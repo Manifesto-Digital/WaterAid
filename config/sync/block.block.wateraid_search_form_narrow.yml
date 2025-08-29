@@ -1,0 +1,23 @@
+uuid: cdcd8c22-c38f-4ca8-9ba9-25d49d060e4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - wateraid
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: wateraid_search_form_narrow
+theme: wateraid
+region: primary_menu
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

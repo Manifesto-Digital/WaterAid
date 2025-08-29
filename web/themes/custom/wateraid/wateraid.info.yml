@@ -1,0 +1,9 @@
+name: wateraid
+type: theme
+'base theme': stable9
+version: 1.0.0
+libraries:
+  - wateraid/main
+description: ''
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.3.2'

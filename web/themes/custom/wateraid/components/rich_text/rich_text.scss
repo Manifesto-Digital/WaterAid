@@ -1,0 +1,6 @@
+@import './sass/1-base/colors';
+
+[data-component-id="wateraid:rich_text"] {
+  color: $black;
+  border: 2px solid $brand-teal;
+}

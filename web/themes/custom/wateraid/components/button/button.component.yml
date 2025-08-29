@@ -1,0 +1,30 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Button
+status: stable
+props:
+  type: object
+  properties:
+    linktext:
+      type: string
+      title: linkText
+      description: The text of the link
+      # @todo Add examples here.
+      examples: []
+    link:
+      type: string
+      title: link
+      description: The button URL
+      # @todo Add examples here.
+      examples: []
+    buttontype:
+      type: string
+      title: buttonType
+      description: Button is primary or secondary
+      # @todo Add examples here.
+      examples: []
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/button/button.css: {}
+  dependencies:
+    - wateraid/main

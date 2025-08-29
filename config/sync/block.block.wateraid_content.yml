@@ -1,0 +1,22 @@
+uuid: b2dd5d33-fb0c-4949-8d7c-7e6edcc3c460
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - wateraid
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: wateraid_content
+theme: wateraid
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

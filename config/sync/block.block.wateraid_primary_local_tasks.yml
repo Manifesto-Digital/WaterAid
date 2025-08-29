@@ -1,0 +1,22 @@
+uuid: b969466f-a354-4979-9721-7b32101557ab
+langcode: en
+status: true
+dependencies:
+  theme:
+    - wateraid
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: wateraid_primary_local_tasks
+theme: wateraid
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

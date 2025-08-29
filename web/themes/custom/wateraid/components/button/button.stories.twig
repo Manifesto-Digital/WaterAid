@@ -1,0 +1,21 @@
+{# web/themes/custom/wateraid/components/button.stories.twig #}
+{% stories button with { title: 'wateraid/Examples/Button' } %}
+
+  {% story using_args with {
+    name: 'Button',
+    args: {
+      linkText: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      buttonType: 'primary'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      linkText,
+      link,
+      buttonType
+    }) }}
+
+  {% endstory %}
+
+{% endstories %}

@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function wateraid_preprocess_image_widget\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: web/themes/custom/wateraid/wateraid.theme
+
+		-
+			message: "#^Function wateraid_preprocess_image_widget\\(\\) has parameter \\$variables with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: web/themes/custom/wateraid/wateraid.theme

@@ -1,0 +1,115 @@
+# Ignore compiled files.
+docroot
+web/*
+!web/modules
+web/modules/contrib
+!web/themes
+web/themes/contrib
+web/themes/custom/rcot/dist/*
+web/themes/custom/rcot/node_modules
+
+!web/sites
+web/sites/*
+!web/sites/development.services.yml
+!web/sites/sites.php
+!web/sites/default
+web/sites/default/*
+!web/sites/default/settings.php
+!web/sites/default/settings.platformsh.php
+!web/sites/default/services.yml
+!web/sites/default/example.settings.local.php
+
+# Sensitive files & directories.
+/backups
+/private
+/tmp
+~*.xlsx
+*.sql*
+
+# Ignore local persistent files.
+.persist
+
+# Ignore folder with tests results
+/tests
+
+# Compiled files
+dist/
+_icons-generated.scss
+dependencyGraph.json
+patterns.zip
+yarn-error.log
+*.css.map
+*.css
+*.min.js
+
+# OS generated files
+*.swp
+.DS_Store
+.DS_Store?
+._.DS_Store
+._.DS_Store?
+ehthumbs.db
+Icon
+Thumbs.db
+
+# Dependencies
+node_modules
+vendor
+
+# Generated files
+*.sass-cache/
+.eslintcache
+*unison.*
+*.generated.json
+*.generated.css
+*.turbo
+.run
+
+#IDE plugins
+.idea
+.vscode
+
+# Errors
+npm-debug.log
+php_errors.log
+
+# Development files.
+settings.local.php
+.env.local
+.ddev/.env
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+!.mariadb-init/startup.sql
+
+# Vim generated files
+*.un~
+
+# DDEV specific
+.ddev/docker-compose.username.yaml
+/.editorconfig
+*storybook.log
+
+# example stories
+web/themes/custom/rcot/stories
+
+# Allow generic media icons to be in git, you seem to need to allow each folder for some reason.
+!web/sites/default/files/
+web/sites/default/files/*
+!web/sites/default/files/media-icons
+web/sites/default/files/media-icons/*
+!web/sites/default/files/media-icons/generic

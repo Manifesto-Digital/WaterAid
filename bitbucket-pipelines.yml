@@ -1,0 +1,119 @@
+clone:
+  depth: full
+
+definitions:
+  caches:
+    drush: ~/.drush/cache
+    node: web/themes/custom/wateraid/node_modules
+  steps:
+    - step: &bootstrap
+        name: Bootstrap
+        image: deeson/deployer
+        script:
+          - make pipelines-bootstrap
+        artifacts:
+          - 'scripts/make/**'
+
+    - step: &drupal
+        name: Build Drupal
+        image: composer:2
+        caches:
+          - composer
+          - drush
+        script:
+          - apk update && apk add rsync
+          - composer --version && composer install --ignore-platform-reqs
+          - ln -s docroot web
+        artifacts:
+          - 'docroot/**'
+          - 'vendor/**'
+          - 'web'
+
+    - step: &frontend
+        name: Build Front-End
+        image:
+          name: deeson/fe-node
+          run-as-user: 1000
+        caches:
+          - node
+        script:
+          - cd web/themes/custom/wateraid && npm && npm build
+        artifacts:
+          - 'web/themes/custom/wateraid/**'
+
+    - step: &code-sniffer
+        name: 'Code Sniffer'
+        image: willhallonline/drupal-phpcs
+        condition:
+          changesets:
+            includePaths:
+              - 'web/modules/**'
+              - 'web/themes/**'
+        script:
+          - HEADER_ROW=1
+          - CUSTOM_MODULES_PATH="web/modules/custom"
+          - PHPCS_ERROR_COUNT=$(phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --report=csv "$CUSTOM_MODULES_PATH" | wc -l)
+          - PHPCS_ERROR_COUNT=$((${PHPCS_ERROR_COUNT} - ${HEADER_ROW}))
+          - if [ ${PHPCS_ERROR_COUNT} -gt ${PHPCS_ERROR_COUNT_BASELINE} ]; then
+          - mkdir test-reports
+          - phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --report-junit=test-reports/phpcs.xml "$CUSTOM_MODULES_PATH"
+          - else
+          - echo "Skipping phpcs. $PHPCS_ERROR_COUNT errors were found. The configured baseline is currently set at $PHPCS_ERROR_COUNT_BASELINE."
+          - fi
+
+    - step: &security-analysis
+        name: Security Analysis
+        image: composer:2
+        caches:
+          - composer
+          - drush
+        script:
+          - composer --version && composer install --ignore-platform-reqs
+          - vendor/bin/phpstan analyse web/modules/custom web/themes/custom --memory-limit=1G
+        artifacts:
+          - 'docroot/**'
+          - 'vendor/**'
+          - 'web'
+    # Skip this step until we have deployment sorted.
+    # - step: &deploy
+    #     name: Relay
+    #     image: deeson/deployer:snapshot-fix
+    #     script:
+    #       - /opt/ci-tools/deployer.sh
+
+    # - step: &composer-audit
+        name: Security check
+        image: composer:latest
+        script:
+          - composer --version
+          - composer install --optimize-autoloader --no-interaction --prefer-dist --ignore-platform-reqs
+          - composer audit || { echo "Composer audit failed"; exit 1; }
+        artifacts:
+          - vendor/**
+          - composer
+
+pipelines:
+  pull-requests:
+    '**':
+      - step: *code-sniffer
+      - step: *security-analysis
+  branches:
+    main:
+      - parallel:
+        - step: *drupal
+        - step: *frontend
+      # - step: *deploy
+    develop:
+      - parallel:
+        - step: *drupal
+        - step: *frontend
+      # - step: *deploy
+  tags:
+    '*':
+      - parallel:
+        - step: *drupal
+        - step: *frontend
+      # - step: *deploy
+  custom:
+    security:
+      - step: *composer-audit
