@@ -2,6 +2,8 @@ uuid: c5424ff3-7f31-466d-a574-514fbcad5e4c
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.field.menu_link_content.wateraid_site_menu.field_classes
   module:
     - menu_link_content
 id: menu_link_content.wateraid_site_menu.default
@@ -13,6 +15,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_classes:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   langcode: true
