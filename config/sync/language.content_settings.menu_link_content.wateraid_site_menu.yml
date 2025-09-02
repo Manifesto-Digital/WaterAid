@@ -1,0 +1,17 @@
+uuid: b38bfff7-01f8-46c1-b3bf-e3559f522dc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - menu_link_content
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.wateraid_site_menu
+target_entity_type_id: menu_link_content
+target_bundle: wateraid_site_menu
+default_langcode: site_default
+language_alterable: true

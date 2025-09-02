@@ -1,0 +1,17 @@
+uuid: ccedab94-a5c6-4525-93f1-2ce435ccaa7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - node.type.page
+  module:
+    - gnode
+    - node
+id: wateraid_site-group_node-page
+group_type: wateraid_site
+content_plugin: 'group_node:page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

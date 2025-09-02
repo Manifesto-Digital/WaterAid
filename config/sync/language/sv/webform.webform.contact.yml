@@ -1,0 +1,8 @@
+title: Kontakt
+settings:
+  confirmation_message: 'Ditt meddelande har skickats.'
+handlers:
+  email_confirmation:
+    label: E-postbekräftelse
+  email_notification:
+    label: E-postmeddelande

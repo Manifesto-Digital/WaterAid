@@ -14,3 +14,7 @@ global_role: authenticated
 group_type: wateraid_site
 permissions:
   - 'view group'
+  - 'view group_node:article entity'
+  - 'view group_node:article relationship'
+  - 'view group_node:page entity'
+  - 'view group_node:page relationship'

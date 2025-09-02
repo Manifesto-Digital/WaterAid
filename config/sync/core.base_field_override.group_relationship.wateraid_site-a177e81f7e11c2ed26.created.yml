@@ -1,0 +1,18 @@
+uuid: f70e3c8f-692f-45de-8c13-106c4a9a14a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-a177e81f7e11c2ed26
+id: group_relationship.wateraid_site-a177e81f7e11c2ed26.created
+field_name: created
+entity_type: group_relationship
+bundle: wateraid_site-a177e81f7e11c2ed26
+label: 'Created on'
+description: 'The time that the group relationship was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created
