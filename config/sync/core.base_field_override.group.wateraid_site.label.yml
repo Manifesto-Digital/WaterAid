@@ -1,0 +1,18 @@
+uuid: f48a4930-31aa-4687-8222-bb05b95e70b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+id: group.wateraid_site.label
+field_name: label
+entity_type: group
+bundle: wateraid_site
+label: 'Site Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

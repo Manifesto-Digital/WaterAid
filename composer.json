@@ -30,6 +30,7 @@
     "drupal/gin": "^4.1",
     "drupal/google_tag": "^2.0",
     "drupal/group": "^3.3",
+    "drupal/group_content_menu_bundles": "^1.0@alpha",
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",

@@ -31,8 +31,11 @@ module:
   filter: 0
   flexible_permissions: 0
   gin_toolbar: 0
+  gnode: 0
   google_tag: 0
   group: 0
+  group_content_menu: 0
+  group_content_menu_bundles: 0
   help: 0
   history: 0
   image: 0
@@ -44,6 +47,7 @@ module:
   media: 0
   media_directories: 0
   media_library: 0
+  menu_item_extras: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0

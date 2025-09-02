@@ -1,0 +1,16 @@
+uuid: f612388d-3e54-44b0-9d5f-438c640c5ead
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - user.role.authenticated
+id: wateraid_site-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: wateraid_site
+permissions:
+  - 'view group'

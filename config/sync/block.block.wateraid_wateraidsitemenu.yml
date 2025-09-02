@@ -1,0 +1,37 @@
+uuid: 6a9b6180-c0d1-4302-9c2b-4be0ef53139d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.wateraid_site_menu
+  module:
+    - group
+    - group_content_menu
+  theme:
+    - wateraid
+id: wateraid_wateraidsitemenu
+theme: wateraid
+region: content
+weight: -6
+provider: null
+plugin: 'group_content_menu:wateraid_site_menu'
+settings:
+  id: 'group_content_menu:wateraid_site_menu'
+  label: 'WaterAid Site Menu'
+  label_display: '0'
+  provider: group_content_menu
+  context_mapping:
+    group: '@group.group_route_context:group'
+  level: 1
+  depth: 0
+  expand_all_items: true
+  relative_visibility: false
+  theme_hook_suggestion: ''
+visibility:
+  group_type:
+    id: group_type
+    group_types:
+      wateraid_site: wateraid_site
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'

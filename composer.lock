@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9252e82f4e241b83e01aea2b3c2ebdd4",
+    "content-hash": "66029c496a6a3d7ca5cb7d89e97d13dc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3217,6 +3217,118 @@
             }
         },
         {
+            "name": "drupal/group_content_menu",
+            "version": "3.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/group_content_menu.git",
+                "reference": "3.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/group_content_menu-3.0.7.zip",
+                "reference": "3.0.7",
+                "shasum": "0d5ec10abcb6a963dd30e053441763bcc3e3a36c"
+            },
+            "require": {
+                "drupal/core": "^10.3 || >=11.1.7 <11.2 || ^11.2",
+                "drupal/group": "^3.0@beta"
+            },
+            "require-dev": {
+                "drupal/tmgmt": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.7",
+                    "datestamp": "1754662847",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Hedding",
+                    "homepage": "https://www.drupal.org/u/heddn",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "ghost of drupal past",
+                    "homepage": "https://www.drupal.org/user/3619592"
+                },
+                {
+                    "name": "heddn",
+                    "homepage": "https://www.drupal.org/user/1463982"
+                }
+            ],
+            "description": "Provides features for a menu per group",
+            "homepage": "https://www.drupal.org/project/group_content_menu",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/group_content_menu",
+                "issues": "https://www.drupal.org/project/issues/group_content_menu"
+            }
+        },
+        {
+            "name": "drupal/group_content_menu_bundles",
+            "version": "1.0.0-alpha5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/group_content_menu_bundles.git",
+                "reference": "1.0.0-alpha5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/group_content_menu_bundles-1.0.0-alpha5.zip",
+                "reference": "1.0.0-alpha5",
+                "shasum": "9f08b51cc8e9a44085084527bb1ca8cbbbcfea68"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10 || ^11",
+                "drupal/group_content_menu": "^3.0",
+                "drupal/menu_item_extras": "^2.19 || ^3.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha5",
+                    "datestamp": "1746722677",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "alecsmrekar",
+                    "homepage": "https://www.drupal.org/user/1050782"
+                },
+                {
+                    "name": "plach",
+                    "homepage": "https://www.drupal.org/user/183211"
+                }
+            ],
+            "description": "Adds group_content_menu support to menu_item_extras.",
+            "homepage": "http://drupal.org/project/group_content_menu_bundles",
+            "support": {
+                "source": "https://git.drupalcode.org/project/group_content_menu_bundles",
+                "issues": "https://www.drupal.org/project/issues/group_content_menu_bundles"
+            }
+        },
+        {
             "name": "drupal/layout_paragraphs",
             "version": "2.1.1",
             "source": {
@@ -3467,6 +3579,76 @@
             "homepage": "https://www.drupal.org/project/media_directories",
             "support": {
                 "source": "https://git.drupalcode.org/project/media_directories"
+            }
+        },
+        {
+            "name": "drupal/menu_item_extras",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/menu_item_extras.git",
+                "reference": "3.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/menu_item_extras-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "39abc5557333e71b1f0b26f069e7367f921bdbab"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.1.0",
+                    "datestamp": "1725022060",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": ">=12"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Andriy Khomych",
+                    "homepage": "https://www.drupal.org/u/andriy-khomych",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Bogdan Hepting",
+                    "homepage": "https://www.drupal.org/u/bogdan-hepting",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Oleh Vehera",
+                    "homepage": "https://www.drupal.org/u/voleger",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Mykhailo Gurei",
+                    "homepage": "https://www.drupal.org/u/ozin",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provide an additional custom fields which can be used on Menu link",
+            "homepage": "https://www.drupal.org/project/menu_item_extras",
+            "keywords": [
+                "Drupal",
+                "Mega Menu"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/menu_item_extras",
+                "issues": "https://www.drupal.org/project/issues/menu_item_extras"
             }
         },
         {
@@ -15629,6 +15811,7 @@
     "stability-flags": {
         "drupal/diff": 10,
         "drupal/entity_usage": 10,
+        "drupal/group_content_menu_bundles": 15,
         "drupal/linkit": 15,
         "drupal/media_directories": 10,
         "drupal/rabbit_hole": 15,

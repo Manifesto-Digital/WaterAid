@@ -1,0 +1,23 @@
+uuid: 6d3aad68-37f3-4f7a-aa97-beaa10357c55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_relationship.wateraid_site-group_membership.group_roles
+    - group.relationship_type.wateraid_site-group_membership
+id: group_relationship.wateraid_site-group_membership.default
+targetEntityType: group_relationship
+bundle: wateraid_site-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  uid: true

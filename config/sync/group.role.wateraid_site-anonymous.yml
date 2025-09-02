@@ -1,0 +1,16 @@
+uuid: 52097bf9-22e7-49a0-8c0b-6cd5e11a6a69
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - user.role.anonymous
+id: wateraid_site-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: wateraid_site
+permissions:
+  - 'view group'

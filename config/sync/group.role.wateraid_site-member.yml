@@ -1,0 +1,15 @@
+uuid: 9c3a17ef-7a29-4e3c-b705-d8a3e706ed27
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - user.role.authenticated
+id: wateraid_site-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: wateraid_site
+permissions: {  }

@@ -1,0 +1,11 @@
+uuid: 904bcaba-4bc9-400b-a5bd-826e53e90c28
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_site
+label: 'WaterAid Site'
+description: 'WaterAid site Groups will be used to provide the regional and Wash Matters sub-sites. Any group of this kind added will present a new sub-site to visitors.'
+new_revision: true
+creator_membership: false
+creator_wizard: false
+creator_roles: {  }

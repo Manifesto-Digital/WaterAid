@@ -1,0 +1,17 @@
+uuid: c5424ff3-7f31-466d-a574-514fbcad5e4c
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.wateraid_site_menu.default
+targetEntityType: menu_link_content
+bundle: wateraid_site_menu
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

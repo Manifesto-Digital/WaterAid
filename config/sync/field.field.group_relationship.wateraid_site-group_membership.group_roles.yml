@@ -1,0 +1,22 @@
+uuid: 1b2e392b-040f-443b-9d40-d6516d75c7ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_relationship.group_roles
+    - group.relationship_type.wateraid_site-group_membership
+id: group_relationship.wateraid_site-group_membership.group_roles
+field_name: group_roles
+entity_type: group_relationship
+bundle: wateraid_site-group_membership
+label: Roles
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: wateraid_site
+field_type: entity_reference

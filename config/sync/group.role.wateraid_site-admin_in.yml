@@ -1,0 +1,15 @@
+uuid: 15191e93-12a3-4b88-8cd2-d26c98c48c6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - user.role.administrator
+id: wateraid_site-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: wateraid_site
+permissions: {  }
