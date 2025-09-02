@@ -20,15 +20,16 @@
     "drupal/admin_toolbar": "^3.5",
     "drupal/config_ignore": "^3.3",
     "drupal/config_split": "^2.0",
-    "drupal/core-composer-scaffold": "^10.3",
-    "drupal/core-project-message": "^10.3",
-    "drupal/core-recommended": "^10.3",
+    "drupal/core-composer-scaffold": "^10.5",
+    "drupal/core-project-message": "^10.5",
+    "drupal/core-recommended": "^10.5",
     "drupal/devel": "^5.3",
     "drupal/diff": "^2.0@beta",
     "drupal/entity_usage": "^2.0@beta",
-    "drupal/field_group": "^3.6",
-    "drupal/gin": "^3.0@RC",
+    "drupal/field_group": "^4.0",
+    "drupal/gin": "^4.1",
     "drupal/google_tag": "^2.0",
+    "drupal/group": "^3.3",
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
@@ -47,8 +48,19 @@
     "drupal/tmgmt_google": "^1.2",
     "drupal/token": "^1.15",
     "drupal/twig_tweak": "^3.4",
-    "drupal/xmlsitemap": "^1.5",
-    "drush/drush": "^12.4"
+    "drupal/webform": "^6.3@beta",
+    "drupal/xmlsitemap": "^2.0",
+    "drush/drush": "^12.4",
+    "wikimedia/composer-merge-plugin": "^2.1"
+  },
+  "require-dev": {
+    "drupal/core-dev": "^10.5",
+    "mglaman/phpstan-drupal": "^1.2",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^1.12",
+    "phpstan/phpstan-deprecation-rules": "^1.2",
+    "spaze/phpstan-disallowed-calls": "^3.4",
+    "squizlabs/php_codesniffer": "*"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -58,12 +70,14 @@
   "config": {
     "allow-plugins": {
       "composer/installers": true,
+      "cweagans/composer-patches": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
       "drupal/core-composer-scaffold": true,
       "drupal/core-project-message": true,
-      "phpstan/extension-installer": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true,
       "php-http/discovery": true,
-      "cweagans/composer-patches": true
+      "phpstan/extension-installer": true,
+      "tbachert/spi": true,
+      "wikimedia/composer-merge-plugin": true
     },
     "sort-packages": true
   },
@@ -110,31 +124,14 @@
         "homepage",
         "support"
       ],
-      "post-create-project-cmd-message": [
-        "<bg=blue;fg=white>                                                         </>",
-        "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
-        "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
-        "<bg=blue;fg=white>                                                         </>",
-        "",
-        "<bg=yellow;fg=black>Next steps</>:",
-        "  * Install the site: https://www.drupal.org/docs/installing-drupal",
-        "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
-        "  * Get support: https://www.drupal.org/support",
-        "  * Get involved with the Drupal community:",
-        "      https://www.drupal.org/getting-involved",
-        "  * Remove the plugin that prints this message:",
-        "      composer remove drupal/core-project-message"
-      ]
+      "post-create-project-cmd-message": []
     },
     "enable-patching": true,
-    "patches": {}
-  },
-  "require-dev": {
-    "mglaman/phpstan-drupal": "^1.2",
-    "phpstan/extension-installer": "^1.4",
-    "phpstan/phpstan": "^1.12",
-    "phpstan/phpstan-deprecation-rules": "^1.2",
-    "spaze/phpstan-disallowed-calls": "^3.4",
-    "squizlabs/php_codesniffer": "*"
+    "patches": {},
+    "merge-plugin": {
+      "include": [
+          "web/modules/contrib/webform/composer.libraries.json"
+      ]
+    }
   }
 }
