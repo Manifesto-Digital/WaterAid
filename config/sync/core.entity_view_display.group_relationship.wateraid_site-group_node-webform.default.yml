@@ -1,12 +1,12 @@
-uuid: 2c37182a-df14-47d5-844c-75908c1b7a99
+uuid: eea9602f-4d17-44ee-9704-2b7ebb5614b9
 langcode: en
 status: true
 dependencies:
   config:
-    - group.relationship_type.wateraid_site-a177e81f7e11c2ed26
-id: group_relationship.wateraid_site-a177e81f7e11c2ed26.default
+    - group.relationship_type.wateraid_site-group_node-webform
+id: group_relationship.wateraid_site-group_node-webform.default
 targetEntityType: group_relationship
-bundle: wateraid_site-a177e81f7e11c2ed26
+bundle: wateraid_site-group_node-webform
 mode: default
 content:
   entity_id:

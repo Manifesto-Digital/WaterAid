@@ -1,8 +1,16 @@
 title: Kontakt
 settings:
-  confirmation_message: 'Ditt meddelande har skickats.'
+  confirmation_message: '<p>Ditt meddelande har skickats.</p>'
 handlers:
   email_confirmation:
     label: E-postbekräftelse
   email_notification:
     label: E-postmeddelande
+description: '<p>Basic email contact webform.</p>'
+elements: |
+  name:
+    '#title': 'Translated Name'
+  email:
+    '#title': 'Translated Email'
+  subject:
+    '#title': 'Translated Subject'
