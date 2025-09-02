@@ -1,0 +1,11 @@
+group_relationship.group_webform_relate_page:
+  route_name: 'entity.group_relationship.group_webform_relate_page'
+  title: 'Add existing webform'
+  appears_on:
+    - 'entity.group.webform'
+
+group_relationship.group_webform_add_page:
+  route_name: 'entity.group_relationship.group_webform_add_page'
+  title: 'Create new webform'
+  appears_on:
+    - 'entity.group.webform'

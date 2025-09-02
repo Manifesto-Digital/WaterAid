@@ -1,0 +1,10 @@
+group.webform:
+  title: "Webforms"
+  base_route: 'entity.group.canonical'
+  route_name: 'entity.group.webform'
+  weight: 35
+group_webform.settings:
+  title: 'Group Webform'
+  base_route: 'entity.group.collection'
+  route_name: 'group_webform.settings'
+  weight: 20

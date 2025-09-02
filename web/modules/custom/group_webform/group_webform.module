@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * @file
+ * Gives the ability to create and manage webforms for groups.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\webform\Entity\Webform;
+use Drupal\webform\WebformInterface;
+
+/**
+ * Implements hook_help().
+ */
+function group_webform_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.group_webform':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module allows you to create group relationships between webform entities and groups.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function group_webform_group_relationship_delete(EntityInterface $entity) {
+  if ($entity->getPlugin()->getPluginId() === 'group_webform:webform') {
+    \Drupal::service('cache.groupwebform')->invalidateAll();
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function group_webform_entity_type_alter(array &$entity_types) {
+  $entity_types['webform']->setHandlerClass('list_builder', "Drupal\group_webform\GroupWebformEntityListBuilder");
+  $entity_types['webform_submission']->setHandlerClass('list_builder', "Drupal\group_webform\GroupWebformSubmissionListBuilder");
+}
+
+/**
+ * Prepares variables for the group relationship template to render the webform.
+ *
+ * Default template: group-relationship.html.twig.
+ *
+ * @param array $variables
+ *   - elements: An array of elements to display in view mode.
+ *   - group_relationship: The group relationship object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser', etc.
+ */
+function group_webform_preprocess_group_relationship(array &$variables) {
+  /** @var \Drupal\webform\Entity\Webform $webform */
+  $webform = $variables["group_relationship"]->getEntity();
+  if ($webform instanceof Webform) {
+    $output = \Drupal::EntityTypeManager()
+      ->getViewBuilder('webform')
+      ->view($webform);
+    $variables["relationship"]["webform"] = $output;
+  }
+}
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ */
+function group_webform_field_widget_single_element_group_webform_entity_reference_select_form_alter(&$element, FormStateInterface $form_state, $context) {
+  /** @var \Drupal\Core\Field\FieldItemListInterface $items */
+  // Hide webform settings for the field widget.
+  $items = $context['items'];
+  $field_definition = $items->getFieldDefinition();
+  if ($field_definition->getType() !== 'webform') {
+    return;
+  }
+  if ($items->getEntity()->getEntityTypeId() !== 'node'
+      && $items->getEntity()->getEntityTypeId() !== 'paragraph') {
+    return;
+  }
+  // Hide Webform field settings.
+  $element['settings']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access() for webform entities.
+ */
+function group_webform_webform_access(WebformInterface $webform = NULL, $operation, AccountInterface $account) {
+  if (!($webform instanceof WebformInterface)) {
+    return AccessResult::neutral();
+  }
+  else {
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    // Check access to webforms embedded in nodes
+    // via Webform Entity Reference fields
+    // specifically those used by Paragraphs.
+    if ($route_name === "entity.node.canonical") {
+      if ($operation === 'submission_create' || 'submission_view_own') {
+        return \Drupal::service('groupwebform.webform')->webformAccess('view', $webform, $account);
+      }
+      if ($operation === 'update') {
+        return \Drupal::service('groupwebform.webform')->webformAccess('update', $webform, $account);
+      }
+      if ($operation === 'submission_update_any') {
+        return \Drupal::service('groupwebform.webform')->webformAccess('submission_view_any', $webform, $account);
+      }
+    }
+  }
+}
