@@ -895,6 +895,28 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
+
+  if (file_exists($app_root . '/sites/development.services.yml')) {
+    $settings['container_yamls'][] = $app_root . '/sites/development.services.yml';
+  }
+
+  /**
+   * Show all error messages, with backtrace information.
+   */
+  error_reporting(E_ALL);
+  ini_set('display_errors', TRUE);
+  ini_set('display_startup_errors', TRUE);
+  $config['system.logging']['error_level'] = 'verbose';
+
+  /**
+   * Disable CSS and JS aggregation.
+   */
+  $config['system.performance']['css']['preprocess'] = FALSE;
+  $config['system.performance']['js']['preprocess'] = FALSE;
+
+  ini_set('max_input_nesting_level', 512);
+  ini_set('xdebug.max_nesting_level', 512);
+  ini_set('zend.assertions', 1);
 }
 
 $settings['config_sync_directory'] = DRUPAL_ROOT . '/../config/sync';
