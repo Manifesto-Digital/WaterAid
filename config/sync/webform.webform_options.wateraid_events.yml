@@ -1,0 +1,26 @@
+uuid: 05bb2eb6-4ab2-4c9d-8a0e-addd10cb1e6f
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_events
+label: 'WaterAid events'
+category: WaterAid
+likert: false
+options: |-
+  'Berlin Marathon 2025': 'Berlin Marathon 2025'
+  'WaterAid Dragon Boat Race 2025': 'Canary Wharf Dragon Boat Race 2025'
+  'Edinburgh Half Marathon 2025': 'Edinburgh Half Marathon 2025'
+  'Edinburgh Marathon 2025': 'Edinburgh Marathon 2025'
+  'Edinburgh Marathon Festival 10k 2025': 'Edinburgh Marathon Festival 10k 2025'
+  'Great North Run 2025': 'Great North Run 2025'
+  'Great North Swim 2025': 'Great North Swim 2025'
+  'Hackney Half Marathon 2025': 'Hackney Half Marathon 2025'
+  'Henley Swim Festival 2025': 'Henley Swim Festival 2025'
+  'Just Water 2025': 'Just Water 2025'
+  'London Landmarks Half Marathon 2025': 'London Landmarks Half Marathon 2025'
+  'London Marathon 2025': 'London Marathon 2025'
+  'Royal Parks Half Marathon 2025': 'Royal Parks Half Marathon 2025'
+  'Sing for Water 2025': 'Sing for Water 2025'
+  'Swim Marathon 2025': 'Swim Marathon 2025'
+  'Swim Serpentine 2025': 'Swim Serpentine 2025'
+  'Walk for Water 2025': 'Walk for Water 2025'

@@ -1,0 +1,22 @@
+uuid: 5819cf72-ece4-457f-a1b6-6c3eb3f99fae
+langcode: en
+status: true
+dependencies: {  }
+id: 2022_festivals
+label: 'Festivals - all 2022'
+category: WaterAid
+likert: false
+options: |-
+  Boomtown: Boomtown
+  'Camp Bestival Dorset': 'Camp Bestival: Dorset'
+  'Camp Bestival Shropshire': 'Camp Bestival: Shropshire'
+  Glastonbury: Glastonbury
+  'Glastonbury Abbey Extravaganza': 'Glastonbury Abbey Extravaganza'
+  'Green Man': 'Green Man'
+  Latitude: Latitude
+  Parklife: Parklife
+  Shambala: Shambala
+  'Smoked & Uncut Bath': 'Smoked & Uncut: Bath'
+  'Smoked & Uncut Bridge Place': 'Smoked & Uncut: Bridge Place'
+  'Smoked & Uncut Brockenhurst': 'Smoked & Uncut: Brockenhurst'
+  'Smoked & Uncut Lime Wood': 'Smoked & Uncut: Lime Wood'

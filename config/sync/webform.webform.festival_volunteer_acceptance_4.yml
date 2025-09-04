@@ -1,0 +1,736 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: "<h2>Your deposit details:</h2>\r\n\r\n<p><strong>Date</strong><br />\r\n[webform_submission:donation-date]</p>\r\n\r\n<p><strong>Donation amount</strong><br />\r\n£[webform_submission:donation-amount]</p>\r\n"
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ' I just donated to @WaterAidUK. You can too: wateraid.org/uk/donate'
+    after_confirmation_footer:
+      value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you. Please do not send your bank details by email.</p>\r\n"
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_donation_stripe:
+    test_secret_key: stripe_test_secret_key_festivals
+    test_public_key: stripe_test_public_key_festivals
+    live_secret_key: stripe_live_secret_key_festivals
+    live_public_key: stripe_live_public_key_festivals
+  wateraid_forms:
+    style_version: v1
+_core:
+  default_config_hash: W8QDMdZhpXffMYRY7zq361fviC6lzyyVlazfxeg7QwE
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: festival_volunteer_acceptance_4
+title: 'Festival Volunteer Acceptance 2023'
+description: 'Non-staff, includes payment fields for deposit. Duplicated from Donation form'
+categories:
+  - Donation
+elements: |-
+  step_1:
+    '#type': webform_wizard_page
+    '#title': 'Accept your festival volunteer offer'
+    '#open': true
+    '#next_button_label': Start
+    form_title:
+      '#type': webform_markup
+      '#markup': |-
+        <h1>Accept your festival volunteer offer</h1>
+
+        <p>Complete this form to confirm your place on the WaterAid 2023 festival volunteering team.</p>
+
+        <p>If you have any questions about the acceptance process, please get in touch with us by emailing <a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a>.</p>
+
+        <p>We look forward to seeing you this summer!</p>
+    donation_amount:
+      '#type': donations_webform_amount
+      '#title': 'Deposit amount'
+      '#frequency__access': false
+      '#frequency__title': 'Select frequency'
+      '#frequency__placeholder': 'Enter frequency'
+      '#amount__title': 'Enter amount'
+      '#amount__placeholder': 'Deposit amount'
+  step_2:
+    '#type': webform_wizard_page
+    '#title': 'Your details'
+    '#open': true
+    '#next_button_label': 'Next step'
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha_v3/default
+    intro:
+      '#type': processed_text
+      '#text': |
+        <h2>Confirm your place at [current-page:query:festival]</h2>
+
+        <p>Before continuing, please make sure you've read the relevant role description on the <strong><a href="[current-page:query:url]">[current-page:query:festival] volunteer hub</a></strong>.</p>
+
+        <p>You'll need to:</p>
+
+        <ul>
+        	<li>provide up to date contact details,</li>
+        	<li>pay a refundable deposit of&nbsp;£[current-page:query:val],</li>
+        	<li>upload a passport-style photo.</li>
+        </ul>
+      '#format': basic_html
+    your_wateraid_festival_volunteering_place_offer:
+      '#type': textfield
+      '#title': 'You''re currently accepting an offer to volunteer at:'
+      '#placeholder': ' '
+      '#required': true
+      '#pattern': '^((?!query).)*$'
+      '#pattern_error': 'Please make sure you accessed this form using your personalised link'
+      '#default_value': '[current-page:query:festival:htmldecode]'
+      '#attributes':
+        readonly: readonly
+      '#format': raw
+    your_volunteer_role_:
+      '#type': textfield
+      '#title': 'Your volunteer role:'
+      '#placeholder': ' '
+      '#required': true
+      '#pattern': '^((?!query).)*$'
+      '#pattern_error': 'Please make sure you accessed this form using your personalised link'
+      '#default_value': '[current-page:query:role]'
+      '#attributes':
+        readonly: readonly
+      '#format': raw
+    extra_info:
+      '#type': processed_text
+      '#text': |
+        <p>If we've offered you a place at more than one festival, you'll need to complete this form for each separate festival, and pay the relevant deposit for each. Please refer back to your offer email and follow the link for each festival.</p>
+      '#format': basic_html
+    your_details:
+      '#type': processed_text
+      '#text': |
+        <h2>Your details</h2>
+      '#format': basic_html
+    contact_name:
+      '#type': wateraid_forms_webform_name
+      '#title': 'Contact name'
+      '#required': true
+      '#title__access': false
+      '#first__required': true
+      '#last__required': true
+    contact_email:
+      '#type': loqate_email_composite
+      '#title': 'Contact email'
+      '#required': true
+      '#required_error': 'Please enter your email address'
+      '#email__title': 'Contact email'
+      '#email__description': 'Please make sure you <strong>use the same name and email address as you did when you completed the application form</strong>. If you need to update any of your details, let us know by emailing <a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a>.'
+      '#email__required': true
+    address_text:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Your billing address</h3>
+
+        <p>Please enter the billing address for the card you will use to pay your deposit &ndash; even if this is different to your home address.</p>
+    address:
+      '#type': webform_address_capture_plus_manual
+      '#title': Address
+      '#description_display': before
+      '#address__required': true
+      '#city__required': true
+      '#postal_code__required': true
+      '#country__required': true
+      '#capture_plus_active': true
+    onsite_info:
+      '#type': processed_text
+      '#text': |
+        <h3>On-site information</h3>
+      '#format': basic_html
+    contact_phone:
+      '#type': tel
+      '#title': 'Please let us know the mobile number you''ll be using at the festival:'
+      '#required': true
+      '#required_error': 'Please let us know your on-site mobile number'
+    will_you_require_a_car_parking_pass_at_the_festival_:
+      '#type': radios
+      '#title': 'Will you require a car parking pass?'
+      '#description': 'If you&#39;re driving, we recommend car sharing with other WaterAid volunteers. Only the driver needs to request a parking pass.'
+      '#options': yes_no
+      '#required': true
+      '#options__properties': ''
+  upload_your_photo:
+    '#type': webform_wizard_page
+    '#title': 'Upload your photo'
+    passport_photo_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Upload your photo</h2>
+
+        <p>The photo must be passport style (not a copy of your passport), with a white background and nothing obstructing your face.</p>
+
+        <p>This photo will be used for your volunteer ID card, and may be shared with the organisers of the event(s) you&#39;re volunteering at, where strictly necessary.</p>
+    passport_photo:
+      '#type': managed_file
+      '#title': 'Upload your photo'
+      '#required': true
+      '#max_filesize': '2'
+      '#file_extensions': 'gif jpg png'
+      '#file_name': '[webform_submission:values:contact_name]'
+      '#sanitize': true
+  medical_and_emergency_information:
+    '#type': webform_wizard_page
+    '#title': 'Medical and Emergency Information'
+    medical_emergency_info:
+      '#type': processed_text
+      '#text': |
+        <h2>Medical and emergency information</h2>
+      '#format': basic_html
+    do_you_have_any_medical_conditions_or_dietary_requirements_that_:
+      '#type': radios
+      '#title': 'Do you have any medical conditions or dietary requirements that we should be aware of whilst you''re volunteering?'
+      '#options': yes_no
+      '#required': true
+      '#required_error': 'Please let us know if you have any medical conditions or dietary requirements we should be aware of.'
+      '#options__properties': ''
+    please_give_details_of_medical_conditions_or_dietary_requirement:
+      '#type': textarea
+      '#title': 'Please give details of medical conditions or dietary requirements'
+      '#states':
+        visible:
+          ':input[name="do_you_have_any_medical_conditions_or_dietary_requirements_that_"]':
+            value: 'Yes'
+    i_consent_for_my_information_to_be_shared_with_relevant_staff_su:
+      '#type': checkbox
+      '#title': 'I consent for my information to be shared with relevant staff/supervisors where necessary for health and safety'
+      '#states':
+        visible:
+          ':input[name="do_you_have_any_medical_conditions_or_dietary_requirements_that_"]':
+            value: 'Yes'
+      '#required': true
+    emergency_contact_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Emergency contacts</h3>
+
+        <p>Please provide details of two emergency contacts who <strong>will not be at the festival</strong> with you.</p>
+    emergency_contact_1_full_name:
+      '#type': textfield
+      '#title': 'Emergency Contact 1: Full name'
+      '#required': true
+    emergency_contact_1_relationship_to_you:
+      '#type': textfield
+      '#title': 'Emergency Contact 1: Relationship to you'
+      '#required': true
+    emergency_contact_1_phone_number:
+      '#type': textfield
+      '#title': 'Emergency Contact 1: Phone number'
+      '#input_mask': '99999999999'
+      '#required': true
+    emergency_contact_2_full_name:
+      '#type': textfield
+      '#title': 'Emergency Contact 2: Full name'
+      '#required': true
+    emergency_contact_2_relationship_to_you:
+      '#type': textfield
+      '#title': 'Emergency Contact 2: Relationship to you'
+      '#required': true
+    emergency_contact_2_phone_number:
+      '#type': textfield
+      '#title': 'Emergency Contact 2: Phone number'
+      '#input_mask': '99999999999'
+      '#required': true
+  volunteer_agreeement:
+    '#type': webform_wizard_page
+    '#title': 'Volunteer agreeement'
+    volunteer_agreement_heading:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Important information</h2>
+
+        <p>Please make sure you have read&nbsp;and agree to the:</p>
+
+        <ul>
+        	<li><a href="/uk/publications/festivals-volunteer-agreement" target="_blank">Volunteer agreement (PDF)</a></li>
+        	<li><a href="/uk/publications/festival-volunteering-health-and-safety-policy">Festival health and safety policy&nbsp;(PDF)</a></li>
+        	<li><a href="/uk/publications/festival-volunteering-deposit-terms-and-conditions" target="_blank">Deposit terms and conditions (PDF)</a></li>
+        	<li><a href="/uk/publications/festival-volunteer-code-of-conduct" target="_blank">Festival volunteer code of conduct (PDF)</a></li>
+        </ul>
+    values:
+      '#type': processed_text
+      '#text': |
+        <h2>Our values</h2>
+
+        <p>At WaterAid, everything we do is guided by our values of respect, collaboration, accountability, innovation, courage and integrity. As a volunteer, we expect you to uphold these values at all times when volunteering with us.</p>
+      '#format': basic_html
+    volunteer_declaration:
+      '#type': processed_text
+      '#text': |
+        <h3>Volunteer declaration</h3>
+
+        <p>I acknowledge that if any of my behaviour is deemed, at WaterAid’s absolute discretion, not to be in accordance with the volunteer code of conduct or WaterAid’s values, then my volunteering role may be reviewed with immediate effect, and this may affect my participation at future events and volunteering opportunities with WaterAid.</p>
+      '#format': basic_html
+    signature:
+      '#type': webform_signature
+      '#title': 'Please sign below to confirm your agreement'
+      '#description': ''
+      '#description_display': after
+      '#required': true
+      '#required_error': 'Please sign to confirm.'
+      '#wrapper_attributes':
+        style: 'display: block !important'
+    photo_film_consent_heading:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Photo/film consent</h2>
+
+        <p>We may take photos and/or film footage during the festival to use in our communications activity, including, but not limited to, in printed materials, in the press, and online (including on social media).</p>
+
+        <p>All material is stored securely and in line with our <a href="https://www.wateraid.org/uk/publications/ethical-image-policy" target="_blank">ethical image policy</a>, which ensures that films and photos are used accurately, honestly, and in context.</p>
+    do_you_consent_to_images_and_or_film_footage_of_you_at_the_festi:
+      '#type': radios
+      '#title': 'Do you consent to images and/or film footage of you at the festival being collected, stored and used by WaterAid?'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No'
+      '#required': true
+      '#options__properties': ''
+    contact_info:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Your data and communications preferences</h2>
+
+        <p>We outlined how and why we use your contact information when you completed the application form. If you have any questions about our use of your data, or if you&#39;d like to change how you hear from us, please email <a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a> or call our Supporter Care team on 020 7793 4594. For full details of how we store your data, see our <a href="/uk/privacy-policy" target="_blank">privacy policy</a>.</p>
+    references:
+      '#type': processed_text
+      '#text': |
+        <h2>Your references</h2>
+
+        <p>This year, your references will be collected by a company called Credence, who are supporting us with this process. If you need a reference check in order to volunteer with us, you'll receive an email from support@credence.co.uk in the next couple of weeks to start the process, where you will be asked to re confirm your referee details.</p>
+
+        <p>If you have any questions about this, please get in touch with us on <strong><a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a></strong>.</p>
+      '#format': basic_html
+  payment_type:
+    '#type': webform_wizard_page
+    '#title': 'Your deposit'
+    deposit_text:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Your deposit</h2>
+
+        <p>To confirm your place at&nbsp;[current-page:query:festival], you need to pay a &pound;[current-page:query:val] refundable deposit. Please read the <a href="/uk/publications/festival-volunteering-deposit-terms-and-conditions" target="_blank">desposit terms and conditions</a> for full&nbsp;information.</p>
+    card_details:
+      '#type': processed_text
+      '#text': |
+        <h3>Your payment card details</h3>
+
+        <p>Please make sure your card matches the address you gave earlier.</p>
+      '#format': basic_html
+    payment:
+      '#type': donations_webform_payment
+      '#title': Payment
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#wizard_prev__label': Back
+    '#wizard_next__label': 'Next step'
+css: "/* Payment methods margin */\r\n#edit-payment-payment-methods-one-off-selection {\r\n  margin-bottom: 24px;\r\n}\r\n.webform-donations-page header[role=\"banner\"] #hamburger {\r\n  position: absolute;\r\n  right: 0;\r\n}\r\n\r\n.fieldset-legend,\r\n.webform-element-description {\r\n  display: block;\r\n  margin-bottom: 12px;\r\n}\r\n.fieldset-legend,\r\n.description,\r\nlabel {\r\n  line-height: 1.6;\r\n}\r\nh2,\r\nh3,\r\nul,\r\n.form-radios,\r\n.webform-element-description {\r\n   text-align: left;\r\n}\r\n.webform-progress h1,\r\n#edit-donation-amount--wrapper,\r\n.webform-progress__actions,\r\n.field-name-node-title { \r\n  display: none; \r\n}\r\n.hidden { \r\n  display: none !important; \r\n}\r\n#edit-contact-name--wrapper {\r\n  margin-bottom: 0;\r\n}\r\n#edit-donation-payment--wrapper .fieldset-legend {\r\n    font-size: 16px;\r\n    margin-bottom: 0;\r\n}\r\n#edit-donation-payment--wrapper--description {\r\n  text-align: center;\r\n}\r\n.form-file {\r\n    visibility: visible;\r\n}\r\n.form-file:after {\r\n   visibility: hidden;\r\n}\r\n\r\n.js-form-type-radio label {\r\n    display: inline-block;\r\n    margin-left: 6px;\r\n    margin-bottom: 0;\r\n}\r\n/* BEGIN Security icons */\r\n.webform-security-icons {\r\n    text-align: center;\r\n}\r\n.payment-methods {\r\n    display: inline-block;\r\n    margin: 0 20px 20px;\r\n    height: 30px;\r\n}\r\n.payment-methods--hidden {\r\n    display: none;\r\n}\r\n.donation-cta-widget--new .wateraid-donations .webform-security-icons .field-name-body, .webform-page.webform-donations-page .wateraid-donations .webform-security-icons .field-name-body {\r\n  display: block;\r\n}\r\n/* END Security icons */"
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /festival-volunteer-acceptance-form
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: true
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Welcome to the 2023 WaterAid festivals team!'
+  confirmation_message: "<p>Please check your inbox for an email with details of what to do next, including your online training. If you haven&#39;t received this email, please get in touch with us asap by emailing <a href=\"mailto:festivals@wateraid.org\">festivals@wateraid.org</a> or calling 0207&nbsp;793&nbsp;4523.</p>\r\n\r\n<h3>Accept another festival place</h3>\r\n\r\n<p>If you&#39;ve received more than one offer to volunteer with us, you&#39;ll need to complete this form, and pay the relevant deposit, for each one.</p>\r\n\r\n<p><strong>You must make sure you use the personalised link you received in your email from us to accept each place.</strong></p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  wateraid_donation_email:
+    id: wateraid_email
+    handler_id: wateraid_donation_email
+    label: 'Email - Glastonbury'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="your_wateraid_festival_volunteering_place_offer"]':
+          value: Glastonbury
+    weight: -49
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: festivals@wateraid.org
+      from_options: {  }
+      from_name: 'Festivals at WaterAid'
+      subject: 'Welcome to the WaterAid festivals team 🌞'
+      body: "<p>Thank you for completing the acceptance form and paying your deposit&nbsp;– we're looking forward to seeing you soon!</p>\r\n\r\n<h2>Your compulsory training</h2>\r\n\r\n<p>This year's&nbsp;training is in two parts: a 90-minute webinar, and online modules to complete at&nbsp;your own pace.</p>\r\n\r\n<p><b>You&nbsp;<em>must&nbsp;</em>complete both parts – even if you've volunteered with us before – or you won't be able to volunteer this year.</b></p>\r\n\r\n<h3>Part 1: Glastonbury webinar</h3>\r\n\r\n<p>Join us online, where we'll go over everything you need to know before volunteering at Glastonbury, including how to prepare, and what your specific role will involve.</p>\r\n\r\n<p>Register for your preferred session:</p>\r\n\r\n<ul>\r\n\t<li><strong><a href=\"https://www.eventbrite.co.uk/e/wateraid-glastonbury-role-specific-training-option-1-tickets-639273874367\">Friday 2 June, 12–1.30pm</a></strong></li>\r\n\t<li><strong><a href=\"https://www.eventbrite.co.uk/e/wateraid-glastonbury-role-specific-training-option-2-tickets-641377436177\">Wednesday 7 June, 6–7.30pm</a></strong></li>\r\n\t<li><strong><a href=\"https://www.eventbrite.co.uk/e/wateraid-glastonbury-role-specific-training-option-3-tickets-641384005827\">Thursday 8 June, 6–7.30pm</a></strong></li>\r\n</ul>\r\n\r\n<p>Each session will cover the same information, and you only need to attend once.</p>\r\n\r\n<h3>Part 2: Online modules</h3>\r\n\r\n<p>This will give you an overview of WaterAid and our work, what we'll be doing at festivals this summer, and essential information about health, safety and wellbeing. It should take no more than an hour to finish, and must be completed before you arrive at Glastonbury.</p>\r\n\r\n<h3>How to access the online training</h3>\r\n\r\n<p><strong>We recommend using a laptop or desktop computer, as you'll find this easier than using a mobile or other device.</strong></p>\r\n\r\n<ol>\r\n\t<li>Go to <strong><a href=\"https://www.wateraid.org/uk/festival-training\">wateraid.org/uk/festival-training</a></strong></li>\r\n\t<li>Select ‘Manual login’ (the second option in the login box).</li>\r\n\t<li>Select ‘Log in as a guest’ (the second option) – you don't need a username or password.</li>\r\n\t<li>You'll then be taken through to the training homepage to begin!</li>\r\n</ol>\r\n\r\n<p><strong><a class=\"button button__primary\" href=\"https://www.wateraid.org/uk/festival-training\">Start the online training now</a></strong></p>\r\n\r\n<p>If you have any questions, or experience any difficulties accessing the training, please get in touch with us at <a href=\"mailto:festivals@wateraid.org\">festivals@wateraid.org</a>.</p>\r\n\r\n<p>Don't forget: if you've been offered a place at more than one festival, you'll need to follow the personalised link in your offer email in order to complete the form for each festival.</p>\r\n\r\n<p>Best wishes,</p>\r\n\r\n<p><strong>Rachel, Polly, Jacqui, Cydney and India</strong><br />\r\nWaterAid festivals team</p>"
+      excluded_elements:
+        contact_name: contact_name
+        contact_email: contact_email
+        contact_phone: contact_phone
+        will_you_require_a_car_parking_pass_at_the_festival_: will_you_require_a_car_parking_pass_at_the_festival_
+        passport_photo: passport_photo
+        do_you_have_any_medical_conditions_or_dietary_requirements_that_: do_you_have_any_medical_conditions_or_dietary_requirements_that_
+        please_give_details_of_medical_conditions_or_dietary_requirement: please_give_details_of_medical_conditions_or_dietary_requirement
+        i_consent_for_my_information_to_be_shared_with_relevant_staff_su: i_consent_for_my_information_to_be_shared_with_relevant_staff_su
+        emergency_contact_1_full_name: emergency_contact_1_full_name
+        emergency_contact_1_relationship_to_you: emergency_contact_1_relationship_to_you
+        emergency_contact_1_phone_number: emergency_contact_1_phone_number
+        emergency_contact_2_full_name: emergency_contact_2_full_name
+        emergency_contact_2_relationship_to_you: emergency_contact_2_relationship_to_you
+        emergency_contact_2_phone_number: emergency_contact_2_phone_number
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: festivals@wateraid.org
+      return_path: ''
+      payment_frequency: one_off
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: null
+      fallback_message: null
+  wateraid_donations:
+    id: wateraid_donations
+    handler_id: wateraid_donations
+    label: 'WaterAid Donations'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -50
+    settings:
+      one_off:
+        option_label: ''
+        enabled: 1
+        payment_methods:
+          - stripe
+          - googlepay
+        default_payment_method: stripe
+        amounts:
+          -
+            amount: '25'
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '25'
+        progress_donation_message: 'You are making a one-off donation of [donation:currency-sign][donation:amount].'
+      recurring:
+        option_label: ''
+        enabled: 0
+        payment_methods: {  }
+        default_payment_method: ''
+        amounts:
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '25'
+        progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount].'
+      frequency_default: one_off
+      currency: null
+      default_fund_code: ''
+      default_package_code: ''
+      customer_fields:
+        customer_name: contact_name
+        customer_address: address
+        customer_email: contact_email
+        customer_phone: contact_phone
+  email_non_glastonbury:
+    id: wateraid_email
+    handler_id: email_non_glastonbury
+    label: 'Email - non-Glastonbury'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="your_wateraid_festival_volunteering_place_offer"]':
+          '!value': Glastonbury
+    weight: 2
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: festivals@wateraid.org
+      from_options: {  }
+      from_name: 'Festivals at WaterAid'
+      subject: 'Welcome to the WaterAid festivals team 🌞'
+      body: "<p>Thank you for completing the acceptance form and paying your deposit&nbsp;– we're looking forward to seeing you soon!</p>\r\n\r\n<h2>Your compulsory training</h2>\r\n\r\n<p>Your online training&nbsp;will give you an overview of WaterAid and our work, what we'll be doing at festivals this summer, and essential information about health, safety and wellbeing. It should take no more than an hour to finish, and <strong>must be completed before you arrive to volunteer with us</strong>.</p>\r\n\r\n<h3>How to access the online training</h3>\r\n\r\n<p><strong>We recommend using a laptop or desktop computer, as you'll find this easier than using a mobile or other device.</strong></p>\r\n\r\n<ol>\r\n\t<li>Go to <strong><a href=\"https://www.wateraid.org/uk/festival-training\">wateraid.org/uk/festival-training</a></strong></li>\r\n\t<li>Select ‘Manual login’ (the second option in the login box).</li>\r\n\t<li>Select ‘Log in as a guest’ (the second option) – you don't need a username or password.</li>\r\n\t<li>You'll then be taken through to the training homepage to begin!</li>\r\n</ol>\r\n\r\n<p><strong><a class=\"button button__primary\" href=\"https://www.wateraid.org/uk/festival-training\">Start the online training now</a></strong></p>\r\n\r\n<p>If you have any questions, or experience any difficulties accessing the training, please get in touch with us at <a href=\"mailto:festivals@wateraid.org\">festivals@wateraid.org</a>.</p>\r\n\r\n<p>Don't forget: if you've been offered a place at more than one festival, you'll need to follow the personalised link in your offer email in order to complete the form for each festival.</p>\r\n\r\n<p>Best wishes,</p>\r\n\r\n<p><strong>Rachel, Polly, Jacqui, Cydney, India and Munesu</strong><br />\r\nWaterAid festivals team</p>"
+      excluded_elements:
+        contact_name: contact_name
+        contact_email: contact_email
+        contact_phone: contact_phone
+        will_you_require_a_car_parking_pass_at_the_festival_: will_you_require_a_car_parking_pass_at_the_festival_
+        passport_photo: passport_photo
+        do_you_have_any_medical_conditions_or_dietary_requirements_that_: do_you_have_any_medical_conditions_or_dietary_requirements_that_
+        please_give_details_of_medical_conditions_or_dietary_requirement: please_give_details_of_medical_conditions_or_dietary_requirement
+        i_consent_for_my_information_to_be_shared_with_relevant_staff_su: i_consent_for_my_information_to_be_shared_with_relevant_staff_su
+        emergency_contact_1_full_name: emergency_contact_1_full_name
+        emergency_contact_1_relationship_to_you: emergency_contact_1_relationship_to_you
+        emergency_contact_1_phone_number: emergency_contact_1_phone_number
+        emergency_contact_2_full_name: emergency_contact_2_full_name
+        emergency_contact_2_relationship_to_you: emergency_contact_2_relationship_to_you
+        emergency_contact_2_phone_number: emergency_contact_2_phone_number
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: festivals@wateraid.org
+      return_path: ''
+      payment_frequency: one_off
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: null
+      fallback_message: null
+variants: {  }

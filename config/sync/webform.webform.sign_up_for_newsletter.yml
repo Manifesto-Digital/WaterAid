@@ -1,0 +1,302 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_forms
+third_party_settings:
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 16
+template: false
+archive: false
+id: sign_up_for_newsletter
+title: 'Sign up for newsletter'
+description: ''
+categories:
+  - Newsletter
+elements: |
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  your_details:
+    '#type': webform_name
+    '#title': 'Your details'
+    '#title__access': false
+    '#first__title': 'First name'
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  email:
+    '#type': loqate_email_composite
+    '#title': 'Your email address'
+    '#required': true
+    '#required_error': 'Please enter your email address so we can send out your newsletter'
+    '#email__title': 'Your email address'
+    '#email__required': true
+  contact_country:
+    '#type': webform_address
+    '#title': Country
+    '#address__access': false
+    '#address_2__access': false
+    '#city__access': false
+    '#state_province__access': false
+    '#postal_code__access': false
+    '#country__required': true
+  sign_up_for_newsletters:
+    '#type': checkboxes
+    '#title': 'Sign up for newsletters'
+    '#description': 'Please let us know which newsletters you would like to receive (select all that apply).&nbsp;'
+    '#title_display': before
+    '#description_display': before
+    '#options':
+      contact_wash_matters_opti_in: 'WASH Matters: quarterly newsletter keeping you up to date on the latest developments in water, sanitation and hygiene (WASH). Share the learning, read the research, join the debate.'
+    '#options__properties': ''
+  opt_in_intro:
+    '#type': processed_text
+    '#text': |
+      <p><strong>Stay updated</strong></p>
+
+      <p>We’d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us.</p>
+    '#format': basic_html
+  communications_preference:
+    '#type': flexible_options
+    '#title': 'Communications preference'
+    '#title_display': invisible
+    '#options': communication_preferences_email
+    '#format_items': ul
+  privacy_statement:
+    '#type': processed_text
+    '#text': |
+      <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+    '#format': basic_html
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /newsletter-sign-up
+  page_confirm_path: /newsletter-sign-up/confirmation
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: true
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thanks for signing up to receive news and updates from WaterAid.'
+  confirmation_message: "<p>Look out for a WaterAid newsletter coming soon to your inbox.</p>\r\n\r\n<p><a href=\"/node/1386/\">Read stories from our work around the world &gt;</a></p>"
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  confirmation_email:
+    id: email
+    handler_id: confirmation_email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: davidmartin@wateraid.org
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thanks for signing up to receive WaterAid newsletters'
+      body: "Hi,<br />\r\n<br />\r\nThanks for signing up to receive news and updates from WaterAid.&nbsp;<br />\r\n<br />\r\nLook out for the WaterAid newsletter coming soon to your inbox!<br />\r\n<br />\r\nRemember if you&#39;d like to change your preferences, you can unsubscribe at any time or get in touch with our Supporter Care team on 020 7793 4594.<br />\r\n&nbsp;<br />\r\nWith warm wishes,<br />\r\nDavid Martin<br />\r\nSupporter Care Manager<br />\r\n&nbsp;"
+      excluded_elements:
+        your_details: your_details
+        email: email
+        contact_country: contact_country
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

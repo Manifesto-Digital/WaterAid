@@ -1,0 +1,695 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+  webform_pdf_receipt:
+    pdf_text:
+      value: "<meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n<title></title>\r\n<style type=\"text/css\">body {\r\n      font-family: 'Arial', sans-serif;\r\n      font-size: 16px;\r\n      line-height: 1.4;\r\n      color: #3A4652;\r\n    }   \r\n    h1, h3, p {\r\n      margin: 0;\r\n    }\r\n    h1  {\r\n      text-transform: uppercase;\r\n    }\r\n    h2  {\r\n      color: #0076b3;\r\n      margin-top: 16px;\r\n      margin-bottom: 16px;\r\n    }\r\n    h3  {\r\n      font-weight: bold;      \r\n    }    \r\n    td {      \r\n      vertical-align: top;\r\n    }\r\n</style>\r\n<table width=\"100%\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"3\">\r\n\t\t\t<h1 style=\"font-size: 36px;\">Volunteer expenses claim</h1>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Finance coding: 3660&nbsp;&nbsp;204F3&nbsp;&nbsp;XA95A&nbsp;&nbsp;PDVARS01</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td width=\"33%\">\r\n\t\t\t<h2>Volunteer details</h2>\r\n\t\t\t</td>\r\n\t\t\t<td width=\"33%\">\r\n\t\t\t<h2>Expenses summary</h2>\r\n\t\t\t</td>\r\n\t\t\t<td width=\"33%\">\r\n\t\t\t<h2>Bank details</h2>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Name</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:name]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Total mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:total_mileage]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Bank name</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:bank_name]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Email address</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:email_address]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Total GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:total_gbp_amount]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Account name</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:account_name]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date submitted</h3>\r\n\r\n\t\t\t<p>[webform_submission:created]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Account number</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:account_number]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Sort code</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:sort_code]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h2>Claim 1</h2>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h2>Claim 2</h2>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h2>Claim 3</h2>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:date_of_talk_or_workshop]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:date_of_talk_or_workshop_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:date_of_talk_or_workshop_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Details of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:details_of_the_talk_or_workshop]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Details of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:details_of_talk_or_workshop_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Details of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:details_of_talk_or_workshop_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Type of expense claim</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:type_of_expense_claim]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Type of expense claim</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:type_of_expense_claim_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Type of expense claim</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:type_of_expense_claim_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:mileage]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:mileage_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:mileage_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:gbp_amount]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:gbp_amount_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:gbp_amount_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3><a href=\"[webform_submission:values:receipts_for_expense_claim_s_]\">Link to receipt(s)</a></h3>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3><a href=\"[webform_submission:values:upload_your_receipt_s_2]\">Link to receipt(s)</a></h3>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3><a href=\"[webform_submission:values:upload_your_receipt_s_3]\">Link to receipt(s)</a></h3>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n"
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 24956
+template: false
+archive: false
+id: volunteer_expenses_claim
+title: 'Volunteer Expenses Claim'
+description: 'Do not import to CRM. Managed by Community, Events and Education team.'
+categories:
+  - Community
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  header:
+    '#type': processed_text
+    '#text': '<h1>Volunteer expenses</h1><p>Fill in the form below to claim expenses incurred for your talks or workshops. You can make up to three claims at a time.</p><p>Please note that <strong>we can''t accept claims for expenses incurred over six months ago</strong>.</p><p class="MsoNormal">If this is a talk/workshop which you organised yourself, please ensure you have completed this <a href="https://www.wateraid.org/uk/tell-us-about-your-visit">form</a>, providing full details to WaterAid.<span style="font-family:&quot;Arial&quot;,sans-serif;font-size:12.0pt;"><o:p></o:p></span></p><p>If you are claiming travel costs, please state the type of fuel used in the details of your talk or workshop.</p>'
+    '#format': basic_html
+  name:
+    '#type': wateraid_forms_webform_name
+    '#title': Name
+    '#required': true
+    '#first__title': 'First name'
+    '#first__required': true
+    '#last__title': 'Last name'
+    '#last__required': true
+  email_address:
+    '#type': loqate_email_composite
+    '#title': 'Email address'
+    '#required': true
+    '#email__title': 'Email address'
+    '#email__required': true
+  claim_one_intro:
+    '#type': processed_text
+    '#text': |
+      <h2>Claim one</h2>
+    '#format': basic_html
+  date_of_talk_or_workshop:
+    '#type': date
+    '#title': 'Date of talk, workshop or training day'
+    '#required': true
+    '#date_date_min': '-6 months'
+    '#date_date_max': today
+    '#datepicker': true
+    '#date_date_format': d/m/Y
+  details_of_the_talk_or_workshop:
+    '#type': textarea
+    '#title': 'Details of talk, workshop or training day'
+    '#description': '<p>Please include the name of the group or school you were visiting.</p>'
+    '#description_display': before
+    '#counter_type': character
+    '#counter_maximum': 500
+    '#required': true
+  type_of_expense_claim:
+    '#type': webform_select_other
+    '#title': 'Type of expense claim'
+    '#options':
+      Travel: Travel
+    '#required': true
+  mileage:
+    '#type': number
+    '#title': Mileage
+    '#description': |
+      <h3>Mileage allowance</h3>
+
+      <p>Current mileage allowance from 1 April 2012.</p>
+
+      <p>Private car (petrol) - 0.45p<br />
+      Private car (diesel)&nbsp;- 0.41p</p>
+    '#description_display': after
+    '#states':
+      visible:
+        ':input[name="type_of_expense_claim[select]"]':
+          value: Travel
+    '#states_clear': false
+    '#default_value': '0'
+    '#min': 0
+    '#max': 1000
+    '#step': 1
+  gbp_amount:
+    '#type': number
+    '#title': 'GBP amount'
+    '#default_value': '0'
+    '#required': true
+    '#min': 0
+    '#max': 1000
+    '#step': 0.01
+  receipts_for_expense_claim_s_:
+    '#type': managed_file
+    '#title': 'Upload your receipt(s)'
+    '#description': '<p>Please upload an image of your receipt(s)</p>'
+    '#description_display': before
+    '#file_extensions': 'gif jpg png pdf doc docx'
+  do_you_want_to_make_another_claim_:
+    '#type': radios
+    '#title': 'Do you want to make another claim?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+    '#options__properties': ''
+  claim_two_intro:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+    '#text': |
+      <h2>Claim two</h2>
+    '#format': basic_html
+  date_of_talk_or_workshop_2:
+    '#type': date
+    '#title': 'Date of talk, workshop or training day'
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+    '#date_date_min': '-6 months'
+    '#date_date_max': today
+    '#datepicker': true
+    '#date_date_format': d/m/Y
+  details_of_talk_or_workshop_2:
+    '#type': textarea
+    '#title': 'Details of talk, workshop or training day'
+    '#description': '<p>Please include the name of the group or school you were visiting.</p>'
+    '#description_display': before
+    '#counter_type': character
+    '#counter_maximum': 500
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+  type_of_expense_claim_2:
+    '#type': webform_select_other
+    '#title': 'Type of expense claim (claim two)'
+    '#options':
+      Travel: Travel
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+  mileage_2:
+    '#type': number
+    '#title': Mileage
+    '#description': |
+      <h3>Mileage allowance</h3>
+
+      <p>Current mileage allowance from 1 April 2012.</p>
+
+      <p>Private car (petrol) - 0.45p<br />
+      Private car (diesel)&nbsp;- 0.41p</p>
+    '#states':
+      visible:
+        ':input[name="type_of_expense_claim_2[select]"]':
+          value: Travel
+    '#states_clear': false
+    '#default_value': '0'
+    '#min': 0
+    '#max': 1000
+    '#step': 1
+  gbp_amount_2:
+    '#type': number
+    '#title': 'GBP amount'
+    '#default_value': '0'
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+    '#min': 0
+    '#max': 1000
+    '#step': 0.01
+  upload_your_receipt_s_2:
+    '#type': managed_file
+    '#title': 'Upload your receipt(s)'
+    '#description': '<p>Please upload an image of your receipt(s)</p>'
+    '#description_display': before
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_"]':
+          value: 'Yes'
+    '#file_extensions': 'gif jpg png pdf doc docx'
+  do_you_want_to_make_another_claim_2:
+    '#type': radios
+    '#title': 'Do you want to make another claim?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#states':
+      visible:
+        ':input[name="details_of_talk_or_workshop_2"]':
+          filled: true
+    '#options__properties': ''
+  claim_three_intro:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+    '#text': |
+      <h2>Claim three</h2>
+    '#format': basic_html
+  date_of_talk_or_workshop_3:
+    '#type': date
+    '#title': 'Date of talk, workshop or training day'
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+    '#date_date_min': '-6 months'
+    '#date_date_max': today
+    '#datepicker': true
+    '#date_date_format': d/m/Y
+  details_of_talk_or_workshop_3:
+    '#type': textarea
+    '#title': 'Details of talk, workshop or training day'
+    '#description': '<p>Please include the name of the group or school you were visiting.</p>'
+    '#description_display': before
+    '#counter_type': character
+    '#counter_maximum': 500
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+  type_of_expense_claim_3:
+    '#type': webform_select_other
+    '#title': 'Type of expense claim (claim three)'
+    '#options':
+      Travel: Travel
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+  mileage_3:
+    '#type': number
+    '#title': Mileage
+    '#description': |
+      <h3>Mileage allowance</h3>
+
+      <p>Current mileage allowance from 1 April 2012.</p>
+
+      <p>Private car (petrol) - 0.45p<br />
+      Private car (diesel)&nbsp;- 0.41p</p>
+    '#states':
+      visible:
+        ':input[name="type_of_expense_claim_3[select]"]':
+          value: Travel
+    '#states_clear': false
+    '#default_value': '0'
+    '#min': 0
+    '#max': 1000
+    '#step': 1
+  gbp_amount_3:
+    '#type': number
+    '#title': 'GBP amount'
+    '#default_value': '0'
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+      required:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+    '#min': 0
+    '#max': 1000
+    '#step': 0.01
+  upload_your_receipt_s_3:
+    '#type': managed_file
+    '#title': 'Upload your receipt(s)'
+    '#description': '<p>Please upload an image of your receipt(s)</p>'
+    '#description_display': before
+    '#states':
+      visible:
+        ':input[name="do_you_want_to_make_another_claim_2"]':
+          value: 'Yes'
+    '#file_extensions': 'gif jpg png pdf doc docx'
+  summary:
+    '#type': webform_markup
+    '#markup': '<h2>Expense(s) summary</h2>'
+  total_mileage:
+    '#type': number
+    '#title': 'Total mileage'
+    '#states':
+      invisible:
+        ':input[name="mileage"]':
+          value: '0'
+        ':input[name="mileage_2"]':
+          value: '0'
+        ':input[name="mileage_3"]':
+          value: '0'
+    '#states_clear': false
+    '#attributes':
+      readonly: true
+  total_gbp_amount:
+    '#type': textfield
+    '#title': 'Total GBP amount'
+    '#attributes':
+      readonly: true
+    '#required': true
+  bank_details_intro:
+    '#type': processed_text
+    '#text': |
+      <h2>Bank details</h2>
+    '#format': basic_html
+  bank_name:
+    '#type': textfield
+    '#title': 'Bank name'
+  account_name:
+    '#type': textfield
+    '#title': 'Account name'
+  account_number:
+    '#type': textfield
+    '#title': 'Account number'
+    '#placeholder': '12345678'
+    '#input_mask': '99999999'
+  sort_code:
+    '#type': textfield
+    '#title': 'Sort code'
+    '#placeholder': 00-00-00
+    '#input_mask': 99-99-99
+  privacy_policy:
+    '#type': webform_markup
+    '#markup': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>'
+css: ".form-item p:not(.fine-print) {\r\n    font-size: 16px;\r\n    margin-bottom: 12px;\r\n}"
+javascript: "jQuery(document).ready(function(){\t\r\n\t\r\n\t// Set Type of expense claim fields 2 and 3 to use the same label as field 1. (They have to be unique in Webform for conditional logic to work, but on the front end we want them to be the same)\r\n\tjQuery('label[for=\"edit-type-of-expense-claim-2\"], label[for=\"edit-type-of-expense-claim-3\"]').html(jQuery('label[for=\"edit-type-of-expense-claim\"]').html());\r\n\r\n\t// Declare variables\r\n\tvar mileage1 = jQuery('#edit-mileage');\r\n\tvar mileage2 = jQuery('#edit-mileage-2');\r\n\tvar mileage3 = jQuery('#edit-mileage-3');\r\n\tvar totalMileage = jQuery('#edit-total-mileage');\r\n\t\r\n\tvar amount1 = jQuery('#edit-gbp-amount');\r\n\tvar amount2 = jQuery('#edit-gbp-amount-2');\r\n\tvar amount3 = jQuery('#edit-gbp-amount-3');\r\n\tvar totalAmount = jQuery('#edit-total-gbp-amount');\t\t\r\n\r\n\t// Declare functions\r\n\tvar calculateMileage = function (){\r\n\t\t//Set the total mileage to the sum of the mileage fields. Convert the value of each mileage field to an integer.\r\n\t\ttotalMileage.val(parseInt(mileage1.val()) + parseInt(mileage2.val()) + parseInt(mileage3.val()));\r\n\t}\r\n\tvar calculateAmount = function (){\r\n\t\t// Get the value of each amount field and round to two decimal places.\r\n\t\tvar amount1Val = Math.round(amount1.val() * 100) / 100;\r\n\t\tvar amount2Val = Math.round(amount2.val() * 100) / 100;\r\n\t\tvar amount3Val = Math.round(amount3.val() * 100) / 100;\t\t\r\n\r\n\t\t//Set the total mileage to the sum of the amount value variables and round to two decimal places\r\n\t\ttotalAmount.val((Math.round((amount1Val + amount2Val + amount3Val) * 100) / 100).toFixed(2));\r\n\t}\t\r\n\t\t\t\r\n\t// Call functions on input keyup or change\r\n\tmileage1.keyup(function(){\t\t\r\n\t\tcalculateMileage();\r\n\t});\t\r\n\tmileage2.keyup(function(){\r\n\t\tcalculateMileage();\r\n\t});\r\n\tmileage3.keyup(function(){\t\t\r\n\t\tcalculateMileage();\r\n\t});\t\r\n\tamount1.keyup(function(){\t\t\r\n\t\tcalculateAmount();\r\n\t});\t\r\n\tamount2.keyup(function(){\t\t\r\n\t\tcalculateAmount();\r\n\t});\r\n\tamount3.keyup(function(){\t\t\r\n\t\tcalculateAmount();\r\n\t});\r\n});\t"
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /volunteer-expenses-claim
+  page_confirm_path: /volunteer-expenses-claim/confirmation
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Your expenses claim has been submitted'
+  confirmation_message: "<p>Thank you again for volunteering your time for the WaterAid Speaker Network and your commitment to spreading our important messages around clean water, decent toilets and good hygiene.<br />\r\n<br />\r\nWe&#39;ve received your volunteer expenses and these will be processed and within your account in the next few weeks. If you have any questions, please contact Speakers@wateraid.org.</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: Speakers@Wateraid.org
+      from_options: {  }
+      from_name: 'Speaker Network Team'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Speaker Network expenses'
+      body: "<p style=\"font-family: Arial, sans-serif;\">Hi&nbsp;[webform_submission:values:name],<br />\r\n<br />\r\nThank you again for volunteering your time for the WaterAid Speaker Network and your commitment to spreading our important messages around clean water, decent toilets and good hygiene.<br />\r\n<br />\r\nWe've received your volunteer expenses and these will be processed and within your account in the next few weeks. If you have any questions, please contact Speakers@wateraid.org.<br />\r\n<br />\r\nThanks,<br />\r\nWaterAid Speaker Network Team</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  webform_pdf_receipt_email:
+    id: webform_pdf_receipt
+    handler_id: webform_pdf_receipt_email
+    label: 'Webform PDF Receipt Email'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: speakers@wateraid.org
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: '<p>Submitted on [webform_submission:created]</p>'
+      excluded_elements: {  }
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      html: true
+      attachments: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      payment_frequency: ''
+      exclude_attachments: 0
+      send: '[date:html_date]'
+      days: 0
+      unschedule: 0
+      ignore_past: 0
+      test_send: 0
+      fallback_plugin: null
+      fallback_message: null
+  email_to_staff:
+    id: email
+    handler_id: email_to_staff
+    label: 'Email to staff'
+    notes: ''
+    status: false
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: speakers@wateraid.org
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: "<p><!--%3Cmeta%20charset%3D%22UTF-8%22%3E--><!--%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E--><!--%3Cmeta%20http-equiv%3D%22X-UA-Compatible%22%20content%3D%22ie%3Dedge%22%3E-->\r\n<style type=\"text/css\">body {\r\n\tfont-family: 'Arial', sans-serif;\r\n\tfont-size: 16px;\r\n\tline-height: 1.4;\r\n\tcolor: #3A4652;\r\n}   \r\nh1, h3, p {\r\n\tmargin: 0;\r\n}\r\nh1  {\r\n\ttext-transform: uppercase;\r\n}\r\nh2  {\r\n\tcolor: #0076b3;\r\n\tmargin-top: 16px;\r\n\tmargin-bottom: 16px;\r\n}\r\nh3  {\r\n\tfont-weight: bold;      \r\n}    \r\ntd {      \r\n\tvertical-align: top;\r\n}\r\n</style>\r\n</p>\r\n\r\n<h1 style=\"font-size: 36px;\">Volunteer expenses claim</h1>\r\n\r\n<p>Finance coding: 3660&nbsp;&nbsp;204F3&nbsp;&nbsp;XA95A&nbsp;&nbsp;PDVARS01</p>\r\n\r\n<h2>Volunteer details</h2>\r\n\r\n<h3>Name</h3>\r\n\r\n<p>[webform_submission:values:name]</p>\r\n\r\n<h3>Email address</h3>\r\n\r\n<p>[webform_submission:values:email_address]</p>\r\n\r\n<h3>Date submitted</h3>\r\n\r\n<p>[webform_submission:created]</p>\r\n\r\n<h2>Expenses summary</h2>\r\n\r\n<h3>Total mileage</h3>\r\n\r\n<p>[webform_submission:values:total_mileage]</p>\r\n\r\n<h3>Total GBP amount</h3>\r\n\r\n<p>[webform_submission:values:total_gbp_amount]</p>\r\n\r\n<h2>Bank details</h2>\r\n\r\n<h3>Bank name</h3>\r\n\r\n<p>[webform_submission:values:bank_name]</p>\r\n\r\n<h3>Account name</h3>\r\n\r\n<p>[webform_submission:values:account_name]</p>\r\n\r\n<h3>Account number</h3>\r\n\r\n<p>[webform_submission:values:account_number]</p>\r\n\r\n<h3>Sort code</h3>\r\n\r\n<p>[webform_submission:values:sort_code]</p>\r\n\r\n<h2>Claim 1</h2>\r\n\r\n<h3>Date of talk, workshop or training day</h3>\r\n\r\n<p>[webform_submission:values:date_of_talk_or_workshop]</p>\r\n\r\n<h3>Details of talk, workshop or training day</h3>\r\n\r\n<p>[webform_submission:values:details_of_the_talk_or_workshop]</p>\r\n\r\n<h3>Type of expense claim</h3>\r\n\r\n<p>[webform_submission:values:type_of_expense_claim]</p>\r\n\r\n<h3>Mileage</h3>\r\n\r\n<p>[webform_submission:values:mileage]</p>\r\n\r\n<h3>GBP amount</h3>\r\n\r\n<p>[webform_submission:values:gbp_amount]</p>\r\n\r\n<h3><a href=\"[webform_submission:values:receipts_for_expense_claim_s_]\">Link to receipt(s)</a></h3>\r\n\r\n<h2>Claim 2</h2>\r\n\r\n<h3>Date of talk, workshop or training day</h3>\r\n\r\n<p>[webform_submission:values:date_of_talk_or_workshop_2]</p>\r\n\r\n<h3>Details of talk, workshop or training day</h3>\r\n\r\n<p>[webform_submission:values:details_of_talk_or_workshop_2]</p>\r\n\r\n<h3>Type of expense claim</h3>\r\n\r\n<p>[webform_submission:values:type_of_expense_claim_2]</p>\r\n\r\n<h3>Mileage</h3>\r\n\r\n<p>[webform_submission:values:mileage_2]</p>\r\n\r\n<h3>GBP amount</h3>\r\n\r\n<p>[webform_submission:values:gbp_amount_2]</p>\r\n\r\n<h3><a href=\"[webform_submission:values:upload_your_receipt_s_2]\">Link to receipt(s)</a></h3>\r\n\r\n<h2>Claim 3</h2>\r\n\r\n<h3>Date of talk, workshop or training day</h3>\r\n\r\n<p>[webform_submission:values:date_of_talk_or_workshop_3]</p>\r\n\r\n<h3>Details of talk, workshop or training day</h3>\r\n\r\n<p>[webform_submission:values:details_of_talk_or_workshop_3]</p>\r\n\r\n<h3>Type of expense claim</h3>\r\n\r\n<p>[webform_submission:values:type_of_expense_claim_3]</p>\r\n\r\n<h3>Mileage</h3>\r\n\r\n<p>[webform_submission:values:mileage_3]</p>\r\n\r\n<h3>GBP amount</h3>\r\n\r\n<p>[webform_submission:values:gbp_amount_3]</p>\r\n\r\n<h3><a href=\"[webform_submission:values:upload_your_receipt_s_3]\">Link to receipt(s)</a></h3>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

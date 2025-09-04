@@ -1,0 +1,340 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+    bank_transfer_instructions:
+      value: ''
+      format: wateraid_editor
+    confirmation_image_url: ''
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: oasis_golden_questions
+title: 'What motivates you to support charities?'
+description: "<p>Linked from Oasis QR to answer Market Insight's golden questions and assign each supporter record with one of the mass segments. Also linked to from donation confirmation pages.</p>"
+categories: {  }
+elements: |-
+  intro:
+    '#type': processed_text
+    '#text': '<h1>What motivates you to support charities?</h1><p>By letting us know what motivates you to support charities, we can improve your experience as WaterAiders and find more brilliant people like you to bring clean water, decent toilet and good hygiene to everyone, everywhere.</p>'
+    '#format': basic_html
+  your_details:
+    '#type': webform_name
+    '#title': 'Your details'
+    '#required': true
+    '#first__title': 'First name'
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  your_address:
+    '#type': webform_address_capture_plus_manual
+    '#title': 'Your address'
+    '#required': true
+    '#address__title': 'Address 1'
+    '#address__required': true
+    '#city__required': true
+    '#state_province__title': County
+    '#postal_code__title': Postcode
+    '#postal_code__required': true
+    '#country__required': true
+    '#capture_plus_active': true
+  motivation:
+    '#type': flexible_options
+    '#title': 'Which of the following would you say motivates you to support charities? (please tick all that apply)'
+    '#options':
+      'Supporting a cause that has affected myself, family or friends': 'Supporting a cause that has affected myself, family or friends'
+      'Making the world a fairer place for everyone': 'Making the world a fairer place for everyone'
+      'Joining in with fun fundraising activities': 'Joining in with fun fundraising activities'
+      'Being part of a community': 'Being part of a community'
+      "It's what a good person does": "It's what a good person does"
+    '#required': true
+    '#options__properties': ''
+  which_of_the_factors_you_selected_above_is_most_important_to_you:
+    '#type': select
+    '#title': 'And which of these is most important to you?'
+    '#options':
+      'Supporting a cause that has affected myself, family or friends': 'Supporting a cause that has affected myself, family or friends'
+      'Making the world a fairer place for everyone': 'Making the world a fairer place for everyone'
+      'Joining in with fun fundraising activities': 'Joining in with fun fundraising activities'
+      'Being part of a community': 'Being part of a community'
+      "It's what a good person does": "It's what a good person does"
+    '#states':
+      visible:
+        - ':input[name="motivation[Supporting a cause that has affected myself, family or friends]"]':
+            checked: true
+        - or
+        - ':input[name="motivation[Making the world a fairer place for everyone]"]':
+            checked: true
+        - or
+        - ':input[name="motivation[Joining in with fun fundraising activities]"]':
+            checked: true
+        - or
+        - ':input[name="motivation[Being part of a community]"]':
+            checked: true
+        - or
+        - ':input[name="motivation[It''s what a good person does]"]':
+            checked: true
+      optional:
+        - ':input[name="motivation[Supporting a cause that has affected myself, family or friends]"]':
+            checked: true
+        - xor
+        - ':input[name="motivation[Making the world a fairer place for everyone]"]':
+            checked: true
+        - xor
+        - ':input[name="motivation[Joining in with fun fundraising activities]"]':
+            checked: true
+        - xor
+        - ':input[name="motivation[Being part of a community]"]':
+            checked: true
+        - xor
+        - ':input[name="motivation[It''s what a good person does]"]':
+            checked: true
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha/reCAPTCHA
+  communication_preferences_text:
+    '#type': webform_markup
+    '#markup': '<p>We’d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us.</p>'
+  communication_preferences:
+    '#type': flexible_options
+    '#title': 'Communication preferences'
+    '#title_display': none
+    '#options': communication_preferences_post
+  privacy_statement:
+    '#type': processed_text
+    '#text': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>'
+    '#format': basic_html
+css: "#edit-motivation--wrapper legend {\r\n   font-weight: normal;\r\n}"
+javascript: "document.addEventListener(\r\n\t'DOMContentLoaded',\r\n\tfunction () {\r\n\t\t// Get checkboxes\r\n\t\tconst checkboxes = document.querySelectorAll('#edit-motivation .form-checkbox');\r\n\t\t// Get select input\r\n\t\tconst select = document.querySelector(\"#edit-which-of-the-factors-you-selected-above-is-most-important-to-you\");\r\n\t\t// Hide all select options by default\r\n\t\tselect.querySelectorAll('option').forEach(option => {\r\n\t\t\toption.classList.add('hidden');\r\n\t\t});\r\n\t\t// When a checkbox is clicked\r\n\t\tfor (const checkbox of checkboxes) {\r\n\t\t\tcheckbox.addEventListener('click', event => {\r\n\t\t\t\t// Reset the value of the select field\r\n\t\t\t\tselect.value = '';\r\n\t\t\t\t// Find the select option with same value as the checkbox\r\n\t\t\t\tconst option = select.querySelector(`option[value=\"${event.target.value}\"]`);\r\n\t\t\t\t// Show / hide select option depending on whether checkbox is checked\r\n\t\t\t\tif (event.target.checked) {\r\n\t\t\t\t\toption.removeAttribute('disabled');\r\n\t\t\t\t\toption.classList.remove('hidden');\r\n\t\t\t\t}\r\n\t\t\t\telse {\r\n\t\t\t\t\toption.setAttribute('disabled', true);\r\n\t\t\t\t\toption.classList.add('hidden');\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t}\r\n\t},\r\n\tfalse\r\n);\r\n"
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /what-motivates-you
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you for your submission'
+  confirmation_message: "<p>Your answers have been submitted. Thank you!&nbsp;</p><p>You're helping us to understand what motivates you to support charities, tailor your experience as a WaterAider to be as rewarding as we can, and find more brilliant people like you.</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

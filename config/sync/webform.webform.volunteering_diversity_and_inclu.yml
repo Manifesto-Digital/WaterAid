@@ -1,0 +1,375 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_forms
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 42826
+template: false
+archive: false
+id: volunteering_diversity_and_inclu
+title: 'Equal Opportunities Monitoring Form'
+description: 'Volunteering diversity and inclusion form&nbsp;'
+categories:
+  - Admin
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+    '#captcha_title': 'I am not a robot'
+  title:
+    '#type': webform_markup
+    '#markup': '<h2><strong>Equal Opportunities Monitoring Form</strong></h2>'
+  e:
+    '#type': hidden
+    '#title': 'Existing Volunteer'
+    '#prepopulate': true
+  what_volunteering_opportunity_have_you_applied_for_:
+    '#type': checkboxes
+    '#title': 'What opportunities are you currently involved with or applying for?'
+    '#options':
+      Festivals: Festivals
+      'Speaker Network': 'Speaker Network'
+      'Local groups': 'Local groups'
+      University: University
+      Events: Events
+      'Prefer not to say': 'Prefer not to say'
+    '#options__properties': ''
+  what_is_your_age_range_:
+    '#type': select
+    '#title': 'What is your age range?'
+    '#options':
+      18-24: 18-24
+      25-34: 25-34
+      35-44: 35-44
+      45-54: 45-54
+      55-64: 55-64
+      65-74: 65-74
+      75+: 75+
+      'Prefer not to say': 'Prefer not to say'
+  what_is_your_ethnicity_:
+    '#type': select
+    '#title': 'What is your ethnicity?'
+    '#options':
+      'Black - African': 'Black - African'
+      'Black - Asian': 'Black - Asian'
+      'Black - Caribbean': 'Black - Caribbean'
+      'Black - European': 'Black - European'
+      'Black - Latin American': 'Black - Latin American'
+      'Black - North American': 'Black - North American'
+      'Black - other (please specify)': 'Black - other (please specify)'
+      Rwandese: Rwandese
+      'White - African': 'White - African'
+      'White - Australian': 'White - Australian'
+      'White - Caribbean': 'White - Caribbean'
+      'White - European': 'White - European'
+      'White - Gypsy/Traveller': 'White - Gypsy/Traveller'
+      'White - North American': 'White - North American'
+      'White - Latin American': 'White - Latin American'
+      'White - other (please specify)': 'White - other (please specify)'
+      'Afrodescendent Latin American': 'Afrodescendent Latin American'
+      'Mestizo Latin American': 'Mestizo Latin American'
+      'Latin American - other (please specify)': 'Latin American - other (please specify)'
+      Arab: Arab
+      'East Asian': 'East Asian'
+      'South Asian': 'South Asian'
+      'South East Asian': 'South East Asian'
+      'West Asian': 'West Asian'
+      Indian: Indian
+      'Pacific Islander': 'Pacific Islander'
+      'Asian - other (please specify)': 'Asian - other (please specify)'
+      'Mixed - Arab and White': 'Mixed - Arab and White'
+      'Mixed - Arab and Black': 'Mixed - Arab and Black'
+      'Mixed - Asian and Black': 'Mixed - Asian and Black'
+      'Mixed - Asian and Indigenous': 'Mixed - Asian and Indigenous'
+      'Mixed - Asian and White': 'Mixed - Asian and White'
+      'Mixed - Black African and White': 'Mixed - Black African and White'
+      'Mixed - Black African and Black Caribbean': 'Mixed - Black African and Black Caribbean'
+      'Mixed - Black Caribbean and White': 'Mixed - Black Caribbean and White'
+      'Mixed - Black, White and Indigenous': 'Mixed - Black, White and Indigenous'
+      'Mixed - other (please specify)': 'Mixed - other (please specify)'
+      'Australian - Aboriginal': 'Australian - Aboriginal'
+      'Australian - Torres Strait Islander': 'Australian - Torres Strait Islander'
+      'Canadian - Aboriginal': 'Canadian - Aboriginal'
+      'Indigenous - Latin American (Central America)': 'Indigenous - Latin American (Central America)'
+      'Indigenous - Latin American (South America)': 'Indigenous - Latin American (South America)'
+      'Indigenous - North American': 'Indigenous - North American'
+      'Indigenous - other (please specify)': 'Indigenous - other (please specify)'
+      Multi-ethnic: Multi-ethnic
+      'Other ethnic group (please specify)': 'Other ethnic group (please specify)'
+      'Prefer not to say': 'Prefer not to say'
+  ethnicity_please_specify:
+    '#type': textfield
+    '#title': 'Please specify:'
+    '#states':
+      visible:
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'Other ethnic group (please specify)'
+        - or
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'Latin American - other (please specify)'
+        - or
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'Indigenous - other (please specify)'
+        - or
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'Mixed - other (please specify)'
+        - or
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'White - other (please specify)'
+        - or
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'Asian - other (please specify)'
+        - or
+        - ':input[name="what_is_your_ethnicity_"]':
+            value: 'Black - other (please specify)'
+  what_is_your_sexual_orientation_:
+    '#type': select
+    '#title': 'What is your sexual orientation?'
+    '#options':
+      'Heterosexual / straight ': 'Heterosexual / straight '
+      'Lesbian ': 'Lesbian '
+      Gay: Gay
+      Bisexual: Bisexual
+      Other: Other
+      'Prefer not to say': 'Prefer not to say'
+  what_is_your_religion_:
+    '#type': select
+    '#title': 'What is your religion?'
+    '#options':
+      Atheist: Atheist
+      Buddhism: Buddhism
+      Christianity: Christianity
+      Hinduism: Hinduism
+      Islam: Islam
+      Judaism: Judaism
+      Nonreligious: Nonreligious
+      Other: Other
+      'Prefer not to say': 'Prefer not to say'
+      Sikhism: Sikhism
+  are_you_a_disabled_person_as_defined_by_the_equality_act_:
+    '#type': select
+    '#title': 'Are you a disabled person as defined by the Equality Act?'
+    '#description': 'Disability is defined by the Equality Act 2010 as &quot;A physical or mental impairment, which has a substantial and long-term adverse effect on a person&#39;s ability to carry out normal day-today activities.&quot;'
+    '#options': yes_no
+  markup:
+    '#type': webform_markup
+    '#markup': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /equal-opportunities-monitoring-form
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you for completing our Equal Opportunities Monitoring Form.'
+  confirmation_message: 'WaterAid is committed to achieving the highest standards of diversity, fairness and equality. We would therefore be very grateful if you could help us monitor our progress by completing our Equal Opportunities Monitoring Form. We ask all prospective volunteers to provide the following information though it is optional whether or not to provide such data, and there are no consequences of failing to do so. The answers you give will be stored annoymously and separately to your volunteer application.'
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

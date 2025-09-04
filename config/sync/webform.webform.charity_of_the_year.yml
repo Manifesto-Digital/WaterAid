@@ -1,47 +1,139 @@
-uuid: 645236f3-cc6a-4468-820b-e78443e3c39a
 langcode: en
 status: open
 dependencies:
-  enforced:
-    module:
-      - webform
-_core:
-  default_config_hash: _je-MWeeJB6gfm6iECiqjcyNetfMFbn-YIInYwZ1gIk
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
 weight: 0
 open: null
 close: null
-uid: null
+uid: 1
 template: false
 archive: false
-id: contact
-title: Contact
-description: 'Basic email contact webform.'
-categories: {  }
-elements: |
-  name:
-    '#title': 'Your Name'
+id: charity_of_the_year
+title: 'Charity of the Year'
+description: '<p>For SMEs to contact events team about choosing us as their charity of the year</p>'
+categories:
+  - Admin
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  intro:
+    '#type': processed_text
+    '#text': '<h3>Your details</h3>'
+    '#format': basic_html
+  your_first_name:
     '#type': textfield
+    '#title': 'Your first name'
     '#required': true
-    '#default_value': '[current-user:display-name]'
-  email:
-    '#title': 'Your Email'
-    '#type': email
-    '#required': true
-    '#default_value': '[current-user:mail]'
-  subject:
-    '#title': Subject
+  your_last_name:
     '#type': textfield
+    '#title': 'Your last name'
     '#required': true
-    '#test': 'Testing contact webform from [site:name]'
-  message:
-    '#title': Message
+  your_email_address:
+    '#type': loqate_email_composite
+    '#title': 'Your email address'
+    '#required': true
+    '#loqate_validation_refuse_disposable': false
+    '#email__title': 'Your email address'
+    '#email__required': true
+    '#loqate_validation': false
+  your_phone_number:
+    '#type': number
+    '#title': 'Your phone number'
+  organisation_info:
+    '#type': processed_text
+    '#text': '<h3>Your organisation</h3>'
+    '#format': basic_html
+  your_organisation:
+    '#type': textfield
+    '#title': 'Your organisation'
+    '#required': true
+    '#required_error': "Please let us know which organisation you're representing"
+  your_organisation_s_address:
+    '#type': pca_address_php
+    '#title': "Your organisation's address"
+    '#required': true
+  organisation_size:
+    '#type': select
+    '#title': 'How large is your organisation?'
+    '#options':
+      'Fewer than 10 employees': 'Fewer than 10 employees'
+      '10-49 employees': '10-49 employees'
+      '50-249 employees': '50-249 employees'
+      '250+ employees': '250+ employees'
+    '#required': true
+    '#required_error': 'Please let us know the size of your organisation'
+  organisation_sector:
+    '#type': textfield
+    '#title': 'What sector(s) does your organisation primarily operate in?'
+    '#required': true
+    '#required_error': "Please let us know your organisation's sector"
+  plans_intro:
+    '#type': processed_text
+    '#text': '<h3>Your plans</h3>'
+    '#format': basic_html
+  fundraising_target:
+    '#type': number
+    '#title': 'How much would you anticipate raising over the duration of this partnership?'
+    '#field_prefix': £
+    '#autocomplete': 'off'
+    '#required': true
+    '#required_error': "Please let us know roughly how much you think you'd raise throughout the partnership."
+  plans_and_ideas:
     '#type': textarea
+    '#title': 'Let us know a little more about your plans and ideas:'
     '#required': true
-    '#test': 'Please ignore this email.'
+  privacy:
+    '#type': processed_text
+    '#text': '<h3>How we''ll use your data</h3><p>We''ll use the email address and/or phone number you provide to get in touch about supporting WaterAid as your organisation''s charity of the year.</p><p class="fine-print">WaterAid and WaterAid Trading may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications, please contact us on 0207 793 4594 or at&nbsp;<a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see <a href="/uk/privacy">our Privacy Policy</a>.</p>'
+    '#format': basic_html
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
-    '#submit__label': 'Send message'
+    '#submit__label': Submit
 css: ''
 javascript: ''
 settings:
@@ -126,7 +218,7 @@ settings:
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
-  wizard_toggle: false
+  wizard_toggle: true
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
   wizard_page_type: container
@@ -146,12 +238,12 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: url_message
-  confirmation_url: '<front>'
-  confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you'
+  confirmation_message: "<p>Thanks for your interest in partnering with WaterAid as your organisation's charity of the year – we'll be in touch within <mark>XX working days</mark>.</p>"
   confirmation_attributes: {  }
-  confirmation_back: true
+  confirmation_back: false
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
@@ -226,18 +318,18 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_confirmation:
+  email_notification:
     id: email
-    handler_id: email_confirmation
-    label: 'Email confirmation'
-    notes: ''
+    handler_id: email_notification
+    label: 'Email notification'
+    notes: 'To team each time form is submitted'
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: '[current-user:mail]'
+      to_mail: events@wateraid.org
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
@@ -250,9 +342,14 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
-      excluded_elements: {  }
+      subject: 'Charity of the year interest'
+      body: '<p>Submitted on [webform_submission:created]</p><p>[webform_submission:values]</p>'
+      excluded_elements:
+        captcha: captcha
+        intro: intro
+        organisation_info: organisation_info
+        plans_intro: plans_intro
+        privacy: privacy
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
@@ -261,35 +358,34 @@ handlers:
       attachments: false
       twig: false
       theme_name: ''
-      langcode: ''
       parameters: {  }
       debug: false
-  email_notification:
+  email:
     id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: ''
+    handler_id: email
+    label: 'Confirmation email'
+    notes: 'To registrant'
     status: true
     conditions: {  }
-    weight: 2
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: _default
+      to_mail: '[webform_submission:values:your_email_address:email:raw]'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
-      from_mail: '[webform_submission:values:email:raw]'
+      from_mail: events@wateraid.org
       from_options: {  }
-      from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
+      from_name: 'WaterAid Fundraising Team'
+      reply_to: events@wateraid.org
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
+      subject: 'Thanks for your interest in partnering with WaterAid'
+      body: "<p>Hi [webform_submission:values:your_first_name]</p><p>Thanks for your interest in supporting WaterAid as [webform_submission:values:your_organisation]'s charity of the year.</p><p>We'll be in touch soon to get the ball rolling!</p><p>Best wishes,<br>WaterAid Fundraising Team</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -299,7 +395,6 @@ handlers:
       attachments: false
       twig: false
       theme_name: ''
-      langcode: ''
       parameters: {  }
       debug: false
 variants: {  }

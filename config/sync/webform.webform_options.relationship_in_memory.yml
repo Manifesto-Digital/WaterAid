@@ -1,0 +1,21 @@
+langcode: en
+status: true
+id: relationship_in_memory
+label: 'Relationship (In Memory)'
+category: Demographic
+likert: false
+options: |-
+  Brother: Brother
+  Daughter: Daughter
+  Father: Father
+  Friend: Friend
+  Grandfather: Grandfather
+  Grandmother: Grandmother
+  Husband: Husband
+  Mother: Mother
+  'Other Relative': 'Other Relative'
+  Partner: Partner
+  Sister: Sister
+  Son: Son
+  Wife: Wife
+uid: d4df1332-47cc-4a64-8ba9-6578525b722a

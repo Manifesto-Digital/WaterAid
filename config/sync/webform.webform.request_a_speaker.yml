@@ -1,0 +1,802 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_azure_storage
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 21
+template: false
+archive: false
+id: request_a_speaker
+title: 'Request a speaker'
+description: ''
+categories:
+  - Community
+elements: |-
+  your_details:
+    '#type': webform_wizard_page
+    '#title': 'Your details'
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha_v3/default
+    header:
+      '#type': processed_text
+      '#text': '<h1>Request a WaterAid Speaker</h1><p>Our volunteer Speakers can visit groups across the UK or deliver online sessions anywhere around the world.</p><p><strong>You need to be over 18 to complete this form.</strong></p>'
+      '#format': basic_html
+    markup:
+      '#type': webform_markup
+      '#markup': '<h2>Our commitment to safeguarding</h2>'
+    i_acknowledge_wateraid_volunteers_are_not_dbs_checked_by_waterai:
+      '#type': checkbox
+      '#title': 'Yes'
+      '#description': '<p>Do you acknowledge that <a href="https://www.wateraid.org/uk/safeguarding-at-wateraid">WaterAid values and commits to safeguarding</a> and that WaterAid volunteers are not DBS checked by WaterAid and must be accompanied at all times when with children, vulnerable adults and those at risk?</p>'
+      '#description_display': before
+      '#required': true
+    details:
+      '#type': webform_markup
+      '#markup': '<h2>Your details</h2>'
+    title:
+      '#type': select
+      '#title': Title
+      '#options': titles
+    first_name:
+      '#type': textfield
+      '#title': 'First name'
+      '#required': true
+    last_name:
+      '#type': textfield
+      '#title': 'Last name'
+      '#required': true
+    email:
+      '#type': loqate_email_composite
+      '#title': Email
+      '#required': true
+      '#loqate_validation_refuse_disposable': false
+      '#email__title': Email
+      '#email__required': true
+    phone_number:
+      '#type': tel
+      '#title': 'Phone number'
+      '#required': true
+    your_role_at_school_organisation:
+      '#type': select
+      '#title': 'Your role at school or organisation'
+      '#options':
+        Leader: Leader
+        Secretary: Secretary
+        Treasurer: Treasurer
+        Member: Member
+        Headteacher: Headteacher
+        'Deputy Headteacher': 'Deputy Headteacher'
+        Teacher: Teacher
+      '#empty_option': '  '
+      '#other__option_label': Other
+      '#required': true
+    school_organisation_name:
+      '#type': textfield
+      '#title': 'School/organisation name'
+      '#required': true
+    school_organisation_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'School/organisation address'
+      '#description': '<p>Please fill in the full address or there may be delays to processing your request.</p>'
+      '#description_display': before
+      '#required': true
+      '#address__title': 'School/organisation address one'
+      '#address__required': true
+      '#address_2__title': 'School/organisation address two'
+      '#city__title': City/town
+      '#city__required': true
+      '#state_province__title': County
+      '#state_province__type': textfield
+      '#postal_code__title': Postcode
+      '#postal_code__required': true
+      '#country__required': true
+      '#capture_plus_active': true
+  your_request:
+    '#type': webform_wizard_page
+    '#title': 'Your request'
+    request:
+      '#type': webform_markup
+      '#markup': '<h2>Your request</h2>'
+    venue_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'Venue address'
+      '#description': 'Please fill in the full address, even if it&#39;s the same as above. If you are having difficulty using the address look up, enter your address manually.'
+      '#description_display': before
+      '#required': true
+      '#loqate_api_key': loqate_live_api_key
+      '#state_province__type': textfield
+      '#country__placeholder': ' '
+      '#capture_plus_lookup_label': 'Enter the venue address where the talk will take place'
+      '#address__title': 'Venue address one'
+      '#address_2__title': 'Venue address two'
+      '#city__title': City/town
+      '#state_province__title': County
+      '#postal_code__title': Postcode
+      '#address__required': true
+      '#address_2__required': false
+      '#city__required': true
+      '#country__required': true
+      '#state_province__required': false
+      '#postal_code__required': true
+      '#capture_plus_active': true
+    number_of_talks_requested_:
+      '#type': select
+      '#title': 'Number of talks requested '
+      '#description': '<p><span style="font-size:11.0pt"><span style="line-height:107%"><span style="font-family:&quot;Calibri&quot;,sans-serif">If you would like further talks for a different day, please submit a separate request </span></span></span></p>'
+      '#options':
+        1: '1'
+        2: '2'
+        3: '3'
+        4: '4'
+        5: '5'
+        6: '6'
+        7: '7'
+        8: '8'
+        9: '9'
+        10: '10'
+      '#required': true
+    preferred_date_of_talk_at_least_a_month_from_today:
+      '#type': date
+      '#title': 'Preferred date of talk (availability from September 2025 onwards and not more than 6 months in advance)'
+      '#required': true
+      '#date_date_min': 'Sep 1 2025'
+      '#date_date_max': '+6 months'
+    are_you_flexible_around_the_time_and_date_:
+      '#type': radios
+      '#title': 'Are you flexible around the time and date?'
+      '#options': yes_no
+      '#required': true
+      '#options__properties': ''
+    optional_later_date:
+      '#type': date
+      '#title': "If yes, please give an alternative date if a speaker isn't available on your preferred date"
+      '#states':
+        visible:
+          ':input[name="are_you_flexible_around_the_time_and_date_"]':
+            value: 'Yes'
+      '#date_date_min': '+1 month'
+      '#date_date_max': '+6 months'
+    start_time_of_talk:
+      '#type': webform_time
+      '#title': 'Start time of talk (24 hour format)'
+      '#required': true
+      '#required_error': 'Please select a time between 06:00 and 22:00'
+      '#time_format': 'H:i'
+      '#min': '06:00:00'
+      '#max': '22:00:00'
+      '#step': 900
+    length_of_talk:
+      '#type': select
+      '#title': 'Length of talk'
+      '#options':
+        'Up to 15 minutes': 'Up to 15 minutes'
+        '15 to 30 minutes': '15 to 30 minutes'
+        '30 to 45 minutes': '30 to 45 minutes'
+        '45 minutes to 1 hour': '45 minutes to 1 hour'
+        'More than 1 hour': 'More than 1 hour'
+      '#empty_option': ' '
+      '#required': true
+    number_of_people_attending:
+      '#type': number
+      '#title': 'Total number of people attending talk(s)'
+      '#description': "<p>If you're requesting more than one talk, please let us know the sum total of all attendees across all talks.</p>"
+      '#required': true
+      '#required_error': 'More than 0 people need to attend the talk'
+      '#min': 1
+    age_range_of_participants:
+      '#type': select
+      '#title': 'Age range of participants'
+      '#description': '(only complete this if any participants are under 18)'
+      '#options': key_stages_school_years
+    equipment_available:
+      '#type': select
+      '#title': 'Equipment available'
+      '#options':
+        'Digital projector and laptop': 'Digital projector and laptop'
+        'Digital projector': 'Digital projector'
+        Laptop: Laptop
+        otherpleasestateintheadditionalinformationbox: 'Other (please state in the additional information box)'
+      '#empty_option': ' '
+      '#other__option_label': Other
+      '#required': true
+    would_you_like_a_speaker_to_attend_in_person_or_can_the_talk_s_b:
+      '#type': radios
+      '#title': 'Would you like a Speaker to attend in person, or can the talk(s) be delivered online? '
+      '#options':
+        'In-person ': 'In-person '
+        Online: Online
+        Either: Either
+      '#required': true
+      '#options__properties': ''
+    tell_us_about_the_nature_of_your_speaker_request:
+      '#type': select
+      '#title': 'Tell us about the nature of your Speaker request'
+      '#options':
+        'General WaterAid talk': 'General WaterAid talk'
+        'WaterAid talk and fundraising event ': 'WaterAid talk and fundraising event '
+        'WaterAid talk and campaigning ': 'WaterAid talk and campaigning '
+        'Educational WaterAid talk': 'Educational WaterAid talk'
+        'WaterAid talk and thank you': 'WaterAid talk and thank you'
+      '#required': true
+    how_did_you_hear_about_our_speaker_network:
+      '#type': webform_select_other
+      '#title': 'How did you hear about our Speaker Network?'
+      '#options':
+        'WaterAid website': 'WaterAid website'
+        'Word of mouth': 'Word of mouth'
+        'My local representative': 'My local representative'
+        'Speaker postcard': 'Speaker postcard'
+      '#empty_option': ' '
+      '#other__option_label': Other
+      '#required': true
+    additional_information:
+      '#type': textarea
+      '#title': "Is there anything else you'd like to let us know?"
+      '#description': '<p>For example fundraising plans, special interests, flexible dates, and disabilities in the audience the Speaker should be aware about. If you already have an allocated Speaker for your talk, please add their full name here.<br><br>Please note that volunteer Speakers cannot pay in donations on your behalf. Visit our <a href="https://www.wateraid.org/uk/get-involved/fundraising/paying-in-your-money"><strong>paying in page</strong></a> for more guidance.</p>'
+      '#description_display': after
+    opt_in_intro:
+      '#type': processed_text
+      '#text': "<h2>How we'll use your data</h2><p>By providing your details, you are agreeing to receive information and resources from WaterAid relating to the Speaker Network.</p><p>The talk will be about the work of WaterAid, and may also include information about ways your audience could support our work.</p><h3>Can we keep in touch?</h3><p>We’d also love to keep you updated on how your support is making change happen. If you agree, we'll send you information about our work, campaigns, opportunities to get involved, and fundraising appeals.</p><p>Let us know how you’d like to hear from us:</p>"
+      '#format': basic_html
+    communications_preference:
+      '#type': flexible_options
+      '#title': 'Communications preference'
+      '#title_display': invisible
+      '#options': communication_preferences_long_form_
+      '#format_items': ul
+    privacy_statement:
+      '#type': processed_text
+      '#text': |
+        <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+      '#format': basic_html
+    i_acknowledge_i_have_read_government_guidance_around_protection_:
+      '#type': checkbox
+      '#title': 'I acknowledge I have read the guidance above around protection from COVID-19 and will ensure appropriate measures are in place, including a COVID-19 risk assessment (to be shared with Speakers) should my organisation host a face to face visit for a Speaker volunteer'
+      '#title_display': before
+      '#wrapper_attributes':
+        class:
+          - hidden
+css: "#edit-wizard-prev {\r\n    margin-bottom: 2em;\r\n}"
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /request-a-speaker
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: "<p>Thank you for your interest in the WaterAid Speaker Network and booking a volunteer Speaker.</p>\r\n\r\n<p>During the Coronavirus outbreak we are not running in-person talks and workshops, although our Speakers are providing virtual talks and workshops.&nbsp;</p>\r\n\r\n<p>Our request form is currently being updated but will be re-launched in September. If you would like an email reminder of when this form is live again please email <a href=\"mailto:Speakers@Wateraid.org\">Speakers@wateraid.org</a>.</p>\r\n\r\n<ul>\r\n\t<li>In the meantime, please take a look at the following online resources&nbsp;that may be useful for your group:</li>\r\n\t<li>Pre-recorded WaterAid talks for&nbsp;<a href=\"https://www.youtube.com/watch?v=PjBkqxryvzY&amp;feature=youtu.be\">primary school children</a>&nbsp;and&nbsp;<a href=\"https://www.youtube.com/watch?v=Uz3wi8B6qD8&amp;feature=youtu.be\">secondary school children or adults</a></li>\r\n\t<li><a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/e540ab9d-ffe3-41e3-88f4-e817112531f7/assetbox.html\" target=\"_blank\">WaterAid presentations</a> (including on hygiene and handwashing)</li>\r\n\t<li><a href=\"https://www.wateraid.org/uk/get-involved/teaching/films-games-and-songs\">Educational games, quizzes and songs</a></li>\r\n\t<li><a href=\"https://www.youtube.com/user/WaterAid\">Our most popular YouTube films</a></li>\r\n</ul>\r\n\r\n<p>Email <a href=\"mailto:Speakers@Wateraid.org\">Speakers@wateraid.org</a> with any questions.&nbsp;</p>"
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you so much for inviting a free Speaker to bring WaterAid’s work to life'
+  confirmation_message: "<p>Your request will now be sent to our volunteer network. It can take up to five weeks to find a volunteer Speaker, but we&#39;ll be in touch to update you.</p>\r\n\r\n<p><strong>Please note that many of our volunteers currently prefer to give online talks, so virtual requests are more likely to be fulfilled, and it may take longer than usual for us to find a Speaker to deliver a face-to-face talk.</strong></p>\r\n\r\n<p>If a Speaker is available, they will get in touch with you directly, most likely via email. Unfortunately, occasionally we&#39;re unable to fulfil requests for talks. In this case,&nbsp;we&#39;ll be in touch to offer you a presentation and supporting resources, which include much of the content delivered by Speakers.<br />\r\n<br />\r\nIn the meantime, please make sure you&#39;ve read our best practice guidelines for hosting a Speaker:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Familiarise yourself with <a href=\"/uk/safeguarding-at-wateraid\">WaterAid&rsquo;s values and commitment to safeguarding</a></p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Ensure you keep the Speaker&#39;s contact details confidential, and make sure you delete them after the talk</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>If you&#39;re hosting an online talk, please read our <a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/d865ce68-0432-483c-95a4-6976bee85263/assetbox.html\">virtual guidance</a> and <a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/b2b00973-5530-4e90-a69f-680e2303a36a/assetbox.html\">risk assessment</a> to ensure online safeguarding measures are in place</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>If you&#39;re hosting a face-to-face visit, please make sure you&#39;re familiar with up to date <a href=\"https://www.gov.uk/coronavirus\">government advice around COVID-19</a>, as well as <a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/bfe4c79e-e84f-4396-a536-ccb2abc94482/assetbox.html\">our COVID-19 guidance and risk assessment</a></p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Share your own risk assessment, and any other protocols you have in place, with the volunteer ahead of their talk</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Many thanks,<br />\r\nWaterAid Speaker Network Team</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: 'Email request a speaker to supporter'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: speakers@wateraid.org
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: "Thank you so much for inviting a Speaker to bring WaterAid's work to life"
+      body: "<p>Dear [webform_submission:values:first_name],<br />\r\n<br />\r\n<strong>Thank you for requesting a talk from one of our volunteer speakers!</strong><br />\r\n<br />\r\nThe details of your requested visit are:</p>\r\n\r\n<p>Date: [webform_submission:values:preferred_date_of_talk_at_least_a_month_from_today]</p>\r\n\r\n<p>Time: [webform_submission:values:start_time_of_talk]</p>\r\n\r\n<p>Venue: [webform_submission:values:venue_address]</p>\r\n\r\n<p>Number of people attending: [webform_submission:values:number_of_people_attending]</p>\r\n\r\n<p>Your request will now be sent to our volunteer network. It can take up to five weeks to find a volunteer Speaker, but we&#39;ll be in touch to update you.</p>\r\n\r\n<p>Please note that many of our volunteers currently prefer to give online talks, so virtual requests are more likely to be fulfilled, and it may take longer than usual for us to find a Speaker to deliver a face-to-face talk.</p>\r\n\r\n<p>If a Speaker is available, they will get in touch with you directly, most likely via email. Unfortunately, occasionally we&#39;re unable to fulfil requests for talks. In this case,&nbsp;we&#39;ll be in touch to offer you a presentation and supporting resources, which include much of the content delivered by Speakers.<br />\r\n<br />\r\nIn the meantime, please make sure you&#39;ve read our best practice guidelines for hosting a Speaker:</p>\r\n\r\n<ul>\r\n\t<li>Familiarise yourself with <a href=\"/uk/safeguarding-at-wateraid\">WaterAid&rsquo;s values and commitment to safeguarding</a></li>\r\n\t<li>Ensure you keep the Speaker&#39;s contact details, and any communications with them, confidential</li>\r\n\t<li>Ensure you delete the volunteer&#39;s contact details after they have delivered the talk</li>\r\n\t<li>If you&#39;re hosting an online talk, please read our <a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/d865ce68-0432-483c-95a4-6976bee85263/assetbox.html\">virtual guidance</a> and <a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/b2b00973-5530-4e90-a69f-680e2303a36a/assetbox.html\">risk assessment</a> to ensure online safeguarding measures are in place</li>\r\n\t<li>If you&#39;re hosting a face-to-face visit, please make sure you&#39;re familiar with up to date <a href=\"https://www.gov.uk/coronavirus\">government advice around COVID-19</a>, as well as <a href=\"https://wateraid.assetbank-server.com/assetbank-wateraid/images/assetbox/bfe4c79e-e84f-4396-a536-ccb2abc94482/assetbox.html\">our COVID-19 guidance and risk assessment</a></li>\r\n\t<li>Share your own risk assessment, and any other protocols you have in place, with the volunteer ahead of their talk</li>\r\n</ul>\r\n\r\n<p>Many thanks,<br />\r\nWaterAid Speaker Network team</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email_1:
+    id: email
+    handler_id: email_1
+    label: 'Speaker requested'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: speakers@wateraid.org
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  wateraid_azure_storage_queue:
+    id: wateraid_azure_storage_queue
+    handler_id: wateraid_azure_storage_queue
+    label: 'WaterAid Azure Storage Queue'
+    notes: ''
+    status: false
+    conditions: {  }
+    weight: 2
+    settings:
+      message_submission_data:
+        -
+          original_key: serial
+          new_key: serial_number
+          parent_key: null
+        -
+          original_key: sid
+          new_key: submission_id
+          parent_key: null
+        -
+          original_key: uri
+          new_key: submission_uri
+          parent_key: null
+        -
+          original_key: created
+          new_key: created
+          parent_key: null
+        -
+          original_key: completed
+          new_key: completed
+          parent_key: null
+        -
+          original_key: changed
+          new_key: changed
+          parent_key: null
+        -
+          original_key: in_draft
+          new_key: is_draft
+          parent_key: null
+        -
+          original_key: current_page
+          new_key: current_page
+          parent_key: null
+        -
+          original_key: remote_addr
+          new_key: remote_ip_address
+          parent_key: null
+        -
+          original_key: uid
+          new_key: id
+          parent_key: null
+        -
+          original_key: langcode
+          new_key: language
+          parent_key: null
+        -
+          original_key: entity_type
+          new_key: submitted_to_entity_type
+          parent_key: null
+        -
+          original_key: entity_id
+          new_key: submitted_to_entity_id
+          parent_key: null
+        -
+          original_key: sticky
+          new_key: sticky
+          parent_key: null
+        -
+          original_key: notes
+          new_key: notes
+          parent_key: null
+        -
+          original_key: url_params
+          new_key: url_parameters
+          parent_key: null
+        -
+          original_key: uid_title
+          new_key: submittedbytitle
+          parent_key: null
+        -
+          original_key: uid_url
+          new_key: url
+          parent_key: null
+        -
+          original_key: entity_title
+          new_key: submitted_to_entity_title
+          parent_key: null
+        -
+          original_key: entity_url
+          new_key: submitted_to_entity_url
+          parent_key: null
+        -
+          original_key: url_params_utm_campaign
+          new_key: utm_campaign
+          parent_key: null
+        -
+          original_key: url_params_utm_source
+          new_key: utm_source
+          parent_key: null
+        -
+          original_key: url_params_utm_content
+          new_key: utm_content
+          parent_key: null
+        -
+          original_key: url_params_utm_medium
+          new_key: utm_medium
+          parent_key: null
+        -
+          original_key: url_params_fund_code
+          new_key: fund_code
+          parent_key: null
+        -
+          original_key: url_params_package_id
+          new_key: package_id
+          parent_key: null
+        -
+          original_key: url_params_campaign
+          new_key: campaign
+          parent_key: null
+        -
+          original_key: url_params_segment_code
+          new_key: segment_code
+          parent_key: null
+        -
+          original_key: i_acknowledge_wateraid_volunteers_are_not_dbs_checked_by_waterai
+          new_key: dbs_waiver_acknowledgement
+          parent_key: null
+        -
+          original_key: title
+          new_key: title
+          parent_key: null
+        -
+          original_key: first_name
+          new_key: first_name
+          parent_key: null
+        -
+          original_key: last_name
+          new_key: last_name
+          parent_key: null
+        -
+          original_key: email
+          new_key: email
+          parent_key: null
+        -
+          original_key: phone_number
+          new_key: phone_number
+          parent_key: null
+        -
+          original_key: your_role_at_school_organisation
+          new_key: your_role_at_school_or_organisation
+          parent_key: null
+        -
+          original_key: school_organisation_name
+          new_key: organisation_name
+          parent_key: null
+        -
+          original_key: number_of_talks_requested_
+          new_key: number_of_workshops
+          parent_key: null
+        -
+          original_key: preferred_date_of_talk_at_least_a_month_from_today
+          new_key: preferred_date_of_talk
+          parent_key: null
+        -
+          original_key: are_you_flexible_around_the_time_and_date_
+          new_key: are_you_flexible_around_the_time_and_date_
+          parent_key: null
+        -
+          original_key: optional_later_date
+          new_key: optional_later_date
+          parent_key: null
+        -
+          original_key: start_time_of_talk
+          new_key: start_time_of_talk
+          parent_key: null
+        -
+          original_key: length_of_talk
+          new_key: length_of_talk
+          parent_key: null
+        -
+          original_key: number_of_people_attending
+          new_key: number_of_people_attending
+          parent_key: null
+        -
+          original_key: equipment_available
+          new_key: equipment_available
+          parent_key: null
+        -
+          original_key: would_you_like_a_speaker_to_attend_in_person_or_can_the_talk_s_b
+          new_key: talk_or_workshop_in_person_or_online
+          parent_key: null
+        -
+          original_key: tell_us_about_the_nature_of_your_speaker_request
+          new_key: nature_of_speaker_request
+          parent_key: null
+        -
+          original_key: how_did_you_hear_about_our_speaker_network
+          new_key: how_did_you_hear_about_our_speaker_network
+          parent_key: null
+        -
+          original_key: additional_information
+          new_key: additional_information
+          parent_key: null
+        -
+          original_key: communications_preference_opt_in_email
+          new_key: communications_preference_opt_in_email
+          parent_key: communications_preference
+        -
+          original_key: communications_preference_opt_in_phone
+          new_key: communications_preference_opt_in_phone
+          parent_key: communications_preference
+        -
+          original_key: communications_preference_opt_in_sms
+          new_key: communications_preference_opt_in_sms
+          parent_key: communications_preference
+        -
+          original_key: communications_preference_opt_in_post
+          new_key: communications_preference_opt_in_post
+          parent_key: communications_preference
+        -
+          original_key: i_acknowledge_i_have_read_government_guidance_around_protection_
+          new_key: covid_guidance
+          parent_key: null
+      message_metadata:
+        -
+          key: webform_name
+          value: request_a_speaker
+        -
+          key: message_processor
+          value: request_a_speaker
+      protocol: null
+      account_name: null
+      test_account_key: null
+      live_account_key: null
+      endpoint_suffix: null
+      queue_name: integrations-prod-inbound
+      queue_mode_bypass: false
+      cron:
+        queue_retry: false
+variants: {  }

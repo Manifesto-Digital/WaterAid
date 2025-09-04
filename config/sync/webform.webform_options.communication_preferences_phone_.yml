@@ -1,0 +1,12 @@
+uuid: 68353cea-f970-4d30-9a6b-f3fc6639baf0
+langcode: en
+status: true
+dependencies: {  }
+id: communication_preferences_phone_
+label: 'Communication preferences (phone and post)'
+category: WaterAid
+likert: false
+options: |
+  opt_in_phone: 'Yes please, I''d like to hear from you by phone'
+  opt_in_sms: 'Yes please, I''d like to hear from you by SMS'
+  opt_in_post: 'No thank you, please do not contact me by post'
