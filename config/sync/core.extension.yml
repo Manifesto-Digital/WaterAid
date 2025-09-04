@@ -15,6 +15,7 @@ module:
   config_ignore: 0
   config_split: 0
   contact: 0
+  content_moderation: 0
   contextual: 0
   datetime: 0
   dblog: 0
@@ -55,10 +56,15 @@ module:
   node: 0
   options: 0
   page_cache: 0
+  paragraphs_clipboard: 0
   path: 0
   path_alias: 0
+  quick_node_clone: 0
   rabbit_hole: 0
   redirect: 0
+  scheduler: 0
+  scheduler_content_moderation_integration: 0
+  schema_metatag: 0
   search: 0
   seckit: 0
   security_review: 0
@@ -75,6 +81,8 @@ module:
   user: 0
   views_ui: 0
   webform: 0
+  webp: 0
+  workflows: 0
   pathauto: 1
   xmlsitemap: 1
   views: 10
