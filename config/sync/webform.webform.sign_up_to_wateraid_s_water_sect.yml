@@ -1,0 +1,337 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: ''
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: ''
+      format: wateraid_editor
+    social_share_title:
+      value: ''
+      format: wateraid_editor
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: ''
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: ''
+      format: wateraid_editor
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 42826
+template: false
+archive: false
+id: sign_up_to_wateraid_s_water_sect
+title: "Sign up to WaterAid's Water Sector Organisation e-newsletter"
+description: ''
+categories:
+  - Newsletter
+elements: |
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  intro:
+    '#type': webform_markup
+    '#markup': '<p>Sign up to receive a quarterly Water Sector Organisation e-newsletter for all the latest news and information on how to get involved, from triathlons to raising awareness.</p>'
+  contact_name:
+    '#type': webform_name
+    '#title': 'Contact name'
+    '#first__title': 'First name'
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  contact_email:
+    '#type': loqate_email_composite
+    '#title': 'Work email address'
+    '#required': true
+    '#email__title': 'Work email address'
+    '#email__required': true
+  organisation_name:
+    '#type': textfield
+    '#title': 'Organisation name'
+    '#required': true
+  organisation_address:
+    '#type': webform_address_capture_plus_manual
+    '#title': 'Work address'
+    '#required': true
+    '#address_line1_search_label': 'Address line 1 (optional)'
+    '#postal_code_search_label': Postcode
+    '#city__title': City/Town
+    '#state_province__title': County
+    '#postal_code__title': Postcode
+    '#address__required': true
+    '#address_2__required': false
+    '#city__required': true
+    '#country__required': true
+    '#state_province__required': false
+    '#postal_code__required': true
+    '#capture_plus_active': true
+    '#state_province__type': textfield
+  communications_preferences:
+    '#type': checkboxes
+    '#title': 'Communications preferences'
+    '#description': |
+      <p><strong>By submitting your details, you are agreeing to receive WaterAid&rsquo;s Water Sector Organisation e-newsletter which contains the latest news and ways to get involved.&nbsp;</strong></p>
+
+      <p>We&rsquo;d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you&rsquo;d like to hear from us.</p>
+    '#title_display': invisible
+    '#description_display': before
+    '#options': communication_preferences_post_and_email
+    '#options__properties': ''
+  privacy_statement:
+    '#type': webform_markup
+    '#markup': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /sign-up-to-wateraids-water-sector-organisation-e-newsletter
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: "<p><strong>Thank you for signing up for the WaterAid&nbsp;Water Sector Organisation e-newsletter!</strong></p>\r\n\r\n<p>&nbsp;</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: "Thank you for signing up to WaterAid's Water Sector Organisation e-newsletter!"
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: waterindustry@wateraid.org
+      from_options: {  }
+      from_name: 'Christine & Caitlin at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: "Thank you for signing up to WaterAid's Water Sector Organisation e-newsletter!"
+      body: "<p>Hi&nbsp;[webform_submission:values:contact_name:title] [webform_submission:values:contact_name:last],<br />\r\n<br />\r\nThank you for signing up to receive WaterAid&#39;s quarterly Water Sector Organisation e-Newsletter.<br />\r\n<br />\r\nFor further information, or to stop receiving the newsetters, please email Christine and Caitlin at <a href=\"http://mailto:Waterindustry@wateraid.org\">waterindustry@wateraid.org</a>.</p>\r\n\r\n<p>&nbsp;</p>"
+      excluded_elements:
+        contact_name: contact_name
+        contact_email: contact_email
+        organisation_name: organisation_name
+        organisation_address: organisation_address
+        communications_preferences: communications_preferences
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

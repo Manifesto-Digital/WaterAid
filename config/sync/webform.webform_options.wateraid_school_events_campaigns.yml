@@ -1,0 +1,13 @@
+uuid: 7badf14f-4204-4971-8b85-d76e171ab699
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_school_events_campaigns
+label: 'WaterAid school events / campaigns'
+category: WaterAid
+likert: false
+options: |
+  'Pupil Pipeline': 'Pupil Pipeline'
+  'Water Warriors': 'Water Warriors'
+  'Youth Ambassador programme': 'Youth Ambassador programme'
+  'Lent: Jars of Change': 'Lent: Jars of Change'

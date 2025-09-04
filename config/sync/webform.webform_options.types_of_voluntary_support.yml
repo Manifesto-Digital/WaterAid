@@ -1,0 +1,23 @@
+uuid: 867869f7-1253-443a-875f-7936248f4a98
+langcode: en
+status: true
+dependencies: {  }
+id: types_of_voluntary_support
+label: 'Types of voluntary support'
+category: WaterAid
+likert: false
+options: |-
+  'WaterAid water industry partner committee member': 'WaterAid water industry partner committee member'
+  'WaterAid speaker volunteer': 'WaterAid speaker volunteer'
+  'WaterAid staff': 'WaterAid staff'
+  'WaterAid local group member': 'WaterAid local group member'
+  'WaterAid university group member': 'WaterAid university group member'
+  'WaterAid office volunteer': 'WaterAid office volunteer'
+  'The Scouting Association': 'The Scouting Association'
+  Girlguiding: Girlguiding
+  'I have taken part in a challenge/event for WaterAid': 'I have taken part in a challenge/event for WaterAid'
+  'I have organised a fundraiser for WaterAid': 'I have organised a fundraiser for WaterAid'
+  'I have organised a fundraiser through my organisation': 'I have organised a fundraiser through my organisation'
+  'I''m a regular giver': 'I''m a regular giver'
+  'I added a gift to my will': 'I added a gift to my will'
+  'Not applicable': 'Not applicable'

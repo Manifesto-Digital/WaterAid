@@ -1,0 +1,942 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_azure_storage
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+    - webform_wizard_single_page
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: '<h2>Your donation details:</h2><p><strong>Date</strong><br>[webform_submission:donation-date]</p><p><strong>Frequency of donation</strong><br>[webform_submission:donation-frequency]</p><p><strong>Donation amount</strong><br>£[webform_submission:donation-amount]</p>'
+      format: wateraid_editor
+    gift_aid_confirmation:
+      value: '<h2><strong>Gift Aid confirmation</strong></h2><p>We confirm that from [webform_submission:donation-date] WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make. Please see the confirmation email for more details on the Gift Aid scheme.&nbsp;</p>'
+      format: wateraid_editor
+    gift_aid_email_confirmation:
+      value: '<h2>Gift Aid declaration</h2><p>Thank you for submitting your Gift Aid online declaration. The Gift Aid scheme gives WaterAid an extra 25p for each pound donated, allowing us to reach even more communities in desperate need.</p><p>We confirm that from [webform_submission:donation-date]&nbsp;WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make.&nbsp;You have confirmed that you pay an amount of income tax/capital gains tax which is at least equal to the amount we (or any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.</p><p>Adding 25p to every pound really makes your gift go further.</p><p><span>You do not need to do anything further for us to reclaim the tax on your gifts. If any of the details above are incorrect please let us know. You also have the option of withdrawing from the Gift Aid scheme within 30 days of this confirmation.</span></p><p><span>If you do stop paying tax in the future, we would appreciate it if you could inform us so that we can adjust our records accordingly. If you have any queries please do not hesitate to contact our Supporter Care team on 020 7793 4594.</span></p>'
+      format: wateraid_editor
+    social_share_title:
+      value: '<p>Spread the word to help reach even more people around the world:</p>'
+      format: wateraid_editor
+    social_share_text: ' I just donated to @WaterAidUK. You can too: wateraid.org/uk/donate'
+    after_confirmation_footer:
+      value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you. Please do not send your bank details by email.</p>"
+      format: wateraid_editor
+    after_confirmation_cta:
+      value: '<h2>You''re helping to share the joy of clean water!</h2><drupal-entity data-align="left" data-entity-type="media" data-entity-uuid="a320447e-4eab-49ae-ab28-f488bd511553" data-embed-button="image" data-entity-embed-display="entity_reference:image_embed_button_formatter" data-entity-embed-display-settings="{&quot;responsive_image_style&quot;:&quot;landscape_image&quot;,&quot;show_credit&quot;:0,&quot;show_caption&quot;:0}">&nbsp;</drupal-entity><p>&nbsp;</p>'
+      format: wateraid_editor
+    direct_debit_guarantee:
+      value: '<p><strong>The Direct Debit Guarantee</strong></p><ul><li>This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.</li><li>If there are any changes to the amount, date or frequency of your Direct Debit WaterAid will notify you 10 working days in advance of your account being debited or as otherwise agreed. If you request WaterAid to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</li><li>If an error is made in the payment of your Direct Debit by WaterAid or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your Bank or Building Society.</li><li>If you receive a refund you are not entitled to, you must pay it back when WaterAid asks you to.</li><li>You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify us.</li></ul><p>To get in touch you can give us a call on 020 7793 4594 or email us on <a href="">supportercare@wateraid.org</a>.</p><p><strong>Service User Name: </strong>WaterAid</p><p><strong>Service User Number: </strong>406789</p>'
+      format: wateraid_editor
+    bank_transfer_instructions:
+      value: ''
+      format: wateraid_editor
+    confirmation_image_url: ''
+  webform_wizard_extra:
+    one_page: false
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  wateraid_forms:
+    style_version: v1
+  webform_wizard_single_page:
+    single_page: false
+_core:
+  default_config_hash: W8QDMdZhpXffMYRY7zq361fviC6lzyyVlazfxeg7QwE
+weight: 0
+open: null
+close: null
+uid: 24956
+template: false
+archive: false
+id: donation_form_elisa
+title: 'Donation form | Elisa'
+description: '<p>Cash only. Supporter Engagement May 2022</p>'
+categories:
+  - Donation
+elements: |-
+  step_1:
+    '#type': webform_wizard_page
+    '#title': 'Donate to WaterAid'
+    '#open': true
+    '#next_button_label': Donate
+    '#select_security_icons_block': '81'
+    donation_amount:
+      '#type': donations_webform_amount
+      '#title': 'Donation amount'
+      '#amount__title': ''
+      '#amount__placeholder': 'Enter own amount e.g. 50'
+      '#frequency__title': 'Select frequency'
+      '#frequency__placeholder': 'Enter frequency'
+  step_2:
+    '#type': webform_wizard_page
+    '#title': 'Your details'
+    '#open': true
+    '#next_button_label': 'Next step'
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha_v3/default
+    contact_name:
+      '#type': wateraid_forms_webform_name
+      '#title': 'Contact name'
+      '#required': true
+      '#first__title': 'First name'
+      '#first__required': true
+      '#last__title': 'Last name'
+      '#last__required': true
+    contact_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'Contact address'
+      '#required': true
+      '#address_line1_search_label': 'House number or name (optional)'
+      '#postal_code_search_label': Postcode
+      '#address__title': 'Address 1'
+      '#city__title': City/Town
+      '#state_province__title': County
+      '#postal_code__title': Postcode
+      '#address__required': true
+      '#address_2__required': false
+      '#city__required': true
+      '#country__required': true
+      '#state_province__required': false
+      '#postal_code__required': true
+      '#capture_plus_active': true
+      '#state_province__type': textfield
+    contact_email:
+      '#type': loqate_email_composite
+      '#title': 'Contact email'
+      '#required': true
+      '#email__title': 'Contact email'
+      '#email__required': true
+    contact_phone:
+      '#type': tel
+      '#title': 'Contact phone'
+  step_giftaid:
+    '#type': webform_wizard_page
+    '#title': 'About your donation'
+    '#open': true
+    '#next_button_label': 'Next step'
+    '#help': '*WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations you may make. To qualify for Gift Aid, you must pay as much UK income and/or capital gains tax as WaterAid (and any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.'
+    '#hide_title': 1
+    gift_aid:
+      '#type': gift_aid
+      '#title': 'Gift Aid'
+      '#opt_in__title': 'Tick here to give more lifesaving clean water by signing up to Gift Aid*'
+  stay_updated:
+    '#type': webform_wizard_page
+    '#title': 'Stay updated'
+    '#help': 'WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.'
+    communication_preferences:
+      '#type': flexible_options
+      '#title': 'Communication preferences'
+      '#description': 'We&rsquo;d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you&rsquo;d like to hear from us.'
+      '#title_display': invisible
+      '#description_display': before
+      '#options': communication_preferences_long_form_
+      '#format_items': ul
+    prompt_reason:
+      '#type': webform_radios_other
+      '#title': 'Reason for donating'
+      '#options': reasons_for_donating
+      '#options_display': two_columns
+      '#other__maxlength': '100'
+      '#wrapper_type': form_element
+      '#wrapper_attributes':
+        class:
+          - hidden
+      '#options__properties': ''
+    in_memory:
+      '#type': donations_webform_in_memory
+      '#title': 'In Memory'
+      '#states':
+        visible:
+          ':input[name="prompt_reason[radios]"]':
+            value: 'In memory'
+          ':input[name="donation_amount[frequency]"]':
+            value: one_off
+      '#in_memory_intro': '<p>If you&rsquo;d like to tell us who you are donating in memory of, please complete the fields below</p>'
+  payment_type:
+    '#type': webform_wizard_page
+    '#title': 'Your payment details'
+    '#select_security_icons_block': '81'
+    payment:
+      '#type': donations_webform_payment
+      '#title': Payment
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#wizard_prev__label': Back
+    '#wizard_next__label': 'Next step'
+css: "/* Payment methods margin */\r\n#edit-payment-payment-methods-one-off-selection {\r\n  margin-bottom: 24px;\r\n}\r\n/* Hide border above credit card field, and remove margin */\r\n#edit-payment-payment-methods-one-off-methods {\r\n    border-top: none;\r\n    margin: 0;\r\n}\r\n/* BEGIN Security icons */\r\n.webform-security-icons,\r\n.webform-security-icons p, {\r\n    text-align: center;\r\n    font-size: 16px;\r\n}\r\n.payment-methods {\r\n    display: inline-block;\r\n    margin: 20px;\r\n    height: 30px;\r\n}\r\n.payment-methods--appeal-logo,\r\n.payment-methods.payment-methods--appeal-logo img {\r\n    height: 95px;\r\n}\r\n.payment-methods--hidden {\r\n    display: none;\r\n}\r\n.donation-cta-widget--new .wateraid-donations .webform-security-icons .field-name-body, .webform-page.webform-donations-page .wateraid-donations .webform-security-icons .field-name-body {\r\n  display: block;\r\n}\r\n/* END Security icons */"
+javascript: "// BEGIN custom javascript\r\njQuery(document).ready(function(){   \r\n  // If user is on step 1...\r\n\tif(jQuery('#edit-step-1').is(':visible')) {\t\t\r\n        // Hide donation amount text\r\n\t\tjQuery('.progress-bar__donation-amount-info').addClass('hidden');        \r\n\t}\r\n\t// Add label for Stripe field\r\n\tjQuery('#edit-payment-payment-methods-one-off-methods-stripe').prepend('<label for=\"stripe-token\">Enter your card details</label>');\r\n  \r\n});"
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /donate/elisa-form
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: '<p>We are currently experiencing technical issues with our online donation forms, and are working to get this up and running again soon.</p><p>In the meantime you can still support WaterAid by donating over the phone.&nbsp;</p><p><strong>Simply&nbsp;call 0300 123 4341 at a local rate.</strong></p><p>Please note calls to this line&nbsp;are recorded for training purposes and to ensure our high standards are maintained.</p>'
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'All done! Your donation is complete'
+  confirmation_message: "<p>Thank you so much for your donation.<br />\r\n<br />\r\nHealth. Happiness. Safety. Right now, thanks to your kind support, an expectant mum is arriving at a health centre without having to worry about finding clean water or a decent toilet. With your help, medical staff are able to wash their hands and equipment, confident that their hard work will keep their patients safe and free from infection or illness.<br />\r\n<br />\r\nThe need for clean water, decent toilets and hygiene in health clinics has never been so great as it is now. For health clinics in the UK, it&rsquo;s an essential part of everyday life, and now thanks to you, it will become part of everyday life for more children like Elisa&rsquo;s baby, Olivia, in Madagascar, all across the world. Thank you.<br />\r\n<br />\r\nYou will receive a confirmation email with the details of your donation.</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  wateraid_donations:
+    id: wateraid_donations
+    handler_id: wateraid_donations
+    label: 'WaterAid Donation'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -50
+    settings:
+      payment_providers: {  }
+      currency: null
+      amounts:
+        -
+          amount: '2'
+          message: message
+      one_off:
+        option_label: 'One off'
+        enabled: 1
+        payment_methods:
+          - paypal_express
+          - applepay
+          - stripe
+          - googlepay
+        default_payment_method: stripe
+        amounts:
+          -
+            amount: '15.30'
+            benefit: '£15.30 could provide 10 meters of galvanised pipe for newly built toilets at a health centre.'
+          -
+            amount: '26.61'
+            benefit: '£26.61 could buy two taps to supply clean water to handwashing stations for doctors and nurses to use in a health centre.'
+          -
+            amount: '59.10'
+            benefit: '£59.10 could provide a shower unit with hot and cold water so new mothers can wash themselves properly after giving birth.'
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '1'
+        allow_other_amount: true
+        minimum_amount: '2'
+        progress_donation_message: 'You are making a one-off donation of [donation:currency-sign][donation:amount].'
+      recurring:
+        option_label: Monthly
+        enabled: 0
+        payment_methods:
+          - bank_account
+        default_payment_method: bank_account
+        amounts:
+          -
+            amount: '3'
+            benefit: 'Become a WaterAider! Your monthly donation over a year could help buy a toilet slab for a pit latrine in Zambia.'
+          -
+            amount: '5'
+            benefit: 'Join us! Your monthly donation over a year could help pay for a standard water quality test for one water point in Nigeria.'
+          -
+            amount: '10'
+            benefit: 'Make change happen! Your monthly donation over a year could help install a touch free handwashing facility in Zambia.'
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '1'
+        allow_other_amount: true
+        minimum_amount: '2'
+        progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount].'
+      frequency_default: one_off
+      default_fund_code: UN9999
+      default_package_code: 22/WPC/00C
+      customer_fields:
+        customer_name: contact_name
+        customer_address: contact_address
+        customer_email: contact_email
+        customer_phone: contact_phone
+  wateraid_donation_email:
+    id: wateraid_email
+    handler_id: wateraid_donation_email
+    label: 'Wateraid Donation Email'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="prompt_reason[radios]"]':
+          '!value': 'In memory'
+    weight: -46
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Thank you so much for your donation'
+      body: "<p>Hi&nbsp;[webform_submission:values:contact_name],</p>\r\n\r\n<h2>Thank you for caring and thank for your donation</h2>\r\n\r\n<p>Your support today is helping to bring clean water, decent toilets and hygiene facilities to communities across the world.<br />\r\n<br />\r\nWith your support, communities worldwide, like Elisa&rsquo;s in Madagascar, will be able to build toilet and shower blocks and install taps in their health centres. Patients like Elisa will be able to access clean water and go to the toilet with dignity, and doctors, nurses and midwives will be able to put all their efforts into caring for their patients. Your gift will help transform communities and health centres, for generations to come.<br />\r\n<br />\r\nAfter the difficulties of the past couple of years, I have never been more thankful for your support. WaterAiders like you, continuing to stand shoulder to shoulder with those lacking access to clean water, decent toilets and good hygiene, fill me with a huge feeling of hope and joy. Together, we really are a powerful force.<br />\r\n<br />\r\nI am incredibly appreciative for everything you do. By donating, you are working with communities to bring a reliable supply of clean water and decent toilets, helping more people like Elisa and Olivia change their futures.<br />\r\n<br />\r\nWith my best wishes,<br />\r\n&nbsp;<br />\r\nErnest Randriarimalala<br />\r\nVoices from the Field Officer, WaterAid Madagascar<br />\r\n&nbsp;</p>\r\n\r\n<p>[webform_submission:values]<br />\r\nTransaction ID: [webform_submission:donation-transaction-id]<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: ''
+      return_path: ''
+      payment_frequency: one_off
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: null
+      fallback_message: null
+  wateraid_donation_email_recurring:
+    id: wateraid_email
+    handler_id: wateraid_donation_email_recurring
+    label: 'Wateraid Donation Email recurring'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="prompt_reason[radios]"]':
+          '!value': 'In memory'
+    weight: -45
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Thank you so much for your monthly donation'
+      body: "<p>Hi&nbsp;[webform_submission:values:contact_name],</p>\r\n\r\n<h2>We&#39;ve received your donation and I&nbsp;can&#39;t thank you enough!</h2>\r\n\r\n<p>Health. Happiness. Safety. A chance at a better education or a better job. It&#39;s amazing what clean water, decent toilets and good hygiene can bring. And that&#39;s the gift that you&#39;ve just given. Your monthly donation will help somebody change their life for good.</p>\r\n\r\n<p>Below you&rsquo;ll find confirmation of your donation, so please check the details and keep this email safe. If you have any questions about WaterAid or your gift, please give us a call on 020 7793 4594 or email us on <a href=\"mailto:supportercare@wateraid.org\">supportercare@wateraid.org</a>. We&#39;d love to hear from you.</p>\r\n\r\n<p>Best wishes and thanks for your support.</p>\r\n\r\n<p>Yours sincerely,</p>\r\n\r\n<p>Tim Wainwright</p>\r\n\r\n<p>Chief Executive</p>\r\n\r\n<p>WaterAid UK</p>\r\n\r\n<p><strong>Important: please find below confirmation of the set-up of your Direct Debit Instruction, including future payment schedule&nbsp;</strong></p>\r\n\r\n<p>[webform_submission:values]<br />\r\n<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: ''
+      return_path: ''
+      payment_frequency: recurring
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: null
+      fallback_message: null
+  wateraid_azure_storage_queue:
+    id: wateraid_azure_storage_queue
+    handler_id: wateraid_azure_storage_queue
+    label: 'WaterAid Azure Storage Queue'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -44
+    settings:
+      message_submission_data:
+        -
+          original_key: serial
+          new_key: serial_number
+          parent_key: null
+        -
+          original_key: sid
+          new_key: submission_id
+          parent_key: null
+        -
+          original_key: uri
+          new_key: submission_uri
+          parent_key: null
+        -
+          original_key: created
+          new_key: created
+          parent_key: null
+        -
+          original_key: completed
+          new_key: completed
+          parent_key: null
+        -
+          original_key: changed
+          new_key: changed
+          parent_key: null
+        -
+          original_key: in_draft
+          new_key: is_draft
+          parent_key: null
+        -
+          original_key: current_page
+          new_key: current_page
+          parent_key: null
+        -
+          original_key: remote_addr
+          new_key: remote_ip_address
+          parent_key: null
+        -
+          original_key: uid
+          new_key: id
+          parent_key: null
+        -
+          original_key: langcode
+          new_key: language
+          parent_key: null
+        -
+          original_key: entity_type
+          new_key: submitted_to_entity_type
+          parent_key: null
+        -
+          original_key: entity_id
+          new_key: submitted_to_entity_id
+          parent_key: null
+        -
+          original_key: sticky
+          new_key: sticky
+          parent_key: null
+        -
+          original_key: notes
+          new_key: notes
+          parent_key: null
+        -
+          original_key: url_params
+          new_key: url_parameters
+          parent_key: null
+        -
+          original_key: uid_title
+          new_key: submittedbytitle
+          parent_key: null
+        -
+          original_key: uid_url
+          new_key: url
+          parent_key: null
+        -
+          original_key: entity_title
+          new_key: submitted_to_entity_title
+          parent_key: null
+        -
+          original_key: entity_url
+          new_key: submitted_to_entity_url
+          parent_key: null
+        -
+          original_key: url_params_utm_campaign
+          new_key: utm_campaign
+          parent_key: null
+        -
+          original_key: url_params_utm_source
+          new_key: utm_source
+          parent_key: null
+        -
+          original_key: url_params_utm_content
+          new_key: utm_content
+          parent_key: null
+        -
+          original_key: url_params_utm_medium
+          new_key: utm_medium
+          parent_key: null
+        -
+          original_key: url_params_fund_code
+          new_key: fund_code
+          parent_key: null
+        -
+          original_key: url_params_package_id
+          new_key: package_id
+          parent_key: null
+        -
+          original_key: url_params_campaign
+          new_key: campaign
+          parent_key: null
+        -
+          original_key: url_params_segment_code
+          new_key: segment_code
+          parent_key: null
+        -
+          original_key: title
+          new_key: title
+          parent_key: contact_name
+        -
+          original_key: first
+          new_key: first_name
+          parent_key: contact_name
+        -
+          original_key: last
+          new_key: last_name
+          parent_key: contact_name
+        -
+          original_key: address
+          new_key: address_1
+          parent_key: contact_address
+        -
+          original_key: address_2
+          new_key: address_2
+          parent_key: contact_address
+        -
+          original_key: city
+          new_key: city_town
+          parent_key: contact_address
+        -
+          original_key: state_province
+          new_key: county
+          parent_key: contact_address
+        -
+          original_key: postal_code
+          new_key: zip_postal_code
+          parent_key: contact_address
+        -
+          original_key: country
+          new_key: country
+          parent_key: contact_address
+        -
+          original_key: paf
+          new_key: paf
+          parent_key: contact_address
+        -
+          original_key: email
+          new_key: contact_email
+          parent_key: contact_email
+        -
+          original_key: contact_phone
+          new_key: contact_phone
+          parent_key: null
+        -
+          original_key: opt_in
+          new_key: opt_in
+          parent_key: gift_aid
+        -
+          original_key: date_made
+          new_key: date_made
+          parent_key: gift_aid
+        -
+          original_key: communication_preferences_opt_in_email
+          new_key: communication_preferences_opt_in_email
+          parent_key: communication_preferences
+        -
+          original_key: communication_preferences_opt_in_phone
+          new_key: communication_preferences_opt_in_phone
+          parent_key: communication_preferences
+        -
+          original_key: communication_preferences_opt_in_sms
+          new_key: communication_preferences_opt_in_sms
+          parent_key: communication_preferences
+        -
+          original_key: communication_preferences_opt_in_post
+          new_key: communication_preferences_opt_in_post
+          parent_key: communication_preferences
+        -
+          original_key: prompt_reason
+          new_key: reason_for_donating
+          parent_key: null
+        -
+          original_key: in_memory_title
+          new_key: in_memory_title
+          parent_key: in_memory
+        -
+          original_key: in_memory_firstname
+          new_key: in_memory_firstname
+          parent_key: in_memory
+        -
+          original_key: in_memory_lastname
+          new_key: in_memory_lastname
+          parent_key: in_memory
+        -
+          original_key: in_memory_relationship
+          new_key: in_memory_relationship
+          parent_key: in_memory
+        -
+          original_key: donation_currency
+          new_key: donation_currency
+          parent_key: payment
+        -
+          original_key: donation_amount
+          new_key: donation_amount
+          parent_key: payment
+        -
+          original_key: donation_date
+          new_key: donation_date
+          parent_key: payment
+        -
+          original_key: donation_fulfillment_letter
+          new_key: donation_fulfillment_letter
+          parent_key: payment
+        -
+          original_key: donation_status
+          new_key: donation_status
+          parent_key: payment
+        -
+          original_key: donation_transaction_id
+          new_key: donation_transaction_id
+          parent_key: payment
+        -
+          original_key: donation_payment_method
+          new_key: donation_payment_method
+          parent_key: payment
+        -
+          original_key: dd_currency
+          new_key: dd_currency
+          parent_key: payment
+        -
+          original_key: dd_amount
+          new_key: dd_amount
+          parent_key: payment
+        -
+          original_key: dd_date
+          new_key: dd_date
+          parent_key: payment
+        -
+          original_key: dd_fulfillment_letter
+          new_key: dd_fulfillment_letter
+          parent_key: payment
+        -
+          original_key: dd_status
+          new_key: dd_status
+          parent_key: payment
+        -
+          original_key: dd_first_payment_date
+          new_key: dd_first_payment_date
+          parent_key: payment
+        -
+          original_key: dd_frequency
+          new_key: dd_frequency
+          parent_key: payment
+        -
+          original_key: dd_sort_code
+          new_key: dd_sort_code
+          parent_key: payment
+        -
+          original_key: dd_account_number
+          new_key: dd_account_number
+          parent_key: payment
+        -
+          original_key: dd_account_name
+          new_key: dd_account_name
+          parent_key: payment
+        -
+          original_key: dd_instruction_reference
+          new_key: dd_instruction_reference
+          parent_key: payment
+      message_metadata:
+        -
+          key: webform_name
+          value: donation_form_elisa
+        -
+          key: message_processor
+          value: drupal_webform_donations_winter
+      cron:
+        queue_retry: true
+      protocol: null
+      account_name: null
+      test_account_key: null
+      live_account_key: null
+      endpoint_suffix: null
+      queue_name: integrations-prod-inbound
+      queue_mode_bypass: false
+  confirmation_page:
+    id: confirmation_page
+    handler_id: confirmation_page
+    label: 'Confirmation Page'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="prompt_reason[radios]"]':
+          value: 'In memory'
+    weight: -49
+    settings:
+      payment_frequency: null
+      confirmation_title: null
+      confirmation_message: '<p>Thank you so much for your incredibly thoughtful gift in memory of your [webform_submission:in-memory:relationship:lowercase] [webform_submission:in-memory:name-fallback]. You&rsquo;re giving hope to those who need it most. You will receive a confirmation email with details of your donation.</p>'
+      fallback_plugin: in_memory
+      fallback_message: '<p>Thank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. You&rsquo;re giving hope to those who need it most. You will receive a confirmation email with details of your donation.</p>'
+      donation_confirmation: null
+  wateraid_donation_email_in_memory_:
+    id: wateraid_email
+    handler_id: wateraid_donation_email_in_memory_
+    label: 'Wateraid Donation Email (In Memory)'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="prompt_reason[radios]"]':
+          value: 'In memory'
+    weight: -48
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Thank you so much for your donation'
+      body: "<p>Dear [webform_submission:values:contact_name],<br />\r\n<br />\r\nThank you so much for your incredibly thoughtful gift in memory of your [webform_submission:in-memory:relationship:lowercase] [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br />\r\n<br />\r\nIf you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href=\"https://wateraid.dedicationpage.org/inmemory\">our WaterAid Remembers page</a>.<br />\r\n<br />\r\nIf you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href=\"mailto:p.pooley@wateraid.org\">p.pooley@wateraid.org</a>. &nbsp;I&rsquo;d love to hear from you.<br />\r\n<br />\r\nBelow you&rsquo;ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br />\r\n<br />\r\nWith very best wishes,&nbsp;<br />\r\n<br />\r\nPhil Pooley<br />\r\n<br />\r\nGifts in Memory Officer<br />\r\n<br />\r\nWaterAid UK</p>\r\n\r\n<p>[webform_submission:values]<br />\r\nTransaction ID: [webform_submission:donation-transaction-id]<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: ''
+      return_path: ''
+      payment_frequency: one_off
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: in_memory
+      fallback_message: "<p>Dear [webform_submission:values:contact_name],<br />\r\n<br />\r\nThank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br />\r\n<br />\r\nIf you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href=\"https://wateraid.dedicationpage.org/inmemory\">our WaterAid Remembers page</a>.<br />\r\n<br />\r\nIf you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href=\"mailto:p.pooley@wateraid.org\">p.pooley@wateraid.org</a>. &nbsp;I&rsquo;d love to hear from you.<br />\r\n<br />\r\nBelow you&rsquo;ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br />\r\n<br />\r\nWith very best wishes,&nbsp;<br />\r\n<br />\r\nPhil Pooley<br />\r\n<br />\r\nGifts in Memory Officer<br />\r\n<br />\r\nWaterAid UK</p>\r\n\r\n<p>[webform_submission:values]<br />\r\nTransaction ID: [webform_submission:donation-transaction-id]<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+  wateraid_donation_email_recurring_in_memory_:
+    id: wateraid_email
+    handler_id: wateraid_donation_email_recurring_in_memory_
+    label: 'Wateraid Donation Email recurring (In Memory)'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="prompt_reason[radios]"]':
+          value: 'In memory'
+    weight: -47
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Thank you so much for your monthly donation'
+      body: "<p>Dear [webform_submission:values:contact_name],<br />\r\n<br />\r\nThank you so much for your incredibly thoughtful gift in memory of your [webform_submission:in-memory:relationship:lowercase] [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br />\r\n<br />\r\nIf you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href=\"https://wateraid.dedicationpage.org/inmemory\">our WaterAid Remembers page</a>.<br />\r\n<br />\r\nIf you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href=\"mailto:p.pooley@wateraid.org\">p.pooley@wateraid.org</a>. &nbsp;I&rsquo;d love to hear from you.<br />\r\n<br />\r\nBelow you&rsquo;ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br />\r\n<br />\r\nWith very best wishes,&nbsp;<br />\r\n<br />\r\nPhil Pooley<br />\r\n<br />\r\nGifts in Memory Officer<br />\r\n<br />\r\nWaterAid UK</p>\r\n\r\n<p>[webform_submission:values]<br />\r\nTransaction ID: [webform_submission:donation-transaction-id]<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: ''
+      return_path: ''
+      payment_frequency: recurring
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: in_memory
+      fallback_message: "<p>Dear [webform_submission:values:contact_name],<br />\r\n<br />\r\nThank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br />\r\n<br />\r\nIf you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href=\"https://wateraid.dedicationpage.org/inmemory\">our WaterAid Remembers page</a>.<br />\r\n<br />\r\nIf you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href=\"mailto:p.pooley@wateraid.org\">p.pooley@wateraid.org</a>. &nbsp;I&rsquo;d love to hear from you.<br />\r\n<br />\r\nBelow you&rsquo;ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br />\r\n<br />\r\nWith very best wishes,&nbsp;<br />\r\n<br />\r\nPhil Pooley<br />\r\n<br />\r\nGifts in Memory Officer<br />\r\n<br />\r\nWaterAid UK</p>\r\n\r\n<p>[webform_submission:values]<br />\r\nTransaction ID: [webform_submission:donation-transaction-id]<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+variants: {  }

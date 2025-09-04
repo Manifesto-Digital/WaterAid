@@ -1,0 +1,17 @@
+uuid: 590de412-fa90-4b7f-9cc0-a148e0bcef6f
+langcode: en
+status: true
+dependencies: {  }
+id: glastonbury_roles
+label: 'Glastonbury roles'
+category: WaterAid
+likert: false
+options: |
+  'Loo Crew': 'Loo Crew'
+  'Kiosk Crew': 'Kiosk Crew'
+  'Water Welcomers': 'Water Welcomers'
+  'The Refill Station Team': 'The Refill Station Team'
+  'The WaterAid Stand Team': 'The WaterAid Stand Team'
+  'Good Loos': 'Good Loos'
+  'Female urinals': 'Female urinals'
+  Recycling: Recycling
