@@ -5,8 +5,8 @@ web/*
 web/modules/contrib
 !web/themes
 web/themes/contrib
-web/themes/custom/rcot/dist/*
-web/themes/custom/rcot/node_modules
+web/themes/custom/wateraid/dist/*
+web/themes/custom/wateraid/node_modules
 
 !web/sites
 web/sites/*
@@ -105,7 +105,7 @@ settings.local.php
 *storybook.log
 
 # example stories
-web/themes/custom/rcot/stories
+web/themes/custom/wateraid/stories
 
 # Allow generic media icons to be in git, you seem to need to allow each folder for some reason.
 !web/sites/default/files/
