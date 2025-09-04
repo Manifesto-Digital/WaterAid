@@ -1,0 +1,12 @@
+uuid: 2aee0a1e-a2ca-446f-bdaf-89eccbd36af8
+langcode: en
+status: true
+dependencies: {  }
+id: festival_roles
+label: 'Festival roles'
+category: WaterAid
+likert: false
+options: |
+  'Good Loos': 'Good Loos'
+  Litterpicking: Litterpicking
+  'Shower Cleaning': 'Shower Cleaning'

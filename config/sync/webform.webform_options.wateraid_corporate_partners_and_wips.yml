@@ -1,0 +1,40 @@
+uuid: b9665dc2-4cff-432e-82a4-bb9557a86799
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_corporate_partners_and_wips
+label: 'WaterAid corporate partners and WIPs'
+category: WaterAid
+likert: false
+options: |-
+  'Affinity Water': 'Affinity Water'
+  'Anglian Water': 'Anglian Water'
+  'Balfour Beatty': 'Balfour Beatty'
+  'Black & Veatch': 'Black & Veatch'
+  'Bournemouth Water': 'Bournemouth Water'
+  'Cambridge Water': 'Cambridge Water'
+  'Dwr Cymru Welsh Water': 'Dwr Cymru Welsh Water'
+  'Esh Group': 'Esh Group'
+  'Essex & Suffolk Water': 'Essex & Suffolk Water'
+  'HSBC Holdings Plc': 'HSBC Holdings Plc'
+  'JN Bentley': 'JN Bentley'
+  'Liberty Specialty Markets': 'Liberty Specialty Markets'
+  'Mott MacDonald': 'Mott MacDonald'
+  'Northern Ireland ': 'Northern Ireland '
+  'Northumbrian Water': 'Northumbrian Water'
+  Ofwat: Ofwat
+  'Portsmouth Water': 'Portsmouth Water'
+  'Scottish Water': 'Scottish Water'
+  'SES Water': 'SES Water'
+  'Severn Trent': 'Severn Trent'
+  Skanska: Skanska
+  'South East Water': 'South East Water'
+  'South Staffs Water': 'South Staffs Water'
+  'Southern Water': 'Southern Water'
+  Santec: Santec
+  'Thames Water': 'Thames Water'
+  'The Environment Agency': 'The Environment Agency'
+  'United Utilities': 'United Utilities'
+  'Wessex Water': 'Wessex Water'
+  'WSP Parsons Brinckerhoff': 'WSP Parsons Brinckerhoff'
+  'Yorkshire Water': 'Yorkshire Water'

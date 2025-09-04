@@ -1,0 +1,15 @@
+uuid: 8c04e83c-3f6b-4d9c-a5ff-20f704e54695
+langcode: en
+status: true
+dependencies: {  }
+id: festival_training_dates
+label: 'Festival training dates'
+category: WaterAid
+likert: false
+options: |
+  'Coventry - Tuesday 26 May (evening)': 'Coventry - Tuesday 26 May (evening)'
+  'Bristol - Wednesday 27 May (evening)': 'Bristol - Wednesday 27 May (evening)'
+  'Leeds - Monday 1 June (afternoon)': 'Leeds - Monday 1 June (afternoon)'
+  'Leeds - Monday 1 June (evening)': 'Leeds - Monday 1 June (evening)'
+  'Glasgow - Tuesday 2 June (evening)': 'Glasgow - Tuesday 2 June (evening)'
+  'London - Saturday 6 June (daytime)': 'London - Saturday 6 June (daytime)'

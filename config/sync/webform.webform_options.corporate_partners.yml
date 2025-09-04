@@ -1,0 +1,23 @@
+uuid: 52421715-d109-4a36-a1ad-6b329d8fe4f7
+langcode: en
+status: true
+dependencies: {  }
+id: corporate_partners
+label: 'WaterAid corporate partners'
+category: WaterAid
+likert: false
+options: |-
+  'Andrex / Kimberly Clark': 'Andrex / Kimberly Clark'
+  'AXA XL': 'AXA XL'
+  Armani: Armani
+  Belu: Belu
+  Diageo: Diageo
+  'Eversheds Sutherland': 'Eversheds Sutherland'
+  'GAMA Healthcare': 'GAMA Healthcare'
+  Halma: Halma
+  LGC: LGC
+  'Liberty Speciality Markets': 'Liberty Speciality Markets'
+  'Tokio Marine Kiln': 'Tokio Marine Kiln'
+  Twinings: Twinings
+  'UK Coffee Week (Allegra Foundation)': 'UK Coffee Week (Allegra Foundation)'
+  Unilever: Unilever

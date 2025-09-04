@@ -1,0 +1,5 @@
+name: 'WaterAid Just Giving'
+type: module
+description: 'Stub module to allow webforms to import'
+package: Custom
+core_version_requirement: ^10 || ^11
