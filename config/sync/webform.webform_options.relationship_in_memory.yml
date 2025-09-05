@@ -1,5 +1,6 @@
 langcode: en
 status: true
+dependencies: {  }
 id: relationship_in_memory
 label: 'Relationship (In Memory)'
 category: Demographic
@@ -18,4 +19,3 @@ options: |-
   Sister: Sister
   Son: Son
   Wife: Wife
-uid: d4df1332-47cc-4a64-8ba9-6578525b722a

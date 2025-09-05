@@ -109,6 +109,14 @@ module:
   webform: 0
   webp: 0
   workflows: 0
+  wateraid_azure_storage: 0
+  wateraid_donation_forms: 0
+  wateraid_donation_stripe: 0
+  wateraid_just_giving: 0
+  wateraid_forms: 0
+  webform_pdf_receipt: 0
+  webform_wizard_extra: 0
+  webform_wizard_single_page: 0
   pathauto: 1
   xmlsitemap: 1
   content_translation: 10
