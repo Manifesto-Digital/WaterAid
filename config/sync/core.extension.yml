@@ -80,6 +80,7 @@ module:
   quick_node_clone: 0
   rabbit_hole: 0
   redirect: 0
+  rest: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   schema_metatag: 0
@@ -88,6 +89,7 @@ module:
   seckit: 0
   security_review: 0
   shield: 0
+  serialization: 0
   shortcut: 0
   storybook: 0
   svg_image: 0
@@ -112,11 +114,17 @@ module:
   wateraid_azure_storage: 0
   wateraid_donation_forms: 0
   wateraid_donation_stripe: 0
-  wateraid_just_giving: 0
   wateraid_forms: 0
+  wateraid_just_giving: 0
+  webform: 0
   webform_pdf_receipt: 0
+  webform_rest: 0
+  webform_scheduled_email: 0
+  webform_ui: 0
   webform_wizard_extra: 0
   webform_wizard_single_page: 0
+  webp: 0
+  workflows: 0
   pathauto: 1
   xmlsitemap: 1
   content_translation: 10
