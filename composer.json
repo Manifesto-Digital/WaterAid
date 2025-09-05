@@ -39,6 +39,7 @@
     "drupal/key_value_field": "^1.4",
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
+    "drupal/loqate": "^3.0",
     "drupal/masquerade": "^2.0",
     "drupal/media_directories": "^2.1@beta",
     "drupal/migrate_plus": "^6.0",
