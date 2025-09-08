@@ -91,6 +91,5 @@ module:
 theme:
   claro: 0
   gin: 0
-  stable9: 0
   wateraid: 0
 profile: standard

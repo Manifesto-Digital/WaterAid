@@ -51,6 +51,7 @@
     "drupal/stage_file_proxy": "^3.1",
     "drupal/storybook": "^1.0@beta",
     "drupal/svg_image": "^3.0",
+    "drupal/tb_megamenu": "^1.10",
     "drupal/tmgmt_google": "^1.2",
     "drupal/token": "^1.15",
     "drupal/twig_tweak": "^3.4",
