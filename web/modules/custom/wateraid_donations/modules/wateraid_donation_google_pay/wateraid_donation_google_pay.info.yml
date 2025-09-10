@@ -1,0 +1,9 @@
+name: WaterAid Donation Google Pay
+type: module
+description: Provides Google Pay via Stripe
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+wateraid.package: donations
+dependencies:
+  - wateraid_donations:wateraid_donation_forms
+  - wateraid_donations:wateraid_donation_stripe

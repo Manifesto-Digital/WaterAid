@@ -1,0 +1,24 @@
+name: 'WaterAid Donation Forms'
+description: 'Provides donation form functionality.'
+type: module
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - currency:currency
+  - datalayer:datalayer
+  - drupal:field
+  - drupal:menu_ui
+  - metatag:metatag
+  - drupal:node
+  - drupal:path
+  - drupal:text
+  - drupal:user
+  - wateraid_base_core:wateraid_base_core
+  - wateraid_donations:wateraid_donations
+  - wateraid_forms:wateraid_forms
+  - wateraid_webform_encrypt:wateraid_webform_encrypt
+  - webform:webform_scheduled_email
+  - anonymous_token:anonymous_token
+  - webform:webform
+  - webform:webform_jqueryui_buttons
+package: wateraid
+wateraid.package: donations

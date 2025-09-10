@@ -1,0 +1,7 @@
+wateraid_donation_stripe.settings:
+  type: mapping
+  label: 'WaterAid donations stripe settings'
+  mapping:
+    apple_pay_server_side_payment_processing:
+      type: boolean
+      label: 'Enable server side apple pay payment processing'

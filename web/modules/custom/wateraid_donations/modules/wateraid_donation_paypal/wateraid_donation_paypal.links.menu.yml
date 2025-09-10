@@ -1,0 +1,5 @@
+wateraid_donation_paypal.admin:
+  title: 'PayPal API'
+  description: 'Edit PayPal API credentials.'
+  parent: system.admin_config_services
+  route_name: wateraid_donation_paypal.admin

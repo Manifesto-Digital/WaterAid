@@ -1,0 +1,26 @@
+wateraid.donation_landing_page_template.add:
+  path: '/node/add/template/{node_type}'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_landing_page\Controller\NodeTemplateController::add'
+    _title_callback: '\Drupal\wateraid_donation_landing_page\Controller\NodeTemplateController::addPageTitle'
+  requirements:
+    _node_add_access: 'node:{node_type}'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        with_config_overrides: TRUE
+
+wateraid.donation_landing_page.add_from_template:
+  path: '/node/add/from_template/{node_type}/{node}'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_landing_page\Controller\NodeTemplateController::addFromTemplate'
+    _title_callback: '\Drupal\wateraid_donation_landing_page\Controller\NodeTemplateController::addFromTemplatePageTitle'
+  requirements:
+    _node_add_access: 'node:{node_type}'
+    node: \d+
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        with_config_overrides: TRUE

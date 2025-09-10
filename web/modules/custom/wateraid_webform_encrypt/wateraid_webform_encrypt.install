@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Install file for wateraid_webform_encrypt module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Add encrypted field to the webform_submission table.
+ */
+function wateraid_webform_encrypt_install() {
+  $field_definition = BaseFieldDefinition::create('boolean')
+    ->setName('encrypted')
+    ->setLabel(t('Encrypted'))
+    ->setTargetEntityTypeId('webform_submission');
+
+  \Drupal::entityDefinitionUpdateManager()->installFieldStorageDefinition('encrypted', 'webform_submission', 'wateraid_webform_encrypt', $field_definition);
+
+  return t('Update webform submission table.');
+}
+
+/**
+ * Add encrypted field to the webform_submission table.
+ */
+function wateraid_webform_encrypt_update_8001(): void {
+  // Base field definition update moved to wateraid_webform_encrypt_install.
+}

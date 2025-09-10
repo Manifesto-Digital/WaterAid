@@ -1,0 +1,6 @@
+administer wateraid donations:
+  title: 'Administer WaterAid donations'
+access wateraid donations report:
+  title: 'View WaterAid donations reports'
+administer wateraid donations report configuration:
+  title: 'Administer WaterAid donations reports email configuration'

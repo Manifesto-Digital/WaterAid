@@ -1,0 +1,18 @@
+services:
+  wateraid_base_core:
+    class: Drupal\wateraid_base_core\Service\WateraidBaseCore
+    arguments: [ '@config.factory', '@request_stack' ]
+  wateraid_base_core.access_check.wateraid_generate_preview:
+    class: Drupal\wateraid_base_core\Access\GeneratePreviewLinkAccessCheck
+    arguments: [ '@config.factory' ]
+    tags:
+      - { name: access_check, applies_to: _wateraid_access_generate_preview }
+  wateraid_base_core.access_check.wateraid_view_preview:
+    class: Drupal\wateraid_base_core\Access\ViewPreviewLinkAccessCheck
+    arguments: [ '@entity_type.manager' ]
+    tags:
+      - { name: access_check, applies_to: _wateraid_access_view_preview }
+  wateraid_base_core.route_subscriber:
+    class: Drupal\wateraid_base_core\Routing\PreviewRouteSubscriber
+    tags:
+      - { name: event_subscriber }

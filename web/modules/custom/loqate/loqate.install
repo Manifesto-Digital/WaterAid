@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * @file
+ * Contains loqate.install.
+ */
+
+use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
+use Drupal\key\Entity\Key;
+use Drupal\loqate\Form\LoqateApiKeyConfigForm;
+use Drupal\loqate\PcaAddressFieldMapping\PcaAddressElement;
+
+/**
+ * Decoupled Webform so install pca_webform submodule for the moved plugins.
+ */
+function loqate_update_8001() {
+  // All sites using this module up until now would have had these plugins.
+  \Drupal::service('module_installer')->install(['pca_webform']);
+  return t('PCA Webform installed.');
+}
+
+/**
+ * Install new dependency on the key module.
+ */
+function loqate_update_8002() {
+  // All sites using this module up until now will need this update.
+  \Drupal::service('module_installer')->install(['key']);
+  return t('Key installed.');
+}
+
+/**
+ * Convert old key string value into a key config entity.
+ */
+function loqate_update_8003() {
+  // Move the string value into a key config entity if any.
+  $loqate_config = \Drupal::configFactory()->getEditable('loqate.loqateapikeyconfig');
+  $old_key_value = $loqate_config->get(LoqateApiKeyConfigForm::DEFAULT_API_KEY);
+  if (!empty($old_key_value)) {
+    // Create a new entity key with the config key provider.
+    $key_entity = new Key([
+      'id' => LoqateApiKeyConfigForm::DEFAULT_API_KEY,
+      'label' => 'Loqate API key',
+      'key_provider' => 'config',
+      'key_input' => 'text_field',
+    ], 'key');
+    $key_entity->setKeyValue($old_key_value);
+    $key_entity->save();
+    // Set the config id now as the key value in config.
+    $loqate_config
+      ->set(LoqateApiKeyConfigForm::DEFAULT_API_KEY, LoqateApiKeyConfigForm::DEFAULT_API_KEY)
+      ->save();
+    return t('Key config entity successfully created.');
+  }
+  return t('No old key value found.');
+}
+
+/**
+ * Assign administer loqate api permission to roles.
+ */
+function loqate_update_8004() {
+  $old_perm = 'access administration pages';
+  $new_perm = 'administer loqate api';
+  $did_update = FALSE;
+
+  /** @var \Drupal\user\RoleInterface[] $roles */
+  $roles = \Drupal::entityTypeManager()->getStorage('user_role')->loadMultiple();
+  foreach ($roles as $role) {
+    if ($role->hasPermission($old_perm)) {
+      $role->grantPermission($new_perm)->save();
+      $did_update = TRUE;
+    }
+  }
+
+  return $did_update ? t('Loqate permission has been granted') : t('No permission updaes required');
+}
+
+/**
+ * Updated config to capture the field mapping enabled boolean.
+ */
+function loqate_update_8005(): void {
+  // Register enabled as TRUE for pre-existing config values.
+  $pca_address_config = \Drupal::configFactory()->getEditable('loqate.settings');
+  $pca_fields = $pca_address_config->get('pca_fields');
+  foreach ($pca_fields as $i => $pca_field) {
+    $pca_fields[$i]['enabled'] = TRUE;
+  }
+  // Set new value in config.
+  $pca_address_config->set('pca_fields', $pca_fields)->save();
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function loqate_update_8006(&$sandbox): void {
+  $field_type = 'pca_address';
+  $property = PcaAddressElement::PAF;
+
+  $manager = Drupal::entityDefinitionUpdateManager();
+  $field_map = Drupal::service('entity_field.manager')
+    ->getFieldMapByFieldType($field_type);
+
+  foreach ($field_map as $entity_type_id => $fields) {
+    foreach (array_keys($fields) as $field_name) {
+      $field_storage_definition = $manager->getFieldStorageDefinition($field_name, $entity_type_id);
+      $storage = Drupal::entityTypeManager()->getStorage($entity_type_id);
+
+      if ($storage instanceof SqlContentEntityStorage) {
+        $table_mapping = $storage->getTableMapping([
+          $field_name => $field_storage_definition,
+        ]);
+        $table_names = $table_mapping->getDedicatedTableNames();
+        $columns = $table_mapping->getColumnNames($field_name);
+
+        foreach ($table_names as $table_name) {
+          $field_schema = $field_storage_definition->getSchema();
+          $schema = Drupal::database()->schema();
+          $field_exists = $schema->fieldExists($table_name, $columns[$property]);
+          $table_exists = $schema->tableExists($table_name);
+
+          if (!$field_exists && $table_exists) {
+            $schema->addField($table_name, $columns[$property], $field_schema['columns'][$property]);
+          }
+        }
+      }
+      $manager->updateFieldStorageDefinition($field_storage_definition);
+    }
+  }
+}
+
+/**
+ * Reset the Loqate API key to the live one.
+ */
+function loqate_update_9000(&$sandbox): void {
+  $loqate_config = \Drupal::configFactory()->getEditable('loqate.loqateapikeyconfig');
+  $loqate_config->set(LoqateApiKeyConfigForm::DEFAULT_API_KEY, 'loqate_live_api_key');
+  $loqate_config->save();
+}

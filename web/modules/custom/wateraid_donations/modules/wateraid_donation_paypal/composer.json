@@ -1,0 +1,8 @@
+{
+    "name": "drupal/wateraid_donation_paypal",
+    "description": "Provides WaterAid PayPal functionality.",
+    "type": "drupal-module",
+    "require": {
+        "paypal/rest-api-sdk-php": "~1.7"
+    }
+}

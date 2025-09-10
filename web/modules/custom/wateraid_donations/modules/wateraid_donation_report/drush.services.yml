@@ -1,0 +1,6 @@
+services:
+  wateraid_donation_report.commands:
+    class: \Drupal\wateraid_donation_report\Commands\WateraidDonationReportCommands
+    arguments: ['@wateraid_donation_report.service']
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Module file for webform_wizard_extra.
+ */
+
+use Drupal\webform_wizard_extra\Plugin\WebformElement\WebformWizardExtraPage;
+use Drupal\webform_wizard_extra\WebformWizardExtraSubmissionForm;
+
+/**
+ * Implements hook_webform_element_info_alter().
+ */
+function webform_wizard_extra_webform_element_info_alter(array &$definitions): void {
+  // Substitute the original for one with extra features.
+  $definitions['webform_wizard_page']['class'] = WebformWizardExtraPage::class;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function webform_wizard_extra_entity_type_alter(array &$entity_types): void {
+  if (isset($entity_types['webform_submission'])) {
+    /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $webform_submission_entity_type */
+    $webform_submission_entity_type = $entity_types['webform_submission'];
+    $handlers = $webform_submission_entity_type->getHandlerClasses();
+    $handlers['form']['default'] = WebformWizardExtraSubmissionForm::class;
+    $handlers['form']['add'] = WebformWizardExtraSubmissionForm::class;
+    $webform_submission_entity_type->setHandlerClass('form', $handlers['form']);
+  }
+}

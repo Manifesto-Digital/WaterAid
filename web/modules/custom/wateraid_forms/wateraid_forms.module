@@ -1,0 +1,440 @@
+<?php
+
+/**
+ * @file
+ * Module file for wateraid_forms.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\wateraid_forms\WateraidFormsUrl;
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function wateraid_forms_theme_registry_alter(&$theme_registry): void {
+  // Allow an actions variable in the webform_progress theme.
+  if (!isset($theme_registry['webform_progress']['variables']['actions'])) {
+    $theme_registry['webform_progress']['variables']['actions'] = NULL;
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function wateraid_forms_page_attachments(array &$attachments): void {
+  // Attach the URL parameters from config as a Javascript setting.
+  $url_parameter_keys = _wateraid_forms_get_url_parameters();
+  $attachments['#attached']['drupalSettings']['wateraidForms'] = ['url_parameters' => $url_parameter_keys];
+
+  if (!\Drupal::moduleHandler()->moduleExists('cookiepro')) {
+    $attachments['#attached']['library'][] = 'wateraid_forms/wateraid_forms_urls';
+  }
+  else {
+    // Attach the Jquery Cookie library dependency.
+    $attachments['#attached']['library'][] = 'core/jquery.cookie';
+
+    // Attach the script manually to allow for text/plain and class on a script
+    // tag so that the Javascript doesn't run initially. CookiePro will convert
+    // this to text/javascript and trigger it if cookies of the correct category
+    // are accepted.
+    $path = \Drupal::service('extension.list.module')->getPath('wateraid_forms');
+    $url = \Drupal::service('file_url_generator')->generateAbsoluteString($path . "/js/wateraid_forms_urls_cookiepro_aware.js");
+
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#tag' => 'script',
+        '#attributes' => [
+          'type' => 'text/plain',
+          'class' => 'optanon-category-C0002',
+        ],
+        // This inline script includes the full JS file.
+        '#value' => 'var script = document.createElement("script");
+        script.src = "' . $url . '";
+        document.head.appendChild(script);',
+      ],
+      'wateraid_forms_url_params',
+    ];
+  }
+}
+
+/**
+ * Get an array of url/cookie parameters.
+ *
+ * @return mixed[]
+ *   URL parameters.
+ */
+function _wateraid_forms_get_url_parameters(): array {
+  /** @var \Drupal\webform\WebformThirdPartySettingsManagerInterface $third_party_settings_manager */
+  $third_party_settings_manager = \Drupal::service('webform.third_party_settings_manager');
+
+  $default_url_parameters = implode(PHP_EOL, WateraidFormsUrl::WATERAID_URL_PARAMETERS);
+
+  $url_parameters = $third_party_settings_manager->getThirdPartySetting('wateraid_forms', 'url_parameters', $default_url_parameters);
+
+  // Clear any /r.
+  return explode("\n", str_replace("\r\n", "\n", $url_parameters));
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the webform export form to set the default exported to be wateraid_csv.
+ */
+function wateraid_forms_form_webform_results_export_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  $form['export']['format']['exporter']['#default_value'] = 'wateraid_csv';
+}
+
+/**
+ * Implements hook_webform_submission_form_alter().
+ */
+function wateraid_forms_webform_submission_form_alter(array &$form, FormStateInterface $form_state, $form_id): void {
+
+  foreach (_wateraid_forms_get_url_parameters() as $param) {
+    $form[$param] = [
+      '#type' => 'hidden',
+    ];
+  }
+
+  if (!empty($form['actions']['submit']['#submit']) && is_array($form['actions']['submit']['#submit'])) {
+    array_unshift($form['actions']['submit']['#submit'], 'wateraid_forms_webform_submission_submit_handler');
+  }
+
+  if (!empty($form_state->getUserInput())) {
+    $form['#attributes']['class'][] = 'form-has-user-input';
+  }
+}
+
+/**
+ * Form process callback to set the url_params field.
+ *
+ * @param mixed[] $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state object.
+ */
+function wateraid_forms_webform_submission_submit_handler(array &$form, FormStateInterface $form_state): void {
+  // Get elements values from webform submission.
+  /** @var \Drupal\webform\WebformSubmissionForm $form_object */
+  $form_object = $form_state->getFormObject();
+  /** @var \Drupal\webform\Entity\WebformSubmission $webform_submission */
+  $webform_submission = $form_object->getEntity();
+
+  $param_values = array_intersect_key($form_state->getValues(), array_flip(_wateraid_forms_get_url_parameters()));
+
+  $webform_submission->set('url_params', $param_values, FALSE);
+}
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function wateraid_forms_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type): void {
+  if ($entity_type->id() === 'webform_submission') {
+    // Add a base field to webform_submission entities.
+    $fields['url_params'] = BaseFieldDefinition::create('map')
+      ->setName('url_params')
+      ->setLabel(t('Url parameters'))
+      ->setTargetEntityTypeId('webform_submission');
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function wateraid_forms_form_node_form_alter(&$form, $form_state, $form_id): void {
+  $cv_index = array_search('clientside_validation_form_after_build', $form['#after_build']);
+  if (is_int($cv_index)) {
+    unset($form['#after_build'][$cv_index]);
+  }
+
+  if (isset($form['field_hero_option'])) {
+
+    if (isset($form['field_article_hero_image'])) {
+      $form['field_article_hero_image']['#states']['invisible'] = [
+        [
+          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+        ],
+      ];
+    }
+
+    if (isset($form['field_event_hero_image'])) {
+      $form['field_event_hero_image']['#states']['invisible'] = [
+        [
+          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+        ],
+      ];
+    }
+
+    if (isset($form['field_hero_video_url'])) {
+      $form['field_hero_video_url']['#states']['visible'] = [
+        [
+          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+        ],
+      ];
+    }
+
+    if (isset($form['field_hero_video_url_mobile'])) {
+      $form['field_hero_video_url_mobile']['#states']['visible'] = [
+        [
+          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero_option"]' => ['value' => 'video_hero'],
+        ],
+      ];
+    }
+
+    if (isset($form['field_hero_image_mobile'])) {
+      $form['field_hero_image_mobile']['#states']['visible'] = [
+        [
+          'select[name="field_hero_option"]' => ['value' => 'hero_hero2'],
+        ],
+        [
+          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+        ],
+      ];
+    }
+  }
+
+  if (isset($form['field_reveal_mobile_field'])) {
+    if (isset($form['field_hero_image_mobile'])) {
+      $form['field_hero_image_mobile']['#states']['visible'] = [
+        [
+          'input[name="field_reveal_mobile_field[value]"]' => ['checked' => TRUE],
+        ],
+      ];
+    }
+  }
+
+  if ($form['#form_id'] === 'node_publication_edit_form' || $form['#form_id'] === 'node_publication_form') {
+    $form['#validate'][] = 'wateraid_forms_publication_validate';
+  }
+
+  if ($form_id == 'node_flexible_content_edit_form' && !empty($form['field_modules'])) {
+    for ($x = 0; $x <= count($form['field_modules']['widget']); $x++) {
+      if (isset($form['field_modules']['widget'][$x]) && $form['field_modules']['widget'][$x]['#paragraph_type'] == 'engagement_tool') {
+        $form['field_modules']['widget'][0]['top']['actions']['actions']['collapse_button'] = NULL;
+        if (isset($form['field_modules']['widget']['header_actions']['actions']['collapse_all'])) {
+          unset($form['field_modules']['widget']['header_actions']['actions']['collapse_all']);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function wateraid_forms_field_widget_paragraphs_form_alter(&$element, &$form_state, $context): void {
+  // Hand module conditional states.
+  if ($element['#paragraph_type'] === 'hand_module') {
+
+    if (isset($element['subform']['field_image_cover_height_and_wid'])) {
+      // Get the action element details for setting the input state.
+      $element_action_id_details = explode('-', $element["top"]["actions"]["actions"]["collapse_button"]["#id"]);
+      $module_element_no = $element_action_id_details[2];
+      if (isset($element['subform']['field_hm_align_horizontal'])) {
+        $element['subform']['field_hm_align_horizontal']['widget']['#states']['invisible'] = [
+          [
+            'input[name="field_modules[' . $module_element_no . '][subform][field_image_cover_height_and_wid][value]"]' => ['checked' => FALSE],
+          ],
+        ];
+      }
+
+      if (isset($element['subform']['field_hm_align_vertical'])) {
+        $element['subform']['field_hm_align_vertical']['widget']['#states']['invisible'] = [
+          [
+            'input[name="field_modules[' . $module_element_no . '][subform][field_image_cover_height_and_wid][value]"]' => ['checked' => FALSE],
+          ],
+        ];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function wateraid_forms_form_alter(&$form, &$form_state, $form_id): void {
+
+  // Hero image conditional states.
+  if (isset($form['field_hero']['widget'][0]['subform']['field_hero_option'])) {
+
+    if (isset($form['field_hero']['widget'][0]['subform']['field_hero_image'])) {
+      $form['field_hero']['widget'][0]['subform']['field_hero_image']['widget']['#states']['invisible'] = [
+        [
+          'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'hero_video'],
+        ],
+      ];
+    }
+
+    if (isset($form['field_hero']['widget'][0]['subform']['field_hero_image_mobile'])) {
+      $form['field_hero']['widget'][0]['subform']['field_hero_image_mobile']['widget']['#states']['visible'] = [
+          [
+            'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'hero_hero2'],
+          ],
+          [
+            'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'hero_video'],
+          ],
+      ];
+    }
+
+    // Hero video conditional states.
+    if (isset($form['field_hero']['widget'][0]['subform']['field_hero_video_url'])) {
+      $form['field_hero']['widget'][0]['subform']['field_hero_video_url']['widget'][0]['value']['#states']['visible'] = [
+        [
+          'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'hero_video'],
+        ],
+      ];
+    }
+
+    if (isset($form['field_hero']['widget'][0]['subform']['field_hero_video_url_mobile'])) {
+      $form['field_hero']['widget'][0]['subform']['field_hero_video_url_mobile']['widget'][0]['value']['#states']['visible'] = [
+        [
+          'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'video_video2'],
+        ],
+        [
+          'select[name="field_hero[0][subform][field_hero_option]"]' => ['value' => 'video_hero'],
+        ],
+      ];
+    }
+
+  }
+
+  if ($form_id === 'webform_ui_element_type_select_form') {
+    // Remove the preview button from the webform UI 'Add element' form.
+    unset($form['preview']);
+  }
+}
+
+/**
+ * Custom validation for publications.
+ *
+ * @param mixed[] $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form State.
+ */
+function wateraid_forms_publication_validate(array &$form, FormStateInterface $form_state): void {
+  if ($form_state->getValue('field_force_open')['value'] == 1 && $form_state->getValue('field_force_download')['value'] == 1) {
+    $form_state->setErrorByName('field_force_open', t('Please only select either Force open or Force download.'));
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function wateraid_forms_entity_presave(EntityInterface $entity): void {
+  $bundle = $entity->bundle();
+  if ($bundle === 'flexible_content') {
+    if ($entity->hasField('field_image_reference')) {
+      $image = $entity->get('field_hero')->referencedEntities();
+      if (isset($image[0])) {
+        $hero_id = $image[0]->get('field_hero_image')->getValue();
+        if ($entity->get('field_image_reference')->getValue() !== $hero_id) {
+          $entity->set('field_image_reference', $hero_id);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_options_list_alter().
+ */
+function wateraid_forms_options_list_alter(array &$options, array $context): void {
+  $entity = $context['entity'];
+  $field_definition = $context['fieldDefinition'];
+  // The paragraph bundles which should have the additional options removed.
+  $bundles = [
+    'hero',
+    'hero_in_content',
+    'aside_with_image',
+    'aside_with_text',
+    'donation_cta_widget_embed',
+    'stats',
+  ];
+
+  // field_applied_stlying is incorrectly spelt from entity field creation.
+  if ($entity->getEntityTypeId() === 'paragraph' && $field_definition->getName() === 'field_applied_stlying') {
+    $type = $entity->getType();
+
+    if (in_array($type, $bundles, TRUE)) {
+      foreach ($options as $key => $option) {
+
+        // Check if the option is a string, '_none' is a translatable string
+        // entity which should remain.
+        if (is_string($option)) {
+          $option_type = explode('_', trim($type))[0];
+
+          if (!str_contains($key, $option_type)) {
+            unset($options[$key]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_third_party_settings_form_alter().
+ */
+function wateraid_forms_webform_third_party_settings_form_alter(&$form, FormStateInterface $form_state): void {
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+
+  $index = 'wateraid_forms';
+  $form['third_party_settings'][$index] = [
+    '#type' => 'details',
+    '#title' => new TranslatableMarkup('Style settings'),
+    '#description' => new TranslatableMarkup('Provides the ability to override style settings on a per Webform basis.'),
+    '#open' => TRUE,
+    '#weight' => -100,
+  ];
+
+  $form['third_party_settings'][$index]['style_version'] = [
+    '#type' => 'select',
+    '#title' => new TranslatableMarkup('Style version'),
+    '#options' => [
+      'v1' => new TranslatableMarkup('Webforms v1 (deprecated)'),
+      'v2' => new TranslatableMarkup('Webforms v2 (default)'),
+    ],
+    '#default_value' => $webform->getThirdPartySetting('wateraid_forms', 'style_version', 'v2'),
+    '#description' => new TranslatableMarkup('Choose form styling to apply from the list of presets.'),
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_forms_preprocess_webform(&$variables): void {
+  $webform_id = $variables['element']['#webform_id'];
+
+  /** @var \Drupal\webform\Entity\Webform $webform */
+  $webform = Drupal::entityTypeManager()->getStorage('webform')->load($webform_id);
+
+  // Get the webform style version.
+  $style_version = $webform->getThirdPartySetting('wateraid_forms', 'style_version', 'v2');
+
+  // Add a class to the form indicating the style version.
+  $variables['attributes']['class'][] = Html::getClass('webform-style-' . $style_version);
+}

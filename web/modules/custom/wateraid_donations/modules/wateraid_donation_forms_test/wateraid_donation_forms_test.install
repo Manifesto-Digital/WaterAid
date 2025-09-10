@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Install file for wateraid_donation_forms_test feature module.
+ */
+
+/**
+ * Import/revert config.
+ */
+function wateraid_donation_forms_test_update_8001() {
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('config_update.config_update');
+
+  $reverter->revert('webform', 'test_donation_form');
+
+  return t('Update test donation form.');
+}
+
+/**
+ * Import/revert config.
+ */
+function wateraid_donation_forms_test_update_8002() {
+  \Drupal::service('module_installer')->install(['webform_bankaccount', 'wateraid_test_stripe_payment_testing'], TRUE);
+
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('config_update.config_update');
+
+  $reverter->revert('webform', 'test_donation_form');
+  $reverter->import('webform', 'test_donation_short_form');
+  $reverter->import('webform', 'test_donation_single_form');
+
+  return t('Update test donation form.');
+}
+
+/**
+ * Import/revert config.
+ */
+function wateraid_donation_forms_test_update_8003() {
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('config_update.config_update');
+
+  $reverter->revert('webform', 'test_donation_form');
+
+  return t('Update test donation form.');
+}
+
+/**
+ * Import/revert config.
+ */
+function wateraid_donation_forms_test_update_8004() {
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('config_update.config_update');
+
+  $reverter->revert('webform', 'test_donation_form');
+
+  return t('Update test donation form.');
+}

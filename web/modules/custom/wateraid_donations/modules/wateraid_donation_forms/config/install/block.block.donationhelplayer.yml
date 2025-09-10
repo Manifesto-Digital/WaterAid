@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.donation
+  content:
+    - 'block_content:faq:051533dd-a348-421c-a93f-34c09e96736b'
+  module:
+    - block_content
+    - block_visibility_groups
+    - wateraid_donation_forms
+  theme:
+    - wateraid_base_theme
+id: donationhelplayer
+theme: wateraid_base_theme
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:051533dd-a348-421c-a93f-34c09e96736b'
+settings:
+  id: 'block_content:051533dd-a348-421c-a93f-34c09e96736b'
+  label: 'Get help donating'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: donation
+    context_mapping: {  }

@@ -1,0 +1,4 @@
+services:
+  loqate_email.validator:
+    class: Drupal\loqate_email\ValidatorService
+    arguments: ['@key.repository', '@email.validator', '@config.factory', '@logger.factory']

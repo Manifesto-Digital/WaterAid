@@ -1,0 +1,8 @@
+name: WaterAid Donation Forms Test
+description: WaterAid donations forms test.
+package: wateraid
+type: module
+core_version_requirement: ^9 || ^10 || ^11
+wateraid.package: donations
+dependencies:
+  - wateraid_donations:wateraid_donation_forms

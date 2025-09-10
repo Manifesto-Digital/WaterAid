@@ -1,0 +1,14 @@
+wateraid_webform_encrypt.settings:
+  path: '/admin/config/system/wateraid_webform_encrypt'
+  defaults:
+    _form: '\Drupal\wateraid_webform_encrypt\Form\SettingsForm'
+    _title: 'Wateraid webform encrypt settings'
+  requirements:
+    _permission: 'administer wateraid webform encryption'
+wateraid_webform_encrypt.batch_job:
+  path: '/admin/config/system/wateraid_webform_encrypt/batch'
+  defaults:
+    _controller: '\Drupal\wateraid_webform_encrypt\WateraidWebformEncryptBatch::batchStart'
+    _title: 'Wateraid webform encrypt settings'
+  requirements:
+    _permission: 'administer wateraid webform encryption'

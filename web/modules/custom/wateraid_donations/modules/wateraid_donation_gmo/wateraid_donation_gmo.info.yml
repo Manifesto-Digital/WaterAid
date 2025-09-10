@@ -1,0 +1,10 @@
+name: WaterAid Donations GMO
+type: module
+description: Provides integration between WaterAid donations and GMO
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+wateraid.package: donations
+configure: wateraid_donation_gmo.settings
+dependencies:
+  - drupal:wateraid_donation_forms
+  - drupal:webform

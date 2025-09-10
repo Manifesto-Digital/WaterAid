@@ -1,0 +1,6 @@
+name: WaterAid Site Manager
+description: Facilitates WaterAid site management by providing a site manager role and a management page from which to manage the site.
+package: wateraid
+type: module
+core_version_requirement: ^9 || ^10 || ^11
+wateraid.package: other

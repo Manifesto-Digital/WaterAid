@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains loqate.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function loqate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the loqate module.
+    case 'help.page.loqate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module provides the integration with Loqate address lookup API.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

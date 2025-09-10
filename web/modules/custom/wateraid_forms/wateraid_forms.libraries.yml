@@ -1,0 +1,13 @@
+wateraid_forms:
+  version: VERSION
+  js:
+    js/wateraid_forms.js: {}
+  dependencies:
+  - webform/libraries.jquery.inputmask
+
+wateraid_forms_urls:
+  version: VERSION
+  js:
+    js/wateraid_forms_urls.js: {}
+  dependencies:
+  - core/js-cookie
