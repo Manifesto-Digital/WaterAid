@@ -4,9 +4,9 @@ status: stable
 props:
   type: object
   properties:
-    linktext:
+    text:
       type: string
-      title: linkText
+      title: text
       description: The text of the link
       # @todo Add examples here.
       examples: []
@@ -16,9 +16,9 @@ props:
       description: The button URL
       # @todo Add examples here.
       examples: []
-    buttontype:
+    type:
       type: string
-      title: buttonType
+      title: type
       description: Button is primary or secondary
       # @todo Add examples here.
       examples: []

@@ -1,4 +1,14 @@
-.site-logo {
-  display: block;
-  width: 200px;
+// TEMPORARY STYLES
+header {
+  display: flex;
+  padding: 24px 30px;
+  border-bottom: grey solid 1px;
+  img {
+    display: block;
+    width: 200px;
+  }
+}
+
+footer {
+  background-color: $brand-teal;
 }

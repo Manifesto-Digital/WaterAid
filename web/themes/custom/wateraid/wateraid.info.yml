@@ -4,6 +4,15 @@ type: theme
 version: 1.0.0
 libraries:
   - wateraid/main
-description: ''
+description: 'Custom theme for WaterAid'
+package: WaterAid
 core_version_requirement: ^10
 generator: 'starterkit_theme:10.3.2'
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  footer: 'Footer'
+

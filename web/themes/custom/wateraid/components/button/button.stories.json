@@ -1,1 +1,23 @@
-{"title":"wateraid\/Examples\/Button","parameters":{"server":{"url":"https:\/\/wateraid.ddev.site\/storybook\/stories\/render"}},"stories":[{"name":"Button","args":{"linkText":"Click to view more","link":"https:\/\/www.google.com","buttonType":"primary"},"parameters":{"server":{"id":"eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3Jjb3RcL2NvbXBvbmVudHNcL2J1dHRvblwvYnV0dG9uLnN0b3JpZXMudHdpZyIsImlkIjoidXNpbmdfYXJncyJ9"}}}]}
+{
+  "title": "wateraid\/Examples\/Button",
+  "parameters": {
+    "server": {
+      "url": "https:\/\/wateraid.ddev.site\/storybook\/stories\/render"
+    }
+  },
+  "stories": [
+    {
+      "name": "Button",
+      "args": {
+        "text": "Click to view more",
+        "link": "https:\/\/www.google.com",
+        "type": "primary"
+      },
+      "parameters": {
+        "server": {
+          "id": "eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3Jjb3RcL2NvbXBvbmVudHNcL2J1dHRvblwvYnV0dG9uLnN0b3JpZXMudHdpZyIsImlkIjoidXNpbmdfYXJncyJ9"
+        }
+      }
+    }
+  ]
+}
