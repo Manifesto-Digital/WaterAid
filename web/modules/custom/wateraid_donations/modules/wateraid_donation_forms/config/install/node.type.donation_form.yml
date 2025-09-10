@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Donation form'
+type: donation_form
+description: 'Donation forms allow users to complete donation transactions, and register for recurring donation payments.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

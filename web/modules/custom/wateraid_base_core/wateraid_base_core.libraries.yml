@@ -1,0 +1,18 @@
+libraries.jquery.sticky:
+  version: 1.0.1
+  js:
+    /libraries/jquery.sticky/jquery.sticky.js: {}
+  dependencies:
+    - core/jquery
+libraries.jquery.waypoints:
+  version: 4.0.1
+  js:
+    /libraries/jquery.waypoints/lib/jquery.waypoints.min.js: {}
+  dependencies:
+    - core/jquery
+libraries.jquery.list:
+  version: 1.5.0
+  js:
+    /libraries/jquery.list/dist/list.min.js: {}
+  dependencies:
+    - core/jquery

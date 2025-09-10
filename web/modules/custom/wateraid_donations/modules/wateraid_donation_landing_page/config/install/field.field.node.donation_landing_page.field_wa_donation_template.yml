@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_wa_donation_template
+    - node.type.donation_landing_page
+id: node.donation_landing_page.field_wa_donation_template
+field_name: field_wa_donation_template
+entity_type: node
+bundle: donation_landing_page
+label: Template
+description: 'Checked when this page is used as a template from which to create other donation landing pages.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

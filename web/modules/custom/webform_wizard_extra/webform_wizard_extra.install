@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Install file for webform_wizard_extra feature module.
+ */
+
+use Drupal\block_content\Entity\BlockContent;
+
+/**
+ * Add custom block to display security icons.
+ */
+function webform_wizard_extra_update_8001(): void {
+
+  // Import general_text block type from core base feature to
+  // create new block type.
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('features.config_update');
+  $reverter->import('system.simple', 'block_content.type.general_text');
+  // Create block from new block type and save block ID.
+  $block = BlockContent::create([
+    'info' => 'Security icons',
+    'type' => 'general_text',
+    'langcode' => 'en',
+  ]);
+  $block->save();
+  \Drupal::state()
+    ->set('webform_wizard_extra_security_icons_block_id', $block->id());
+}

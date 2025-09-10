@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - wateraid_donation_forms
+id: donation
+label: Donation
+logic: and
+conditions:
+  931baa39-ee94-4646-ac78-d3fe448bd70b:
+    id: donation_page
+    negate: 0
+    donation_page: 1
+    context_mapping:
+      webform: '@webform.webform_route_context:webform'
+    uuid: 931baa39-ee94-4646-ac78-d3fe448bd70b
+allow_other_conditions: true

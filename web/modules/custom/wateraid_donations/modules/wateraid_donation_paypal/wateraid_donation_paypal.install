@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Install file for wateraid_donation_paypal module.
+ */
+
+/**
+ * Import/revert config.
+ */
+function wateraid_donation_paypal_update_8001() {
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('config_update.config_update');
+
+  $reverter->import('system.simple', 'wateraid_donation_paypal.settings');
+
+  return t('Install paypal config.');
+}

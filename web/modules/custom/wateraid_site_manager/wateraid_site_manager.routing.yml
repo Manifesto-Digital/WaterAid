@@ -1,0 +1,49 @@
+wateraid.admin:
+  path: '/admin/wateraid'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::overview'
+    link_id: 'system.admin_wateraid'
+    _title: 'WaterAid'
+  requirements:
+    _permission: 'access wateraid administration pages'
+
+wateraid.admin_site:
+  path: '/admin/wateraid/site'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Site administration'
+  requirements:
+    _permission: 'access wateraid administration pages'
+
+wateraid.admin_site_features:
+  path: '/admin/wateraid/site/features'
+  defaults:
+    _title: 'Site features'
+    _title_context: 'With components'
+    _form: 'Drupal\wateraid_site_manager\Form\WaterAidSiteFeaturesListForm'
+  requirements:
+    _permission: 'administer wateraid'
+
+wateraid.admin_site_features_confirm:
+  path: '/admin/wateraid/site/features/confirm'
+  defaults:
+    _form: 'Drupal\wateraid_site_manager\Form\WaterAidSiteFeaturesListConfirmForm'
+    _title: 'Some required modules must be enabled'
+  requirements:
+    _permission: 'administer wateraid'
+
+wateraid.admin_site_features_uninstall:
+  path: '/admin/wateraid/site/features/uninstall'
+  defaults:
+    _form: 'Drupal\wateraid_site_manager\Form\WaterAidSiteFeaturesUninstallForm'
+    _title: 'Uninstall site features'
+  requirements:
+    _permission: 'administer wateraid'
+
+wateraid.admin_site_features_uninstall_confirm:
+  path: '/admin/wateraid/site/features/uninstall/confirm'
+  defaults:
+    _form: 'Drupal\wateraid_site_manager\Form\WaterAidSiteFeaturesUninstallConfirmForm'
+    _title: 'Confirm uninstall'
+  requirements:
+    _permission: 'administer wateraid'

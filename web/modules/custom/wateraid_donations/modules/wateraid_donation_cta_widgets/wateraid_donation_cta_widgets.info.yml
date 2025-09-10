@@ -1,0 +1,24 @@
+name: 'WaterAid Donation CTA Widgets'
+description: 'Provides CTA widget embedding functionality.'
+type: module
+core_version_requirement: ^10 || ^11
+dependencies:
+  - block_field:block_field
+  - classy_paragraphs:classy_paragraphs
+  - drupal:block
+  - drupal:block_content
+  - drupal:field
+  - drupal:node
+  - drupal:path
+  - drupal:text
+  - drupal:user
+  - ds:ds
+  - entity_reference_revisions:entity_reference_revisions
+  - field_group:field_group
+  - metatag:metatag
+  - paragraphs:paragraphs
+  - wateraid_base_core:wateraid_base_core
+  - wateraid_donations:wateraid_donation_forms
+  - webform:webform
+package: wateraid
+wateraid.package: donations

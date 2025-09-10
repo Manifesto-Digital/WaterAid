@@ -1,0 +1,14 @@
+paypal.checkoutjs:
+  remote: https://developer.paypal.com/docs/integration/direct/express-checkout/integration-jsv4/add-paypal-button/
+  version: 4.x
+  license:
+    name: UNKNOWN
+    url: UNKNOWN
+    gpl-compatible: FALSE
+  js:
+    js/wateraid_donation_paypal.js: {}
+    https://www.paypalobjects.com/api/checkout.js:
+      type: external
+      minified: true
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms

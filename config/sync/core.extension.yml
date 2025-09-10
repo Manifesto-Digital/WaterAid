@@ -125,7 +125,51 @@ module:
   webform_wizard_single_page: 0
   webp: 0
   workflows: 0
+  address: 1
+  anonymous_token: 1
+  azure_storage: 1
+  block_class: 1
+  block_visibility_groups: 1
+  classy_paragraphs: 1
+  clientside_validation: 1
+  clientside_validation_jquery: 1
+  crop: 1
+  ctools: 1
+  currency: 1
+  datalayer: 1
+  ds: 1
+  ds_extras: 1
+  encrypt: 1
+  entity_browser: 1
+  entity_print: 1
+  focal_point: 1
+  jquery_ui: 1
+  jquery_ui_button: 1
+  jquery_ui_checkboxradio: 1
+  jquery_ui_controlgroup: 1
+  just_giving: 1
+  key: 1
+  link_class: 1
+  maxlength: 1
+  menu_link_attributes: 1
+  paragraphs_colour: 1
   pathauto: 1
+  plugin: 1
+  real_aes: 1
+  responsive_image: 1
+  sharethis: 1
+  social_media_links: 1
+  stripe_api: 1
+  telephone: 1
+  view_mode_condition: 1
+  view_mode_selector: 1
+  views_bulk_operations: 1
+  viewsreference: 1
+  wateraid_base_core: 1
+  wateraid_donations: 1
+  wateraid_site_manager: 1
+  wateraid_webform_encrypt: 1
+  webform_jqueryui_buttons: 1
   xmlsitemap: 1
   content_translation: 10
   views: 10

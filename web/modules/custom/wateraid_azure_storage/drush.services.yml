@@ -1,0 +1,6 @@
+services:
+  wateraid_azure_storage.commands:
+    class: \Drupal\wateraid_azure_storage\Commands\WaterAidAzureStorageCommands
+    arguments: ['@date.formatter', '@plugin.manager.mail', '@config.factory', '@queue']
+    tags:
+      - { name: drush.command }

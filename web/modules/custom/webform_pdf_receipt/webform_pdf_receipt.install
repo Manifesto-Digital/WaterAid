@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ * Install file for webform_pdf_receipt module.
+ */
+
+/**
+ * Add encrypted field to the webform_submission table.
+ */
+function webform_pdf_receipt_install(): void {
+  \Drupal::entityDefinitionUpdateManager()->installFieldStorageDefinition('receipt', 'webform_submission', 'webform_pdf_receipt', webform_pdf_receipt_get_base_field());
+  \Drupal::database()->schema()->createTable('webform_pdf_receipt', [
+    'fields' => [
+      'rid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'size' => 'normal',
+        'default' => '0',
+      ],
+      'sid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'size' => 'normal',
+        'default' => '0',
+      ],
+    ],
+    'primary key' => ['rid'],
+  ]);
+}
+
+/**
+ * Add encrypted field to the webform_submission table.
+ */
+function webform_pdf_receipt_uninstall(): void {
+  \Drupal::configFactory()->getEditable('views.view.webform_receipts')->delete();
+  \Drupal::entityDefinitionUpdateManager()->uninstallFieldStorageDefinition(webform_pdf_receipt_get_base_field());
+  if (\Drupal::database()->schema()->tableExists('webform_pdf_receipt')) {
+    \Drupal::database()->schema()->dropTable('webform_pdf_receipt');
+  }
+}
+
+/**
+ * Update Webform PDF receipt text formats.
+ */
+function webform_pdf_receipt_update_8005(&$sandbox) {
+  $storage = \Drupal::entityTypeManager()->getStorage('webform');
+  $results = $storage->getQuery()->execute();
+
+  if (!isset($sandbox['progress'])) {
+    if (empty($results)) {
+      return t('Nothing to update.');
+    }
+
+    $sandbox['progress'] = 0;
+    $sandbox['total'] = count($results);
+  }
+
+  $result = array_slice($results, $sandbox['progress'], 1);
+  $webform_id = reset($result);
+  $sandbox['progress']++;
+  $sandbox['#finished'] = $sandbox['progress'] / $sandbox['total'];
+
+  /** @var \Drupal\webform\Entity\Webform $webform */
+  $webform = $storage->load($webform_id);
+  $format = 'wateraid_pdf';
+
+  $pdf_text = $webform->getThirdPartySetting('webform_pdf_receipt', 'pdf_text');
+
+  if (is_array($pdf_text) && array_key_exists('format', $pdf_text) && $pdf_text['format'] !== $format) {
+    $pdf_text['format'] = $format;
+    $webform->setThirdPartySetting('webform_pdf_receipt', 'pdf_text', $pdf_text);
+    try {
+      $webform->save();
+      return t('Successfully updated webform_pdf_receipt text format for @webform', ['@webform' => $webform->id()]);
+
+    }
+    catch (\Exception $e) {
+      return t('Failed to update webform_pdf_receipt text format for @webform', ['@webform' => $webform->id()]);
+    }
+  }
+}

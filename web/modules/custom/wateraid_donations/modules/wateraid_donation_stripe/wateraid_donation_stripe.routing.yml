@@ -1,0 +1,32 @@
+wateraid_donation_stripe.charge:
+  path: '/wateraid_donation_stripe/charge'
+  defaults:
+    _title: 'Stripe AJAX charge routing'
+    _controller: '\Drupal\wateraid_donation_stripe\Controller\StripeController::chargeApplePay'
+  requirements:
+    # Access to JS callback required.
+    _access: 'TRUE'
+  methods: [POST]
+
+wateraid_donation_stripe.stripe_payment_intent_controller_create_intent:
+  path: '/wateraid_donation_stripe/sca/payment_intent'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_stripe\Controller\StripePaymentIntentController::createIntent'
+    _title: 'Stripe PaymentIntent Create'
+  requirements:
+    # Access is controlled by anonymous_csrf_token.
+    _access: 'TRUE'
+    _anonymous_csrf_token: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+  methods: [POST]
+
+wateraid_donation_stripe.idempotency_key:
+  path: '/wateraid-donation-stripe/sca/idempotency-key'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_stripe\Controller\StripePaymentIntentController::getIdempotencyKey'
+    _title: 'Stripe PaymentIntent Idempotency Key'
+  requirements:
+    # Access to JS callback required.
+    _access: 'TRUE'
+  methods: [POST]

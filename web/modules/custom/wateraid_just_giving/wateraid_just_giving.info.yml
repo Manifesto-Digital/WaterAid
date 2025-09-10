@@ -1,5 +1,9 @@
-name: 'WaterAid Just Giving'
+name: WaterAid Just Giving
 type: module
-description: 'Stub module to allow webforms to import'
-package: Custom
-core_version_requirement: ^10 || ^11
+description: Provides integration between webform & Just Giving.
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+dependencies:
+  - just_giving:just_giving
+  - webform:webform
+wateraid.package: donations

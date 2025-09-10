@@ -1,0 +1,9 @@
+name: WaterAid Donations Report
+type: module
+description: Provides wateraid donation reporting
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+wateraid.package: donations
+dependencies:
+  - webform:webform
+configure: wateraid_donation_report.config

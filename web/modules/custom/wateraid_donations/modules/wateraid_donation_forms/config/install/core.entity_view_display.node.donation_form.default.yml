@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.donation_form.body
+    - node.type.donation_form
+  module:
+    - text
+    - user
+id: node.donation_form.default
+targetEntityType: node
+bundle: donation_form
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

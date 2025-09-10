@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install file for wateraid_donation_landing_page feature module.
+ */
+
+/**
+ * Import/revert config.
+ */
+function wateraid_donation_landing_page_update_8001() {
+  /** @var \Drupal\config_update\ConfigReverter $reverter */
+  $reverter = \Drupal::service('config_update.config_update');
+
+  $reverter->revert('entity_form_display', 'node.donation_landing_page.default');
+  $reverter->revert('entity_view_display', 'node.donation_landing_page.default');
+  $reverter->revert('entity_view_display', 'node.donation_landing_page.teaser');
+
+  return t('Revert existing config for donation landing page.');
+}
