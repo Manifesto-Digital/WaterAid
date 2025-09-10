@@ -1,12 +1,22 @@
+@import "../1-base/grid";
 // TEMPORARY STYLES
 header {
-  display: flex;
-  padding: 24px 30px;
-  border-bottom: grey solid 1px;
+  padding: 24px 0;
+  border-bottom: $black solid 1px;
+
+  & > div {
+    @include page-container;
+    margin-left: 0;
+  }
+
   img {
     display: block;
     width: 200px;
   }
+}
+
+.container {
+  @include page-container;
 }
 
 footer {

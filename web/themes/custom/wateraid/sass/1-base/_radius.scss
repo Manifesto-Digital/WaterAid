@@ -1,0 +1,51 @@
+@use "mixins";
+
+$radius-none: 0;
+
+// 2px
+$radius-xxs: mixins.calculate-rem(2);
+
+// 4px
+$radius-xs: mixins.calculate-rem(4);
+
+// 6px
+$radius-sm: mixins.calculate-rem(6);
+
+// 8px
+$radius-md: mixins.calculate-rem(8);
+
+// 10px
+$radius-lg: mixins.calculate-rem(10);
+
+// 12px
+$radius-xl: mixins.calculate-rem(12);
+
+// 16px
+$radius-2xl: mixins.calculate-rem(16);
+
+// 20px
+$radius-3xl: mixins.calculate-rem(20);
+
+// 24px
+$radius-4xl: mixins.calculate-rem(24);
+
+// 32px
+$radius-5xl: mixins.calculate-rem(32);
+
+// 40px
+$radius-6xl: mixins.calculate-rem(40);
+
+// 48px
+$radius-7xl: mixins.calculate-rem(48);
+
+// 64px
+$radius-8xl: mixins.calculate-rem(64);
+
+// 80px
+$radius-9xl: mixins.calculate-rem(80);
+
+// 96px
+$radius-10xl: mixins.calculate-rem(96);
+
+// 9998.4px
+$radius-full: 100%;
