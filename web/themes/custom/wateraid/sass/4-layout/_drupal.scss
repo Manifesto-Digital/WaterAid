@@ -1,5 +1,7 @@
 @import "../1-base/grid";
-// TEMPORARY STYLES
+@import "../1-base/typography";
+
+//  ---- TEMPORARY STYLES  ----- \\
 header {
   padding: 24px 0;
   border-bottom: $black solid 1px;
@@ -19,6 +21,12 @@ header {
   @include page-container;
 }
 
+body {
+  font-family: $font-family;
+}
+
 footer {
   background-color: $brand-teal;
 }
+
+//  ---- TEMPORARY STYLES END ----- \\
