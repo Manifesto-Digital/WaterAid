@@ -1,0 +1,27 @@
+wateraid_donation_report.admin:
+  path: '/admin/reports/donation-report/{date}'
+  defaults:
+    _title: 'Wateraid Donation Report'
+    _form: '\Drupal\wateraid_donation_report\Form\DonationReportForm'
+    date: ''
+  requirements:
+    _permission: 'access wateraid donations report'
+  options:
+    _admin_route: TRUE
+wateraid_donation_report.download:
+  path: '/admin/reports/donation-report/download/{filename}'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_report\Controller\ReportController::downloadCsv'
+  requirements:
+    _permission: 'access wateraid donations report'
+  options:
+    _admin_route: TRUE
+wateraid_donation_report.config:
+  path: '/admin/reports/donation-report/configuration'
+  defaults:
+    _title: 'Wateraid Donation Report'
+    _form: '\Drupal\wateraid_donation_report\Form\DonationReportConfigForm'
+  requirements:
+    _permission: 'administer wateraid donations report configuration'
+  options:
+    _admin_route: TRUE

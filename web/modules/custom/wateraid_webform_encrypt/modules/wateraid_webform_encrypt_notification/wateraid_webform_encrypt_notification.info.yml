@@ -1,0 +1,7 @@
+name: 'WaterAid Webform Encrypt Notification'
+type: module
+description: 'Provides email notifications relating to webform encryption'
+package: 'Webform'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - webform:webform

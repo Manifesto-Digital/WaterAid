@@ -1,5 +1,12 @@
-name: 'WaterAid Azure Storage'
+name: WaterAid Azure Storage
 type: module
-description: 'Stub module to allow import of webforms'
-package: Custom
-core_version_requirement: ^10 || ^11
+description: Provides a 2nd level integration of Azure Storage with Webform.
+core_version_requirement: ^9 || ^10
+package: wateraid
+dependencies:
+  - azure_storage:azure_storage
+  - views_bulk_operations:views_bulk_operations
+  - webform:webform
+  - wateraid_forms:wateraid_forms
+  - wateraid_donations:wateraid_donation_forms
+wateraid.package: donations

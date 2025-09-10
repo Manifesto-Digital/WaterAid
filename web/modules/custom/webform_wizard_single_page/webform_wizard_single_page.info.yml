@@ -1,5 +1,8 @@
-name: 'Webform Wizard Single Page'
+name: Webform Wizard Single Page
 type: module
-description: 'Stub module to allow import of webforms'
-package: Custom
-core_version_requirement: ^10 || ^11
+description: Provides one-page multistep webform functionality
+package: Webform
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - webform:webform
+  - webform_wizard_extra:webform_wizard_extra

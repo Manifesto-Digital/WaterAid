@@ -1,0 +1,6 @@
+wateraid_donation_gmo.settings:
+  title: GMO API
+  description: 'Edit GMO API credentials.'
+  parent: system.admin_config_services
+  route_name: wateraid_donation_gmo.settings
+  weight: 10

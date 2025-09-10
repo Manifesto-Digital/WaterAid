@@ -1,0 +1,4 @@
+loqate_email.settings_form:
+  route_name: loqate_email.settings_form
+  title: 'Loqate email settings'
+  base_route: loqate.loqate_api_key_config_form

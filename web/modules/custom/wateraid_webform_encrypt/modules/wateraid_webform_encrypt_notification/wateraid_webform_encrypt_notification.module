@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ * Provides wateraid_webform_encrypt_notification hooks.
+ */
+
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_cron().
+ */
+function wateraid_webform_encrypt_notification_cron() {
+  $logger = \Drupal::logger('wateraid_webform_encrypt_notification');
+  try {
+    // Get submission IDs where one or more submission values does not start
+    // with the encryption prefix.
+    $records = \Drupal::database()->select('webform_submission_data', 'w')
+      ->fields('w', ['sid'])
+      ->condition('w.value', 'def502%', 'NOT LIKE')
+      ->groupBy('sid')
+      ->execute()
+      ->fetchAllKeyed();
+    $count = count($records);
+    if ($count > 0) {
+      // Onr or more submissions is not encrypted.
+      $sids = implode(', ', array_keys($records));
+
+      // Message to log to watchdog and email to system admins.
+      $message = \Drupal::translation()->formatPlural($count, 'Unencrypted data was detected within @count Webform submission. Affected submission ID: @sids', 'Unencrypted data was detected within @count Webform submissions. Affected submission IDs: @sids', [
+        '@count' => $count,
+        '@sids' => $sids,
+      ]);
+
+      $logger->warning($message);
+
+      // Load system admins to notify via email.
+      $user_storage = \Drupal::entityTypeManager()->getStorage('user');
+      $email_notification_role = 'system_administrator';
+      $uids = $user_storage->getQuery()
+        ->condition('roles', [$email_notification_role])
+        ->accessCheck(FALSE)
+        ->execute();
+
+      $email_addresses = [];
+      foreach ($uids as $uid) {
+        /** @var \Drupal\user\Entity\User $user */
+        $user = $user_storage->load($uid);
+        $email_addresses[] = $user->getEmail();
+      }
+
+      if (!empty($email_addresses)) {
+        $recipients = implode(', ', $email_addresses);
+        $module = 'wateraid_webform_encrypt_notification';
+        $key = 'unencrypted_webform_data';
+        $lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $params['body'] = $message;
+
+        /** @var \Drupal\Core\Mail\MailManagerInterface $mail_service */
+        $mail_service = \Drupal::service('plugin.manager.mail');
+
+        try {
+          $mail_service->mail($module, $key, $recipients, $lang_code, $params, NULL, TRUE);
+        }
+        catch (\Exception $e) {
+          $logger->error('Unable to send email');
+        }
+      }
+      else {
+        $logger->warning(t('No users have the @role role - no emails were sent', ['@role' => $email_notification_role]));
+      }
+
+    }
+    else {
+      $logger->notice('No unencrypted records were found');
+    }
+  }
+  catch (\Exception $e) {
+    $logger->error($e);
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function wateraid_webform_encrypt_notification_mail($key, &$message, $params) {
+  if ($key == 'unencrypted_webform_data') {
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['headers']['From'] = \Drupal::config('system.site')->get('mail');
+    $message['subject'] = new TranslatableMarkup('Unencrypted Webform submission data detected on "@site" - (@env)', [
+      '@site' => \Drupal::config('system.site')->get('name'),
+      '@env' => $_ENV['AH_SITE_ENVIRONMENT'] ?? 'local',
+    ]);
+
+    $message['body'][] = $params['body'];
+  }
+}

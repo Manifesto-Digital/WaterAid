@@ -1,5 +1,8 @@
-name: 'Webform Wizard Extra'
+name: Webform Wizard Extra
 type: module
-description: 'Stub module to allow import of webforms'
-package: Custom
-core_version_requirement: ^10 || ^11
+description: Provides additional option to webform wizards.
+core_version_requirement: ^9 || ^10 || ^11
+package: Webform
+dependencies:
+  - webform:webform
+  - wateraid_donations:wateraid_donation_forms

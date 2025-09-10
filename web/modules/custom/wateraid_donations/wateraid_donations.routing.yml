@@ -1,0 +1,7 @@
+wateraid.admin_donations:
+  path: '/admin/wateraid/donations'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Donations'
+  requirements:
+    _permission: 'access wateraid administration pages'

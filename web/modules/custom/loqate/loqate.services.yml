@@ -1,0 +1,6 @@
+services:
+  loqate.config_sync:
+    class: Drupal\loqate\EventSubscriber\ConfigSubscriber
+    arguments: ['@config.factory']
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,6 @@
+wateraid_webform_encrypt.admin:
+  title: 'Wateraid Webform Encrypt settings'
+  description: 'Wateraid Webform Encrypt settings.'
+  parent: system.admin_config_system
+  route_name: wateraid_webform_encrypt.settings
+  weight: 40

@@ -1,0 +1,10 @@
+wateraid_donation_report.admin:
+  title: 'Donation Report'
+  description: 'Donation reports.'
+  parent: wateraid_site_reports.reports_admin
+  route_name: wateraid_donation_report.admin
+wateraid_donation_report.configration:
+  title: 'Donation Report Email Configuration'
+  description: 'Donation reports email configuration'
+  parent: wateraid_site_reports.reports_admin
+  route_name: wateraid_donation_report.config

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webform
+label: Webform
+type: 'canonical_entities:node'
+pattern: '[node:webform-is-donate]/[node:title]'
+selection_criteria:
+  261f0c4f-fba9-46aa-abc5-a7113d75f4f4:
+    id: node_type
+    bundles:
+      webform: webform
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 261f0c4f-fba9-46aa-abc5-a7113d75f4f4
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,8 @@
+name: WaterAid Donations PayPal
+type: module
+description: Provides integration between wateraid donations and PayPal elements
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+wateraid.package: donations
+dependencies:
+  - wateraid_donations:wateraid_donation_forms

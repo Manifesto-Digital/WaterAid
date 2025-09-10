@@ -1,0 +1,17 @@
+entity.webform.error:
+  path: '/forms/{webform}/error'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_forms\Controller\WebformController::error'
+    _title_callback: '\Drupal\wateraid_donation_forms\Controller\WebformController::title'
+  requirements:
+    _entity_access: 'webform.submission_create'
+
+entity.webform.handler.add_confirmation_page:
+  path: '/admin/structure/webform/manage/{webform}/handlers/add/confirmation-page'
+  defaults:
+    _form: '\Drupal\webform\Form\WebformHandlerAddForm'
+    _title: 'Add confirmation page'
+    webform_handler: confirmation_page
+  requirements:
+    _entity_access: 'webform.update'
+    _custom_access: '\Drupal\webform\Access\WebformHandlerAccess::checkHandlerAccess'

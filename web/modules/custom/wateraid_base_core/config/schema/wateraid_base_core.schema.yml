@@ -1,0 +1,29 @@
+field.formatter.settings.responsive_media_thumbnail:
+  type: mapping
+  label: 'Media thumbnail field display format settings'
+  mapping:
+    image_link:
+      type: string
+      label: 'Link image to'
+    image_style:
+      type: string
+      label: 'Image style'
+    responsive_image_style:
+      type: string
+      label: 'Responsive image style'
+    use_responsive_image:
+      type: boolean
+      label: 'Responsive image checkbox'
+block.settings.wateraid_donation_cta:
+  type: block_settings
+  label: 'Wateraid donation CTA widget block configuration'
+  mapping:
+    link_text:
+      type: label
+      label: 'Link text'
+    link_url:
+      type: label
+      label: 'Link URL'
+    link_target:
+      type: boolean
+      label: 'Link opens in a new window'

@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Module file.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function wateraid_donation_landing_page_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  if ($form_id == 'node_donation_landing_page_form') {
+    if (!empty($form_state->getStorage()['template'])) {
+      // Hide template reference and template checkbox fields.
+      $form['field_wa_donation_page_template']['#access'] = FALSE;
+      $form['field_wa_donation_template']['#access'] = FALSE;
+
+      // Require description for template nodes.
+      $form['field_wa_admin_description']['#required'] = TRUE;
+      $form['field_wa_admin_description']['widget'][0]['#required'] = TRUE;
+      $form['field_wa_admin_description']['widget'][0]['value']['#required'] = TRUE;
+    }
+    elseif (!empty($form_state->getStorage()['from_template'])) {
+      // Disable template reference field and hide template checkbox field.
+      $form['field_wa_donation_page_template']['#disabled'] = TRUE;
+      $form['field_wa_donation_template']['#access'] = FALSE;
+    }
+    else {
+      // Hide template reference and template checkbox fields.
+      $form['field_wa_donation_page_template']['#access'] = FALSE;
+      $form['field_wa_donation_template']['#access'] = FALSE;
+    }
+  }
+  elseif ($form_id == 'node_donation_landing_page_edit_form') {
+    // Don't allow users to change the page template or template fields.
+    $form['field_wa_donation_page_template']['#disabled'] = TRUE;
+    $form['field_wa_donation_template']['#disabled'] = TRUE;
+  }
+}

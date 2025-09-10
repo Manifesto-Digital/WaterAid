@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Functions for the wateraid donations report.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_cron().
+ */
+function wateraid_donation_report_cron(): void {
+
+  // Get unix timestamps of the start and end dates, ensuring we set the time,
+  // so we capture all donations.
+  $start = new DrupalDateTime('first day of last month');
+  $start->setTime(0, 0);
+  $end = new DrupalDateTime('last day of last month');
+  $end->setTime(23, 59, 59);
+
+  /** @var \Drupal\wateraid_donation_report\WaterAidDonationReportService $reportService */
+  $reportService = \Drupal::service('wateraid_donation_report.service');
+  $reportService->generateDonationCsv($start, $end);
+}
+
+/**
+ * Implements hook_mail().
+ */
+function wateraid_donation_report_mail($key, &$message, $params): void {
+
+  if ($key == 'donation_report_mail') {
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['headers']['From'] = \Drupal::config('system.site')->get('mail');
+    $message['subject'] = new TranslatableMarkup('A New Donation Report has been generated for "@site" - (@env)', [
+      '@site' => \Drupal::config('system.site')->get('name'),
+      '@env' => $_ENV['AH_SITE_ENVIRONMENT'] ?? 'local',
+    ]);
+
+    $message['body'][] = $params['body'];
+  }
+}

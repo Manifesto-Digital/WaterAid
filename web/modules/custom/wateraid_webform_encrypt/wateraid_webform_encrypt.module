@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Main module file for the Webform Encrypt module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\encrypt\Entity\EncryptionProfile;
+use Drupal\wateraid_webform_encrypt\WateraidWebformEncryptSubmissionStorage;
+
+/**
+ * Load the global encryption profile.
+ *
+ * @return Drupal\encrypt\Entity\EncryptionProfile|null
+ *   The encryption profile object, or NULL if not enabled.
+ */
+function wateraid_webform_encrypt_get_encryption_profile(): ?EncryptionProfile {
+  $config = \Drupal::config('wateraid_webform_encrypt.settings');
+  if ($config->get('enabled')) {
+    return EncryptionProfile::load($config->get('encryption_profile'));
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function wateraid_webform_encrypt_entity_type_alter(array &$entity_types): void {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  $entity_types['webform_submission']->setStorageClass(WateraidWebformEncryptSubmissionStorage::class);
+}
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function wateraid_webform_encrypt_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type): void {
+  if ($entity_type->id() == 'webform_submission') {
+    // Add a base field to webform_submission entities.
+    $fields['encrypted'] = BaseFieldDefinition::create('boolean')
+      ->setName('encrypted')
+      ->setLabel(t('Encrypted'))
+      ->setTargetEntityTypeId('webform_submission');
+  }
+}

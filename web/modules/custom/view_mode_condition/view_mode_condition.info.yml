@@ -1,0 +1,5 @@
+name: View Mode Condition
+type: module
+description: Provides a condition to check a view mode exists on an entity.
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom

@@ -1,0 +1,31 @@
+name: 'WaterAid Donation Landing Pages'
+description: 'Donation landing page feature for conversion of paid and organic search.'
+type: module
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - drupal:block
+  - drupal:block_content
+  - entity_reference_revisions:entity_reference_revisions
+  - drupal:field
+  - field_group:field_group
+  - drupal:image
+  - drupal:menu_ui
+  - metatag:metatag
+  - drupal:node
+  - paragraphs:paragraphs
+  - drupal:path
+  - pathauto:pathauto
+  - replicate:replicate
+  - drupal:system
+  - drupal:text
+  - drupal:user
+  - drupal:views
+  - wateraid_base_core:wateraid_base_core
+  - wateraid_donations:wateraid_donations
+package: wateraid
+config_devel:
+  - node.type.donation_landing_page
+  - user.role.donation_landing_page_manager
+  - views.view.wateraid_donation_landing_pages
+  - views.view.wateraid_donation_landing_page_templates
+wateraid.package: donations
