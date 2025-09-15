@@ -1,8 +1,10 @@
+label: 'Modererat innehåll'
+description: 'Hitta och moderera innehåll.'
 display:
   default:
-    display_title: Huvud
+    display_title: Förvald
     display_options:
-      title: Noder
+      title: 'Modererat innehåll'
       fields:
         title:
           label: Titel
@@ -10,22 +12,22 @@ display:
         type:
           label: Innehållstyp
           separator: ', '
-        status:
-          label: Status
-          settings:
-            format_custom_false: 'Ej publicerad'
-            format_custom_true: Publicerad
+        name:
+          label: Författare
+          separator: ', '
+        moderation_state:
+          label: Modereringsstatus
           separator: ', '
         changed:
           label: Uppdaterad
           separator: ', '
-        dropbutton:
+        operations:
           label: Funktioner
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
+            next: 'Nästa ›'
+            previous: '‹ Föregående'
             first: '« Första'
             last: 'Sista »'
           expose:
@@ -34,34 +36,26 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: Applicera
+          submit_button: Filtrera
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
       empty:
         area_text_custom:
-          content: 'Inget innehåll tillgängligt.'
-      arguments:
-        gid:
-          exception:
-            title: Alla
+          content: 'Inget modererat innehåll tillgängligt. Endast väntande versioner av innehåll, till exempel utkast, listas här.'
       filters:
-        status:
+        title:
           expose:
-            label: 'Status för publicering'
-          group_info:
-            label: 'Status för publicering'
-            group_items:
-              1:
-                title: Publicerad
-              2:
-                title: 'Ej publicerad'
+            label: Titel
         type:
           expose:
-            label: Typ
-  page_1:
-    display_title: Sida
-    display_options:
-      menu:
-        title: Noder
+            label: Innehållstyp
+        moderation_state:
+          expose:
+            label: Modereringsstatus
+        langcode:
+          expose:
+            label: Språk
+  moderated_content:
+    display_title: 'Modererat innehåll'

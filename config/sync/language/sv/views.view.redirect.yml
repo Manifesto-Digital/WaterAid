@@ -1,6 +1,7 @@
 label: Omdirigera
 display:
   default:
+    display_title: Huvud
     display_options:
       exposed_form:
         options:
