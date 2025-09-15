@@ -108,7 +108,6 @@
     "drupal/core-dev": "^10.5",
     "mglaman/phpstan-drupal": "^1.2",
     "phpstan/extension-installer": "^1.4",
-    "phpstan/phpstan": "^1.12",
     "phpstan/phpstan-deprecation-rules": "^1.2",
     "spaze/phpstan-disallowed-calls": "^3.4",
     "squizlabs/php_codesniffer": "*"
