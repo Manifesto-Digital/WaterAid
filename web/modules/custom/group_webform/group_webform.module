@@ -10,7 +10,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\group\Entity\GroupRelationship;
+use Drupal\group_webform\Plugin\Menu\LocalTask\LocalTaskGroupMenu;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformInterface;
 
@@ -109,5 +109,16 @@ function group_webform_webform_access(EntityInterface $webform, $operation, Acco
         return \Drupal::service('groupwebform.webform')->webformAccess('submission_view_any', $webform, $account);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_local_tasks_alter().
+ */
+function group_webform_local_tasks_alter(&$local_tasks): void {
+  if (isset($local_tasks['entity.group_content_menu.edit_form'])) {
+    $local_tasks['entity.group_content_menu.edit_form']['class'] = LocalTaskGroupMenu::class;
+
+    $one = 1;
   }
 }

@@ -1,0 +1,21 @@
+uuid: 8aabc25f-0a72-4ad9-99f8-6a1b798e4a70
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.wateraid_site_menu
+id: group_content_menu.wateraid_site_menu.default
+targetEntityType: group_content_menu
+bundle: wateraid_site_menu
+mode: default
+content:
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  langcode: true
