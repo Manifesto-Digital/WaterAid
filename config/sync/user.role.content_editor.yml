@@ -8,8 +8,10 @@ dependencies:
     - taxonomy.vocabulary.tags
   module:
     - comment
+    - content_translation
     - contextual
     - file
+    - group_content_menu
     - node
     - path
     - system
@@ -42,6 +44,7 @@ permissions:
   - 'edit own page content'
   - 'edit terms in tags'
   - 'revert all revisions'
+  - 'translate group_content_menu'
   - 'view all revisions'
   - 'view own unpublished content'
   - 'view the administration theme'

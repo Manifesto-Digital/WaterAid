@@ -33,6 +33,7 @@ final class GroupWebformRouteSubscriber extends RouteSubscriberBase {
     foreach ([
       'entity.group.version_history',
       'view.group_members.page_1',
+      'view.group_content.page_1',
     ] as $route_name) {
       if ($route = $collection->get($route_name)) {
         $route->setOption('_admin_route', TRUE);
