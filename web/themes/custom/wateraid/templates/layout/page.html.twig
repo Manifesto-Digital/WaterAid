@@ -48,27 +48,21 @@
     {{ page.header }}
   </header>
 
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
+  <div class="container">
+    {{ page.primary_menu }}
+    {{ page.breadcrumb }}
+  </div>
 
-  {{ page.breadcrumb }}
-
-  {{ page.highlighted }}
-
-  {{ page.help }}
-
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+  <main role="main" class="container">
+    <a id="main-content" tabindex="-1"></a>
 
     <div class="layout-content">
       {{ page.content }}
-    </div>{# /.layout-content #}
-
+    </div>
   </main>
 
   <footer role="contentinfo">
-    <p>Page footer...</p>
     {{ page.footer }}
   </footer>
 
-</div>{# /.layout-container #}
+</div>

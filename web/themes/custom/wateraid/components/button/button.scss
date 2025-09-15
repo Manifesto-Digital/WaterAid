@@ -1,3 +1,6 @@
+@import './sass/styles';
+
 a.btn {
-  border: 1px dashed blue;
+  border: 1px dashed $brand-teal;
+  padding: $spacing-sm;
 }

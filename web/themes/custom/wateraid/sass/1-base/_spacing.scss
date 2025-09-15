@@ -1,0 +1,52 @@
+@use "mixins";
+
+// 0
+$spacing-none: 0rem;
+
+// 2px
+$spacing-xxs: mixins.calculate-rem(2);
+
+// 4px
+$spacing-xs: mixins.calculate-rem(4);
+
+// 6px
+$spacing-sm: mixins.calculate-rem(6);
+
+// 8px
+$spacing-md: mixins.calculate-rem(8);
+
+// 12px
+$spacing-lg: mixins.calculate-rem(12);
+
+// 16px
+$spacing-xl: mixins.calculate-rem(16);
+
+// 20px
+$spacing-2xl: mixins.calculate-rem(20);
+
+// 24px
+$spacing-3xl: mixins.calculate-rem(24);
+
+// 32px
+$spacing-4xl: mixins.calculate-rem(32);
+
+// 40px
+$spacing-5xl: mixins.calculate-rem(40);
+
+// 48px
+$spacing-6xl: mixins.calculate-rem(48);
+
+// 64px
+$spacing-7xl: mixins.calculate-rem(64);
+
+// 80px
+$spacing-8xl: mixins.calculate-rem(80);
+
+// 96px
+$spacing-9xl: mixins.calculate-rem(96);
+
+// 128px
+$spacing-10xl: mixins.calculate-rem(128);
+
+// 160px
+$spacing-11xl: mixins.calculate-rem(160);
