@@ -1,0 +1,29 @@
+{
+  "name": "drupal/group_webform",
+  "type": "drupal-module",
+  "description": "This module provides integration between Webform and Group modules",
+  "homepage": "http://drupal.org/project/group_webform",
+  "authors": [
+    {
+      "name": "Fabian Sierra",
+      "homepage": "https://www.drupal.org/u/fabiansierra5191",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Ivan Duarte",
+      "homepage": "https://www.drupal.org/u/jidrone",
+      "role": "Co-maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://drupal.org/project/issues/group_webform",
+    "source": "https://git.drupalcode.org/group_webform"
+  },
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/core": "^9.5 || ^10",
+    "drupal/group": "^3.2",
+    "drupal/webform": "^6.2"
+  }
+}

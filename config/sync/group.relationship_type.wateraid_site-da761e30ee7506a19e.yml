@@ -1,0 +1,16 @@
+uuid: 3f80b4a7-5706-41e3-8ec2-c3aa7074c56f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+  module:
+    - group_webform
+    - webform
+id: wateraid_site-da761e30ee7506a19e
+group_type: wateraid_site
+content_plugin: 'group_webform:webform'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,0 +1,18 @@
+uuid: 25c5985d-c898-421a-ba21-65b09c70cb92
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-group_node-article
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_relationship.wateraid_site-group_node-article
+target_entity_type_id: group_relationship
+target_bundle: wateraid_site-group_node-article
+default_langcode: site_default
+language_alterable: false

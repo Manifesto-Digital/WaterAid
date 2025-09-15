@@ -1,0 +1,18 @@
+route_callbacks:
+  - '\Drupal\group_webform\Routing\GroupWebformRouteProvider::getRoutes'
+group_webform.settings:
+  path: 'admin/group/groupwebform'
+  defaults:
+    _form: '\Drupal\group_webform\Form\GroupWebformSettingsForm'
+    _title: 'Group Webform Settings'
+  requirements:
+    _permission: 'administer group'
+entity.group.webform:
+  path: '/group/{group}/webforms'
+  defaults:
+    _controller: '\Drupal\group_webform\Controller\GroupWebformController::groupRelationshipOverview'
+    _title_callback: '\Drupal\group_webform\Controller\GroupWebformController::groupRelationshipOverviewTitle'
+  requirements:
+    _group_permission: 'access group_webform overview'
+  options:
+    _admin_route: TRUE

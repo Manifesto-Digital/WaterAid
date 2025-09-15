@@ -7,10 +7,19 @@ dependencies:
     - user.role.anonymous
 id: wateraid_site-anonymous
 label: Anonymous
-weight: -102
+weight: -10
 admin: false
 scope: outsider
 global_role: anonymous
 group_type: wateraid_site
 permissions:
   - 'view group'
+  - 'view group_node:article entity'
+  - 'view group_node:article relationship'
+  - 'view group_node:page entity'
+  - 'view group_node:page relationship'
+  - 'view group_node:webform entity'
+  - 'view group_node:webform relationship'
+  - 'view group_webform:webform entity'
+  - 'view group_webform:webform relationship'
+  - 'view own group_webform:webform submission'

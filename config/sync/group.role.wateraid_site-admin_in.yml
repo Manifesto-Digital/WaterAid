@@ -7,9 +7,9 @@ dependencies:
     - user.role.administrator
 id: wateraid_site-admin_in
 label: Administrator
-weight: 102
+weight: -6
 admin: true
-scope: insider
+scope: outsider
 global_role: administrator
 group_type: wateraid_site
 permissions: {  }

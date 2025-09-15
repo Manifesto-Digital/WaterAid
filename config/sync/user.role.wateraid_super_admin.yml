@@ -1,0 +1,9 @@
+uuid: b50e4f92-8dbf-4f26-b4a9-fc713077dd88
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_super_admin
+label: 'WaterAid Super Admin'
+weight: -7
+is_admin: null
+permissions: {  }

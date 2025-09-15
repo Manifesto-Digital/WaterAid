@@ -1,0 +1,14 @@
+uuid: 4e6806ee-b86a-47d2-869d-a7a18241ce18
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wateraid_super_admin
+  module:
+    - user
+id: user_add_role_action.wateraid_super_admin
+label: 'Add the WaterAid Super Admin role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wateraid_super_admin

@@ -2,6 +2,8 @@ uuid: 039c16f1-0918-48d9-b837-e240408dab06
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.field.menu_link_content.wateraid_site_menu.field_classes
   module:
     - link
     - menu_item_extras
@@ -11,6 +13,21 @@ targetEntityType: menu_link_content
 bundle: wateraid_site_menu
 mode: default
 content:
+  field_classes:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: -5
@@ -18,6 +35,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   view_mode:
     type: menu_item_extras_view_mode_selector_select

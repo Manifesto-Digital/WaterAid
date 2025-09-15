@@ -1,0 +1,10 @@
+name: 'Group Webform'
+description: 'Enables Group Relationships for Webform entities.'
+package: 'Group'
+type: 'module'
+configure: 'group_webform.settings'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - group:group
+  - group_content_menu_bundles:group_content_menu_bundles
+  - webform:webform

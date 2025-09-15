@@ -1,0 +1,14 @@
+uuid: bf86bfb0-1433-47ae-99a0-51b9a6114aa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wateraid_super_admin
+  module:
+    - user
+id: user_remove_role_action.wateraid_super_admin
+label: 'Remove the WaterAid Super Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wateraid_super_admin

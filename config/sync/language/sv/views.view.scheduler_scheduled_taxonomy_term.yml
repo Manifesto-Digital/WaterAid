@@ -1,0 +1,65 @@
+display:
+  default:
+    display_title: Huvud
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filtrera
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Inlägg per sida'
+            items_per_page_options_all_label: '- Alla -'
+            offset_label: Kompensera
+          tags:
+            previous: '‹ föregående'
+            next: 'nästa ›'
+            first: '« första'
+            last: 'sista »'
+      fields:
+        taxonomy_term_bulk_form:
+          label: Massuppdatera
+          action_title: Åtgärd
+        name:
+          label: Term
+          separator: ', '
+        vid:
+          label: Vokabulär
+          separator: ', '
+        status:
+          label: Status
+          settings:
+            format_custom_true: Publicerad
+            format_custom_false: 'Ej publicerad'
+          separator: ', '
+        publish_on:
+          label: 'Publicera den'
+          separator: ', '
+        unpublish_on:
+          label: 'Avpublicera den'
+          separator: ', '
+        operations:
+          label: Funktioner
+      filters:
+        name:
+          expose:
+            label: 'Termens namn'
+        vid:
+          expose:
+            label: Vokabulär
+        status:
+          expose:
+            label: Status
+          group_info:
+            label: 'Status för publicering'
+            group_items:
+              1:
+                title: Publicerad
+              2:
+                title: 'Ej publicerad'
+  overview:
+    display_title: Taxonomitermer

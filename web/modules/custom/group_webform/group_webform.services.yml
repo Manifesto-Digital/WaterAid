@@ -1,0 +1,23 @@
+services:
+  cache.groupwebform:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [groupwebform]
+  group.relation_handler.permission_provider.group_webform:
+    class: 'Drupal\group_webform\Plugin\Group\RelationHandler\GroupWebformPermissionProvider'
+    arguments: ['@group.relation_handler.permission_provider']
+    shared: false
+  groupwebform.route_subscriber:
+    class: Drupal\group_webform\Routing\GroupWebformRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  groupwebform.webform:
+    class: Drupal\group_webform\GroupWebformService
+    arguments: ['@entity_type.manager', '@current_user', '@group.membership_loader', '@config.factory', '@current_route_match']
+
+  group_webform.route_subscriber:
+    class: Drupal\group_webform\EventSubscriber\GroupWebformRouteSubscriber
+    tags:
+      - { name: event_subscriber }

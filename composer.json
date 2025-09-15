@@ -135,7 +135,11 @@
       "post-create-project-cmd-message": []
     },
     "enable-patching": true,
-    "patches": {},
+    "patches": {
+        "drupal/group_content_menu": {
+            "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"
+        }
+    },
     "merge-plugin": {
       "include": [
           "web/modules/contrib/webform/composer.libraries.json"
