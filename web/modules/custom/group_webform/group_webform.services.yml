@@ -16,3 +16,8 @@ services:
   groupwebform.webform:
     class: Drupal\group_webform\GroupWebformService
     arguments: ['@entity_type.manager', '@current_user', '@group.membership_loader', '@config.factory', '@current_route_match']
+
+  group_webform.route_subscriber:
+    class: Drupal\group_webform\EventSubscriber\GroupWebformRouteSubscriber
+    tags:
+      - { name: event_subscriber }
