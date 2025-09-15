@@ -3,29 +3,29 @@
 namespace Drupal\group_webform\Plugin\Group\Relation;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\group\Plugin\Attribute\GroupRelationType;
 use Drupal\group\Plugin\Group\Relation\GroupRelationBase;
 
 /**
  * Provides a relation enabler for webforms.
- *
- * @GroupRelationType(
- *   id = "group_webform",
- *   label = @Translation("Group webform"),
- *   description = @Translation("Adds webforms to groups both publicly and privately."),
- *   entity_type_id = "webform",
- *   entity_access = TRUE,
- *   pretty_path_key = "webform",
- *   reference_label = @Translation("Title"),
- *   reference_description = @Translation("The title of the webform to add to the group"),
- *   deriver = "Drupal\group_webform\Plugin\Group\Relation\GroupWebformDeriver",
- * )
  */
+#[GroupRelationType(
+  id: 'group_webform',
+  entity_type_id: 'webform',
+  label: new TranslatableMarkup('Group webform'),
+  description: new TranslatableMarkup('Adds webforms to groups both publicly and privately.'),
+  reference_label: new TranslatableMarkup('Title'),
+  reference_description: new TranslatableMarkup('The title of the webform to add to the group'),
+  entity_access: TRUE,
+  deriver: 'Drupal\group_webform\Plugin\Group\Relation\GroupWebformDeriver'
+)]
 class GroupWebform extends GroupRelationBase {
 
   /**
    * {@inheritdoc}
    */
-  public function defaultConfiguration() {
+  public function defaultConfiguration(): array {
     $config = parent::defaultConfiguration();
     $config['entity_cardinality'] = 1;
     return $config;

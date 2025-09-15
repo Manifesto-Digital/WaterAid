@@ -118,16 +118,27 @@ class GroupWebformRelationshipListBuilder extends GroupRelationshipListBuilder {
     $operations = parent::getDefaultOperations($entity);
     $plugin_id = 'group_webform:webform';
 
-    // Add view operation for the Group Relationship.
-    if (!isset($operations['view']) && $entity->access('view')) {
-      $operations['view'] = [
-        'title' => $this->t('View webform'),
-        'weight' => 1,
-        'url' => $entity->toUrl(),
+    // Unset default operations that don't make sense with our UI.
+    unset($operations['edit']);
+    unset($operations['view']);
+
+    // And rename delete.
+    $operations['delete']['title'] = t('Remove from Site');
+
+    // Add operations to edit and delete the actual entity.
+    if ($this->group->hasPermission("update any $plugin_id entity", $this->currentUser) || ($this->group->hasPermission("update own $plugin_id entity", $this->currentUser) && $entity->getOwner()->id() == $this->currentUser->id())) {
+      $operations['edit-entity'] = [
+        'title' => $this->t('Edit'),
+        'weight' => 102,
+        'url' => $entity->getEntity()->toUrl('edit-form'),
       ];
     }
-    else {
-      $operations['view']['title'] = $this->t('View webform entity');
+    if ($this->group->hasPermission("delete any $plugin_id entity", $this->currentUser) || ($this->group->hasPermission("delete own $plugin_id entity", $this->currentUser) && $entity->getOwner()->id() == $this->currentUser->id())) {
+      $operations['delete-entity'] = [
+        'title' => $this->t('Delete'),
+        'weight' => 103,
+        'url' => $entity->getEntity()->toUrl('delete-form'),
+      ];
     }
 
     // Slap on redirect destinations for the administrative operations.
@@ -136,29 +147,6 @@ class GroupWebformRelationshipListBuilder extends GroupRelationshipListBuilder {
       $operations[$key]['query'] = $destination;
     }
 
-    if ($this->group->hasPermission("view $plugin_id entity", $this->currentUser)) {
-      $operations['view-entity'] = [
-        'title' => $this->t('View relation'),
-        'weight' => 1,
-        'url' => $entity->toUrl(),
-      ];
-    }
-
-    // Add operations to edit and delete the actual entity.
-    if ($this->group->hasPermission("update any $plugin_id entity", $this->currentUser) || ($this->group->hasPermission("update own $plugin_id entity", $this->currentUser) && $entity->getOwner()->id() == $this->currentUser->id())) {
-      $operations['edit-entity'] = [
-        'title' => $this->t('Edit Webform'),
-        'weight' => 102,
-        'url' => $entity->getEntity()->toUrl('edit-form'),
-      ];
-    }
-    if ($this->group->hasPermission("delete any $plugin_id entity", $this->currentUser) || ($this->group->hasPermission("delete own $plugin_id entity", $this->currentUser) && $entity->getOwner()->id() == $this->currentUser->id())) {
-      $operations['delete-entity'] = [
-        'title' => $this->t('Delete Webform'),
-        'weight' => 103,
-        'url' => $entity->getEntity()->toUrl('delete-form'),
-      ];
-    }
     return $operations;
   }
 

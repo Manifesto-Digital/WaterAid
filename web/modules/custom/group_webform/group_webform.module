@@ -89,7 +89,7 @@ function group_webform_field_widget_single_element_group_webform_entity_referenc
 /**
  * Implements hook_ENTITY_TYPE_access() for webform entities.
  */
-function group_webform_webform_access(WebformInterface $webform = NULL, $operation, AccountInterface $account) {
+function group_webform_webform_access(EntityInterface $webform, $operation, AccountInterface $account) {
   if (!($webform instanceof WebformInterface)) {
     return AccessResult::neutral();
   }
@@ -109,33 +109,5 @@ function group_webform_webform_access(WebformInterface $webform = NULL, $operati
         return \Drupal::service('groupwebform.webform')->webformAccess('submission_view_any', $webform, $account);
       }
     }
-  }
-}
-
-/**
- * Implements hook_entity_operation_alter().
- */
-function group_webform_entity_operation_alter(array &$operations, EntityInterface $entity): void {
-  if ($entity instanceof GroupRelationship) {
-    if ($content = $entity->getEntity()) {
-      $operations['content_edit'] = [
-        'title' => t('Edit'),
-        'weight' => 0,
-        'attributes' => ($operations['edit']['attributes']) ?? [],
-        'url' => $content->toUrl('edit-form'),
-        'query' => ($operations['edit']['query']) ?? [],
-      ];
-      $operations['content_delete'] = [
-        'title' => t('Delete'),
-        'weight' => 0,
-        'attributes' => ($operations['delete']['attributes']) ?? [],
-        'url' => $content->toUrl('delete-form'),
-        'query' => ($operations['delete']['query']) ?? [],
-      ];
-    }
-
-    unset($operations['edit']);
-    unset($operations['view']);
-    $operations['delete']['title'] = t('Remove from Site');
   }
 }

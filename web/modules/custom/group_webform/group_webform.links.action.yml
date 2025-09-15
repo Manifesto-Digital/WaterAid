@@ -12,18 +12,18 @@ group_relationship.group_webform_add_page:
 
 group_relationship.add_page:
   route_name: 'entity.group_relationship.add_page'
-  title: 'Add existing content'
+  title: 'Add existing site content'
   appears_on:
     - entity.group_relationship.collection
-    - view.group_content.page_1
+    - view.group_node.page_1
     - entity.group.canonical
     - entity.group_relationship.canonical
 
 group_relationship.create_page:
   route_name: 'entity.group_relationship.create_page'
-  title: 'Add new content'
+  title: 'Add new site content'
   appears_on:
     - entity.group_relationship.collection
-    - view.group_content.page_1
+    - view.group_node.page_1
     - entity.group.canonical
     - entity.group_relationship.canonical

@@ -8,7 +8,3 @@ group_webform.settings:
   base_route: 'entity.group.collection'
   route_name: 'group_webform.settings'
   weight: 20
-view.group_content.page_1:
-  title: Content
-  base_route: entity.group.canonical
-  route_name: view.group_content.page_1

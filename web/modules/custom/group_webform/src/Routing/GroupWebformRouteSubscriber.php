@@ -13,7 +13,7 @@ class GroupWebformRouteSubscriber extends RouteSubscriberBase {
   /**
    * {@inheritdoc}
    */
-  protected function alterRoutes(RouteCollection $collection) {
+  protected function alterRoutes(RouteCollection $collection): void {
     // See webform/webform.routing.yml and
     // webform.module hook webform_webform_access_rules().
     $routes = $collection->all();
@@ -35,21 +35,6 @@ class GroupWebformRouteSubscriber extends RouteSubscriberBase {
         case 'entity.webform_submission.notes_form':
         case 'entity.webform_submission.resend_form':
         case 'entity.webform.variant.duplicate_form':
-        /*case 'webform.addons':
-        case 'webform.config':
-        case 'webform.config.elements':
-        case 'webform.config.submissions':
-        case 'webform.config.handlers':
-        case 'webform.config.variants':
-        case 'webform.config.exporters':
-        case 'webform.config.libraries':
-        case 'webform.config.advanced':
-        case 'webform.help':
-        case 'webform.help.video':
-        case 'webform.reports_plugins.elements':
-        case 'webform.reports_plugins.handlers':
-        case 'webform.reports_plugins.variants':
-        case 'webform.reports_plugins.exporters':*/
           $route->setRequirements(['_custom_access' => '\Drupal\group_webform\Access\GroupWebformAccess::webformAdministerAccess']);
           break;
 
