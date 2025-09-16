@@ -1,7 +1,0 @@
-bundle: wateraid_feature
-excluded:
-  - paragraphs.paragraphs_type.general_text_area
-  - paragraphs.paragraphs_type.donation_cta_widget_embed
-  - system.action.user_add_role_action.donation_landing_page_manager
-  - system.action.user_remove_role_action.donation_landing_page_manager
-required: true

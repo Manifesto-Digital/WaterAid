@@ -7,7 +7,4 @@ dependencies:
   - webform:webform
   - encrypt:encrypt
   - real_aes:real_aes
-config_devel:
-  - key.key.wateraid_webform_encryption_key
-  - encrypt.profile.wateraid_webform_encrypt
 wateraid.package: donations

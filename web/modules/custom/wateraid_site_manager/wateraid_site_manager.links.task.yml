@@ -1,9 +1,0 @@
-wateraid.admin_site_features:
-  route_name: wateraid.admin_site_features
-  base_route: wateraid.admin_site_features
-  title: 'List'
-wateraid.admin_site_features_uninstall:
-  route_name: wateraid.admin_site_features_uninstall
-  base_route: wateraid.admin_site_features
-  title: 'Uninstall'
-  weight: 20

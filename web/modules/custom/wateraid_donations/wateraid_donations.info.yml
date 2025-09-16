@@ -2,7 +2,5 @@ name: WaterAid Donations
 description: Base WaterAid donations site feature.
 package: wateraid
 type: module
-core_version_requirement: ^9 || ^10 || ^11
+core_version_requirement: ^10 || ^11
 wateraid.package: donations
-dependencies:
-  - wateraid_site_manager:wateraid_site_manager
