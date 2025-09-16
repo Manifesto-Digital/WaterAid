@@ -130,7 +130,7 @@ module:
   address: 1
   anonymous_token: 1
   azure_storage: 1
-  classy_paragraphs: 1
+  captcha: 0
   clientside_validation: 1
   clientside_validation_jquery: 1
   crop: 1
