@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.menu_link_content.wateraid_site_menu.field_attributes
     - field.field.menu_link_content.wateraid_site_menu.field_classes
   module:
     - menu_link_content
@@ -14,15 +15,9 @@ content:
   children:
     settings: {  }
     third_party_settings: {  }
-    weight: 1
-    region: content
-  field_classes:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
+    weight: 0
     region: content
 hidden:
+  field_attributes: true
+  field_classes: true
   langcode: true

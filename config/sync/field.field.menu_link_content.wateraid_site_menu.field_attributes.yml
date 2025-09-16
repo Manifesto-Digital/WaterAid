@@ -1,0 +1,21 @@
+uuid: 14a414f0-8682-4f17-9efd-c2a9141bec96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_attributes
+  module:
+    - key_value_field
+    - menu_link_content
+id: menu_link_content.wateraid_site_menu.field_attributes
+field_name: field_attributes
+entity_type: menu_link_content
+bundle: wateraid_site_menu
+label: Attributes
+description: 'Enter any custom attributes you wish to add to the menu link, such as rel=nofollow.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: key_value
