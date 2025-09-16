@@ -745,7 +745,9 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $payment_method_max = [];
         $payment_provider_definitions = \Drupal::service('plugin.manager.payment_provider')->getDefinitions();
         foreach ($this->configuration[$payment_frequency_name]['payment_methods'] as $payment_method) {
-          $payment_method_max[$payment_method] = $payment_provider_definitions[$payment_method]['paymentUpperLimit'];
+          if (isset($payment_provider_definitions[$payment_method])) {
+            $payment_method_max[$payment_method] = $payment_provider_definitions[$payment_method]['paymentUpperLimit'];
+          }
         }
 
         $amounts_full[$payment_frequency_name] = [

@@ -146,11 +146,6 @@ function wateraid_forms_entity_base_field_info_alter(&$fields, EntityTypeInterfa
  * Implements hook_form_FORM_ID_alter().
  */
 function wateraid_forms_form_node_form_alter(&$form, $form_state, $form_id): void {
-  $cv_index = array_search('clientside_validation_form_after_build', $form['#after_build']);
-  if (is_int($cv_index)) {
-    unset($form['#after_build'][$cv_index]);
-  }
-
   if (isset($form['field_hero_option'])) {
 
     if (isset($form['field_article_hero_image'])) {

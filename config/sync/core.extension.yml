@@ -1,7 +1,6 @@
 _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
-  webform_clientside_validation: -1
   admin_toolbar: 0
   admin_toolbar_tools: 0
   announcements_feed: 0
@@ -131,8 +130,6 @@ module:
   address: 1
   anonymous_token: 1
   azure_storage: 1
-  clientside_validation: 1
-  clientside_validation_jquery: 1
   crop: 1
   ctools: 1
   currency: 1
