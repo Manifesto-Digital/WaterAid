@@ -120,3 +120,40 @@ function group_webform_local_tasks_alter(&$local_tasks): void {
     $local_tasks['entity.group_content_menu.edit_form']['class'] = LocalTaskGroupMenu::class;
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function group_webform_preprocess_menu__group_menu(&$variables): void {
+
+  // We only want to act on the WA Site menu, in case any new ones get added in
+  // future.
+  if (isset($variables['group_content_menu']['group_content_menu_type']) && $variables['group_content_menu']['group_content_menu_type'] == 'wateraid_site_menu') {
+    foreach ($variables['items'] as &$item) {
+
+      // The entity with our custom fields on are nested inside the menu link
+      // entity that Group Content Menu uses, so we need to dig down to find it.
+      if ($entity = $item['original_link'] ?? NULL) {
+        if ($menu_content = $entity->getEntity()) {
+
+          /** @var \Drupal\Core\Template\Attribute $attributes */
+          $attributes = &$item['attributes'];
+
+          // Any custom classes and attributes should be added to the li
+          // surrounding the menu link.
+          if ($classes = $menu_content->get('field_classes')->getValue()) {
+            foreach ($classes as $class) {
+              $attributes->addClass($class);
+            }
+          }
+
+          if ($params = $menu_content->get('field_attributes')->getValue()) {
+            foreach ($params as $param) {
+              $attributes->setAttribute($param['key'], $param['value']);
+            }
+          }
+        }
+      }
+    }
+  }
+}
