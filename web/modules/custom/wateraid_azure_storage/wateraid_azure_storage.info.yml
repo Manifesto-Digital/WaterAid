@@ -1,7 +1,7 @@
 name: WaterAid Azure Storage
 type: module
 description: Provides a 2nd level integration of Azure Storage with Webform.
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10
 package: wateraid
 dependencies:
   - azure_storage:azure_storage

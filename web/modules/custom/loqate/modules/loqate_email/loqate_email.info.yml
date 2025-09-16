@@ -7,4 +7,3 @@ package: 'Custom'
 dependencies:
   - loqate:loqate
   - webform:webform
-  - clientside_validation:clientside_validation_jquery
