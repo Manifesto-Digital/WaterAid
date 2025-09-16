@@ -1,6 +1,0 @@
-administer wateraid:
-  title: 'Administer WaterAid site'
-  description: 'Gain full control over wateraid site configuration.'
-  restrict access: TRUE
-access wateraid administration pages:
-  title: 'Access WaterAid administration pages and help'

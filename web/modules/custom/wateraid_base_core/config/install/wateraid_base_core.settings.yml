@@ -1,9 +1,0 @@
-subsite_language:
-  indexes: [3, 1]
-  map:
-    ja: ['jkxoof266', 'jp']
-    hi: ['jkxoof336', 'in']
-    sv: ['jkxoof226', 'se']
-    bn: ['jkxoof236', 'bd']
-    pt: ['jkxoof341', 'mz']
-    ur: ['jkxoof326', 'pk']

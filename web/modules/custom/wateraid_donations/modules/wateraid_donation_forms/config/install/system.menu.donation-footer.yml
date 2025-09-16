@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: donation-footer
-label: 'Donation footer'
-description: 'Donation footer menu links'
-locked: false

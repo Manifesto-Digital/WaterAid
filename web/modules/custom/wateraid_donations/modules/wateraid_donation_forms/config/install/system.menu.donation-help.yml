@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: donation-help
-label: 'Donation help'
-description: 'The Get Help donating block'
-locked: false

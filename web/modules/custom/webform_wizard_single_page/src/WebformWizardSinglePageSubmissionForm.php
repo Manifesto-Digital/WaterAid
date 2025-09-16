@@ -27,30 +27,12 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
   }
 
   /**
-   * Check if CTA widget mode is enabled.
-   *
-   * @return bool
-   *   TRUE if the webform is in CTA widget mode.
-   *
-   * @see \Drupal\wateraid_base_core\Plugin\Field\FieldFormatter\WebformCTAFormatter::viewElements()
-   */
-  public function ctaWidgetEnabled(): bool {
-    /** @var \Drupal\webform\Entity\Webform $webform */
-    $webform = $this->getWebform();
-    return (bool) $webform->get('is_cta_widget');
-  }
-
-  /**
    * Enable/disable Ajax depending on settings and context.
    *
    * @return bool
    *   True if Ajax should be enabled, otherwise false.
    */
   protected function isAjax(): bool {
-    // Disable Ajax when the form is embedded in a WebformCTAFormatter.
-    if ($this->ctaWidgetEnabled()) {
-      return FALSE;
-    }
 
     // Enable Ajax when single-page mode is enabled.
     if ($this->singlePageEnabled()) {
@@ -69,7 +51,7 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
      * Do not modify the Webform to add step titles if single page mode is
      * disabled or the Webform is rendered within a WebformCTAFormatter.
      */
-    if (!$this->singlePageEnabled() || $this->ctaWidgetEnabled()) {
+    if (!$this->singlePageEnabled()) {
       // Use the legacy wizard functionality (deprecated).
       return parent::form($form, $form_state);
     }
