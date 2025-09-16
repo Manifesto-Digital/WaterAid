@@ -328,7 +328,6 @@ libraries:
     - jquery.chosen
 requirements:
   cdn: true
-  clientside_validation: true
   spam: true
 langcode: en
 third_party_settings:
