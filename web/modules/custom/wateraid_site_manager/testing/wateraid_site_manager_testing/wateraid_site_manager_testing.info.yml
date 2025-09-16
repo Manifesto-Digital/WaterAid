@@ -1,7 +1,0 @@
-name: WaterAid Site Manager Testing
-description: Provides test coverage for the wateraid site manager module.
-package: wateraid
-type: module
-core_version_requirement: ^9 || ^10 || ^11
-dependencies:
-  - wateraid_site_manager:wateraid_site_manager

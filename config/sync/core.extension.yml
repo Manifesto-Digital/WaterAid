@@ -80,6 +80,7 @@ module:
   phpass: 0
   quick_node_clone: 0
   rabbit_hole: 0
+  recaptcha_v3: 0
   redirect: 0
   rest: 0
   scheduler: 0
@@ -129,8 +130,6 @@ module:
   address: 1
   anonymous_token: 1
   azure_storage: 1
-  block_class: 1
-  block_visibility_groups: 1
   classy_paragraphs: 1
   clientside_validation: 1
   clientside_validation_jquery: 1
@@ -150,10 +149,6 @@ module:
   jquery_ui_controlgroup: 1
   just_giving: 1
   key: 1
-  link_class: 1
-  maxlength: 1
-  menu_link_attributes: 1
-  paragraphs_colour: 1
   pathauto: 1
   plugin: 1
   real_aes: 1
@@ -162,13 +157,8 @@ module:
   social_media_links: 1
   stripe_api: 1
   telephone: 1
-  view_mode_condition: 1
-  view_mode_selector: 1
   views_bulk_operations: 1
-  viewsreference: 1
-  wateraid_base_core: 1
   wateraid_donations: 1
-  wateraid_site_manager: 1
   wateraid_webform_encrypt: 1
   webform_jqueryui_buttons: 1
   xmlsitemap: 1

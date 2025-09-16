@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: donation-header
-label: 'Donation header'
-description: 'Donation header menu'
-locked: false

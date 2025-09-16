@@ -1,7 +1,7 @@
 name: 'WaterAid Donation Forms'
 description: 'Provides donation form functionality.'
 type: module
-core_version_requirement: ^9 || ^10 || ^11
+core_version_requirement: ^10 || ^11
 dependencies:
   - currency:currency
   - datalayer:datalayer
@@ -12,7 +12,6 @@ dependencies:
   - drupal:path
   - drupal:text
   - drupal:user
-  - wateraid_base_core:wateraid_base_core
   - wateraid_donations:wateraid_donations
   - wateraid_forms:wateraid_forms
   - wateraid_webform_encrypt:wateraid_webform_encrypt

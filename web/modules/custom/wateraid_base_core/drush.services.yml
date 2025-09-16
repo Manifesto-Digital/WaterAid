@@ -1,6 +1,0 @@
-services:
-  wateraid_base_core.commands:
-    class: \Drupal\wateraid_base_core\Commands\WateraidBaseCoreCommands
-    arguments: ['@wateraid_base_core']
-    tags:
-      - { name: drush.command }

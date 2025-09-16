@@ -1,5 +1,0 @@
-services:
-  wateraid_site_manager.route_subscriber:
-    class: Drupal\wateraid_site_manager\Routing\RouteSubscriber
-    tags:
-      - { name: event_subscriber }

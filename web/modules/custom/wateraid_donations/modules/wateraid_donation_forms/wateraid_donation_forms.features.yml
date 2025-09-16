@@ -1,4 +1,0 @@
-bundle: wateraid_feature
-excluded:
-  - field.field.node.donation_landing_page.field_donation_form
-required: true
