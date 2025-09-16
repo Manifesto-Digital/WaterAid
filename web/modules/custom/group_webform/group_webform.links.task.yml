@@ -11,5 +11,5 @@ group_webform.settings:
 entity.group_content_menu.edit_form:
   route_name: entity.group_content_menu.edit_form
   base_route: 'entity.group.canonical'
-  title: 'Edit menu'
+  title: 'Menu'
   weight: 50
