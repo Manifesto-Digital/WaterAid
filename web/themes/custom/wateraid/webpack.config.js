@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     'styles': ['./sass/styles.scss'],
     'components/button/button': ['./components/button/button.scss'],
+    'components/image/image': ['./components/image/image.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
   },
   output: {

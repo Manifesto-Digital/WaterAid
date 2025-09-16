@@ -1,0 +1,15 @@
+<div {{ attributes }}>
+  {% if caption %}
+    <figure class="image image--{{ caption_display }} image--{{ width }}">
+      {{ image }}
+      <figcaption class="image__caption">
+        {{ caption }}
+        <span class="image__credit">{{ credit }}</span>
+      </figcaption>
+    </figure>
+  {% else %}
+    <div class="image image--{{ caption_display }} image--{{ width }}">
+      {{ image }}
+    </div>
+  {% endif %}
+</div>

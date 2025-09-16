@@ -1,0 +1,43 @@
+@import './sass/styles';
+
+[data-component-id="wateraid:image"] {
+  @include grid();
+
+  .image {
+    // Image widths.
+    &--full {
+      @include grid-item-span(12, 12, 12);
+      height: auto;
+    }
+
+    &--large {
+      @include grid-item-span(12, 10, 10);
+    }
+
+    &--small {
+      @include grid-item-span(12, 6, 6);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &__caption {
+      background-color: $wa-cream;
+      font-size: 1rem;
+      padding: $wa-spacing-03;
+      line-height: 1.5;
+      margin-top: -$wa-spacing-01;
+      border-radius: 0 0 calculate-rem(2) calculate-rem(2);
+    }
+
+    &__credit {
+      font-size: calculate-rem(14);
+      line-height: 1.5;
+      color: $wa-navy-80;
+    }
+
+    // @Todo: Expandable style
+  }
+}
