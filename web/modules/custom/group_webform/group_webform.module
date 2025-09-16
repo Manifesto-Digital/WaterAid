@@ -118,7 +118,5 @@ function group_webform_webform_access(EntityInterface $webform, $operation, Acco
 function group_webform_local_tasks_alter(&$local_tasks): void {
   if (isset($local_tasks['entity.group_content_menu.edit_form'])) {
     $local_tasks['entity.group_content_menu.edit_form']['class'] = LocalTaskGroupMenu::class;
-
-    $one = 1;
   }
 }

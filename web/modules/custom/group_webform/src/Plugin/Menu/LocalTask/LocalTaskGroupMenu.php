@@ -52,7 +52,9 @@ class LocalTaskGroupMenu extends LocalTaskDefault implements ContainerFactoryPlu
   public function getRouteParameters(RouteMatchInterface $route_match) {
     $route_parameters = parent::getRouteParameters($route_match);
 
-    if (!isset($route_parameters['group_content_menu'])) {
+    // If we don't have a group menu, we should be able to load it from the
+    // group. If we don't have a group, there's nothing we can do.
+    if (!isset($route_parameters['group_content_menu']) && isset($route_parameters['group'])) {
 
       /** @var \Drupal\group\Entity\GroupInterface $group */
       $group = $this->entity_type_manager->getStorage('group')->load($route_parameters['group']);
