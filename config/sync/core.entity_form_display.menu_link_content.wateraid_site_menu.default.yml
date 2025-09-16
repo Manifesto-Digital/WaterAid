@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.menu_link_content.wateraid_site_menu.field_attributes
     - field.field.menu_link_content.wateraid_site_menu.field_classes
   module:
+    - key_value_field
     - link
     - menu_item_extras
     - menu_link_content
@@ -13,6 +15,22 @@ targetEntityType: menu_link_content
 bundle: wateraid_site_menu
 mode: default
 content:
+  field_attributes:
+    type: key_value_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+      key_label: Key
+      value_label: Value
+      description_label: Description
+      description_rows: 5
+      key_size: 60
+      key_placeholder: ''
+      description_enabled: true
+      description_placeholder: ''
+    third_party_settings: {  }
   field_classes:
     type: string_textfield
     weight: 21
