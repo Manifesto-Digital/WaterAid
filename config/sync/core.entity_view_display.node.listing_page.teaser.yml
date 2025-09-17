@@ -1,0 +1,40 @@
+uuid: d7932cfd-6473-4f3e-9a96-86b0450c8ad8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.listing_page.field_content
+    - field.field.node.listing_page.field_teaser_image
+    - field.field.node.listing_page.field_teaser_text
+    - node.type.listing_page
+  module:
+    - user
+id: node.listing_page.teaser
+targetEntityType: node
+bundle: listing_page
+mode: teaser
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content: true
+  langcode: true
