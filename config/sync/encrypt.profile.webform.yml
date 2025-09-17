@@ -1,0 +1,13 @@
+uuid: 61c7ace4-7ee6-40ac-833f-db0fcbdaf305
+langcode: en
+status: true
+dependencies:
+  config:
+    - key.key.webform_encrypt_key
+  module:
+    - real_aes
+id: webform
+label: Webform
+encryption_method: real_aes
+encryption_method_configuration: {  }
+encryption_key: webform_encrypt_key
