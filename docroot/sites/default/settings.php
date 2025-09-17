@@ -822,6 +822,18 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
+
+  /**
+   * Disable CSS and JS aggregation.
+   */
+  $config['system.performance']['css']['preprocess'] = FALSE;
+  $config['system.performance']['js']['preprocess'] = FALSE;
+
+  ini_set('max_input_nesting_level', 512);
+  ini_set('xdebug.max_nesting_level', 512);
+  ini_set('zend.assertions', 1);
+
+  $settings['file_private_path'] = 'sites/default/files/private';
 }
 
 $repo_root = dirname(DRUPAL_ROOT);

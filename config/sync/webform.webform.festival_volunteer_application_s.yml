@@ -10,26 +10,26 @@ third_party_settings:
   wateraid_donation_forms:
     donation_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_email_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_title:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_text: ''
     after_confirmation_footer:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     after_confirmation_cta:
       value: "<drupal-entity data-embed-button=\"image\" data-entity-embed-display=\"entity_reference:image_embed_button_formatter\" data-entity-embed-display-settings=\"{&quot;responsive_image_style&quot;:&quot;&quot;,&quot;show_credit&quot;:0,&quot;show_caption&quot;:0}\" data-entity-type=\"media\" data-entity-uuid=\"183f7d08-16c8-40dc-b9d7-3eaa271acaed\"></drupal-entity>\r\n"
-      format: wateraid_editor
+      format: basic_html
     direct_debit_guarantee:
       value: ''
-      format: wateraid_editor
+      format: basic_html
   webform_wizard_extra:
     one_page: false
   wateraid_forms:

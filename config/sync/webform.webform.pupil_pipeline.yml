@@ -12,30 +12,30 @@ third_party_settings:
   wateraid_donation_forms:
     message:
       value: "<p>This fun and educational activity will inspire your pupils to get clean water to children who need it most.</p>\r\n\r\n<ul>\r\n\t<li><strong>Ask your pupils to bring in £2 or a donation of their choice.</strong> £2 is the cost of one metre of pipeline, which could help transport clean, safe water to children in the developing world. £250 from your school could pay for a handpump!</li>\r\n\t<li><strong>Gather your pupils together and direct them to form a long line.&nbsp;</strong>They can go through the playground, over the climbing frame, across the playing field or even around town. Try to make your Pupil Pipeline as long as possible!</li>\r\n\t<li><strong>Start your Pupil Pipeline challenge!</strong> Ask your pupils to pass one or more buckets, bottles, jars, cups or even wellies filled with water along the line without spilling a drop. How quickly can they pass it along? You can then use the water for a project of your choice – for example, watering the plants in your school garden. Or you could include a Pupil Pipeline in your school sports day and add a competitive edge!</li>\r\n</ul>\r\n\r\n<h3>Here's what the Pupil Pipeline achieved last year:</h3>\r\n\r\n<drupal-entity data-embed-button=\"video\" data-entity-embed-display=\"view_mode:media.embedded\" data-entity-type=\"media\" data-entity-uuid=\"6c5537b5-4080-41f5-bc80-f4247948fa7c\"></drupal-entity>\r\n"
-      format: wateraid_editor
+      format: basic_html
     currency: GBP
     donation_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_email_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_title:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_text: ''
     after_confirmation_footer:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     after_confirmation_cta:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     direct_debit_guarantee:
       value: ''
-      format: wateraid_editor
+      format: basic_html
   webform_wizard_extra:
     one_page: false
   wateraid_donation_stripe:
