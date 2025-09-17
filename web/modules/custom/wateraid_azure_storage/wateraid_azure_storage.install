@@ -38,15 +38,3 @@ function wateraid_azure_storage_uninstall(): void {
     $definition_update_manager->uninstallFieldStorageDefinition($field_storage_definition_message_retries);
   }
 }
-
-/**
- * Ensure Loqate module is enabled before post update runs.
- */
-function wateraid_azure_storage_update_9001(&$sandbox): void {
-  $site = \Drupal::config('system.date')->get('country.default');
-  if ($site != 'GB') {
-    return;
-  }
-
-  \Drupal::service('module_installer')->install(['loqate']);
-}
