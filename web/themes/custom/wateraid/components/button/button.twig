@@ -1,3 +1,25 @@
-<a href="{{ link }}" class="btn {{ type }}">
-  {{ text }}
+<a href="{{ link }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
+  {% if type == 'primary' or type == 'secondary' %}
+    <span class="button__svg button__svg--left">
+        {{ include('@wateraid/images/icons/wa-utility-arrow.svg') }}
+      </span>
+    {{ text }}
+    <span class="button__svg button__svg--right">
+        {{ include('@wateraid/images/icons/wa-utility-arrow.svg') }}
+      </span>
+  {% endif %}
+
+  {% if type == 'donate' %}
+    <span class="button__svg">
+        {{ include('@wateraid/images/icons/wa-utility-lock.svg') }}
+      </span>
+    {{ text }}
+  {% endif %}
+
+  {% if type == 'icon' or type == 'social' %}
+    {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+    {{ include(icon_url) }}
+  {% endif %}
 </a>
+
+

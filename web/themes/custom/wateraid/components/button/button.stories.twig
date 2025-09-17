@@ -1,21 +1,151 @@
 {# web/themes/custom/wateraid/components/button.stories.twig #}
 {% stories button with { title: 'wateraid/Atoms/Button' } %}
 
-  {% story using_args with {
-    name: 'Button',
+  {% story PrimaryLight with {
+    name: 'PrimaryLight',
     args: {
       text: 'Click to view more'|t,
       link: 'https://www.google.com'|t,
-      type: 'primary'
+      type: 'primary',
+      theme: 'light'
     }
   } %}
 
     {{ include('wateraid:button', {
       text,
       link,
-      type
+      type,
+      theme
     }) }}
+  {% endstory %}
 
+  {% story PrimaryDark with {
+    name: 'PrimaryDark',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'primary',
+      theme: 'dark'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story SecondaryLight with {
+    name: 'SecondaryLight',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'secondary',
+      theme: 'light'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story SecondaryDark with {
+    name: 'SecondaryDark',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'secondary',
+      theme: 'dark'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story Donate with {
+    name: 'Donate',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'donate',
+      theme: ''
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story IconLight with {
+    name: 'IconLight',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'icon',
+      theme: 'light',
+      icon: 'wa-utility-arrow'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story IconDark with {
+    name: 'IconDark',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'icon',
+      theme: 'dark',
+      icon: 'wa-utility-arrow'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story Social with {
+    name: 'Social',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'social',
+      theme: '',
+      icon: 'facebook'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      type,
+      theme
+    }) }}
   {% endstory %}
 
 {% endstories %}
