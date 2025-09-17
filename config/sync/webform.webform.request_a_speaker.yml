@@ -14,26 +14,26 @@ third_party_settings:
     currency: GBP
     donation_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_email_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_title:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_text: ''
     after_confirmation_footer:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     after_confirmation_cta:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     direct_debit_guarantee:
       value: ''
-      format: wateraid_editor
+      format: basic_html
   wateraid_donation_stripe:
     test_secret_key: ''
     test_public_key: ''

@@ -13,26 +13,26 @@ third_party_settings:
     currency: GBP
     donation_confirmation:
       value: "<h2>Your donation details:</h2>\r\n\r\n<p><strong>Date</strong><br />\r\n[webform_submission:donation-date]</p>\r\n\r\n<p><strong>Frequency of donation</strong><br />\r\n[webform_submission:donation-frequency]</p>\r\n\r\n<p><strong>Donation amount</strong><br />\r\n£[webform_submission:donation-amount]</p>\r\n"
-      format: wateraid_editor
+      format: basic_html
     gift_aid_confirmation:
       value: "<h2><strong>Gift Aid confirmation</strong></h2>\r\n\r\n<p>We confirm that from [webform_submission:donation-date] WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make. Please see the confirmation email for more details on the Gift Aid scheme.&nbsp;</p>\r\n"
-      format: wateraid_editor
+      format: basic_html
     gift_aid_email_confirmation:
       value: "<h2>Gift Aid declaration</h2>\r\n\r\n<p>Thank you for submitting your Gift Aid online declaration. The Gift Aid scheme gives WaterAid an extra 25p for each pound donated, allowing us to reach even more communities in desperate need.</p>\r\n\r\n<p>We confirm that from [webform_submission:donation-date]&nbsp;WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make.&nbsp;You have confirmed that you pay an amount of income tax/capital gains tax which is at least equal to the amount we (or any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.</p>\r\n\r\n<p>Adding 25p to every pound really makes your gift go further.</p>\r\n\r\n<p><span><span><span><span>You do not need to do anything further for us to reclaim the tax on your gifts. If any of the details above are incorrect please let us know. You also have the option of withdrawing from the Gift Aid scheme within 30 days of this confirmation.</span></span></span></span></p>\r\n\r\n<p><span><span><span><span><span><span><span><span><span><span><span>If you do stop paying tax in the future, we would appreciate it if you could inform us so that we can adjust our records accordingly. If you have any queries please do not hesitate to contact our Supporter Care team on 020 7793 4594.</span></span></span></span></span></span></span></span></span></span></span></p>\r\n"
-      format: wateraid_editor
+      format: basic_html
     social_share_title:
       value: "<p>Spread the word to help reach even more people around the world:</p>\r\n"
-      format: wateraid_editor
+      format: basic_html
     social_share_text: ' I just donated to @WaterAidUK. You can too: wateraid.org/uk/donate'
     after_confirmation_footer:
       value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you. Please do not send your bank details by email.</p>\r\n"
-      format: wateraid_editor
+      format: basic_html
     after_confirmation_cta:
       value: "<h2>You're helping to share the joy of clean water!</h2>\r\n\r\n<drupal-entity data-align=\"left\" data-embed-button=\"image\" data-entity-embed-display=\"entity_reference:image_embed_button_formatter\" data-entity-embed-display-settings=\"{&quot;responsive_image_style&quot;:&quot;landscape_image&quot;,&quot;show_credit&quot;:0,&quot;show_caption&quot;:0}\" data-entity-type=\"media\" data-entity-uuid=\"a320447e-4eab-49ae-ab28-f488bd511553\"></drupal-entity>\r\n\r\n<p>&nbsp;</p>\r\n"
-      format: wateraid_editor
+      format: basic_html
     direct_debit_guarantee:
       value: "<p><strong>The Direct Debit Guarantee</strong></p>\r\n\r\n<ul>\r\n\t<li>This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.</li>\r\n\t<li>If there are any changes to the amount, date or frequency of your Direct Debit WaterAid will notify you 10 working days in advance of your account being debited or as otherwise agreed. If you request WaterAid to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</li>\r\n\t<li>If an error is made in the payment of your Direct Debit by WaterAid or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your Bank or Building Society.</li>\r\n\t<li>If you receive a refund you are not entitled to, you must pay it back when WaterAid asks you to.</li>\r\n\t<li>You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify us.</li>\r\n</ul>\r\n\r\n<p>To get in touch you can give us a call on 020 7793 4594 or email us on <a href=\"\">supportercare@wateraid.org</a>.</p>\r\n\r\n<p><strong>Service User Name: </strong>WaterAid</p>\r\n\r\n<p><strong>Service User Number: </strong>406789</p>\r\n"
-      format: wateraid_editor
+      format: basic_html
   webform_pdf_receipt:
     pdf_text:
       value: ''

@@ -1,0 +1,8 @@
+name: Webform Capture Plus (Address Lookup)
+type: module
+description: Provides integration to the capture plus address look up service.
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - webform:webform
+  - loqate:loqate

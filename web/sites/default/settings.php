@@ -917,6 +917,8 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   ini_set('max_input_nesting_level', 512);
   ini_set('xdebug.max_nesting_level', 512);
   ini_set('zend.assertions', 1);
+
+  $settings['file_private_path'] = 'sites/default/files/private';
 }
 
 $settings['config_sync_directory'] = DRUPAL_ROOT . '/../config/sync';
