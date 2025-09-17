@@ -243,9 +243,8 @@ libraries:
     - jquery.chosen
     - progress-tracker
 requirements:
-  cdn: false
+  cdn: true
   clientside_validation: true
-  bootstrap: true
   spam: true
 third_party_settings:
   wateraid_forms:
