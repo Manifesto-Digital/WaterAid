@@ -1,0 +1,20 @@
+uuid: 2f62cd3d-c59d-4735-9176-5a2881c36069
+langcode: en
+status: true
+dependencies: {  }
+alternativeSigns: {  }
+currencyCode: JPY
+currencyNumber: '392'
+label: 'Japanese yen'
+roundingStep: 1.0
+sign: ¥
+subunits: 1000
+usages:
+  -
+    countryCode: FM
+    start: '1914-10-03'
+    end: '1944-01-01'
+  -
+    countryCode: JP
+    start: '1871-06-01'
+    end: null

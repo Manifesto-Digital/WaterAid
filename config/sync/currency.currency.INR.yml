@@ -1,0 +1,37 @@
+uuid: 9a9b0fc9-2057-4282-95ec-d9015e3e4a1a
+langcode: en
+status: true
+dependencies: {  }
+alternativeSigns:
+  - ₨
+currencyCode: INR
+currencyNumber: '356'
+label: 'Indian rupee'
+roundingStep: 0.01
+sign: ₹
+subunits: 100
+usages:
+  -
+    countryCode: BD
+    start: '1835-08-17'
+    end: '1948-04-01'
+  -
+    countryCode: BT
+    start: '1907-01-01'
+    end: null
+  -
+    countryCode: IN
+    start: '1835-08-17'
+    end: null
+  -
+    countryCode: IQ
+    start: '1920-11-11'
+    end: '1931-04-19'
+  -
+    countryCode: NP
+    start: '1870-01-01'
+    end: '1966-10-17'
+  -
+    countryCode: PK
+    start: '1835-08-17'
+    end: '1947-08-15'

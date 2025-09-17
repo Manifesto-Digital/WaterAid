@@ -1,0 +1,9 @@
+just_giving:
+  environments: 'https://api.staging.justgiving.com/'
+  api_version: '1'
+environments: 'https://api.justgiving.com/'
+api_key: b60a926a
+api_version: '1'
+charity_id: '54697'
+username: null
+password: null

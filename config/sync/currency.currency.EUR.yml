@@ -1,0 +1,152 @@
+uuid: e4798729-3e3a-47f6-bd13-fb07bdab4b59
+langcode: en
+status: true
+dependencies: {  }
+alternativeSigns: {  }
+currencyCode: EUR
+currencyNumber: '978'
+label: Euro
+roundingStep: 0.01
+sign: €
+subunits: 100
+usages:
+  -
+    countryCode: AD
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: AT
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: AX
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: BE
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: BL
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: CS
+    start: '2003-02-04'
+    end: '2006-06-03'
+  -
+    countryCode: CY
+    start: '2008-01-01'
+    end: null
+  -
+    countryCode: DE
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: EE
+    start: '2011-01-01'
+    end: null
+  -
+    countryCode: ES
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: FI
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: FR
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: GF
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: GP
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: GR
+    start: '2001-01-01'
+    end: null
+  -
+    countryCode: IE
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: IT
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: LU
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: LV
+    start: '2014-01-01'
+    end: null
+  -
+    countryCode: MC
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: ME
+    start: '2002-01-01'
+    end: null
+  -
+    countryCode: MF
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: MQ
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: MT
+    start: '2008-01-01'
+    end: null
+  -
+    countryCode: NL
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: PM
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: PT
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: EU
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: RE
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: SI
+    start: '2007-01-01'
+    end: null
+  -
+    countryCode: SK
+    start: '2009-01-01'
+    end: null
+  -
+    countryCode: SM
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: TF
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: VA
+    start: '1999-01-01'
+    end: null
+  -
+    countryCode: YT
+    start: '1999-01-01'
+    end: null

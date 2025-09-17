@@ -1,0 +1,20 @@
+uuid: 8e167998-2c15-4e88-ac9b-e5046a43445c
+langcode: en
+status: true
+dependencies: {  }
+alternativeSigns: {  }
+currencyCode: SEK
+currencyNumber: '752'
+label: 'Swedish krona'
+roundingStep: 0.01
+sign: ''
+subunits: 100
+usages:
+  -
+    countryCode: 'NO'
+    start: '1873-05-27'
+    end: '1905-06-07'
+  -
+    countryCode: SE
+    start: '1873-05-27'
+    end: null

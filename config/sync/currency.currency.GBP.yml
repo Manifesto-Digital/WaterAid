@@ -1,0 +1,52 @@
+uuid: 5d3bf9c2-5288-40ae-bffc-61233e905319
+langcode: en
+status: true
+dependencies: {  }
+alternativeSigns: {  }
+currencyCode: GBP
+currencyNumber: '826'
+label: 'British pound sterling'
+roundingStep: 0.01
+sign: £
+subunits: 100
+usages:
+  -
+    countryCode: GB
+    start: '1694-07-27'
+    end: null
+  -
+    countryCode: GG
+    start: '1830-01-01'
+    end: null
+  -
+    countryCode: GS
+    start: '1908-01-01'
+    end: null
+  -
+    countryCode: IE
+    start: '1800-01-01'
+    end: '1922-01-01'
+  -
+    countryCode: IM
+    start: '1840-01-03'
+    end: null
+  -
+    countryCode: IO
+    start: '1965-11-08'
+    end: null
+  -
+    countryCode: JE
+    start: '1837-01-01'
+    end: null
+  -
+    countryCode: SD
+    start: '1889-01-19'
+    end: '1958-01-01'
+  -
+    countryCode: SL
+    start: '1808-11-30'
+    end: '1966-02-04'
+  -
+    countryCode: VG
+    start: '1833-01-01'
+    end: '1959-01-01'
