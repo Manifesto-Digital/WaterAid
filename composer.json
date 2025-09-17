@@ -99,7 +99,6 @@
     "drupal/svg_image_field": "^2.3",
     "drupal/tb_megamenu": "^1.10",
     "drupal/tmgmt_google": "^1.2",
-    "drupal/token": "^1.15",
     "drupal/twig_tweak": "^3.4",
     "drupal/views_infinite_scroll": "^2.0",
     "drupal/view_mode_selector": "^1.1",
