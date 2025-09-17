@@ -1,0 +1,13 @@
+webform_capture_plus:
+  version: VERSION
+  js:
+    js/webform_capture_plus.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - core/drupalSettings
+    - clientside_validation_jquery/cv.jquery.validate
+  css:
+    theme:
+      css/webform_capture_plus.css: {}

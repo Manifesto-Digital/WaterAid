@@ -15,30 +15,30 @@ third_party_settings:
   wateraid_donation_forms:
     message:
       value: "<p>Thank you so much for contacting us – we really appreciate your interest in our work.</p>\r\n\r\n<p>We'll respond to your message as soon as we can, and any information you may have requested will be with you shortly. In the meantime you may find some useful information in our FAQs.</p>"
-      format: wateraid_editor
+      format: basic_html
     currency: GBP
     donation_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_email_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_title:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_text: ''
     after_confirmation_footer:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     after_confirmation_cta:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     direct_debit_guarantee:
       value: ''
-      format: wateraid_editor
+      format: basic_html
   webform_wizard_extra:
     one_page: false
   wateraid_donation_stripe:

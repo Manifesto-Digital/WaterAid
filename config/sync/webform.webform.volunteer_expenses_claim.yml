@@ -13,26 +13,26 @@ third_party_settings:
     currency: GBP
     donation_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     gift_aid_email_confirmation:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_title:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     social_share_text: ''
     after_confirmation_footer:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     after_confirmation_cta:
       value: ''
-      format: wateraid_editor
+      format: basic_html
     direct_debit_guarantee:
       value: ''
-      format: wateraid_editor
+      format: basic_html
   webform_pdf_receipt:
     pdf_text:
       value: "<meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n<title></title>\r\n<style type=\"text/css\">body {\r\n      font-family: 'Arial', sans-serif;\r\n      font-size: 16px;\r\n      line-height: 1.4;\r\n      color: #3A4652;\r\n    }   \r\n    h1, h3, p {\r\n      margin: 0;\r\n    }\r\n    h1  {\r\n      text-transform: uppercase;\r\n    }\r\n    h2  {\r\n      color: #0076b3;\r\n      margin-top: 16px;\r\n      margin-bottom: 16px;\r\n    }\r\n    h3  {\r\n      font-weight: bold;      \r\n    }    \r\n    td {      \r\n      vertical-align: top;\r\n    }\r\n</style>\r\n<table width=\"100%\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"3\">\r\n\t\t\t<h1 style=\"font-size: 36px;\">Volunteer expenses claim</h1>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Finance coding: 3660&nbsp;&nbsp;204F3&nbsp;&nbsp;XA95A&nbsp;&nbsp;PDVARS01</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td width=\"33%\">\r\n\t\t\t<h2>Volunteer details</h2>\r\n\t\t\t</td>\r\n\t\t\t<td width=\"33%\">\r\n\t\t\t<h2>Expenses summary</h2>\r\n\t\t\t</td>\r\n\t\t\t<td width=\"33%\">\r\n\t\t\t<h2>Bank details</h2>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Name</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:name]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Total mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:total_mileage]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Bank name</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:bank_name]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Email address</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:email_address]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Total GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:total_gbp_amount]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Account name</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:account_name]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date submitted</h3>\r\n\r\n\t\t\t<p>[webform_submission:created]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Account number</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:account_number]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Sort code</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:sort_code]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h2>Claim 1</h2>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h2>Claim 2</h2>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h2>Claim 3</h2>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:date_of_talk_or_workshop]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:date_of_talk_or_workshop_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Date of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:date_of_talk_or_workshop_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Details of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:details_of_the_talk_or_workshop]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Details of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:details_of_talk_or_workshop_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Details of talk, workshop or training day</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:details_of_talk_or_workshop_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Type of expense claim</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:type_of_expense_claim]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Type of expense claim</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:type_of_expense_claim_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Type of expense claim</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:type_of_expense_claim_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>Mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:mileage]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:mileage_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>Mileage</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:mileage_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3>GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:gbp_amount]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:gbp_amount_2]</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3>GBP amount</h3>\r\n\r\n\t\t\t<p>[webform_submission:values:gbp_amount_3]</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<h3><a href=\"[webform_submission:values:receipts_for_expense_claim_s_]\">Link to receipt(s)</a></h3>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3><a href=\"[webform_submission:values:upload_your_receipt_s_2]\">Link to receipt(s)</a></h3>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<h3><a href=\"[webform_submission:values:upload_your_receipt_s_3]\">Link to receipt(s)</a></h3>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n"
@@ -90,7 +90,6 @@ elements: |-
     '#required': true
     '#date_date_min': '-6 months'
     '#date_date_max': today
-    '#datepicker': true
     '#date_date_format': d/m/Y
   details_of_the_talk_or_workshop:
     '#type': textarea
@@ -169,7 +168,6 @@ elements: |-
           value: 'Yes'
     '#date_date_min': '-6 months'
     '#date_date_max': today
-    '#datepicker': true
     '#date_date_format': d/m/Y
   details_of_talk_or_workshop_2:
     '#type': textarea
@@ -272,7 +270,6 @@ elements: |-
           value: 'Yes'
     '#date_date_min': '-6 months'
     '#date_date_max': today
-    '#datepicker': true
     '#date_date_format': d/m/Y
   details_of_talk_or_workshop_3:
     '#type': textarea

@@ -160,7 +160,7 @@ element:
     password_confirm: password_confirm
 html_editor:
   disabled: false
-  element_format: wateraid_editor
+  element_format: basic_html
   mail_format: wateraid_mail
   tidy: true
   make_unused_managed_files_temporary: true

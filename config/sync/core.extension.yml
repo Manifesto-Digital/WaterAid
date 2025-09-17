@@ -122,6 +122,7 @@ module:
   wateraid_forms: 0
   wateraid_just_giving: 0
   webform: 0
+  webform_capture_plus: 0
   webform_pdf_receipt: 0
   webform_rest: 0
   webform_scheduled_email: 0
