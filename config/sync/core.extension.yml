@@ -7,6 +7,7 @@ module:
   automated_cron: 0
   azure_blob_storage: 0
   better_exposed_filters: 0
+  basic_auth: 0
   big_pipe: 0
   block: 0
   block_content: 0
