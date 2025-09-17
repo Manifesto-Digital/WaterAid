@@ -990,8 +990,9 @@ class DonationsWebformHandler extends WebformHandlerBase {
       // Only show the message if we have the frequency, currency sign and
       // amount so that we don't show a message with unreplaced tokens.
       if ($currency->getSign()
-        && $form_state->get(DonationsWebformAmount::STORAGE_FREQUENCY)
-        && $form_state->get([DonationsWebformAmount::STORAGE_AMOUNT])
+        && $form_state->has(DonationsWebformAmount::STORAGE_FREQUENCY)
+        && $form_state->has([DonationsWebformAmount::STORAGE_AMOUNT])
+        && $form_state->has([DonationsWebformAmount::STORAGE_DURATION])
       ) {
         // Get the correct donation message for the selected frequency.
         $payment_message = $this->configuration[$form_state->get(DonationsWebformAmount::STORAGE_FREQUENCY)]['progress_donation_message'];

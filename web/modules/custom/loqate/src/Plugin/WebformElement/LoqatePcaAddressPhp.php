@@ -103,7 +103,7 @@ class LoqatePcaAddressPhp extends WebformCompositeBase {
 
     // Copy required value on initalize to allow changes and checks that don't
     // conflict with states and Webform conditions.
-    $element['#loqate_required'] = $element['#required'];
+    $element['#loqate_required'] = ($element['#required']) ?? FALSE;
   }
 
   /**
