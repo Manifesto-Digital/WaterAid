@@ -34,6 +34,7 @@
     "drupal/admin_toolbar": "^3.5",
     "drupal/anonymous_token": "^3.0@beta",
     "drupal/azure_storage": "^2.0",
+    "drupal/clientside_validation": "^4.1",
     "drupal/config_ignore": "^3.3",
     "drupal/config_split": "^2.0",
     "drupal/core-composer-scaffold": "^10.5",
@@ -105,7 +106,7 @@
   "conflict": {
     "drupal/drupal": "*"
   },
-  "minimum-stability": "beta",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
     "allow-plugins": {
