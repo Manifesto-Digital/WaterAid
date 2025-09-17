@@ -12,9 +12,22 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "justgiving/justgiving",
+          "version": "1.0",
+          "type": "drupal-vendor",
+          "dist": {
+              "url": "https://github.com/JustGiving/JustGiving.Api.Sdk/archive/master.zip",
+              "type": "zip"
+          }
+      }
     }
   ],
   "require": {
+    "baikho/loqate-php": "^2.0",
     "composer/installers": "^2.0",
     "cweagans/composer-patches": "^1.7",
     "drupal/address": "^2.0",
@@ -96,6 +109,8 @@
     "drupal/webp": "^1.0@RC",
     "drupal/xmlsitemap": "^2.0",
     "drush/drush": "^12.4",
+    "justgiving/justgiving": "^1.0",
+    "mikehaertl/phpwkhtmltopdf": "^2.5",
     "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
@@ -134,12 +149,18 @@
         "[web-root]/sites/development.services.yml": false
       }
     },
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
     "installer-paths": {
       "docroot/core": [
         "type:drupal-core"
       ],
-      "docroot/libraries/{$name}": [
-        "type:drupal-library"
+      "web/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
       ],
       "docroot/modules/contrib/{$name}": [
         "type:drupal-module"
@@ -159,8 +180,11 @@
       "docroot/profiles/custom/{$name}": [
         "type:drupal-custom-profile"
       ],
-      "docroot/themes/custom/{$name}": [
+      "web/themes/custom/{$name}": [
         "type:drupal-theme"
+      ],
+      "vendor/{$name}": [
+        "type:drupal-vendor"
       ]
     },
     "drupal-core-project-message": {
