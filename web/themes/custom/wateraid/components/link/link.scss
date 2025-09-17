@@ -1,4 +1,4 @@
-@import './sass/styles';
+@import "./sass/styles";
 
 .link {
   @include link();
@@ -13,6 +13,7 @@
 
   &--text {
     @include text-link();
+
     display: flex;
     gap: $wa-spacing-01;
     align-items: center;

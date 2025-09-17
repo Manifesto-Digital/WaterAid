@@ -7,13 +7,15 @@
     @include link();
   }
 
-  ol, ul {
+  ol,
+  ul {
     @include paragraph-md();
+
     padding-left: $wa-spacing-07;
   }
 
   ul {
-    li::marker{
+    li::marker {
       color: $wa-blue;
     }
   }
