@@ -16,3 +16,30 @@ entity.group.webform:
     _group_permission: 'access group_webform overview'
   options:
     _admin_route: TRUE
+
+group_webform.remove_confirm:
+  path: '/node/{node}/remove'
+  defaults:
+    _title: 'Remove from Site'
+    _form: 'Drupal\group_webform\Form\RemoveConfirmForm'
+  requirements:
+    _group_remove: 'true'
+  options:
+    _admin_route: TRUE
+    node: \d+
+    _node_operation_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+group_webform.webform_remove_confirm:
+  path: '/form/{webform}/remove'
+  defaults:
+    _title: 'Remove from Site'
+    _form: 'Drupal\group_webform\Form\RemoveConfirmForm'
+  requirements:
+    _group_remove: 'true'
+  options:
+    _admin_route: TRUE
+    parameters:
+      webform:
+        type: entity:webform

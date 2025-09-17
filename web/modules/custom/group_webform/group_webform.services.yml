@@ -21,3 +21,9 @@ services:
     class: Drupal\group_webform\EventSubscriber\GroupWebformRouteSubscriber
     tags:
       - { name: event_subscriber }
+
+  access_check.group_webform.group_remove:
+    class: Drupal\group_webform\Access\GroupRemoveAccessChecker
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: access_check, applies_to: _group_remove }
