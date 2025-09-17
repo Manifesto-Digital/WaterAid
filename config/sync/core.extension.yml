@@ -56,9 +56,10 @@ module:
   link: 0
   linkit: 0
   locale: 0
+  loqate: 0
+  loqate_email: 0
   masquerade: 0
   media: 0
-  media_directories: 0
   media_library: 0
   menu_item_extras: 0
   menu_link_content: 0
@@ -137,7 +138,6 @@ module:
   ds: 1
   ds_extras: 1
   encrypt: 1
-  entity_browser: 1
   entity_print: 1
   focal_point: 1
   jquery_ui: 1

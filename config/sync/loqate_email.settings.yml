@@ -1,0 +1,6 @@
+mode: live
+live_api_key: loqate_email_live_api_key
+invalid_email_error_message: 'Please enter a valid email address'
+timeout: '15000'
+disable_globally: 0
+debug: 0

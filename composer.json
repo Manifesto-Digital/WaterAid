@@ -39,7 +39,6 @@
     "drupal/entity_update": "^3.0",
     "drupal/ds": "^3.30",
     "drupal/encrypt": "^3.2",
-    "drupal/entity_browser": "^2.15",
     "drupal/entity_print": "^2.18",
     "drupal/entity_usage": "^2.0@beta",
     "drupal/facets": "^3.0",
@@ -55,7 +54,6 @@
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
-    "drupal/media_directories": "^2.1@beta",
     "drupal/metatag": "^2.0",
     "drupal/migrate_plus": "^6.0",
     "drupal/migrate_tools": "^6.1",
@@ -176,6 +174,9 @@
     "patches": {
         "drupal/group_content_menu": {
             "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"
+        },
+        "drupal/webform_rest": {
+            "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
         }
     },
     "merge-plugin": {
