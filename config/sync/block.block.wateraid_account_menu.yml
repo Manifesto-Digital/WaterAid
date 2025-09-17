@@ -1,6 +1,6 @@
 uuid: 2fee28ca-d737-4898-b8e2-69816e8d0218
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.account
@@ -12,7 +12,7 @@ _core:
   default_config_hash: gmxYWWHmgbe0Pnv8y48ZLSLH5mEHejOjAP6RLxUfdzU
 id: wateraid_account_menu
 theme: wateraid
-region: secondary_menu
+region: header
 weight: -4
 provider: null
 plugin: 'system_menu_block:account'
