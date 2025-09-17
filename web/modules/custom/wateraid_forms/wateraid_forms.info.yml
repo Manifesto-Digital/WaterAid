@@ -7,3 +7,8 @@ wateraid.package: forms
 dependencies:
   - webform:webform
   - webform:webform_ui
+  - clientside_validation:clientside_validation
+  - clientside_validation:clientside_validation_jquery
+config_devel:
+  - user.role.form_builder
+  - user.role.form_manager

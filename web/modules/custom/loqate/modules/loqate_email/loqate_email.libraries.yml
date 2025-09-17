@@ -7,3 +7,4 @@ loqate-validate:
     - core/once
     - core/drupalSettings
     - core/drupal.ajax
+    - clientside_validation_jquery/cv.jquery.validate
