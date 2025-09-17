@@ -83,7 +83,6 @@
     "drupal/svg_image": "^3.0",
     "drupal/tb_megamenu": "^1.10",
     "drupal/tmgmt_google": "^1.2",
-    "drupal/token": "^1.15",
     "drupal/twig_tweak": "^3.4",
     "drupal/views_bulk_operations": "^4.3",
     "drupal/webform": "^6.3@beta",
