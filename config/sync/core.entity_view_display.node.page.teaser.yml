@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.field_content
+    - field.field.node.page.field_teaser_image
+    - field.field.node.page.field_teaser_text
     - node.type.page
   module:
     - user
@@ -15,6 +17,21 @@ targetEntityType: node
 bundle: page
 mode: teaser
 content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
   links:
     weight: 101
     region: content

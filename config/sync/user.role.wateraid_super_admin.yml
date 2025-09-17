@@ -13,6 +13,7 @@ dependencies:
     - taxonomy.vocabulary.event_types
     - taxonomy.vocabulary.region
     - node.type.listing_page
+    - node.type.page
   module:
     - node
     - quick_node_clone
@@ -27,11 +28,14 @@ permissions:
   - 'clone listing_page content'
   - 'clone own event content'
   - 'clone own landing_page content'
+  - 'clone own page content'
+  - 'clone page content'
   - 'clone own listing_page content'
   - 'clone own story content'
   - 'clone story content'
   - 'create event content'
   - 'create landing_page content'
+  - 'create page content'
   - 'create listing_page content'
   - 'create story content'
   - 'create terms in audiences'
@@ -42,6 +46,7 @@ permissions:
   - 'create terms in themes'
   - 'delete any event content'
   - 'delete any landing_page content'
+  - 'delete any page content'
   - 'delete any listing_page content'
   - 'delete any story content'
   - 'delete event revisions'
@@ -49,6 +54,8 @@ permissions:
   - 'delete listing_page revisions'
   - 'delete own event content'
   - 'delete own landing_page content'
+  - 'delete own page content'
+  - 'delete page revisions'
   - 'delete own listing_page content'
   - 'delete own story content'
   - 'delete story revisions'
@@ -66,10 +73,12 @@ permissions:
   - 'delete terms in themes'
   - 'edit any event content'
   - 'edit any landing_page content'
+  - 'edit any page content'
   - 'edit any listing_page content'
   - 'edit any story content'
   - 'edit own event content'
   - 'edit own landing_page content'
+  - 'edit own page content'
   - 'edit own listing_page content'
   - 'edit own story content'
   - 'edit terms in audiences'
@@ -80,6 +89,7 @@ permissions:
   - 'edit terms in themes'
   - 'revert event revisions'
   - 'revert landing_page revisions'
+  - 'revert page revisions'
   - 'revert listing_page revisions'
   - 'revert story revisions'
   - 'revert term revisions in audiences'
@@ -90,6 +100,7 @@ permissions:
   - 'revert term revisions in themes'
   - 'view event revisions'
   - 'view landing_page revisions'
+  - 'view page revisions'
   - 'view listing_page revisions'
   - 'view story revisions'
   - 'view term revisions in audiences'
