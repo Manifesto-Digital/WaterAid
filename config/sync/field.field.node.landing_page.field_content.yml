@@ -1,0 +1,31 @@
+uuid: 0ad72509-81e6-4882-bc7a-6d9910c6ca59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.rich_text
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_content
+field_name: field_content
+entity_type: node
+bundle: landing_page
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      rich_text: rich_text
+    negate: 0
+    target_bundles_drag_drop:
+      rich_text:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions
