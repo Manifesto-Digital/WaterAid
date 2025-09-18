@@ -5,6 +5,7 @@
  * Module file for wateraid_donation_forms module.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Render\Element;
 use Drupal\node\NodeInterface;
@@ -15,7 +16,7 @@ use Drupal\webform\WebformSubmissionInterface;
 /**
  * Implements hook_theme().
  */
-function wateraid_donation_forms_theme() {
+function wateraid_donation_forms_theme(): array {
   return [
     'wateraid_donation_forms_benefit' => [
       'variables' => [
@@ -436,6 +437,21 @@ function wateraid_donation_forms_preprocess_node__webform(&$variables) {
         ];
         break;
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_donation_forms_preprocess_webform(&$variables): void {
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  if ($webform = \Drupal::entityTypeManager()->getStorage('webform')->load($variables['element']['#webform_id'])) {
+    if (_wateraid_donation_forms_is_donation_form($webform)) {
+      $variables['#attached']['library'][] = 'wateraid_donation_forms/donation';
+      $variables['attributes']['class'][] = Html::getClass('webform-donations-page');
+      $variables['attributes']['class'][] = Html::getClass('webform-page');
     }
   }
 }
