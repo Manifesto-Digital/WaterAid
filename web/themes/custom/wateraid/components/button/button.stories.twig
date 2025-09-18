@@ -144,7 +144,30 @@
       text,
       link,
       type,
-      theme
+      theme,
+      icon
+    }) }}
+  {% endstory %}
+
+  {% story IconSmall with {
+    name: 'IconSmall',
+    args: {
+      id: 'wa-close',
+      link: '',
+      text: 'Click to view more'|t,
+      type: 'icon-small',
+      theme: 'dark',
+      icon: 'wa-utility-close'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      id,
+      type,
+      theme,
+      icon
     }) }}
   {% endstory %}
 
