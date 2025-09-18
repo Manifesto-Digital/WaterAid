@@ -161,7 +161,7 @@ element:
 html_editor:
   disabled: false
   element_format: basic_html
-  mail_format: wateraid_mail
+  mail_format: basic_html
   tidy: true
   make_unused_managed_files_temporary: true
 file:
