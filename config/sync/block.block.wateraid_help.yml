@@ -1,6 +1,6 @@
 uuid: 8eeea39f-ccf1-4d69-94c1-258231c84f52
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - help
@@ -10,7 +10,7 @@ _core:
   default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
 id: wateraid_help
 theme: wateraid
-region: sidebar_first
+region: header
 weight: 0
 provider: null
 plugin: help_block

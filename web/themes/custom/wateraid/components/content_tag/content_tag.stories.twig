@@ -1,0 +1,35 @@
+{# web/themes/custom/wateraid/components/content_tag.stories.twig #}
+{% stories link with { title: 'wateraid/Atoms/ContentTag' } %}
+
+  {% story Large with {
+    name: 'Large',
+    args: {
+      text: 'Content tag'|t,
+      size: 'large',
+      theme: 'light'
+    }
+  } %}
+
+    {{ include('wateraid:content_tag', {
+      text,
+      size,
+      theme
+    }) }}
+  {% endstory %}
+
+  {% story Small with {
+    name: 'Small',
+    args: {
+      text: 'Content tag'|t,
+      size: 'small',
+      theme: 'light'
+    }
+  } %}
+
+    {{ include('wateraid:content_tag', {
+      text,
+      size,
+      theme
+    }) }}
+  {% endstory %}
+{% endstories %}

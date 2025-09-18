@@ -1,0 +1,25 @@
+@import "./sass/styles";
+
+.content-tag {
+  display: inline-flex;
+  padding: $wa-spacing-01 $wa-spacing-02;
+  justify-content: center;
+  align-items: center;
+  border-radius: $radius-xs;
+
+  &--large {
+    @include paragraph-sm();
+  }
+
+  &--small {
+    @include paragraph-xs();
+  }
+
+  &--light {
+    background-color: $wa-navy-10;
+  }
+
+  &--dark {
+    background-color: $wa-navy-80;
+  }
+}

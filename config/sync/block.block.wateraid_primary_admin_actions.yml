@@ -8,8 +8,8 @@ _core:
   default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
 id: wateraid_primary_admin_actions
 theme: wateraid
-region: highlighted
-weight: -5
+region: breadcrumb
+weight: -6
 provider: null
 plugin: local_actions_block
 settings:
