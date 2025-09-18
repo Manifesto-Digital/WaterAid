@@ -1,6 +1,6 @@
-{% stories image with { title: 'wateraid/Image' } %}
-  {% story using_args with {
-    name: 'Image',
+{% stories image with { title: 'wateraid/Atoms/Image' } %}
+  {% story default with {
+    name: 'Default',
     args: {
       caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       credit: 'Lorem ipsum dolor sit amet.',
@@ -8,7 +8,30 @@
       caption_display: 'default'
     }
   } %}
-    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Exammple image"/>{% endset %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+
+    {{ include('wateraid:image', {
+      image,
+      caption,
+      credit,
+      width,
+      caption_display
+    }) }}
+  {% endstory %}
+
+  {% story expandable with {
+    name: 'Expandable',
+    args: {
+      caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      credit: 'Lorem ipsum dolor sit amet.',
+      width: 'large',
+      caption_display: 'expand'
+    }
+  } %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+
     {{ include('wateraid:image', {
       image,
       caption,
