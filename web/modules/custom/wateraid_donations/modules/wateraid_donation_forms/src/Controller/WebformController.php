@@ -144,10 +144,6 @@ class WebformController extends WebformEntityController {
     ];
 
     $build['#attached']['html_head'][] = [$url_tag, 'og_url'];
-    // Blazy library is not loading for formatter field.
-    // Not clear it's a bug or not, to make it work attaching.
-    // Library as below.
-    $build['#attached']['library'][] = 'blazy/load';
 
     return $build;
   }
