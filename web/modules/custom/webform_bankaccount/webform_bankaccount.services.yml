@@ -1,0 +1,7 @@
+services:
+  logger.channel.webform_bankaccount:
+    parent: logger.channel_base
+    arguments: ['webform_bankaccount']
+  webform_bankaccount.validator:
+    class: Drupal\webform_bankaccount\BankAccountValidation
+    arguments: ['@config.factory', '@http_client']

@@ -1,0 +1,7 @@
+webform_bankaccount:
+  version: VERSION
+  js:
+    js/webform_bankaccount.js: {}
+  dependencies:
+  - webform/libraries.jquery.inputmask
+  - wateraid_donation_forms/wateraid_donation_forms
