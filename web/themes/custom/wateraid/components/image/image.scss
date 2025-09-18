@@ -1,0 +1,99 @@
+@import './sass/styles';
+
+[data-component-id="wateraid:image"] {
+  @include grid();
+
+  .image {
+    margin: 0;
+
+    // Image widths.
+    &__wrapper {
+      position: relative;
+
+      &.open {
+        .image__caption {
+          height: fit-content;
+          width: fit-content;
+          max-width: 80%;
+          max-height: 150px;
+          padding: $wa-spacing-03;
+          @include desktop {
+            max-width: calc((100% / 3) * 2);
+          }
+        }
+
+        .image__button--close {
+          display: block;
+        }
+
+        .image__button--open {
+          display: none;
+        }
+      }
+    }
+
+    &__wrapper--full {
+      @include grid-item-span(12, 12, 12);
+      height: auto;
+    }
+
+    &__wrapper--large {
+      @include grid-item-span(12, 10, 10);
+    }
+
+    &__wrapper--small {
+      @include grid-item-span(12, 6, 6);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &__caption {
+      background-color: $wa-cream;
+      font-size: 1rem;
+      padding: $wa-spacing-03;
+      line-height: 1.5;
+      margin-top: -$wa-spacing-01;
+      border-radius: 0 0 calculate-rem(2) calculate-rem(2);
+    }
+
+    &__credit {
+      font-size: calculate-rem(14);
+      line-height: 1.5;
+      color: $wa-navy-80;
+      display: block;
+    }
+
+    &--expandable {
+      .image__caption {
+        position: absolute;
+        bottom: 16px;
+        right: 12px;
+        max-width: 80%;
+        border-radius: $radius-xs;
+        height: 0;
+        width: 0;
+        padding: 0;
+        max-height: 0;
+        overflow-y: hidden;
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(1, 1, 1, 1);
+      }
+    }
+
+    &__button {
+      position: absolute;
+      bottom: 12px;
+      right: 8px;
+      z-index: 10;
+
+      &--close {
+        display: none;
+      }
+    }
+
+  }
+}
