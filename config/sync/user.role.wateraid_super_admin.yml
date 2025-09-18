@@ -1,9 +1,24 @@
 uuid: b50e4f92-8dbf-4f26-b4a9-fc713077dd88
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.landing_page
+  module:
+    - node
+    - quick_node_clone
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
 weight: -7
 is_admin: null
-permissions: {  }
+permissions:
+  - 'clone landing_page content'
+  - 'clone own landing_page content'
+  - 'create landing_page content'
+  - 'delete any landing_page content'
+  - 'delete landing_page revisions'
+  - 'delete own landing_page content'
+  - 'edit any landing_page content'
+  - 'edit own landing_page content'
+  - 'revert landing_page revisions'
+  - 'view landing_page revisions'
