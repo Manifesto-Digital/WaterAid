@@ -299,9 +299,6 @@
       }
     },
     handleFrequencyChange: function (event) {
-      if (Drupal.blazy !== undefined) {
-        Drupal.blazy.init.revalidate();
-      }
       // Set frequency.
       if ($(event.target).val()) {
         this.model.setFrequency($(event.target).val());

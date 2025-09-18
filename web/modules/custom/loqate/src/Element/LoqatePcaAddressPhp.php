@@ -742,7 +742,7 @@ class LoqatePcaAddressPhp extends FormElement {
         PcaAddressElement::ADMINISTRATIVE_AREA => 'admin area',
         PcaAddressElement::POSTAL_CODE => 'T1 1ST',
         PcaAddressElement::COUNTRY_CODE => 'GB',
-        PcaAddressElement::PAF => (int) TRUE,
+        PcaAddressElement::PAF => 1,
       ];
     }
     else {
