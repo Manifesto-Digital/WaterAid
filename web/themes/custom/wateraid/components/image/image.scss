@@ -39,6 +39,17 @@
       display: block;
     }
 
-    // @Todo: Expandable style
+    &--expand {
+      position: relative;
+
+      .image__caption {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        max-width: calc((100% / 3) * 2);
+        width: fit-content;
+        border-radius: $radius-xs;
+      }
+    }
   }
 }
