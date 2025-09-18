@@ -1,0 +1,11 @@
+uuid: 8077cd0f-2f83-449c-9702-deb047a40808
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.get_involved
+id: taxonomy_term.get_involved
+target_entity_type_id: taxonomy_term
+target_bundle: get_involved
+default_langcode: site_default
+language_alterable: false

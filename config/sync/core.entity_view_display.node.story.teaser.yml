@@ -1,0 +1,50 @@
+uuid: 1fe5a4a3-5230-4349-8df5-c45dafbab6d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.story.field_audience
+    - field.field.node.story.field_content
+    - field.field.node.story.field_country
+    - field.field.node.story.field_get_involved
+    - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_teaser_image
+    - field.field.node.story.field_teaser_text
+    - field.field.node.story.field_theme
+    - node.type.story
+  module:
+    - user
+id: node.story.teaser
+targetEntityType: node
+bundle: story
+mode: teaser
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_audience: true
+  field_content: true
+  field_country: true
+  field_get_involved: true
+  field_in_page_navigation: true
+  field_theme: true
+  langcode: true
