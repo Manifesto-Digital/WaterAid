@@ -1,0 +1,6 @@
+<a href="{{ link }}" class="link link--{{ type }}">
+  {{ text }}
+  {% if type == "text" %}
+    {{ include('@wateraid/images/icons/wa-utility-arrow.svg') }}
+  {% endif %}
+</a>

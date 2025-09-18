@@ -1,0 +1,51 @@
+{# web/themes/custom/wateraid/components/link.stories.twig #}
+{% stories link with { title: 'wateraid/Atoms/Link' } %}
+
+  {% story Text with {
+    name: 'Text',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'text'
+    }
+  } %}
+
+    {{ include('wateraid:link', {
+      text,
+      link,
+      type
+    }) }}
+  {% endstory %}
+
+  {% story Inline with {
+    name: 'Inline',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'inline'
+    }
+  } %}
+
+    {{ include('wateraid:link', {
+      text,
+      link,
+      type
+    }) }}
+  {% endstory %}
+
+  {% story Footer with {
+    name: 'Footer',
+    args: {
+      text: 'Click to view more'|t,
+      link: 'https://www.google.com'|t,
+      type: 'footer'
+    }
+  } %}
+
+    {{ include('wateraid:link', {
+      text,
+      link,
+      type
+    }) }}
+  {% endstory %}
+{% endstories %}
