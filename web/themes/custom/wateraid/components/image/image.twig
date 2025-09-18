@@ -1,0 +1,39 @@
+<div {{ attributes }}>
+  <div class="image__wrapper image__wrapper--{{ width }}">
+    <figure class="image image--{{ caption_display }}">
+      {{ image }}
+
+      <figcaption class="image__caption">
+        {{ caption }}
+        <span class="image__credit">{{ credit }}</span>
+      </figcaption>
+
+    </figure>
+
+    {% if caption_display == 'expandable' %}
+      <div class="image__button">
+        <div class="image__button--open">
+          {{ include('wateraid:button', {
+            text: 'Open caption',
+            link: '',
+            id: 'image-caption-open',
+            type: 'icon-small',
+            icon: 'wa-utility-information',
+            theme: 'dark',
+          }) }}
+        </div>
+        <div class="image__button--close">
+          {{ include('wateraid:button', {
+            text: 'Close caption',
+            link: '',
+            id: 'image-caption-close',
+            type: 'icon-small',
+            icon: 'wa-utility-close',
+            theme: 'dark',
+          }) }}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>

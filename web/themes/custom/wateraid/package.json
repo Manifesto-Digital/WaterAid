@@ -1,4 +1,7 @@
 {
+  "name": "wateraid",
+  "version": "1.0.0",
+  "main": "index.js",
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.13.8",
@@ -37,6 +40,9 @@
     "sass-loader": "^12.3.0",
     "sass-resources-loader": "^2.2.4",
     "storybook": "^9.1.5",
+    "stylelint": "^16.24.0",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-standard-scss": "^16.0.0",
     "svg-inline-loader": "^0.8.2",
     "svg-spritemap-webpack-plugin": "^4.4.0",
     "twig-drupal-filters": "^3.2.0",
@@ -54,10 +60,18 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "dev": "webpack --progress --config webpack.config.dev.js --watch",
-    "build": "webpack --progress --config webpack.config.build.js"
+    "build": "webpack --progress --config webpack.config.build.js",
+    "prettier": "prettier components --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "lint-css": "stylelint --allow-empty-input 'components/**/*.{css,scss}'",
+    "lint-css:fix": "npm run lint-css -- --fix",
+    "lint-js": "eslint components",
+    "lint-js:fix": "npm run lint-js -- --fix",
+    "lint": "npm run lint-css; npm run lint-js",
+    "lint:fix": "npm run lint-css:fix; npm run lint-js:fix",
+    "fix": "npm run prettier:fix; npm run lint:fix"
   },
   "dependencies": {
-    "@fontsource-variable/noto-sans": "^5.2.8",
     "core-js": "^3.38.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",

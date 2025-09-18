@@ -1,0 +1,27 @@
+uuid: ca392ef7-dac7-4610-b1a3-32f03156e064
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_caption_display
+field_name: field_caption_display
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: below_image
+      label: Default
+    -
+      value: expandable
+      label: Expandable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
