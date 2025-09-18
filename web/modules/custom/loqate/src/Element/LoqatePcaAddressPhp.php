@@ -636,9 +636,9 @@ class LoqatePcaAddressPhp extends FormElement {
       if (!empty($response)) {
 
         foreach ($response->Items as $address) {
-          if (!property_exists($address, 'Type') || $address->Type != 'Address') {
+          if (property_exists($address, 'Type') && $address->Type != 'Address') {
             // Check if type of the item is postcode
-            // Then it is a contaner and make another.
+            // Then it is a container and make another.
             // Request to get addresses in that container.
             if ($address->Type === 'Postcode') {
               $containerResponse = self::getAddresses(NULL, 'container', $address->Id);
@@ -648,6 +648,10 @@ class LoqatePcaAddressPhp extends FormElement {
             }
             continue;
           }
+          elseif (!property_exists($address, 'Type')) {
+            continue;
+          }
+
           $options[$address->Id] = $address->Text . ' ' . $address->Description;
         }
       }
