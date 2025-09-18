@@ -10,18 +10,9 @@ group_relationship.group_webform_add_page:
   appears_on:
     - entity.group.webform
 
-group_relationship.add_page:
-  route_name: 'entity.group_relationship.add_page'
-  title: 'Add existing site content'
-  appears_on:
-    - entity.group_relationship.collection
-    - view.group_node.page_1
-    - entity.group.canonical
-    - entity.group_relationship.canonical
-
 group_relationship.create_page:
   route_name: 'entity.group_relationship.create_page'
-  title: 'Add new site content'
+  title: 'Add site content'
   appears_on:
     - entity.group_relationship.collection
     - view.group_node.page_1

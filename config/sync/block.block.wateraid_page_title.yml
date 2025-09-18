@@ -1,6 +1,6 @@
 uuid: 51c40a65-885e-4da5-8a4e-5e2783404f16
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - wateraid
@@ -8,7 +8,7 @@ _core:
   default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
 id: wateraid_page_title
 theme: wateraid
-region: sidebar_first
+region: header
 weight: -5
 provider: null
 plugin: page_title_block

@@ -1,0 +1,24 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Link
+status: stable
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: text
+      description: The text of the link
+    link:
+      type: string
+      title: link
+      description: The link URL
+    type:
+      type: string
+      title: type
+      description: Link is inline, footer or text
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/link/link.css: {}
+  dependencies:
+    - wateraid/main

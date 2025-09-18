@@ -1,6 +1,26 @@
-@import './sass/styles';
+@import "./sass/styles";
 
 [data-component-id="wateraid:rich_text"] {
-  color: $black;
-  border: 2px solid $brand-teal;
+  color: $wa-navy;
+
+  a {
+    @include link();
+  }
+
+  ol,
+  ul {
+    @include paragraph-md();
+
+    padding-left: $wa-spacing-07;
+  }
+
+  ul {
+    li::marker {
+      color: $wa-blue;
+    }
+  }
+
+  li {
+    margin-bottom: $wa-spacing-05;
+  }
 }
