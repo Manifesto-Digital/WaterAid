@@ -1,0 +1,2 @@
+api_key: UM15-ZX64-XT94-DP14
+bank_verification_api_url: 'https://services.postcodeanywhere.co.uk/BankAccountValidation/Interactive/Validate/v2.00/json3.ws'

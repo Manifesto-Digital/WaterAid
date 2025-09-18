@@ -834,6 +834,25 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   ini_set('zend.assertions', 1);
 
   $settings['file_private_path'] = 'sites/default/files/private';
+
+  // Update local config across all sites:
+  $config['loqate_email.settings']['mode'] = 'test';
+  $config['loqate.loqateapikeyconfig']['mode'] = 'test';
+  $config['webform_capture_plus.settings']['mode'] = 'test';
+  $config['wateraid_donation_paypal.settings']['mode'] = 'test';
+  $config['stripe_api.settings']['mode'] = 'test';
+  $config['azure_storage.settings']['mode'] = 'test';
+  $config['loqate.loqateapikeyconfig']['mode'] = 'test';
+
+  $config['key.key.webform_encrypt_key']['key_provider'] = 'config';
+  $config['key.key.webform_encrypt_key']['key_provider_settings']['key_value'] = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';
+
+  // Ensure the GMO payment integration is in Test mode.
+  $config['wateraid_donation_gmo.settings']['mode'] = 'test';
+
+  // reCaptcha v3.
+  $config['recaptcha_v3.settings']['site_key'] = '6LfmHCkdAAAAAFcTcD-N6cNay3UA8ti221UnUYIv';
+  $config['recaptcha_v3.settings']['secret_key'] = '6LfmHCkdAAAAABYZksQxxKhum3Y8KJuFRi64gX-C';
 }
 
 $repo_root = dirname(DRUPAL_ROOT);
