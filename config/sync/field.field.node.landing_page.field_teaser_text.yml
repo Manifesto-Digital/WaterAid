@@ -1,0 +1,19 @@
+uuid: f07b36d4-e3b4-49d8-8ea7-14d07fd383ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_text
+    - node.type.landing_page
+id: node.landing_page.field_teaser_text
+field_name: field_teaser_text
+entity_type: node
+bundle: landing_page
+label: 'Teaser text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

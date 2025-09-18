@@ -17,7 +17,8 @@
     @include link();
   }
 
-  ol, ul {
+  ol,
+  ul {
     padding-left: $wa-spacing-06;
   }
 

@@ -1,0 +1,24 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Content tag
+status: stable
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: text
+      description: The text of the link
+    size:
+      type: string
+      title: size
+      description: Tag is large or small
+    theme:
+      type: string
+      title: theme
+      description: Using light theme or dark
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/content_tag/content_tag.css: {}
+  dependencies:
+    - wateraid/main

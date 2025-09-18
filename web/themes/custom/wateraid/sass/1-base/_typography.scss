@@ -163,6 +163,26 @@ $heading-font: 'RB Nylo Black', sans-serif;
   }
 }
 
+@mixin text-link {
+  color: colors.$wa-blue;
+  font-family: $bold-font;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: mixins.calculate-rem(20);
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    color: colors.$wa-navy;
+    background-color: colors.$wa-pink;
+    border-bottom: solid colors.$wa-navy mixins.calculate-rem(3);
+    outline: none;
+  }
+}
+
 
 h1, .pseudo-h1 {
   @include h1();
@@ -192,6 +212,3 @@ p {
   @include paragraph-md();
 }
 
-a {
-  @include link();
-}
