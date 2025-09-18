@@ -3,22 +3,48 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.event
     - node.type.landing_page
+    - taxonomy.vocabulary.event_types
+    - taxonomy.vocabulary.region
   module:
     - node
     - quick_node_clone
+    - taxonomy
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
 weight: -7
 is_admin: null
 permissions:
+  - 'clone event content'
   - 'clone landing_page content'
+  - 'clone own event content'
   - 'clone own landing_page content'
+  - 'create event content'
   - 'create landing_page content'
+  - 'create terms in event_types'
+  - 'create terms in region'
+  - 'delete any event content'
   - 'delete any landing_page content'
+  - 'delete event revisions'
   - 'delete landing_page revisions'
+  - 'delete own event content'
   - 'delete own landing_page content'
+  - 'delete term revisions in event_types'
+  - 'delete term revisions in region'
+  - 'delete terms in event_types'
+  - 'delete terms in region'
+  - 'edit any event content'
   - 'edit any landing_page content'
+  - 'edit own event content'
   - 'edit own landing_page content'
+  - 'edit terms in event_types'
+  - 'edit terms in region'
+  - 'revert event revisions'
   - 'revert landing_page revisions'
+  - 'revert term revisions in event_types'
+  - 'revert term revisions in region'
+  - 'view event revisions'
   - 'view landing_page revisions'
+  - 'view term revisions in event_types'
+  - 'view term revisions in region'
