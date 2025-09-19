@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.rss
-    - field.field.node.article.body
-    - field.field.node.article.comment
-    - field.field.node.article.field_image
-    - field.field.node.article.field_tags
+    - field.field.node.article.field_audience
+    - field.field.node.article.field_content
+    - field.field.node.article.field_country
+    - field.field.node.article.field_teaser_image
+    - field.field.node.article.field_teaser_text
+    - field.field.node.article.field_theme
     - node.type.article
   module:
     - user
@@ -22,8 +24,10 @@ content:
     weight: 100
     region: content
 hidden:
-  body: true
-  comment: true
-  field_image: true
-  field_tags: true
+  field_audience: true
+  field_content: true
+  field_country: true
+  field_teaser_image: true
+  field_teaser_text: true
+  field_theme: true
   langcode: true
