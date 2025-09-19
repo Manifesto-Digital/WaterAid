@@ -2,6 +2,16 @@
 
 [data-component-id="wateraid:rich_text"] {
   color: $wa-navy;
+  @include paragraph-md();
+
+  .paragraph-lg,
+  .paragraph-lg a {
+    @include paragraph-lg();
+  }
+
+  strong {
+    font-family: $bold-font;
+  }
 
   a {
     @include link();
@@ -9,9 +19,7 @@
 
   ol,
   ul {
-    @include paragraph-md();
-
-    padding-left: $wa-spacing-07;
+    padding-left: $wa-spacing-06;
   }
 
   ul {
@@ -22,5 +30,30 @@
 
   li {
     margin-bottom: $wa-spacing-05;
+    padding-left: $wa-spacing-01;
+  }
+
+  blockquote {
+    @include h5();
+    position: relative;
+    margin: $wa-spacing-04 0;
+    padding-left: $wa-spacing-07;
+    padding-top: calculate-rem(6);
+
+    &::before {
+      content: '';
+      background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      height: calculate-rem(28);
+      width: calculate-rem(28);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    p {
+      @include h5();
+      margin-top: 0;
+    }
   }
 }

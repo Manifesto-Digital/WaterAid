@@ -45,6 +45,7 @@ $heading-font: 'RB Nylo Black', sans-serif;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
+  color: colors.$wa-blue;
   @include breakpoints.tablet {
     font-size: mixins.calculate-rem(60);
   }
@@ -56,6 +57,7 @@ $heading-font: 'RB Nylo Black', sans-serif;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
+  color: colors.$wa-blue;
   @include breakpoints.tablet {
     font-size: mixins.calculate-rem(44);
   }
@@ -67,6 +69,7 @@ $heading-font: 'RB Nylo Black', sans-serif;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
+  color: colors.$wa-blue;
   @include breakpoints.tablet {
     font-size: mixins.calculate-rem(36);
   }
