@@ -1,18 +1,18 @@
-uuid: e2970793-7a21-461e-88ea-657f2ece5680
+uuid: 15606701-7531-4c3d-abf0-69bfc574a61e
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_content
-    - node.type.event
+    - node.type.donation
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.rich_text
   module:
     - entity_reference_revisions
-id: node.event.field_content
+id: node.donation.field_content
 field_name: field_content
 entity_type: node
-bundle: event
+bundle: donation
 label: Content
 description: ''
 required: false

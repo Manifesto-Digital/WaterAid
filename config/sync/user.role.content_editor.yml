@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - node.type.article
+    - node.type.donation
     - node.type.event
     - node.type.landing_page
     - node.type.listing_page
@@ -11,8 +12,8 @@ dependencies:
     - node.type.story
     - taxonomy.vocabulary.audiences
     - taxonomy.vocabulary.countries
-    - taxonomy.vocabulary.get_involved
     - taxonomy.vocabulary.event_types
+    - taxonomy.vocabulary.get_involved
     - taxonomy.vocabulary.region
     - taxonomy.vocabulary.tags
     - taxonomy.vocabulary.themes
@@ -41,6 +42,7 @@ permissions:
   - 'access toolbar'
   - 'administer url aliases'
   - 'create article content'
+  - 'create donation content'
   - 'create event content'
   - 'create landing_page content'
   - 'create listing_page content'
@@ -54,15 +56,18 @@ permissions:
   - 'create terms in tags'
   - 'create terms in themes'
   - 'create url aliases'
+  - 'delete any donation content'
   - 'delete any event content'
   - 'delete any landing_page content'
   - 'delete any listing_page content'
   - 'delete any story content'
   - 'delete article revisions'
+  - 'delete donation revisions'
   - 'delete event revisions'
   - 'delete landing_page revisions'
   - 'delete listing_page revisions'
   - 'delete own article content'
+  - 'delete own donation content'
   - 'delete own event content'
   - 'delete own files'
   - 'delete own landing_page content'
@@ -83,12 +88,14 @@ permissions:
   - 'delete terms in get_involved'
   - 'delete terms in region'
   - 'delete terms in themes'
+  - 'edit any donation content'
   - 'edit any event content'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
   - 'edit any story content'
   - 'edit own article content'
   - 'edit own comments'
+  - 'edit own donation content'
   - 'edit own event content'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
@@ -102,6 +109,7 @@ permissions:
   - 'edit terms in tags'
   - 'edit terms in themes'
   - 'revert all revisions'
+  - 'revert donation revisions'
   - 'revert event revisions'
   - 'revert landing_page revisions'
   - 'revert listing_page revisions'
@@ -114,6 +122,7 @@ permissions:
   - 'revert term revisions in themes'
   - 'translate group_content_menu'
   - 'view all revisions'
+  - 'view donation revisions'
   - 'view event revisions'
   - 'view landing_page revisions'
   - 'view listing_page revisions'

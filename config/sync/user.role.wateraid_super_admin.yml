@@ -3,16 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.donation
     - node.type.event
     - node.type.landing_page
+    - node.type.listing_page
     - node.type.story
     - taxonomy.vocabulary.audiences
     - taxonomy.vocabulary.countries
-    - taxonomy.vocabulary.get_involved
-    - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.event_types
+    - taxonomy.vocabulary.get_involved
     - taxonomy.vocabulary.region
-    - node.type.listing_page
+    - taxonomy.vocabulary.themes
   module:
     - node
     - quick_node_clone
@@ -22,14 +23,17 @@ label: 'WaterAid Super Admin'
 weight: -7
 is_admin: null
 permissions:
+  - 'clone donation content'
   - 'clone event content'
   - 'clone landing_page content'
   - 'clone listing_page content'
+  - 'clone own donation content'
   - 'clone own event content'
   - 'clone own landing_page content'
   - 'clone own listing_page content'
   - 'clone own story content'
   - 'clone story content'
+  - 'create donation content'
   - 'create event content'
   - 'create landing_page content'
   - 'create listing_page content'
@@ -40,13 +44,16 @@ permissions:
   - 'create terms in get_involved'
   - 'create terms in region'
   - 'create terms in themes'
+  - 'delete any donation content'
   - 'delete any event content'
   - 'delete any landing_page content'
   - 'delete any listing_page content'
   - 'delete any story content'
+  - 'delete donation revisions'
   - 'delete event revisions'
   - 'delete landing_page revisions'
   - 'delete listing_page revisions'
+  - 'delete own donation content'
   - 'delete own event content'
   - 'delete own landing_page content'
   - 'delete own listing_page content'
@@ -64,10 +71,12 @@ permissions:
   - 'delete terms in get_involved'
   - 'delete terms in region'
   - 'delete terms in themes'
+  - 'edit any donation content'
   - 'edit any event content'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
   - 'edit any story content'
+  - 'edit own donation content'
   - 'edit own event content'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
@@ -78,6 +87,7 @@ permissions:
   - 'edit terms in get_involved'
   - 'edit terms in region'
   - 'edit terms in themes'
+  - 'revert donation revisions'
   - 'revert event revisions'
   - 'revert landing_page revisions'
   - 'revert listing_page revisions'
@@ -88,6 +98,7 @@ permissions:
   - 'revert term revisions in get_involved'
   - 'revert term revisions in region'
   - 'revert term revisions in themes'
+  - 'view donation revisions'
   - 'view event revisions'
   - 'view landing_page revisions'
   - 'view listing_page revisions'

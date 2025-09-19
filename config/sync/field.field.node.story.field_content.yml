@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content
     - node.type.story
+    - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.rich_text
   module:
     - entity_reference_revisions
@@ -23,8 +24,12 @@ settings:
   handler_settings:
     target_bundles:
       rich_text: rich_text
+      image: image
     negate: 0
     target_bundles_drag_drop:
+      image:
+        weight: 3
+        enabled: true
       rich_text:
         weight: 2
         enabled: true
