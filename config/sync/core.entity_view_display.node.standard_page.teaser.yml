@@ -1,0 +1,50 @@
+uuid: 91150a1d-8262-4d89-af38-bb3de01bf79f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.standard_page.field_age
+    - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_get_involved
+    - field.field.node.standard_page.field_key_stage
+    - field.field.node.standard_page.field_subject_area
+    - field.field.node.standard_page.field_teaser_image
+    - field.field.node.standard_page.field_teaser_text
+    - field.field.node.standard_page.field_topic
+    - node.type.standard_page
+  module:
+    - user
+id: node.standard_page.teaser
+targetEntityType: node
+bundle: standard_page
+mode: teaser
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_age: true
+  field_content: true
+  field_get_involved: true
+  field_key_stage: true
+  field_subject_area: true
+  field_topic: true
+  langcode: true

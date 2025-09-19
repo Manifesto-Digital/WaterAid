@@ -1,0 +1,29 @@
+uuid: 5ec0b4fc-0e5f-4070-8743-9d96b7f94746
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_get_involved
+    - node.type.standard_page
+    - taxonomy.vocabulary.get_involved
+id: node.standard_page.field_get_involved
+field_name: field_get_involved
+entity_type: node
+bundle: standard_page
+label: 'Get involved'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      get_involved: get_involved
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

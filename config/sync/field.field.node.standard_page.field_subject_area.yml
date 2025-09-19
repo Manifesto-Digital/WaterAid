@@ -1,0 +1,29 @@
+uuid: b7a17546-f674-4fea-b664-a34821df28a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subject_area
+    - node.type.standard_page
+    - taxonomy.vocabulary.key_stage
+id: node.standard_page.field_subject_area
+field_name: field_subject_area
+entity_type: node
+bundle: standard_page
+label: 'Subject area'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      key_stage: key_stage
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
