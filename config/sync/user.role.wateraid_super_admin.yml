@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
     - node.type.landing_page
   module:
     - node
@@ -12,13 +13,23 @@ label: 'WaterAid Super Admin'
 weight: -7
 is_admin: null
 permissions:
+  - 'clone article content'
   - 'clone landing_page content'
+  - 'clone own article content'
   - 'clone own landing_page content'
+  - 'create article content'
   - 'create landing_page content'
+  - 'delete any article content'
   - 'delete any landing_page content'
+  - 'delete article revisions'
   - 'delete landing_page revisions'
+  - 'delete own article content'
   - 'delete own landing_page content'
+  - 'edit any article content'
   - 'edit any landing_page content'
+  - 'edit own article content'
   - 'edit own landing_page content'
+  - 'revert article revisions'
   - 'revert landing_page revisions'
+  - 'view article revisions'
   - 'view landing_page revisions'
