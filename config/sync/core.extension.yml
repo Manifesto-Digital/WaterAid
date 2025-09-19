@@ -57,10 +57,15 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
+  migrate: 0
+  migrate_plus: 0
+  migrate_source_queue: 0
+  migrate_tools: 0
   mysql: 0
   node: 0
   node_co_authors: 0
   options: 0
+  orange_dam: 0
   page_cache: 0
   paragraphs_clipboard: 0
   path: 0
