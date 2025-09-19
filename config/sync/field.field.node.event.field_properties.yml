@@ -1,0 +1,21 @@
+uuid: 41d9c8b7-7016-4bbf-8379-8450af684957
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_properties
+    - node.type.event
+  module:
+    - key_value_field
+id: node.event.field_properties
+field_name: field_properties
+entity_type: node
+bundle: event
+label: Properties
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: key_value
