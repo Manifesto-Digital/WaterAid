@@ -1,0 +1,22 @@
+uuid: 4e30224c-6fc9-43d1-ab85-c1cb6e2c2d7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_citation
+    - paragraphs.paragraphs_type.quote
+  module:
+    - text
+id: paragraph.quote.field_citation
+field_name: field_citation
+entity_type: paragraph
+bundle: quote
+label: Citation
+description: 'Add a citation'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text
