@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: Hero
 status: stable
 description: Hero component
@@ -12,10 +12,10 @@ props:
       type: string
       title: Standfirst
     cta:
-      type: ['object', 'null']
+      type: ["object", "null"]
       title: CTA
     link:
-      type: [ 'object', 'null' ]
+      type: ["object", "null"]
       title: Link
     colour:
       type: string

@@ -9,22 +9,22 @@ props:
       title: text
       description: The text of the link
       # @todo Add examples here.
-      examples: [ ]
+      examples: []
     link:
       type: string
       title: link
       description: The button URL
       # @todo Add examples here.
-      examples: [ ]
+      examples: []
     type:
       type: string
       title: type
       description: Button is primary or secondary
       # @todo Add examples here.
-      examples: [ ]
+      examples: []
 libraryOverrides:
   css:
     theme:
-      ../../dist/css/components/button/button.css: { }
+      ../../dist/css/components/button/button.css: {}
   dependencies:
     - wateraid/main
