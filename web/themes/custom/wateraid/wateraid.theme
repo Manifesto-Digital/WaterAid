@@ -19,3 +19,11 @@ function wateraid_preprocess_image_widget(array &$variables) {
     unset($data['preview']);
   }
 }
+
+function wateraid_preprocess_paragraph(&$variables) {
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  $variables['page_title'] = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
+  $variables['#cache']['contexts'][] = 'url';
+}

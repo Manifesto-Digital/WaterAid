@@ -12,6 +12,7 @@ module.exports = {
     'styles': ['./sass/styles.scss'],
     'components/button/button': ['./components/button/button.scss'],
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
+    'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],
     'components/link/link': ['./components/link/link.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
