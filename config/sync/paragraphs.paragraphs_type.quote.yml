@@ -1,20 +1,10 @@
 uuid: 5f2ac6e1-777e-4582-bcf5-c4bf62fbc04e
 langcode: en
 status: true
-dependencies:
-  module:
-    - layout_paragraphs
+dependencies: {  }
 id: quote
 label: Quote
 icon_uuid: null
 icon_default: null
 description: 'Allows you to add a quote to content.'
-behavior_plugins:
-  layout_paragraphs:
-    enabled: true
-    available_layouts:
-      layout_onecol: 'One column'
-      layout_twocol: 'Two column'
-      layout_twocol_bricks: 'Two column bricks'
-      layout_threecol_25_50_25: 'Three column 25/50/25'
-      layout_threecol_33_34_33: 'Three column 33/34/33'
+behavior_plugins: {  }

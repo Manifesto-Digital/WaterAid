@@ -88,6 +88,7 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  wa_editor_experience: 0
   webform: 0
   webp: 0
   workflows: 0
