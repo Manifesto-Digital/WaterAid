@@ -16,6 +16,7 @@ module.exports = {
     'components/image/image': ['./components/image/image.scss'],
     'components/link/link': ['./components/link/link.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
+    'components/quote/quote': ['./components/quote/quote.scss'],
   },
   output: {
     filename: 'js/[name].js',

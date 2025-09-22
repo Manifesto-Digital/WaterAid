@@ -18,7 +18,7 @@ settings:
       value: image_left_above
       label: 'Image Left/Above'
     -
-      value: image_right_above
+      value: image_right_below
       label: 'Image Right/Below'
   allowed_values_function: ''
 module: options

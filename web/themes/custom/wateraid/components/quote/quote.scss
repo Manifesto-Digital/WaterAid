@@ -1,0 +1,61 @@
+@import "./sass/1-base/_colors";
+@import "./sass/1-base/_typography";
+@import "./sass/1-base/_spacing";
+
+.paragraph--type--quote {
+  padding-top: $wa-spacing-09;
+
+  &.quote-type--text--only {
+    .content {
+      max-width: 1344px;
+    }
+  }
+
+  &.quote-type--image-left-above,
+  &.quote-type--image-right-below {
+    display: flex;
+    align-items: stretch;
+
+    .content,
+    .image {
+      flex: 0 1 50%;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: center;
+
+      > * {
+        flex: 1 0 100%;
+      }
+    }
+  }
+
+  .content {
+    display: block;
+    padding: 0 0 $wa-spacing-03 $wa-spacing-09;
+    background: $wa-blue;
+
+    .field--name-field-citation {
+      color: $wa-white;
+    }
+
+    .field--name-field-text {
+      @extend .pseudo-h4;
+      color: $wa-white;
+
+      &::before {
+        padding: 0 0 $wa-spacing-01;
+        content: "";
+        color: $wa-white;
+        background: url("../../../../images/icons/wa-icon-quote-mark.svg") no-repeat;
+        background-size: 30px 30px;
+        width: 30px;
+        display: block;
+        height: 30px;
+      }
+    }
+  }
+}

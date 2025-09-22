@@ -44,3 +44,12 @@ function wa_editor_experience_update_field_widget(array &$element, FormStateInte
     }
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function wa_editor_experience_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables): void {
+  if ($variables['elements']['#paragraph']->hasField('field_quote_type')) {
+    $suggestions[] = 'paragraph__' . $variables['elements']['#paragraph']->bundle() . '__' . $variables['elements']['#paragraph']->get('field_quote_type')->getString();
+  }
+}

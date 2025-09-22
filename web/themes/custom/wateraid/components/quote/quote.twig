@@ -1,0 +1,18 @@
+{% block content %}
+  {% if type == 'image_left_above' %}
+    <div class="image">
+      {{ image }}
+    </div>
+  {% endif %}
+<div class="content">
+  {{ quote }}
+  {% if citation %}
+    {{ citation }}
+  {% endif %}
+</div>
+  {% if type == 'image_right_below' %}
+    <div class="image">
+      {{ image }}
+    </div>
+  {% endif %}
+{% endblock %}
