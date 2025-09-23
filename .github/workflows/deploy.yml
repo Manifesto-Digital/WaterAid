@@ -25,58 +25,83 @@ jobs:
       - name: Skip if not desired branch
         if: github.ref_name != 'develop' && github.ref_name != 'staging' && github.ref_name != 'main' && github.ref_name != 'feature/WA-367-CI-CD-setup'
         run: exit 0
+
       - name: Skip if not merged PR or manual trigger
         if: github.event_name == 'pull_request' && github.event.pull_request.merged == false
         run: exit 0
+
       - name: Set dev ENV vars
         if: github.ref_name == 'develop'
         run: |
           echo "ENVIRONMENT=${{ inputs.environment || 'dev' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
       - name: Set test ENV vars
         if: github.ref_name == 'staging'
         run: |
           echo "ENVIRONMENT=${{ inputs.environment || 'test' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
       - name: Set prod ENV vars
         if: github.ref_name == 'main'
         run: |
           echo "ENVIRONMENT=${{ inputs.environment || 'prod' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
       - name: Set testing ENV vars
         if: github.ref_name == 'feature/WA-367-CI-CD-setup'
         run: |
           echo "ENVIRONMENT=${{ inputs.environment || 'dev' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
       - name: Block non-main to prod
         if: env.ENVIRONMENT == 'prod' && env.BRANCH_NAME != 'main'
         run: exit 1
+
       - uses: actions/checkout@v4
+
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           tools: composer
           extensions: mbstring, pdo, xml, gd, curl, zip, bcmath, intl
+
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader
+
+      - name: Verify build output
+        run: |
+          test -d docroot/core || { echo "docroot/core missing after composer install"; exit 1; }
+          test -d vendor || { echo "vendor missing after composer install"; exit 1; }
+
+      - name: Prepare artifact directory
+        run: |
+          ARTIFACT_DIR=$(mktemp -d)
+          echo "ARTIFACT_DIR=$ARTIFACT_DIR" >> $GITHUB_ENV
+
       - name: Install Acquia CLI
         run: |
           curl -sSL https://github.com/acquia/cli/releases/latest/download/acli.phar -o acli
           chmod +x acli && sudo mv acli /usr/local/bin/acli
+
       - name: Setup SSH key for Acquia Git
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.ACQUIA_SSH_PRIVATE_KEY }}
+
       - name: Add Acquia host to known_hosts
         run: ssh-keyscan -H ${{ env.ACQUIA_GIT_HOST }} >> ~/.ssh/known_hosts
+
       - name: Set Git author info for Acquia commit
         run: |
           git config --global user.name "Jenkins"
           git config --global user.email "jenkins@manifesto.co.uk"
+
       - name: Authenticate
         run: |
           acli auth:login -vvv --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
+
       - name: Deploy
         run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT -vvv --no-clone --no-interaction
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT -vvv --no-clone --dir "$ARTIFACT_DIR" --no-interaction
           acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
