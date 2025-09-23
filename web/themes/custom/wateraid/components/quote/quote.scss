@@ -48,13 +48,20 @@
       color: $wa-white;
     }
 
-    .quote-mark {
-      padding: 0 0 $wa-spacing-01;
-      width: 30px;
-      display: block;
-      height: 30px;
-      color: $wa-white;
-      fill: $wa-white;
+    .wrapper {
+      position: relative;
+
+      .quote-mark {
+        padding: 0 0 $wa-spacing-01;
+        width: 30px;
+        display: block;
+        height: 30px;
+        color: $wa-white;
+        fill: $wa-white;
+        position: relative;
+        top: 20px;
+        left: calc(-30px - $wa-spacing-00);
+      }
     }
   }
 }
