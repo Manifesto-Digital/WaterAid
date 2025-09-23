@@ -1,4 +1,4 @@
-name: Deploy to Acquia
+name: Deploy Acquia Site
 on:
   pull_request:
     branches: [main, develop, staging]
