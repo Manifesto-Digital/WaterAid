@@ -119,13 +119,13 @@
         "type:drupal-drush"
       ],
       "docroot/modules/custom/{$name}": [
-        "type:drupal-custom-module"
+        "type:drupal-module"
       ],
       "docroot/profiles/custom/{$name}": [
         "type:drupal-custom-profile"
       ],
       "docroot/themes/custom/{$name}": [
-        "type:drupal-custom-theme"
+        "type:drupal-theme"
       ]
     },
     "drupal-core-project-message": {
