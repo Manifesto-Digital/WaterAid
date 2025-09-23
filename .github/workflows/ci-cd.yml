@@ -140,7 +140,17 @@ jobs:
           path: |
             docroot/
             vendor/
-            web
+          if-no-files-found: warn
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
+
+      - name: Upload web symlink info
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-symlink
+          path: web
+          if-no-files-found: warn
 
   build-frontend:
     name: Build Front-End
