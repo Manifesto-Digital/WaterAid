@@ -109,4 +109,10 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction
+          # Try artifact push first, fall back to code deploy if tag is blocking
+          if ! acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction; then
+            echo "Artifact push failed, trying code deploy to clear tag..."
+            acli push:code $ACQUIA_SITE.$ENVIRONMENT $BRANCH_NAME --no-interaction
+            sleep 30
+            acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction
+          fi
