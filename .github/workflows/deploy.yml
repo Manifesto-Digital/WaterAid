@@ -69,7 +69,7 @@ jobs:
           ssh-private-key: ${{ secrets.ACQUIA_SSH_PRIVATE_KEY }}
       - name: Add Acquia host to known_hosts
         run: ssh-keyscan -H ${{ env.ACQUIA_GIT_HOST }} >> ~/.ssh/known_hosts
-      - name: Set Git author for Acquia commit
+      - name: Set Git author info for Acquia commit
         run: |
           git config --global user.name "Jenkins"
           git config --global user.email "jenkins@manifesto.co.uk"
