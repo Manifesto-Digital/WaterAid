@@ -104,4 +104,7 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
+          mkdir /tmp/acli-push-artifact
+          mv .git /tmp/acli-push-artifact/
+          shopt -s dotglob && rm -rf ./* && mv /tmp/acli-push-artifact/* ./
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --destination-git-branch=main-build --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git --no-clone --no-interaction
