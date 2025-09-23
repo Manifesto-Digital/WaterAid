@@ -69,6 +69,11 @@ jobs:
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader
 
+      - name: Install Frontend
+        run: |
+        	cd docroot/themes/custom/wateraid
+          npm i
+
       - name: Verify build output
         run: |
           test -d docroot/core || { echo "docroot/core missing after composer install"; exit 1; }
