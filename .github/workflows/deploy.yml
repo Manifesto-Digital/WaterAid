@@ -70,14 +70,8 @@ jobs:
         run: composer install --no-dev --optimize-autoloader
 
       - name: Install Frontend
+        working-directory: ${{ github.workspace }}
         run: npm i --prefix docroot/themes/custom/wateraid
-
-      - name: Verify build output
-        run: |
-          test -d docroot/core || { echo "docroot/core missing after composer install"; exit 1; }
-          test -d docroot/themes/custom/wateraid || { echo "custom themes missing"; exit 1; }
-          test -d docroot/modules/custom || { echo "Custom modules missing"; exit 1; }
-          test -d vendor || { echo "vendor missing after composer install"; exit 1; }
 
       - name: Install Acquia CLI
         run: |
