@@ -108,3 +108,4 @@ jobs:
           acli push:artifact --dry-run --no-clone --no-commit
           mv .git /tmp/acli-push-artifact/
           shopt -s dotglob && rm -rf ./* && mv /tmp/acli-push-artifact/* ./
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --destination-git-branch=main-build --dir=/tmp/acli-push-artifact --no-interaction
