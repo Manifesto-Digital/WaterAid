@@ -75,7 +75,7 @@ jobs:
           git config --global user.email "jenkins@manifesto.co.uk"
       - name: Authenticate
         run: |
-          acli auth:login --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }} -vvv
+          acli auth:login -vvv --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
       - name: Deploy
         run: |
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction
