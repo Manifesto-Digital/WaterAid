@@ -109,6 +109,6 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
-          ls -la ${{ github.workspace }}/docroot/themes/
-          ls -la ${{ github.workspace }}/docroot/modules/
+          ls -la ${{ github.workspace }}/docroot/themes/custom
+          ls -la ${{ github.workspace }}/docroot/modules/custom
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }}
