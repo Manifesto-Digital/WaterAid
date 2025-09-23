@@ -1,0 +1,29 @@
+uuid: 7e04b0aa-b2b7-496c-8b17-59af2ab38981
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_image
+    - media.type.image
+    - node.type.publication
+id: node.publication.field_teaser_image
+field_name: field_teaser_image
+entity_type: node
+bundle: publication
+label: 'Teaser image'
+description: 'Add a teaser image. This will be shown in listing and on search engine listings.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

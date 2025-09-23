@@ -3,21 +3,32 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
     - node.type.article
     - node.type.landing_page
     - node.type.page
-    - taxonomy.vocabulary.tags
+    - node.type.publication
+    - taxonomy.vocabulary.get_involved
+    - taxonomy.vocabulary.key_stage
+    - taxonomy.vocabulary.subject_areas
   module:
     - comment
     - content_translation
     - contextual
     - file
     - group_content_menu
+    - media
     - node
+    - node_co_authors
     - path
+    - quick_node_clone
     - system
-    - taxonomy
     - toolbar
+    - webform
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
@@ -29,35 +40,73 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access media overview'
+  - 'access own webform configuration'
   - 'access toolbar'
+  - 'access webform help'
   - 'administer url aliases'
+  - 'change own username'
+  - 'clone own publication content'
+  - 'clone publication content'
   - 'create article content'
+  - 'create audio media'
+  - 'create document media'
+  - 'create image media'
   - 'create landing_page content'
+  - 'create media'
   - 'create page content'
-  - 'create terms in tags'
+  - 'create publication content'
+  - 'create remote_video media'
   - 'create url aliases'
+  - 'create video media'
+  - 'create webform'
   - 'delete any article content'
   - 'delete any landing_page content'
   - 'delete article revisions'
   - 'delete landing_page revisions'
+  - 'delete media'
   - 'delete own article content'
+  - 'delete own audio media'
+  - 'delete own document media'
   - 'delete own files'
+  - 'delete own image media'
   - 'delete own landing_page content'
   - 'delete own page content'
+  - 'delete own publication content'
+  - 'delete own remote_video media'
+  - 'delete own video media'
+  - 'delete own webform'
+  - 'delete own webform submission'
   - 'delete page revisions'
   - 'edit any article content'
   - 'edit any landing_page content'
+  - 'edit co-authors of all content'
+  - 'edit co-authors of co-authored content'
+  - 'edit co-authors of own content'
   - 'edit own article content'
+  - 'edit own audio media'
   - 'edit own comments'
+  - 'edit own document media'
+  - 'edit own image media'
   - 'edit own landing_page content'
   - 'edit own page content'
-  - 'edit terms in tags'
+  - 'edit own publication content'
+  - 'edit own remote_video media'
+  - 'edit own video media'
+  - 'edit own webform'
+  - 'edit own webform submission'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert landing_page revisions'
+  - 'translate get_involved taxonomy_term'
   - 'translate group_content_menu'
+  - 'translate key_stage taxonomy_term'
+  - 'translate subject_areas taxonomy_term'
+  - 'update media'
   - 'view all revisions'
   - 'view article revisions'
   - 'view landing_page revisions'
   - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view own webform submission'
   - 'view the administration theme'

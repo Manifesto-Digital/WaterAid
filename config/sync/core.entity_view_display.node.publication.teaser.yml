@@ -1,0 +1,54 @@
+uuid: 9cc54945-e12e-473b-b9ec-69f69801ae04
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.publication.field_audience
+    - field.field.node.publication.field_content
+    - field.field.node.publication.field_country
+    - field.field.node.publication.field_get_involved
+    - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_subject_area
+    - field.field.node.publication.field_teaser_image
+    - field.field.node.publication.field_teaser_text
+    - field.field.node.publication.field_theme
+    - node.type.publication
+  module:
+    - user
+id: node.publication.teaser
+targetEntityType: node
+bundle: publication
+mode: teaser
+content:
+  field_teaser_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  co_authors: true
+  field_audience: true
+  field_content: true
+  field_country: true
+  field_get_involved: true
+  field_key_stage: true
+  field_subject_area: true
+  field_theme: true
+  langcode: true
