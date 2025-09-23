@@ -109,4 +109,6 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
+          echo "${{ github.workspace }}"
+          ls -la ${{ github.workspace }}
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build
