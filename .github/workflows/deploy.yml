@@ -111,4 +111,4 @@ jobs:
         run: |
           echo "${{ github.workspace }}"
           ls -la ${{ github.workspace }}
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }}
