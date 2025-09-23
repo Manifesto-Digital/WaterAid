@@ -37,6 +37,7 @@
     display: block;
     padding: 0 0 $wa-spacing-03 $wa-spacing-09;
     background: $wa-blue;
+    color: $wa-white;
 
     .field--name-field-citation {
       color: $wa-white;
@@ -45,17 +46,15 @@
     .field--name-field-text {
       @extend .pseudo-h4;
       color: $wa-white;
+    }
 
-      &::before {
-        padding: 0 0 $wa-spacing-01;
-        content: "";
-        color: $wa-white;
-        background: url("../../../../images/icons/wa-icon-quote-mark.svg") no-repeat;
-        background-size: 30px 30px;
-        width: 30px;
-        display: block;
-        height: 30px;
-      }
+    .quote-mark {
+      padding: 0 0 $wa-spacing-01;
+      width: 30px;
+      display: block;
+      height: 30px;
+      color: $wa-white;
+      fill: $wa-white;
     }
   }
 }
