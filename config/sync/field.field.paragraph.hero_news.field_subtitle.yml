@@ -1,0 +1,24 @@
+uuid: f20e90c1-483c-4aa0-8760-df766964ffe9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.hero_news
+  module:
+    - text
+id: paragraph.hero_news.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: hero_news
+label: Subtitle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

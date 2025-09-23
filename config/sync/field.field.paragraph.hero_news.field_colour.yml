@@ -1,0 +1,21 @@
+uuid: be61a735-1f90-448c-930e-530ded39bbe5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_colour
+    - paragraphs.paragraphs_type.hero_news
+  module:
+    - options
+id: paragraph.hero_news.field_colour
+field_name: field_colour
+entity_type: paragraph
+bundle: hero_news
+label: Colour
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

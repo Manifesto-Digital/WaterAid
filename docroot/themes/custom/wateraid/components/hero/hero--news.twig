@@ -1,0 +1,76 @@
+{% set classes = [
+  'hero',
+  'hero--' ~ colour,
+  'hero--' ~ variant
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="hero__content">
+
+    {% if tags %}
+      <div class="hero__content--tags">
+        {% for tag in tags %}
+          {{ include('wateraid:content_tag', {
+            text: tag,
+            size: 'large',
+            theme: colour == 'white' ? 'light' : 'dark'
+          }) }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <h1 class="hero__content--title">{{ title }}</h1>
+
+    {% if standfirst %}
+      <div class="hero__content--standfirst">
+        {{ standfirst }}
+      </div>
+    {% endif %}
+
+    <div class="hero__content--wrapper">
+      <div class="hero__content--details">
+        {% if publish_date %}
+          <div class="hero__content--date">
+            {{ publish_date|date("l j F Y") }}
+          </div>
+        {% endif %}
+
+        {% if publish_date and authors %}
+          {{ include('@wateraid/images/icons/wa-shape-drop.svg') }}
+        {% endif %}
+
+        {% if authors %}
+          <div class="hero__content--author">
+            {{ 'by ' |t }}
+            {% for author in authors %}
+              {% if loop.last == false %}
+                {{ author ~ ', ' }}
+              {% else %}
+                {{ author }}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      {% if time_to_read %}
+        <div class="hero__content--time">
+          {{ include('@wateraid/images/icons/wa-utility-schedule.svg') }}
+          {{ time_to_read|replace({'minute': 'min'}) ~ ' read'|t }}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  {% if image %}
+    <div class="hero__image">
+      {{ include('wateraid:image', {
+        image,
+        caption: media_caption,
+        credit: media_credit,
+        width: 'full',
+        caption_display: 'expandable'
+      }) }}
+    </div>
+  {% endif %}
+</div>
