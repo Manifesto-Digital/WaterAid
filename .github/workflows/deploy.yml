@@ -110,4 +110,4 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=master --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git
