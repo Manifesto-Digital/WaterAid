@@ -95,7 +95,7 @@ class GroupWebformRelationshipListBuilder extends GroupRelationshipListBuilder {
     }
     /** @var \Drupal\group\Entity\GroupRelationshipInterface $entity */
     $row['id'] = $entity->id();
-    $row['label']['data'] = $entity->getEntity()->toLink(NULL, 'edit-form');
+    $row['label'] = $entity->toLink();
     $row = $row + parent::buildRow($entity);
     unset($row['entity_type'], $row['plugin']);
     return $row;
