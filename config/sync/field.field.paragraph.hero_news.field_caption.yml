@@ -1,0 +1,19 @@
+uuid: f7ce0ae8-2611-4f93-b281-054807dd3632
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption
+    - paragraphs.paragraphs_type.hero_news
+id: paragraph.hero_news.field_caption
+field_name: field_caption
+entity_type: paragraph
+bundle: hero_news
+label: Caption
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

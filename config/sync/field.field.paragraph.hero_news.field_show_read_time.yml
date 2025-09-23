@@ -1,0 +1,23 @@
+uuid: 5efae31f-dd56-4442-871d-bef0a9cbb0ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_read_time
+    - paragraphs.paragraphs_type.hero_news
+id: paragraph.hero_news.field_show_read_time
+field_name: field_show_read_time
+entity_type: paragraph
+bundle: hero_news
+label: 'Show read time'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

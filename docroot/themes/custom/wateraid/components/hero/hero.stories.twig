@@ -1,6 +1,6 @@
 {% stories hero with { title: 'wateraid/Molecules/Hero' } %}
-  {% story Default with {
-    name: 'Default (image)',
+  {% story Image with {
+    name: 'Hero (image)',
     args: {
       title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
       standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
@@ -35,39 +35,67 @@
     }) }}
   {% endstory %}
 
-  {% story DefaultWhite with {
-    name: 'Default White (image)',
+  {% story News with {
+    name: 'Hero (news)',
     args: {
-      title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
-      standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
-      cta: {
-        url: '/',
-        title: 'Button label'|t,
-      },
-      link: {
-        url: '/',
-        title: 'Button label'|t,
-      },
-      colour: 'white',
+      title: 'Article title lorem ipsum dolor sit amet'|t,
+      standfirst: 'Optional subtitle bibendum id egestas sagittis',
+      publish_date: 'Wednesday 30 September 2025',
+      time_to_read: '7 min read',
       media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       media_credit: 'Lorem ipsum dolor sit amet.',
+      colour: 'navy',
     }
   } %}
 
     {# Defaults #}
-    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
-                        alt="Example image"/>{% endset %}
-
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {% set tags = ['Content tag 1', 'Content tag 2', 'Content tag 3'] %}
+    {% set authors = ['Author 1', 'Author 2'] %}
     {{ include('wateraid:hero', {
       title,
       standfirst,
-      cta,
-      link,
+      publish_date,
+      authors,
+      tags,
+      time_to_read,
       image,
       media_caption,
       media_credit,
       colour,
-      variant: 'default'
+      variant: 'news'
+    }) }}
+  {% endstory %}
+
+  {% story NewsWhite with {
+    name: 'Hero (news) - White',
+    args: {
+      title: 'Article title lorem ipsum dolor sit amet'|t,
+      standfirst: 'Optional subtitle bibendum id egestas sagittis',
+      publish_date: 'Wednesday 30 September 2025',
+      time_to_read: '7 min read',
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+      colour: 'white',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {% set tags = ['Content tag 1', 'Content tag 2', 'Content tag 3'] %}
+    {% set authors = ['Author 1', 'Author 2'] %}
+    {{ include('wateraid:hero', {
+      title,
+      standfirst,
+      publish_date,
+      authors,
+      tags,
+      time_to_read,
+      image,
+      media_caption,
+      media_credit,
+      colour,
+      variant: 'news'
     }) }}
   {% endstory %}
 
