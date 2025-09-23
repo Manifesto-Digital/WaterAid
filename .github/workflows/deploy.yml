@@ -78,6 +78,5 @@ jobs:
           acli auth:login -vvv --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
       - name: Deploy
         run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT -vvv --no-clone --no-interaction
           acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
-          done
