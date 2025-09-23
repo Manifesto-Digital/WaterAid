@@ -774,7 +774,7 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * @see https://docs.acquia.com/acquia-cloud/manage/code/require-line/
  */
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/manifestopartner.dev/D10-manifestopartnerhfgeeshxaz-common-settings.inc';
+  require '/var/www/site-php/manifestopartner/manifestopartner-settings.inc';
 }
 
 
@@ -801,11 +801,25 @@ if (!empty($acquia_env)) {
 }
 
 /**
- * Acquia memcache settings.
+ * Load local development override configuration, if available.
  *
- * @see https://github.com/acquia/memcache-settings
+ * Create a settings.local.php file to override variables on secondary (staging,
+ * development, etc.) installations of this site.
+ *
+ * Typical uses of settings.local.php include:
+ * - Disabling caching.
+ * - Disabling JavaScript/CSS compression.
+ * - Rerouting outgoing emails.
+ *
+ * Keep this code block at the end of this file to take full effect.
  */
-$memcacheSettingsFile = $repo_root . '/vendor/acquia/memcache-settings/memcache.settings.php';
-if (file_exists($memcacheSettingsFile)) {
-  require $memcacheSettingsFile;
+#
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+// Automatically generated include for settings managed by ddev.
+$ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
+if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
+  require $ddev_settings;
 }
