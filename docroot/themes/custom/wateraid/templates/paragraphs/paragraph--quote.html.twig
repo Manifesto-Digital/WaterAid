@@ -53,7 +53,7 @@
     {% block content %}
       {{ include('wateraid:quote', {
         type: paragraph.field_quote_type.value,
-        quote: content.field_text,
+        quote: content.field_quote,
         citation: content.field_citation,
         image: content.field_image_paragraph,
       })

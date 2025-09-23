@@ -5,9 +5,15 @@
 .paragraph--type--quote {
   padding-top: $wa-spacing-09;
 
-  &.quote-type--text--only {
+  &.quote-type--text-only {
     .content {
       max-width: 1344px;
+
+      .wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 888px;
+      }
     }
   }
 
@@ -20,21 +26,11 @@
     .image {
       flex: 0 1 50%;
     }
-
-    .content {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      align-content: center;
-
-      > * {
-        flex: 1 0 100%;
-      }
-    }
   }
 
   .content {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0 0 $wa-spacing-03 $wa-spacing-09;
     background: $wa-blue;
     color: $wa-white;
@@ -43,24 +39,32 @@
       color: $wa-white;
     }
 
-    .field--name-field-text {
+    .field--name-field-quote {
       @extend .pseudo-h4;
       color: $wa-white;
     }
 
     .wrapper {
-      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      padding: $wa-spacing-09 0;
 
-      .quote-mark {
+      svg {
         padding: 0 0 $wa-spacing-01;
         width: 30px;
         display: block;
         height: 30px;
-        color: $wa-white;
-        fill: $wa-white;
-        position: relative;
-        top: 20px;
-        left: calc(-30px - $wa-spacing-00);
+        flex: 0 0 30px;
+      }
+
+      .field--name-field-quote {
+        flex: 0 0 calc(100% - (30px + $wa-spacing-03));
+      }
+
+      .field--name-field-citation {
+        flex: 1 0 calc (100% - $wa-spacing-03);
+        padding-left: 30px;
+        margin-top: 8px;
       }
     }
   }

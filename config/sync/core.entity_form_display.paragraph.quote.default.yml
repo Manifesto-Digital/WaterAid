@@ -5,28 +5,27 @@ dependencies:
   config:
     - field.field.paragraph.quote.field_citation
     - field.field.paragraph.quote.field_image_paragraph
+    - field.field.paragraph.quote.field_quote
     - field.field.paragraph.quote.field_quote_type
-    - field.field.paragraph.quote.field_text
     - paragraphs.paragraphs_type.quote
   module:
     - paragraphs
-    - text
 id: paragraph.quote.default
 targetEntityType: paragraph
 bundle: quote
 mode: default
 content:
   field_citation:
-    type: text_textfield
-    weight: 3
+    type: string_textarea
+    weight: 2
     region: content
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_image_paragraph:
     type: paragraphs
-    weight: 4
+    weight: 3
     region: content
     settings:
       title: Image
@@ -44,19 +43,19 @@ content:
         convert: '0'
         duplicate: '0'
     third_party_settings: {  }
-  field_quote_type:
-    type: options_select
+  field_quote:
+    type: string_textarea
     weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_text:
-    type: text_textarea
-    weight: 2
     region: content
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  field_quote_type:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
     third_party_settings: {  }
   layout_paragraphs_fields:
     weight: 0

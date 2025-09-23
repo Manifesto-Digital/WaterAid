@@ -6,7 +6,7 @@
   {% endif %}
 <div class="content">
   <div class="wrapper">
-    <img class="quote-mark" src="/themes/custom/wateraid/images/icons/wa-icon-quote-mark.svg" alt="Image of a quotation mark" />
+    {{ include('@wateraid/images/icons/wa-icon-quote-mark.svg') }}
     {{ quote }}
     {% if citation %}
       {{ citation }}
