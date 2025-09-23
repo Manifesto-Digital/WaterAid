@@ -826,11 +826,4 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
 
 $repo_root = dirname(DRUPAL_ROOT);
 
-echo '<pre>';
-die(var_dump(
-  $repo_root,
-  "$repo_root/config/sync",
-  realpath("$repo_root/config/sync")
-));
-
 $settings['config_sync_directory'] = realpath("$repo_root/config/sync");
