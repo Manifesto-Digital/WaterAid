@@ -824,4 +824,6 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
 }
 
-$settings['config_sync_directory'] = DRUPAL_ROOT . '/../config/sync';
+
+$repo_root = dirname(DRUPAL_ROOT);
+$settings['config_sync_directory'] = realpath("$repo_root/src/config/default/sync");
