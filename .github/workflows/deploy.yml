@@ -75,7 +75,7 @@ jobs:
           git config --global user.email "jenkins@manifesto.co.uk"
       - name: Authenticate & Deploy to Acquia
         run: |
-          acli auth:login --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
+          acli auth:login -k=${{ secrets.ACQUIA_API_KEY_ID }} -s=${{ secrets.ACQUIA_API_KEY_SECRET }}
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction
           acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
           done
