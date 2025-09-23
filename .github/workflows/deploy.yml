@@ -111,4 +111,4 @@ jobs:
         run: |
           ls -la ${{ github.workspace }}/docroot/themes/custom
           ls -la ${{ github.workspace }}/docroot/modules/custom
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }}
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git
