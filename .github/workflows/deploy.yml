@@ -75,19 +75,14 @@ jobs:
       - name: Verify build output
         run: |
           test -d docroot/core || { echo "docroot/core missing after composer install"; exit 1; }
+          test -d docroot/themes/custom/wateraid || { echo "custom themes missing"; exit 1; }
+          test -d docroot/modules/custom || { echo "Custom modules missing"; exit 1; }
           test -d vendor || { echo "vendor missing after composer install"; exit 1; }
-
-      - name: Ensure docroot exists (symlink if needed)
-        run: |
-          if [ ! -d docroot ] && [ -d web ]; then ln -s web docroot; fi
 
       - name: Install Acquia CLI
         run: |
           curl -sSL https://github.com/acquia/cli/releases/latest/download/acli.phar -o acli
           chmod +x acli && sudo mv acli /usr/local/bin/acli
-
-      - name: Ensure default Acquia artifact dir exists
-        run: mkdir -p /tmp/acli-push-artifact
 
       - name: Setup SSH key for Acquia Git
         uses: webfactory/ssh-agent@v0.9.0
@@ -109,6 +104,4 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
-          ls -la ${{ github.workspace }}/docroot/themes/custom
-          ls -la ${{ github.workspace }}/docroot/modules/custom
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git
