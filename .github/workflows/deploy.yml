@@ -97,6 +97,12 @@ jobs:
           git config --global user.name "Jenkins"
           git config --global user.email "jenkins@manifesto.co.uk"
 
+      - name: Commit build artifacts
+        run: |
+          git add -A
+          git status
+          git commit -m "Build artifacts for deployment" || echo "No changes to commit"
+
       - name: Authenticate
         run: |
           acli auth:login -vvv --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
