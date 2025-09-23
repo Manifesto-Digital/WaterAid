@@ -108,6 +108,4 @@ jobs:
 
       - name: Deploy
         working-directory: ${{ github.workspace }}
-        run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-clone --no-interaction
-          acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
+        run: acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-clone --no-interaction
