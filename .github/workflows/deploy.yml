@@ -21,7 +21,7 @@ jobs:
     environment: ${{ inputs.environment || 'test' }}
     steps:
       - name: Skip if not desired branch
-        if: github.ref_name !== 'develop' && github.ref_name !== 'staging' && github.ref_name !== 'main'
+        if: github.ref_name != 'develop' && github.ref_name != 'staging' && github.ref_name != 'main'
         run: exit 0
       - name: Skip if not merged PR or manual trigger
         if: github.event_name == 'pull_request' && github.event.pull_request.merged == false
