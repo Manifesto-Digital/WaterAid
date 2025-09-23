@@ -74,15 +74,17 @@ jobs:
           test -d docroot/core || { echo "docroot/core missing after composer install"; exit 1; }
           test -d vendor || { echo "vendor missing after composer install"; exit 1; }
 
-      - name: Prepare artifact directory
+      - name: Ensure docroot exists (symlink if needed)
         run: |
-          ARTIFACT_DIR=$(mktemp -d)
-          echo "ARTIFACT_DIR=$ARTIFACT_DIR" >> $GITHUB_ENV
+          if [ ! -d docroot ] && [ -d web ]; then ln -s web docroot; fi
 
       - name: Install Acquia CLI
         run: |
           curl -sSL https://github.com/acquia/cli/releases/latest/download/acli.phar -o acli
           chmod +x acli && sudo mv acli /usr/local/bin/acli
+
+      - name: Ensure default Acquia artifact dir exists
+        run: mkdir -p /tmp/acli-push-artifact
 
       - name: Setup SSH key for Acquia Git
         uses: webfactory/ssh-agent@v0.9.0
@@ -102,6 +104,7 @@ jobs:
           acli auth:login -vvv --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
 
       - name: Deploy
+        working-directory: ${{ github.workspace }}
         run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT -vvv --no-clone --dir "$ARTIFACT_DIR" --no-interaction
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT -vvv --no-clone --no-interaction
           acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
