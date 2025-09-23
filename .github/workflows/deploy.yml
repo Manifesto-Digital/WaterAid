@@ -99,6 +99,8 @@ jobs:
 
       - name: Commit build artifacts
         run: |
+          git add docroot/modules/custom/ --force || echo "No custom modules to add"
+          git add docroot/themes/custom/ --force || echo "No custom themes to add"
           git add -A
           git status
           git commit -m "Build artifacts for deployment" || echo "No changes to commit"
