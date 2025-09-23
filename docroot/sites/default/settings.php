@@ -766,11 +766,6 @@ $settings['entity_update_backup'] = TRUE;
  */
 $settings['migrate_node_migrate_type_classic'] = FALSE;
 
-/*
- * Royal Parks - ACQUIA SETTINGS
- */
-$repo_root = dirname(DRUPAL_ROOT);
-
 /**
  * Include Acquia settings.
  *
@@ -779,8 +774,9 @@ $repo_root = dirname(DRUPAL_ROOT);
  * @see https://docs.acquia.com/acquia-cloud/manage/code/require-line/
  */
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/theroyalparks/theroyalparks-settings.inc';
+  require '/var/www/site-php/manifestopartner.dev/D10-manifestopartnerhfgeeshxaz-common-settings.inc';
 }
+
 
 ini_set('newrelic.loglevel', 'error');
 
@@ -793,7 +789,7 @@ if (!empty($acquia_env)) {
 
   // Set correct solr search core.
   // @see https://docs.acquia.com/acquia-search/multiple-cores/override.
-  $settings['acquia_search']['override_search_core'] = "ABLR-206360.{$acquia_env}.theroyalparks";
+  // $settings['acquia_search']['override_search_core'] = "ABLR-206360.{$acquia_env}.override";
 
   $config['config_split.config_split.local_dev']['status'] = FALSE;
   if (($acquia_env === 'dev' || $acquia_env === 'test')) {
@@ -812,20 +808,4 @@ if (!empty($acquia_env)) {
 $memcacheSettingsFile = $repo_root . '/vendor/acquia/memcache-settings/memcache.settings.php';
 if (file_exists($memcacheSettingsFile)) {
   require $memcacheSettingsFile;
-}
-
-/*
- * Royal Parks - CUSTOM ALTERATIONS
- */
-$settings['config_sync_directory'] = realpath("$repo_root/src/config/default/sync");
-
-/**
- * Include Acquia settings.
- *
- * It must come before using Acquia environment variables.
- *
- * @see https://docs.acquia.com/acquia-cloud/manage/code/require-line/
- */
-if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/manifestopartner.dev/D10-manifestopartnerhfgeeshxaz-common-settings.inc';
 }
