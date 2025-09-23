@@ -1,23 +1,23 @@
 # Ignore compiled files.
-docroot/*
-web/*
-!web/modules
-web/modules/contrib
-!web/themes
-web/themes/contrib
-web/themes/custom/wateraid/dist/*
-web/themes/custom/wateraid/node_modules
 
-!web/sites
-web/sites/*
-!web/sites/development.services.yml
-!web/sites/sites.php
-!web/sites/default
-web/sites/default/*
-!web/sites/default/settings.php
-!web/sites/default/settings.platformsh.php
-!web/sites/default/services.yml
-!web/sites/default/example.settings.local.php
+docroot/*
+!docroot/modules
+docroot/modules/contrib
+!docroot/themes
+docroot/themes/contrib
+docroot/themes/custom/wateraid/dist/*
+docroot/themes/custom/wateraid/node_modules
+
+!docroot/sites
+docroot/sites/*
+!docroot/sites/development.services.yml
+!docroot/sites/sites.php
+!docroot/sites/default
+docroot/sites/default/*
+!docroot/sites/default/settings.php
+!docroot/sites/default/settings.platformsh.php
+!docroot/sites/default/services.yml
+!docroot/sites/default/example.settings.local.php
 
 # Sensitive files & directories.
 /backups
@@ -105,11 +105,11 @@ settings.local.php
 *storybook.log
 
 # example stories
-web/themes/custom/wateraid/stories
+docroot/themes/custom/wateraid/stories
 
 # Allow generic media icons to be in git, you seem to need to allow each folder for some reason.
-!web/sites/default/files/
-web/sites/default/files/*
-!web/sites/default/files/media-icons
-web/sites/default/files/media-icons/*
-!web/sites/default/files/media-icons/generic
+!docroot/sites/default/files/
+docroot/sites/default/files/*
+!docroot/sites/default/files/media-icons
+docroot/sites/default/files/media-icons/*
+!docroot/sites/default/files/media-icons/generic

@@ -73,9 +73,6 @@ jobs:
         run: |
           git config --global user.name "Jenkins"
           git config --global user.email "jenkins@manifesto.co.uk"
-      - name: Make docroot symlink for Acquia CLI
-        run: |
-          if [ ! -e docroot ]; then ln -s web docroot; fi
       - name: Authenticate
         run: |
           acli auth:login -vvv --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
