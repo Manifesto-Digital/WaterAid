@@ -93,8 +93,6 @@ jobs:
 
       - name: Commit build artifacts
         run: |
-          git add docroot/modules/custom/ --force || echo "No custom modules to add"
-          git add docroot/themes/custom/ --force || echo "No custom themes to add"
           git add -A
           git status
           git commit -m "Build artifacts for deployment" || echo "No changes to commit"
@@ -106,4 +104,4 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --no-interaction --destination-git-branch=main-build --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --destination-git-branch=main-build --dir=${{ github.workspace }} --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git --no-clone --no-interaction
