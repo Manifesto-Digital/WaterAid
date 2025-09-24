@@ -1,4 +1,4 @@
-uuid: d2154fd2-2035-40f0-a2f7-8ccc64f6ab80
+uuid: 845468da-4005-4ca4-9ec5-beed3bd51990
 langcode: en
 status: true
 dependencies:
@@ -18,8 +18,8 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: 'Subject areas'
+name: 'Subject Areas'
 vid: subject_areas
-description: null
+description: 'Subject area tags for content'
 weight: 0
 new_revision: false

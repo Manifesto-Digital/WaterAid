@@ -1,0 +1,29 @@
+uuid: a79e7ccb-248c-47ab-98d7-ab1da5c36e9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_country
+    - node.type.publication
+    - taxonomy.vocabulary.countries
+id: node.publication.field_country
+field_name: field_country
+entity_type: node
+bundle: publication
+label: Country
+description: 'Select the country for this publication.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      countries: countries
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

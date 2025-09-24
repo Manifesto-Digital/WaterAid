@@ -1,0 +1,29 @@
+uuid: db06cff3-91e2-45df-8c24-eaeced04e2e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_key_stage
+    - node.type.publication
+    - taxonomy.vocabulary.key_stage
+id: node.publication.field_key_stage
+field_name: field_key_stage
+entity_type: node
+bundle: publication
+label: 'Key Stage'
+description: 'Select the appropriate key stage for this publication.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      key_stage: key_stage
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

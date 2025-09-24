@@ -1,10 +1,15 @@
-uuid: bf42fff5-9cc6-4d1a-bec1-c2dcaeb486a6
+uuid: 97deefc3-a2d1-4e3a-b430-fd2d8445ebfc
 langcode: en
 status: true
 dependencies:
   module:
+    - menu_ui
     - scheduler
 third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
   scheduler:
     expand_fieldset: when_required
     fields_display_mode: vertical_tab
@@ -18,8 +23,10 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: 'Key Stage'
-vid: key_stage
-description: 'The educational Key Stages in the UK'
-weight: 0
-new_revision: false
+name: Publication
+type: publication
+description: 'Publications are content related to published resources, and will appear on the publication list.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

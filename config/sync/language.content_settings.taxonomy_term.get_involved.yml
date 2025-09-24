@@ -1,9 +1,14 @@
-uuid: 8077cd0f-2f83-449c-9702-deb047a40808
+uuid: 1c795c4a-c7ba-4140-89f1-dc82353fea04
 langcode: en
 status: true
 dependencies:
   config:
     - taxonomy.vocabulary.get_involved
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
 id: taxonomy_term.get_involved
 target_entity_type_id: taxonomy_term
 target_bundle: get_involved

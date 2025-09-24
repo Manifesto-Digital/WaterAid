@@ -1,4 +1,4 @@
-uuid: d5f1848b-4134-4d66-865a-e8fe3690a69e
+uuid: fc755ec3-2e05-4d14-b6ec-b4b0eb315055
 langcode: en
 status: true
 dependencies:
@@ -18,7 +18,7 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: 'Get involved'
+name: 'Get Involved'
 vid: get_involved
 description: null
 weight: 0

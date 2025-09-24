@@ -1,9 +1,14 @@
-uuid: 031e1e5d-c3a4-44ae-873e-cd03abb4c485
+uuid: a00bd176-ce06-4afc-ba73-5e21a350fb45
 langcode: en
 status: true
 dependencies:
   config:
     - taxonomy.vocabulary.key_stage
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
 id: taxonomy_term.key_stage
 target_entity_type_id: taxonomy_term
 target_bundle: key_stage

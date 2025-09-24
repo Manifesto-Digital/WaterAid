@@ -3,6 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
     - node.type.article
     - node.type.donation
     - node.type.event
@@ -23,17 +28,24 @@ dependencies:
     - taxonomy.vocabulary.tags
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
+    - node.type.publication
+    - taxonomy.vocabulary.get_involved
+    - taxonomy.vocabulary.key_stage
+    - taxonomy.vocabulary.subject_areas
   module:
     - comment
     - content_translation
     - contextual
     - file
     - group_content_menu
+    - media
     - node
+    - node_co_authors
     - path
+    - quick_node_clone
     - system
-    - taxonomy
     - toolbar
+    - webform
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
@@ -45,14 +57,26 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access media overview'
+  - 'access own webform configuration'
   - 'access toolbar'
+  - 'access webform help'
   - 'administer url aliases'
+  - 'change own username'
+  - 'clone own publication content'
+  - 'clone publication content'
   - 'create article content'
+  - 'create audio media'
+  - 'create document media'
   - 'create donation content'
   - 'create event content'
+  - 'create image media'
   - 'create landing_page content'
   - 'create listing_page content'
+  - 'create media'
   - 'create page content'
+  - 'create publication content'
+  - 'create remote_video media'
   - 'create standard_page content'
   - 'create story content'
   - 'create terms in age'
@@ -67,11 +91,12 @@ permissions:
   - 'create terms in themes'
   - 'create terms in topic'
   - 'create url aliases'
+  - 'create video media'
+  - 'create webform'
   - 'create webform content'
   - 'delete any article content'
   - 'delete any donation content'
   - 'delete any event content'
-  - 'delete any landing_page content'
   - 'delete any landing_page content'
   - 'delete any listing_page content'
   - 'delete any page content'
@@ -83,17 +108,25 @@ permissions:
   - 'delete event revisions'
   - 'delete landing_page revisions'
   - 'delete listing_page revisions'
+  - 'delete media'
   - 'delete own article content'
+  - 'delete own audio media'
+  - 'delete own document media'
   - 'delete own donation content'
   - 'delete own event content'
   - 'delete own files'
+  - 'delete own image media'
   - 'delete own landing_page content'
   - 'delete own listing_page content'
   - 'delete own page content'
+  - 'delete own publication content'
+  - 'delete own remote_video media'
   - 'delete own standard_page content'
   - 'delete own story content'
+  - 'delete own video media'
+  - 'delete own webform'
   - 'delete own webform content'
-  - 'delete page revisions'
+  - 'delete own webform submission'
   - 'delete page revisions'
   - 'delete standard_page revisions'
   - 'delete story revisions'
@@ -121,22 +154,32 @@ permissions:
   - 'edit any article content'
   - 'edit any event content'
   - 'edit any landing_page content'
-  - 'edit any landing_page content'
   - 'edit any listing_page content'
   - 'edit any page content'
   - 'edit any standard_page content'
   - 'edit any story content'
   - 'edit any webform content'
+  - 'edit co-authors of all content'
+  - 'edit co-authors of co-authored content'
+  - 'edit co-authors of own content'
   - 'edit own article content'
+  - 'edit own audio media'
   - 'edit own comments'
+  - 'edit own document media'
   - 'edit own donation content'
   - 'edit own event content'
+  - 'edit own image media'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
   - 'edit own page content'
+  - 'edit own publication content'
+  - 'edit own remote_video media'
   - 'edit own standard_page content'
   - 'edit own story content'
+  - 'edit own video media'
+  - 'edit own webform'
   - 'edit own webform content'
+  - 'edit own webform submission'
   - 'edit terms in age'
   - 'edit terms in audiences'
   - 'edit terms in countries'
@@ -146,15 +189,12 @@ permissions:
   - 'edit terms in region'
   - 'edit terms in subject_areas'
   - 'edit terms in tags'
-  - 'edit terms in tags'
   - 'edit terms in themes'
   - 'edit terms in topic'
-  - 'revert all revisions'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert donation revisions'
   - 'revert event revisions'
-  - 'revert landing_page revisions'
   - 'revert landing_page revisions'
   - 'revert listing_page revisions'
   - 'revert page revisions'
@@ -171,9 +211,11 @@ permissions:
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
   - 'revert webform revisions'
+  - 'translate get_involved taxonomy_term'
   - 'translate group_content_menu'
-  - 'translate group_content_menu'
-  - 'view all revisions'
+  - 'translate key_stage taxonomy_term'
+  - 'translate subject_areas taxonomy_term'
+  - 'update media'
   - 'view all revisions'
   - 'view article revisions'
   - 'view donation revisions'
@@ -181,6 +223,8 @@ permissions:
   - 'view landing_page revisions'
   - 'view listing_page revisions'
   - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view own webform submission'
   - 'view page revisions'
   - 'view standard_page revisions'
   - 'view story revisions'

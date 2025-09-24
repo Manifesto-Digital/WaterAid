@@ -1,0 +1,19 @@
+uuid: 46e1a383-ecfc-420e-901d-b5c26e5aa070
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_text
+    - node.type.publication
+id: node.publication.field_teaser_text
+field_name: field_teaser_text
+entity_type: node
+bundle: publication
+label: 'Teaser text'
+description: 'Enter the teaser text that will display in search engine results and l,isting pages.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
