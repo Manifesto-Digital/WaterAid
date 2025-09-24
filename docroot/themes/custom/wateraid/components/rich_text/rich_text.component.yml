@@ -13,4 +13,4 @@ props:
 libraryOverrides:
   css:
     theme:
-      ../../assets/css/components/rich_text/rich_text.css: {}
+      ../../dist/css/components/rich_text/rich_text.css: {}

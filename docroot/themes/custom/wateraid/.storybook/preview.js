@@ -1,5 +1,5 @@
 /** @type { import('@storybook/server').Preview } */
-import '../assets/css/styles.css'
+import '../dist/css/styles.css'
 
 const preview = {
   parameters: {
