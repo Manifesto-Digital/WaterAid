@@ -52,6 +52,13 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+          extensions: mbstring, pdo, xml, gd, curl, zip, bcmath, intl
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -63,20 +70,14 @@ jobs:
           npm i --prefix docroot/themes/custom/wateraid
           npm run build --prefix docroot/themes/custom/wateraid
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          tools: composer
-          extensions: mbstring, pdo, xml, gd, curl, zip, bcmath, intl
-
       - name: Install Composer Dependencies
         working-directory: ${{ github.workspace }}
         run: composer install --no-dev --optimize-autoloader
 
       - name: Install Acquia CLI
+        working-directory: ${{ github.workspace }}
         run: |
-          curl -sSL https://github.com/acquia/cli/releases/latest/download/acli.phar -o acli
+          curl -sSL https://github.com/acquia/cli/releases/download/2.48.0/acli.phar -o acli
           chmod +x acli && sudo mv acli /usr/local/bin/acli
 
       - name: Setup SSH key for Acquia Git
@@ -98,6 +99,7 @@ jobs:
           git checkout .
 
       - name: Authenticate
+        working-directory: ${{ github.workspace }}
         run: |
           acli auth:login --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
       - name: Deploy
