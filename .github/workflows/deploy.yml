@@ -3,8 +3,6 @@ on:
   pull_request:
     branches: [main, develop, staging]
     types: [closed]
-  push:
-    branches: [feature/WA-367-CI-CD-setup]
   workflow_dispatch:
     inputs:
       environment:
@@ -46,12 +44,6 @@ jobs:
         if: github.ref_name == 'main'
         run: |
           echo "ENVIRONMENT=${{ inputs.environment || 'prod' }}" >> $GITHUB_ENV
-          echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
-
-      - name: Set testing ENV vars
-        if: github.ref_name == 'feature/WA-367-CI-CD-setup'
-        run: |
-          echo "ENVIRONMENT=${{ inputs.environment || 'dev' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Block non-main to prod
