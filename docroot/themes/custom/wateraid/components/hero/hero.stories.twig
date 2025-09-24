@@ -19,7 +19,8 @@
   } %}
 
     {# Defaults #}
-    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
 
     {{ include('wateraid:hero', {
       title,
@@ -54,7 +55,8 @@
   } %}
 
     {# Defaults #}
-    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
 
     {{ include('wateraid:hero', {
       title,
@@ -69,4 +71,42 @@
     }) }}
   {% endstory %}
 
+  {% story DefaultVideo with {
+    name: 'Default (video)',
+    args: {
+      title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
+      standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+      cta: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+      link: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+      colour: 'blue',
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set video %}
+      <video controls="controls" width="640" height="480">
+        <source src="https://www.pexels.com/download/video/31853732/" type="video/mp4">
+      </video>
+    {% endset %}
+
+    {{ include('wateraid:hero', {
+      title,
+      standfirst,
+      cta,
+      link,
+      video,
+      media_caption,
+      media_credit,
+      colour,
+      variant: 'default'
+    }) }}
+  {% endstory %}
 {% endstories %}

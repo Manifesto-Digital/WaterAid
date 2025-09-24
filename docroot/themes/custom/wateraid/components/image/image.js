@@ -1,12 +1,9 @@
 (function (Drupal) {
   Drupal.behaviors.image = {
     attach(context) {
-      let openButton = context.getElementById("image-caption-open");
-      let closeButton = context.getElementById("image-caption-close");
-      let image = context.querySelector(".image__wrapper");
-
-      console.log(openButton);
-      console.log(closeButton);
+      const openButton = context.getElementById("image-caption-open");
+      const closeButton = context.getElementById("image-caption-close");
+      const image = context.querySelector(".image__wrapper");
 
       openButton.addEventListener("click", toggleCaption);
       closeButton.addEventListener("click", toggleCaption);

@@ -25,6 +25,9 @@ slots:
   image:
     title: Image
     description: Image slot
+  video:
+    title: Video
+    description: Image slot
   media_caption:
     type: string
     title: Caption
