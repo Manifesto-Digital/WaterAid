@@ -19,6 +19,6 @@ props:
 libraryOverrides:
   css:
     theme:
-      ../../assets/css/components/link/link.css: {}
+      ../../dist/css/components/link/link.css: {}
   dependencies:
     - wateraid/main

@@ -34,4 +34,4 @@ slots:
 libraryOverrides:
   css:
     theme:
-      ../../assets/css/components/hero/hero.css: {}
+      ../../dist/css/components/hero/hero.css: {}
