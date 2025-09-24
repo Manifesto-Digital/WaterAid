@@ -1,0 +1,21 @@
+prod:
+  host: <prod_ip_address>
+  user: manifestopartner
+  root: /var/www/html/manifestopartnerhfgeeshxaz/docroot/
+  uri: https://wateraid.manifesto.sh/
+  paths:
+    drush-script: '/var/www/html/manifestopartnerhfgeeshxaz/vendor/bin/drush'
+test:
+  host: <test_ip_address>
+  user: manifestopartner
+  root: /var/www/html/manifestopartnerhfgeeshxaz/docroot/
+  uri: https://wateraid-stage.manifesto.sh/
+  paths:
+    drush-script: '/var/www/html/manifestopartnerhfgeeshxaz/vendor/bin/drush'
+dev:
+  host: srv-5032.devcloud.hosting.acquia.com
+  user: manifestopartner.dev
+  root: /var/www/html/manifestopartnerhfgeeshxaz/docroot/
+  uri: https://wateraid-dev.manifesto.sh/
+  paths:
+    drush-script: '/var/www/html/manifestopartnerhfgeeshxaz/vendor/bin/drush'
