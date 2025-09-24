@@ -1,71 +1,72 @@
-@import "./sass/1-base/_colors";
-@import "./sass/1-base/_typography";
-@import "./sass/1-base/_spacing";
+@import "./sass/styles";
 
-.paragraph--type--quote {
-  padding-top: $wa-spacing-09;
+.quote {
+  color: $wa-white;
+  background-color: $wa-blue;
 
-  &.quote-type--text-only {
-    .content {
-      max-width: 1344px;
+  &__content {
+    padding: $wa-spacing-09;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    align-items: start;
 
-      .wrapper {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 888px;
-      }
+    svg {
+      width: calculate-rem(30);
+      top: calculate-rem(-6);
+      height: auto;
+      position: relative;
+    }
+
+    &--quote {
+      @include h4();
+    }
+
+    &--citation {
+      @include paragraph-sm();
+
+      margin-top: calculate-rem(22);
     }
   }
 
-  &.quote-type--image-left-above,
-  &.quote-type--image-right-below {
-    display: flex;
-    align-items: stretch;
+  &--image-left-above,
+  &--image-right-below {
+    @include grid();
 
-    .content,
-    .image {
-      flex: 0 1 50%;
+    column-gap: 0;
+
+    .quote__content {
+      @include grid-item-span(12, 12, 6);
+
+      &--wrapper {
+        max-width: calculate-rem(630);
+      }
+    }
+
+    .quote__image {
+      @include grid-item-span(12, 12, 6);
+
+      color: $wa-navy;
+    }
+
+    [data-component-id="wateraid:image"] .image {
+      display: inline;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .field--type-image {
+      display: grid;
     }
   }
 
-  .content {
-    display: flex;
-    align-items: center;
-    padding: 0 0 $wa-spacing-03 $wa-spacing-09;
-    background: $wa-blue;
-    color: $wa-white;
-
-    .field--name-field-citation {
-      color: $wa-white;
-    }
-
-    .field--name-field-quote {
-      @extend .pseudo-h4;
-      color: $wa-white;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      padding: $wa-spacing-09 0;
-
-      svg {
-        padding: 0 0 $wa-spacing-01;
-        width: 30px;
-        display: block;
-        height: 30px;
-        flex: 0 0 30px;
-      }
-
-      .field--name-field-quote {
-        flex: 0 0 calc(100% - (30px + $wa-spacing-03));
-      }
-
-      .field--name-field-citation {
-        flex: 1 0 calc (100% - $wa-spacing-03);
-        padding-left: 30px;
-        margin-top: 8px;
-      }
+  &--text-only {
+    .quote__content {
+      max-width: calculate-rem(888);
     }
   }
 }

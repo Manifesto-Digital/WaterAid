@@ -1,4 +1,4 @@
-'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
 name: quote
 status: stable
 description: Quote component
@@ -9,7 +9,7 @@ props:
       type: string
       title: Type
       description: The type of quote component
-      examples: ['text_only', 'image_right_below', 'image_left_above']
+      examples: ["text_only", "image_right_below", "image_left_above"]
     quote:
       type: string
       title: Quote
@@ -20,8 +20,17 @@ props:
       title: Citation
       description: The citation text
       example: []
-    image:
-      type: array
-      title: image
-      description: The (optional) image paragraph.
-      example: []
+slots:
+  image:
+    title: Image
+    description: Image slot
+  image_caption:
+    type: string
+    title: Caption
+  image_credit:
+    type: string
+    title: Credit
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/quote/quote.css: {}
