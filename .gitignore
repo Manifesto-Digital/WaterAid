@@ -1,23 +1,27 @@
 # Ignore compiled files.
 
-docroot/*
-!docroot/modules
+docroot/core/
+docroot/libraries/
 docroot/modules/contrib
-!docroot/themes
+docroot/profiles/contrib
 docroot/themes/contrib
 docroot/themes/custom/wateraid/dist/*
 docroot/themes/custom/wateraid/node_modules
 
-!docroot/sites
-docroot/sites/*
-!docroot/sites/development.services.yml
-!docroot/sites/sites.php
-!docroot/sites/default
-docroot/sites/default/*
-!docroot/sites/default/settings.php
-!docroot/sites/default/settings.platformsh.php
-!docroot/sites/default/services.yml
-!docroot/sites/default/example.settings.local.php
+docroot/sites/README.txt
+docroot/sites/*/default.*.yml
+docroot/sites/*/*.settings.php
+docroot/sites/*.settings.local.php
+docroot/sites/*.sites.php
+docroot/web.config
+
+.csslintrc
+.eslintignore
+.eslintrc.json
+.ht.router.php
+*.txt
+README.md
+example.gitignore
 
 # Sensitive files & directories.
 /backups
@@ -108,8 +112,4 @@ settings.local.php
 docroot/themes/custom/wateraid/stories
 
 # Allow generic media icons to be in git, you seem to need to allow each folder for some reason.
-!docroot/sites/default/files/
-docroot/sites/default/files/*
-!docroot/sites/default/files/media-icons
-docroot/sites/default/files/media-icons/*
-!docroot/sites/default/files/media-icons/generic
+docroot/sites/default/files/
