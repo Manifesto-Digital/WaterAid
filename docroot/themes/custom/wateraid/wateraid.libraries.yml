@@ -1,5 +1,9 @@
 main:
-  version: VERSION
   css:
     theme:
       dist/css/styles.css: {}
+
+quote:
+  css:
+    theme:
+      dist/css/components/quote/quote.css: {}

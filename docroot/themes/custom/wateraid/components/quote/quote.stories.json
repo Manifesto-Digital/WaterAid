@@ -1,0 +1,53 @@
+{
+  "title": "wateraid\/Molecules\/Quote",
+  "parameters": {
+    "server": {
+      "url": "https:\/\/wateraid.ddev.site\/storybook\/stories\/render"
+    }
+  },
+  "stories": [
+    {
+      "name": "TextOnly",
+      "args": {
+        "type": "text_only",
+        "quote": "Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.",
+        "citation": "Optional citation"
+      },
+      "parameters": {
+        "server": {
+          "id": "eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3dhdGVyYWlkXC9jb21wb25lbnRzXC9xdW90ZVwvcXVvdGUuc3Rvcmllcy50d2lnIiwiaWQiOiJRdW90ZVRleHQifQ%3D%3D"
+        }
+      }
+    },
+    {
+      "name": "ImageLeft",
+      "args": {
+        "type": "image_left_above",
+        "quote": "Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.",
+        "citation": "Optional citation",
+        "image_caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "image_credit": "Lorem ipsum dolor sit amet"
+      },
+      "parameters": {
+        "server": {
+          "id": "eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3dhdGVyYWlkXC9jb21wb25lbnRzXC9xdW90ZVwvcXVvdGUuc3Rvcmllcy50d2lnIiwiaWQiOiJRdW90ZUltYWdlQWJvdmUifQ%3D%3D"
+        }
+      }
+    },
+    {
+      "name": "ImageRight",
+      "args": {
+        "type": "image_right_below",
+        "quote": "Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.",
+        "citation": "Optional citation",
+        "image_caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "image_credit": "Lorem ipsum dolor sit amet"
+      },
+      "parameters": {
+        "server": {
+          "id": "eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3dhdGVyYWlkXC9jb21wb25lbnRzXC9xdW90ZVwvcXVvdGUuc3Rvcmllcy50d2lnIiwiaWQiOiJRdW90ZUltYWdlQmVsb3cifQ%3D%3D"
+        }
+      }
+    }
+  ]
+}

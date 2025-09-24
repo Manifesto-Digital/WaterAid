@@ -1,0 +1,30 @@
+uuid: 182b79f9-1cf5-490e-ac1f-dae31c111d3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_quote_type
+field_name: field_quote_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: text_only
+      label: 'Text Only'
+    -
+      value: image_left_above
+      label: 'Image Left/Above'
+    -
+      value: image_right_below
+      label: 'Image Right/Below'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

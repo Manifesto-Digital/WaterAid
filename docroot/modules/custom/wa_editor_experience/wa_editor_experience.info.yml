@@ -1,0 +1,7 @@
+name: 'WaterAid Editor Experience'
+type: module
+description: 'Functionality related to the content editing experience'
+package: Content
+core_version_requirement: ^10 || ^11
+dependencies:
+  - paragraphs:paragraphs

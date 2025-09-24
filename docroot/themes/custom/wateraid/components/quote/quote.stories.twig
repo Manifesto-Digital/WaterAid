@@ -1,0 +1,64 @@
+{# web/themes/custom/wateraid/components/quote.stories.twig #}
+{% stories link with { title: 'wateraid/Molecules/Quote' } %}
+
+  {% story QuoteText with {
+    name: 'TextOnly',
+    args: {
+      type: 'text_only',
+      quote: 'Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.'|t,
+      citation: 'Optional citation'
+    }
+  } %}
+
+    {{ include('wateraid:quote', {
+      type,
+      quote,
+      citation
+    }) }}
+  {% endstory %}
+
+  {% story QuoteImageAbove with {
+    name: 'ImageLeft',
+    args: {
+      type: 'image_left_above',
+      quote: 'Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.'|t,
+      citation: 'Optional citation',
+      image_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      image_credit: 'Lorem ipsum dolor sit amet'
+    }
+  } %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {{ include('wateraid:quote', {
+      type,
+      quote,
+      citation,
+      image,
+      image_caption,
+      image_credit
+    }) }}
+  {% endstory %}
+
+  {% story QuoteImageBelow with {
+    name: 'ImageRight',
+    args: {
+      type: 'image_right_below',
+      quote: 'Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.'|t,
+      citation: 'Optional citation',
+      image_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      image_credit: 'Lorem ipsum dolor sit amet'
+    }
+  } %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {{ include('wateraid:quote', {
+      type,
+      quote,
+      citation,
+      image,
+      image_caption,
+      image_credit
+    }) }}
+  {% endstory %}
+
+{% endstories %}
