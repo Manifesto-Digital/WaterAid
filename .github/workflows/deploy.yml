@@ -60,7 +60,22 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - uses: shivammathur/setup-php@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Frontend
+        working-directory: ${{ github.workspace }}
+        run: |
+          npm i --prefix docroot/themes/custom/wateraid
+          npm run build --prefix docroot/themes/custom/wateraid
+
+
+
+      - name: Set up PHP
+        working-directory: ${{ github.workspace }}
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           tools: composer
@@ -68,10 +83,6 @@ jobs:
 
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader
-
-      - name: Install Frontend
-        working-directory: ${{ github.workspace }}
-        run: npm i --prefix docroot/themes/custom/wateraid
 
       - name: Install Acquia CLI
         run: |
@@ -93,9 +104,8 @@ jobs:
 
       - name: Commit build artifacts
         run: |
-          git add -A
           git status
-          git commit -m "Build artifacts for deployment" || echo "No changes to commit"
+          git checkout .
 
       - name: Authenticate
         run: |
@@ -104,8 +114,10 @@ jobs:
       - name: Deploy
         working-directory: ${{ github.workspace }}
         run: |
-          mkdir /tmp/acli-push-artifact
-          acli push:artifact --dry-run --no-clone --no-commit
-          mv .git /tmp/acli-push-artifact/
-          shopt -s dotglob && rm -rf ./* && mv /tmp/acli-push-artifact/* ./
-          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT --destination-git-branch=main-build --dir=/tmp/acli-push-artifact --no-interaction
+          acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
+          --destination-git-branch=main-build  \
+          --dir=${{ github.workspace }}  \
+          --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git  \
+          --no-clone \
+          --no-interaction
+
