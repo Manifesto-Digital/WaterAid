@@ -5,7 +5,6 @@ docroot/libraries/
 docroot/modules/contrib
 docroot/profiles/contrib
 docroot/themes/contrib
-docroot/themes/custom/wateraid/dist/*
 docroot/themes/custom/wateraid/node_modules
 
 docroot/sites/README.txt
@@ -37,14 +36,10 @@ example.gitignore
 /tests
 
 # Compiled files
-dist/
 _icons-generated.scss
 dependencyGraph.json
 patterns.zip
 yarn-error.log
-*.css.map
-*.css
-*.min.js
 
 # OS generated files
 *.swp
