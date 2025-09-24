@@ -75,6 +75,7 @@ jobs:
         run: composer install --no-dev --optimize-autoloader
 
       - name: Install Acquia CLI
+        working-directory: ${{ github.workspace }}
         run: |
           curl -sSL https://github.com/acquia/cli/releases/latest/download/acli.phar -o acli
           sudo mv -f acli /usr/local/bin/acli
@@ -99,6 +100,7 @@ jobs:
           git checkout .
 
       - name: Authenticate
+        working-directory: ${{ github.workspace }}
         run: |
           acli auth:login --key=${{ secrets.ACQUIA_API_KEY_ID }} --secret=${{ secrets.ACQUIA_API_KEY_SECRET }}
       - name: Deploy
