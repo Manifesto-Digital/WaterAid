@@ -1,0 +1,31 @@
+uuid: e2970793-7a21-461e-88ea-657f2ece5680
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.event
+    - paragraphs.paragraphs_type.rich_text
+  module:
+    - entity_reference_revisions
+id: node.event.field_content
+field_name: field_content
+entity_type: node
+bundle: event
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      rich_text: rich_text
+    negate: 0
+    target_bundles_drag_drop:
+      rich_text:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

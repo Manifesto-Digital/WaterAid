@@ -1,0 +1,31 @@
+uuid: a0e3d0cf-fba2-48d4-a814-f1e7c96b7a76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.story
+    - paragraphs.paragraphs_type.rich_text
+  module:
+    - entity_reference_revisions
+id: node.story.field_content
+field_name: field_content
+entity_type: node
+bundle: story
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      rich_text: rich_text
+    negate: 0
+    target_bundles_drag_drop:
+      rich_text:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

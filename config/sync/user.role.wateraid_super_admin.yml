@@ -3,17 +3,139 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.event
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.page
+    - node.type.standard_page
+    - node.type.story
+    - taxonomy.vocabulary.age
+    - taxonomy.vocabulary.audiences
+    - taxonomy.vocabulary.countries
+    - taxonomy.vocabulary.event_types
+    - taxonomy.vocabulary.get_involved
+    - taxonomy.vocabulary.key_stage
+    - taxonomy.vocabulary.region
+    - taxonomy.vocabulary.subject_areas
+    - taxonomy.vocabulary.themes
+    - taxonomy.vocabulary.topic
     - node.type.article
     - node.type.landing_page
     - node.type.webform
   module:
     - node
     - quick_node_clone
+    - taxonomy
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
 weight: -7
 is_admin: null
 permissions:
+  - 'clone event content'
+  - 'clone landing_page content'
+  - 'clone listing_page content'
+  - 'clone own event content'
+  - 'clone own landing_page content'
+  - 'clone own listing_page content'
+  - 'clone own page content'
+  - 'clone own standard_page content'
+  - 'clone own story content'
+  - 'clone page content'
+  - 'clone standard_page content'
+  - 'clone story content'
+  - 'create event content'
+  - 'create landing_page content'
+  - 'create listing_page content'
+  - 'create page content'
+  - 'create standard_page content'
+  - 'create story content'
+  - 'create terms in age'
+  - 'create terms in audiences'
+  - 'create terms in countries'
+  - 'create terms in event_types'
+  - 'create terms in get_involved'
+  - 'create terms in key_stage'
+  - 'create terms in region'
+  - 'create terms in subject_areas'
+  - 'create terms in themes'
+  - 'create terms in topic'
+  - 'delete any event content'
+  - 'delete any landing_page content'
+  - 'delete any listing_page content'
+  - 'delete any page content'
+  - 'delete any standard_page content'
+  - 'delete any story content'
+  - 'delete event revisions'
+  - 'delete landing_page revisions'
+  - 'delete listing_page revisions'
+  - 'delete own event content'
+  - 'delete own landing_page content'
+  - 'delete own listing_page content'
+  - 'delete own page content'
+  - 'delete own standard_page content'
+  - 'delete own story content'
+  - 'delete page revisions'
+  - 'delete standard_page revisions'
+  - 'delete story revisions'
+  - 'delete term revisions in age'
+  - 'delete term revisions in audiences'
+  - 'delete term revisions in countries'
+  - 'delete term revisions in event_types'
+  - 'delete term revisions in get_involved'
+  - 'delete term revisions in key_stage'
+  - 'delete term revisions in region'
+  - 'delete term revisions in subject_areas'
+  - 'delete term revisions in themes'
+  - 'delete term revisions in topic'
+  - 'delete terms in age'
+  - 'delete terms in audiences'
+  - 'delete terms in countries'
+  - 'delete terms in event_types'
+  - 'delete terms in get_involved'
+  - 'delete terms in key_stage'
+  - 'delete terms in region'
+  - 'delete terms in subject_areas'
+  - 'delete terms in themes'
+  - 'delete terms in topic'
+  - 'edit any event content'
+  - 'edit any landing_page content'
+  - 'edit any listing_page content'
+  - 'edit any page content'
+  - 'edit any standard_page content'
+  - 'edit any story content'
+  - 'edit own event content'
+  - 'edit own landing_page content'
+  - 'edit own listing_page content'
+  - 'edit own page content'
+  - 'edit own standard_page content'
+  - 'edit own story content'
+  - 'edit terms in age'
+  - 'edit terms in audiences'
+  - 'edit terms in countries'
+  - 'edit terms in event_types'
+  - 'edit terms in get_involved'
+  - 'edit terms in key_stage'
+  - 'edit terms in region'
+  - 'edit terms in subject_areas'
+  - 'edit terms in themes'
+  - 'edit terms in topic'
+  - 'revert event revisions'
+  - 'revert landing_page revisions'
+  - 'revert listing_page revisions'
+  - 'revert page revisions'
+  - 'revert standard_page revisions'
+  - 'revert story revisions'
+  - 'revert term revisions in age'
+  - 'revert term revisions in audiences'
+  - 'revert term revisions in countries'
+  - 'revert term revisions in event_types'
+  - 'revert term revisions in get_involved'
+  - 'revert term revisions in key_stage'
+  - 'revert term revisions in region'
+  - 'revert term revisions in subject_areas'
+  - 'revert term revisions in themes'
+  - 'revert term revisions in topic'
+  - 'view event revisions'
   - 'clone article content'
   - 'clone landing_page content'
   - 'clone own article content'
@@ -56,3 +178,17 @@ permissions:
   - 'revert landing_page revisions'
   - 'view article revisions'
   - 'view landing_page revisions'
+  - 'view listing_page revisions'
+  - 'view page revisions'
+  - 'view standard_page revisions'
+  - 'view story revisions'
+  - 'view term revisions in age'
+  - 'view term revisions in audiences'
+  - 'view term revisions in countries'
+  - 'view term revisions in event_types'
+  - 'view term revisions in get_involved'
+  - 'view term revisions in key_stage'
+  - 'view term revisions in region'
+  - 'view term revisions in subject_areas'
+  - 'view term revisions in themes'
+  - 'view term revisions in topic'

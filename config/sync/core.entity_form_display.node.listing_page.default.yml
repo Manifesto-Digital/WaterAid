@@ -1,12 +1,12 @@
-uuid: 4987f92f-06e7-4fdc-a9c5-9f3272b69bce
+uuid: a4f584bf-11a4-40c1-8237-50f6b7295d33
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_content
-    - field.field.node.page.field_teaser_image
-    - field.field.node.page.field_teaser_text
-    - node.type.page
+    - field.field.node.listing_page.field_content
+    - field.field.node.listing_page.field_teaser_image
+    - field.field.node.listing_page.field_teaser_text
+    - node.type.listing_page
   module:
     - field_group
     - layout_paragraphs
@@ -18,11 +18,10 @@ third_party_settings:
       children:
         - group_general
         - group_content
-        - group_teaser
       label: Tabs
       region: content
       parent_name: ''
-      weight: 1
+      weight: 0
       format_type: tabs
       format_settings:
         classes: ''
@@ -34,43 +33,11 @@ third_party_settings:
     group_general:
       children:
         - title
+        - field_teaser_text
       label: General
       region: content
       parent_name: group_tabs
-      weight: 10
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: open
-        description: ''
-        required_fields: false
-    group_content:
-      children:
-        - field_content
-      label: Content
-      region: content
-      parent_name: group_tabs
-      weight: 11
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: false
-    group_teaser:
-      children:
-        - field_teaser_text
-        - field_teaser_image
-      label: Teaser
-      region: content
-      parent_name: group_tabs
-      weight: 12
+      weight: 20
       format_type: tab
       format_settings:
         classes: ''
@@ -80,25 +47,39 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
-_core:
-  default_config_hash: SfpLhPExzvR0MgFp0Wp7CrmgEnhcqQ-fXIWFhbf4ue0
-id: node.page.default
+    group_content:
+      children:
+        - field_content
+      label: Content
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.listing_page.default
 targetEntityType: node
-bundle: page
+bundle: listing_page
 mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_content:
     type: layout_paragraphs
-    weight: 4
+    weight: 5
     region: content
     settings:
-      view_mode: preview
+      view_mode: default
       preview_view_mode: default
       form_display_mode: default
       nesting_depth: 0
@@ -107,14 +88,14 @@ content:
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
-    weight: 2
+    weight: 4
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_teaser_text:
     type: string_textarea
-    weight: 1
+    weight: 2
     region: content
     settings:
       rows: 5
@@ -129,47 +110,42 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 4
+    weight: 7
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 8
+    weight: 11
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 5
+    weight: 8
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  translation:
-    weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -178,7 +154,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 7
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

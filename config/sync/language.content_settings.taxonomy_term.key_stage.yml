@@ -1,0 +1,11 @@
+uuid: 031e1e5d-c3a4-44ae-873e-cd03abb4c485
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.key_stage
+id: taxonomy_term.key_stage
+target_entity_type_id: taxonomy_term
+target_bundle: key_stage
+default_langcode: site_default
+language_alterable: false

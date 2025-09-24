@@ -1,20 +1,18 @@
-uuid: 0b0d4048-297f-492c-b802-c889252cf706
+uuid: 2106c1d6-3a80-40df-bb96-29ac99d1ea4c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_content
-    - field.field.node.page.field_teaser_image
-    - field.field.node.page.field_teaser_text
-    - node.type.page
+    - field.field.node.listing_page.field_content
+    - field.field.node.listing_page.field_teaser_image
+    - field.field.node.listing_page.field_teaser_text
+    - node.type.listing_page
   module:
     - entity_reference_revisions
     - user
-_core:
-  default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
-id: node.page.default
+id: node.listing_page.default
 targetEntityType: node
-bundle: page
+bundle: listing_page
 mode: default
 content:
   field_content:
@@ -24,12 +22,12 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 102
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 100
     region: content
 hidden:
   field_teaser_image: true
