@@ -5,11 +5,15 @@
   background-color: $wa-blue;
 
   &__content {
-    padding: $wa-spacing-09;
+    padding: $wa-spacing-07 $wa-spacing-05;
     margin: auto;
     width: fit-content;
     display: flex;
     align-items: start;
+
+    @include desktop {
+      padding: $wa-spacing-09;
+    }
 
     svg {
       width: calculate-rem(30);
