@@ -25,6 +25,6 @@ props:
 libraryOverrides:
   css:
     theme:
-      ../../dist/css/components/button/button.css: {}
+      ../../assets/css/components/button/button.css: {}
   dependencies:
     - wateraid/main

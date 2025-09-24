@@ -1,4 +1,4 @@
 main:
   css:
     theme:
-      dist/css/styles.css: {}
+      assets/css/styles.css: {}

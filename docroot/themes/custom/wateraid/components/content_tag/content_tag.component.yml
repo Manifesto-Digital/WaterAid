@@ -19,6 +19,6 @@ props:
 libraryOverrides:
   css:
     theme:
-      ../../dist/css/components/content_tag/content_tag.css: {}
+      ../../assets/css/components/content_tag/content_tag.css: {}
   dependencies:
     - wateraid/main

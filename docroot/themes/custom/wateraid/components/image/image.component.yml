@@ -25,4 +25,4 @@ props:
 libraryOverrides:
   css:
     theme:
-      ../../dist/css/components/image/image.css: {}
+      ../../assets/css/components/image/image.css: {}
