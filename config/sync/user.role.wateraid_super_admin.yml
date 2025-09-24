@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.article
     - node.type.landing_page
+    - node.type.webform
   module:
     - node
     - quick_node_clone
@@ -13,6 +14,28 @@ label: 'WaterAid Super Admin'
 weight: -7
 is_admin: null
 permissions:
+  - 'clone article content'
+  - 'clone landing_page content'
+  - 'clone own article content'
+  - 'clone own landing_page content'
+  - 'clone own webform content'
+  - 'clone webform content'
+  - 'create landing_page content'
+  - 'create webform content'
+  - 'delete any landing_page content'
+  - 'delete any webform content'
+  - 'delete landing_page revisions'
+  - 'delete own landing_page content'
+  - 'delete own webform content'
+  - 'delete webform revisions'
+  - 'edit any landing_page content'
+  - 'edit any webform content'
+  - 'edit own landing_page content'
+  - 'edit own webform content'
+  - 'revert landing_page revisions'
+  - 'revert webform revisions'
+  - 'view landing_page revisions'
+  - 'view webform revisions'
   - 'clone article content'
   - 'clone landing_page content'
   - 'clone own article content'
