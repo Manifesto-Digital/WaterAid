@@ -113,6 +113,8 @@ jobs:
         run: |
           mkdir -p /tmp/acli-push-artifact
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
-          --destination-git-branch=develop \
+          --destination-git-branch=main-build \
+          --vvv \
+          --no-sanitize \
           --no-interaction
 
