@@ -108,7 +108,7 @@ jobs:
           mkdir -p /tmp/acli-push-artifact
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
           --destination-git-branch=main-build \
-          --no-sanitize \
+          --no-sanitize=true \
           --no-interaction
       - name: Drush commands
         working-directory: ${{ github.workspace }}
