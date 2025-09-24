@@ -116,8 +116,10 @@ jobs:
         run: |
           mkdir -p /tmp/acli-push-artifact
           acli push:artifact --dry-run --no-clone --no-commit
-          ls -la /tmp/acli-push-artifact
+          ls -la /tmp/acli-push-artifact/docroot/themes
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
           --dir=/tmp/acli-push-artifact \
+          --destination-git-branch=main-build \
+          --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git \
           --no-interaction
 
