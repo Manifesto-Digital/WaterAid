@@ -20,7 +20,7 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     chunkFilename: 'js/async/[name].chunk.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'assets'),
     pathinfo: true,
     publicPath: '../../',
   },
