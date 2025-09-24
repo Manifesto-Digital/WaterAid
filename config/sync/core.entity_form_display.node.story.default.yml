@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.story.field_content
     - field.field.node.story.field_country
     - field.field.node.story.field_get_involved
+    - field.field.node.story.field_hero
     - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
@@ -39,6 +40,7 @@ third_party_settings:
     group_general:
       children:
         - title
+        - field_hero
         - field_in_page_navigation
       label: General
       region: content
@@ -169,9 +171,21 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_hero:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
   field_in_page_navigation:
     type: boolean_checkbox
-    weight: 2
+    weight: 3
     region: content
     settings:
       display_label: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.listing_page.field_content
+    - field.field.node.listing_page.field_hero
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - node.type.listing_page
@@ -36,5 +37,7 @@ content:
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_content: true
+  field_hero: true
   langcode: true

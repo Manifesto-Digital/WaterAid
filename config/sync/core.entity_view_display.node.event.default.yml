@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.event.field_content
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
     - field.field.node.event.field_teaser_image
@@ -36,6 +37,15 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_properties:
     type: key_value
     label: above
@@ -58,6 +68,7 @@ content:
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true

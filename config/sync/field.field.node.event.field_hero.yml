@@ -1,18 +1,18 @@
-uuid: 12ce4fe6-e6e4-4ed3-9722-ca6c4a26684b
+uuid: b3e589d6-9e5c-464b-9c71-7d4804590c12
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_hero
-    - node.type.landing_page
+    - node.type.event
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_video
   module:
     - entity_reference_revisions
-id: node.landing_page.field_hero
+id: node.event.field_hero
 field_name: field_hero
 entity_type: node
-bundle: landing_page
+bundle: event
 label: Hero
 description: ''
 required: true
