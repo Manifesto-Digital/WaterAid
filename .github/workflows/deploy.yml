@@ -71,8 +71,6 @@ jobs:
           npm i --prefix docroot/themes/custom/wateraid
           npm run build --prefix docroot/themes/custom/wateraid
 
-
-
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -115,6 +113,6 @@ jobs:
         run: |
           mkdir -p /tmp/acli-push-artifact
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
-          --destination-git-branch=main-build \
+          --destination-git-branch=develop \
           --no-interaction
 
