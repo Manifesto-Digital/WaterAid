@@ -55,3 +55,7 @@ You should now be able to run `make storybook` to start up Storybook
 
 The default URLs for Storybook hangs on Macs, so access Storybook on your local via:
 https:/wateraid.ddev.site:6006
+
+### Acquia
+PRs merging into the main, develop or staging branches will automatically deploy to the Acquia holding environments for
+testing purposes.
