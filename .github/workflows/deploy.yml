@@ -117,6 +117,5 @@ jobs:
           mkdir -p /tmp/acli-push-artifact
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
           --destination-git-branch=main-build \
-          --destination-git-urls=manifestopartner@svn-4258.devcloud.hosting.acquia.com:manifestopartner.git \
           --no-interaction
 
