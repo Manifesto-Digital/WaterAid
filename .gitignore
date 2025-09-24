@@ -7,7 +7,6 @@ docroot/profiles/contrib
 docroot/themes/contrib
 docroot/themes/custom/wateraid/node_modules
 
-
 docroot/sites/README.txt
 docroot/sites/*/default.*.yml
 docroot/sites/*/*.settings.php
