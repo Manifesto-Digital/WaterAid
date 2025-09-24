@@ -36,14 +36,10 @@ example.gitignore
 /tests
 
 # Compiled files
-dist/
 _icons-generated.scss
 dependencyGraph.json
 patterns.zip
 yarn-error.log
-*.css.map
-*.css
-*.min.js
 
 # OS generated files
 *.swp
