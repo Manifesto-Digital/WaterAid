@@ -39,7 +39,7 @@ To create new components:
 ```
 4) Create component_name.stories.twig
 5) Run `make all-stories` to generate storybook files (you can also watch for changes)
-5) Add entry point for scss and js to `web/themes/custom/wateraid/webpack.config.js`
+5) Add entry point for scss and js to `docroot/themes/custom/wateraid/webpack.config.js`
 6) Create paragraph in CMS and paragraph twig template in code base
 
 

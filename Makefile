@@ -35,31 +35,31 @@ install: ## Initialise project containers & install Drupal.
 	make install-storybook
 
 local-settings: ## Add local Drupal development settings.
-	cp web/sites/default/example.settings.local.php web/sites/default/settings.local.php
-	echo "Created \`web/sites/default/settings.local.php\` from \`web/sites/default/example.settings.local.php\`"
+	cp docroot/sites/default/example.settings.local.php docroot/sites/default/settings.local.php
+	echo "Created \`docroot/sites/default/settings.local.php\` from \`docroot/sites/default/example.settings.local.php\`"
 
 mysql:
 	ddev exec mysql -u db -pdb db
 
 install-frontend:
-	cd web/themes/custom/wateraid && \
+	cd docroot/themes/custom/wateraid && \
 	ddev npm i --quiet
 
 watch-frontend:
-	ddev npm run dev --prefix web/themes/custom/wateraid/
+	ddev npm run dev --prefix docroot/themes/custom/wateraid/
 
 build-frontend:
-	ddev npm run build --prefix web/themes/custom/wateraid/
+	ddev npm run build --prefix docroot/themes/custom/wateraid/
 
 install-storybook: ## Sets up local storybook
-	cd web/themes/custom/wateraid && \
+	cd docroot/themes/custom/wateraid && \
 	ddev npm install && \
 	ddev npm install watch && \
 	ddev npx sb init --builder webpack5 --type server --no-dev
-	cp web/themes/custom/wateraid/defaults/storybook.main.js web/themes/custom/wateraid/.storybook/main.js
+	cp docroot/themes/custom/wateraid/defaults/storybook.main.js docroot/themes/custom/wateraid/.storybook/main.js
 
 storybook: ## Run Storybook. Todo: see why we need to keep enabling Corepack
-	cd web/themes/custom/wateraid && \
+	cd docroot/themes/custom/wateraid && \
 	ddev npm install && \
 	ddev npm run storybook -- --no-open
 	echo "==================================================="
