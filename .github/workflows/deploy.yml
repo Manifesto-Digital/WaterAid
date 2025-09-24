@@ -77,9 +77,8 @@ jobs:
       - name: Install Acquia CLI
         working-directory: ${{ github.workspace }}
         run: |
-          curl -sSL https://github.com/acquia/cli/releases/latest/download/acli.phar -o acli
-          sudo mv -f acli /usr/local/bin/acli
-          sudo chmod -R 0755 /usr/local/bin
+          curl -sSL https://github.com/acquia/cli/releases/download/2.49.0/acli.phar -o acli
+          chmod +x acli && sudo mv acli /usr/local/bin/acli
 
       - name: Setup SSH key for Acquia Git
         uses: webfactory/ssh-agent@v0.9.0
