@@ -7,7 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
   module:
     - link
-id: paragraph.hero.field_primary_cta
+id: paragraph.hero_image.field_primary_cta
 field_name: field_primary_cta
 entity_type: paragraph
 bundle: hero_image

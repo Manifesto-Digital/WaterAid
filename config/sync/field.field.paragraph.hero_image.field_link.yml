@@ -7,7 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
   module:
     - link
-id: paragraph.hero.field_link
+id: paragraph.hero_image.field_link
 field_name: field_link
 entity_type: paragraph
 bundle: hero_image

@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_credit
     - paragraphs.paragraphs_type.hero_image
-id: paragraph.hero.field_credit
+id: paragraph.hero_image.field_credit
 field_name: field_credit
 entity_type: paragraph
 bundle: hero_image

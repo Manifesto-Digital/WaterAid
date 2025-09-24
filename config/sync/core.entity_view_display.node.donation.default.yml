@@ -1,16 +1,18 @@
-uuid: 0bbfd7fd-35f6-42fc-9780-bce0b294cb83
+uuid: 4ce87b2a-73cd-47ea-a566-9c987fe35f76
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.webform.field_content
-    - node.type.webform
+    - field.field.node.donation.field_content
+    - field.field.node.donation.field_teaser_image
+    - field.field.node.donation.field_teaser_text
+    - node.type.donation
   module:
     - entity_reference_revisions
     - user
-id: node.webform.default
+id: node.donation.default
 targetEntityType: node
-bundle: webform
+bundle: donation
 mode: default
 content:
   field_content:
@@ -29,4 +31,6 @@ content:
     region: content
 hidden:
   co_authors: true
+  field_teaser_image: true
+  field_teaser_text: true
   langcode: true

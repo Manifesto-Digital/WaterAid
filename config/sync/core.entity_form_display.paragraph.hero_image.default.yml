@@ -35,7 +35,7 @@ third_party_settings:
         open: true
         description: ''
         required_fields: true
-id: paragraph.hero.default
+id: paragraph.hero_image.default
 targetEntityType: paragraph
 bundle: hero_image
 mode: default

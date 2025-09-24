@@ -8,7 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
   module:
     - text
-id: paragraph.hero.field_standfirst
+id: paragraph.hero_image.field_standfirst
 field_name: field_standfirst
 entity_type: paragraph
 bundle: hero_image

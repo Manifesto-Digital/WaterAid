@@ -18,6 +18,7 @@ third_party_settings:
       children:
         - group_general
         - group_content
+        - group_teaser
       label: Tabs
       region: content
       parent_name: ''
@@ -33,7 +34,6 @@ third_party_settings:
     group_general:
       children:
         - title
-        - field_teaser_text
       label: General
       region: content
       parent_name: group_tabs
@@ -63,11 +63,38 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+    group_teaser:
+      children:
+        - field_teaser_text
+        - field_teaser_image
+      label: Teaser
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
 id: node.listing_page.default
 targetEntityType: node
 bundle: listing_page
 mode: default
 content:
+  co_authors:
+    type: entity_reference_autocomplete_tags
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 6
@@ -88,7 +115,7 @@ content:
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
-    weight: 4
+    weight: 3
     region: content
     settings:
       media_types: {  }

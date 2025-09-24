@@ -1,20 +1,18 @@
-uuid: c6cadf91-fe4e-4ce9-abec-3a87848f0589
+uuid: 3e3b8a52-2c0b-4ad4-818f-c7f1596014b4
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.page.field_content
-    - field.field.node.page.field_teaser_image
-    - field.field.node.page.field_teaser_text
-    - node.type.page
+    - field.field.node.donation.field_content
+    - field.field.node.donation.field_teaser_image
+    - field.field.node.donation.field_teaser_text
+    - node.type.donation
   module:
     - user
-_core:
-  default_config_hash: 8BgdRtLbtQ0F__o0FHSH0Mx5fvXOra9tfT1GmNKbRYw
-id: node.page.teaser
+id: node.donation.teaser
 targetEntityType: node
-bundle: page
+bundle: donation
 mode: teaser
 content:
   field_teaser_image:
@@ -33,7 +31,9 @@ content:
     weight: 2
     region: content
   links:
-    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   co_authors: true

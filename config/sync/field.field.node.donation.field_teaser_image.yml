@@ -1,18 +1,18 @@
-uuid: 7ec8b777-a7fa-45f7-800a-58bf72d16dc2
+uuid: 01c7fd29-25f2-4d30-92e6-c13da3cc2ff8
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_image
+    - field.storage.node.field_teaser_image
     - media.type.image
-    - paragraphs.paragraphs_type.hero_image
-id: paragraph.hero_image.field_image
-field_name: field_image
-entity_type: paragraph
-bundle: hero_image
-label: Image
+    - node.type.donation
+id: node.donation.field_teaser_image
+field_name: field_teaser_image
+entity_type: node
+bundle: donation
+label: 'Teaser image'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

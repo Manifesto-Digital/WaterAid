@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_caption
     - paragraphs.paragraphs_type.hero_image
-id: paragraph.hero.field_caption
+id: paragraph.hero_image.field_caption
 field_name: field_caption
 entity_type: paragraph
 bundle: hero_image
