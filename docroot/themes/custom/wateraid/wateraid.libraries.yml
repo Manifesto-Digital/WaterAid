@@ -1,5 +1,4 @@
 main:
-  version: VERSION
   css:
     theme:
       dist/css/styles.css: {}
