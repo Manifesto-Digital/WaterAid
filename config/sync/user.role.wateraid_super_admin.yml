@@ -3,13 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - node.type.article
     - node.type.donation
     - node.type.event
     - node.type.landing_page
     - node.type.listing_page
     - node.type.page
+    - node.type.publication
     - node.type.standard_page
     - node.type.story
+    - node.type.webform
     - taxonomy.vocabulary.age
     - taxonomy.vocabulary.audiences
     - taxonomy.vocabulary.countries
@@ -18,39 +26,9 @@ dependencies:
     - taxonomy.vocabulary.key_stage
     - taxonomy.vocabulary.region
     - taxonomy.vocabulary.subject_areas
-    - taxonomy.vocabulary.themes
-    - taxonomy.vocabulary.topic
-    - node.type.article
-    - node.type.landing_page
-    - node.type.webform
-    - taxonomy.vocabulary.region
-    - taxonomy.vocabulary.themes
-    - node.type.donation
-    - node.type.event
-    - node.type.landing_page
-    - node.type.listing_page
-    - node.type.story
-    - taxonomy.vocabulary.audiences
-    - taxonomy.vocabulary.countries
-    - taxonomy.vocabulary.event_types
-    - taxonomy.vocabulary.get_involved
-    - taxonomy.vocabulary.region
-    - media.type.audio
-    - media.type.document
-    - media.type.image
-    - media.type.remote_video
-    - media.type.video
-    - node.type.article
-    - node.type.landing_page
-    - node.type.page
-    - node.type.publication
-    - taxonomy.vocabulary.audiences
-    - taxonomy.vocabulary.countries
-    - taxonomy.vocabulary.get_involved
-    - taxonomy.vocabulary.key_stage
-    - taxonomy.vocabulary.subject_areas
     - taxonomy.vocabulary.tags
     - taxonomy.vocabulary.themes
+    - taxonomy.vocabulary.topic
   module:
     - content_translation
     - group
@@ -63,7 +41,6 @@ dependencies:
     - taxonomy
     - toolbar
     - webform
-    - taxonomy
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
 weight: -7
@@ -86,6 +63,7 @@ permissions:
   - 'administer users'
   - 'administer webform'
   - 'administer webform element access'
+  - 'administer webform overview'
   - 'administer webform submission'
   - 'change own username'
   - 'clone article content'
