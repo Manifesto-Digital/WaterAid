@@ -161,7 +161,7 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
       $elements['goto_page_' . $page_id] = [
         '#type' => 'fieldset',
         '#title' => '<span class="step-title"><span class="step-title__icon fa-stack"><i class="fa fa-solid fa-circle fa-stack-1x"></i><strong class="fa-stack-1x">' . $page['#page_number'] . '</strong></span><span class="step-title__text">' . $page['#title'] . '</span></span>',
-        '#attributes' => ['class' => 'next-form-step'],
+        '#attributes' => ['class' => ['next-form-step']],
       ];
     }
     return $elements;
