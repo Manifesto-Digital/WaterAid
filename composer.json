@@ -72,6 +72,7 @@
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
+    "drupal/media_directories": "^2.0",
     "drupal/metatag": "^2.0",
     "drupal/migrate_plus": "^6.0",
     "drupal/migrate_tools": "^6.1",
@@ -164,7 +165,7 @@
       "docroot/core": [
         "type:drupal-core"
       ],
-      "web/libraries/{$name}": [
+      "docroot/libraries/{$name}": [
         "type:drupal-library",
         "type:bower-asset",
         "type:npm-asset"
@@ -187,7 +188,7 @@
       "docroot/profiles/custom/{$name}": [
         "type:drupal-custom-profile"
       ],
-      "web/themes/custom/{$name}": [
+      "docroot/themes/custom/{$name}": [
         "type:drupal-theme"
       ],
       "vendor/{$name}": [
