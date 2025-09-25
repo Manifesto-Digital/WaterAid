@@ -5,14 +5,22 @@
         let openButton = image.querySelector(".image__button--open button");
         let closeButton = image.querySelector(".image__button--close button");
         let wrapper = image.querySelector(".image__wrapper");
-
-        openButton.addEventListener("click", function(){wrapper.classList.toggle("open");});
-        closeButton.addEventListener("click", function(){wrapper.classList.toggle("open");});
+        
+        if (openButton) {
+          openButton.addEventListener("click", function () {
+            wrapper.classList.toggle("open");
+          });
+          closeButton.addEventListener("click", function () {
+            wrapper.classList.toggle("open");
+          });
+        }
       }
 
-      context.querySelectorAll('[data-component-id="wateraid:image"]').forEach(image => {
-        attachEventListeners(image);
-      });
+      context
+        .querySelectorAll('[data-component-id="wateraid:image"]')
+        .forEach((image) => {
+          attachEventListeners(image);
+        });
     },
   };
 })(Drupal);
