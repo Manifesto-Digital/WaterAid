@@ -74,6 +74,7 @@ module:
   search: 0
   seckit: 0
   security_review: 0
+  shield: 0
   shortcut: 0
   storybook: 0
   svg_image: 0
