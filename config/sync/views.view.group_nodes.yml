@@ -1003,10 +1003,9 @@ display:
       path: group/%group/nodes
       menu:
         type: tab
-        title: Nodes
+        title: Content
         description: ''
         weight: 25
-        enabled: true
         expanded: false
         menu_name: main
         parent: ''
