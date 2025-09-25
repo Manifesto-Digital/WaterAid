@@ -47,7 +47,7 @@
     "drupal/core-recommended": "^10.5",
     "drupal/currency": "^3.4",
     "drupal/datalayer": "^2.1",
-    "drupal/devel": "^5.3",
+    "drupal/devel": "^5.4",
     "drupal/diff": "^2.0@beta",
     "drupal/ds": "^3.30",
     "drupal/encrypt": "^3.2",
@@ -65,6 +65,7 @@
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
+    "drupal/media_directories": "^2.0",
     "drupal/metatag": "^2.0",
     "drupal/node_co_authors": "^1.2",
     "drupal/paragraphs": "^1.18",
@@ -147,7 +148,7 @@
       "docroot/core": [
         "type:drupal-core"
       ],
-      "web/libraries/{$name}": [
+      "docroot/libraries/{$name}": [
         "type:drupal-library",
         "type:bower-asset",
         "type:npm-asset"
@@ -170,7 +171,7 @@
       "docroot/profiles/custom/{$name}": [
         "type:drupal-custom-profile"
       ],
-      "web/themes/custom/{$name}": [
+      "docroot/themes/custom/{$name}": [
         "type:drupal-theme"
       ],
       "vendor/{$name}": [
