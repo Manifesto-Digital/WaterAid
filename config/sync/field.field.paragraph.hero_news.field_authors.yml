@@ -1,0 +1,29 @@
+uuid: 4979b2ca-99c1-473a-b679-5d1471a739ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_authors
+    - paragraphs.paragraphs_type.hero_news
+id: paragraph.hero_news.field_authors
+field_name: field_authors
+entity_type: paragraph
+bundle: hero_news
+label: Authors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

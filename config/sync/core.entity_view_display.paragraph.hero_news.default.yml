@@ -1,0 +1,90 @@
+uuid: 512e0e8a-a9ed-49b3-8081-ef2fc66c37fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_news.field_authors
+    - field.field.paragraph.hero_news.field_caption
+    - field.field.paragraph.hero_news.field_colour
+    - field.field.paragraph.hero_news.field_credit
+    - field.field.paragraph.hero_news.field_image
+    - field.field.paragraph.hero_news.field_published_date
+    - field.field.paragraph.hero_news.field_show_read_time
+    - field.field.paragraph.hero_news.field_subtitle
+    - paragraphs.paragraphs_type.hero_news
+  module:
+    - datetime
+    - options
+    - text
+id: paragraph.hero_news.default
+targetEntityType: paragraph
+bundle: hero_news
+mode: default
+content:
+  field_authors:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_colour:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_show_read_time:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_subtitle:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

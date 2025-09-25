@@ -1,0 +1,10 @@
+uuid: 29230aad-b080-479e-aa4a-b9a5da54b2d9
+langcode: en
+status: true
+dependencies: {  }
+id: hero_news
+label: 'Hero (news)'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

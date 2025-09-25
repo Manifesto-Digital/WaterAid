@@ -1,0 +1,21 @@
+uuid: 28f78cd3-bd48-4208-a2a8-2c54efd63544
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_published_date
+    - paragraphs.paragraphs_type.hero_news
+  module:
+    - datetime
+id: paragraph.hero_news.field_published_date
+field_name: field_published_date
+entity_type: paragraph
+bundle: hero_news
+label: 'Published date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,12 @@
+_core:
+  default_config_hash: zmm-fQ8G89G2R7Se5kE4s6A5astPdyWlH_omoGrBkJs
+reading_time:
+  container:
+    article:
+      is_activated: 1
+    landing_page:
+      is_activated: 0
+    page:
+      is_activated: 0
+  words_per_minute: 225
+  unit_of_time: minute
