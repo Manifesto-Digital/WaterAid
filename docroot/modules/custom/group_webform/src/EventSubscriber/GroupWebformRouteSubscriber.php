@@ -20,7 +20,6 @@ final class GroupWebformRouteSubscriber extends RouteSubscriberBase {
     // Hide unneeded tabs.
     foreach ([
       'entity.group_relationship.collection',
-      'entity.group_content_menu.add_menu_link',
       'entity.group_content_menu.collection',
     ] as $route_name) {
       if ($route = $collection->get($route_name)) {
