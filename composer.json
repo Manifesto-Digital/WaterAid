@@ -72,7 +72,7 @@
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
-    "drupal/media_directories": "^2.0",
+    "drupal/media_directories": "^2.2@beta",
     "drupal/metatag": "^2.0",
     "drupal/migrate_plus": "^6.0",
     "drupal/migrate_tools": "^6.1",
