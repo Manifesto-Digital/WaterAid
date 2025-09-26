@@ -21,6 +21,12 @@ header {
   @include page-container;
 }
 
+.content-section {
+  @include desktop() {
+    max-width: calculate-rem(660);
+  }
+}
+
 body {
   font-family: $font-family;
 }
