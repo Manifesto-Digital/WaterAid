@@ -41,6 +41,7 @@ content:
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_audience: true
   field_content: true
   field_country: true

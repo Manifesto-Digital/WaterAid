@@ -39,6 +39,7 @@ content:
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_content: true
   field_event_type: true
   field_properties: true
