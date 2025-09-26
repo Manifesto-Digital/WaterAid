@@ -35,6 +35,7 @@ dependencies:
     - group
     - group_content_menu
     - media
+    - menu_link_content
     - node
     - node_co_authors
     - path
@@ -89,6 +90,7 @@ permissions:
   - 'clone webform content'
   - 'create article content'
   - 'create audio media'
+  - 'create content translations'
   - 'create document media'
   - 'create donation content'
   - 'create event content'
@@ -142,6 +144,7 @@ permissions:
   - 'delete any webform content'
   - 'delete any webform submission'
   - 'delete article revisions'
+  - 'delete content translations'
   - 'delete donation revisions'
   - 'delete event revisions'
   - 'delete landing_page revisions'
@@ -267,12 +270,17 @@ permissions:
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
   - 'revert webform revisions'
+  - 'translate any entity'
+  - 'translate article node'
   - 'translate get_involved taxonomy_term'
   - 'translate group_content_menu'
   - 'translate key_stage taxonomy_term'
+  - 'translate menu_link_content'
+  - 'translate page node'
   - 'translate subject_areas taxonomy_term'
   - 'translate wateraid_site group'
   - 'update any media'
+  - 'update content translations'
   - 'update media'
   - 'view all media revisions'
   - 'view all revisions'
