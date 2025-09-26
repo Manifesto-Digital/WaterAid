@@ -1,0 +1,23 @@
+uuid: 2b393e0a-2cd0-4c35-8228-fd58b36c027f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-group_node-webform
+id: group_relationship.wateraid_site-group_node-webform.default
+targetEntityType: group_relationship
+bundle: wateraid_site-group_node-webform
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  uid: true
