@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.field_content
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
     - field.field.node.event.field_teaser_image
@@ -42,6 +43,7 @@ hidden:
   co_authors: true
   field_content: true
   field_event_type: true
+  field_hero: true
   field_properties: true
   field_region: true
   langcode: true

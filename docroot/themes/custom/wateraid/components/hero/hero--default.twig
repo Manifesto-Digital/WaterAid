@@ -15,6 +15,32 @@
       }) }}
     </div>
   {% endif %}
+  {% if video %}
+    <div class="hero__video">
+      {{ video }}
+
+      <div class="hero__video--play">
+        {{ include('wateraid:button', {
+          text: 'Play video',
+          link: '',
+          id: 'hero-play-button',
+          type: 'icon',
+          icon: 'wa-utility-play',
+          theme: 'dark',
+        }) }}
+      </div>
+      <div class="hero__video--pause">
+        {{ include('wateraid:button', {
+          text: 'Pause video',
+          link: '',
+          id: 'hero-pause-button',
+          type: 'icon',
+          icon: 'wa-utility-pause',
+          theme: 'dark',
+        }) }}
+      </div>
+    </div>
+  {% endif %}
   <div class="hero__content">
     <h1 class="hero__content--title">{{ title }}</h1>
 

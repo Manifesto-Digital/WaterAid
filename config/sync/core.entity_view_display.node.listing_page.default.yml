@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.listing_page.field_content
+    - field.field.node.listing_page.field_hero
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - node.type.listing_page
@@ -16,6 +17,15 @@ bundle: listing_page
 mode: default
 content:
   field_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hero:
     type: entity_reference_revisions_entity_view
     label: hidden
     settings:

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
     - field.field.node.publication.field_get_involved
+    - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stage
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
@@ -53,6 +54,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_key_stage:
     type: entity_reference_label
