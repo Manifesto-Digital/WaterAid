@@ -1,0 +1,58 @@
+uuid: 4470dcfa-b53e-407e-b1b3-2a9a5c250e1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_basic.field_call_to_action_type
+    - field.field.paragraph.hero_basic.field_link
+    - field.field.paragraph.hero_basic.field_primary_cta
+    - field.field.paragraph.hero_basic.field_standfirst
+    - paragraphs.paragraphs_type.hero_basic
+  module:
+    - link
+    - options
+    - text
+id: paragraph.hero_basic.default
+targetEntityType: paragraph
+bundle: hero_basic
+mode: default
+content:
+  field_call_to_action_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_primary_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_standfirst:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

@@ -1,0 +1,24 @@
+uuid: b15d64fe-58d6-4b9a-81e1-de965708cf34
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_standfirst
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.hero_basic
+  module:
+    - text
+id: paragraph.hero_basic.field_standfirst
+field_name: field_standfirst
+entity_type: paragraph
+bundle: hero_basic
+label: Standfirst
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

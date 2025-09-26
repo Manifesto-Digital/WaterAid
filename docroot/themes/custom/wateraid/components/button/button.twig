@@ -16,7 +16,10 @@
 
   {% if type == 'donate' %}
     <span class="button__svg">
-        {{ include('@wateraid/images/icons/wa-utility-lock.svg') }}
+      {% if icon|render %}
+        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+        {{ include(icon_url) }}
+      {% endif %}
       </span>
     {{ text }}
   {% endif %}

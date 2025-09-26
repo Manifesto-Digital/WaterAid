@@ -1,0 +1,51 @@
+uuid: 512e445c-584c-4f44-9c11-2e6bc28e58a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_basic.field_call_to_action_type
+    - field.field.paragraph.hero_basic.field_link
+    - field.field.paragraph.hero_basic.field_primary_cta
+    - field.field.paragraph.hero_basic.field_standfirst
+    - paragraphs.paragraphs_type.hero_basic
+  module:
+    - link
+    - text
+id: paragraph.hero_basic.default
+targetEntityType: paragraph
+bundle: hero_basic
+mode: default
+content:
+  field_call_to_action_type:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_primary_cta:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_standfirst:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

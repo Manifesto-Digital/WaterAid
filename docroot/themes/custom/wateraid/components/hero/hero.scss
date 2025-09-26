@@ -53,6 +53,9 @@
 
     &--standfirst {
       @include paragraph-lg;
+      p {
+        margin: 0;
+      }
     }
 
     &--ctas {
@@ -64,6 +67,16 @@
       @include desktop {
         flex-direction: row;
         align-items: center;
+      }
+    }
+  }
+
+  &--basic {
+    .cta__content {
+      padding: $wa-spacing-07 $wa-spacing-05;
+
+      @include desktop {
+        padding: $wa-spacing-09;
       }
     }
   }
