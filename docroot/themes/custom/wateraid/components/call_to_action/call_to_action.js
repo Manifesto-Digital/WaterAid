@@ -5,10 +5,10 @@
         const videoElement = video.querySelector("video");
         const playButton = video.querySelector(".cta__video--play");
         const pauseButton = video.querySelector(".cta__video--pause");
-
-        if (playButton) {
-          pauseButton.style.display = "none";
+        
+        if (videoElement) {
           videoElement.controls = false;
+          pauseButton.style.display = "none";
 
           playButton.addEventListener("click", function () {
             videoElement.play();
