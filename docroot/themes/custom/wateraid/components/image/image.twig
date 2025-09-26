@@ -3,10 +3,12 @@
     <figure class="image image--{{ caption_display }}">
       {{ image }}
 
-      <figcaption class="image__caption">
-        {{ caption }}
-        <span class="image__credit">{{ credit }}</span>
-      </figcaption>
+      {% if caption or credit %}
+        <figcaption class="image__caption">
+          {{ caption }}
+          <span class="image__credit">{{ credit }}</span>
+        </figcaption>
+      {% endif %}
 
     </figure>
 
