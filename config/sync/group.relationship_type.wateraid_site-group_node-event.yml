@@ -1,0 +1,17 @@
+uuid: db131ae1-bf96-437d-bf2c-cc07893f87fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - node.type.event
+  module:
+    - gnode
+    - node
+id: wateraid_site-group_node-event
+group_type: wateraid_site
+content_plugin: 'group_node:event'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

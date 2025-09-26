@@ -36,5 +36,6 @@ content:
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_content: true
   langcode: true
