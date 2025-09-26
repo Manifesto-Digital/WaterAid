@@ -59,8 +59,8 @@
     description: content.field_rich_text|render,
     cta: cta,
     link: link,
-    video: content.field_video ? content.field_video,
-    image: content.field_image ? content.field_image,
+    video: content.field_video|render ? content.field_video,
+    image: content.field_image|render ? content.field_image,
     media_caption: paragraph.field_caption.value ? content.field_caption,
     media_credit: paragraph.field_credit.value ? content.field_credit,
     variant: paragraph.field_variant.value == 'text_only' ? 'default' : 'media'

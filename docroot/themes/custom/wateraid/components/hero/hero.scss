@@ -7,10 +7,14 @@
 
   &__image {
     width: 100%;
+    display: inline;
 
     img {
-      max-height: 720px;
+      display: block;
       max-width: 100%;
+      max-height: calculate-rem(720);
+      object-fit: cover;
+      object-position: center;
     }
   }
 

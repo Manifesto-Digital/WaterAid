@@ -5,7 +5,7 @@
         const videoElement = video.querySelector("video");
         const playButton = video.querySelector(".cta__video--play");
         const pauseButton = video.querySelector(".cta__video--pause");
-        
+
         if (videoElement) {
           videoElement.controls = false;
           pauseButton.style.display = "none";
