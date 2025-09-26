@@ -2,6 +2,7 @@
 
 [data-component-id="wateraid:rich_text"] {
   color: $wa-navy;
+  max-width: calculate-rem(660);
   @include paragraph-md();
 
   .paragraph-lg,

@@ -1,14 +1,15 @@
 @use "breakpoints";
+@use "spacing";
 
 $grid-max-width: 1440px;
 $grid-cols-mobile: 4;
 $grid-cols-tablet: 6;
 $grid-cols-desktop: 12;
-$container-padding-mobile: 20px;
-$container-padding-tablet: 12px;
-$container-padding-desktop: 36px;
-$grid-gap-mobile: 16px;
-$grid-gap-tablet: 24px;
+$container-padding-mobile: spacing.$wa-spacing-05;
+$container-padding-tablet: spacing.$wa-spacing-05;
+$container-padding-desktop: spacing.$wa-spacing-09;
+$grid-gap-mobile: spacing.$wa-spacing-04;
+$grid-gap-tablet: spacing.$wa-spacing-06;
 
 @mixin page-container {
   padding-left: $container-padding-mobile;
