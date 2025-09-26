@@ -1,0 +1,5 @@
+name: 'Azure Blob Storage'
+type: module
+description: 'Provides the ability to push data into Azure Blob Storage'
+package: Microsoft
+core_version_requirement: ^10 || ^11

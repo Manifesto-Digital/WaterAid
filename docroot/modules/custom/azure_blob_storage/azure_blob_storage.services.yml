@@ -1,0 +1,4 @@
+services:
+  azure_blob_storage.api:
+    class: Drupal\azure_blob_storage\service\AzureApi
+    arguments: ['@http_client']
