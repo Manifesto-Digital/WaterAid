@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\azure_blob_storage\service;
 
-use Psr\Http\Client\ClientInterface;
+use Drupal\Core\Site\Settings;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 
 /**
  * Service for connecting to Azure Blob Storage.
@@ -12,52 +13,37 @@ use Psr\Http\Client\ClientInterface;
 final class AzureApi {
 
   /**
-   * Constructs an AzureApi object.
-   */
-  public function __construct(
-    private readonly ClientInterface $httpClient,
-  ) {}
-
-  /**
    * Puts data into an Azure Blob.
    *
    * @param string $blob_name
    *   The Blob to push data into.
-   * @param mixed $data
+   * @param string $data
    *   The data to store in the blob.
+   *
+   * @return bool
+   *   Whether the data was successfully pushed to the blob.
    */
-  public function putBlob(string $blob_name, mixed $data): void {
-    // @todo Place your code here.
-  }
+  public function putBlob(string $blob_name, string $data): bool {
+    $result = FALSE;
 
-  /**
-   * The blob storage URL.
-   *
-   * @var string
-   */
-  private string $url = 'https://myaccount.blob.core.windows.net/mycontainer/';
+    if (!$key = Settings::get('azure_blob_storage')) {
+      return $result;
+    }
 
-  /**
-   * Helper to override the base URL.
-   *
-   * @param string $url
-   *   The new URL to use.
-   */
-  public function setUrl(string $url): void {
-    $this->url = $url;
-  }
+    try {
+      $blobClient = BlobRestProxy::createBlobService("DefaultEndpointsProtocol=https;AccountName=watestcrmlocation;AccountKey=$key;EndpointSuffix=core.windows.net");
 
-  /**
-   * Helper to create the blob URL.
-   *
-   * @param string $blob_name
-   *   The name of the blob to push to.
-   *
-   * @return string
-   *   The URL including the blob parameter.
-   */
-  private function getUrl(string $blob_name): string {
-    return $this->url . $blob_name;
+      if ($blobClient->createBlockBlob('wateraid-webforms', $blob_name, $data)) {
+        $result = TRUE;
+      }
+    }
+    catch (\Exception $e) {
+
+      // We only want to record failures after 5 retries, so we won't log this
+      // here and will instead rely on the queue to do the failure logging.
+    }
+
+    return $result;
   }
 
 }

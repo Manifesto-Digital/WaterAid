@@ -1,4 +1,8 @@
 services:
   azure_blob_storage.api:
     class: Drupal\azure_blob_storage\service\AzureApi
-    arguments: ['@http_client']
+
+  logger.channel.azure_blob_storage:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['azure_blob_storage']
