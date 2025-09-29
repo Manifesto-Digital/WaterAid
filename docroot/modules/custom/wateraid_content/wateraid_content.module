@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for WaterAid Content module.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_state): void {
+  if (isset($form['field_review_date'])) {
+    if (wateraid_content_review_date_form_access($form, $form_state)) {
+      $form['field_review_date']['#group'] = (isset($form["author"])) ? 'author' : NULL;
+
+      if ($form['field_review_date']['widget'][0]['value']) {
+        // Set a date range that can be no more than +2 years.
+        $date = new DrupalDateTime();
+
+        $form['field_review_date']['widget'][0]['value']['#date_year_range'] = $date->format('Y') . ':';
+
+        $interval = DateInterval::createFromDateString('+2 years');
+        $date->add($interval);
+
+        $form['field_review_date']['widget'][0]['value']['#date_year_range'] .= $date->format('Y');
+      }
+    }
+    else {
+      $form['field_review_date']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Helper to calculate if the user has access to see the review date field.
+ *
+ * @param array $form
+ *   The node edit form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ *
+ * @return bool
+ *   TRUE if they have access, FALSE (default) if not.
+ */
+function wateraid_content_review_date_form_access(array $form, FormStateInterface $form_state): bool {
+  $current_user = \Drupal::currentUser();
+
+  // Root user can always override.
+  if ($current_user->id() == 1) {
+    return TRUE;
+  }
+
+  $roles = $current_user->getRoles(TRUE);
+
+  // Administrators or WaterAid Super Admins can view all expiry dates.
+  if (in_array(['administrator', 'wateraid_super_admin'], $roles)) {
+    return TRUE;
+  }
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+
+  // If the node is being created, the user will be the owner and so will have
+  // access to the field.
+  if ($node->isNew()) {
+    return TRUE;
+  }
+
+  if (in_array('content_editor', $roles)) {
+
+    // WaterAid Administrators can see their own nodes.
+    if ($node->getOwnerId() == $current_user->id()) {
+      return TRUE;
+    }
+
+    // Co-authors can view the review date.
+    if ($co_authors = $node->get('co_authors')->getValue()) {
+      if (isset($co_authors['0']) && in_array($current_user->id(), $co_authors[0])) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
