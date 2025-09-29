@@ -1,0 +1,24 @@
+uuid: d4643068-7eee-4274-9765-47efb030d6da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_review_date
+    - node.type.story
+  module:
+    - datetime
+id: node.story.field_review_date
+field_name: field_review_date
+entity_type: node
+bundle: story
+label: 'Review Date'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: '+2 years'
+default_value_callback: ''
+settings: {  }
+field_type: datetime

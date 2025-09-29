@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_review_date
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
     - field.field.node.publication.field_teaser_text
@@ -51,6 +52,7 @@ hidden:
   field_get_involved: true
   field_hero: true
   field_key_stage: true
+  field_review_date: true
   field_subject_area: true
   field_theme: true
   langcode: true

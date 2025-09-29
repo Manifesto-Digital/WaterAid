@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_hero
+    - field.field.node.webform.field_review_date
     - node.type.webform
   module:
+    - datetime
     - field_group
     - layout_paragraphs
     - path
@@ -106,6 +108,12 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_review_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

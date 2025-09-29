@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
     - node.type.article
   module:
+    - datetime
     - field_group
     - layout_paragraphs
     - media_library
@@ -157,6 +159,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_review_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget

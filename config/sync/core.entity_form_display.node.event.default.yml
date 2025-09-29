@@ -8,10 +8,12 @@ dependencies:
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
+    - field.field.node.event.field_review_date
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - node.type.event
   module:
+    - datetime
     - field_group
     - key_value_field
     - layout_paragraphs
@@ -201,6 +203,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_review_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
