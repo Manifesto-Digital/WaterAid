@@ -7,6 +7,9 @@
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -85,4 +88,42 @@ function wateraid_content_review_date_form_access(array $form, FormStateInterfac
   }
 
   return FALSE;
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function wateraid_content_views_query_alter(ViewExecutable $view, QueryPluginBase $query): void {
+  if ($view->id() == 'content_review_dashboard') {
+    $current_user = \Drupal::currentUser();
+
+    // If the user is a WaterAid Administrator, they can only see the content
+    // they own.
+    if (in_array('content_editor', $current_user->getRoles(TRUE))) {
+      $configuration = [
+        'type'       => 'LEFT',
+        'table'      => 'node__co_authors',
+        'field'      => 'entity_id',
+        'left_table' => 'node_field_data',
+        'left_field' => 'nid',
+        'operator'   => '=',
+      ];
+
+      /** @var \Drupal\views\Plugin\views\join\JoinPluginBase $join */
+      $join = Views::pluginManager('join')->createInstance('standard', $configuration);
+      $query->addTable('node__co_authors', NULL, $join, 'node__co_authors');
+
+      // The count of the current where conditions plus one will give us the
+      // next available group number.
+      $group = count($query->where) + 1;
+
+      // We'll add where conditions for the co-authors and node owner fields.
+      foreach (['node__co_authors.co_authors_target_id', 'node_field_data.uid'] as $field) {
+        $query->addWhere($group, $field, $current_user->id());
+      }
+
+      // Set the group to be an OR group.
+      $query->setWhereGroup('OR', $group);
+    }
+  }
 }
