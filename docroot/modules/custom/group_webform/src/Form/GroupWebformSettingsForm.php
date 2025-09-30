@@ -63,15 +63,6 @@ class GroupWebformSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('show_all_webforms_in_gwselect'),
     ];
 
-    $data = [
-      "this"    => "is",
-      "a"       => "test",
-      "object"  => "for",
-      "testing" => "purposes",
-    ];
-
-    $return = \Drupal::service('azure_blob_storage.api')->blobPut('wateraid-webforms', 'wateraid', json_encode($data));
-
     return $form;
   }
 
