@@ -306,6 +306,27 @@ footer {
   max-width: 100%;
 }
 
+.hero__video {
+  width: 100%;
+  position: relative;
+}
+
+.hero__video video {
+  width: 100%;
+  height: 100%;
+}
+
+.hero__video--play, .hero__video--pause {
+  position: absolute;
+  bottom: 1rem;
+  right: .75rem;
+  z-index: 1;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 .hero__content {
   position: relative;
   padding: 2rem 1.25rem .25rem 1.25rem;
@@ -322,6 +343,7 @@ footer {
 
 .hero__content--title {
   margin: 0;
+  color: #fff;
 }
 
 .hero__content--standfirst {
@@ -403,3 +425,5 @@ footer {
   color: #006bd9;
 }
 
+
+/*# sourceMappingURL=hero.css.map*/

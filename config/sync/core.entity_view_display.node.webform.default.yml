@@ -52,3 +52,4 @@ content:
 hidden:
   co_authors: true
   langcode: true
+  node_read_time: true

@@ -17,6 +17,12 @@ props:
     link:
       type: ["object", "null"]
       title: Link
+    publish_date:
+      type: string
+      title: Publish date
+    time_to_read:
+      type: string
+      title: Time to read
     colour:
       type: string
       title: Colour
@@ -34,6 +40,12 @@ slots:
   media_credit:
     type: string
     title: Credit
+  tags:
+    type: [ "object", "null" ]
+    title: Tags
+  authors:
+    type: [ "object", "null" ]
+    title: Authors
 libraryOverrides:
   css:
     theme:

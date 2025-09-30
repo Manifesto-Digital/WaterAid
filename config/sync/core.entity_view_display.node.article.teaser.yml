@@ -47,3 +47,5 @@ hidden:
   field_review_date: true
   field_theme: true
   langcode: true
+  node_read_time: true
+  reading_time: true

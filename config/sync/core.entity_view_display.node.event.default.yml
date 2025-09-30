@@ -84,3 +84,4 @@ hidden:
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true

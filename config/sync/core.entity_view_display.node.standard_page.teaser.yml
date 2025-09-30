@@ -53,3 +53,4 @@ hidden:
   field_subject_area: true
   field_topic: true
   langcode: true
+  node_read_time: true

@@ -43,3 +43,4 @@ hidden:
   field_hero: true
   field_review_date: true
   langcode: true
+  node_read_time: true

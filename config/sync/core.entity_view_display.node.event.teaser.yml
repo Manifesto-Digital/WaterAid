@@ -49,3 +49,4 @@ hidden:
   field_region: true
   field_review_date: true
   langcode: true
+  node_read_time: true
