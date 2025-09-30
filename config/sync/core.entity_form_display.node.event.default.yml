@@ -5,12 +5,15 @@ dependencies:
   config:
     - field.field.node.event.field_content
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
+    - field.field.node.event.field_review_date
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - node.type.event
   module:
+    - datetime
     - field_group
     - key_value_field
     - layout_paragraphs
@@ -73,6 +76,7 @@ third_party_settings:
     group_general:
       children:
         - title
+        - field_hero
       label: General
       region: content
       parent_name: group_tabs
@@ -124,6 +128,16 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
+  co_authors:
+    type: entity_reference_autocomplete_tags
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 7
@@ -152,6 +166,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_hero:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
   field_properties:
     type: key_value_textfield
     weight: 7
@@ -177,6 +203,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_review_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget

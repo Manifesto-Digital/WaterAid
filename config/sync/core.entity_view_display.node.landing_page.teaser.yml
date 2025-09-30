@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.landing_page.field_content
     - field.field.node.landing_page.field_hero
+    - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_teaser_image
     - field.field.node.landing_page.field_teaser_text
     - node.type.landing_page
@@ -40,4 +41,6 @@ hidden:
   co_authors: true
   field_content: true
   field_hero: true
+  field_review_date: true
   langcode: true
+  node_read_time: true

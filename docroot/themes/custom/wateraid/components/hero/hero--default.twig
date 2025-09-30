@@ -1,6 +1,7 @@
 {% set classes = [
   'hero',
-  'hero--'~colour
+  'hero--'~colour,
+  image or video ? 'hero--media' : 'hero--basic'
 ] %}
 
 <div {{ attributes.addClass(classes) }}>
@@ -15,6 +16,32 @@
       }) }}
     </div>
   {% endif %}
+  {% if video %}
+    <div class="hero__video">
+      {{ video }}
+
+      <div class="hero__video--play">
+        {{ include('wateraid:button', {
+          text: 'Play video',
+          link: '',
+          id: 'hero-play-button',
+          type: 'icon',
+          icon: 'wa-utility-play',
+          theme: 'dark',
+        }) }}
+      </div>
+      <div class="hero__video--pause">
+        {{ include('wateraid:button', {
+          text: 'Pause video',
+          link: '',
+          id: 'hero-pause-button',
+          type: 'icon',
+          icon: 'wa-utility-pause',
+          theme: 'dark',
+        }) }}
+      </div>
+    </div>
+  {% endif %}
   <div class="hero__content">
     <h1 class="hero__content--title">{{ title }}</h1>
 
@@ -26,14 +53,24 @@
 
     {% if cta.title and cta.url or link.title and link.url %}
       <div class="hero__content--ctas">
-        <div class="hero__content--cta">
-          {{ include('wateraid:button', {
-            text: cta.title,
-            link: cta.url,
-            type: 'primary',
-            theme: colour == 'white' ? 'light' : 'dark'
-          }) }}
-        </div>
+        {% if cta.title and cta.url %}
+          <div class="hero__content--cta">
+            {% if cta.type == 'primary' %}
+              {{ include('wateraid:button', {
+                text: cta.title,
+                link: cta.url,
+                type: 'primary',
+                theme: colour == 'white' ? 'light' : 'dark'
+              }) }}
+            {% else %}
+              {{ include('wateraid:button', {
+                text: cta.title,
+                link: cta.url,
+                type: 'donate',
+              }) }}
+            {% endif %}
+          </div>
+        {% endif %}
         {% if link.title and link.url %}
           <div class="hero__content--link">
             {{ include('wateraid:link', {

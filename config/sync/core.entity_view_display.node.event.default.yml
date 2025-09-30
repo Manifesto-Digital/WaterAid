@@ -5,12 +5,15 @@ dependencies:
   config:
     - field.field.node.event.field_content
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
+    - field.field.node.event.field_review_date
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - node.type.event
   module:
+    - datetime
     - entity_reference_revisions
     - key_value_field
     - user
@@ -36,6 +39,15 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_properties:
     type: key_value
     label: above
@@ -52,12 +64,24 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true

@@ -7,12 +7,15 @@ dependencies:
     - field.field.node.story.field_content
     - field.field.node.story.field_country
     - field.field.node.story.field_get_involved
+    - field.field.node.story.field_hero
     - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_review_date
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
     - node.type.story
   module:
+    - datetime
     - entity_reference_revisions
     - user
 id: node.story.default
@@ -53,6 +56,15 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_in_page_navigation:
     type: boolean
     label: hidden
@@ -62,6 +74,16 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_theme:
     type: entity_reference_label
@@ -77,6 +99,8 @@ content:
     weight: 100
     region: content
 hidden:
+  co_authors: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true

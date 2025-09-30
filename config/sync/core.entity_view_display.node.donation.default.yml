@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.donation.field_content
+    - field.field.node.donation.field_hero
+    - field.field.node.donation.field_review_date
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
     - node.type.donation
   module:
+    - datetime
     - entity_reference_revisions
     - user
 id: node.donation.default
@@ -24,6 +27,25 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -34,3 +56,4 @@ hidden:
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true

@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.donation.field_content
+    - field.field.node.donation.field_hero
+    - field.field.node.donation.field_review_date
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
     - node.type.donation
   module:
+    - datetime
     - field_group
     - layout_paragraphs
     - media_library
@@ -34,6 +37,7 @@ third_party_settings:
     group_general:
       children:
         - title
+        - field_hero
       label: General
       region: content
       parent_name: group_tabs
@@ -112,6 +116,24 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_hero:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_review_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
