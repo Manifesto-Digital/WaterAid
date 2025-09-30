@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_hero
     - node.type.webform
+    - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_video
   module:
@@ -24,9 +25,13 @@ settings:
   handler_settings:
     target_bundles:
       hero_image: hero_image
+      hero_basic: hero_basic
       hero_video: hero_video
     negate: 0
     target_bundles_drag_drop:
+      hero_basic:
+        weight: 6
+        enabled: true
       hero_image:
         weight: 4
         enabled: true
