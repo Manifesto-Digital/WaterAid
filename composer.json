@@ -39,6 +39,7 @@
     "drupal/media_directories": "^2.1@beta",
     "drupal/metatag": "^2.0",
     "drupal/node_co_authors": "^1.2",
+    "drupal/orange_dam": "^2.2",
     "drupal/paragraphs": "^1.18",
     "drupal/paragraphs_clipboard": "^1.0",
     "drupal/pathauto": "^1.13",
