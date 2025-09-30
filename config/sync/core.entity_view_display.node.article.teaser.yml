@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
@@ -43,5 +44,6 @@ hidden:
   field_audience: true
   field_content: true
   field_country: true
+  field_review_date: true
   field_theme: true
   langcode: true

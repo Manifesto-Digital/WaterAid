@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
     - node.type.article
   module:
+    - datetime
     - entity_reference_revisions
     - user
 _core:
@@ -44,6 +46,16 @@ content:
       link: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_theme:
     type: entity_reference_label

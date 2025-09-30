@@ -1,0 +1,24 @@
+uuid: 34133fc0-6ff5-47ec-9aca-e80f1bd9d7fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_review_date
+    - node.type.event
+  module:
+    - datetime
+id: node.event.field_review_date
+field_name: field_review_date
+entity_type: node
+bundle: event
+label: 'Review Date'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: '+2 years'
+default_value_callback: ''
+settings: {  }
+field_type: datetime

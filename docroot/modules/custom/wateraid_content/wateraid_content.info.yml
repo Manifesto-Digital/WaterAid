@@ -1,0 +1,5 @@
+name: 'WaterAid Content'
+type: module
+description: 'Code relating to managing content'
+package: Content
+core_version_requirement: ^10 || ^11

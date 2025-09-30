@@ -9,12 +9,14 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_review_date
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
     - field.field.node.publication.field_teaser_text
     - field.field.node.publication.field_theme
     - node.type.publication
   module:
+    - datetime
     - field_group
     - layout_paragraphs
     - media_library
@@ -195,6 +197,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_review_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_subject_area:
     type: entity_reference_autocomplete
