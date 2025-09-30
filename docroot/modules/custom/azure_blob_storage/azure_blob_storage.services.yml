@@ -1,6 +1,6 @@
 services:
   azure_blob_storage.api:
-    class: Drupal\azure_blob_storage\service\AzureApi
+    class: Drupal\azure_blob_storage\Service\AzureApi
 
   logger.channel.azure_blob_storage:
     class: Drupal\Core\Logger\LoggerChannel
