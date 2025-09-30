@@ -9,8 +9,28 @@ dependencies:
     - field.field.paragraph.hero_basic.field_standfirst
     - paragraphs.paragraphs_type.hero_basic
   module:
+    - field_group
     - link
     - text
+third_party_settings:
+  field_group:
+    group_call_to_action:
+      children:
+        - field_primary_cta
+        - field_call_to_action_type
+      label: 'Call to action'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
 id: paragraph.hero_basic.default
 targetEntityType: paragraph
 bundle: hero_basic
@@ -18,13 +38,13 @@ mode: default
 content:
   field_call_to_action_type:
     type: options_select
-    weight: 1
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 3
+    weight: 4
     region: content
     settings:
       placeholder_url: ''

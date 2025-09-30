@@ -11,7 +11,7 @@ id: paragraph.hero_basic.field_primary_cta
 field_name: field_primary_cta
 entity_type: paragraph
 bundle: hero_basic
-label: 'Primary cta'
+label: 'Call to action'
 description: ''
 required: false
 translatable: false

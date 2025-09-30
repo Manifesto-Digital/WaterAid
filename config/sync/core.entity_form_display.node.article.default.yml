@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_hero
     - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
@@ -39,6 +40,7 @@ third_party_settings:
     group_general:
       children:
         - title
+        - field_hero
         - langcode
       label: General
       region: content
@@ -160,6 +162,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_hero:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
@@ -183,7 +197,7 @@ content:
     third_party_settings: {  }
   field_theme:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 17
     region: content
     settings:
       match_operator: CONTAINS
@@ -193,7 +207,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     region: content
     settings:
       include_locked: true

@@ -1,0 +1,52 @@
+uuid: 7a528bc2-1072-4ecd-9593-8f7ccbc3f660
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero
+    - node.type.article
+    - paragraphs.paragraphs_type.hero_news
+  module:
+    - entity_reference_revisions
+id: node.article.field_hero
+field_name: field_hero
+entity_type: node
+bundle: article
+label: Hero
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero_news: hero_news
+    negate: 0
+    target_bundles_drag_drop:
+      call_to_action:
+        weight: 9
+        enabled: false
+      hero_basic:
+        weight: 10
+        enabled: false
+      hero_image:
+        weight: 4
+        enabled: false
+      hero_news:
+        weight: 12
+        enabled: true
+      hero_video:
+        weight: 6
+        enabled: false
+      image:
+        weight: 5
+        enabled: false
+      quote:
+        weight: 15
+        enabled: false
+      rich_text:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

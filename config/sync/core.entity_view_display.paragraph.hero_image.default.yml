@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.hero_image.field_call_to_action_type
     - field.field.paragraph.hero_image.field_caption
     - field.field.paragraph.hero_image.field_credit
     - field.field.paragraph.hero_image.field_image
@@ -12,12 +13,20 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
   module:
     - link
+    - options
     - text
 id: paragraph.hero_image.default
 targetEntityType: paragraph
 bundle: hero_image
 mode: default
 content:
+  field_call_to_action_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_caption:
     type: string
     label: hidden
