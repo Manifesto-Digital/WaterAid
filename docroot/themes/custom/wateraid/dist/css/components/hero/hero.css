@@ -236,23 +236,23 @@ header {
 }
 
 header > div {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   max-width: 1440px;
   margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
   header > div {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 968px) {
   header > div {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
@@ -266,23 +266,29 @@ header img {
 }
 
 .container {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   max-width: 1440px;
   margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
   .container {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 968px) {
   .container {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media only screen and (min-width: 968px) {
+  .content-section {
+    max-width: 41.25rem;
   }
 }
 
@@ -300,10 +306,17 @@ footer {
 
 .hero__image {
   width: 100%;
+  display: inline;
 }
 
 .hero__image img {
+  display: block;
   max-width: 100%;
+  max-height: 45rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .hero__video {
@@ -328,8 +341,24 @@ footer {
 }
 
 .hero__content {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero__content {
+    font-size: 1.25rem;
+  }
+}
+
+.hero__content {
   position: relative;
-  padding: 2rem 1.25rem .25rem 1.25rem;
+  padding: 2rem 1.25rem;
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
@@ -337,11 +366,12 @@ footer {
 
 @media only screen and (min-width: 968px) {
   .hero__content {
-    padding: 3rem 3rem .25rem 3rem;
+    padding: 3rem;
   }
 }
 
 .hero__content--title {
+  color: #fff;
   margin: 0;
   color: #fff;
 }
@@ -362,6 +392,10 @@ footer {
   }
 }
 
+.hero__content--standfirst p {
+  margin: 0;
+}
+
 .hero__content--ctas {
   z-index: 10;
   display: flex;
@@ -376,18 +410,79 @@ footer {
   }
 }
 
-.hero--blue {
-  background-color: #006bd9;
+.hero__content--tags {
+  display: flex;
+  gap: .5rem;
+}
+
+.hero__content--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.hero__content--details {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+@media only screen and (min-width: 968px) {
+  .hero__content--details {
+    flex-direction: row;
+    gap: .75rem;
+  }
+}
+
+.hero__content--details svg {
+  display: none;
+}
+
+@media only screen and (min-width: 968px) {
+  .hero__content--details svg {
+    display: block;
+    width: .75rem;
+    height: auto;
+    color: #006bd9;
+  }
+}
+
+.hero__content--date {
+  font-family: "Noto Sans Bold";
+}
+
+.hero__content--time {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.hero__content--time svg {
+  width: 1.5rem;
+  height: auto;
+}
+
+.hero--basic .cta__content {
+  padding: 2rem 1.25rem;
+}
+
+@media only screen and (min-width: 968px) {
+  .hero--basic .cta__content {
+    padding: 3rem;
+  }
 }
 
 .hero--blue .hero__content {
+  background-color: #006bd9;
   color: #fff;
   margin-bottom: 3rem;
+  padding: 2rem 1.25rem .25rem 1.25rem;
 }
 
 @media only screen and (min-width: 968px) {
   .hero--blue .hero__content {
     margin-bottom: 3.5rem;
+    padding: 3rem 3rem .25rem 3rem;
   }
 }
 
@@ -416,13 +511,49 @@ footer {
   color: #fff;
 }
 
-.hero--white {
+.hero--white .hero__content {
   background-color: #fff;
 }
 
 .hero--white .hero__content--title,
-.hero--white .hero__content--link a {
+.hero--white .hero__content--link a,
+.hero--white .hero__content--time svg {
   color: #006bd9;
+}
+
+.hero--navy .hero__content {
+  background-color: #151435;
+}
+
+.hero--navy .hero__content,
+.hero--navy .hero__content--link a {
+  color: #fff;
+}
+
+.hero--news .hero__content {
+  gap: 0;
+}
+
+.hero--news .hero__content--tags {
+  margin-bottom: 1.5rem;
+}
+
+@media only screen and (min-width: 968px) {
+  .hero--news .hero__content--tags {
+    margin-bottom: 2rem;
+  }
+}
+
+.hero--news .hero__content--title {
+  margin-bottom: .5rem;
+}
+
+.hero--news.hero--white .hero__content--standfirst {
+  color: #006bd9;
+}
+
+.hero--news .hero__content--standfirst {
+  margin-bottom: 1.5rem;
 }
 
 
