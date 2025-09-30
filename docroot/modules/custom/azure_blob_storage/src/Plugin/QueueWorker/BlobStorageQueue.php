@@ -85,9 +85,8 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
       'webform_id' => $data['webform_id'],
     ])) {
       $name = $data['webform_id'] . '-' . $data['sid'];
-      $data = Json::encode($submission->toArray());
 
-      if ($this->azureBlobStorageApi->putBlob($name, $data)) {
+      if ($this->azureBlobStorageApi->blobPut($name, $submission->toArray(), TRUE)) {
 
         // The submission has been successfully stored in the blob, so we can
         // delete it from the website.
