@@ -25,6 +25,7 @@
     "drupal/core-recommended": "^10.5",
     "drupal/devel": "^5.4",
     "drupal/diff": "^2.0@beta",
+    "drupal/entity_update": "^3.0",
     "drupal/entity_usage": "^2.0@beta",
     "drupal/field_group": "^4.0",
     "drupal/focal_point": "^2.1",
