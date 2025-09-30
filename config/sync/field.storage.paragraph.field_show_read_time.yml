@@ -1,0 +1,18 @@
+uuid: 4d08524b-19b0-4836-9fe2-5c6da38dc0f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_show_read_time
+field_name: field_show_read_time
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

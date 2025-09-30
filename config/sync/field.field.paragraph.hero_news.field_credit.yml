@@ -1,0 +1,19 @@
+uuid: 07858863-1380-4dd8-a852-5f325a491753
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_credit
+    - paragraphs.paragraphs_type.hero_news
+id: paragraph.hero_news.field_credit
+field_name: field_credit
+entity_type: paragraph
+bundle: hero_news
+label: Credit
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
