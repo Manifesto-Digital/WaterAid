@@ -1,0 +1,22 @@
+uuid: 5e2f710a-495d-4dff-ba84-f23b8690b0fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - paragraphs.paragraphs_type.accordion
+  module:
+    - text
+id: paragraph.accordion.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: accordion
+label: Subtitle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

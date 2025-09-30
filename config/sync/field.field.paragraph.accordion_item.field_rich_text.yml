@@ -1,0 +1,26 @@
+uuid: 2c1a5f18-9b20-409a-b045-b9e0bd757d2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rich_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.accordion_item
+  module:
+    - text
+id: paragraph.accordion_item.field_rich_text
+field_name: field_rich_text
+entity_type: paragraph
+bundle: accordion_item
+label: 'Rich Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+field_type: text_long

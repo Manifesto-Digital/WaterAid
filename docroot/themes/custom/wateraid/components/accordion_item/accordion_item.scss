@@ -1,0 +1,39 @@
+.accordion-item {
+  &__title {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid red;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    .rich-text {
+      padding: 0;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    .rich-text__wrapper {
+      width: unset;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

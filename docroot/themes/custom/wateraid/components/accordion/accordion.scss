@@ -1,0 +1,14 @@
+.accordion {
+  &__wrapper {
+    margin: 0 auto;
+    max-width: 100%;
+    width: 704px;
+
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+}

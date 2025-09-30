@@ -1,0 +1,43 @@
+{% stories accordion with { title: 'wateraid/Molecules/Accordion' } %}
+  {% story Accordion with {
+    name: 'Accordion',
+    args: {
+      title: 'A snowy hillside'|t
+    }
+  } %}
+
+    {# Defaults #}
+    {% set text %}
+      <h5>Heading 5</h5>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque, eget molestie mauris vehicula. Curabitur auctor, eros vitae porta
+        ullamcorper, erat quam mattis nulla, sed varius lacus nisl quis felis. Sed placerat euismod magna id ornare.
+        Nulla scelerisque at dolor vel bibendum. Nullam vestibulum ullamcorper ultricies. Sed commodo efficitur nisl, ac
+        luctus metus hendrerit quis. Vestibulum sem tellus, scelerisque quis accumsan sed, consectetur non ante. Donec
+        dapibus mollis augue, sed auctor leo lobortis nec.</p>
+    {% endset %}
+
+    {% set accordion_items = [
+      include('wateraid:accordion_item', {
+        title: 'Accordion Item 1',
+        subtitle: 'Subtitle 1',
+        copy: text,
+      }),
+      include('wateraid:accordion_item', {
+        title: 'Accordion Item 2',
+        subtitle: '',
+        copy: text,
+      }),
+      include('wateraid:accordion_item', {
+        title: 'Accordion Item 3',
+        subtitle: 'Subtitle 3',
+        copy: text,
+      }),
+    ] %}
+
+    {{ include('wateraid:accordion', {
+      title,
+      accordion_items,
+    }) }}
+  {% endstory %}
+{% endstories %}

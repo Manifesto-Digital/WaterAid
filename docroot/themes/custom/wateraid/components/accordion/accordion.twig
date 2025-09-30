@@ -1,0 +1,18 @@
+{% set classes = [
+  'accordion',
+  'container'
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="accordion__wrapper" >
+    {% if title %}
+      <div class="accordion__intro">
+        <h3 class="accordion__title">{{ title }}</h3>
+      </div>
+    {% endif %}
+
+    {% for accordion_item in accordion_items %}
+      {{ accordion_item|raw }}
+    {% endfor %}
+  </div>
+</div>

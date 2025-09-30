@@ -1,0 +1,24 @@
+{% set classes = [
+  'accordion-item',
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <button aria-expanded="false" class="accordion-item__title">
+    <h4>{{ title }}</h4>
+  </button>
+  <div aria-hidden="true" class="accordion-item__content">
+    <div class="accordion-item__content_wrapper">
+      {% embed 'wateraid:rich_text' with {
+        bg_colour: background_colour,
+        container: false,
+        with_context: false
+      } %}
+        {% block contents %}
+          {{ copy }}
+        {% endblock %}
+      {% endembed %}
+    </div>
+  </div>
+</div>
+
+

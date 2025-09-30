@@ -10,6 +10,8 @@ module.exports = {
   // todo: remove entry point from webpack and automate it.
   entry: {
     'styles': ['./sass/styles.scss'],
+    'components/accordion/accordion': ['./components/accordion/accordion.scss'],
+    'components/accordion_item/accordion_item': ['./components/accordion_item/accordion_item.scss'],
     'components/button/button': ['./components/button/button.scss'],
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],

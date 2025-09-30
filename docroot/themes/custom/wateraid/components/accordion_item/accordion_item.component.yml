@@ -1,0 +1,22 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Accordion Item
+status: stable
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+      description: The title you see while it is collapsed
+      examples: []
+    copy:
+      type: string
+      title: Copy
+      description: The text that is shown when the item is expanded
+      examples: []
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/accordion_item/accordion_item.css: {}
+  dependencies:
+    - wateraid/main
