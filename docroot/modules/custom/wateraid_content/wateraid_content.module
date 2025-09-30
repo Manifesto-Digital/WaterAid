@@ -17,7 +17,7 @@ use Drupal\views\Views;
 function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_state): void {
   if (isset($form['field_review_date'])) {
     if (wateraid_content_review_date_form_access($form, $form_state)) {
-      $form['field_review_date']['#group'] = (isset($form["author"])) ? 'author' : NULL;
+      $form['field_review_date']['#group'] = (isset($form['author'])) ? 'author' : NULL;
 
       if ($form['field_review_date']['widget'][0]['value']) {
         // Set a date range that can be no more than +2 years.
@@ -33,6 +33,9 @@ function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_
     }
     else {
       $form['field_review_date']['#access'] = FALSE;
+      $form['field_review_date']['widget']['#required'] = FALSE;
+      $form['field_review_date']['widget'][0]['#required'] = FALSE;
+      $form['field_review_date']['widget'][0]['value']['#required'] = FALSE;
     }
   }
 }
@@ -59,7 +62,7 @@ function wateraid_content_review_date_form_access(array $form, FormStateInterfac
   $roles = $current_user->getRoles(TRUE);
 
   // Administrators or WaterAid Super Admins can view all expiry dates.
-  if (in_array(['administrator', 'wateraid_super_admin'], $roles)) {
+  if (in_array('administrator', $roles) || in_array('wateraid_super_admin', $roles)) {
     return TRUE;
   }
 
