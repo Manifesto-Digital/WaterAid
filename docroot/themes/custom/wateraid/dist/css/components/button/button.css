@@ -324,6 +324,10 @@ footer {
   background: none;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .button--primary, .button--secondary, .button--donate {
   font-size: 1.5rem;
   font-family: "Noto Sans Bold";
@@ -520,3 +524,5 @@ footer {
   transform: rotate(180deg);
 }
 
+
+/*# sourceMappingURL=button.css.map*/

@@ -5,7 +5,7 @@
         let openButton = image.querySelector(".image__button--open button");
         let closeButton = image.querySelector(".image__button--close button");
         let wrapper = image.querySelector(".image__wrapper");
-        
+
         if (openButton) {
           openButton.addEventListener("click", function () {
             wrapper.classList.toggle("open");

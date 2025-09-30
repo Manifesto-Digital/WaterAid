@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content
     - node.type.page
+    - paragraphs.paragraphs_type.call_to_action
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.rich_text
@@ -26,9 +27,16 @@ settings:
     target_bundles:
       rich_text: rich_text
       image: image
+      call_to_action: call_to_action
       quote: quote
     negate: 0
     target_bundles_drag_drop:
+      call_to_action:
+        weight: 5
+        enabled: true
+      hero_image:
+        weight: 6
+        enabled: false
       image:
         weight: 3
         enabled: true

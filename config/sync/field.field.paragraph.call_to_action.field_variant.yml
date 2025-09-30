@@ -1,0 +1,23 @@
+uuid: a433b93c-5ae1-4edc-96ca-dc1a9483e41a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_variant
+    - paragraphs.paragraphs_type.call_to_action
+  module:
+    - options
+id: paragraph.call_to_action.field_variant
+field_name: field_variant
+entity_type: paragraph
+bundle: call_to_action
+label: Variant
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: text_only
+default_value_callback: ''
+settings: {  }
+field_type: list_string
