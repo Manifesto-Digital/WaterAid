@@ -1,11 +1,9 @@
 $small-device-min-width: 390px;
 $medium-device-min-width: 768px;
-$large-device-min-width: 968px;
-$x-large-device-min-width: 1320px;
-$x-small-device-max-width: calc($small-device-min-width - 1px);
-$small-device-max-width: calc($medium-device-min-width - 1px);
-$medium-device-max-width: calc($large-device-min-width - 1px);
-$large-device-max-width: calc($x-large-device-min-width - 1px);
+$large-device-min-width: 1440px;
+$small-device-max-width: calc($small-device-min-width - 1px);
+$medium-device-max-width: calc($medium-device-min-width - 1px);
+$large-device-max-width: calc($large-device-min-width - 1px);
 
 // From width $width.
 @mixin from-breakpoint($width) {
@@ -40,12 +38,6 @@ $large-device-max-width: calc($x-large-device-min-width - 1px);
   }
 }
 
-@mixin breakpoint-xl {
-  @include from-breakpoint($x-large-device-min-width) {
-    @content;
-  }
-}
-
 // Shorthand: just faster to type while coding.
 @mixin tablet {
   @include breakpoint-md {
@@ -59,19 +51,7 @@ $large-device-max-width: calc($x-large-device-min-width - 1px);
   }
 }
 
-@mixin desktop-wide {
-  @include breakpoint-xl {
-    @content;
-  }
-}
-
 // Fallback to-breakpoint mixins.
-@mixin breakpoint-xs-down {
-  @include to-breakpoint($x-small-device-max-width) {
-    @content;
-  }
-}
-
 @mixin breakpoint-sm-down {
   @include to-breakpoint($small-device-max-width) {
     @content;

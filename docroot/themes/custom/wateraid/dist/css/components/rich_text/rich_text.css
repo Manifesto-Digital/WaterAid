@@ -36,7 +36,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -51,7 +51,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -66,7 +66,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -106,7 +106,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   p {
     font-size: 1.25rem;
   }
@@ -154,7 +154,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -169,7 +169,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -184,7 +184,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -224,7 +224,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   p {
     font-size: 1.25rem;
   }
@@ -249,7 +249,7 @@ header > div {
   }
 }
 
-@media only screen and (min-width: 968px) {
+@media only screen and (min-width: 1440px) {
   header > div {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -279,14 +279,14 @@ header img {
   }
 }
 
-@media only screen and (min-width: 968px) {
+@media only screen and (min-width: 1440px) {
   .container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
-@media only screen and (min-width: 968px) {
+@media only screen and (min-width: 1440px) {
   .content-section {
     max-width: 41.25rem;
   }
@@ -312,7 +312,7 @@ footer {
   text-transform: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   [data-component-id="wateraid:rich_text"] {
     font-size: 1.25rem;
   }
