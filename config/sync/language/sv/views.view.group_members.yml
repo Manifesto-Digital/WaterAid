@@ -5,22 +5,15 @@ display:
       fields:
         name:
           label: Användare
-          separator: ', '
         group_roles:
           label: Roller
-          separator: ', '
         changed:
           label: Uppdaterad
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: Funktioner
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Första'
             last: 'Sista »'
           expose:
