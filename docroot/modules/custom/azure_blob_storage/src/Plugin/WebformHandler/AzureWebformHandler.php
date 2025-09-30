@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dso_overviews\Plugin\WebformHandler;
+namespace Drupal\azure_blob_storage\Plugin\WebformHandler;
 
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
