@@ -3,6 +3,7 @@
 [data-component-id="wateraid:rich_text"] {
   color: $wa-navy;
   max-width: calculate-rem(660);
+
   @include paragraph-md();
 
   .paragraph-lg,
@@ -36,13 +37,14 @@
 
   blockquote {
     @include h5();
+
     position: relative;
     margin: $wa-spacing-04 0;
     padding-left: $wa-spacing-07;
     padding-top: calculate-rem(6);
 
     &::before {
-      content: '';
+      content: "";
       background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark.svg");
       background-size: 100%;
       background-repeat: no-repeat;
@@ -52,8 +54,10 @@
       left: 0;
       top: 0;
     }
+
     p {
       @include h5();
+
       margin-top: 0;
     }
   }

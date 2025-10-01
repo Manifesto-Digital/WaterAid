@@ -212,3 +212,6 @@ p {
   @include paragraph-md();
 }
 
+strong {
+  font-family: $bold-font;
+}

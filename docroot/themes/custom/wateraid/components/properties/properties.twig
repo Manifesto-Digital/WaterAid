@@ -1,0 +1,10 @@
+<div {{ attributes.addClass('properties') }}>
+  <ul class="properties__items">
+    {% for key,item in items['#items'] %}
+      <li class="properties__item">
+        <span class="properties__item--key"><strong>{{ item.key }}</strong></span>
+        <span class="properties__item--value">{{ item.value }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

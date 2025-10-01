@@ -112,6 +112,10 @@ p {
   }
 }
 
+strong {
+  font-family: "Noto Sans Bold";
+}
+
 /**
   * Elements
   */
@@ -228,6 +232,10 @@ p {
   p {
     font-size: 1.25rem;
   }
+}
+
+strong {
+  font-family: "Noto Sans Bold";
 }
 
 header {
@@ -494,3 +502,5 @@ footer {
   }
 }
 
+
+/*# sourceMappingURL=call_to_action.css.map*/

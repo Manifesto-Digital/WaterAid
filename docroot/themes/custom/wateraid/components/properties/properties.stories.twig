@@ -1,0 +1,23 @@
+{% stories image with { title: 'wateraid/Molecules/Properties' } %}
+  {% story default with {
+    name: 'Default',
+    args: {
+      items: {
+        0: {
+          key: 'Key 1',
+          value: 'Value 1',
+        },
+        1: {
+          key: 'Key 2',
+          value: 'Value 2',
+        },
+      },
+    }
+  } %}
+
+    {{ include('wateraid:properties', {
+      items,
+    }) }}
+  {% endstory %}
+
+{% endstories %}
