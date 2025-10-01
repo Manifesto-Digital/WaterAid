@@ -3,23 +3,50 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.hero_video.field_call_to_action_type
     - field.field.paragraph.hero_video.field_link
     - field.field.paragraph.hero_video.field_primary_cta
     - field.field.paragraph.hero_video.field_standfirst
     - field.field.paragraph.hero_video.field_video
     - paragraphs.paragraphs_type.hero_video
   module:
+    - field_group
     - link
     - media_library
     - text
+third_party_settings:
+  field_group:
+    group_call_to_action:
+      children:
+        - field_primary_cta
+        - field_call_to_action_type
+      label: 'Call to action'
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
 id: paragraph.hero_video.default
 targetEntityType: paragraph
 bundle: hero_video
 mode: default
 content:
+  field_call_to_action_type:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 2
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -27,7 +54,7 @@ content:
     third_party_settings: {  }
   field_primary_cta:
     type: link_default
-    weight: 1
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
@@ -43,7 +70,7 @@ content:
     third_party_settings: {  }
   field_video:
     type: media_library_widget
-    weight: 3
+    weight: 1
     region: content
     settings:
       media_types: {  }

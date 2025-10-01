@@ -10,11 +10,13 @@
     {% if tags %}
       <div class="hero__content--tags">
         {% for tag in tags %}
-          {{ include('wateraid:content_tag', {
-            text: tag,
-            size: 'large',
-            theme: colour == 'white' ? 'light' : 'dark'
-          }) }}
+          {% if tag %}
+            {{ include('wateraid:content_tag', {
+              text: tag,
+              size: 'large',
+              theme: colour == 'white' ? 'light' : 'dark'
+            }) }}
+          {% endif %}
         {% endfor %}
       </div>
     {% endif %}

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_hero
     - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
@@ -46,6 +47,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_review_date:
     type: datetime_time_ago
