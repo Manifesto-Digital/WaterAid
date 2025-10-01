@@ -1,0 +1,122 @@
+@import "./sass/styles";
+
+[data-component-id="wateraid:video"] {
+  @include grid();
+
+  .video {
+    margin: 0 0 $wa-spacing-06 0;
+    position: relative;
+
+    &__caption {
+      position: relative;
+      font-size: $wa-spacing-04;
+      padding: $wa-spacing-03;
+      line-height: 1.5;
+      margin-top: -$wa-spacing-01;
+      border-radius: 0 0 calculate-rem(2) calculate-rem(2);
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        background-image: url("/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg");
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        left: 0;
+        top: -1px;
+        height: 100%;
+        z-index: -1;
+      }
+    }
+
+    &__credit {
+      font-size: calculate-rem(14);
+      line-height: 1.5;
+      color: $wa-navy-80;
+      display: block;
+    }
+
+    // Local videos
+    video {
+      width: 100%;
+      height: auto;
+    }
+
+    &__play {
+      position: absolute;
+      top: calc(50% - 24px);
+      left: calc(50% - 24px);
+      z-index: 1;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    // Remote videos
+    &__container {
+      overflow: hidden;
+      border: 0;
+      position: relative;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 66.67%
+    }
+
+    &__thumbnail,
+    .field--name-field-video {
+      border: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      object-fit: cover;
+    }
+
+    .contextual-region,
+    .field {
+      height: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    &.video--thumbnail {
+      /* added visibility on the iframe */
+      iframe {
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // Image widths.
+    &__wrapper {
+      position: relative;
+    }
+
+    &__wrapper--full {
+      @include grid-item-span(4, 6, 12);
+
+      height: auto;
+    }
+
+    &__wrapper--large {
+      @include grid-item-span(4, 5, 10);
+    }
+
+    &__wrapper--small {
+      @include grid-item-span(4, 3, 6);
+    }
+  }
+}

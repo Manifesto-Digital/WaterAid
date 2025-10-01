@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.rich_text
+    - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
 id: node.page.field_content
@@ -29,13 +30,23 @@ settings:
       image: image
       call_to_action: call_to_action
       quote: quote
+      video: video
     negate: 0
     target_bundles_drag_drop:
       call_to_action:
         weight: 5
         enabled: true
+      hero_basic:
+        weight: 11
+        enabled: false
       hero_image:
         weight: 6
+        enabled: false
+      hero_news:
+        weight: 13
+        enabled: false
+      hero_video:
+        weight: 14
         enabled: false
       image:
         weight: 3
@@ -45,5 +56,8 @@ settings:
         enabled: true
       rich_text:
         weight: 2
+        enabled: true
+      video:
+        weight: 18
         enabled: true
 field_type: entity_reference_revisions

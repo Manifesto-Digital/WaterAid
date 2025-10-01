@@ -18,6 +18,7 @@ module.exports = {
     'components/link/link': ['./components/link/link.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
     'components/quote/quote': ['./components/quote/quote.scss'],
+    'components/video/video': ['./components/video/video.scss'],
   },
   output: {
     filename: 'js/[name].js',

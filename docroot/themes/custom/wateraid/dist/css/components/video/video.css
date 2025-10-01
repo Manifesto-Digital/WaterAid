@@ -300,107 +300,7 @@ footer {
   background-color: #43cfb5;
 }
 
-.cta__image {
-  width: 100%;
-}
-
-.cta__image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.cta__video {
-  width: 100%;
-  position: relative;
-}
-
-.cta__video video {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.cta__video--play, .cta__video--pause {
-  position: absolute;
-  bottom: 1rem;
-  right: .75rem;
-  z-index: 1;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.cta__content {
-  position: relative;
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
-}
-
-.cta__content--title {
-  color: #fff;
-  margin: 0;
-}
-
-.cta__content--description {
-  color: #fff;
-  font-family: "Noto Sans";
-  font-size: 1.25rem;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.5;
-  text-decoration: none;
-  text-transform: none;
-}
-
-@media only screen and (min-width: 768px) {
-  .cta__content--description {
-    font-size: 1.5rem;
-  }
-}
-
-.cta__content--description p {
-  margin: 0;
-}
-
-@media only screen and (min-width: 1440px) {
-  .cta__links {
-    align-content: end;
-    justify-items: end;
-  }
-}
-
-.cta__links--wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-@media only screen and (min-width: 1440px) {
-  .cta__links--wrapper {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-.cta__links--cta {
-  z-index: 10;
-}
-
-.cta__links--cta .button {
-  max-width: 100%;
-  justify-content: center;
-}
-
-.cta__links--link a {
-  color: #fff;
-}
-
-.cta--default {
+[data-component-id="wateraid:video"] {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   -moz-column-gap: 1rem;
@@ -408,7 +308,7 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
-  .cta--default {
+  [data-component-id="wateraid:video"] {
     grid-template-columns: repeat(6, 1fr);
     -moz-column-gap: 1.5rem;
          column-gap: 1.5rem;
@@ -416,83 +316,164 @@ footer {
 }
 
 @media only screen and (min-width: 1440px) {
-  .cta--default {
+  [data-component-id="wateraid:video"] {
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
-.cta--default {
-  background-color: #006bd9;
-  padding: 2rem 1.25rem;
-}
-
-@media only screen and (min-width: 1440px) {
-  .cta--default {
-    padding: 3rem;
-  }
-}
-
-.cta--default .cta__links,
-.cta--default .cta__content {
-  grid-column: span 12;
-}
-
-@media only screen and (min-width: 768px) {
-  .cta--default .cta__links,
-  .cta--default .cta__content {
-    grid-column: span 6;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .cta--default .cta__links,
-  .cta--default .cta__content {
-    grid-column: span 6;
-  }
-}
-
-.cta--default .cta__links {
-  margin-top: 2rem;
-}
-
-@media only screen and (min-width: 1440px) {
-  .cta--default .cta__links {
-    margin: 0;
-  }
-}
-
-.cta--media {
+[data-component-id="wateraid:video"] .video {
+  margin: 0 0 1.5rem 0;
   position: relative;
 }
 
-.cta--media .cta__content {
-  background-color: #006bd9;
-  padding: 2rem 1.25rem;
+[data-component-id="wateraid:video"] .video__caption {
+  position: relative;
+  font-size: 1rem;
+  padding: .75rem;
+  line-height: 1.5;
+  margin-top: -0.25rem;
+  border-radius: 0 0 .125rem .125rem;
 }
 
-@media only screen and (min-width: 1440px) {
-  .cta--media .cta__content {
-    position: absolute;
-    left: 3rem;
-    bottom: 3rem;
-    padding: 3rem;
-    max-width: 34.125rem;
+[data-component-id="wateraid:video"] .video__caption::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  left: 0;
+  top: -1px;
+  height: 100%;
+  z-index: -1;
+}
+
+[data-component-id="wateraid:video"] .video__credit {
+  font-size: .875rem;
+  line-height: 1.5;
+  color: #44435d;
+  display: block;
+}
+
+[data-component-id="wateraid:video"] .video video {
+  width: 100%;
+  height: auto;
+}
+
+[data-component-id="wateraid:video"] .video__play {
+  position: absolute;
+  top: calc(50% - 24px);
+  left: calc(50% - 24px);
+  z-index: 1;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+[data-component-id="wateraid:video"] .video__container {
+  overflow: hidden;
+  border: 0;
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 66.67%;
+}
+
+[data-component-id="wateraid:video"] .video__thumbnail,
+[data-component-id="wateraid:video"] .video .field--name-field-video {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+[data-component-id="wateraid:video"] .video .contextual-region,
+[data-component-id="wateraid:video"] .video .field {
+  height: 100%;
+}
+
+[data-component-id="wateraid:video"] .video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+[data-component-id="wateraid:video"] .video.video--thumbnail {
+  /* added visibility on the iframe */
+}
+
+[data-component-id="wateraid:video"] .video.video--thumbnail iframe {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+[data-component-id="wateraid:video"] .video__wrapper {
+  position: relative;
+}
+
+[data-component-id="wateraid:video"] .video__wrapper--full {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  [data-component-id="wateraid:video"] .video__wrapper--full {
+    grid-column: span 6;
   }
 }
 
-.cta--media .cta__links {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: .5rem;
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"] .video__wrapper--full {
+    grid-column: span 12;
+  }
+}
+
+[data-component-id="wateraid:video"] .video__wrapper--full {
+  height: auto;
+}
+
+[data-component-id="wateraid:video"] .video__wrapper--large {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  [data-component-id="wateraid:video"] .video__wrapper--large {
+    grid-column: span 5;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-  .cta--media .cta__links {
-    flex-direction: row;
-    align-items: center;
+  [data-component-id="wateraid:video"] .video__wrapper--large {
+    grid-column: span 10;
+  }
+}
+
+[data-component-id="wateraid:video"] .video__wrapper--small {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  [data-component-id="wateraid:video"] .video__wrapper--small {
+    grid-column: span 3;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"] .video__wrapper--small {
+    grid-column: span 6;
   }
 }
 
 
-/*# sourceMappingURL=call_to_action.css.map*/
+/*# sourceMappingURL=video.css.map*/
