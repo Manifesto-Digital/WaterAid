@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_image
+    - media.type.icon_library
     - media.type.image
     - paragraphs.paragraphs_type.image
 id: paragraph.image.field_image
@@ -20,10 +21,11 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      icon_library: icon_library
       image: image
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: icon_library
 field_type: entity_reference
