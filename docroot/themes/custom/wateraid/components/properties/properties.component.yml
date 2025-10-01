@@ -1,0 +1,14 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: properties
+status: stable
+description: Properties component
+props:
+  type: object
+  properties:
+    items:
+      type: object
+      title: Items
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/properties/properties.css: {}

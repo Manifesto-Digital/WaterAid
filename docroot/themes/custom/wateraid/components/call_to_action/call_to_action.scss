@@ -1,7 +1,6 @@
 @import "./sass/styles";
 
 .cta {
-
   &__image {
     width: 100%;
 
@@ -49,6 +48,7 @@
 
     &--description {
       color: $wa-white;
+
       @include paragraph-lg;
 
       p {
@@ -90,6 +90,7 @@
 
   &--default {
     @include grid();
+
     background-color: $wa-blue;
     padding: $wa-spacing-07 $wa-spacing-05;
 
@@ -104,6 +105,7 @@
 
     .cta__links {
       margin-top: $wa-spacing-07;
+
       @include desktop {
         margin: 0;
       }
@@ -116,6 +118,7 @@
     .cta__content {
       background-color: $wa-blue;
       padding: $wa-spacing-07 $wa-spacing-05;
+
       @include desktop {
         position: absolute;
         left: $wa-spacing-09;

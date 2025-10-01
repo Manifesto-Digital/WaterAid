@@ -1,0 +1,31 @@
+@import "./sass/styles";
+
+.properties {
+  padding: $wa-spacing-07 $wa-spacing-09;
+  background-color: $wa-cream;
+
+  &__items {
+    @include grid();
+
+    gap: $wa-spacing-06;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    @include grid-item-span(4, 3, 4);
+    @include paragraph-md();
+
+    height: auto;
+
+    &--key {
+      display: block;
+      margin-bottom: $wa-spacing-01;
+    }
+
+    &--value {
+      display: block;
+    }
+  }
+}

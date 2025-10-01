@@ -24,11 +24,9 @@
         }
       }
 
-      context
-        .querySelectorAll('.cta__video')
-        .forEach((video) => {
-          addCustomVideoPlay(video);
-        });
+      context.querySelectorAll(".cta__video").forEach((video) => {
+        addCustomVideoPlay(video);
+      });
     },
   };
 })(Drupal);

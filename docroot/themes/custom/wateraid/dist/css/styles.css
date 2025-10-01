@@ -112,6 +112,10 @@ p {
   }
 }
 
+strong {
+  font-family: "Noto Sans Bold";
+}
+
 /**
   * Elements
   */
@@ -230,6 +234,10 @@ p {
   }
 }
 
+strong {
+  font-family: "Noto Sans Bold";
+}
+
 header {
   padding: 24px 0;
   border-bottom: #000 solid 1px;
@@ -300,3 +308,5 @@ footer {
   background-color: #43cfb5;
 }
 
+
+/*# sourceMappingURL=styles.css.map*/

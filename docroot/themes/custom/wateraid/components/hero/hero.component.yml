@@ -41,10 +41,10 @@ slots:
     type: string
     title: Credit
   tags:
-    type: [ "object", "null" ]
+    type: ["object", "null"]
     title: Tags
   authors:
-    type: [ "object", "null" ]
+    type: ["object", "null"]
     title: Authors
 libraryOverrides:
   css:

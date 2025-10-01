@@ -112,6 +112,10 @@ p {
   }
 }
 
+strong {
+  font-family: "Noto Sans Bold";
+}
+
 /**
   * Elements
   */
@@ -228,6 +232,10 @@ p {
   p {
     font-size: 1.25rem;
   }
+}
+
+strong {
+  font-family: "Noto Sans Bold";
 }
 
 header {
@@ -431,3 +439,5 @@ footer {
   max-width: 55.5rem;
 }
 
+
+/*# sourceMappingURL=quote.css.map*/
