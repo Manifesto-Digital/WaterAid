@@ -1,6 +1,6 @@
 <div {{ attributes }}>
   <div class="image__wrapper image__wrapper--{{ width }}">
-    <figure class="image image--{{ caption_display }}">
+    <figure class="image image--{{ caption_display|replace({'_':'-'}) }}">
       {{ image }}
 
       {% if caption or credit %}

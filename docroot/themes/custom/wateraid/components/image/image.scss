@@ -35,6 +35,7 @@
 
     &__wrapper--full {
       @include grid-item-span(4, 6, 12);
+
       height: auto;
     }
 
@@ -82,6 +83,28 @@
         transition-property: all;
         transition-duration: 0.5s;
         transition-timing-function: cubic-bezier(1, 1, 1, 1);
+      }
+    }
+
+    &--below-image {
+margin-bottom: $wa-spacing-04;
+      .image__caption {
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          background-image: url("/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg");
+          background-position: center;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          width: 100%;
+          left: 0;
+          top: -1px;
+          height: 100%;
+          z-index: -1;
+        }
       }
     }
 
