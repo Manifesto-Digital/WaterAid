@@ -41,6 +41,15 @@ function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function wateraid_content_form_node_publication_form_alter(&$form, FormStateInterface $form_state): void {
+  if (isset($form['field_author_override'])) {
+    $form['field_author_override']['#group'] = (isset($form['author'])) ? 'author' : NULL;
+  }
+}
+
+/**
  * Helper to calculate if the user has access to see the review date field.
  *
  * @param array $form
