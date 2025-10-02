@@ -6,6 +6,7 @@ dependencies:
     - group.type.wateraid_site
     - media.type.audio
     - media.type.document
+    - media.type.icon_library
     - media.type.image
     - media.type.remote_video
     - media.type.video
@@ -95,6 +96,7 @@ permissions:
   - 'create document media'
   - 'create donation content'
   - 'create event content'
+  - 'create icon_library media'
   - 'create image media'
   - 'create landing_page content'
   - 'create listing_page content'
@@ -200,6 +202,7 @@ permissions:
   - 'edit any document media'
   - 'edit any donation content'
   - 'edit any event content'
+  - 'edit any icon_library media'
   - 'edit any image media'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
@@ -219,6 +222,7 @@ permissions:
   - 'edit own document media'
   - 'edit own donation content'
   - 'edit own event content'
+  - 'edit own icon_library media'
   - 'edit own image media'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
@@ -288,6 +292,7 @@ permissions:
   - 'view all taxonomy revisions'
   - 'view any audio media revisions'
   - 'view any document media revisions'
+  - 'view any icon_library media revisions'
   - 'view any image media revisions'
   - 'view any remote_video media revisions'
   - 'view any video media revisions'

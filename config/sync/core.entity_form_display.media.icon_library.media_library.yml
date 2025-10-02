@@ -1,0 +1,26 @@
+uuid: b7136e47-1aae-4c19-a3c3-ad257aaaca88
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.icon_library.field_media_svg
+    - media.type.icon_library
+id: media.icon_library.media_library
+targetEntityType: media
+bundle: icon_library
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  directory: true
+  field_media_svg: true
+  langcode: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  status: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true
