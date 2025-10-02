@@ -1,0 +1,7 @@
+field.value.wa_orange_dam_image:
+  type: mapping
+  label: Default value
+  mapping:
+    value:
+      type: label
+      label: Value
