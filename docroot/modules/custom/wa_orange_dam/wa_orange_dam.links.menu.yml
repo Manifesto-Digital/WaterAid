@@ -1,0 +1,5 @@
+wa_orange_dam.oauth2:
+  title: 'Orange DAM'
+  description: 'Configure the website integration with the Orange DAM.'
+  route_name: wa_orange_dam.oauth2
+  parent: system.admin_config_services

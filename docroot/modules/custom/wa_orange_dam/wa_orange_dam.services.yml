@@ -1,0 +1,10 @@
+services:
+  wa_orange_dam.api:
+    class: Drupal\wa_orange_dam\Service\Api
+    arguments: ['@http_client']
+
+  access_check.wa_orange_dam.token:
+    class: Drupal\wa_orange_dam\Access\TokenAccessChecker
+    arguments: ['@state', '@request_stack']
+    tags:
+      - { name: access_check, applies_to: _token }

@@ -1,0 +1,4 @@
+administer wa_orange_dam configuration:
+  title: 'Administer wa_orange_dam configuration'
+  description: 'Access the administration form for Orange DAM access'
+  restrict access: true
