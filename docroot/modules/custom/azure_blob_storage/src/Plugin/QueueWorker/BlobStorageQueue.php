@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Drupal\azure_blob_storage\Plugin\QueueWorker;
 
 use Drupal\azure_blob_storage\service\AzureApi;
-use Drupal\Component\Serialization\Json;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -71,7 +72,6 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
 
     // If we've had five tries, we'll give up.
     if ($tries >= 5) {
-
       $this->loggerChannel->critical($this->t('Error sending submission :sid from the :webform webform to the Azure storage blob', [
         ':sid' => $data['sid'],
         ':webform' => $data['webform_id'],
@@ -79,29 +79,69 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
       return;
     }
 
+    $error = FALSE;
+
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->entityTypeManager->getStorage('webform_submission')->loadByProperties([
-      'sid' => $data['sid'],
-      'webform_id' => $data['webform_id'],
-    ])) {
-      $name = $data['webform_id'] . '-' . $data['sid'];
+    if ($submissions = $this->entityTypeManager->getStorage('webform_submission')
+      ->loadByProperties([
+        'sid' => $data['sid'],
+        'webform_id' => $data['webform_id'],
+      ])) {
+      if (count($submissions) == 1) {
+        $name = $data['webform_id'] . '-' . $data['sid'];
+        $submission = reset($submissions);
 
-      if ($this->azureBlobStorageApi->blobPut($name, $submission->toArray(), TRUE)) {
-
-        // The submission has been successfully stored in the blob, so we can
-        // delete it from the website.
-        $submission->delete();
+        if ($this->azureBlobStorageApi->blobPut($name, $this->generateBlobArray($submission), TRUE)) {
+          // The submission has been successfully stored in the blob, so we can
+          // delete it from the website.
+          $submission->delete();
+        }
+        else {
+          $error = TRUE;
+        }
       }
       else {
-
-        // If something went wrong, we'll push the data back into the queue to
-        // try again.
-        $tries++;
-        $data['tries'] = $tries;
-
-        $this->queue->createItem($data);
+        $error = TRUE;
       }
     }
+    else {
+      $error = TRUE;
+    }
+
+    if ($error) {
+
+      // If something went wrong, we'll push the data back into the queue to
+      // try again.
+      $tries++;
+      $data['tries'] = $tries;
+
+      $this->queue->createItem($data);
+    }
+  }
+
+  /**
+   * Generates the data structure to be stored in Azure.
+   *
+   * @param \Drupal\webform\WebformSubmissionInterface $submission
+   *   The webform submission.
+   *
+   * @return array
+   *   A structured array of data.
+   */
+  private function generateBlobArray(WebformSubmissionInterface $submission): array {
+    $webform = $submission->getWebform();
+    $owner = $webform->getOwner();
+
+    $date = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
+
+    return [
+      'id' => $submission->id(),
+      'webform' => $webform->id(),
+      'webform_owner' => ($owner) ? $owner->label() : 'Anonymous',
+      'webform_last_updated' => '',
+      'submission_data' => $submission->getData(),
+      'submission_date' => $date->format(\DateTimeInterface::ATOM),
+    ];
   }
 
 }
