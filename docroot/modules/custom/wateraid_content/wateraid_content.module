@@ -29,6 +29,7 @@ function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_
         $date->add($interval);
 
         $form['field_review_date']['widget'][0]['value']['#date_year_range'] .= $date->format('Y');
+        $form['field_review_date']['#element_validate'][] = 'wateraid_content_review_date_validate';
       }
     }
     else {
@@ -100,6 +101,41 @@ function wateraid_content_review_date_form_access(array $form, FormStateInterfac
   }
 
   return FALSE;
+}
+
+/**
+ * Validates the Review Date.
+ *
+ * @param array $element
+ *   The review date field form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The node form form state.
+ */
+function wateraid_content_review_date_validate(array &$element, FormStateInterface $form_state): void {
+  if ($date = $form_state->getValue('field_review_date')) {
+    if (isset($date[0]['value'])) {
+
+      /** @var \Drupal\Core\Datetime\DrupalDateTime $date */
+      $date = $date[0]['value'];
+
+      // Normalise the dates to the same timezone and hours as it's only the
+      // dates we're interested in.
+      $date->setTime(0, 0, 1);
+      $now = new DrupalDateTime('now', 'UTC');
+      $now->setTime(0, 0, 1);
+
+      if ($date < $now) {
+        $form_state->setError($element, t('Review Date cannot be before today.'));
+      }
+
+      $interval = DateInterval::createFromDateString('+2 years');
+      $now->add($interval);
+
+      if ($date > $now) {
+        $form_state->setError($element, t('Review Date must be less than 2 years in the future.'));
+      }
+    }
+  }
 }
 
 /**
