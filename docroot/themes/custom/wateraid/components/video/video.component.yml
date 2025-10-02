@@ -1,0 +1,32 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: video
+status: stable
+description: Video component
+props:
+  type: object
+  properties:
+    caption:
+      type: string
+      title: Caption
+    credit:
+      type: string
+      title: Credit
+    width:
+      type: string
+      title: Width
+    type:
+      type: string
+      title: Type
+  slots:
+    video:
+      title: Video
+      description: Video
+      required: true
+    image:
+      title: Image
+      description: Image
+      required: false
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/video/video.css: {}

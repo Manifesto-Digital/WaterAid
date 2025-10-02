@@ -308,40 +308,72 @@ footer {
   background-color: #43cfb5;
 }
 
-.hero[data-component-id="wateraid:hero"] {
-  margin-bottom: 6rem;
+[data-component-id="wateraid:video"] {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
 }
 
-.hero__image {
-  width: 100%;
-  display: inline;
+@media only screen and (min-width: 768px) {
+  [data-component-id="wateraid:video"] {
+    grid-template-columns: repeat(6, 1fr);
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
+  }
 }
 
-.hero__image img {
-  display: block;
-  max-width: 100%;
-  max-height: 45rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"] {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
-.hero__video {
-  display: block;
-  width: 100%;
+[data-component-id="wateraid:video"] .video {
+  margin: 0 0 1.5rem 0;
   position: relative;
 }
 
-.hero__video video {
-  width: 100%;
-  height: 100%;
+[data-component-id="wateraid:video"] .video__caption {
+  position: relative;
+  font-size: 1rem;
+  padding: .75rem;
+  line-height: 1.5;
+  margin-top: -0.25rem;
+  border-radius: 0 0 .125rem .125rem;
 }
 
-.hero__video--play, .hero__video--pause {
+[data-component-id="wateraid:video"] .video__caption::after {
+  content: "";
+  display: block;
   position: absolute;
-  bottom: 1rem;
-  right: .75rem;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  left: 0;
+  top: -1px;
+  height: 100%;
+  z-index: -1;
+}
+
+[data-component-id="wateraid:video"] .video__credit {
+  font-size: .875rem;
+  line-height: 1.5;
+  color: #44435d;
+  display: block;
+}
+
+[data-component-id="wateraid:video"] .video video {
+  width: 100%;
+  height: auto;
+}
+
+[data-component-id="wateraid:video"] .video__play {
+  position: absolute;
+  top: calc(50% - 24px);
+  left: calc(50% - 24px);
   z-index: 1;
   background: transparent;
   border: none;
@@ -349,220 +381,107 @@ footer {
   cursor: pointer;
 }
 
-.hero__content {
-  font-family: "Noto Sans";
-  font-size: 1.125rem;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.5;
-  text-decoration: none;
-  text-transform: none;
-}
-
-@media only screen and (min-width: 1440px) {
-  .hero__content {
-    font-size: 1.25rem;
-  }
-}
-
-.hero__content {
+[data-component-id="wateraid:video"] .video__container {
+  overflow: hidden;
+  border: 0;
   position: relative;
-  padding: 2rem 1.25rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 66.67%;
 }
 
-@media only screen and (min-width: 1440px) {
-  .hero__content {
-    padding: 3rem;
-  }
+[data-component-id="wateraid:video"] .video__thumbnail,
+[data-component-id="wateraid:video"] .video .field--name-field-video {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.hero__content--title {
-  margin: 0;
-  color: #fff;
+[data-component-id="wateraid:video"] .video .contextual-region,
+[data-component-id="wateraid:video"] .video .field {
+  height: 100%;
 }
 
-.hero__content--standfirst {
-  font-family: "Noto Sans";
-  font-size: 1.25rem;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.5;
-  text-decoration: none;
-  text-transform: none;
+[data-component-id="wateraid:video"] .video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+[data-component-id="wateraid:video"] .video.video--thumbnail {
+  /* added visibility on the iframe */
+}
+
+[data-component-id="wateraid:video"] .video.video--thumbnail iframe {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+[data-component-id="wateraid:video"] .video__wrapper {
+  position: relative;
+}
+
+[data-component-id="wateraid:video"] .video__wrapper--full {
+  grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  .hero__content--standfirst {
-    font-size: 1.5rem;
+  [data-component-id="wateraid:video"] .video__wrapper--full {
+    grid-column: span 6;
   }
-}
-
-.hero__content--standfirst p {
-  margin: 0;
-}
-
-.hero__content--ctas {
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  .hero__content--ctas {
-    flex-direction: row;
-    align-items: center;
+  [data-component-id="wateraid:video"] .video__wrapper--full {
+    grid-column: span 12;
   }
 }
 
-.hero__content--tags {
-  display: flex;
-  gap: .5rem;
-}
-
-.hero__content--wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-}
-
-.hero__content--details {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-}
-
-@media only screen and (min-width: 1440px) {
-  .hero__content--details {
-    flex-direction: row;
-    gap: .75rem;
-  }
-}
-
-.hero__content--details svg {
-  display: none;
-}
-
-@media only screen and (min-width: 1440px) {
-  .hero__content--details svg {
-    display: block;
-    width: .75rem;
-    height: auto;
-    color: #006bd9;
-  }
-}
-
-.hero__content--date {
-  font-family: "Noto Sans Bold";
-}
-
-.hero__content--time {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-
-.hero__content--time svg {
-  width: 1.5rem;
+[data-component-id="wateraid:video"] .video__wrapper--full {
   height: auto;
 }
 
-.hero--basic .cta__content {
-  padding: 2rem 1.25rem;
+[data-component-id="wateraid:video"] .video__wrapper--large {
+  grid-column: span 4;
 }
 
-@media only screen and (min-width: 1440px) {
-  .hero--basic .cta__content {
-    padding: 3rem;
+@media only screen and (min-width: 768px) {
+  [data-component-id="wateraid:video"] .video__wrapper--large {
+    grid-column: span 5;
   }
 }
 
-.hero--blue .hero__content {
-  background-color: #006bd9;
-  color: #fff;
-  margin-bottom: 3rem;
-  padding: 2rem 1.25rem .25rem 1.25rem;
-}
-
 @media only screen and (min-width: 1440px) {
-  .hero--blue .hero__content {
-    margin-bottom: 3.5rem;
-    padding: 3rem 3rem .25rem 3rem;
+  [data-component-id="wateraid:video"] .video__wrapper--large {
+    grid-column: span 10;
   }
 }
 
-.hero--blue .hero__content::after {
-  content: "";
-  display: block;
-  position: absolute;
-  background-image: url("/themes/custom/wateraid/images/icons/wa-edge-bottom-1-blue.svg");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  width: 100%;
-  left: 0;
-  height: 3rem;
-  bottom: -3rem;
+[data-component-id="wateraid:video"] .video__wrapper--small {
+  grid-column: span 4;
 }
 
-@media only screen and (min-width: 1440px) {
-  .hero--blue .hero__content::after {
-    height: 3.5rem;
-    bottom: -3.5rem;
+@media only screen and (min-width: 768px) {
+  [data-component-id="wateraid:video"] .video__wrapper--small {
+    grid-column: span 3;
   }
 }
 
-.hero--blue .hero__content--link a {
-  color: #fff;
-}
-
-.hero--white .hero__content {
-  background-color: #fff;
-}
-
-.hero--white .hero__content--title,
-.hero--white .hero__content--link a,
-.hero--white .hero__content--time svg {
-  color: #006bd9;
-}
-
-.hero--navy .hero__content {
-  background-color: #151435;
-}
-
-.hero--navy .hero__content,
-.hero--navy .hero__content--link a {
-  color: #fff;
-}
-
-.hero--news .hero__content {
-  gap: 0;
-}
-
-.hero--news .hero__content--tags {
-  margin-bottom: 1.5rem;
-}
-
 @media only screen and (min-width: 1440px) {
-  .hero--news .hero__content--tags {
-    margin-bottom: 2rem;
+  [data-component-id="wateraid:video"] .video__wrapper--small {
+    grid-column: span 6;
   }
 }
 
-.hero--news .hero__content--title {
-  margin-bottom: .5rem;
-}
 
-.hero--news.hero--white .hero__content--standfirst {
-  color: #006bd9;
-}
-
-.hero--news .hero__content--standfirst {
-  margin-bottom: 1.5rem;
-}
-
-
-/*# sourceMappingURL=hero.css.map*/
+/*# sourceMappingURL=video.css.map*/

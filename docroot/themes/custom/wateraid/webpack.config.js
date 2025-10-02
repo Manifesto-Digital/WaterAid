@@ -19,6 +19,7 @@ module.exports = {
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
     'components/properties/properties': ['./components/properties/properties.scss'],
     'components/quote/quote': ['./components/quote/quote.scss'],
+    'components/video/video': ['./components/video/video.scss'],
   },
   output: {
     filename: 'js/[name].js',
