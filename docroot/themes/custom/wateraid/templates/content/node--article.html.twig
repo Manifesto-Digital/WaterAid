@@ -77,5 +77,6 @@
   {{ content.field_hero }}
   <div class="container">
     {{ content.field_content }}
+    {{ content|without('field_hero', 'field_content') }}
   </div>
 </article>
