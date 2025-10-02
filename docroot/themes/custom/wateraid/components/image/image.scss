@@ -34,17 +34,16 @@
     }
 
     &__wrapper--full {
-      @include grid-item-span(12, 12, 12);
-
+      @include grid-item-span(4, 6, 12);
       height: auto;
     }
 
     &__wrapper--large {
-      @include grid-item-span(12, 10, 10);
+      @include grid-item-span(4, 5, 10);
     }
 
     &__wrapper--small {
-      @include grid-item-span(12, 6, 6);
+      @include grid-item-span(4, 3, 6);
     }
 
     img {
