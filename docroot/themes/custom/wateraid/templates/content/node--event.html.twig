@@ -82,5 +82,7 @@
       }, only) }}
     {% endif %}
     {{ content.field_content }}
+
+    {{ content|without('field_hero', 'field_content', 'field_properties') }}
   </div>
 </article>
