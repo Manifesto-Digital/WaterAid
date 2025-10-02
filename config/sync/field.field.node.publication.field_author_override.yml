@@ -1,0 +1,19 @@
+uuid: 5ac718dd-3ce0-44e3-bf8d-28aa853f711a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author_override
+    - node.type.publication
+id: node.publication.field_author_override
+field_name: field_author_override
+entity_type: node
+bundle: publication
+label: 'Author Override'
+description: 'Enter the names of any non-Drupal authors you wish to display for the publication.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

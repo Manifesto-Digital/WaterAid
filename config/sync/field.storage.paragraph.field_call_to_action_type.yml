@@ -12,11 +12,11 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: action
-      label: Action
-    -
       value: primary
       label: Primary
+    -
+      value: donate
+      label: Donate
   allowed_values_function: ''
 module: options
 locked: false

@@ -55,18 +55,18 @@
       <div class="hero__content--ctas">
         {% if cta.title and cta.url %}
           <div class="hero__content--cta">
-            {% if cta.type == 'primary' %}
+            {% if cta.type == 'donate' %}
               {{ include('wateraid:button', {
                 text: cta.title,
                 link: cta.url,
-                type: 'primary',
-                theme: colour == 'white' ? 'light' : 'dark'
+                type: 'donate',
               }) }}
             {% else %}
               {{ include('wateraid:button', {
                 text: cta.title,
                 link: cta.url,
-                type: 'donate',
+                type: 'primary',
+                theme: colour == 'white' ? 'light' : 'dark'
               }) }}
             {% endif %}
           </div>

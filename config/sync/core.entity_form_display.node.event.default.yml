@@ -191,7 +191,7 @@ content:
       description_rows: 5
       key_size: 60
       key_placeholder: ''
-      description_enabled: true
+      description_enabled: false
       description_placeholder: ''
     third_party_settings: {  }
   field_region:

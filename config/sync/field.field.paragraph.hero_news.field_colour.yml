@@ -13,9 +13,11 @@ entity_type: paragraph
 bundle: hero_news
 label: Colour
 description: ''
-required: false
+required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: navy
 default_value_callback: ''
 settings: {  }
 field_type: list_string

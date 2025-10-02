@@ -39,25 +39,25 @@
  */
 #}
 
-{% set tags = [] %}
-{% set tags = tags|merge([
-  paragraph.parentEntity.field_tags.0.entity.name.value,
-  paragraph.parentEntity.field_theme.0.entity.name.value
-]) %}
+{% set tags = {
+  'author': paragraph.parentEntity.field_audience.0.entity.name.value,
+  'country': paragraph.parentEntity.field_country.0.entity.name.value,
+  'theme': paragraph.parentEntity.field_theme.0.entity.name.value,
+} %}
+
 
 {% set authors = [] %}
 {% for item in paragraph.field_authors %}
   {% set authors = authors|merge([item.entity.name.value]) %}
 {% endfor %}
 
-
 {% block paragraph %}
   {{ include('wateraid:hero', {
     title: page_title,
     standfirst: content.field_subtitle|render,
-    tags: tags,
     publish_date: paragraph.field_published_date.value,
     authors: authors,
+    tags: tags,
     time_to_read: paragraph.field_show_read_time.value == '1' ? paragraph.parentEntity.node_read_time.0.value : '',
     image: content.field_image,
     media_caption: paragraph.field_caption.value ? content.field_caption,

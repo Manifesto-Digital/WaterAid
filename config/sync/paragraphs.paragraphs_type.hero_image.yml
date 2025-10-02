@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: hero_image
-label: 'Hero (Image)'
+label: 'Hero (image)'
 icon_uuid: null
 icon_default: null
 description: ''

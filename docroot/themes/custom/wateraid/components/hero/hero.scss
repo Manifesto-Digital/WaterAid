@@ -19,6 +19,7 @@
   }
 
   &__video {
+    display: block;
     width: 100%;
     position: relative;
 
@@ -54,13 +55,13 @@
     }
 
     &--title {
-      color: $wa-white;
       margin: 0;
       color: $wa-white;
     }
 
     &--standfirst {
       @include paragraph-lg;
+
       p {
         margin: 0;
       }
@@ -101,6 +102,7 @@
 
       svg {
         display: none;
+
         @include desktop {
           display: block;
           width: $wa-spacing-03;
@@ -124,7 +126,6 @@
         height: auto;
       }
     }
-
   }
 
   &--basic {
@@ -204,6 +205,7 @@
 
     .hero__content--tags {
       margin-bottom: $wa-spacing-06;
+
       @include desktop {
         margin-bottom: $wa-spacing-07;
       }

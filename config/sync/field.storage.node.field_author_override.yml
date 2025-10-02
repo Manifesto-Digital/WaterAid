@@ -1,21 +1,18 @@
-uuid: c47e4e1d-2474-45be-a0a6-530ed8262070
+uuid: 84927257-67a9-4609-8844-9dbe3f32964e
 langcode: en
 status: true
 dependencies:
   module:
-    - key_value_field
     - node
-id: node.field_properties
-field_name: field_properties
+id: node.field_author_override
+field_name: field_author_override
 entity_type: node
-type: key_value
+type: string
 settings:
-  key_max_length: 255
-  key_is_ascii: false
   max_length: 255
-  is_ascii: false
   case_sensitive: false
-module: key_value_field
+  is_ascii: false
+module: core
 locked: false
 cardinality: -1
 translatable: true
