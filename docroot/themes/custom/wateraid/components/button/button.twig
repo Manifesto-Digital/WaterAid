@@ -1,30 +1,36 @@
 {% if link %}
-  <a href="{{ link }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
-{% else %}
-    <button id="{{ id }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
-{% endif %}
+<a href="{{ link }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
+  {% else %}
+  <button id="{{ id }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
+    {% endif %}
 
-  {% if type == 'primary' or type == 'secondary' %}
-    {{ text }}
-  {% endif %}
+    {% if type == 'primary' or type == 'secondary' %}
+      {{ text }}
+      {% if icon|render %}
+        <span class="button__svg">
+        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+          {{ include(icon_url) }}
+      </span>
+      {% endif %}
+    {% endif %}
 
-  {% if type == 'donate' %}
-    <span class="button__svg">
+    {% if type == 'donate' %}
+      <span class="button__svg">
       {% if icon|render %}
         {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
         {{ include(icon_url) }}
       {% endif %}
       </span>
-    {{ text }}
-  {% endif %}
+      {{ text }}
+    {% endif %}
 
-  {% if type == 'icon' or type == 'social' or type == 'icon-small' %}
-    {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-    {{ include(icon_url) }}
-  {% endif %}
+    {% if type == 'icon' or type == 'social' or type == 'icon-small' %}
+      {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+      {{ include(icon_url) }}
+    {% endif %}
 
-{% if link %}
-  </a>
+    {% if link %}
+</a>
 {% else %}
   </button>
 {% endif %}

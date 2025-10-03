@@ -3,23 +3,27 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.accordion_item.field_rich_text
+    - field.field.paragraph.accordion_item.field_accordion_content
     - field.field.paragraph.accordion_item.field_title
     - paragraphs.paragraphs_type.accordion_item
   module:
-    - text
+    - layout_paragraphs
 id: paragraph.accordion_item.default
 targetEntityType: paragraph
 bundle: accordion_item
 mode: default
 content:
-  field_rich_text:
-    type: text_textarea
-    weight: 1
+  field_accordion_content:
+    type: layout_paragraphs
+    weight: 2
     region: content
     settings:
-      rows: 5
-      placeholder: ''
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
     third_party_settings: {  }
   field_title:
     type: string_textfield

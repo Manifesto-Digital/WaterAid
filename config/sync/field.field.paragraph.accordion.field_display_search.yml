@@ -1,0 +1,21 @@
+uuid: b70e03e6-2eea-4688-8001-3e97e6a36d9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_search
+    - paragraphs.paragraphs_type.accordion
+id: paragraph.accordion.field_display_search
+field_name: field_display_search
+entity_type: paragraph
+bundle: accordion
+label: 'Display search'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

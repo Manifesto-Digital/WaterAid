@@ -9,10 +9,10 @@ props:
       title: Title
       description: The title you see while it is collapsed
       examples: []
-    copy:
-      type: string
-      title: Copy
-      description: The text that is shown when the item is expanded
+    content:
+      type: object
+      title: Content
+      description: The content that is shown when the item is expanded
       examples: []
 libraryOverrides:
   css:

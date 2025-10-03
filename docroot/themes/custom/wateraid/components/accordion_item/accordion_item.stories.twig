@@ -2,14 +2,12 @@
   {% story using_args with {
     name: 'Accordion item',
     args: {
-      title: 'A snowy hillside'|t,
-      subtitle: 'is cold'|t,
+      title: 'Accordion'|t,
     }
   } %}
 
     {# Defaults #}
     {% set copy %}
-      <h5>Heading 5</h5>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
         convallis felis vel purus pellentesque, eget molestie mauris vehicula. Curabitur auctor, eros vitae porta
         ullamcorper, erat quam mattis nulla, sed varius lacus nisl quis felis. Sed placerat euismod magna id ornare.
@@ -20,7 +18,7 @@
 
     {{ include('wateraid:accordion_item', {
       title,
-      subtitle,
+      description,
       copy,
     }) }}
 

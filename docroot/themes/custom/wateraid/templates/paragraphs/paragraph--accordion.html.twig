@@ -52,7 +52,11 @@
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:accordion', {
       title: paragraph.field_title.value,
+      description: content.field_rich_text,
       accordion_items: content.field_accordion_items|children,
+      search: paragraph.field_display_search.value,
+      search_label: paragraph.field_label.value,
+      search_description: paragraph.field_description.value,
     }, with_context = false) }}
   </div>
 {% endblock paragraph %}

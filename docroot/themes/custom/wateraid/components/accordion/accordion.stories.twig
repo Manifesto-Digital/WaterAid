@@ -2,13 +2,13 @@
   {% story Accordion with {
     name: 'Accordion',
     args: {
-      title: 'A snowy hillside'|t
+      title: 'Accordion'|t,
+      subtitle: 'Lorem ipsum dolor sit amet'|t,
     }
   } %}
 
     {# Defaults #}
     {% set text %}
-      <h5>Heading 5</h5>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
         convallis felis vel purus pellentesque, eget molestie mauris vehicula. Curabitur auctor, eros vitae porta
         ullamcorper, erat quam mattis nulla, sed varius lacus nisl quis felis. Sed placerat euismod magna id ornare.
@@ -20,17 +20,14 @@
     {% set accordion_items = [
       include('wateraid:accordion_item', {
         title: 'Accordion Item 1',
-        subtitle: 'Subtitle 1',
         copy: text,
       }),
       include('wateraid:accordion_item', {
         title: 'Accordion Item 2',
-        subtitle: '',
         copy: text,
       }),
       include('wateraid:accordion_item', {
         title: 'Accordion Item 3',
-        subtitle: 'Subtitle 3',
         copy: text,
       }),
     ] %}

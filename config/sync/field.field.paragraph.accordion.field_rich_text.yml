@@ -1,4 +1,4 @@
-uuid: 2c1a5f18-9b20-409a-b045-b9e0bd757d2c
+uuid: 5b23bbdc-c0ab-4532-b8c9-78832cea0c0b
 langcode: en
 status: true
 dependencies:
@@ -6,14 +6,14 @@ dependencies:
     - field.storage.paragraph.field_rich_text
     - filter.format.basic_html
     - filter.format.full_html
-    - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.accordion
   module:
     - text
-id: paragraph.accordion_item.field_rich_text
+id: paragraph.accordion.field_rich_text
 field_name: field_rich_text
 entity_type: paragraph
-bundle: accordion_item
-label: 'Rich Text'
+bundle: accordion
+label: Description
 description: ''
 required: false
 translatable: false

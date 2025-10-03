@@ -1,14 +1,61 @@
-.accordion {
-  &__wrapper {
-    margin: 0 auto;
-    max-width: 100%;
-    width: 704px;
+@import "./sass/styles";
 
+.accordion {
+  max-width: 100%;
+  width: 660px;
+  margin-bottom: $wa-spacing-06;
+
+
+  &__search {
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-03;
+    margin-bottom: $wa-spacing-07;
+    @include desktop {
+      margin-bottom: $wa-spacing-09;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: $wa-spacing-04;
+      @include desktop {
+        flex-direction: row;
+        gap: $wa-spacing-01;
+      }
+    }
+
+    &--description {
+      @include paragraph-sm();
+      color: $wa-navy-80;
+    }
+
+    label {
+      display: block;
+      @include paragraph-md();
+      font-family: $bold-font;
+    }
+
+    input {
+      @include paragraph-sm();
+      padding: $wa-spacing-03;
+      border: 2px solid $wa-navy;
+      border-radius: 2px;
+      flex: 1;
+    }
+
+    button {
+      color: $wa-white;
+      min-width: 100%;
+      justify-content: center;
+      @include desktop {
+        min-width: unset;
+      }
+    }
   }
 
-  &__content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+  mark {
+    background: $wa-navy-10;
   }
 }
