@@ -18,10 +18,20 @@
           videoElement.controls = false;
 
           playButton.addEventListener("click", function () {
+            videoElement.controls = true;
             videoElement.play();
             playButton.style.display = "none";
             video.classList.add("playing");
           });
+
+          if(videoElement.paused){
+            videoElement.addEventListener("click", function () {
+              videoElement.controls = false;
+              videoElement.pause();
+              playButton.style.display = "block";
+              video.classList.remove("playing");
+            });
+          }
         }
       }
 
