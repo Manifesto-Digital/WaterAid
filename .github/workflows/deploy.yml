@@ -52,13 +52,6 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          tools: composer
-          extensions: mbstring, pdo, xml, gd, curl, zip, bcmath, intl
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -69,6 +62,13 @@ jobs:
         run: |
           npm i --prefix docroot/themes/custom/wateraid
           npm run build --prefix docroot/themes/custom/wateraid
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+          extensions: mbstring, pdo, xml, gd, curl, zip, bcmath, intl
 
       - name: Install Composer Dependencies
         working-directory: ${{ github.workspace }}
@@ -107,7 +107,7 @@ jobs:
         run: |
           mkdir -p /tmp/acli-push-artifact
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
-          --destination-git-branch=main-build \
+          --destination-git-branch=develop \
           --no-interaction
       - name: Drush commands
         working-directory: ${{ github.workspace }}

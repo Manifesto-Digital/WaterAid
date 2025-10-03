@@ -68,7 +68,8 @@
         "text": "Click to view more",
         "link": "https:\/\/www.google.com",
         "type": "donate",
-        "theme": ""
+        "theme": "",
+        "icon": "wa-utility-lock"
       },
       "parameters": {
         "server": {

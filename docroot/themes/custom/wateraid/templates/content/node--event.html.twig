@@ -76,6 +76,13 @@
 <article{{ attributes.addClass(node_classes).removeAttribute('role') }}>
   {{ content.field_hero }}
   <div class="container">
+    {% if content.field_properties %}
+      {{ include('wateraid:properties', {
+        items: content.field_properties,
+      }, only) }}
+    {% endif %}
     {{ content.field_content }}
+
+    {{ content|without('field_hero', 'field_content', 'field_properties') }}
   </div>
 </article>

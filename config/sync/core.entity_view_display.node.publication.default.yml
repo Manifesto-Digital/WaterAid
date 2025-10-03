@@ -4,17 +4,20 @@ status: true
 dependencies:
   config:
     - field.field.node.publication.field_audience
+    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_review_date
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
     - field.field.node.publication.field_teaser_text
     - field.field.node.publication.field_theme
     - node.type.publication
   module:
+    - datetime
     - entity_reference_revisions
     - user
 id: node.publication.default
@@ -28,7 +31,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_content:
     type: entity_reference_revisions_entity_view
@@ -45,7 +48,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
   field_get_involved:
     type: entity_reference_label
@@ -53,7 +56,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_hero:
     type: entity_reference_revisions_entity_view
@@ -62,7 +65,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_key_stage:
     type: entity_reference_label
@@ -70,7 +73,17 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 6
+    weight: 7
+    region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_subject_area:
     type: entity_reference_label
@@ -78,7 +91,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: content
   field_theme:
     type: entity_reference_label
@@ -86,7 +99,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   links:
     settings: {  }
@@ -95,6 +108,8 @@ content:
     region: content
 hidden:
   co_authors: true
+  field_author_override: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true

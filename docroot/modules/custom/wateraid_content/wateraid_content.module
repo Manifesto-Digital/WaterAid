@@ -1,0 +1,177 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for WaterAid Content module.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_state): void {
+  if (isset($form['field_review_date'])) {
+    if (wateraid_content_review_date_form_access($form, $form_state)) {
+      $form['field_review_date']['#group'] = (isset($form['author'])) ? 'author' : NULL;
+
+      if ($form['field_review_date']['widget'][0]['value']) {
+        // Set a date range that can be no more than +2 years.
+        $date = new DrupalDateTime();
+
+        $form['field_review_date']['widget'][0]['value']['#date_year_range'] = $date->format('Y') . ':';
+
+        $interval = DateInterval::createFromDateString('+2 years');
+        $date->add($interval);
+
+        $form['field_review_date']['widget'][0]['value']['#date_year_range'] .= $date->format('Y');
+        $form['field_review_date']['#element_validate'][] = 'wateraid_content_review_date_validate';
+      }
+    }
+    else {
+      $form['field_review_date']['#access'] = FALSE;
+      $form['field_review_date']['widget']['#required'] = FALSE;
+      $form['field_review_date']['widget'][0]['#required'] = FALSE;
+      $form['field_review_date']['widget'][0]['value']['#required'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function wateraid_content_form_node_publication_form_alter(&$form, FormStateInterface $form_state): void {
+  if (isset($form['field_author_override'])) {
+    $form['field_author_override']['#group'] = (isset($form['author'])) ? 'author' : NULL;
+  }
+}
+
+/**
+ * Helper to calculate if the user has access to see the review date field.
+ *
+ * @param array $form
+ *   The node edit form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ *
+ * @return bool
+ *   TRUE if they have access, FALSE (default) if not.
+ */
+function wateraid_content_review_date_form_access(array $form, FormStateInterface $form_state): bool {
+  $current_user = \Drupal::currentUser();
+
+  // Root user can always override.
+  if ($current_user->id() == 1) {
+    return TRUE;
+  }
+
+  $roles = $current_user->getRoles(TRUE);
+
+  // Administrators or WaterAid Super Admins can view all expiry dates.
+  if (in_array('administrator', $roles) || in_array('wateraid_super_admin', $roles)) {
+    return TRUE;
+  }
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+
+  // If the node is being created, the user will be the owner and so will have
+  // access to the field.
+  if ($node->isNew()) {
+    return TRUE;
+  }
+
+  if (in_array('content_editor', $roles)) {
+
+    // WaterAid Administrators can see their own nodes.
+    if ($node->getOwnerId() == $current_user->id()) {
+      return TRUE;
+    }
+
+    // Co-authors can view the review date.
+    if ($co_authors = $node->get('co_authors')->getValue()) {
+      if (isset($co_authors['0']) && in_array($current_user->id(), $co_authors[0])) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Validates the Review Date.
+ *
+ * @param array $element
+ *   The review date field form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The node form form state.
+ */
+function wateraid_content_review_date_validate(array &$element, FormStateInterface $form_state): void {
+  if ($date = $form_state->getValue('field_review_date')) {
+    if (isset($date[0]['value'])) {
+
+      /** @var \Drupal\Core\Datetime\DrupalDateTime $date */
+      $date = $date[0]['value'];
+
+      // Normalise the dates to the same timezone and hours as it's only the
+      // dates we're interested in.
+      $date->setTime(0, 0, 1);
+      $now = new DrupalDateTime('now', 'UTC');
+      $now->setTime(0, 0, 1);
+
+      if ($date < $now) {
+        $form_state->setError($element, t('Review Date cannot be before today.'));
+      }
+
+      $interval = DateInterval::createFromDateString('+2 years');
+      $now->add($interval);
+
+      if ($date > $now) {
+        $form_state->setError($element, t('Review Date must be less than 2 years in the future.'));
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function wateraid_content_views_query_alter(ViewExecutable $view, QueryPluginBase $query): void {
+  if ($view->id() == 'content_review_dashboard') {
+    $current_user = \Drupal::currentUser();
+
+    // If the user is a WaterAid Administrator, they can only see the content
+    // they own.
+    if (in_array('content_editor', $current_user->getRoles(TRUE))) {
+      $configuration = [
+        'type'       => 'LEFT',
+        'table'      => 'node__co_authors',
+        'field'      => 'entity_id',
+        'left_table' => 'node_field_data',
+        'left_field' => 'nid',
+        'operator'   => '=',
+      ];
+
+      /** @var \Drupal\views\Plugin\views\join\JoinPluginBase $join */
+      $join = Views::pluginManager('join')->createInstance('standard', $configuration);
+      $query->addTable('node__co_authors', NULL, $join, 'node__co_authors');
+
+      // The count of the current where conditions plus one will give us the
+      // next available group number.
+      $group = count($query->where) + 1;
+
+      // We'll add where conditions for the co-authors and node owner fields.
+      foreach (['node__co_authors.co_authors_target_id', 'node_field_data.uid'] as $field) {
+        $query->addWhere($group, $field, $current_user->id());
+      }
+
+      // Set the group to be an OR group.
+      $query->setWhereGroup('OR', $group);
+    }
+  }
+}

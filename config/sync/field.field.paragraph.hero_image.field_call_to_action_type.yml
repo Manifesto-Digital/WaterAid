@@ -1,0 +1,23 @@
+uuid: 0d23d489-a705-4baa-bf98-d5f8d0a0a94a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_call_to_action_type
+    - paragraphs.paragraphs_type.hero_image
+  module:
+    - options
+id: paragraph.hero_image.field_call_to_action_type
+field_name: field_call_to_action_type
+entity_type: paragraph
+bundle: hero_image
+label: 'Call to action type'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: primary
+default_value_callback: ''
+settings: {  }
+field_type: list_string

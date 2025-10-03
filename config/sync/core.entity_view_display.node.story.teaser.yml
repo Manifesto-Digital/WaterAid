@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
     - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_review_date
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
@@ -49,5 +50,7 @@ hidden:
   field_get_involved: true
   field_hero: true
   field_in_page_navigation: true
+  field_review_date: true
   field_theme: true
   langcode: true
+  node_read_time: true

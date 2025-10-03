@@ -1,0 +1,23 @@
+uuid: 97dbb8ad-be98-4763-ae7e-e83d4f5cce48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote_type
+    - paragraphs.paragraphs_type.quote
+  module:
+    - options
+id: paragraph.quote.field_quote_type
+field_name: field_quote_type
+entity_type: paragraph
+bundle: quote
+label: 'Quote Type'
+description: 'Select the type of quote you wish to add. Types using images will display left or right depending on the chosen option on larger screens, and above/below on mobile devices.'
+required: true
+translatable: false
+default_value:
+  -
+    value: text_only
+default_value_callback: ''
+settings: {  }
+field_type: list_string

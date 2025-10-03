@@ -5,18 +5,15 @@
 {% endif %}
 
   {% if type == 'primary' or type == 'secondary' %}
-    <span class="button__svg button__svg--left">
-        {{ include('@wateraid/images/icons/wa-utility-arrow.svg') }}
-      </span>
     {{ text }}
-    <span class="button__svg button__svg--right">
-        {{ include('@wateraid/images/icons/wa-utility-arrow.svg') }}
-      </span>
   {% endif %}
 
   {% if type == 'donate' %}
     <span class="button__svg">
-        {{ include('@wateraid/images/icons/wa-utility-lock.svg') }}
+      {% if icon|render %}
+        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+        {{ include(icon_url) }}
+      {% endif %}
       </span>
     {{ text }}
   {% endif %}

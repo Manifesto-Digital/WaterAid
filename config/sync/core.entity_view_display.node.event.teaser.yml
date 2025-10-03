@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
+    - field.field.node.event.field_review_date
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - node.type.event
@@ -46,4 +47,6 @@ hidden:
   field_hero: true
   field_properties: true
   field_region: true
+  field_review_date: true
   langcode: true
+  node_read_time: true

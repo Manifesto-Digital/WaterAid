@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.hero_video.field_call_to_action_type
     - field.field.paragraph.hero_video.field_link
     - field.field.paragraph.hero_video.field_primary_cta
     - field.field.paragraph.hero_video.field_standfirst
@@ -10,12 +11,20 @@ dependencies:
     - paragraphs.paragraphs_type.hero_video
   module:
     - link
+    - options
     - text
 id: paragraph.hero_video.default
 targetEntityType: paragraph
 bundle: hero_video
 mode: default
 content:
+  field_call_to_action_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_link:
     type: link
     label: hidden

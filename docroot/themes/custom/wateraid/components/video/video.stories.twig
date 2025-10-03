@@ -1,0 +1,27 @@
+{% stories video with { title: 'wateraid/Atoms/Video' } %}
+  {% story default with {
+    name: 'Default',
+    args: {
+      caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      credit: 'Lorem ipsum dolor sit amet.',
+      type: 'local',
+      width: 'large',
+    }
+  } %}
+    {% set video %}
+      <video controls="controls" width="640" height="480">
+        <source src="https://www.pexels.com/download/video/31853732/" type="video/mp4">
+      </video>
+    {% endset %}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+
+    {{ include('wateraid:video', {
+      video,
+      type,
+      image,
+      caption,
+      credit,
+      width,
+    }) }}
+  {% endstory %}
+{% endstories %}

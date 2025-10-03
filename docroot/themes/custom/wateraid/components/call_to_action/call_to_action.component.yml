@@ -1,0 +1,36 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Call to action
+status: stable
+description: Call to action component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+    description:
+      type: string
+      title: Description
+    cta:
+      type: ["object", "null"]
+      title: CTA
+    link:
+      type: ["object", "null"]
+      title: Link
+slots:
+  image:
+    title: Image
+    description: Image slot
+  media_caption:
+    type: string
+    title: Caption
+  media_credit:
+    type: string
+    title: Credit
+  video:
+    title: Video
+    description: Video slot
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/call_to_action/call_to_action.css: {}

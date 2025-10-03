@@ -1,0 +1,48 @@
+<div {{ attributes }}>
+  <div class="video__wrapper video__wrapper--{{ width }}">
+
+    <div class="video {{ image ? 'video--thumbnail' : 'video--default' }}">
+
+      {% if type == 'local' %}
+        <video controls="controls" width="640" height="480" poster="{{ image }}">
+          <source src="{{ video|render|striptags|trim }}" type="video/mp4">
+        </video>
+        <div class="video__play">
+          {{ include('wateraid:button', {
+            text: 'Play video',
+            link: '',
+            id: 'video-play-button',
+            type: 'icon',
+            icon: 'wa-utility-play',
+            theme: 'dark',
+          }) }}
+        </div>
+      {% else %}
+        <div class="video__container">
+          {% if image %}
+            <img class="video__thumbnail" src="{{ image }}" alt=""/>
+            <div class="video__play">
+              {{ include('wateraid:button', {
+                text: 'Play video',
+                link: '',
+                id: 'video-play-button',
+                type: 'icon',
+                icon: 'wa-utility-play',
+                theme: 'dark',
+              }) }}
+            </div>
+          {% endif %}
+          {{ video }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if caption %}
+      <div class="video__caption">
+        {{ caption }}
+        <span class="video__credit">{{ credit }}</span>
+      </div>
+    {% endif %}
+
+  </div>
+</div>

@@ -1,23 +1,25 @@
 uuid: b6e80706-f4fe-41a5-9c52-5e3a9cd354f7
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - focal_point
 _core:
   default_config_hash: BgeBV-xOFINMsz-y2thm45EGesj6bRM6DTLZ6ce3V9I
 name: thumbnail
 label: 'Thumbnail (100×100)'
 effects:
-  1cfec298-8620-4749-b100-ccb6c4500779:
-    uuid: 1cfec298-8620-4749-b100-ccb6c4500779
-    id: image_scale
-    weight: 0
-    data:
-      width: 100
-      height: 100
-      upscale: false
   c4eb9942-2c9e-4a81-949f-6161a44b6559:
     uuid: c4eb9942-2c9e-4a81-949f-6161a44b6559
     id: image_convert
-    weight: 2
+    weight: -9
     data:
       extension: webp
+  9ad02768-9e8d-411c-b80a-877c14f6ac92:
+    uuid: 9ad02768-9e8d-411c-b80a-877c14f6ac92
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 100
+      height: 100
+      crop_type: focal_point

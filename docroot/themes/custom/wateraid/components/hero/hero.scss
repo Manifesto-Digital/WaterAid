@@ -7,13 +7,19 @@
 
   &__image {
     width: 100%;
+    display: inline;
 
     img {
+      display: block;
       max-width: 100%;
+      max-height: calculate-rem(720);
+      object-fit: cover;
+      object-position: center;
     }
   }
 
   &__video {
+    display: block;
     width: 100%;
     position: relative;
 
@@ -36,14 +42,16 @@
   }
 
   &__content {
+    @include paragraph-md;
+
     position: relative;
-    padding: $wa-spacing-07 $wa-spacing-05 $wa-spacing-01 $wa-spacing-05;
+    padding: $wa-spacing-07 $wa-spacing-05;
     display: flex;
     gap: $wa-spacing-06;
     flex-direction: column;
 
     @include desktop {
-      padding: $wa-spacing-09 $wa-spacing-09 $wa-spacing-01 $wa-spacing-09;
+      padding: $wa-spacing-09;
     }
 
     &--title {
@@ -53,6 +61,10 @@
 
     &--standfirst {
       @include paragraph-lg;
+
+      p {
+        margin: 0;
+      }
     }
 
     &--ctas {
@@ -66,17 +78,76 @@
         align-items: center;
       }
     }
+
+    &--tags {
+      display: flex;
+      gap: $wa-spacing-02;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: $wa-spacing-02;
+    }
+
+    &--details {
+      display: flex;
+      flex-direction: column;
+      gap: $wa-spacing-02;
+
+      @include desktop {
+        flex-direction: row;
+        gap: $wa-spacing-03;
+      }
+
+      svg {
+        display: none;
+
+        @include desktop {
+          display: block;
+          width: $wa-spacing-03;
+          height: auto;
+          color: $wa-blue;
+        }
+      }
+    }
+
+    &--date {
+      font-family: $bold-font;
+    }
+
+    &--time {
+      display: flex;
+      align-items: center;
+      gap: $wa-spacing-03;
+
+      svg {
+        width: $wa-spacing-06;
+        height: auto;
+      }
+    }
+  }
+
+  &--basic {
+    .cta__content {
+      padding: $wa-spacing-07 $wa-spacing-05;
+
+      @include desktop {
+        padding: $wa-spacing-09;
+      }
+    }
   }
 
   &--blue {
-    background-color: $wa-blue;
-
     .hero__content {
+      background-color: $wa-blue;
       color: $wa-white;
       margin-bottom: $wa-spacing-09;
+      padding: $wa-spacing-07 $wa-spacing-05 $wa-spacing-01 $wa-spacing-05;
 
       @include desktop {
         margin-bottom: $wa-spacing-10;
+        padding: $wa-spacing-09 $wa-spacing-09 $wa-spacing-01 $wa-spacing-09;
       }
 
       &::after {
@@ -105,11 +176,51 @@
   }
 
   &--white {
-    background-color: $wa-white;
+    .hero__content {
+      background-color: $wa-white;
+    }
 
     .hero__content--title,
-    .hero__content--link a {
+    .hero__content--link a,
+    .hero__content--time svg {
       color: $wa-blue;
+    }
+  }
+
+  &--navy {
+    .hero__content {
+      background-color: $wa-navy;
+    }
+
+    .hero__content,
+    .hero__content--link a {
+      color: $wa-white;
+    }
+  }
+
+  &--news {
+    .hero__content {
+      gap: 0;
+    }
+
+    .hero__content--tags {
+      margin-bottom: $wa-spacing-06;
+
+      @include desktop {
+        margin-bottom: $wa-spacing-07;
+      }
+    }
+
+    .hero__content--title {
+      margin-bottom: $wa-spacing-02;
+    }
+
+    &.hero--white .hero__content--standfirst {
+      color: $wa-blue;
+    }
+
+    .hero__content--standfirst {
+      margin-bottom: $wa-spacing-06;
     }
   }
 }

@@ -1,0 +1,24 @@
+uuid: a813b6e5-48f0-42c2-bcd2-e69760193956
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_review_date
+    - node.type.donation
+  module:
+    - datetime
+id: node.donation.field_review_date
+field_name: field_review_date
+entity_type: node
+bundle: donation
+label: 'Review Date'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: '+2 years'
+default_value_callback: ''
+settings: {  }
+field_type: datetime

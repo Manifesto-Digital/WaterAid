@@ -6,28 +6,22 @@ display:
     display_options:
       title: Filer
       fields:
-        fid:
-          label: Fid
         filename:
           label: Namn
-          separator: ', '
         filemime:
           label: 'Typ av MIME'
         filesize:
           label: Storlek
         status:
-          label: Status
           settings:
             format_custom_false: Temporär
-            format_custom_true: Permanent
         created:
           label: 'Datum för uppladdning'
         changed:
           label: 'Datum för ändring'
         count:
           label: 'Används i'
-          alter:
-            path: 'admin/content/files/usage/{{ fid }}'
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: Funktioner
       pager:
@@ -56,9 +50,6 @@ display:
         filemime:
           expose:
             label: 'Typ av MIME'
-        status:
-          expose:
-            label: Status
   page_1:
     display_title: 'Översikt av filer'
     display_options:
@@ -77,7 +68,6 @@ display:
           label: 'Registrerar modul'
         count:
           label: 'Antal använd'
-          format_plural_string: !!binary MQNAY291bnQ=
       pager:
         options:
           tags:

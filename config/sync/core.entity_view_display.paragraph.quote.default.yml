@@ -1,0 +1,58 @@
+uuid: a1e86456-4401-4d44-b124-8030a8c52fc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote.field_caption
+    - field.field.paragraph.quote.field_citation
+    - field.field.paragraph.quote.field_credit
+    - field.field.paragraph.quote.field_image
+    - field.field.paragraph.quote.field_quote
+    - field.field.paragraph.quote.field_quote_type
+    - paragraphs.paragraphs_type.quote
+id: paragraph.quote.default
+targetEntityType: paragraph
+bundle: quote
+mode: default
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_citation:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_quote:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_quote_type: true

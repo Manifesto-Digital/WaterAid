@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_hero
+    - field.field.node.webform.field_review_date
     - node.type.webform
   module:
+    - datetime
     - entity_reference_revisions
     - user
 id: node.webform.default
@@ -32,6 +34,16 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -40,3 +52,4 @@ content:
 hidden:
   co_authors: true
   langcode: true
+  node_read_time: true

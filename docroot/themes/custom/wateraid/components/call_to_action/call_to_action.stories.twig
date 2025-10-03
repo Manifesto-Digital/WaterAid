@@ -1,0 +1,97 @@
+{% stories call_to_action with { title: 'wateraid/Molecules/CallToAction' } %}
+  {% story Default with {
+    name: 'Default',
+    args: {
+      title: 'Heading 2 lorem ipsum dolor sit amet'|t,
+      description: 'Regular paragraph lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.',
+      cta: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+      link: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+    }
+  } %}
+
+    {{ include('wateraid:call_to_action', {
+      title,
+      descripion,
+      cta,
+      link,
+      image,
+      media_caption,
+      media_credit,
+      variant: 'default'
+    }) }}
+  {% endstory %}
+
+  {% story Image with {
+    name: 'Image',
+    args: {
+      title: 'Heading 2 lorem ipsum dolor sit amet'|t,
+      description: 'Regular paragraph lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.',
+      cta: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+      link: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
+
+    {{ include('wateraid:call_to_action', {
+      title,
+      descripion,
+      cta,
+      link,
+      image,
+      media_caption,
+      media_credit,
+      variant: 'media'
+    }) }}
+  {% endstory %}
+
+  {% story Video with {
+    name: 'Video',
+    args: {
+      title: 'Heading 2 lorem ipsum dolor sit amet'|t,
+      description: 'Regular paragraph lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.',
+      cta: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+      link: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+    }
+  } %}
+
+    {# Defaults #}
+    {% set video %}
+      <video controls="controls" width="640" height="480">
+        <source src="https://www.pexels.com/download/video/31853732/" type="video/mp4">
+      </video>
+    {% endset %}
+
+    {{ include('wateraid:call_to_action', {
+      title,
+      descripion,
+      cta,
+      link,
+      video,
+      variant: 'media'
+    }) }}
+  {% endstory %}
+
+{% endstories %}

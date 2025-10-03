@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.field_content
+    - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
     - node.type.page
@@ -38,4 +39,6 @@ content:
 hidden:
   co_authors: true
   field_content: true
+  field_review_date: true
   langcode: true
+  node_read_time: true

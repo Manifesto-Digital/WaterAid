@@ -62,6 +62,7 @@ class GroupWebformSettingsForm extends ConfigFormBase {
       '#description' => $this->t("By default the Group Webform Select Field only shows webforms with Group Relationships. Check to show all user-accessible webforms in the Select Field. Additonal webforms will only appear for users with 'Administer webform' permission."),
       '#default_value' => $config->get('show_all_webforms_in_gwselect'),
     ];
+
     return $form;
   }
 

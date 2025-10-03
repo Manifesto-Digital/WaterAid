@@ -1,0 +1,23 @@
+uuid: babcca25-25c3-44b8-8aa4-feef7443bc4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_width
+    - paragraphs.paragraphs_type.video
+  module:
+    - options
+id: paragraph.video.field_image_width
+field_name: field_image_width
+entity_type: paragraph
+bundle: video
+label: 'Video width'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: full
+default_value_callback: ''
+settings: {  }
+field_type: list_string
