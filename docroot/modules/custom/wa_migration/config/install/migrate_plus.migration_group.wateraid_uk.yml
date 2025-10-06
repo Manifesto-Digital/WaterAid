@@ -1,0 +1,13 @@
+id: wateraid_uk
+label: WaterAid UK migration
+description: Content from the wateraid.org/uk site
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+source_type: Database
+shared_configuration:
+  source:
+    key: migrate
+  migration_tags:
+    - wateraid_uk
