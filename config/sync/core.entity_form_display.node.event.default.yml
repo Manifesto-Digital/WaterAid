@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.event.field_content
+    - field.field.node.event.field_event_end_date
+    - field.field.node.event.field_event_start_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
@@ -41,7 +43,6 @@ third_party_settings:
     group_content:
       children:
         - field_content
-        - group_properties
         - group_tags
       label: Content
       region: content
@@ -77,6 +78,7 @@ third_party_settings:
       children:
         - title
         - field_hero
+        - group_properties
       label: General
       region: content
       parent_name: group_tabs
@@ -109,11 +111,13 @@ third_party_settings:
         required_fields: true
     group_properties:
       children:
+        - field_event_start_date
+        - field_event_end_date
         - field_properties
       label: Properties
       region: content
-      parent_name: group_content
-      weight: 8
+      parent_name: group_general
+      weight: 3
       format_type: details
       format_settings:
         classes: ''
@@ -156,6 +160,18 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
+  field_event_end_date:
+    type: datetime_default
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_start_date:
+    type: datetime_default
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_event_type:
     type: entity_reference_autocomplete
     weight: 2
@@ -180,7 +196,7 @@ content:
     third_party_settings: {  }
   field_properties:
     type: key_value_textfield
-    weight: 7
+    weight: 29
     region: content
     settings:
       size: 60

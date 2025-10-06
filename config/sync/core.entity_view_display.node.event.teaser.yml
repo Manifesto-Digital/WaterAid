@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.field_content
+    - field.field.node.event.field_event_end_date
+    - field.field.node.event.field_event_start_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
@@ -43,6 +45,8 @@ content:
 hidden:
   co_authors: true
   field_content: true
+  field_event_end_date: true
+  field_event_start_date: true
   field_event_type: true
   field_hero: true
   field_properties: true
