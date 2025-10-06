@@ -308,181 +308,100 @@ footer {
   background-color: #43cfb5;
 }
 
-[data-component-id="wateraid:image"] {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+.accordion {
+  max-width: 100%;
+  width: 660px;
+  margin-bottom: 1.5rem;
 }
 
-@media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] {
-    grid-template-columns: repeat(6, 1fr);
-    -moz-column-gap: 1.5rem;
-         column-gap: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] {
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-[data-component-id="wateraid:image"] .image {
-  margin: 0;
-}
-
-[data-component-id="wateraid:image"] .image__wrapper {
-  position: relative;
-}
-
-[data-component-id="wateraid:image"] .image__wrapper.open .image__caption {
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  max-width: 80%;
-  max-height: 150px;
-  padding: .75rem;
+.accordion__search {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper.open .image__caption {
-    max-width: 66.6666666667%;
+  .accordion__search {
+    margin-bottom: 3rem;
   }
 }
 
-[data-component-id="wateraid:image"] .image__wrapper.open .image__button--close {
-  display: block;
-}
-
-[data-component-id="wateraid:image"] .image__wrapper.open .image__button--open {
-  display: none;
-}
-
-[data-component-id="wateraid:image"] .image__wrapper--full {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] .image__wrapper--full {
-    grid-column: span 6;
-  }
+.accordion__search--wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper--full {
-    grid-column: span 12;
+  .accordion__search--wrapper {
+    flex-direction: row;
+    gap: .25rem;
   }
 }
 
-[data-component-id="wateraid:image"] .image__wrapper--full {
-  height: auto;
-}
-
-[data-component-id="wateraid:image"] .image__wrapper--large {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] .image__wrapper--large {
-    grid-column: span 5;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper--large {
-    grid-column: span 10;
-  }
-}
-
-[data-component-id="wateraid:image"] .image__wrapper--small {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] .image__wrapper--small {
-    grid-column: span 3;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper--small {
-    grid-column: span 6;
-  }
-}
-
-[data-component-id="wateraid:image"] .image img {
-  width: 100%;
-  height: auto;
-}
-
-[data-component-id="wateraid:image"] .image__caption {
-  background-color: #f8f0e4;
+.accordion__search--description {
+  font-family: "Noto Sans";
   font-size: 1rem;
-  padding: .75rem;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.5;
-  margin-top: -0.25rem;
-  border-radius: 0 0 .125rem .125rem;
-}
-
-[data-component-id="wateraid:image"] .image__credit {
-  font-size: .875rem;
-  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
   color: #44435d;
+}
+
+.accordion__search label {
   display: block;
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
 }
 
-[data-component-id="wateraid:image"] .image--expandable .image__caption {
-  position: absolute;
-  bottom: 16px;
-  right: 12px;
-  max-width: 80%;
-  border-radius: .25rem;
-  height: 0;
-  width: 0;
-  padding: 0;
-  max-height: 0;
-  overflow-y: hidden;
-  transition-property: all;
-  transition-duration: .5s;
-  transition-timing-function: cubic-bezier(1, 1, 1, 1);
+@media only screen and (min-width: 1440px) {
+  .accordion__search label {
+    font-size: 1.25rem;
+  }
 }
 
-[data-component-id="wateraid:image"] .image--below-image {
-  margin-bottom: 1rem;
+.accordion__search label {
+  font-family: "Noto Sans Bold";
 }
 
-[data-component-id="wateraid:image"] .image--below-image .image__caption {
-  position: relative;
+.accordion__search input {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+  padding: .75rem;
+  border: 2px solid #151435;
+  border-radius: 2px;
+  flex: 1;
 }
 
-[data-component-id="wateraid:image"] .image--below-image .image__caption::after {
-  content: "";
-  display: block;
-  position: absolute;
-  background-image: url("/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  width: 100%;
-  left: 0;
-  top: -1px;
-  height: 100%;
-  z-index: -1;
+.accordion__search button {
+  color: #fff;
+  min-width: 100%;
+  justify-content: center;
 }
 
-[data-component-id="wateraid:image"] .image__button {
-  position: absolute;
-  bottom: 12px;
-  right: 8px;
-  z-index: 10;
+@media only screen and (min-width: 1440px) {
+  .accordion__search button {
+    min-width: unset;
+  }
 }
 
-[data-component-id="wateraid:image"] .image__button--close {
-  display: none;
+.accordion mark {
+  background: #e8e8eb;
 }
 
 
-/*# sourceMappingURL=image.css.map*/
+/*# sourceMappingURL=accordion.css.map*/

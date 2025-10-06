@@ -1,0 +1,26 @@
+{% stories accordionItem with { title: 'wateraid/Atoms/Accordion item' } %}
+  {% story using_args with {
+    name: 'Accordion item',
+    args: {
+      title: 'Accordion'|t,
+    }
+  } %}
+
+    {# Defaults #}
+    {% set copy %}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque, eget molestie mauris vehicula. Curabitur auctor, eros vitae porta
+        ullamcorper, erat quam mattis nulla, sed varius lacus nisl quis felis. Sed placerat euismod magna id ornare.
+        Nulla scelerisque at dolor vel bibendum. Nullam vestibulum ullamcorper ultricies. Sed commodo efficitur nisl, ac
+        luctus metus hendrerit quis. Vestibulum sem tellus, scelerisque quis accumsan sed, consectetur non ante. Donec
+        dapibus mollis augue, sed auctor leo lobortis nec.</p>
+    {% endset %}
+
+    {{ include('wateraid:accordion_item', {
+      title,
+      description,
+      copy,
+    }) }}
+
+  {% endstory %}
+{% endstories %}

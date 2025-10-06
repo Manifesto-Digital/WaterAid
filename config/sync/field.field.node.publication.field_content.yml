@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content
     - node.type.publication
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.call_to_action
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.quote
@@ -27,37 +28,44 @@ settings:
   handler_settings:
     target_bundles:
       rich_text: rich_text
-      image: image
+      accordion: accordion
       call_to_action: call_to_action
+      image: image
       quote: quote
       video: video
     negate: 1
     target_bundles_drag_drop:
+      accordion:
+        weight: -22
+        enabled: true
+      accordion_item:
+        weight: -14
+        enabled: false
       call_to_action:
-        weight: 5
+        weight: -21
         enabled: true
       hero_basic:
-        weight: 10
+        weight: -16
         enabled: false
       hero_image:
-        weight: 6
+        weight: -17
         enabled: false
       hero_news:
-        weight: 12
+        weight: -15
         enabled: false
       hero_video:
-        weight: 13
+        weight: -13
         enabled: false
       image:
-        weight: 3
+        weight: -20
         enabled: true
       quote:
-        weight: 15
+        weight: -19
         enabled: true
       rich_text:
-        weight: 2
+        weight: -23
         enabled: true
       video:
-        weight: 18
+        weight: -18
         enabled: true
 field_type: entity_reference_revisions
