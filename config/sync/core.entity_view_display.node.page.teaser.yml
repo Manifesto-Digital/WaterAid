@@ -34,7 +34,9 @@ content:
     weight: 2
     region: content
   links:
-    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   co_authors: true

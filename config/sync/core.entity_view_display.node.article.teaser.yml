@@ -22,6 +22,22 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_teaser_image:
     type: entity_reference_label
     label: hidden
@@ -37,17 +53,31 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   links:
-    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  node_read_time:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   co_authors: true
-  field_audience: true
   field_content: true
-  field_country: true
   field_hero: true
   field_review_date: true
-  field_theme: true
   langcode: true
-  node_read_time: true
   reading_time: true

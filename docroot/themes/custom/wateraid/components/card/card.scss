@@ -1,0 +1,97 @@
+@import "./sass/styles";
+
+.card {
+  max-width: 432px;
+
+  &::before {
+    transition: transform 200ms;
+    will-change: transform;
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0;
+    width: 0;
+    z-index: -1;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-tall.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  &:hover::before {
+    transform: translateX(-$wa-spacing-01) translateY($wa-spacing-01);
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: $wa-white;
+    cursor: pointer;
+  }
+
+  &:focus-within {
+    outline: $wa-pink $wa-spacing-01 solid;
+    border: $wa-navy $wa-spacing-01 solid;
+  }
+
+  &__image img {
+    display: block;
+    max-width: 100%;
+  }
+
+  &__body {
+    @include paragraph-sm();
+
+    padding: $wa-spacing-04 0;
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-02;
+    color: $wa-navy;
+  }
+
+  &__heading {
+    @include h6();
+
+    margin: 0;
+    padding-bottom: $wa-spacing-02;
+
+    a {
+      text-decoration: none;
+      color: $wa-navy;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+
+  &__date {
+    font-family: $bold-font;
+  }
+
+  &__authors {
+    display: flex;
+    gap: $wa-spacing-02;
+    align-items: center;
+
+    svg {
+      color: $wa-blue;
+      width: $wa-spacing-02;
+      height: auto;
+    }
+  }
+
+  &__read-time {
+    display: flex;
+    gap: $wa-spacing-02;
+    align-items: center;
+
+    svg {
+      color: $wa-blue;
+    }
+  }
+
+  &__tags {
+    padding-top: $wa-spacing-01;
+  }
+}
