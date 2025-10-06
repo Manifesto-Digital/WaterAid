@@ -1,0 +1,32 @@
+{% stories card with { title: 'wateraid/Molecules/Card' } %}
+
+  {% story Default with {
+    name: 'Default',
+    args: {
+      heading: 'Heading lorem ipsum dolor sit amet consectetur',
+      description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed. Eget faucibus nisl dignissim suspendisse egestas et sagittis morbi.',
+      publish_date: 'Wednesday 30 September 2025',
+      time_to_read: '7 min read',
+      url: '#',
+      image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+      variant: 'teaser'
+    }
+  } %}
+
+    {% set tags = ['Content tag 1', 'Content tag 2', 'Content tag 3'] %}
+    {% set authors = ['Author 1', 'Author 2'] %}
+
+    {{ include('wateraid:card', {
+      heading,
+      description,
+      publish_date,
+      time_to_read,
+      url,
+      image_url,
+      tags,
+      variant
+    }) }}
+
+  {% endstory %}
+
+{% endstories %}
