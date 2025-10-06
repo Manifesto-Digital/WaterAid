@@ -6,6 +6,7 @@ module:
   announcements_feed: 0
   automated_cron: 0
   azure_blob_storage: 0
+  better_exposed_filters: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -28,6 +29,8 @@ module:
   entity: 0
   entity_reference_revisions: 0
   entity_usage: 0
+  facets: 0
+  facets_exposed_filters: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -81,6 +84,7 @@ module:
   scheduler_content_moderation_integration: 0
   schema_metatag: 0
   search: 0
+  search_api: 0
   seckit: 0
   security_review: 0
   shield: 0
@@ -96,6 +100,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  views_infinite_scroll: 0
   views_ui: 0
   wa_editor_experience: 0
   wateraid_content: 0
