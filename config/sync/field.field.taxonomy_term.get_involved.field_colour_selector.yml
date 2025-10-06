@@ -1,0 +1,21 @@
+uuid: 8e8b3da2-afe8-4550-abb9-0b0cdc6b3b04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_colour_selector
+    - taxonomy.vocabulary.get_involved
+  module:
+    - options
+id: taxonomy_term.get_involved.field_colour_selector
+field_name: field_colour_selector
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Colour Selector'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

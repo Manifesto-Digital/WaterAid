@@ -1,0 +1,19 @@
+uuid: 719c3944-54f1-4b8a-94a4-9aebf20f598d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_category_description
+    - taxonomy.vocabulary.audiences
+id: taxonomy_term.audiences.field_category_description
+field_name: field_category_description
+entity_type: taxonomy_term
+bundle: audiences
+label: 'Category description'
+description: 'Set the description text that will appear on the Get Involved filtered page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
