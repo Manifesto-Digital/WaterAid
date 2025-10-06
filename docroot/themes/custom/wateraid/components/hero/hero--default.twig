@@ -5,10 +5,22 @@
 ] %}
 
 <div {{ attributes.addClass(classes) }}>
-  {% if image %}
-    <div class="hero__image">
+  {% if mobile_image %}
+    <div class="hero__image hero__image--mobile">
       {{ include('wateraid:image', {
-        image,
+        image: mobile_image,
+        caption: mobile_caption,
+        credit: mobile_credit,
+        width: 'full',
+        caption_display: 'expandable'
+      }) }}
+    </div>
+  {% endif %}
+
+  {% if image %}
+    <div class="hero__image {{ mobile_image ? "hero__image--desktop" }}">
+      {{ include('wateraid:image', {
+        image: image,
         caption: media_caption,
         credit: media_credit,
         width: 'full',
@@ -16,6 +28,7 @@
       }) }}
     </div>
   {% endif %}
+
   {% if video %}
     <div class="hero__video">
       {{ video }}

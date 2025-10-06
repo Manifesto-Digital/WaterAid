@@ -33,13 +33,22 @@ slots:
     description: Image slot
   video:
     title: Video
-    description: Image slot
+    description: Video slot
   media_caption:
     type: string
     title: Caption
   media_credit:
     type: string
     title: Credit
+  mobile_image:
+    title: Mobile image
+    description: Mobile image slot
+  mobile_caption:
+    type: string
+    title: Mobile caption
+  mobile_credit:
+    type: string
+    title: Mobile credit
   tags:
     type: ["object", "null"]
     title: Tags
