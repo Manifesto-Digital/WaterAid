@@ -327,6 +327,26 @@ footer {
      object-position: center;
 }
 
+.hero__image--desktop {
+  display: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero__image--desktop {
+    display: block;
+  }
+}
+
+.hero__image--mobile {
+  display: block;
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero__image--mobile {
+    display: none;
+  }
+}
+
 .hero__video {
   display: block;
   width: 100%;

@@ -16,6 +16,20 @@
       object-fit: cover;
       object-position: center;
     }
+
+    &--desktop {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
   }
 
   &__video {

@@ -12,7 +12,7 @@
 
     </figure>
 
-    {% if caption_display == 'expandable' %}
+    {% if (caption or credit) and caption_display == 'expandable' %}
       <div class="image__button">
         <div class="image__button--open">
           {{ include('wateraid:button', {
