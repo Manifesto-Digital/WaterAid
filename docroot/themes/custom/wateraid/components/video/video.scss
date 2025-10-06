@@ -2,9 +2,10 @@
 
 [data-component-id="wateraid:video"] {
   @include grid();
+  margin-bottom: $wa-spacing-06;
 
   .video {
-    margin: 0 0 $wa-spacing-06 0;
+    margin: 0;
     position: relative;
 
     &__caption {
@@ -82,7 +83,8 @@
     }
 
     .contextual-region,
-    .field {
+    .field,
+    div {
       height: 100%;
     }
 
