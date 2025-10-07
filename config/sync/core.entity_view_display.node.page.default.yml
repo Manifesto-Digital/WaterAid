@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_content
-    - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
@@ -29,16 +28,6 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 102
-    region: content
-  field_minimal_header:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 107
     region: content
   field_review_date:
     type: datetime_time_ago
