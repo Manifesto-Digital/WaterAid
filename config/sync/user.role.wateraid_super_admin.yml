@@ -6,6 +6,7 @@ dependencies:
     - group.type.wateraid_site
     - media.type.audio
     - media.type.document
+    - media.type.donation_icon_library
     - media.type.icon_library
     - media.type.image
     - media.type.remote_video
@@ -95,6 +96,7 @@ permissions:
   - 'create content translations'
   - 'create document media'
   - 'create donation content'
+  - 'create donation_icon_library media'
   - 'create event content'
   - 'create icon_library media'
   - 'create image media'
@@ -129,6 +131,8 @@ permissions:
   - 'delete any document media'
   - 'delete any document media revisions'
   - 'delete any donation content'
+  - 'delete any donation_icon_library media'
+  - 'delete any donation_icon_library media revisions'
   - 'delete any event content'
   - 'delete any image media'
   - 'delete any image media revisions'
@@ -157,6 +161,7 @@ permissions:
   - 'delete own audio media'
   - 'delete own document media'
   - 'delete own donation content'
+  - 'delete own donation_icon_library media'
   - 'delete own event content'
   - 'delete own image media'
   - 'delete own landing_page content'
@@ -201,6 +206,7 @@ permissions:
   - 'edit any audio media'
   - 'edit any document media'
   - 'edit any donation content'
+  - 'edit any donation_icon_library media'
   - 'edit any event content'
   - 'edit any icon_library media'
   - 'edit any image media'
@@ -221,6 +227,7 @@ permissions:
   - 'edit own audio media'
   - 'edit own document media'
   - 'edit own donation content'
+  - 'edit own donation_icon_library media'
   - 'edit own event content'
   - 'edit own icon_library media'
   - 'edit own image media'
@@ -251,6 +258,7 @@ permissions:
   - 'revert all taxonomy revisions'
   - 'revert any audio media revisions'
   - 'revert any document media revisions'
+  - 'revert any donation_icon_library media revisions'
   - 'revert any image media revisions'
   - 'revert any remote_video media revisions'
   - 'revert any video media revisions'
@@ -292,6 +300,7 @@ permissions:
   - 'view all taxonomy revisions'
   - 'view any audio media revisions'
   - 'view any document media revisions'
+  - 'view any donation_icon_library media revisions'
   - 'view any icon_library media revisions'
   - 'view any image media revisions'
   - 'view any remote_video media revisions'
