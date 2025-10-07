@@ -22,6 +22,38 @@ targetEntityType: node
 bundle: standard_page
 mode: teaser
 content:
+  field_age:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_key_stage:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_subject_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_teaser_image:
     type: entity_reference_label
     label: hidden
@@ -37,20 +69,23 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_topic:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   co_authors: true
-  field_age: true
   field_content: true
-  field_get_involved: true
   field_hero: true
-  field_key_stage: true
   field_review_date: true
-  field_subject_area: true
-  field_topic: true
   langcode: true
   node_read_time: true
