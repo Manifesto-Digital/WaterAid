@@ -1,0 +1,19 @@
+uuid: fdc96ab5-aa41-460e-bea3-89effc355593
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sticky_button_text
+    - node.type.standard_page
+id: node.standard_page.field_sticky_button_text
+field_name: field_sticky_button_text
+entity_type: node
+bundle: standard_page
+label: 'Sticky button text'
+description: 'Leave this field blank to display no button.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

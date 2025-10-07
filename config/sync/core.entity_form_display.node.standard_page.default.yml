@@ -3,13 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.standard_page.field_age
+    - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
-    - field.field.node.standard_page.field_key_stage
+    - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
+    - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
@@ -133,15 +136,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_age:
-    type: entity_reference_autocomplete
-    weight: 17
+  field_age_range:
+    type: options_select
+    weight: 31
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_content:
     type: layout_paragraphs
@@ -154,6 +153,16 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_event_type:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
@@ -177,15 +186,11 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
-  field_key_stage:
-    type: entity_reference_autocomplete
-    weight: 18
+  field_key_stages:
+    type: options_select
+    weight: 32
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_minimal_header:
     type: boolean_checkbox
@@ -194,11 +199,25 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_regions:
+    type: options_select
+    weight: 33
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_sticky_button_text:
+    type: string_textfield
+    weight: 30
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_subject_area:
     type: entity_reference_autocomplete

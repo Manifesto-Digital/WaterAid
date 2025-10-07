@@ -1,0 +1,39 @@
+uuid: f6589884-661a-478a-9b63-1d465fbdc320
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_key_stages
+field_name: field_key_stages
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '716'
+      label: 'Early Years'
+    -
+      value: '501'
+      label: 'Key Stage 1'
+    -
+      value: '506'
+      label: 'Key Stage 2'
+    -
+      value: '511'
+      label: 'Key Stage 3'
+    -
+      value: '516'
+      label: 'Key Stage 4'
+    -
+      value: '731'
+      label: 'Key Stage 5'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
