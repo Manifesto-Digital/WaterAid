@@ -4,18 +4,23 @@ status: true
 dependencies:
   config:
     - field.field.node.standard_page.field_age_range
+    - field.field.node.standard_page.field_area
+    - field.field.node.standard_page.field_capital
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
+    - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
+    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
     - field.field.node.standard_page.field_weight
     - node.type.standard_page
@@ -36,6 +41,22 @@ content:
     third_party_settings: {  }
     weight: 110
     region: content
+  field_area:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_capital:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 114
+    region: content
   field_content:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -44,6 +65,14 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_event_type:
     type: entity_reference_label
@@ -87,6 +116,14 @@ content:
     third_party_settings: {  }
     weight: 107
     region: content
+  field_population:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 115
+    region: content
   field_regions:
     type: list_default
     label: above
@@ -119,6 +156,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 108
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_topic:
     type: entity_reference_label

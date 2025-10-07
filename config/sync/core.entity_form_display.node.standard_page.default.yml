@@ -4,18 +4,23 @@ status: true
 dependencies:
   config:
     - field.field.node.standard_page.field_age_range
+    - field.field.node.standard_page.field_area
+    - field.field.node.standard_page.field_capital
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
+    - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
+    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
     - field.field.node.standard_page.field_weight
     - node.type.standard_page
@@ -142,6 +147,22 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_area:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_capital:
+    type: string_textfield
+    weight: 35
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_content:
     type: layout_paragraphs
     weight: 17
@@ -153,6 +174,16 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_country:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_event_type:
     type: entity_reference_autocomplete
@@ -199,6 +230,14 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_population:
+    type: string_textfield
+    weight: 36
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_regions:
     type: options_select
     weight: 33
@@ -242,6 +281,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_topic:

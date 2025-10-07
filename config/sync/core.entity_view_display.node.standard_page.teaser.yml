@@ -5,18 +5,23 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.standard_page.field_age_range
+    - field.field.node.standard_page.field_area
+    - field.field.node.standard_page.field_capital
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
+    - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
+    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
     - field.field.node.standard_page.field_weight
     - node.type.standard_page
@@ -27,6 +32,14 @@ targetEntityType: node
 bundle: standard_page
 mode: teaser
 content:
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_event_type:
     type: entity_reference_label
     label: hidden
@@ -66,6 +79,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_topic:
     type: entity_reference_label
     label: hidden
@@ -82,10 +103,13 @@ content:
 hidden:
   co_authors: true
   field_age_range: true
+  field_area: true
+  field_capital: true
   field_content: true
   field_hero: true
   field_key_stages: true
   field_minimal_header: true
+  field_population: true
   field_regions: true
   field_review_date: true
   field_sticky_button_text: true
