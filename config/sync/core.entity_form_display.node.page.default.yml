@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_content
+    - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_weight
     - node.type.page
   module:
     - datetime
@@ -117,6 +119,13 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
+  field_minimal_header:
+    type: boolean_checkbox
+    weight: 29
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
@@ -136,6 +145,13 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_weight:
+    type: number
+    weight: 28
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   langcode:
