@@ -77,7 +77,10 @@
   {{ content.field_hero }}
   <div class="container">
     {% if content.field_properties %}
+
       {{ include('wateraid:properties', {
+        start_date: node.field_event_start_date.value,
+        end_date: node.field_event_end_date.value,
         items: content.field_properties,
       }, only) }}
     {% endif %}

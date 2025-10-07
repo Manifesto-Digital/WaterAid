@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.event.field_content
+    - field.field.node.event.field_event_end_date
+    - field.field.node.event.field_event_start_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
@@ -30,6 +32,24 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_event_end_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_event_start_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_event_type:
     type: entity_reference_label
