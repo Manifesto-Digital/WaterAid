@@ -6,6 +6,8 @@ dependencies:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_teaser_image
+    - field.field.node.webform.field_teaser_text
     - node.type.webform
   module:
     - datetime
@@ -51,5 +53,7 @@ content:
     region: content
 hidden:
   co_authors: true
+  field_teaser_image: true
+  field_teaser_text: true
   langcode: true
   node_read_time: true
