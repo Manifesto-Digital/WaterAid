@@ -170,7 +170,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: 'Ooops! No results'
+            value: 'No results found.'
             format: basic_html
           tokenize: false
       sorts:

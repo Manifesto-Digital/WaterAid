@@ -4,6 +4,7 @@ display:
   default:
     display_title: Förvald
     display_options:
+      title: Media
       fields:
         media_bulk_form:
           action_title: Åtgärd
@@ -61,6 +62,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
+        name:
+          separator: ', '
         edit_media:
           alter:
             text: 'Redigera {{ name }}'
