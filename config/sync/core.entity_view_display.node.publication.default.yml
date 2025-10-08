@@ -7,9 +7,13 @@ dependencies:
     - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
+    - field.field.node.publication.field_download_link_placement
+    - field.field.node.publication.field_force_download
+    - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
-    - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
@@ -19,6 +23,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - options
     - user
 id: node.publication.default
 targetEntityType: node
@@ -50,6 +55,33 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
+  field_download_link_placement:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_force_download:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 120
+    region: content
+  field_force_open:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 121
+    region: content
   field_get_involved:
     type: entity_reference_label
     label: above
@@ -67,13 +99,19 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_key_stage:
-    type: entity_reference_label
+  field_key_stages:
+    type: list_default
     label: above
-    settings:
-      link: true
+    settings: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 111
+    region: content
+  field_regions:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
     region: content
   field_review_date:
     type: datetime_time_ago

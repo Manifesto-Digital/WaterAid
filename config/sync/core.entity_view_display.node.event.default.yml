@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.event.field_get_involved
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
-    - field.field.node.event.field_region
     - field.field.node.event.field_regions
     - field.field.node.event.field_registration_link
     - field.field.node.event.field_review_date
@@ -155,14 +154,6 @@ content:
       value_only: false
     third_party_settings: {  }
     weight: 101
-    region: content
-  field_region:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 103
     region: content
   field_regions:
     type: list_default

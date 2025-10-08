@@ -1,0 +1,21 @@
+uuid: 4d8dc16b-318c-4bf3-b303-a13a64484884
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_key_stages
+    - node.type.publication
+  module:
+    - options
+id: node.publication.field_key_stages
+field_name: field_key_stages
+entity_type: node
+bundle: publication
+label: 'Key Stage'
+description: 'Select the Key Stage this content is suitable for.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

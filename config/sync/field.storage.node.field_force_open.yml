@@ -1,16 +1,14 @@
-uuid: b1389a9f-6d44-41d9-9fac-e9e44a00ff9b
+uuid: 410e23bb-6df5-44d4-b2ca-68d4e2720272
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - taxonomy
-id: node.field_region
-field_name: field_region
+id: node.field_force_open
+field_name: field_force_open
 entity_type: node
-type: entity_reference
-settings:
-  target_type: taxonomy_term
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

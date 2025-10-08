@@ -8,9 +8,13 @@ dependencies:
     - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
+    - field.field.node.publication.field_download_link_placement
+    - field.field.node.publication.field_force_download
+    - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
-    - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
@@ -47,14 +51,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 5
-    region: content
-  field_key_stage:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 6
     region: content
   field_subject_area:
     type: entity_reference_label
@@ -97,7 +93,12 @@ hidden:
   co_authors: true
   field_author_override: true
   field_content: true
+  field_download_link_placement: true
+  field_force_download: true
+  field_force_open: true
   field_hero: true
+  field_key_stages: true
+  field_regions: true
   field_review_date: true
   langcode: true
   node_read_time: true

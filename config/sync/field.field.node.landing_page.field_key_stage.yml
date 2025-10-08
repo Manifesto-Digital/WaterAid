@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_key_stage
     - node.type.landing_page
-    - taxonomy.vocabulary.key_stage
 id: node.landing_page.field_key_stage
 field_name: field_key_stage
 entity_type: node
@@ -19,8 +18,7 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles:
-      key_stage: key_stage
+    target_bundles: {  }
     sort:
       field: name
       direction: asc
