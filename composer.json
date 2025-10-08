@@ -69,6 +69,7 @@
     "drupal/token": "^1.15",
     "drupal/twig_tweak": "^3.4",
     "drupal/views_infinite_scroll": "^2.0",
+    "drupal/viewsreference": "^2.0@beta",
     "drupal/webform": "^6.3@beta",
     "drupal/webp": "^1.0@RC",
     "drupal/xmlsitemap": "^2.0",

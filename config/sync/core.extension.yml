@@ -102,6 +102,7 @@ module:
   user: 0
   views_infinite_scroll: 0
   views_ui: 0
+  viewsreference: 0
   wa_editor_experience: 0
   wateraid_content: 0
   webform: 0
