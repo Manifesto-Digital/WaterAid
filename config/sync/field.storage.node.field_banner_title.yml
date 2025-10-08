@@ -1,19 +1,20 @@
-uuid: 1be96706-eda7-4461-a6ae-aef0b3ff1316
+uuid: fec4a83f-9113-4106-af2f-111deb65a05c
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - taxonomy
-id: node.field_topic
-field_name: field_topic
+id: node.field_banner_title
+field_name: field_banner_title
 entity_type: node
-type: entity_reference
+type: string
 settings:
-  target_type: taxonomy_term
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

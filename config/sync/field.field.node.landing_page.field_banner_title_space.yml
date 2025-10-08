@@ -1,0 +1,21 @@
+uuid: a1e251e7-60c4-43c9-82b4-49a8c9300036
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_title_space
+    - node.type.landing_page
+  module:
+    - options
+id: node.landing_page.field_banner_title_space
+field_name: field_banner_title_space
+entity_type: node
+bundle: landing_page
+label: 'Banner title space'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
