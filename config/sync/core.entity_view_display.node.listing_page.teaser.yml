@@ -6,10 +6,16 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.listing_page.field_content
     - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_include_search
+    - field.field.node.listing_page.field_initial_items
+    - field.field.node.listing_page.field_introduction
+    - field.field.node.listing_page.field_items_to_display
     - field.field.node.listing_page.field_review_date
+    - field.field.node.listing_page.field_rss_feed
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - field.field.node.listing_page.field_view
+    - field.field.node.listing_page.field_weight
     - node.type.listing_page
   module:
     - user
@@ -42,8 +48,14 @@ hidden:
   co_authors: true
   field_content: true
   field_hero: true
+  field_include_search: true
+  field_initial_items: true
+  field_introduction: true
+  field_items_to_display: true
   field_review_date: true
   field_view: true
+  field_rss_feed: true
+  field_weight: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true

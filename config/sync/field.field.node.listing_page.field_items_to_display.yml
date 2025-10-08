@@ -1,0 +1,23 @@
+uuid: dd1925f7-804e-49aa-beae-7dab5a7ccd1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_items_to_display
+    - node.type.listing_page
+id: node.listing_page.field_items_to_display
+field_name: field_items_to_display
+entity_type: node
+bundle: listing_page
+label: 'Items To Display'
+description: "The number of items to display after the user clicks 'show more'. Leave blank to use the default in the view."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

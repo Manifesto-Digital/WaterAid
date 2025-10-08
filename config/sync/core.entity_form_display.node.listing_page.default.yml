@@ -5,15 +5,22 @@ dependencies:
   config:
     - field.field.node.listing_page.field_content
     - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_include_search
+    - field.field.node.listing_page.field_initial_items
+    - field.field.node.listing_page.field_introduction
+    - field.field.node.listing_page.field_items_to_display
     - field.field.node.listing_page.field_review_date
+    - field.field.node.listing_page.field_rss_feed
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - field.field.node.listing_page.field_view
+    - field.field.node.listing_page.field_weight
     - node.type.listing_page
   module:
     - datetime
     - field_group
     - layout_paragraphs
+    - link
     - media_library
     - path
     - viewsreference
@@ -133,11 +140,48 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
+  field_include_search:
+    type: boolean_checkbox
+    weight: 27
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_initial_items:
+    type: number
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_introduction:
+    type: string_textarea
+    weight: 29
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_items_to_display:
+    type: number
+    weight: 30
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_rss_feed:
+    type: link_default
+    weight: 31
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
@@ -152,6 +196,13 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_weight:
+    type: number
+    weight: 28
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_view:
