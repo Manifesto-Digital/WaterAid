@@ -1,0 +1,21 @@
+uuid: e94d16b0-d983-484b-8cb5-827d44207894
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_donation_reminder
+    - node.type.donation
+id: node.donation.field_display_donation_reminder
+field_name: field_display_donation_reminder
+entity_type: node
+bundle: donation
+label: 'Display Donation Reminder'
+description: 'If the donation reminder is activated for one-off donations, display it on this page'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Display
+  off_label: Hide
+field_type: boolean

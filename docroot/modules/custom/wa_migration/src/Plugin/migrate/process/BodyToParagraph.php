@@ -55,16 +55,20 @@ final class BodyToParagraph extends ProcessPluginBase implements ContainerFactor
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
-    $paragraph = $this->entityTypeManager->getStorage('paragraph')->create([
-      'type' => 'rich_text',
-    ]);
-    $paragraph->set('field_rich_text', [
-      'value' => $value,
-      'format' => 'full_html',
-    ]);
-    $paragraph->enforceIsNew();
+    if ($value) {
+      $paragraph = $this->entityTypeManager->getStorage('paragraph')->create([
+        'type' => 'rich_text',
+      ]);
+      $paragraph->set('field_rich_text', [
+        'value' => $value,
+        'format' => 'full_html',
+      ]);
+      $paragraph->enforceIsNew();
 
-    return $paragraph;
+      $value = $paragraph;
+    }
+
+    return $value;
   }
 
 }

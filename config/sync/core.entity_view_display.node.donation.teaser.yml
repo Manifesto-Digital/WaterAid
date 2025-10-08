@@ -4,11 +4,18 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.donation.field_administrative_description
     - field.field.node.donation.field_content
+    - field.field.node.donation.field_display_donation_reminder
     - field.field.node.donation.field_hero
+    - field.field.node.donation.field_minimal_header
+    - field.field.node.donation.field_page_template
     - field.field.node.donation.field_review_date
+    - field.field.node.donation.field_subtext
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
+    - field.field.node.donation.field_template
+    - field.field.node.donation.field_weight
     - node.type.donation
   module:
     - user
@@ -39,8 +46,15 @@ content:
     region: content
 hidden:
   co_authors: true
+  field_administrative_description: true
   field_content: true
+  field_display_donation_reminder: true
   field_hero: true
+  field_minimal_header: true
+  field_page_template: true
   field_review_date: true
+  field_subtext: true
+  field_template: true
+  field_weight: true
   langcode: true
   node_read_time: true

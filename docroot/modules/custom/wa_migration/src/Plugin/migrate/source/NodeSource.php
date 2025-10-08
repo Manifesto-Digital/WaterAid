@@ -26,6 +26,14 @@ final class NodeSource extends SqlBase {
       ->fields('n')
       ->condition('n.type', $this->configuration['bundle']);
 
+    if (isset($this->configuration['fields'])) {
+      if (in_array('field_wa_donation_page_template', $this->configuration['fields'])) {
+        $query->leftJoin('node__field_wa_donation_page_template', 't', 't.entity_id = n.nid');
+        $query->orderBy('field_wa_donation_page_template_target_id');
+        $query->fields('t', ['field_wa_donation_page_template_target_id']);
+      }
+    }
+
     return $query;
   }
 
