@@ -9,13 +9,17 @@ dependencies:
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
+    - field.field.node.standard_page.field_full_title
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
+    - field.field.node.standard_page.field_job_id
+    - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_shortcode
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
@@ -28,6 +32,7 @@ dependencies:
     - datetime
     - field_group
     - layout_paragraphs
+    - link
     - media_library
     - path
 third_party_settings:
@@ -195,6 +200,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_full_title:
+    type: string_textfield
+    weight: 37
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
     weight: 15
@@ -216,6 +229,22 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_job_id:
+    type: string_textfield
+    weight: 38
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_job_url:
+    type: link_default
+    weight: 39
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_key_stages:
     type: options_select
@@ -249,6 +278,14 @@ content:
     weight: 26
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_shortcode:
+    type: string_textfield
+    weight: 40
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_sticky_button_text:
     type: string_textfield

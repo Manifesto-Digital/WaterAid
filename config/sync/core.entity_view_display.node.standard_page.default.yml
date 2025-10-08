@@ -9,13 +9,17 @@ dependencies:
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
+    - field.field.node.standard_page.field_full_title
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
+    - field.field.node.standard_page.field_job_id
+    - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_shortcode
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
@@ -27,6 +31,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - link
     - options
     - user
 id: node.standard_page.default
@@ -82,6 +87,14 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
+  field_full_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 116
+    region: content
   field_get_involved:
     type: entity_reference_label
     label: hidden
@@ -98,6 +111,26 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_job_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 117
+    region: content
+  field_job_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 118
     region: content
   field_key_stages:
     type: list_default
@@ -140,6 +173,14 @@ content:
       granularity: 2
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_shortcode:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 119
     region: content
   field_sticky_button_text:
     type: string

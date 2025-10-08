@@ -10,13 +10,17 @@ dependencies:
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
+    - field.field.node.standard_page.field_full_title
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
+    - field.field.node.standard_page.field_job_id
+    - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_shortcode
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
@@ -106,12 +110,16 @@ hidden:
   field_area: true
   field_capital: true
   field_content: true
+  field_full_title: true
   field_hero: true
+  field_job_id: true
+  field_job_url: true
   field_key_stages: true
   field_minimal_header: true
   field_population: true
   field_regions: true
   field_review_date: true
+  field_shortcode: true
   field_sticky_button_text: true
   field_weight: true
   langcode: true
