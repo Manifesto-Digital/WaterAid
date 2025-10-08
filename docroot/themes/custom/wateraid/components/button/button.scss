@@ -223,6 +223,10 @@
 
   &__svg {
     text-align-last: center;
+
+    svg {
+      vertical-align: middle;
+    }
   }
 
   &__svg--left svg {
