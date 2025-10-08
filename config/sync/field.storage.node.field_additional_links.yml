@@ -1,17 +1,16 @@
-uuid: c9012831-7064-407c-a8a7-d53c1f83e3bc
+uuid: 3e46b774-0375-46f2-9e2d-ad201d57da8b
 langcode: en
 status: true
 dependencies:
   module:
+    - link
     - node
-    - taxonomy
-id: node.field_audience
-field_name: field_audience
+id: node.field_additional_links
+field_name: field_additional_links
 entity_type: node
-type: entity_reference
-settings:
-  target_type: taxonomy_term
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: -1
 translatable: true

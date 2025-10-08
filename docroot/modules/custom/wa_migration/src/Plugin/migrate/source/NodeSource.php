@@ -90,6 +90,10 @@ final class NodeSource extends SqlBase {
             elseif (isset($values[$field . '_target_id'])) {
               $value = [$values[$field . '_target_id']];
             }
+            elseif ((isset($values[$field . '_uri']))) {
+              $row->setSourceProperty($field . '_uri', $values[$field . '_uri']);
+              $row->setSourceProperty($field . '_title', $values[$field . '_title']);
+            }
           }
         }
 
@@ -103,6 +107,26 @@ final class NodeSource extends SqlBase {
       ->execute()->fetchAssoc()) {
       $row->setSourceProperty('body__value', $data['body_value']);
       $row->setSourceProperty('body__summary', $data['body_summary']);
+    }
+
+    if ($data = $this->select('node__field_event_date', 'e')
+      ->fields('e')
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->execute()->fetchAll()) {
+
+      $start = $end = [];
+
+      foreach ($data as $values) {
+        if (isset($values['field_event_date_value'])) {
+          $start[] = $values['field_event_date_value'];
+        }
+        if (isset($values['field_event_date_end_value'])) {
+          $end[] = $values['field_event_date_end_value'];
+        }
+      }
+
+      $row->setSourceProperty('field_event_date_start', $start);
+      $row->setSourceProperty('field_event_date_end', $end);
     }
 
     return parent::prepareRow($row);

@@ -65,10 +65,11 @@ final class BodyToParagraph extends ProcessPluginBase implements ContainerFactor
       ]);
       $paragraph->enforceIsNew();
 
-      $value = $paragraph;
+      return $paragraph;
     }
-
-    return $value;
+    else {
+      return NULL;
+    }
   }
 
 }

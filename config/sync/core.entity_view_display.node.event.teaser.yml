@@ -4,16 +4,29 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.event.field_additional_links
+    - field.field.node.event.field_audience
+    - field.field.node.event.field_colour_selector
     - field.field.node.event.field_content
+    - field.field.node.event.field_country
+    - field.field.node.event.field_cta_supporting_text
+    - field.field.node.event.field_cta_title
     - field.field.node.event.field_event_end_date
+    - field.field.node.event.field_event_information_bg_colou
     - field.field.node.event.field_event_start_date
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_get_involved
     - field.field.node.event.field_hero
     - field.field.node.event.field_properties
     - field.field.node.event.field_region
+    - field.field.node.event.field_regions
+    - field.field.node.event.field_registration_link
     - field.field.node.event.field_review_date
+    - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
+    - field.field.node.event.field_theme
+    - field.field.node.event.field_weight
     - node.type.event
   module:
     - user
@@ -22,6 +35,22 @@ targetEntityType: node
 bundle: event
 mode: teaser
 content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_event_type:
     type: entity_reference_label
     label: hidden
@@ -29,6 +58,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_region:
     type: entity_reference_label
@@ -53,6 +90,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -60,12 +105,21 @@ content:
     region: content
 hidden:
   co_authors: true
+  field_additional_links: true
+  field_colour_selector: true
   field_content: true
+  field_cta_supporting_text: true
+  field_cta_title: true
   field_event_end_date: true
+  field_event_information_bg_colou: true
   field_event_start_date: true
   field_event_type: true
   field_hero: true
   field_properties: true
+  field_regions: true
+  field_registration_link: true
   field_review_date: true
+  field_synopsis: true
+  field_weight: true
   langcode: true
   node_read_time: true
