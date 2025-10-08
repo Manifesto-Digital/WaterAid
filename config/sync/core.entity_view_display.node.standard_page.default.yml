@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
+    - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_full_title
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
@@ -86,6 +87,16 @@ content:
       link: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_force_download:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 120
     region: content
   field_full_title:
     type: string

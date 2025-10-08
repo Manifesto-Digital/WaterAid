@@ -1,28 +1,26 @@
-uuid: 7c4ef161-9347-4238-9b1c-80acb37c7f9d
-langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - wa_migration
-id: articles
+id: press_and_media
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - Database
 migration_group: wateraid_uk
-label: Articles
+label: 'Press and Media'
 source:
   plugin: node_source
-  bundle: article
+  bundle: press_and_media
   fields:
     - field_audiences
     - field_author
     - field_countries
+    - field_force_download
     - field_get_involved_terms
     - field_meta_tags
-    - field_post_description
     - field_themes
     - field_weight
 process:
@@ -41,6 +39,7 @@ process:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+  field_force_download: field_force_download
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
@@ -50,7 +49,6 @@ process:
     plugin: migration_lookup
     migration: users
     source: field_author
-  field_post_description: field_post_description
   field_theme:
     plugin: migration_lookup
     migration: themes
@@ -66,7 +64,7 @@ process:
       source: body__value
 destination:
   plugin: 'entity:node'
-  default_bundle: article
+  default_bundle: standard_page
 idMap: {  }
 migration_dependencies:
   required:

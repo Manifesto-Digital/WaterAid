@@ -23,7 +23,6 @@ process:
     -
       plugin: default_value
       default_value: en
-  vid: vid
   status: status
   name: name
   description/value: description__value

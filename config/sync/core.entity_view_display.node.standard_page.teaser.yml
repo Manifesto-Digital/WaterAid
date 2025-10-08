@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
+    - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_full_title
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
@@ -110,6 +111,7 @@ hidden:
   field_area: true
   field_capital: true
   field_content: true
+  field_force_download: true
   field_full_title: true
   field_hero: true
   field_job_id: true
