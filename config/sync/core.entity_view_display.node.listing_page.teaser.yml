@@ -53,8 +53,8 @@ hidden:
   field_introduction: true
   field_items_to_display: true
   field_review_date: true
-  field_view: true
   field_rss_feed: true
+  field_view: true
   field_weight: true
   langcode: true
   node_read_time: true

@@ -102,15 +102,6 @@ content:
     third_party_settings: {  }
     weight: 109
     region: content
-  field_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 106
-    region: content
   field_view:
     type: viewsreference_formatter
     label: hidden
@@ -119,6 +110,15 @@ content:
         - block
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
     region: content
   links:
     settings: {  }

@@ -198,18 +198,18 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_view:
+    type: viewsreference_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_weight:
     type: number
     weight: 28
     region: content
     settings:
       placeholder: ''
-    third_party_settings: {  }
-  field_view:
-    type: viewsreference_select
-    weight: 27
-    region: content
-    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select
