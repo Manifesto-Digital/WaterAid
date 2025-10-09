@@ -22,7 +22,6 @@ settings:
       - numberedList
       - '|'
       - blockQuote
-      - drupalInsertImage
       - '|'
       - heading
       - style
@@ -37,8 +36,6 @@ settings:
         - heading4
         - heading5
         - heading6
-    ckeditor5_imageResize:
-      allow_resize: true
     ckeditor5_list:
       properties:
         reversed: false
@@ -64,6 +61,9 @@ settings:
         -
           label: 'Standfirst (large paragraph)'
           element: '<p class="paragraph-lg">'
+        -
+          label: 'Text link'
+          element: '<a class="link link--text">'
 image_upload:
   status: true
   scheme: public
