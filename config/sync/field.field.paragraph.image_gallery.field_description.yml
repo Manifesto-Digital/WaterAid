@@ -1,0 +1,19 @@
+uuid: ec63c27c-9d62-4f2f-b7b7-b8407185a534
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.image_gallery
+id: paragraph.image_gallery.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: image_gallery
+label: 'Search description'
+description: 'Add a description to the item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

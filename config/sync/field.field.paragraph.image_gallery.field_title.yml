@@ -1,0 +1,19 @@
+uuid: ca03274e-ae6d-46a6-b30e-a20495c9b577
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.image_gallery
+id: paragraph.image_gallery.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: image_gallery
+label: Title
+description: 'Add a title to the item'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

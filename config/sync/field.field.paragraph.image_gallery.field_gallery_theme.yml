@@ -1,0 +1,23 @@
+uuid: aebd869b-c434-4b11-b076-ae85368edc40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_gallery_theme
+    - paragraphs.paragraphs_type.image_gallery
+  module:
+    - options
+id: paragraph.image_gallery.field_gallery_theme
+field_name: field_gallery_theme
+entity_type: paragraph
+bundle: image_gallery
+label: 'Gallery Theme'
+description: 'Select the theme for the gallery'
+required: true
+translatable: false
+default_value:
+  -
+    value: white
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -192,6 +192,9 @@ function wateraid_content_preprocess_paragraph(&$variables): void {
     elseif ($paragraph->hasField('field_colour_variant') && !$paragraph->get('field_colour_variant')->isEmpty()) {
       $classes[] = 'colour-' . $paragraph->get('field_colour_variant')->getString();
     }
+    elseif ($paragraph->hasField('field_gallery_theme') && !$paragraph->get('field_gallery_theme')->isEmpty()) {
+      $classes[] = 'colour-' . $paragraph->get('field_gallery_theme')->getString();
+    }
 
     if (!empty($classes)) {
       $variables['attributes']['class'] = isset($variables['attributes']['class']) ? array_merge($variables['attributes']['class'], $classes) : $classes;
