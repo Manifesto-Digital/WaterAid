@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.story.field_audience
     - field.field.node.story.field_content
     - field.field.node.story.field_country
+    - field.field.node.story.field_full_story_link
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
     - field.field.node.story.field_in_page_navigation
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
+    - field.field.node.story.field_weight
     - node.type.story
   module:
     - user
@@ -77,8 +79,10 @@ content:
 hidden:
   co_authors: true
   field_content: true
+  field_full_story_link: true
   field_hero: true
   field_in_page_navigation: true
   field_review_date: true
+  field_weight: true
   langcode: true
   node_read_time: true

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.story.field_audience
     - field.field.node.story.field_content
     - field.field.node.story.field_country
+    - field.field.node.story.field_full_story_link
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
     - field.field.node.story.field_in_page_navigation
@@ -13,11 +14,13 @@ dependencies:
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
+    - field.field.node.story.field_weight
     - node.type.story
   module:
     - datetime
     - field_group
     - layout_paragraphs
+    - link
     - media_library
     - path
 third_party_settings:
@@ -163,6 +166,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_full_story_link:
+    type: link_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
     weight: 17
@@ -221,6 +232,13 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_weight:
+    type: number
+    weight: 28
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   langcode:

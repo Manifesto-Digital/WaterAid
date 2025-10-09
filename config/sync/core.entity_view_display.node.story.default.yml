@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.story.field_audience
     - field.field.node.story.field_content
     - field.field.node.story.field_country
+    - field.field.node.story.field_full_story_link
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
     - field.field.node.story.field_in_page_navigation
@@ -13,10 +14,12 @@ dependencies:
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
+    - field.field.node.story.field_weight
     - node.type.story
   module:
     - datetime
     - entity_reference_revisions
+    - link
     - user
 id: node.story.default
 targetEntityType: node
@@ -47,6 +50,18 @@ content:
       link: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_full_story_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
     region: content
   field_get_involved:
     type: entity_reference_label
@@ -92,6 +107,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
     region: content
   links:
     settings: {  }
