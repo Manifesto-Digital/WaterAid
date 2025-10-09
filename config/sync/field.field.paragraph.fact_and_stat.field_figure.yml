@@ -1,0 +1,19 @@
+uuid: 47e7f6f8-960b-452f-8c99-4acd8412717d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_figure
+    - paragraphs.paragraphs_type.fact_and_stat
+id: paragraph.fact_and_stat.field_figure
+field_name: field_figure
+entity_type: paragraph
+bundle: fact_and_stat
+label: Figure
+description: 'The headline figure for the stat'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

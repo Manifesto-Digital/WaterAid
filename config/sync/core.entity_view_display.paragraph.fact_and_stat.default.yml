@@ -1,0 +1,57 @@
+uuid: a3744fe3-a704-443d-a631-d16c8f92548e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fact_and_stat.field_colour_variant
+    - field.field.paragraph.fact_and_stat.field_copy
+    - field.field.paragraph.fact_and_stat.field_figure
+    - field.field.paragraph.fact_and_stat.field_icon
+    - field.field.paragraph.fact_and_stat.field_link
+    - paragraphs.paragraphs_type.fact_and_stat
+  module:
+    - link
+id: paragraph.fact_and_stat.default
+targetEntityType: paragraph
+bundle: fact_and_stat
+mode: default
+content:
+  field_copy:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_figure:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_colour_variant: true
+  search_api_excerpt: true

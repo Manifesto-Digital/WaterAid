@@ -1,0 +1,19 @@
+uuid: f2a4e552-b44b-4472-8f6b-692c9480e0ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.facts_and_stats
+id: paragraph.facts_and_stats.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: facts_and_stats
+label: Title
+description: 'Add a title'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

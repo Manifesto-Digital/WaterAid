@@ -1,0 +1,10 @@
+uuid: f600a8ef-312c-434f-8cb5-78316891f46a
+langcode: en
+status: true
+dependencies: {  }
+id: facts_and_stats
+label: 'Facts and Stats'
+icon_uuid: null
+icon_default: null
+description: 'Show a collection of statistics or facts as an infographic.'
+behavior_plugins: {  }

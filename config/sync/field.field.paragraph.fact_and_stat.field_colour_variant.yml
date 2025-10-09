@@ -1,0 +1,23 @@
+uuid: 3090b447-a651-477d-950a-661c607005cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_colour_variant
+    - paragraphs.paragraphs_type.fact_and_stat
+  module:
+    - options
+id: paragraph.fact_and_stat.field_colour_variant
+field_name: field_colour_variant
+entity_type: paragraph
+bundle: fact_and_stat
+label: Variant
+description: 'Select the colour variant for the item.'
+required: true
+translatable: false
+default_value:
+  -
+    value: cream
+default_value_callback: ''
+settings: {  }
+field_type: list_string

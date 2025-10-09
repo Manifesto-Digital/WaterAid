@@ -1,0 +1,29 @@
+uuid: 8f8c1619-d471-4b01-a08d-e418db41058d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - media.type.icon_library
+    - paragraphs.paragraphs_type.fact_and_stat
+id: paragraph.fact_and_stat.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: fact_and_stat
+label: Icon
+description: 'Selectvcan icon to display'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon_library: icon_library
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

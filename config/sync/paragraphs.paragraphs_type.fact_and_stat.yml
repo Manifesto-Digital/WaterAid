@@ -1,0 +1,10 @@
+uuid: 10ae5599-06f4-491c-99a9-6b243b6db7b4
+langcode: en
+status: true
+dependencies: {  }
+id: fact_and_stat
+label: 'Fact and Stat'
+icon_uuid: null
+icon_default: null
+description: 'A single Fact and Stat item, to display inside the Facts and Stats paragraph.'
+behavior_plugins: {  }

@@ -1,0 +1,19 @@
+uuid: a1c8d001-7bd5-45e0-8ba4-bce7ce6f4a76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_copy
+    - paragraphs.paragraphs_type.fact_and_stat
+id: paragraph.fact_and_stat.field_copy
+field_name: field_copy
+entity_type: paragraph
+bundle: fact_and_stat
+label: Copy
+description: 'Enter the text you wish to display.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

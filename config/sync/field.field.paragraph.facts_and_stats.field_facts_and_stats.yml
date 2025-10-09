@@ -1,0 +1,67 @@
+uuid: 676f97a3-073d-4bb5-a13a-f994a128db84
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_facts_and_stats
+    - paragraphs.paragraphs_type.fact_and_stat
+    - paragraphs.paragraphs_type.facts_and_stats
+  module:
+    - entity_reference_revisions
+id: paragraph.facts_and_stats.field_facts_and_stats
+field_name: field_facts_and_stats
+entity_type: paragraph
+bundle: facts_and_stats
+label: 'Facts and Stats'
+description: 'Add your Facts and Stats to display.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      fact_and_stat: fact_and_stat
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 14
+        enabled: false
+      accordion_item:
+        weight: 15
+        enabled: false
+      call_to_action:
+        weight: 16
+        enabled: false
+      fact_and_stat:
+        weight: 18
+        enabled: true
+      facts_and_stats:
+        weight: 17
+        enabled: false
+      hero_basic:
+        weight: 19
+        enabled: false
+      hero_image:
+        weight: 20
+        enabled: false
+      hero_news:
+        weight: 21
+        enabled: false
+      hero_video:
+        weight: 22
+        enabled: false
+      image:
+        weight: 23
+        enabled: false
+      quote:
+        weight: 24
+        enabled: false
+      rich_text:
+        weight: 25
+        enabled: false
+      video:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions
