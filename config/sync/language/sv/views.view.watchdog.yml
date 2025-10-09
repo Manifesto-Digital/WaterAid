@@ -18,6 +18,7 @@ display:
           label: Meddelande
         name:
           label: Användare
+          separator: ', '
         link:
           label: Funktioner
       pager:

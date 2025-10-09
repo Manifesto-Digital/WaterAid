@@ -8,11 +8,13 @@ dependencies:
     - field.field.node.listing_page.field_review_date
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
+    - field.field.node.listing_page.field_view
     - node.type.listing_page
   module:
     - datetime
     - entity_reference_revisions
     - user
+    - viewsreference
 id: node.listing_page.default
 targetEntityType: node
 bundle: listing_page
@@ -38,13 +40,22 @@ content:
     region: content
   field_review_date:
     type: datetime_time_ago
-    label: above
+    label: hidden
     settings:
       future_format: '@interval hence'
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_view:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     settings: {  }
@@ -57,3 +68,4 @@ hidden:
   field_teaser_text: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true

@@ -3,7 +3,8 @@ main:
     theme:
       dist/css/styles.css: {}
 
-quote:
-  css:
-    theme:
-      dist/css/components/quote/quote.css: {}
+listing:
+  js:
+    components/listing/listing.js: { }
+  dependencies:
+    - core/jquery

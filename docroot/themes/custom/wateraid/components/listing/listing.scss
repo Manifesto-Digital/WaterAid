@@ -1,0 +1,208 @@
+@import "./sass/styles";
+
+.listing {
+  margin-bottom: $wa-spacing-07;
+
+  &__wrapper {
+    @include grid();
+
+    .button {
+      max-width: 100%;
+    }
+  }
+
+  &__wrapper--button {
+    @include grid-item-span(4, 6, 4);
+    justify-self: left;
+    padding-bottom: $wa-spacing-07;
+    width: 100%;
+
+    @include desktop {
+      width: calc(100% - 90px);
+    }
+  }
+
+
+  &__filters {
+    display: none;
+
+    legend {
+      @include h6();
+      background-color: transparent;
+      box-shadow: none;
+      width: 100%;
+      text-align: left;
+      border: none;
+      border-top: 2px solid $wa-blue;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $wa-spacing-06 0;
+      background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-chevron-down.svg");
+      background-position: calc(100% - $wa-spacing-06) center;
+      background-repeat: no-repeat;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.listing__filter--open {
+        background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-chevron-up.svg");
+      }
+    }
+
+    .fieldset-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+
+    .form-checkboxes {
+      margin-bottom: $wa-spacing-06;
+    }
+
+    .form-actions {
+      position: relative;
+      width: 100%;
+
+      &::after {
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide.svg");
+      }
+    }
+
+    input.button {
+      color: $wa-white;
+      padding: $wa-spacing-03 $wa-spacing-04;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    &--button {
+      margin-bottom: $wa-spacing-07;
+    }
+  }
+
+  &__content {
+    @include grid-item-span(4, 6, 12);
+  }
+
+  &__content .views-infinite-scroll-content-wrapper {
+    @include grid();
+    gap: $wa-spacing-06;
+
+    .views-row {
+      @include grid-item-span(4, 3, 4);
+    }
+  }
+
+  &__pager {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .button {
+      align-items: center;
+      background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-plus-blue.svg");
+      background-position: $wa-spacing-06 center;
+      background-repeat: no-repeat;
+      color: $wa-blue;
+      max-width: fit-content;
+      padding: $wa-spacing-03 $wa-spacing-06 $wa-spacing-03 $wa-spacing-10;
+
+      &::after {
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
+      }
+    }
+  }
+
+  .button,
+  .form-actions {
+    align-items: center;
+    display: flex;
+    font-family: "Noto Sans Bold";
+    font-size: 1.5rem;
+    gap: $wa-spacing-02;
+    justify-self: center;
+    text-decoration: none;
+    justify-content: center;
+    width: 100%;
+
+
+    &::before {
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      content: "";
+      display: block;
+      height: 0;
+      position: absolute;
+      transition: transform 200ms;
+      width: 0;
+      will-change: transform;
+      z-index: -1;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover::before {
+      transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    &:focus-visible {
+      outline: $wa-pink $wa-spacing-01 solid;
+      border: none;
+      background: none;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      left: 0;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &--filters-open {
+    @include grid();
+
+    .listing__wrapper--button {
+      display: none;
+    }
+
+    .listing__filters {
+      @include grid-item-span(4, 6, 4);
+      display: block;
+      padding-bottom: $wa-spacing-07;
+      @include desktop {
+        padding-right: calculate-rem(90);
+      }
+
+    }
+
+    .listing__content {
+      @include grid-item-span(4, 6, 8);
+
+      .views-row {
+        @include grid-item-span(4, 3, 6);
+      }
+    }
+  }
+
+}
+
+.viewsreference--view-title {
+  display: none;
+}
