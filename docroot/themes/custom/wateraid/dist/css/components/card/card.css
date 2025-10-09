@@ -408,8 +408,8 @@ footer {
   color: #006bd9;
 }
 
-.card__tags {
-  padding-top: .25rem;
+.card__tags span {
+  margin-top: .25rem;
 }
 
 
