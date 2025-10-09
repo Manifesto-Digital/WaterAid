@@ -7,6 +7,7 @@ dependencies:
     - node.type.landing_page
     - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.call_to_action
+    - paragraphs.paragraphs_type.facts_and_stats
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.rich_text
@@ -30,42 +31,49 @@ settings:
       rich_text: rich_text
       accordion: accordion
       call_to_action: call_to_action
+      facts_and_stats: facts_and_stats
       image: image
       quote: quote
       video: video
     negate: 0
     target_bundles_drag_drop:
       accordion:
-        weight: -22
+        weight: -26
         enabled: true
       accordion_item:
-        weight: -14
-        enabled: false
-      call_to_action:
-        weight: -21
-        enabled: true
-      hero_basic:
-        weight: -16
-        enabled: false
-      hero_image:
         weight: -17
         enabled: false
+      call_to_action:
+        weight: -25
+        enabled: true
+      facts_and_stats:
+        weight: -24
+        enabled: true
+      hero_basic:
+        weight: -19
+        enabled: false
+      hero_image:
+        weight: -20
+        enabled: false
       hero_news:
-        weight: -15
+        weight: -18
         enabled: false
       hero_video:
-        weight: -13
+        weight: -16
         enabled: false
       image:
-        weight: -20
-        enabled: true
-      quote:
-        weight: -19
-        enabled: true
-      rich_text:
         weight: -23
         enabled: true
+      quote:
+        weight: -22
+        enabled: true
+      rich_text:
+        weight: -27
+        enabled: true
+      stats_item:
+        weight: -15
+        enabled: false
       video:
-        weight: -18
+        weight: -21
         enabled: true
 field_type: entity_reference_revisions

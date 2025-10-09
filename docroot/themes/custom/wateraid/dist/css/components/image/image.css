@@ -6,6 +6,40 @@
   * Base
   */
 
+.js-form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem;
+}
+
+.js-form-type-checkbox:hover {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  border-radius: .125rem;
+  border: .125rem solid #151435;
+  vertical-align: middle;
+}
+
+input[type=checkbox]:checked {
+  background-color: #151435;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+input[type=checkbox]:focus-visible {
+  outline: .25rem #ff96e6 solid;
+  box-shadow: 0 0 0 .125rem #151435;
+}
+
 @font-face {
   font-family: "RB Nylo Black";
   src: url("../../fonts/RBNylo-Black.otf") format("opentype");
@@ -273,7 +307,7 @@ header img {
   width: 200px;
 }
 
-.container {
+.page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -281,22 +315,27 @@ header img {
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .page-container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .page-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
+.container {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
 @media only screen and (min-width: 1440px) {
-  .content-section {
-    max-width: 41.25rem;
+  .container {
+    margin-left: 7.125rem;
   }
 }
 
@@ -308,36 +347,21 @@ footer {
   background-color: #43cfb5;
 }
 
-[data-component-id="wateraid:image"] {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-}
-
-@media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] {
-    grid-template-columns: repeat(6, 1fr);
-    -moz-column-gap: 1.5rem;
-         column-gap: 1.5rem;
-  }
+.image {
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] {
-    grid-template-columns: repeat(12, 1fr);
+  .image {
+    margin-top: 3rem;
   }
 }
 
-[data-component-id="wateraid:image"] .image {
-  margin: 0;
-}
-
-[data-component-id="wateraid:image"] .image__wrapper {
+.image__wrapper {
   position: relative;
 }
 
-[data-component-id="wateraid:image"] .image__wrapper.open .image__caption {
+.image__wrapper.open .image__caption {
   height: -moz-fit-content;
   height: fit-content;
   width: -moz-fit-content;
@@ -348,77 +372,110 @@ footer {
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper.open .image__caption {
+  .image__wrapper.open .image__caption {
     max-width: 66.6666666667%;
   }
 }
 
-[data-component-id="wateraid:image"] .image__wrapper.open .image__button--close {
+.image__wrapper.open .image__button--close {
   display: block;
 }
 
-[data-component-id="wateraid:image"] .image__wrapper.open .image__button--open {
+.image__wrapper.open .image__button--open {
   display: none;
 }
 
-[data-component-id="wateraid:image"] .image__wrapper--full {
+.image--full .image__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] .image__wrapper--full {
+  .image--full .image__wrapper {
     grid-column: span 6;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper--full {
+  .image--full .image__wrapper {
     grid-column: span 12;
   }
 }
 
-[data-component-id="wateraid:image"] .image__wrapper--full {
+.image--full .image__wrapper {
   height: auto;
 }
 
-[data-component-id="wateraid:image"] .image__wrapper--large {
-  grid-column: span 4;
+.image--large {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .image--large {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.image--large .image__wrapper {
+  width: 100%;
+}
+
+.image--small {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .image--small {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.image--small {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] .image__wrapper--large {
-    grid-column: span 5;
+  .image--small {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper--large {
-    grid-column: span 10;
+  .image--small {
+    grid-template-columns: repeat(12, 1fr);
   }
 }
 
-[data-component-id="wateraid:image"] .image__wrapper--small {
+.image--small .image__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:image"] .image__wrapper--small {
+  .image--small .image__wrapper {
     grid-column: span 3;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:image"] .image__wrapper--small {
+  .image--small .image__wrapper {
     grid-column: span 6;
   }
 }
 
-[data-component-id="wateraid:image"] .image img {
+.image img {
   width: 100%;
   height: auto;
 }
 
-[data-component-id="wateraid:image"] .image__caption {
+.image__content {
+  margin: 0;
+}
+
+.image__caption {
   background-color: #f8f0e4;
   font-size: 1rem;
   padding: .75rem;
@@ -427,14 +484,14 @@ footer {
   border-radius: 0 0 .125rem .125rem;
 }
 
-[data-component-id="wateraid:image"] .image__credit {
+.image__credit {
   font-size: .875rem;
   line-height: 1.5;
   color: #44435d;
   display: block;
 }
 
-[data-component-id="wateraid:image"] .image--expandable .image__caption {
+.image--expandable .image__caption {
   position: absolute;
   bottom: 16px;
   right: 12px;
@@ -450,15 +507,15 @@ footer {
   transition-timing-function: cubic-bezier(1, 1, 1, 1);
 }
 
-[data-component-id="wateraid:image"] .image--below-image {
+.image--below-image {
   margin-bottom: 1rem;
 }
 
-[data-component-id="wateraid:image"] .image--below-image .image__caption {
+.image--below-image .image__caption {
   position: relative;
 }
 
-[data-component-id="wateraid:image"] .image--below-image .image__caption::after {
+.image--below-image .image__caption::after {
   content: "";
   display: block;
   position: absolute;
@@ -473,14 +530,14 @@ footer {
   z-index: -1;
 }
 
-[data-component-id="wateraid:image"] .image__button {
+.image__button {
   position: absolute;
   bottom: 12px;
   right: 8px;
   z-index: 10;
 }
 
-[data-component-id="wateraid:image"] .image__button--close {
+.image__button--close {
   display: none;
 }
 

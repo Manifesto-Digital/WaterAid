@@ -3,6 +3,10 @@
 .quote {
   color: $wa-white;
   background-color: $wa-blue;
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
 
   &__content {
     padding: $wa-spacing-07 $wa-spacing-05;

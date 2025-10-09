@@ -6,6 +6,40 @@
   * Base
   */
 
+.js-form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem;
+}
+
+.js-form-type-checkbox:hover {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  border-radius: .125rem;
+  border: .125rem solid #151435;
+  vertical-align: middle;
+}
+
+input[type=checkbox]:checked {
+  background-color: #151435;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+input[type=checkbox]:focus-visible {
+  outline: .25rem #ff96e6 solid;
+  box-shadow: 0 0 0 .125rem #151435;
+}
+
 @font-face {
   font-family: "RB Nylo Black";
   src: url("../../fonts/RBNylo-Black.otf") format("opentype");
@@ -273,7 +307,7 @@ header img {
   width: 200px;
 }
 
-.container {
+.page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -281,22 +315,27 @@ header img {
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .page-container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .page-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
+.container {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
 @media only screen and (min-width: 1440px) {
-  .content-section {
-    max-width: 41.25rem;
+  .container {
+    margin-left: 7.125rem;
   }
 }
 
@@ -309,7 +348,7 @@ footer {
 }
 
 .card {
-  max-width: 432px;
+  position: relative;
 }
 
 .card::before {
@@ -327,14 +366,13 @@ footer {
 }
 
 .card:hover::before {
-  transform: translateX(-0.25rem) translateY(.25rem);
+  transform: translateX(-0.5rem) translateY(.5rem);
   left: 0;
   height: 100%;
   width: 100%;
 }
 
 .card:hover {
-  background-color: #fff;
   cursor: pointer;
 }
 
@@ -364,13 +402,7 @@ footer {
 }
 
 .card__heading {
-  font-family: "Noto Sans Bold";
-  font-size: 1.375rem;
-  line-height: 1.2;
-  text-decoration: none;
-  text-transform: none;
   margin: 0;
-  padding-bottom: .5rem;
 }
 
 .card__heading a {
@@ -410,6 +442,83 @@ footer {
 
 .card__tags span {
   margin-top: .25rem;
+}
+
+.card--teaser {
+  border: .25rem #fff solid;
+  height: 100%;
+  max-width: 432px;
+}
+
+.card--teaser:hover {
+  background-color: #fff;
+}
+
+.card--teaser__heading {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  padding-bottom: .5rem;
+}
+
+.card--stats {
+  justify-items: center;
+  padding: 1.5rem;
+}
+
+.card--stats:hover::before {
+  transform: translateX(-1rem) translateY(-0.5rem);
+}
+
+.card--stats .card__image img {
+  width: 9rem;
+  height: 9rem;
+}
+
+.card--stats .card__body {
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.card--stats .card__link {
+  padding-top: .5rem;
+}
+
+.card--cream {
+  background-color: #f8f0e4;
+  color: #151435;
+}
+
+.card--navy {
+  background-color: #151435;
+  color: #fff;
+}
+
+.card--navy h3,
+.card--navy a,
+.card--navy .card__body {
+  color: #fff;
+}
+
+.card--navy .card__image {
+  filter: brightness(0) invert(1);
+}
+
+.card--blue {
+  background-color: #006bd9;
+}
+
+.card--blue h3,
+.card--blue a,
+.card--blue .card__body {
+  color: #fff;
+}
+
+.card--blue .card__image {
+  filter: brightness(0) invert(1);
 }
 
 

@@ -1,0 +1,65 @@
+uuid: ee959718-d8ca-48d4-93f8-5abc06c3061f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.facts_and_stats.field_column_count
+    - field.field.paragraph.facts_and_stats.field_link
+    - field.field.paragraph.facts_and_stats.field_rich_text
+    - field.field.paragraph.facts_and_stats.field_stat_items
+    - field.field.paragraph.facts_and_stats.field_title
+    - paragraphs.paragraphs_type.facts_and_stats
+  module:
+    - layout_paragraphs
+    - link
+    - text
+id: paragraph.facts_and_stats.default
+targetEntityType: paragraph
+bundle: facts_and_stats
+mode: default
+content:
+  field_column_count:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_rich_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+  field_stat_items:
+    type: layout_paragraphs
+    weight: 3
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -307,7 +307,7 @@ header img {
   width: 200px;
 }
 
-.container {
+.page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -315,22 +315,27 @@ header img {
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .page-container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .page-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
+.container {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
 @media only screen and (min-width: 1440px) {
-  .content-section {
-    max-width: 41.25rem;
+  .container {
+    margin-left: 7.125rem;
   }
 }
 

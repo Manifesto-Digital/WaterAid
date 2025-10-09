@@ -17,14 +17,12 @@ header {
   }
 }
 
-.container {
+.page-container {
   @include page-container;
 }
 
-.content-section {
-  @include desktop() {
-    max-width: calculate-rem(660);
-  }
+.container {
+  @include container-sm();
 }
 
 body {

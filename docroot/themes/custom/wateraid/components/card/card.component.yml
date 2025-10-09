@@ -35,6 +35,13 @@ slots:
   authors:
     type: ["object", "null"]
     title: Authors
+  link_text:
+    type: string
+    title: Link text
+    description: Link text
+  colour:
+    type: string
+    title: Card colour
 libraryOverrides:
   css:
     theme:

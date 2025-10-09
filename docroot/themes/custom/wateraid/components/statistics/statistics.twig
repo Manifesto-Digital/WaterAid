@@ -1,0 +1,38 @@
+{% set classes = [
+  'statistics',
+  'statistics--' ~ columns,
+] %}
+
+{% set text %}
+  {% if title %}
+    <h2>{{ title }}</h2>
+  {% endif %}
+  {% if description %}
+    <div>{{ description }}</div>
+  {% endif %}
+{% endset %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="statistics__content container">
+    {% if title %}
+      <h2 class="statistics__content--title">{{ title }}</h2>
+    {% endif %}
+    {% if description %}
+      <div class="statistics__content--description">{{ description }}</div>
+    {% endif %}
+
+    {{ include('wateraid:link', {
+      text: link.title,
+      link: link.url,
+      type: 'text',
+    }) }}
+  </div>
+
+  <div class="statistics__items">
+    {% for stats_item in stats_items %}
+      <div class="statistics__items--item">
+        {{ stats_item|raw }}
+      </div>
+    {% endfor %}
+  </div>
+</div>

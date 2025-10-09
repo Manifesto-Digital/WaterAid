@@ -1,0 +1,23 @@
+uuid: 2e8ae3bb-83a9-423e-9fb6-61de403a2495
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_colour
+    - paragraphs.paragraphs_type.stats_item
+  module:
+    - options
+id: paragraph.stats_item.field_card_colour
+field_name: field_card_colour
+entity_type: paragraph
+bundle: stats_item
+label: Colour
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: cream
+default_value_callback: ''
+settings: {  }
+field_type: list_string

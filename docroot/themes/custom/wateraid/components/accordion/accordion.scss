@@ -1,11 +1,11 @@
 @import "./sass/styles";
 
 .accordion {
-  max-width: 100%;
-  width: 660px;
-  margin-bottom: $wa-spacing-06;
-
-
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+  
   &__search {
     display: flex;
     flex-direction: column;
