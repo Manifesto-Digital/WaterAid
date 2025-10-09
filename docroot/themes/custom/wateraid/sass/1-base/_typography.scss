@@ -212,6 +212,14 @@ p {
   @include paragraph-md();
 }
 
+p.paragraph-lg {
+  @include paragraph-lg();
+}
+
+p.paragraph-sm {
+  @include paragraph-sm();
+}
+
 strong {
   font-family: $bold-font;
 }
