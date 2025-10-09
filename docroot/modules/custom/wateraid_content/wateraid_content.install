@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install and update functionality for Wateraid Content.
+ */
+
+/**
+ * Delete the unused taxonomy vocabularies.
+ */
+function wateraid_content_update_10001(&$sandbox): void {
+
+  /** @var \Drupal\taxonomy\TermStorageInterface $storage */
+  $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  foreach ([
+    'tags',
+    'region',
+    'key_stage',
+    'age',
+  ] as $vocabulary) {
+    $tids = $storage->getQuery()
+      ->condition('vid', $vocabulary)
+      ->accessCheck()
+      ->execute();
+
+    $storage->delete($storage->loadMultiple($tids));
+  }
+}
