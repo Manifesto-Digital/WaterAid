@@ -347,5 +347,14 @@ footer {
   transition: max-height .2s ease-out;
 }
 
+.accordion-item .quote {
+  color: #151435;
+  background-color: #fff;
+}
+
+.accordion-item .quote__content {
+  padding: 2rem 0;
+}
+
 
 /*# sourceMappingURL=accordion_item.css.map*/

@@ -63,7 +63,7 @@
         }
         let hasMatch = false;
 
-        const contentElements = item.querySelectorAll(".accordion-item__content p, .accordion-item__content h2, .accordion-item__content h3, .accordion-item__content h4, .accordion-item__content h4, .accordion-item__content h5, .accordion-item__content h6, .accordion-item__content li, .accordion-item__content blockquote");
+        const contentElements = item.querySelectorAll(".accordion-item__content p, .accordion-item__content h2, .accordion-item__content h3, .accordion-item__content h4, .accordion-item__content h4, .accordion-item__content h5, .accordion-item__content h6, .accordion-item__content li, .accordion-item__content blockquote, .accordion-item__content figcaption");
 
         contentElements.forEach((element) => {
           if (!element) return;
