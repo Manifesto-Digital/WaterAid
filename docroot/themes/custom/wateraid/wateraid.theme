@@ -36,3 +36,4 @@ function wateraid_preprocess_paragraph(&$variables): void {
 
   $variables['#cache']['contexts'][] = 'url';
 }
+
