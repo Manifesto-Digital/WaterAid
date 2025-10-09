@@ -30,7 +30,10 @@ final class NodeSource extends SqlBase {
       if (in_array('field_wa_donation_page_template', $this->configuration['fields'])) {
         $query->leftJoin('node__field_wa_donation_page_template', 't', 't.entity_id = n.nid');
         $query->orderBy('field_wa_donation_page_template_target_id');
-        $query->fields('t', ['field_wa_donation_page_template_target_id']);
+      }
+      if (in_array('field_related_content', $this->configuration['fields'])) {
+        $query->leftJoin('node__field_related_content', 't', 't.entity_id = n.nid');
+        $query->orderBy('field_related_content_target_id');
       }
     }
 
