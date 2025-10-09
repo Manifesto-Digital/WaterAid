@@ -56,62 +56,77 @@ process:
       plugin: migration_lookup
       migration: articles
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: campaigns
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: country_details
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: events
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: filtered_landing_pages
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: flexible_content
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: get_involved_node
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: jobs
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: press_and_media
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: press_and_media_biographies
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: publication
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: shorthand_story
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: standard_page
       source: field_related_content
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: stories
       source: field_related_content
   field_related_content_type:
-    -  plugin: skip_on_empty
-       source: field_related_content_type
-       method: process
-    -  plugin: static_map
-       source: field_related_content_type
-       map:
-         campaign: standard_page
-         country_details: standard_page
-         filtered_landing_page: listing_page
-         flexible_content: standard_page
-         get_involved: landing_page
-         job: standard_page
-         press_and_media: standard_page
-         press_and_media_flexible: standard_page
-         shorthand_story: story
-         stories: story
+    -
+      plugin: skip_on_empty
+      source: field_related_content_type
+      method: process
+    -
+      plugin: static_map
+      source: field_related_content_type
+      map:
+        campaign: standard_page
+        country_details: standard_page
+        filtered_landing_page: listing_page
+        flexible_content: standard_page
+        get_involved: landing_page
+        job: standard_page
+        press_and_media: standard_page
+        press_and_media_flexible: standard_page
+        shorthand_story: story
+        stories: story
   field_theme:
     plugin: migration_lookup
     migration: themes

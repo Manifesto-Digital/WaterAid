@@ -129,7 +129,6 @@ process:
         press_and_media_flexible: standard_page
         shorthand_story: story
         stories: story
-        default_value: field_related_content_type
   field_theme:
     plugin: migration_lookup
     migration: themes
