@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8553d8893db9ee0aab91ab8b8fb5685e",
+    "content-hash": "d2e41eba0b57f0e14e280fa8f669b03d",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -6289,92 +6289,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/tb_megamenu",
                 "issues": "https://www.drupal.org/project/issues/tb_megamenu"
-            }
-        },
-        {
-            "name": "drupal/tiny_slider",
-            "version": "1.1.0-rc5",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/tiny_slider.git",
-                "reference": "1.1.0-rc5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tiny_slider-1.1.0-rc5.zip",
-                "reference": "1.1.0-rc5",
-                "shasum": "d58a46cdfedcace2d129906718a97ffdd8db87cf"
-            },
-            "require": {
-                "drupal/core": "^9.3 || ^10"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.1.0-rc5",
-                    "datestamp": "1749338301",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
-                    }
-                },
-                "drush": {
-                    "services": {
-                        "drush.services.yml": "^10"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "belazoth",
-                    "homepage": "https://www.drupal.org/user/3397316"
-                },
-                {
-                    "name": "cedrichillion",
-                    "homepage": "https://www.drupal.org/user/3091823"
-                },
-                {
-                    "name": "danielzigo",
-                    "homepage": "https://www.drupal.org/user/3569258"
-                },
-                {
-                    "name": "endrukk",
-                    "homepage": "https://www.drupal.org/user/3669887"
-                },
-                {
-                    "name": "hebl",
-                    "homepage": "https://www.drupal.org/user/3688118"
-                },
-                {
-                    "name": "ipwa",
-                    "homepage": "https://www.drupal.org/user/130909"
-                },
-                {
-                    "name": "Lisa-Webster",
-                    "homepage": "https://www.drupal.org/user/3682291"
-                },
-                {
-                    "name": "paul.moloney",
-                    "homepage": "https://www.drupal.org/user/274172"
-                },
-                {
-                    "name": "welly",
-                    "homepage": "https://www.drupal.org/user/354705"
-                },
-                {
-                    "name": "xiwar",
-                    "homepage": "https://www.drupal.org/user/3309931"
-                }
-            ],
-            "description": "Drupal integration for Tiny Slider",
-            "homepage": "https://www.drupal.org/project/tiny_slider",
-            "support": {
-                "source": "https://git.drupalcode.org/project/tiny_slider",
-                "issues": "https://www.drupal.org/project/issues/tiny_slider"
             }
         },
         {
@@ -18299,7 +18213,6 @@
         "drupal/preview_link": 15,
         "drupal/rabbit_hole": 15,
         "drupal/storybook": 10,
-        "drupal/tiny_slider": 5,
         "drupal/viewsreference": 10,
         "drupal/webform": 10,
         "drupal/webp": 5

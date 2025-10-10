@@ -3,6 +3,7 @@
   'image-gallery--' ~ theme,
 ] %}
 
+
 <div {{ attributes.addClass(classes) }}>
   <div class="image-gallery__wrapper">
     <div class="image-gallery__content">
@@ -24,12 +25,16 @@
 
       <div class="image-gallery__controls desktop">
         {{ include('wateraid:button', {
-          id: 'next',
-          text: 'Next'|t,
+          id: 'previous',
+          text: 'Previous'|t,
           link: '',
           type: 'icon',
           theme,
-          icon: 'wa-utility-arrow-right'
+          icon: 'wa-utility-arrow-right',
+          attribute: {
+            attr: 'data-controls',
+            value: 'previous'
+          },
         }) }}
 
         {{ include('wateraid:button', {
@@ -38,36 +43,50 @@
           link: '',
           type: 'icon',
           theme,
-          icon: 'wa-utility-arrow'
+          icon: 'wa-utility-arrow',
+          attribute: {
+            attr: 'data-controls',
+            value: 'next'
+          },
         }) }}
       </div>
     </div>
 
     <div class="image-gallery__items">
+        <div class="image-gallery__slider">
       {% for image_item in image_items %}
         <div class="image-gallery__item">
           {{ image_item|raw }}
         </div>
       {% endfor %}
+        </div>
     </div>
 
     <div class="image-gallery__controls mobile">
       {{ include('wateraid:button', {
-        id: 'next',
-        text: 'Next'|t,
+        id: 'previous-mobile',
+        text: 'Previous'|t,
         link: '',
         type: 'icon',
         theme,
-        icon: 'wa-utility-arrow-right'
+        icon: 'wa-utility-arrow-right',
+        attribute: {
+          attr: 'data-controls',
+          value: 'previous'
+        },
       }) }}
 
       {{ include('wateraid:button', {
-        id: 'next',
+        id: 'next-mobile',
         text: 'Next'|t,
         link: '',
         type: 'icon',
         theme,
-        icon: 'wa-utility-arrow'
+        icon: 'wa-utility-arrow',
+        attribute: {
+          attr: 'data-controls',
+          value: 'next'
+        },
       }) }}
     </div>
   </div>

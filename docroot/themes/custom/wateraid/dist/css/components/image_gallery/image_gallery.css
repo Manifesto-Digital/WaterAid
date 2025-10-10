@@ -328,13 +328,24 @@ header img {
   }
 }
 
-.container {
+.container-md {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
   width: 100%;
   max-width: 41.25rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .container-sm {
     margin-left: 7.125rem;
   }
 }
@@ -348,16 +359,6 @@ footer {
 }
 
 .image-gallery {
-  left: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  max-width: 100vw;
-  position: relative;
-  right: 50%;
-  width: 100vw;
-}
-
-.image-gallery__wrapper {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -365,16 +366,26 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
-  .image-gallery__wrapper {
+  .image-gallery {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .image-gallery__wrapper {
+  .image-gallery {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+}
+
+.image-gallery {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery {
+    margin-top: 3rem;
   }
 }
 
@@ -472,13 +483,19 @@ footer {
   }
 }
 
+.image-gallery--light {
+  padding: 0;
+}
+
 .image-gallery--dark {
-  background-color: #006bd9;
-  padding: 3rem 0;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");
+  background-size: 100% 100%;
+  padding: 3rem;
 }
 
 .image-gallery--dark .image-gallery__content--title,
 .image-gallery--dark .image-gallery__content--description,
+.image-gallery--dark .image__credit,
 .image-gallery--dark .link--text {
   color: #fff;
 }

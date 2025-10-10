@@ -8,3 +8,8 @@ listing:
     components/listing/listing.js: { }
   dependencies:
     - core/jquery
+
+image-gallery:
+  js:
+    node_modules/tiny-slider/dist/min/tiny-slider.js: { minified: true }
+    node_modules/tiny-slider/dist/tiny-slider.js: { minified: false }
