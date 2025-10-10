@@ -18,6 +18,7 @@ module.exports = {
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],
+    'components/image_gallery/image_gallery': ['./components/image_gallery/image_gallery.scss'],
     'components/link/link': ['./components/link/link.scss'],
     'components/listing/listing': ['./components/listing/listing.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],

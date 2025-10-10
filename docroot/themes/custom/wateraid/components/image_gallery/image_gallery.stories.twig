@@ -1,0 +1,48 @@
+{% stories image_gallery with { title: 'wateraid/Molecules/ImageGallery' } %}
+  {% story Default with {
+    name: 'Image gallery',
+    args: {
+      title: 'Image gallery'|t,
+    }
+  } %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
+    {% set description %}
+      <p>Description lorem ipsum dolor sit amet consectetur. Nec et in lectus adipiscing ut non urna lectus. Orci massa
+        justo eget morbi. Placerat tortor egestas potenti tortor proin malesuada ornare sed sapien.</p>
+      <p>Tellus integer donec ut urna iaculis. Fames morbi suspendisse augue libero posuere urna sociis semper. Quisque
+        natoque porta nullam lacus ac scelerisque quam.</p>
+    {% endset %}
+
+    {% set images = [
+      include('wateraid:image', {
+        image: image,
+        caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        credit: 'Lorem ipsum dolor sit amet.',
+        width: 'full',
+        caption_display: 'default'
+      }),
+      include('wateraid:image', {
+        image: image,
+        caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        credit: 'Lorem ipsum dolor sit amet.',
+        width: 'full',
+        caption_display: 'default'
+      }),
+      include('wateraid:image', {
+        image: image,
+        caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        credit: 'Lorem ipsum dolor sit amet.',
+        width: 'full',
+        caption_display: 'default'
+      }),
+    ] %}
+
+    {{ include('wateraid:image_gallery', {
+      title,
+      description,
+      images,
+    }) }}
+  {% endstory %}
+{% endstories %}

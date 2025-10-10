@@ -30,3 +30,20 @@
   background-color: transparent;
   box-shadow: none;
 }
+
+@mixin container-md {
+  width: 100%;
+  @include desktop() {
+    max-width: calculate-rem(1116);
+    margin-left: calculate-rem(114);
+  }
+}
+
+@mixin container-sm {
+  width: 100%;
+  max-width: calculate-rem(660);
+  @include desktop() {
+    margin-left: calculate-rem(114);
+  }
+}
+

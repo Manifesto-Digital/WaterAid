@@ -1,0 +1,78 @@
+@import "./sass/styles";
+
+.image-gallery {
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  position: relative;
+  right: 50%;
+  width: 100vw;
+
+  &__wrapper {
+    @include page-container();
+    @include grid();
+  }
+
+  &__content {
+    @include grid-item-span(4, 6, 4);
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-06;
+
+    &--title {
+      margin: 0;
+    }
+
+    &--description p:first-of-type {
+      margin-top: 0;
+    }
+
+    &--description p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__controls {
+    gap: $wa-spacing-02;
+
+    &.mobile {
+      display: flex;
+      @include desktop(){
+        display: none;
+      }
+    }
+
+    &.desktop {
+      display: none;
+      margin-top: $wa-spacing-06;
+      @include desktop(){
+        display: flex;
+      }
+    }
+  }
+
+  &__items {
+    @include grid-item-span(4, 6, 8);
+  }
+
+  &--light {
+
+  }
+
+  &--dark {
+    background-color: $wa-blue;
+    padding: $wa-spacing-09 0;
+
+    .image-gallery__content--title,
+    .image-gallery__content--description,
+    .link--text {
+      color: $wa-white;
+    }
+
+    .image__caption {
+      background-color: $wa-navy;
+      color: $wa-white;
+    }
+  }
+}

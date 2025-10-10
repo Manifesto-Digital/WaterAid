@@ -1,0 +1,33 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Image gallery
+status: stable
+description: Image gallery component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+      examples: []
+    description:
+      type: string
+      title: Subtitle
+      examples: [ ]
+    link:
+      type: [ "object", "null" ]
+      title: Link
+    image_items:
+      type: array
+      title: Image items
+      description: An array of image items
+      examples: []
+    theme:
+      type: string
+      title: theme
+      description: Using light theme or dark
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/image_gallery/image_gallery.css: {}
+  dependencies:
+    - wateraid/main

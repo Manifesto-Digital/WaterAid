@@ -1,0 +1,492 @@
+/**
+  * Libs
+  */
+
+/**
+  * Base
+  */
+
+.js-form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem;
+}
+
+.js-form-type-checkbox:hover {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  border-radius: .125rem;
+  border: .125rem solid #151435;
+  vertical-align: middle;
+}
+
+input[type=checkbox]:checked {
+  background-color: #151435;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+input[type=checkbox]:focus-visible {
+  outline: .25rem #ff96e6 solid;
+  box-shadow: 0 0 0 .125rem #151435;
+}
+
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, .pseudo-h1 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.625rem;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h1, .pseudo-h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2, .pseudo-h2 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2, .pseudo-h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3, .pseudo-h3 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h3, .pseudo-h3 {
+    font-size: 2.25rem;
+  }
+}
+
+h4, .pseudo-h4 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h5, .pseudo-h5 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h6, .pseudo-h6 {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+strong {
+  font-family: "Noto Sans Bold";
+}
+
+/**
+  * Elements
+  */
+
+/**
+  * Components - mostly controlled within SCD
+  */
+
+/**
+  * Layout
+  */
+
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, .pseudo-h1 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.625rem;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h1, .pseudo-h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2, .pseudo-h2 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2, .pseudo-h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3, .pseudo-h3 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h3, .pseudo-h3 {
+    font-size: 2.25rem;
+  }
+}
+
+h4, .pseudo-h4 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h5, .pseudo-h5 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h6, .pseudo-h6 {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+strong {
+  font-family: "Noto Sans Bold";
+}
+
+header {
+  padding: 24px 0;
+  border-bottom: #000 solid 1px;
+}
+
+header > div {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  header > div {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  header > div {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+header > div {
+  margin-left: 0;
+}
+
+header img {
+  display: block;
+  width: 200px;
+}
+
+.page-container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .page-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .page-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    margin-left: 7.125rem;
+  }
+}
+
+body {
+  font-family: "Noto Sans";
+}
+
+footer {
+  background-color: #43cfb5;
+}
+
+.image-gallery {
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  position: relative;
+  right: 50%;
+  width: 100vw;
+}
+
+.image-gallery__wrapper {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-gallery__wrapper {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__wrapper {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.image-gallery__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-gallery__wrapper {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__wrapper {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.image-gallery__content {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-gallery__content {
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__content {
+    grid-column: span 4;
+  }
+}
+
+.image-gallery__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.image-gallery__content--title {
+  margin: 0;
+}
+
+.image-gallery__content--description p:first-of-type {
+  margin-top: 0;
+}
+
+.image-gallery__content--description p:last-of-type {
+  margin-bottom: 0;
+}
+
+.image-gallery__controls {
+  gap: .5rem;
+}
+
+.image-gallery__controls.mobile {
+  display: flex;
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__controls.mobile {
+    display: none;
+  }
+}
+
+.image-gallery__controls.desktop {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__controls.desktop {
+    display: flex;
+  }
+}
+
+.image-gallery__items {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-gallery__items {
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__items {
+    grid-column: span 8;
+  }
+}
+
+.image-gallery--dark {
+  background-color: #006bd9;
+  padding: 3rem 0;
+}
+
+.image-gallery--dark .image-gallery__content--title,
+.image-gallery--dark .image-gallery__content--description,
+.image-gallery--dark .link--text {
+  color: #fff;
+}
+
+.image-gallery--dark .image__caption {
+  background-color: #151435;
+  color: #fff;
+}
+
+
+/*# sourceMappingURL=image_gallery.css.map*/
