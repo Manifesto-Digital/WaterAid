@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.listing_page.field_review_date
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
+    - field.field.node.listing_page.field_view
     - node.type.listing_page
   module:
     - user
@@ -42,5 +43,7 @@ hidden:
   field_content: true
   field_hero: true
   field_review_date: true
+  field_view: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true

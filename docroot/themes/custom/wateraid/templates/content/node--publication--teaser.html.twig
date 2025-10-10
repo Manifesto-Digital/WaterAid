@@ -70,16 +70,22 @@
   'theme': node.field_theme.0.entity.name.value,
 } %}
 
-{% set authors = [] %}
-{% for item in node.field_hero.0.entity.field_authors %}
-  {% set authors = authors|merge([item.entity.name.value]) %}
-{% endfor %}
+{% set authors = [author_name|render|striptags|trim] %}
+{% if node.co_authors %}
+  {% for item in node.co_authors %}
+    {% set authors = authors|merge([item.entity.name.value]) %}
+  {% endfor %}
+{% endif %}
+{% if node.field_author_override.value %}
+  {% set authors = authors|merge([node.field_author_override.value]) %}
+{% endif %}
 
 {{ include('wateraid:card', {
   attributes: attributes,
   heading: label,
   description: content.field_teaser_text,
   image_url: file_url(node.field_teaser_image[0].entity.field_media_image.entity.uri.value),
+  date: node.created.value,
   authors: authors,
   tags: tags,
   url: url,

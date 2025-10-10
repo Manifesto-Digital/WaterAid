@@ -24,6 +24,7 @@ display:
       fields:
         redirect_source__path:
           label: Från
+          separator: ', '
         created:
           label: Skapad
       filters:

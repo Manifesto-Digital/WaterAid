@@ -19,6 +19,7 @@ module.exports = {
     'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],
     'components/link/link': ['./components/link/link.scss'],
+    'components/listing/listing': ['./components/listing/listing.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
     'components/properties/properties': ['./components/properties/properties.scss'],
     'components/quote/quote': ['./components/quote/quote.scss'],

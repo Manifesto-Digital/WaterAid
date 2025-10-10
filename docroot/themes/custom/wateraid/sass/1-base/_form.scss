@@ -1,0 +1,41 @@
+@use "breakpoints";
+@use "colors";
+@use "spacing";
+@use "radius";
+@use "mixins";
+
+// Checkboxes
+.js-form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: spacing.$wa-spacing-03;
+  padding: spacing.$wa-spacing-03;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  width: spacing.$wa-spacing-06;
+  height: spacing.$wa-spacing-06;
+  background: colors.$wa-white;
+  border-radius: radius.$radius-xxs;
+  border: mixins.calculate-rem(2) solid colors.$wa-navy;
+  vertical-align: middle;
+
+
+  &:checked {
+    background-color: colors.$wa-navy;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+  }
+
+  &:focus-visible {
+    outline: spacing.$wa-spacing-01 colors.$wa-pink solid;
+    box-shadow: 0 0 0 mixins.calculate-rem(2) colors.$wa-navy;
+  }
+}

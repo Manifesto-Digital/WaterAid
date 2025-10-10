@@ -5,6 +5,9 @@ display:
     display_title: Förvald
     display_options:
       title: 'Nyligen uppdaterat innehåll'
+      fields:
+        changed:
+          separator: ', '
       exposed_form:
         options:
           submit_button: Applicera

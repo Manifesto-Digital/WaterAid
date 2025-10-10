@@ -18,7 +18,7 @@
   }
 
   &:hover::before {
-    transform: translateX(-$wa-spacing-01) translateY($wa-spacing-01);
+    transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
     left: 0;
     height: 100%;
     width: 100%;
@@ -91,7 +91,12 @@
     }
   }
 
-  &__tags {
-    padding-top: $wa-spacing-01;
+  &__tags span {
+    margin-top: $wa-spacing-01;
+  }
+
+  &--teaser {
+    border: $wa-spacing-01 $wa-white solid;
+    height: 100%;
   }
 }
