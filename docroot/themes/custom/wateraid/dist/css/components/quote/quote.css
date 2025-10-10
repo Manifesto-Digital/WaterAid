@@ -328,13 +328,24 @@ header img {
   }
 }
 
-.container {
+.container-md {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
   width: 100%;
   max-width: 41.25rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .container-sm {
     margin-left: 7.125rem;
   }
 }

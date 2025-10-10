@@ -328,13 +328,24 @@ header img {
   }
 }
 
-.container {
+.container-md {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
   width: 100%;
   max-width: 41.25rem;
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .container-sm {
     margin-left: 7.125rem;
   }
 }
@@ -473,54 +484,76 @@ footer {
   position: relative;
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--full {
+[data-component-id="wateraid:video"].video--full .video__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:video"] .video__wrapper--full {
+  [data-component-id="wateraid:video"].video--full .video__wrapper {
     grid-column: span 6;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:video"] .video__wrapper--full {
+  [data-component-id="wateraid:video"].video--full .video__wrapper {
     grid-column: span 12;
   }
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--full {
+[data-component-id="wateraid:video"].video--full .video__wrapper {
   height: auto;
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--large {
+[data-component-id="wateraid:video"].video--large {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"].video--large {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+[data-component-id="wateraid:video"].video--large .video__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:video"] .video__wrapper--large {
-    grid-column: span 5;
+  [data-component-id="wateraid:video"].video--large .video__wrapper {
+    grid-column: span 6;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:video"] .video__wrapper--large {
-    grid-column: span 10;
+  [data-component-id="wateraid:video"].video--large .video__wrapper {
+    grid-column: span 12;
   }
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--small {
+[data-component-id="wateraid:video"].video--small {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"].video--small {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+[data-component-id="wateraid:video"].video--small .video__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:video"] .video__wrapper--small {
+  [data-component-id="wateraid:video"].video--small .video__wrapper {
     grid-column: span 3;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:video"] .video__wrapper--small {
+  [data-component-id="wateraid:video"].video--small .video__wrapper {
     grid-column: span 6;
   }
 }

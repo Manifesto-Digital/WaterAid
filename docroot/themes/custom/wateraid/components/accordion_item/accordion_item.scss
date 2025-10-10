@@ -35,6 +35,11 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+    .container-sm {
+      @include desktop(){
+        margin: 0;
+      }
+    }
   }
 }
 

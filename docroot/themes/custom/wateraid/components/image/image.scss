@@ -1,11 +1,6 @@
 @import "./sass/styles";
 
 .image {
-  margin-top: $wa-spacing-07;
-  @include desktop {
-    margin-top: $wa-spacing-09;
-  }
-
   // Image widths.
   &__wrapper {
     position: relative;
@@ -45,7 +40,7 @@
     @include container-md();
 
     .image__wrapper {
-      width: 100%;
+      @include grid-item-span(4, 6, 12);
     }
   }
 
@@ -59,6 +54,7 @@
   }
 
   img {
+    display: block;
     width: 100%;
     height: auto;
   }

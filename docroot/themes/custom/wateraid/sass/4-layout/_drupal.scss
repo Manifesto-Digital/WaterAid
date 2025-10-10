@@ -21,7 +21,11 @@ header {
   @include page-container;
 }
 
-.container {
+.container-md {
+  @include container-md();
+}
+
+.container-sm {
   @include container-sm();
 }
 
