@@ -3,7 +3,7 @@
     attach(context) {
       function initSlider(gallery) {
         var slider = tns({
-          container: ".image-gallery__slider",
+          container: gallery.querySelector(".image-gallery__slider"),
           items: 1,
           slideBy: "page",
           autoplay: false,

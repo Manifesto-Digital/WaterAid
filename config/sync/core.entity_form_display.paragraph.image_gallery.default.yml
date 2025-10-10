@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.image_gallery.field_images
     - field.field.paragraph.image_gallery.field_link
     - field.field.paragraph.image_gallery.field_rich_text
+    - field.field.paragraph.image_gallery.field_theme
     - field.field.paragraph.image_gallery.field_title
     - paragraphs.paragraphs_type.image_gallery
   module:
@@ -19,7 +20,7 @@ mode: default
 content:
   field_images:
     type: layout_paragraphs
-    weight: 3
+    weight: 4
     region: content
     settings:
       view_mode: default
@@ -31,7 +32,7 @@ content:
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 2
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
@@ -39,15 +40,21 @@ content:
     third_party_settings: {  }
   field_rich_text:
     type: text_textarea
-    weight: 1
+    weight: 2
     region: content
     settings:
       rows: 2
       placeholder: ''
     third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60

@@ -6,11 +6,13 @@ dependencies:
     - field.field.paragraph.image_gallery.field_images
     - field.field.paragraph.image_gallery.field_link
     - field.field.paragraph.image_gallery.field_rich_text
+    - field.field.paragraph.image_gallery.field_theme
     - field.field.paragraph.image_gallery.field_title
     - paragraphs.paragraphs_type.image_gallery
   module:
     - entity_reference_revisions
     - link
+    - options
     - text
 id: paragraph.image_gallery.default
 targetEntityType: paragraph
@@ -44,6 +46,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_theme:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_title:
     type: string
