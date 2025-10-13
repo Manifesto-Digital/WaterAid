@@ -33,6 +33,7 @@ process:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
   field_minimal_header: field_header_style
   field_content:

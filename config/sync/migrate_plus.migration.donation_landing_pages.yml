@@ -40,6 +40,7 @@ process:
     plugin: migration_lookup
     migration: donation_landing_pages
     source: field_wa_donation_page_template
+    no_stub: true
   field_meta_tags: field_meta_tags
   field_subtext: field_subtext
   field_template: field_wa_donation_template
@@ -47,6 +48,7 @@ process:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
   field_content:
     -

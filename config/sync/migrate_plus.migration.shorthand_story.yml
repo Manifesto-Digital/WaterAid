@@ -41,75 +41,121 @@ process:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
+    no_stub: true
   field_country:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+    no_stub: true
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
     source: field_get_involved_terms
+    no_stub: true
   field_hide_from_listing: field_hide_from_listing
   field_hide_related_content: field_hide_related_content
   field_meta_tags: field_meta_tags
   field_override_related_content: field_override_related
-  field_related_content:
+  temp_articles:
     -
       plugin: migration_lookup
       migration: articles
       source: field_related_content
+      no_stub: true
+  temp_campaigns:
     -
       plugin: migration_lookup
       migration: campaigns
       source: field_related_content
+      no_stub: true
+  temp_country_details:
     -
       plugin: migration_lookup
       migration: country_details
       source: field_related_content
+      no_stub: true
+  temp_events:
     -
       plugin: migration_lookup
       migration: events
       source: field_related_content
+      no_stub: true
+  temp_filtered_landing_pages:
     -
       plugin: migration_lookup
       migration: filtered_landing_pages
       source: field_related_content
+      no_stub: true
+  temp_flexible_content:
     -
       plugin: migration_lookup
       migration: flexible_content
       source: field_related_content
+      no_stub: true
+  temp_get_involved:
     -
       plugin: migration_lookup
       migration: get_involved_node
       source: field_related_content
+      no_stub: true
+  temp_press_and_media:
+      plugin: migration_lookup
+      migration: press_and_media
+      source: field_related_content
+      no_stub: true
+  temp_jobs:
     -
       plugin: migration_lookup
       migration: jobs
       source: field_related_content
-    -
-      plugin: migration_lookup
-      migration: press_and_media
-      source: field_related_content
+      no_stub: true
+  temp_press_and_media_biographies:
     -
       plugin: migration_lookup
       migration: press_and_media_biographies
       source: field_related_content
+      no_stub: true
+  temp_publication:
     -
       plugin: migration_lookup
       migration: publication
       source: field_related_content
+      no_stub: true
+  temp_shorthand_story:
     -
       plugin: migration_lookup
       migration: shorthand_story
       source: field_related_content
+      no_stub: true
+  temp_standard_page:
     -
       plugin: migration_lookup
       migration: standard_page
       source: field_related_content
+      no_stub: true
+  temp_stories:
     -
       plugin: migration_lookup
       migration: stories
       source: field_related_content
+      no_stub: true
+  field_related_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_articles'
+      - '@temp_campaigns'
+      - '@temp_country_details'
+      - '@temp_events'
+      - '@temp_filtered_landing_pages'
+      - '@temp_flexible_content'
+      - '@temp_get_involved'
+      - '@temp_press_and_media'
+      - '@temp_jobs'
+      - '@temp_press_and_media_biographies'
+      - '@temp_publication'
+      - '@temp_shorthand_story'
+      - '@temp_standard_page'
+      - '@temp_stories'
   field_related_content_type:
     -
       plugin: skip_on_empty
@@ -133,10 +179,12 @@ process:
     plugin: migration_lookup
     migration: themes
     source: field_themes
+    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
 destination:
   plugin: 'entity:node'

@@ -32,15 +32,18 @@ process:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+    no_stub: true
   field_meta_tags: field_meta_tags
   field_theme:
     plugin: migration_lookup
     migration: themes
     source: field_themes
+    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_content:
     -
       plugin: body_to_paragraph

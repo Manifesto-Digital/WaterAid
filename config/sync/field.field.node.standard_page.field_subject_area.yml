@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_subject_area
     - node.type.standard_page
+    - taxonomy.vocabulary.subject_areas
 id: node.standard_page.field_subject_area
 field_name: field_subject_area
 entity_type: node
@@ -18,7 +19,8 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles: {  }
+    target_bundles:
+      subject_areas: subject_areas
     sort:
       field: name
       direction: asc

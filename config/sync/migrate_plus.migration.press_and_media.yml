@@ -37,28 +37,34 @@ process:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
+    no_stub: true
   field_country:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+    no_stub: true
   field_force_download: field_force_download
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
     source: field_get_involved_terms
+    no_stub: true
   field_meta_tags: field_meta_tags
   co_authors:
     plugin: migration_lookup
     migration: users
     source: field_author
+    no_stub: true
   field_theme:
     plugin: migration_lookup
     migration: themes
     source: field_themes
+    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
   field_content:
     -
