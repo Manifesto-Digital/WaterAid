@@ -10,7 +10,11 @@ dependencies:
     - field.field.node.article.field_country
     - field.field.node.article.field_get_involved
     - field.field.node.article.field_hero
+    - field.field.node.article.field_hide_related_content
+    - field.field.node.article.field_override_related_content
     - field.field.node.article.field_post_description
+    - field.field.node.article.field_related_content
+    - field.field.node.article.field_related_content_type
     - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
@@ -91,8 +95,13 @@ hidden:
   co_authors: true
   field_content: true
   field_hero: true
+  field_hide_related_content: true
+  field_override_related_content: true
   field_post_description: true
+  field_related_content: true
+  field_related_content_type: true
   field_review_date: true
   field_weight: true
   langcode: true
   reading_time: true
+  search_api_excerpt: true

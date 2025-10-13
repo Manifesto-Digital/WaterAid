@@ -220,3 +220,4 @@ hidden:
   field_teaser_text: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true
