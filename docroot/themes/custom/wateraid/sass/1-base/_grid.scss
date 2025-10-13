@@ -31,11 +31,11 @@ $grid-gap-tablet: spacing.$wa-spacing-06;
 @mixin grid {
   display: grid;
   grid-template-columns: repeat($grid-cols-mobile, 1fr);
-  column-gap: $grid-gap-mobile;
+  gap: $grid-gap-mobile;
 
   @include breakpoints.tablet {
     grid-template-columns: repeat($grid-cols-tablet, 1fr);
-    column-gap: $grid-gap-tablet;
+    gap: $grid-gap-tablet;
   }
 
   @include breakpoints.desktop {

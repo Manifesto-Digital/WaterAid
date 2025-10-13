@@ -1,0 +1,79 @@
+@import "./sass/styles";
+
+.image-gallery {
+  @include page-container;
+
+  margin-top: $wa-spacing-07;
+
+  @include desktop() {
+    margin-top: $wa-spacing-09;
+  }
+
+  &__wrapper {
+    @include grid();
+  }
+
+  &__content {
+    @include grid-item-span(4, 6, 4);
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-06;
+
+    &--title {
+      margin: 0;
+    }
+
+    &--description p:first-of-type {
+      margin-top: 0;
+    }
+
+    &--description p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__controls {
+    gap: $wa-spacing-02;
+
+    &.mobile {
+      display: flex;
+      @include desktop() {
+        display: none;
+      }
+    }
+
+    &.desktop {
+      display: none;
+      margin-top: $wa-spacing-06;
+      @include desktop() {
+        display: flex;
+      }
+    }
+  }
+
+  &__items {
+    @include grid-item-span(4, 6, 8);
+  }
+
+  &--light {
+    padding: 0;
+  }
+
+  &--dark {
+    background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");
+    background-size: 100% 100%;
+    padding: $wa-spacing-09;
+
+    .image-gallery__content--title,
+    .image-gallery__content--description,
+    .image__credit,
+    .link--text {
+      color: $wa-white;
+    }
+
+    .image__caption {
+      background-color: $wa-navy;
+      color: $wa-white;
+    }
+  }
+}
