@@ -83,10 +83,6 @@ process:
         migration: general_text_area
         source: field_modules
         no_stub: true
-    -
-      plugin: skip_on_empty
-      source: general_text_area
-      method: process
   field_content:
     plugin: merge_without_exception
     source:

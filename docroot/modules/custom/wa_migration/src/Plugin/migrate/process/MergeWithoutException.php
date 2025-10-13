@@ -58,8 +58,17 @@ class MergeWithoutException extends ProcessPluginBase {
 
     if (is_array($value)) {
       foreach ($value as $item) {
-        if ($item) {
-          $return[] = $item;
+        if (!empty($item)) {
+          if (is_array($item)) {
+            foreach ($item as $sub) {
+              if (!empty($sub)) {
+                $return[] = $sub;
+              }
+            }
+          }
+          else {
+            $return[] = $item;
+          }
         }
       }
     }

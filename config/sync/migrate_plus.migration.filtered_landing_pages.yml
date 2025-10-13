@@ -24,6 +24,7 @@ source:
     - field_meta_tags
     - field_rss
     - field_weight
+    - field_modules
 process:
   langcode:
     -
@@ -44,10 +45,21 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_content:
+  temp_body:
     -
       plugin: body_to_paragraph
       source: body__value
+  temp_general_text_area:
+    -
+      plugin: migration_lookup
+      migration: general_text_area
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_general_text_area'
 destination:
   plugin: 'entity:node'
   default_bundle: listing_page
@@ -55,4 +67,5 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - general_text_area
 include: null

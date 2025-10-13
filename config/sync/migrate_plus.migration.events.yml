@@ -32,6 +32,7 @@ source:
     - field_synopsis
     - field_themes
     - field_weight
+    - field_modules
 process:
   langcode:
     -
@@ -84,10 +85,21 @@ process:
     source: uid
     no_stub: true
   field_weight: field_weight
-  field_content:
+  temp_body:
     -
       plugin: body_to_paragraph
       source: body__value
+  temp_general_text_area:
+    -
+      plugin: migration_lookup
+      migration: general_text_area
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_general_text_area'
 destination:
   plugin: 'entity:node'
   default_bundle: event
@@ -100,4 +112,5 @@ migration_dependencies:
     - get_involved
     - themes
     - users
+    - general_text_area
 include: null
