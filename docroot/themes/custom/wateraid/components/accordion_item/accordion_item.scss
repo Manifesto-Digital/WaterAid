@@ -36,5 +36,13 @@
     overflow: hidden;
     transition: max-height 0.2s ease-out;
   }
+  .quote {
+    color: $wa-navy;
+    background-color: $wa-white;
+
+    &__content {
+      padding: $wa-spacing-07 0;
+    }
+  }
 }
 

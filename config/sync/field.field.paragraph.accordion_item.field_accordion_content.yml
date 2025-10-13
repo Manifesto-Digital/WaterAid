@@ -16,7 +16,7 @@ entity_type: paragraph
 bundle: accordion_item
 label: 'Accordion content'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

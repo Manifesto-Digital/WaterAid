@@ -16,13 +16,13 @@
         {{ include('@wateraid/images/icons/wa-icon-quote-mark.svg') }}
       </div>
       <div class="quote__content--wrapper">
-        <div class="quote__content--quote">
+        <blockquote class="quote__content--quote">
           {{ quote }}
-        </div>
+        </blockquote>
         {% if citation %}
-          <div class="quote__content--citation">
+          <cite class="quote__content--citation">
             {{ citation }}
-          </div>
+          </cite>
         {% endif %}
       </div>
     </div>

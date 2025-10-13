@@ -6,6 +6,40 @@
   * Base
   */
 
+.js-form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem;
+}
+
+.js-form-type-checkbox:hover {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  border-radius: .125rem;
+  border: .125rem solid #151435;
+  vertical-align: middle;
+}
+
+input[type=checkbox]:checked {
+  background-color: #151435;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+input[type=checkbox]:focus-visible {
+  outline: .25rem #ff96e6 solid;
+  box-shadow: 0 0 0 .125rem #151435;
+}
+
 @font-face {
   font-family: "RB Nylo Black";
   src: url("../../fonts/RBNylo-Black.otf") format("opentype");
@@ -110,6 +144,32 @@ p {
   p {
     font-size: 1.25rem;
   }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
 }
 
 strong {
@@ -232,6 +292,32 @@ p {
   p {
     font-size: 1.25rem;
   }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
 }
 
 strong {
@@ -526,6 +612,10 @@ footer {
 .button__svg {
   -moz-text-align-last: center;
        text-align-last: center;
+}
+
+.button__svg svg {
+  vertical-align: middle;
 }
 
 .button__svg--left svg {

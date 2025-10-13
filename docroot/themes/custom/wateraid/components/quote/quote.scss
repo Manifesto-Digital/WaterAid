@@ -24,11 +24,13 @@
 
     &--quote {
       @include h4();
+      margin: 0;
     }
 
     &--citation {
       @include paragraph-sm();
 
+      display: block;
       margin-top: calculate-rem(22);
     }
   }
