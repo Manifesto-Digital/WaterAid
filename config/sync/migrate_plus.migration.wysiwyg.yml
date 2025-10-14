@@ -1,28 +1,30 @@
+uuid: 1c37afdc-c90b-438b-ac82-5a5405b69d85
+langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - wa_migration
-id: general_text_area
+id: wysiwyg
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - Database
 migration_group: wateraid_uk
-label: 'General Text Area'
+label: WYSIWYG
 source:
   plugin: paragraph_source
-  bundle: general_text_area
+  bundle: wysiwyg
   fields:
-    - field_paragraph_content
+    - field_wysiwyg_text_block
 process:
   langcode:
     -
       plugin: default_value
       default_value: en
   status: status
-  field_rich_text/value: field_paragraph_content
+  field_rich_text/value: field_wysiwyg_text_block
   field_rich_text/format:
     -
       plugin: default_value

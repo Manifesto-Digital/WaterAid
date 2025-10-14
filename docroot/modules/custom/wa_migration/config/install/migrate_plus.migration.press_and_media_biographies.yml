@@ -18,6 +18,7 @@ source:
     - field_countries
     - field_meta_tags
     - field_themes
+    - field_modules
 process:
   langcode:
     -
@@ -30,19 +31,39 @@ process:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+    no_stub: true
   field_meta_tags: field_meta_tags
   field_theme:
     plugin: migration_lookup
     migration: themes
     source: field_themes
+    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
-  field_content:
+    no_stub: true
+  temp_body:
     -
       plugin: body_to_paragraph
       source: body__value
+  temp_general_text_area:
+    -
+      plugin: migration_lookup
+      migration: general_text_area
+      source: field_modules
+      no_stub: true
+  temp_wysiwyg:
+    - plugin: migration_lookup
+      migration: wysiwyg
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_general_text_area'
+      - '@temp_wysiwyg'
 destination:
   plugin: 'entity:node'
   default_bundle: standard_page
@@ -52,4 +73,6 @@ migration_dependencies:
     - countries
     - themes
     - users
+    - general_text_area
+    - wysiwyg
 include: null

@@ -28,6 +28,7 @@ source:
     - field_themes
     - field_topic
     - field_weight
+    - field_modules
 process:
   langcode:
     -
@@ -41,18 +42,22 @@ process:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
+    no_stub: true
   field_country:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+    no_stub: true
   field_event_type:
     plugin: migration_lookup
     migration: event_types
     source: field_event_type
+    no_stub: true
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
     source: field_get_involved_terms
+    no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
   field_regions: field_regions
@@ -61,23 +66,44 @@ process:
     plugin: migration_lookup
     migration: subject_areas
     source: field_subject_areas
+    no_stub: true
   field_theme:
     plugin: migration_lookup
     migration: themes
     source: field_themes
+    no_stub: true
   field_topic:
     plugin: migration_lookup
     migration: topic
     source: field_topic
+    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
-  field_content:
+  temp_body:
     -
       plugin: body_to_paragraph
       source: body__value
+  temp_general_text_area:
+    -
+      plugin: migration_lookup
+      migration: general_text_area
+      source: field_modules
+      no_stub: true
+  temp_wysiwyg:
+    - plugin: migration_lookup
+      migration: wysiwyg
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_general_text_area'
+      - '@temp_wysiwyg'
 destination:
   plugin: 'entity:node'
   default_bundle: standard_page
@@ -92,4 +118,6 @@ migration_dependencies:
     - themes
     - topic
     - users
+    - general_text_area
+    - wysiwyg
 include: null

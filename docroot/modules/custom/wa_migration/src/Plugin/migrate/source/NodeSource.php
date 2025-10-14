@@ -80,7 +80,7 @@ final class NodeSource extends SqlBase {
   public function prepareRow(Row $row): bool {
     if (isset($this->configuration['fields'])) {
       foreach ($this->configuration['fields'] as $field) {
-        $value = NULL;
+        $value = [];
 
         if ($data = $this->select('node__' . $field, 'f')
           ->fields('f')
@@ -88,10 +88,10 @@ final class NodeSource extends SqlBase {
           ->execute()->fetchAll()) {
           foreach ($data as $values) {
             if (isset($values[$field . '_value'])) {
-              $value = [$values[$field . '_value']];
+              $value[] = $values[$field . '_value'];
             }
             elseif (isset($values[$field . '_target_id'])) {
-              $value = [$values[$field . '_target_id']];
+              $value[] = $values[$field . '_target_id'];
             }
             elseif ((isset($values[$field . '_uri']))) {
               $row->setSourceProperty($field . '_uri', $values[$field . '_uri']);
@@ -99,6 +99,8 @@ final class NodeSource extends SqlBase {
             }
           }
         }
+
+        $value = (empty($value)) ? NULL : $value;
 
         $row->setSourceProperty($field, $value);
       }

@@ -99,10 +99,10 @@ process:
       source: field_related_content
       no_stub: true
   temp_press_and_media:
-      plugin: migration_lookup
-      migration: press_and_media
-      source: field_related_content
-      no_stub: true
+    plugin: migration_lookup
+    migration: press_and_media
+    source: field_related_content
+    no_stub: true
   temp_jobs:
     -
       plugin: migration_lookup
@@ -193,7 +193,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences
-    - articles
     - campaigns
     - countries
     - country_details
@@ -210,4 +209,5 @@ migration_dependencies:
     - stories
     - themes
     - users
+    - articles
 include: null

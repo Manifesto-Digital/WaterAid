@@ -35,6 +35,7 @@ process:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
 destination:
   plugin: 'entity:node'
   default_bundle: standard_page

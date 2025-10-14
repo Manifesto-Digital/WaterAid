@@ -51,6 +51,7 @@ process:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
+    no_stub: true
   field_banner_title: field_banner_title
   field_banner_title_space: field_banner_title_space
   field_colour_selector: field_colour_selector
@@ -58,6 +59,7 @@ process:
     plugin: migration_lookup
     migration: countries
     source: field_countries
+    no_stub: true
   field_registration_link/uri: field_event_registration_link_uri
   field_registration_link/title: field_event_registration_link_title
   field_cta_title: field_event_cta_title
@@ -65,11 +67,13 @@ process:
     plugin: migration_lookup
     migration: event_types
     source: field_event_type
+    no_stub: true
   field_get_involved_section_title: field_get_involved_section_title
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
     source: field_get_involved_terms
+    no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
   field_regions: field_regions
@@ -79,20 +83,24 @@ process:
     plugin: migration_lookup
     migration: subject_areas
     source: field_subject_areas
+    no_stub: true
   field_synopsis: field_synopsis
   field_synopsis_background_colour: field_synopsis_background_colour
   field_theme:
     plugin: migration_lookup
     migration: themes
     source: field_themes
+    no_stub: true
   field_topic:
     plugin: migration_lookup
     migration: topic
     source: field_topic
+    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
   field_content:
     -

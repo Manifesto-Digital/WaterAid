@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Drupal\wa_migration\Plugin\migrate\process;
 
-use Drupal\migrate\MigrateException;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * This plugin merges arrays together.
@@ -48,7 +50,32 @@ use Drupal\migrate\Row;
  *  destination:
  *    plugin: 'entity:node'
  */
-class MergeWithoutException extends ProcessPluginBase {
+class MergeWithoutException extends ProcessPluginBase implements ContainerFactoryPluginInterface {
+
+
+  /**
+   * Constructs the plugin instance.
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
+    return new self(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -76,7 +103,31 @@ class MergeWithoutException extends ProcessPluginBase {
       $return = $value;
     }
 
-    return (empty($return)) ? NULL : $return;
+    // If we have an entity id here, try to load it.
+    if (!empty($return)) {
+      $entity_type = ($destination_property == 'field_content') ? 'paragraph' : 'node';
+      $storage = $this->entityTypeManager->getStorage($entity_type);
+
+      foreach ($return as $key => $item) {
+        if (is_int($item) || is_string($item)) {
+
+          /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+          if ($entity = $storage->load($item)) {
+
+            // Make sure the paragraph parent update gets saved.
+            if ($entity_type == 'paragraph') {
+              $entity->setNeedsSave(TRUE);
+            }
+            $return[$key] = $entity;
+          }
+        }
+      }
+    }
+    else {
+      $return = NULL;
+    }
+
+    return $return;
   }
 
 }

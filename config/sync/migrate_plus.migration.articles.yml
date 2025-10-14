@@ -139,12 +139,6 @@ process:
       migration: publication
       source: field_related_content
       no_stub: true
-  temp_shorthand_story:
-    -
-      plugin: migration_lookup
-      migration: shorthand_story
-      source: field_related_content
-      no_stub: true
   temp_standard_page:
     -
       plugin: migration_lookup
@@ -171,7 +165,6 @@ process:
       - '@temp_jobs'
       - '@temp_press_and_media_biographies'
       - '@temp_publication'
-      - '@temp_shorthand_story'
       - '@temp_standard_page'
       - '@temp_stories'
   field_related_content_type:
@@ -203,11 +196,17 @@ process:
       migration: general_text_area
       source: field_modules
       no_stub: true
+  temp_wysiwyg:
+    - plugin: migration_lookup
+      migration: wysiwyg
+      source: field_modules
+      no_stub: true
   field_content:
     plugin: merge_without_exception
     source:
       - '@temp_body'
       - '@temp_general_text_area'
+      - '@temp_wysiwyg'
 destination:
   plugin: 'entity:node'
   default_bundle: article
@@ -232,4 +231,5 @@ migration_dependencies:
     - themes
     - users
     - general_text_area
+    - wysiwyg
 include: null

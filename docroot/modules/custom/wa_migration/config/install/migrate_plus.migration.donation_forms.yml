@@ -29,6 +29,7 @@ process:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_content:
     -
       plugin: body_to_paragraph

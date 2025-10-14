@@ -23,6 +23,7 @@ source:
     - field_subtext
     - field_wa_donation_template
     - field_weight
+    - field_modules
 process:
   langcode:
     -
@@ -38,6 +39,7 @@ process:
     plugin: migration_lookup
     migration: donation_landing_pages
     source: field_wa_donation_page_template
+    no_stub: true
   field_meta_tags: field_meta_tags
   field_subtext: field_subtext
   field_template: field_wa_donation_template
@@ -45,11 +47,29 @@ process:
     plugin: migration_lookup
     migration: users
     source: uid
+    no_stub: true
   field_weight: field_weight
-  field_content:
+  temp_body:
     -
       plugin: body_to_paragraph
       source: body__value
+  temp_general_text_area:
+    -
+      plugin: migration_lookup
+      migration: general_text_area
+      source: field_modules
+      no_stub: true
+  temp_wysiwyg:
+    - plugin: migration_lookup
+      migration: wysiwyg
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_general_text_area'
+      - '@temp_wysiwyg'
 destination:
   plugin: 'entity:node'
   default_bundle: donation
@@ -57,4 +77,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - general_text_area
+    - wysiwyg
 include: null

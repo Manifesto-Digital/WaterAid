@@ -20,6 +20,7 @@ source:
     - field_header_style
     - field_meta_tags
     - field_weight
+    - field_modules
 process:
   langcode:
     -
@@ -36,10 +37,27 @@ process:
     no_stub: true
   field_weight: field_weight
   field_minimal_header: field_header_style
-  field_content:
+  temp_body:
     -
       plugin: body_to_paragraph
       source: body__value
+  temp_general_text_area:
+    -
+      plugin: migration_lookup
+      migration: general_text_area
+      source: field_modules
+      no_stub: true
+  temp_wysiwyg:
+    - plugin: migration_lookup
+      migration: wysiwyg
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_general_text_area'
+      - '@temp_wysiwyg'
 destination:
   plugin: 'entity:node'
   default_bundle: standard_page
@@ -47,4 +65,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - general_text_area
+    - wysiwyg
 include: null
