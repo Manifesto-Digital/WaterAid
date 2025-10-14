@@ -1,0 +1,49 @@
+@import "./sass/styles";
+
+.m-text-media {
+  @include grid();
+  gap: $wa-spacing-07;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+    gap: $wa-spacing-06
+  }
+
+  &__media {
+    margin: 0;
+    img {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 50%;
+    }
+    @include desktop {
+      width: 40%;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      background-color: $wa-cream;
+      padding: $wa-spacing-03;
+    }
+
+    &--caption {
+      color: $wa-navy;
+      @include font-size(16, 24);
+    }
+
+    &--credit {
+      color: $wa-navy-80;
+      @include font-size(14, 21);
+    }
+  }
+
+  &__text {
+    @include tablet {
+      align-self: center;
+      width: 50%;
+    }
+  }
+}

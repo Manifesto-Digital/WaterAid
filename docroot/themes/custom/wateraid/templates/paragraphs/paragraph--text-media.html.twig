@@ -1,0 +1,17 @@
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ include('wateraid:text_media', {
+      text: content.field_rich_text,
+      image: content.field_image,
+      caption: content.field_caption,
+      image_alignment: paragraph.field_image_alignment.value
+    }, with_context = false) }}
+  </div>
+{% endblock paragraph %}
