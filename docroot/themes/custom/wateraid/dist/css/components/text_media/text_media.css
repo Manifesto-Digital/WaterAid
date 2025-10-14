@@ -431,13 +431,27 @@ footer {
 
 .m-text-media {
   gap: 2rem;
-  flex-direction: column;
 }
 
 @media only screen and (min-width: 768px) {
   .m-text-media {
-    flex-direction: row;
     gap: 1.5rem;
+  }
+}
+
+.m-text-media__text, .m-text-media__media {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .m-text-media__text, .m-text-media__media {
+    grid-column: span 3;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .m-text-media__text, .m-text-media__media {
+    grid-column: span 6;
   }
 }
 
@@ -447,18 +461,6 @@ footer {
 
 .m-text-media__media img {
   width: 100%;
-}
-
-@media only screen and (min-width: 768px) {
-  .m-text-media__media {
-    width: 50%;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .m-text-media__media {
-    width: 40%;
-  }
 }
 
 .m-text-media__media--wrapper {
@@ -480,11 +482,8 @@ footer {
   line-height: 1.3125rem;
 }
 
-@media only screen and (min-width: 768px) {
-  .m-text-media__text {
-    align-self: center;
-    width: 50%;
-  }
+.m-text-media--image_left .m-text-media__media {
+  order: -1;
 }
 
 

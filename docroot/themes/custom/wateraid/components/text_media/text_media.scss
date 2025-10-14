@@ -3,23 +3,23 @@
 .m-text-media {
   @include grid();
   gap: $wa-spacing-07;
-  flex-direction: column;
   @include tablet {
-    flex-direction: row;
     gap: $wa-spacing-06
+  }
+
+  &__text,
+  &__media {
+    @include grid-item-span(
+      $col-span-mobile: $grid-cols-mobile,
+      $col-span-tablet: 3,
+      $col-span-desktop: 6
+    );
   }
 
   &__media {
     margin: 0;
     img {
       width: 100%;
-    }
-
-    @include tablet {
-      width: 50%;
-    }
-    @include desktop {
-      width: 40%;
     }
 
     &--wrapper {
@@ -40,10 +40,10 @@
     }
   }
 
-  &__text {
-    @include tablet {
-      align-self: center;
-      width: 50%;
+  &--image_left {
+    .m-text-media__media {
+      // ...target the child media element and apply the order property to it.
+      order: -1;
     }
   }
 }

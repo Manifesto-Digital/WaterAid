@@ -9,9 +9,10 @@
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:text_media', {
       text: content.field_rich_text,
-      image: content.field_image,
+      media: content.field_media,
       caption: content.field_caption,
-      image_alignment: paragraph.field_image_alignment.value
+      credit: content.field_credit,
+      alignment: paragraph.field_image_position.0.value
     }, with_context = false) }}
   </div>
 {% endblock paragraph %}
