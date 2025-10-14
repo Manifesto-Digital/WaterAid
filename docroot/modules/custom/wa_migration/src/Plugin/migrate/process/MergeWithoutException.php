@@ -105,7 +105,7 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
 
     // If we have an entity id here, try to load it.
     if (!empty($return)) {
-      $entity_type = ($destination_property == 'field_content') ? 'paragraph' : 'node';
+      $entity_type = ($destination_property == 'field_related_content') ? 'node' : 'paragraph';
       $storage = $this->entityTypeManager->getStorage($entity_type);
 
       foreach ($return as $key => $item) {

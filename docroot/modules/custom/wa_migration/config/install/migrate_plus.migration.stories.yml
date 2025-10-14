@@ -77,13 +77,21 @@ process:
       source: field_modules
       no_stub: true
   temp_menu_cta:
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: menu_cta
       source: field_modules
       no_stub: true
   temp_resource_link_with_description:
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: resource_link_with_description
+      source: field_modules
+      no_stub: true
+  temp_faqs:
+    -
+      plugin: migration_lookup
+      migration: faqs
       source: field_modules
       no_stub: true
   field_content:
@@ -94,6 +102,7 @@ process:
       - '@temp_wysiwyg'
       - '@temp_menu_cta'
       - '@temp_resource_link_with_description'
+      - '@temp_faqs'
 destination:
   plugin: 'entity:node'
   default_bundle: story
@@ -109,4 +118,5 @@ migration_dependencies:
     - wysiwyg
     - menu_cta
     - resource_link_with_description
+    - faqs
 include: null
