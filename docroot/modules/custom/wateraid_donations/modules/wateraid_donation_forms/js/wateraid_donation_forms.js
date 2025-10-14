@@ -54,7 +54,7 @@
       'step': 0
     },
     initialize: function (params) {
-      alert('hello');
+      // alert('hello');
       let amount_defaults = params.amount_defaults;
       let frequency = amount_defaults.frequency_default;
       let default_frequency_settings = amount_defaults[frequency];
@@ -484,7 +484,7 @@
    */
   Drupal.behaviors.wateraidDonationForms = {
     attach: function () {
-      $(once('wateraid_donations_forms', 'form.wateraid-donations')).each(function () {
+      $(once('wateraid_donations_forms', 'form.webform-donations-page')).each(function () {
         initWateraidDonationForms(this);
       });
     }

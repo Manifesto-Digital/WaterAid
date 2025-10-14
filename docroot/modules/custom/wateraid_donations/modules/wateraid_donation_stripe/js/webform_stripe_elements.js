@@ -34,18 +34,22 @@
     },
     submitFormHandler: function (event) {
       this.removeErrormessage();
+
       // Ensure we're only altering the submit event when dealing with Stripe payments.
       if ($.inArray(this.model.attributes.paymentMethod, ["stripe", "stripe_subscription", "stripe_fixed_period"]) !== -1) {
+
         if (document.getElementById('payment-response-result').value === "") {
           event.preventDefault();
           // Check for valid Stripe card element.
           if ($('.StripeElement--complete').length === 0) {
             return false;
           }
+
           // Do not proceed if createPaymentMethod is already initiated.
           if (this.model.getDisableCreatePaymentMethod() === true) {
             return false;
           }
+
           // Disable init of payment method and run through.
           this.model.setDisableCreatePaymentMethod(true);
           this.createPaymentMethod(event);
@@ -104,6 +108,7 @@
       });
     },
     createPaymentMethod: function (event) {
+
       /**
        *  Remove the card number field and submit button from view
        *  upon a user submitting them to prevent multiple submissions
@@ -284,9 +289,10 @@
         }
         this.stripe = new Stripe(drupalSettings.webformStripe.public_key, stripeOptions);
         let elements = this.stripe.elements();
-        let style = drupalSettings.webformStripeElements.style;
+        // let style = drupalSettings.webformStripeElements.style;
+
         let $button_element = $('.stripe-card-element', this.el);
-        this.stripe_el = elements.create('card', {style: style, hidePostalCode: true});
+        this.stripe_el = elements.create('card', { hidePostalCode: true});
         this.stripe_el.mount($button_element[0]);
 
         let $errorEl = $('.stripe-card-errors', this.el);

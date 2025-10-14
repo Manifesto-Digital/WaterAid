@@ -1,0 +1,137 @@
+.wa-subelement-wrapper-capture-plus {
+  display: none;
+}
+
+#selected-address {
+  display: none;
+}
+
+.pca * {
+  box-sizing: content-box;
+}
+
+.pca {
+  margin: 0;
+  padding: 0;
+  position: static;
+  border: none;
+  box-sizing: content-box;
+}
+
+.pca .pcalist {
+  position: relative;
+  list-style-type: none;
+  list-style-position: outside;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fafafa;
+}
+
+.pca .pcaautocomplete .pcalist {
+  height: 244px;
+  width: auto;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ccc;
+}
+.pca .pcaitem {
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 9px 10px 9px 10px;
+  padding: 7px 10px;
+  font-size: 12px;
+  background: none;
+  line-height: 15px;
+  text-align: left;
+  white-space: nowrap;
+  border: solid 1px transparent;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e5e5e5;
+  border-bottom-color: transparent;
+  padding-right: 22px;
+  opacity: .8;
+  filter: alpha(opacity=80);
+  color: #000;
+}
+
+.pca .pcaautocomplete {
+  margin: 0;
+  padding: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  border-bottom: 0;
+  background: 0;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2);
+  width: inherit;
+  position: absolute;
+  z-index: 9999999999;
+}
+.pca .pcaautocomplete {
+  border: 1px solid #ccc !important;
+}
+.pca .pcatext {
+  font: 9pt arial;
+  color: #333;
+}
+
+.pca .pcaselected {
+  color: #333;
+  background-color: #e5f0ff;
+  background-color: #f0f0f0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e5e5e5;
+  border-bottom-color: transparent;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  color: #000;
+}
+
+.pca .pcaitem .pcadescription {
+  color: #888;
+  margin-left: 8px;
+}
+
+#address-buttons .button {
+  width: calc(50% - 3px);
+}
+#address-buttons .button__primary {
+  border: #006bd9 2px solid;
+}
+.lookup-results {
+  text-align: left;
+  margin-top: 20px;
+}
+#address-error {
+  text-align: center;
+}
+#address-buttons {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}
+
+#edit-contact-address--wrapper legend {
+  display: none;
+}
+
+.disabled {
+  background-color: lightgray !important;
+}
+
+::-webkit-credentials-auto-fill-button,
+::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+}

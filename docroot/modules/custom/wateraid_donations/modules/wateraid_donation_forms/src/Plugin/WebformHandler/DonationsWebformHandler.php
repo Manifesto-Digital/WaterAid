@@ -712,20 +712,20 @@ class DonationsWebformHandler extends WebformHandlerBase {
             ];
 
             $image_file = NULL;
-            if (!empty($amount_details['image'])) {
-              /** @var \Drupal\media\Entity\Media $image */
-              $image = Media::load($amount_details['image']);
-              $image_fid = $image->getSource()->getSourceFieldValue($image);
-              $image_file = File::load($image_fid);
-            }
-
+//            if (!empty($amount_details['image'])) {
+//              /** @var \Drupal\media\Entity\Media $image */
+//              $image = Media::load($amount_details['image']);
+//              $image_fid = $image->getSource()->getSourceFieldValue($image);
+//              $image_file = File::load($image_fid);
+//            }
+//
             $icon_file = NULL;
-            if (!empty($amount_details['icon'])) {
-              /** @var \Drupal\media\Entity\Media $icon */
-              $icon = Media::load($amount_details['icon']);
-              $icon_fid = $icon->getSource()->getSourceFieldValue($icon);
-              $icon_file = File::load($icon_fid);
-            }
+//            if (!empty($amount_details['icon'])) {
+//              /** @var \Drupal\media\Entity\Media $icon */
+//              $icon = Media::load($amount_details['icon']);
+//              $icon_fid = $icon->getSource()->getSourceFieldValue($icon);
+//              $icon_file = File::load($icon_fid);
+//            }
 
             /** @var \Drupal\Core\Render\Renderer $renderer */
             $renderer = \Drupal::service('renderer');
