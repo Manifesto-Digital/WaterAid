@@ -9,8 +9,8 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - Database
-migration_group: wateraid_uk
-label: 'Event Ttpes'
+migration_group: wateraid_uk_terms
+label: 'Event Types'
 source:
   plugin: term_source
   bundle: event_types

@@ -9,7 +9,7 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - Database
-migration_group: wateraid_uk
+migration_group: wateraid_uk_nodes
 label: 'Donation Forms'
 source:
   plugin: node_source

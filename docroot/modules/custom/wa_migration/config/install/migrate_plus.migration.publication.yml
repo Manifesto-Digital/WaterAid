@@ -9,7 +9,7 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - Database
-migration_group: wateraid_uk
+migration_group: wateraid_uk_nodes
 label: Publication
 source:
   plugin: node_source
@@ -89,45 +89,22 @@ process:
     -
       plugin: body_to_paragraph
       source: body__value
-  temp_general_text_area:
+  temp_paragraphs:
     -
-      plugin: migration_lookup
-      migration: general_text_area
-      source: field_modules
-      no_stub: true
-  temp_wysiwyg:
-    -
-      plugin: migration_lookup
-      migration: wysiwyg
-      source: field_modules
-      no_stub: true
-  temp_menu_cta:
-    -
-      plugin: migration_lookup
-      migration: menu_cta
-      source: field_modules
-      no_stub: true
-  temp_resource_link_with_description:
-    -
-      plugin: migration_lookup
-      migration: resource_link_with_description
-      source: field_modules
-      no_stub: true
-  temp_faqs:
-    -
-      plugin: migration_lookup
-      migration: faqs
+      plugin: paragraph_migration_lookup
+      migrations:
+        - general_text_area
+        - wysiwyg
+        - menu_cta
+        - resource_link_with_description
+        - faqs
       source: field_modules
       no_stub: true
   field_content:
     plugin: merge_without_exception
     source:
       - '@temp_body'
-      - '@temp_general_text_area'
-      - '@temp_wysiwyg'
-      - '@temp_menu_cta'
-      - '@temp_resource_link_with_description'
-      - '@temp_faqs'
+      - '@temp_paragraphs'
 destination:
   plugin: 'entity:node'
   default_bundle: publication

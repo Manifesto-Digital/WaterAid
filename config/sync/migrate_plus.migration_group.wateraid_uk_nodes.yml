@@ -1,11 +1,13 @@
+uuid: eeb16d4f-0f64-4784-afbc-3bb56396cf25
+langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - wa_migration
-id: wateraid_uk
-label: 'WaterAid UK migration'
-description: 'Content from the wateraid.org/uk site'
+id: wateraid_uk_nodes
+label: 'WaterAid UK migration (Nodes)'
+description: 'Nodes from the wateraid.org/uk site'
 source_type: Database
 module: null
 shared_configuration:
