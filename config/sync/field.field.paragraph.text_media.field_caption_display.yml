@@ -1,0 +1,23 @@
+uuid: a78bc254-1bf3-4c89-8867-b84741f68c2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption_display
+    - paragraphs.paragraphs_type.text_media
+  module:
+    - options
+id: paragraph.text_media.field_caption_display
+field_name: field_caption_display
+entity_type: paragraph
+bundle: text_media
+label: 'Caption display'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: below_image
+default_value_callback: ''
+settings: {  }
+field_type: list_string

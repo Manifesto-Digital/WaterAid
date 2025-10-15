@@ -1,0 +1,28 @@
+{% set classes = [
+  'm-text-media',
+  'm-text-media--' ~ alignment,
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="m-text-media__text">
+    {{ include('wateraid:rich_text', { text: text }, with_context = false) }}
+
+    {% if link.title and link.url %}
+      {{ include('wateraid:link', {
+        text: link.title,
+        link: link.url,
+        type: 'text',
+      }) }}
+    {% endif %}
+  </div>
+
+  <div class="m-text-media__media">
+    {{ include('wateraid:image', {
+      image: media,
+      caption: caption,
+      credit: credit,
+      width: 'full',
+      caption_display: caption_display
+    }) }}
+  </div>
+</div>

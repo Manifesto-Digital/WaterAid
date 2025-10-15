@@ -1,0 +1,43 @@
+{% stories text_media with { title: 'wateraid/Molecules/TextMedia' } %}
+  {% story using_args with {
+    name: 'Text & Media',
+    argTypes: {
+      alignment: {
+        control: 'select',
+        options: ['left', 'right'],
+      }
+    },
+    args: {
+      caption: 'A snowy hillside'|t,
+      alignment: 'left',
+      credit: 'Luke Holmes | United Kingdom',
+      caption_display: 'expandable',
+      link: {
+        url: '/',
+        title: 'Click here'|t,
+      },
+    }
+  } %}
+
+    {# Defaults #}
+    {% set media %}<img src="https://picsum.photos/500/350"/>{% endset %}
+    {% set text %}
+      <h2>Heading 2</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque, eget molestie mauris vehicula. Curabitur auctor, eros vitae porta
+        ullamcorper, erat quam mattis nulla, sed varius lacus nisl quis felis. Sed placerat euismod magna id ornare.
+        Nulla scelerisque at dolor vel bibendum. Nullam vestibulum ullamcorper ultricies. Sed commodo efficitur nisl, ac
+        luctus metus hendrerit quis. Vestibulum sem tellus, scelerisque quis accumsan sed, consectetur non ante. Donec
+        dapibus mollis augue, sed auctor leo lobortis nec.</p>
+    {% endset %}
+
+    {{ include('wateraid:text_media', {
+      text,
+      media,
+      alignment,
+      caption,
+      credit,
+      link,
+    }) }}
+  {% endstory %}
+{% endstories %}
