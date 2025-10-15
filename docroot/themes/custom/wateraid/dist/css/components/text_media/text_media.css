@@ -459,29 +459,6 @@ footer {
   margin: 0;
 }
 
-.m-text-media__media img {
-  width: 100%;
-}
-
-.m-text-media__media--wrapper {
-  display: flex;
-  flex-direction: column;
-  background-color: #f8f0e4;
-  padding: .75rem;
-}
-
-.m-text-media__media--caption {
-  color: #151435;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.m-text-media__media--credit {
-  color: #44435d;
-  font-size: .875rem;
-  line-height: 1.3125rem;
-}
-
 .m-text-media--image_left .m-text-media__media {
   order: -1;
 }
