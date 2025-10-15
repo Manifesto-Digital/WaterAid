@@ -38,6 +38,10 @@
       let el = this.el;
       let $errorEl = $('.paypal-express-errors', el);
 
+      if (!client || !client[mode]) {
+        return true
+      }
+
       $('.paypal-express-container', this.el).each(function () {
         paypal.Button.render({
           style: {

@@ -57,15 +57,24 @@
       amount = amount * 100;
 
       let currency = model.get('currency').toLowerCase();
-      let paymentRequest = this.stripe.paymentRequest({
-        country: model.get('countryCode'),
-        currency: currency,
-        total: {
-          label: 'Payment by Google Pay',
-          amount: amount
-        },
-        customer: drupalSettings.wateraidDonationForms.contact_details
-      });
+      let paymentRequest
+
+      try {
+        paymentRequest = this.stripe.paymentRequest({
+          country: model.get('countryCode'),
+          currency: currency,
+          total: {
+            label: 'Payment by Google Pay',
+            amount: amount
+          },
+          customer: drupalSettings.wateraidDonationForms.contact_details
+        });
+      }
+      catch (e) {
+        console.warn("Unable to initialise GooglePay", e)
+        return true
+      }
+
 
       const elements = this.stripe.elements();
       const prButton = elements.create('paymentRequestButton', {
