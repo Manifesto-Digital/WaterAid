@@ -114,6 +114,9 @@ module:
   wateraid_azure_storage: 0
   wateraid_content: 0
   wateraid_donation_forms: 0
+  wateraid_donation_gmo: 0
+  wateraid_donation_google_pay: 0
+  wateraid_donation_paypal: 0
   wateraid_donation_stripe: 0
   wateraid_forms: 0
   wateraid_just_giving: 0
