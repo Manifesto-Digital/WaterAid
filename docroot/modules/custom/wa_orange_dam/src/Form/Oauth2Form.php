@@ -89,6 +89,14 @@ final class Oauth2Form extends FormBase {
       ],
     ];
 
+    /** @var \Drupal\wa_orange_dam\Service\Api $service */
+    $service = \Drupal::service('wa_orange_dam.api');
+    $one = $service->authorize();
+
+    if ($one['access_token']) {
+      $service->search([], $one['access_token']);
+    }
+
     return $form;
   }
 

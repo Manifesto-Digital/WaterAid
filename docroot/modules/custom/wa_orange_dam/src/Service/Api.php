@@ -33,23 +33,60 @@ final class Api {
    * @param array $query
    *   The query parameters. Will be turned into JSOn for the call.
    */
-  public function search(array $query) {
+  public function search(array $query = [], string $bearer = NULL) {
     $url = $this->base . 'API/search/v4.0/search';
+
+    $bearer = ($bearer) ?? Settings::get('orange_dam_bearer');
 
     $query['fields'] = 'SystemIdentifier, Title';
     $query['format'] = 'json';
-    $body = Json::encode($query);
 
     // This is the example call provided by Orange DAM. Currently it fails as
     // unauthorized so we will add our body params once we know it works.
     $response = $this->httpClient->request('POST', $url, [
-      'body' => '{"countperpage":100,"pagenumber":1,"verbose":false,"generateformatifnotexists":false,"getpermanentassetspaths":false,"disableURIencoding":false,"includebinned":false,"includeassetswithvirtualpaths":false,"format":"json"}',
+      'form_params' => [
+        "countperpage" > 100,
+        "pagenumber" => 1,
+        "verbose" => false,
+        "generateformatifnotexists" => false,
+        "getpermanentassetspaths" => false,
+        "disableURIencoding" => false,
+        "includebinned" => false,
+        "includeassetswithvirtualpaths" => false,
+        "format" => "json",
+      ],
       'headers' => [
         'accept' => 'application/json',
-        'authorization' => 'Bearer ' . Settings::get('orange_dam_bearer'),
+        'Authorization' => 'Bearer ' . $bearer,
         'content-type' => 'application/json',
       ],
     ]);
+
+    if ($body = $response->getBody()->getContents()) {
+      $return = Json::decode($body);
+    }
+  }
+
+  public function authorize() {
+    $return = NULL;
+
+    $response = $this->httpClient->request('POST', $this->base . 'webapi/security/clientcredentialsauthentication/authenticate_46H_v1', [
+      'form_params' => [
+        'grant_type' => 'client_credentials',
+        'client_id' => Settings::get('orange_dam_id'),
+        'client_secret' => Settings::get('orange_dam_secret'),
+      ],
+      'headers' => [
+        'accept' => 'application/json',
+        'content-type' => 'application/x-www-form-urlencoded',
+      ],
+    ]);
+
+    if ($body = $response->getBody()->getContents()) {
+      $return = Json::decode($body);
+    }
+
+    return $return;
   }
 
 }
