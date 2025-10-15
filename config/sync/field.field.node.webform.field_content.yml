@@ -1,14 +1,15 @@
-uuid: 062a6724-b691-4c14-9d6b-9e166800f9c3
+uuid: 26c4e902-d8d8-403c-aad7-8d57eb028d00
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_content
     - node.type.webform
-    - paragraphs.paragraphs_type.call_to_action
-    - paragraphs.paragraphs_type.image
-    - paragraphs.paragraphs_type.quote
-    - paragraphs.paragraphs_type.rich_text
+    - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.hero_basic
+    - paragraphs.paragraphs_type.hero_image
+    - paragraphs.paragraphs_type.hero_news
+    - paragraphs.paragraphs_type.hero_video
   module:
     - entity_reference_revisions
 id: node.webform.field_content
@@ -25,34 +26,50 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      rich_text: rich_text
-      image: image
-      call_to_action: call_to_action
-      quote: quote
-    negate: 0
+      hero_basic: hero_basic
+      hero_image: hero_image
+      hero_news: hero_news
+      hero_video: hero_video
+      accordion_item: accordion_item
+    negate: 1
     target_bundles_drag_drop:
+      accordion:
+        weight: -24
+        enabled: false
+      accordion_item:
+        weight: -14
+        enabled: true
       call_to_action:
-        weight: 5
-        enabled: true
+        weight: -23
+        enabled: false
       hero_basic:
-        weight: 10
-        enabled: false
+        weight: -18
+        enabled: true
       hero_image:
-        weight: 6
-        enabled: false
+        weight: -17
+        enabled: true
       hero_news:
-        weight: 12
-        enabled: false
+        weight: -16
+        enabled: true
       hero_video:
-        weight: 13
-        enabled: false
+        weight: -15
+        enabled: true
       image:
-        weight: 3
-        enabled: true
+        weight: -22
+        enabled: false
+      image_gallery:
+        weight: -21
+        enabled: false
       quote:
-        weight: 15
-        enabled: true
+        weight: -20
+        enabled: false
       rich_text:
-        weight: 2
-        enabled: true
+        weight: -25
+        enabled: false
+      text_media:
+        weight: 25
+        enabled: false
+      video:
+        weight: -19
+        enabled: false
 field_type: entity_reference_revisions

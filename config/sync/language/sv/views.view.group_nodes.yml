@@ -6,16 +6,13 @@ display:
       fields:
         title:
           label: Titel
-          separator: ', '
         type:
           label: Innehållstyp
-          separator: ', '
         status:
           label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
-          separator: ', '
         view_group_relationship:
           text: view
         delete_group_relationship:

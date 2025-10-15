@@ -8,7 +8,6 @@ display:
       fields:
         filename:
           label: Namn
-          separator: ', '
         filemime:
           label: 'Typ av MIME'
         filesize:

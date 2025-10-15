@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a87f74e84fdb55da78758062a73d92a0",
+    "content-hash": "535b3a0e88ecefe0c18cfa1f8eca399d",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -3010,56 +3010,6 @@
             }
         },
         {
-            "name": "drupal/classy_paragraphs",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/classy_paragraphs.git",
-                "reference": "2.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/classy_paragraphs-2.0.0.zip",
-                "reference": "2.0.0",
-                "shasum": "ae5b37d2d9ab0ebfbea815249d0f82c1bd151535"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10 || ^11",
-                "drupal/paragraphs": "~1.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "2.0.0",
-                    "datestamp": "1725556985",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "i-trokhanenko",
-                    "homepage": "https://www.drupal.org/user/3546872"
-                },
-                {
-                    "name": "ivan zugec",
-                    "homepage": "https://www.drupal.org/user/86970"
-                }
-            ],
-            "description": "Allows an editor to apply a class to paragraphs.",
-            "homepage": "https://www.drupal.org/project/classy_paragraphs",
-            "support": {
-                "source": "https://git.drupalcode.org/project/classy_paragraphs",
-                "issues": "https://www.drupal.org/project/issues/classy_paragraphs"
-            }
-        },
-        {
             "name": "drupal/clientside_validation",
             "version": "4.1.2",
             "source": {
@@ -4715,70 +4665,6 @@
             "homepage": "https://www.drupal.org/project/entity_reference_revisions",
             "support": {
                 "source": "https://git.drupalcode.org/project/entity_reference_revisions"
-            }
-        },
-        {
-            "name": "drupal/entity_update",
-            "version": "3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/entity_update.git",
-                "reference": "3.0.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_update-3.0.1.zip",
-                "reference": "3.0.1",
-                "shasum": "c56d6995b380d82665038b1c18377826c97862a1"
-            },
-            "require": {
-                "drupal/core": "^9.4 || ^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1741245993",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                },
-                "drush": {
-                    "services": {
-                        "drush.services.yml": "^10 || ^11"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL"
-            ],
-            "authors": [
-                {
-                    "name": "Nuwantha",
-                    "homepage": "https://www.drupal.org/u/iwsp",
-                    "role": "Owner"
-                },
-                {
-                    "name": "NuWans",
-                    "homepage": "https://www.drupal.org/u/nuwans",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Siva Karthik Reddy",
-                    "homepage": "https://www.drupal.org/u/sivakarthik229",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Update Drupal Entity schema.",
-            "homepage": "https://www.drupal.org/project/entity_update",
-            "support": {
-                "source": "http://git.drupal.org/project/entity_update.git",
-                "issues": "https://www.drupal.org/project/issues/entity_update"
             }
         },
         {
