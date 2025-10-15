@@ -67,7 +67,13 @@ final class Api {
     }
   }
 
-  public function authorize() {
+  /**
+   * Authorize against the API and obtain a bearer token.
+   *
+   * @return array|null
+   *   A response array or NULL on error.
+   */
+  public function authorize(): ?array {
     $return = NULL;
 
     $response = $this->httpClient->request('POST', $this->base . 'webapi/security/clientcredentialsauthentication/authenticate_46H_v1', [
