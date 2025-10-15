@@ -373,7 +373,7 @@ function wateraid_donation_forms_update_confirm_alias(NodeInterface $node): void
   if ($node->bundle() == 'webform') {
 
     // Only react if a webform has been linked.
-    if ($node->get('webform')->getString()) {
+    if ($node->get('field_webform')->getString()) {
 
       /** @var \Drupal\path_alias\AliasManagerInterface $service */
       $service = \Drupal::service('path_alias.manager');
@@ -423,7 +423,7 @@ function wateraid_donation_forms_preprocess_node__webform(&$variables) {
   // Add cancellation message to the node in case field_c_w_sidebar_blocks is
   // empty.
   $node = $variables['node'];
-  if ($webforms = $node->get('webform')->referencedEntities()) {
+  if ($webforms = $node->get('field_webform')->referencedEntities()) {
     /** @var \Drupal\webform\Entity\Webform $webform */
     $webform = reset($webforms);
     $handlers = $webform->getHandlers('wateraid_donations');

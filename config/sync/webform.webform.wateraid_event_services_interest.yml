@@ -294,9 +294,6 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
       payment_frequency: ''
       fallback_plugin: null
       fallback_message: null

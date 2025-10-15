@@ -109,6 +109,7 @@
     "drupal/view_mode_selector": "^1.1",
     "drupal/views_bulk_operations": "^4.3",
     "drupal/views_infinite_scroll": "^2.0",
+    "drupal/viewsreference": "^2.0@beta",
     "drupal/webform": "^6.3@beta",
     "drupal/webform_rest": "^4.2",
     "drupal/webp": "^1.0@RC",
