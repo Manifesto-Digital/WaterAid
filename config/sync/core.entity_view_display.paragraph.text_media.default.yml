@@ -7,10 +7,12 @@ dependencies:
     - field.field.paragraph.text_media.field_caption_display
     - field.field.paragraph.text_media.field_credit
     - field.field.paragraph.text_media.field_image_position
+    - field.field.paragraph.text_media.field_link
     - field.field.paragraph.text_media.field_media
     - field.field.paragraph.text_media.field_rich_text
     - paragraphs.paragraphs_type.text_media
   module:
+    - link
     - text
 id: paragraph.text_media.default
 targetEntityType: paragraph
@@ -32,6 +34,18 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_media:
     type: entity_reference_entity_view

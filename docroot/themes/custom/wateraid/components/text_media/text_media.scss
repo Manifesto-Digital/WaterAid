@@ -42,7 +42,6 @@
 
   &--image_left {
     .m-text-media__media {
-      // ...target the child media element and apply the order property to it.
       order: -1;
     }
   }

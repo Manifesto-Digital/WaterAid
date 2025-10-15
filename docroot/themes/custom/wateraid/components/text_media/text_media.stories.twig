@@ -10,7 +10,12 @@
     args: {
       caption: 'A snowy hillside'|t,
       alignment: 'left',
-      credit: 'Luke Holmes | United Kingdom'
+      credit: 'Luke Holmes | United Kingdom',
+      caption_display: 'expandable',
+      link: {
+        url: '/',
+        title: 'Click here'|t,
+      },
     }
   } %}
 
@@ -32,6 +37,7 @@
       alignment,
       caption,
       credit,
+      link,
     }) }}
   {% endstory %}
 {% endstories %}

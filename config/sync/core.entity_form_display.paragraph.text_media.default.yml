@@ -7,11 +7,13 @@ dependencies:
     - field.field.paragraph.text_media.field_caption_display
     - field.field.paragraph.text_media.field_credit
     - field.field.paragraph.text_media.field_image_position
+    - field.field.paragraph.text_media.field_link
     - field.field.paragraph.text_media.field_media
     - field.field.paragraph.text_media.field_rich_text
     - paragraphs.paragraphs_type.text_media
   module:
     - field_group
+    - link
     - media_library
     - text
 third_party_settings:
@@ -36,6 +38,7 @@ third_party_settings:
     group_text:
       children:
         - field_rich_text
+        - field_link
       label: Text
       region: content
       parent_name: group_tabs
@@ -116,6 +119,14 @@ content:
     weight: 5
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_media:
     type: media_library_widget

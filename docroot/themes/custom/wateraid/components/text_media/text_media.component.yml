@@ -20,6 +20,9 @@ props:
       type: string
       title: Image alignment
       examples: []
+    link:
+      type: [ "object", "null" ]
+      title: Link
 slots:
   media:
     title: Media
