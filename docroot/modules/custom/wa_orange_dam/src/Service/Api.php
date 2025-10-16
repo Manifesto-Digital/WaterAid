@@ -28,33 +28,50 @@ final class Api {
   private string $base = 'https://dam.wi0.orangelogic.com/';
 
   /**
-   * Performs a search on the Orange DAM.
+   * Performs a search against the Orange API.
    *
    * @param array $query
-   *   The query parameters. Will be turned into JSOn for the call.
+   *   The query parameters: <parameter> => <value>
+   * @param array $fields
+   *   The returned fields: [<field Identifier>, <field Identifier>]
+   * @param string|NULL $bearer
+   *   The bearer token to use: will default to a bearer in settings.
+   * @param array $results
+   *   Any previous results to include in the return.
+   *
+   * @return array
+   *   The return from the search call. Empty on error.
    */
-  public function search(array $query = [], string $bearer = NULL) {
-    $url = $this->base . 'API/search/v4.0/search';
+  public function search(array $query = [], array $fields = [], string $bearer = NULL, array &$results = []): array {
+    $return = [];
 
     $bearer = ($bearer) ?? Settings::get('orange_dam_bearer');
 
-    $query['fields'] = 'SystemIdentifier, Title';
-    $query['format'] = 'json';
+    $fields = array_merge([
+      'SystemIdentifier',
+       'Title',
+       'CaptionShort',
+       'CaptionLong',
+       'MIMEtype',
+       'path_TR1',
+       'MediaType'], $fields);
 
-    // This is the example call provided by Orange DAM. Currently it fails as
-    // unauthorized so we will add our body params once we know it works.
+    $query = array_merge([
+      'format' => 'JSON',
+      'fields' => implode(',', $fields),
+      'countperpage' => 100,
+      'pagenumber' => 1,
+      'verbose' => TRUE,
+      'generateformatifnotexists' => FALSE,
+      'getpermanentassetspaths' => TRUE,
+      'disableURIencoding' => FALSE,
+      'includebinned' => FALSE,
+      'includeassetswithvirtualpaths' => TRUE,
+    ], $query);
+
+    $url = $this->base . 'API/search/v4.0/search?' . http_build_query($query);
+
     $response = $this->httpClient->request('POST', $url, [
-      'form_params' => [
-        "countperpage" > 100,
-        "pagenumber" => 1,
-        "verbose" => false,
-        "generateformatifnotexists" => false,
-        "getpermanentassetspaths" => false,
-        "disableURIencoding" => false,
-        "includebinned" => false,
-        "includeassetswithvirtualpaths" => false,
-        "format" => "json",
-      ],
       'headers' => [
         'accept' => 'application/json',
         'Authorization' => 'Bearer ' . $bearer,
@@ -65,6 +82,8 @@ final class Api {
     if ($body = $response->getBody()->getContents()) {
       $return = Json::decode($body);
     }
+
+    return $return;
   }
 
   /**
