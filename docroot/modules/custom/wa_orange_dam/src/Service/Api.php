@@ -36,25 +36,23 @@ final class Api {
    *   The returned fields: [<field Identifier>, <field Identifier>]
    * @param string|NULL $bearer
    *   The bearer token to use: will default to a bearer in settings.
-   * @param array $results
-   *   Any previous results to include in the return.
    *
    * @return array
    *   The return from the search call. Empty on error.
    */
-  public function search(array $query = [], array $fields = [], string $bearer = NULL, array &$results = []): array {
+  public function search(array $query = [], array $fields = [], string $bearer = NULL): array {
     $return = [];
 
     $bearer = ($bearer) ?? Settings::get('orange_dam_bearer');
 
     $fields = array_merge([
       'SystemIdentifier',
-       'Title',
-       'CaptionShort',
-       'CaptionLong',
-       'MIMEtype',
-       'path_TR1',
-       'MediaType'], $fields);
+      'Title',
+      'CaptionShort',
+      'CaptionLong',
+      'MIMEtype',
+      'path_TR1',
+      'MediaType'], $fields);
 
     $query = array_merge([
       'format' => 'JSON',

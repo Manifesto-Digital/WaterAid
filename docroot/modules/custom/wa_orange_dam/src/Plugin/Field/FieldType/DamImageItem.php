@@ -21,7 +21,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *   default_formatter = "string",
  * )
  */
-final class ImageItem extends FieldItemBase {
+final class DamImageItem extends FieldItemBase {
 
   /**
    * {@inheritdoc}
@@ -37,8 +37,8 @@ final class ImageItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition): array {
-    $properties['value'] = DataDefinition::create('string')
-      ->setLabel(t('Text value'))
+    $properties['system_identifier'] = DataDefinition::create('string')
+      ->setLabel(t('Orange Dam System Identifier'))
       ->setRequired(TRUE);
 
     return $properties;
@@ -47,50 +47,28 @@ final class ImageItem extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-  public function getConstraints(): array {
-    $constraints = parent::getConstraints();
-
-    $constraint_manager = $this->getTypedDataManager()->getValidationConstraintManager();
-
-    // @DCG Suppose our value must not be longer than 10 characters.
-    $options['value']['Length']['max'] = 10;
-
-    // @DCG
-    // See /core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint
-    // directory for available constraints.
-    $constraints[] = $constraint_manager->create('ComplexData', $options);
-    return $constraints;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public static function schema(FieldStorageDefinitionInterface $field_definition): array {
-
     $columns = [
-      'value' => [
+      'system_identifier' => [
         'type' => 'varchar',
         'not null' => FALSE,
-        'description' => 'Column description.',
+        'description' => 'Orange Dam System Identifier.',
         'length' => 255,
       ],
     ];
 
-    $schema = [
+    return [
       'columns' => $columns,
-      // @todo Add indexes here if necessary.
     ];
-
-    return $schema;
   }
 
   /**
    * {@inheritdoc}
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition): array {
-    $random = new Random();
-    $values['value'] = $random->word(mt_rand(1, 50));
-    return $values;
+    return [
+      'Orange Dam System Identifier' => 'WI11NOKK',
+    ];
   }
 
 }
