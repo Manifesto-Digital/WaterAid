@@ -207,7 +207,7 @@ class WebformController extends WebformEntityController {
 
     // Donation upsell image.
     if ($upsellImageField = $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_upsell_confirmation')) {
-      $upsell_image_id = $upsellImageField['donation_upsell_image'][0];
+      $upsell_image_id = ($upsellImageField['donation_upsell_image'][0]) ?? NULL;
       if (!empty($upsell_image_id)) {
         $image_file = \Drupal::entityTypeManager()->getStorage('file')->load($upsell_image_id);
         $upsell_image_url = $image_file->createFileUrl();

@@ -1,0 +1,45 @@
+uuid: b066c792-f8ba-4d52-a56d-d75d3c9dc32c
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.wateraid_pdf
+  module:
+    - ckeditor5
+format: wateraid_pdf
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - italic
+      - underline
+      - bulletedList
+      - numberedList
+      - alignment
+      - insertTable
+      - drupalMedia
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
+    media_media:
+      allow_view_mode_override: false
+image_upload:
+  status: false

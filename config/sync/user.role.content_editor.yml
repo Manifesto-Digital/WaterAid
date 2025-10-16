@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
     - media.type.document
@@ -31,6 +32,7 @@ dependencies:
     - content_translation
     - contextual
     - file
+    - filter
     - group
     - group_content_menu
     - media
@@ -202,6 +204,7 @@ permissions:
   - 'translate wateraid_site group'
   - 'update content translations'
   - 'update media'
+  - 'use text format wateraid_pdf'
   - 'view all revisions'
   - 'view article revisions'
   - 'view donation revisions'
