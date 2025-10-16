@@ -7,6 +7,7 @@ dependencies:
     - media.type.dam_image
   module:
     - path
+    - wa_orange_dam
 id: media.dam_image.default
 targetEntityType: media
 bundle: dam_image
@@ -25,12 +26,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_media_dam_image:
-    type: string_textfield
+    type: wa_orange_dam
     weight: 0
     region: content
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

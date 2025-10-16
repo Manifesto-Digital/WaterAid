@@ -5,9 +5,11 @@ namespace Drupal\wa_orange_dam\Plugin\media\Source;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\FieldTypePluginManagerInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\field\FieldConfigInterface;
 use Drupal\media\Attribute\MediaSource;
 use Drupal\media\MediaInterface;
 use Drupal\media\MediaTypeInterface;
@@ -94,7 +96,7 @@ class DamImage extends File {
   /**
    * {@inheritdoc}
    */
-  public function getMetadataAttributes() {
+  public function getMetadataAttributes(): array {
     $attributes = parent::getMetadataAttributes();
 
     $attributes += [
@@ -119,15 +121,15 @@ class DamImage extends File {
 
     switch ($attribute_name) {
       case static::METADATA_ATTRIBUTE_WIDTH:
-        return $values['width'] ?: NULL;
+        return $values[0]['width'] ?: NULL;
 
       case static::METADATA_ATTRIBUTE_HEIGHT:
-        return $values['height'] ?: NULL;
+        return $values[0]['height'] ?: NULL;
 
       case 'thumbnail_uri':
         $uri = NULL;
 
-        if ($api_result = $this->orange_api->getPublicLink($values['system_identifier'], 'TR1', 100, 100)) {
+        if ($api_result = $this->orange_api->getPublicLink($values[0]['system_identifier'], 'TR1', 100, 100)) {
           if (isset($api_result['link'])) {
             $uri = $api_result['link'];
           }
@@ -139,10 +141,10 @@ class DamImage extends File {
         $alt = parent::getMetadata($media, $attribute_name);
 
         if ($api_result = $this->orange_api->search([
-          'query' => 'SystemIdentifier:' . $values['system_identifier'],
+          'query' => 'SystemIdentifier:' . $values[0]['system_identifier'],
         ])) {
           if (isset($api_result['APIResponse']['Items'][0]['CaptionShort'])) {
-            $alt = $api_result['link'];
+            $alt = $api_result['APIResponse']['Items'][0]['CaptionShort'];
           }
         }
 
@@ -155,7 +157,7 @@ class DamImage extends File {
   /**
    * {@inheritdoc}
    */
-  public function createSourceField(MediaTypeInterface $type) {
+  public function createSourceField(MediaTypeInterface $type): FieldConfigInterface|EntityInterface {
     /** @var \Drupal\field\FieldConfigInterface $field */
     $field = parent::createSourceField($type);
 
@@ -169,7 +171,7 @@ class DamImage extends File {
   /**
    * {@inheritdoc}
    */
-  public function prepareViewDisplay(MediaTypeInterface $type, EntityViewDisplayInterface $display) {
+  public function prepareViewDisplay(MediaTypeInterface $type, EntityViewDisplayInterface $display): void {
     parent::prepareViewDisplay($type, $display);
 
     // Use the `large` image style and do not link the image to anything.
