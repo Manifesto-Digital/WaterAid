@@ -3,9 +3,11 @@
 @use "spacing";
 @use "radius";
 @use "mixins";
+@use "typography";
 
-// Checkboxes
-.js-form-type-checkbox {
+// Checkboxes & Radios
+.js-form-type-checkbox,
+.js-form-type-radio {
   display: flex;
   align-items: center;
   gap: spacing.$wa-spacing-03;
@@ -16,7 +18,49 @@
   }
 }
 
-input[type='checkbox'] {
+.webform-type-checkboxes,
+.webform-type-radios {
+  legend {
+    font-family: typography.$bold-font;
+    font-size: mixins.calculate-rem(20);
+    margin-bottom: spacing.$wa-spacing-02;
+    .optional {
+      font-family: typography.$font-family;
+    }
+  }
+  .js-webform-checkboxes,
+  .js-webform-radios {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$wa-spacing-03;
+  }
+  .js-form-type-checkbox,
+  .js-form-type-radio {
+    padding: 0;
+    padding-left: spacing.$wa-spacing-03;
+    label {
+      margin: 0;
+    }
+  }
+
+  .webform-type-checkbox,
+  .webform-type-radio {
+    display: flex;
+  }
+}
+
+.webform-type-checkbox,
+.webform-type-radio {
+  display: block;
+  label.option {
+    font-family: typography.$font-family;
+    font-size: mixins.calculate-rem(20);
+    margin: 0;
+  }
+}
+
+input[type='checkbox'],
+input[type='radio'] {
   -webkit-appearance: none;
   width: spacing.$wa-spacing-06;
   height: spacing.$wa-spacing-06;
@@ -24,7 +68,6 @@ input[type='checkbox'] {
   border-radius: radius.$radius-xxs;
   border: mixins.calculate-rem(2) solid colors.$wa-navy;
   vertical-align: middle;
-
 
   &:checked {
     background-color: colors.$wa-navy;
@@ -38,4 +81,80 @@ input[type='checkbox'] {
     outline: spacing.$wa-spacing-01 colors.$wa-pink solid;
     box-shadow: 0 0 0 mixins.calculate-rem(2) colors.$wa-navy;
   }
+}
+
+input[type='radio'] {
+  border-radius: radius.$radius-full;
+  &:checked {
+    background-image: none;
+    background-color: colors.$wa-navy;
+  }
+  &:focus-visible {
+    outline: spacing.$wa-spacing-01 colors.$wa-pink solid;
+    box-shadow: 0 0 0 mixins.calculate-rem(2) colors.$wa-navy;
+  }
+}
+
+
+.form-item {
+  label {
+    display: inline-block;
+    font-family: typography.$bold-font;
+    font-size: mixins.calculate-rem(20);
+    margin-bottom: spacing.$wa-spacing-02;
+  }
+
+  .optional {
+    font-size: mixins.calculate-rem(20);
+  }
+
+  .description {
+    font-size: mixins.calculate-rem(16);
+    color: colors.$wa-navy-80;
+    margin-bottom: spacing.$wa-spacing-03;
+  }
+
+  // Inputs & textareas
+  input[type='text'],
+  input[type='email'],
+  input[type='phone'] {
+    height: mixins.calculate-rem(28);
+    border-radius: 2px;
+    border: 2px solid colors.$wa-navy;
+    padding: spacing.$wa-spacing-03;
+    font-size: mixins.calculate-rem(18);
+  }
+
+  textarea {
+    border-radius: 2px;
+    border: 2px solid colors.$wa-navy;
+    padding: spacing.$wa-spacing-03;
+    font-size: mixins.calculate-rem(20);
+  }
+
+  // Select
+  select {
+    width: 100%;
+    height: mixins.calculate-rem(54);
+    border-radius: 2px;
+    border: 2px solid colors.$wa-navy;
+    font-size: mixins.calculate-rem(20);
+    padding: spacing.$wa-spacing-03;
+    /* Custom arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("../../images/icons/select.svg");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+  }
+}
+
+// Buttons / Navigation
+.form-submit {
+  @include mixins.button;
+}
+
+.webform-button--next {
+
 }
