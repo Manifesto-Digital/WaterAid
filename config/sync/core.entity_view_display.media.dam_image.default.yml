@@ -5,16 +5,17 @@ dependencies:
   config:
     - field.field.media.dam_image.field_media_dam_image
     - media.type.dam_image
+  module:
+    - wa_orange_dam
 id: media.dam_image.default
 targetEntityType: media
 bundle: dam_image
 mode: default
 content:
   field_media_dam_image:
-    type: string
+    type: wa_orange_dam_image_formater
     label: visually_hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content

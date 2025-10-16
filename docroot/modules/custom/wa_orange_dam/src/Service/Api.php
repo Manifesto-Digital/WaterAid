@@ -75,9 +75,9 @@ final class Api {
    *   The unique identifier of the file.
    * @param string $format
    *   The format of the image.
-   * @param int $width
+   * @param int|string $width
    *   The width of the image.
-   * @param int $height
+   * @param int|string $height
    *   The height of the image.
    * @param bool $download
    *   FALSE to create a view image, TRUE to create a download link.
@@ -87,7 +87,7 @@ final class Api {
    * @return array
    *   The result of the API call. Empty on error.
    */
-  public function getPublicLink(string $identifier, string $format, int $width, int $height, bool $download = FALSE, string $bearer = NULL): array {
+  public function getPublicLink(string $identifier, string $format, int|string $width, int|string $height, bool $download = FALSE, string $bearer = NULL): array {
     $url = $this->base . '/webapi/objectmanagement/share/getlink_4HZ_v1?' . http_build_query([
       'Identifier' => $identifier,
       'Format' => $format,
