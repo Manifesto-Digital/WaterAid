@@ -41,10 +41,6 @@ final class Api {
    *   The return from the search call. Empty on error.
    */
   public function search(array $query = [], array $fields = [], string $bearer = NULL): array {
-    $return = [];
-
-    $bearer = ($bearer) ?? Settings::get('orange_dam_bearer');
-
     $fields = array_merge([
       'SystemIdentifier',
       'Title',
@@ -69,16 +65,74 @@ final class Api {
 
     $url = $this->base . 'API/search/v4.0/search?' . http_build_query($query);
 
-    $response = $this->httpClient->request('POST', $url, [
-      'headers' => [
-        'accept' => 'application/json',
-        'Authorization' => 'Bearer ' . $bearer,
-        'content-type' => 'application/json',
-      ],
+    return $this->call($url, 'POST', $bearer);
+  }
+
+  /**
+   * Get a public URl for a file.
+   *
+   * @param string $identifier
+   *   The unique identifier of the file.
+   * @param string $format
+   *   The format of the image.
+   * @param int $width
+   *   The width of the image.
+   * @param int $height
+   *   The height of the image.
+   * @param bool $download
+   *   FALSE to create a view image, TRUE to create a download link.
+   * @param string|NULL $bearer
+   *   The bearer token to use: will default to a bearer in settings.
+   *
+   * @return array
+   *   The result of the API call. Empty on error.
+   */
+  public function getPublicLink(string $identifier, string $format, int $width, int $height, bool $download = FALSE, string $bearer = NULL): array {
+    $url = $this->base . '/webapi/objectmanagement/share/getlink_4HZ_v1?' . http_build_query([
+      'Identifier' => $identifier,
+      'Format' => $format,
+      'MaxWidth' => $width,
+      'MaxHeight' => $height,
+      'CreateDownloadLink' => ($download) ? 'true' : 'false',
+      'ImageResizingMethod' => 'CentreCrop',
     ]);
 
-    if ($body = $response->getBody()->getContents()) {
-      $return = Json::decode($body);
+    return $this->call($url, 'GET', $bearer);
+  }
+
+  /**
+   * Call the API.
+   *
+   * @param string $url
+   *   The URL to call.
+   * @param string $method
+   *   A valid http method.
+   * @param string|null $bearer
+   *   The bearer. Defaults to the bearer in settings if empty.
+   *
+   * @return array
+   *   The result of the API call. Empty on error.
+   */
+  private function call(string $url, string $method, ?string $bearer = NULL): array {
+    $return = [];
+
+    $bearer = ($bearer) ?? Settings::get('orange_dam_bearer');
+
+    try {
+      $response = $this->httpClient->request($method, $url, [
+        'headers' => [
+          'accept' => 'application/json',
+          'Authorization' => 'Bearer ' . $bearer,
+          'content-type' => 'application/json',
+        ],
+      ]);
+
+      if ($body = $response->getBody()->getContents()) {
+        $return = Json::decode($body);
+      }
+    }
+    catch (\Exception $e) {
+      // Do nothing.
     }
 
     return $return;

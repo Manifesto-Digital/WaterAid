@@ -27,7 +27,7 @@ final class DamImageItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty(): bool {
-    return match ($this->get('value')->getValue()) {
+    return match ($this->get('system_identifier')->getValue()) {
       NULL, '' => TRUE,
       default => FALSE,
     };
@@ -40,6 +40,10 @@ final class DamImageItem extends FieldItemBase {
     $properties['system_identifier'] = DataDefinition::create('string')
       ->setLabel(t('Orange Dam System Identifier'))
       ->setRequired(TRUE);
+    $properties['width'] = DataDefinition::create('integer')
+      ->setLabel(t('Width'));
+    $properties['height'] = DataDefinition::create('integer')
+      ->setLabel(t('Height'));
 
     return $properties;
   }
@@ -55,6 +59,16 @@ final class DamImageItem extends FieldItemBase {
         'description' => 'Orange Dam System Identifier.',
         'length' => 255,
       ],
+      'width' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Width',
+      ],
+      'height' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Height',
+      ],
     ];
 
     return [
@@ -67,7 +81,9 @@ final class DamImageItem extends FieldItemBase {
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition): array {
     return [
-      'Orange Dam System Identifier' => 'WI11NOKK',
+      'Orange Dam System Identifier' => 'WI11NONT',
+      'width' => 1200,
+      'height' => 1067,
     ];
   }
 

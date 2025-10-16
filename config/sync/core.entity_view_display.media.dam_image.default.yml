@@ -1,0 +1,27 @@
+uuid: 84a7b5b5-7ff9-4237-86b8-90a0c34e9e8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.dam_image.field_media_dam_image
+    - media.type.dam_image
+id: media.dam_image.default
+targetEntityType: media
+bundle: dam_image
+mode: default
+content:
+  field_media_dam_image:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
