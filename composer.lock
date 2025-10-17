@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "535b3a0e88ecefe0c18cfa1f8eca399d",
+    "content-hash": "5a65681302741e873caed669791b39f0",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -8114,28 +8114,28 @@
         },
         {
             "name": "drupal/stripe_api",
-            "version": "3.0.1",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/stripe_api.git",
-                "reference": "3.0.1"
+                "reference": "4.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/stripe_api-3.0.1.zip",
-                "reference": "3.0.1",
-                "shasum": "d064d1e107a18a30471e0483eb51af9879d96b41"
+                "url": "https://ftp.drupal.org/files/projects/stripe_api-4.0.1.zip",
+                "reference": "4.0.1",
+                "shasum": "6b129cbf80e25be7cb993da3f3bb0bdc847c0c71"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10",
+                "drupal/core": "^8 || ^9 || ^10 || ^11",
                 "drupal/key": "^1.13",
                 "stripe/stripe-php": "^7.36"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1716845261",
+                    "version": "4.0.1",
+                    "datestamp": "1760519110",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

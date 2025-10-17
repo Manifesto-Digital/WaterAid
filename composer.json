@@ -98,7 +98,7 @@
     "drupal/social_media_links": "^2.10",
     "drupal/stage_file_proxy": "^3.1",
     "drupal/storybook": "^1.0@beta",
-    "drupal/stripe_api": "^3.0",
+    "drupal/stripe_api": "^4.0",
     "drupal/svg_image": "^3.0",
     "drupal/svg_image_field": "^2.3",
     "drupal/tb_megamenu": "^1.10",
