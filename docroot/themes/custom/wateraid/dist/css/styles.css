@@ -344,7 +344,7 @@ input[type=radio]:focus-visible {
   font-size: 1.25rem;
 }
 
-.form-item .description {
+.form-item .webform-element-description {
   font-size: 1rem;
   color: #44435d;
   margin-bottom: .75rem;

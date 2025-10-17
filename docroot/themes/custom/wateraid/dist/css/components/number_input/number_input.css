@@ -165,6 +165,66 @@ strong {
   gap: 2rem;
 }
 
+.webform-submission-form .form-actions {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.webform-submission-form .form-actions .form-submit,
+.webform-submission-form .form-actions .webform-button--next {
+  flex: 1;
+  font-family: "RB Nylo Black", sans-serif;
+  font-weight: 700;
+  padding: 0;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 1.5rem;
+  padding: .75rem 1rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  border: none;
+  background-image: url("../../images/icons/wa-container-sm-wide.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.webform-submission-form .form-actions .form-submit::after,
+.webform-submission-form .form-actions .webform-button--next::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  left: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.webform-submission-form .form-actions .form-submit:focus-visible,
+.webform-submission-form .form-actions .webform-button--next:focus-visible {
+  outline: #ff96e6 .25rem solid;
+  border: 4px solid #000;
+}
+
+.webform-submission-form .form-actions .form-submit:hover,
+.webform-submission-form .form-actions .webform-button--next:hover {
+  cursor: pointer;
+}
+
+.webform-submission-form .form-actions .webform-button--previous {
+  background-image: url("../../images/icons/wa-container-sm-wide-border-light.svg");
+  color: #006bd9;
+}
+
 .js-form-type-checkbox,
 .js-form-type-radio {
   display: flex;
@@ -284,7 +344,7 @@ input[type=radio]:focus-visible {
   font-size: 1.25rem;
 }
 
-.form-item .description {
+.form-item .webform-element-description {
   font-size: 1rem;
   color: #44435d;
   margin-bottom: .75rem;
