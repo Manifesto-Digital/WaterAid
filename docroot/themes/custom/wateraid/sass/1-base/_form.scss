@@ -18,6 +18,59 @@
     flex-direction: column;
     gap: spacing.$wa-spacing-07;
   }
+
+  .form-actions {
+    margin: spacing.$wa-spacing-09 0;
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$wa-spacing-06;
+
+    .form-submit,
+    .webform-button--next {
+      flex: 1;
+      font-family: typography.$heading-font;
+      font-weight: 700;
+      @include mixins.reset-button();
+      font-size: calculate-rem(24);
+      padding: spacing.$wa-spacing-03 spacing.$wa-spacing-04;
+      display: flex;
+      gap: spacing.$wa-spacing-02;
+      align-items: center;
+      color: colors.$wa-white;
+      text-decoration: none;
+      position: relative;
+      border: none;
+      background-image: url("../../images/icons/wa-container-sm-wide.svg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        left: 0;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+
+      &:focus-visible {
+        outline: colors.$wa-pink spacing.$wa-spacing-01 solid;
+        border: 4px solid colors.$black;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .webform-button--previous {
+      background-image: url("../../images/icons/wa-container-sm-wide-border-light.svg");
+      color: colors.$wa-blue;
+    }
+  }
 }
 
 // Checkboxes & Radios
