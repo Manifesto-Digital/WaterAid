@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.webform.field_donation_menu
     - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
+    - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
@@ -64,6 +65,13 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_options:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_review_date:
     type: datetime_time_ago

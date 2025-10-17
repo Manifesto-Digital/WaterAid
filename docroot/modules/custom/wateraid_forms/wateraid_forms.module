@@ -146,89 +146,90 @@ function wateraid_forms_entity_base_field_info_alter(&$fields, EntityTypeInterfa
  * Implements hook_form_FORM_ID_alter().
  */
 function wateraid_forms_form_node_form_alter(&$form, $form_state, $form_id): void {
-  $cv_index = array_search('clientside_validation_form_after_build', $form['#after_build']);
-  if (is_int($cv_index)) {
-    unset($form['#after_build'][$cv_index]);
-  }
-
-  if (isset($form['field_hero_option'])) {
-
-    if (isset($form['field_article_hero_image'])) {
-      $form['field_article_hero_image']['#states']['invisible'] = [
-        [
-          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
-        ],
-        [
-          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
-        ],
-      ];
+  if (isset($form['#after_build'])) {
+    $cv_index = array_search('clientside_validation_form_after_build', $form['#after_build']);
+    if (is_int($cv_index)) {
+      unset($form['#after_build'][$cv_index]);
     }
 
-    if (isset($form['field_event_hero_image'])) {
-      $form['field_event_hero_image']['#states']['invisible'] = [
-        [
-          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
-        ],
-        [
-          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
-        ],
-      ];
+    if (isset($form['field_hero_option'])) {
+      if (isset($form['field_article_hero_image'])) {
+        $form['field_article_hero_image']['#states']['invisible'] = [
+          [
+            'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+          ],
+          [
+            'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+          ],
+        ];
+      }
+
+      if (isset($form['field_event_hero_image'])) {
+        $form['field_event_hero_image']['#states']['invisible'] = [
+          [
+            'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+          ],
+          [
+            'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+          ],
+        ];
+      }
+
+      if (isset($form['field_hero_video_url'])) {
+        $form['field_hero_video_url']['#states']['visible'] = [
+          [
+            'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+          ],
+          [
+            'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+          ],
+        ];
+      }
+
+      if (isset($form['field_hero_video_url_mobile'])) {
+        $form['field_hero_video_url_mobile']['#states']['visible'] = [
+          [
+            'select[name="field_hero_option"]' => ['value' => 'video_video2'],
+          ],
+          [
+            'select[name="field_hero_option"]' => ['value' => 'video_hero'],
+          ],
+        ];
+      }
+
+      if (isset($form['field_hero_image_mobile'])) {
+        $form['field_hero_image_mobile']['#states']['visible'] = [
+          [
+            'select[name="field_hero_option"]' => ['value' => 'hero_hero2'],
+          ],
+          [
+            'select[name="field_hero_option"]' => ['value' => 'hero_video'],
+          ],
+        ];
+      }
     }
 
-    if (isset($form['field_hero_video_url'])) {
-      $form['field_hero_video_url']['#states']['visible'] = [
-        [
-          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
-        ],
-        [
-          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
-        ],
-      ];
+    if (isset($form['field_reveal_mobile_field'])) {
+      if (isset($form['field_hero_image_mobile'])) {
+        $form['field_hero_image_mobile']['#states']['visible'] = [
+          [
+            'input[name="field_reveal_mobile_field[value]"]' => ['checked' => TRUE],
+          ],
+        ];
+      }
     }
 
-    if (isset($form['field_hero_video_url_mobile'])) {
-      $form['field_hero_video_url_mobile']['#states']['visible'] = [
-        [
-          'select[name="field_hero_option"]' => ['value' => 'video_video2'],
-        ],
-        [
-          'select[name="field_hero_option"]' => ['value' => 'video_hero'],
-        ],
-      ];
+    if ($form['#form_id'] === 'node_publication_edit_form' || $form['#form_id'] === 'node_publication_form') {
+      $form['#validate'][] = 'wateraid_forms_publication_validate';
     }
 
-    if (isset($form['field_hero_image_mobile'])) {
-      $form['field_hero_image_mobile']['#states']['visible'] = [
-        [
-          'select[name="field_hero_option"]' => ['value' => 'hero_hero2'],
-        ],
-        [
-          'select[name="field_hero_option"]' => ['value' => 'hero_video'],
-        ],
-      ];
-    }
-  }
-
-  if (isset($form['field_reveal_mobile_field'])) {
-    if (isset($form['field_hero_image_mobile'])) {
-      $form['field_hero_image_mobile']['#states']['visible'] = [
-        [
-          'input[name="field_reveal_mobile_field[value]"]' => ['checked' => TRUE],
-        ],
-      ];
-    }
-  }
-
-  if ($form['#form_id'] === 'node_publication_edit_form' || $form['#form_id'] === 'node_publication_form') {
-    $form['#validate'][] = 'wateraid_forms_publication_validate';
-  }
-
-  if ($form_id == 'node_flexible_content_edit_form' && !empty($form['field_modules'])) {
-    for ($x = 0; $x <= count($form['field_modules']['widget']); $x++) {
-      if (isset($form['field_modules']['widget'][$x]) && $form['field_modules']['widget'][$x]['#paragraph_type'] == 'engagement_tool') {
-        $form['field_modules']['widget'][0]['top']['actions']['actions']['collapse_button'] = NULL;
-        if (isset($form['field_modules']['widget']['header_actions']['actions']['collapse_all'])) {
-          unset($form['field_modules']['widget']['header_actions']['actions']['collapse_all']);
+    if ($form_id == 'node_flexible_content_edit_form' && !empty($form['field_modules'])) {
+      for ($x = 0; $x <= count($form['field_modules']['widget']); $x++) {
+        if (isset($form['field_modules']['widget'][$x]) && $form['field_modules']['widget'][$x]['#paragraph_type'] == 'engagement_tool') {
+          $form['field_modules']['widget'][0]['top']['actions']['actions']['collapse_button'] = NULL;
+          if (isset($form['field_modules']['widget']['header_actions']['actions']['collapse_all'])) {
+            unset($form['field_modules']['widget']['header_actions']['actions']['collapse_all']);
+          }
         }
       }
     }

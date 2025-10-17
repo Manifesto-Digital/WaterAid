@@ -1,0 +1,10 @@
+uuid: b3aab009-1572-4474-b35e-bbaffc37b051
+langcode: en
+status: true
+dependencies: {  }
+id: webform_poc
+label: 'Webform POC'
+icon_uuid: null
+icon_default: null
+description: 'A POC paragraph for embedding webforms'
+behavior_plugins: {  }
