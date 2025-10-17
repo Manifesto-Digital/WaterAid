@@ -142,6 +142,29 @@ strong {
   font-family: "Noto Sans Bold";
 }
 
+.webform-submission-form {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .webform-submission-form {
+    margin-left: 7.125rem;
+  }
+}
+
+.webform-submission-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.webform-submission-form .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .js-form-type-checkbox,
 .js-form-type-radio {
   display: flex;
@@ -271,6 +294,7 @@ input[type=radio]:focus-visible {
 .form-item input[type=email],
 .form-item input[type=tel],
 .form-item input[type=number] {
+  width: 100%;
   height: 1.75rem;
   border-radius: 2px;
   border: 2px solid #151435;
@@ -280,6 +304,8 @@ input[type=radio]:focus-visible {
 
 .form-item textarea {
   border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
   border: 2px solid #151435;
   padding: .75rem;
   font-size: 1.25rem;
@@ -292,13 +318,71 @@ input[type=radio]:focus-visible {
   border: 2px solid #151435;
   font-size: 1.25rem;
   padding: .75rem;
-  /* Custom arrow */
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   background-image: url("../../images/icons/select.svg");
   background-repeat: no-repeat;
   background-position: right 15px center;
+}
+
+.webform-progress-tracker .progress-step .progress-marker {
+  font-size: 1.375rem;
+  font-family: "Noto Sans Bold";
+}
+
+.webform-progress-tracker .progress-step .progress-marker:before {
+  background-size: 50px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: -10px;
+}
+
+.webform-progress-tracker .progress-step .progress-marker:after {
+  background-color: #f8f0e4;
+}
+
+.webform-progress-tracker .progress-step:hover .progress-marker:before {
+  background-color: #f8f0e4;
+}
+
+.webform-progress-tracker .progress-step .progress-marker {
+  color: #151435;
+}
+
+.webform-progress-tracker .progress-step .progress-marker:before {
+  background-color: #f8f0e4;
+  background-image: url("../../images/icons/next.svg");
+  width: 51px;
+  height: 48px;
+}
+
+.webform-progress-tracker .progress-step .progress-marker:hover .progress-marker:before {
+  background-color: #f8f0e4;
+}
+
+.webform-progress-tracker .progress-step.is-complete .progress-marker:before {
+  background-color: #f8f0e4;
+  background-image: url("../../images/icons/complete.svg");
+}
+
+.webform-progress-tracker .progress-step.is-complete:hover .progress-marker:before {
+  background-color: #fff;
+}
+
+.webform-progress-tracker .progress-step.is-active .progress-marker {
+  color: #151435;
+}
+
+.webform-progress-tracker .progress-step.is-active .progress-marker:before {
+  background-color: #fff;
+  background-image: url("../../images/icons/current.svg");
+  background-size: cover;
+}
+
+.webform-progress-tracker .progress-step.is-active:hover .progress-marker:before {
+  background-color: #fff;
 }
 
 @font-face {

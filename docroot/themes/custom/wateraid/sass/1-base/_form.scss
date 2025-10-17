@@ -6,6 +6,20 @@
 @use "./functions";
 @use "./typography";
 
+// Webforms
+.webform-submission-form {
+  @include mixins.container-sm();
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$wa-spacing-07;
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$wa-spacing-07;
+  }
+}
+
 // Checkboxes & Radios
 .js-form-type-checkbox,
 .js-form-type-radio {
@@ -127,6 +141,7 @@ input[type='radio'] {
   input[type='email'],
   input[type='tel'],
   input[type='number'] {
+    width: 100%;
     height: functions.calculate-rem(28);
     border-radius: 2px;
     border: 2px solid colors.$wa-navy;
@@ -136,6 +151,8 @@ input[type='radio'] {
 
   textarea {
     border-radius: 2px;
+    width: 100%;
+    max-width: 100%;
     border: 2px solid colors.$wa-navy;
     padding: spacing.$wa-spacing-03;
     font-size: functions.calculate-rem(20);
@@ -149,12 +166,94 @@ input[type='radio'] {
     border: 2px solid colors.$wa-navy;
     font-size: functions.calculate-rem(20);
     padding: spacing.$wa-spacing-03;
-    /* Custom arrow */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-image: url("../../images/icons/select.svg");
     background-repeat: no-repeat;
     background-position: right 15px center;
+  }
+}
+
+.webform-progress-tracker {
+  .progress-step {
+    .progress-marker {
+      font-size: functions.calculate-rem(22);
+      font-family: typography.$bold-font;
+
+      &:before {
+        background-size: 50px;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        top: -10px;
+      }
+      &:after {
+        background-color: colors.$wa-cream;
+      }
+    }
+    &:hover {
+      .progress-marker {
+        &:before {
+          background-color: colors.$wa-cream;
+        }
+      }
+    }
+  }
+
+  .progress-step {
+    .progress-marker {
+      color: colors.$wa-navy;
+      &:before {
+        background-color: colors.$wa-cream;
+        background-image: url("../../images/icons/next.svg");
+        width: 51px;
+        height: 48px;
+      }
+      &:hover {
+        .progress-marker {
+          &:before {
+            background-color: colors.$wa-cream;
+          }
+        }
+      }
+    }
+
+
+    &.is-complete {
+      .progress-marker {
+        &:before {
+          background-color: colors.$wa-cream;
+          background-image: url("../../images/icons/complete.svg");
+        }
+      }
+      &:hover {
+        .progress-marker {
+          &:before {
+            background-color: colors.$wa-white;
+          }
+        }
+      }
+    }
+
+    &.is-active {
+      .progress-marker {
+        color: colors.$wa-navy;
+
+        &:before {
+          background-color: colors.$wa-white;
+          background-image: url("../../images/icons/current.svg");
+          background-size: cover;
+        }
+      }
+
+      &:hover {
+        .progress-marker {
+          &:before {
+            background-color: colors.$wa-white;
+          }
+        }
+      }
+    }
   }
 }

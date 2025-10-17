@@ -61,15 +61,11 @@
   description_display == 'invisible' ? 'visually-hidden',
 ] %}
 
-{% set field_types = ['radio', 'checkbox'] %}
 <div{{ attributes.addClass(classes) }}>
   {% if type not in field_types %}
   <div class="form-item__label-container">
     {% if label_display in ['before', 'invisible'] %}
       {{ label }}
-      {% if not required %}
-        <span class="optional">(optional)</span>
-      {% endif %}
     {% endif %}
   </div>
   {% endif %}
@@ -87,9 +83,6 @@
   {% endif %}
   {% if label_display == 'after' %}
     {{ label }}
-    {% if not required and type not in field_types %}
-      <span class="optional">(optional)</span>
-    {% endif %}
   {% endif %}
   {% if errors %}
     <div class="form-item--error-message">
