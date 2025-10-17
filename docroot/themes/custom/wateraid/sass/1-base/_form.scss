@@ -40,7 +40,7 @@
       text-decoration: none;
       position: relative;
       border: none;
-      background-image: url("../../images/icons/wa-container-sm-wide.svg");
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide.svg");
       background-size: 100% 100%;
       background-repeat: no-repeat;
 
@@ -67,7 +67,7 @@
     }
 
     .webform-button--previous {
-      background-image: url("../../images/icons/wa-container-sm-wide-border-light.svg");
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
       color: colors.$wa-blue;
     }
   }
@@ -144,7 +144,7 @@ input[type='radio'] {
 
   &:checked {
     background-color: colors.$wa-navy;
-    background-image: url("../../images/icons/wa-form-check.svg");
+    background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
@@ -195,7 +195,7 @@ input[type='radio'] {
   input[type='tel'],
   input[type='number'] {
     width: 100%;
-    height: functions.calculate-rem(28);
+    height: functions.calculate-rem(54);
     border-radius: 2px;
     border: 2px solid colors.$wa-navy;
     padding: spacing.$wa-spacing-03;
@@ -222,7 +222,7 @@ input[type='radio'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("../../images/icons/select.svg");
+    background-image: url("/themes/custom/wateraid/images/icons/select.svg");
     background-repeat: no-repeat;
     background-position: right 15px center;
   }
@@ -259,7 +259,7 @@ input[type='radio'] {
       color: colors.$wa-navy;
       &:before {
         background-color: colors.$wa-cream;
-        background-image: url("../../images/icons/next.svg");
+        background-image: url("/themes/custom/wateraid/images/icons/next.svg");
         width: 51px;
         height: 48px;
       }
@@ -277,7 +277,7 @@ input[type='radio'] {
       .progress-marker {
         &:before {
           background-color: colors.$wa-cream;
-          background-image: url("../../images/icons/complete.svg");
+          background-image: url("/themes/custom/wateraid/images/icons/complete.svg");
         }
       }
       &:hover {
@@ -295,7 +295,7 @@ input[type='radio'] {
 
         &:before {
           background-color: colors.$wa-white;
-          background-image: url("../../images/icons/current.svg");
+          background-image: url("/themes/custom/wateraid/images/icons/current.svg");
           background-size: cover;
         }
       }
