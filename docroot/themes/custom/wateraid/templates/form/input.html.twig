@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ */
+#}
+{% if is_webform_action_button %}
+  <div class="webform-button-wrapper">
+    <input{{ attributes }} />{{ children }}
+  </div>
+{% else %}
+  <input{{ attributes }} />{{ children }}
+{% endif %}

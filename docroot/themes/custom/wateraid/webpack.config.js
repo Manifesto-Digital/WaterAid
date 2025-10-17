@@ -26,6 +26,7 @@ module.exports = {
     'components/quote/quote': ['./components/quote/quote.scss'],
     'components/video/video': ['./components/video/video.scss'],
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
+    'components/number_input/number_input': ['./components/number_input/number_input.scss'],
   },
   output: {
     filename: 'js/[name].js',

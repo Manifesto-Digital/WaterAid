@@ -1,0 +1,7 @@
+// Utility functions that can be used across the project without creating circular dependencies.
+
+@function calculate-rem($size) {
+  $rem-size: calc($size / 16);
+
+  @return #{$rem-size}rem;
+}
