@@ -54,7 +54,6 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    // @see \Drupal\Core\Field\WidgetPluginManager::createInstance().
     return new static(
       $plugin_id,
       $plugin_definition,

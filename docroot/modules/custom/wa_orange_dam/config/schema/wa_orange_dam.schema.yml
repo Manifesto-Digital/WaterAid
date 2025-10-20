@@ -11,3 +11,17 @@ field.value.wa_orange_dam_image:
     height:
       type: int
       label: Height
+
+field.value.wa_orange_dam_video:
+  type: mapping
+  label: Default value
+  mapping:
+    system_identifier:
+      type: id
+      label: System Identifier
+    width:
+      type: int
+      label: Width
+    height:
+      type: int
+      label: Height

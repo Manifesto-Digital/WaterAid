@@ -7,26 +7,26 @@ namespace Drupal\wa_orange_dam\Plugin\Field\FieldType;
 use Drupal\Core\Field\FieldDefinitionInterface;
 
 /**
- * Defines the 'wa_orange_dam_image' field type.
+ * Defines the 'wa_orange_dam_video' field type.
  *
  * @FieldType(
- *   id = "wa_orange_dam_image",
- *   label = @Translation("Orange DAM Image"),
- *   description = @Translation("Images from the Orange DAM"),
+ *   id = "wa_orange_dam_video",
+ *   label = @Translation("Orange DAM Video"),
+ *   description = @Translation("Videos from the Orange DAM"),
  *   default_widget = "string_textfield",
  *   default_formatter = "string",
  * )
  */
-final class DamImageItem extends DamItemBase {
+final class DamVideoItem extends DamItemBase {
 
   /**
    * {@inheritdoc}
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition): array {
     return [
-      'Orange Dam System Identifier' => 'WI11NONT',
+      'Orange Dam System Identifier' => 'WI11NOYK',
       'width' => 1200,
-      'height' => 1067,
+      'height' => 675,
     ];
   }
 
