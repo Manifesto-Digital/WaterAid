@@ -93,8 +93,7 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
     ];
 
     $element['dam_button'] = [
-      '#type' => 'html_tag',
-      '#tag' => 'button',
+      '#type' => 'button',
       '#value' => $this->t('Open the Orange DAM'),
       '#attributes' => [
         'id' => 'orange-dam-open',
