@@ -18,9 +18,8 @@
         });
 
 
-        gallery.querySelectorAll("[data-controls='previous']").forEach((next) => {
-          console.log(next);
-            next.addEventListener("click", () => {
+        gallery.querySelectorAll("[data-controls='previous']").forEach((prev) => {
+            prev.addEventListener("click", () => {
               slider.goTo("prev");
             });
           });
