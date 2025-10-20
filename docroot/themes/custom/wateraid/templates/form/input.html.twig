@@ -2,12 +2,22 @@
 /**
  * @file
  * Theme override for an 'input' #type form element.
+ *
+ * Conditionally renders submit inputs as <button> elements via an include,
+ * and passes a specific 'theme' based on whether it is a 'next' or 'previous' button.
  */
 #}
-{% if is_webform_action_button %}
-  <div class="webform-button-wrapper">
-    <input{{ attributes }} />{{ children }}
-  </div>
+{% if button_type is defined and button_type %}
+  {% set text = attributes.value %}
+  {% set theme = (button_type == 'next' or button_type == 'primary') ? 'primary' : 'secondary' %}
+
+  {{ include('wateraid:button', {
+    text: text,
+    type: theme|default('primary'),
+    attributes: attributes,
+    theme: 'light',
+  }) }}
+
 {% else %}
   <input{{ attributes }} />{{ children }}
 {% endif %}
