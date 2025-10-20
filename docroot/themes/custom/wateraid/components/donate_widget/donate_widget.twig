@@ -1,0 +1,94 @@
+{% set classes = [
+  'donate-widget',
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  {# Heading  #}
+  {% if heading %}
+    <div class="donate-widget__heading">
+      <h2>{{ heading }}</h2>
+    </div>
+  {% endif %}
+
+  <!-- Form -->
+  <form class="donate-widget__form">
+    <!-- Frequency Options -->
+    <fieldset class="donate-widget__options-group">
+      <legend class="donate-widget__legend">How often can you donate?</legend>
+      <div class="donate-widget__options-wrapper">
+        <!-- Option: Monthly -->
+        <div class="donate-widget__option">
+          <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
+                 checked>
+          <label class="donate-widget__radio-label" for="freq-monthly">Monthly</label>
+        </div>
+        <!-- Option: One off -->
+        <div class="donate-widget__option">
+          <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off">
+          <label class="donate-widget__radio-label" for="freq-one-off">One off</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Amount Options -->
+    <fieldset class="donate-widget__options-group">
+      <legend class="donate-widget__legend">How much can you donate?</legend>
+      <div class="donate-widget__options-wrapper">
+        <!-- Option: £2 -->
+        <div class="donate-widget__option">
+          <input class="donate-widget__radio-input" type="radio" id="amount-2" name="amount" value="2">
+          <label class="donate-widget__radio-label" for="amount-2">£2</label>
+        </div>
+        <!-- Option: £5 -->
+        <div class="donate-widget__option">
+          <input class="donate-widget__radio-input" type="radio" id="amount-5" name="amount" value="5" checked>
+          <label class="donate-widget__radio-label" for="amount-5">£5</label>
+        </div>
+        <!-- Option: £10 -->
+        <div class="donate-widget__option">
+          <input class="donate-widget__radio-input" type="radio" id="amount-10" name="amount" value="10">
+          <label class="donate-widget__radio-label" for="amount-10">£10</label>
+        </div>
+        <!-- Option: Other -->
+        <div class="donate-widget__option">
+          <input class="donate-widget__radio-input" type="radio" id="amount-other" name="amount" value="other">
+          <label class="donate-widget__radio-label" for="amount-other">Other</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="donate-widget__form--submit">
+      {{ include('wateraid:button', {
+        text: button_text,
+        link: '/',
+        type: 'donate',
+        theme: '',
+        icon: 'wa-utility-lock'
+      }) }}
+    </div>
+  </form>
+
+  <div class="donate-widget__footer">
+
+    {# Additional link #}
+    {% if additional_link.title and additional_link.href %}
+      <div class="donate-widget__additional-link">
+        <a href="{{ additional_link.href }}">{{ additional_link.title }}</a>
+      </div>
+    {% endif %}
+
+    {# Payment logos #}
+    <div class="donate-widget__payment-logos">
+      {% for payment_logo in payment_logos %}
+        {% include('@wateraid/images/icons/' ~ payment_logo.src) %}
+      {% endfor %}
+    </div>
+
+    {# FR logo #}
+    <div class="donate-widget__fr-logo">
+      {% include('@wateraid/images/icons/wa-fr-logo.svg') %}
+    </div>
+
+
+  </div>
+</div>

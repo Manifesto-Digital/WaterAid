@@ -776,5 +776,139 @@ footer {
   background-color: #43cfb5;
 }
 
+.donate-widget {
+  background-color: #006bd9;
+  color: #fff;
+  padding: 3rem 2rem;
+}
 
-/*# sourceMappingURL=styles.css.map*/
+.donate-widget__heading {
+  margin-bottom: 1.5rem;
+}
+
+.donate-widget__heading h2 {
+  color: #fff;
+}
+
+.donate-widget__form--submit {
+  z-index: 10;
+  position: relative;
+  margin: 0 0 1.5rem 0;
+}
+
+.donate-widget__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.donate-widget__additional-link {
+  text-align: center;
+}
+
+.donate-widget__additional-link a {
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.donate-widget__payment-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: .75rem;
+  gap: .5rem;
+}
+
+.donate-widget__fr-logo {
+  margin: 0 auto;
+}
+
+/* Element: Options Group (Fieldset) */
+
+.donate-widget__options-group {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Element: Legend */
+
+.donate-widget__legend {
+  color: #fff;
+  font-family: "Noto Sans Bold";
+  font-size: 1.25rem;
+  margin-bottom: .75rem;
+}
+
+/* Element: Options Wrapper */
+
+.donate-widget__options-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: .75rem;
+  background-color: #151435;
+  color: #fff;
+}
+
+/* Element: Individual Option */
+
+.donate-widget__option {
+  /* Each option grows equally to fill the space */
+  flex: 1 1 auto;
+  position: relative;
+}
+
+/* Element: The actual radio input */
+
+.donate-widget__radio-input {
+  /* This is the key: hide the radio button visually but keep it accessible */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+/* Element: The styled label that acts as a button */
+
+.donate-widget__radio-label {
+  display: block;
+  width: 100%;
+  font-size: 1.25rem;
+  font-family: "Noto Sans Bold";
+  padding: .75rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Add a hover effect for interactivity */
+
+.donate-widget__radio-label:hover {
+  background-color: var(--bg-light);
+  border-color: var(--brand-secondary);
+}
+
+/* Modifier: Active State */
+
+/* This is the magic selector. When the input is checked,
+   style the label that immediately follows it. */
+
+.donate-widget__radio-input:checked + .donate-widget__radio-label {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-rectangle-wide.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #151435;
+  border-radius: 0;
+}
+
+/* Add a focus state for keyboard navigation accessibility */
+
+.donate-widget__radio-input:focus + .donate-widget__radio-label {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 2px;
+}
+
+
+/*# sourceMappingURL=donate_widget.css.map*/
