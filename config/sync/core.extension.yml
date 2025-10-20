@@ -72,11 +72,11 @@ module:
   node_co_authors: 0
   node_read_time: 0
   options: 0
-  orange_dam: 0
   page_cache: 0
   paragraphs_clipboard: 0
   path: 0
   path_alias: 0
+  phpass: 0
   quick_node_clone: 0
   rabbit_hole: 0
   redirect: 0
@@ -104,6 +104,7 @@ module:
   views_ui: 0
   viewsreference: 0
   wa_editor_experience: 0
+  wa_migration: 0
   wateraid_content: 0
   webform: 0
   webp: 0

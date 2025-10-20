@@ -1,0 +1,21 @@
+uuid: 448bc8f6-708e-474a-87bb-412805c7d04a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_exclude_from_landing_page
+    - taxonomy.vocabulary.get_involved
+id: taxonomy_term.get_involved.field_exclude_from_landing_page
+field_name: field_exclude_from_landing_page
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Exclude from Landing Page'
+description: 'Select this option if you do not want it to display on the Get Involved Landing Page e.g. if it being used to categorise other content such as Publications only.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Do NOT display'
+  off_label: Display
+field_type: boolean

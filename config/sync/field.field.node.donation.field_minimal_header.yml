@@ -1,0 +1,23 @@
+uuid: ffae87bc-f2cf-473c-a314-da47bbb33c64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minimal_header
+    - node.type.donation
+id: node.donation.field_minimal_header
+field_name: field_minimal_header
+entity_type: node
+bundle: donation
+label: 'Minimal Header'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

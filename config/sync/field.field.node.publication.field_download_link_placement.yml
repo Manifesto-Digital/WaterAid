@@ -1,0 +1,23 @@
+uuid: 37a483fd-0366-4fa3-ae87-26e9873b42a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_download_link_placement
+    - node.type.publication
+  module:
+    - options
+id: node.publication.field_download_link_placement
+field_name: field_download_link_placement
+entity_type: node
+bundle: publication
+label: 'Download Link Placement'
+description: 'Select where you would like the download links to show up.'
+required: false
+translatable: false
+default_value:
+  -
+    value: both
+default_value_callback: ''
+settings: {  }
+field_type: list_string

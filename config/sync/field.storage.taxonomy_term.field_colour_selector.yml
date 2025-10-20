@@ -1,0 +1,66 @@
+uuid: 79ce5a1c-bbee-4aeb-be20-6e5c93f32e5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_colour_selector
+field_name: field_colour_selector
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: wa-black
+      label: Black
+    -
+      value: wa-white
+      label: White
+    -
+      value: wa-cyan
+      label: 'WaterAid Cyan'
+    -
+      value: wa-blue
+      label: 'WaterAid Blue'
+    -
+      value: secondary-orange
+      label: 'Secondary - Orange'
+    -
+      value: secondary-light-green
+      label: 'Secondary - Light Green'
+    -
+      value: secondary-dark-green
+      label: 'Secondary - Dark Green'
+    -
+      value: secondary-blue
+      label: 'Secondary - Blue'
+    -
+      value: secondary-navy-green
+      label: 'Secondary - Navy Green'
+    -
+      value: secondary-fuscia
+      label: 'Secondary - Fuscia'
+    -
+      value: secondary-purple
+      label: 'Secondary - Purple'
+    -
+      value: secondary-red
+      label: 'Secondary - Red'
+    -
+      value: secondary-brown
+      label: 'Secondary - Brown'
+    -
+      value: tertiary-light-brown
+      label: 'Tertiary - Light Brown'
+    -
+      value: deep-purple
+      label: 'Tertiary - Deep Purple'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

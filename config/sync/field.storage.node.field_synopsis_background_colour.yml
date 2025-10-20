@@ -1,0 +1,51 @@
+uuid: c3c33c9d-5c8c-484d-b720-bea568a48b38
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_synopsis_background_colour
+field_name: field_synopsis_background_colour
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: navy
+      label: Navy
+    -
+      value: blue
+      label: Blue
+    -
+      value: wa-white
+      label: White
+    -
+      value: cream
+      label: Cream
+    -
+      value: orange
+      label: Orange
+    -
+      value: yellow
+      label: Yellow
+    -
+      value: light-green
+      label: 'Light Green'
+    -
+      value: dark-green
+      label: 'Dark Green'
+    -
+      value: pink
+      label: Pink
+    -
+      value: plum
+      label: Plum
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,51 @@
+uuid: caf30d9b-88f3-411a-b5a6-b890cdca7826
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_event_information_bg_colou
+field_name: field_event_information_bg_colou
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: blue
+      label: Blue
+    -
+      value: navy
+      label: Navy
+    -
+      value: wa-white
+      label: White
+    -
+      value: cream
+      label: Cream
+    -
+      value: orange
+      label: Orange
+    -
+      value: yellow
+      label: Yellow
+    -
+      value: light-green
+      label: 'Light Green'
+    -
+      value: dark-green
+      label: 'Dark Green'
+    -
+      value: pink
+      label: Pink
+    -
+      value: plum
+      label: Plum
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

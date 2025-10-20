@@ -1,0 +1,17 @@
+uuid: 1b6be27c-b36d-474d-b53c-cda5f38eed8c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_uk_terms
+label: 'WaterAid UK migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/uk site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: migrate
+  migration_tags:
+    - wateraid_uk

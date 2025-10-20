@@ -1,0 +1,19 @@
+uuid: 9333b0b8-b0d1-4abb-966b-183e188cfead
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_text
+    - node.type.webform
+id: node.webform.field_teaser_text
+field_name: field_teaser_text
+entity_type: node
+bundle: webform
+label: 'Teaser text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

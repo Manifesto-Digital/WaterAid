@@ -1,0 +1,23 @@
+uuid: 52f14bb1-c208-4745-86e4-bb00f5317394
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minimal_header
+    - node.type.standard_page
+id: node.standard_page.field_minimal_header
+field_name: field_minimal_header
+entity_type: node
+bundle: standard_page
+label: 'Minimal Header'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

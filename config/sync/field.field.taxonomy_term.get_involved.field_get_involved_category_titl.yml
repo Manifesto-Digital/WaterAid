@@ -1,0 +1,19 @@
+uuid: d193aaaa-e01a-41c6-9b13-4af83567fd32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_get_involved_category_titl
+    - taxonomy.vocabulary.get_involved
+id: taxonomy_term.get_involved.field_get_involved_category_titl
+field_name: field_get_involved_category_titl
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Get Involved Category title'
+description: 'e.g. <strong>Popular Campaigns</strong> or <strong>Popular Events</strong><br>Note: if this field is not used, the taxonomy term name will be used instead.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

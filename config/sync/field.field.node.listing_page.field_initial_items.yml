@@ -1,0 +1,23 @@
+uuid: 1d53464f-722e-4f57-8d62-631339aaa994
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_initial_items
+    - node.type.listing_page
+id: node.listing_page.field_initial_items
+field_name: field_initial_items
+entity_type: node
+bundle: listing_page
+label: 'Initial Items'
+description: 'The initial number of items to display. Leave blank to use the default value from the view.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

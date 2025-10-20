@@ -1,0 +1,25 @@
+uuid: 306dcc88-4d76-4e4e-a1b4-d560fa38d63b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.donation
+id: node.donation.field_weight
+field_name: field_weight
+entity_type: node
+bundle: donation
+label: Weight
+description: 'Add a weight to dictate where this content will show up in relevant views.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: -50
+  max: 50
+  prefix: ''
+  suffix: ''
+field_type: integer

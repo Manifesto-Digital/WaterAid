@@ -1,0 +1,19 @@
+uuid: e8c384c4-3f59-465f-8512-676e998c1a09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_title
+    - node.type.standard_page
+id: node.standard_page.field_full_title
+field_name: field_full_title
+entity_type: node
+bundle: standard_page
+label: 'Full title'
+description: 'Workable Job Full Title.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
