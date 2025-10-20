@@ -71,7 +71,7 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state): array {
     $element['system_identifier'] = $element + [
       '#type' => 'textfield',
-      '#default_value' => $items[$delta]->value ?? NULL,
+      '#default_value' => $items[$delta]->system_identifier ?? NULL,
       '#element_validate' => [
         [$this, 'validateElement'],
       ],
