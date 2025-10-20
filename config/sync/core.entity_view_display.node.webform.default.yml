@@ -12,7 +12,6 @@ dependencies:
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
     - field.field.node.webform.field_title_colour
-    - field.field.node.webform.field_webform
     - field.field.node.webform.webform
     - node.type.webform
   module:
