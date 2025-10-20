@@ -165,7 +165,6 @@ content:
   field_title_colour:
     type: options_select
     weight: 28
-    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
