@@ -69,13 +69,48 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state): array {
+    switch ($this->fieldDefinition->getTargetBundle()) {
+
+      case 'dam_image':
+        $types = ['Images*'];
+        break;
+
+      default:
+        $types = [];
+        break;
+
+    }
+
     $element['system_identifier'] = $element + [
       '#type' => 'textfield',
       '#default_value' => $items[$delta]->system_identifier ?? NULL,
       '#element_validate' => [
         [$this, 'validateElement'],
       ],
+      '#attributes' => [
+        'id' => 'orange-dam-identifier',
+      ],
     ];
+
+    $element['dam_button'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'button',
+      '#value' => $this->t('Open the Orange DAM'),
+      '#attributes' => [
+        'id' => 'orange-dam-open',
+      ],
+      '#attached' => [
+        'library' => [
+          'wa_orange_dam/content_browser',
+        ],
+        'drupalSettings' => [
+          'wa_orange_dam' => [
+            'types' => $types,
+          ],
+        ],
+      ],
+    ];
+
     return $element;
   }
 

@@ -1,6 +1,10 @@
 content_browser:
   js:
     js/OrangeDAMContentBrowserSDK.min.js: {minified: true}
+    js/OrangeDamLauncher.js: {}
   css:
     component:
       css/OrangeDAMContentBrowserSDK.min.css: {minified: true}
+  dependencies:
+    - core/drupalSettings
+    - core/drupal.message
