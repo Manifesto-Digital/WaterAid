@@ -2,7 +2,10 @@
 
 [data-component-id="wateraid:rich_text"] {
   color: $wa-navy;
-  max-width: calculate-rem(660);
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
 
   @include paragraph-md();
 

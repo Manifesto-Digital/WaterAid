@@ -29,7 +29,7 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked {
   background-color: #151435;
-  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-image: url("../../images/icons/wa-form-check.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -359,7 +359,7 @@ header img {
   width: 200px;
 }
 
-.container {
+.page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -367,22 +367,38 @@ header img {
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .page-container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .page-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
+.container-md {
+  width: 100%;
+}
+
 @media only screen and (min-width: 1440px) {
-  .content-section {
-    max-width: 41.25rem;
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-sm {
+    margin-left: 7.125rem;
   }
 }
 
@@ -395,10 +411,10 @@ footer {
 }
 
 .card {
-  max-width: 432px;
+  position: relative;
 }
 
-.card::before {
+.card.card--link::before {
   transition: transform 200ms;
   will-change: transform;
   content: "";
@@ -412,19 +428,18 @@ footer {
   background-repeat: no-repeat;
 }
 
-.card:hover::before {
+.card.card--link:hover::before {
   transform: translateX(-0.5rem) translateY(.5rem);
   left: 0;
   height: 100%;
   width: 100%;
 }
 
-.card:hover {
-  background-color: #fff;
+.card.card--link:hover {
   cursor: pointer;
 }
 
-.card:focus-within {
+.card.card--link:focus-within {
   outline: #ff96e6 .25rem solid;
   border: #151435 .25rem solid;
 }
@@ -450,13 +465,7 @@ footer {
 }
 
 .card__heading {
-  font-family: "Noto Sans Bold";
-  font-size: 1.375rem;
-  line-height: 1.2;
-  text-decoration: none;
-  text-transform: none;
   margin: 0;
-  padding-bottom: .5rem;
 }
 
 .card__heading a {
@@ -500,6 +509,87 @@ footer {
 
 .card--teaser {
   border: .25rem #fff solid;
+  height: 100%;
+  max-width: 432px;
+}
+
+.card--teaser:hover {
+  background-color: #fff;
+}
+
+.card--teaser__heading {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  padding-bottom: .5rem;
+}
+
+.card--stats {
+  justify-items: center;
+  padding: 1.5rem;
+  height: calc(100% - 3rem);
+}
+
+.card--stats.card--link:hover::before {
+  transform: translateX(-1rem) translateY(-0.5rem);
+}
+
+.card--stats .card__image img {
+  width: 9rem;
+  height: 9rem;
+}
+
+.card--stats .card__body {
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.card--stats .card__link {
+  padding-top: .5rem;
+}
+
+.card--stats .link--text:hover {
+  text-decoration: none;
+}
+
+.card--cream {
+  background-color: #f8f0e4;
+  color: #151435;
+}
+
+.card--navy {
+  background-color: #151435;
+  color: #fff;
+}
+
+.card--navy h3,
+.card--navy a,
+.card--navy .card__body {
+  color: #fff;
+}
+
+.card--navy .card__image {
+  filter: brightness(0) invert(1);
+}
+
+.card--blue {
+  background-color: #006bd9;
+}
+
+.card--blue h3,
+.card--blue a,
+.card--blue .card__body {
+  color: #fff;
+}
+
+.card--blue .card__image {
+  filter: brightness(0) invert(1);
+}
+
+.paragraph--type--stats-item {
   height: 100%;
 }
 

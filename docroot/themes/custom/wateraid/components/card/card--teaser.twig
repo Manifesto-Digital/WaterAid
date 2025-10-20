@@ -1,6 +1,7 @@
 {% set classes = [
   'card',
   'card--' ~ variant,
+  url ? 'card--link' : 'card--no-link',
 ] %}
 
 <div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>

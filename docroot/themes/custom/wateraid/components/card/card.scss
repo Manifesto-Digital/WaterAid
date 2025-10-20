@@ -1,9 +1,9 @@
 @import "./sass/styles";
 
 .card {
-  max-width: 432px;
+  position: relative;
 
-  &::before {
+  &.card--link::before {
     transition: transform 200ms;
     will-change: transform;
     content: "";
@@ -17,19 +17,18 @@
     background-repeat: no-repeat;
   }
 
-  &:hover::before {
+  &.card--link:hover::before {
     transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
     left: 0;
     height: 100%;
     width: 100%;
   }
 
-  &:hover {
-    background-color: $wa-white;
+  &.card--link:hover {
     cursor: pointer;
   }
 
-  &:focus-within {
+  &.card--link:focus-within {
     outline: $wa-pink $wa-spacing-01 solid;
     border: $wa-navy $wa-spacing-01 solid;
   }
@@ -50,10 +49,7 @@
   }
 
   &__heading {
-    @include h6();
-
     margin: 0;
-    padding-bottom: $wa-spacing-02;
 
     a {
       text-decoration: none;
@@ -95,8 +91,86 @@
     margin-top: $wa-spacing-01;
   }
 
+  // Card variants.
   &--teaser {
     border: $wa-spacing-01 $wa-white solid;
     height: 100%;
+    max-width: 432px;
+
+    &:hover {
+      background-color: $wa-white;
+    }
+    &__heading {
+      @include h6();
+      padding-bottom: $wa-spacing-02;
+    }
   }
+
+  &--stats {
+    justify-items: center;
+    padding: $wa-spacing-06;
+    height: calc(100% - 3rem);
+
+    &.card--link:hover::before {
+      transform: translateX(-$wa-spacing-04) translateY(-$wa-spacing-02);
+    }
+
+    .card__image img {
+      width: calculate-rem(144);
+      height: calculate-rem(144);
+    }
+
+    .card__body {
+      align-items: center;
+      text-align: center;
+      gap: $wa-spacing-04;
+    }
+
+    .card__link {
+      padding-top: $wa-spacing-02;
+    }
+
+    .link--text:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Colour variants.
+  &--cream {
+    background-color: $wa-cream;
+    color: $wa-navy;
+  }
+
+  &--navy {
+    background-color: $wa-navy;
+    color: $wa-white;
+
+    h3,
+    a,
+    .card__body {
+      color: $wa-white;
+    }
+
+    .card__image {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &--blue {
+    background-color: $wa-blue;
+
+    h3,
+    a,
+    .card__body {
+      color: $wa-white;
+    }
+
+    .card__image {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+.paragraph--type--stats-item {
+  height: 100%;
 }

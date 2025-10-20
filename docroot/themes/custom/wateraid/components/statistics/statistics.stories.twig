@@ -1,0 +1,58 @@
+{% stories statistics with { title: 'wateraid/Molecules/Statistics' } %}
+  {% story Statistics with {
+    name: 'Statistics',
+    args: {
+      title: 'Statistics'|t,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque, eget molestie mauris vehicula.'|t,
+      columns: '3_columns',
+      link: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+    }
+  } %}
+
+    {# Defaults #}
+    {% set stats_items = [
+      include('wateraid:card', {
+        heading: "999,999,999",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque.",
+        image_url: '/themes/custom/wateraid/images/icons/wa-icon-globe.svg',
+        url: '#',
+        link_text: 'Text link',
+        colour: 'cream',
+        variant: 'stats'
+      }),
+      include('wateraid:card', {
+        heading: "999,999,999",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque.",
+        image_url: '/themes/custom/wateraid/images/icons/wa-icon-globe.svg',
+        url: '#',
+        link_text: 'Text link',
+        colour: 'cream',
+        variant: 'stats'
+      }),
+      include('wateraid:card', {
+        heading: "999,999,999",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dictum neque, in hendrerit nisi. Morbi
+        convallis felis vel purus pellentesque.",
+        image_url: '/themes/custom/wateraid/images/icons/wa-icon-globe.svg',
+        url: '#',
+        link_text: 'Text link',
+        colour: 'cream',
+        variant: 'stats'
+      }),
+    ] %}
+
+    {{ include('wateraid:statistics', {
+      title,
+      description,
+      columns,
+      link,
+      stats_items,
+    }) }}
+  {% endstory %}
+{% endstories %}

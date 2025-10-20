@@ -102,23 +102,32 @@
       }
     }
 
-    // Image widths.
+    // Video widths.
     &__wrapper {
       position: relative;
     }
+  }
 
-    &__wrapper--full {
+  &.video--full {
+    .video__wrapper {
       @include grid-item-span(4, 6, 12);
 
       height: auto;
     }
+  }
 
-    &__wrapper--large {
-      @include grid-item-span(4, 5, 10);
+  &.video--large {
+    @include container-md();
+    .video__wrapper {
+      @include grid-item-span(4, 6, 12);
     }
+  }
 
-    &__wrapper--small {
+  &.video--small {
+    @include container-md();
+    .video__wrapper {
       @include grid-item-span(4, 3, 6);
     }
   }
 }
+

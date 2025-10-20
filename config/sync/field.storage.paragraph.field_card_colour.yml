@@ -1,0 +1,30 @@
+uuid: fd678bcd-e9f4-4fc1-baff-c3c3c5cc6d41
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_card_colour
+field_name: field_card_colour
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: cream
+      label: Cream
+    -
+      value: navy
+      label: Navy
+    -
+      value: blue
+      label: Blue
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

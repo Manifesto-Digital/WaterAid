@@ -29,7 +29,7 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked {
   background-color: #151435;
-  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-image: url("../../images/icons/wa-form-check.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -359,7 +359,7 @@ header img {
   width: 200px;
 }
 
-.container {
+.page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -367,22 +367,38 @@ header img {
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .page-container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .page-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
+.container-md {
+  width: 100%;
+}
+
 @media only screen and (min-width: 1440px) {
-  .content-section {
-    max-width: 41.25rem;
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-sm {
+    margin-left: 7.125rem;
   }
 }
 
@@ -397,15 +413,13 @@ footer {
 [data-component-id="wateraid:video"] {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  gap: 1.25rem;
 }
 
 @media only screen and (min-width: 768px) {
   [data-component-id="wateraid:video"] {
     grid-template-columns: repeat(6, 1fr);
-    -moz-column-gap: 1.5rem;
-         column-gap: 1.5rem;
+    gap: 1.5rem;
   }
 }
 
@@ -522,54 +536,76 @@ footer {
   position: relative;
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--full {
+[data-component-id="wateraid:video"].video--full .video__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:video"] .video__wrapper--full {
+  [data-component-id="wateraid:video"].video--full .video__wrapper {
     grid-column: span 6;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:video"] .video__wrapper--full {
+  [data-component-id="wateraid:video"].video--full .video__wrapper {
     grid-column: span 12;
   }
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--full {
+[data-component-id="wateraid:video"].video--full .video__wrapper {
   height: auto;
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--large {
+[data-component-id="wateraid:video"].video--large {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"].video--large {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+[data-component-id="wateraid:video"].video--large .video__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:video"] .video__wrapper--large {
-    grid-column: span 5;
+  [data-component-id="wateraid:video"].video--large .video__wrapper {
+    grid-column: span 6;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:video"] .video__wrapper--large {
-    grid-column: span 10;
+  [data-component-id="wateraid:video"].video--large .video__wrapper {
+    grid-column: span 12;
   }
 }
 
-[data-component-id="wateraid:video"] .video__wrapper--small {
+[data-component-id="wateraid:video"].video--small {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:video"].video--small {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+[data-component-id="wateraid:video"].video--small .video__wrapper {
   grid-column: span 4;
 }
 
 @media only screen and (min-width: 768px) {
-  [data-component-id="wateraid:video"] .video__wrapper--small {
+  [data-component-id="wateraid:video"].video--small .video__wrapper {
     grid-column: span 3;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  [data-component-id="wateraid:video"] .video__wrapper--small {
+  [data-component-id="wateraid:video"].video--small .video__wrapper {
     grid-column: span 6;
   }
 }
