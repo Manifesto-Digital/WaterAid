@@ -34,6 +34,16 @@ final class DamImageItem extends FieldItemBase {
   }
 
   /**
+   * Allows image formater to be run as if it is an entity reference.
+   *
+   * @return false
+   *   Never has an entity attached, so always false.
+   */
+  public function hasNewEntity(): bool {
+    return FALSE;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition): array {

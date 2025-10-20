@@ -73,11 +73,11 @@ final class Api {
    *
    * @param string $identifier
    *   The unique identifier of the file.
-   * @param string $format
+   * @param string|NULL $format
    *   The format of the image.
-   * @param int|string $width
+   * @param int|string|NULL $width
    *   The width of the image.
-   * @param int|string $height
+   * @param int|string|NULL $height
    *   The height of the image.
    * @param bool $download
    *   FALSE to create a view image, TRUE to create a download link.
@@ -87,15 +87,28 @@ final class Api {
    * @return array
    *   The result of the API call. Empty on error.
    */
-  public function getPublicLink(string $identifier, string $format, int|string $width, int|string $height, bool $download = FALSE, string $bearer = NULL): array {
-    $url = $this->base . '/webapi/objectmanagement/share/getlink_4HZ_v1?' . http_build_query([
+  public function getPublicLink(string $identifier, string|null $format = NULL, int|string|null $width = NULL, int|string|null $height = NULL, bool $download = FALSE, string $bearer = NULL): array {
+    $query = [
       'Identifier' => $identifier,
-      'Format' => $format,
-      'MaxWidth' => $width,
-      'MaxHeight' => $height,
       'CreateDownloadLink' => ($download) ? 'true' : 'false',
       'ImageResizingMethod' => 'CentreCrop',
-    ]);
+      'StickToCurrentVersion' => 'false',
+    ];
+
+    if (isset($format)) {
+      $query['Format'] = $format;
+    }
+    elseif ($width && $height) {
+      $query['MaxWidth'] = $width;
+      $query['MaxHeight'] = $height;
+    }
+    else {
+
+      // Default to the original image if no style or width provided.
+      $query['Format'] = 'TRX';
+    }
+
+    $url = $this->base . '/webapi/objectmanagement/share/getlink_4HZ_v1?' . http_build_query($query);
 
     return $this->call($url, 'GET', $bearer);
   }

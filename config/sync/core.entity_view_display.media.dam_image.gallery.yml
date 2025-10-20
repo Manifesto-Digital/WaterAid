@@ -1,23 +1,24 @@
-uuid: 84a7b5b5-7ff9-4237-86b8-90a0c34e9e8b
+uuid: e5f9eb05-d31a-4404-9907-e3d098a042ed
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.gallery
     - field.field.media.dam_image.field_media_dam_image
-    - image.style.large
+    - image.style.scale_crop_5_3
     - media.type.dam_image
   module:
     - wa_orange_dam
-id: media.dam_image.default
+id: media.dam_image.gallery
 targetEntityType: media
 bundle: dam_image
-mode: default
+mode: gallery
 content:
   field_media_dam_image:
     type: wa_orange_dam_image_formater
     label: visually_hidden
     settings:
-      image_style: large
+      image_style: scale_crop_5_3
       image_link: ''
       image_loading:
         attribute: lazy
