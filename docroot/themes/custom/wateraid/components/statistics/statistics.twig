@@ -20,12 +20,13 @@
     {% if description %}
       <div class="statistics__content--description">{{ description }}</div>
     {% endif %}
-
+{% if link %}
     {{ include('wateraid:link', {
       text: link.title,
       link: link.url,
       type: 'text',
     }) }}
+    {% endif %}
   </div>
 
   <div class="statistics__items">

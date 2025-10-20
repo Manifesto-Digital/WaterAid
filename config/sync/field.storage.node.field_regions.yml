@@ -1,0 +1,42 @@
+uuid: 0e8126f3-093f-4da6-b733-9a5f78c009d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_regions
+field_name: field_regions
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '526'
+      label: 'London and South East'
+    -
+      value: '551'
+      label: 'Midlands and East Anglia'
+    -
+      value: '546'
+      label: 'South West and Wales'
+    -
+      value: '531'
+      label: 'North of England'
+    -
+      value: '541'
+      label: 'Northern Ireland'
+    -
+      value: '536'
+      label: Scotland
+    -
+      value: '521'
+      label: Overseas
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

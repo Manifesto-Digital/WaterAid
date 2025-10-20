@@ -4,12 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.node.webform.field_content
+    - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_teaser_image
+    - field.field.node.webform.field_teaser_text
+    - field.field.node.webform.field_title_colour
     - node.type.webform
   module:
     - datetime
     - entity_reference_revisions
+    - options
     - user
 id: node.webform.default
 targetEntityType: node
@@ -24,6 +30,26 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_donation_menu:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_form_to_overlap_with_hero:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_hero:
     type: entity_reference_revisions_entity_view
@@ -44,6 +70,13 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_title_colour:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -51,5 +84,8 @@ content:
     region: content
 hidden:
   co_authors: true
+  field_teaser_image: true
+  field_teaser_text: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true

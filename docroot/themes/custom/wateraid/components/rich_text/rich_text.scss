@@ -20,6 +20,22 @@
 
   a {
     @include link();
+
+    &.link--text {
+      @include text-link();
+
+      align-items: center;
+      display: flex;
+      gap: $wa-spacing-01;
+      &::after {
+        content: "";
+        display: block;
+        background-image: url("/themes/custom/wateraid/images/icons/wa-utility-arrow-blue.svg");
+        height: $wa-spacing-06;
+        width: $wa-spacing-06;
+        align-items: center;
+      }
+    }
   }
 
   ol,

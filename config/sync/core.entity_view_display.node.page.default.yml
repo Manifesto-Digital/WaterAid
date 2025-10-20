@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_weight
     - node.type.page
   module:
     - datetime
@@ -38,6 +39,15 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -49,3 +59,4 @@ hidden:
   field_teaser_text: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true

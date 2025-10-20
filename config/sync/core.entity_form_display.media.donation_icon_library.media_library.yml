@@ -1,0 +1,26 @@
+uuid: 89050492-7b25-48ef-89a9-1c227300eb3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.donation_icon_library.field_media_svg
+    - media.type.donation_icon_library
+id: media.donation_icon_library.media_library
+targetEntityType: media
+bundle: donation_icon_library
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  directory: true
+  field_media_svg: true
+  langcode: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  status: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true

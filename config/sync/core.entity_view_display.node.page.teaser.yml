@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_weight
     - node.type.page
   module:
     - user
@@ -42,5 +43,7 @@ hidden:
   co_authors: true
   field_content: true
   field_review_date: true
+  field_weight: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true

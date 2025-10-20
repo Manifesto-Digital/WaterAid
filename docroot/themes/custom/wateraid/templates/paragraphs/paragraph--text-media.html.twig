@@ -1,0 +1,27 @@
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+
+  {% if not paragraph.field_link.isEmpty() %}
+    {% set link = {
+      url: paragraph.field_link.0.url,
+      title: paragraph.field_link.0.title,
+    }%}
+  {% endif %}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ include('wateraid:text_media', {
+      text: content.field_rich_text,
+      media: content.field_media,
+      caption: content.field_caption,
+      caption_display: paragraph.field_caption_display.0.value,
+      credit: content.field_credit,
+      alignment: paragraph.field_image_position.0.value,
+      link: link,
+    }, with_context = false) }}
+  </div>
+{% endblock paragraph %}

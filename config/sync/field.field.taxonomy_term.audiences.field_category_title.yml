@@ -1,0 +1,19 @@
+uuid: 652c295b-8d9f-4a35-b77a-b9dc20abcf58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_category_title
+    - taxonomy.vocabulary.audiences
+id: taxonomy_term.audiences.field_category_title
+field_name: field_category_title
+entity_type: taxonomy_term
+bundle: audiences
+label: 'Category title'
+description: 'Set the alternative title that will appear on the category pages.  Leave blank to use the category name.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

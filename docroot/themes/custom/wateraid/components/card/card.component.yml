@@ -11,10 +11,6 @@ props:
     description:
       type: string
       title: Description
-    url:
-      type: string
-      title: URL
-      description: Card url
     variant:
       type: string
       title: Card variant type
@@ -23,6 +19,10 @@ props:
       title: Image url
       description: Image url
 slots:
+  url:
+    type: string
+    title: URL
+    description: Card url
   time_to_read:
     type: ["string", "integer"]
     title: Time to read

@@ -50,7 +50,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: default
+      view_mode: gallery
       link: false
     third_party_settings: {  }
     weight: 0
@@ -111,4 +111,5 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+uuid: 4b394a61-f623-41aa-bd08-24fa36f9bcb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_id
+    - node.type.standard_page
+id: node.standard_page.field_job_id
+field_name: field_job_id
+entity_type: node
+bundle: standard_page
+label: 'Job ID'
+description: 'Workable Job ID'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

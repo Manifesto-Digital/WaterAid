@@ -1,0 +1,38 @@
+uuid: 0fe8dae3-143a-4b09-9d38-8db83a39b743
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.donation_icon_library.field_media_svg
+    - media.type.donation_icon_library
+  module:
+    - svg_image_field
+id: media.donation_icon_library.default
+targetEntityType: media
+bundle: donation_icon_library
+mode: default
+content:
+  field_media_svg:
+    type: svg_image_field_formatter
+    label: visually_hidden
+    settings:
+      inline: false
+      apply_dimensions: true
+      width: 25
+      height: 25
+      enable_alt: true
+      enable_title: true
+      link: ''
+      force_fill: false
+      sanitize: true
+      sanitize_remote: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

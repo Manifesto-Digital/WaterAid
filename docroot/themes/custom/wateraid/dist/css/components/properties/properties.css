@@ -29,7 +29,7 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked {
   background-color: #151435;
-  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-image: url("../../images/icons/wa-form-check.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -144,6 +144,32 @@ p {
   p {
     font-size: 1.25rem;
   }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
 }
 
 strong {
@@ -266,6 +292,32 @@ p {
   p {
     font-size: 1.25rem;
   }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
 }
 
 strong {

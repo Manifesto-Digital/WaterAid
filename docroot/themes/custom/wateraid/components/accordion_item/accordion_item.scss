@@ -41,5 +41,13 @@
       }
     }
   }
+  .quote {
+    color: $wa-navy;
+    background-color: $wa-white;
+
+    &__content {
+      padding: $wa-spacing-07 0;
+    }
+  }
 }
 

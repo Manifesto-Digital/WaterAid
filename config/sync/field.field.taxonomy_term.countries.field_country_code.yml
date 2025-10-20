@@ -1,0 +1,19 @@
+uuid: 30a74bdb-bdd3-4040-91b4-b8c1694524f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_country_code
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries.field_country_code
+field_name: field_country_code
+entity_type: taxonomy_term
+bundle: countries
+label: 'Country Code'
+description: "This needs to be a 3 character country code. For example <strong>BMU</strong> will be for <strong>Bermuda</strong>\r\nFor more information you could try: http://www.worldatlas.com/aatlas/ctycodes.htm"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -5,8 +5,13 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.webform.field_content
+    - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_teaser_image
+    - field.field.node.webform.field_teaser_text
+    - field.field.node.webform.field_title_colour
     - node.type.webform
   module:
     - user
@@ -15,6 +20,21 @@ targetEntityType: node
 bundle: webform
 mode: teaser
 content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -23,7 +43,11 @@ content:
 hidden:
   co_authors: true
   field_content: true
+  field_donation_menu: true
+  field_form_to_overlap_with_hero: true
   field_hero: true
   field_review_date: true
+  field_title_colour: true
   langcode: true
   node_read_time: true
+  search_api_excerpt: true

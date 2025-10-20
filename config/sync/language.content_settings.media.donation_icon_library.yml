@@ -1,0 +1,11 @@
+uuid: 825aac27-edad-4f08-bf12-cc5d0b8dc09c
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library
+target_entity_type_id: media
+target_bundle: donation_icon_library
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,23 @@
+uuid: 866ff00a-5a42-4f78-b84c-c2f57debcbc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_sequence_number
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries.field_sequence_number
+field_name: field_sequence_number
+entity_type: taxonomy_term
+bundle: countries
+label: 'Sequence number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

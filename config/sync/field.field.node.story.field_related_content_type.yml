@@ -1,0 +1,23 @@
+uuid: 1df01803-36e8-4298-ae82-0e687a636ce7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content_type
+    - node.type.story
+id: node.story.field_related_content_type
+field_name: field_related_content_type
+entity_type: node
+bundle: story
+label: 'Related content type (automatic listing)'
+description: "When \"Override related\" is NOT checked, filter the automatic listing to the following content type(s).\r\n\r\nNote that:\r\n<ul>\r\n<li>If no content types are specified, the automatic listing is filtered to Stories and Stories (Shorthand) by default.</li>\r\n<li>The automatic listing only shows nodes with one or more tags in common (in any field/vocabulary).</li>\r\n<li>The automatic listing only appears if there are four or more results.</li>\r\n</ul>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node_type'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

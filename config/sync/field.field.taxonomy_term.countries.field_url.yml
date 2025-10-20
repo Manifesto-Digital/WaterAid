@@ -1,0 +1,23 @@
+uuid: 9af2f7ee-2035-4616-a93a-fa3a0c8bdb1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_url
+    - taxonomy.vocabulary.countries
+  module:
+    - link
+id: taxonomy_term.countries.field_url
+field_name: field_url
+entity_type: taxonomy_term
+bundle: countries
+label: Url
+description: 'Add URL to global site selector.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

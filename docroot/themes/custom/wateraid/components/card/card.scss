@@ -3,7 +3,7 @@
 .card {
   position: relative;
 
-  &::before {
+  &.card--link::before {
     transition: transform 200ms;
     will-change: transform;
     content: "";
@@ -17,18 +17,18 @@
     background-repeat: no-repeat;
   }
 
-  &:hover::before {
+  &.card--link:hover::before {
     transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
     left: 0;
     height: 100%;
     width: 100%;
   }
 
-  &:hover {
+  &.card--link:hover {
     cursor: pointer;
   }
 
-  &:focus-within {
+  &.card--link:focus-within {
     outline: $wa-pink $wa-spacing-01 solid;
     border: $wa-navy $wa-spacing-01 solid;
   }
@@ -109,8 +109,9 @@
   &--stats {
     justify-items: center;
     padding: $wa-spacing-06;
+    height: calc(100% - 3rem);
 
-    &:hover::before {
+    &.card--link:hover::before {
       transform: translateX(-$wa-spacing-04) translateY(-$wa-spacing-02);
     }
 
@@ -168,4 +169,8 @@
       filter: brightness(0) invert(1);
     }
   }
+}
+
+.paragraph--type--stats-item {
+  height: 100%;
 }

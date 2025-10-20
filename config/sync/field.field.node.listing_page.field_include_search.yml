@@ -1,0 +1,21 @@
+uuid: 13f0b77c-6dea-4658-8c27-3783befd57b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_include_search
+    - node.type.listing_page
+id: node.listing_page.field_include_search
+field_name: field_include_search
+entity_type: node
+bundle: listing_page
+label: 'Include search'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

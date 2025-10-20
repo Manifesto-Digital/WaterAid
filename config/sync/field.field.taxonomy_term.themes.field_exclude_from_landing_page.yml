@@ -1,0 +1,21 @@
+uuid: 54690055-0286-4706-be5f-a04e3a8c53d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_exclude_from_landing_page
+    - taxonomy.vocabulary.themes
+id: taxonomy_term.themes.field_exclude_from_landing_page
+field_name: field_exclude_from_landing_page
+entity_type: taxonomy_term
+bundle: themes
+label: 'Exclude from Landing Page'
+description: 'Select this option if you do not want it to display on the landing pages e.g. if it being used to categorise other content such as Publications only.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Do NOT display'
+  off_label: Display
+field_type: boolean
