@@ -4,10 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.webform.field_content
+    - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
     - field.field.node.webform.field_sidebar_content
+    - field.field.node.webform.field_teaser_image
+    - field.field.node.webform.field_teaser_text
+    - field.field.node.webform.field_title_colour
     - field.field.node.webform.webform
     - node.type.webform
   module:
