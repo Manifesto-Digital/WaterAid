@@ -1,0 +1,6 @@
+stripe.googlepayjs:
+  js:
+    js/stripe_googlepay.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - wateraid_donation_stripe/stripe.apijs

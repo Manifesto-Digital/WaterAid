@@ -1,0 +1,5 @@
+loqate: null
+loqate_api_key: loqate_live_api_key
+mode: live
+test_api_key: loqate_test_api_key
+live_api_key: loqate_live_api_key

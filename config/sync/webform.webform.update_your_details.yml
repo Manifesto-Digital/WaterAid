@@ -1,0 +1,474 @@
+uuid: 7e6cd92c-8d13-427d-96a4-89a19ac0ac19
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+    confirmation_image_url: ''
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 16
+template: false
+archive: false
+id: update_your_details
+title: 'Update your details'
+description: ''
+categories:
+  - Admin
+elements: |-
+  page_title:
+    '#type': webform_markup
+    '#markup': '<h1>Update your contact details</h1>'
+  your_old_details:
+    '#type': webform_wizard_extra_page
+    '#title': 'Your old details'
+    intro:
+      '#type': processed_text
+      '#text': '<p class="intro-text">Moving on? We''d love to stay in touch so we can keep you updated on how your support is helping people transform their lives with clean water, decent toilets and good hygiene.</p>'
+      '#format': basic_html
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha_v3/default
+    please_enter_your_old_details_here:
+      '#type': processed_text
+      '#text': |
+        <h2>Your existing details</h2>
+
+        <p>Please enter these details so we can identify you.</p>
+      '#format': basic_html
+    your_details:
+      '#type': webform_name
+      '#title': 'Your name'
+      '#title_display': none
+      '#title__placeholder': ' '
+      '#title__required': true
+      '#first__title': 'First name'
+      '#first__required': true
+      '#middle__access': false
+      '#last__title': 'Last name'
+      '#last__required': true
+      '#suffix__access': false
+      '#degree__access': false
+    your_email:
+      '#type': loqate_email_composite
+      '#title': 'Your email address'
+      '#required': true
+      '#email__title': 'Your email address'
+      '#email__required': true
+    address:
+      '#type': webform_markup
+      '#markup': '<p>Your address</p>'
+    your_old_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'Your previous address'
+      '#required': true
+      '#loqate_api_key': loqate_live_api_key
+      '#address__title': 'Address 1'
+      '#city__title': City/town
+      '#state_province__title': County
+      '#postal_code__title': Postcode
+      '#address__required': true
+      '#address_2__required': false
+      '#city__required': true
+      '#country__required': true
+      '#state_province__required': false
+      '#postal_code__required': true
+      '#capture_plus_active': true
+      '#state_province__type': textfield
+    your_phone_number:
+      '#type': tel
+      '#title': 'Your phone number'
+      '#format': raw
+    supp_id:
+      '#type': hidden
+      '#default_value': supp_id
+  your_new_details:
+    '#type': webform_wizard_extra_page
+    '#title': 'Your new details'
+    please_enter_your_new_details:
+      '#type': processed_text
+      '#text': '<h2>Your new details</h2><p>Enter any new details you’d like to update.</p>'
+      '#format': basic_html
+    new_name:
+      '#type': wateraid_forms_webform_name
+      '#title': 'New name'
+      '#wrapper_attributes':
+        class:
+          - hidden
+      '#title__title': 'New title'
+      '#first__title': 'New first name'
+      '#last__title': 'New last name'
+    new_address:
+      '#type': webform_markup
+      '#markup': '<p>New address</p>'
+    your_new_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'Your new address'
+      '#address_line1_search_label': 'House number or name (optional)'
+      '#postal_code_search_label': Postcode
+      '#address__title': 'Address 1'
+      '#city__title': City/town
+      '#state_province__title': County
+      '#postal_code__title': Postcode
+      '#address__required': true
+      '#address_2__required': false
+      '#city__required': true
+      '#country__required': true
+      '#state_province__required': false
+      '#postal_code__required': true
+      '#capture_plus_active': true
+      '#state_province__type': textfield
+    your_new_phone_number:
+      '#type': tel
+      '#title': 'New phone number'
+    mobile_number_optional_:
+      '#type': tel
+      '#title': 'New mobile number'
+    your_new_email:
+      '#type': loqate_email_composite
+      '#title': 'New email address'
+      '#email__title': 'New email address'
+    update_opt_in:
+      '#type': processed_text
+      '#text': '<h2>Stay updated</h2><p>We’d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us.</p>'
+      '#format': basic_html
+    communications_preference:
+      '#type': flexible_options
+      '#title': 'Communications preference'
+      '#title_display': invisible
+      '#options': communication_preferences_update
+      '#format_items': ul
+      '#options__properties': ''
+    privacy_statement:
+      '#type': processed_text
+      '#text': |
+        <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+      '#format': basic_html
+css: ".webform-button--submit {\r\n    margin-top: 24px;\r\n}"
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /update-your-details
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you for letting us know your new details'
+  confirmation_message: "<p>We really appreciate your support, and we will update your details as soon as possible.</p>\r\n\r\n<p>If you&rsquo;ve chosen to receive updates from us, there may already be one in the pipeline which will be sent to your previous details. After this, all communications will come through to your new details as requested.</p>\r\n\r\n<p>We&#39;re always happy to help, so please email us at <a href=\"mailto:supportercare@wateraid.org\"><span class=\"wa-blue\">supportercare@wateraid.org</span></a> or call us at 020 7793 4594 if you have any questions.</p>\r\n\r\n<p>Your continued support will help transform lives around the world with clean water, decent toilets and good hygiene.</p>\r\n\r\n<p><strong><a href=\"https://www.wateraid.org/stories-from-our-work-around-the-world\"><span class=\"wa-blue\">Read stories from our work around the world &gt;</span></a></strong></p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: false
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: supporteroperations@wateraid.org
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: '[webform_submission:values:your_details:raw]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Request to update details'
+      body: "<strong>Name: </strong>[webform_submission:values:your_details]<br />\r\n<strong>Email: </strong>[webform_submission:values:your_email:email]<br />\r\n<strong>Old address: </strong>[webform_submission:values:your_old_address]<br />\r\n<strong>Old phone number: </strong>[webform_submission:values:your_phone_number]<br />\r\n<strong>New name</strong>: [webform_submission:values:new_name]<br />\r\n<strong>New address: </strong>[webform_submission:values:your_new_address]<br />\r\n<strong>New phone number: </strong>[webform_submission:values:your_new_phone_number]<br />\r\n<strong>New mobile number</strong>: [webform_submission:values:mobile_number_optional_]<br />\r\n<strong>New email:&nbsp; </strong>[webform_submission:values:your_new_email:email]<br />\r\n<strong>Communication Preferences? </strong>[webform_submission:values:communications_preference]<br />\r\n<strong>Supporter ID: </strong>[webform_submission:values:supp_id]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  email_1:
+    id: email
+    handler_id: email_1
+    label: 'Email update details to supporter'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:your_email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: '[webform_submission:values:your_new_email:email:raw]'
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thank you for updating your details'
+      body: |-
+        <p>Hi,</p>
+
+        <p>Thanks so much for updating your details.</p>
+
+        <p>If you&rsquo;ve chosen to receive updates from us, there may already be one in the pipeline which will be sent to your previous details. After this, all communications will come through to your new details as requested.</p>
+
+        <p>We&#39;re always happy to help, so please email us at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a> or call us at 020 7793 4594 if you have any questions.</p>
+
+        <p>By supporting WaterAid, you are helping reach more people around the world with clean water, decent toilets and good hygiene &ndash; thanks again for your support.</p>
+
+        <p>Yours sincerely,<br />
+        David Martin<br />
+        Supporter Care Manager</p>
+      excluded_elements:
+        your_old_address: your_old_address
+        your_phone_number: your_phone_number
+        new_name: new_name
+        your_new_address: your_new_address
+        your_new_phone_number: your_new_phone_number
+        mobile_number_optional_: mobile_number_optional_
+        communications_preference: communications_preference
+        supp_id: supp_id
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

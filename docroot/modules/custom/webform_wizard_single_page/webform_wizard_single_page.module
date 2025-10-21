@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Webform Wizard Single Page module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\webform_wizard_single_page\WebformWizardSinglePageSubmissionForm;
+
+/**
+ * Implements hook_third_party_settings_form_alter().
+ */
+function webform_wizard_single_page_webform_third_party_settings_form_alter(&$form, FormStateInterface $form_state): void {
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+
+  $index = 'webform_wizard_single_page';
+  $form['third_party_settings'][$index] = [
+    '#type' => 'details',
+    '#title' => new TranslatableMarkup('Single-page settings'),
+    '#description' => new TranslatableMarkup('Provides the ability to override wizard settings on a per form basis.'),
+    '#open' => TRUE,
+    '#weight' => -99,
+  ];
+
+  $form['third_party_settings'][$index]['single_page'] = [
+    '#type' => 'checkbox',
+    '#title' => new TranslatableMarkup('Use single-page wizard'),
+    '#default_value' => $webform->getThirdPartySetting($index, 'single_page', '0'),
+    '#description' => new TranslatableMarkup('Choose whether to enable single-page mode.'),
+  ];
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function webform_wizard_single_page_entity_type_alter(array &$entity_types): void {
+  if (isset($entity_types['webform_submission'])) {
+    /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $webform_submission_entity_type */
+    $webform_submission_entity_type = $entity_types['webform_submission'];
+    $handlers = $webform_submission_entity_type->getHandlerClasses();
+    $handlers['form']['default'] = WebformWizardSinglePageSubmissionForm::class;
+    $handlers['form']['add'] = WebformWizardSinglePageSubmissionForm::class;
+    $webform_submission_entity_type->setHandlerClass('form', $handlers['form']);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ *
+ * Add theme suggestions for single-page Webform progress bars.
+ */
+function webform_wizard_single_page_theme_suggestions_alter(array &$suggestions, array $variables, $hook): void {
+
+  if ($hook == 'webform_progress') {
+    /** @var \Drupal\webform\Entity\Webform $webform */
+    $webform = $variables['webform'];
+    $single_page = (bool) $webform->getThirdPartySetting('webform_wizard_single_page', 'single_page');
+
+    if ($single_page) {
+      $suggestions[] = $hook . '__single_page';
+    }
+  }
+}

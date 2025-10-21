@@ -1,0 +1,519 @@
+uuid: 56e780ef-c479-436e-a5d9-72c22f13bd53
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - wateraid_just_giving
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 33116
+template: false
+archive: false
+id: the_tap_challenge
+title: 'Sign up for The Tap Challenge'
+description: ''
+categories:
+  - Community
+elements: |
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  form_title:
+    '#type': webform_markup
+    '#markup': '<h1>Sign up for The Tap Challenge</h1>'
+  title:
+    '#type': select
+    '#title': Title
+    '#options': titles
+  first_name:
+    '#type': textfield
+    '#title': 'First name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last name'
+    '#required': true
+  email:
+    '#type': loqate_email_composite
+    '#title': Email
+    '#required': true
+    '#email__title': Email
+    '#email__required': true
+  phone_number:
+    '#type': tel
+    '#title': 'Phone number'
+    '#required': true
+  are_you_an_employee_of_a_wateraid_corporate_water_industry_partn:
+    '#type': select
+    '#title': 'Are you an employee of a WaterAid corporate partner/ Water Industry Partner?'
+    '#options': yes_no
+    '#empty_option': 'Please select'
+  please_specify_which_corporate_partner_or_water_industry_partner:
+    '#type': textfield
+    '#title': 'Please specify which corporate partner or water industry partner you belong to'
+    '#states':
+      visible:
+        ':input[name="are_you_an_employee_of_a_wateraid_corporate_water_industry_partn"]':
+          value: 'Yes'
+  justgiving:
+    '#type': fieldset
+    '#title': JustGiving
+    '#attributes':
+      style: 'border: 2px solid #7B8EA2; padding: 1rem; border-radius: 4px;'
+    just_giving_intro:
+      '#type': webform_markup
+      '#markup': '<p>Create a JustGiving fundraising page, personalise it with your reason for taking part, then share it with family, friends and colleagues. It&#39;s the easiest and quickest way to collect sponsorship.</p>'
+    create_fundraiser_page:
+      '#type': select
+      '#title': 'Do you want to setup a JustGiving fundraiser page?'
+      '#options': yes_no
+      '#required': true
+    create_account:
+      '#type': select
+      '#title': 'Do you have a JustGiving account?'
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="create_fundraiser_page"]':
+            value: 'Yes'
+      '#required': true
+    justgiving_existing_account_text:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="create_account"]':
+            value: 'Yes'
+      '#markup': '<p>Enter the email address and password you use to login to JustGiving. If you can&rsquo;t remember your password please <a href="https://www.justgiving.com/sso/resetpassword">go to JustGiving to reset it</a> before you complete the form.</p>'
+    justgiving_new_account_text:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="create_account"]':
+            value: 'No'
+      '#markup': '<p>Create a JustGiving account &ndash; enter the email address and password you&rsquo;d like to use to login</p>'
+    justgiving_email:
+      '#type': loqate_email_composite
+      '#title': 'JustGiving Email'
+      '#states':
+        visible:
+          ':input[name="create_fundraiser_page"]':
+            value: 'Yes'
+      '#required': true
+      '#email__title': 'JustGiving Email'
+      '#email__required': true
+      '#loqate_validation': false
+    justgiving_password:
+      '#type': password
+      '#title': 'JustGiving Password'
+      '#states':
+        visible:
+          ':input[name="create_fundraiser_page"]':
+            value: 'Yes'
+      '#required': true
+    justgiving_address:
+      '#type': webform_address
+      '#title': 'JustGiving Address'
+      '#states':
+        visible:
+          ':input[name="create_fundraiser_page"]':
+            value: 'Yes'
+          ':input[name="create_account"]':
+            value: 'No'
+      '#address__required': true
+      '#city__required': true
+      '#state_province__title': County
+      '#state_province__type': textfield
+      '#postal_code__title': Postcode
+      '#postal_code__required': true
+      '#country__required': true
+    justgiving_privacy_policy:
+      '#type': checkbox
+      '#title': 'JustGiving Terms and Conditions'
+      '#description': 'By continuing you agree to JustGiving&rsquo;s <a href="https://www.justgiving.com/info/terms-of-service">Terms of Service</a> and <a href="https://www.justgiving.com/info/privacy">Privacy Policy</a>.'
+      '#states':
+        visible:
+          ':input[name="create_account"]':
+            value: 'No'
+      '#required': true
+    fundraiser_page_title:
+      '#type': textfield
+      '#title': 'Fundraiser Page Title'
+      '#states':
+        visible:
+          ':input[name="create_fundraiser_page"]':
+            value: 'Yes'
+      '#required': true
+    fundraiser_page_id:
+      '#type': hidden
+    fundraiser_page_url:
+      '#type': hidden
+    justgiving_preferences:
+      '#type': checkbox
+      '#title': 'I am happy for JustGiving to send me emails that inspire me, interest me and make me smile'
+      '#states':
+        visible:
+          ':input[name="create_fundraiser_page"]':
+            value: 'Yes'
+  opt_in_intro:
+    '#type': processed_text
+    '#text': |
+      <p><strong>By signing up to The Tap Challenge you are agreeing to receive helpful tips, fundraising resources and information from WaterAid relating to the challenge.</strong></p>
+
+      <p>However, we’d also love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us.</p>
+    '#format': basic_html
+  communications_preference:
+    '#type': flexible_options
+    '#title': 'Communications preference'
+    '#title_display': invisible
+    '#options': communication_preferences_email
+  privacy_statement:
+    '#type': processed_text
+    '#text': |
+      <p class="fine-print">WaterAid and WaterAid Trading will use your data to communicate with you in the ways you have agreed to, and in accordance with our Privacy Policy. We may use your data for administrative purposes. We may also analyse your data and obtain further data about you and your preferences from publicly available and other sources, and may use third parties to carry this out on our behalf. This provides background information about you which helps us to make our communications more appropriate and relevant to your interests. You can opt out of all communications or the ways in which we process your data at any time by contacting our Supporter Care Team on 020 7793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+    '#format': basic_html
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /join-the-tap-challenge
+  page_confirm_path: /join-the-tap-challenge/confirmation
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: www.wateraid.org/uk/get-involved/just-water-rules-and-resources
+  confirmation_title: 'Thanks for signing up to The Tap Challenge'
+  confirmation_message: "<p>Welcome to the challenge!&nbsp;We can&#39;t wait to see your wonderful GPS art.</p>\r\n\r\n<p>If you created a JustGiving page, you&#39;ll find the link for this below.</p>\r\n\r\n<p><a href=\"[webform_submission:values:fundraiser_page_url]\">[webform_submission:values:fundraiser_page_url]</a></p>\r\n\r\n<p>If you didn&#39;t create a JustGiving page, you can still do this by following the link below. It&#39;s the easiest and quickest way to collect fundraising money.</p>\r\n\r\n<p><a href=\"https://www.justgiving.com/campaign/TheTapChallenge\">Set up a JustGiving page</a></p>\r\n\r\n<h2>&nbsp;</h2>\r\n\r\n<div id=\"product-component-1573492661554\">&nbsp;</div>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  thank_you_for_signing_up_to_just_water:
+    id: email
+    handler_id: thank_you_for_signing_up_to_just_water
+    label: 'Thank you for signing up to the tap challenge (Created fundraising page)'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="create_fundraiser_page"]':
+          value: 'Yes'
+        ':input[name="fundraiser_page_url"]':
+          filled: true
+    weight: -50
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: events@wateraid.org
+      from_options: {  }
+      from_name: 'Lizzie at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: "You're taking on The Tap Challenge"
+      body: "<p>Hi [webform_submission:values:first_name],<br />\r\n<br />\r\nThanks for joining the Tap Challenge with Team WaterAid! We can&#39;t wait to see what wonderful art you create with your feet.<br />\r\n<br />\r\nEven with races and events on hold let&#39;s show that we can still come together and support those living without the basic human right of clean water.</p>\r\n\r\n<h3>First time creating GPS art?</h3>\r\n\r\n<p>No problem. Take a look at our <a href=\"https://youtu.be/89VN4bGK_vE\">how-to video</a>&nbsp;or <a href=\"https://www.wateraid.org/uk/publications/tap-challenge-how-to-guide\">how-to guide (PDF)</a> for step-by-step guidance on how to plan and carry out your activity.</p>\r\nIf you&rsquo;re using Strava, why not join the WaterAid runners, WaterAid riders or WaterAid walkers clubs? Check out what other WaterAiders are up to and challenge them with your tap creations!\r\n\r\n<h3>You set up a JustGiving page</h3>\r\n\r\n<p>Here&#39;s the link to it:&nbsp;[webform_submission:values:fundraiser_page_url]<br />\r\n<br />\r\nBe sure to personalise it with a photo and story, send it round to friends and family and keep it updated during and after your challenge!</p>\r\n\r\n<h3>More hints and tips</h3>\r\n\r\n<p>For more Tap Challenge advice, including help with sharing your challenge via social media, take a look at our <a href=\"https://www.wateraid.org/uk/publications/tap-challenge-how-to-guide\">Tap Challenge hints and tips guide (PDF)</a>.</p>\r\n\r\n<h3>Let us know when you&rsquo;ve completed your challenge</h3>\r\n\r\n<p>Once you&#39;ve completed your activity, be sure to email us your GPSart at <a href=\"mailto:events@wateraid.org\">events@wateraid.org</a> so we can thank you. We&#39;d also love to showcase everyone&#39;s art on our website and social media - make sure to post it with #tapchallenge!<br />\r\n<br />\r\nBest of luck mapping your tap,&nbsp;[webform_submission:values:first_name].<br />\r\n<br />\r\nLizzie Griffiths<br />\r\nWaterAid Events Team</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  wateraid__justgiving:
+    id: wateraid_just_giving
+    handler_id: wateraid__justgiving
+    label: 'WaterAid JustGiving'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -48
+    settings:
+      auth_fields:
+        email: justgiving_email
+        password: justgiving_password
+      account_fields:
+        create_account_consent:
+          element: create_account
+          value: 'No'
+        first_name: first_name
+        last_name: last_name
+        address: justgiving_address
+        terms: justgiving_privacy_policy
+      fundraiser_page_fields:
+        create_fundraiser_page_consent:
+          element: create_fundraiser_page
+          value: 'Yes'
+        charity_id: '54697'
+        event_id: '6033187'
+        campaign_short_name: ''
+        title: fundraiser_page_title
+        url: fundraiser_page_url
+        id: fundraiser_page_id
+        preferences: justgiving_preferences
+  thank_you_for_signing_up_to_just_water_1:
+    id: email
+    handler_id: thank_you_for_signing_up_to_just_water_1
+    label: 'Thank you for signing up to the tap challenge (did not create fundraising page)'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="create_fundraiser_page"]':
+          '!value': 'Yes'
+        ':input[name="fundraiser_page_url"]':
+          empty: true
+    weight: -49
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: events@wateraid.org
+      from_options: {  }
+      from_name: 'Lizzie at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: "You're taking on The Tap Challenge"
+      body: "<p>Hi [webform_submission:values:first_name],<br />\r\n<br />\r\nThanks for joining the Tap Challenge with Team WaterAid! We can&#39;t wait to see what wonderful art you create with your feet.<br />\r\n<br />\r\nEven with races and events on hold let&#39;s show that we can still come together and support those living without the basic human right of clean water.</p>\r\n\r\n<h3>First time creating GPS art?</h3>\r\n\r\n<p>No problem. Take a look at our <a href=\"https://youtu.be/89VN4bGK_vE\">how-to video</a>&nbsp;or <a href=\"https://www.wateraid.org/uk/publications/tap-challenge-how-to-guide\">how-to guide (PDF)</a> for step-by-step guidance on how to plan and carry out your activity.</p>\r\nIf you&rsquo;re using Strava, why not join the WaterAid runners, WaterAid riders or WaterAid walkers clubs? Check out what other WaterAiders are up to and challenge them with your tap creations!\r\n\r\n<h3>Set up a JustGiving fundraising page</h3>\r\n\r\n<p>If you&rsquo;ve not done so, we suggest that setting up an online fundraising page with JustGiving. Online fundraising pages are a fantastic way to get the word out about your challenge to your friends and family and can be promoted on your Facebook page, Twitter account and even in your email footer.<br />\r\n<br />\r\n<a href=\"https://www.justgiving.com/campaign/TheTapChallenge\">Set up a JustGiving page</a></p>\r\n\r\n<h2>More hints and tips</h2>\r\n\r\n<p>For more Tap Challenge advice, including help with sharing your challenge via social media, take a look at our <a href=\"https://www.wateraid.org/uk/publications/tap-challenge-how-to-guide\">Tap Challenge hints and tips guide (PDF)</a>.</p>\r\n\r\n<h3>Let us know when you&rsquo;ve completed your challenge</h3>\r\n\r\n<p>Once you&#39;ve completed your activity, be sure to email us your GPSart at <a href=\"mailto:events@wateraid.org\">events@wateraid.org</a> so we can thank you. We&#39;d also love to showcase everyone&#39;s art on our website and social media - make sure to post it with #tapchallenge!<br />\r\n<br />\r\nBest of lcuk mapping your tap,&nbsp;[webform_submission:values:first_name].<br />\r\n<br />\r\nLizzie Griffiths<br />\r\nWaterAid Events Team</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

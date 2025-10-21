@@ -1,0 +1,360 @@
+uuid: c394ef45-a2e1-4339-92b0-e3bc821e754b
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_forms
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: gambling_self_exclusion_form
+title: 'Gambling self-exclusion form'
+description: '<p ccp_infra_copy_id="72a533bc-0a53-4bc9-9d66-becbd9ed419c" ccp_infra_timestamp="1574101735870" ccp_infra_user_hash="1932709043" ccp_infra_version="2" data-ccp-timestamp="1574101735870">A form for those wanting&nbsp;to self-exclude from&nbsp;raffles and lotteries.</p>'
+categories:
+  - Admin
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  title:
+    '#type': webform_markup
+    '#markup': |
+      <h2><strong>Gambling Self-Exclusion Form</strong></h2>
+
+      <p>Complete this form to self-exclude&nbsp;from&nbsp;WaterAid&nbsp;raffles and lotteries.&nbsp;You can also call our Supporter Care team on 020 7793 4594 to make a self-exclusion request over the phone.</p>
+  i_request_to_be_excluded_from_the_wateraid_raffle_lottery_with_i:
+    '#type': checkbox
+    '#title': 'I request to be excluded from the WaterAid raffle/lottery with immediate effect'
+    '#required': true
+  i_understand_that_if_i_attempt_to_enter_a_wateraid_raffle_or_lot:
+    '#type': checkbox
+    '#title': 'I understand that if I attempt to enter a WaterAid raffle or lottery during the term of this exclusion and am identified by a member of staff, I will be refused entry and any stake will be returned to me.'
+    '#required': true
+  i_acknowledge_my_responsibility_in_ensuring_adherence_to_this_ag:
+    '#type': checkbox
+    '#title': 'I acknowledge my responsibility in ensuring adherence to this agreement. I acknowledge that WaterAid, its employees or agents have no liability or claims arising from my voluntary use of the gambling facilities provided.'
+    '#required': true
+  i_understand_that_by_submitting_this_form_the_exclusion_will_rem:
+    '#type': checkbox
+    '#title': 'I understand that by submitting this form, the exclusion will remain in place until I remove the exclusion, and for a minimum period of 6 months.'
+    '#description': 'You can remove the exclusion by calling our Supporter Care Team on 020 7793 4594.'
+    '#required': true
+  contact_name:
+    '#type': webform_name
+    '#title': 'Contact name'
+    '#required': true
+    '#first__title': 'First name'
+    '#middle__access': false
+    '#last__title': 'Last name'
+    '#suffix__access': false
+    '#degree__access': false
+  date_of_birth:
+    '#type': textfield
+    '#title': 'Date of Birth'
+    '#placeholder': DD/MM/YYYY
+    '#input_mask': 99/99/9999
+    '#required': true
+  address:
+    '#type': webform_address_capture_plus_manual
+    '#title': Address
+    '#required': true
+    '#address_line1_search_label': 'House number or name (optional)'
+    '#postal_code_search_label': Postcode
+    '#city__title': City/Town
+    '#state_province__title': County
+    '#postal_code__title': Postcode
+    '#address__required': true
+    '#address_2__required': false
+    '#city__required': true
+    '#country__required': true
+    '#state_province__required': false
+    '#postal_code__required': true
+    '#capture_plus_active': true
+    '#state_province__type': textfield
+  email_address:
+    '#type': loqate_email_composite
+    '#title': 'Email address'
+    '#required': true
+    '#email__title': 'Email address'
+    '#email__required': true
+  supporter_number:
+    '#type': textfield
+    '#title': 'Supporter number'
+    '#description': '(If known)'
+  end_date_for_self_exclusion:
+    '#type': date
+    '#title': 'End date for self-exclusion'
+    '#description': 'Minimum 6 months. If left blank the request will remain until we hear from you.'
+    '#date_date_min': '+6 months'
+  info:
+    '#type': webform_markup
+    '#markup': '<p ccp_infra_copy_id="d50f28ab-320f-4eca-92b8-58eabb10d436" ccp_infra_timestamp="1574187268007" ccp_infra_user_hash="1932709043" ccp_infra_version="2" data-ccp-timestamp="1574187268007">We ask you to provide the above details so we can identify you on our database and ensure your self-exclusion request is fulfilled. This does not constitute a marketing opt in and we will not use your details for any marketing activity unless we have your consent to do so.</p>'
+  privacy_policy:
+    '#type': webform_markup
+    '#markup': |
+      <h3><strong>Your privacy</strong></h3>
+
+      <p>WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+  getting_help:
+    '#type': webform_markup
+    '#markup': |-
+      <h3><strong>Getting help</strong></h3>
+
+      <p>WaterAid would also like to advise anyone who feels they are spending too much time or money gambling to visit www.gamcare.org.uk, or call their helpline on 0845 6000 133. &nbsp;GamCare provides access to support, information and specially trained counsellors to anyone who feels they, or someone close to them, has a problem with gambling.</p>
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /gambling-self-exclusion-form
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank You'
+  confirmation_message: "<p>Thank you for submitting your self-exclusion request, your record will be updated on the WaterAid database within two working days. &nbsp;<br />\r\n<br />\r\nPlease call our Supporter Care team on 020 7793 4594 if you have any further questions.<br />\r\n<br />\r\nVisit <a href=\"https://www.gamcare.org.uk\" target=\"_blank\">www.gamcare.org.uk</a> or call their helpline on 0845 6000 133 for support with problem gambling.</p>"
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: 'Thank you for submitting your self-exclusion request'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: supportercare@wateraid.org
+      from_options: {  }
+      from_name: 'Supporter Care'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thank you for submitting your self-exclusion request'
+      body: "<p ccp_infra_copy_id=\"dbe8e3a7-4b1c-49d2-aebf-e97ce59424ff\" ccp_infra_timestamp=\"1574260841634\" ccp_infra_user_hash=\"1932709043\" ccp_infra_version=\"2\" data-ccp-timestamp=\"1574260841634\">Thank you for submitting your self-exclusion request, your record will be updated on the WaterAid database within two working days. &nbsp;<br />\r\n<br />\r\nPlease call our Supporter Care team on 020 7793 4594 if you have any further questions.<br />\r\n<br />\r\nVisit <a href=\"https://www.gamcare.org.uk\" target=\"_blank\">www.gamcare.org.uk</a> or call their helpline on 0845 6000 133 for support with problem gambling.</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

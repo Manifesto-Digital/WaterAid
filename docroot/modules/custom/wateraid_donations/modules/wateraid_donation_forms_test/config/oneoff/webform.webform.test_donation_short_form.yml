@@ -1,0 +1,179 @@
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+_core:
+  default_config_hash: W8QDMdZhpXffMYRY7zq361fviC6lzyyVlazfxeg7QwE
+open: null
+close: null
+uid: 1
+template: false
+id: test_donation_short_form
+title: 'Test donation short form'
+description: 'Includes just amount and payment options on a 2-step form.'
+category: Donation
+elements: |
+  step_1:
+    '#type': webform_wizard_page
+    '#title': 'Make a donation'
+    '#open': true
+    '#next_button_label': 'Donate with Credit/Debit card'
+    donation_amount:
+      '#type': donations_webform_amount
+      '#title': 'Donation amount'
+      '#amount__placeholder': 'Enter amount'
+      '#frequency__placeholder': 'Enter frequency'
+      '#message__placeholder': 'This is a placeholder.'
+  payment_type:
+    '#type': webform_wizard_page
+    '#title': 'Payment type'
+    payment:
+      '#type': donations_webform_payment
+      '#title': Payment
+css: ''
+javascript: ''
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_submit_once: true
+  form_submit_attributes: {  }
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: false
+  form_confidential: true
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_unsaved: false
+  form_disable_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  submission_log: false
+  wizard_progress_bar: true
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_next_button_attributes: {  }
+  wizard_prev_button_label: Back
+  wizard_prev_button_attributes: {  }
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_next_button_attributes: {  }
+  preview_prev_button_label: ''
+  preview_prev_button_attributes: {  }
+  preview_message: ''
+  draft: none
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_button_attributes: {  }
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  purge: none
+  purge_days: null
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  wateraid_donations:
+    id: wateraid_donations
+    label: 'WaterAid Donations'
+    handler_id: wateraid_donations
+    status: true
+    weight: 0
+    settings:
+      payment_providers: {  }
+      currency: GBP
+      amounts:
+        - amount: '2'
+          message: message
+      one_off:
+        payment_methods:
+          - paypal_express
+          - stripe
+        default_payment_method: stripe
+        amounts:
+          - amount: '15'
+            benefit: '£15 provides safe water for one person'
+          - amount: '50'
+            benefit: '£50 buys a handpump in Nepal'
+          - amount: '30'
+            benefit: '£30 buys a toilet for a household in India'
+          - amount: ''
+            benefit: ''
+          - amount: ''
+            benefit: ''
+          - amount: ''
+            benefit: ''
+        default_amount: '1'
+        enabled: 1
+      recurring:
+        payment_methods:
+          - bank_account
+        default_payment_method: bank_account
+        amounts:
+          - amount: '2'
+            benefit: '£2 buys a water system toolkit in Timor-Leste'
+          - amount: '10'
+            benefit: '£10 buys a mason to construct a family toilet'
+          - amount: '5'
+            benefit: '£5 buys a tube well in Nepal'
+          - amount: ''
+            benefit: ''
+          - amount: ''
+            benefit: ''
+          - amount: ''
+            benefit: ''
+        default_amount: '1'
+        enabled: 1
+      frequency_default: ''

@@ -1,0 +1,8 @@
+name: Webform Wizard Single Page
+type: module
+description: Provides one-page multistep webform functionality
+package: Webform
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - webform:webform
+  - webform_wizard_extra:webform_wizard_extra

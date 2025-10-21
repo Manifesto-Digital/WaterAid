@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Install file for wateraid_azure_storage module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_install().
+ */
+function wateraid_azure_storage_install(): void {
+  $field_storage_definition_message_id = BaseFieldDefinition::create('string')
+    ->setName('message_id')
+    ->setLabel(t('Azure Queue Storage Message Id'))
+    ->setTargetEntityTypeId('webform_submission');
+
+  $field_storage_definition_message_retries = BaseFieldDefinition::create('integer')
+    ->setName('message_retries')
+    ->setLabel(t('Azure Queue Storage Message Retries'))
+    ->setTargetEntityTypeId('webform_submission');
+
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $definition_update_manager->installFieldStorageDefinition('message_id', 'webform_submission', 'wateraid_azure_storage', $field_storage_definition_message_id);
+  $definition_update_manager->installFieldStorageDefinition('message_retries', 'webform_submission', 'wateraid_azure_storage', $field_storage_definition_message_retries);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function wateraid_azure_storage_uninstall(): void {
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  if ($field_storage_definition_message_id = $definition_update_manager->getFieldStorageDefinition('message_id', 'webform_submission')) {
+    $definition_update_manager->uninstallFieldStorageDefinition($field_storage_definition_message_id);
+  }
+  if ($field_storage_definition_message_retries = $definition_update_manager->getFieldStorageDefinition('message_retries', 'webform_submission')) {
+    $definition_update_manager->uninstallFieldStorageDefinition($field_storage_definition_message_retries);
+  }
+}

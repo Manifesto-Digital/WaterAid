@@ -1,0 +1,31 @@
+stripe.apijs:
+  remote: https://stripe.com/docs/stripe.js
+  version: 3.x
+  license:
+    name: UNKNOWN
+    url: UNKNOWN
+    gpl-compatible: FALSE
+  js:
+    https://js.stripe.com/v2:
+    https://js.stripe.com/v3:
+      type: external
+      minified: true
+
+stripe.stripejs:
+  js:
+    js/webform_stripe_elements.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - wateraid_donation_stripe/stripe.apijs
+    - core/drupal.message
+
+stripe.applepayjs:
+  version: 1.5
+  js:
+    js/webform_stripe_applepay.js: {}
+  css:
+    component:
+      css/webform_stripe_applepay.css: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - wateraid_donation_stripe/stripe.apijs

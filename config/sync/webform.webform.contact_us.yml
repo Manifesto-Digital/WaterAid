@@ -1,0 +1,559 @@
+uuid: f2e87f1c-6978-4471-adf6-7fedfea65898
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+  enforced:
+    module:
+      - webform
+third_party_settings:
+  wateraid_donation_forms:
+    message:
+      value: "<p>Thank you so much for contacting us – we really appreciate your interest in our work.</p>\r\n\r\n<p>We'll respond to your message as soon as we can, and any information you may have requested will be with you shortly. In the meantime you may find some useful information in our FAQs.</p>"
+      format: basic_html
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: null
+template: false
+archive: false
+id: contact_us
+title: 'Contact Us'
+description: 'Email contact webform.'
+categories:
+  - Admin
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  please_select_an_enquiry_type:
+    '#type': select
+    '#title': 'Select an enquiry type'
+    '#options':
+      'General enquiry': 'General enquiry'
+      'Contact details': 'Update your contact details'
+      'Donation enquiry': 'Donations enquiry'
+      'Comments and feedback': 'Comments and feedback'
+      'Direct debit': 'Increase your direct debit'
+      ' Jobs': Jobs
+      Volunteering: Volunteering
+      Speaker: 'Request a Speaker'
+      'Trusts and foundations': 'Trusts and foundations'
+      'Making a donation of over £10,000': 'Making a donation of over £10,000'
+      'Corporate partnerships': 'Corporate partnerships'
+      'Water and sanitation technical enquiry': 'Water and sanitation technical enquiry'
+      Media: Media
+      Complaint: Complaint
+      Safeguarding: 'Report a safeguarding concern'
+    '#required': true
+    '#default_value': '  '
+  enquiries_elements:
+    '#type': container
+    '#states':
+      invisible:
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: 'Contact details'
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: Volunteering
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: Safeguarding
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: 'Direct debit'
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: Speaker
+    title:
+      '#type': select
+      '#title': Title
+      '#options': titles
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+    first_name:
+      '#type': textfield
+      '#title': 'First name'
+      '#required': true
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+    last_name:
+      '#type': textfield
+      '#title': 'Last name'
+      '#required': true
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+    email:
+      '#type': loqate_email_composite
+      '#title': 'Your email address'
+      '#required': true
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+      '#default_value': ''
+      '#email__title': 'Your email address'
+      '#email__required': true
+    postcode:
+      '#type': webform_address
+      '#title': Postcode
+      '#required': true
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+      '#address__access': false
+      '#address_2__access': false
+      '#city__access': false
+      '#state_province__access': false
+      '#postal_code__title': Postcode
+      '#postal_code__required': true
+      '#country__access': false
+    your_phone_number:
+      '#type': tel
+      '#title': 'Your phone number (optional)'
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+      '#format': raw
+    your_company_or_organisation:
+      '#type': textfield
+      '#title': 'Your company or organisation (optional)'
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+    message:
+      '#type': textarea
+      '#title': Message
+      '#required': true
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+    privacy_statement:
+      '#type': processed_text
+      '#states':
+        invisible:
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Safeguarding
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Speaker
+          - or
+          - ':input[name="please_select_an_enquiry_type"]':
+              value: Volunteering
+      '#text': |
+        <p class="fine-print">If you would like to find out more or wish to stop receiving communications from WaterAid about the difference your support makes, please call our Supporter Care team on 020 7793 4594 and they will be happy to help.</p>
+
+        <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+      '#format': basic_html
+  volunteering_message:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="please_select_an_enquiry_type"]':
+          value: Volunteering
+    '#text': '<h3>Volunteering enquiries</h3><p>Give your time, skills and energy as a volunteer – and help make huge change happen around the world.</p><p><a class="button button__primary button__large" href="/uk/get-involved/volunteering">Find a voluntary opportunity</a></p>'
+    '#format': basic_html
+  speaker_message:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="please_select_an_enquiry_type"]':
+          value: Speaker
+    '#text': '<h3>Free talks and workshops from our Speaker Network</h3><p>Inspire your group with a talk, assembly or curriculum-based workshop from our expert Speakers.</p><p><a class="button button__primary button__large" href="/uk/get-involved/teaching/book-a-free-speaker">Request a Speaker</a></p><p>If you have any questions, get in touch with the team direct on <a href="mailto:speakers@wateraid.org">speakers@wateraid.org</a></p>'
+    '#format': basic_html
+  safeguarding_message:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="please_select_an_enquiry_type"]':
+          value: Safeguarding
+    '#text': '<h3>Safeguarding and whistleblowing</h3><p>All reports are strictly confidential, and you can always choose to remain anonymous.</p><p><a class="button button__primary button__large" href="/uk/safeguarding-and-whistleblowing#report">Report a concern</a></p>'
+    '#format': basic_html
+  contact_details:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="please_select_an_enquiry_type"]':
+          value: 'Contact details'
+    '#text': '<h3>Update your contact details</h3><p>If you''ve moved house or changed your email address or phone number, let us know so we can keep in touch!</p><p><a class="button button__primary button__large" href="/uk/update-your-details">Update your contact details</a></p>'
+    '#format': basic_html
+  direct_debit_message:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="please_select_an_enquiry_type"]':
+          value: 'Direct debit'
+    '#text': '<h3>Increase your direct debit</h3><p>Your support really does make a difference – and by increasing your regular gift, you can help even more people around the world transform their futures with clean water, decent toilets and good hygiene.</p><p><a class="button button__primary button__large" href="/uk/increase-your-direct-debit">Increase your direct debit</a></p>'
+    '#format': basic_html
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#states':
+      invisible:
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: Speaker
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: Volunteering
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: Safeguarding
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: 'Direct debit'
+        - or
+        - ':input[name="please_select_an_enquiry_type"]':
+            value: 'Contact details'
+    '#submit__label': 'Send message'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /form/contact_us
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: '<front>'
+  confirmation_title: 'Thank you so much for contacting WaterAid'
+  confirmation_message: "<p>We&#39;re really pleased you&#39;ve got in touch and we&#39;ll reply to you as soon as we can.</p>\r\n\r\n<p>In the meantime, you might find the information you&#39;re looking for in our <a href=\"https://www.wateraid.org/uk/contact-us\">frequently asked questions &gt;</a></p>"
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_notification:
+    id: email
+    handler_id: email_notification
+    label: 'Email notification'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:please_select_an_enquiry_type:raw]'
+      to_options:
+        -
+          value: 'General enquiry'
+          text: supportercare@wateraid.org
+        -
+          value: 'Comments and feedback'
+          text: supportercare@wateraid.org
+        -
+          value: ' Jobs'
+          text: jobs@wateraid.org
+        -
+          value: 'Donation enquiry'
+          text: supportercare@wateraid.org
+        -
+          value: 'Trusts and foundations'
+          text: philanthropy@wateraid.org
+        -
+          value: 'Making a donation of over £10,000'
+          text: philanthropy@wateraid.org
+        -
+          value: 'Corporate partnerships'
+          text: corporate@wateraid.org
+        -
+          value: 'Water and sanitation technical enquiry'
+          text: advisor@wateraid.org
+        -
+          value: Media
+          text: pressoffice@wateraid.org
+        -
+          value: Complaint
+          text: supportercare@wateraid.org
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: '[webform_submission:values:first_name:value] [webform_submission:values:last_name:value]'
+      reply_to: '[webform_submission:values:email:email:raw]'
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'WaterAid: [webform_submission:values:please_select_an_enquiry_type]'
+      body: "<strong>Name: </strong>[webform_submission:values:first_name:value] [webform_submission:values:last_name:value]<br />\r\n<strong>Email: </strong>[webform_submission:values:email:email]<br />\r\n<strong>Postcode:</strong> [webform_submission:values:postcode]<br />\r\n<strong>Phone number: </strong>[webform_submission:values:your_phone_number:value]<br />\r\n<strong>Company/organisation:</strong> [webform_submission:values:your_company_or_organisation]<br />\r\n<strong>Message: </strong>[webform_submission:values:message]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

@@ -1,0 +1,319 @@
+uuid: 84e91580-9c7b-45b2-87c4-f2ef56e796e5
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+    - webform_wizard_single_page
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+    confirmation_image_url: ''
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+  webform_wizard_single_page:
+    single_page: false
+weight: 0
+open: null
+close: null
+uid: 96
+template: false
+archive: false
+id: request_your_free_will_informati
+title: 'Request your free will information pack'
+description: ''
+categories:
+  - Community
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  intro:
+    '#type': processed_text
+    '#text': |
+      <h1>Request your free will information pack</h1>
+
+      <p><strong>Request your free will information pack today for details on how to have a simple will written by solicitors who are part of the National Free Wills Network.</strong></p>
+
+      <p>There is no obligation to include a gift to WaterAid; however, we do hope you will consider leaving the gift of clean water in your will.</p>
+    '#format': basic_html
+  title:
+    '#type': select
+    '#title': Title
+    '#options': titles
+  first_name:
+    '#type': textfield
+    '#title': 'First name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last name'
+    '#required': true
+  your_address:
+    '#type': webform_address_capture_plus_manual
+    '#title': 'Your address'
+    '#required': true
+    '#address__required': true
+    '#city__required': true
+    '#state_province__title': County
+    '#state_province__type': textfield
+    '#postal_code__title': Postcode
+    '#postal_code__required': true
+    '#country__required': true
+    '#capture_plus_active': true
+  opt_in_intro:
+    '#type': processed_text
+    '#text': |
+      <p><strong>By providing your postal address, you are agreeing to receive information on our free will writing offer.</strong></p>
+
+      <h2>Stay updated</h2>
+
+      <p>We’d also love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know if you'd prefer not to hear from us.</p>
+    '#format': basic_html
+  communications_preference:
+    '#type': flexible_options
+    '#title': 'Communications preference'
+    '#title_display': invisible
+    '#options':
+      noidontwanttohearfromyoubypost: 'No, I don''t want to hear from you by post'
+  privacy_statement:
+    '#type': processed_text
+    '#text': |
+      <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+    '#format': basic_html
+  disclosure:
+    '#type': processed_text
+    '#text': |
+      <h2>Terms and conditions</h2>
+
+      <p><span>WaterAid, through the National Free Wills Network, will pay a discounted price for a simple single or mirror will to be written by participating solicitors. This offer is for a limited time only.</span></p>
+
+      <p><span>You'll receive a pack with a list of participating solicitors in your area; you'll need to book your appointment within three months of receiving this pack.</span></p>
+
+      <p><span>WaterAid assumes no responsibility for the wills written by our partners. You may be asked to pay for storage of your will or&nbsp;other similar services;&nbsp;you are not obliged to take these services up and can opt out at any time. </span></p>
+    '#format': basic_html
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /get-involved/giving/free-will-writing-services/information-pack
+  page_confirm_path: /get-involved/giving/free-will-writing-services/information-pack/confirmation
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you for choosing to use our free will offer'
+  confirmation_message: '<p>We will send you a pack with details of participating solicitors. This will be with you within the next two weeks.</p>'
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

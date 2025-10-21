@@ -1,0 +1,22 @@
+uuid: 329318a4-a121-4d3e-9ddb-1ae3c713319b
+langcode: en
+status: true
+dependencies: {  }
+id: relationship_in_memory
+label: 'Relationship (In Memory)'
+category: Demographic
+likert: false
+options: |-
+  Brother: Brother
+  Daughter: Daughter
+  Father: Father
+  Friend: Friend
+  Grandfather: Grandfather
+  Grandmother: Grandmother
+  Husband: Husband
+  Mother: Mother
+  'Other Relative': 'Other Relative'
+  Partner: Partner
+  Sister: Sister
+  Son: Son
+  Wife: Wife

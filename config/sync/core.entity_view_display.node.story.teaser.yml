@@ -83,6 +83,10 @@ content:
     region: content
 hidden:
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_audience: true
   field_content: true
   field_full_story_link: true
   field_hero: true

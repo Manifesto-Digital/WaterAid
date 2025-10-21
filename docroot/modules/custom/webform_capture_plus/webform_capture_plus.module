@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * @file
+ * Add checkbox to webform address element form to enable the capture plus.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\webform_capture_plus\Plugin\WebformElement\WebformAddressCapturePlus;
+use Drupal\webform_capture_plus\WebformAddressCapturePlusConstants;
+
+/**
+ * Implements hook_webform_element_info_alter().
+ */
+function webform_capture_plus_webform_element_info_alter(array &$definitions): void {
+  // Substitute the original for one with address lookup functionality.
+  // Because the element had been altered previously and is already in use on
+  // various Webforms, we cannot just switch to a new element without a lot of
+  // data transitioning...
+  $definitions['webform_address']['class'] = WebformAddressCapturePlus::class;
+}
+
+/**
+ * Alters the form widget in the form.
+ *
+ * Implements hook_webform_element_alter().
+ */
+function webform_capture_plus_webform_element_alter(array &$element, FormStateInterface $form_state, array $context): void {
+  // Make sure we have the correct form element i.e. "webform_address" or
+  // "webform_address_sweden".
+  if (!empty($element['#type']) && (str_starts_with($element['#type'], 'webform_address'))) {
+
+    // If the Capture Plus is not enabled then exit.
+    if (!isset($element['#capture_plus_active']) || $element['#capture_plus_active'] !== TRUE) {
+      return;
+    }
+
+    // Get the unique key for the element w/o the donation form! This is not
+    // used here.
+    $webform_element_key = $element['#webform_key'];
+
+    // Get the Loqate api key from configuration.
+    $loqate_api_config = \Drupal::configFactory()->get('webform_capture_plus.settings');
+    if ($loqate_api_config->get('mode') === 'live') {
+      $key_id = $loqate_api_config->get('live_api_key');
+    }
+    else {
+      $key_id = $loqate_api_config->get('test_api_key');
+    }
+    $api_key = \Drupal::service('key.repository')->getKey($key_id)->getKeyValue();
+
+    // Add a wrapper class that distinguishes the Capture Plus Address version.
+    $element['#attributes']['class'] = [
+      HTML::cleanCssIdentifier('wa-subelement-wrapper-capture-plus'),
+    ];
+
+    $element['#attached']['library'][] = 'webform_capture_plus/webform_capture_plus';
+    $data = [
+      'webform_key' => $webform_element_key,
+      'apiKey' => $api_key,
+    ];
+
+    $element['#attached']['drupalSettings']['webformCapturePlus']['keys'][$webform_element_key] = $data;
+    $element['#attached']['drupalSettings']['webformCapturePlus']['apiKey'] = $api_key;
+    $element['#attached']['drupalSettings']['webformCapturePlus']['lookupLabel'] = $element['#' . WebformAddressCapturePlusConstants::WEBFORM_CAPTURE_LOOKUP_LABEL] ?? new TranslatableMarkup('Search for your address…');
+    $element['#attached']['drupalSettings']['webformCapturePlus']['placeholder'] = $element['#' . WebformAddressCapturePlusConstants::WEBFORM_CAPTURE_PLACEHOLDER] ?? new TranslatableMarkup('Start typing your address or postcode');
+    $element['#attached']['drupalSettings']['webformCapturePlus']['required'] = !empty($element['#required']);
+
+    $element['#cache']['tags'][] = 'config:webform_capture_plus.settings';
+    $element['#cache']['tags'][] = 'config:key.key.loqate_live_api_key';
+    $element['#cache']['tags'][] = 'config:key.key.loqate_test_api_key';
+  }
+
+}

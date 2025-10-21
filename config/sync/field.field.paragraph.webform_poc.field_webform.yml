@@ -1,0 +1,32 @@
+uuid: 5cb226be-c311-4504-a476-9ab9fe4e814a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webform
+    - paragraphs.paragraphs_type.webform_poc
+    - webform.webform.poc_test
+  module:
+    - webform
+id: paragraph.webform_poc.field_webform
+field_name: field_webform
+entity_type: paragraph
+bundle: webform_poc
+label: webform
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: d629a193-4f95-4c0c-ba5b-9a743cd344f5
+    default_data: ''
+    status: open
+    open: ''
+    close: ''
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

@@ -1,0 +1,9 @@
+name: WaterAid Just Giving
+type: module
+description: Provides integration between webform & Just Giving.
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+dependencies:
+  - just_giving:just_giving
+  - webform:webform
+wateraid.package: donations

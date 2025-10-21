@@ -1,0 +1,32 @@
+uuid: 6c003a61-c38c-42c5-bb4d-08c1644b24cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webform_poc.field_options
+    - field.field.paragraph.webform_poc.field_webform
+    - paragraphs.paragraphs_type.webform_poc
+  module:
+    - webform
+id: paragraph.webform_poc.default
+targetEntityType: paragraph
+bundle: webform_poc
+mode: default
+content:
+  field_options:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webform:
+    type: webform_entity_reference_select
+    weight: 1
+    region: content
+    settings:
+      default_data: true
+      webforms: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

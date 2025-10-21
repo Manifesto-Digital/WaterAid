@@ -98,6 +98,9 @@ hidden:
   co_authors: true
   field_additional_links: true
   field_colour_selector: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_content: true
   field_cta_supporting_text: true
   field_cta_title: true

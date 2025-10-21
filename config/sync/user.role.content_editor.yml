@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
     - media.type.document
@@ -31,6 +32,7 @@ dependencies:
     - content_translation
     - contextual
     - file
+    - filter
     - group
     - group_content_menu
     - media
@@ -62,7 +64,9 @@ permissions:
   - 'administer url aliases'
   - 'change own username'
   - 'clone own publication content'
+  - 'clone own webform content'
   - 'clone publication content'
+  - 'clone webform content'
   - 'create article content'
   - 'create audio media'
   - 'create content translations'
@@ -97,7 +101,6 @@ permissions:
   - 'delete any page content'
   - 'delete any standard_page content'
   - 'delete any story content'
-  - 'delete any webform content'
   - 'delete article revisions'
   - 'delete content translations'
   - 'delete donation revisions'
@@ -140,7 +143,6 @@ permissions:
   - 'delete terms in subject_areas'
   - 'delete terms in themes'
   - 'delete terms in topic'
-  - 'delete webform revisions'
   - 'edit any article content'
   - 'edit any event content'
   - 'edit any landing_page content'
@@ -148,7 +150,6 @@ permissions:
   - 'edit any page content'
   - 'edit any standard_page content'
   - 'edit any story content'
-  - 'edit any webform content'
   - 'edit co-authors of all content'
   - 'edit co-authors of co-authored content'
   - 'edit co-authors of own content'
@@ -193,7 +194,6 @@ permissions:
   - 'revert term revisions in subject_areas'
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
-  - 'revert webform revisions'
   - 'translate any entity'
   - 'translate article node'
   - 'translate get_involved taxonomy_term'
@@ -204,6 +204,7 @@ permissions:
   - 'translate wateraid_site group'
   - 'update content translations'
   - 'update media'
+  - 'use text format wateraid_pdf'
   - 'view all revisions'
   - 'view article revisions'
   - 'view donation revisions'
@@ -224,4 +225,3 @@ permissions:
   - 'view term revisions in themes'
   - 'view term revisions in topic'
   - 'view the administration theme'
-  - 'view webform revisions'

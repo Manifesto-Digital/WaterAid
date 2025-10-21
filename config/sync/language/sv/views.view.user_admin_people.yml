@@ -26,8 +26,6 @@ display:
             past_format: '@interval sedan'
         operations:
           label: Funktioner
-        mail:
-          separator: ', '
       pager:
         options:
           tags:

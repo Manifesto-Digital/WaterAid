@@ -1,0 +1,1152 @@
+uuid: 5f2b08f7-53c0-4db2-88e7-5b12fc53ba39
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_azure_storage
+    - wateraid_donation_forms
+    - wateraid_forms
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: "<h2>Your donation details:</h2>\r\n\r\n<p><strong>Date</strong><br />\r\n[webform_submission:donation-date]</p>\r\n\r\n<p><strong>Donation amount</strong><br />\r\n£[webform_submission:donation-amount]</p>\r\n"
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you.</p>\r\n"
+      format: basic_html
+    after_confirmation_cta:
+      value: "<h2>You're helping to share the joy of clean water!</h2>\r\n\r\n<drupal-entity data-align=\"left\" data-embed-button=\"image\" data-entity-embed-display=\"entity_reference:image_embed_button_formatter\" data-entity-embed-display-settings=\"{&quot;responsive_image_style&quot;:&quot;landscape_image&quot;,&quot;show_credit&quot;:0,&quot;show_caption&quot;:0}\" data-entity-type=\"media\" data-entity-uuid=\"a320447e-4eab-49ae-ab28-f488bd511553\"></drupal-entity>\r\n\r\n<p>&nbsp;</p>\r\n"
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: pay_in_your_fundraising
+title: 'Pay in your fundraising'
+description: ''
+categories:
+  - Donation
+elements: |-
+  about_your_fundraising:
+    '#type': webform_wizard_page
+    '#title': 'About your fundraising'
+    '#help': '<p>Not looking to pay in money from a fundraiser? <a href="/donate"><span class="secondary-blue">Make a personal donation to WaterAid</span></a></p>'
+    '#hide_title': true
+    '#select_security_icons_block': '81'
+    about_your_fundraising_title:
+      '#type': webform_markup
+      '#markup': |
+        <h1 class="form-title">Pay in your fundraising</h1>
+
+        <p>Please use this form if you are donating money that has been raised from a fundraising event or collection that you&#39;ve held, or if you are paying in money on behalf of a company, community group or other organisation.</p>
+    donation_amount:
+      '#type': donations_webform_amount
+      '#title': 'What amount are you paying in?'
+      '#title_display': before
+      '#required': true
+      '#frequency__access': false
+    how_was_the_money_raised_:
+      '#type': select
+      '#title': 'How was the money raised?'
+      '#options':
+        'Through my own event / challenge': 'Through my own event / challenge'
+        'As an organisation': 'As an organisation'
+      '#empty_option': 'Please select'
+      '#required': true
+    what_kind_of_event_challenge_individual_:
+      '#type': select
+      '#title': 'What kind of event / challenge?'
+      '#options':
+        'I took part in a WaterAid event': 'I took part in a WaterAid event'
+        'I organised my own event': 'I organised my own event'
+        'I fundraised for my birthday, wedding or anniversary': 'I fundraised for my birthday, wedding or anniversary'
+        'I fundraised in memory of someone': 'I fundraised in memory of someone'
+        "I'm paying in fundraising on behalf of my child": "I'm paying in fundraising on behalf of my child"
+        'I organised an event at my university': 'I organised an event at my university'
+        'I took part in Winnovators': 'I took part in Winnovators'
+      '#states':
+        visible:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'Through my own event / challenge'
+        required:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'Through my own event / challenge'
+    organisation_type:
+      '#type': select
+      '#title': 'Organisation type'
+      '#options':
+        Company: Company
+        'Faith group': 'Faith group'
+        School: School
+        'Service organisation or club': 'Service organisation or club'
+        'Youth group': 'Youth group'
+        Nursery: Nursery
+        University: University
+        'Water company, partner or contractor': 'Water company, partner or contractor'
+        'Trust or foundation': 'Trust or foundation'
+        'Other community group or organisation': 'Other community group or organisation'
+      '#states':
+        visible:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'As an organisation'
+        required:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'As an organisation'
+    organisation_name_company:
+      '#type': webform_select_other
+      '#title': 'Organisation name'
+      '#options': corporate_partners
+      '#states':
+        visible:
+          ':input[name="organisation_type"]':
+            value: Company
+        required:
+          ':input[name="organisation_type"]':
+            value: Company
+      '#wrapper_type': form_element
+    type_of_service_organisation_or_club:
+      '#type': webform_select_other
+      '#title': 'Type of service organisation or club'
+      '#options':
+        Lions: Lions
+        'Inner Wheel': 'Inner Wheel'
+        Rotary: Rotary
+        Soroptimists: Soroptimists
+      '#states':
+        visible:
+          ':input[name="organisation_type"]':
+            value: 'Service organisation or club'
+        required:
+          ':input[name="organisation_type"]':
+            value: 'Service organisation or club'
+      '#wrapper_type': form_element
+    what_was_the_name_of_the_event_water_company_event:
+      '#type': webform_select_other
+      '#title': 'What was the name of the event?'
+      '#options': water_industry_partner_wip_events
+      '#states':
+        visible:
+          ':input[name="organisation_type"]':
+            value: 'Water company, partner or contractor'
+        required:
+          ':input[name="organisation_type"]':
+            value: 'Water company, partner or contractor'
+    organisation_name:
+      '#type': textfield
+      '#title': 'Organisation name'
+      '#states':
+        visible:
+          - ':input[name="organisation_type"]':
+              value: 'Trust or foundation'
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Faith group'
+          - or
+          - ':input[name="organisation_type"]':
+              value: School
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Service organisation or club'
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Youth group'
+          - or
+          - ':input[name="organisation_type"]':
+              value: Nursery
+          - or
+          - ':input[name="organisation_type"]':
+              value: University
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Other community group or organisation'
+          - or
+          - ':input[name="what_was_the_name_of_the_event_water_company_event[other]"]':
+              filled: true
+        required:
+          - ':input[name="organisation_type"]':
+              value: 'Trust or foundation'
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Faith group'
+          - or
+          - ':input[name="organisation_type"]':
+              value: School
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Service organisation or club'
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Youth group'
+          - or
+          - ':input[name="organisation_type"]':
+              value: Nursery
+          - or
+          - ':input[name="organisation_type"]':
+              value: University
+          - or
+          - ':input[name="organisation_type"]':
+              value: 'Other community group or organisation'
+          - or
+          - ':input[name="what_was_the_name_of_the_event_water_company_event[other]"]':
+              filled: true
+    what_kind_of_event_challenge_company_:
+      '#type': webform_select_other
+      '#title': 'What kind of event / challenge?'
+      '#options':
+        'We took part in a WaterAid event': 'We took part in a WaterAid event'
+        'We organised our own event': 'We organised our own event'
+      '#states':
+        visible:
+          ':input[name="organisation_type"]':
+            value: Company
+        required:
+          ':input[name="organisation_type"]':
+            value: Company
+      '#wrapper_type': form_element
+    what_kind_of_event_challenge_faith_group_:
+      '#type': webform_select_other
+      '#title': 'What kind of event / challenge?'
+      '#options':
+        'We took part in the Harvest appeal': 'We took part in the Harvest appeal'
+        'We took part in the Lent appeal': 'We took part in the Lent appeal'
+        'We took part in the Christmas appeal': 'We took part in the Christmas appeal'
+        'Sukkot Appeal 2022': 'We took part in the Sukkot appeal'
+      '#states':
+        visible:
+          ':input[name="organisation_type"]':
+            value: 'Faith group'
+        required:
+          ':input[name="organisation_type"]':
+            value: 'Faith group'
+      '#wrapper_type': form_element
+    what_kind_of_event_challenge_school_:
+      '#type': webform_select_other
+      '#title': 'What kind of event / challenge?'
+      '#options': wateraid_school_events_campaigns
+      '#states':
+        visible:
+          ':input[name="organisation_type"]':
+            value: School
+        required:
+          ':input[name="organisation_type"]':
+            value: School
+      '#wrapper_type': form_element
+    what_event_did_you_take_part_in_individual:
+      '#type': webform_select_other
+      '#title': 'Which event did you take part in?'
+      '#options': wateraid_events
+      '#states':
+        visible:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I took part in a WaterAid event'
+        required:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I took part in a WaterAid event'
+      '#wrapper_type': form_element
+      '#format': raw
+    what_event_did_you_take_part_in_company:
+      '#type': select
+      '#title': 'Which event did you take part in?'
+      '#options': wateraid_events
+      '#states':
+        visible:
+          ':input[name="what_kind_of_event_challenge_company_[select]"]':
+            value: 'We took part in a WaterAid event'
+        required:
+          ':input[name="what_kind_of_event_challenge_company_[select]"]':
+            value: 'We took part in a WaterAid event'
+    what_was_the_name_of_the_event_:
+      '#type': textfield
+      '#title': 'What was the name of the event?'
+      '#maxlength': 100
+      '#states':
+        visible:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I organised my own event'
+        required:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I organised my own event'
+      '#format': raw
+    when_did_the_event_take_place_individual:
+      '#type': textfield
+      '#title': 'When did the event take place?'
+      '#placeholder': DD/MM/YYYY
+      '#input_mask': 99/99/9999
+      '#states':
+        visible:
+          - ':input[name="what_kind_of_event_challenge_individual_"]':
+              value: 'I organised my own event'
+          - or
+          - ':input[name="what_kind_of_event_challenge_individual_"]':
+              value: 'I fundraised for my birthday or wedding'
+          - or
+          - ':input[name="what_kind_of_event_challenge_individual_"]':
+              value: 'I fundraised in memory of someone'
+    when_did_the_event_take_place_company:
+      '#type': textfield
+      '#title': 'When did the event take place?'
+      '#placeholder': DD/MM/YYYY
+      '#input_mask': 99/99/9999
+      '#states':
+        visible:
+          ':input[name="what_kind_of_event_challenge_company_[select]"]':
+            value: 'We organised our own event'
+    university_name:
+      '#type': textfield
+      '#title': 'University name'
+      '#states':
+        visible:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I organised an event at my university'
+        required:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I organised an event at my university'
+    team_name:
+      '#type': textfield
+      '#title': 'Team name'
+      '#states':
+        visible:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I took part in Winnovators'
+        required:
+          ':input[name="what_kind_of_event_challenge_individual_"]':
+            value: 'I took part in Winnovators'
+    have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_:
+      '#type': select
+      '#title': 'Have you had a talk or workshop from a WaterAid speaker?'
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'As an organisation'
+        required:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'As an organisation'
+    funnel_tracking_step_1:
+      '#type': processed_text
+      '#text': |
+        <script>
+        window.dataLayer.push
+        ({
+          'event' : 'donateFormStepPayFundraising',
+          'funnelStep' : 'About your fundraising'
+        });
+        </script>
+      '#format': basic_html
+  your_details:
+    '#type': webform_wizard_page
+    '#title': 'Your details'
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha_v3/default
+    your_details_title:
+      '#type': webform_markup
+      '#markup': '<h1 class="form-title">Your details</h1>'
+    contact_name:
+      '#type': wateraid_forms_webform_name
+      '#title': 'Contact name'
+      '#first__title': 'First name'
+      '#first__required': true
+      '#last__title': 'Last name'
+      '#last__required': true
+    address_intro_organisation:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="how_was_the_money_raised_"]':
+            value: 'As an organisation'
+      '#markup': '<p style="text-align: left;">If you are paying in on behalf of an organisation, please enter your organisation&#39;s address. This should be an address where your organisation can receive post.</p>'
+    contact_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'Contact address'
+      '#required': true
+      '#address_line1_search_label': 'Address line 1 (optional)'
+      '#postal_code_search_label': Postcode
+      '#address__title': 'Address 1'
+      '#state_province__title': County
+      '#address__required': true
+      '#address_2__required': false
+      '#city__required': true
+      '#country__required': true
+      '#state_province__required': false
+      '#postal_code__required': true
+      '#capture_plus_active': true
+      '#state_province__type': textfield
+    contact_email:
+      '#type': loqate_email_composite
+      '#title': 'Contact email'
+      '#required': true
+      '#email__title': 'Contact email'
+      '#email__required': true
+    contact_phone:
+      '#type': tel
+      '#title': 'Contact phone'
+    funnel_tracking_step_2:
+      '#type': processed_text
+      '#text': |
+        <script>
+        window.dataLayer.push
+        ({
+          'event' : 'donateFormStepPayFundraising',
+          'funnelStep' : 'Your details'
+        });
+        </script>
+      '#format': basic_html
+  stay_updated:
+    '#type': webform_wizard_page
+    '#title': 'Stay updated'
+    '#help': 'WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.'
+    stay_updated_title:
+      '#type': webform_markup
+      '#markup': '<h1 class="form-title">Stay updated</h1>'
+    communication_preferences:
+      '#type': flexible_options
+      '#title': 'Communication preferences'
+      '#description': 'We&rsquo;d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you&rsquo;d like to hear from us.'
+      '#title_display': invisible
+      '#description_display': before
+      '#options': communication_preferences_long_form_
+    funnel_tracking_step_3:
+      '#type': processed_text
+      '#text': |
+        <script>
+        window.dataLayer.push
+        ({
+          'event' : 'donateFormStepPayFundraising',
+          'funnelStep' : 'Stay updated'
+        });
+        </script>
+      '#format': basic_html
+  your_payment_details:
+    '#type': webform_wizard_page
+    '#title': 'Your payment details'
+    '#select_security_icons_block': '116'
+    your_payment_details_title:
+      '#type': webform_markup
+      '#markup': '<h1 class="form-title">Your payment details</h1>'
+    payment:
+      '#type': donations_webform_payment
+      '#title': Payment
+    funnel_tracking_step_4:
+      '#type': processed_text
+      '#text': |
+        <script>
+        window.dataLayer.push
+        ({
+          'event' : 'donateFormStepPayFundraising',
+          'funnelStep' : 'Your payment details'
+        });
+        </script>
+      '#format': basic_html
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#wizard_prev__label': Back
+    '#wizard_next__label': 'Next step'
+css: "/* Payment methods margin */\r\n#edit-payment-payment-methods-one-off-selection {\r\n  margin-bottom: 24px;\r\n}\r\n.form-title {\r\n  padding-bottom: 16px;\r\n}\r\n.webform-progress h1 {\r\n  display: none;\r\n}\r\n#edit-donation-amount--wrapper,\r\n#edit-donation-amount--wrapper .fieldset-legend {\r\n    margin-bottom: 0;\r\n}\r\n#edit-donation-amount--wrapper legend {\r\n    margin-bottom: 12px;\r\n}\r\n#edit-your-payment-details h1 {\r\n    padding: 0; \r\n}\r\n#edit-payment--wrapper {\r\n  margin: 0;\r\n}\r\n#edit-payment-payment-methods-one-off-methods {\r\n    border-top: 0;\r\n    margin: 0;\r\n}\r\n.webform-page.webform-donations-page .wateraid-donations .webform-page-help {\r\n    text-align: center;\r\n}\r\n.fieldset-legend {\r\n  display: block;\r\n  margin-bottom: 4px;\r\n}\r\n.wateraid-donations legend {\r\n    display: block;\r\n    padding: 0;\r\n    font-size: inherit;\r\n    font-weight: 400;\r\n    margin: 0;\r\n    padding-right: 0;\r\n    line-height: inherit;\r\n}\r\n/* BEGIN Security icons */\r\n.webform-security-icons,\r\n.webform-security-icons p, {\r\n    text-align: center;\r\n    font-size: 16px;\r\n}\r\n.payment-methods {\r\n    display: inline-block;\r\n    margin: 20px;\r\n    height: 30px;\r\n}\r\n.payment-methods--appeal-logo {\r\n    height: 95px;\r\n}\r\n.payment-methods--hidden {\r\n    display: none;\r\n}\r\n.donation-cta-widget--new .wateraid-donations .webform-security-icons .field-name-body, .webform-page.webform-donations-page .wateraid-donations .webform-security-icons .field-name-body {\r\n  display: block;\r\n}\r\n/* END Security icons */\r\n.webform-page.webform-donations-page .wateraid-donations .webform-page-help {\r\n    margin-bottom: 16px;\r\n}\r\n#about-your-fundraising .webform-page-help {\r\n    font-size: 14px; \r\n}\r\n.webform-page-help a {\r\n    color: #00AEEF;\r\n}\r\n#when-cant-we-claim-gift-aid {\r\n  display: block; \r\n}"
+javascript: "jQuery(document).ready(function(){\r\n    // Add label for Stripe field\r\n    jQuery('#edit-payment-payment-methods-one-off-methods-stripe').prepend('<label for=\"stripe-token\">Enter your card details</label>');\r\n  \r\n    // Move security icons below next step / submit button\r\n    jQuery('.security-icons').detach().insertAfter(jQuery('#edit-actions'));\r\n  \r\n    // BEGIN Donation amount text\r\n\r\n\t// Function to change donation amount text\r\n\tvar changetext = function()\r\n\t{\r\n\t\tif(Drupal.wateraidDonationForms.model.get(\"frequency\") == \"recurring\") {\r\n\t\t\tjQuery('.webform-progress__actions').text(\"You are making a monthly donation of £\" + Drupal.wateraidDonationForms.model.get(\"amount\"));\r\n\t\t} else {\r\n\t\t\tjQuery('.webform-progress__actions').text(\"You are paying in £\" + Drupal.wateraidDonationForms.model.get(\"amount\"));\r\n\t\t}\r\n\t}\r\n\t\r\n\t// Call function on page load\r\n\tchangetext();\r\n\t\r\n\t// Call function on 'Donate' button click on step 1\r\n\tjQuery(\"#edit-next\").click(function() {\r\n\t\tchangetext();\r\n\t});\r\n\r\n\t// Clear donation amount text on back button click, to ensure incorrect text is not displayed on step 1\r\n\t//jQuery(\"span, input.webform-button--previous\").click(function() {\r\n\t//   jQuery('.webform-progress__actions').text(\"\");\r\n\t//});\r\n\t\r\n  \t//Hide the text if on the first step\r\n\tif(jQuery('#edit-about-your-fundraising').is(':visible')) {\t\t\r\n\t\tjQuery('.webform-progress__actions').addClass('hidden');\r\n\t}\r\n  \r\n\t// END Donation amount text  \r\n});"
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /pay-in-your-fundraising
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: "<p>We are currently experiencing technical issues with our online donation forms, and are working to get this up and running again soon.</p>\r\n\r\n<p>In the meantime you can still support WaterAid by donating over the phone.&nbsp;</p>\r\n\r\n<p><strong>Simply&nbsp;call 0300 123 4341 at a local rate.</strong></p>\r\n\r\n<p>Please note calls to this line&nbsp;are recorded for training purposes and to ensure our high standards are maintained.</p>"
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'All done!'
+  confirmation_message: "<p>Thank you so much for choosing to fundraise for WaterAid &ndash; we&rsquo;re so grateful for your generous support.</p>\r\n\r\n<p>Your donation today will help us to continue to transform lives around the world with water, toilets and hygiene.</p>\r\n\r\n<p>You will receive a confirmation email with details of your donation.</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  wateraid_donations:
+    id: wateraid_donations
+    handler_id: wateraid_donations
+    label: 'WaterAid Donations'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      currency: null
+      default_fund_code: ''
+      default_package_code: ''
+      frequency_default: one_off
+      customer_fields:
+        customer_name: contact_name
+        customer_address: contact_address
+        customer_email: contact_email
+        customer_phone: contact_phone
+      one_off:
+        option_label: 'One off'
+        enabled: 1
+        payment_methods:
+          - paypal_express
+          - applepay
+          - stripe
+          - googlepay
+        default_payment_method: stripe
+        amounts:
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '2'
+        progress_donation_message: 'You are making a one-off donation of [donation:currency-sign][donation:amount].'
+      recurring:
+        option_label: Recurring
+        enabled: 0
+        payment_methods: {  }
+        default_payment_method: ''
+        amounts:
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '2'
+        progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount].'
+  wateraid_donation_email:
+    id: wateraid_email
+    handler_id: wateraid_donation_email
+    label: 'Wateraid Donation Email'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Thank you so much for your donation'
+      body: "<p>Hello [webform_submission:values:contact_name],</p>\r\n\r\n<p><strong>You&rsquo;ve done something amazing!</strong></p>\r\n\r\n<p>Thank you so much for choosing to fundraise for WaterAid &ndash; we&rsquo;re so grateful for your generous support. Your donation today will help us to continue to transform lives around the world with water, toilets and hygiene.</p>\r\n\r\n<p>The ripple of change that comes from these three basic things really is incredible. Health. Happiness. Safety. The chance of an education or a better job. It&rsquo;s just the beginning of breaking the cycle of poverty, and because of gifts like yours, we&rsquo;re able to make this difference a reality for even more communities.</p>\r\n\r\n<p>Below you&rsquo;ll find confirmation of your donation, so please check the details and keep this email safe. If you have any questions about WaterAid or your gift, please give us a call on 020 7793 4594 or email us on <a href=\"mailto:supportercare@wateraid.org\">supportercare@wateraid.org</a>. We&#39;d love to hear from you.</p>\r\n\r\n<p>Thank you again for your wonderful support!</p>\r\n\r\n<p>Tim Wainwright</p>\r\n\r\n<p>Chief Executive</p>\r\n\r\n<p>WaterAid</p>\r\n\r\n<p>[webform_submission:values]</p>\r\n\r\n<p>Transaction ID: [webform_submission:donation-transaction-id]</p>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: false
+      reply_to: ''
+      return_path: ''
+      payment_frequency: ''
+      ignore_access: 0
+      exclude_empty: true
+      exclude_empty_checkbox: 0
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: 0
+      fallback_plugin: null
+      fallback_message: null
+  email_to_staff:
+    id: email
+    handler_id: email_to_staff
+    label: 'Email to staff'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:organisation_type:raw]'
+      to_options:
+        -
+          value: 'Water company, partner or contractor'
+          text: waterindustry@wateraid.org
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  wateraid_azure_storage_queue:
+    id: wateraid_azure_storage_queue
+    handler_id: wateraid_azure_storage_queue
+    label: 'WaterAid Azure Storage Queue'
+    notes: ''
+    status: false
+    conditions: {  }
+    weight: 2
+    settings:
+      message_submission_data:
+        -
+          original_key: serial
+          new_key: serial_number
+          parent_key: null
+        -
+          original_key: sid
+          new_key: submission_id
+          parent_key: null
+        -
+          original_key: uri
+          new_key: submission_uri
+          parent_key: null
+        -
+          original_key: created
+          new_key: created
+          parent_key: null
+        -
+          original_key: completed
+          new_key: completed
+          parent_key: null
+        -
+          original_key: changed
+          new_key: changed
+          parent_key: null
+        -
+          original_key: in_draft
+          new_key: is_draft
+          parent_key: null
+        -
+          original_key: current_page
+          new_key: current_page
+          parent_key: null
+        -
+          original_key: remote_addr
+          new_key: remote_ip_address
+          parent_key: null
+        -
+          original_key: uid
+          new_key: id
+          parent_key: null
+        -
+          original_key: langcode
+          new_key: language
+          parent_key: null
+        -
+          original_key: entity_type
+          new_key: submitted_to_entity_type
+          parent_key: null
+        -
+          original_key: entity_id
+          new_key: submitted_to_entity_id
+          parent_key: null
+        -
+          original_key: sticky
+          new_key: sticky
+          parent_key: null
+        -
+          original_key: notes
+          new_key: notes
+          parent_key: null
+        -
+          original_key: url_params
+          new_key: url_parameters
+          parent_key: null
+        -
+          original_key: uid_title
+          new_key: submittedbytitle
+          parent_key: null
+        -
+          original_key: uid_url
+          new_key: url
+          parent_key: null
+        -
+          original_key: entity_title
+          new_key: submitted_to_entity_title
+          parent_key: null
+        -
+          original_key: entity_url
+          new_key: submitted_to_entity_url
+          parent_key: null
+        -
+          original_key: url_params_utm_campaign
+          new_key: utm_campaign
+          parent_key: null
+        -
+          original_key: url_params_utm_source
+          new_key: utm_source
+          parent_key: null
+        -
+          original_key: url_params_utm_content
+          new_key: utm_content
+          parent_key: null
+        -
+          original_key: url_params_utm_medium
+          new_key: utm_medium
+          parent_key: null
+        -
+          original_key: url_params_fund_code
+          new_key: fund_code
+          parent_key: null
+        -
+          original_key: url_params_package_id
+          new_key: package_id
+          parent_key: null
+        -
+          original_key: url_params_campaign
+          new_key: campaign
+          parent_key: null
+        -
+          original_key: url_params_segment_code
+          new_key: segment_code
+          parent_key: null
+        -
+          original_key: how_was_the_money_raised_
+          new_key: how_was_the_money_raised_
+          parent_key: null
+        -
+          original_key: what_kind_of_event_challenge_individual_
+          new_key: what_kind_of_event_challenge_individual_
+          parent_key: null
+        -
+          original_key: organisation_type
+          new_key: organisation_type
+          parent_key: null
+        -
+          original_key: organisation_name_company
+          new_key: organisation_name_company
+          parent_key: null
+        -
+          original_key: type_of_service_organisation_or_club
+          new_key: type_of_service_organisation_or_club
+          parent_key: null
+        -
+          original_key: what_was_the_name_of_the_event_water_company_event
+          new_key: what_was_the_name_of_the_event_water_company_event
+          parent_key: null
+        -
+          original_key: organisation_name
+          new_key: organisation_name
+          parent_key: null
+        -
+          original_key: what_kind_of_event_challenge_company_
+          new_key: what_kind_of_event_challenge_company_
+          parent_key: null
+        -
+          original_key: what_kind_of_event_challenge_faith_group_
+          new_key: what_kind_of_event_challenge_faith_group_
+          parent_key: null
+        -
+          original_key: what_kind_of_event_challenge_school_
+          new_key: what_kind_of_event_challenge_school_
+          parent_key: null
+        -
+          original_key: what_event_did_you_take_part_in_individual
+          new_key: what_event_did_you_take_part_in_individual
+          parent_key: null
+        -
+          original_key: what_event_did_you_take_part_in_company
+          new_key: what_event_did_you_take_part_in_company
+          parent_key: null
+        -
+          original_key: what_was_the_name_of_the_event_
+          new_key: what_was_the_name_of_the_event_
+          parent_key: null
+        -
+          original_key: when_did_the_event_take_place_individual
+          new_key: when_did_the_event_take_place_individual
+          parent_key: null
+        -
+          original_key: when_did_the_event_take_place_company
+          new_key: when_did_the_event_take_place_company
+          parent_key: null
+        -
+          original_key: university_name
+          new_key: university_name
+          parent_key: null
+        -
+          original_key: team_name
+          new_key: team_name
+          parent_key: null
+        -
+          original_key: have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_
+          new_key: have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_
+          parent_key: null
+        -
+          original_key: title
+          new_key: title
+          parent_key: contact_name
+        -
+          original_key: first
+          new_key: first_name
+          parent_key: contact_name
+        -
+          original_key: last
+          new_key: last_name
+          parent_key: contact_name
+        -
+          original_key: address
+          new_key: address_1
+          parent_key: contact_address
+        -
+          original_key: address_2
+          new_key: address_2
+          parent_key: contact_address
+        -
+          original_key: city
+          new_key: city_town
+          parent_key: contact_address
+        -
+          original_key: state_province
+          new_key: county
+          parent_key: contact_address
+        -
+          original_key: postal_code
+          new_key: zip_postal_code
+          parent_key: contact_address
+        -
+          original_key: country
+          new_key: country
+          parent_key: contact_address
+        -
+          original_key: contact_email
+          new_key: contact_email
+          parent_key: null
+        -
+          original_key: contact_phone
+          new_key: contact_phone
+          parent_key: null
+        -
+          original_key: communication_preferences_opt_in_email
+          new_key: communication_preferences_opt_in_email
+          parent_key: communication_preferences
+        -
+          original_key: communication_preferences_opt_in_phone
+          new_key: communication_preferences_opt_in_phone
+          parent_key: communication_preferences
+        -
+          original_key: communication_preferences_opt_in_sms
+          new_key: communication_preferences_opt_in_sms
+          parent_key: communication_preferences
+        -
+          original_key: communication_preferences_opt_in_post
+          new_key: communication_preferences_opt_in_post
+          parent_key: communication_preferences
+        -
+          original_key: donation_currency
+          new_key: donation_currency
+          parent_key: payment
+        -
+          original_key: donation_amount
+          new_key: donation_amount
+          parent_key: payment
+        -
+          original_key: donation_date
+          new_key: donation_date
+          parent_key: payment
+        -
+          original_key: donation_fulfillment_letter
+          new_key: donation_fulfillment_letter
+          parent_key: payment
+        -
+          original_key: donation_status
+          new_key: donation_status
+          parent_key: payment
+        -
+          original_key: donation_transaction_id
+          new_key: donation_transaction_id
+          parent_key: payment
+        -
+          original_key: donation_payment_method
+          new_key: donation_payment_method
+          parent_key: payment
+        -
+          original_key: dd_currency
+          new_key: dd_currency
+          parent_key: payment
+        -
+          original_key: dd_amount
+          new_key: dd_amount
+          parent_key: payment
+        -
+          original_key: dd_date
+          new_key: dd_date
+          parent_key: payment
+        -
+          original_key: dd_fulfillment_letter
+          new_key: dd_fulfillment_letter
+          parent_key: payment
+        -
+          original_key: dd_status
+          new_key: dd_status
+          parent_key: payment
+        -
+          original_key: dd_first_payment_date
+          new_key: dd_first_payment_date
+          parent_key: payment
+        -
+          original_key: dd_frequency
+          new_key: dd_frequency
+          parent_key: payment
+        -
+          original_key: dd_sort_code
+          new_key: dd_sort_code
+          parent_key: payment
+        -
+          original_key: dd_account_number
+          new_key: dd_account_number
+          parent_key: payment
+        -
+          original_key: dd_account_name
+          new_key: dd_account_name
+          parent_key: payment
+        -
+          original_key: dd_instruction_reference
+          new_key: dd_instruction_reference
+          parent_key: payment
+      message_metadata:
+        -
+          key: webform_name
+          value: pay_in_your_fundraising
+        -
+          key: message_processor
+          value: pay_in_your_fundraising
+      protocol: null
+      account_name: null
+      test_account_key: null
+      live_account_key: null
+      endpoint_suffix: null
+      queue_name: integrations-prod-inbound
+      queue_mode_bypass: false
+      cron:
+        queue_retry: false
+variants: {  }

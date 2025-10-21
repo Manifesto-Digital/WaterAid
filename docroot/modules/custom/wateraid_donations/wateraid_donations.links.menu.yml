@@ -1,0 +1,5 @@
+system.admin_wateraid_donations:
+  title: 'Donations'
+  route_name: wateraid.admin_donations
+  parent: system.admin_wateraid
+  description: 'Manage and configure donation transactions, journeys, landing pages, and CTAs.'

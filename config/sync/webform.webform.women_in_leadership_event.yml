@@ -1,0 +1,357 @@
+uuid: 812ba01c-0f3e-4fb8-9ac9-1d65b276b170
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+    - webform_wizard_single_page
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+    confirmation_image_url: ''
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+  webform_wizard_single_page:
+    single_page: false
+weight: 0
+open: null
+close: null
+uid: 60471
+template: false
+archive: false
+id: women_in_leadership_event
+title: 'Women in Leadership event '
+description: '<p>Data capture for email follow-up&nbsp;</p>'
+categories:
+  - Admin
+elements: |-
+  intro:
+    '#type': processed_text
+    '#text': '<h2>Thank you for attending our event!</h2><p><strong>It was great to see you at our event in partnership with The Women in Advertising and Communications Leadership network.</strong></p><p><span data-olk-copy-source="MessageBody">We would love to send you information about our work, campaigns, fundraising and opportunities to get involved. Simply let us know that you’re happy to hear from us.</span></p>'
+    '#format': basic_html
+  yes_please_i_d_like_to_hear_from_you_by_email:
+    '#type': checkbox
+    '#title': "Yes please, I'd like to hear from you by email."
+    '#required': true
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  your_first_name:
+    '#type': textfield
+    '#title': 'Your first name'
+    '#required': true
+  your_last_name:
+    '#type': textfield
+    '#title': 'Your last name'
+    '#required': true
+  your_email_address:
+    '#type': loqate_email_composite
+    '#title': 'Your email address'
+    '#required': true
+    '#loqate_validation_refuse_disposable': false
+    '#email__title': 'Your email address'
+    '#email__required': true
+    '#loqate_validation': false
+  following_our_discussion_today_please_let_us_know_if_you_d_also:
+    '#type': checkbox
+    '#title': "Support WaterAid's strategic projects with a personal donation."
+    '#description': '<p>Following our discussion today, please let us know if you’d also be open to having a further conversation about how you could:</p>'
+    '#description_display': before
+  make_introductions_to_your_network_of_influential_or_high_net_wo:
+    '#type': checkbox
+    '#title': 'Introduce WaterAid to your network of influential high-net-worth contacts.'
+  collaborate_with_wateraid_in_communications_to_raise_awareness_t:
+    '#type': checkbox
+    '#title': 'Support WaterAid with brand partnerships or media opportunities including donated space.'
+  all_of_the_above:
+    '#type': checkbox
+    '#title': 'All of the above.'
+  privacy:
+    '#type': processed_text
+    '#text': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in <a href="/uk/privacy">our Privacy Policy</a>. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications, please contact us on 0207 793 4594 or at&nbsp;<a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see <a href="/uk/privacy">our Privacy Policy</a>.</p>'
+    '#format': basic_html
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Register
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /wacl-event-form
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: 'Registration for the 2023 Dragon Boat Race coming soon &ndash; <a href="/uk/get-involved/events/dragon-boat-race/register-interest">register your interest</a> to be the first to hear when it opens!'
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_notification:
+    id: email
+    handler_id: email_notification
+    label: 'Email notification'
+    notes: 'To Jenny each time form is submitted'
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: jennycockin@wateraid.org
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Women in Leadership event submission'
+      body: '<p>Submitted on [webform_submission:created]</p><p>[webform_submission:values]</p>'
+      excluded_elements:
+        intro: intro
+        captcha: captcha
+        privacy: privacy
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  confirmation_online_payment:
+    id: settings
+    handler_id: confirmation_online_payment
+    label: 'Confirmation '
+    notes: 'Confirmation page '
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      debug: false
+      preview_title: ''
+      preview_message: ''
+      confirmation_url: ''
+      confirmation_title: 'Thanks for registering'
+      confirmation_message: "<p>We'll be in touch soon with details of how we can work together to help make clean water, decent toilets, and good hygiene a normal part of daily life - for everyone, everywhere.&nbsp;</p>"
+variants: {  }

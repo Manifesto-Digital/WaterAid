@@ -1,0 +1,9 @@
+webform_wizard_single_page:
+  version: 1.0
+  js:
+    js/webform_wizard_single_page.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - core/backbone
