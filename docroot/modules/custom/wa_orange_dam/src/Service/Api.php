@@ -48,7 +48,8 @@ final class Api {
       'CaptionLong',
       'MIMEtype',
       'path_TR1',
-      'MediaType'], $fields);
+      'MediaType',
+      'Representative_DO'], $fields);
 
     $query = array_merge([
       'format' => 'JSON',

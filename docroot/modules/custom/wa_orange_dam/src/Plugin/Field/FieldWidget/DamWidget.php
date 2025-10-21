@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @FieldWidget(
  *   id = "wa_orange_dam",
  *   label = @Translation("DAM Asset"),
- *   field_types = {"wa_orange_dam_image"},
+ *   field_types = {"wa_orange_dam_image", "wa_orange_dam_video"},
  * )
  */
 final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterface {
@@ -72,6 +72,10 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
 
       case 'dam_image':
         $types = ['Images*'];
+        break;
+
+      case 'dam_videojhgjk':
+        $types = ['Videos*'];
         break;
 
       default:

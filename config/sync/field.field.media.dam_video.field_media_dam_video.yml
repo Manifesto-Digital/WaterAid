@@ -1,0 +1,21 @@
+uuid: 5b57e06e-b7e5-4f36-97b7-9a7d46c86fa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_dam_video
+    - media.type.dam_video
+  module:
+    - wa_orange_dam
+id: media.dam_video.field_media_dam_video
+field_name: field_media_dam_video
+entity_type: media
+bundle: dam_video
+label: 'DAM Video'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: wa_orange_dam_video
