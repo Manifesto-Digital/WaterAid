@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
     'wa_orange_dam_video',
   ],
 )]
-class DamVideoFormatter extends FileVideoFormatter {
+final class DamVideoFormatter extends FileVideoFormatter {
 
 
   /**

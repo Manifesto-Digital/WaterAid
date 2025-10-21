@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @FieldWidget(
  *   id = "wa_orange_dam",
  *   label = @Translation("DAM Asset"),
- *   field_types = {"wa_orange_dam_image", "wa_orange_dam_video"},
+ *   field_types = {"wa_orange_dam_image", "wa_orange_dam_video", "wa_orange_dam_file"},
  * )
  */
 final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterface {

@@ -25,11 +25,27 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * DAM Image entity media source.
  */
 #[MediaSource(
-  id: "dam_video",
-  label: new TranslatableMarkup("DAM Video"),
-  description: new TranslatableMarkup("Use Orange DAM video for reusable media."),
-  allowed_field_types: ["wa_orange_dam_video"],
+  id: "dam_file",
+  label: new TranslatableMarkup("DAM File"),
+  description: new TranslatableMarkup("Use Orange DAM files for reusable media."),
+  allowed_field_types: ["wa_orange_dam_file"],
   default_thumbnail_filename: "no-thumbnail.png",
   thumbnail_alt_metadata_attribute: "thumbnail_alt_value"
 )]
-final class DamVideo extends DamBase {}
+final class DamFile extends DamBase {
+  /**
+   * {@inheritdoc}
+   */
+  public function getMetadataAttributes(): array {
+    $attributes = parent::getMetadataAttributes();
+
+    foreach (['width', 'height'] as $property) {
+      if (array_key_exists($property, $attributes)) {
+        unset($attributes[$property]);
+      }
+    }
+
+    return $attributes;
+  }
+
+}

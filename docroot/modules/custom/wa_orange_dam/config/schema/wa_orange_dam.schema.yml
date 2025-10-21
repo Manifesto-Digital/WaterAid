@@ -25,3 +25,11 @@ field.value.wa_orange_dam_video:
     height:
       type: int
       label: Height
+
+field.value.wa_orange_dam_file:
+  type: mapping
+  label: Default value
+  mapping:
+    system_identifier:
+      type: id
+      label: System Identifier

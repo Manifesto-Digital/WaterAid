@@ -13,8 +13,8 @@ use Drupal\Core\Field\FieldDefinitionInterface;
  *   id = "wa_orange_dam_image",
  *   label = @Translation("Orange DAM Image"),
  *   description = @Translation("Images from the Orange DAM"),
- *   default_widget = "string_textfield",
- *   default_formatter = "string",
+ *   default_widget = "wa_orange_dam",
+ *   default_formatter = "wa_orange_dam_image_formater",
  * )
  */
 final class DamImageItem extends DamItemBase {

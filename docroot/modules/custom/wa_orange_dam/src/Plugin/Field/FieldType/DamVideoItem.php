@@ -13,8 +13,8 @@ use Drupal\Core\Field\FieldDefinitionInterface;
  *   id = "wa_orange_dam_video",
  *   label = @Translation("Orange DAM Video"),
  *   description = @Translation("Videos from the Orange DAM"),
- *   default_widget = "string_textfield",
- *   default_formatter = "string",
+ *   default_widget = "wa_orange_dam",
+ *   default_formatter = "wa_orange_dam_video_formater",
  * )
  */
 final class DamVideoItem extends DamItemBase {

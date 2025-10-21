@@ -96,7 +96,7 @@ final class Api {
       'StickToCurrentVersion' => 'false',
     ];
 
-    if (isset($format)) {
+    if (!empty($format)) {
       $query['Format'] = $format;
     }
     elseif ($width && $height) {
