@@ -4,21 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.webform.field_content
-    - field.field.node.webform.field_donation_menu
-    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
-    - field.field.node.webform.field_teaser_image
-    - field.field.node.webform.field_teaser_text
-    - field.field.node.webform.field_title_colour
+    - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.webform
     - node.type.webform
   module:
     - datetime
     - field_group
     - layout_paragraphs
-    - media_library
     - path
     - webform
 third_party_settings:
@@ -27,6 +22,7 @@ third_party_settings:
       children:
         - group_general
         - group_content
+        - group_sidebar_content
       label: Tabs
       region: content
       parent_name: ''
@@ -59,12 +55,28 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - webform
         - field_content
+        - webform
       label: Content
       region: content
       parent_name: group_tabs
       weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_sidebar_content:
+      children:
+        - field_sidebar_content
+      label: 'Sidebar content'
+      region: hidden
+      parent_name: group_tabs
+      weight: 2
       format_type: tab
       format_settings:
         classes: ''
@@ -83,7 +95,7 @@ mode: default
 content:
   co_authors:
     type: entity_reference_autocomplete_tags
-    weight: 17
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -93,7 +105,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -137,15 +149,27 @@ content:
     third_party_settings: {  }
   field_options:
     type: options_select
-    weight: 121
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
-    weight: 26
+    weight: 6
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_sidebar_content:
+    type: layout_paragraphs
+    weight: 12
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
@@ -177,27 +201,27 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 15
+    weight: 3
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 120
+    weight: 9
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 4
     region: content
     settings:
       display_label: true
@@ -212,7 +236,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
@@ -221,13 +245,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   webform:
     type: webform_entity_reference_select
-    weight: 1
+    weight: 2
     region: content
     settings:
       default_data: true

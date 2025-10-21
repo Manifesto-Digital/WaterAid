@@ -402,6 +402,69 @@ header img {
   }
 }
 
+.layout__two-column {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .layout__two-column {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .layout__two-column {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.layout__two-column--main {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .layout__two-column--main {
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .layout__two-column--main {
+    grid-column: span 8;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .layout__two-column--main {
+    margin-left: 7.125rem;
+  }
+}
+
+.layout__two-column--side {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .layout__two-column--side {
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .layout__two-column--side {
+    grid-column: span 4;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .layout__two-column--side {
+    margin-left: 5.625rem;
+  }
+}
+
 body {
   font-family: "Noto Sans";
 }
