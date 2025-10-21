@@ -1,5 +1,3 @@
-label: 'Schemalagd Media'
-description: 'Hitta och hantera schemalagd media.'
 display:
   default:
     display_title: Huvud
@@ -24,35 +22,32 @@ display:
             last: 'sista »'
       fields:
         media_bulk_form:
-          label: Massuppdatera
           action_title: Åtgärd
         name:
-          label: Medianamn
+          separator: ', '
         bundle:
-          label: Mediatyp
+          separator: ', '
         uid:
           label: Författare
+          separator: ', '
         status:
-          label: Status
           settings:
             format_custom_true: Publicerad
             format_custom_false: 'Ej publicerad'
+          separator: ', '
         publish_on:
           label: 'Publicera den'
+          separator: ', '
         unpublish_on:
           label: 'Avpublicera den'
+          separator: ', '
         operations:
           label: Funktioner
       filters:
-        name:
-          expose:
-            label: Medianamn
         bundle:
           expose:
             label: Typ
         status:
-          expose:
-            label: Status
           group_info:
             label: 'Status för publicering'
             group_items:
@@ -63,16 +58,5 @@ display:
         langcode:
           expose:
             label: Språk
-      title: 'Schemalagd Media'
-      empty:
-        area_text_custom:
-          content: 'Ingen schemalagd media.'
-  overview:
-    display_options:
-      menu:
-        title: 'Schemalagd Media'
   user_page:
     display_title: Användare
-    display_options:
-      menu:
-        title: 'Schemalagd Media'

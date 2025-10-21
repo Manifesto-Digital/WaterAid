@@ -2,6 +2,8 @@ _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
   webform_clientside_validation: -1
+  acquia_connector: 0
+  acquia_search: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   announcements_feed: 0
@@ -88,8 +90,8 @@ module:
   scheduler: 0
   scheduler_content_moderation_integration: 0
   schema_metatag: 0
-  search: 0
   search_api: 0
+  search_api_solr: 0
   seckit: 0
   security_review: 0
   serialization: 0

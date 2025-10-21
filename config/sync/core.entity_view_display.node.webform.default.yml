@@ -105,11 +105,11 @@ content:
     region: content
 hidden:
   co_authors: true
-  field_teaser_image: true
-  field_teaser_text: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_teaser_image: true
+  field_teaser_text: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true
