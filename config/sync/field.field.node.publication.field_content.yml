@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_content
     - node.type.publication
     - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
@@ -31,6 +32,7 @@ settings:
       hero_news: hero_news
       hero_video: hero_video
       accordion_item: accordion_item
+      donation_amount: donation_amount
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -41,6 +43,12 @@ settings:
         enabled: true
       call_to_action:
         weight: -23
+        enabled: false
+      donation_amount:
+        weight: 19
+        enabled: true
+      donation_widget:
+        weight: 20
         enabled: false
       hero_basic:
         weight: -18
@@ -65,6 +73,9 @@ settings:
         enabled: false
       rich_text:
         weight: -25
+        enabled: false
+      text_media:
+        weight: 29
         enabled: false
       video:
         weight: -19
