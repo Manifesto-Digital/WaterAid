@@ -57,6 +57,14 @@
 
         // Run the function once on page load to set the initial state correctly.
         updateAmountSelection();
+
+        // Hide impact tag after 10 seconds.
+        setInterval(() => {
+            const impactTags = document.querySelectorAll('.donate-widget__increase-impact');
+            impactTags.forEach((impactTag) => {
+                impactTag.classList.add('is-hidden');
+              });
+        }, 10000);
         });
     });
 })(Drupal);
