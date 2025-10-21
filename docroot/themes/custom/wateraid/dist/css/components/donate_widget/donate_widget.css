@@ -779,7 +779,13 @@ footer {
 .donate-widget {
   background-color: #006bd9;
   color: #fff;
-  padding: 3rem 2rem;
+  padding: 2rem 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .donate-widget {
+    padding: 3rem 2rem;
+  }
 }
 
 .donate-widget__heading {
@@ -794,6 +800,11 @@ footer {
   z-index: 10;
   position: relative;
   margin: 0 0 1.5rem 0;
+}
+
+.donate-widget__form--submit a {
+  max-width: none;
+  justify-content: center;
 }
 
 .donate-widget__footer {
@@ -813,11 +824,16 @@ footer {
 
 .donate-widget__payment-logos {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   margin-top: .75rem;
   gap: .5rem;
+}
+
+.donate-widget__payment-logos svg {
+  max-width: 75px;
 }
 
 .donate-widget__fr-logo {
@@ -852,6 +868,82 @@ footer {
   color: #fff;
 }
 
+.donate-widget__custom-amount {
+  display: flex;
+  flex-direction: column;
+  margin-top: .75rem;
+}
+
+.donate-widget__custom-amount label {
+  margin: .75rem 0;
+  font-size: 1.25rem;
+}
+
+.donate-widget__custom-amount input {
+  height: 54px;
+  padding: .75rem .75rem .75rem 2.5rem;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-pound.svg");
+  background-position: 20px center;
+  background-repeat: no-repeat;
+  color: #151435;
+  background-color: #fff;
+  font-size: 1.25rem;
+  border-radius: .125rem;
+  border: 2px solid #151435;
+}
+
+.donate-widget__custom-amount.is-hidden {
+  display: none;
+}
+
+.donate-widget__amount-details {
+  margin: .75rem 0;
+}
+
+.donate-widget__amount-details--detail {
+  background-color: #f8f0e4;
+  padding: .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.donate-widget__amount-details--detail.is-hidden {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .donate-widget__amount-details--detail {
+    flex-direction: row;
+  }
+}
+
+.donate-widget__amount-details--detail .donate-widget__amount--image img {
+  width: 100%;
+}
+
+.donate-widget__amount-details--detail .donate-widget__amount--meta {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.donate-widget__amount-details--detail .donate-widget__amount--meta .title {
+  font-size: 1rem;
+  font-family: "Noto Sans Bold";
+  color: #151435;
+}
+
+.donate-widget__amount-details--detail .donate-widget__amount--meta .description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #151435;
+}
+
+.donate-widget__amount-details--detail .donate-widget__amount--meta--credit {
+  color: #44435d;
+}
+
 /* Element: Individual Option */
 
 .donate-widget__option {
@@ -883,6 +975,17 @@ footer {
   cursor: pointer;
 }
 
+.donate-widget__increase-impact {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-rectangle-wide.svg");
+  position: absolute;
+  background: #fff;
+  color: #006bd9;
+  font-family: "Noto Sans Bold";
+  background-size: cover;
+  right: 0;
+  top: -40px;
+}
+
 /* Add a hover effect for interactivity */
 
 .donate-widget__radio-label:hover {
@@ -901,6 +1004,16 @@ footer {
   background-repeat: no-repeat;
   color: #151435;
   border-radius: 0;
+}
+
+.donate-widget__radio-input:checked + .donate-widget__radio-label.amount:after {
+  content: "";
+  width: 32px;
+  height: 16px;
+  position: absolute;
+  bottom: -15px;
+  left: calc(50% - 16px);
+  background-image: url("/themes/custom/wateraid/images/icons/wa-pointer.svg");
 }
 
 /* Add a focus state for keyboard navigation accessibility */

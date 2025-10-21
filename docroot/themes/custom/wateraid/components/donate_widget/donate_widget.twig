@@ -34,26 +34,60 @@
     <fieldset class="donate-widget__options-group">
       <legend class="donate-widget__legend">How much can you donate?</legend>
       <div class="donate-widget__options-wrapper">
-        <!-- Option: £2 -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="amount-2" name="amount" value="2">
-          <label class="donate-widget__radio-label" for="amount-2">£2</label>
-        </div>
-        <!-- Option: £5 -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="amount-5" name="amount" value="5" checked>
-          <label class="donate-widget__radio-label" for="amount-5">£5</label>
-        </div>
-        <!-- Option: £10 -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="amount-10" name="amount" value="10">
-          <label class="donate-widget__radio-label" for="amount-10">£10</label>
-        </div>
-        <!-- Option: Other -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="amount-other" name="amount" value="other">
-          <label class="donate-widget__radio-label" for="amount-other">Other</label>
-        </div>
+        {% for item in donation_amounts %}
+          {% set radio_id = 'amount-' ~ item.amount %}
+
+          <div class="donate-widget__option">
+            {% if loop.revindex == 2 %}
+              <div class="donate-widget__increase-impact">
+                Increase your input
+              </div>
+            {% endif %}
+            <input class="donate-widget__radio-input"
+                   type="radio"
+                   id="{{ radio_id }}"
+                   name="amount"
+                   value="{{ item.amount }}"
+                   {% if loop.index == 1 %}checked{% endif %}>
+            <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
+              {{ item.amount }}
+            </label>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="donate-widget__amount-details">
+        {% for item in donation_amounts %}
+          {% set id = 'details-amount-' ~ item.amount %}
+
+          {% if item.title and item.description %}
+            <div id="{{ id }}" class="donate-widget__amount-details--detail">
+              {% if item.image %}
+                <div class="donate-widget__amount--image">
+                  <img loading="lazy" alt="" src="{{ item.image }}"/>
+                </div>
+              {% endif %}
+              <div class="donate-widget__amount--meta">
+                <div class="title">{{ item.title }}</div>
+                <div class="description">{{ item.description }}</div>
+                {% if item.credit %}
+                  <div class="donate-widget__amount--meta--credit">
+                    {{ item.credit }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="donate-widget__custom-amount">
+        <label for="custom_amount">
+          Enter a custom amount:
+        </label>
+        <input type="text"
+               id="custom_amount"
+               name="custom_amount"/>
       </div>
     </fieldset>
 

@@ -3,7 +3,11 @@
 .donate-widget {
   background-color: $wa-blue;
   color: $wa-white;
-  padding: $wa-spacing-09 $wa-spacing-07;
+  padding: $wa-spacing-07 $wa-spacing-05;
+
+  @include tablet {
+    padding: $wa-spacing-09 $wa-spacing-07;
+  }
 
   &__heading {
     margin-bottom: $wa-spacing-06;
@@ -18,6 +22,10 @@
       z-index: 10;
       position: relative;
       margin: 0 0 $wa-spacing-06 0;
+      a {
+        max-width: none;
+        justify-content: center;
+      }
     }
   }
 
@@ -38,11 +46,15 @@
 
   &__payment-logos {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     margin-top: $wa-spacing-03;
     gap: $wa-spacing-02;
+    svg {
+      max-width: 75px;
+    }
   }
 
   &__fr-logo {
@@ -75,6 +87,76 @@
   color: $wa-white;
 }
 
+.donate-widget__custom-amount {
+  display: flex;
+  flex-direction: column;
+  margin-top: $wa-spacing-03;
+  label {
+    margin: $wa-spacing-03 0;
+    font-size: calculate-rem(20);
+  }
+  input {
+    height: 54px;
+    padding: $wa-spacing-03 $wa-spacing-03 $wa-spacing-03 $wa-spacing-08;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-pound.svg");
+    background-position: 20px center;
+    background-repeat: no-repeat;
+    color: $wa-navy;
+    background-color: $wa-white;
+    font-size: calculate-rem(20);
+    border-radius: $radius-xxs;
+    border: 2px solid $wa-navy;
+  }
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.donate-widget {
+  &__amount-details {
+    margin: $wa-spacing-03 0;
+
+    &--detail {
+     background-color: $wa-cream;
+     padding: $wa-spacing-03;
+     display: flex;
+     flex-direction: column;
+     gap: $wa-spacing-06;
+
+      &.is-hidden {
+        display: none;
+      }
+
+     @include tablet {
+       flex-direction: row;
+     }
+     .donate-widget__amount--image {
+        img {
+          width: 100%;
+        }
+     }
+     .donate-widget__amount--meta {
+       display: flex;
+       flex-direction: column;
+       gap: $wa-spacing-02;
+       .title {
+         font-size: calculate-rem(16);
+         font-family: $bold-font;
+         color: $wa-navy;
+       }
+       .description {
+         font-size: calculate-rem(16);
+         line-height: 1.5;
+         color: $wa-navy;
+       }
+       &--credit {
+         color: $wa-navy-80;
+       }
+     }
+   }
+  }
+}
+
 /* Element: Individual Option */
 .donate-widget__option {
   /* Each option grows equally to fill the space */
@@ -103,6 +185,17 @@
   cursor: pointer;
 }
 
+.donate-widget__increase-impact {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-rectangle-wide.svg");
+  position: absolute;
+  background: $wa-white;
+  color: $wa-blue;
+  font-family: $bold-font;
+  background-size: cover;
+  right: 0;
+  top: -40px;
+}
+
 /* Add a hover effect for interactivity */
 .donate-widget__radio-label:hover {
   background-color: var(--bg-light);
@@ -118,6 +211,17 @@
   background-repeat: no-repeat;
   color: $wa-navy;
   border-radius: 0;
+  &.amount {
+    &:after {
+      content: '';
+      width: 32px;
+      height: 16px;
+      position: absolute;
+      bottom: -15px;
+      left: calc(50% - 16px);
+      background-image: url("/themes/custom/wateraid/images/icons/wa-pointer.svg");
+    }
+  }
 }
 
 /* Add a focus state for keyboard navigation accessibility */
