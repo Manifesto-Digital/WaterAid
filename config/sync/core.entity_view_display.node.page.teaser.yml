@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.field_content
+    - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_weight
     - node.type.page
   module:
     - user
@@ -33,9 +35,15 @@ content:
     weight: 2
     region: content
   links:
-    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   co_authors: true
   field_content: true
+  field_review_date: true
+  field_weight: true
   langcode: true
+  node_read_time: true
+  search_api_excerpt: true

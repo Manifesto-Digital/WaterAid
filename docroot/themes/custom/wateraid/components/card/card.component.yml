@@ -1,0 +1,48 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Card
+status: stable
+description: General card component used within listings
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+    description:
+      type: string
+      title: Description
+    variant:
+      type: string
+      title: Card variant type
+    image_url:
+      type: string
+      title: Image url
+      description: Image url
+slots:
+  url:
+    type: string
+    title: URL
+    description: Card url
+  time_to_read:
+    type: ["string", "integer"]
+    title: Time to read
+  tags:
+    type: ["object", "null"]
+    title: Tags
+  date:
+    type: string
+    title: Publish date
+  authors:
+    type: ["object", "null"]
+    title: Authors
+  link_text:
+    type: string
+    title: Link text
+    description: Link text
+  colour:
+    type: string
+    title: Card colour
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/card/card.css: {}

@@ -1,0 +1,26 @@
+uuid: 1e0a9e26-38b5-4b5f-8eb0-acae74408030
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rich_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.call_to_action
+  module:
+    - text
+id: paragraph.call_to_action.field_rich_text
+field_name: field_rich_text
+entity_type: paragraph
+bundle: call_to_action
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+field_type: text_long

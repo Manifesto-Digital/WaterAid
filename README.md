@@ -58,4 +58,4 @@ https:/wateraid.ddev.site:6006
 
 ### Acquia
 PRs merging into the main, develop or staging branches will automatically deploy to the Acquia holding environments for
-testing purposes.
+testing purposes until a live env is created.

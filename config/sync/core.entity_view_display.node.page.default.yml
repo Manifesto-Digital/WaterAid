@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_content
+    - field.field.node.page.field_review_date
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_weight
     - node.type.page
   module:
+    - datetime
     - entity_reference_revisions
     - user
 _core:
@@ -26,6 +29,25 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -36,3 +58,5 @@ hidden:
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true
+  search_api_excerpt: true

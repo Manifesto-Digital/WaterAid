@@ -1,0 +1,14 @@
+services:
+  wateraid_donation_paypal.webhook_subscriber:
+    class: Drupal\wateraid_donation_paypal\Event\PayPalApiWebhookSubscriber
+    arguments: ['@logger.channel.paypal_api']
+    tags:
+      - {name: event_subscriber}
+
+  wateraid_donation_paypal.paypal_api:
+    class: Drupal\wateraid_donation_paypal\PayPalApiService
+    arguments: ["@config.factory", "@entity_type.manager", "@logger.channel.paypal_api", "@key.repository"]
+
+  logger.channel.paypal_api:
+    parent: logger.channel_base
+    arguments: ['paypal_api']

@@ -1,0 +1,23 @@
+uuid: 8b175cce-bdbf-4161-8cdd-bf4edabbcea6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_count
+    - paragraphs.paragraphs_type.facts_and_stats
+  module:
+    - options
+id: paragraph.facts_and_stats.field_column_count
+field_name: field_column_count
+entity_type: paragraph
+bundle: facts_and_stats
+label: 'Column count'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 2_column
+default_value_callback: ''
+settings: {  }
+field_type: list_string

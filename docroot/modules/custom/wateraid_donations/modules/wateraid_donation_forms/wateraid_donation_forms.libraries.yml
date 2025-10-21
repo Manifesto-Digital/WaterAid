@@ -1,0 +1,123 @@
+wateraid_donation_forms.underscore:
+  remote: https://github.com/jashkenas/underscore
+  version: "1.13.6"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/jashkenas/underscore/1.13.6/LICENSE
+    gpl-compatible: true
+  js:
+    js/underscore/underscore-min.js: { weight: -20, minified: true }
+
+wateraid_donation_forms.backbone:
+  remote: https://github.com/jashkenas/backbone
+  version: "1.4.1"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/jashkenas/backbone/1.4.1/LICENSE
+    gpl-compatible: true
+  js:
+    js/backbone/backbone-min.js: { weight: -19, minified: true }
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms.underscore
+
+wateraid_donation_forms:
+  js:
+    js/wateraid_donation_forms.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms.backbone
+    - core/once
+
+wateraid_donation_forms.element.amount:
+  js:
+    js/wateraid_donation_forms.element.amount.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - webform/webform.element.inputmask
+
+wateraid_donation_forms.element.other.v2:
+  version: 1.0
+  js:
+    js/wateraid_donation_forms.element.other.v2.js: {}
+  dependencies:
+    - core/once
+
+wateraid_donation_forms.element.giftaid:
+  js:
+    js/wateraid_donation_forms.element.giftaid.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - core/once
+
+wateraid_donation_forms.element.giftaid.v2:
+  js:
+    js/wateraid_donation_forms.element.giftaid.v2.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+wateraid_donation_forms.payment_logos:
+  js:
+    js/wateraid_donation_forms.payment_logos.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - core/once
+
+wateraid_donation_forms.confirmation:
+  js:
+    js/wateraid_donation_forms.confirmation.js: {}
+  dependencies:
+    - core/jquery
+
+wateraid_donation_forms.element.amount_benefits.v2:
+  js:
+    js/wateraid_donation_forms.element.amount_benefits.v2.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+wateraid_donation_forms.element.payment.v2:
+  js:
+    js/wateraid_donation_forms.element.payment.v2.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+wateraid_donation_forms.cancellation_messages:
+  js:
+    js/wateraid_donation_forms.cancellation_messages.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - wateraid_donation_forms/wateraid_donation_forms
+
+wateraid_donation_forms.upsell:
+  js:
+    js/wateraid_donation_forms.upsell.js: {}
+  css:
+    theme:
+      css/wateraid_donation_forms.upsell.css: {}
+  dependencies:
+    - core/drupal
+
+wateraid_donation_forms.element.amount.v2:
+  js:
+    js/wateraid_donation_forms.element.amount.v2.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+donation:
+  js:
+    js/donation-header.js: {}
+    js/donation-page-behaviours.js: {}
+    js/donation-form.js: { attributes: { crossorigin: anonymous } }
+  dependencies:
+    - wateraid_donation_forms/webform
+    - core/once
+
+webform:
+  js:
+    js/webform.js: {}
+    js/accessibility.js: {}

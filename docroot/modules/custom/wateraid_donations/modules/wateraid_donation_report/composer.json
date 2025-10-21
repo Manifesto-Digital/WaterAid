@@ -1,0 +1,11 @@
+{
+    "name": "org/wateraid_donation_report",
+    "type": "drupal-drush",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^10"
+            }
+        }
+    }
+}

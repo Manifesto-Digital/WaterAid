@@ -1,0 +1,37 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Accordion
+status: stable
+description: Accordion component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+      examples: []
+    description:
+      type: string
+      title: Subtitle
+      examples: [ ]
+    search:
+      type: string
+      title: Search
+    search_label:
+      type: string
+      title: Search label
+      examples: [ ]
+    search_description:
+      type: string
+      title: Search description
+      examples: [ ]
+    accordion_items:
+      type: array
+      title: Accordion items
+      description: An array of accordion items
+      examples: []
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/accordion/accordion.css: {}
+  dependencies:
+    - wateraid/main

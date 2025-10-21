@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Main module file for the webform encrypt pdf.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function webform_pdf_receipt_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type): void {
+  if ($entity_type->id() == 'webform_submission') {
+    // Add a base field to webform_submission entities.
+    $fields['receipt'] = webform_pdf_receipt_get_base_field();
+    $fields['file_id'] = BaseFieldDefinition::create('integer')
+      ->setName('file_id')
+      ->setLabel(t('File ID'))
+      ->setDescription(t('Stores the generated pdf file id.'))
+      ->setTargetEntityTypeId('webform_submission');
+  }
+}
+
+/**
+ * Get the base field definition to store the receipt.
+ */
+function webform_pdf_receipt_get_base_field(): BaseFieldDefinition {
+  return BaseFieldDefinition::create('integer')
+    ->setName('receipt')
+    ->setLabel(t('Receipt'))
+    ->setDescription(t('Stores the generated pdf receipt file.'))
+    ->setTargetEntityTypeId('webform_submission');
+}
+
+/**
+ * Implements hook_webform_third_party_settings_form_alter().
+ */
+function webform_pdf_receipt_webform_third_party_settings_form_alter(&$form, FormStateInterface $form_state): void {
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+
+  $form['third_party_settings']['webform_pdf_receipt'] = [
+    '#type' => 'details',
+    '#title' => t('PDF Receipt'),
+    '#open' => TRUE,
+  ];
+
+  $form['third_party_settings']['webform_pdf_receipt']['pdf_text'] = [
+    '#type' => 'text_format',
+    '#title' => t('PDF text'),
+    '#default_value' => $webform->getThirdPartySetting('webform_pdf_receipt', 'pdf_text')['value'] ?? '',
+    '#allowed_formats' => ['wateraid_pdf'],
+    '#format' => $webform->getThirdPartySetting('webform_pdf_receipt', 'pdf_text')['format'] ?? 'wateraid_pdf',
+  ];
+}
+
+/**
+ * Implements hook_views_data_alter().
+ *
+ * Allow our receipt field to join on the files table.
+ */
+function webform_pdf_receipt_views_data_alter(array &$data): void {
+
+  if (isset($data['webform_submission']['file_id'])) {
+
+    $data['webform_submission']['receipt']['relationship'] = [
+      'id' => 'standard',
+      'base' => 'file_managed',
+      'entity type' => 'file',
+      'base field' => 'fid',
+      'field' => 'file_id',
+      'label' => t('PDF'),
+    ];
+  }
+}

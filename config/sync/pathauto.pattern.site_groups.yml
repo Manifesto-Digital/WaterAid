@@ -1,0 +1,22 @@
+uuid: 618db226-a5cd-45ee-8227-a9cad279af5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: site_groups
+label: 'Site Groups'
+type: 'canonical_entities:group'
+pattern: '[group:title]'
+selection_criteria:
+  73143c30-ab0d-417c-9b65-eb400ff1b71e:
+    id: 'entity_bundle:group'
+    negate: false
+    uuid: 73143c30-ab0d-417c-9b65-eb400ff1b71e
+    context_mapping:
+      group: group
+    bundles:
+      wateraid_site: wateraid_site
+selection_logic: and
+weight: -10
+relationships: {  }

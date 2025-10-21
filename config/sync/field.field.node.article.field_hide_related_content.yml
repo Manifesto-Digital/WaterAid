@@ -1,0 +1,21 @@
+uuid: 451d0bc9-a3b8-4d2c-a2c9-b1794ab00324
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_related_content
+    - node.type.article
+id: node.article.field_hide_related_content
+field_name: field_hide_related_content
+entity_type: node
+bundle: article
+label: 'Hide related content'
+description: 'This will prevent the related stories section from appearing on this page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

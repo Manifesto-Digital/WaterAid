@@ -1,16 +1,24 @@
-<div {{ attributes }}>
-  <div class="image__wrapper image__wrapper--{{ width }}">
-    <figure class="image image--{{ caption_display }}">
+{% set classes = [
+  'image',
+  'image--' ~ width,
+  'image--' ~ caption_display|replace({'_':'-'})
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="image__wrapper">
+    <figure class="image__content">
       {{ image }}
 
-      <figcaption class="image__caption">
-        {{ caption }}
-        <span class="image__credit">{{ credit }}</span>
-      </figcaption>
+      {% if caption or credit %}
+        <figcaption class="image__caption">
+          {{ caption }}
+          <span class="image__credit">{{ credit }}</span>
+        </figcaption>
+      {% endif %}
 
     </figure>
 
-    {% if caption_display == 'expandable' %}
+    {% if (caption or credit) and caption_display == 'expandable' %}
       <div class="image__button">
         <div class="image__button--open">
           {{ include('wateraid:button', {

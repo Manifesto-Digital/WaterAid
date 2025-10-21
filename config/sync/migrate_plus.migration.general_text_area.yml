@@ -1,0 +1,37 @@
+uuid: 7be59e6f-d30f-4f3e-90cd-c6a4005a7fe1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: general_text_area
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_uk
+label: 'General Text Area'
+source:
+  plugin: paragraph_source
+  bundle: general_text_area
+  fields:
+    - field_paragraph_content
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_rich_text/value: field_paragraph_content
+  field_rich_text/format:
+    -
+      plugin: default_value
+      default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: rich_text
+idMap: {  }
+migration_dependencies: {  }
+include: null

@@ -6,6 +6,40 @@
   * Base
   */
 
+.js-form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem;
+}
+
+.js-form-type-checkbox:hover {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  border-radius: .125rem;
+  border: .125rem solid #151435;
+  vertical-align: middle;
+}
+
+input[type=checkbox]:checked {
+  background-color: #151435;
+  background-image: url("../../images/icons/wa-form-check.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+input[type=checkbox]:focus-visible {
+  outline: .25rem #ff96e6 solid;
+  box-shadow: 0 0 0 .125rem #151435;
+}
+
 @font-face {
   font-family: "RB Nylo Black";
   src: url("../../fonts/RBNylo-Black.otf") format("opentype");
@@ -36,7 +70,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -51,7 +85,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -66,7 +100,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -106,10 +140,40 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   p {
     font-size: 1.25rem;
   }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+strong {
+  font-family: "Noto Sans Bold";
 }
 
 /**
@@ -154,7 +218,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -169,7 +233,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -184,7 +248,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -224,10 +288,40 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   p {
     font-size: 1.25rem;
   }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+strong {
+  font-family: "Noto Sans Bold";
 }
 
 header {
@@ -236,23 +330,23 @@ header {
 }
 
 header > div {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   max-width: 1440px;
   margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
   header > div {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
-@media only screen and (min-width: 968px) {
+@media only screen and (min-width: 1440px) {
   header > div {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
@@ -265,24 +359,46 @@ header img {
   width: 200px;
 }
 
-.container {
-  padding-left: 20px;
-  padding-right: 20px;
+.page-container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   max-width: 1440px;
   margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
-    padding-left: 12px;
-    padding-right: 12px;
+  .page-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
-@media only screen and (min-width: 968px) {
-  .container {
-    padding-left: 36px;
-    padding-right: 36px;
+@media only screen and (min-width: 1440px) {
+  .page-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.container-md {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-sm {
+    margin-left: 7.125rem;
   }
 }
 
@@ -316,6 +432,10 @@ footer {
   outline: #ff96e6 .25rem solid;
   border: none;
   background: none;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .button--primary, .button--secondary, .button--donate {
@@ -510,7 +630,13 @@ footer {
        text-align-last: center;
 }
 
+.button__svg svg {
+  vertical-align: middle;
+}
+
 .button__svg--left svg {
   transform: rotate(180deg);
 }
 
+
+/*# sourceMappingURL=button.css.map*/

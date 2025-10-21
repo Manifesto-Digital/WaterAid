@@ -1,0 +1,463 @@
+uuid: 5f408db6-377b-4c31-bfea-b33951be24e9
+langcode: en
+status: closed
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_forms
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: "<h2>Your donation details:</h2>\r\n\r\n<p><strong>Date</strong><br />\r\n[webform_submission:donation-date]</p>\r\n\r\n<p><strong>Frequency of donation</strong><br />\r\n[webform_submission:donation-frequency]</p>\r\n\r\n<p><strong>Donation amount</strong><br />\r\n£[webform_submission:donation-amount]</p>\r\n"
+      format: basic_html
+    gift_aid_confirmation:
+      value: "<h2><strong>Gift Aid confirmation</strong></h2>\r\n\r\n<p>We confirm that from [webform_submission:donation-date] WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make. Please see the confirmation email for more details on the Gift Aid scheme.&nbsp;</p>\r\n"
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: "<h2>Gift Aid declaration</h2>\r\n\r\n<p>Thank you for submitting your Gift Aid online declaration. The Gift Aid scheme gives WaterAid an extra 25p for each pound donated, allowing us to reach even more communities in desperate need.</p>\r\n\r\n<p>We confirm that from [webform_submission:donation-date]&nbsp;WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make.&nbsp;You have confirmed that you pay an amount of income tax/capital gains tax which is at least equal to the amount we (or any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.</p>\r\n\r\n<p>Adding 25p to every pound really makes your gift go further.</p>\r\n\r\n<p><span><span><span><span>You do not need to do anything further for us to reclaim the tax on your gifts. If any of the details above are incorrect please let us know. You also have the option of withdrawing from the Gift Aid scheme within 30 days of this confirmation.</span></span></span></span></p>\r\n\r\n<p><span><span><span><span><span><span><span><span><span><span><span>If you do stop paying tax in the future, we would appreciate it if you could inform us so that we can adjust our records accordingly. If you have any queries please do not hesitate to contact our Supporter Care team on 020 7793 4594.</span></span></span></span></span></span></span></span></span></span></span></p>\r\n"
+      format: basic_html
+    social_share_title:
+      value: "<p>Spread the word to help reach even more people around the world:</p>\r\n"
+      format: basic_html
+    social_share_text: ' I just donated to @WaterAidUK. You can too: wateraid.org/uk/donate'
+    after_confirmation_footer:
+      value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you. Please do not send your bank details by email.</p>\r\n"
+      format: basic_html
+    after_confirmation_cta:
+      value: "<h2>You're helping to share the joy of clean water!</h2>\r\n\r\n<drupal-entity data-align=\"left\" data-embed-button=\"image\" data-entity-embed-display=\"entity_reference:image_embed_button_formatter\" data-entity-embed-display-settings=\"{&quot;responsive_image_style&quot;:&quot;landscape_image&quot;,&quot;show_credit&quot;:0,&quot;show_caption&quot;:0}\" data-entity-type=\"media\" data-entity-uuid=\"a320447e-4eab-49ae-ab28-f488bd511553\"></drupal-entity>\r\n\r\n<p>&nbsp;</p>\r\n"
+      format: basic_html
+    direct_debit_guarantee:
+      value: "<p><strong>The Direct Debit Guarantee</strong></p>\r\n\r\n<ul>\r\n\t<li>This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.</li>\r\n\t<li>If there are any changes to the amount, date or frequency of your Direct Debit WaterAid will notify you 10 working days in advance of your account being debited or as otherwise agreed. If you request WaterAid to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</li>\r\n\t<li>If an error is made in the payment of your Direct Debit by WaterAid or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your Bank or Building Society.</li>\r\n\t<li>If you receive a refund you are not entitled to, you must pay it back when WaterAid asks you to.</li>\r\n\t<li>You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify us.</li>\r\n</ul>\r\n\r\n<p>To get in touch you can give us a call on 020 7793 4594 or email us on <a href=\"\">supportercare@wateraid.org</a>.</p>\r\n\r\n<p><strong>Service User Name: </strong>WaterAid</p>\r\n\r\n<p><strong>Service User Number: </strong>406789</p>\r\n"
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+_core:
+  default_config_hash: W8QDMdZhpXffMYRY7zq361fviC6lzyyVlazfxeg7QwE
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: donation_one_off_wateraid_festiv
+title: 'Donate your festival deposit'
+description: 'Cash only form - Festival Deposit'
+categories:
+  - Donation
+elements: |-
+  step_1:
+    '#type': webform_wizard_page
+    '#title': 'Donate your festival deposit'
+    '#open': true
+    '#next_button_label': Donate
+    '#show_security_icons': 1
+    intro_text:
+      '#type': webform_markup
+      '#markup': |
+        <p>Thank you for choosing to donate your WaterAid festival volunteer deposit with Gift Aid. Your support will mean that we can reach even more people with clean water, decent toilets and good hygiene!<br />
+        <br />
+        Please complete the form below to donate the deposit you have claimed back from the festivals team with Gift Aid.<br />
+        <br />
+        Many thanks again for all your hard work volunteering with WaterAid at festivals this summer.</p>
+    donation_amount:
+      '#type': donations_webform_amount
+      '#title': 'Donation amount'
+      '#amount__title': ''
+      '#amount__placeholder': 'Enter own amount e.g. 50'
+      '#frequency__title': 'Select frequency'
+      '#frequency__placeholder': 'Enter frequency'
+  step_2:
+    '#type': webform_wizard_page
+    '#title': 'Your details'
+    '#open': true
+    '#next_button_label': 'Next step'
+    contact_name:
+      '#type': wateraid_forms_webform_name
+      '#title': 'Contact name'
+      '#required': true
+      '#first__title': 'First name'
+      '#first__required': true
+      '#last__title': 'Last name'
+      '#last__required': true
+    contact_address:
+      '#type': webform_address_capture_plus_manual
+      '#title': 'Contact address'
+      '#required': true
+      '#address__required': true
+      '#city__required': true
+      '#state_province__type': textfield
+      '#postal_code__required': true
+      '#loqate_api_key': loqate_live_api_key
+      '#address__title': 'Address 1'
+      '#state_province__title': County
+      '#postal_code__title': Postcode
+      '#address_2__required': false
+      '#country__required': true
+      '#state_province__required': false
+      '#capture_plus_active': true
+    contact_email:
+      '#type': loqate_email_composite
+      '#title': 'Contact email'
+      '#required': true
+      '#email__title': 'Contact email'
+      '#email__required': true
+      '#loqate_validation': false
+    contact_phone:
+      '#type': tel
+      '#title': 'Contact phone'
+    captcha:
+      '#type': captcha
+      '#captcha_type': recaptcha_v3/default
+  step_giftaid:
+    '#type': webform_wizard_page
+    '#title': 'About your donation'
+    '#open': true
+    '#next_button_label': 'Next step'
+    '#help': '*WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations you may make. To qualify for Gift Aid, you must pay as much UK income and/or capital gains tax as WaterAid (and any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.'
+    '#hide_title': 1
+    gift_aid:
+      '#type': gift_aid
+      '#title': 'Gift Aid'
+      '#opt_in__title': 'Tick here to give more lifesaving, clean water by signing up to Gift Aid*'
+  stay_updated:
+    '#type': webform_wizard_page
+    '#title': 'Stay updated'
+    '#help': 'WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.'
+    communication_preferences:
+      '#type': flexible_options
+      '#title': 'Communication preferences'
+      '#description': 'We&rsquo;d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you&rsquo;d like to hear from us.'
+      '#title_display': invisible
+      '#description_display': before
+      '#options': communication_preferences_long_form_
+      '#format_items': ul
+    prompt_reason:
+      '#type': webform_radios_other
+      '#title': 'Reason for donating'
+      '#options': reasons_for_donating
+      '#options_display': two_columns
+      '#other__maxlength': '100'
+      '#wrapper_type': form_element
+      '#wrapper_attributes':
+        class:
+          - hidden
+      '#options__properties': ''
+  payment_type:
+    '#type': webform_wizard_page
+    '#title': 'Your payment details'
+    '#show_security_icons': 1
+    payment:
+      '#type': donations_webform_payment
+      '#title': Payment
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#wizard_prev__label': Back
+    '#wizard_next__label': 'Next step'
+css: "#edit-payment-payment-methods-one-off-selection--wrapper,\r\n#edit-donation-amount-frequency--wrapper,\r\n#edit-donation-amount-message,\r\n.embedded-entity.align-center:first-child,\r\n#block-mainnavigation,\r\n.field-name-node-title {\r\n  display: none;\r\n}\r\n#edit-donation-amount-amount-one-off-amounts-buttons {\r\n    -ms-flex-wrap: no-wrap;\r\n    flex-wrap: no-wrap;\r\n}\r\n.webform-page.webform-donations-page .wateraid-donations .webform-buttons-other .webform-options-display-side-by-side label.ui-button {\r\n   flex-grow: 1; \r\n}\r\n.webform-page.webform-donations-page .wateraid-donations .webform-buttons-other .webform-options-display-side-by-side label.ui-button:last-child {\r\n   margin-right: 0; \r\n}\r\n#edit-payment-payment-methods-one-off-methods {\r\n  margin-bottom: 0;\r\n}\r\n#edit-actions--4 {\r\n  margin-top: 0;\r\n}\r\n.field-name-field-webform-embed {\r\n    margin-top: 60px;\r\n}\r\n/* Hide border above credit card field */\r\n#edit-payment-payment-methods-one-off-methods {\r\n  border-top: none; \r\n}\r\n/* BEGIN Security icons */\r\n.webform-security-icons {\r\n    text-align: center;\r\n}\r\n.payment-methods {\r\n    display: inline-block;\r\n    margin: 0 20px 20px;\r\n    height: 30px;\r\n}\r\n.payment-methods--hidden {\r\n    display: none;\r\n}\r\n.donation-cta-widget--new .wateraid-donations .webform-security-icons .field-name-body, .webform-page.webform-donations-page .wateraid-donations .webform-security-icons .field-name-body {\r\n  display: block;\r\n}\r\n/* END Security icons */"
+javascript: "// BEGIN custom javascript\r\njQuery(document).ready(function(){\r\n  \r\n    // BEGIN Donation amount text\r\n\t\r\n\t// Function to change donation amount text\r\n\tvar changetext = function()\r\n\t{\r\n\t\tif(Drupal.wateraidDonationForms.model.get(\"frequency\") == \"recurring\") {\r\n\t\t\tjQuery('.donation-amount-info').text(\"You are making a monthly donation of £\" + Drupal.wateraidDonationForms.model.get(\"amount\") + \".\");\r\n\t\t} else {\r\n\t\t\tjQuery('.donation-amount-info').text(\"You are making a one-off donation of £\" + Drupal.wateraidDonationForms.model.get(\"amount\") + \".\");\r\n\t\t}\r\n\t}\r\n\t\r\n\t// Call function on page load\r\n\tchangetext();\r\n\t\r\n\t// Call function on 'Donate' button click on step 1\r\n\tjQuery(\"#edit-next\").click(function() {\r\n\t\tchangetext();\r\n\t});\r\n\r\n\t// Call function when user types other amount\r\n\tjQuery(\"#edit-donation-amount-amount-one-off-amounts-other\").keyup(function() {\r\n\t\tchangetext();\r\n\t});\r\n\r\n\t// Clear donation amount text on back button click, to ensure incorrect text is not displayed on step 1\r\n\tjQuery(\"span, input.webform-button--previous\").click(function() {\r\n\t   jQuery('.donation-amount-info').text(\"\");\r\n\t});\r\n\t\r\n\t//Hide the text if on the first step\r\n\tif(jQuery('#edit-step-1').is(':visible')) {\t\t\r\n\t\tjQuery('.progress-bar__donation-amount-info').addClass('hidden');\r\n\t}\r\n\t\r\n\t// END Donation amount text  \r\n });"
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /donate/donation-volunteer-festival-deposit
+  page_confirm_path: /donate/donation-volunteer-festival-deposit/confirmation
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Your donation is complete'
+  confirmation_message: "<p>Thank you so much your donation.<br />\r\n<br />\r\nHealth. Happiness. Safety. A chance at a better education or a better job. It&#39;s amazing what clean water, decent toilets and good hygiene can bring. And that&#39;s the gift that you&#39;ve just given.<br />\r\nYour donation will help somebody change their life for good.</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  wateraid_donations:
+    id: wateraid_donations
+    handler_id: wateraid_donations
+    label: 'WaterAid Donation'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      payment_providers: {  }
+      currency: GBP
+      amounts:
+        -
+          amount: '2'
+          message: message
+      one_off:
+        option_label: 'One off'
+        payment_methods:
+          - paypal_express
+          - stripe
+          - googlepay
+        default_payment_method: stripe
+        amounts:
+          -
+            amount: '50'
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '50'
+        enabled: 1
+      recurring:
+        option_label: Monthly
+        payment_methods: {  }
+        default_payment_method: bank_account
+        amounts:
+          -
+            amount: '2'
+            benefit: '£2 a month over a year buys tools to dig a trench for a water pipe'
+          -
+            amount: '5'
+            benefit: '£5 a month over a year buys a clean water tank for a school'
+          -
+            amount: '10'
+            benefit: '£10 a month over a year trains a person to maintain a water pump'
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+          -
+            amount: ''
+            benefit: ''
+        default_amount: '1'
+        allow_other_amount: true
+        minimum_amount: '2'
+        enabled: 0
+      frequency_default: one_off
+      default_fund_code: UN0000
+      default_package_code: 19/EAG/01B
+      customer_fields:
+        customer_name: contact_name
+        customer_address: contact_address
+        customer_email: contact_email
+        customer_phone: contact_phone
+  wateraid_donation_email:
+    id: wateraid_email
+    handler_id: wateraid_donation_email
+    label: 'Wateraid Donation Email'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 2
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Thank you so much for your donation'
+      body: "Hi&nbsp;[webform_submission:values:contact_name],\r\n<h2>We&#39;ve received your festival deposit donation and we can&#39;t thank you enough!</h2>\r\nHealth. Happiness. Safety. A chance at a better education or a better job. It&#39;s amazing what clean water, decent toilets and good hygiene can bring. And that&#39;s the gift that you&#39;ve just given. Your donation will help somebody change their life for good. Below you&rsquo;ll find confirmation of your donation, so please check the details and keep this email safe. If you have any questions about WaterAid or your gift, please give us a call on 020 7793 4594 or email us on <a href=\"\">supportercare@wateraid.org</a>. We&#39;d love to hear from you.\r\n\r\n<p>Best wishes and thanks for your support.</p>\r\n\r\n<p>Yours sincerely,</p>\r\n\r\n<p>David Martin</p>\r\n\r\n<p>Supporter Care Manager</p>\r\n\r\n<p>WaterAid<br />\r\n<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: 0
+      reply_to: ''
+      return_path: ''
+      payment_frequency: ''
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+      exclude_attachments: false
+variants: {  }

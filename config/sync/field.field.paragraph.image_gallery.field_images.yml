@@ -1,0 +1,64 @@
+uuid: ae812199-4766-4ead-b8bc-ee955faa9f90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_images
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.image_gallery
+  module:
+    - entity_reference_revisions
+id: paragraph.image_gallery.field_images
+field_name: field_images
+entity_type: paragraph
+bundle: image_gallery
+label: Images
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      image: image
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 13
+        enabled: false
+      accordion_item:
+        weight: 14
+        enabled: false
+      call_to_action:
+        weight: 15
+        enabled: false
+      hero_basic:
+        weight: 16
+        enabled: false
+      hero_image:
+        weight: 17
+        enabled: false
+      hero_news:
+        weight: 18
+        enabled: false
+      hero_video:
+        weight: 19
+        enabled: false
+      image:
+        weight: 20
+        enabled: true
+      image_gallery:
+        weight: 21
+        enabled: false
+      quote:
+        weight: 22
+        enabled: false
+      rich_text:
+        weight: 23
+        enabled: false
+      video:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

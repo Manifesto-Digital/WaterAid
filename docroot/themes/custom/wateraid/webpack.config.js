@@ -10,12 +10,23 @@ module.exports = {
   // todo: remove entry point from webpack and automate it.
   entry: {
     'styles': ['./sass/styles.scss'],
+    'components/accordion/accordion': ['./components/accordion/accordion.scss'],
+    'components/accordion_item/accordion_item': ['./components/accordion_item/accordion_item.scss'],
     'components/button/button': ['./components/button/button.scss'],
+    'components/call_to_action/call_to_action': ['./components/call_to_action/call_to_action.scss'],
+    'components/card/card': ['./components/card/card.scss'],
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],
+    'components/image_gallery/image_gallery': ['./components/image_gallery/image_gallery.scss'],
     'components/link/link': ['./components/link/link.scss'],
+    'components/listing/listing': ['./components/listing/listing.scss'],
+    'components/properties/properties': ['./components/properties/properties.scss'],
+    'components/quote/quote': ['./components/quote/quote.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
+    'components/statistics/statistics': ['./components/statistics/statistics.scss'],
+    'components/video/video': ['./components/video/video.scss'],
+    'components/text_media/text_media': ['./components/text_media/text_media.scss'],
   },
   output: {
     filename: 'js/[name].js',

@@ -1,0 +1,18 @@
+uuid: ec8e8ae7-aa98-4d77-a45c-6b43d819b6af
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_display_donation_reminder
+field_name: field_display_donation_reminder
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

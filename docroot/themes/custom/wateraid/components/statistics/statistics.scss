@@ -1,0 +1,57 @@
+@import "./sass/styles";
+
+.statistics {
+  margin-top: $wa-spacing-07;
+
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+
+  &__content {
+    &--title {
+      margin: 0;
+    }
+
+    &--description {
+      margin: $wa-spacing-06 0 $wa-spacing-07 0;
+    }
+  }
+
+  &__items {
+    @include grid();
+
+    margin-top: $wa-spacing-07;
+    @include desktop() {
+      margin-top: $wa-spacing-09;
+    }
+  }
+
+  &--2-column {
+    .statistics__items {
+      @include container-md();
+    }
+
+    .statistics__items--item {
+      @include grid-item-span(4, 3, 6);
+    }
+  }
+
+  &--3-columns {
+    .statistics__items {
+      @include container-md();
+    }
+
+    .statistics__items--item {
+      @include grid-item-span(4, 3, 4);
+    }
+  }
+
+  &--4-columns {
+    .statistics__items--item {
+      @include grid-item-span(4, 3, 3);
+    }
+
+    .statistics__items {
+    }
+  }
+}

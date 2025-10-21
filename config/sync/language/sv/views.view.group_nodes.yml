@@ -6,23 +6,26 @@ display:
       fields:
         title:
           label: Titel
-          separator: ', '
         type:
           label: Innehållstyp
-          separator: ', '
         status:
           label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Funktioner
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Första'
             last: 'Sista »'
           expose:
@@ -43,6 +46,7 @@ display:
         gid:
           exception:
             title: Alla
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:

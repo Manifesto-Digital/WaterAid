@@ -1,0 +1,18 @@
+uuid: 743f7707-b392-4745-95a8-179958fbe6b7
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_uk_departments
+label: 'WaterAid UK departments'
+category: ''
+likert: false
+options: |-
+  'Chief Executive': 'Chief Executive'
+  'Communications & Fundraising': 'Communications & Fundraising'
+  'Finance & IT': 'Finance & IT'
+  'Internal Audit': 'Internal Audit'
+  'International Programmes': 'International Programmes'
+  'People & Innovation': 'People & Innovation'
+  'People & Organisational Development': 'People & Organisational Development'
+  'Policy & Campaigns': 'Policy & Campaigns'
+  'WaterAid International': 'WaterAid International'

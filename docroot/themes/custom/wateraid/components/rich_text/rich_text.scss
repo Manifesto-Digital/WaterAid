@@ -2,6 +2,11 @@
 
 [data-component-id="wateraid:rich_text"] {
   color: $wa-navy;
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+
   @include paragraph-md();
 
   .paragraph-lg,
@@ -15,6 +20,22 @@
 
   a {
     @include link();
+
+    &.link--text {
+      @include text-link();
+
+      align-items: center;
+      display: flex;
+      gap: $wa-spacing-01;
+      &::after {
+        content: "";
+        display: block;
+        background-image: url("/themes/custom/wateraid/images/icons/wa-utility-arrow-blue.svg");
+        height: $wa-spacing-06;
+        width: $wa-spacing-06;
+        align-items: center;
+      }
+    }
   }
 
   ol,
@@ -35,13 +56,14 @@
 
   blockquote {
     @include h5();
+
     position: relative;
     margin: $wa-spacing-04 0;
     padding-left: $wa-spacing-07;
     padding-top: calculate-rem(6);
 
     &::before {
-      content: '';
+      content: "";
       background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark.svg");
       background-size: 100%;
       background-repeat: no-repeat;
@@ -51,8 +73,10 @@
       left: 0;
       top: 0;
     }
+
     p {
       @include h5();
+
       margin-top: 0;
     }
   }

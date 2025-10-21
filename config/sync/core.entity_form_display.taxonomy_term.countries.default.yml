@@ -3,8 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.countries.field_add_to_site_selector
+    - field.field.taxonomy_term.countries.field_category_description
+    - field.field.taxonomy_term.countries.field_category_title
+    - field.field.taxonomy_term.countries.field_country_code
+    - field.field.taxonomy_term.countries.field_is_current_site
+    - field.field.taxonomy_term.countries.field_sequence_number
+    - field.field.taxonomy_term.countries.field_url
     - taxonomy.vocabulary.countries
   module:
+    - link
     - path
     - text
 id: taxonomy_term.countries.default
@@ -19,6 +27,59 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_add_to_site_selector:
+    type: boolean_checkbox
+    weight: 101
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_category_description:
+    type: string_textarea
+    weight: 101
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_category_title:
+    type: string_textfield
+    weight: 102
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_country_code:
+    type: string_textfield
+    weight: 103
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_is_current_site:
+    type: boolean_checkbox
+    weight: 104
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_sequence_number:
+    type: number
+    weight: 105
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 106
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select

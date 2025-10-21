@@ -17,6 +17,12 @@ props:
     link:
       type: ["object", "null"]
       title: Link
+    publish_date:
+      type: string
+      title: Publish date
+    time_to_read:
+      type: ["string", "integer"]
+      title: Time to read
     colour:
       type: string
       title: Colour
@@ -25,12 +31,30 @@ slots:
   image:
     title: Image
     description: Image slot
+  video:
+    title: Video
+    description: Video slot
   media_caption:
     type: string
     title: Caption
   media_credit:
     type: string
     title: Credit
+  mobile_image:
+    title: Mobile image
+    description: Mobile image slot
+  mobile_caption:
+    type: string
+    title: Mobile caption
+  mobile_credit:
+    type: string
+    title: Mobile credit
+  tags:
+    type: ["object", "null"]
+    title: Tags
+  authors:
+    type: ["object", "null"]
+    title: Authors
 libraryOverrides:
   css:
     theme:

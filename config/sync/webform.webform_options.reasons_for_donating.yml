@@ -1,0 +1,24 @@
+uuid: 6a089444-5310-4312-b5f0-e0d782f23555
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: G05QT-rX5sL0f3PmBP6tNbgQD5BQne_GA1i7mGpsxgo
+id: reasons_for_donating
+label: 'Reasons for donating'
+category: Donation
+likert: false
+options: |-
+  'TV Advert': 'TV Advert'
+  'Press Leaflet': 'Press Leaflet'
+  'Water Bill': 'Water Bill'
+  'In memory': 'In memory'
+  Celebration: Celebration
+  'Sponsored event': 'Sponsored event'
+  Recommendation: 'Recommended By Friend/Family'
+  Company: Company
+  School: School
+  'Faith Group': 'Faith Group'
+  'Social Group': 'Social Group'
+  Letter: Letter
+  Email: Email

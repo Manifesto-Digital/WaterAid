@@ -1,0 +1,19 @@
+uuid: 346577ac-42fb-40ff-958f-d5bcf4beea80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_synopsis
+    - node.type.landing_page
+id: node.landing_page.field_synopsis
+field_name: field_synopsis
+entity_type: node
+bundle: landing_page
+label: Synopsis
+description: 'A short single paragraph synopsis of the event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

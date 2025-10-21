@@ -3,10 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.hero_image.field_call_to_action_type
     - field.field.paragraph.hero_image.field_caption
     - field.field.paragraph.hero_image.field_credit
     - field.field.paragraph.hero_image.field_image
     - field.field.paragraph.hero_image.field_link
+    - field.field.paragraph.hero_image.field_mobile_caption
+    - field.field.paragraph.hero_image.field_mobile_credit
+    - field.field.paragraph.hero_image.field_mobile_image
     - field.field.paragraph.hero_image.field_primary_cta
     - field.field.paragraph.hero_image.field_standfirst
     - paragraphs.paragraphs_type.hero_image
@@ -25,6 +29,23 @@ third_party_settings:
       label: Image
       region: content
       parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
+    group_call_to_action:
+      children:
+        - field_primary_cta
+        - field_call_to_action_type
+      label: 'Call to action'
+      region: content
+      parent_name: ''
       weight: 3
       format_type: details
       format_settings:
@@ -35,11 +56,35 @@ third_party_settings:
         open: true
         description: ''
         required_fields: true
+    group_mobile_image:
+      children:
+        - field_mobile_image
+        - field_mobile_caption
+        - field_mobile_credit
+      label: 'Mobile image'
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
 id: paragraph.hero_image.default
 targetEntityType: paragraph
 bundle: hero_image
 mode: default
 content:
+  field_call_to_action_type:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_caption:
     type: string_textfield
     weight: 1
@@ -65,15 +110,38 @@ content:
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 2
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_mobile_caption:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_credit:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_image:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_primary_cta:
     type: link_default
-    weight: 1
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -84,7 +152,7 @@ content:
     weight: 0
     region: content
     settings:
-      rows: 5
+      rows: 2
       placeholder: ''
     third_party_settings: {  }
 hidden:

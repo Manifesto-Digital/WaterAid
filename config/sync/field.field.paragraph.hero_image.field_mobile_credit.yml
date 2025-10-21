@@ -1,0 +1,19 @@
+uuid: 1d8fa642-610c-4688-aca5-3355af3af5f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mobile_credit
+    - paragraphs.paragraphs_type.hero_image
+id: paragraph.hero_image.field_mobile_credit
+field_name: field_mobile_credit
+entity_type: paragraph
+bundle: hero_image
+label: 'Mobile credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

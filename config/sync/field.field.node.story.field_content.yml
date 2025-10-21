@@ -5,8 +5,12 @@ dependencies:
   config:
     - field.storage.node.field_content
     - node.type.story
-    - paragraphs.paragraphs_type.image
-    - paragraphs.paragraphs_type.rich_text
+    - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.hero_basic
+    - paragraphs.paragraphs_type.hero_image
+    - paragraphs.paragraphs_type.hero_news
+    - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
 id: node.story.field_content
@@ -23,14 +27,51 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      rich_text: rich_text
-      image: image
-    negate: 0
+      hero_basic: hero_basic
+      hero_image: hero_image
+      hero_news: hero_news
+      hero_video: hero_video
+      accordion_item: accordion_item
+      stats_item: stats_item
+    negate: 1
     target_bundles_drag_drop:
+      accordion:
+        weight: -26
+        enabled: false
+      accordion_item:
+        weight: -16
+        enabled: true
+      call_to_action:
+        weight: -25
+        enabled: false
+      facts_and_stats:
+        weight: -24
+        enabled: false
+      hero_basic:
+        weight: -20
+        enabled: true
+      hero_image:
+        weight: -19
+        enabled: true
+      hero_news:
+        weight: -18
+        enabled: true
+      hero_video:
+        weight: -17
+        enabled: true
       image:
-        weight: 3
-        enabled: true
+        weight: -23
+        enabled: false
+      quote:
+        weight: -22
+        enabled: false
       rich_text:
-        weight: 2
+        weight: -27
+        enabled: false
+      stats_item:
+        weight: -15
         enabled: true
+      video:
+        weight: -21
+        enabled: false
 field_type: entity_reference_revisions

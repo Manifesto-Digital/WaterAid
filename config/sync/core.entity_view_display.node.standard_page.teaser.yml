@@ -4,14 +4,31 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.standard_page.field_age
+    - field.field.node.standard_page.field_age_range
+    - field.field.node.standard_page.field_area
+    - field.field.node.standard_page.field_capital
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_country
+    - field.field.node.standard_page.field_event_type
+    - field.field.node.standard_page.field_force_download
+    - field.field.node.standard_page.field_full_title
     - field.field.node.standard_page.field_get_involved
-    - field.field.node.standard_page.field_key_stage
+    - field.field.node.standard_page.field_hero
+    - field.field.node.standard_page.field_job_id
+    - field.field.node.standard_page.field_job_url
+    - field.field.node.standard_page.field_key_stages
+    - field.field.node.standard_page.field_minimal_header
+    - field.field.node.standard_page.field_population
+    - field.field.node.standard_page.field_regions
+    - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_shortcode
+    - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
+    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
+    - field.field.node.standard_page.field_weight
     - node.type.standard_page
   module:
     - user
@@ -20,6 +37,38 @@ targetEntityType: node
 bundle: standard_page
 mode: teaser
 content:
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_event_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_subject_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_teaser_image:
     type: entity_reference_label
     label: hidden
@@ -35,17 +84,46 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_topic:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   co_authors: true
-  field_age: true
+  field_age_range: true
+  field_area: true
+  field_capital: true
   field_content: true
-  field_get_involved: true
-  field_key_stage: true
-  field_subject_area: true
-  field_topic: true
+  field_force_download: true
+  field_full_title: true
+  field_hero: true
+  field_job_id: true
+  field_job_url: true
+  field_key_stages: true
+  field_minimal_header: true
+  field_population: true
+  field_regions: true
+  field_review_date: true
+  field_shortcode: true
+  field_sticky_button_text: true
+  field_weight: true
   langcode: true
+  node_read_time: true
+  search_api_excerpt: true

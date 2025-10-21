@@ -1,0 +1,10 @@
+uuid: 5f2ac6e1-777e-4582-bcf5-c4bf62fbc04e
+langcode: en
+status: true
+dependencies: {  }
+id: quote
+label: Quote
+icon_uuid: null
+icon_default: null
+description: 'Allows you to add a quote to content.'
+behavior_plugins: {  }

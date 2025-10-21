@@ -1,0 +1,73 @@
+uuid: eff4f1d6-1ac9-40b2-828d-63070de48d8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero
+    - node.type.webform
+    - paragraphs.paragraphs_type.hero_basic
+    - paragraphs.paragraphs_type.hero_image
+    - paragraphs.paragraphs_type.hero_news
+    - paragraphs.paragraphs_type.hero_video
+  module:
+    - entity_reference_revisions
+id: node.webform.field_hero
+field_name: field_hero
+entity_type: node
+bundle: webform
+label: Hero
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero_image: hero_image
+      hero_video: hero_video
+      hero_basic: hero_basic
+      hero_news: hero_news
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 14
+        enabled: false
+      accordion_item:
+        weight: 15
+        enabled: false
+      call_to_action:
+        weight: 9
+        enabled: false
+      hero_basic:
+        weight: 10
+        enabled: true
+      hero_image:
+        weight: 4
+        enabled: true
+      hero_news:
+        weight: 12
+        enabled: true
+      hero_video:
+        weight: 6
+        enabled: true
+      image:
+        weight: 5
+        enabled: false
+      image_gallery:
+        weight: 22
+        enabled: false
+      quote:
+        weight: 15
+        enabled: false
+      rich_text:
+        weight: 6
+        enabled: false
+      text_media:
+        weight: 25
+        enabled: false
+      video:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

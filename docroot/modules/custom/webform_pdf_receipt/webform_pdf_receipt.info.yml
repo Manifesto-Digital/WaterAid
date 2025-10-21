@@ -1,0 +1,9 @@
+name: Webform PDF Receipt
+type: module
+description: Generates a pdf receipt of the webform submission.
+core_version_requirement: ^10 || ^11
+package: Webform
+dependencies:
+  - webform:webform
+  - entity_print:entity_print
+  - wateraid_donations:wateraid_donation_forms

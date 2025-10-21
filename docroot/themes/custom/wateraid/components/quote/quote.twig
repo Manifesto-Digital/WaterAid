@@ -1,0 +1,41 @@
+{% block content %}
+  <div class="quote quote--{{ type|replace({'_':'-'}) }}">
+    {% if type == 'image_left_above' %}
+      <div class="quote__image">
+        {{ include('wateraid:image', {
+          image: image,
+          caption: image_caption,
+          credit: image_credit,
+          width: 'full',
+          caption_display: 'expandable'
+        }) }}
+      </div>
+    {% endif %}
+    <div class="quote__content">
+      <div class="quote__content--svg">
+        {{ include('@wateraid/images/icons/wa-icon-quote-mark.svg') }}
+      </div>
+      <div class="quote__content--wrapper">
+        <blockquote class="quote__content--quote">
+          {{ quote }}
+        </blockquote>
+        {% if citation %}
+          <cite class="quote__content--citation">
+            {{ citation }}
+          </cite>
+        {% endif %}
+      </div>
+    </div>
+    {% if type == 'image_right_below' %}
+      <div class="quote__image">
+        {{ include('wateraid:image', {
+          image: image,
+          caption: image_caption,
+          credit: image_credit,
+          width: 'full',
+          caption_display: 'expandable'
+        }) }}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

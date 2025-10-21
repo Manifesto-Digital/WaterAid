@@ -8,6 +8,7 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group_webform\Plugin\Menu\LocalTask\LocalTaskGroupMenu;
@@ -156,4 +157,44 @@ function group_webform_preprocess_menu__group_menu(&$variables): void {
       }
     }
   }
+}
+
+/**
+ * Implements hook_token_info_alter().
+ */
+function group_webform_token_info_alter(&$data): void {
+  if (isset($data['tokens']['group_relationship'])) {
+    $data['tokens']['group_relationship']['content_name'] = [
+      'name' => t('Content Name'),
+      'description' => t('The name of the content linked to the relationship.')
+    ];
+  }
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function group_webform_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+
+  if ($type == 'group_relationship') {
+    if (isset($tokens['content_name'])) {
+
+      $replacements[$tokens['content_name']] = '';
+
+      /** @var \Drupal\group\Entity\GroupRelationshipInterface $relationship */
+      $relationship = $data['group_relationship'];
+
+      if ($content = $relationship->getEntity()) {
+        if (method_exists($content, 'label')) {
+          $replacements[$tokens['content_name']] = $content->label();
+        }
+        else {
+          $one = 1;
+        }
+      }
+    }
+  }
+
+  return $replacements;
 }

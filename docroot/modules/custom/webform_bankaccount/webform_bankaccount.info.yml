@@ -1,0 +1,8 @@
+name: Webform Bank Account Element
+type: module
+description: Provides element for bank account details with PCA integration.
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - webform:webform
+  - wateraid_donations:wateraid_donation_forms

@@ -1,0 +1,7 @@
+wateraid_donation_gmo.settings:
+  path: '/admin/config/services/gmo_api'
+  defaults:
+    _title: 'GMO integration settings'
+    _form: 'Drupal\wateraid_donation_gmo\Form\SettingsForm'
+  requirements:
+    _permission: 'administer gmo api'

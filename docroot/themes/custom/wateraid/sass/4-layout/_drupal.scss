@@ -17,8 +17,16 @@ header {
   }
 }
 
-.container {
+.page-container {
   @include page-container;
+}
+
+.container-md {
+  @include container-md();
+}
+
+.container-sm {
+  @include container-sm();
 }
 
 body {

@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for WaterAid Editor Experience module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_layout_paragraphs_component_form_alter().
+ */
+function wa_editor_experience_form_layout_paragraphs_component_form_alter(array &$form, FormStateInterface &$form_state): void {
+  if (isset($form['field_quote_type'])) {
+    wa_editor_experience_update_field_widget($form, $form_state, ['field_image', 'field_caption', 'field_credit'], 'field_quote_type', 'text_only', 'invisible');
+  }
+  if (isset($form['field_variant'])) {
+    wa_editor_experience_update_field_widget($form, $form_state, ['field_video'], 'field_variant', 'video', 'visible');
+    wa_editor_experience_update_field_widget($form, $form_state, ['field_image', 'field_caption', 'field_credit'], 'field_variant', 'image', 'visible');
+  }
+}
+
+
+/**
+ * Helper to set the states api implementation for a widget form.
+ *
+ * @param array $element
+ *   The Paragraph form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ * @param array $fields
+ *   An array of fields to add states to.
+ * @param string $target_field
+ *   The Target field's machine name.
+ * @param string $value
+ *   The value to use
+ * @param string $state
+ *   The state to use: visible, invisible, etc.
+ */
+function wa_editor_experience_update_field_widget(array &$element, FormStateInterface $form_state, array $fields, string $target_field, string $value, string $state): void {
+  foreach ($fields as $field) {
+    if (isset($element[$field])) {
+      $element[$field]['#states'] = [
+        $state => [
+          ':input[name="' . $target_field . '"]' => ['value' => $value],
+        ],
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function wa_editor_experience_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables): void {
+  if ($variables['elements']['#paragraph']->hasField('field_quote_type')) {
+    $suggestions[] = 'paragraph__' . $variables['elements']['#paragraph']->bundle() . '__' . $variables['elements']['#paragraph']->get('field_quote_type')->getString();
+  }
+}

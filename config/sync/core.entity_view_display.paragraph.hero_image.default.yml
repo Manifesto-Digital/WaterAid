@@ -3,21 +3,33 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.hero_image.field_call_to_action_type
     - field.field.paragraph.hero_image.field_caption
     - field.field.paragraph.hero_image.field_credit
     - field.field.paragraph.hero_image.field_image
     - field.field.paragraph.hero_image.field_link
+    - field.field.paragraph.hero_image.field_mobile_caption
+    - field.field.paragraph.hero_image.field_mobile_credit
+    - field.field.paragraph.hero_image.field_mobile_image
     - field.field.paragraph.hero_image.field_primary_cta
     - field.field.paragraph.hero_image.field_standfirst
     - paragraphs.paragraphs_type.hero_image
   module:
     - link
+    - options
     - text
 id: paragraph.hero_image.default
 targetEntityType: paragraph
 bundle: hero_image
 mode: default
 content:
+  field_call_to_action_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_caption:
     type: string
     label: hidden
@@ -38,7 +50,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: default
+      view_mode: gallery
       link: false
     third_party_settings: {  }
     weight: 0
@@ -54,6 +66,31 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_mobile_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_mobile_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_mobile_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_primary_cta:
     type: link
@@ -74,4 +111,5 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

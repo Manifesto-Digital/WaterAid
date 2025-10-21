@@ -1,0 +1,21 @@
+uuid: 657a9c07-2cac-46ac-8e06-49d290ec954c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.accordion
+id: paragraph.accordion.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: accordion
+label: 'Search label'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: Search
+default_value_callback: ''
+settings: {  }
+field_type: string

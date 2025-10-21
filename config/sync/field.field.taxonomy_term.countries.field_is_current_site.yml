@@ -1,0 +1,21 @@
+uuid: b3d0739c-f650-45da-8681-971201b8bde3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_is_current_site
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries.field_is_current_site
+field_name: field_is_current_site
+entity_type: taxonomy_term
+bundle: countries
+label: 'Is current site'
+description: 'Check this if the country is the current site.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Chock
+  off_label: 'Do Not Check'
+field_type: boolean

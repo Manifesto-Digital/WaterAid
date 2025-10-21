@@ -7,11 +7,20 @@ dependencies:
     - field.field.node.story.field_audience
     - field.field.node.story.field_content
     - field.field.node.story.field_country
+    - field.field.node.story.field_full_story_link
     - field.field.node.story.field_get_involved
+    - field.field.node.story.field_hero
+    - field.field.node.story.field_hide_from_listing
+    - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_override_related_content
+    - field.field.node.story.field_related_content
+    - field.field.node.story.field_related_content_type
+    - field.field.node.story.field_review_date
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
+    - field.field.node.story.field_weight
     - node.type.story
   module:
     - user
@@ -20,6 +29,30 @@ targetEntityType: node
 bundle: story
 mode: teaser
 content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_teaser_image:
     type: entity_reference_label
     label: hidden
@@ -35,16 +68,36 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_audience: true
   field_content: true
-  field_country: true
-  field_get_involved: true
+  field_full_story_link: true
+  field_hero: true
+  field_hide_from_listing: true
+  field_hide_related_content: true
   field_in_page_navigation: true
-  field_theme: true
+  field_override_related_content: true
+  field_related_content: true
+  field_related_content_type: true
+  field_review_date: true
+  field_weight: true
   langcode: true
+  node_read_time: true
+  search_api_excerpt: true

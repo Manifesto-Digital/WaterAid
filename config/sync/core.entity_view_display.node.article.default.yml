@@ -3,15 +3,27 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.article.body
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_get_involved
+    - field.field.node.article.field_hero
+    - field.field.node.article.field_hide_related_content
+    - field.field.node.article.field_override_related_content
+    - field.field.node.article.field_post_description
+    - field.field.node.article.field_related_content
+    - field.field.node.article.field_related_content_type
+    - field.field.node.article.field_review_date
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
+    - field.field.node.article.field_weight
     - node.type.article
   module:
+    - datetime
     - entity_reference_revisions
+    - text
     - user
 _core:
   default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
@@ -20,6 +32,13 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
   field_audience:
     type: entity_reference_label
     label: hidden
@@ -45,6 +64,77 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hide_related_content:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_override_related_content:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_post_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_related_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_related_content_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_review_date:
+    type: datetime_time_ago
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 104
+    region: content
   field_theme:
     type: entity_reference_label
     label: hidden
@@ -52,6 +142,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
     region: content
   links:
     settings: {  }
@@ -63,3 +162,6 @@ hidden:
   field_teaser_image: true
   field_teaser_text: true
   langcode: true
+  node_read_time: true
+  reading_time: true
+  search_api_excerpt: true

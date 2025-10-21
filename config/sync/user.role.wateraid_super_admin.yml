@@ -3,58 +3,39 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.donation
-    - node.type.event
-    - node.type.landing_page
-    - node.type.listing_page
-    - node.type.page
-    - node.type.standard_page
-    - node.type.story
-    - taxonomy.vocabulary.age
-    - taxonomy.vocabulary.audiences
-    - taxonomy.vocabulary.countries
-    - taxonomy.vocabulary.event_types
-    - taxonomy.vocabulary.get_involved
-    - taxonomy.vocabulary.key_stage
-    - taxonomy.vocabulary.region
-    - taxonomy.vocabulary.subject_areas
-    - taxonomy.vocabulary.themes
-    - taxonomy.vocabulary.topic
-    - node.type.article
-    - node.type.landing_page
-    - node.type.webform
-    - taxonomy.vocabulary.region
-    - taxonomy.vocabulary.themes
-    - node.type.donation
-    - node.type.event
-    - node.type.landing_page
-    - node.type.listing_page
-    - node.type.story
-    - taxonomy.vocabulary.audiences
-    - taxonomy.vocabulary.countries
-    - taxonomy.vocabulary.event_types
-    - taxonomy.vocabulary.get_involved
-    - taxonomy.vocabulary.region
+    - filter.format.wateraid_pdf
+    - group.type.wateraid_site
     - media.type.audio
     - media.type.document
+    - media.type.donation_icon_library
+    - media.type.icon_library
     - media.type.image
     - media.type.remote_video
     - media.type.video
     - node.type.article
+    - node.type.donation
+    - node.type.event
     - node.type.landing_page
+    - node.type.listing_page
     - node.type.page
     - node.type.publication
+    - node.type.standard_page
+    - node.type.story
+    - node.type.webform
     - taxonomy.vocabulary.audiences
     - taxonomy.vocabulary.countries
+    - taxonomy.vocabulary.event_types
     - taxonomy.vocabulary.get_involved
-    - taxonomy.vocabulary.key_stage
     - taxonomy.vocabulary.subject_areas
-    - taxonomy.vocabulary.tags
     - taxonomy.vocabulary.themes
+    - taxonomy.vocabulary.topic
   module:
     - content_translation
+    - filter
     - group
+    - group_content_menu
     - media
+    - menu_link_content
     - node
     - node_co_authors
     - path
@@ -63,7 +44,6 @@ dependencies:
     - taxonomy
     - toolbar
     - webform
-    - taxonomy
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
 weight: -7
@@ -86,6 +66,7 @@ permissions:
   - 'administer users'
   - 'administer webform'
   - 'administer webform element access'
+  - 'administer webform overview'
   - 'administer webform submission'
   - 'change own username'
   - 'clone article content'
@@ -110,9 +91,12 @@ permissions:
   - 'clone webform content'
   - 'create article content'
   - 'create audio media'
+  - 'create content translations'
   - 'create document media'
   - 'create donation content'
+  - 'create donation_icon_library media'
   - 'create event content'
+  - 'create icon_library media'
   - 'create image media'
   - 'create landing_page content'
   - 'create listing_page content'
@@ -122,15 +106,11 @@ permissions:
   - 'create remote_video media'
   - 'create standard_page content'
   - 'create story content'
-  - 'create terms in age'
   - 'create terms in audiences'
   - 'create terms in countries'
   - 'create terms in event_types'
   - 'create terms in get_involved'
-  - 'create terms in key_stage'
-  - 'create terms in region'
   - 'create terms in subject_areas'
-  - 'create terms in tags'
   - 'create terms in themes'
   - 'create terms in topic'
   - 'create url aliases'
@@ -145,6 +125,8 @@ permissions:
   - 'delete any document media'
   - 'delete any document media revisions'
   - 'delete any donation content'
+  - 'delete any donation_icon_library media'
+  - 'delete any donation_icon_library media revisions'
   - 'delete any event content'
   - 'delete any image media'
   - 'delete any image media revisions'
@@ -163,6 +145,7 @@ permissions:
   - 'delete any webform content'
   - 'delete any webform submission'
   - 'delete article revisions'
+  - 'delete content translations'
   - 'delete donation revisions'
   - 'delete event revisions'
   - 'delete landing_page revisions'
@@ -172,6 +155,7 @@ permissions:
   - 'delete own audio media'
   - 'delete own document media'
   - 'delete own donation content'
+  - 'delete own donation_icon_library media'
   - 'delete own event content'
   - 'delete own image media'
   - 'delete own landing_page content'
@@ -189,26 +173,18 @@ permissions:
   - 'delete publication revisions'
   - 'delete standard_page revisions'
   - 'delete story revisions'
-  - 'delete term revisions in age'
   - 'delete term revisions in audiences'
   - 'delete term revisions in countries'
   - 'delete term revisions in event_types'
   - 'delete term revisions in get_involved'
-  - 'delete term revisions in key_stage'
-  - 'delete term revisions in region'
   - 'delete term revisions in subject_areas'
-  - 'delete term revisions in tags'
   - 'delete term revisions in themes'
   - 'delete term revisions in topic'
-  - 'delete terms in age'
   - 'delete terms in audiences'
   - 'delete terms in countries'
   - 'delete terms in event_types'
   - 'delete terms in get_involved'
-  - 'delete terms in key_stage'
-  - 'delete terms in region'
   - 'delete terms in subject_areas'
-  - 'delete terms in tags'
   - 'delete terms in themes'
   - 'delete terms in topic'
   - 'delete webform revisions'
@@ -216,7 +192,9 @@ permissions:
   - 'edit any audio media'
   - 'edit any document media'
   - 'edit any donation content'
+  - 'edit any donation_icon_library media'
   - 'edit any event content'
+  - 'edit any icon_library media'
   - 'edit any image media'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
@@ -235,7 +213,9 @@ permissions:
   - 'edit own audio media'
   - 'edit own document media'
   - 'edit own donation content'
+  - 'edit own donation_icon_library media'
   - 'edit own event content'
+  - 'edit own icon_library media'
   - 'edit own image media'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
@@ -248,15 +228,11 @@ permissions:
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
-  - 'edit terms in age'
   - 'edit terms in audiences'
   - 'edit terms in countries'
   - 'edit terms in event_types'
   - 'edit terms in get_involved'
-  - 'edit terms in key_stage'
-  - 'edit terms in region'
   - 'edit terms in subject_areas'
-  - 'edit terms in tags'
   - 'edit terms in themes'
   - 'edit terms in topic'
   - 'edit webform assets'
@@ -264,6 +240,7 @@ permissions:
   - 'revert all taxonomy revisions'
   - 'revert any audio media revisions'
   - 'revert any document media revisions'
+  - 'revert any donation_icon_library media revisions'
   - 'revert any image media revisions'
   - 'revert any remote_video media revisions'
   - 'revert any video media revisions'
@@ -276,28 +253,33 @@ permissions:
   - 'revert publication revisions'
   - 'revert standard_page revisions'
   - 'revert story revisions'
-  - 'revert term revisions in age'
   - 'revert term revisions in audiences'
   - 'revert term revisions in countries'
   - 'revert term revisions in event_types'
   - 'revert term revisions in get_involved'
-  - 'revert term revisions in key_stage'
-  - 'revert term revisions in region'
   - 'revert term revisions in subject_areas'
-  - 'revert term revisions in tags'
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
   - 'revert webform revisions'
+  - 'translate any entity'
+  - 'translate article node'
   - 'translate get_involved taxonomy_term'
-  - 'translate key_stage taxonomy_term'
+  - 'translate group_content_menu'
+  - 'translate menu_link_content'
+  - 'translate page node'
   - 'translate subject_areas taxonomy_term'
+  - 'translate wateraid_site group'
   - 'update any media'
+  - 'update content translations'
   - 'update media'
+  - 'use text format wateraid_pdf'
   - 'view all media revisions'
   - 'view all revisions'
   - 'view all taxonomy revisions'
   - 'view any audio media revisions'
   - 'view any document media revisions'
+  - 'view any donation_icon_library media revisions'
+  - 'view any icon_library media revisions'
   - 'view any image media revisions'
   - 'view any remote_video media revisions'
   - 'view any video media revisions'
@@ -314,15 +296,11 @@ permissions:
   - 'view publication revisions'
   - 'view standard_page revisions'
   - 'view story revisions'
-  - 'view term revisions in age'
   - 'view term revisions in audiences'
   - 'view term revisions in countries'
   - 'view term revisions in event_types'
   - 'view term revisions in get_involved'
-  - 'view term revisions in key_stage'
-  - 'view term revisions in region'
   - 'view term revisions in subject_areas'
-  - 'view term revisions in tags'
   - 'view term revisions in themes'
   - 'view term revisions in topic'
   - 'view the administration theme'

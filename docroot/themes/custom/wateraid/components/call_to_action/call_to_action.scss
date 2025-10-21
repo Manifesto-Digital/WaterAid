@@ -1,0 +1,148 @@
+@import "./sass/styles";
+
+.cta {
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__video {
+    width: 100%;
+    position: relative;
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--play,
+    &--pause {
+      position: absolute;
+      bottom: $wa-spacing-04;
+      right: $wa-spacing-03;
+      z-index: 1;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    gap: $wa-spacing-06;
+    flex-direction: column;
+
+    &--title {
+      color: $wa-white;
+      margin: 0;
+    }
+
+    &--description {
+      color: $wa-white;
+
+      @include paragraph-lg;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  &__links {
+    @include desktop {
+      align-content: end;
+      justify-items: end;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: $wa-spacing-06;
+
+      @include desktop {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &--cta {
+      z-index: 10;
+
+      .button {
+        max-width: 100%;
+        justify-content: center;
+      }
+    }
+
+    &--link a {
+      color: $wa-white;
+    }
+  }
+
+  &--default {
+    @include grid();
+
+    background-color: $wa-blue;
+    padding: $wa-spacing-07 $wa-spacing-05;
+
+    @include desktop {
+      padding: $wa-spacing-09;
+    }
+
+    .cta__links,
+    .cta__content {
+      @include grid-item-span(12, 6, 6);
+    }
+
+    .cta__links {
+      margin-top: $wa-spacing-07;
+
+      @include desktop {
+        margin: 0;
+      }
+    }
+  }
+
+  &--media {
+    position: relative;
+
+    .cta__content {
+      background-color: $wa-blue;
+      padding: $wa-spacing-07 $wa-spacing-05;
+
+      @include desktop {
+        position: absolute;
+        left: $wa-spacing-09;
+        bottom: $wa-spacing-09;
+        padding: $wa-spacing-09;
+        max-width: calculate-rem(546);
+      }
+    }
+
+    .cta__links {
+      display: flex;
+      flex-direction: column;
+      gap: $wa-spacing-06;
+      margin-top: $wa-spacing-02;
+
+      @include desktop {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+  }
+}

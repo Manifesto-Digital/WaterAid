@@ -5,10 +5,17 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.publication.field_audience
+    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
+    - field.field.node.publication.field_download_link_placement
+    - field.field.node.publication.field_force_download
+    - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
-    - field.field.node.publication.field_key_stage
+    - field.field.node.publication.field_hero
+    - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_regions
+    - field.field.node.publication.field_review_date
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
     - field.field.node.publication.field_teaser_text
@@ -21,6 +28,38 @@ targetEntityType: node
 bundle: publication
 mode: teaser
 content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_subject_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
     label: hidden
@@ -37,18 +76,30 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   co_authors: true
-  field_audience: true
+  field_author_override: true
   field_content: true
-  field_country: true
-  field_get_involved: true
-  field_key_stage: true
-  field_subject_area: true
-  field_theme: true
+  field_download_link_placement: true
+  field_force_download: true
+  field_force_open: true
+  field_hero: true
+  field_key_stages: true
+  field_regions: true
+  field_review_date: true
   langcode: true
+  node_read_time: true
+  search_api_excerpt: true

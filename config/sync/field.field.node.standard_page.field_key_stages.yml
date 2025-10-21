@@ -1,0 +1,21 @@
+uuid: 629149b9-2f7b-43df-b85a-b8ab9162c4d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_key_stages
+    - node.type.standard_page
+  module:
+    - options
+id: node.standard_page.field_key_stages
+field_name: field_key_stages
+entity_type: node
+bundle: standard_page
+label: 'Key Stage'
+description: 'Select the Key Stage this content is suitable for.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

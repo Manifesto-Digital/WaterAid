@@ -1,0 +1,53 @@
+@import "./sass/styles";
+
+.accordion-item {
+  &__title {
+    @include h6();
+    background-color: transparent;
+    box-shadow: none;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-top: 2px solid $wa-blue;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $wa-spacing-06 0;
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      color: $wa-blue;
+      transform: rotate(180deg);
+      transition: transform 0.2s;
+    }
+
+    &[aria-expanded="true"] {
+      svg {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    .container-sm {
+      @include desktop(){
+        margin: 0;
+      }
+    }
+  }
+  .quote {
+    color: $wa-navy;
+    background-color: $wa-white;
+
+    &__content {
+      padding: $wa-spacing-07 0;
+    }
+  }
+}
+

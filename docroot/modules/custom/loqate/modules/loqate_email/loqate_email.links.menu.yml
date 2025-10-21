@@ -1,0 +1,5 @@
+loqate_email.settings_form:
+  title: 'Loqate email settings'
+  route_name: loqate_email.settings_form
+  description: 'Loqate email settings'
+  parent: loqate.loqate_api_key_config_form

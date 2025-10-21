@@ -1,0 +1,28 @@
+@import "./sass/styles";
+
+.m-text-media {
+  @include grid();
+  gap: $wa-spacing-07;
+  @include tablet {
+    gap: $wa-spacing-06
+  }
+
+  &__text,
+  &__media {
+    @include grid-item-span(
+      $col-span-mobile: $grid-cols-mobile,
+      $col-span-tablet: 3,
+      $col-span-desktop: 6
+    );
+  }
+
+  &__media {
+    margin: 0;
+  }
+
+  &--image_left {
+    .m-text-media__media {
+      order: -1;
+    }
+  }
+}

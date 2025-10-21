@@ -1,0 +1,8 @@
+uuid: bdd1ef66-c6c6-484e-9ac5-5d52b1361a81
+langcode: en
+status: true
+dependencies: {  }
+decimalSeparator: ','
+groupingSeparator: ' '
+locale: sv_SE
+pattern: '#,##0.00 ¤'

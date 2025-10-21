@@ -1,0 +1,26 @@
+# Schema for the configuration files of the WaterAid Donations GMO module.
+wateraid_donation_gmo.settings:
+  type: config_object
+  label: 'WaterAid Donations GMO settings'
+  mapping:
+    shop_id_live:
+      type: string
+      label: 'Shop ID (Live)'
+    salesforce_url_live:
+      type: string
+      label: 'SalesForce payment request URL (Live)'
+    salesforce_token_live:
+      type: string
+      label: 'SalesForce payment token (Live)'
+    shop_id_test:
+      type: string
+      label: 'Shop ID (Test)'
+    salesforce_url_test:
+      type: string
+      label: 'SalesForce payment request URL (Test)'
+    salesforce_token_test:
+      type: string
+      label: 'SalesForce payment token (Test)'
+    mode:
+      type: string
+      label: 'Mode'

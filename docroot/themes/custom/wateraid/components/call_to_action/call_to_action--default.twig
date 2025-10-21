@@ -1,0 +1,40 @@
+{% set classes = [
+  'cta',
+  'cta--' ~ variant
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="cta__content">
+    <h2 class="cta__content--title">{{ title }}</h2>
+
+    {% if description %}
+      <div class="cta__content--description">
+        {{ description }}
+      </div>
+    {% endif %}
+  </div>
+  {% if cta.title and cta.url or link.title and link.url %}
+    <div class="cta__links">
+      <div class="cta__links--wrapper">
+        <div class="cta__links--cta">
+          {{ include('wateraid:button', {
+            text: cta.title,
+            link: cta.url,
+            type: 'primary',
+            theme: colour == 'white' ? 'light' : 'dark'
+          }) }}
+        </div>
+        {% if link.title and link.url %}
+          <div class="cta__links--link">
+            {{ include('wateraid:link', {
+              text: link.title,
+              link: link.url,
+              type: 'text',
+            }) }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+

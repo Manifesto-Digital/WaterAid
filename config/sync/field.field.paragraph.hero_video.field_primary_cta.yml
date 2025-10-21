@@ -1,0 +1,23 @@
+uuid: 7fa97823-2828-47ad-b557-7eb7872c8658
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_primary_cta
+    - paragraphs.paragraphs_type.hero_video
+  module:
+    - link
+id: paragraph.hero_video.field_primary_cta
+field_name: field_primary_cta
+entity_type: paragraph
+bundle: hero_video
+label: 'Call to action'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

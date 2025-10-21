@@ -1,0 +1,51 @@
+uuid: 1b990405-113d-4767-b11d-0c2398e2661d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.themes.field_category_description
+    - field.field.taxonomy_term.themes.field_category_title
+    - field.field.taxonomy_term.themes.field_exclude_from_landing_page
+    - taxonomy.vocabulary.themes
+  module:
+    - text
+id: taxonomy_term.themes.default
+targetEntityType: taxonomy_term
+bundle: themes
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_category_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_category_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_exclude_from_landing_page:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

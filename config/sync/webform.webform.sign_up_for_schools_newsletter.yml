@@ -1,0 +1,327 @@
+uuid: 30c056cc-3e58-43db-9ddf-5d4cd398adf6
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: sign_up_for_schools_newsletter
+title: 'Sign up for the WaterAid schools e-newsletter'
+description: ''
+categories:
+  - Newsletter
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  contact_name:
+    '#type': webform_name
+    '#title': 'Contact name'
+    '#first__title': 'First name'
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last name'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  contact_email:
+    '#type': loqate_email_composite
+    '#title': 'Contact email'
+    '#required': true
+    '#email__title': 'Contact email'
+    '#email__required': true
+  organisation_name:
+    '#type': textfield
+    '#title': 'Organisation name'
+    '#required': true
+  organisation_address:
+    '#type': webform_address_capture_plus_manual
+    '#title': 'Organisation address'
+    '#required': true
+    '#address__required': true
+    '#city__required': true
+    '#state_province__title': County
+    '#state_province__type': textfield
+    '#postal_code__required': true
+    '#country__required': true
+    '#capture_plus_active': true
+  communications_preferences:
+    '#type': checkboxes
+    '#title': 'Communications preferences'
+    '#description': "<p><strong>By submitting your details you're agreeing to receive the WaterAid schools e-newsletter, which shares educational resources, lesson plans, our latest news, and inspiring fundraising ideas.</strong></p><p>We’d also love to keep you updated on how your support is making change happen. If you agree, we'll send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us:</p>"
+    '#title_display': invisible
+    '#description_display': before
+    '#options': communication_preferences_post_and_email
+    '#options__properties': ''
+  privacy_statement:
+    '#type': webform_markup
+    '#markup': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences or request to stop receiving communications, please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our <a href="/uk/privacy">Privacy Policy</a>.</p>'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /sign-up-for-schools-newsletter
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: '<p><strong>Thank you for signing up for the WaterAid schools e-newsletter – look out for your first edition dropping into your inbox in the next few weeks.</strong></p><p>We’re here to make learning about water, toilets and hygiene fun! In each newsletter, we’ll share new resources and lesson ideas, the latest news and inspiring fundraising ideas.</p><p>In the meantime, you can always find all of our resources on our website:</p><ul><li><a href="uk/get-involved/teaching-resources">Check out our curriculum-linked lesson plans, films, games and songs</a>, which cover topics ranging from climate change to menstrual hygiene, the water cycle to the importance of toilets – and much more!</li><li><a href="/uk/get-involved/schools-and-teachers/schools-fundraising">Sign up for one of our fundraising challenges</a> and help bring clean water, decent toilets and good hygiene to communities around the world. We’ve got resources and inspiration for everything from non-uniform days to sponsored walks and sports days.</li><li><a href="/uk/get-involved/teaching/book-a-free-speaker">Book a free WaterAid speaker</a> for an engaging assembly or interactive workshop. Our trained speakers inspire and educate children of all ages by bringing learning about water to life.</li></ul><p>If you have any questions about lesson planning, or need more classroom resources, please get in touch with us at <a href="mailto:schools@wateraid.org">schools@wateraid.org</a>.</p>'
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: 'Email to user'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:contact_email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: schools@wateraid.org
+      from_options: {  }
+      from_name: 'WaterAid schools team'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thank you for signing up for the WaterAid schools e-newsletter'
+      body: "<p>Hi&nbsp;[webform_submission:values:contact_name:title] [webform_submission:values:contact_name:last],<br />\r\n<br />\r\nThank you for signing up for the WaterAid schools e-newsletter - look out for your first edition dropping into your inbox in the next few weeks.<br />\r\n<br />\r\nWe&rsquo;re here to make learning about water fun! In each e-newsletter, I&rsquo;ll share new resources and lesson ideas, the latest news and inspiring fundraising ideas.<br />\r\n<br />\r\nIn the meantime, you can always find all of our resources on our website:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://www.wateraid.org/uk/get-involved/teaching\">Check out our lesson plans, films, games and songs</a> which cover KS1-4, and includes everything from the water cycle to the physics of flushing a toilet.</li>\r\n\t<li><a href=\"https://www.wateraid.org/uk/get-involved/fundraising/schools-and-teachers\">Sign up for one of our fundraising challenges</a> and help bring clean water, sanitation and hygiene education to communities around the world. We&rsquo;ve got resources and inspiration for everything from non-uniform days to sponsored walks and sports days.</li>\r\n\t<li><a href=\"https://www.wateraid.org/uk/get-involved/teaching/speaker-network\">Book a free WaterAid speaker</a> for an engaging assembly or interactive workshop. Our trained speakers inspire and educate children of all ages by bringing learning about water to life.</li>\r\n</ul>\r\n\r\n<p>I hope you enjoy using our resources and exploring what we have to offer. If you have any questions about lesson planning or simply need more classroom resources get in touch at <a href=\"mailto:schools@wateraid.org\">schools@wateraid.org</a><br />\r\n&nbsp;</p>\r\n\r\n<p>With best wishes,<br />\r\n<br />\r\nWaterAid schools team</p>"
+      excluded_elements:
+        contact_name: contact_name
+        contact_email: contact_email
+        organisation_name: organisation_name
+        organisation_address: organisation_address
+        communications_preferences: communications_preferences
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

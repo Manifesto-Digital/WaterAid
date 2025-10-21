@@ -1,0 +1,25 @@
+uuid: bf942df1-74de-4324-acaf-e4766afaf8c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.listing_page
+id: node.listing_page.field_weight
+field_name: field_weight
+entity_type: node
+bundle: listing_page
+label: Weight
+description: 'Add a weight to dictate where this content will show up in relevant views.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: -50
+  max: 50
+  prefix: ''
+  suffix: ''
+field_type: integer

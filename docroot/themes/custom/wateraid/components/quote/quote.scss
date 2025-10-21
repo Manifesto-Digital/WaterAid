@@ -1,0 +1,82 @@
+@import "./sass/styles";
+
+.quote {
+  color: $wa-white;
+  background-color: $wa-blue;
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+
+  &__content {
+    padding: $wa-spacing-07 $wa-spacing-05;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    align-items: start;
+
+    @include desktop {
+      padding: $wa-spacing-09;
+    }
+
+    svg {
+      width: calculate-rem(30);
+      top: calculate-rem(-6);
+      height: auto;
+      position: relative;
+    }
+
+    &--quote {
+      @include h4();
+      margin: 0;
+    }
+
+    &--citation {
+      @include paragraph-sm();
+
+      display: block;
+      margin-top: calculate-rem(22);
+    }
+  }
+
+  &--image-left-above,
+  &--image-right-below {
+    @include grid();
+
+    column-gap: 0;
+
+    .quote__content {
+      @include grid-item-span(12, 12, 6);
+
+      &--wrapper {
+        max-width: calculate-rem(630);
+      }
+    }
+
+    .quote__image {
+      @include grid-item-span(12, 12, 6);
+
+      color: $wa-navy;
+    }
+
+    [data-component-id="wateraid:image"] .image {
+      display: inline;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .field--type-image {
+      display: grid;
+    }
+  }
+
+  &--text-only {
+    .quote__content {
+      max-width: calculate-rem(888);
+    }
+  }
+}

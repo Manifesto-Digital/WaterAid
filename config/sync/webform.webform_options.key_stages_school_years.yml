@@ -1,0 +1,14 @@
+uuid: f76a132e-01fa-42f7-833f-fedb5ad43c13
+langcode: en
+status: true
+dependencies: {  }
+id: key_stages_school_years
+label: 'Key Stages / School years'
+category: ''
+likert: false
+options: |-
+  'Key Stage 1 - ages 5-7 (Years 1-2)': 'Key Stage 1 - ages 5-7 (Years 1-2)'
+  'Key Stage 2 - ages 7-11 (Years 3-6)': 'Key Stage 2 - ages 7-11 (Years 3-6)'
+  'Key Stage 3 - ages 11-14 (Years 7-9)': 'Key Stage 3 - ages 11-14 (Years 7-9)'
+  'Key Stage 4 - ages 14-16 (Years 10-11)': 'Key Stage 4 - ages 14-16 (Years 10-11)'
+  'Key Stage 5 - ages 16-18 (Years 12-13)': 'Key Stage 5 - ages 16-18 (Years 12-13)'
