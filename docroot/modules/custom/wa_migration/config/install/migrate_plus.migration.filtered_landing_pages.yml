@@ -56,6 +56,7 @@ process:
         - menu_cta
         - resource_link_with_description
         - faqs
+        - view_more_teasers
       source: field_modules
       no_stub: true
   field_content:
@@ -75,4 +76,5 @@ migration_dependencies:
     - menu_cta
     - resource_link_with_description
     - faqs
+    - view_more_teasers
 include: null
