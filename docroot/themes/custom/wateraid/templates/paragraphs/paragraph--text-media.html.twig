@@ -9,19 +9,28 @@
     {% set link = {
       url: paragraph.field_link.0.url,
       title: paragraph.field_link.0.title,
-    }%}
+    } %}
+  {% endif %}
+
+  {% if paragraph.field_media.entity %}
+    {% set media_type = paragraph.field_media.entity.bundle() %}
+  {% endif %}
+
+  {% if media_type == 'video' %}
+    {% set video_url = file_url(paragraph.field_media[0].entity.field_media_video_file.entity.uri.value) %}
   {% endif %}
 
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:text_media', {
       text: content.field_rich_text,
-      media: content.field_media,
+      media: media_type == 'video' ? video_url : content.field_media,
       caption: content.field_caption,
       caption_display: paragraph.field_caption_display.0.value,
       credit: content.field_credit,
       alignment: paragraph.field_image_position.0.value,
       link: link,
+      media_type: media_type,
     }, with_context = false) }}
   </div>
 {% endblock paragraph %}
