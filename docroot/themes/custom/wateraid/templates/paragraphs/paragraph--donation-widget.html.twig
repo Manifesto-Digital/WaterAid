@@ -53,7 +53,8 @@
     {{ include('wateraid:donate_widget', {
       heading: paragraph.field_title.value,
       button_text: 'Donate securely now',
-      donation_amounts: monthly_donation_amounts,
+      monthly_amounts: monthly_donation_amounts,
+      one_off_amounts: one_off_donation_amounts,
       additional_link: {
         title: 'Pay in money raised from a collection or fundraiser',
         href: 'https://www.google.co.uk'
