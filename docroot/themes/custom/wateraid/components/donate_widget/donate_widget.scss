@@ -145,7 +145,15 @@
        display: flex;
        flex-direction: column;
        gap: $wa-spacing-02;
+
+       .icon img {
+          width: $wa-spacing-06;
+       }
+
        .title {
+         align-items: center;
+         display: flex;
+         gap: $wa-spacing-02;
          font-size: calculate-rem(16);
          font-family: $bold-font;
          color: $wa-navy;

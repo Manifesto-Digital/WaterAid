@@ -22,6 +22,9 @@ props:
     additional_link:
       type: object
       title: Additional link
+    monthly_default:
+      type: string
+      title: Monthly default boolean
 libraryOverrides:
   css:
     theme:

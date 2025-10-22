@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.donation_widget.field_monthly_default
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_title
@@ -67,7 +68,7 @@ third_party_settings:
       label: Monthly
       region: content
       parent_name: group_donation_amounts
-      weight: 22
+      weight: 21
       format_type: details
       format_settings:
         classes: ''
@@ -81,7 +82,7 @@ third_party_settings:
       children:
         - field_one_off_donation_amounts
       label: 'One off'
-      region: hidden
+      region: content
       parent_name: group_donation_amounts
       weight: 20
       format_type: details
@@ -98,6 +99,13 @@ targetEntityType: paragraph
 bundle: donation_widget
 mode: default
 content:
+  field_monthly_default:
+    type: boolean_checkbox
+    weight: 23
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_monthly_donation_amounts:
     type: paragraphs
     weight: 5

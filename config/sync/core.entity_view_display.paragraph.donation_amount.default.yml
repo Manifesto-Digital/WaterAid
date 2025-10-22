@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.donation_amount.field_credit
     - field.field.paragraph.donation_amount.field_description
     - field.field.paragraph.donation_amount.field_donation_amount
+    - field.field.paragraph.donation_amount.field_icon
     - field.field.paragraph.donation_amount.field_image
     - field.field.paragraph.donation_amount.field_title
     - paragraphs.paragraphs_type.donation_amount
@@ -35,6 +36,15 @@ content:
     settings:
       thousand_separator: ''
       prefix_suffix: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
     third_party_settings: {  }
     weight: 0
     region: content

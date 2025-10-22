@@ -19,12 +19,13 @@
         <!-- Option: Monthly -->
         <div class="donate-widget__option">
           <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
-                 checked>
+                 {% if monthly_default == '1' %}checked{% endif %}>
           <label class="donate-widget__radio-label" for="freq-monthly">Monthly</label>
         </div>
         <!-- Option: One off -->
         <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off">
+          <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off"
+                 {% if monthly_default == '0' %}checked{% endif %}>
           <label class="donate-widget__radio-label" for="freq-one-off">One off</label>
         </div>
       </div>
@@ -68,7 +69,12 @@
                 </div>
               {% endif %}
               <div class="donate-widget__amount--meta">
-                <div class="title">{{ item.title }}</div>
+                <div class="title">
+                  {% if item.icon %}
+                    <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                  {% endif %}
+                  {{ item.title }}
+                </div>
                 <div class="description">{{ item.description }}</div>
                 {% if item.credit %}
                   <div class="donate-widget__amount--meta--credit">
@@ -129,7 +135,12 @@
                 </div>
               {% endif %}
               <div class="donate-widget__amount--meta">
-                <div class="title">{{ item.title }}</div>
+                <div class="title">
+                  {% if item.icon %}
+                    <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                  {% endif %}
+                  {{ item.title }}
+                </div>
                 <div class="description">{{ item.description }}</div>
                 {% if item.credit %}
                   <div class="donate-widget__amount--meta--credit">

@@ -118,6 +118,7 @@
 
       // Run the function once on page load to set the initial state correctly.
       updateAmountSelection();
+      updateFrequencySelection();
 
       // Hide impact tag after 10 seconds.
       setInterval(() => {

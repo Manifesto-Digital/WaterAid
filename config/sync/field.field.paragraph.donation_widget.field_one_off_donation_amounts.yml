@@ -40,6 +40,9 @@ settings:
       donation_widget:
         weight: 20
         enabled: false
+      facts_and_stats:
+        weight: 24
+        enabled: false
       hero_basic:
         weight: 21
         enabled: false
@@ -64,10 +67,16 @@ settings:
       rich_text:
         weight: 28
         enabled: false
+      stats_item:
+        weight: 33
+        enabled: false
       text_media:
         weight: 29
         enabled: false
       video:
         weight: 30
+        enabled: false
+      webform_poc:
+        weight: 36
         enabled: false
 field_type: entity_reference_revisions

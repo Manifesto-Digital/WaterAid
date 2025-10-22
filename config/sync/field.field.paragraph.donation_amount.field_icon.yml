@@ -1,0 +1,29 @@
+uuid: 15c076a0-1c1a-45a6-8643-3a77eb3829fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - media.type.icon_library
+    - paragraphs.paragraphs_type.donation_amount
+id: paragraph.donation_amount.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: donation_amount
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon_library: icon_library
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
