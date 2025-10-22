@@ -15,6 +15,7 @@ module.exports = {
     'components/button/button': ['./components/button/button.scss'],
     'components/call_to_action/call_to_action': ['./components/call_to_action/call_to_action.scss'],
     'components/card/card': ['./components/card/card.scss'],
+    'components/card_collection/card_collection': ['./components/card_collection/card_collection.scss'],
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],

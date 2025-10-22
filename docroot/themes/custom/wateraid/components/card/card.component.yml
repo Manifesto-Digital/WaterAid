@@ -14,10 +14,6 @@ props:
     variant:
       type: string
       title: Card variant type
-    image_url:
-      type: string
-      title: Image url
-      description: Image url
 slots:
   url:
     type: string
