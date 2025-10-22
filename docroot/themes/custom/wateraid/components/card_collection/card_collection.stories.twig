@@ -1,0 +1,174 @@
+{% stories CardCollection with { title: 'wateraid/Organisms/CardCollection' } %}
+  {% story CardCollection4 with {
+    name: '4 cards',
+    args: {
+      background: 'white',
+      columns: '4-columns',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set card_items = [
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+    ] %}
+
+    {{ include('wateraid:card_collection', {
+      title,
+      card_items,
+    }) }}
+  {% endstory %}
+
+  {% story CardCollection3 with {
+    name: '3 cards',
+    args: {
+      background: 'cream',
+      columns: '3-columns',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set card_items = [
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+    ] %}
+
+    {{ include('wateraid:card_collection', {
+      title,
+      card_items,
+    }) }}
+  {% endstory %}
+
+  {% story CardCollection2 with {
+    name: '2 cards',
+    args: {
+      background: 'white',
+      columns: '2-columns',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set card_items = [
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+    ] %}
+
+    {{ include('wateraid:card_collection', {
+      title,
+      card_items,
+    }) }}
+  {% endstory %}
+
+  {% story CardCollection1 with {
+    name: '1 card',
+    args: {
+      background: 'cream',
+      columns: '1-column',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set card_items = [
+      include('wateraid:card', {
+        heading: 'Heading lorem ipsum dolor',
+        description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+        publish_date: 'Wednesday 30 September 2025',
+        time_to_read: '7 min read',
+        url: '#',
+        image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+        bundle: 'Content type',
+        variant: 'signposting'
+      }),
+    ] %}
+
+    {{ include('wateraid:card_collection', {
+      title,
+      card_items,
+    }) }}
+  {% endstory %}
+
+{% endstories %}

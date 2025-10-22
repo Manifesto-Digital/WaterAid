@@ -1,0 +1,23 @@
+uuid: 405f7c1e-8d92-49a5-a703-c6ecd0438692
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_columns
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - options
+id: paragraph.card_collection.field_card_columns
+field_name: field_card_columns
+entity_type: paragraph
+bundle: card_collection
+label: 'Column count'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 4_columns
+default_value_callback: ''
+settings: {  }
+field_type: list_string
