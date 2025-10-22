@@ -62,7 +62,7 @@
       background-color: $wa-navy;
       justify-self: flex-end;
       margin-top: 0;
-      max-width: calculate-rem(660);
+      width: calculate-rem(660);
     }
     .quote__content--quote {
       @include h5();
@@ -74,7 +74,7 @@
       position: absolute;
       top: $wa-spacing-13;
       left: $wa-spacing-09;
-      max-width: calculate-rem(660);
+      width: calculate-rem(660);
     }
   }
 
