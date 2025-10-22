@@ -1,0 +1,22 @@
+{% stories call_to_action with { title: 'wateraid/Atoms/CancelAnytime' } %}
+  {% story Default with {
+    name: 'Default',
+    args: {
+      title: 'Cancel anytime'|t,
+    }
+  } %}
+
+    {% set copy %}
+      <p>
+        We are so grateful for your donation, but we know financial situations can change. Should you ever need to
+        change or cancel your direct debit, you can easily do directly from your bank or by calling our supporter care
+        team.
+      </p>
+    {% endset %}
+
+    {{ include('wateraid:cancel_anytime', {
+      title,
+      copy,
+    }) }}
+  {% endstory %}
+{% endstories %}

@@ -402,69 +402,6 @@ header img {
   }
 }
 
-.layout__two-column {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-}
-
-@media only screen and (min-width: 768px) {
-  .layout__two-column {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column {
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-.layout__two-column--main {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  .layout__two-column--main {
-    grid-column: span 6;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--main {
-    grid-column: span 8;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--main {
-    margin-left: 7.125rem;
-  }
-}
-
-.layout__two-column--side {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  .layout__two-column--side {
-    grid-column: span 6;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--side {
-    grid-column: span 4;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--side {
-    margin-left: 5.625rem;
-  }
-}
-
 body {
   font-family: "Noto Sans";
 }
@@ -473,5 +410,30 @@ footer {
   background-color: #43cfb5;
 }
 
+.cancel-anytime {
+  max-width: 27.5rem;
+  padding: 1.5rem;
+}
 
-/*# sourceMappingURL=styles.css.map*/
+.cancel-anytime__icon {
+  display: block;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.cancel-anytime__icon svg {
+  max-width: 7.5rem;
+  height: auto;
+}
+
+.cancel-anytime__title {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #151435;
+}
+
+
+/*# sourceMappingURL=cancel_anytime.css.map*/

@@ -14,6 +14,7 @@ module.exports = {
     'components/accordion_item/accordion_item': ['./components/accordion_item/accordion_item.scss'],
     'components/button/button': ['./components/button/button.scss'],
     'components/call_to_action/call_to_action': ['./components/call_to_action/call_to_action.scss'],
+    'components/cancel_anytime/cancel_anytime': ['./components/cancel_anytime/cancel_anytime.scss'],
     'components/card/card': ['./components/card/card.scss'],
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],

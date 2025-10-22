@@ -1,0 +1,35 @@
+uuid: deff4b87-d775-49b6-b25b-0c01f0c33568
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cancel_anytime.field_rich_text
+    - field.field.paragraph.cancel_anytime.field_title
+    - paragraphs.paragraphs_type.cancel_anytime
+  module:
+    - text
+id: paragraph.cancel_anytime.default
+targetEntityType: paragraph
+bundle: cancel_anytime
+mode: default
+content:
+  field_rich_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
