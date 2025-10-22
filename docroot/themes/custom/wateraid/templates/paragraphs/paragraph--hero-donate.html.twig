@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for the Donation Widget paragraph.
+ * Default theme implementation for the Hero paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -39,30 +39,32 @@
  */
 #}
 
-{%
-  set classes = [
-  'paragraph',
-  'paragraph--type--' ~ paragraph.bundle|clean_class,
-  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-  not paragraph.isPublished() ? 'paragraph--unpublished'
-]
-%}
+  {% if not paragraph.field_primary_cta.isEmpty() %}
+    {% set cta = {
+      url: paragraph.field_primary_cta.0.url,
+      title: paragraph.field_primary_cta.0.title,
+      type: paragraph.field_call_to_action_type.value,
+    }%}
+  {% endif %}
 
-{% set parent_bundle = paragraph.getParentEntity().bundle %}
+  {% if not paragraph.field_link.isEmpty() %}
+    {% set link = {
+      url: paragraph.field_link.0.url,
+      title: paragraph.field_link.0.title,
+    }%}
+  {% endif %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:donate_widget', {
-      heading: paragraph.field_title.value,
-      button_text: 'Donate securely now',
-      monthly_amounts: monthly_donation_amounts,
-      one_off_amounts: one_off_donation_amounts,
-      monthly_default: paragraph.field_monthly_default.value,
-      additional_link: {
-        title: 'Pay in money raised from a collection or fundraiser',
-        href: 'https://www.google.co.uk'
-      },
-      variant: parent_bundle == 'hero_donate' ? 'hero' : 'default',
-    }, with_context = false) }}
-  </div>
+  {{ include('wateraid:hero', {
+    title: page_title,
+    quote: content.field_quote,
+    quote_citation: content.field_citation,
+    donate_widget: content.field_donate_widget,
+    image: content.field_image,
+    media_caption: paragraph.field_caption.value ? content.field_caption,
+    media_credit: paragraph.field_credit.value ? content.field_credit,
+    variant: 'donate'
+  }, only) }}
 {% endblock paragraph %}
+
+{% set catch_cache = content|render %}

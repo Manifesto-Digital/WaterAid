@@ -792,6 +792,7 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.donate-widget__heading h1,
 .donate-widget__heading h2 {
   color: #fff;
 }

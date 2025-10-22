@@ -1,0 +1,35 @@
+{% set classes = [
+  'hero',
+  'hero--' ~ colour,
+  'hero--' ~ variant
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  {% if image %}
+    <div class="hero__image">
+      {{ include('wateraid:image', {
+        image,
+        caption: media_caption,
+        credit: media_credit,
+        width: 'full',
+        caption_display: 'expandable'
+      }) }}
+    </div>
+  {% endif %}
+
+  {% if donate_widget %}
+    <div class="hero__donate">
+      {{ donate_widget }}
+    </div>
+  {% endif %}
+
+  {% if quote %}
+    <div class="hero__quote">
+      {{ include('wateraid:quote', {
+        quote: quote,
+        citation: quote_citation,
+        type: 'text_only',
+      }) }}
+    </div>
+  {% endif %}
+</div>

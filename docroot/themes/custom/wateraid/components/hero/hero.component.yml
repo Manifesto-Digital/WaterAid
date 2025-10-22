@@ -28,6 +28,15 @@ props:
       title: Colour
       description: The background colour applied to the hero
 slots:
+  donate_widget:
+    title: Donate widget
+    description: Donate widget slot
+  quote:
+    title: Quote
+    description: Quote slot
+  quote_citation:
+    title: Quote citation
+    description: Quote citation slot
   image:
     title: Image
     description: Image slot
