@@ -785,6 +785,16 @@ if (!empty($acquia_env)) {
   // Add environment value to variable.
   $settings['site_env'] = $acquia_env;
 
+  $databases['migrate']['default'] = [
+    'driver' => 'mysql',
+    'database' => 'manifestodb394531',
+    'username' => 's133940',
+    'password' => 'YRzXF979Gy58rCt',
+    'host' => 'srv-5032',
+    'port' => 3306,
+    'prefix' => '',
+  ];
+
   $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $acquia_env . '/' . $site_path . '/files-private';
 
   // Set correct solr search core.
@@ -797,16 +807,6 @@ if (!empty($acquia_env)) {
   }
   if (($acquia_env === 'prod')) {
     $config['config_split.config_split.prod']['status'] = TRUE;
-
-    $databases['migrate']['default'] = [
-      'driver' => 'mysql',
-      'database' => 'manifestodb394531',
-      'username' => 's133940',
-      'password' => 'YRzXF979Gy58rCt',
-      'host' => 'srv-5032',
-      'port' => 3306,
-      'prefix' => '',
-    ];
   }
 }
 
