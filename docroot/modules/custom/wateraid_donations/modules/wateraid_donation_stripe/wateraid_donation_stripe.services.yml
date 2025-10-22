@@ -1,0 +1,7 @@
+services:
+  logger.channel.wateraid_donation_stripe:
+    parent: logger.channel_base
+    arguments: ['wateraid_donation_stripe']
+  wateraid_webform_stripe:
+    class: \Drupal\wateraid_donation_stripe\WaterAidWebformStripeService
+    arguments: ['@logger.channel.wateraid_donation_stripe', '@stripe_api.stripe_api', '@key.repository']

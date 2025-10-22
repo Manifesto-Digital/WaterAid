@@ -1,0 +1,10 @@
+uuid: b23ec601-496c-4ce8-a529-a7bc22a7835a
+langcode: en
+status: true
+dependencies: {  }
+id: communication_preferences_email
+label: 'Communication preferences email'
+category: WaterAid
+likert: false
+options: |
+  opt_in_email: 'Yes please, I''d like to hear from you by email'

@@ -1,4 +1,4 @@
-uuid: 63fe8195-0117-45be-8d51-fdf8961ac6d6
+uuid: eff4f1d6-1ac9-40b2-828d-63070de48d8d
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,7 @@ dependencies:
     - node.type.webform
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_image
+    - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
   module:
     - entity_reference_revisions
@@ -25,15 +26,28 @@ settings:
   handler_settings:
     target_bundles:
       hero_image: hero_image
-      hero_basic: hero_basic
       hero_video: hero_video
+      hero_basic: hero_basic
+      hero_news: hero_news
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 14
+        enabled: false
+      accordion_item:
+        weight: 15
+        enabled: false
+      call_to_action:
+        weight: 9
+        enabled: false
       hero_basic:
-        weight: 6
+        weight: 10
         enabled: true
       hero_image:
         weight: 4
+        enabled: true
+      hero_news:
+        weight: 12
         enabled: true
       hero_video:
         weight: 6
@@ -41,7 +55,19 @@ settings:
       image:
         weight: 5
         enabled: false
+      image_gallery:
+        weight: 22
+        enabled: false
+      quote:
+        weight: 15
+        enabled: false
       rich_text:
         weight: 6
+        enabled: false
+      text_media:
+        weight: 25
+        enabled: false
+      video:
+        weight: 26
         enabled: false
 field_type: entity_reference_revisions

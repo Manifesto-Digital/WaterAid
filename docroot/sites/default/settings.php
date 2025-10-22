@@ -785,6 +785,16 @@ if (!empty($acquia_env)) {
   // Add environment value to variable.
   $settings['site_env'] = $acquia_env;
 
+  $databases['migrate']['default'] = [
+    'driver' => 'mysql',
+    'database' => 'manifestodb394531',
+    'username' => 's133940',
+    'password' => 'YRzXF979Gy58rCt',
+    'host' => 'srv-5032',
+    'port' => 3306,
+    'prefix' => '',
+  ];
+
   $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $acquia_env . '/' . $site_path . '/files-private';
 
   // Set correct solr search core.
@@ -822,6 +832,37 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
+
+  /**
+   * Disable CSS and JS aggregation.
+   */
+  $config['system.performance']['css']['preprocess'] = FALSE;
+  $config['system.performance']['js']['preprocess'] = FALSE;
+
+  ini_set('max_input_nesting_level', 512);
+  ini_set('xdebug.max_nesting_level', 512);
+  ini_set('zend.assertions', 1);
+
+  $settings['file_private_path'] = 'sites/default/files/private';
+
+  // Update local config across all sites:
+  $config['loqate_email.settings']['mode'] = 'test';
+  $config['loqate.loqateapikeyconfig']['mode'] = 'test';
+  $config['webform_capture_plus.settings']['mode'] = 'test';
+  $config['wateraid_donation_paypal.settings']['mode'] = 'test';
+  $config['stripe_api.settings']['mode'] = 'test';
+  $config['azure_storage.settings']['mode'] = 'test';
+  $config['loqate.loqateapikeyconfig']['mode'] = 'test';
+
+  $config['key.key.webform_encrypt_key']['key_provider'] = 'config';
+  $config['key.key.webform_encrypt_key']['key_provider_settings']['key_value'] = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';
+
+  // Ensure the GMO payment integration is in Test mode.
+  $config['wateraid_donation_gmo.settings']['mode'] = 'test';
+
+  // reCaptcha v3.
+  $config['recaptcha_v3.settings']['site_key'] = '6LfmHCkdAAAAAFcTcD-N6cNay3UA8ti221UnUYIv';
+  $config['recaptcha_v3.settings']['secret_key'] = '6LfmHCkdAAAAABYZksQxxKhum3Y8KJuFRi64gX-C';
 }
 
 $repo_root = dirname(DRUPAL_ROOT);

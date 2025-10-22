@@ -1,0 +1,9 @@
+uuid: cde27fe5-ac57-4579-a260-c89a9d98452a
+langcode: en
+status: true
+dependencies: {  }
+id: communication_preferences_post
+label: 'Communication preferences post'
+category: WaterAid
+likert: false
+options: "opt_in_post: 'No thank you, please do not contact me by post'"

@@ -1,0 +1,19 @@
+uuid: 1bd8f453-93ee-41a0-b5c6-7b055878e6a3
+langcode: en
+status: true
+dependencies: {  }
+id: festivals_all_2023
+label: 'Festivals - all 2023'
+category: ''
+likert: false
+options: |-
+  Glastonbury: Glastonbury
+  'Smoked & Uncut: Lime Wood': 'Smoked & Uncut: Lime Wood'
+  'Camp Bestival: Dorset': 'Camp Bestival: Dorset'
+  'Glastonbury Abbey': 'Glastonbury Abbey'
+  Boomtown: Boomtown
+  'Smoked & Uncut: The Pig at Bridge Place': 'Smoked & Uncut: The Pig at Bridge Place'
+  'Green Man': 'Green Man'
+  'Camp Bestival: Shropshire': 'Camp Bestival: Shropshire'
+  Shambala: Shambala
+  'Pilton Party': 'Pilton Party'

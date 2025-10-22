@@ -1,0 +1,7 @@
+webform.settings.third_party.webform_wizard_single_page:
+  type: mapping
+  label: 'Single page wizard settings'
+  mapping:
+    single_page:
+      type: boolean
+      label: 'Single page'

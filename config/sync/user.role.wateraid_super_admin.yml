@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
     - media.type.document
@@ -30,6 +31,7 @@ dependencies:
     - taxonomy.vocabulary.topic
   module:
     - content_translation
+    - filter
     - group
     - group_content_menu
     - media
@@ -270,6 +272,7 @@ permissions:
   - 'update any media'
   - 'update content translations'
   - 'update media'
+  - 'use text format wateraid_pdf'
   - 'view all media revisions'
   - 'view all revisions'
   - 'view all taxonomy revisions'

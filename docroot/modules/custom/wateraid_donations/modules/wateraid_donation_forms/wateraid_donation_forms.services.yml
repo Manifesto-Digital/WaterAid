@@ -1,0 +1,29 @@
+services:
+  logger.channel.wateraid_donation_forms:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['wateraid_donation_forms']
+  plugin.manager.payment_frequency:
+    class: Drupal\wateraid_donation_forms\PaymentFrequencyPluginManager
+    parent: default_plugin_manager
+  plugin.manager.payment_provider:
+    class: Drupal\wateraid_donation_forms\PaymentProviderPluginManager
+    parent: default_plugin_manager
+  plugin.manager.payment_type:
+    class: Drupal\wateraid_donation_forms\PaymentTypePluginManager
+    parent: default_plugin_manager
+  plugin.manager.fallback:
+    class: Drupal\wateraid_donation_forms\FallbackPluginManager
+    parent: default_plugin_manager
+  wateraid_donation_forms.route_subscriber:
+    class: Drupal\wateraid_donation_forms\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  wateraid_donation_forms.kill_session:
+    class: Drupal\wateraid_donation_forms\EventSubscriber\KillSession
+    arguments: ['@current_user', '@session_manager']
+    tags:
+      - { name: event_subscriber }
+  wateraid_donation_forms.donation:
+    class: Drupal\wateraid_donation_forms\DonationService
+    arguments: ['@plugin.manager.payment_frequency', '@plugin.manager.payment_provider', '@plugin.manager.payment_type', '@logger.channel.wateraid_donation_forms']

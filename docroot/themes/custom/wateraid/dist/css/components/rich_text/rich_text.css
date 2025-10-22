@@ -29,7 +29,7 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked {
   background-color: #151435;
-  background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
+  background-image: url("../../images/icons/wa-form-check.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -359,7 +359,7 @@ header img {
   width: 200px;
 }
 
-.container {
+.page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   max-width: 1440px;
@@ -367,22 +367,38 @@ header img {
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
+  .page-container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .page-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
+.container-md {
+  width: 100%;
+}
+
 @media only screen and (min-width: 1440px) {
-  .content-section {
-    max-width: 41.25rem;
+  .container-md {
+    max-width: 69.75rem;
+    margin-left: 7.125rem;
+  }
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 41.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-sm {
+    margin-left: 7.125rem;
   }
 }
 
@@ -396,7 +412,16 @@ footer {
 
 [data-component-id="wateraid:rich_text"] {
   color: #151435;
-  max-width: 41.25rem;
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  [data-component-id="wateraid:rich_text"] {
+    margin-top: 3rem;
+  }
+}
+
+[data-component-id="wateraid:rich_text"] {
   font-family: "Noto Sans";
   font-size: 1.125rem;
   font-weight: 400;

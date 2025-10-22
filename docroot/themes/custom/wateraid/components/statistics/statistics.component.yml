@@ -1,0 +1,26 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Statistics
+status: stable
+description: Statistics component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+      examples: []
+    description:
+      type: string
+      title: Subtitle
+      examples: [ ]
+    stats_items:
+      type: array
+      title: Stats items
+      description: An array of stats items
+      examples: []
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/statistics/statistics.css: {}
+  dependencies:
+    - wateraid/main

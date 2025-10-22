@@ -1,0 +1,31 @@
+uuid: 273e5110-4b3f-4839-a3e5-0404d4eae30c
+langcode: en
+status: true
+dependencies: {  }
+id: water_industry_partners_wips_
+label: 'Water industry partners (WIPs)'
+category: WaterAid
+likert: false
+options: |
+  'Affinity Water': 'Affinity Water'
+  'Anglian Water': 'Anglian Water'
+  'Bournemouth Water': 'Bournemouth Water'
+  'Bristol Water': 'Bristol Water'
+  'Cambridge Water': 'Cambridge Water'
+  'Dwr Cymru Welsh Water': 'Dwr Cymru Welsh Water'
+  'Essex & Suffolk Water': 'Essex & Suffolk Water'
+  'Northern Ireland ': 'Northern Ireland '
+  'Northumbrian Water': 'Northumbrian Water'
+  Ofwat: Ofwat
+  'Portsmouth Water': 'Portsmouth Water'
+  'Scottish Water': 'Scottish Water'
+  'SES Water': 'SES Water'
+  'Severn Trent': 'Severn Trent'
+  'South East Water': 'South East Water'
+  'South Staffs Water': 'South Staffs Water'
+  'Southern Water': 'Southern Water'
+  'South West Water': 'South West Water'
+  'Thames Water': 'Thames Water'
+  'United Utilities': 'United Utilities'
+  'Wessex Water': 'Wessex Water'
+  'Yorkshire Water': 'Yorkshire Water'

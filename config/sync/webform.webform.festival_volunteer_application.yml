@@ -1,0 +1,1342 @@
+uuid: d0300c71-426f-4628-abfe-26ee74c65879
+langcode: en
+status: closed
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: "<drupal-entity data-embed-button=\"image\" data-entity-embed-display=\"entity_reference:image_embed_button_formatter\" data-entity-embed-display-settings=\"{&quot;responsive_image_style&quot;:&quot;&quot;,&quot;show_credit&quot;:0,&quot;show_caption&quot;:0}\" data-entity-type=\"media\" data-entity-uuid=\"183f7d08-16c8-40dc-b9d7-3eaa271acaed\"></drupal-entity>\r\n"
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+    currency: GBP
+  webform_wizard_extra:
+    one_page: false
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: festival_volunteer_application
+title: 'Festival Volunteer Application'
+description: '**do not use**'
+categories:
+  - Community
+elements: |-
+  intro:
+    '#type': webform_wizard_page
+    '#title': Intro
+    intro_text:
+      '#type': webform_markup
+      '#markup': |-
+        <h1>Festival volunteer application form</h1>
+
+        <p>Thank you for choosing to apply to join the WaterAid festival volunteering team in 2022!</p>
+
+        <h2>Before you start</h2>
+
+        <p>This form will take 20-30 minutes to fill in. You can&#39;t save your progress, so make sure you have enough time to fill it in and submit it all at once.</p>
+
+        <p>Before you begin your application, please make sure you&#39;ve read, and agree to, our:</p>
+
+        <ul>
+        	<li><a href="/uk/publications/festivals-volunteer-agreement">Volunteer agreement (PDF)</a></li>
+        	<li><a href="/uk/publications/festival-volunteering-covid-19-policy">COVID-19 volunteer policy (PDF)</a></li>
+        	<li><a href="/uk/publications/festival-volunteering-deposit-terms-and-conditions">Deposit terms and conditions (PDF)</a></li>
+        </ul>
+
+        <p>You&#39;ll need to have the details of two referees to hand &ndash; <a href="/uk/get-involved/volunteering/festival-volunteering/faqs#references">see our FAQs for more information on acceptable referees</a>.</p>
+
+        <p>Ensure you complete all mandatory fields marked with a *. If any mandatory fields are left blank, you won&#39;t be able to submit the form.</p>
+
+        <p>If you have any difficulties completing this form, please contact us on <a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a> or call 020 7793 4594.</p>
+  about_you:
+    '#type': webform_wizard_page
+    '#title': 'About you'
+    about_you_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>About you</h2>
+
+        <p>If you are offered a volunteer place, you will need to provide photo ID to gain access to the festival site. Please complete this form with your full name <strong>exactly as it appears on your ID</strong>.</p>
+    first_name:
+      '#type': textfield
+      '#title': 'First name'
+      '#required': true
+    last_name:
+      '#type': textfield
+      '#title': 'Last name'
+      '#required': true
+    gender:
+      '#type': select
+      '#title': Gender
+      '#description': 'We collect this information as some of our roles are gender specific.'
+      '#options': gender
+      '#wrapper_attributes':
+        class:
+          - hidden
+    address:
+      '#type': webform_address_capture_plus_manual
+      '#title': Address
+      '#state_province__type': textfield
+      '#loqate_api_key': loqate_live_api_key
+      '#required': true
+      '#state_province__title': County
+      '#address__required': true
+      '#address_2__required': false
+      '#city__required': true
+      '#country__required': true
+      '#state_province__required': false
+      '#postal_code__required': true
+      '#capture_plus_active': true
+    phone_number:
+      '#type': tel
+      '#title': 'Phone number'
+      '#size': 100
+      '#international': true
+      '#international_initial_country': GB
+      '#required': true
+    email_address:
+      '#type': loqate_email_composite
+      '#title': 'Email address'
+      '#description': 'If you work for WaterAid please use your work email address.'
+      '#description_display': after
+      '#required': true
+      '#email__title': 'Email address'
+      '#email__description': 'If you work for WaterAid please use your work email address.'
+      '#email__required': true
+      '#loqate_validation': false
+    i_am_aged:
+      '#type': select
+      '#title': 'I am aged'
+      '#options':
+        '18 or over': '18 or over'
+        '17, turning 18 before the arrival date of the festival I''m applying for': '17, turning 18 before the arrival date of the festival I''m applying for'
+      '#required': true
+    if_under_18:
+      '#type': container
+      '#states':
+        visible:
+          ':input[name="i_am_aged"]':
+            value: '17, turning 18 before the arrival date of the festival I''m applying for'
+      festival_dates_copy:
+        '#type': webform_markup
+      date_of_birth:
+        '#type': textfield
+        '#title': 'Date of birth'
+        '#description': |-
+          <p>You must be aged 18 or over by the festival arrival date, and you&#39;ll need to show your photo ID on entry.</p>
+
+          <p><strong><a class="arrow-link--dark" href="/uk/get-involved/volunteering/festival-volunteering">Check festival arrival dates</a></strong></p>
+        '#placeholder': dd/mm/yyyy
+        '#input_mask': 99/99/9999
+        '#required': true
+    are_there_any_reasonable_adjustments_you_would_require_to_enable:
+      '#type': radios
+      '#title': 'Are there any reasonable adjustments you would require to enable you to volunteer at a festival with WaterAid?'
+      '#description': |-
+        <p>We welcome applications from people with physical and mental health conditions or disabilities, where they are able to carry out the work involved.</p>
+
+        <p>Where possible, we will do our best to make any reasonable adaptations to our roles, or to discuss with you what additional requirements may be needed to support you in your volunteer role. We need to know this in advance to ensure these adjustments can be made. Please <a href="/uk/get-involved/volunteering/festival-volunteering/faqs">see our FAQs for more information</a>.</p>
+      '#options': yes_no
+      '#required': true
+      '#options__properties': ''
+    if_you_have_additional_needs_please_provide_details_here:
+      '#type': textarea
+      '#title': 'Please outline these below'
+      '#description': 'We welcome applications from people with additional accessibility requirements, and where possible will do our best to make any reasonable adaptions to our roles. Depending on your requirements, we may be in touch to discuss further how we could best support you to volunteer with us. Please <a href="https://www.wateraid.org/uk/get-involved/volunteering/festival-volunteering/faqs" target="_blank">see our FAQs</a> for more information.'
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="are_there_any_reasonable_adjustments_you_would_require_to_enable"]':
+            value: 'Yes'
+    please_let_us_know_your_t_shirt_size:
+      '#type': select
+      '#title': 'Please let us know your t-shirt size'
+      '#description': 'Items are standard loose fit adult sizes. Knowing this in advance helps us to order in bulk for our volunteers.'
+      '#options': size
+      '#empty_option': 'Please select'
+      '#required': true
+  your_support:
+    '#type': webform_wizard_page
+    '#title': 'Your support'
+    your_support_intro:
+      '#type': webform_markup
+      '#markup': '<h2>Your skills, experience and support for WaterAid</h2>'
+    if_more_than_2_ways_text:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Your support for WaterAid</h3>
+
+        <p>Volunteering at events is a great way to support WaterAid and raise awareness of our work!<br />
+        <br />
+        We&#39;d love to hear about how you&#39;re already involved with WaterAid (or how you have been in the past). If you support WaterAid in multiple ways, select the two ways that you feel are most relevant to this application.</p>
+    please_select_your_most_relevant_involvement_with_wateraid:
+      '#type': select
+      '#title': 'Please select your most relevant involvement with WaterAid'
+      '#options': types_of_voluntary_support
+      '#required': true
+    is_this_involvement_with_wateraid_current_:
+      '#type': select
+      '#title': 'Is this involvement with WaterAid current? 1'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No'
+      '#states':
+        invisible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'Not applicable'
+        optional:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'Not applicable'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    please_select_your_second_most_relevant_involvement_with_waterai:
+      '#type': select
+      '#title': 'Please select your second most relevant involvement with WaterAid'
+      '#options': types_of_voluntary_support
+      '#states':
+        optional:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+        invisible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+    is_this_involvement_with_wateraid_current_2:
+      '#type': select
+      '#title': 'Is this involvement with WaterAid current? 2'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No'
+      '#states':
+        visible:
+          ':input[name="please_select_your_second_most_relevant_involvement_with_waterai"]':
+            '!value': 'Not applicable'
+        invisible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    have_you_volunteered_at_a_festival_with_wateraid_previously_:
+      '#type': select
+      '#title': 'Have you volunteered at a festival with WaterAid in the last five years?'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No'
+      '#empty_option': 'Please select'
+      '#states':
+        optional:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+        invisible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+    please_select_any_festivals_you_have_volunteered_at_with_waterai:
+      '#type': checkboxes
+      '#title': 'Please select any festivals you have volunteered at with WaterAid'
+      '#options':
+        'Bestival 2017': 'Bestival 2017'
+        'Bestival 2018': 'Bestival 2018'
+        'Boomtown 2018': 'Boomtown 2018'
+        'Boomtown 2019': 'Boomtown 2019'
+        'Camp Bestival 2018': 'Camp Bestival 2018'
+        'Camp Bestival 2019': 'Camp Bestival 2019'
+        'Glastonbury 2017': 'Glastonbury 2017'
+        'Glastonbury 2019': 'Glastonbury 2019'
+        'The Good Life Experience 2018': 'The Good Life Experience 2018'
+        'Green Man 2018': 'Green Man 2018'
+        'Green Man 2019': 'Green Man 2019'
+        'Latitude 2019': 'Latitude 2019'
+        'Shambala 2018': 'Shambala 2018'
+        'Shambala 2019': 'Shambala 2019'
+        'Glastonbury Abbey 2021': 'Glastonbury Abbey 2021'
+        'Worthy Pastures 2021': 'Worthy Pastures 2021'
+        'Camp Bestival 2021': 'Camp Bestival 2021'
+        'Green Man 2021': 'Green Man 2021'
+        'Parklife 2021': 'Parklife 2021'
+      '#options_display': two_columns
+      '#states':
+        visible:
+          ':input[name="have_you_volunteered_at_a_festival_with_wateraid_previously_"]':
+            value: 'Yes'
+      '#options__properties': ''
+    please_summarise_how_you_have_supported_wateraid_in_the_past_12_:
+      '#type': textarea
+      '#title': 'Please summarise how you have supported WaterAid in the past three years.'
+      '#description': '<span class="fieldset-legend">Tell us a bit more about your involvement with WaterAid, and any ways you&#39;ve supported us. Feel free to expand on any involvement you&#39;ve mentioned above.</span>'
+      '#description_display': before
+      '#rows': 10
+      '#counter_type': character
+      '#counter_maximum': 500
+      '#states':
+        optional:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+        invisible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+    please_select_your_department:
+      '#type': select
+      '#title': 'Please select your department'
+      '#options': wateraid_uk_departments
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+    we_want_to_hear_about_you_your_skills_and_experience_staff:
+      '#type': textarea
+      '#title': 'We''re particularly looking for WaterAid staff who have experience working or volunteering at events, and managing volunteers. Please let us know any relevant experience you have in these areas.'
+      '#description_display': before
+      '#rows': 10
+      '#required': true
+      '#counter_type': character
+      '#counter_maximum': 500
+      '#states':
+        visible:
+          ':input[name="please_select_your_most_relevant_involvement_with_wateraid"]':
+            value: 'WaterAid staff'
+          ':input[name="is_this_involvement_with_wateraid_current_"]':
+            value: 'Yes'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    please_describe_which_area_of_wateraid_s_work_you_are_most_passi:
+      '#type': textarea
+      '#title': 'At WaterAid we are passionate about reaching everyone, everywhere with clean water, decent toilets and good hygiene.'
+      '#description': '<span class="fieldset-legend">Please describe an area of WaterAid&rsquo;s work you are passionate about, and why this inspired you to apply for a volunteer role in our festivals team. </span>'
+      '#description_display': before
+      '#rows': 10
+      '#counter_type': character
+      '#counter_maximum': 500
+      '#wrapper_attributes':
+        class:
+          - hidden
+    skills_and_experience:
+      '#type': webform_markup
+      '#markup': '<h3>Your skills and experience</h3>'
+    we_want_to_hear_about_you_your_skills_and_experience_tell_us_why:
+      '#type': textarea
+      '#title': 'Tell us about yourself'
+      '#description': |-
+        <p>Use this space to tell us why you&rsquo;d make a great festival volunteer &ndash; you could give details of any relevant previous experience (either paid or voluntary), share what motivates you to volunteer with WaterAid, or tell us a bit more about what makes you tick!</p>
+
+        <p>We get thousands of applications, so this is your opportunity to stand out from the crowd.</p>
+      '#description_display': before
+      '#rows': 10
+      '#counter_type': character
+      '#counter_maximum': 500
+      '#states':
+        visible:
+          ':input[name="have_you_volunteered_at_a_festival_with_wateraid_previously_"]':
+            value: 'No'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    previous_experience:
+      '#type': checkboxes
+      '#title': 'Do you have experience of any of the following?'
+      '#options':
+        'Bar work': 'Working or volunteering in a busy bar-like environment, with payment and stock handling'
+        'Leading teams of people ': 'Leading teams of people '
+        'Engaging people in charity campaigns': 'Engaging people in charity campaigns'
+      '#options__properties': ''
+    role_types:
+      '#type': checkboxes
+      '#title': 'Let us know if you''re happy to do roles that involve:'
+      '#description': 'We allocate roles based on the number of volunteers we need, and according to your skills and experience. Most of our roles, especially at Glastonbury, involve cleaning of some kind &ndash; so please be aware that if you don&#39;t select this option, you&#39;ll be limiting the chances of us having a place for you!'
+      '#options':
+        Roaming: 'Roaming around the festival -- This could mean walking or standing for up to 7 hours at a time.'
+        Cleaning: 'Cleaning -- Most of our roles involve cleaning of some sort.'
+        'Cleaning toilets': 'Cleaning toilets -- Over half of our roles at Glastonbury involve cleaning toilets.'
+        'Night shifts': 'Night shifts -- Some of our roles involve night shifts (midnight – 6am), for the late night areas of the festivals. Shift times will rotate each day so volunteers in these areas still work different hours throughout.'
+        'Female urinals': 'Working in a female toilet urinal area -- Please only select this option if you identify as female.'
+      '#options_description_display': help
+      '#options__properties': ''
+  at_the_festival:
+    '#type': webform_wizard_page
+    '#title': 'At the festival'
+    at_the_festival_intro:
+      '#type': webform_markup
+      '#markup': '<h2>Festivals and training</h2>'
+    information_pack_text:
+      '#type': webform_markup
+      '#markup': '<p>NB: all festivals and events are subject to change and/or cancellation by the organisers.</p>'
+    festival_preference_copy:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Your festival choices</h3>
+
+        <p>Select the festivals that you would like to attend, in order of preference. Please only select festivals that you can definitely attend!</p>
+    festival_role_preference_1:
+      '#type': select
+      '#title': 'Festival preference 1'
+      '#description_display': before
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#required': true
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    festival_role_preference_2:
+      '#type': select
+      '#title': 'Festival preference 2'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+      '#options': festivals
+      '#empty_option': 'Please select'
+    festival_role_preference_3:
+      '#type': select
+      '#title': 'Festival preference 3'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+      '#options': festivals
+      '#empty_option': 'Please select'
+    festival_role_preference_4:
+      '#type': select
+      '#title': 'Festival preference 4'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+      '#options': festivals
+      '#empty_option': 'Please select'
+    festival_role_preference_5:
+      '#type': select
+      '#title': 'Festival preference 5'
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    festival_role_preference_6:
+      '#type': select
+      '#title': 'Festival preference 6'
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    festival_role_preference_7:
+      '#type': select
+      '#title': 'Festival preference 7'
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    festival_role_preference_8:
+      '#type': select
+      '#title': 'Festival preference 8'
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    festival_preference_9:
+      '#type': select
+      '#title': 'Festival preference 9'
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    festival_preference_10:
+      '#type': select
+      '#title': 'Festival preference 10'
+      '#options': festivals
+      '#empty_option': 'Please select'
+      '#attributes':
+        class:
+          - js-festival-role-preference
+    smoked_bath_options:
+      '#type': radios
+      '#title': 'At Smoked & Uncut (The Pig near Bath), would you like to volunteer for the full weekend or just Saturday?'
+      '#options':
+        'Full weekend': 'Full weekend (Friday 8 - Sunday 10 July)'
+        'Saturday only': 'Saturday only (arriving by 10am and leaving no later than midnight)'
+      '#required': true
+      '#states':
+        visible:
+          - ':input[name="festival_role_preference_1"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_2"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_3"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_4"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_5"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_6"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_7"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_role_preference_8"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_preference_9"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+          - or
+          - ':input[name="festival_preference_10"]':
+              value: 'Smoked & Uncut - The Pig near Bath'
+      '#options__properties': ''
+    smoked_hampshire_options:
+      '#type': radios
+      '#title': 'At Smoked & Uncut (Lime Wood), would you like to volunteer for the full weekend or just Saturday?'
+      '#options':
+        'Full weekend': 'Full weekend (Friday 22 - Sunday 24 July)'
+        'Saturday only': 'Saturday only (arriving by 10am and leaving no later than midnight)'
+      '#required': true
+      '#states':
+        visible:
+          - ':input[name="festival_role_preference_1"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_role_preference_2"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_role_preference_3"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_role_preference_4"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_role_preference_5"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_role_preference_7"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_role_preference_8"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_preference_9"]':
+              value: 'Smoked & Uncut - Lime Wood'
+          - or
+          - ':input[name="festival_preference_10"]':
+              value: 'Smoked & Uncut - Lime Wood'
+      '#options__properties': ''
+    smoked_kent_options:
+      '#type': radios
+      '#title': 'At Smoked & Uncut (The Pig at Bridge Place), would you like to volunteer for the full weekend or just Saturday?'
+      '#options':
+        'Full weekend': 'Full weekend (Friday 12 - Sunday 14 August)'
+        'Saturday only': 'Saturday only (arriving by 10am and leaving no later than midnight)'
+      '#required': true
+      '#states':
+        visible:
+          - ':input[name="festival_role_preference_1"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_2"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_3"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_4"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_5"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_6"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_7"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_role_preference_8"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_preference_9"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+          - or
+          - ':input[name="festival_preference_10"]':
+              value: 'Smoked & Uncut - The Pig at Bridge Place'
+      '#options__properties': ''
+    clear_preferences_button:
+      '#type': webform_markup
+      '#markup': '<a class="button button__secondary form-item js-reset-preferences">Reset festival preferences</a>'
+    how_many_festivals:
+      '#type': radios
+      '#title': 'How many festivals would you ideally like to attend with WaterAid?'
+      '#options':
+        One: One
+        Two: Two
+        'Three or more': 'Three or more'
+      '#required': true
+      '#options__properties': ''
+    preferences_include:
+      '#type': container
+      preferences_include_glastonbury:
+        '#type': select
+        '#title': 'Preferences include Glastonbury'
+        '#options':
+          'Yes': 'Yes'
+        '#wrapper_attributes':
+          class:
+            - hidden
+      preferences_include_a_festival_other_than_glastonbury:
+        '#type': select
+        '#title': 'Preferences include a festival other than Glastonbury'
+        '#options':
+          'Yes': 'Yes'
+        '#wrapper_attributes':
+          class:
+            - hidden
+    hidden_fields:
+      '#type': container
+      '#attributes':
+        class:
+          - hidden
+      glastonbury_fields:
+        '#type': container
+        '#states':
+          visible:
+            ':input[name="preferences_include_glastonbury"]':
+              value: 'Yes'
+        '#attributes':
+          class:
+            - hidden
+        glastonbury_fields_title:
+          '#type': webform_markup
+          '#markup': '<h2>Glastonbury</h2>'
+        role_preferences_glastonbury:
+          '#type': checkboxes
+          '#title': 'If your application is successful, which roles would you be prepared to carry out at Glastonbury?'
+          '#options': worthy_pastures_weeks
+          '#options_display': two_columns
+          '#required_error': 'Please select one or more option(s)'
+          '#options__properties': ''
+        please_confirm_the_earliest_date_you_would_be_able_to_arrive_at_:
+          '#type': select
+          '#title': 'Please confirm the earliest date you would be able to arrive at the festival for your onsite training'
+          '#description': '<p>Please only select Tuesday 23 June if you are definitely able to arrive onsite at the festival on this day. Most of our roles begin onsite on Tuesday 23 June.</p>'
+          '#options':
+            'During the day on Tuesday 23 June': 'During the day on Tuesday 23 June'
+            'During the day on Wednesday 24 June': 'During the day on Wednesday 24 June'
+        glastonbury_training_heading:
+          '#type': webform_markup
+          '#markup': '<h3>Training</h3>'
+        training_session_intro:
+          '#type': webform_markup
+          '#markup': |
+            <p>The majority of our Glastonbury volunteer team is required to attend a face to face training session in preparation for the festival.<br />
+            <br />
+            Training sessions are listed below - please specify your preferred sessions and we will do our best to accommodate your preferences.<br />
+            <br />
+            Please note that if you volunteered with WaterAid at Glastonbury 2019, then you may NOT be required to attend a face to face session this year. Our team will be in touch if this applies to you.</p>
+        please_select_your_first_choice_of_training_location_date:
+          '#type': select
+          '#title': 'Please select your first choice of training location/date'
+          '#options': festival_training_dates
+          '#empty_option': 'Please select'
+          '#attributes':
+            class:
+              - js-training-preference
+        please_select_your_second_choice_of_training_location_date:
+          '#type': select
+          '#title': 'Please select your second choice of training location/date'
+          '#options': festival_training_dates
+          '#empty_option': 'Please select'
+          '#wrapper_attributes':
+            class:
+              - js-training-preference
+          '#attributes':
+            class:
+              - js-training-preference
+        reset_training_preferences:
+          '#type': webform_markup
+          '#markup': '<a class="button button__secondary form-item js-reset-training-preferences">Reset training preferences</a>'
+        friends_family_intro:
+          '#type': webform_markup
+          '#markup': |
+            <h3>Friends and family</h3>
+
+            <p>If you are applying to Worthy Pastures with friends and family, please name them here. We do our best to match applications, however this is not always possible.<br />
+            <br />
+            Please ensure you use the exact name that your friends/family have used on their applications, or we may not be able to match you.</p>
+        friend_family_1:
+          '#type': textfield
+          '#title': 'Name of friend/family member 1 1'
+          '#label_attributes':
+            class:
+              - js-trim-field-label
+        friend_family_2:
+          '#type': textfield
+          '#title': 'Name of friend/family member 2 1'
+          '#label_attributes':
+            class:
+              - js-trim-field-label
+        friend_family_3:
+          '#type': textfield
+          '#title': 'Name of friend/family member 3 1'
+          '#label_attributes':
+            class:
+              - js-trim-field-label
+      other_festivals_fields:
+        '#type': container
+        '#states':
+          visible:
+            ':input[name="preferences_include_a_festival_other_than_glastonbury"]':
+              value: 'Yes'
+        '#attributes':
+          class:
+            - hidden
+        other_festivals_title:
+          '#type': webform_markup
+          '#markup': |-
+            <h2>Festivals</h2>
+
+            <p>The below information relates to your application for Parklife.</p>
+        roles_text:
+          '#type': webform_markup
+          '#wrapper_attributes':
+            class:
+              - hidden
+          '#markup': |
+            <h3 class="roles-title">Roles</h3>
+
+            <p>Please note that some roles are only available at specific festivals. Please make sure you have read the information on the <a href="https://www.wateraid.org/uk/get-involved/volunteering/festival-volunteering" target="_blank">WaterAid Festivals page</a> thoroughly before completing this section.</p>
+        role_preferences:
+          '#type': checkboxes
+          '#title': 'If your application is successful, which roles would you be prepared to carry out at the festival?'
+          '#description_display': before
+          '#options': festival_roles
+          '#wrapper_attributes':
+            class:
+              - hidden
+          '#options__properties': ''
+    arrival_date_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Arrival dates</h3>
+
+        <p>Please make sure you&#39;re definitely able to arrive on the start date(s) for the festival(s) you&#39;re applying for &ndash; bearing in mind it will usually be before the festival opens to the public.</p>
+
+        <p><a href="/uk/get-involved/volunteering/festival-volunteering" target="_blank" class="arrow-link--dark">Check festival arrival dates</a></p>
+    i_confirm_i_can_arrive_on_the_specified_date_s:
+      '#type': checkbox
+      '#title': 'I confirm I can arrive on the specified date/s'
+      '#required': true
+    friends_family_intro_2:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Friends and family</h3>
+
+        <p>If you&#39;re applying with friends and family, let us know so we can match your applications.<br />
+        <br />
+        Please only give names of people who are definitely applying in 2022, and make sure you use exactly the same name they have used on their application, or we may not be able to match you!</p>
+    other_fests_friend_family_1:
+      '#type': textfield
+      '#title': 'Name of friend/family member 1 2'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    other_fests_friend_family_2:
+      '#type': textfield
+      '#title': 'Name of friend/family member 2 2'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    other_fests_friend_family_3:
+      '#type': textfield
+      '#title': 'Name of friend/family member 3 2'
+      '#label_attributes':
+        class:
+          - js-trim-field-label
+    before_the_festival_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Training</h2>
+
+        <p>All volunteers need to complete online training before arriving at their first festival.</p>
+
+        <p>If you are unable to complete your training online, please get in touch with us at <a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a> or call us on 020 7793 4594.</p>
+
+        <p>You will also need to complete in-person training at each festival, before you start your shifts.</p>
+    i_confirm_i_am_able_to_complete_training_online:
+      '#type': checkbox
+      '#title': 'I confirm I am able to complete training online'
+      '#required': true
+    onsite_training_confirmation:
+      '#type': checkbox
+      '#title': 'I understand I will also need to complete training at the festival when I arrive, before I carry out my shifts'
+      '#required': true
+  references:
+    '#type': webform_wizard_page
+    '#title': 'Employment and background checks'
+    references_heading:
+      '#type': webform_markup
+      '#markup': '<h2>Employment and background checks</h2>'
+    current_employer:
+      '#type': select
+      '#title': 'Do you work for any of the following?'
+      '#options':
+        WaterAid: WaterAid
+        'Water Sector Company': 'Water Sector Company'
+        'Environment Agency': 'Environment Agency'
+        'WaterAid Corporate Partner': 'WaterAid Corporate Partner'
+        'WaterAid Supplier': 'WaterAid Supplier'
+        'Not applicable': 'Not applicable'
+      '#empty_option': 'Please select'
+      '#required': true
+    please_tell_us_which_company_you_work_for:
+      '#type': webform_select_other
+      '#title': 'Please tell us which company you work for'
+      '#options': corporate_partners
+      '#states':
+        visible:
+          ':input[name="current_employer"]':
+            value: 'WaterAid Corporate Partner'
+      '#required': true
+    please_tell_us_which_water_company_you_work_for:
+      '#type': webform_select_other
+      '#title': 'Please tell us which water company you work for'
+      '#options': water_industry_partners_wips_
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="current_employer"]':
+            value: 'Water Sector Company'
+    references_intro_staff:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="current_employer"]':
+            value: WaterAid
+      '#markup': 'Please skip to the next section.'
+    visible_if_not_wateraid:
+      '#type': container
+      '#states':
+        visible:
+          ':input[name="current_employer"]':
+            '!value': WaterAid
+      references_intro:
+        '#type': webform_markup
+        '#markup': |-
+          <p>All volunteer place offers are subject to satisfactory references.</p>
+
+          <p>If you volunteered with us at a festival in 2021, we will most likely not need to contact your referees.</p>
+
+          <p>See our <a href="/uk/get-involved/volunteering/festival-volunteering/faqs#references">festival volunteering FAQs</a> for more information on why we collect references and how long we keep them for. If you can&#39;t find the answer to your question, get in touch with us on <a href="mailto:festivals@wateraid.org">festivals@wateraid.org</a>.</p>
+
+          <p>Please provide details of two people that can comment on your suitability to represent WaterAid at a festival. The questions are set out to ensure that we receive the most relevant reference from you.</p>
+
+          <p><strong>Family members or partners cannot act as referees.</strong></p>
+      water_company_description:
+        '#type': webform_markup
+        '#states':
+          visible:
+            ':input[name="current_employer"]':
+              value: 'Water Sector Company'
+        '#markup': '<p>Please note that we may share your details with the water sector company that you work for.</p>'
+      referee_1_title:
+        '#type': webform_markup
+        '#markup': '<h3>Referee 1</h3>'
+      please_select_your_first_reference_type:
+        '#type': select
+        '#title': 'Please select your first reference type 1'
+        '#options':
+          'Current employer (line manager or equivalent)': 'Current employer (line manager or equivalent)'
+          'Current educational institution (teacher, tutor, or equivalent)': 'Current educational institution (teacher, tutor, or equivalent)'
+          'I don''t have either of the above': 'I don''t have either of the above'
+        '#required': true
+        '#label_attributes':
+          class:
+            - js-trim-field-label
+      please_select_your_first_reference_type_group_2:
+        '#type': select
+        '#title': 'Please select your first reference type 2'
+        '#options':
+          'A previous employer from the last three years (line manager or equivalent)': 'A previous employer from the last three years (line manager or equivalent)'
+          'A current volunteer manager': 'A current volunteer manager'
+          'I don''t have either of the above': 'I don''t have either of the above'
+        '#required': true
+        '#states':
+          visible:
+            ':input[name="please_select_your_first_reference_type"]':
+              value: 'I don''t have either of the above'
+        '#label_attributes':
+          class:
+            - js-trim-field-label
+      please_select_your_first_reference_type_group_3:
+        '#type': select
+        '#title': 'Please select your first reference type 3'
+        '#options':
+          'A representative from a professional body such as a club or association (e.g. Rotary club, community or faith group)': 'A representative from a professional body such as a club or association (e.g. Rotary club, community or faith group)'
+          'Someone who has known you for over five years': 'Someone who has known you for over five years'
+        '#required': true
+        '#states':
+          visible:
+            ':input[name="please_select_your_first_reference_type_group_2"]':
+              value: 'I don''t have either of the above'
+        '#label_attributes':
+          class:
+            - js-trim-field-label
+      referee_1_full_name:
+        '#type': textfield
+        '#title': 'Referee 1: Full name'
+      referee_1_relationship_to_you:
+        '#type': textfield
+        '#title': 'Referee 1: Relationship to you'
+        '#required': true
+        '#states':
+          visible:
+            - ':input[name="please_select_your_first_reference_type_group_3"]':
+                value: 'A representative from a professional body such as a club or association (i.e. Rotary club, community or faith group)'
+            - or
+            - ':input[name="please_select_your_first_reference_type_group_3"]':
+                value: 'Someone who has known you for over five years'
+      referee_1_email_address:
+        '#type': loqate_email_composite
+        '#title': 'Referee 1: Email address'
+        '#loqate_validation_refuse_disposable': false
+        '#email__title': 'Referee 1: Email address'
+        '#loqate_validation': false
+      referee_1_phone_number:
+        '#type': tel
+        '#title': 'Referee 1: Phone number'
+        '#size': 100
+        '#international': true
+        '#international_initial_country': GB
+      referee_2_title:
+        '#type': webform_markup
+        '#markup': '<h3>Referee 2</h3>'
+      please_select_your_second_reference_type:
+        '#type': select
+        '#title': 'Please select your second reference type'
+        '#options':
+          'Current employer (line manager or equivalent)': 'Current employer (line manager or equivalent)'
+          'Current educational institution (teacher, tutor, or equivalent)': 'Current educational institution (teacher, tutor, or equivalent)'
+          'A previous employer from the last three years (line manager or equivalent)': 'A previous employer from the last three years (line manager or equivalent)'
+          'A current volunteer manager': 'A current volunteer manager'
+          'A representative from a professional body such as a club or association (e.g. Rotary club, community or faith group)': 'A representative from a professional body such as a club or association (e.g. Rotary club, community or faith group)'
+          'Someone who has known you for over five years': 'Someone who has known you for over five years'
+        '#required': true
+      referee_2_full_name:
+        '#type': textfield
+        '#title': 'Referee 2: Full name'
+      referee_2_relationship_to_you:
+        '#type': textfield
+        '#title': 'Referee 2: Relationship to you'
+        '#required': true
+        '#states':
+          visible:
+            - ':input[name="please_select_your_second_reference_type"]':
+                value: 'A representative from a professional body such as a club or association (i.e. Rotary club, community or faith group)'
+            - or
+            - ':input[name="please_select_your_second_reference_type"]':
+                value: 'Someone who has known you for over five years'
+      referee_2_email_address:
+        '#type': loqate_email_composite
+        '#title': 'Referee 2: Email address'
+        '#loqate_validation_refuse_disposable': false
+        '#email__title': 'Referee 2: Email address'
+        '#loqate_validation': false
+      referee_2_phone_number:
+        '#type': tel
+        '#title': 'Referee 2: Phone number'
+        '#size': 100
+        '#international': true
+        '#international_initial_country': GB
+      i_am_happy_for_my_references_to_be_contacted:
+        '#type': checkbox
+        '#title': 'I am happy for my references to be contacted if I accept my volunteer place'
+        '#required': true
+      do_you_have_any_unspent_criminal_convictions_:
+        '#type': select
+        '#title': 'Do you have any unspent criminal convictions? '
+        '#description': 'Having a conviction will not necessarily prevent you from volunteering, but it will be taken into consideration.'
+        '#options':
+          'Yes': 'Yes'
+          'No': 'No'
+        '#empty_option': 'Please select'
+        '#required': true
+      please_declare_details_of_any_unspent_criminal_convictions:
+        '#type': textarea
+        '#title': 'Please declare details of any unspent criminal convictions'
+        '#rows': 10
+        '#required': true
+        '#counter_type': character
+        '#counter_maximum': 500
+        '#states':
+          visible:
+            ':input[name="do_you_have_any_unspent_criminal_convictions_"]':
+              value: 'Yes'
+  complete_application:
+    '#type': webform_wizard_page
+    '#title': 'Volunteer Agreement'
+    complete_application_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Volunteer agreement</h2>
+
+        <p>Please make sure you&#39;ve read, and agreed to, our:</p>
+
+        <ul>
+        	<li><a href="/uk/publications/festivals-volunteer-agreement">Volunteer agreement</a></li>
+        	<li><a href="/uk/publications/festival-volunteering-covid-19-policy">Festival volunteering COVID-19 policy</a></li>
+        	<li><a href="/uk/publications/festival-volunteering-deposit-terms-and-conditions">Deposit terms and conditions</a></li>
+        </ul>
+
+        <h3>Our commitment to safeguarding</h3>
+
+        <p>WaterAid is committed to ensuring that, wherever we work in the world, there is no tolerance for the abuse of power, privilege or trust. We reinforce a culture of zero tolerance towards any form of inappropriate behaviour, abuse, harassment, or exploitation of any kind. The safeguarding of our staff, volunteers, people we work with, and anyone working on our behalf is our top priority, and we take our responsibilities extremely seriously. All festival volunteers will be expected to share in our values and commit to our Volunteer Code of Conduct.</p>
+    i_confirm_i_have_read_and_agree_to_the_volunteer_agreement_and_t:
+      '#type': checkbox
+      '#title': 'I confirm I have read and agree to the Volunteer Agreement and Deposit Terms and Conditions'
+      '#required': true
+  keeping_you_updated_on_wateraid_s_work:
+    '#type': webform_wizard_page
+    '#title': 'Keeping you updated on WaterAid’s work'
+    why_how_do_we_need_to_contact_you:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>How we will use your contact information</h2>
+
+        <p>If your application is successful, we may need to contact you by email, phone, post and SMS.</p>
+
+        <h3>Contacting you by email</h3>
+
+        <p>Most of our communication with you before and after the festival will be by email, including essential information you need to volunteer.</p>
+
+        <h3>Contacting you by phone</h3>
+
+        <p>We may need to contact you by phone before and/or after the festival when email is not appropriate, and when onsite at the festival for health and safety reasons, or in case of emergency.</p>
+
+        <h3>Contacting you by post</h3>
+
+        <p>We may need to post resources/clothing to you before the festival.</p>
+
+        <h3>Contacting you by SMS</h3>
+
+        <p>We may need to communicate with you by SMS when onsite at the festival for health and safety reasons, or in case of emergency.</p>
+
+        <h3>Sharing your information with third parties</h3>
+
+        <p>We will need to share some of your information with the festival(s) you&#39;re volunteering at, and with some relevant third parties, for health &amp; safety (e.g. our emergency text cascade system) and ticketing purposes.</p>
+
+        <p>We will never share your information with third parties unless strictly necessary for the purposes of your volunteering role or the reasons outlined above.</p>
+    interested_in_volunteering_at_other_fesrivals:
+      '#type': webform_markup
+      '#markup': |-
+        <h2>Can we keep in touch?</h2>
+
+        <p>Would you like to hear about more festival volunteering with us? If you agree, we&rsquo;ll email you with the latest opportunities throughout the year:</p>
+    yes_i_am_interested_in_hearing_from_wateraid_about_other_festiva:
+      '#type': checkbox
+      '#title': 'Yes, contact me about festival volunteering'
+    keeping_you_updated_intro:
+      '#type': webform_markup
+      '#markup': |-
+        <h3>Keeping you updated on WaterAid&#39;s work</h3>
+
+        <p>Aside from communications relating to your volunteer role, at WaterAid and WaterAid Trading we&rsquo;d also love to keep you updated on how your support is making change happen. If you agree, we&#39;ll send you information about our work, campaigns, opportunities to get involved and fundraising. Let us know how you&rsquo;d like to hear from us:</p>
+    communication_preferences:
+      '#type': flexible_options
+      '#title': 'Communication preferences'
+      '#title_display': invisible
+      '#options': communication_preferences_long_form_
+      '#options__properties': ''
+    privacy_policy:
+      '#type': webform_markup
+      '#markup': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our <a href="https://www.wateraid.org/uk/privacy-policy">Privacy Policy</a>. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>'
+    captcha:
+      '#type': captcha
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': 'Submit application'
+    '#submit__attributes':
+      style: 'margin-top: 1.5em;'
+    '#wizard_prev__label': Back
+    '#wizard_next__label': 'Next step'
+    '#update__attributes':
+      style: 'margin-top: 1.5em;'
+css: ".fieldset-legend {display: block; margin-bottom: 12px;}\r\n.field-name-node-title { display: none; }\r\nlegend {\r\n    padding: 0;\r\n    font-size: inherit;\r\n    font-weight: 400;\r\n    margin: 0;\r\n    padding-right: 0;\r\n    line-height: inherit;\r\n}\r\n.description, label {\r\n  line-height: 1.6;\r\n}\r\n.roles-title {\r\n  margin-top: 12px;\r\n}\r\n/* Telephone error message styling */\r\n.form-item--error-message {\r\n    padding: 8px 0;\r\n    line-height: 1.6;\r\n}\r\n/* Display checkboxes e.g. previous festivals in single column in IE/Edge */\r\n@media (min-width: 400px) {\r\n.webform-options-display-two-columns.webform-options-display-two-columns {\r\n    column-count: 1;\r\n}\r\n}\r\nlabel.error {\r\n  font-size: 18px;\r\n}\r\n.webform-button--submit {\r\n    margin-top: 1em;\r\n}"
+javascript: "jQuery(document).ready(function(){\r\n\t// Function to trim field labels where ' 1', ' 2' etc has been added to the end of the label text\r\n\tjQuery('.js-trim-field-label').each(function(){\r\n\t\tvar label = jQuery(this).html();\r\n\t\tvar newLabel = label.slice(0, -2);\r\n\t\tjQuery(this).html(newLabel);\r\n\t});\r\n  \r\n   // Function to add '(waitlist)' to festival options\r\n   jQuery('.js-festival-role-preference option').not('option[value=\"\"], option[value=\"Boomtown\"], option[value=\"Smoked & Uncut - The Pig at Bridge Place\"], option[value=\"Smoked & Uncut - Lime Wood\"]').append('<span> (waitlist)</span>');\r\n        \r\n    // On change of festival preference fields...\r\n    jQuery('.js-festival-role-preference').change(function() {\r\n        // Make festival / role preferences unique\r\n        var selectedOption = jQuery(this).val();\r\n        jQuery('.js-festival-role-preference option').each(function() {\r\n            if(jQuery(this).val() == selectedOption && !jQuery(this).attr('selected')) {\r\n            jQuery(this).addClass('hidden');\r\n            }\r\n        });\r\n        // Call process preferences\r\n        // processPreferences();\t\r\n    });\r\n    // On 'Reset preferences button click...\r\n    jQuery('.js-reset-preferences').click(function(){\r\n        // Reset festival / role preferences ( call change to kick off conditional logic)\r\n        jQuery('.js-festival-role-preference').val('').change();\r\n        jQuery('.js-festival-role-preference option').removeClass('hidden');\r\n        // Call process preferences\r\n        // processPreferences();\r\n    });\r\n\r\n\r\n    // OLD CODE FOR SHOWING/HIDING FIELDS IF PREFS INCLUDE GLASTONBURY\r\n    // // Declare variables\r\n\t// var preferencesIncludeGlastonbury = jQuery('#edit-preferences-include-glastonbury');\r\n\t// var preferencesIncludeAnotherFestival = jQuery('#edit-preferences-include-a-festival-other-than-glastonbury');\r\n\t// var glastonburyFields = jQuery('#edit-glastonbury-fields');\r\n\t// var otherFestivalFields = jQuery('#edit-other-festivals-fields');\r\n\r\n    // Function to update array of festival preferences and handle conditional logic based on these preferences\r\n    // \tfunction processPreferences() {\r\n    // \t\t// Declare the array\r\n    // \t\tvar festivalPreferences = [];\t\r\n    // \t\t// Loop over each festival preference field, and if it has a value, add the value to the array\r\n    // \t\tjQuery('.js-festival-role-preference').each(function(){\r\n    // \t\t\tif ( jQuery(this).val() ) {\r\n    // \t\t\t\tfestivalPreferences.push( jQuery(this).val() );\t\r\n    // \t\t\t}\r\n    // \t\t});\r\n    // \t\t// Set the value of the 'Preferences include...' fields, depending on preferences\r\n    // \t\t// Does the array of preferences include Glastonbury?\r\n    // \t\tif ( festivalPreferences.includes('Glastonbury') ) {\r\n    // \t\t\tpreferencesIncludeGlastonbury.val('Yes');\r\n    // \t\t} else {\r\n    // \t\t\tpreferencesIncludeGlastonbury.val('');\r\n    // \t\t}\r\n    // \t\t// Does the array of preferences include Glastonbury and does it contain more than one preference i.e. Glastonbury and at least one other festival?\r\n    // \t\tif ( festivalPreferences.includes('Glastonbury') && festivalPreferences.length > 1 ) {\r\n    // \t\t\tpreferencesIncludeGlastonbury.val('Yes');\r\n    // \t\t\tpreferencesIncludeAnotherFestival.val('Yes');\r\n    // \t\t} else {\r\n    // \t\t\tpreferencesIncludeAnotherFestival.val('');\r\n    // \t\t}\r\n    // \t\t// Does the array of preferences contain at least one preference but not include Glastonbury? i.e. only contains other festivals?\r\n    // \t\tif ( festivalPreferences.length > 0 && !festivalPreferences.includes('Glastonbury') ) {\r\n    // \t\t\tpreferencesIncludeAnotherFestival.val('Yes');\r\n    // \t\t\tpreferencesIncludeGlastonbury.val('');\r\n    // \t\t}\r\n    // \t\t// Trigger 'change' event on Preferences include...' fields to kick off conditional logic \r\n    // \t\tpreferencesIncludeGlastonbury.change();\r\n    // \t\tpreferencesIncludeAnotherFestival.change();\r\n    // \t}\r\n\r\n\t// Call process preferences on page load\r\n\t//processPreferences();\t\r\n\t\r\n\t// // Make Glastonbury training preferences unique\r\n\t// jQuery('.js-training-preference').change(function() {\r\n\t//  \tvar selectedOption = jQuery(this).val();\r\n\t// \tjQuery('.js-training-preference option').each(function() {\r\n\t// \t\tif(jQuery(this).attr('value') == selectedOption) {\r\n\t// \t\t\tjQuery(this).addClass('hidden');\r\n\t// \t\t}\r\n\t// \t});\t\t\t\r\n\t// });\r\n\t// // Reset training preferences on button click\r\n\t// jQuery('.js-reset-training-preferences').click(function(){\r\n\t// \tjQuery('.js-training-preference').val('');\r\n\t// \tjQuery('.js-training-preference option').removeClass('hidden');\r\n\t// });\t\t\r\n});"
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /festival-volunteer-application-form
+  page_confirm_path: /festival-volunteer-application-form/confirmation
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: 'Applications to volunteer with us in 2022 are now closed.'
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 'Thank you for applying to volunteer with WaterAid this summer!  '
+  confirmation_message: "<p>We are currently reviewing volunteer applications and will be in touch to let you know if your application is successful.</p>\r\n\r\n<p>If you have any queries in the meantime, please get in touch with us at <a href=\"mailto:festivals@wateraid.org\">festivals@wateraid.org</a>.</p>\r\n\r\n<p>We are committed to achieving the highest standards of diversity, fairness and equality. We would therefore be very grateful if you could help us monitor our progress by completing our <a href=\"/uk/equal-opportunities-monitoring-form\">equal opportunities monitoring form</a>. We ask all prospective volunteers to provide this information, athough it is optional whether or not to provide such data, and there are no consequences of failing to do so. The answers you give will be stored anonymously and separately to your volunteer application.</p>\r\n\r\n<p><a class=\"button button__primary button__large\" href=\"https://www.wateraid.org/uk/equal-opportunities-monitoring-form\">Fill in the equal opportunities form</a></p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: festivals@wateraid.org
+      from_options: {  }
+      from_name: 'Festivals at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thank you for applying to volunteer with WaterAid this summer!'
+      body: "<p style=\"font-family: Arial, sans-serif;\">Dear [webform_submission:values:first_name],<br />\r\n<br />\r\nThank you for applying to volunteer with WaterAid this summer!<br />\r\n<br />\r\nWe are currently reviewing volunteer applications and will be in touch to let you know if your application is successful.<br />\r\n<br />\r\nIf you have any queries in the meantime please get in touch with us at <a href=\"mailto:festivals@wateraid.org\">festivals@wateraid.org</a><br />\r\n<br />\r\nMany thanks,<br />\r\n<br />\r\nThe WaterAid Festivals team</p>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

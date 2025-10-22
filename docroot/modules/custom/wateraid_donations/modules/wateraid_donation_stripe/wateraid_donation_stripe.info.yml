@@ -1,0 +1,11 @@
+name: WaterAid Donations Stripe
+type: module
+description: Provides integration between wateraid donations and Stripe elements
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+wateraid.package: donations
+dependencies:
+  - wateraid_donations:wateraid_donation_forms
+  - stripe_api:stripe_api
+  - anonymous_token:anonymous_token
+  - webform:webform

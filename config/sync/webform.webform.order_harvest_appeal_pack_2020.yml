@@ -1,0 +1,691 @@
+uuid: 6449cabb-4a49-47eb-8d08-e6785c97f223
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 33116
+template: false
+archive: false
+id: order_harvest_appeal_pack_2020
+title: 'Order your Harvest Appeal pack'
+description: 'For faith, school and community groups to request a harvest pack (digital, print or both versions).'
+categories:
+  - Community
+elements: |-
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha_v3/default
+  intro:
+    '#type': webform_markup
+    '#markup': '<h1>Get your free harvest resources</h1><p>Everything you need to inspire your group and fundraise for WaterAid this harvest, including:</p><ul><li>engaging classroom/youth group activities,</li><li>poster,</li><li>fundraising ideas,</li><li>GiftAid envelope,</li><li>paying-in form.</li></ul><p>These resources are available in both digital and print versions – please select below which versions you would like.</p>'
+  please_select_the_group_that_best_describes_yours:
+    '#type': select
+    '#title': 'Please select the group that best describes yours'
+    '#options':
+      'Faith group': 'Faith group'
+      School: School
+      'Community group': 'Community group'
+    '#required': true
+  how_would_you_like_to_receive_your_resources:
+    '#type': select
+    '#title': 'How would you like to receive your resources?'
+    '#options':
+      "I'd like to download them": "I'd like to download them"
+      "I'd like them sent in the post": "I'd like them sent in the post"
+      "I'd like both (download and by post)": "I'd like both (download and by post)"
+    '#required': true
+  title:
+    '#type': select
+    '#title': Title
+    '#options': titles
+    '#required': true
+  first_name:
+    '#type': textfield
+    '#title': 'First name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last name'
+    '#required': true
+  your_email_address:
+    '#type': loqate_email_composite
+    '#title': 'Your email address'
+    '#title_display': before
+    '#states':
+      required:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like to download them"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+    '#email__title': 'Your email address'
+  your_job_title:
+    '#type': textfield
+    '#title': 'Your job title'
+    '#title_display': before
+  organisation_name:
+    '#type': textfield
+    '#title': 'Organisation name'
+    '#title_display': before
+    '#required': true
+  address_type:
+    '#type': select
+    '#title': 'Address type'
+    '#options':
+      Home: Home
+      Work: Work
+    '#required': true
+    '#states':
+      visible:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like them sent in the post"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+  address:
+    '#type': webform_address
+    '#title': 'Your address'
+    '#required_error': ''
+    '#states':
+      visible:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like them sent in the post"
+    '#address__title': 'Address line one'
+    '#address_2__title': 'Address line two'
+    '#city__title': City/town
+    '#state_province__title': County
+    '#state_province__type': textfield
+    '#postal_code__title': Postcode
+    '#required': true
+  telephone_number:
+    '#type': tel
+    '#title': 'Telephone number'
+    '#title_display': before
+    '#states':
+      visible:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like them sent in the post"
+  how_many_gift_aid_envelopes_would_you_like_:
+    '#type': number
+    '#title': 'How many GiftAid envelopes would you like?'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="please_select_the_group_that_best_describes_yours"]':
+          '!value': School
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          '!value': "I'd like to download them"
+    '#default_value': '0'
+    '#min': 0
+    '#max': 100
+  how_many_posters_would_you_like_:
+    '#type': number
+    '#title': 'How many posters would you like?'
+    '#required': true
+    '#states':
+      visible:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like them sent in the post"
+    '#default_value': '0'
+    '#min': 0
+    '#max': 3
+    '#step': 1
+  how_did_you_hear_about_wateraid_1:
+    '#type': webform_select_other
+    '#title': 'How did you hear about WaterAid?'
+    '#options':
+      'Search engine': 'Search engine'
+      Mailing: 'Mailing from WaterAid'
+      'Email from WaterAid': 'Email from WaterAid'
+      'Article in newspaper or magazine': 'Article in newspaper or magazine'
+      Radio: Radio
+      Facebook: Facebook
+      Twitter: Twitter
+      'Oasis magazine': 'Oasis magazine'
+      'Recommended by family or friend': 'Recommended by family or friend'
+      'WaterAid speaker': 'WaterAid speaker'
+      'My church/diocese newsletter': 'My church/diocese newsletter'
+  opt_in_intro:
+    '#type': processed_text
+    '#states':
+      visible:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like them sent in the post"
+    '#text': |
+      <p><strong>By providing your email or&nbsp;postal address you are agreeing to receive information and resources relating to the Harvest Appeal.</strong></p>
+    '#format': basic_html
+  opt_in_intro_email_only:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          value: "I'd like to download them"
+    '#text': |
+      <p><strong>By providing your email&nbsp;address you are agreeing to receive information and resources relating to the Harvest Appeal.</strong></p>
+    '#format': basic_html
+  opt_in_statement:
+    '#type': processed_text
+    '#text': |
+      <p><strong>Would you also like to hear more about WaterAid's work?</strong></p>
+
+      <p>At WaterAid and WaterAid Trading we’d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us.</p>
+    '#format': basic_html
+  communications_preference_email_only:
+    '#type': flexible_options
+    '#title': 'Communications preference'
+    '#title_display': invisible
+    '#options': communication_preferences_email
+    '#options__properties': ''
+  communications_preference:
+    '#type': flexible_options
+    '#title': 'Communications preference'
+    '#title_display': invisible
+    '#options': communication_preferences_phone_
+    '#states':
+      visible:
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+        - or
+        - ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like them sent in the post"
+    '#options__properties': ''
+  privacy_statement:
+    '#type': processed_text
+    '#text': |
+      <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our <a href="/uk/privacy">Privacy Policy</a>.</p>
+    '#format': basic_html
+css: "#edit-communications-preference--wrapper {\r\n    margin-top: -26px;\r\n}"
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /get-involved/fundraising/harvest-appeal/order-your-pack
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: uk/get-involved/fundraising/harvest-appeal
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_download_only:
+    id: email
+    handler_id: email_download_only
+    label: 'Email - all - download or both'
+    notes: '= download only OR download + post'
+    status: true
+    conditions:
+      enabled:
+        -
+          ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like to download them"
+        - or
+        -
+          ':input[name="how_would_you_like_to_receive_your_resources"]':
+            value: "I'd like both (download and by post)"
+    weight: -48
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:your_email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: harvest@wateraid.org
+      from_options: {  }
+      from_name: 'Emily at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Your digital resources for harvest'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p>Thank you so much for ordering a harvest resource pack – we’re delighted that your group is joining our Harvest Appeal and we truly appreciate your support.</p><p><a class="button button__primary webform-button--submit" href="https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal/resources">Browse all our downloadable resources</a></p><p>If you also requested to receive them by post, your resources should arrive within the next two weeks. If you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like <span style="-webkit-text-stroke-width:0px;background-color:rgb(248, 240, 228);color:rgb(21, 20, 53);display:inline !important;float:none;font-family:&quot;Noto Sans&quot;, Helvetica, Arial, sans-serif;font-size:18px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Rihanata''s</span>.</p><p><strong>Thank you again.</strong></p><p>With very best wishes,</p><p>Emily McGuinness<br>Community Team, WaterAid</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  email_post_and_download:
+    id: email
+    handler_id: email_post_and_download
+    label: 'Email - school - download or both'
+    notes: '= school AND download only OR download + post'
+    status: false
+    conditions:
+      enabled:
+        ':input[name="please_select_the_group_that_best_describes_yours"]':
+          value: School
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          '!value': "I'd like them sent in the post"
+    weight: -44
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:your_email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: harvest@wateraid.org
+      from_options: {  }
+      from_name: 'Emily at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Your digital resources for harvest'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p>Thank you so much for ordering a harvest resource pack – we’re delighted that your school is joining our Harvest Appeal and we truly appreciate your support.</p><p><a class="button button__primary webform-button--submit" href="https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal/schools-resources">Browse all our downloadable resources for schools</a></p><p>If you also requested to receive them by post, your resources should arrive within the next two weeks. If you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like Mayaman''s&nbsp;– so more people can enjoy bountiful harvests, come rain or shine.</p><p><strong>Thank you again.</strong></p><p>With very best wishes,</p><p>Emily McGuinness<br>Community Team, WaterAid</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  email_post_only:
+    id: email
+    handler_id: email_post_only
+    label: 'Email - all - post only'
+    notes: 'email sent to all segments, post only'
+    status: true
+    conditions:
+      enabled:
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          value: "I'd like them sent in the post"
+    weight: -47
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:your_email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: harvest@wateraid.org
+      from_options: {  }
+      from_name: 'Emily at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thank you for ordering a harvest resources pack'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p>Thank you so much for ordering a harvest resource pack – we’re delighted that your group is joining our Harvest Appeal and we truly appreciate your support.</p><p>Your resources should arrive within the next two weeks; if you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like <span style="-webkit-text-stroke-width:0px;background-color:rgb(248, 240, 228);color:rgb(21, 20, 53);display:inline !important;float:none;font-family:&quot;Noto Sans&quot;, Helvetica, Arial, sans-serif;font-size:18px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Rihanata''s</span>.</p><p><strong>Thank you again.</strong></p><p>With very best wishes,</p><p>Emily McGuinness<br>Community Team, WaterAid</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  settings:
+    id: settings
+    handler_id: settings
+    label: 'Confirmation - school - download or both'
+    notes: '= school AND download only OR download + post.'
+    status: false
+    conditions:
+      enabled:
+        ':input[name="please_select_the_group_that_best_describes_yours"]':
+          value: School
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          '!value': "I'd like them sent in the post"
+    weight: -46
+    settings:
+      debug: false
+      preview_title: ''
+      preview_message: ''
+      confirmation_url: ''
+      confirmation_title: 'Thank you'
+      confirmation_message: '<p>Thank you so much for joining our Harvest Appeal!</p><p><a href="https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal/resources"><strong>Browse all our downloadable resources</strong></a></p><p>We''ve also emailed you the download link, so you can refer to it whenever you need.</p><p>If you also requested to receive resources by post, they will arrive within the next two weeks. If you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like Mayaman''s&nbsp;– so more people can enjoy bountiful harvests, come rain or shine.</p><p><strong>Thank you again.</strong></p>'
+  download_school:
+    id: settings
+    handler_id: download_school
+    label: 'Confirmation - all - download or both'
+    notes: '= download only OR download + post'
+    status: true
+    conditions:
+      enabled:
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          '!value': "I'd like them sent in the post"
+    weight: -49
+    settings:
+      debug: false
+      preview_title: ''
+      preview_message: ''
+      confirmation_url: ''
+      confirmation_title: 'Thank you'
+      confirmation_message: '<p>Thank you so much for joining our Harvest Appeal!</p><p><a class="button button__primary" href="/uk/get-involved/fundraising/harvest-appeal/resources"><strong>Browse all our downloadable resources</strong></a></p><p>We''ve also emailed you the download link, so you can refer to it whenever you need.</p><p>If you also requested to receive resources by post, they will arrive within the next two weeks. If you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like Rhianata''s.</p><p><strong>Thank you again.</strong></p>'
+  download_faith:
+    id: settings
+    handler_id: download_faith
+    label: 'Confirmation - community - download or both'
+    notes: '= community AND download only OR download + post'
+    status: false
+    conditions:
+      enabled:
+        ':input[name="please_select_the_group_that_best_describes_yours"]':
+          value: 'Community group'
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          '!value': "I'd like them sent in the post"
+    weight: -45
+    settings:
+      debug: false
+      preview_title: ''
+      preview_message: ''
+      confirmation_url: ''
+      confirmation_title: 'Thank you'
+      confirmation_message: '<p>Thank you so much for joining our Harvest Appeal!</p><p><a href="https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal/resources"><strong>Browse all our downloadable resources</strong></a></p><p>We''ve also emailed you the download link, so you can refer to it whenever you need.</p><p>If you also requested to receive resources by post, they will arrive within the next two weeks. If you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like Mayaman''s&nbsp;– so more people can enjoy bountiful harvests, come rain or shine.</p><p><strong>Thank you again.</strong></p>'
+  post_all:
+    id: settings
+    handler_id: post_all
+    label: 'Confirmation - all - post only'
+    notes: 'message for all segments, post only'
+    status: true
+    conditions:
+      enabled:
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          value: "I'd like them sent in the post"
+    weight: -50
+    settings:
+      debug: false
+      preview_title: ''
+      preview_message: ''
+      confirmation_url: ''
+      confirmation_title: 'Thank you'
+      confirmation_message: '<p>Thank you so much for joining our Harvest Appeal!</p><p>Your resources will arrive within the next two weeks; if you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like Mayaman''s&nbsp;– so more people can enjoy bountiful harvests, come rain or shine.</p><p><strong>Thank you again.</strong></p>'
+  email_faith_download_or_both:
+    id: email
+    handler_id: email_faith_download_or_both
+    label: 'Email - community - download or both'
+    notes: '= community AND download only OR download + post'
+    status: false
+    conditions:
+      enabled:
+        ':input[name="please_select_the_group_that_best_describes_yours"]':
+          value: 'Community group'
+        ':input[name="how_would_you_like_to_receive_your_resources"]':
+          '!value': "I'd like them sent in the post"
+    weight: -43
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:your_email_address:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: harvest@wateraid.org
+      from_options: {  }
+      from_name: 'Emily at WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Your digital resources for harvest'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p>Thank you so much for ordering a harvest resource pack – we’re delighted that your group is joining our Harvest Appeal and we truly appreciate your support.</p><p><a class="button button__primary webform-button--submit" href="https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal/resources">Browse all our downloadable resources</a></p><p>If you also requested to receive them by post, your resources should arrive within the next two weeks. If you haven’t received them by then, please call us on 020 7793 4594 or email <a href="mailto:harvest@wateraid.org">harvest@wateraid.org</a>.</p><p>By supporting WaterAid, you''re helping to bring a reliable supply of clean water to more communities like Mayaman''s&nbsp;– so more people can enjoy bountiful harvests, come rain or shine.</p><p><strong>Thank you again.</strong></p><p>With very best wishes,</p><p>Emily McGuinness<br>Community Team, WaterAid</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

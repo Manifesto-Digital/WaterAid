@@ -1,0 +1,9 @@
+webform_capture_plus_loqate.admin:
+  path: '/admin/config/services/loqateapi'
+  defaults:
+    _form: '\Drupal\webform_capture_plus\Form\LoqateApiAdminForm'
+    _title: 'Loqate API Settings'
+  requirements:
+    _permission: 'administer loqate api'
+  options:
+    _admin_route: TRUE

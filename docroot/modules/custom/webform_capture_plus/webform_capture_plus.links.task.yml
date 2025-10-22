@@ -1,0 +1,4 @@
+webform_capture_plus_loqate.admin:
+  route_name: webform_capture_plus_loqate.admin
+  title: 'Loqate API (Capture Plus)'
+  base_route: loqate.loqate_api_key_config_form

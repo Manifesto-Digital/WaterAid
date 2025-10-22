@@ -1,4 +1,4 @@
-uuid: 0bbfd7fd-35f6-42fc-9780-bce0b294cb83
+uuid: 6fde68a8-e5f1-46e5-96bc-6853e33d3c0a
 langcode: en
 status: true
 dependencies:
@@ -7,16 +7,21 @@ dependencies:
     - field.field.node.webform.field_donation_menu
     - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
+    - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
     - field.field.node.webform.field_title_colour
+    - field.field.node.webform.webform
     - node.type.webform
   module:
     - datetime
     - entity_reference_revisions
     - options
     - user
+    - webform
+_core:
+  default_config_hash: 3r1i0UMUbeNHhvmiqHDYznoS4G9XR1jq6lQ49r80lDE
 id: node.webform.default
 targetEntityType: node
 bundle: webform
@@ -58,7 +63,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 0
+    region: content
+  field_options:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_review_date:
     type: datetime_time_ago
@@ -80,10 +92,22 @@ content:
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 4
+    region: content
+  webform:
+    type: webform_entity_reference_entity_view
+    label: hidden
+    settings:
+      source_entity: true
+      lazy: false
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true

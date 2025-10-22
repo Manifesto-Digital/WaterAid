@@ -1,15 +1,17 @@
-uuid: 062a6724-b691-4c14-9d6b-9e166800f9c3
+uuid: 26c4e902-d8d8-403c-aad7-8d57eb028d00
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_content
     - node.type.webform
-    - paragraphs.paragraphs_type.call_to_action
+    - paragraphs.paragraphs_type.accordion_item
     - paragraphs.paragraphs_type.donation_amount
-    - paragraphs.paragraphs_type.image
-    - paragraphs.paragraphs_type.quote
-    - paragraphs.paragraphs_type.rich_text
+    - paragraphs.paragraphs_type.hero_basic
+    - paragraphs.paragraphs_type.hero_image
+    - paragraphs.paragraphs_type.hero_news
+    - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
 id: node.webform.field_content
@@ -26,56 +28,67 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      rich_text: rich_text
-      image: image
-      call_to_action: call_to_action
-      quote: quote
+      hero_basic: hero_basic
+      hero_image: hero_image
+      hero_news: hero_news
+      hero_video: hero_video
+      accordion_item: accordion_item
       donation_amount: donation_amount
-    negate: 0
+      stats_item: stats_item
+    negate: 1
     target_bundles_drag_drop:
       accordion:
-        weight: 16
+        weight: -24
         enabled: false
       accordion_item:
-        weight: 17
-        enabled: false
-      call_to_action:
-        weight: 5
+        weight: -14
         enabled: true
+      call_to_action:
+        weight: -23
+        enabled: false
       donation_amount:
-        weight: 19
+        weight: 22
         enabled: true
       donation_widget:
-        weight: 20
+        weight: 23
+        enabled: false
+      facts_and_stats:
+        weight: 24
         enabled: false
       hero_basic:
-        weight: 10
-        enabled: false
-      hero_image:
-        weight: 6
-        enabled: false
-      hero_news:
-        weight: 12
-        enabled: false
-      hero_video:
-        weight: 13
-        enabled: false
-      image:
-        weight: 3
+        weight: -18
         enabled: true
+      hero_image:
+        weight: -17
+        enabled: true
+      hero_news:
+        weight: -16
+        enabled: true
+      hero_video:
+        weight: -15
+        enabled: true
+      image:
+        weight: -22
+        enabled: false
       image_gallery:
-        weight: 26
+        weight: -21
         enabled: false
       quote:
-        weight: 15
-        enabled: true
+        weight: -20
+        enabled: false
       rich_text:
-        weight: 2
+        weight: -25
+        enabled: false
+      stats_item:
+        weight: 33
         enabled: true
       text_media:
-        weight: 29
+        weight: 25
         enabled: false
       video:
-        weight: 30
+        weight: -19
+        enabled: false
+      webform_poc:
+        weight: 36
         enabled: false
 field_type: entity_reference_revisions

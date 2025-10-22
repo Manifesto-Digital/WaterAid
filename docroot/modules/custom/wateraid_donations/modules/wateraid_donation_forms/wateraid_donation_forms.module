@@ -1,0 +1,457 @@
+<?php
+
+/**
+ * @file
+ * Module file for wateraid_donation_forms module.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Element;
+use Drupal\node\NodeInterface;
+use Drupal\webform\Entity\Webform;
+use Drupal\webform\WebformInterface;
+use Drupal\webform\WebformSubmissionInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function wateraid_donation_forms_theme(): array {
+  return [
+    'wateraid_donation_forms_benefit' => [
+      'variables' => [
+        'amount' => NULL,
+        'image' => NULL,
+        'icon' => NULL,
+        'benefit' => NULL,
+        'body' => NULL,
+        'upsell' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_create().
+ *
+ * Custom overrides to give donation CTA widgets the ability to directly feed
+ * into the second step of a donation Webform.
+ *
+ * @note See WebformWizardExtraSubmissionForm::form() as it closely works
+ *   together with this logic.
+ */
+function wateraid_donation_forms_webform_submission_create(WebformSubmissionInterface $webform_submission): void {
+  $request_query = \Drupal::request()->query;
+  $frequency = $request_query->get('fq');
+  $amount = $request_query->get('val');
+  $duration = $request_query->get('dur');
+
+  // Do some simple pre-validity checks.
+  if (empty($frequency) || empty($amount) || !is_numeric($amount) || (int) $amount <= 0) {
+    return;
+  }
+
+  // Fixed period needs a duration.
+  if ($frequency === 'fixed_period' && (empty($duration) || !is_numeric($duration) || (int) $duration <= 0)) {
+    return;
+  }
+
+  // Check if the Webform is within a "CTA Widget" block.
+  $webform = $webform_submission->getWebform();
+  $cta_widget = property_exists($webform, 'is_cta_widget') ?? $webform->is_cta_widget ?? FALSE;
+  if ($cta_widget) {
+    // Do not alter steps for CTA widget mode.
+    return;
+  }
+
+  $version = $webform->getThirdPartySetting('wateraid_forms', 'style_version', 'v2');
+  if ($version !== 'v2') {
+    // Do not alter steps unless the form is v2.
+    return;
+  }
+
+  // Check elements and find the specific amounts' element.
+  $elements_pages = $webform->getElementsDecoded();
+  // Get page keys.
+  $page_keys = array_keys($elements_pages);
+  $step_1 = $page_keys[0] ?? NULL;
+  $step_2 = $page_keys[1] ?? NULL;
+
+  if (!$step_1 || !$step_2) {
+    return;
+  }
+
+  // We only care about the first 2 steps. We know that Donation Webforms are
+  // either setup to have a step 1 with a Donation Amounts element or not so
+  // check upon that.
+  $donation_amount_element = NULL;
+  foreach (Element::children($elements_pages[$step_1]) as $child_element) {
+    // Find the donation amount element if present.
+    if (isset($elements_pages[$step_1][$child_element]['#type']) && $elements_pages[$step_1][$child_element]['#type'] === 'donations_webform_amount') {
+      // We only expect 1 amounts element, so break out of the loop.
+      $donation_amount_element = $child_element;
+      break;
+    }
+  }
+
+  if (!$donation_amount_element) {
+    return;
+  }
+
+  // Now is suitable to do some more thorough validity checks on the provided
+  // query strings before we actually proceed with skipping the first step.
+  /** @var \Drupal\wateraid_donation_forms\DonationServiceInterface $donation_service */
+  $donation_service = \Drupal::service('wateraid_donation_forms.donation');
+  $payment_frequency_plugins = $donation_service->getPaymentFrequencies();
+
+  // Check for known payment frequencies.
+  if (!array_key_exists($frequency, $payment_frequency_plugins)) {
+    return;
+  }
+
+  $handlers = $webform->getHandlers('wateraid_donations');
+  if ($handlers->count() === 0) {
+    return;
+  }
+
+  /** @var \Drupal\wateraid_donation_forms\Plugin\WebformHandler\DonationsWebformHandler $handler */
+  $handler = $handlers->getIterator()->current();
+
+  // Check the selected frequency option is enabled.
+  $frequency_config = $handler->getSetting($frequency);
+  if (!$frequency_config || $frequency_config['enabled'] !== 1) {
+    return;
+  }
+
+  $handler_amounts = $handler->getAmounts();
+
+  // Check only for amount min limitations, the max amount can only be
+  // determined after the payment step so nothing to worry about at this
+  // stage.
+  if (isset($handler_amounts[$frequency]['minimum_amount']) && (int) $amount < (int) $handler_amounts[$frequency]['minimum_amount']) {
+    return;
+  }
+
+  // If we get to this stage then all validity checks have passed, and we can
+  // safely update the current page to "step 2".
+  $webform_submission->setCurrentPage($step_2);
+
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ *
+ * Add theme suggestions when the donations handler has been added to a form.
+ */
+function wateraid_donation_forms_theme_suggestions_alter(array &$suggestions, array $variables, $hook): void {
+  /** @var \Drupal\webform\WebformInterface $webform */
+  if ($hook === 'html' && ($webform = \Drupal::routeMatch()->getParameter('webform')) && is_object($webform)) {
+    // Add donations suggestion.
+    $handlers = $webform->getHandlers('wateraid_donations');
+    if ($handlers->count() > 0) {
+      $args = ['webform', 'wateraid_donations', $webform->id()];
+      $suggestions = array_unique(array_merge($suggestions, theme_get_suggestions($args, 'html')));
+    }
+  }
+
+  if (!str_starts_with($hook, 'webform')) {
+    return;
+  }
+
+  if ($hook === 'webform') {
+    $suggestions[] = $hook . '__' . $variables['element']['#webform_id'];
+    /** @var \Drupal\webform\WebformInterface $webform */
+    $webform = Webform::load($variables['element']['#webform_id']);
+    $handlers = $webform->getHandlers('wateraid_donations');
+    if ($handlers->count() > 0) {
+      $suggestions[] = $hook . '__wateraid_donations';
+      $suggestions[] = $hook . '__wateraid_donations__' . $variables['element']['#webform_id'];
+    }
+  }
+  elseif (isset($variables['webform'])) {
+    /** @var \Drupal\webform\WebformInterface $webform */
+    $webform = $variables['webform'];
+    $handlers = $webform->getHandlers('wateraid_donations');
+    if ($handlers->count() > 0) {
+      $suggestions[] = $hook . '__wateraid_donations';
+      $suggestions[] = $hook . '__wateraid_donations__' . $webform->id();
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Clear all the previous aliases for the confirmation page.  We need to do this
+ * otherwise we'll end up with duplicates if the path is updated.
+ *
+ * Must be done in presave, so we allow the webform module to add back in
+ * its own path.
+ */
+function wateraid_donation_forms_webform_presave(WebformInterface $entity): void {
+  // Path module must be enabled for URL aliases to be updated.
+  if (!\Drupal::moduleHandler()->moduleExists('path')) {
+    return;
+  }
+  if (!_wateraid_donation_forms_is_donation_form($entity)) {
+    return;
+  }
+
+  // When webform is duplicated its URL alias is also copied over.
+  // If so, we set it to blank so that the default value is applied.
+  $query = \Drupal::entityQuery('webform')
+    ->condition('status', 'open');
+  $webform_ids = $query->execute();
+  /** @var \Drupal\webform\WebformInterface[] $webforms */
+  $webforms = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple($webform_ids);
+  foreach ($webforms as $webform) {
+    // Make sure we are not comparing a form to itself.
+    // This happens when we modify and save a form, without any duplication.
+    if ($webform->id() !== $entity->id() &&
+        $webform->getSetting('page_submit_path') === $entity->getSetting('page_submit_path')) {
+      // If left blank the default value of URL alias is applied.
+      $entity->setSetting('page_submit_path', '');
+      break;
+    }
+  }
+
+  // Update confirm path.
+  $confirm_source = '/webform/' . $entity->id() . '/confirmation';
+
+  /** @var \Drupal\Core\Entity\ContentEntityStorageInterface $path_alias_storage */
+  $path_alias_storage = \Drupal::entityTypeManager()->getStorage('path_alias');
+  $entities = $path_alias_storage->loadByProperties(['path' => $confirm_source]);
+  $path_alias_storage->delete($entities);
+}
+
+if (!function_exists('bcmul')) {
+
+  /**
+   * Substitute bcmul() method if bcmath PHP extension not installed.
+   *
+   * Multiply two arbitrary precision numbers.
+   *
+   * @param string $_ro
+   *   The right operand.
+   * @param string $_lo
+   *   The left operand.
+   * @param int $_scale
+   *   Scale.
+   *
+   * @return float
+   *   Result.
+   */
+  // phpcs:ignore
+  function bcmul(string $_ro, string $_lo, int $_scale = 0): float {
+    return round($_ro * $_lo, $_scale);
+  }
+
+}
+
+if (!function_exists('bcdiv')) {
+
+  /**
+   * Substitute bcdiv() method if bcmath PHP extension not installed.
+   *
+   * Divide two arbitrary precision numbers.
+   *
+   * @param string $_ro
+   *   The right operand.
+   * @param string $_lo
+   *   The left operand.
+   * @param int $_scale
+   *   Scale.
+   *
+   * @return float
+   *   Result.
+   */
+  // phpcs:ignore
+  function bcdiv(string $_ro, string $_lo, int $_scale = 0): float {
+    return round($_ro / $_lo, $_scale);
+  }
+
+}
+
+/**
+ * Checks the given webform is a donation form or not.
+ *
+ * @param \Drupal\webform\WebformInterface $webform
+ *   A Webform object.
+ *
+ * @return bool
+ *   TRUE or FALSE.
+ */
+function _wateraid_donation_forms_is_donation_form(WebformInterface $webform): bool {
+  /** @var \Drupal\webform\Plugin\WebformHandlerPluginCollection $handlers */
+  $handlers = $webform->getHandlers('wateraid_donations');
+  $donation_page = $handlers->count() > 0;
+  if ($donation_page) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Get the confirm path from a webform entity.
+ *
+ * Code is basically copied from Drupal\webform\Entity\Webform::updatePaths();
+ * Have to account for whether the confirm path has been manually set or not.
+ *
+ * @param \Drupal\webform\WebformInterface $webform
+ *   A Webform object.
+ *
+ * @return string
+ *   Confirmation path.
+ */
+function _wateraid_donation_forms_get_confirm_path(WebformInterface $webform): string {
+  $submit_path = $webform->getSetting('page_submit_path')
+    ?: trim(\Drupal::config('webform.settings')->get('settings.default_page_base_path'), '/') . '/' . str_replace('_', '-', $webform->id());
+  return $webform->getSetting('page_confirm_path') ?: $submit_path . '/confirmation';
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function wateraid_donation_forms_preprocess_paragraph(&$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->bundle() == 'payment_icon_item') {
+    // Hide all payment options by default.
+    $variables['attributes']['class'][] = 'hidden';
+
+    // Indicate that the visibility depends on the selected frequency.
+    $variables['attributes']['data-toggle-frequency'] = '';
+
+    // Check which frequency options are enabled for this icon.
+    $frequencies = $paragraph->get('field_field_p_pii_applies_to')->getValue();
+    if ($frequencies) {
+      $frequencies = array_column($frequencies, 'value');
+    }
+
+    // Add data attributes indicating which option(s) enable the icon.
+    if (in_array('oneoff', $frequencies)) {
+      $variables['attributes']['data-frequency-oneoff'] = '';
+    }
+    if (in_array('monthly', $frequencies)) {
+      $variables['attributes']['data-frequency-recurring'] = '';
+    }
+
+    // Attach the library which controls the display logic.
+    $variables['#attached']['library'][] = 'wateraid_donation_forms/wateraid_donation_forms.payment_logos';
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function wateraid_donation_forms_node_insert(EntityInterface $entity): void {
+  if ($entity instanceof NodeInterface) {
+    wateraid_donation_forms_update_confirm_alias($entity);
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function wateraid_donation_forms_entity_update(EntityInterface $entity): void {
+  if ($entity instanceof NodeInterface) {
+    wateraid_donation_forms_update_confirm_alias($entity);
+  }
+}
+
+/**
+ * Helper to update the confirm alias for webforms.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   A webform node.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function wateraid_donation_forms_update_confirm_alias(NodeInterface $node): void {
+  if ($node->bundle() == 'webform') {
+
+    // Only react if a webform has been linked.
+    if ($node->get('webform')->getString()) {
+
+      /** @var \Drupal\path_alias\AliasManagerInterface $service */
+      $service = \Drupal::service('path_alias.manager');
+      $alias = $service->getAliasByPath('/node/' . $node->id());
+      $confirm_alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id() . '/webform/confirmation');
+
+      $correct_alias = $alias . '/confirmation';
+
+      if ($correct_alias !== $confirm_alias) {
+
+        /** @var \Drupal\path_alias\PathAliasStorage $storage */
+        $storage = \Drupal::entityTypeManager()->getStorage('path_alias');
+        if ($existing = $storage->loadByProperties([
+          'alias' => $confirm_alias,
+        ])) {
+          foreach ($existing as $delete) {
+            $delete->delete();
+          }
+        }
+
+        $storage->create([
+          'path' => '/node/' . $node->id() . '/webform/confirmation',
+          'alias' => $correct_alias,
+        ])->save();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function wateraid_donation_forms_module_implements_alter(&$implementations, $hook): void {
+  if (isset($implementations['wateraid_donation_forms'])) {
+    if ($hook == 'entity_update' || $hook == 'entity_insert') {
+      $implementation = $implementations['wateraid_donation_forms'];
+      unset($implementations['wateraid_donation_forms']);
+      $implementations['wateraid_donation_forms'] = $implementation;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_donation_forms_preprocess_node__webform(&$variables) {
+  // Add cancellation message to the node in case field_c_w_sidebar_blocks is
+  // empty.
+  $node = $variables['node'];
+  if ($webforms = $node->get('webform')->referencedEntities()) {
+    /** @var \Drupal\webform\Entity\Webform $webform */
+    $webform = reset($webforms);
+    $handlers = $webform->getHandlers('wateraid_donations');
+    foreach ($handlers as $handler) {
+      if ($handler->getPluginId() == 'wateraid_donations') {
+        $message = $handler->getSetting('desktop_cancellation_message') ?? [];
+        $variables['cancellation_message'] = [
+          '#type' => 'processed_text',
+          '#text' => $message['value'],
+          '#format' => $message['format'],
+        ];
+        break;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_donation_forms_preprocess_webform(&$variables): void {
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  if ($webform = \Drupal::entityTypeManager()->getStorage('webform')->load($variables['element']['#webform_id'])) {
+    if (_wateraid_donation_forms_is_donation_form($webform)) {
+      $variables['#attached']['library'][] = 'wateraid_donation_forms/donation';
+      $variables['attributes']['class'][] = Html::getClass('webform-donations-page');
+      $variables['attributes']['class'][] = Html::getClass('webform-page');
+    }
+  }
+}

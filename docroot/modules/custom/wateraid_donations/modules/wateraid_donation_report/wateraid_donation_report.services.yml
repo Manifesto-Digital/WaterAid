@@ -1,0 +1,11 @@
+services:
+  logger.channel.wateraid_donation_report:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['wateraid_donation_report']
+  wateraid_donation_report.service:
+    class: Drupal\wateraid_donation_report\WaterAidDonationReportService
+    arguments: ['@logger.channel.wateraid_donation_report', '@database', '@file_system', '@stream_wrapper_manager', '@entity_type.manager', '@file.repository', '@wateraid_donation_report.mail_service', '@date.formatter']
+  wateraid_donation_report.mail_service:
+    class: Drupal\wateraid_donation_report\WaterAidDonationReportMailService
+    arguments: [ '@plugin.manager.mail', '@config.factory', '@logger.channel.wateraid_donation_report']

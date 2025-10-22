@@ -1,0 +1,52 @@
+<div class="donation-benefit">
+  {% if image %}
+    {% set responsiveimage = {
+      '#theme': 'responsive_image',
+      '#responsive_image_style_id': 'landscape_image',
+      '#uri': image,
+      '#attributes': { class: 'img-responsive' },
+    } %}
+    <div class="donation-benefit--top">
+      <div class="donation-benefit--amount-container">
+        <div class="donation-benefit--badge"></div>
+        <div class="donation-benefit--amount">{{ amount }}</div>
+      </div>
+      <div class="donation-benefit--image">
+        {{ responsiveimage }}
+      </div>
+    </div>
+
+  {% endif %}
+
+  <div class="donation-benefit--bottom">
+    <div class="donation-benefit--title">
+      {% if icon %}
+        {% set responsiveicon = {
+          '#theme': 'responsive_image',
+          '#responsive_image_style_id': 'small_square_image',
+          '#uri': icon,
+          '#attributes': { class: 'img-responsive' },
+        } %}
+
+        <div class="donation-benefit--icon">
+          {{ responsiveicon }}
+        </div>
+      {% endif %}
+
+      {% if benefit %}
+        <h3 class="donation-benefit--benefit">
+          {{ benefit }}
+        </h3>
+
+      {% endif %}
+    </div>
+
+
+    {% if body %}
+      <div class="donation-benefit--body">
+        {{ body }}
+      </div>
+    {% endif %}
+  </div>
+
+</div>

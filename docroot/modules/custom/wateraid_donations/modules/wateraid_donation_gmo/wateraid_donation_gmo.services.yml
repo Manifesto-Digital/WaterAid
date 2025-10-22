@@ -1,0 +1,7 @@
+services:
+  logger.channel.wateraid_donation_gmo:
+    parent: logger.channel_base
+    arguments: ['wateraid_donation_gmo']
+  wateraid_webform_gmo:
+    class: Drupal\wateraid_donation_gmo\WateraidWebformGmoService
+    arguments: ['@config.factory']

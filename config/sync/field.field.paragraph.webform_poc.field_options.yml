@@ -1,0 +1,21 @@
+uuid: 1bd5c39c-459d-4c8c-b4cb-79c57f8010ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_options
+    - paragraphs.paragraphs_type.webform_poc
+  module:
+    - options
+id: paragraph.webform_poc.field_options
+field_name: field_options
+entity_type: paragraph
+bundle: webform_poc
+label: Options
+description: 'Select the options to appear in the webform.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

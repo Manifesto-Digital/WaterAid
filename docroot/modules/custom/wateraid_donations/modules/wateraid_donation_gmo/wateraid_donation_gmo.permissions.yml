@@ -1,0 +1,4 @@
+administer gmo api:
+  title: 'Administer wateraid_donation_gmo configuration'
+  description: 'Edit API settings for the GMO integration.'
+  restrict access: true

@@ -1,0 +1,6 @@
+mode: test
+log_webhooks: 0
+test_secret_key: paypal_sandbox_secret_key
+test_public_key: paypal_client_id
+live_secret_key: ''
+live_public_key: ''

@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
 id: node.page.field_content
@@ -33,6 +34,7 @@ settings:
       hero_video: hero_video
       accordion_item: accordion_item
       donation_amount: donation_amount
+      stats_item: stats_item
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -49,6 +51,9 @@ settings:
         enabled: true
       donation_widget:
         weight: 20
+        enabled: false
+      facts_and_stats:
+        weight: -24
         enabled: false
       hero_basic:
         weight: -18
@@ -74,6 +79,9 @@ settings:
       rich_text:
         weight: -25
         enabled: false
+      stats_item:
+        weight: -15
+        enabled: true
       text_media:
         weight: 29
         enabled: false

@@ -3,6 +3,7 @@
     attach(context) {
       function clickableCard(card) {
         const cardLink = card.href;
+
         card.addEventListener("click", () => {
           card.focus();
           window.location.href = cardLink;

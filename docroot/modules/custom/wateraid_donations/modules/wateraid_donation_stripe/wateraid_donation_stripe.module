@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Functions for the Stripe Donations module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_webform_third_party_settings_form_alter().
+ *
+ * Provides settings to capture per Webform Stripe Credentials. We're not
+ * adding these settings to the DonationsWebformHandler to keep that class as
+ * generic as much as we can. Anything specific to a Payment Provider is kept
+ * as a separate piece of logic.
+ *
+ * @see stripe_api
+ * @see \Drupal\wateraid_donation_stripe\WaterAidWebformStripeService
+ */
+function wateraid_donation_stripe_webform_third_party_settings_form_alter(&$form, FormStateInterface $form_state): void {
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+  $index = 'wateraid_donation_stripe';
+
+  $form['third_party_settings'][$index] = [
+    '#type' => 'details',
+    '#title' => new TranslatableMarkup('Stripe API settings'),
+    '#description' => new TranslatableMarkup('Provides the ability to override Stripe API settings on a per Webform basis.'),
+    '#open' => TRUE,
+    '#weight' => 150,
+  ];
+
+  $form['third_party_settings'][$index]['test_secret_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('Stripe Secret Key (test)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_stripe', 'test_secret_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+  $form['third_party_settings'][$index]['test_public_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('Stripe Public Key (test)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_stripe', 'test_public_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+  $form['third_party_settings'][$index]['live_secret_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('Stripe Secret Key (live)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_stripe', 'live_secret_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+  $form['third_party_settings'][$index]['live_public_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('Stripe Public Key (live)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_stripe', 'live_public_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+}

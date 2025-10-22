@@ -1,0 +1,6 @@
+services:
+  wateraid_forms.event_subscriber:
+    class: Drupal\wateraid_forms\EventSubscriber\WateraidWebformSubscriber
+    arguments: ['@current_route_match']
+    tags:
+      - { name: event_subscriber }

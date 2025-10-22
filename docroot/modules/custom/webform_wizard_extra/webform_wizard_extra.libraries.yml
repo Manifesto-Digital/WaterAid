@@ -1,0 +1,10 @@
+webform_wizard_extra:
+  version: 1.0
+  js:
+    js/webform_wizard_extra.wizard.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - wateraid_donation_forms/wateraid_donation_forms.backbone
+    - wateraid_donation_forms/wateraid_donation_forms
