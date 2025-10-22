@@ -797,6 +797,16 @@ if (!empty($acquia_env)) {
   }
   if (($acquia_env === 'prod')) {
     $config['config_split.config_split.prod']['status'] = TRUE;
+
+    $databases['migrate']['default'] = [
+      'driver' => 'mysql',
+      'database' => 'manifestodb394531',
+      'username' => 's133940',
+      'password' => 'YRzXF979Gy58rCt',
+      'host' => 'srv-5032',
+      'port' => 3306,
+      'prefix' => '',
+    ];
   }
 }
 
