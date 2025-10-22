@@ -1,0 +1,23 @@
+uuid: f1ca83f9-2c6c-4722-bdcd-3f35c10bee25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_colour
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - options
+id: paragraph.card_collection.field_background_colour
+field_name: field_background_colour
+entity_type: paragraph
+bundle: card_collection
+label: 'Background colour'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: cream
+default_value_callback: ''
+settings: {  }
+field_type: list_string

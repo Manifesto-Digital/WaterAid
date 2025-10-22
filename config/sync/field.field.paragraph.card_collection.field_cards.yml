@@ -1,0 +1,49 @@
+uuid: 831ed967-e4d4-4886-9cc7-0909f3ee3b6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cards
+    - node.type.article
+    - node.type.donation
+    - node.type.event
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.page
+    - node.type.publication
+    - node.type.standard_page
+    - node.type.story
+    - node.type.webform
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - entity_reference_revisions
+id: paragraph.card_collection.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: card_collection
+label: Cards
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      page: page
+      donation: donation
+      event: event
+      landing_page: landing_page
+      listing_page: listing_page
+      publication: publication
+      standard_page: standard_page
+      story: story
+      webform: webform
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference_revisions

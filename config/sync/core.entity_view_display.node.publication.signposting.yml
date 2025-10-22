@@ -1,0 +1,79 @@
+uuid: 7162a166-ab59-4489-8ce8-31bea75bd982
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.signposting
+    - field.field.node.publication.field_audience
+    - field.field.node.publication.field_author_override
+    - field.field.node.publication.field_content
+    - field.field.node.publication.field_country
+    - field.field.node.publication.field_download_link_placement
+    - field.field.node.publication.field_force_download
+    - field.field.node.publication.field_force_open
+    - field.field.node.publication.field_get_involved
+    - field.field.node.publication.field_hero
+    - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_regions
+    - field.field.node.publication.field_review_date
+    - field.field.node.publication.field_subject_area
+    - field.field.node.publication.field_teaser_image
+    - field.field.node.publication.field_teaser_text
+    - field.field.node.publication.field_theme
+    - node.type.publication
+  module:
+    - user
+id: node.publication.signposting
+targetEntityType: node
+bundle: publication
+mode: signposting
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  node_read_time:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_audience: true
+  field_author_override: true
+  field_content: true
+  field_country: true
+  field_download_link_placement: true
+  field_force_download: true
+  field_force_open: true
+  field_get_involved: true
+  field_hero: true
+  field_key_stages: true
+  field_regions: true
+  field_review_date: true
+  field_subject_area: true
+  field_theme: true
+  langcode: true
+  search_api_excerpt: true

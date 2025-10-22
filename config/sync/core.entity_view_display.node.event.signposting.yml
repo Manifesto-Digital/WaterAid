@@ -1,9 +1,9 @@
-uuid: be8eba70-4029-47f2-b741-b70ab50e9136
+uuid: d94fd37a-829c-4863-a48a-b617f1eadfd3
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.signposting
     - field.field.node.event.field_additional_links
     - field.field.node.event.field_audience
     - field.field.node.event.field_colour_selector
@@ -28,66 +28,36 @@ dependencies:
     - field.field.node.event.field_weight
     - node.type.event
   module:
+    - datetime
     - user
-id: node.event.teaser
+id: node.event.signposting
 targetEntityType: node
 bundle: event
-mode: teaser
+mode: signposting
 content:
-  field_audience:
-    type: entity_reference_label
-    label: hidden
+  field_event_start_date:
+    type: datetime_default
+    label: above
     settings:
-      link: true
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  field_country:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_event_type:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  field_get_involved:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_teaser_image:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
+      timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
     weight: 1
     region: content
-  field_teaser_text:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  field_theme:
+  field_teaser_image:
     type: entity_reference_label
-    label: hidden
+    label: above
     settings:
       link: true
     third_party_settings: {  }
-    weight: 6
+    weight: 2
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }
@@ -100,20 +70,23 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_additional_links: true
+  field_audience: true
   field_colour_selector: true
   field_content: true
+  field_country: true
   field_cta_supporting_text: true
   field_cta_title: true
   field_event_end_date: true
   field_event_information_bg_colou: true
-  field_event_start_date: true
   field_event_type: true
+  field_get_involved: true
   field_hero: true
   field_properties: true
   field_regions: true
   field_registration_link: true
   field_review_date: true
   field_synopsis: true
+  field_theme: true
   field_weight: true
   langcode: true
   node_read_time: true
