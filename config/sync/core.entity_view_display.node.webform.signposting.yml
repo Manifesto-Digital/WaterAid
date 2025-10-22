@@ -55,6 +55,7 @@ hidden:
   field_hero: true
   field_options: true
   field_review_date: true
+  field_sidebar_content: true
   field_title_colour: true
   langcode: true
   node_read_time: true
