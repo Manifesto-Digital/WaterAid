@@ -15,7 +15,6 @@ display:
         uid:
           label: Författare
         status:
-          label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad

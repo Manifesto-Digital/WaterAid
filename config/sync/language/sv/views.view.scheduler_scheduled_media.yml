@@ -33,7 +33,6 @@ display:
         uid:
           label: Författare
         status:
-          label: Status
           settings:
             format_custom_true: Publicerad
             format_custom_false: 'Ej publicerad'
@@ -51,8 +50,6 @@ display:
           expose:
             label: Typ
         status:
-          expose:
-            label: Status
           group_info:
             label: 'Status för publicering'
             group_items:
