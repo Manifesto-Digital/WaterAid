@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.accordion_item
     - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.hero_basic
+    - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
@@ -32,9 +33,10 @@ settings:
       hero_image: hero_image
       hero_news: hero_news
       hero_video: hero_video
-      accordion_item: accordion_item
       stats_item: stats_item
+      accordion_item: accordion_item
       donation_amount: donation_amount
+      hero_donate: hero_donate
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -57,6 +59,9 @@ settings:
         enabled: false
       hero_basic:
         weight: -18
+        enabled: true
+      hero_donate:
+        weight: 27
         enabled: true
       hero_image:
         weight: -17
@@ -87,5 +92,8 @@ settings:
         enabled: false
       video:
         weight: -19
+        enabled: false
+      webform_poc:
+        weight: 38
         enabled: false
 field_type: entity_reference_revisions

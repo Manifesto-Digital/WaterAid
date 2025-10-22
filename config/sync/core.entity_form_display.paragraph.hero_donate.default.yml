@@ -1,0 +1,112 @@
+uuid: 89e7a9cf-2edb-4246-986f-01591a0a7f95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_donate.field_caption
+    - field.field.paragraph.hero_donate.field_citation
+    - field.field.paragraph.hero_donate.field_credit
+    - field.field.paragraph.hero_donate.field_donate_widget
+    - field.field.paragraph.hero_donate.field_image
+    - field.field.paragraph.hero_donate.field_quote
+    - paragraphs.paragraphs_type.hero_donate
+  module:
+    - field_group
+    - layout_paragraphs
+    - media_library
+third_party_settings:
+  field_group:
+    group_image:
+      children:
+        - field_image
+        - field_caption
+        - field_credit
+      label: Image
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_quote:
+      children:
+        - field_quote
+        - field_citation
+      label: Quote
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.hero_donate.default
+targetEntityType: paragraph
+bundle: hero_donate
+mode: default
+content:
+  field_caption:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_citation:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_donate_widget:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_quote:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

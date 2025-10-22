@@ -1,0 +1,19 @@
+uuid: 772e740f-fd02-483f-901b-9b7d525fb457
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote
+    - paragraphs.paragraphs_type.hero_donate
+id: paragraph.hero_donate.field_quote
+field_name: field_quote
+entity_type: paragraph
+bundle: hero_donate
+label: Quote
+description: 'Enter your quote.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
