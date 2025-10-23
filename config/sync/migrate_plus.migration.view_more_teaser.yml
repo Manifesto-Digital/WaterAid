@@ -43,5 +43,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: card_collection
 idMap: {  }
-migration_dependencies: {}
+migration_dependencies: {  }
 include: null

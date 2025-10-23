@@ -57,6 +57,8 @@ process:
         - resource_link_with_description
         - faqs
         - view_more_teasers
+        - aside_link_item
+        - info_section
       source: field_modules
   field_content:
     plugin: merge_without_exception

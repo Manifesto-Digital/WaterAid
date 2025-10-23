@@ -51,5 +51,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: call_to_action
 idMap: {  }
-migration_dependencies: {}
+migration_dependencies: {  }
 include: null
