@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.event.field_regions
     - field.field.node.event.field_registration_link
     - field.field.node.event.field_review_date
+    - field.field.node.event.field_search_phrases
     - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
@@ -219,6 +220,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_search_phrases: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true

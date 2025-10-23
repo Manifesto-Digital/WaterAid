@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.donation.field_minimal_header
     - field.field.node.donation.field_page_template
     - field.field.node.donation.field_review_date
+    - field.field.node.donation.field_search_phrases
     - field.field.node.donation.field_subtext
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
@@ -122,6 +123,10 @@ content:
     region: content
 hidden:
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_search_phrases: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true

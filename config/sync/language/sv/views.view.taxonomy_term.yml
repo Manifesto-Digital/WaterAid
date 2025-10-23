@@ -1,8 +1,5 @@
-label: Taxonomiterm
-description: 'Innehåll som hör till en viss taxonomiterm.'
 display:
   default:
-    display_title: Förvald
     display_options:
       pager:
         options:
@@ -12,7 +9,6 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: Applicera
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
@@ -21,7 +17,3 @@ display:
         tid:
           exception:
             title: Alla
-  feed_1:
-    display_title: Innehållsflöde
-  page_1:
-    display_title: Sida

@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.article.field_related_content
     - field.field.node.article.field_related_content_type
     - field.field.node.article.field_review_date
+    - field.field.node.article.field_search_phrases
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
@@ -67,6 +68,7 @@ third_party_settings:
     group_content:
       children:
         - field_content
+        - field_search_phrases
         - group_tags
       label: Content
       region: content
@@ -106,7 +108,7 @@ third_party_settings:
       label: Tags
       region: content
       parent_name: group_content
-      weight: 7
+      weight: 8
       format_type: details
       format_settings:
         classes: ''
@@ -125,7 +127,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 27
+    weight: 13
     region: content
     settings:
       rows: 9
@@ -135,7 +137,7 @@ content:
     third_party_settings: {  }
   co_authors:
     type: entity_reference_autocomplete_tags
-    weight: 17
+    weight: 11
     region: content
     settings:
       match_operator: CONTAINS
@@ -145,13 +147,13 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   field_audience:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 18
     region: content
     settings:
       match_operator: CONTAINS
@@ -173,7 +175,7 @@ content:
     third_party_settings: {  }
   field_country:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 19
     region: content
     settings:
       match_operator: CONTAINS
@@ -183,7 +185,7 @@ content:
     third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -205,21 +207,21 @@ content:
     third_party_settings: {  }
   field_hide_related_content:
     type: boolean_checkbox
-    weight: 30
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_override_related_content:
     type: boolean_checkbox
-    weight: 31
+    weight: 17
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_post_description:
     type: string_textfield
-    weight: 29
+    weight: 15
     region: content
     settings:
       size: 60
@@ -227,7 +229,7 @@ content:
     third_party_settings: {  }
   field_related_content:
     type: entity_reference_autocomplete
-    weight: 32
+    weight: 18
     region: content
     settings:
       match_operator: CONTAINS
@@ -237,7 +239,7 @@ content:
     third_party_settings: {  }
   field_related_content_type:
     type: entity_reference_autocomplete
-    weight: 33
+    weight: 19
     region: content
     settings:
       match_operator: CONTAINS
@@ -247,9 +249,17 @@ content:
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
-    weight: 26
+    weight: 12
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_search_phrases:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
@@ -268,7 +278,7 @@ content:
     third_party_settings: {  }
   field_theme:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 20
     region: content
     settings:
       match_operator: CONTAINS
@@ -278,7 +288,7 @@ content:
     third_party_settings: {  }
   field_weight:
     type: number
-    weight: 28
+    weight: 14
     region: content
     settings:
       placeholder: ''
@@ -292,27 +302,27 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 11
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 9
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 13
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 10
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -326,13 +336,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 8
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -341,7 +351,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 12
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }

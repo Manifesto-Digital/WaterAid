@@ -1,0 +1,19 @@
+uuid: 109449d7-e530-4efc-b695-915c4f7b4974
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_phrases
+    - node.type.standard_page
+id: node.standard_page.field_search_phrases
+field_name: field_search_phrases
+entity_type: node
+bundle: standard_page
+label: 'Search Phrases'
+description: 'Enter any keywords related to this content that users may use when searching for it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
