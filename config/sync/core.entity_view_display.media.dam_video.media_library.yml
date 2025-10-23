@@ -1,0 +1,38 @@
+uuid: 7a33c62e-5f71-4f09-b32d-b36134123ee9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.dam_video.field_media_dam_video
+    - image.style.medium
+    - media.type.dam_video
+  module:
+    - svg_image
+id: media.dam_video.media_library
+targetEntityType: media
+bundle: dam_video
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_dam_video: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true
