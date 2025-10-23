@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for the Hero paragraph.
+ * Default theme implementation for the Hero (donate) paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -38,21 +38,6 @@
  * @ingroup themeable
  */
 #}
-
-  {% if not paragraph.field_primary_cta.isEmpty() %}
-    {% set cta = {
-      url: paragraph.field_primary_cta.0.url,
-      title: paragraph.field_primary_cta.0.title,
-      type: paragraph.field_call_to_action_type.value,
-    }%}
-  {% endif %}
-
-  {% if not paragraph.field_link.isEmpty() %}
-    {% set link = {
-      url: paragraph.field_link.0.url,
-      title: paragraph.field_link.0.title,
-    }%}
-  {% endif %}
 
 {% block paragraph %}
   {{ include('wateraid:hero', {
