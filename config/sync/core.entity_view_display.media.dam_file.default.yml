@@ -1,0 +1,32 @@
+uuid: 3b440205-6021-4c39-9aa1-fa78ea29ff51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.dam_file.field_media_dam_file
+    - media.type.dam_file
+  module:
+    - wa_orange_dam
+id: media.dam_file.default
+targetEntityType: media
+bundle: dam_file
+mode: default
+content:
+  field_media_dam_file:
+    type: wa_orange_dam_file_formater
+    label: visually_hidden
+    settings:
+      link_to_file: '1'
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

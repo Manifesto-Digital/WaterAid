@@ -6,6 +6,8 @@ dependencies:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
+    - media.type.dam_image
+    - media.type.dam_video
     - media.type.document
     - media.type.donation_icon_library
     - media.type.icon_library
@@ -92,6 +94,8 @@ permissions:
   - 'create article content'
   - 'create audio media'
   - 'create content translations'
+  - 'create dam_image media'
+  - 'create dam_video media'
   - 'create document media'
   - 'create donation content'
   - 'create donation_icon_library media'
@@ -122,6 +126,10 @@ permissions:
   - 'delete any article content'
   - 'delete any audio media'
   - 'delete any audio media revisions'
+  - 'delete any dam_image media'
+  - 'delete any dam_image media revisions'
+  - 'delete any dam_video media'
+  - 'delete any dam_video media revisions'
   - 'delete any document media'
   - 'delete any document media revisions'
   - 'delete any donation content'
@@ -153,6 +161,8 @@ permissions:
   - 'delete media'
   - 'delete own article content'
   - 'delete own audio media'
+  - 'delete own dam_image media'
+  - 'delete own dam_video media'
   - 'delete own document media'
   - 'delete own donation content'
   - 'delete own donation_icon_library media'
@@ -190,6 +200,8 @@ permissions:
   - 'delete webform revisions'
   - 'edit any article content'
   - 'edit any audio media'
+  - 'edit any dam_image media'
+  - 'edit any dam_video media'
   - 'edit any document media'
   - 'edit any donation content'
   - 'edit any donation_icon_library media'
@@ -211,6 +223,8 @@ permissions:
   - 'edit co-authors of own content'
   - 'edit own article content'
   - 'edit own audio media'
+  - 'edit own dam_image media'
+  - 'edit own dam_video media'
   - 'edit own document media'
   - 'edit own donation content'
   - 'edit own donation_icon_library media'
@@ -239,6 +253,8 @@ permissions:
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
   - 'revert any audio media revisions'
+  - 'revert any dam_image media revisions'
+  - 'revert any dam_video media revisions'
   - 'revert any document media revisions'
   - 'revert any donation_icon_library media revisions'
   - 'revert any image media revisions'
@@ -277,6 +293,8 @@ permissions:
   - 'view all revisions'
   - 'view all taxonomy revisions'
   - 'view any audio media revisions'
+  - 'view any dam_image media revisions'
+  - 'view any dam_video media revisions'
   - 'view any document media revisions'
   - 'view any donation_icon_library media revisions'
   - 'view any icon_library media revisions'

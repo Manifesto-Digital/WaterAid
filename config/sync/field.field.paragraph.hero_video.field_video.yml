@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_video
+    - media.type.dam_video
     - media.type.video
     - paragraphs.paragraphs_type.hero_video
 id: paragraph.hero_video.field_video
@@ -20,10 +21,11 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      dam_video: dam_video
       video: video
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: remote_video
+    auto_create_bundle: dam_video
 field_type: entity_reference

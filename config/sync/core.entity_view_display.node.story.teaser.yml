@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.story.field_related_content
     - field.field.node.story.field_related_content_type
     - field.field.node.story.field_review_date
+    - field.field.node.story.field_search_phrases
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
@@ -97,6 +98,7 @@ hidden:
   field_related_content: true
   field_related_content_type: true
   field_review_date: true
+  field_search_phrases: true
   field_weight: true
   langcode: true
   node_read_time: true

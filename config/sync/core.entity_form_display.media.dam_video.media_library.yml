@@ -1,0 +1,26 @@
+uuid: 95141ae9-8478-4d07-8de9-48b5cd0ab2d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.dam_video.field_media_dam_video
+    - media.type.dam_video
+id: media.dam_video.media_library
+targetEntityType: media
+bundle: dam_video
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  directory: true
+  field_media_dam_video: true
+  langcode: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  status: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true
