@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
     - field.field.node.webform.field_title_colour
@@ -55,6 +56,7 @@ hidden:
   field_hero: true
   field_options: true
   field_review_date: true
+  field_sidebar_content: true
   field_title_colour: true
   field_webform: true
   langcode: true

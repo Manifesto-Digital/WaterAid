@@ -2,20 +2,28 @@
   {% story default with {
     name: 'Default',
     args: {
-      items: {
-        0: {
-          key: 'Key 1',
-          value: 'Value 1',
-        },
-        1: {
-          key: 'Key 2',
-          value: 'Value 2',
-        },
-      },
+      start_date: 'Wednesday 1 September 2025',
+      end_date: 'Wednesday 8 September 2025',
     }
   } %}
 
+    {% set items = {
+      '#items': {
+        1 : {
+          key : 'Key 1',
+          value : 'Value 1'
+        },
+        2 : {
+          key : 'Key 2',
+          value : 'Value 2'
+        },
+      },
+    }
+    %}
+
     {{ include('wateraid:properties', {
+      start_date,
+      end_date,
       items,
     }) }}
   {% endstory %}

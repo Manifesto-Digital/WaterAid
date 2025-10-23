@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
     - field.field.node.webform.field_title_colour
@@ -67,20 +68,29 @@ content:
     region: content
   field_options:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 5
     region: content
   field_review_date:
     type: datetime_time_ago
-    label: above
+    label: hidden
     settings:
       future_format: '@interval hence'
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_sidebar_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 108
     region: content
   field_title_colour:
     type: list_default

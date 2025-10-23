@@ -23,6 +23,10 @@ props:
     link:
       type: [ "object", "null" ]
       title: Link
+    media_type:
+      type: string
+      title: Media type
+      examples: []
 slots:
   media:
     title: Media
