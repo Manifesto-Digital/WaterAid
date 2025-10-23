@@ -75,6 +75,7 @@ process:
         - view_more_teasers
         - aside_link_item
         - info_section
+        - quote_simple
       source: field_modules
   field_content:
     plugin: merge_without_exception
