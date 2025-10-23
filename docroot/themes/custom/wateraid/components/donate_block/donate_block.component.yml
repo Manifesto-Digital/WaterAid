@@ -1,0 +1,25 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Donate block
+status: stable
+description: Hero component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+    theme:
+      type: string
+      title: theme
+      description: Using light theme or dark
+slots:
+  widget:
+    title: Donate widget
+    description: Donate widget slot
+  content:
+    title: Content
+    description: Content can be rich_text, quote or image
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/donate_block/donate_block.css: {}

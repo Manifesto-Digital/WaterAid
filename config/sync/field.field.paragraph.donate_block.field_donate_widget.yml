@@ -1,0 +1,94 @@
+uuid: 15afd90f-d4d1-4bc1-905e-4e2d05979a08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_donate_widget
+    - paragraphs.paragraphs_type.donate_block
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - entity_reference_revisions
+id: paragraph.donate_block.field_donate_widget
+field_name: field_donate_widget
+entity_type: paragraph
+bundle: donate_block
+label: 'Donate widget'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      donation_widget: donation_widget
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 20
+        enabled: false
+      accordion_item:
+        weight: 21
+        enabled: false
+      call_to_action:
+        weight: 22
+        enabled: false
+      cancel_anytime:
+        weight: 26
+        enabled: false
+      card_collection:
+        weight: 27
+        enabled: false
+      donate_block:
+        weight: 28
+        enabled: false
+      donation_amount:
+        weight: 23
+        enabled: false
+      donation_widget:
+        weight: 24
+        enabled: true
+      facts_and_stats:
+        weight: 25
+        enabled: false
+      hero_basic:
+        weight: 26
+        enabled: false
+      hero_donate:
+        weight: 27
+        enabled: false
+      hero_image:
+        weight: 28
+        enabled: false
+      hero_news:
+        weight: 29
+        enabled: false
+      hero_video:
+        weight: 30
+        enabled: false
+      image:
+        weight: 31
+        enabled: false
+      image_gallery:
+        weight: 32
+        enabled: false
+      quote:
+        weight: 33
+        enabled: false
+      rich_text:
+        weight: 34
+        enabled: false
+      stats_item:
+        weight: 35
+        enabled: false
+      text_media:
+        weight: 36
+        enabled: false
+      video:
+        weight: 37
+        enabled: false
+      webform_poc:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

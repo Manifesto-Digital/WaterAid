@@ -1,0 +1,161 @@
+uuid: 4ae855d3-212c-445e-ad36-6d44cdade99a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.simple_form
+    - field.field.paragraph.donation_widget.field_monthly_default
+    - field.field.paragraph.donation_widget.field_monthly_donation_amounts
+    - field.field.paragraph.donation_widget.field_one_off_donation_amounts
+    - field.field.paragraph.donation_widget.field_title
+    - field.field.paragraph.donation_widget.field_webform_node
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_content
+        - group_donation_amounts
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: horizontal
+        width_breakpoint: 640
+    group_donation_amounts:
+      children:
+        - group_one_off
+        - group_monthly
+      label: 'Donation amounts'
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_content:
+      children:
+        - field_webform_node
+        - field_monthly_default
+      label: Content
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: open
+        description: ''
+        required_fields: true
+    group_monthly:
+      children:
+        - field_monthly_donation_amounts
+      label: Monthly
+      region: content
+      parent_name: group_donation_amounts
+      weight: 22
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_one_off:
+      children:
+        - field_one_off_donation_amounts
+      label: 'One off'
+      region: content
+      parent_name: group_donation_amounts
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.donation_widget.simple_form
+targetEntityType: paragraph
+bundle: donation_widget
+mode: simple_form
+content:
+  field_monthly_default:
+    type: boolean_checkbox
+    weight: 23
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_monthly_donation_amounts:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_one_off_donation_amounts:
+    type: paragraphs
+    weight: 25
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_webform_node:
+    type: entity_reference_autocomplete
+    weight: 22
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_title: true
+  status: true
