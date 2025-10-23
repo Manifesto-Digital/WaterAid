@@ -25,6 +25,9 @@ props:
     monthly_default:
       type: string
       title: Monthly default boolean
+    webform_node:
+      type: string
+      title: Webform node url
 libraryOverrides:
   css:
     theme:

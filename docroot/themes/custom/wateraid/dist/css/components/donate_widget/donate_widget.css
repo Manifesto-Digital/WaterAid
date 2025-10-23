@@ -802,9 +802,10 @@ footer {
   margin: 0 0 1.5rem 0;
 }
 
-.donate-widget__form--submit a {
+.donate-widget__form--submit button {
   max-width: none;
   justify-content: center;
+  width: 100%;
 }
 
 .donate-widget__footer {
