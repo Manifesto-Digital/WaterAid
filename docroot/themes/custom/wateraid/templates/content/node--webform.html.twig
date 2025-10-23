@@ -75,8 +75,13 @@
 
 <article{{ attributes.addClass(node_classes).removeAttribute('role') }}>
   {{ content.field_hero }}
-  <div class="page-container">
-    {{ content.field_content }}
-    {{ content|without('field_hero', 'field_content') }}
+  <div class="page-container layout__two-column">
+    <div class="layout__two-column--main">
+      {{ content.field_content }}
+      {{ content.webform }}
+    </div>
+    <div class="layout__two-column--side">
+      {{ content.field_sidebar_content }}
+    </div>
   </div>
 </article>

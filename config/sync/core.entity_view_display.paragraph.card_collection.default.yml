@@ -1,0 +1,45 @@
+uuid: 88e6df6a-91f5-4838-af75-8ef73596d2fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_collection.field_background_colour
+    - field.field.paragraph.card_collection.field_card_columns
+    - field.field.paragraph.card_collection.field_cards
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.card_collection.default
+targetEntityType: paragraph
+bundle: card_collection
+mode: default
+content:
+  field_background_colour:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_card_columns:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: signposting
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
