@@ -18,6 +18,7 @@
       const monthlyCustomAmountInput = widget.querySelector("#custom_amount_monthly");
       const oneOffCustomAmountContainer = widget.querySelector(".donate-widget__custom-amount--one-off");
       const oneOffCustomAmountInput = widget.querySelector("#custom_amount_one_off");
+      const submitButton = widget.querySelector('#donate_submit');
 
       // Exit if we don't have the necessary elements
       if (
@@ -116,6 +117,35 @@
         radio.addEventListener("change", updateFrequencySelection);
       });
 
+      const donateRedirection = (event) => {
+        event.preventDefault();
+        const selectedFrequency = widget.querySelector('input[name="frequency"]:checked');
+        let selectedRadio = widget.querySelector('input[name="one_off_amount"]:checked');
+
+        if (selectedFrequency.value === "monthly") {
+          selectedRadio = widget.querySelector('input[name="monthly_amount"]:checked');
+        }
+
+        const location = submitButton.getAttribute('data-location');
+        const frequencyValue = selectedFrequency.value;
+        let amountValue = selectedRadio.value;
+
+        if (amountValue === 'other') {
+          if (selectedFrequency.value === "monthly") {
+            amountValue = monthlyCustomAmountInput.value;
+          } else {
+            amountValue = oneOffCustomAmountInput.value;
+          }
+        }
+
+        const redirectUrl = location + '?donation_type=' + frequencyValue + '&donation_value=' + amountValue;
+
+        window.location.href = redirectUrl;
+
+      };
+
+      submitButton.addEventListener('click', donateRedirection);
+
       // Run the function once on page load to set the initial state correctly.
       updateAmountSelection();
       updateFrequencySelection();
@@ -128,7 +158,37 @@
         });
       }, 10000);
 
-      if (window.ApplePaySession) {
+      // Check if mobile or tablet detected.
+      function hasTouchSupport() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      }
+
+      // Check device operating system - Android or IOS
+      const isMobile = {
+        Android: function () {
+          return navigator.userAgent.match(/Android/i);
+        },
+        iOS: function () {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+      };
+
+      // Hide GooglePay and ApplePay if not compatible.
+      if (!hasTouchSupport()) {
+        const applePay = widget.querySelector('.wa-apple');
+        const googlePay = widget.querySelector('.wa-google');
+        applePay.style.display = 'none';
+        googlePay.style.display = 'none';
+      }
+      // Hide ApplePay on Android device.
+      if (hasTouchSupport() && isMobile.Android()) {
+        const applePay = widget.querySelector('.wa-apple');
+        const googlePay = widget.querySelector('.wa-google');
+        applePay.style.display = 'none';
+        googlePay.style.display = 'block';
+      }
+      // Hide GooglePay on IOS device.
+      if (isMobile.iOS() || window.ApplePaySession) {
         const applePay = widget.querySelector('.wa-apple');
         const googlePay = widget.querySelector('.wa-google');
         applePay.style.display = 'block';

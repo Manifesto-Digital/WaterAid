@@ -2,6 +2,27 @@
   'donate-widget',
 ] %}
 
+{% set payment_logos = [
+  { src: 'wa-visa.svg',
+    alt: 'Visa'
+  },
+  { src: 'wa-mastercard.svg',
+    alt: 'Mastercard'
+  },
+  { src: 'wa-paypal.svg',
+    alt: 'PayPal'
+  },
+  { src: 'wa-apple.svg',
+    alt: 'Apple Pay'
+  },
+  { src: 'wa-google.svg',
+    alt: 'Google Pay'
+  },
+  { src: 'wa-direct-debit.svg',
+    alt: 'Direct debit'
+  },
+] %}
+
 <div {{ attributes.addClass(classes) }}>
   {# Heading  #}
   {% if heading %}
@@ -170,10 +191,14 @@
     <div class="donate-widget__form--submit">
       {{ include('wateraid:button', {
         text: button_text,
-        link: '/',
+        id: 'donate_submit',
         type: 'donate',
         theme: '',
-        icon: 'wa-utility-lock'
+        icon: 'wa-utility-lock',
+        attribute: {
+          attr: 'data-location',
+          value: webform_node,
+        },
       }) }}
     </div>
   </form>
@@ -200,7 +225,6 @@
     <div class="donate-widget__fr-logo">
       {% include('@wateraid/images/icons/wa-fr-logo.svg') %}
     </div>
-
 
   </div>
 </div>

@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_title
+    - field.field.paragraph.donation_widget.field_webform_node
     - paragraphs.paragraphs_type.donation_widget
   module:
     - field_group
@@ -49,6 +50,8 @@ third_party_settings:
     group_content:
       children:
         - field_title
+        - field_webform_node
+        - field_monthly_default
       label: Content
       region: content
       parent_name: group_tabs
@@ -68,7 +71,7 @@ third_party_settings:
       label: Monthly
       region: content
       parent_name: group_donation_amounts
-      weight: 21
+      weight: 22
       format_type: details
       format_settings:
         classes: ''
@@ -126,7 +129,7 @@ content:
     third_party_settings: {  }
   field_one_off_donation_amounts:
     type: paragraphs
-    weight: 21
+    weight: 25
     region: content
     settings:
       title: Paragraph
@@ -147,6 +150,16 @@ content:
     weight: 21
     region: content
     settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_webform_node:
+    type: entity_reference_autocomplete
+    weight: 22
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
