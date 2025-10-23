@@ -1,0 +1,71 @@
+uuid: baa4900b-af30-4b22-a1d3-6ac0c0e69d2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.simple_form
+    - field.field.paragraph.image.field_caption
+    - field.field.paragraph.image.field_caption_display
+    - field.field.paragraph.image.field_credit
+    - field.field.paragraph.image.field_image
+    - field.field.paragraph.image.field_image_width
+    - paragraphs.paragraphs_type.image
+  module:
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - field_caption_display
+      label: Settings
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.image.simple_form
+targetEntityType: paragraph
+bundle: image
+mode: simple_form
+content:
+  field_caption:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_caption_display:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_image_width: true
+  status: true
