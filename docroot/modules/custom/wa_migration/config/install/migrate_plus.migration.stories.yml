@@ -41,7 +41,27 @@ process:
     migration: countries
     source: field_countries
     no_stub: true
-  field_full_story_link/uri: field_single_link_uri
+  field_full_story_link/uri:
+    -
+      plugin: link_migration_lookup
+      migration:
+        - articles
+        - campaigns
+        - country_details
+        - donation_forms
+        - donation_landing_pages
+        - events
+        - filtered_landing_pages
+        - flexible_content
+        - get_involved_node
+        - jobs
+        - press_and_media
+        - press_and_media_biographies
+        - publication
+        - standard_page
+        - stories
+        - webforms
+      source: field_single_link_uri
   field_full_story_link/title: field_single_link_title
   field_get_involved:
     plugin: migration_lookup
@@ -75,7 +95,6 @@ process:
         - faqs
         - view_more_teasers
       source: field_modules
-      no_stub: true
   field_content:
     plugin: merge_without_exception
     source:
@@ -92,10 +111,4 @@ migration_dependencies:
     - get_involved
     - themes
     - users
-    - general_text_area
-    - wysiwyg
-    - menu_cta
-    - resource_link_with_description
-    - faqs
-    - view_more_teasers
 include: null

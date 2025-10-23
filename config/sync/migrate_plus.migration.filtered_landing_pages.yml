@@ -60,7 +60,6 @@ process:
         - faqs
         - view_more_teasers
       source: field_modules
-      no_stub: true
   field_content:
     plugin: merge_without_exception
     source:
@@ -73,10 +72,4 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
-    - general_text_area
-    - wysiwyg
-    - menu_cta
-    - resource_link_with_description
-    - faqs
-    - view_more_teasers
 include: null

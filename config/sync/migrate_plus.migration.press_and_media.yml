@@ -82,7 +82,6 @@ process:
         - faqs
         - view_more_teasers
       source: field_modules
-      no_stub: true
   field_content:
     plugin: merge_without_exception
     source:
@@ -99,10 +98,4 @@ migration_dependencies:
     - get_involved
     - themes
     - users
-    - general_text_area
-    - wysiwyg
-    - menu_cta
-    - resource_link_with_description
-    - faqs
-    - view_more_teasers
 include: null

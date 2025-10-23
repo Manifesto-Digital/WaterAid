@@ -1,4 +1,4 @@
-uuid: 98db27ed-38ab-4623-a6b0-b542e1573955
+uuid: ba55b209-20ea-413d-8fb4-d526b962b91e
 langcode: en
 status: true
 dependencies:
@@ -29,13 +29,11 @@ process:
       plugin: migration_lookup
       migration: flexible_content
       source: field_related_content
-      no_stub: true
   temp_get_involved:
     -
       plugin: migration_lookup
       migration: get_involved_node
       source: field_related_content
-      no_stub: true
   field_cards:
     plugin: merge_without_exception
     source:
@@ -45,8 +43,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: card_collection
 idMap: {  }
-migration_dependencies:
-  required:
-    - flexible_content
-    - get_involved_node
+migration_dependencies: {}
 include: null
