@@ -6,10 +6,12 @@ dependencies:
     - field.storage.node.field_content
     - node.type.webform
     - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
 id: node.webform.field_content
@@ -31,6 +33,8 @@ settings:
       hero_news: hero_news
       hero_video: hero_video
       accordion_item: accordion_item
+      donation_amount: donation_amount
+      stats_item: stats_item
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -41,6 +45,15 @@ settings:
         enabled: true
       call_to_action:
         weight: -23
+        enabled: false
+      donation_amount:
+        weight: 22
+        enabled: true
+      donation_widget:
+        weight: 23
+        enabled: false
+      facts_and_stats:
+        weight: 24
         enabled: false
       hero_basic:
         weight: -18
@@ -66,10 +79,16 @@ settings:
       rich_text:
         weight: -25
         enabled: false
+      stats_item:
+        weight: 33
+        enabled: true
       text_media:
         weight: 25
         enabled: false
       video:
         weight: -19
+        enabled: false
+      webform_poc:
+        weight: 36
         enabled: false
 field_type: entity_reference_revisions

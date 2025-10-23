@@ -1,0 +1,72 @@
+uuid: 502cba1c-b1ac-4fcf-8c63-1988624c1598
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.donation_amount.field_credit
+    - field.field.paragraph.donation_amount.field_description
+    - field.field.paragraph.donation_amount.field_donation_amount
+    - field.field.paragraph.donation_amount.field_icon
+    - field.field.paragraph.donation_amount.field_image
+    - field.field.paragraph.donation_amount.field_title
+    - paragraphs.paragraphs_type.donation_amount
+id: paragraph.donation_amount.default
+targetEntityType: paragraph
+bundle: donation_amount
+mode: default
+content:
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_donation_amount:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

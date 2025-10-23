@@ -1,24 +1,20 @@
-uuid: 15606701-7531-4c3d-abf0-69bfc574a61e
+uuid: bc6cc0d1-91c2-4453-9fe8-f7bc0ad4304c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_content
-    - node.type.donation
-    - paragraphs.paragraphs_type.call_to_action
+    - field.storage.paragraph.field_one_off_donation_amounts
     - paragraphs.paragraphs_type.donation_amount
-    - paragraphs.paragraphs_type.image
-    - paragraphs.paragraphs_type.quote
-    - paragraphs.paragraphs_type.rich_text
+    - paragraphs.paragraphs_type.donation_widget
   module:
     - entity_reference_revisions
-id: node.donation.field_content
-field_name: field_content
-entity_type: node
-bundle: donation
-label: Content
+id: paragraph.donation_widget.field_one_off_donation_amounts
+field_name: field_one_off_donation_amounts
+entity_type: paragraph
+bundle: donation_widget
+label: 'One off donation amounts'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -26,10 +22,6 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      rich_text: rich_text
-      image: image
-      call_to_action: call_to_action
-      quote: quote
       donation_amount: donation_amount
     negate: 0
     target_bundles_drag_drop:
@@ -40,42 +32,51 @@ settings:
         weight: 17
         enabled: false
       call_to_action:
-        weight: 5
-        enabled: true
+        weight: 18
+        enabled: false
       donation_amount:
         weight: 19
         enabled: true
       donation_widget:
         weight: 20
         enabled: false
+      facts_and_stats:
+        weight: 24
+        enabled: false
       hero_basic:
-        weight: 10
+        weight: 21
         enabled: false
       hero_image:
-        weight: 6
+        weight: 22
         enabled: false
       hero_news:
-        weight: 12
+        weight: 23
         enabled: false
       hero_video:
-        weight: 13
+        weight: 24
         enabled: false
       image:
-        weight: 3
-        enabled: true
+        weight: 25
+        enabled: false
       image_gallery:
         weight: 26
         enabled: false
       quote:
-        weight: 15
-        enabled: true
+        weight: 27
+        enabled: false
       rich_text:
-        weight: 2
-        enabled: true
+        weight: 28
+        enabled: false
+      stats_item:
+        weight: 33
+        enabled: false
       text_media:
         weight: 29
         enabled: false
       video:
         weight: 30
+        enabled: false
+      webform_poc:
+        weight: 36
         enabled: false
 field_type: entity_reference_revisions
