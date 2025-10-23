@@ -161,7 +161,7 @@ class GroupWebformService implements GroupWebformServiceInterface {
       // which should be allowed by default if the webform
       // doesn't belong to a group.
       $current_route_match = $this->currentRouteMatch->getRouteName();
-      if ($current_route_match === 'entity.webform.canonical') {
+      if ($current_route_match === 'entity.webform.canonical' || $current_route_match === 'entity.webform.confirmation') {
         return $this->webformAccess[$op][$account_id][$webform_id] = AccessResult::allowed();
       }
       else {

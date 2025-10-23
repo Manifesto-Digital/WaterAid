@@ -807,6 +807,13 @@ if (!empty($acquia_env)) {
   }
   if (($acquia_env === 'prod')) {
     $config['config_split.config_split.prod']['status'] = TRUE;
+
+    $config['loqate.loqateapikeyconfig']['mode'] = 'live';
+    $config['loqate_email.settings']['mode'] = 'live';
+    $config['webform_capture_plus.setting']['mode'] = 'live';
+    $config['wateraid_donation_paypal.settings']['mode'] = 'live';
+    $config['stripe_api.settings']['mode'] = 'live';
+    $config['wateraid_donation_gmo.settings']['mode'] = 'live';
   }
 }
 
@@ -845,20 +852,8 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
 
   $settings['file_private_path'] = 'sites/default/files/private';
 
-  // Update local config across all sites:
-  $config['loqate_email.settings']['mode'] = 'test';
-  $config['loqate.loqateapikeyconfig']['mode'] = 'test';
-  $config['webform_capture_plus.settings']['mode'] = 'test';
-  $config['wateraid_donation_paypal.settings']['mode'] = 'test';
-  $config['stripe_api.settings']['mode'] = 'test';
-  $config['azure_storage.settings']['mode'] = 'test';
-  $config['loqate.loqateapikeyconfig']['mode'] = 'test';
-
   $config['key.key.webform_encrypt_key']['key_provider'] = 'config';
   $config['key.key.webform_encrypt_key']['key_provider_settings']['key_value'] = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';
-
-  // Ensure the GMO payment integration is in Test mode.
-  $config['wateraid_donation_gmo.settings']['mode'] = 'test';
 
   // reCaptcha v3.
   $config['recaptcha_v3.settings']['site_key'] = '6LfmHCkdAAAAAFcTcD-N6cNay3UA8ti221UnUYIv';

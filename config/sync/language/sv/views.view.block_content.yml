@@ -1,14 +1,11 @@
 display:
   default:
-    display_title: Förvald
     display_options:
       fields:
         info:
-          label: Blockbeskrivning
+          separator: ', '
         type:
-          label: 'Typ av block'
-        changed:
-          label: Uppdaterad
+          separator: ', '
         operations:
           label: Funktioner
       pager:
@@ -22,23 +19,7 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: Applicera
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      empty:
-        area_text_custom:
-          content: 'Det finns inga tillgängliga innehållsblock.'
-      filters:
-        info:
-          expose:
-            label: Blockbeskrivning
-        type:
-          expose:
-            label: 'Typ av block'
-  page_1:
-    display_title: Sida
-    display_options:
-      menu:
-        title: Block
