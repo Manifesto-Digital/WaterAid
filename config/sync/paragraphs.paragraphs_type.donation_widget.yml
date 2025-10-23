@@ -1,0 +1,10 @@
+uuid: 66b8a125-b73a-45ff-adc5-c85cc928552c
+langcode: en
+status: true
+dependencies: {  }
+id: donation_widget
+label: 'Donation widget'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

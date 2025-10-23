@@ -29,6 +29,7 @@ module.exports = {
     'components/statistics/statistics': ['./components/statistics/statistics.scss'],
     'components/video/video': ['./components/video/video.scss'],
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
+    'components/donate_widget/donate_widget': ['./components/donate_widget/donate_widget.scss'],
   },
   output: {
     filename: 'js/[name].js',
