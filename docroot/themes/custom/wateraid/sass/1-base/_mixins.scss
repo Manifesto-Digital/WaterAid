@@ -1,14 +1,13 @@
 // Utility functions and mixins.
-
-@function calculate-rem($size) {
-  $rem-size: calc($size / 16);
-
-  @return #{$rem-size}rem;
-}
+@use "./functions";
+@use "./colors";
+@use "./spacing";
+@use "./breakpoints";
+@use "./typography";
 
 @mixin font-size($size, $height: $size) {
-  font-size: calculate-rem($size);
-  line-height: calculate-rem($height);
+  font-size: functions.calculate-rem($size);
+  line-height: functions.calculate-rem($height);
 }
 
 @mixin sr-only {
@@ -33,17 +32,17 @@
 
 @mixin container-md {
   width: 100%;
-  @include desktop() {
-    max-width: calculate-rem(1116);
-    margin-left: calculate-rem(114);
+  @include breakpoints.desktop() {
+    max-width: functions.calculate-rem(1116);
+    margin-left: functions.calculate-rem(114);
   }
 }
 
 @mixin container-sm {
   width: 100%;
-  max-width: calculate-rem(660);
-  @include desktop() {
-    margin-left: calculate-rem(114);
+  max-width: functions.calculate-rem(660);
+  @include breakpoints.desktop() {
+    margin-left: functions.calculate-rem(114);
   }
 }
 

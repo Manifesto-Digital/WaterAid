@@ -1,5 +1,5 @@
-@use "breakpoints";
-@use "spacing";
+@use "./breakpoints";
+@use "./spacing";
 
 $grid-max-width: 1440px;
 $grid-cols-mobile: 4;
