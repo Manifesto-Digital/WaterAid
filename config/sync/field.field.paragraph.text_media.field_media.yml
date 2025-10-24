@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_media
+    - media.type.dam_image
+    - media.type.dam_video
     - media.type.image
     - media.type.video
     - paragraphs.paragraphs_type.text_media
@@ -21,6 +23,8 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      dam_image: dam_image
+      dam_video: dam_video
       image: image
       video: video
     sort:

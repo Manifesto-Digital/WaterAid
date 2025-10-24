@@ -1,40 +1,24 @@
 <div {{ attributes.addClass('video--' ~ width ) }}>
   <div class="video__wrapper">
-
-    <div class="video {{ image ? 'video--thumbnail' : 'video--default' }}">
-
-      {% if type == 'local' %}
-        <video controls="controls" width="640" height="480" poster="{{ image }}">
-          <source src="{{ video|render|striptags|trim }}" type="video/mp4">
-        </video>
-        <div class="video__play">
-          {{ include('wateraid:button', {
-            text: 'Play video',
-            link: '',
-            id: 'video-play-button',
-            type: 'icon',
-            icon: 'wa-utility-play',
-            theme: 'dark',
-          }) }}
+    <div class="video {{ image ? '' : 'video--default' }}">
+      <div class="video__container">
+        <div class="video__thumbnail">
+          {{ image }}
         </div>
-      {% else %}
-        <div class="video__container">
-          {% if image %}
-            <img class="video__thumbnail" src="{{ image }}" alt=""/>
-            <div class="video__play">
-              {{ include('wateraid:button', {
-                text: 'Play video',
-                link: '',
-                id: 'video-play-button',
-                type: 'icon',
-                icon: 'wa-utility-play',
-                theme: 'dark',
-              }) }}
-            </div>
-          {% endif %}
-          {{ video }}
-        </div>
-      {% endif %}
+        {% if type == 'local' or image %}
+          <div class="video__play">
+            {{ include('wateraid:button', {
+              text: 'Play video',
+              link: '',
+              id: 'video-play-button',
+              type: 'icon',
+              icon: 'wa-utility-play',
+              theme: 'dark',
+            }) }}
+          </div>
+        {% endif %}
+        {{ video }}
+      </div>
     </div>
 
     {% if caption %}
