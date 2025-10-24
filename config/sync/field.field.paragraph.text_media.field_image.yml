@@ -1,17 +1,16 @@
-uuid: 8873feca-ff91-469c-af43-bdc7ae640dd4
+uuid: f8874df0-a113-462f-a289-1af2dc5c205f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_media
+    - field.storage.paragraph.field_image
     - media.type.dam_image
-    - media.type.dam_video
     - paragraphs.paragraphs_type.text_media
-id: paragraph.text_media.field_media
-field_name: field_media
+id: paragraph.text_media.field_image
+field_name: field_image
 entity_type: paragraph
 bundle: text_media
-label: Media
+label: Thumbnail
 description: ''
 required: false
 translatable: false
@@ -22,10 +21,9 @@ settings:
   handler_settings:
     target_bundles:
       dam_image: dam_image
-      dam_video: dam_video
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: dam_image
+    auto_create_bundle: ''
 field_type: entity_reference

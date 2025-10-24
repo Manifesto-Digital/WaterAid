@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.text_media.field_caption
     - field.field.paragraph.text_media.field_caption_display
     - field.field.paragraph.text_media.field_credit
+    - field.field.paragraph.text_media.field_image
     - field.field.paragraph.text_media.field_image_position
     - field.field.paragraph.text_media.field_link
     - field.field.paragraph.text_media.field_media
@@ -56,6 +57,7 @@ third_party_settings:
       children:
         - field_caption_display
         - field_image_position
+        - field_image
       label: Settings
       region: content
       parent_name: group_tabs
@@ -113,6 +115,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 6
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   field_image_position:
     type: options_select
