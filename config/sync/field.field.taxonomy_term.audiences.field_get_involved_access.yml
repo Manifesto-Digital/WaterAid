@@ -1,0 +1,21 @@
+uuid: 1d61ad0a-ff32-46f0-ac72-caa6316df246
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_get_involved_access
+    - taxonomy.vocabulary.audiences
+id: taxonomy_term.audiences.field_get_involved_access
+field_name: field_get_involved_access
+entity_type: taxonomy_term
+bundle: audiences
+label: 'Get Involved Access'
+description: 'Select this checkbox to PREVENT users being able to see results for this term in the Get Involved listing'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

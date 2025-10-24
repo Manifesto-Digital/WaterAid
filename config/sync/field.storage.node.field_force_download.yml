@@ -1,0 +1,18 @@
+uuid: 2cf8f818-3459-474c-8582-e96e89c44e08
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_force_download
+field_name: field_force_download
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

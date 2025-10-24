@@ -6,7 +6,6 @@ dependencies:
     - image.style.thumbnail
   module:
     - media
-    - media_directories
     - svg_image
     - user
 _core:

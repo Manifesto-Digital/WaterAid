@@ -1,0 +1,21 @@
+uuid: 783be163-0743-4b6e-9430-ccba1cb3eb86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_regions
+    - node.type.event
+  module:
+    - options
+id: node.event.field_regions
+field_name: field_regions
+entity_type: node
+bundle: event
+label: Regions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

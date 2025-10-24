@@ -1,0 +1,16 @@
+gmo.gmojs-test:
+  js:
+    https://stg.static.mul-pay.jp/ext/js/token.js: { type: external, minified: true }
+    js/webform_gmo.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - core/drupal.message
+    - core/drupal.dialog.ajax
+gmo.gmojs-live:
+  js:
+    https://static.mul-pay.jp/ext/js/token.js: { type: external, minified: true }
+    js/webform_gmo.js: {}
+  dependencies:
+    - wateraid_donation_forms/wateraid_donation_forms
+    - core/drupal.message
+    - core/drupal.dialog.ajax

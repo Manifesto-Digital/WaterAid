@@ -1,0 +1,36 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Donate widget
+status: stable
+description: Donate widget
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+      examples: []
+    button_text:
+      type: string
+      title: Button text
+      examples: [ ]
+    payment_logos:
+      type: array
+      title: Payment Logos
+    donation_amounts:
+      type: array
+      title: Donation amounts
+    additional_link:
+      type: object
+      title: Additional link
+    monthly_default:
+      type: string
+      title: Monthly default boolean
+    webform_node:
+      type: string
+      title: Webform node url
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/donate_widget/donate_widget.css: {}
+  dependencies:
+    - wateraid/main

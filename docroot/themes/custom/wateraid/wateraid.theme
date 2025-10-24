@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_preprocess_image_widget().
@@ -94,3 +95,87 @@ function wateraid_preprocess_input(&$variables) {
   }
 }
 
+/*
+ * Implements hook_preprocess_paragraph__donation_widget().
+ *
+ * This function now calls a helper to process the monthly and one-off
+ * donation amount fields, then passes the structured arrays to Twig.
+ */
+function wateraid_preprocess_paragraph__donation_widget(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Process the 'monthly' amounts field using the helper function.
+  $monthly_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_monthly_donation_amounts');
+
+  // Process the 'one-off' amounts field using the same helper function.
+  $one_off_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_one_off_donation_amounts');
+
+  // Add the static 'other' option to both arrays.
+  $other_option = [
+    'amount' => 'other',
+    'title' => '',
+    'description' => '',
+    'image' => '',
+    'credit' => '',
+  ];
+  $monthly_amounts[] = $other_option;
+  $one_off_amounts[] = $other_option;
+
+  $variables['monthly_donation_amounts'] = $monthly_amounts;
+  $variables['one_off_donation_amounts'] = $one_off_amounts;
+}
+
+/**
+ * Helper function to extract and format donation amount data from a paragraph.
+ */
+function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string $field_name): array {
+  $donation_amounts = [];
+
+  if ($paragraph->hasField($field_name) && !$paragraph->get($field_name)->isEmpty()) {
+    $referenced_paragraphs = $paragraph->get($field_name)->referencedEntities();
+
+    foreach ($referenced_paragraphs as $donation_paragraph) {
+      if ($donation_paragraph instanceof Paragraph && $donation_paragraph->bundle() === 'donation_amount') {
+        $image_url = '';
+        $icon_url = '';
+        $credit = '';
+
+        if (!$donation_paragraph->get('field_image')->isEmpty()) {
+          /** @var \Drupal\media\Entity\Media $media_entity */
+          if ($media_entity = $donation_paragraph->get('field_image')->entity) {
+            /** @var \Drupal\file\Entity\File $file */
+            if ($file = $media_entity->field_media_image->entity) {
+              $image_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+            }
+          }
+        }
+
+        if (!$donation_paragraph->get('field_icon')->isEmpty()) {
+          /** @var \Drupal\media\Entity\Media $media_entity */
+          if ($media_entity = $donation_paragraph->get('field_icon')->entity) {
+            /** @var \Drupal\file\Entity\File $file */
+            if ($file = $media_entity->field_media_svg->entity) {
+              $icon_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+            }
+          }
+        }
+
+        if (!$donation_paragraph->get('field_credit')->isEmpty()) {
+          $credit = $donation_paragraph->get('field_credit')->value;
+        }
+
+        $donation_amounts[] = [
+          'amount' => $donation_paragraph->get('field_donation_amount')->value,
+          'title' => $donation_paragraph->get('field_title')->value,
+          'description' => $donation_paragraph->get('field_description')->value,
+          'image' => $image_url,
+          'icon' => $icon_url,
+          'credit' => $credit,
+        ];
+      }
+    }
+  }
+
+  return $donation_amounts;
+}

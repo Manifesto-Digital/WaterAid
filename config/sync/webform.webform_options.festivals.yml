@@ -1,0 +1,19 @@
+uuid: 6b0b93c9-bf5f-4050-87f0-8815145623d1
+langcode: en
+status: true
+dependencies: {  }
+id: festivals
+label: Festivals
+category: WaterAid
+likert: false
+options: |-
+  Glastonbury: Glastonbury
+  'Smoked & Uncut: Lime Wood': 'Smoked & Uncut: Lime Wood'
+  'Camp Bestival Dorset': 'Camp Bestival: Dorset'
+  'Glastonbury Abbey': 'Glastonbury Abbey Extravaganza'
+  Boomtown: Boomtown
+  'Smoked & Uncut: The Pig at Bridge Place': 'Smoked & Uncut: The Pig at Bridge Place'
+  'Green Man': 'Green Man'
+  'Camp Bestival Shropshire': 'Camp Bestival: Shropshire'
+  Shambala: Shambala
+  'Pilton Party': 'Pilton Party'

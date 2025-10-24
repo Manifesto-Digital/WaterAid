@@ -6,10 +6,10 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - node.type.event
     - taxonomy.vocabulary.event_types
-    - taxonomy.vocabulary.region
   module:
     - better_exposed_filters
     - node
+    - options
     - taxonomy
     - user
     - views_infinite_scroll
@@ -138,7 +138,7 @@ display:
                 select_all_none: false
                 select_all_none_nested: false
                 display_inline: false
-              field_region_target_id:
+              field_regions_value:
                 plugin_id: bef
                 advanced:
                   sort_options: false
@@ -261,27 +261,27 @@ display:
           hierarchy: false
           limit: true
           error_message: true
-        field_region_target_id:
-          id: field_region_target_id
-          table: node__field_region
-          field: field_region_target_id
+        field_regions_value:
+          id: field_regions_value
+          table: node__field_regions
+          field: field_regions_value
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: taxonomy_index_tid
+          plugin_id: list_field
           operator: or
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_region_target_id_op
-            label: 'Region (field_region)'
+            operator_id: field_regions_value_op
+            label: Regions
             description: ''
             use_operator: false
-            operator: field_region_target_id_op
+            operator: field_regions_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_region_target_id
+            identifier: regions
             required: false
             remember: false
             multiple: true
@@ -304,12 +304,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          vid: region
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
+          reduce_duplicates: true
       style:
         type: default
       row:

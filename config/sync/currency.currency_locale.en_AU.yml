@@ -1,0 +1,8 @@
+uuid: 90752e3d-e613-4848-8f2e-80f5c886549e
+langcode: en
+status: true
+dependencies: {  }
+decimalSeparator: .
+groupingSeparator: ','
+locale: en_AU
+pattern: '¤#,##0.00;(¤#,##0.00)'

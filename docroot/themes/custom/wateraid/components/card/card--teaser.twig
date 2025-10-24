@@ -1,6 +1,7 @@
 {% set classes = [
   'card',
   'card--' ~ variant,
+  'card--link',
 ] %}
 
 <div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
@@ -11,7 +12,7 @@
 
   <div class="card__body">
     <h3 class="card__heading">
-      <a href="{{ url }}" class="card__heading--link">{{ heading }}</a>
+      <a href="{{ url }}" class="card__link">{{ heading }}</a>
     </h3>
 
     {% if date %}

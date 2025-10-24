@@ -1,0 +1,15 @@
+{
+  "name": "drupal/webform_bankaccount",
+  "description": "Webform bank account webform integration.",
+  "type": "drupal-module",
+  "authors": [
+    {
+      "name": "Andy Chapman",
+      "email": "andy.chapman@mirumagency.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "azuyalabs/yasumi": "~1.6.1"
+  }
+}

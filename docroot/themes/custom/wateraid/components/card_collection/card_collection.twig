@@ -1,0 +1,13 @@
+{% set classes = [
+  'card-collection',
+  'card-collection--' ~ columns,
+  'card-collection--' ~ background
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="card-collection__wrapper">
+    {% for card_item in card_items %}
+      {{ card_item|raw }}
+    {% endfor %}
+  </div>
+</div>

@@ -1,23 +1,34 @@
-uuid: 778e8815-36ac-44d3-af9c-d481e60e83e0
+uuid: a5dc9151-687b-444d-b80a-1bb9af2aacd8
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.webform.field_content
+    - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
+    - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_sidebar_content
+    - field.field.node.webform.field_teaser_image
+    - field.field.node.webform.field_teaser_text
+    - field.field.node.webform.field_title_colour
+    - field.field.node.webform.webform
     - node.type.webform
   module:
     - datetime
     - field_group
     - layout_paragraphs
+    - media_library
     - path
+    - webform
 third_party_settings:
   field_group:
     group_tabs:
       children:
         - group_general
         - group_content
+        - group_sidebar_content
       label: Tabs
       region: content
       parent_name: ''
@@ -38,7 +49,7 @@ third_party_settings:
       label: General
       region: content
       parent_name: group_tabs
-      weight: 20
+      weight: 0
       format_type: tab
       format_settings:
         classes: ''
@@ -50,11 +61,12 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
+        - webform
         - field_content
       label: Content
       region: content
       parent_name: group_tabs
-      weight: 21
+      weight: 1
       format_type: tab
       format_settings:
         classes: ''
@@ -64,6 +76,24 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+    group_sidebar_content:
+      children:
+        - field_sidebar_content
+      label: 'Sidebar content'
+      region: hidden
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: A3evv2pt6d-bKCPcgjXA5VGTemXWOxG3lSXvWiRWcck
 id: node.webform.default
 targetEntityType: node
 bundle: webform
@@ -81,13 +111,13 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_content:
     type: layout_paragraphs
-    weight: 4
+    weight: 0
     region: content
     settings:
       view_mode: default
@@ -97,9 +127,23 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
+  field_donation_menu:
+    type: boolean_checkbox
+    weight: 29
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_form_to_overlap_with_hero:
+    type: boolean_checkbox
+    weight: 27
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_hero:
     type: layout_paragraphs
-    weight: 4
+    weight: 1
     region: content
     settings:
       view_mode: default
@@ -108,6 +152,12 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_options:
+    type: options_select
+    weight: 121
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
@@ -115,43 +165,76 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_sidebar_content:
+    type: layout_paragraphs
+    weight: 12
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_teaser_image:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_teaser_text:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title_colour:
+    type: options_select
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 5
+    weight: 2
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 6
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 10
+    weight: 120
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 7
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 3
+    weight: 0
     region: content
     settings:
       size: 60
@@ -159,7 +242,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -168,9 +251,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 9
+    weight: 50
     region: content
     settings: {  }
+    third_party_settings: {  }
+  webform:
+    type: webform_entity_reference_select
+    weight: 1
+    region: content
+    settings:
+      default_data: true
+      webforms: {  }
     third_party_settings: {  }
 hidden:
   publish_on: true

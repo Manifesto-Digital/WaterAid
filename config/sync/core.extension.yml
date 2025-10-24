@@ -1,26 +1,31 @@
 _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
+  webform_clientside_validation: -1
+  acquia_connector: 0
+  acquia_search: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   announcements_feed: 0
   automated_cron: 0
   azure_blob_storage: 0
+  basic_auth: 0
   better_exposed_filters: 0
   big_pipe: 0
   block: 0
   block_content: 0
   breakpoint: 0
+  captcha: 0
   ckeditor5: 0
   comment: 0
   config: 0
   config_ignore: 0
+  config_override_warn: 0
   config_split: 0
   config_translation: 0
   contact: 0
   content_moderation: 0
   contextual: 0
-  crop: 0
   datetime: 0
   dblog: 0
   diff: 0
@@ -37,7 +42,6 @@ module:
   file: 0
   filter: 0
   flexible_permissions: 0
-  focal_point: 0
   gin_toolbar: 0
   gnode: 0
   google_tag: 0
@@ -55,6 +59,8 @@ module:
   link: 0
   linkit: 0
   locale: 0
+  loqate: 0
+  loqate_email: 0
   masquerade: 0
   media: 0
   media_directories: 0
@@ -72,21 +78,24 @@ module:
   node_co_authors: 0
   node_read_time: 0
   options: 0
-  orange_dam: 0
   page_cache: 0
   paragraphs_clipboard: 0
   path: 0
   path_alias: 0
+  phpass: 0
   quick_node_clone: 0
   rabbit_hole: 0
+  recaptcha_v3: 0
   redirect: 0
+  rest: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   schema_metatag: 0
-  search: 0
   search_api: 0
+  search_api_solr: 0
   seckit: 0
   security_review: 0
+  serialization: 0
   shield: 0
   shortcut: 0
   storybook: 0
@@ -104,11 +113,61 @@ module:
   views_ui: 0
   viewsreference: 0
   wa_editor_experience: 0
+  wa_migration: 0
+  wa_orange_dam: 0
+  wateraid_azure_storage: 0
   wateraid_content: 0
+  wateraid_donation_forms: 0
+  wateraid_donation_gmo: 0
+  wateraid_donation_google_pay: 0
+  wateraid_donation_paypal: 0
+  wateraid_donation_stripe: 0
+  wateraid_forms: 0
+  wateraid_just_giving: 0
   webform: 0
+  webform_bankaccount: 0
+  webform_capture_plus: 0
+  webform_node: 0
+  webform_pdf_receipt: 0
+  webform_rest: 0
+  webform_scheduled_email: 0
+  webform_ui: 0
+  webform_wizard_extra: 0
+  webform_wizard_single_page: 0
   webp: 0
   workflows: 0
+  address: 1
+  anonymous_token: 1
+  azure_storage: 1
+  clientside_validation: 1
+  clientside_validation_jquery: 1
+  crop: 1
+  ctools: 1
+  currency: 1
+  datalayer: 1
+  ds: 1
+  ds_extras: 1
+  encrypt: 1
+  entity_print: 1
+  focal_point: 1
+  jquery_ui: 1
+  jquery_ui_button: 1
+  jquery_ui_checkboxradio: 1
+  jquery_ui_controlgroup: 1
+  just_giving: 1
+  key: 1
   pathauto: 1
+  plugin: 1
+  real_aes: 1
+  responsive_image: 1
+  sharethis: 1
+  social_media_links: 1
+  stripe_api: 1
+  telephone: 1
+  views_bulk_operations: 1
+  wateraid_donations: 1
+  wateraid_webform_encrypt: 1
+  webform_jqueryui_buttons: 1
   xmlsitemap: 1
   content_translation: 10
   views: 10

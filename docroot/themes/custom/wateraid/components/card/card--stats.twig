@@ -1,0 +1,33 @@
+{% set classes = [
+  'card',
+  'card--' ~ variant,
+  'card--' ~ colour,
+  url ? 'card--link' : 'card--no-link',
+] %}
+
+<div {{ attributes.addClass(classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
+
+  <div class="card__image">
+    <img src="{{ image_url }}" alt="" />
+  </div>
+
+  <div class="card__body">
+    <h3 class="card__heading">
+      {{ heading }}
+    </h3>
+
+    <div class="card__description">
+      {{ description }}
+    </div>
+
+    {% if url %}
+      <div class="card__link">
+        {{ include('wateraid:link', {
+          text: link_text,
+          link: url,
+          type: 'text',
+        }) }}
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -22,15 +22,12 @@ display:
             last: 'sista »'
       fields:
         taxonomy_term_bulk_form:
-          label: Massuppdatera
           action_title: Åtgärd
         name:
           separator: ', '
         vid:
-          label: Vokabulär
           separator: ', '
         status:
-          label: Status
           settings:
             format_custom_true: Publicerad
             format_custom_false: 'Ej publicerad'
@@ -44,15 +41,7 @@ display:
         operations:
           label: Funktioner
       filters:
-        name:
-          expose:
-            label: 'Termens namn'
-        vid:
-          expose:
-            label: Vokabulär
         status:
-          expose:
-            label: Status
           group_info:
             label: 'Status för publicering'
             group_items:
@@ -60,5 +49,3 @@ display:
                 title: Publicerad
               2:
                 title: 'Ej publicerad'
-  overview:
-    display_title: Taxonomitermer

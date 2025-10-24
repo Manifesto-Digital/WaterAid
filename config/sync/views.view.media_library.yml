@@ -7,7 +7,6 @@ dependencies:
     - image.style.media_library
   module:
     - media
-    - media_directories
     - media_library
     - svg_image
     - user

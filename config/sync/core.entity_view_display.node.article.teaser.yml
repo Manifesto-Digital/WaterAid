@@ -4,14 +4,23 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.article.body
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
+    - field.field.node.article.field_get_involved
     - field.field.node.article.field_hero
+    - field.field.node.article.field_hide_related_content
+    - field.field.node.article.field_override_related_content
+    - field.field.node.article.field_post_description
+    - field.field.node.article.field_related_content
+    - field.field.node.article.field_related_content_type
     - field.field.node.article.field_review_date
+    - field.field.node.article.field_search_phrases
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
+    - field.field.node.article.field_weight
     - node.type.article
   module:
     - user
@@ -31,6 +40,14 @@ content:
     weight: 4
     region: content
   field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_get_involved:
     type: entity_reference_label
     label: hidden
     settings:
@@ -75,9 +92,21 @@ content:
     weight: 3
     region: content
 hidden:
+  body: true
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_content: true
   field_hero: true
+  field_hide_related_content: true
+  field_override_related_content: true
+  field_post_description: true
+  field_related_content: true
+  field_related_content_type: true
   field_review_date: true
+  field_search_phrases: true
+  field_weight: true
   langcode: true
   reading_time: true
+  search_api_excerpt: true

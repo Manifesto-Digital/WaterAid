@@ -1,0 +1,8 @@
+name: 'WaterAid UK migration'
+type: module
+description: 'Migrate content from the UK WaterAid site'
+package: Migrate
+core_version_requirement: ^10 || ^11
+dependencies:
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools

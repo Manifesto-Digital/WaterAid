@@ -11,18 +11,14 @@ props:
     description:
       type: string
       title: Description
-    url:
-      type: string
-      title: URL
-      description: Card url
     variant:
       type: string
       title: Card variant type
-    image_url:
-      type: string
-      title: Image url
-      description: Image url
 slots:
+  url:
+    type: string
+    title: URL
+    description: Card url
   time_to_read:
     type: ["string", "integer"]
     title: Time to read
@@ -35,6 +31,13 @@ slots:
   authors:
     type: ["object", "null"]
     title: Authors
+  link_text:
+    type: string
+    title: Link text
+    description: Link text
+  colour:
+    type: string
+    title: Card colour
 libraryOverrides:
   css:
     theme:

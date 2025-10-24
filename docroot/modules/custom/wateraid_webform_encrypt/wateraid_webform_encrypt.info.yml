@@ -1,0 +1,10 @@
+name: 'WaterAid Webform Encrypt'
+type: module
+description: 'Provides encryption for webform components.'
+package: 'Webform'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - webform:webform
+  - encrypt:encrypt
+  - real_aes:real_aes
+wateraid.package: donations

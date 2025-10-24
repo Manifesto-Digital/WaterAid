@@ -1,0 +1,67 @@
+uuid: 21d83d69-9c9e-49f5-8d4d-671b4c69a007
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stat_items
+    - paragraphs.paragraphs_type.facts_and_stats
+    - paragraphs.paragraphs_type.stats_item
+  module:
+    - entity_reference_revisions
+id: paragraph.facts_and_stats.field_stat_items
+field_name: field_stat_items
+entity_type: paragraph
+bundle: facts_and_stats
+label: 'Stat items'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stats_item: stats_item
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 13
+        enabled: false
+      accordion_item:
+        weight: 14
+        enabled: false
+      call_to_action:
+        weight: 15
+        enabled: false
+      facts_and_stats:
+        weight: 16
+        enabled: false
+      hero_basic:
+        weight: 17
+        enabled: false
+      hero_image:
+        weight: 18
+        enabled: false
+      hero_news:
+        weight: 19
+        enabled: false
+      hero_video:
+        weight: 20
+        enabled: false
+      image:
+        weight: 21
+        enabled: false
+      quote:
+        weight: 22
+        enabled: false
+      rich_text:
+        weight: 23
+        enabled: false
+      stats_item:
+        weight: 25
+        enabled: true
+      video:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

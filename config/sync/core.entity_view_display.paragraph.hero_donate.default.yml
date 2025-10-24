@@ -1,0 +1,72 @@
+uuid: 1fe57921-24d3-4dc7-a1ba-726c63f587e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_donate.field_caption
+    - field.field.paragraph.hero_donate.field_citation
+    - field.field.paragraph.hero_donate.field_credit
+    - field.field.paragraph.hero_donate.field_donate_widget
+    - field.field.paragraph.hero_donate.field_image
+    - field.field.paragraph.hero_donate.field_quote
+    - paragraphs.paragraphs_type.hero_donate
+  module:
+    - entity_reference_revisions
+id: paragraph.hero_donate.default
+targetEntityType: paragraph
+bundle: hero_donate
+mode: default
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_citation:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_donate_widget:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_quote:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

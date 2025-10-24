@@ -3,6 +3,7 @@
 .hero {
   &[data-component-id="wateraid:hero"] {
     margin-bottom: $wa-spacing-13;
+    position: relative;
   }
 
   &__image {
@@ -52,6 +53,28 @@
       border: none;
       padding: 0;
       cursor: pointer;
+    }
+  }
+
+  &__quote {
+    background-color: $wa-navy;
+    .quote {
+      background-color: $wa-navy;
+      justify-self: flex-end;
+      margin-top: 0;
+      width: calculate-rem(660);
+    }
+    .quote__content--quote {
+      @include h5();
+    }
+  }
+
+  &__donate {
+    @include desktop {
+      position: absolute;
+      top: $wa-spacing-13;
+      left: $wa-spacing-09;
+      width: calculate-rem(660);
     }
   }
 
@@ -236,5 +259,11 @@
     .hero__content--standfirst {
       margin-bottom: $wa-spacing-06;
     }
+  }
+
+  &--donate {
+.image__credit {
+  max-width: calculate-rem(660);
+}
   }
 }

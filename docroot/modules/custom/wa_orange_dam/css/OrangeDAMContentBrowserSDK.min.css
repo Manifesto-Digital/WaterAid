@@ -1,0 +1,6 @@
+/*!
+ * * @copyright
+ * * OrangeDAMContentBrowser – Copyright 2025
+ * * OrangeLogic <orangelogic.com>
+ */@import url(https://design-system.orangelogic.com/css/ol-light.css);#cortex-asset-picker-root{--cx-button-text-transform:none;--default-representative-background-color:#6cdaf3;--default-representative-color:#377a86;font-synthesis-weight:auto;color:var(--cx-color-neutral);font-family:var(--cx-font-sans)}#cortex-asset-picker-root :not(:defined){opacity:0}#cortex-asset-picker-root *{box-sizing:border-box}#cortex-asset-picker-root ::-webkit-scrollbar{height:17px;width:17px}#cortex-asset-picker-root ::-webkit-scrollbar-corner{background-color:initial}#cortex-asset-picker-root ::-webkit-scrollbar-thumb{background:#8e8e93;background-clip:padding-box;border:7px solid #0000;border-radius:13px;min-height:50px}#cortex-asset-picker-root ::-webkit-scrollbar-thumb:hover{background:#5b5b6f;background-clip:padding-box;border:4px solid #0000}
+/*# sourceMappingURL=OrangeDAMContentBrowserSDK.min.css.map*/

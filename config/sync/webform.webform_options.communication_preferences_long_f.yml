@@ -1,0 +1,14 @@
+uuid: 0b262ab0-191a-494f-b377-0a6735ac07bc
+langcode: en
+status: true
+dependencies: {  }
+id: communication_preferences_long_f
+label: 'Communication preferences (long form + social)'
+category: WaterAid
+likert: false
+options: |-
+  opt_in_email: 'Yes please, I''d like to hear from you by email'
+  opt_in_phone: 'Yes please, I''d like to hear from you by phone'
+  opt_in_sms: 'Yes please, I''d like to hear from you by SMS'
+  opt_in_social: 'Yes please, I''d like to hear from you on social media'
+  opt_in_post: 'No thank you, please do not contact me by post'

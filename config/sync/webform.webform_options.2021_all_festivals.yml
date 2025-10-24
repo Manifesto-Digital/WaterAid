@@ -1,0 +1,20 @@
+uuid: 20550c06-df0a-4f28-9c13-69e0ae4a1fb6
+langcode: en
+status: true
+dependencies: {  }
+id: 2021_all_festivals
+label: 'Festivals - all 2021'
+category: WaterAid
+likert: false
+options: |-
+  'Worthy Pastures 1': 'Worthy Pastures, 22 - 26 July'
+  'Worthy Pastures 2': 'Worthy Pastures, 27 July - 2 August'
+  'Worthy Pastures 3': 'Worthy Pastures, 3 - 9 August'
+  'Worthy Pastures 4': 'Worthy Pastures, 10 - 16 August'
+  'Worthy Pastures 5': 'Worthy Pastures, 17 - 23 August'
+  'Worthy Pastures 6': 'Worthy Pastures, 24 - 31 August'
+  'Green Man': 'Green Man'
+  'Camp Bestival': 'Camp Bestival'
+  'Glastonbury Abbey Extravaganza': 'Glastonbury Abbey Extravaganza'
+  Parklife: Parklife
+  'New Order Homecoming Concert': 'New Order Homecoming Concert'

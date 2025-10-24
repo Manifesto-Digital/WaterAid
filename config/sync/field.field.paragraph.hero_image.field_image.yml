@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_image
+    - media.type.dam_image
     - media.type.image
     - paragraphs.paragraphs_type.hero_image
 id: paragraph.hero_image.field_image
@@ -20,10 +21,11 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      dam_image: dam_image
       image: image
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: dam_image
 field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: ef3ab815-4c35-419f-b231-4c2b45dc0b46
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+id: media.dam_file
+target_entity_type_id: media
+target_bundle: dam_file
+default_langcode: site_default
+language_alterable: false

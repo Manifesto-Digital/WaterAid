@@ -1,0 +1,4 @@
+services:
+  wa_orange_dam.api:
+    class: Drupal\wa_orange_dam\Service\Api
+    arguments: ['@http_client']

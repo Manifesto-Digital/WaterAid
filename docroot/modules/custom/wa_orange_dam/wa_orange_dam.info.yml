@@ -1,0 +1,5 @@
+name: 'Orange DAM'
+type: module
+description: 'Display media from the Orange DAM'
+package: Orange DAM
+core_version_requirement: ^10 || ^11

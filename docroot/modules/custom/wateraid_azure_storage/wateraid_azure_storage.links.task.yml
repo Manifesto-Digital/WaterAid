@@ -1,0 +1,8 @@
+entity.wateraid_azure_storage.webform_azure_settings:
+  title: 'Azure Storage'
+  route_name: wateraid_azure_storage.webform_azure_settings
+  parent_id: entity.webform.results
+wateraid_azure_storage.settings_form.webform:
+  title: 'Webform'
+  route_name: wateraid_azure_storage.settings_form.webform
+  base_route: azure_storage.settings_form

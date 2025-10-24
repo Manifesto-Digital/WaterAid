@@ -1,0 +1,14 @@
+name: WaterAid Forms
+type: module
+description: Configurable forms for donations and general use.
+core_version_requirement: ^9 || ^10
+package: wateraid
+wateraid.package: forms
+dependencies:
+  - webform:webform
+  - webform:webform_ui
+  - clientside_validation:clientside_validation
+  - clientside_validation:clientside_validation_jquery
+config_devel:
+  - user.role.form_builder
+  - user.role.form_manager

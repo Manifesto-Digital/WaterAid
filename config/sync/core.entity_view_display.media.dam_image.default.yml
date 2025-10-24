@@ -1,0 +1,33 @@
+uuid: 84a7b5b5-7ff9-4237-86b8-90a0c34e9e8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.dam_image.field_media_dam_image
+    - image.style.large
+    - media.type.dam_image
+  module:
+    - wa_orange_dam
+id: media.dam_image.default
+targetEntityType: media
+bundle: dam_image
+mode: default
+content:
+  field_media_dam_image:
+    type: wa_orange_dam_image_formater
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

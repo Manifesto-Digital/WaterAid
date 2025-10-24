@@ -1,0 +1,26 @@
+uuid: 70d669a7-8977-4632-b86a-5983ab8878da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rich_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.facts_and_stats
+  module:
+    - text
+id: paragraph.facts_and_stats.field_rich_text
+field_name: field_rich_text
+entity_type: paragraph
+bundle: facts_and_stats
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+field_type: text_long

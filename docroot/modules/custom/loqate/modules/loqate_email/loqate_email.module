@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Contains loqate_email.module.
+ */
+
+use Drupal\loqate_email\Plugin\WebformElement\LoqateEmail;
+
+/**
+ * Implements hook_webform_element_info_alter().
+ */
+function loqate_email_webform_element_info_alter(array &$definitions): void {
+  // @todo remove LoqateEmail class and this hook after migration to LoqateEmailComposite.
+  $definitions['email']['class'] = LoqateEmail::class;
+}

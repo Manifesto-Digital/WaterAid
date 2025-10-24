@@ -1,0 +1,56 @@
+uuid: 5e4ba2f0-a96c-4a6f-83de-b07921c4be4a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: countries
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_uk_terms
+label: Countries
+source:
+  plugin: term_source
+  bundle: countries
+  fields:
+    - field_get_involv_category_title
+    - field_get_involved_description
+    - field_add_to_site_selector
+    - field_country_code
+    - field_is_current_site
+    - field_sequence_number
+    - field_url
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  name: name
+  description/value: description__value
+  description/format:
+    -
+      plugin: default_value
+      default_value: full_html
+  weight: weight
+  field_category_title/value: field_get_involv_category_title
+  field_category_description/value: field_get_involved_description
+  field_add_to_site_selector/value: field_add_to_site_selector
+  field_country_code/value: field_country_code
+  field_is_current_site/value: field_is_current_site
+  field_sequence_number/value: field_sequence_number
+  field_url/uri: field_url
+  parent:
+    plugin: migration_lookup
+    migration: countries
+    source: parent
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: countries
+idMap: {  }
+migration_dependencies: null
+include: null

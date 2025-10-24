@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Install file for webform_pdf_receipt module.
+ */
+
+/**
+ * Add encrypted field to the webform_submission table.
+ */
+function webform_pdf_receipt_install(): void {
+  \Drupal::entityDefinitionUpdateManager()->installFieldStorageDefinition('receipt', 'webform_submission', 'webform_pdf_receipt', webform_pdf_receipt_get_base_field());
+  \Drupal::database()->schema()->createTable('webform_pdf_receipt', [
+    'fields' => [
+      'rid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'size' => 'normal',
+        'default' => '0',
+      ],
+      'sid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'size' => 'normal',
+        'default' => '0',
+      ],
+    ],
+    'primary key' => ['rid'],
+  ]);
+}
+
+/**
+ * Add encrypted field to the webform_submission table.
+ */
+function webform_pdf_receipt_uninstall(): void {
+  \Drupal::configFactory()->getEditable('views.view.webform_receipts')->delete();
+  \Drupal::entityDefinitionUpdateManager()->uninstallFieldStorageDefinition(webform_pdf_receipt_get_base_field());
+  if (\Drupal::database()->schema()->tableExists('webform_pdf_receipt')) {
+    \Drupal::database()->schema()->dropTable('webform_pdf_receipt');
+  }
+}

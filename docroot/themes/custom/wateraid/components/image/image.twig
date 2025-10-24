@@ -1,6 +1,12 @@
-<div {{ attributes }}>
-  <div class="image__wrapper image__wrapper--{{ width }}">
-    <figure class="image image--{{ caption_display|replace({'_':'-'}) }}">
+{% set classes = [
+  'image',
+  'image--' ~ width,
+  'image--' ~ caption_display|replace({'_':'-'})
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="image__wrapper">
+    <figure class="image__content">
       {{ image }}
 
       {% if caption or credit %}

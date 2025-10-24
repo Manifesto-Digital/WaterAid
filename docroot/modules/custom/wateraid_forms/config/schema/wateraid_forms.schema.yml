@@ -1,0 +1,7 @@
+webform.settings.third_party.wateraid_forms:
+  type: mapping
+  label: 'Style settings'
+  mapping:
+    style_version:
+      type: string
+      label: 'Style version'

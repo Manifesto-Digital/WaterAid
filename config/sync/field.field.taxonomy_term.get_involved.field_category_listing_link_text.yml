@@ -1,0 +1,19 @@
+uuid: 852bc975-a987-4527-aa70-8eddc8371a2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_category_listing_link_text
+    - taxonomy.vocabulary.get_involved
+id: taxonomy_term.get_involved.field_category_listing_link_text
+field_name: field_category_listing_link_text
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Category Listing Link Text'
+description: 'e.g. <strong>View all campaigns</strong>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

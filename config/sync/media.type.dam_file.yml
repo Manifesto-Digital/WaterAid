@@ -1,0 +1,31 @@
+uuid: 8a1eb061-4bdb-40a9-8e53-87246be99f5f
+langcode: en
+status: true
+dependencies:
+  module:
+    - scheduler
+    - wa_orange_dam
+third_party_settings:
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+id: dam_file
+label: 'DAM File'
+description: 'Serve a file from the Orange DAM.'
+source: dam_file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_dam_file
+field_map:
+  name: name

@@ -1,8 +1,6 @@
 label: Innehåll
-description: 'Hitta och hantera innehåll.'
 display:
   default:
-    display_title: Förvald
     display_options:
       title: Innehåll
       fields:
@@ -14,12 +12,9 @@ display:
         name:
           label: Författare
         status:
-          label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
-        changed:
-          label: Uppdaterad
         langcode:
           label: Språk
           separator: ', '
@@ -39,9 +34,6 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      empty:
-        area_text_custom:
-          content: 'Inget innehåll tillgängligt.'
       filters:
         title:
           expose:
@@ -50,8 +42,6 @@ display:
           expose:
             label: Innehållstyp
         status:
-          expose:
-            label: Status
           group_info:
             label: 'Status för publicering'
             group_items:
@@ -63,10 +53,8 @@ display:
           expose:
             label: Språk
   page_1:
-    display_title: Sida
     display_options:
       menu:
         title: Innehåll
       tab_options:
         title: Innehåll
-        description: 'Hitta och hantera innehåll'

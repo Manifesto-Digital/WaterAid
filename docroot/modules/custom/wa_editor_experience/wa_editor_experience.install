@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for the editor experience.
+ */
+
+/**
+ * Delete test webform nodes.
+ */
+function wa_editor_experience_update_10001(): void {
+  foreach (\Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+    'type' => 'webform',
+  ]) as $node) {
+    $node->delete();
+  }
+}

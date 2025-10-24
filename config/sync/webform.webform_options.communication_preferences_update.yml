@@ -1,0 +1,13 @@
+uuid: 99cf00cb-286a-40fd-b7fe-81d73e1d8209
+langcode: en
+status: true
+dependencies: {  }
+id: communication_preferences_update
+label: 'Communication preferences (update your details form only)'
+category: WaterAid
+likert: false
+options: |-
+  opt_in_email: 'Yes please, I''d like to hear from you by email'
+  opt_in_phone: 'Yes please, I''d like to hear from you by phone'
+  opt_in_sms: 'Yes please, I''d like to hear from you by SMS'
+  opt_out_post: 'No thank you, please do not contact me by post'

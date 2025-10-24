@@ -1,0 +1,21 @@
+uuid: b8f937a1-0926-4c83-9fee-7aa33101cd57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_add_to_site_selector
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries.field_add_to_site_selector
+field_name: field_add_to_site_selector
+entity_type: taxonomy_term
+bundle: countries
+label: 'Add to site selector'
+description: 'Add this country to global site selector.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Added
+  off_label: 'Not Added'
+field_type: boolean

@@ -1,0 +1,19 @@
+uuid: 5404b122-f341-4393-a68f-b01518fd1794
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_phrases
+    - node.type.donation
+id: node.donation.field_search_phrases
+field_name: field_search_phrases
+entity_type: node
+bundle: donation
+label: 'Search Phrases'
+description: 'Enter any keywords related to this content that users may use when searching for it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

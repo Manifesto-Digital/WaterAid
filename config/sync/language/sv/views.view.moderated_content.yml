@@ -1,10 +1,6 @@
-label: 'Modererat innehåll'
-description: 'Hitta och moderera innehåll.'
 display:
   default:
-    display_title: Förvald
     display_options:
-      title: 'Modererat innehåll'
       fields:
         title:
           label: Titel
@@ -16,10 +12,8 @@ display:
           label: Författare
           separator: ', '
         moderation_state:
-          label: Modereringsstatus
           separator: ', '
         changed:
-          label: Uppdaterad
           separator: ', '
         operations:
           label: Funktioner
@@ -41,9 +35,6 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      empty:
-        area_text_custom:
-          content: 'Inget modererat innehåll tillgängligt. Endast väntande versioner av innehåll, till exempel utkast, listas här.'
       filters:
         title:
           expose:
@@ -51,11 +42,6 @@ display:
         type:
           expose:
             label: Innehållstyp
-        moderation_state:
-          expose:
-            label: Modereringsstatus
         langcode:
           expose:
             label: Språk
-  moderated_content:
-    display_title: 'Modererat innehåll'

@@ -1,0 +1,19 @@
+uuid: f4299460-6f76-4291-8aed-61bdf7b13348
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+_core:
+  default_config_hash: zgiNfDJ8fGk8SWqOylSkjIxpO4n2XmN8kHBK1LpNozU
+id: wateraid_uk
+label: 'WaterAid UK migration'
+description: 'Content from the wateraid.org/uk site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: migrate
+  migration_tags:
+    - wateraid_uk

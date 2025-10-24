@@ -1,0 +1,19 @@
+uuid: e06de179-f11b-4c52-8b4b-d6c789df77da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.facts_and_stats
+id: paragraph.facts_and_stats.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: facts_and_stats
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

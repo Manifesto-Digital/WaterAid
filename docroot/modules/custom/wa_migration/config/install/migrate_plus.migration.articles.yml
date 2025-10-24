@@ -1,0 +1,235 @@
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: articles
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_uk_nodes
+label: Articles
+source:
+  plugin: node_source
+  bundle: article
+  fields:
+    - field_audiences
+    - field_author
+    - field_countries
+    - field_get_involved_terms
+    - field_meta_tags
+    - field_post_description
+    - field_themes
+    - field_weight
+    - field_hide_related_content
+    - field_modules
+    - field_override_related
+    - field_related_content
+    - field_related_content_type
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  title: title
+  field_teaser_text: body__summary
+  field_audience:
+    plugin: migration_lookup
+    migration: audiences
+    source: field_audiences
+    no_stub: true
+  field_country:
+    plugin: migration_lookup
+    migration: countries
+    source: field_countries
+    no_stub: true
+  field_get_involved:
+    plugin: migration_lookup
+    migration: get_involved
+    source: field_get_involved_terms
+    no_stub: true
+  field_meta_tags: field_meta_tags
+  co_authors:
+    plugin: migration_lookup
+    migration: users
+    source: field_author
+    no_stub: true
+  field_post_description: field_post_description
+  field_theme:
+    plugin: migration_lookup
+    migration: themes
+    source: field_themes
+    no_stub: true
+  uid:
+    plugin: migration_lookup
+    migration: users
+    source: uid
+    no_stub: true
+  field_weight: field_weight
+  field_hide_related_content: field_hide_related_content
+  field_override_related_content: field_override_related
+  temp_articles:
+    -
+      plugin: migration_lookup
+      migration: articles
+      source: field_related_content
+      no_stub: true
+  temp_campaigns:
+    -
+      plugin: migration_lookup
+      migration: campaigns
+      source: field_related_content
+      no_stub: true
+  temp_country_details:
+    -
+      plugin: migration_lookup
+      migration: country_details
+      source: field_related_content
+      no_stub: true
+  temp_events:
+    -
+      plugin: migration_lookup
+      migration: events
+      source: field_related_content
+      no_stub: true
+  temp_filtered_landing_pages:
+    -
+      plugin: migration_lookup
+      migration: filtered_landing_pages
+      source: field_related_content
+      no_stub: true
+  temp_flexible_content:
+    -
+      plugin: migration_lookup
+      migration: flexible_content
+      source: field_related_content
+      no_stub: true
+  temp_get_involved:
+    -
+      plugin: migration_lookup
+      migration: get_involved_node
+      source: field_related_content
+      no_stub: true
+  temp_press_and_media:
+    -
+      plugin: migration_lookup
+      migration: press_and_media
+      source: field_related_content
+      no_stub: true
+  temp_jobs:
+    -
+      plugin: migration_lookup
+      migration: jobs
+      source: field_related_content
+      no_stub: true
+  temp_press_and_media_biographies:
+    -
+      plugin: migration_lookup
+      migration: press_and_media_biographies
+      source: field_related_content
+      no_stub: true
+  temp_publication:
+    -
+      plugin: migration_lookup
+      migration: publication
+      source: field_related_content
+      no_stub: true
+  temp_standard_page:
+    -
+      plugin: migration_lookup
+      migration: standard_page
+      source: field_related_content
+      no_stub: true
+  temp_stories:
+    -
+      plugin: migration_lookup
+      migration: stories
+      source: field_related_content
+      no_stub: true
+  field_related_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_articles'
+      - '@temp_campaigns'
+      - '@temp_country_details'
+      - '@temp_events'
+      - '@temp_filtered_landing_pages'
+      - '@temp_flexible_content'
+      - '@temp_get_involved'
+      - '@temp_press_and_media'
+      - '@temp_jobs'
+      - '@temp_press_and_media_biographies'
+      - '@temp_publication'
+      - '@temp_standard_page'
+      - '@temp_stories'
+  field_related_content_type:
+    -
+      plugin: skip_on_empty
+      source: field_related_content_type
+      method: process
+    -
+      plugin: static_map
+      source: field_related_content_type
+      map:
+        campaign: standard_page
+        country_details: standard_page
+        filtered_landing_page: listing_page
+        flexible_content: standard_page
+        get_involved: landing_page
+        job: standard_page
+        press_and_media: standard_page
+        press_and_media_flexible: standard_page
+        shorthand_story: story
+        stories: story
+  temp_body:
+    -
+      plugin: body_to_paragraph
+      source: body__value
+  temp_paragraphs:
+    -
+      plugin: paragraph_migration_lookup
+      migrations:
+        - general_text_area
+        - wysiwyg
+        - menu_cta
+        - resource_link_with_description
+        - faqs
+      source: field_modules
+      no_stub: true
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_paragraphs'
+destination:
+  plugin: 'entity:node'
+  default_bundle: article
+idMap: {  }
+migration_dependencies:
+  required:
+    - audiences
+    - campaigns
+    - countries
+    - country_details
+    - events
+    - filtered_landing_pages
+    - flexible_content
+    - get_involved
+    - get_involved_node
+    - jobs
+    - press_and_media
+    - press_and_media_biographies
+    - publication
+    - standard_page
+    - stories
+    - themes
+    - users
+    - general_text_area
+    - wysiwyg
+    - menu_cta
+    - resource_link_with_description
+    - faqs
+include: null

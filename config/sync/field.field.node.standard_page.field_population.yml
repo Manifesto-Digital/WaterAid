@@ -1,0 +1,19 @@
+uuid: befe8cb8-e5d0-4407-8de7-4129922f6283
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_population
+    - node.type.standard_page
+id: node.standard_page.field_population
+field_name: field_population
+entity_type: node
+bundle: standard_page
+label: Population
+description: 'The number of people currently living in the country, for example <em>20 milllion</em> or <em>250 thousand</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

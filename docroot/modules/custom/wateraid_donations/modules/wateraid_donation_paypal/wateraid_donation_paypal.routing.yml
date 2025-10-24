@@ -1,0 +1,17 @@
+wateraid_donation_paypal.admin:
+  path: '/admin/config/services/paypal_api'
+  defaults:
+    _form: '\Drupal\wateraid_donation_paypal\Form\PayPalApiAdminForm'
+    _title: 'PayPal API Settings'
+  requirements:
+    _permission: 'administer paypal api'
+  options:
+    _admin_route: TRUE
+
+paypal_api.webhook:
+  path: '/paypal/webhook'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\wateraid_donation_paypal\Controller\PayPalApiWebhook::handleIncomingWebhook'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,11 @@
+uuid: e250ab59-3fc1-46fe-8914-9b63c2b6c4e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+id: media.dam_video
+target_entity_type_id: media
+target_bundle: dam_video
+default_langcode: site_default
+language_alterable: false

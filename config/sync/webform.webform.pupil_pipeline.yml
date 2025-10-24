@@ -1,0 +1,401 @@
+uuid: 1ca8e7a6-a66f-4449-9827-0dff0e73da5e
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    message:
+      value: "<p>This fun and educational activity will inspire your pupils to get clean water to children who need it most.</p>\r\n\r\n<ul>\r\n\t<li><strong>Ask your pupils to bring in £2 or a donation of their choice.</strong> £2 is the cost of one metre of pipeline, which could help transport clean, safe water to children in the developing world. £250 from your school could pay for a handpump!</li>\r\n\t<li><strong>Gather your pupils together and direct them to form a long line.&nbsp;</strong>They can go through the playground, over the climbing frame, across the playing field or even around town. Try to make your Pupil Pipeline as long as possible!</li>\r\n\t<li><strong>Start your Pupil Pipeline challenge!</strong> Ask your pupils to pass one or more buckets, bottles, jars, cups or even wellies filled with water along the line without spilling a drop. How quickly can they pass it along? You can then use the water for a project of your choice – for example, watering the plants in your school garden. Or you could include a Pupil Pipeline in your school sports day and add a competitive edge!</li>\r\n</ul>\r\n\r\n<h3>Here's what the Pupil Pipeline achieved last year:</h3>\r\n\r\n<drupal-entity data-embed-button=\"video\" data-entity-embed-display=\"view_mode:media.embedded\" data-entity-type=\"media\" data-entity-uuid=\"6c5537b5-4080-41f5-bc80-f4247948fa7c\"></drupal-entity>\r\n"
+      format: basic_html
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_wizard_extra:
+    one_page: false
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  wateraid_forms:
+    style_version: v1
+weight: 0
+open: null
+close: null
+uid: 21
+template: false
+archive: false
+id: pupil_pipeline
+title: 'Pupil Pipeline'
+description: ''
+categories:
+  - Community
+elements: |-
+  title:
+    '#type': select
+    '#title': Title
+    '#options': titles
+  first_name:
+    '#type': textfield
+    '#title': 'First name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last name'
+    '#required': true
+  email:
+    '#type': loqate_email_composite
+    '#title': 'Your email address'
+    '#required': true
+    '#email__title': 'Your email address'
+    '#email__required': true
+  phone_number:
+    '#type': tel
+    '#title': 'Your phone number'
+  job_title:
+    '#type': textfield
+    '#title': 'Your job title'
+    '#required': true
+  organisation_type:
+    '#type': webform_select_other
+    '#title': 'Organisation type'
+    '#options':
+      'Primary school': 'Primary school'
+      'Secondary school': 'Secondary school'
+      'Other school': 'Other school'
+      'Church or faith group': 'Church or faith group'
+      University: University
+      Nursery: Nursery
+      'Youth organisation': 'Youth organisation (e.g. Scouts or Guides)'
+      'Rotary club': 'Rotary Club'
+      'Inner wheel': 'Inner Wheel'
+      'Lions Club': 'Lions Club'
+      Soroptimists: Soroptimists
+    '#empty_option': ' '
+    '#other__option_label': Other
+    '#required': true
+  organisation_name:
+    '#type': textfield
+    '#title': 'School or organisation name'
+    '#required': true
+  school_or_organisation_address:
+    '#type': webform_address_capture_plus_manual
+    '#title': 'School or organisation address'
+    '#required': true
+    '#address_line1_search_label': 'Address line 1 (optional)'
+    '#postal_code_search_label': Postcode
+    '#address__title': 'School/organisation address one'
+    '#address_2__title': 'School/organisation address two'
+    '#city__title': City/town
+    '#state_province__title': County
+    '#postal_code__title': Postcode
+    '#address__required': true
+    '#address_2__required': false
+    '#city__required': true
+    '#country__required': true
+    '#state_province__required': false
+    '#postal_code__required': true
+    '#capture_plus_active': true
+    '#state_province__type': textfield
+  what_prompted_you_to_request_a_pack:
+    '#type': webform_select_other
+    '#title': 'What prompted you to sign up?'
+    '#options':
+      'Social media': 'Social media'
+      'Search engine': 'Search engine'
+      'Email from WaterAid': 'Email from WaterAid'
+      'WaterAid website': 'WaterAid website'
+      'TV advert': 'TV advert'
+      'Postcard or flyer': 'Postcard or flyer'
+      'Water company education centre': 'Water company education centre'
+      'The Education/Big Bang Show': 'The Education Show or Big Bang Show'
+      'The Guardian website': 'The Guardian website'
+      'TES website': 'TES website'
+      'Resources4Schools website': 'Resources4Schools website'
+      'Water Explorer': 'Water Explorer'
+      Eco-schools: Eco-schools
+      'Recommended by friends or family': 'Recommended by friends or family'
+      'Article online or in a magazine': 'Article online or in a magazine'
+      'Teach Primary or Teach Secondary': 'Teach Primary or Teach Secondary'
+      Scholastic: Scholastic
+    '#empty_option': ' '
+    '#other__option_label': Other
+    '#required': true
+  if_you_know_the_date_of_your_event_please_let_us_know_here:
+    '#type': date
+    '#title': 'If you know the date of your event, please let us know here'
+    '#date_date_min': '+1 day'
+  opt_in_intro:
+    '#type': processed_text
+    '#text': |
+      <p><strong>By signing up to the Pupil Pipeline you are agreeing to receive information and resources relating to the challenge.</strong></p>
+
+      <p>However, we’d love to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know how you’d like to hear from us.</p>
+    '#format': basic_html
+  communication_preferences:
+    '#type': flexible_options
+    '#title': 'Communication preferences'
+    '#title_display': invisible
+    '#options': communication_preferences_long_form_
+    '#format_items': ul
+  privacy_statement:
+    '#type': processed_text
+    '#text': |
+      <p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>
+    '#format': basic_html
+  captcha:
+    '#type': captcha
+    '#captcha_type': recaptcha/reCAPTCHA
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /form/pupil_pipeline
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: /uk/pupil-pipeline/confirmation
+  confirmation_title: 'Thank you for joining The Pupil Pipeline!'
+  confirmation_message: "<p><strong>You can now <a href=\"/uk/get-involved/teaching/join-the-pupil-pipeline/resources\" target=\"_blank\">browse and download all the resources</a> you need to get started.</strong></p>\r\n\r\n<p>We&#39;ve also emailed you the download link, so you can refer to it whenever you need.</p>\r\n\r\n<p>If you have any difficulty downloading your resources, or if you have any questions about the challenge, get in touch with us on 020 7793 4594 or <a href=\"mailto:schools@wateraid.org\">schools@wateraid.org</a> &ndash; we&#39;d love to help!</p>"
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 90
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  thank_you_for_ordering_your_water_resource_pack:
+    id: email
+    handler_id: thank_you_for_ordering_your_water_resource_pack
+    label: 'Thank you for signing your school up to The Pupil Pipeline challenge'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email:email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: schools@wateraid.org
+      from_options: {  }
+      from_name: 'Lizzie Griffiths, WaterAid'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Thank you for signing your school up to The Pupil Pipeline challenge!'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p>Thank you for signing up your school to join The Pupil Pipeline challenge, so we can get water to children who need it. You now have access to <a href="/uk/get-involved/teaching/join-the-pupil-pipeline/resources">our fantastic range of online resources.</a> They include:</p><ul><li>an inspiring film to share with your class or use in an assembly, showing what their fundraising can help achieve,</li><li>science, geography, art, and design &amp; technology teaching resources to make learning about water and pipes fun,</li><li>a template letter to tell parents and guardians about the challenge,</li><li>a poster to advertise your event,</li><li>fundraising resources and ideas to help you run your event,</li><li>stories from Ethiopia.</li></ul><p>Make sure you also <a href="https://www.wateraid.org/uk/get-involved/teaching/request-an-educational-workshop">book a free WaterAid speaker</a> to come to your school and bring the Pupil Pipeline to life.</p><p>If you’d like any other resources please contact us at <a href="mailto:schools@wateraid.org">schools@wateraid.org</a> or by calling 020 7793 4594 – we''ll be very happy to help!</p><p>Thank you again, and best of luck for your event!</p><p>Lizzie Griffiths,<br>WaterAid Schools Team</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

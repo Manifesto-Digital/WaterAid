@@ -1,6 +1,11 @@
 @import "./sass/styles";
 
 .cta {
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+
   &__image {
     width: 100%;
 
