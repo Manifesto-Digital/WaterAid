@@ -16,6 +16,18 @@
     );
   }
 
+
+
+  &__text {
+    [data-component-id="wateraid:rich_text"] {
+      margin: 0;
+    }
+  }
+
+  .link--text {
+    margin-top: $wa-spacing-07;
+  }
+
   &__media {
     margin: 0;
   }
