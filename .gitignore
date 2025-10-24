@@ -28,6 +28,8 @@ example.gitignore
 /tmp
 ~*.xlsx
 *.sql*
+.ddev/.env.web
+
 
 # Ignore local persistent files.
 .persist
@@ -75,7 +77,6 @@ php_errors.log
 # Development files.
 settings.local.php
 .env.local
-.ddev/.env
 
 # Packages
 *.7z

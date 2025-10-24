@@ -1309,69 +1309,6 @@ header img {
   }
 }
 
-.layout__two-column {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-}
-
-@media only screen and (min-width: 768px) {
-  .layout__two-column {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column {
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-.layout__two-column--main {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  .layout__two-column--main {
-    grid-column: span 6;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--main {
-    grid-column: span 8;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--main {
-    margin-left: 7.125rem;
-  }
-}
-
-.layout__two-column--side {
-  grid-column: span 4;
-}
-
-@media only screen and (min-width: 768px) {
-  .layout__two-column--side {
-    grid-column: span 6;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--side {
-    grid-column: span 4;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .layout__two-column--side {
-    margin-left: 5.625rem;
-  }
-}
-
 body {
   font-family: "Noto Sans";
 }
@@ -1380,5 +1317,75 @@ footer {
   background-color: #43cfb5;
 }
 
+.number-input {
+  width: 100%;
+}
 
-/*# sourceMappingURL=styles.css.map*/
+.number-input-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.number-input__buttons {
+  display: flex;
+  flex-direction: row;
+  margin-left: -65px;
+  padding: 10px 0;
+}
+
+.number-input__button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .2s ease-in-out;
+  z-index: 1;
+}
+
+.number-input__button:disabled {
+  cursor: not-allowed;
+  opacity: .4;
+}
+
+.number-input__button:disabled:hover {
+  background-color: transparent;
+}
+
+.number-input__button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.number-input__button--decrement {
+  border-right: 1px solid #e8e8eb;
+}
+
+.number-input input {
+  -webkit-appearance: none;
+     -moz-appearance: textfield;
+          appearance: textfield;
+  width: 100%;
+  height: 50px;
+  padding: 0 50px;
+  border-radius: .125rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+  position: relative;
+}
+
+.number-input input::-webkit-outer-spin-button, .number-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/*# sourceMappingURL=number_input.css.map*/

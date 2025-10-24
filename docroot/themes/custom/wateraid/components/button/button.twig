@@ -1,7 +1,13 @@
+{%
+  set button_attributes = create_attribute(attributes|default({}))
+  .addClass('button', 'button--' ~ type, 'button--' ~ theme)
+  .setAttribute('aria-label', text)
+%}
+
 {% if link %}
 <a href="{{ link }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
   {% else %}
-  <button id="{{ id }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} >
+  <button {{ button_attributes }} id="{{ id }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} >
     {% endif %}
 
     {% if type == 'primary' or type == 'secondary' %}
