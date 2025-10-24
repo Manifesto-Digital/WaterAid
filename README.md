@@ -11,6 +11,9 @@ To install site: `make install`
 
 ## Backend
 
+* To set up your local environment, copy the file at .env.example to .ddev/.env.web and add a non-expiring bearer
+  token from Orange DAM.
+
 
 ## Frontend
 

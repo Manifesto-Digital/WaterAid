@@ -863,3 +863,5 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
 $repo_root = dirname(DRUPAL_ROOT);
 
 $settings['config_sync_directory'] = realpath("$repo_root/config/sync");
+
+$settings['orange_dam_bearer'] = $_ENV['ORANGE_DAM_BEARER'] ?? getenv('ORANGE_DAM_BEARER');
