@@ -5,10 +5,6 @@ description: Donate widget
 props:
   type: object
   properties:
-    heading:
-      type: string
-      title: Heading
-      examples: []
     button_text:
       type: string
       title: Button text
@@ -28,6 +24,10 @@ props:
     webform_node:
       type: string
       title: Webform node url
+slots:
+  heading:
+    type: string
+    title: Heading
 libraryOverrides:
   css:
     theme:
