@@ -3,7 +3,6 @@ langcode: en
 status: open
 dependencies:
   module:
-    - wateraid_azure_storage
     - wateraid_forms
 third_party_settings:
   wateraid_forms:

@@ -79,9 +79,9 @@ hidden:
   field_population: true
   field_regions: true
   field_review_date: true
+  field_search_phrases: true
   field_shortcode: true
   field_sticky_button_text: true
-  field_search_phrases: true
   field_subject_area: true
   field_teaser_image: true
   field_teaser_text: true

@@ -3,7 +3,6 @@ langcode: en
 status: closed
 dependencies:
   module:
-    - wateraid_azure_storage
     - wateraid_donation_forms
     - wateraid_forms
     - webform_pdf_receipt
