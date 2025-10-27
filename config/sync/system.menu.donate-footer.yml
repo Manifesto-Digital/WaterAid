@@ -1,0 +1,8 @@
+uuid: dd2d20bc-787c-40f3-85ea-b26da997b75d
+langcode: en
+status: true
+dependencies: {  }
+id: donate-footer
+label: 'Donate footer menu'
+description: ''
+locked: false
