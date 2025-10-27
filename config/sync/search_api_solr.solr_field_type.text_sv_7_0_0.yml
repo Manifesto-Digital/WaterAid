@@ -82,9 +82,9 @@ field_type:
           words: stopwords_sv.txt
         -
           class: solr.SynonymGraphFilterFactory
+          ignoreCase: true
           synonyms: synonyms_sv.txt
           expand: true
-          ignoreCase: true
         -
           class: solr.SwedishLightStemFilterFactory
         -
@@ -161,9 +161,9 @@ unstemmed_field_type:
           words: stopwords_sv.txt
         -
           class: solr.SynonymGraphFilterFactory
+          ignoreCase: true
           synonyms: synonyms_sv.txt
           expand: true
-          ignoreCase: true
         -
           class: solr.ScandinavianNormalizationFilterFactory
         -
@@ -370,10 +370,6 @@ text_files:
     ert
     era
     vilkas
-  synonyms: |
-    drupal, durpal
-  nouns: |
-
   protwords: |
 
   accents: |
@@ -562,3 +558,7 @@ text_files:
     "\u014D" => "o"
     # ū => u
     "\u016B" => "u"
+  synonyms: |
+    drupal, durpal
+  nouns: |
+
