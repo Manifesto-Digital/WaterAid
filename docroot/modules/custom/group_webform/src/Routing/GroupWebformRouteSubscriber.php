@@ -42,6 +42,8 @@ class GroupWebformRouteSubscriber extends RouteSubscriberBase {
         // Webform permission: webform.view.
         case 'entity.webform.assets.javascript':
         case 'entity.webform.assets.css':
+          // Don't block custom JS and CSS attached to the webforms.
+          break;
           // '/webform/{webform}/confirmation'
         case 'entity.webform.confirmation':
 
