@@ -183,7 +183,7 @@ elements: |-
     '#wrapper_attributes':
       class:
         - form-item--donate-button
-    '#markup': '<p><a class="webform-button--submit button button--primary hidden">Donate</a></p>'
+    '#markup': '<p><a class="webform-button--submit button button--primary button--light hidden">Donate</a></p>'
   project:
     '#type': hidden
     '#title': project
