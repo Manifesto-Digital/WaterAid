@@ -17,7 +17,7 @@
   </div>
 
   <div class="m-text-media__media">
-    {% if media_type == 'image' %}
+    {% if media_type == 'dam_image' %}
       {{ include('wateraid:image', {
         image: media,
         caption: caption,
@@ -28,11 +28,12 @@
     {% else %}
       {{ include('wateraid:video', {
         video: media,
-        type: 'local',
+        type: 'remote',
         caption: caption,
+        image: thumbnail,
         credit: credit,
         width: 'full',
-      }) }}
+      }, with_context: false) }}
     {% endif %}
   </div>
 </div>

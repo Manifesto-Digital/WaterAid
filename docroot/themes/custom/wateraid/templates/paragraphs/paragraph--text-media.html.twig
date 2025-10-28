@@ -16,15 +16,12 @@
     {% set media_type = paragraph.field_media.entity.bundle() %}
   {% endif %}
 
-  {% if media_type == 'video' %}
-    {% set video_url = file_url(paragraph.field_media[0].entity.field_media_video_file.entity.uri.value) %}
-  {% endif %}
-
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:text_media', {
       text: content.field_rich_text,
-      media: media_type == 'video' ? video_url : content.field_media,
+      media: content.field_media,
+      thumbnail: content.field_image,
       caption: content.field_caption,
       caption_display: paragraph.field_caption_display.0.value,
       credit: content.field_credit,

@@ -32,6 +32,9 @@ slots:
     title: Media
     description: Media slot
     required: true
+  thumbnail:
+    title: Thumbnail
+    description: Video thumbnail
 libraryOverrides:
   css:
     theme:
