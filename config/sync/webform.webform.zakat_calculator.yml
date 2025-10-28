@@ -180,7 +180,10 @@ elements: |-
     '#title': 'Your Zakat donation (£)'
   donate_button:
     '#type': webform_markup
-    '#markup': '<p><a>Donate</a></p>'
+    '#wrapper_attributes':
+      class:
+        - form-item--donate-button
+    '#markup': '<p><a class="webform-button--submit button button--primary hidden">Donate</a></p>'
   project:
     '#type': hidden
     '#title': project
