@@ -5,10 +5,14 @@
  * Functions to support theming.
  */
 
-use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Component\Utility\Html;
 use Drupal\paragraphs\Entity\Paragraph;
+
+// Require all the theme includes.
+$theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
+  require_once $file;
+}
 
 /**
  * Implements hook_preprocess_image_widget().
@@ -23,37 +27,6 @@ function wateraid_preprocess_image_widget(array &$variables) {
   if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
     unset($data['preview']);
   }
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function wateraid_preprocess_paragraph(&$variables): void {
-  if ($variables['paragraph']->bundle() == 'quote') {
-    $variables['attributes']['class'][] = 'quote-type--' . Html::cleanCssIdentifier($variables['paragraph']->get('field_quote_type')->getString());
-  }
-
-  $request = \Drupal::request();
-  $route_match = \Drupal::routeMatch();
-  $variables['page_title'] = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-
-  $variables['#cache']['contexts'][] = 'url';
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function wateraid_preprocess_paragraph__image(&$variables): void {
-  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
-  $paragraph = $variables['paragraph'];
-  $parent = $paragraph->getParentEntity();
-  // For image paragraphs referenced from an image_gallery paragraph, we want to
-  // force an arbitrary width for images, any other width names will mess with
-  // the gallery implementation.
-  if ($parent instanceof ParagraphInterface && $parent->bundle() === 'image_gallery') {
-    $variables['force_width'] = 'gallery-image';
-  }
-
 }
 
 /**
