@@ -39,6 +39,14 @@
     margin: 0;
   }
 
+  .donate-widget[data-component-id="wateraid:donate_widget"] {
+    margin-top: 0;
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
   &--light {
     .quote {
       background-color: $wa-white;

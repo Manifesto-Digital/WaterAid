@@ -1,14 +1,20 @@
 @import "./sass/styles";
 
 .donate-widget {
-  background-color: $wa-blue;
-  color: $wa-white;
-  padding: $wa-spacing-07 $wa-spacing-05;
+ &[data-component-id="wateraid:donate_widget"] {
+   background-color: $wa-blue;
+   color: $wa-white;
+   padding: $wa-spacing-07 $wa-spacing-05;
+   margin-top: $wa-spacing-07;
 
-  @include tablet {
-    padding: $wa-spacing-09 $wa-spacing-07;
-  }
+   @include tablet {
+     padding: $wa-spacing-09 $wa-spacing-07;
+   }
 
+   @include desktop {
+     margin-top: $wa-spacing-09;
+   }
+ }
   &__heading {
     margin-bottom: $wa-spacing-06;
 
