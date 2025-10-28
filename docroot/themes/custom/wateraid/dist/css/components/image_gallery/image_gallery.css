@@ -1601,7 +1601,24 @@ body {
 }
 
 .image-gallery__controls.mobile {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-gallery__controls.mobile {
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-gallery__controls.mobile {
+    grid-column: span 8;
+  }
+}
+
+.image-gallery__controls.mobile {
   display: flex;
+  justify-content: flex-end;
 }
 
 @media only screen and (min-width: 1440px) {

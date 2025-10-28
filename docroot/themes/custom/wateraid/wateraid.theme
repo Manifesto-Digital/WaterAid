@@ -5,8 +5,14 @@
  * Functions to support theming.
  */
 
-use Drupal\Component\Utility\Html;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+
+// Require all the theme includes.
+$theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
+  require_once $file;
+}
 
 /**
  * Implements hook_preprocess_image_widget().
@@ -21,21 +27,6 @@ function wateraid_preprocess_image_widget(array &$variables) {
   if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
     unset($data['preview']);
   }
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function wateraid_preprocess_paragraph(&$variables): void {
-  if ($variables['paragraph']->bundle() == 'quote') {
-    $variables['attributes']['class'][] = 'quote-type--' . Html::cleanCssIdentifier($variables['paragraph']->get('field_quote_type')->getString());
-  }
-
-  $request = \Drupal::request();
-  $route_match = \Drupal::routeMatch();
-  $variables['page_title'] = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-
-  $variables['#cache']['contexts'][] = 'url';
 }
 
 /**
@@ -67,7 +58,7 @@ function wateraid_preprocess_form_element_label(&$variables) {
  * Targets webform wizard buttons to be rendered as <button> elements
  * instead of <input> elements by adding a custom flag for the theme layer.
  */
-function wateraid_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (isset($form['#webform_id'])) {
     if (isset($form['actions']['wizard_prev'])) {
       $form['actions']['wizard_prev']['#button_type'] = 'previous';
@@ -95,7 +86,7 @@ function wateraid_preprocess_input(&$variables) {
   }
 }
 
-/*
+/**
  * Implements hook_preprocess_paragraph__donation_widget().
  *
  * This function now calls a helper to process the monthly and one-off

@@ -44,7 +44,8 @@ class GroupWebformRouteSubscriber extends RouteSubscriberBase {
         case 'entity.webform.assets.css':
           // Don't block custom JS and CSS attached to the webforms.
           break;
-          // '/webform/{webform}/confirmation'
+
+        // '/webform/{webform}/confirmation'
         case 'entity.webform.confirmation':
 
           // Webform permission: webform.submission_page.
@@ -64,7 +65,7 @@ class GroupWebformRouteSubscriber extends RouteSubscriberBase {
         // 'update group_webform:webform entity',any/own
         // Webform permission: webform.update. (using 'update' as $op)
         case 'entity.webform.edit_form':
-        //case 'entity.webform.add_form':
+          // Case 'entity.webform.add_form':
         case 'entity.webform.handlers':
         case 'entity.webform.handler':
         case 'entity.webform.handler.add_form':

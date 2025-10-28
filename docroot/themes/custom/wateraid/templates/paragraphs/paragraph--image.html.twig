@@ -38,13 +38,15 @@
  * @ingroup themeable
  */
 #}
+{% set width = paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim %}
+{% set width = force_width ? force_width : width %}
 
 {% block paragraph %}
   {{ include('wateraid:image', {
     image: content.field_image,
     caption: paragraph.field_caption.value ? content.field_caption,
     credit: paragraph.field_credit.value ? content.field_credit,
-    width: paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim,
+    width: width,
     caption_display: paragraph.field_caption_display.value ? content.field_caption_display|render|striptags|trim
   }, only) }}
 {% endblock paragraph %}

@@ -38,7 +38,10 @@
     gap: $wa-spacing-02;
 
     &.mobile {
+      @include grid-item-span(4, 6, 8);
       display: flex;
+      justify-content: flex-end;
+
       @include desktop() {
         display: none;
       }
