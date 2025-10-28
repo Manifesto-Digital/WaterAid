@@ -1,0 +1,8 @@
+uuid: 8a198ba9-1fb0-407f-af4d-389a33b6f96a
+langcode: en
+status: true
+dependencies: {  }
+id: secondary-footer
+label: 'Secondary footer menu'
+description: ''
+locked: false

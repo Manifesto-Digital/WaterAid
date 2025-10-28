@@ -1,0 +1,120 @@
+{% stories footer with { title: 'wateraid/Organisms/Footer' } %}
+  {% story default with {
+    name: 'Footer',
+    args: {
+      contact_details: {
+        tel: '000-000-0000',
+        mail: 'country@wateraid.org',
+        address: 'WaterAid address'
+      },
+      cta: {
+        link: '/',
+        text: 'Donate',
+      },
+      primary_menu: [
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+        {
+          url: '#',
+          title: 'Primary footer link',
+        },
+      ],
+      secondary_menu: [
+        {
+          url: '#',
+          title: 'Secondary footer link',
+        },
+        {
+          url: '#',
+          title: 'Secondary footer link',
+        },
+        {
+          url: '#',
+          title: 'Secondary footer link',
+        },
+        {
+          url: '#',
+          title: 'Secondary footer link',
+        },
+        {
+          url: '#',
+          title: 'Secondary footer link',
+        },
+        {
+          url: '#',
+          title: 'Secondary footer link',
+        },
+      ],
+      facebook_url: '#',
+      instagram_url: '#',
+      tiktok_url: '#',
+      linkedin_url: '#',
+      youtube_url: '#',
+      variant: 'default'
+    },
+  } %}
+
+    {% set copy %}
+      <p>Lorem ipsum dolor sit amet consectetur. Pellentesque interdum quam augue elit sit nec. Ultricies tellus nunc
+        consequat in lobortis. Elit arcu amet augue eget tincidunt iaculis id rhoncus donec.</p>
+      <p>Tincidunt nibh cum tristique aliquet viverra. Cursus turpis eget vulputate tortor semper nullam. Ornare enim
+        rhoncus laoreet maecenas non massa. Nunc mi elit ipsum mollis lorem. Feugiat purus ante in enim sit. Quis ut sed
+        a sit in et elementum nibh vitae integer laoreet amet vestibulum.</p>
+    {% endset %}
+
+
+    {{ include('wateraid:footer', {
+      contact_details,
+      cta,
+      address,
+      primary_menu,
+      secondary_menu,
+      facebook_url,
+      instagram_url,
+      tiktok_url,
+      linkedin_url,
+      youtube_url,
+      copy,
+      variant: 'default'
+    }) }}
+  {% endstory %}
+
+{% endstories %}

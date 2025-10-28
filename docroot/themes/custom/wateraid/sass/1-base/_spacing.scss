@@ -1,49 +1,49 @@
-@use "mixins";
+@use "./functions";
 
 // 0
 $wa-spacing-00: 0rem;
 
 // 4px
-$wa-spacing-01: mixins.calculate-rem(4);
+$wa-spacing-01: functions.calculate-rem(4);
 
 // 8px
-$wa-spacing-02: mixins.calculate-rem(8);
+$wa-spacing-02: functions.calculate-rem(8);
 
 // 12px
-$wa-spacing-03: mixins.calculate-rem(12);
+$wa-spacing-03: functions.calculate-rem(12);
 
 // 16px
-$wa-spacing-04: mixins.calculate-rem(16);
+$wa-spacing-04: functions.calculate-rem(16);
 
 // 20px
-$wa-spacing-05: mixins.calculate-rem(20);
+$wa-spacing-05: functions.calculate-rem(20);
 
 // 24px
-$wa-spacing-06: mixins.calculate-rem(24);
+$wa-spacing-06: functions.calculate-rem(24);
 
 // 32px
-$wa-spacing-07: mixins.calculate-rem(32);
+$wa-spacing-07: functions.calculate-rem(32);
 
 // 40px
-$wa-spacing-08: mixins.calculate-rem(40);
+$wa-spacing-08: functions.calculate-rem(40);
 
 // 48px
-$wa-spacing-09: mixins.calculate-rem(48);
+$wa-spacing-09: functions.calculate-rem(48);
 
 // 56px
-$wa-spacing-10: mixins.calculate-rem(56);
+$wa-spacing-10: functions.calculate-rem(56);
 
 // 64px
-$wa-spacing-11: mixins.calculate-rem(64);
+$wa-spacing-11: functions.calculate-rem(64);
 
 // 72px
-$wa-spacing-12: mixins.calculate-rem(72);
+$wa-spacing-12: functions.calculate-rem(72);
 
 // 96px
-$wa-spacing-13: mixins.calculate-rem(96);
+$wa-spacing-13: functions.calculate-rem(96);
 
 // 120px
-$wa-spacing-14: mixins.calculate-rem(120);
+$wa-spacing-14: functions.calculate-rem(120);
 
 // 144px
-$wa-spacing-15: mixins.calculate-rem(144);
+$wa-spacing-15: functions.calculate-rem(144);

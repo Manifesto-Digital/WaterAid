@@ -1,0 +1,19 @@
+uuid: a81f5277-b18d-469e-8d41-fd6085fb4f91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.cancel_anytime
+id: paragraph.cancel_anytime.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: cancel_anytime
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

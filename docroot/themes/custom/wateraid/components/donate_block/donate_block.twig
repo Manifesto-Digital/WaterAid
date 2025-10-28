@@ -1,0 +1,21 @@
+{% set classes = [
+  'donate-block',
+  'donate-block--' ~ theme,
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="donate-block__wrapper">
+    {% if title %}
+      <h2 class="donate-block__title">{{ title }}</h2>
+    {% endif %}
+
+    {% if content %}
+      <div class="donate-block__content">{{ content }}</div>
+    {% endif %}
+  </div>
+
+  <div class="donate-block__widget">
+    {{ widget }}
+  </div>
+
+</div>

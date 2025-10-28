@@ -1,0 +1,23 @@
+uuid: 35bda0a8-b705-4e8c-b0a6-6ce57bb563b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_monthly_default
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_monthly_default
+field_name: field_monthly_default
+entity_type: paragraph
+bundle: donation_widget
+label: 'Set monthly as default'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,19 @@
+uuid: d9cdbe2d-ae25-46af-8299-c9c6968f96b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - link
+id: config_pages.field_linkedin
+field_name: field_linkedin
+entity_type: config_pages
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

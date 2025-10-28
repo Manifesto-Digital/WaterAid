@@ -1,0 +1,79 @@
+@import "./sass/styles";
+
+.donate-block {
+  @include grid();
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+
+  &__wrapper {
+    @include grid-item-span(4, 6, 6);
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-06;
+  }
+
+  &__content {
+    .field--name-field-donate-content {
+      display: flex;
+      flex-direction: column;
+      gap: $wa-spacing-06;
+    }
+
+    .paragraph--type--rich-text.container-sm {
+      margin: 0;
+    }
+  }
+
+  &__widget {
+    @include grid-item-span(4, 6, 6);
+  }
+
+  .quote {
+    margin-top: 0;
+  }
+
+  .quote__content {
+    padding: 0;
+    margin: 0;
+  }
+
+  .donate-widget[data-component-id="wateraid:donate_widget"] {
+    margin-top: 0;
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  &--light {
+    .quote {
+      background-color: $wa-white;
+      color: $wa-navy;
+    }
+  }
+
+  &--dark {
+    background-color: $wa-blue;
+    color: $wa-white;
+
+    .donate-block__wrapper {
+      padding: $wa-spacing-07 $wa-spacing-05 0 $wa-spacing-05;
+      @include desktop {
+        padding: $wa-spacing-09 0 $wa-spacing-09 $wa-spacing-09;
+      }
+    }
+
+    h2,
+    .image__credit,
+    .field--name-field-rich-text {
+      color: $wa-white;
+    }
+
+    .image__caption {
+      background-color: $wa-navy;
+      color: $wa-white;
+    }
+  }
+}

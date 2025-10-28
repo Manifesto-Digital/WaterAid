@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_media
-    - media.type.image
-    - media.type.video
+    - media.type.dam_image
+    - media.type.dam_video
     - paragraphs.paragraphs_type.text_media
 id: paragraph.text_media.field_media
 field_name: field_media
@@ -21,11 +21,11 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
-      video: video
+      dam_image: dam_image
+      dam_video: dam_video
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: image
+    auto_create_bundle: dam_image
 field_type: entity_reference

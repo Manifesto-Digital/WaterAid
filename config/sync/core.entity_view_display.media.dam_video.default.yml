@@ -1,0 +1,38 @@
+uuid: 7558270e-1bdc-4f97-aec9-3977e12acab2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.dam_video.field_media_dam_video
+    - media.type.dam_video
+  module:
+    - wa_orange_dam
+id: media.dam_video.default
+targetEntityType: media
+bundle: dam_video
+mode: default
+content:
+  field_media_dam_video:
+    type: wa_orange_dam_video_formater
+    label: visually_hidden
+    settings:
+      controls: '1'
+      multiple_file_display_type: sources
+      width: '640'
+      height: '480'
+      autoplay: 0
+      loop: 0
+      muted: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

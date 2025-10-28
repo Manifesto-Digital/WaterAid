@@ -1,0 +1,21 @@
+uuid: 5255e41b-0ea8-4941-b804-c31d2a7c2a54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_dam_image
+    - media.type.dam_image
+  module:
+    - wa_orange_dam
+id: media.dam_image.field_media_dam_image
+field_name: field_media_dam_image
+entity_type: media
+bundle: dam_image
+label: 'DAM Image'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: wa_orange_dam_image

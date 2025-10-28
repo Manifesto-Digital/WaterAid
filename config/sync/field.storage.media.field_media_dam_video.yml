@@ -1,0 +1,19 @@
+uuid: d56217e4-256e-42e1-80ba-83a3e491972b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - wa_orange_dam
+id: media.field_media_dam_video
+field_name: field_media_dam_video
+entity_type: media
+type: wa_orange_dam_video
+settings: {  }
+module: wa_orange_dam
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

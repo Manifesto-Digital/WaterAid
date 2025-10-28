@@ -1,0 +1,26 @@
+@import "./sass/styles";
+
+.cancel-anytime {
+  max-width: calculate-rem(440);
+  padding: $wa-spacing-06;
+
+  &__icon {
+    display: block;
+    padding-bottom: $wa-spacing-07;
+    text-align: center;
+
+    svg {
+      max-width: $wa-spacing-14;
+      height: auto;
+    }
+  }
+
+  &__title {
+    @include h6();
+    color: $wa-navy;
+  }
+
+  &__copy {
+
+  }
+}

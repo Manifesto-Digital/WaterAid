@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_update_N().
+ * Delete test webform nodes.
  */
 function wa_editor_experience_update_10001(): void {
   foreach (\Drupal::entityTypeManager()->getStorage('node')->loadByProperties([

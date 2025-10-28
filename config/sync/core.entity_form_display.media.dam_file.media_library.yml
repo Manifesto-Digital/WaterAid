@@ -1,0 +1,26 @@
+uuid: 9267d9a7-b535-4f03-88e8-be44e855d0f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.dam_file.field_media_dam_file
+    - media.type.dam_file
+id: media.dam_file.media_library
+targetEntityType: media
+bundle: dam_file
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  directory: true
+  field_media_dam_file: true
+  langcode: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  status: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true

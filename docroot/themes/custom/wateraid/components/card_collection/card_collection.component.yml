@@ -1,0 +1,25 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Card collection
+status: stable
+description: Card collection component
+props:
+  type: object
+  properties:
+    card_items:
+      type: array
+      title: Accordion items
+      description: An array of accordion items
+      examples: [ ]
+slots:
+  size:
+    type: string
+    title: Card size
+  background:
+    type: string
+    title: Colour
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/card_collection/card_collection.css: {}
+  dependencies:
+    - wateraid/main

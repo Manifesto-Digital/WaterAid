@@ -1,0 +1,34 @@
+uuid: 6200e2e1-785e-4a25-9889-aac5d809d12a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cancel_anytime.field_rich_text
+    - field.field.paragraph.cancel_anytime.field_title
+    - paragraphs.paragraphs_type.cancel_anytime
+  module:
+    - text
+id: paragraph.cancel_anytime.default
+targetEntityType: paragraph
+bundle: cancel_anytime
+mode: default
+content:
+  field_rich_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

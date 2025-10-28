@@ -1,0 +1,23 @@
+uuid: a875978e-00d6-4b29-8520-396b757595cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_donation_amount
+    - paragraphs.paragraphs_type.donation_amount
+id: paragraph.donation_amount.field_donation_amount
+field_name: field_donation_amount
+entity_type: paragraph
+bundle: donation_amount
+label: 'Donation amount'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

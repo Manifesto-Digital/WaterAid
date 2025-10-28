@@ -6,6 +6,8 @@ dependencies:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
+    - media.type.dam_image
+    - media.type.dam_video
     - media.type.document
     - media.type.image
     - media.type.remote_video
@@ -70,6 +72,8 @@ permissions:
   - 'create article content'
   - 'create audio media'
   - 'create content translations'
+  - 'create dam_image media'
+  - 'create dam_video media'
   - 'create document media'
   - 'create donation content'
   - 'create event content'
@@ -110,6 +114,8 @@ permissions:
   - 'delete media'
   - 'delete own article content'
   - 'delete own audio media'
+  - 'delete own dam_image media'
+  - 'delete own dam_video media'
   - 'delete own document media'
   - 'delete own donation content'
   - 'delete own event content'
@@ -156,6 +162,8 @@ permissions:
   - 'edit own article content'
   - 'edit own audio media'
   - 'edit own comments'
+  - 'edit own dam_image media'
+  - 'edit own dam_video media'
   - 'edit own document media'
   - 'edit own donation content'
   - 'edit own event content'

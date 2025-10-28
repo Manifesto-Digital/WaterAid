@@ -1,0 +1,10 @@
+uuid: 01787521-3794-4d14-acb4-90be2d0be338
+langcode: en
+status: true
+dependencies: {  }
+id: donate_block
+label: 'Donate block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

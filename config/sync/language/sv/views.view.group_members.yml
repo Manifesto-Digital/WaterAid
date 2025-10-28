@@ -5,10 +5,13 @@ display:
       fields:
         name:
           label: Användare
+          separator: ', '
         group_roles:
-          label: Roller
+          separator: ', '
         changed:
-          label: Uppdaterad
+          separator: ', '
+        created:
+          separator: ', '
         dropbutton:
           label: Funktioner
       pager:
@@ -22,7 +25,6 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: Applicera
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
@@ -31,5 +33,3 @@ display:
         gid:
           exception:
             title: Alla
-  page_1:
-    display_title: Sida

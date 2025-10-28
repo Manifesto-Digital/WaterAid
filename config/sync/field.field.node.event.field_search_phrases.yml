@@ -1,0 +1,19 @@
+uuid: 045068e4-1fc8-4d34-87f6-016bb452984f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_phrases
+    - node.type.event
+id: node.event.field_search_phrases
+field_name: field_search_phrases
+entity_type: node
+bundle: event
+label: 'Search Phrases'
+description: 'Enter any keywords related to this content that users may use when searching for it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

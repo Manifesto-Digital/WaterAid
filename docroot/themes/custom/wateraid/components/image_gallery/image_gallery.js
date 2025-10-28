@@ -17,11 +17,10 @@
           });
         });
 
-        gallery
-          .querySelectorAll("[data-controls='previous']")
-          .forEach((next) => {
-            next.addEventListener("click", () => {
-              slider.goTo("previous");
+
+        gallery.querySelectorAll("[data-controls='previous']").forEach((prev) => {
+            prev.addEventListener("click", () => {
+              slider.goTo("prev");
             });
           });
       }

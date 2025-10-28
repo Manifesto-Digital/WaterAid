@@ -1,0 +1,21 @@
+{% stories number_input with { title: 'wateraid/atoms/Number input' } %}
+  {% story Default with {
+    name: 'Number input',
+  } %}
+
+    {# Defaults #}
+    {% set input %}
+      <div class="number-input-wrapper">
+        <button class="number-input__button number-input__button--decrement" type="button" aria-label="Decrease value">
+        </button>
+        <input{{ attributes }} />{{ children }}
+        <button class="number-input__button number-input__button--increment" type="button" aria-label="Increase value">
+        </button>
+      </div>
+    {% endset %}
+
+    {{ include('wateraid:number_input', {
+      input
+    }) }}
+  {% endstory %}
+{% endstories %}

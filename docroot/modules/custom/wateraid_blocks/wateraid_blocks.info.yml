@@ -1,0 +1,7 @@
+name: WaterAid blocks
+type: module
+description: Generate WaterAid site blocks.
+package: wateraid
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:block

@@ -1,0 +1,29 @@
+uuid: ce6f308e-1033-4665-8a85-1fb1a3205918
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webform_node
+    - node.type.webform
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_webform_node
+field_name: field_webform_node
+entity_type: paragraph
+bundle: donation_widget
+label: 'Webform page'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webform: webform
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

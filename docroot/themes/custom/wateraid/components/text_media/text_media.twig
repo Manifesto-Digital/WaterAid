@@ -17,12 +17,23 @@
   </div>
 
   <div class="m-text-media__media">
-    {{ include('wateraid:image', {
-      image: media,
-      caption: caption,
-      credit: credit,
-      width: 'full',
-      caption_display: caption_display
-    }) }}
+    {% if media_type == 'dam_image' %}
+      {{ include('wateraid:image', {
+        image: media,
+        caption: caption,
+        credit: credit,
+        width: 'full',
+        caption_display: caption_display
+      }) }}
+    {% else %}
+      {{ include('wateraid:video', {
+        video: media,
+        type: 'remote',
+        caption: caption,
+        image: thumbnail,
+        credit: credit,
+        width: 'full',
+      }, with_context: false) }}
+    {% endif %}
   </div>
 </div>

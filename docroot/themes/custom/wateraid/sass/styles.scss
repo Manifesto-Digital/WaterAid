@@ -3,13 +3,14 @@
 /**
   * Libs
   */
-// @import '0-lib/reset';
+@import '0-lib/reset';
 
 /**
   * Base
   */
 @import '1-base/breakpoints';
 @import '1-base/colors';
+@import '1-base/functions';
 @import '1-base/form';
 @import '1-base/grid';
 @import '1-base/mixins';

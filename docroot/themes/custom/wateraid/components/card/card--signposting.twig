@@ -1,0 +1,55 @@
+{% set classes = [
+  'card',
+  'card--' ~ variant,
+  'card--' ~ size,
+  'card--link',
+] %}
+
+<div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
+
+  <div class="card__image">
+    <img src="{{ image_url }}" alt=""/>
+  </div>
+
+  <div class="card__body">
+    <div class="card__bundle">
+      {{ bundle }}
+    </div>
+    <h3 class="card__heading">
+      <a href="{{ url }}" class="card__link">{{ heading }}</a>
+    </h3>
+
+    {% if date %}
+      <div class="card__date">
+        {{ include('@wateraid/images/icons/wa-utility-calendar.svg') }}
+        {{ date|date("l j F Y") }}
+      </div>
+    {% endif %}
+
+    {% if authors %}
+      <div class="card__authors">
+        {{ include('@wateraid/images/icons/wa-utility-person.svg') }}
+        {% if authors|length <= 2 %}
+          {{ authors.0 }}
+          {% if authors|length == 2 %}
+            , {{ authors.1 }}
+          {% endif %}
+        {% else %}
+          {{ authors|length ~ ' authors'|t }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if time_to_read %}
+      <div class="card__read-time">
+        {{ include('@wateraid/images/icons/wa-utility-schedule.svg') }}
+        {{ time_to_read|replace({'minute': 'min'}) ~ ' read'|t }}
+      </div>
+    {% endif %}
+
+    <div class="card__description">
+      {{ description }}
+    </div>
+
+  </div>
+</div>

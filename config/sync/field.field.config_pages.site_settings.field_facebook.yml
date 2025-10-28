@@ -1,0 +1,23 @@
+uuid: 6de3c2c2-05fb-49d7-8fb0-79a979009689
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_settings
+    - field.storage.config_pages.field_facebook
+  module:
+    - link
+id: config_pages.site_settings.field_facebook
+field_name: field_facebook
+entity_type: config_pages
+bundle: site_settings
+label: Facebook
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

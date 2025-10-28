@@ -1,8 +1,5 @@
-label: Startsida
-description: 'Allt innehåll som visas på startsidan.'
 display:
   default:
-    display_title: Förvald
     display_options:
       pager:
         options:
@@ -17,17 +14,7 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: Applicera
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      empty:
-        area_text_custom:
-          content: 'Inget innehåll för framsidan har skapats ännu.<br />Följ <a target="_blank" href="https://www.drupal.org/docs/user_guide/en/index.html">användarguiden</a> för att börja bygga din webbplats.'
-        title:
-          title: Välkommen!
-  feed_1:
-    display_title: Innehållsflöde
-  page_1:
-    display_title: Sida

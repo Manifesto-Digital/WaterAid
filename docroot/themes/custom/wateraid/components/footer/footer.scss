@@ -1,0 +1,233 @@
+@import "./sass/styles";
+
+.footer {
+  &[data-component-id="wateraid:footer"] {
+    color: $wa-white;
+    margin-top: $wa-spacing-10;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      background-image: url("/themes/custom/wateraid/images/icons/wa-curve-high-blue.svg");
+      background-position: center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 100%;
+      left: 0;
+      height: $wa-spacing-04;
+      top: -$wa-spacing-04;
+
+      @include tablet {
+        height: $wa-spacing-07;
+        top: -$wa-spacing-07;
+      }
+
+      @include desktop {
+        height: $wa-spacing-10;
+        top: -$wa-spacing-10;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .button--donate {
+    max-width: 100%;
+    justify-content: center;
+    @include desktop {
+      max-width: fit-content;
+    }
+  }
+
+  h2 {
+    color: $wa-white;
+    margin-bottom: $wa-spacing-04;
+  }
+
+  &__top,
+  &__main {
+    @include grid();
+    background-color: $wa-blue;
+    z-index: 0;
+    position: relative;
+  }
+
+  &__top {
+    padding: $wa-spacing-07 $wa-spacing-05;
+    gap: $wa-spacing-07;
+    @include desktop() {
+      padding: $wa-spacing-09 $wa-spacing-09 0 $wa-spacing-09;
+    }
+  }
+
+  &__main {
+    padding: 0 $wa-spacing-05 $wa-spacing-07 $wa-spacing-05;
+    @include desktop() {
+      padding: $wa-spacing-09;
+    }
+  }
+
+  &__bottom {
+    @include grid();
+    background-color: $wa-navy;
+    padding: $wa-spacing-07 $wa-spacing-05;
+    @include desktop() {
+      padding: $wa-spacing-09;
+    }
+  }
+
+  &__site-logo img {
+    filter: brightness(0) invert(1);
+    width: calculate-rem(163);
+    @include tablet() {
+      width: calculate-rem(204);
+    }
+  }
+
+  &__logos {
+    margin-top: $wa-spacing-07;
+
+    .field {
+      display: flex;
+      gap: $wa-spacing-06;
+    }
+
+    img {
+      filter: brightness(0) invert(1);
+      height: $wa-spacing-11;
+      width: auto;
+    }
+  }
+
+  &__copy p:not(:last-of-type) {
+    margin-bottom: $wa-spacing-03;
+  }
+
+  &__site-logo,
+  &__info,
+  &__socials {
+    @include grid-item-span(4, 6, 3);
+  }
+
+  &__donate,
+  &__menus,
+  &__copy {
+    @include grid-item-span(4, 6, 9);
+  }
+
+  &__contact--tel {
+    align-items: center;
+    display: flex;
+    gap: $wa-spacing-02;
+  }
+
+  &__contact,
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-03;
+
+    p {
+      @include paragraph-sm();
+    }
+
+    a {
+      @include paragraph-sm();
+      text-decoration: underline;
+    }
+  }
+
+  &__socials ul {
+    display: flex;
+    gap: $wa-spacing-03;
+  }
+
+  &__menu--primary ul {
+    @include grid();
+    gap: $wa-spacing-06;
+
+    .menu-item {
+      @include grid-item-span(4, 3, 4);
+    }
+
+    .link {
+      @include paragraph-md;
+    }
+  }
+
+  &__menu--secondary ul,
+  &__menu--donate ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: $wa-spacing-06;
+    margin-top: $wa-spacing-07;
+
+    @include tablet() {
+      grid-template-columns: 1fr 1fr;
+      margin-top: $wa-spacing-09;
+    }
+
+    @include desktop() {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      margin-top: $wa-spacing-09;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: $wa-spacing-06;
+      justify-content: space-between;
+
+      @include desktop {
+        &:not(:last-of-type) {
+          &:after {
+            background-image: url('/themes/custom/wateraid/images/icons/wa-shape-drop.svg');
+            background-size: contain;
+            color: $wa-navy;
+            content: "";
+            display: block;
+            position: relative;
+            height: calculate-rem(14);
+            width: calculate-rem(10);
+          }
+        }
+      }
+    }
+  }
+
+
+  &--donate {
+    .footer__top {
+      @include paragraph-md();
+    }
+
+    .footer__contact {
+      gap: $wa-spacing-04;
+      flex-direction: row;
+
+      a {
+        @include paragraph-md();
+        text-decoration: underline;
+      }
+
+      &--tel,
+      &--mail {
+        align-items: center;
+        display: flex;
+        gap: $wa-spacing-02;
+      }
+    }
+
+    .footer__bottom {
+      row-gap: 0;
+    }
+
+    .footer__copy {
+      @include grid-item-span(4, 6, 12);
+    }
+  }
+}

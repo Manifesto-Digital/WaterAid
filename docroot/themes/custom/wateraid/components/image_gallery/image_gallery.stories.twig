@@ -3,6 +3,7 @@
     name: 'Image gallery',
     args: {
       title: 'Image gallery'|t,
+      theme: 'light',
     }
   } %}
 
@@ -15,7 +16,7 @@
         natoque porta nullam lacus ac scelerisque quam.</p>
     {% endset %}
 
-    {% set images = [
+    {% set image_items = [
       include('wateraid:image', {
         image: image,
         caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -42,7 +43,7 @@
     {{ include('wateraid:image_gallery', {
       title,
       description,
-      images,
+      image_items,
     }) }}
   {% endstory %}
 {% endstories %}
