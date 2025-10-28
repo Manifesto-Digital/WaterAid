@@ -1821,5 +1821,15 @@ body {
   max-width: 41.25rem;
 }
 
+.hero--donate .donate-widget[data-component-id="wateraid:donate_widget"] {
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero--donate .donate-widget[data-component-id="wateraid:donate_widget"] {
+    margin-top: 0;
+  }
+}
+
 
 /*# sourceMappingURL=hero.css.map*/

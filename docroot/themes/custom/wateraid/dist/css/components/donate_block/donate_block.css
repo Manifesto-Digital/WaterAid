@@ -1598,6 +1598,16 @@ body {
   margin: 0;
 }
 
+.donate-block .donate-widget[data-component-id="wateraid:donate_widget"] {
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 1440px) {
+  .donate-block .donate-widget[data-component-id="wateraid:donate_widget"] {
+    margin-top: 0;
+  }
+}
+
 .donate-block--light .quote {
   background-color: #fff;
   color: #151435;
