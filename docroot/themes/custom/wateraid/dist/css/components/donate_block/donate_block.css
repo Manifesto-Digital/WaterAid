@@ -1512,10 +1512,6 @@ body {
   font-family: "Noto Sans";
 }
 
-footer {
-  background-color: #43cfb5;
-}
-
 .donate-block {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1600,6 +1596,16 @@ footer {
 .donate-block .quote__content {
   padding: 0;
   margin: 0;
+}
+
+.donate-block .donate-widget[data-component-id="wateraid:donate_widget"] {
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 1440px) {
+  .donate-block .donate-widget[data-component-id="wateraid:donate_widget"] {
+    margin-top: 0;
+  }
 }
 
 .donate-block--light .quote {

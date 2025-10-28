@@ -1,0 +1,19 @@
+uuid: e836f25c-18ba-4009-a862-444204f66acf
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - link
+id: config_pages.field_youtube
+field_name: field_youtube
+entity_type: config_pages
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

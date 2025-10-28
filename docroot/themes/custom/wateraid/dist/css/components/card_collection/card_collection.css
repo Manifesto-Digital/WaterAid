@@ -1512,10 +1512,6 @@ body {
   font-family: "Noto Sans";
 }
 
-footer {
-  background-color: #43cfb5;
-}
-
 .card-collection {
   padding: 2rem 1.25rem;
   z-index: 0;

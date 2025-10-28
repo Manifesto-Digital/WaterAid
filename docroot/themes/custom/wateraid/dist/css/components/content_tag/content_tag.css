@@ -1512,10 +1512,6 @@ body {
   font-family: "Noto Sans";
 }
 
-footer {
-  background-color: #43cfb5;
-}
-
 .content-tag {
   display: inline-flex;
   padding: .25rem .5rem;

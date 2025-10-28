@@ -1,0 +1,92 @@
+uuid: 8b7db10c-35d2-4068-912c-c24ac2bd076b
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_settings
+    - field.field.config_pages.site_settings.field_facebook
+    - field.field.config_pages.site_settings.field_instagram
+    - field.field.config_pages.site_settings.field_linkedin
+    - field.field.config_pages.site_settings.field_site_logo
+    - field.field.config_pages.site_settings.field_tiktok
+    - field.field.config_pages.site_settings.field_youtube
+  module:
+    - field_group
+    - link
+    - media_library
+third_party_settings:
+  field_group:
+    group_social_media_links:
+      children:
+        - field_facebook
+        - field_instagram
+        - field_tiktok
+        - field_linkedin
+        - field_youtube
+      label: 'Social media links'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: config_pages.site_settings.default
+targetEntityType: config_pages
+bundle: site_settings
+mode: default
+content:
+  field_facebook:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_instagram:
+    type: link_default
+    weight: 8
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_linkedin:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_site_logo:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_tiktok:
+    type: link_default
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_youtube:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  label: true

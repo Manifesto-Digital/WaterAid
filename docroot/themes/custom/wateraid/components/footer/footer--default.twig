@@ -1,0 +1,157 @@
+{% set classes = [
+  'footer',
+  'footer--' ~ variant
+] %}
+
+<footer {{ attributes.addClass(classes) }}>
+
+  <div class="footer__top">
+    <div class="footer__site-logo">
+      {{ site_logo }}
+    </div>
+    {% if cta.text and cta.link %}
+      <div class="footer__donate">
+        {{ include('wateraid:button', {
+          text: cta.text,
+          link: cta.link,
+          type: 'donate',
+        }) }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="footer__main">
+
+    <div class="footer__info">
+      <div class="footer__contact">
+        {% if contact_details.address %}
+          <div class="footer__contact--address">
+            {{ contact_details.address }}
+          </div>
+        {% endif %}
+        {% if contact_details.tel %}
+          <div class="footer__contact--tel">
+            <span>Tel:</span>
+            {{ include('wateraid:link', {
+              text: contact_details.tel,
+              link: 'tel:' ~ contact_details.tel,
+              type: 'inline'
+            }) }}
+          </div>
+        {% endif %}
+        {% if contact_details.mail %}
+          <div class="footer__contact--mail">
+            {{ include('wateraid:link', {
+              text: contact_details.mail,
+              link: 'mailto:' ~ contact_details.mail,
+              type: 'inline'
+            }) }}
+          </div>
+        {% endif %}
+      </div>
+      {% if logos %}
+        <div class="footer__logos">
+          {{ logos }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="footer__menus">
+      <div class="footer__menu--primary">
+        <ul>
+          {% for link in primary_menu %}
+            <li class="menu-item">
+              {{ include('wateraid:link', {
+                text: link.title,
+                link: link.url,
+                type: 'footer'
+              }) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer__menu--secondary">
+        <ul>
+          {% for link in secondary_menu %}
+            <li class="menu-item">
+              {{ include('wateraid:link', {
+                text: link.title,
+                link: link.url,
+                type: 'footer'
+              }) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__socials">
+      <ul>
+        {% if facebook_url %}
+          <li>
+            {{ include('wateraid:button', {
+              text: 'Click to view more'|t,
+              link: facebook_url,
+              type: 'social',
+              theme: '',
+              icon: 'facebook'
+            }) }}
+          </li>
+        {% endif %}
+        {% if instagram_url %}
+          <li>
+            {{ include('wateraid:button', {
+              text: 'Click to view more'|t,
+              link: instagram_url,
+              type: 'social',
+              theme: '',
+              icon: 'instagram'
+            }) }}
+          </li>
+        {% endif %}
+        {% if tiktok_url %}
+          <li>
+            {{ include('wateraid:button', {
+              text: 'Click to view more'|t,
+              link: tiktok_url,
+              type: 'social',
+              theme: '',
+              icon: 'tiktok'
+            }) }}
+          </li>
+        {% endif %}
+        {% if linkedin_url %}
+          <li>
+            {{ include('wateraid:button', {
+              text: 'Click to view more'|t,
+              link: linkedin_url,
+              type: 'social',
+              theme: '',
+              icon: 'linkedin'
+            }) }}
+          </li>
+        {% endif %}
+        {% if youtube_url %}
+          <li>
+            {{ include('wateraid:button', {
+              text: 'Click to view more'|t,
+              link: youtube_url,
+              type: 'social',
+              theme: '',
+              icon: 'youtube'
+            }) }}
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% if copy %}
+      <div class="footer__copy">
+        {{ copy }}
+      </div>
+    {% endif %}
+  </div>
+
+</footer>

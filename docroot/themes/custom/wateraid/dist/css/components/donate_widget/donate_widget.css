@@ -1512,19 +1512,22 @@ body {
   font-family: "Noto Sans";
 }
 
-footer {
-  background-color: #43cfb5;
-}
-
-.donate-widget {
+.donate-widget[data-component-id="wateraid:donate_widget"] {
   background-color: #006bd9;
   color: #fff;
   padding: 2rem 1.25rem;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
-  .donate-widget {
+  .donate-widget[data-component-id="wateraid:donate_widget"] {
     padding: 3rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .donate-widget[data-component-id="wateraid:donate_widget"] {
+    margin-top: 3rem;
   }
 }
 

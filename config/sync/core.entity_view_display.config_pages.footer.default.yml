@@ -1,0 +1,94 @@
+uuid: d6db092d-9269-45a8-92fb-9eb9311b6c80
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer
+    - field.field.config_pages.footer.field_address
+    - field.field.config_pages.footer.field_copy
+    - field.field.config_pages.footer.field_donate_link
+    - field.field.config_pages.footer.field_email
+    - field.field.config_pages.footer.field_logos
+    - field.field.config_pages.footer.field_phone_number
+    - field.field.config_pages.footer.field_subtitle
+    - field.field.config_pages.footer.field_title
+  module:
+    - address
+    - link
+    - text
+id: config_pages.footer.default
+targetEntityType: config_pages
+bundle: footer
+mode: default
+content:
+  field_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_copy:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_donate_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_logos:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

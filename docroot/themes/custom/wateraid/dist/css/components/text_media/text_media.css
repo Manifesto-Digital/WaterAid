@@ -1512,10 +1512,6 @@ body {
   font-family: "Noto Sans";
 }
 
-footer {
-  background-color: #43cfb5;
-}
-
 .m-text-media {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

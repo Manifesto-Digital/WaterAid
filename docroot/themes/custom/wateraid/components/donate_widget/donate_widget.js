@@ -138,7 +138,7 @@
           }
         }
 
-        const redirectUrl = location + '?donation_type=' + frequencyValue + '&donation_value=' + amountValue;
+        const redirectUrl = location + '?fq=' + frequencyValue + '&val=' + amountValue;
 
         window.location.href = redirectUrl;
 
