@@ -58,12 +58,14 @@
 
   &__quote {
     background-color: $wa-navy;
+
     .quote {
       background-color: $wa-navy;
       justify-self: flex-end;
       margin-top: 0;
       width: calculate-rem(660);
     }
+
     .quote__content--quote {
       @include h5();
     }
@@ -262,8 +264,16 @@
   }
 
   &--donate {
-.image__credit {
-  max-width: calculate-rem(660);
-}
+    .image__credit {
+      max-width: calculate-rem(660);
+    }
+
+    .donate-widget[data-component-id="wateraid:donate_widget"] {
+      margin-top: 0;
+
+      @include desktop {
+        margin-top: 0;
+      }
+    }
   }
 }
