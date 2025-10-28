@@ -5,6 +5,8 @@
  * Functions to support theming.
  */
 
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\paragraphs\Entity\Paragraph;
 
@@ -39,6 +41,22 @@ function wateraid_preprocess_paragraph(&$variables): void {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_preprocess_paragraph__image(&$variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  $parent = $paragraph->getParentEntity();
+  // For image paragraphs referenced from an mage_gallery paragraph, we want to
+  // force full width images, any other styles will mess with the gallery
+  // implementation.
+  if ($parent instanceof ParagraphInterface && $parent->bundle() === 'image_gallery') {
+    $variables['force_width'] = 'gallery-image';
+  }
+
+}
+
+/**
  * Implements hook_preprocess_form_element().
  *
  * Pass the element #type to the label's render array using a custom property
@@ -67,7 +85,7 @@ function wateraid_preprocess_form_element_label(&$variables) {
  * Targets webform wizard buttons to be rendered as <button> elements
  * instead of <input> elements by adding a custom flag for the theme layer.
  */
-function wateraid_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (isset($form['#webform_id'])) {
     if (isset($form['actions']['wizard_prev'])) {
       $form['actions']['wizard_prev']['#button_type'] = 'previous';
@@ -95,7 +113,7 @@ function wateraid_preprocess_input(&$variables) {
   }
 }
 
-/*
+/**
  * Implements hook_preprocess_paragraph__donation_widget().
  *
  * This function now calls a helper to process the monthly and one-off
