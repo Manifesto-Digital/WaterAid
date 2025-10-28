@@ -47,9 +47,9 @@ function wateraid_preprocess_paragraph__image(&$variables): void {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
   $parent = $paragraph->getParentEntity();
-  // For image paragraphs referenced from an mage_gallery paragraph, we want to
-  // force full width images, any other styles will mess with the gallery
-  // implementation.
+  // For image paragraphs referenced from an image_gallery paragraph, we want to
+  // force an arbitrary width for images, any other width names will mess with
+  // the gallery implementation.
   if ($parent instanceof ParagraphInterface && $parent->bundle() === 'image_gallery') {
     $variables['force_width'] = 'gallery-image';
   }
