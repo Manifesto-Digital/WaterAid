@@ -39,13 +39,15 @@
  */
 #}
 
-{% set video_url = file_url(paragraph.field_video[0].entity.field_media_video_file.entity.uri.value) %}
+{% if paragraph.field_video.entity %}
+  {% set media_type = paragraph.field_video.entity.bundle() %}
+{% endif %}
 
 {% block paragraph %}
   {{ include('wateraid:video', {
-    video: video_url ? video_url : content.field_video,
-    type: video_url ? 'local' : 'remote',
-    image: file_url(paragraph.field_image[0].entity.field_media_image.entity.uri.value),
+    video: content.field_video,
+    type: media_type == 'dam_video' ? 'local' : 'remote',
+    image: content.field_image,
     caption: paragraph.field_caption.value ? content.field_caption,
     credit: paragraph.field_credit.value ? content.field_credit,
     width: paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim,
