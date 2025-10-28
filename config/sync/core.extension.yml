@@ -21,6 +21,7 @@ module:
   config: 0
   config_ignore: 0
   config_override_warn: 0
+  config_pages: 0
   config_split: 0
   config_translation: 0
   contact: 0
@@ -116,6 +117,7 @@ module:
   wa_editor_experience: 0
   wa_migration: 0
   wa_orange_dam: 0
+  wateraid_blocks: 0
   wateraid_content: 0
   wateraid_donation_forms: 0
   wateraid_donation_gmo: 0

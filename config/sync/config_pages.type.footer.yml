@@ -1,0 +1,17 @@
+uuid: fb89acf1-2206-4cb7-82bd-0dd5d56a74d6
+langcode: en
+status: true
+dependencies: {  }
+id: footer
+label: Footer
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: ''
+  weight: 0
+  description: ''

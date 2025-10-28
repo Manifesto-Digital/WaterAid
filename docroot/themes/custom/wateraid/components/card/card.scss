@@ -111,7 +111,7 @@
   &--stats {
     justify-items: center;
     padding: $wa-spacing-06;
-    height: calc(100% - 3rem);
+    height: 100%;
 
     &.card--link:hover::before {
       transform: translateX(-$wa-spacing-04) translateY(-$wa-spacing-02);
