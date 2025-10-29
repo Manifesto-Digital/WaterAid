@@ -41,7 +41,9 @@ dependencies:
     - node
     - node_co_authors
     - path
+    - pathauto
     - quick_node_clone
+    - redirect_bulk
     - system
     - taxonomy
     - toolbar
@@ -63,6 +65,7 @@ permissions:
   - 'access webform help'
   - 'access webform overview'
   - 'access webform submission user'
+  - 'administer bulk redirects'
   - 'administer group'
   - 'administer url aliases'
   - 'administer users'
@@ -70,6 +73,8 @@ permissions:
   - 'administer webform element access'
   - 'administer webform overview'
   - 'administer webform submission'
+  - 'bulk delete aliases'
+  - 'bulk update aliases'
   - 'change own username'
   - 'clone article content'
   - 'clone donation content'
