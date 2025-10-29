@@ -865,3 +865,6 @@ $repo_root = dirname(DRUPAL_ROOT);
 $settings['config_sync_directory'] = realpath("$repo_root/config/sync");
 
 $settings['orange_dam_bearer'] = $_ENV['ORANGE_DAM_BEARER'] ?? getenv('ORANGE_DAM_BEARER');
+$settings['azure_blob_storage_key'] = $_ENV['BLOB_STORAGE_KEY'] ?? getenv('BLOB_STORAGE_KEY');
+$settings['azure_blob_storage_accountname'] = $_ENV['BLOB_STORAGE_ACCOUNT'] ?? getenv('BLOB_STORAGE_ACCOUNT');
+$settings['azure_blob_storage_container'] = $_ENV['BLOB_STORAGE_CONTAINER'] ?? getenv('BLOB_STORAGE_CONTAINER');
