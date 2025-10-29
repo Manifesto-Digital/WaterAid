@@ -1,7 +1,10 @@
 name: Deploy Acquia Site
 on:
+  push:
+    branches:
+      - staging--webform-fix
   pull_request:
-    branches: [main, develop, staging, staging--webform-fix]
+    branches: [main, develop, staging]
     types: [closed]
   workflow_dispatch:
     inputs:
