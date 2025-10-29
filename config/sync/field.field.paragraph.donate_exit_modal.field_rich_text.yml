@@ -1,0 +1,26 @@
+uuid: 1f9c3239-68d9-4d11-9639-51309feb103b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rich_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.donate_exit_modal
+  module:
+    - text
+id: paragraph.donate_exit_modal.field_rich_text
+field_name: field_rich_text
+entity_type: paragraph
+bundle: donate_exit_modal
+label: Copy
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+field_type: text_long
