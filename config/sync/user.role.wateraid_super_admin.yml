@@ -32,6 +32,7 @@ dependencies:
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
   module:
+    - config_pages
     - content_translation
     - filter
     - group
@@ -53,6 +54,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access config_pages overview'
   - 'access content overview'
   - 'access group overview'
   - 'access media overview'
@@ -64,6 +66,7 @@ permissions:
   - 'access webform overview'
   - 'access webform submission user'
   - 'administer group'
+  - 'administer menu'
   - 'administer url aliases'
   - 'administer users'
   - 'administer webform'
@@ -221,6 +224,8 @@ permissions:
   - 'edit co-authors of all content'
   - 'edit co-authors of co-authored content'
   - 'edit co-authors of own content'
+  - 'edit config_pages entity'
+  - 'edit footer config page entity'
   - 'edit own article content'
   - 'edit own audio media'
   - 'edit own dam_image media'
@@ -242,6 +247,7 @@ permissions:
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
+  - 'edit site_settings config page entity'
   - 'edit terms in audiences'
   - 'edit terms in countries'
   - 'edit terms in event_types'
@@ -303,8 +309,10 @@ permissions:
   - 'view any video media revisions'
   - 'view any webform submission'
   - 'view article revisions'
+  - 'view config_pages entity'
   - 'view donation revisions'
   - 'view event revisions'
+  - 'view footer config page entity'
   - 'view landing_page revisions'
   - 'view listing_page revisions'
   - 'view own unpublished content'
@@ -312,6 +320,7 @@ permissions:
   - 'view own webform submission'
   - 'view page revisions'
   - 'view publication revisions'
+  - 'view site_settings config page entity'
   - 'view standard_page revisions'
   - 'view story revisions'
   - 'view term revisions in audiences'
