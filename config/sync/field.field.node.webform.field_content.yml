@@ -48,6 +48,18 @@ settings:
       call_to_action:
         weight: -23
         enabled: false
+      cancel_anytime:
+        weight: 27
+        enabled: false
+      card_collection:
+        weight: 28
+        enabled: false
+      donate_block:
+        weight: 29
+        enabled: false
+      donate_exit_modal:
+        weight: 30
+        enabled: false
       donation_amount:
         weight: 22
         enabled: true
