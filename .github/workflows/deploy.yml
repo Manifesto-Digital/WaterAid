@@ -105,8 +105,8 @@ jobs:
           acli push:artifact $ACQUIA_SITE.$ENVIRONMENT \
           --destination-git-branch=develop \
           --no-interaction
-      - name: Drush commands
-        working-directory: ${{ github.workspace }}
-        run: |
-          acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
+      # - name: Drush commands
+      #   working-directory: ${{ github.workspace }}
+      #   run: |
+      #     acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
 
