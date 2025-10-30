@@ -160,7 +160,7 @@ final class DamImageFormater extends ImageFormatter {
         '#uri' => $data['link'],
         '#width' => $width,
         '#height' => $height,
-        '#alt' => $search['APIResponse']['Items'][0]['CaptionLong'] ?? '',
+        '#alt' => $search['APIResponse']['Items'][0]['CustomField.Caption'] ?? '',
         '#attributes' => [],
         '#cache' => $cache,
       ];

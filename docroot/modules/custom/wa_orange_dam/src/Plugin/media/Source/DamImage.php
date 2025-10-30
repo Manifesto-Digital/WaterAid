@@ -18,7 +18,10 @@ use Drupal\media\Attribute\MediaSource;
   description: new TranslatableMarkup("Use Orange DAM images for reusable media."),
   allowed_field_types: ["wa_orange_dam_image"],
   default_thumbnail_filename: "no-thumbnail.png",
-  thumbnail_alt_metadata_attribute: "thumbnail_alt_value"
+  thumbnail_alt_metadata_attribute: "thumbnail_alt_value",
+  forms: [
+    "media_library_add" => "Drupal\wa_orange_dam\Form\AjaxMediaForm",
+  ]
 )]
 final class DamImage extends DamBase {
 
