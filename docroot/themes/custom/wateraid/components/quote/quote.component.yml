@@ -30,7 +30,3 @@ slots:
   image_credit:
     type: string
     title: Credit
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/quote/quote.css: {}

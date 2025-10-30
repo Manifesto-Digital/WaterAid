@@ -10,7 +10,3 @@ props:
       title: Text
       # @todo Add examples here.
       examples: []
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/rich_text/rich_text.css: {}

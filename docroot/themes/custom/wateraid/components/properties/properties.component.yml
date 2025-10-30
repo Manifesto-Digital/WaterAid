@@ -8,7 +8,3 @@ props:
     items:
       type: object
       title: Items
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/properties/properties.css: {}

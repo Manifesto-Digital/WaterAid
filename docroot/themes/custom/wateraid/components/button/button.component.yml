@@ -23,8 +23,5 @@ props:
       # @todo Add examples here.
       examples: []
 libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/button/button.css: {}
   dependencies:
     - wateraid/main

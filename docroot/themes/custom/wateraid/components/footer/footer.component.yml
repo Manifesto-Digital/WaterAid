@@ -48,8 +48,5 @@ slots:
   logos:
     title: Logos
 libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/footer/footer.css: {}
   dependencies:
     - wateraid/main

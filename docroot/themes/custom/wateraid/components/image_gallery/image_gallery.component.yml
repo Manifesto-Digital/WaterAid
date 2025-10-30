@@ -26,8 +26,5 @@ props:
       title: theme
       description: Using light theme or dark
 libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/image_gallery/image_gallery.css: {}
   dependencies:
     - wateraid/main

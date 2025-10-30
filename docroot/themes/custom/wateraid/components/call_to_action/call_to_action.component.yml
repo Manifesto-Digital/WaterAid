@@ -30,7 +30,3 @@ slots:
   video:
     title: Video
     description: Video slot
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/call_to_action/call_to_action.css: {}

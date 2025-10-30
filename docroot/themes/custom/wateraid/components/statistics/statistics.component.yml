@@ -19,8 +19,5 @@ props:
       description: An array of stats items
       examples: []
 libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/statistics/statistics.css: {}
   dependencies:
     - wateraid/main

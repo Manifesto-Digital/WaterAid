@@ -11,8 +11,5 @@ slots:
     title: Children
     description: Input children
 libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/number_input/number_input.css: {}
   dependencies:
     - wateraid/main

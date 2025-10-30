@@ -38,7 +38,3 @@ slots:
   colour:
     type: string
     title: Card colour
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/card/card.css: {}

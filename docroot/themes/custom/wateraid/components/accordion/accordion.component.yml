@@ -30,8 +30,5 @@ props:
       description: An array of accordion items
       examples: []
 libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/accordion/accordion.css: {}
   dependencies:
     - wateraid/main

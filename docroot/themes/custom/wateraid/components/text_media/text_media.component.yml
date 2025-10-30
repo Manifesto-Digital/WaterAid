@@ -35,7 +35,3 @@ slots:
   thumbnail:
     title: Thumbnail
     description: Video thumbnail
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/text_media/text_media.css: {}

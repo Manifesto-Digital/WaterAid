@@ -22,7 +22,3 @@ props:
       title: Image
       description: Image
       required: true
-libraryOverrides:
-  css:
-    theme:
-      ../../dist/css/components/image/image.css: {}
