@@ -139,8 +139,8 @@ class DamBase extends File {
         if ($api_result = $this->orange_api->search([
           'query' => 'SystemIdentifier:' . $values[0]['system_identifier'],
         ])) {
-          if (isset($api_result['APIResponse']['Items'][0]['CaptionShort'])) {
-            $alt = $api_result['APIResponse']['Items'][0]['CaptionShort'];
+          if (isset($api_result['APIResponse']['Items'][0]['CustomField.Caption'])) {
+            $alt = $api_result['APIResponse']['Items'][0]['CustomField.Caption'];
           }
         }
 
