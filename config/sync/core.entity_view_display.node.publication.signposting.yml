@@ -73,6 +73,7 @@ hidden:
   field_key_stages: true
   field_regions: true
   field_review_date: true
+  field_search_phrases: true
   field_subject_area: true
   field_theme: true
   langcode: true

@@ -56,6 +56,7 @@ hidden:
   field_minimal_header: true
   field_page_template: true
   field_review_date: true
+  field_search_phrases: true
   field_subtext: true
   field_template: true
   field_weight: true

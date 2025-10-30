@@ -447,7 +447,7 @@ handlers:
     handler_id: wateraid_donation_email
     label: 'Wateraid Donation Email'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -586,4 +586,13 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: in_memory
       fallback_message: '<p>Dear [webform_submission:values:contact_name],<br><br>Thank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br><br>If you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href="https://wateraid.dedicationpage.org/inmemory">our WaterAid Remembers page</a>.<br><br>If you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href="mailto:d.abranson@wateraid.org">d.abranson@wateraid.org</a>. &nbsp;I’d love to hear from you.<br><br>Below you’ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br><br>With very best wishes,&nbsp;<br><br>Dominique Abranson<br>Gifts in Memory Team<br>WaterAid UK<br>[webform_submission:values]<br>Transaction ID: [webform_submission:donation-transaction-id]<br>[webform_submission:gift-aid-confirmation-text]<br>[webform_submission:dd-bankaccount-email-text]</p>'
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

@@ -558,7 +558,7 @@ handlers:
     handler_id: wateraid_donation_email
     label: 'Email (with opt-in)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -646,7 +646,7 @@ handlers:
     handler_id: wateraid_donation_email_in_memory_
     label: 'Wateraid Donation Email (In Memory)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -747,7 +747,7 @@ handlers:
     handler_id: email_no_opt_in
     label: 'Email (no opt-in)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -787,4 +787,13 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }
