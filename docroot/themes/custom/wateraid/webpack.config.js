@@ -26,6 +26,7 @@ module.exports = {
     'components/image_gallery/image_gallery': ['./components/image_gallery/image_gallery.scss'],
     'components/link/link': ['./components/link/link.scss'],
     'components/listing/listing': ['./components/listing/listing.scss'],
+    'components/modal/modal': ['./components/modal/modal.scss'],
     'components/number_input/number_input': ['./components/number_input/number_input.scss'],
     'components/properties/properties': ['./components/properties/properties.scss'],
     'components/quote/quote': ['./components/quote/quote.scss'],
@@ -123,7 +124,7 @@ module.exports = {
               additionalData: `
                 @use "sass:color";
                 @use "sass:math";
-                @import "./sass/1-base/_colors.scss";
+                @import "./sass/0-settings/_colors.scss";
               `,
             },
           },
