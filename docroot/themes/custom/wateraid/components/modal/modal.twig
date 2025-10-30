@@ -1,0 +1,44 @@
+{% set classes = [
+  'modal'
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="modal__wrapper">
+    <div class="modal__image">
+      {{ include('wateraid:image', {
+        image: image,
+        caption: caption,
+        credit: credit,
+        width: 'full',
+        caption_display: 'expandable'
+      }) }}
+    </div>
+
+
+    <div class="modal__content">
+      <div class="modal__close">
+        {{ include('wateraid:button', {
+          text: 'Close',
+          link: '',
+          id: 'modal-close',
+          type: 'icon-small',
+          icon: 'wa-utility-close',
+          theme: 'dark',
+        }) }}
+      </div>
+      <h2 class="modal__title">{{ title }}</h2>
+
+      <div class="modal__copy">
+        {{ copy }}
+      </div>
+
+      <div class="modal__cta">
+        {{ include('wateraid:button', {
+          text: cta.title,
+          link: cta.url,
+          type: 'donate'
+        }) }}
+      </div>
+    </div>
+  </div>
+</div>
