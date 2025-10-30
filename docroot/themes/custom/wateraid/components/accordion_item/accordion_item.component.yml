@@ -15,5 +15,8 @@ props:
       description: The content that is shown when the item is expanded
       examples: []
 libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/accordion_item/accordion_item.css: {}
   dependencies:
     - wateraid/main

@@ -5,8 +5,8 @@
 @import '2-generic/reset';
 
 // Elements
-@forward '3-elements/typography';
+@import '3-elements/typography';
 
 // Components - mostly output separately via SCD but there will be outliers.
-@forward '5-components/drupal';
-@forward '5-components/form';
+@import '5-components/drupal';
+@import '5-components/form';

@@ -25,3 +25,7 @@ props:
       title: Image
       description: Image
       required: true
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/modal/modal.css: {}

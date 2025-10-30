@@ -19,3 +19,7 @@ slots:
   content:
     title: Content
     description: Content can be rich_text, quote or image
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/donate_block/donate_block.css: {}

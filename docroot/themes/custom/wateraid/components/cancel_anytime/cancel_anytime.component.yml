@@ -11,3 +11,7 @@ props:
     copy:
       type: string
       title: Description
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/cancel_anytime/cancel_anytime.css: {}

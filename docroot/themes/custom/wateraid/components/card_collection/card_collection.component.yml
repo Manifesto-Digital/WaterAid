@@ -18,5 +18,8 @@ slots:
     type: string
     title: Colour
 libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/card_collection/card_collection.css: {}
   dependencies:
     - wateraid/main

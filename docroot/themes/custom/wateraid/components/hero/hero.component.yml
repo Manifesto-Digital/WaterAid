@@ -64,3 +64,7 @@ slots:
   authors:
     type: ["object", "null"]
     title: Authors
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/hero/hero.css: {}

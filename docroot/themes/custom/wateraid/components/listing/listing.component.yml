@@ -22,5 +22,8 @@ slots:
     title: Footer
     description: Drupal view footer
 libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/listing/listing.css: {}
   dependencies:
     - wateraid/main

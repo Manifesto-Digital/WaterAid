@@ -29,5 +29,8 @@ slots:
     type: string
     title: Heading
 libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/donate_widget/donate_widget.css: {}
   dependencies:
     - wateraid/main

@@ -26,3 +26,7 @@ props:
       title: Image
       description: Image
       required: false
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/video/video.css: {}
