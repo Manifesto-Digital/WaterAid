@@ -1,10 +1,10 @@
-@use "./breakpoints";
+@use "../1-tools/breakpoints";
 @use "./colors";
-@use "./spacing";
-@use "./radius";
-@use "./mixins";
-@use "./functions";
-@use "./typography";
+@use "../0-settings/spacing";
+@use "../0-settings/radius";
+@use "../1-tools/mixins";
+@use "../1-tools/functions";
+@use "../1-tools/typography";
 
 // Webforms
 .webform-submission-form {
