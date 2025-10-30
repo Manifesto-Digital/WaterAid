@@ -124,7 +124,7 @@ module.exports = {
               additionalData: `
                 @use "sass:color";
                 @use "sass:math";
-                @import "./sass/1-base/_colors.scss";
+                @import "./sass/0-settings/_colors.scss";
               `,
             },
           },

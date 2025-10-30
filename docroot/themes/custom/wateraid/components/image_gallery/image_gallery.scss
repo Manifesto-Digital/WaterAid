@@ -1,13 +1,19 @@
-@import "./sass/styles";
+@import "../../sass/base";
 
 .image-gallery {
   &[data-component-id="wateraid:image_gallery"] {
     @include page-container;
 
     margin-top: $wa-spacing-07;
+    margin-left: calc(-1 * $container-padding-mobile);
+    margin-right: calc(-1 * $container-padding-mobile);
+    padding: $wa-spacing-06 $container-padding-mobile;
 
     @include desktop() {
       margin-top: $wa-spacing-09;
+      margin-left: 0;
+      margin-right: 0;
+      padding: $wa-spacing-09;
     }
   }
 
@@ -67,9 +73,13 @@
 
   &--dark {
     &[data-component-id="wateraid:image_gallery"] {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");
+      background-color: $wa-blue;
       background-size: 100% 100%;
-      padding: $wa-spacing-09;
+
+      @include desktop {
+        background-color: transparent;
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");
+      }
     }
 
     .image-gallery__content--title,

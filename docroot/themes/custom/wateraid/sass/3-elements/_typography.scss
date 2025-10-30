@@ -1,0 +1,41 @@
+@use "../1-tools/typography";
+
+h1, .pseudo-h1 {
+  @include typography.h1();
+}
+
+h2, .pseudo-h2 {
+  @include typography.h2();
+}
+
+h3, .pseudo-h3 {
+  @include typography.h3();
+}
+
+h4, .pseudo-h4 {
+  @include typography.h4();
+}
+
+h5, .pseudo-h5 {
+  @include typography.h5();
+}
+
+h6, .pseudo-h6 {
+  @include typography.h6();
+}
+
+p {
+  @include typography.paragraph-md();
+}
+
+p.paragraph-lg {
+  @include typography.paragraph-lg();
+}
+
+p.paragraph-sm {
+  @include typography.paragraph-sm();
+}
+
+strong {
+  font-family: typography.$bold-font;
+}

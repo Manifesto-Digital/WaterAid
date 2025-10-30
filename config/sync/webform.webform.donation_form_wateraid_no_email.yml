@@ -510,7 +510,7 @@ handlers:
     handler_id: wateraid_donation_email
     label: 'Wateraid Donation Email'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -553,7 +553,7 @@ handlers:
     handler_id: wateraid_donation_email_recurring
     label: 'Wateraid Donation Email recurring'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -596,7 +596,7 @@ handlers:
     handler_id: wateraid_donation_email_in_memory_
     label: 'Wateraid Donation Email (In Memory)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="prompt_reason[radios]"]':
@@ -652,4 +652,13 @@ handlers:
       fallback_plugin: in_memory
       fallback_message: '<p>Thank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. You&rsquo;re giving hope to those who need it most. You will receive a confirmation email with details of your donation.</p>'
       donation_confirmation: null
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

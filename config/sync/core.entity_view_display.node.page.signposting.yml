@@ -46,6 +46,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_review_date: true
+  field_search_phrases: true
   field_weight: true
   langcode: true
   node_read_time: true

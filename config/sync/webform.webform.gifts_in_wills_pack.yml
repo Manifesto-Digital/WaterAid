@@ -331,7 +331,7 @@ handlers:
     handler_id: email
     label: 'Email (download and post)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_pack_"]':
@@ -372,7 +372,7 @@ handlers:
     handler_id: email_download_only_
     label: 'Email (download only)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_pack_"]':
@@ -413,7 +413,7 @@ handlers:
     handler_id: email_post_
     label: 'Email (post)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_pack_"]':
@@ -503,4 +503,13 @@ handlers:
       confirmation_url: ''
       confirmation_title: 'Your gifts in wills pack'
       confirmation_message: "<p>Thank you for requesting more information on how to add WaterAid to your will. This special gift can bring clean water to communities around the world, helping people to change their lives for generations to come.</p><p>You'll receive your information pack by post within ten working days.</p><p><strong>Thank you once again.</strong></p>"
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

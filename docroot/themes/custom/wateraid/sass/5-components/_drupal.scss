@@ -1,0 +1,55 @@
+@import "../base";
+
+//  ---- TEMPORARY STYLES  ----- \\
+header {
+  padding: 24px 0;
+  border-bottom: $black solid 1px;
+
+  & > div {
+    @include page-container;
+    margin-left: 0;
+  }
+
+  img {
+    display: block;
+    width: 200px;
+  }
+}
+
+.page-container {
+  @include page-container;
+}
+
+.container-md {
+  @include container-md();
+}
+
+.container-sm {
+  @include container-sm();
+}
+
+.layout {
+  &__two-column {
+    @include grid();
+
+    &--main {
+      @include grid-item-span(4, 6, 8);
+      @include desktop() {
+        margin-left: calculate-rem(114);
+      }
+    }
+
+    &--side {
+      @include grid-item-span(4, 6, 4);
+      @include desktop() {
+        margin-left: calculate-rem(90);
+      }
+    }
+  }
+}
+
+body {
+  font-family: $font-family;
+}
+
+//  ---- TEMPORARY STYLES END ----- \\

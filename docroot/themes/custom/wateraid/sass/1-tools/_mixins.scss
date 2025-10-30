@@ -1,0 +1,48 @@
+// Utility functions and mixins.
+@use "functions";
+@use "../0-settings/colors";
+@use "../0-settings/spacing";
+@use "breakpoints";
+@use "typography";
+
+@mixin font-size($size, $height: $size) {
+  font-size: functions.calculate-rem($size);
+  line-height: functions.calculate-rem($height);
+}
+
+@mixin sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+// Reset an input type button/submit, or a button element.
+@mixin reset-button {
+  padding: 0;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+@mixin container-md {
+  width: 100%;
+  @include breakpoints.desktop() {
+    max-width: functions.calculate-rem(1116);
+    margin-left: functions.calculate-rem(114);
+  }
+}
+
+@mixin container-sm {
+  width: 100%;
+  max-width: functions.calculate-rem(660);
+  @include breakpoints.desktop() {
+    margin-left: functions.calculate-rem(114);
+  }
+}
+
