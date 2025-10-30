@@ -6,6 +6,7 @@ namespace Drupal\wa_orange_dam\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
+use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -60,9 +61,9 @@ final class AjaxMediaForm extends FormBase {
     // Store the media type for later use
     $form_state->set('media_type_id', $media_type);
 
-    $url = Url::fromRoute('wa_orange_dam.ajax_media_form', ['media_type' => 'dam_image'], ['media_type' => 'dam_image']);
+    $url = Url::fromRoute('wa_orange_dam.ajax_media_form', ['media_type' => 'dam_image']);
 
-    die('urdsl: ' . $url->toString());
+    // die('urdsl: ' . $url->toString());
 
     // Load the media type to get the types for the DAM browser
     $types = $this->getDamTypes($media_type);
@@ -110,25 +111,32 @@ final class AjaxMediaForm extends FormBase {
       '#name' => 'save_and_select',
       '#value' => $this->t('Add to Library'),
       '#ajax' => [
-        'callback' => '::submitFormCallback',   // your AJAX handler
+        'callback' => '::submitForm',
         'wrapper' => 'dam-media-form-wrapper',
-        'url' => $url,                          // force submission to dedicated route
+        'url' => $url,
       ],
-      '#submit' => ['::submitFormCallback'],    // ensure the AJAX handler is used
+      '#submit' => ['::submitForm'],
       '#validate' => [],
     ];
 
-    $this->logger('TEST')->notice('Build form.');
+    $form['#action'] = $url->toString();
+    $form['#attached']['drupalSettings']['ajaxTrustedUrl'][$url->toString()] = TRUE;
+
 
     return $form;
+  }
+
+    /**
+   * {@inheritdoc}
+   */
+  public function submitForm2(array &$form, FormStateInterface $form_state): void {
+    // This method is required by FormInterface but not used in AJAX context.
   }
 
   /**
    * AJAX callback for form submission.
    */
-  public function submitFormCallback(array &$form, FormStateInterface $form_state): AjaxResponse {
-    die(var_dump('AJAX submitFormCallback called.'));
-    $this->logger('TEST')->notice('AJAX submitFormCallback called.');
+  public function submitForm(array &$form, FormStateInterface $form_state): AjaxResponse {
     $response = new AjaxResponse();
 
     $valid = FALSE;
@@ -141,38 +149,23 @@ final class AjaxMediaForm extends FormBase {
       if ($apiResult = $this->wa_orange_dam_api->search([
         'query' => 'SystemIdentifier:' . $systemIdentifier,
       ])) {
+        // Add the width and height properties.
         if (!empty($apiResult['APIResponse']['Items'][0])) {
-
+          $apiResponseItem = $apiResult['APIResponse']['Items'][0];
           // The id works, so this is now valid.
           $valid = TRUE;
-
-          // Add the width and height properties.
-          if (!empty($apiResult['APIResponse']['Items'][0])) {
-            $apiResponseItem = $apiResult['APIResponse']['Items'][0];
-
-            // The id works, so this is now valid.
-            $valid = TRUE;
-
-            // Add the DAM properties to the Media.
-            if (isset($apiResponseItem['path_TR1'])) {
-              if (isset($apiResponseItem['path_TR1']['Width'])) {
-                $value[0]['width'] = $apiResponseItem['path_TR1']['Width'];
-              }
-              if (isset($apiResponseItem['path_TR1']['Height'])) {
-                $value[0]['height'] = $apiResponseItem['path_TR1']['Height'];
-              }
+          // Add the DAM properties to the Media.
+          if (isset($apiResponseItem['path_TR1'])) {
+            if (isset($apiResponseItem['path_TR1']['Width'])) {
+              $value[0]['width'] = $apiResponseItem['path_TR1']['Width'];
+            }
+            if (isset($apiResponseItem['path_TR1']['Height'])) {
+              $value[0]['height'] = $apiResponseItem['path_TR1']['Height'];
             }
           }
-
         }
       }
-
     }
-
-
-    // echo '<pre>';
-    // die(var_dump($apiResponseItem));
-
 
     if (empty($systemIdentifier) || !$valid) {
       $response->addCommand(new ReplaceCommand('#dam-messages',
@@ -184,9 +177,6 @@ final class AjaxMediaForm extends FormBase {
       return $response;
     }
 
-    // echo '<pre>';
-    // die(var_dump($apiResponseItem));
-
     // Create the media entity
     $media = $this->createMedia('dam_image', $systemIdentifier, $damItemData);
 
@@ -197,25 +187,40 @@ final class AjaxMediaForm extends FormBase {
       $media->set('field_credit', $apiResponseItem['customfield.Credit']['Value']);
     }
 
+      $this->logger('TEST')->notice('Debug set fields');
+
+
     if ($media) {
       $media->save();
-
+      $this->logger('TEST')->notice('Media saved debug');
       // Trigger JavaScript event to notify the media library
-      $response->addCommand(new InvokeCommand(NULL, 'damMediaCreated', [
-        [
-          'id' => $media->id(),
-          'uuid' => $media->uuid(),
-          'name' => $media->label(),
-          'type' => $mediaTypeId,
-        ]
-      ]));
+      // $response->addCommand(new InvokeCommand(NULL, 'damMediaCreated', [
+      //   [
+      //     'id' => $media->id(),
+      //     'uuid' => $media->uuid(),
+      //     'name' => $media->label(),
+      //     'type' => $mediaTypeId,
+      //   ]
+      // ]));
 
       // Close the modal
-      $response->addCommand(new CloseModalDialogCommand());
+      // $response->addCommand(new CloseModalDialogCommand());
+
+      // Rebuild the view (you can filter or rebuild as needed)
+      $view = \Drupal\views\Views::getView('media_library');
+      $view->setDisplay('widget');
+      $view->preExecute();
+      $view->execute();
+      $rendered_view = $view->render();
+
+      // Update the DOM inside the Layout Builder modal
+      $response->addCommand(new HtmlCommand('#media-library-view', $rendered_view));
+
 
       // Show success message
-      $this->messenger()->addMessage($this->t('Media "@title" has been created.', ['@title' => $media->label()]));
+      $this->logger('TEST')->notice('Debug Success');
     } else {
+      $this->logger('TEST')->notice('Debug Error');
       $response->addCommand(new ReplaceCommand('#dam-messages',
         '<div id="dam-messages" class="dam-messages">' .
         '<div class="messages messages--error">' .
@@ -225,23 +230,6 @@ final class AjaxMediaForm extends FormBase {
     }
 
     return $response;
-  }
-
-    /**
-   * AJAX callback for cancel button.
-   */
-  public function cancelCallback(array &$form, FormStateInterface $form_state): AjaxResponse {
-    $response = new AjaxResponse();
-    $response->addCommand(new CloseModalDialogCommand());
-    return $response;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state): void {
-    // This method is required by FormInterface but not used in AJAX context
-    die(var_dump('submitForm called.'));
   }
 
   /**
