@@ -84,6 +84,8 @@ hidden:
   field_shortcode: true
   field_sticky_button_text: true
   field_subject_area: true
+  field_teaser_image: true
+  field_teaser_text: true
   field_theme: true
   field_topic: true
   field_weight: true

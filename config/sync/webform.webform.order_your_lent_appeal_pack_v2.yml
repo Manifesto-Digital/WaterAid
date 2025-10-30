@@ -450,7 +450,7 @@ handlers:
     handler_id: email_download_only
     label: 'Email (download only)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_resources"]':
@@ -491,7 +491,7 @@ handlers:
     handler_id: email_post_and_download
     label: 'Email (post and download)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_resources"]':
@@ -532,7 +532,7 @@ handlers:
     handler_id: email_post_only
     label: 'Email (post only)'
     notes: ''
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_resources"]':
@@ -622,4 +622,13 @@ handlers:
       confirmation_url: ''
       confirmation_title: 'Thank you for joining our Lent Appeal'
       confirmation_message: '<p><strong>Your support will help communities build clean water systems for generations to come.</strong></p><p>Your resources should arrive within the next two weeks. If you haven''t received them by then, please call us on 020 7793 4594 or email <a href="mailto:lent@wateraid.org">lent@wateraid.org</a>.</p><p>For more inspiration, or if you need a hand with bringing WaterAid’s work to life, you can also book a <a href="/uk/get-involved/teaching/speaker-network" target="_blank">free WaterAid talk or workshop</a> for your group.</p><p>Thank you again.</p>'
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

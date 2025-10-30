@@ -3,6 +3,7 @@ langcode: en
 status: open
 dependencies:
   module:
+    - azure_blob_storage
     - wateraid_donation_forms
     - wateraid_donation_stripe
     - wateraid_forms
@@ -295,7 +296,7 @@ handlers:
     handler_id: email_notification
     label: 'Email notification'
     notes: 'To team each time form is submitted'
-    status: true
+    status: false
     conditions: {  }
     weight: 0
     settings:
@@ -336,7 +337,7 @@ handlers:
     handler_id: email
     label: 'Confirmation email'
     notes: 'To registrant'
-    status: true
+    status: false
     conditions: {  }
     weight: 0
     settings:
@@ -369,4 +370,13 @@ handlers:
       langcode: ''
       parameters: {  }
       debug: false
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

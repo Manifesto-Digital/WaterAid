@@ -730,7 +730,7 @@ handlers:
     handler_id: wateraid_donation_email
     label: 'Wateraid Donation Email'
     notes: ''
-    status: true
+    status: false
     conditions: {  }
     weight: 1
     settings:
@@ -770,7 +770,7 @@ handlers:
     handler_id: email_to_staff
     label: 'Email to staff'
     notes: ''
-    status: true
+    status: false
     conditions: {  }
     weight: 2
     settings:
@@ -806,4 +806,13 @@ handlers:
       langcode: ''
       parameters: {  }
       debug: false
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }
