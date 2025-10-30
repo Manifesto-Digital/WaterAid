@@ -1,9 +1,9 @@
 // Utility functions and mixins.
-@use "./functions";
-@use "./colors";
-@use "./spacing";
-@use "./breakpoints";
-@use "./typography";
+@use "functions";
+@use "../0-settings/colors";
+@use "../0-settings/spacing";
+@use "breakpoints";
+@use "typography";
 
 @mixin font-size($size, $height: $size) {
   font-size: functions.calculate-rem($size);
