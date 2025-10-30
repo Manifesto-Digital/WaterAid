@@ -27,6 +27,7 @@ module.exports = {
     'components/link/link': ['./components/link/link.scss'],
     'components/listing/listing': ['./components/listing/listing.scss'],
     'components/navigation/primary_navigation/primary_navigation': ['./components/navigation/primary_navigation/primary_navigation.scss'],
+    'components/modal/modal': ['./components/modal/modal.scss'],
     'components/number_input/number_input': ['./components/number_input/number_input.scss'],
     'components/site_header/site_header': ['./components/site_header/site_header.scss'],
     'components/properties/properties': ['./components/properties/properties.scss'],

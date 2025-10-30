@@ -89,6 +89,7 @@
     "drupal/real_aes": "^2.6",
     "drupal/recaptcha_v3": "^2.0",
     "drupal/redirect": "^1.10",
+    "drupal/redirect_bulk": "^1.0",
     "drupal/scheduler": "^2.2",
     "drupal/scheduler_content_moderation_integration": "^3.0",
     "drupal/schema_metatag": "^3.0",
@@ -219,5 +220,8 @@
           "docroot/modules/contrib/webform/composer.libraries.json"
       ]
     }
+  },
+  "scripts": {
+    "post-acli-pull-database": [ "./scripts/drush-common.sh site.prod" ]
   }
 }
