@@ -1,42 +1,36 @@
-@use "../1-tools/breakpoints";
-@use "./colors";
-@use "../0-settings/spacing";
-@use "../0-settings/radius";
-@use "../1-tools/mixins";
-@use "../1-tools/functions";
-@use "../1-tools/typography";
+@use "../base";
 
 // Webforms
 .webform-submission-form {
-  @include mixins.container-sm();
+  @include base.container-sm();
   display: flex;
   flex-direction: column;
-  gap: spacing.$wa-spacing-07;
+  gap: base.$wa-spacing-07;
 
   .form-wrapper {
     display: flex;
     flex-direction: column;
-    gap: spacing.$wa-spacing-07;
+    gap: base.$wa-spacing-07;
   }
 
   .form-actions {
-    margin: spacing.$wa-spacing-09 0;
+    margin: base.$wa-spacing-09 0;
     display: flex;
     flex-direction: row;
-    gap: spacing.$wa-spacing-06;
+    gap: base.$wa-spacing-06;
 
     .form-submit,
     .webform-button--next {
       flex: 1;
-      font-family: typography.$heading-font;
+      font-family: base.$heading-font;
       font-weight: 700;
-      @include mixins.reset-button();
-      font-size: calculate-rem(24);
-      padding: spacing.$wa-spacing-03 spacing.$wa-spacing-04;
+      @include base.reset-button();
+      font-size: base.calculate-rem(24);
+      padding: base.$wa-spacing-03 base.$wa-spacing-04;
       display: flex;
-      gap: spacing.$wa-spacing-02;
+      gap: base.$wa-spacing-02;
       align-items: center;
-      color: colors.$wa-white;
+      color: base.$wa-white;
       text-decoration: none;
       position: relative;
       border: none;
@@ -57,8 +51,8 @@
       }
 
       &:focus-visible {
-        outline: colors.$wa-pink spacing.$wa-spacing-01 solid;
-        border: 4px solid colors.$black;
+        outline: base.$wa-pink base.$wa-spacing-01 solid;
+        border: 4px solid base.$black;
       }
 
       &:hover {
@@ -68,7 +62,7 @@
 
     .webform-button--previous {
       background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
-      color: colors.$wa-blue;
+      color: base.$wa-blue;
     }
   }
 }
@@ -78,8 +72,8 @@
 .js-form-type-radio {
   display: flex;
   align-items: center;
-  gap: spacing.$wa-spacing-03;
-  padding: spacing.$wa-spacing-03;
+  gap: base.$wa-spacing-03;
+  padding: base.$wa-spacing-03;
 
   &:hover {
     cursor: pointer;
@@ -89,12 +83,12 @@
 .webform-type-checkboxes,
 .webform-type-radios {
   legend {
-    font-family: typography.$bold-font;
-    font-size: functions.calculate-rem(20);
-    margin-bottom: spacing.$wa-spacing-02;
+    font-family: base.$bold-font;
+    font-size: base.calculate-rem(20);
+    margin-bottom: base.$wa-spacing-02;
 
     .optional {
-      font-family: typography.$font-family;
+      font-family: base.$font-family;
     }
   }
 
@@ -102,13 +96,13 @@
   .js-webform-radios {
     display: flex;
     flex-direction: column;
-    gap: spacing.$wa-spacing-03;
+    gap: base.$wa-spacing-03;
   }
 
   .js-form-type-checkbox,
   .js-form-type-radio {
     padding: 0;
-    padding-left: spacing.$wa-spacing-03;
+    padding-left: base.$wa-spacing-03;
 
     label {
       margin: 0;
@@ -126,8 +120,8 @@
   display: block;
 
   label.option {
-    font-family: typography.$font-family;
-    font-size: functions.calculate-rem(20);
+    font-family: base.$font-family;
+    font-size: base.calculate-rem(20);
     margin: 0;
   }
 }
@@ -135,15 +129,15 @@
 input[type='checkbox'],
 input[type='radio'] {
   -webkit-appearance: none;
-  width: spacing.$wa-spacing-06;
-  height: spacing.$wa-spacing-06;
-  background: colors.$wa-white;
-  border-radius: radius.$radius-xxs;
-  border: functions.calculate-rem(2) solid colors.$wa-navy;
+  width: base.$wa-spacing-06;
+  height: base.$wa-spacing-06;
+  background: base.$wa-white;
+  border-radius: base.$radius-xxs;
+  border: base.calculate-rem(2) solid base.$wa-navy;
   vertical-align: middle;
 
   &:checked {
-    background-color: colors.$wa-navy;
+    background-color: base.$wa-navy;
     background-image: url("/themes/custom/wateraid/images/icons/wa-form-check.svg");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -151,22 +145,22 @@ input[type='radio'] {
   }
 
   &:focus-visible {
-    outline: spacing.$wa-spacing-01 colors.$wa-pink solid;
-    box-shadow: 0 0 0 functions.calculate-rem(2) colors.$wa-navy;
+    outline: base.$wa-spacing-01 base.$wa-pink solid;
+    box-shadow: 0 0 0 base.calculate-rem(2) base.$wa-navy;
   }
 }
 
 input[type='radio'] {
-  border-radius: radius.$radius-full;
+  border-radius: base.$radius-full;
 
   &:checked {
     background-image: none;
-    background-color: colors.$wa-navy;
+    background-color: base.$wa-navy;
   }
 
   &:focus-visible {
-    outline: spacing.$wa-spacing-01 colors.$wa-pink solid;
-    box-shadow: 0 0 0 functions.calculate-rem(2) colors.$wa-navy;
+    outline: base.$wa-spacing-01 base.$wa-pink solid;
+    box-shadow: 0 0 0 base.calculate-rem(2) base.$wa-navy;
   }
 }
 
@@ -174,19 +168,19 @@ input[type='radio'] {
 .form-item {
   label {
     display: inline-block;
-    font-family: typography.$bold-font;
-    font-size: functions.calculate-rem(20);
-    margin-bottom: spacing.$wa-spacing-02;
+    font-family: base.$bold-font;
+    font-size: base.calculate-rem(20);
+    margin-bottom: base.$wa-spacing-02;
   }
 
   .optional {
-    font-size: functions.calculate-rem(20);
+    font-size: base.calculate-rem(20);
   }
 
   .webform-element-description {
-    font-size: functions.calculate-rem(16);
-    color: colors.$wa-navy-80;
-    margin-bottom: spacing.$wa-spacing-03;
+    font-size: base.calculate-rem(16);
+    color: base.$wa-navy-80;
+    margin-bottom: base.$wa-spacing-03;
   }
 
   // Inputs & textareas
@@ -195,30 +189,30 @@ input[type='radio'] {
   input[type='tel'],
   input[type='number'] {
     width: 100%;
-    height: functions.calculate-rem(54);
+    height: base.calculate-rem(54);
     border-radius: 2px;
-    border: 2px solid colors.$wa-navy;
-    padding: spacing.$wa-spacing-03;
-    font-size: functions.calculate-rem(18);
+    border: 2px solid base.$wa-navy;
+    padding: base.$wa-spacing-03;
+    font-size: base.calculate-rem(18);
   }
 
   textarea {
     border-radius: 2px;
     width: 100%;
     max-width: 100%;
-    border: 2px solid colors.$wa-navy;
-    padding: spacing.$wa-spacing-03;
-    font-size: functions.calculate-rem(20);
+    border: 2px solid base.$wa-navy;
+    padding: base.$wa-spacing-03;
+    font-size: base.calculate-rem(20);
   }
 
   // Select
   select {
     width: 100%;
-    height: functions.calculate-rem(54);
+    height: base.calculate-rem(54);
     border-radius: 2px;
-    border: 2px solid colors.$wa-navy;
-    font-size: functions.calculate-rem(20);
-    padding: spacing.$wa-spacing-03;
+    border: 2px solid base.$wa-navy;
+    font-size: base.calculate-rem(20);
+    padding: base.$wa-spacing-03;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -231,8 +225,8 @@ input[type='radio'] {
 .webform-progress-tracker {
   .progress-step {
     .progress-marker {
-      font-size: functions.calculate-rem(22);
-      font-family: typography.$bold-font;
+      font-size: base.calculate-rem(22);
+      font-family: base.$bold-font;
 
       &:before {
         background-size: 50px;
@@ -242,13 +236,13 @@ input[type='radio'] {
         top: -10px;
       }
       &:after {
-        background-color: colors.$wa-cream;
+        background-color: base.$wa-cream;
       }
     }
     &:hover {
       .progress-marker {
         &:before {
-          background-color: colors.$wa-cream;
+          background-color: base.$wa-cream;
         }
       }
     }
@@ -256,9 +250,9 @@ input[type='radio'] {
 
   .progress-step {
     .progress-marker {
-      color: colors.$wa-navy;
+      color: base.$wa-navy;
       &:before {
-        background-color: colors.$wa-cream;
+        background-color: base.$wa-cream;
         background-image: url("/themes/custom/wateraid/images/icons/next.svg");
         width: 51px;
         height: 48px;
@@ -266,7 +260,7 @@ input[type='radio'] {
       &:hover {
         .progress-marker {
           &:before {
-            background-color: colors.$wa-cream;
+            background-color: base.$wa-cream;
           }
         }
       }
@@ -276,14 +270,14 @@ input[type='radio'] {
     &.is-complete {
       .progress-marker {
         &:before {
-          background-color: colors.$wa-cream;
+          background-color: base.$wa-cream;
           background-image: url("/themes/custom/wateraid/images/icons/complete.svg");
         }
       }
       &:hover {
         .progress-marker {
           &:before {
-            background-color: colors.$wa-white;
+            background-color: base.$wa-white;
           }
         }
       }
@@ -291,10 +285,10 @@ input[type='radio'] {
 
     &.is-active {
       .progress-marker {
-        color: colors.$wa-navy;
+        color: base.$wa-navy;
 
         &:before {
-          background-color: colors.$wa-white;
+          background-color: base.$wa-white;
           background-image: url("/themes/custom/wateraid/images/icons/current.svg");
           background-size: cover;
         }
@@ -303,7 +297,7 @@ input[type='radio'] {
       &:hover {
         .progress-marker {
           &:before {
-            background-color: colors.$wa-white;
+            background-color: base.$wa-white;
           }
         }
       }

@@ -1,37 +1,12 @@
-// @import '_breakpoint';
-
-// Base.
+// Non-printing.
 @import 'base';
 
 // Generic
 @import '2-generic/reset';
 
-// Components - mostly controlled within SCD but there will be outliers.
-@import '../components/accordion/accordion.scss';
-@import '../components/accordion_item/accordion_item.scss';
-@import '../components/button/button.scss';
-@import '../components/call_to_action/call_to_action.scss';
-@import '../components/cancel_anytime/cancel_anytime.scss';
-@import '../components/card/card.scss';
-@import '../components/card_collection/card_collection.scss';
-@import '../components/content_tag/content_tag.scss';
-@import '../components/donate_block/donate_block.scss';
-@import '../components/donate_widget/donate_widget.scss';
-@import '../components/footer/footer.scss';
-@import '../components/hero/hero.scss';
-@import '../components/image/image.scss';
-@import '../components/image_gallery/image_gallery.scss';
-@import '../components/link/link.scss';
-@import '../components/listing/listing.scss';
-@import '../components/modal/modal.scss';
-@import '../components/number_input/number_input.scss';
-@import '../components/properties/properties.scss';
-@import '../components/quote/quote.scss';
-@import '../components/rich_text/rich_text.scss';
-@import '../components/statistics/statistics.scss';
-@import '../components/text_media/text_media.scss';
-@import '../components/video/video.scss';
+// Elements
+@forward '3-elements/typography';
 
-
-@import '5-components/drupal';
-@import '5-components/form';
+// Components - mostly output separately via SCD but there will be outliers.
+@forward '5-components/drupal';
+@forward '5-components/form';
