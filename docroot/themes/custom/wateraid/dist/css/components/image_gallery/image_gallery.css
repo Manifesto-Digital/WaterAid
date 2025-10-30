@@ -1537,8 +1537,7 @@ body {
   margin-top: 2rem;
   margin-left: calc(-1 * 1.25rem);
   margin-right: calc(-1 * 1.25rem);
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding: 1.5rem 1.25rem;
 }
 
 @media only screen and (min-width: 1440px) {
@@ -1546,6 +1545,7 @@ body {
     margin-top: 3rem;
     margin-left: 0;
     margin-right: 0;
+    padding: 3rem;
   }
 }
 
@@ -1669,15 +1669,12 @@ body {
 .image-gallery--dark[data-component-id="wateraid:image_gallery"] {
   background-color: #006bd9;
   background-size: 100% 100%;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 
 @media only screen and (min-width: 1440px) {
   .image-gallery--dark[data-component-id="wateraid:image_gallery"] {
     background-color: transparent;
     background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");
-    padding: 3rem;
   }
 }
 
