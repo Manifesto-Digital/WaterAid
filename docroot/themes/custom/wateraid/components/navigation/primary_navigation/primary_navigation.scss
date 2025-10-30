@@ -1,0 +1,13 @@
+@import "../../../sass/styles";
+
+.primary-nav {
+
+  &__meganav {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: $wa-blue;
+  }
+}
+
+

@@ -1,0 +1,19 @@
+<header role="banner" {{ attributes.addClass('site-header').setAttribute('role', 'banner') }}>
+  <div class="site-header__container">
+
+    <div class="site-header__logo">
+      <a href="/" class="site-header__logo-link">
+        <img src="/themes/custom/wateraid/logo.svg" alt="WaterAid logo" />
+      </a>
+    </div>
+
+    {{ include ('wateraid:primary_navigation', {
+      menu: primary_menu
+    }, false) }}
+
+    <button type="button" class="js-show-hide-menu-button">Show/hide menu</button>
+
+  </div>
+
+
+</header>

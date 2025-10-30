@@ -1,0 +1,31 @@
+{{ menu|without('#items') }}
+{% set items = menu['#items'] %}
+{{ dump(items) }}
+
+<div class="nav primary-nav" role="navigation" aria-label="Main navigation">
+  <nav>
+    <ul class="primary-nav primary-nav__level-1">
+      {% for link in items %}
+        <li><button type="button">{{ link.title }}</button></li>
+        <div class="primary-nav__meganav">
+          <div class="primary-nav__meganav-inner">
+            <div class="primary-nav__col primary-nav__col-first">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+              {# @TODO Add top level description. #}
+              <div class="description"><p>Lorem ipsum dolor diset.</p></div>
+            </div>
+            {% if link.below %}
+              {% set items = link.below %}
+                <ul class="primary-nav primary-nav__level-2">
+                  {% for link in items %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </ul>
+  </nav>
+
+</div>

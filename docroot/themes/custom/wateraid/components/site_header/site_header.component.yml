@@ -1,0 +1,18 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Site header
+status: stable
+description: Site header including branding and navigations.
+libraryOverrides:
+  dependencies:
+    - core/once
+  css:
+    theme:
+      ../../dist/css/components/site_header/site_header.css: {}
+props:
+  type: object
+  properties: {}
+slots:
+  primary_menu:
+    title: Primary navigation items
+  secondary_menu:
+    title: Secondary navigation items

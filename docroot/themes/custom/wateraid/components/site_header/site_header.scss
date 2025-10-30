@@ -1,0 +1,7 @@
+@import "../../sass/styles";
+
+.site-header {
+  &__container {
+    @include page-container;
+  }
+}
