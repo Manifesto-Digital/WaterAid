@@ -7,7 +7,9 @@ libraryOverrides:
     - core/once
   css:
     theme:
-      ../../dist/css/components/navigation/primary_navigation/primary_navigation.css: { }
+      ../../../dist/css/components/navigation/primary_navigation/primary_navigation.css: { }
+  js:
+    primary_navigation.js: {}
 props:
   type: object
   properties:

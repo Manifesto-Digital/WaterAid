@@ -1,7 +1,19 @@
-@import "../../sass/styles";
+@import "./sass/base";
 
 .site-header {
+  position: relative;
+  z-index: 1;
+
+  &__colour-wrapper {
+    background: $white;
+  }
+
   &__container {
     @include page-container;
+  }
+
+  &__logo-link {
+    display: block;
+    max-width: 200px;
   }
 }

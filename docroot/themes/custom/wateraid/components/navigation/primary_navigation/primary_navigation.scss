@@ -1,13 +1,174 @@
-@import "../../../sass/styles";
+@import "./../../../sass/base";
 
-.primary-nav {
+$navigation_bottom_spacing: 0;
 
-  &__meganav {
+.meganav {
+  // Declare this in ms only - this is picked up by our JS behaviour too.
+  --meganav-transition-time: 800ms;
+
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  &__level-1 {
+    display: flex;
+    flex-direction: column;
+    background: $white;
+
+    @include tablet {
+      flex-direction: row;
+      gap: $wa-spacing-05;
+      padding-bottom: $navigation_bottom_spacing;
+    }
+  }
+
+  &__level-1-link {
+    @include nav-level-1-link;
+    display: block;
+    padding: $wa-spacing-03 $wa-spacing-04;
+    border-bottom: 3px transparent solid;
+
+    &:focus-visible {
+      border-bottom: 3px inset $wa-navy;
+      outline: none;
+    }
+    &.active {
+      color: $wa-navy;
+      border-bottom: 3px inset $wa-navy;
+    }
+  }
+
+  &__level-1-panel-title-link {
+    @include nav-level-2-link;
+    display: inline-block;
+    margin-bottom: $wa-spacing-04;
+  }
+
+  &__level-2-item {
+    border-top: 1px solid white;
+
+    &:first-child {
+      border-top-color: transparent;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid white;
+    }
+
+    &:hover,
+    &.active{
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+
+      + .meganav__level-2-item {
+        border-top-color: transparent;
+      }
+    }
+  }
+
+  &__level-2-link {
+    @include nav-level-2-link;
+    display: block;
+    padding: $wa-spacing-02 $wa-spacing-03;
+    width: 100%;
+    text-align: left;
+  }
+
+  &__level-3-link {
+    @include nav-level-3-link;
+    display: block;
+    padding: $wa-spacing-02 $wa-spacing-03;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid $wa-blue;
+
+    &:focus-visible {
+      border-color: $wa-navy;
+    }
+
+    &.meganav__level-3-heading-link {
+      font-family: $bold-font;
+      border-bottom: 2px solid $wa-white;
+
+      &:focus-visible {
+        border-color: $wa-navy;
+      }
+    }
+  }
+
+  &__panel {
+    overflow: hidden;
+    color: white;
+    min-height: 400px;
+    transform: translate(0, -100%);
+    z-index: -2;
     position: absolute;
     width: 100%;
     left: 0;
     background: $wa-blue;
+    backface-visibility: hidden;
+    visibility: hidden;
+    padding: $wa-spacing-07 0;
+    @include wa-transition-motion-flow(transform, var(--meganav-transition-time));
+
+    &.panel-animating-in {
+      z-index: -1;
+    }
+
+    .meganav-animating & {
+      visibility: visible;
+    }
+
+    &.active {
+      transform: translate(0, $navigation_bottom_spacing);
+      visibility: visible;
+    }
+  }
+
+  &__panel-inner {
+    @include page-container;
+    @include grid;
+  }
+
+  &__col {
+    @include grid-item-span(4, 2, 3);
+
+    &--first {
+      @include grid-item-span(4, 2, 5);
+      padding-top: $wa-spacing-06;
+    }
+  }
+
+  &__level-2 {
+    position: relative;
+    padding: $wa-spacing-04 0;
+  }
+  &__level-3 {
+    position: absolute;
+    left: calc(100% + $grid-gap-tablet);
+    top: 0;
+    width: 100%;
+    visibility: hidden;
+    background: $wa-navy;
+    padding: $wa-spacing-04;
+    opacity: 0;
+    @include link-transition;
+
+    &.show {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }
+
+
+
+
 
 

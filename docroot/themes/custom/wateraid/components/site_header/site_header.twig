@@ -1,19 +1,21 @@
-<header role="banner" {{ attributes.addClass('site-header').setAttribute('role', 'banner') }}>
-  <div class="site-header__container">
+<header role="banner" {{ attributes.addClass(['site-header', 'js-site-header']).setAttribute('role', 'banner') }}>
+  <div class="site-header__colour-wrapper">
 
-    <div class="site-header__logo">
-      <a href="/" class="site-header__logo-link">
-        <img src="/themes/custom/wateraid/logo.svg" alt="WaterAid logo" />
-      </a>
+    <div class="site-header__container">
+
+      <div class="site-header__logo">
+        <a href="/" class="site-header__logo-link">
+          <img src="/themes/custom/wateraid/logo.svg" alt="WaterAid logo" />
+        </a>
+      </div>
+
+      <button type="button" class="js-menu-open-close-btn">Show/hide menu</button>
+
+      {{ include ('wateraid:primary_navigation', {
+        menu: primary_menu
+      }, false) }}
+
     </div>
-
-    {{ include ('wateraid:primary_navigation', {
-      menu: primary_menu
-    }, false) }}
-
-    <button type="button" class="js-show-hide-menu-button">Show/hide menu</button>
-
   </div>
-
 
 </header>

@@ -1,21 +1,6 @@
 @import "../base";
 
 //  ---- TEMPORARY STYLES  ----- \\
-header {
-  padding: 24px 0;
-  border-bottom: $black solid 1px;
-
-  & > div {
-    @include page-container;
-    margin-left: 0;
-  }
-
-  img {
-    display: block;
-    width: 200px;
-  }
-}
-
 .page-container {
   @include page-container;
 }
@@ -53,3 +38,9 @@ body {
 }
 
 //  ---- TEMPORARY STYLES END ----- \\
+
+// Hide the
+.gin-secondary-toolbar--frontend {
+  background: $wa-white;
+  opacity: 1;
+}
