@@ -8,4 +8,22 @@ id: global
 label: Global
 tags:
   canonical_url: '[current-page:url]'
+  og_description: '[meta:description]'
+  og_image_url: '[site:url]/themes/custom/wateraid/wateraid-social-logo.png'
+  og_title: '[meta:title]'
+  schema_web_page_author: 'a:5:{s:5:"@type";s:12:"Organization";s:3:"@id";s:25:"https://www.wateraid.org/";s:4:"name";s:8:"WaterAid";s:3:"url";s:25:"https://www.wateraid.org/";s:4:"logo";a:5:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:5:"False";s:3:"url";s:68:"[site:url]themes/custom/wateraid/wateraid-social-logo.png";s:5:"width";s:3:"600";s:6:"height";s:2:"60";}}'
+  schema_web_page_breadcrumb: 'Yes'
+  schema_web_page_description: '[meta:description]'
+  schema_web_page_id: '[current-page:url]'
+  schema_web_page_in_language: '[language:langcode]'
+  schema_web_page_is_accessible_for_free: 'True'
+  schema_web_page_publisher: 'a:5:{s:5:"@type";s:12:"Organization";s:3:"@id";s:25:"https://www.wateraid.org/";s:4:"name";s:8:"WaterAid";s:3:"url";s:25:"https://www.wateraid.org/";s:4:"logo";a:5:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:5:"False";s:3:"url";s:68:"[site:url]themes/custom/wateraid/wateraid-social-logo.png";s:5:"width";s:3:"600";s:6:"height";s:2:"60";}}'
+  schema_web_page_type: WebPage
+  schema_web_site_name: '[site:name]'
+  schema_web_site_type: WebSite
+  schema_web_site_url: '[site:url]'
   title: '[current-page:title] | [site:name]'
+  twitter_cards_description: '[meta:description]'
+  twitter_cards_image: '[site:url]themes/custom/wateraid/wateraid-social-logo.png'
+  twitter_cards_title: '[meta:title]'
+  twitter_cards_type: summary_large_image

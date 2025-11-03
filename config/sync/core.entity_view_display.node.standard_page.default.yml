@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.standard_page.field_job_id
     - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
+    - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
@@ -32,6 +33,7 @@ dependencies:
     - node.type.standard_page
   module:
     - entity_reference_revisions
+    - metatag
     - user
 id: node.standard_page.default
 targetEntityType: node
@@ -55,6 +57,13 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   links:
     settings: {  }

@@ -13,10 +13,12 @@ dependencies:
     - field.field.node.story.field_hide_from_listing
     - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_metatags
     - field.field.node.story.field_override_related_content
     - field.field.node.story.field_related_content
     - field.field.node.story.field_related_content_type
     - field.field.node.story.field_review_date
+    - field.field.node.story.field_search_phrases
     - field.field.node.story.field_teaser_image
     - field.field.node.story.field_teaser_text
     - field.field.node.story.field_theme
@@ -179,6 +181,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_metatags: true
   field_search_phrases: true
   field_teaser_image: true
   field_teaser_text: true

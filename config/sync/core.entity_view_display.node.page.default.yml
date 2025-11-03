@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_content
+    - field.field.node.page.field_metatags
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
@@ -13,6 +14,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - metatag
     - user
 _core:
   default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
@@ -29,6 +31,13 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_review_date:
     type: datetime_time_ago

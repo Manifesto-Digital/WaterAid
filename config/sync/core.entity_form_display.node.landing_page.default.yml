@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.landing_page.field_get_involved_section_title
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_key_stage
+    - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
     - field.field.node.landing_page.field_registration_link
     - field.field.node.landing_page.field_resources
@@ -37,6 +38,7 @@ dependencies:
     - layout_paragraphs
     - link
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -252,6 +254,14 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_regions:
     type: options_select

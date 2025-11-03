@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.event.field_event_type
     - field.field.node.event.field_get_involved
     - field.field.node.event.field_hero
+    - field.field.node.event.field_metatags
     - field.field.node.event.field_properties
     - field.field.node.event.field_regions
     - field.field.node.event.field_registration_link
@@ -32,6 +33,7 @@ dependencies:
     - entity_reference_revisions
     - key_value_field
     - link
+    - metatag
     - options
     - user
 id: node.event.default
@@ -147,6 +149,13 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_properties:
     type: key_value
