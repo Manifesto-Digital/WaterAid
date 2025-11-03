@@ -23,6 +23,9 @@ process:
   field_media_dam_image:
     plugin: asset_to_orange_dam
     source: field_remote_id_value
+  uid:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:media'
   default_bundle: dam_image

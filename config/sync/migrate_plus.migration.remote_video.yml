@@ -1,32 +1,32 @@
+uuid: 6528795b-3eec-4890-98f2-014eb3f06743
+langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - wa_migration
-id: media
+id: remote_video
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - Database
 migration_group: wateraid_uk
-label: Media
+label: 'Remote Video'
 source:
-  plugin: asset_image_source
+  plugin: remote_video_source
 process:
   langcode:
     -
       plugin: default_value
       default_value: en
-  field_media_dam_image:
-    plugin: asset_to_orange_dam
-    source: field_remote_id_value
+  field_media_oembed_video: field_media_video_embed_field_value
   uid:
     plugin: default_value
     default_value: 1
 destination:
   plugin: 'entity:media'
-  default_bundle: dam_image
+  default_bundle: remote_video
 idMap: {  }
-migration_dependencies: {}
+migration_dependencies: {  }
 include: null
