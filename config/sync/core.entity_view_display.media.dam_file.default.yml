@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.dam_file.field_caption
+    - field.field.media.dam_file.field_credit
     - field.field.media.dam_file.field_media_dam_file
     - media.type.dam_file
   module:
@@ -12,6 +14,22 @@ targetEntityType: media
 bundle: dam_file
 mode: default
 content:
+  field_caption:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_credit:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_media_dam_file:
     type: wa_orange_dam_file_formater
     label: visually_hidden

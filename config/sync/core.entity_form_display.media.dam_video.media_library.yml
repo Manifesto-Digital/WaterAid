@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.dam_video.field_caption
+    - field.field.media.dam_video.field_credit
     - field.field.media.dam_video.field_media_dam_video
     - media.type.dam_video
 id: media.dam_video.media_library
@@ -14,6 +16,8 @@ content: {  }
 hidden:
   created: true
   directory: true
+  field_caption: true
+  field_credit: true
   field_media_dam_video: true
   langcode: true
   name: true
