@@ -63,9 +63,8 @@ final class AssetToOrangeDam extends ProcessPluginBase implements ContainerFacto
         if (!isset($result['APIResponse']['Items'][0]['SystemIdentifier'])) {
 
           // If we don't get it by the asset bank id, we'll try searching for
-          // the value in the filename. Currently this search returns no
-          // results.
-          $result = $this->api->search(['query' => 'CoreField.OriginalFileName:*' . $value . '*']);
+          // the value in the filename.
+          $result = $this->api->search(['query' => 'CoreField.OriginalFileName:' . $value]);
 
           if (!empty($result['APIResponse']['Items']) && count($result['APIResponse']['Items']) > 1) {
 
