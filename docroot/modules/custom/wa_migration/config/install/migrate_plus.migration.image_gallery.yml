@@ -1,0 +1,37 @@
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: image_gallery
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_uk
+label: Image Gallery
+source:
+  plugin: paragraph_source
+  bundle: two_column_images
+  fields:
+    - field_one_column_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_images:
+    plugin: migration_lookup
+    source: field_one_column_image_target_id
+    migration: image
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies:
+  required:
+    - image
+include: null

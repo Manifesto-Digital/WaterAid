@@ -101,6 +101,8 @@ process:
         - info_section
         - quote_simple
         - image
+        - image_gallery
+        - video
       source: field_modules
   field_content:
     plugin: merge_without_exception
