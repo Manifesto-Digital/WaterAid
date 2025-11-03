@@ -2,11 +2,3 @@ services:
   wa_orange_dam.api:
     class: Drupal\wa_orange_dam\Service\Api
     arguments: ['@http_client']
-
-  wa_orange_dam.media_library_integration:
-    class: Drupal\wa_orange_dam\Service\MediaLibraryIntegration
-    arguments:
-      - '@entity_type.manager'
-      - '@form_builder'
-      - '@renderer'
-      - '@module_handler'

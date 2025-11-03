@@ -6,7 +6,9 @@ namespace Drupal\wa_orange_dam\Controller;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
+use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -85,109 +87,70 @@ final class AjaxMediaController extends ControllerBase {
    */
   public function createMediaEntity(Request $request): AjaxResponse {
     $response = new AjaxResponse();
+    $valid = FALSE;
+    $systemIdentifier = $request->request->get('asset_id');
+    $damItemData = [];
 
-    $system_identifier = $request->request->get('system_identifier');
-    $media_type_id = $request->request->get('media_type', 'dam_image');
-    $opener_id = $request->request->get('opener_id');
+    if ($systemIdentifier) {
+      if ($apiResult = $this->wa_orange_dam_api->search([
+        'query' => 'SystemIdentifier:' . $systemIdentifier,
+      ])) {
+        // Add the width and height properties.
+        if (!empty($apiResult['APIResponse']['Items'][0])) {
+          $apiResponseItem = $apiResult['APIResponse']['Items'][0];
+          // The id works, so this is now valid.
+          $valid = TRUE;
+          // Add the DAM properties to the Media.
+          if (isset($apiResponseItem['path_TR1'])) {
+            if (isset($apiResponseItem['path_TR1']['Width'])) {
+              $value[0]['width'] = $apiResponseItem['path_TR1']['Width'];
+            }
+            if (isset($apiResponseItem['path_TR1']['Height'])) {
+              $value[0]['height'] = $apiResponseItem['path_TR1']['Height'];
+            }
+          }
+        }
+      }
+    }
 
-    if (empty($system_identifier)) {
-      $response->addCommand(new InvokeCommand(NULL, 'showMessage', [
-        $this->t('Please select a DAM asset.'),
-        'error'
-      ]));
+    if (empty($systemIdentifier) || !$valid) {
+      $response->addCommand(new ReplaceCommand('#dam-messages',
+        '<div id="dam-messages" class="dam-messages">' .
+        '<div class="messages messages--error">' .
+        $this->t('Please select a valid DAM asset.') .
+        '</div></div>'
+      ));
       return $response;
     }
 
-    // Validate the DAM asset exists
-    if ($api_result = $this->wa_orange_dam_api->search([
-      'query' => 'SystemIdentifier:' . $system_identifier,
-    ])) {
-      if (!empty($api_result['APIResponse']['Items'][0])) {
-        // Create the media entity
-        $media = $this->createMedia($media_type_id, $system_identifier, $api_result['APIResponse']['Items'][0]);
+    // Create the media entity
+    $media = $this->createMedia('dam_image', $systemIdentifier, $damItemData);
 
-        if ($media) {
-          $media->save();
-
-          // Return success response with media data
-          $response->addCommand(new InvokeCommand(NULL, 'damMediaSelected', [
-            [
-              'id' => $media->id(),
-              'uuid' => $media->uuid(),
-              'name' => $media->label(),
-              'type' => $media_type_id,
-              'opener_id' => $opener_id
-            ]
-          ]));
-
-          // Close the modal
-          $response->addCommand(new CloseModalDialogCommand());
-        }
-        else {
-          $response->addCommand(new InvokeCommand(NULL, 'showMessage', [
-            $this->t('Failed to create media entity.'),
-            'error'
-          ]));
-        }
-      }
-      else {
-        $response->addCommand(new InvokeCommand(NULL, 'showMessage', [
-          $this->t('DAM asset not found.'),
-          'error'
-        ]));
-      }
+    if (isset($apiResponseItem['CustomField.Caption'])) {
+      $media->set('field_caption', $apiResponseItem['CustomField.Caption']);
     }
-    else {
-      $response->addCommand(new InvokeCommand(NULL, 'showMessage', [
-        $this->t('Error communicating with DAM service.'),
-        'error'
-      ]));
+    if (isset($apiResponseItem['customfield.Credit']) && isset($apiResponseItem['customfield.Credit']['Value'])) {
+      $media->set('field_credit', $apiResponseItem['customfield.Credit']['Value']);
+    }
+
+      \Drupal::logger('TEST')->notice('Debug set fields');
+
+
+    if ($media) {
+      $media->save();
+
+      // Trigger modal reload.
+      $response->addCommand(new InvokeCommand('a[data-title*="DAM"].active', 'click'));
+    } else {
+      $response->addCommand(new ReplaceCommand('#dam-messages',
+        '<div id="dam-messages" class="dam-messages">' .
+        '<div class="messages messages--error">' .
+        $this->t('Failed to create media entity.') .
+        '</div></div>'
+      ));
     }
 
     return $response;
-  }
-
-  /**
-   * Validates a DAM asset identifier via AJAX.
-   *
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The current request.
-   *
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
-   *   The JSON response.
-   */
-  public function validateDamAsset(Request $request): JsonResponse {
-    $system_identifier = $request->request->get('system_identifier');
-
-    if (empty($system_identifier)) {
-      return new JsonResponse(['valid' => FALSE, 'message' => 'No identifier provided']);
-    }
-
-    $valid = FALSE;
-    $message = '';
-    $asset_data = NULL;
-
-    if ($api_result = $this->wa_orange_dam_api->search([
-      'query' => 'SystemIdentifier:' . $system_identifier,
-    ])) {
-      if (!empty($api_result['APIResponse']['Items'][0])) {
-        $valid = TRUE;
-        $asset_data = $api_result['APIResponse']['Items'][0];
-        $message = 'Asset found';
-      }
-      else {
-        $message = 'This ID does not exist on the Orange DAM.';
-      }
-    }
-    else {
-      $message = 'Error communicating with DAM service.';
-    }
-
-    return new JsonResponse([
-      'valid' => $valid,
-      'message' => $message,
-      'asset_data' => $asset_data,
-    ]);
   }
 
   /**
