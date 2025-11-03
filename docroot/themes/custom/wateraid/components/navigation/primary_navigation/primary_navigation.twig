@@ -1,113 +1,166 @@
-{{ menu|without('#items') }}
-{% set items = items|default(menu['#items']) %}
+<div {{ attributes.addClass('primary-navigation').setAttribute('role', 'navigation').setAttribute('aria-label', 'Main navigation') }}>
 
-<div class="meganav" id="meganav" role="navigation" aria-label="Main navigation">
-  <nav>
-    <ul class="meganav__level-1">
-      {% for link in items %}
-        {% set l1_index = loop.index %}
-        <li>
-          {% if link.below %}
-            <button
-              class="meganav__level-1-link"
-              type="button"
-              data-level2-trigger="{{ l1_index }}"
-              aria-controls="meganav-level-2-child-of-{{ l1_index }}"
-            >{{ link.title }}</button>
-          {% else %}
-            <a class="meganav__level-1-link" href="{{ link.url }}">{{ link.title }}</a>
-          {% endif %}
+  {% set items = items|default(menu['#items']) %}
 
-          {# Start building meganav panel for each level 1 item with children. #}
-          <div id="meganav-level-2-child-of-{{ l1_index }}" class="meganav__panel" data-meganav-panel-id="{{ l1_index }}" aria-expanded="false">
-            <div class="meganav__panel-inner">
-              <div class="meganav__col meganav__col--first">
-                <a class="meganav__level-1-panel-title-link" href="{{ link.url }}">{{ link.title }}</a>
-                {# @TODO Add top level description. #}
-                <div class="description"><p>Lorem ipsum dolor diset.</p></div>
-              </div>
-              {% if link.below %}
-                {% set level_2_items = link.below %}
+  {# Meganav navigation. #}
+  <div class="meganav" id="meganav">
+    <nav>
+      <ul class="meganav__level-1">
+        {% for link in items %}
+          {% set l1_index = loop.index %}
+          <li>
+            {% if link.below %}
+              <button
+                class="meganav__level-1-link primary-navigation__level-1-link"
+                type="button"
+                data-level2-trigger="{{ l1_index }}"
+                aria-controls="meganav-level-2-child-of-{{ l1_index }}"
+              >{{ link.title }}</button>
+            {% else %}
+              <a class="meganav__level-1-link primary-navigation__level-1-link" href="{{ link.url }}">{{ link.title }}</a>
+            {% endif %}
 
-                {# Check if any level 2 items have a level 3 menu available. #}
-                {% set has_any_level_3_items = false %}
-                {% for link in level_2_items %}
-                  {% set l2_index = loop.index %}
-                  {% if link.below is not empty%}
-                    {% set has_any_level_3_items = true %}
-                  {% endif %}
-                {% endfor %}
+            {# Start building meganav panel for each level 1 item with children. #}
+            <div id="meganav-level-2-child-of-{{ l1_index }}" class="meganav__panel" data-meganav-panel-id="{{ l1_index }}" aria-expanded="false">
+              <div class="meganav__panel-inner">
+                <div class="meganav__col meganav__col--first">
+                  <a class="meganav__level-1-panel-title-link" href="{{ link.url }}">{{ link.title }}</a>
+                  {# @TODO Add top level description. #}
+                  <div class="description"><p>Lorem ipsum dolor diset.</p></div>
+                </div>
+                {% if link.below %}
+                  {% set level_2_items = link.below %}
 
-                {# Start rendering out level 2 items. #}
-                {% if has_any_level_3_items %}
+                  {# Check if any level 2 items have a level 3 menu available. #}
+                  {% set has_any_level_3_items = false %}
+                  {% for link in level_2_items %}
+                    {% set l2_index = loop.index %}
+                    {% if link.below is not empty%}
+                      {% set has_any_level_3_items = true %}
+                    {% endif %}
+                  {% endfor %}
 
-                  <div class="meganav__col meganav__col--second">
-                    <ul class="meganav__level-2">
-                      {% for link in level_2_items %}
-                        {% set l2_index = loop.index %}
-                        <li class="meganav__level-2-item">
-                          {% if link.below is empty %}
-                            <a class="meganav__level-2-link" href="{{ link.url }}">{{ link.title }}</a>
-                          {% else %}
-                            <button
-                              class="meganav__level-2-link"
-                              {% if link.below %}data-level3-trigger="{{ l2_index }}"{% endif %}
-                              aria-controls="meganav-level-3-child-of-{{ l2_index }}"
-                            >{{ link.title }}</button>
-                            {# Start rendering out level 3 items. #}
-                            {% set level_3_items = link.below %}
-                            <div id="meganav-level-3-child-of-{{ l2_index }}" class="meganav__level-3" data-level-3-id="{{ l2_index }}" aria-expanded="false">
-                              <a class="meganav__level-3-link meganav__level-3-heading-link" href="{{ link.url }}">{{ link.title }}</a>
-                              <ul>
-                                {% for link in level_3_items %}
-                                  <li><a class="meganav__level-3-link" href="{{ link.url }}">{{ link.title }}</a></li>
-                                {% endfor %}
-                              </ul>
-                            </div>
-                          {% endif %}
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
+                  {# Start rendering out level 2 items. #}
+                  {% if has_any_level_3_items %}
 
-                {% else %}
-                  {% if level_2_items|length > 8 %}
-                    {# Split into 2 groups. If it's an add number, always make
-                    sure the first col gets the additional. #}
-                    {% set split_point = (level_2_items|length / 2)|round(0, 'ceil') %}
-                    {% set level_2_first_col_links = level_2_items|slice(0, split_point) %}
-                    {% set level_2_second_col_links = level_2_items|slice(split_point) %}
-                  {% else %}
-                    {% set level_2_first_col_links = level_2_items %}
-                  {% endif %}
-
-                  <div class="meganav__col meganav__col--second">
-                    <ul class="meganav__level-2">
-                      {% for link in level_2_first_col_links %}
-                        <li class="meganav__level-2-item"><a class="meganav__level-2-link" href="{{ link.url }}">{{ link.title }}</a></li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-
-                  {% if level_2_second_col_links %}
-                    <div class="meganav__col meganav__col--third">
+                    <div class="meganav__col meganav__col--second">
                       <ul class="meganav__level-2">
-                        {% for link in level_2_second_col_links %}
-                          <li class="meganav__level-2-item"><a class="meganav__level-2-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% for link in level_2_items %}
+                          {% set l2_index = loop.index %}
+                          <li class="meganav__level-2-item">
+                            {% if link.below is empty %}
+                              <a class="meganav__level-2-link primary-navigation__level-2-link" href="{{ link.url }}">{{ link.title }}</a>
+                            {% else %}
+                              <button
+                                class="meganav__level-2-link  primary-navigation__level-2-link"
+                                {% if link.below %}data-level3-trigger="{{ l2_index }}"{% endif %}
+                                aria-controls="meganav-level-3-child-of-{{ l2_index }}"
+                              >{{ link.title }}</button>
+                              {# Start rendering out level 3 items. #}
+                              {% set level_3_items = link.below %}
+                              <div id="meganav-level-3-child-of-{{ l2_index }}" class="meganav__level-3" data-level-3-id="{{ l2_index }}" aria-expanded="false">
+                                <a class="meganav__level-3-heading-link meganav__level-3-link primary-navigation__level-3-link " href="{{ link.url }}">{{ link.title }}</a>
+                                <ul>
+                                  {% for link in level_3_items %}
+                                    <li><a class="meganav__level-3-link primary-navigation__level-3-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                            {% endif %}
+                          </li>
                         {% endfor %}
                       </ul>
                     </div>
+
+                  {% else %}
+                    {# If no level 3 items at all in this panel then the level
+                    2 items can occupy both cols. #}
+                    {% if level_2_items|length > 8 %}
+                      {# Split into 2 groups. If it's an add number, always make
+                      sure the first col gets the additional. #}
+                      {% set split_point = (level_2_items|length / 2)|round(0, 'ceil') %}
+                      {% set level_2_first_col_links = level_2_items|slice(0, split_point) %}
+                      {% set level_2_second_col_links = level_2_items|slice(split_point) %}
+                    {% else %}
+                      {% set level_2_first_col_links = level_2_items %}
+                    {% endif %}
+
+                    <div class="meganav__col meganav__col--second">
+                      <ul class="meganav__level-2">
+                        {% for link in level_2_first_col_links %}
+                          <li class="meganav__level-2-item"><a class="meganav__level-2-link  primary-navigation__level-2-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+                    {% if level_2_second_col_links %}
+                      <div class="meganav__col meganav__col--third">
+                        <ul class="meganav__level-2">
+                          {% for link in level_2_second_col_links %}
+                            <li class="meganav__level-2-item"><a class="meganav__level-2-link  primary-navigation__level-2-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+
                   {% endif %}
 
+
                 {% endif %}
-
-
-              {% endif %}
+              </div>
             </div>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+
+  {# Mobile menu navigation.  #}
+  {% import _self as menus %}
+
+  {#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
+  #}
+  {# Same as stable9 menu.html.twig but tweaked for our purposes. #}
+  {% macro menu_links(items, attributes, menu_level, parent_index) %}
+    {% import _self as menus %}
+    {% if items %}
+      {% set menu_level_attrs = create_attribute().addClass('mobile-nav__level-' ~ menu_level) %}
+      {% if menu_level > 1 %}
+        {% set menu_level_attrs = menu_level_attrs
+          .setAttribute('data-mobile-submenu-id', parent_index)
+          .setAttribute('id', 'meganav-level-' ~ menu_level ~ '-child-of-' ~ parent_index)
+        %}
+      {% endif %}
+      <ul {{ menu_level_attrs }}>
+        {% for item in items %}
+          {% set index = loop.index %}
+          <li{{ item.attributes }}>
+            {% if item.below %}
+              <button
+                class="mobile-nav__level-{{ menu_level }}-link primary-navigation__level-{{ menu_level }}-link"
+                type="button"
+                data-level{{ menu_level + 1 }}-trigger="{{ index }}"
+                aria-controls="meganav-level-2-child-of-{{ index }}"
+              >{{ item.title }}</button>
+              {{ menus.menu_links(item.below, attributes, menu_level + 1, index) }}
+            {% else %}
+              {{ link(item.title, item.url) }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endmacro %}
+
+
+  <div class="mobile-nav" id="mobile-nav">
+    <nav class="mobile-nav__container">
+      {{ menus.menu_links(items, attributes, 1, null) }}
+    </nav>
+  </div>
 
 </div>
+
+{{ menu|without(['#items']) }}

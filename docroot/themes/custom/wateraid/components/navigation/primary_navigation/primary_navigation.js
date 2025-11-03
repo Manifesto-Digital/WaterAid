@@ -26,14 +26,17 @@
 
     initNav(nav, context) {
       const header = document.querySelector('.js-site-header');
+      const megaNav = nav.querySelector('.meganav');
+      const mobileNav = nav.querySelector('.mobile-nav');
       const menuButton = document.querySelector('.js-menu-open-close-btn');
-      const meganavPanels = nav.querySelectorAll('[data-meganav-panel-id]');
+      const meganavPanels = megaNav.querySelectorAll('[data-meganav-panel-id]');
+
       const level2Triggers = nav.querySelectorAll('[data-level2-trigger]');
       const level3Triggers = nav.querySelectorAll('[data-level3-trigger]');
 
       // Get the meganav open/close transition time from CSS var, make it
       // unitless (nb. Must be in milliseconds).
-      const meganavTransitionTimeString = getComputedStyle(nav).getPropertyValue('--meganav-transition-time');
+      const meganavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--meganav-transition-time');
       const meganavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
 
 
@@ -44,15 +47,18 @@
       level2Triggers.forEach((el) => {
         el.addEventListener('click', (e) => {
           e.preventDefault();
-          const trigger_id = e.target.dataset.level2Trigger;
-          this.state.activeLevel2 = this.state.activeLevel2 === trigger_id ? null : trigger_id;
+          const isMeganavTrigger = megaNav.contains(e.target);
+          const triggerId = e.target.dataset.level2Trigger;
+          console.log(triggerId);
+          this.state.activeLevel2 = isMeganavTrigger && this.state.activeLevel2 === triggerId ? null : triggerId;
         });
       });
       level3Triggers.forEach((el) => {
         el.addEventListener('click', (e) => {
           e.preventDefault();
-          const trigger_id = e.target.dataset.level3Trigger;
-          this.state.activeLevel3 = this.state.activeLevel3 === trigger_id ? null : trigger_id;
+          const isMeganavTrigger = megaNav.contains(e.target);
+          const triggerId = e.target.dataset.level3Trigger;
+          this.state.activeLevel3 = isMeganavTrigger && this.state.activeLevel3 === triggerId ? null : triggerId;
         });
       });
 
@@ -70,7 +76,7 @@
             (newValue, oldValue) => {
              if (newValue !== oldValue) {
                // menuButton.setAttribute('aria-expanded', newValue);
-               document.body.classList.toggle('meganav-open');
+               document.body.classList.toggle('primary-menu-open');
              }
             }
           ],
@@ -84,19 +90,24 @@
                 el.classList.remove('active');
                 el.setAttribute('aria-expanded', false);
               });
-              level2Triggers.forEach((el) => { el.classList.remove('active'); });
+              level2Triggers.forEach((el) => {
+                el.classList.remove('active');
+              });
 
               if (newValue) {
-                document.body.classList.add('meganav-open');
+                document.body.classList.add('primary-menu-open');
                 // Changing meganav panel.
-                nav.querySelector('[data-meganav-panel-id="' + newValue + '"]').classList.add('active', 'panel-animating-in');
-                nav.querySelector('[data-meganav-panel-id="' + newValue + '"]').setAttribute('aria-expanded', true);
+                const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');
+                newPanel.classList.add('active', 'panel-animating-in');
+                newPanel.setAttribute('aria-expanded', true);
                 // Active class on level 1 nav button.
-                nav.querySelector('[data-level2-trigger="' + newValue + '"]').classList.add('active');
+                nav.querySelectorAll('[data-level2-trigger="' + newValue + '"]').forEach((el) => {
+                  el.classList.add('active');
+                });
               }
               else {
                 // Closing meganav.
-                document.body.classList.remove('meganav-open');
+                document.body.classList.remove('primary-menu-open');
                 this.state.activeLevel3 = null;
               }
 
@@ -129,10 +140,12 @@
           ]
         }
       );
+      // Attach it to the Drupal global to make it globally available.
+      Drupal.primaryMenuState = this.state;
     },
 
     attach(context) {
-      once('meganav', '.meganav').forEach((el) => {
+      once('primary-navigation-menus', '.primary-navigation').forEach((el) => {
         this.initNav(el, context);
       });
     },
