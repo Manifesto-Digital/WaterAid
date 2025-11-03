@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Drupal\wa_orange_dam\Controller;
 
 use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\CloseModalDialogCommand;
-use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
@@ -15,8 +13,8 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\media\MediaInterface;
 use Drupal\wa_orange_dam\Service\Api;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -33,6 +31,8 @@ final class AjaxMediaController extends ControllerBase {
    *   The entity form builder.
    * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
    *   The form builder.
+   * @param \Psr\Log\LoggerInterface $logger
+   *   The logger channel for the module.
    * @param \Drupal\wa_orange_dam\Service\Api $wa_orange_dam_api
    *   The Orange DAM API service.
    */
@@ -40,6 +40,7 @@ final class AjaxMediaController extends ControllerBase {
     private readonly EntityTypeManagerInterface $entity_type_manager,
     private readonly EntityFormBuilderInterface $entity_form_builder,
     private readonly FormBuilderInterface $form_builder,
+    private readonly LoggerInterface $logger,
     private readonly Api $wa_orange_dam_api,
   ) {
   }
@@ -52,6 +53,7 @@ final class AjaxMediaController extends ControllerBase {
       $container->get('entity_type.manager'),
       $container->get('entity.form_builder'),
       $container->get('form_builder'),
+      $container->get('logger.factory')->get('wa_orange_dam'),
       $container->get('wa_orange_dam.api'),
     );
   }
@@ -123,7 +125,7 @@ final class AjaxMediaController extends ControllerBase {
       return $response;
     }
 
-    // Create the media entity
+    // Create the media entity.
     $media = $this->createMedia('dam_image', $systemIdentifier, $damItemData);
 
     if (isset($apiResponseItem['CustomField.Caption'])) {
@@ -133,15 +135,13 @@ final class AjaxMediaController extends ControllerBase {
       $media->set('field_credit', $apiResponseItem['customfield.Credit']['Value']);
     }
 
-      \Drupal::logger('TEST')->notice('Debug set fields');
-
-
     if ($media) {
       $media->save();
 
       // Trigger modal reload.
       $response->addCommand(new InvokeCommand('a[data-title*="DAM"].active', 'click'));
-    } else {
+    }
+    else {
       $response->addCommand(new ReplaceCommand('#dam-messages',
         '<div id="dam-messages" class="dam-messages">' .
         '<div class="messages messages--error">' .
@@ -176,19 +176,19 @@ final class AjaxMediaController extends ControllerBase {
 
       $source_field = $media_type->getSource()->getSourceFieldDefinition($media_type);
 
-      // Prepare field data - same structure as DamWidget
+      // Prepare field data - same structure as DamWidget.
       $field_data = [
         'system_identifier' => $system_identifier,
       ];
 
-      // Add width and height if available (same logic as DamWidget)
+      // Add width and height if available (same logic as DamWidget).
       foreach (['Width', 'Height'] as $key) {
         if (isset($dam_item_data['path_TR1'][$key])) {
           $field_data[strtolower($key)] = $dam_item_data['path_TR1'][$key];
         }
       }
 
-      // Use the title from DAM if available, otherwise use the system identifier
+      // Use the title from DAM title, system identifier otherwise.
       $title = $dam_item_data['CoreField']['Title'] ?? 'DAM Asset ' . $system_identifier;
 
       $media = $this->entity_type_manager->getStorage('media')->create([
@@ -200,7 +200,7 @@ final class AjaxMediaController extends ControllerBase {
       return $media;
     }
     catch (\Exception $e) {
-      \Drupal::logger('wa_orange_dam')->error('Failed to create media entity: @message', ['@message' => $e->getMessage()]);
+      $this->logger->error('Failed to create media entity: @message', ['@message' => $e->getMessage()]);
       return NULL;
     }
   }

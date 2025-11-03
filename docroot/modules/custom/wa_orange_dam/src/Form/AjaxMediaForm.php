@@ -40,6 +40,16 @@ class AjaxMediaForm extends FormBase {
   }
 
   /**
+   * Gets the default media type for the form.
+   *
+   * @return string
+   *   The media type ID.
+   */
+  protected function getDefaultMediaType(): string {
+    return 'dam_image';
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getFormId(): string {
@@ -49,9 +59,9 @@ class AjaxMediaForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, string $media_type = 'dam_image'): array {
-    // Load the media type to get the types for the DAM browser
-    $types = $this->getDamTypes($media_type);
+  public function buildForm(array $form, FormStateInterface $form_state): array {
+    // Load the media type to get the types for the DAM browser.
+    $types = $this->getDamTypes();
 
     $form['#prefix'] = '<div id="dam-media-form-wrapper">';
     $form['#suffix'] = '</div>';
@@ -89,12 +99,10 @@ class AjaxMediaForm extends FormBase {
       ],
     ];
 
-
-
     return $form;
   }
 
-    /**
+  /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
@@ -104,14 +112,11 @@ class AjaxMediaForm extends FormBase {
   /**
    * Gets the DAM types for the given media type.
    *
-   * @param string $media_type_id
-   *   The media type ID.
-   *
    * @return array
    *   Array of DAM types.
    */
-  private function getDamTypes(string $media_type_id): array {
-    switch ($media_type_id) {
+  private function getDamTypes(): array {
+    switch ($this->getDefaultMediaType()) {
       case 'dam_image':
         return ['Images*'];
 

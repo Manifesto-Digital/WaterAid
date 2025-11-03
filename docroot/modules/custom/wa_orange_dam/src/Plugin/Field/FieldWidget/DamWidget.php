@@ -78,6 +78,10 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
         $types = ['Videos*'];
         break;
 
+      case 'dam_file':
+        $types = ['Audio*', 'Others*'];
+        break;
+
       default:
         $types = [];
         break;
