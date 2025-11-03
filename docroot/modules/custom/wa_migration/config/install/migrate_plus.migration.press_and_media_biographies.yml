@@ -60,6 +60,7 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
       source: field_modules
   field_content:
     plugin: merge_without_exception
