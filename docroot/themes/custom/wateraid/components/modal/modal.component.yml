@@ -15,7 +15,7 @@ props:
       type: [ "object", "null" ]
       title: CTA
     continueDonation:
-      type: bool
+      type: boolean
       title: "Continue donation button"
     caption:
       type: string
