@@ -22,6 +22,13 @@ props:
       description: Button is primary or secondary
       # @todo Add examples here.
       examples: []
+    classes:
+      type: array
+      title: classes
+      description: Additional CSS classes to add to the button
+      items:
+        type: string
+      examples: []
 libraryOverrides:
   css:
     theme:
