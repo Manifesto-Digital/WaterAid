@@ -1,0 +1,294 @@
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, .pseudo-h1 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.625rem;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h1, .pseudo-h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2, .pseudo-h2 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2, .pseudo-h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3, .pseudo-h3 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h3, .pseudo-h3 {
+    font-size: 2.25rem;
+  }
+}
+
+h4, .pseudo-h4 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h5, .pseudo-h5 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h6, .pseudo-h6 {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+strong {
+  font-family: "Noto Sans Bold";
+}
+
+.modal[data-component-id="wateraid:modal"] {
+  display: none;
+}
+
+.modal[data-component-id="wateraid:modal"].open {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(12px);
+  z-index: 20;
+}
+
+.modal[data-component-id="wateraid:modal"] .modal__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal[data-component-id="wateraid:modal"] .modal__wrapper {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .modal[data-component-id="wateraid:modal"] .modal__wrapper {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.modal[data-component-id="wateraid:modal"] .modal__wrapper {
+  -moz-column-gap: 0;
+       column-gap: 0;
+  row-gap: 0;
+  position: absolute;
+  width: 100%;
+  max-width: 69.5625rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal__image {
+  grid-column: span 12;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal__image {
+    grid-column: span 3;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .modal__image {
+    grid-column: span 6;
+  }
+}
+
+.modal__image {
+  width: 100%;
+  grid-row: 2;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal__image {
+    grid-row: 1;
+  }
+}
+
+.modal__image .image,
+.modal__image .image__wrapper,
+.modal__image .image__content,
+.modal__image .image__content div {
+  height: 100%;
+}
+
+.modal__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.modal__content {
+  grid-column: span 12;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal__content {
+    grid-column: span 3;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .modal__content {
+    grid-column: span 6;
+  }
+}
+
+.modal__content {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  background-color: #006bd9;
+  padding: 2.75rem 1.5rem;
+  grid-row: 1;
+}
+
+.modal__close {
+  position: absolute;
+  right: .75rem;
+  top: .75rem;
+}
+
+.modal__title {
+  color: #fff;
+  margin: 0;
+}
+
+.modal__copy {
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal__copy {
+    font-size: 1.5rem;
+  }
+}
+
+.modal__copy p {
+  margin: 0;
+}
+
+.modal__cta {
+  z-index: 1;
+}
+
+.modal-open {
+  position: fixed;
+  overflow: hidden;
+}
+
+
+/*# sourceMappingURL=modal.css.map*/
