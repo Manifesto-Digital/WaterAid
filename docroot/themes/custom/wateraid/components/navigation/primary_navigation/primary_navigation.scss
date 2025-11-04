@@ -1,23 +1,52 @@
 @import "./../../../sass/base";
 @import "./../../site_header/site_header";
 
+// Some styling for both mega and mobile navs.
 .primary-navigation {
   align-self: flex-end;
 
   ul {
     list-style: none;
   }
+
+  &__level-1-link,
+  &__level-2-link,
+  &__level-3-link {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+
+    .icon-chevron-right {
+      @include wa-transition-motion-flow(transform, 200ms);
+      transform: rotate(90deg);
+      display: block;
+      fill: currentColor;
+      width: $wa-spacing-04;
+
+      svg {
+        max-width: 100%;
+        aspect-ratio: 1;
+      }
+    }
+  }
   &__level-1-link {
     @include nav-level-1-link;
+    padding: $wa-spacing-03 $wa-spacing-04;
   }
   &__level-2-link {
     @include nav-level-2-link;
+    padding: $wa-spacing-02 $wa-spacing-03;
   }
   &__level-3-link {
     @include nav-level-3-link;
+    padding: $wa-spacing-02 $wa-spacing-03;
   }
 }
+
+//Meganav styles.
 .meganav {
+
   // Declare this in ms only - this is picked up by our JS behaviour too.
   --meganav-transition-time: 800ms;
 
@@ -47,9 +76,22 @@
   }
 
   &__level-1-link {
-    display: block;
-    padding: $wa-spacing-03 $wa-spacing-04;
     border-bottom: 3px transparent solid;
+    display: flex;
+    gap: $wa-spacing-01;
+
+    .icon-chevron-down {
+      @include wa-transition-motion-flow(transform, 200ms);
+      transform: rotate(180deg);
+      display: block;
+      fill: currentColor;
+      width: $wa-spacing-04;
+
+      svg {
+        max-width: 100%;
+        aspect-ratio: 1;
+      }
+    }
 
     &:focus-visible {
       border-bottom: 3px inset $wa-navy;
@@ -58,7 +100,12 @@
     &.active {
       color: $wa-navy;
       border-bottom: 3px inset $wa-navy;
+
+      .icon-chevron {
+        transform: rotate(360deg);
+      }
     }
+
   }
 
   &__level-1-panel-title-link {
@@ -90,17 +137,11 @@
   }
 
   &__level-2-link {
-    display: block;
-    padding: $wa-spacing-02 $wa-spacing-03;
-    width: 100%;
     text-align: left;
   }
 
   &__level-3-link {
-    display: block;
     padding: $wa-spacing-02 $wa-spacing-03;
-    width: 100%;
-    text-align: left;
     border-bottom: 1px solid $wa-blue;
 
     &:focus-visible {
@@ -194,7 +235,7 @@
   visibility: hidden;
   opacity: 0;
   overflow: hidden;
-  @include wa-transition-motion-flow(height, 0.4s);
+  @include wa-transition-motion-flow(height, var(--mobile-nav-transition-time));
 
   body.primary-menu-open & {
     visibility: visible;
@@ -209,6 +250,7 @@
   ul {
     height: 100%;
     width: 100%;
+    padding-top: $wa-spacing-05;
   }
 
   &__slider {
@@ -233,6 +275,10 @@
 
   &__level-1 {
     position: relative;
+
+    > li {
+      border-bottom: 2px solid $wa-blue;
+    }
   }
 
   &__level-2,
@@ -260,8 +306,23 @@
   }
 
   &__back-btn {
-    display: block;
+    display: flex;
     color: $wa-white;
+    gap: $wa-spacing-02;
+    text-decoration: underline;
+
+    .icon-arrow-left {
+      @include wa-transition-motion-flow(transform, 200ms);
+      transform: rotate(180deg);
+      display: block;
+      fill: currentColor;
+      width: $wa-spacing-04;
+
+      svg {
+        max-width: 100%;
+        aspect-ratio: 1;
+      }
+    }
   }
 }
 

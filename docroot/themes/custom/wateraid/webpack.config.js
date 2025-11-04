@@ -157,9 +157,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
-    new SVGSpritemapPlugin(path.resolve(__dirname, 'media/icons/**/*.svg'), {
+    new SVGSpritemapPlugin(path.resolve(__dirname, 'images/icons/**/*.svg'), {
       output: {
-        filename: 'media/sprite.svg',
+        filename: 'images/sprite.svg',
         svg: {
           sizes: false
         },

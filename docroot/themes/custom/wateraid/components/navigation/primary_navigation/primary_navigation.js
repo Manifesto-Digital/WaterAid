@@ -54,7 +54,18 @@
           e.preventDefault();
           const isMeganavTrigger = megaNav.contains(e.target);
           const triggerId = e.target.dataset.level2Trigger;
-          this.state.activeLevel2 = isMeganavTrigger && this.state.activeLevel2 === triggerId ? null : triggerId;
+          if (isMeganavTrigger) {
+            if (this.state.activeLevel2 === triggerId) {
+              this.state.isOpen = false;
+              this.state.activeLevel2 = null;
+            }
+            else {
+              this.state.activeLevel2 = triggerId;
+            }
+          }
+          else {
+            this.state.activeLevel2 = triggerId;
+          }
         });
       });
       level3Triggers.forEach((el) => {
@@ -78,6 +89,27 @@
         });
       });
 
+      document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (this.state.isOpen && !header.contains(target)) {
+          this.state.isOpen = false;
+        }
+      });
+
+      // Open the navigation.
+      this.openNav = () => {
+        menuButton.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('primary-menu-open');
+      }
+      // Close the navigation.
+      this.closeNav = () => {
+        document.body.classList.remove('primary-menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('mobile-nav-static');
+        this.state.activeLevel2 = null;
+        this.state.activeLevel3 = null;
+      }
+
       // Initialize subscribers, listen to property changes and react
       // accordingly.
       this.state = initSubscribers(
@@ -90,26 +122,18 @@
           // Listener for isOpen property changes, this is mobile menu only.
           isOpen: [
             (newValue, oldValue) => {
-             if (newValue !== oldValue) {
-               menuButton.setAttribute('aria-expanded', newValue);
-               document.body.classList.add('primary-menu-open');
-
-               if (!newValue) {
-                 console.log('Close');
-                 document.body.classList.remove('primary-menu-open');
-                 mobileNav.classList.remove('mobile-nav-static');
-                 this.state.activeLevel2 = null;
-                 this.state.activeLevel3 = null;
-               }
+              if (newValue) {
+                this.openNav();
+              }
+              else {
+                this.closeNav();
+              }
              }
-
-            }
           ],
 
           // Listener for activeLevel2 property change.
           activeLevel2: [
             (newValue, oldValue) => {
-
               header.setAttribute('data-mobile-menu-level-active', '2');
               megaNav.classList.add('meganav-animating');
               mobileNav.classList.remove('mobile-nav-static');
@@ -123,7 +147,7 @@
               });
 
               if (newValue) {
-                this.state.isOpen = true;
+                //this.state.isOpen = true;
                 document.body.classList.add('primary-menu-open');
                 // Changing meganav panel.
                 const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');
@@ -174,14 +198,14 @@
 
               if (newValue !== oldValue) {
                 if (newValue !== null) {
-                  this.state.isOpen = true;
+                  //this.state.isOpen = true;
 
                   nav.querySelector('[data-level3-trigger="' + newValue + '"]').classList.add('active');
                   const elementToOpen = nav.querySelector('[data-level-3-id="' + newValue + '"]');
                   elementToOpen.classList.add('show');
                   elementToOpen.setAttribute('aria-expanded', true);
 
-                  // Mobile nav
+                  // Mobile nav, make corresponding 3rd level menu active.
                   mobileNav
                     .querySelector('[data-mobile-submenu-id="'+ this.state.activeLevel2 +'"]')
                     .querySelector('[data-mobile-submenu-id="'+ this.state.activeLevel3 +'"]')

@@ -14,7 +14,13 @@
               type="button"
               data-level2-trigger="{{ l1_index }}"
               aria-controls="meganav-level-2-child-of-{{ l1_index }}"
-            >{{ link.title }}</button>
+            >{{ link.title }}
+              <span class="icon icon-chevron-down">
+                <svg>
+                  <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                </svg>
+              </span>
+            </button>
           {% else %}
             <a class="meganav__level-1-link primary-navigation__level-1-link" href="{{ link.url }}">{{ link.title }}</a>
           {% endif %}
@@ -48,20 +54,42 @@
                         {% set l2_index = loop.index %}
                         <li class="meganav__level-2-item">
                           {% if link.below is empty %}
-                            <a class="meganav__level-2-link primary-navigation__level-2-link" href="{{ link.url }}">{{ link.title }}</a>
+                            {{ link(link.title, link.url,
+                              {'class': [
+                                'meganav__level-2-link',
+                                'primary-navigation__level-2-link',
+                              ]}) }}
                           {% else %}
                             <button
                               class="meganav__level-2-link  primary-navigation__level-2-link"
                               {% if link.below %}data-level3-trigger="{{ l2_index }}"{% endif %}
                               aria-controls="meganav-level-3-child-of-{{ l2_index }}"
-                            >{{ link.title }}</button>
+                            >
+                              {{ link.title }}
+                              <span class="icon icon-chevron-right">
+                                <svg>
+                                  <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                                </svg>
+                              </span>
+                            </button>
                             {# Start rendering out level 3 items. #}
                             {% set level_3_items = link.below %}
                             <div id="meganav-level-3-child-of-{{ l2_index }}" class="meganav__level-3" data-level-3-id="{{ l2_index }}" aria-expanded="false">
-                              <a class="meganav__level-3-heading-link meganav__level-3-link primary-navigation__level-3-link " href="{{ link.url }}">{{ link.title }}</a>
+                              {{ link(link.title,link.url,
+                                {'class': [
+                                  'meganav__level-3-heading-link',
+                                  'meganav__level-3-link',
+                                  'primary-navigation__level-3-link',
+                                ]}) }}
                               <ul>
                                 {% for link in level_3_items %}
-                                  <li><a class="meganav__level-3-link primary-navigation__level-3-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                                  <li>
+                                    {{ link(link.title,link.url,
+                                      {'class': [
+                                        'meganav__level-3-link',
+                                        'primary-navigation__level-3-link',
+                                      ]}) }}
+                                  </li>
                                 {% endfor %}
                               </ul>
                             </div>
@@ -76,6 +104,7 @@
                   {# If no level 3 items at all in this panel then the level
                   2 items can occupy both cols. #}
                   {% if level_2_items|length > 8 %}
+                    {{ dump(level_2_items) }}
                     {# Split into 2 groups. If it's an add number, always make
                     sure the first col gets the additional. #}
                     {% set split_point = (level_2_items|length / 2)|round(0, 'ceil') %}
@@ -88,7 +117,13 @@
                   <div class="meganav__col meganav__col--second">
                     <ul class="meganav__level-2">
                       {% for link in level_2_first_col_links %}
-                        <li class="meganav__level-2-item"><a class="meganav__level-2-link  primary-navigation__level-2-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                        <li class="meganav__level-2-item">
+                          {{ link(link.title, link.url,
+                            {'class': [
+                              'meganav__level-2-link',
+                              'primary-navigation__level-2-link',
+                            ]}) }}
+                        </li>
                       {% endfor %}
                     </ul>
                   </div>
@@ -97,7 +132,13 @@
                     <div class="meganav__col meganav__col--third">
                       <ul class="meganav__level-2">
                         {% for link in level_2_second_col_links %}
-                          <li class="meganav__level-2-item"><a class="meganav__level-2-link  primary-navigation__level-2-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                          <li class="meganav__level-2-item">
+                            {{ link(link.title, link.url,
+                              {'class': [
+                                'meganav__level-2-link',
+                                'primary-navigation__level-2-link',
+                              ]}) }}
+                          </li>
                         {% endfor %}
                       </ul>
                     </div>
@@ -128,7 +169,14 @@
       {% endif %}
       <ul {{ menu_level_attrs }}>
         {% if menu_level > 1 %}
-          <button class="mobile-nav__back-btn js-mobile-nav-back-btn">Back</button>
+          <button class="mobile-nav__back-btn js-mobile-nav-back-btn">
+            <span class="icon icon-arrow-left">
+              <svg>
+                <use href="{{ get_spritemap() }}#wa-shape-arrow" />
+              </svg>
+            </span>
+            Back
+          </button>
         {% endif %}
         {% if parent_link %}
           {{ link(
@@ -149,7 +197,13 @@
                 type="button"
                 data-level{{ menu_level + 1 }}-trigger="{{ index }}"
                 aria-controls="meganav-level-2-child-of-{{ index }}"
-              >{{ item.title }}</button>
+              >{{ item.title }}
+                <span class="icon icon-chevron-right">
+                  <svg>
+                    <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                  </svg>
+                </span>
+              </button>
               {{ menus.menu_links(item.below, attributes, menu_level + 1, index, {title: item.title, url: item.url}) }}
             {% else %}
               {{ link(item.title, item.url, {'class': ['mobile-nav__level-' ~ menu_level ~ '-link', 'primary-navigation__level-' ~ menu_level ~'-link']}) }}

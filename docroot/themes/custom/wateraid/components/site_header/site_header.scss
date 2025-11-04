@@ -12,6 +12,7 @@ $header-padding-bottom: $wa-spacing-04;
 
   &__colour-wrapper {
     background: $white;
+    width: 100vw;
   }
 
   &__container {
@@ -51,19 +52,22 @@ $header-padding-bottom: $wa-spacing-04;
   }
 
   @include tablet-down {
+    .site-header__colour-wrapper {
+      @include wa-transition-motion-flow(background-color, 0.4s);
+    }
 
-    &[data-menu-level-active='2'] {
+    &[data-mobile-menu-level-active='2'] {
       .site-header__colour-wrapper {
-        background: $wa-blue;
+        background-color: $wa-blue;
       }
       .site-header__logo-image {
         color: $wa-white;
       }
     }
 
-    &[data-menu-level-active='3'] {
+    &[data-mobile-menu-level-active='3'] {
       .site-header__colour-wrapper {
-        background: $wa-navy;
+        background-color: $wa-navy;
       }
       .site-header__logo-image {
         color: $wa-white;
