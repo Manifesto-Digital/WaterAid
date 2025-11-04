@@ -1,4 +1,4 @@
-uuid: 35d23cd9-c960-4646-a3e2-90f0e33eb7a2
+uuid: fa18f7d6-7b2f-4215-bb1b-ec471c23280a
 langcode: en
 status: open
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
     - wateraid_donation_stripe
     - wateraid_forms
     - webform_pdf_receipt
-    - webform_wizard_extra
+    - webform_wizard_single_page
 third_party_settings:
   wateraid_donation_forms:
     currency: GBP
@@ -33,79 +33,105 @@ third_party_settings:
     direct_debit_guarantee:
       value: ''
       format: basic_html
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+    confirmation_image_url: ''
   wateraid_donation_stripe:
     test_secret_key: ''
     test_public_key: ''
     live_secret_key: ''
     live_public_key: ''
+  wateraid_forms:
+    style_version: v2
   webform_pdf_receipt:
     pdf_text:
       value: ''
       format: wateraid_pdf
-  webform_wizard_extra:
-    one_page: false
-  wateraid_forms:
-    style_version: v1
+  webform_wizard_single_page:
+    single_page: false
 weight: 0
 open: null
 close: null
 uid: 1
 template: false
 archive: false
-id: dragon_boat_race_interest
-title: 'Canary Wharf dragon boat race interest'
-description: 'To express interest to hear when full registration opens'
-categories:
-  - Admin
+id: test_open_letter
+title: "Water can't wait"
+description: ''
+categories: {  }
 elements: |-
-  intro:
-    '#type': processed_text
-    '#text': "<h1>Register your interest in the 2026 Dragon Boat Race</h1><p>Complete the form below and we'll be in touch as soon as registration for the 2026 event opens!</p>"
-    '#format': basic_html
   captcha:
     '#type': captcha
     '#captcha_type': recaptcha_v3/default
-  your_first_name:
-    '#type': textfield
-    '#title': 'Your first name'
-    '#required': true
-  your_last_name:
-    '#type': textfield
-    '#title': 'Your last name'
-    '#required': true
-  your_email_address:
-    '#type': loqate_email_composite
-    '#title': 'Your email address'
-    '#required': true
-    '#loqate_validation_refuse_disposable': false
-    '#email__title': 'Your email address'
-    '#email__required': true
-    '#loqate_validation': false
-  your_phone_number:
-    '#type': number
-    '#title': 'Your phone number'
-    '#required': true
-  job_title:
-    '#type': textfield
-    '#title': 'Your job title/role within your organisation'
-    '#required': true
-  your_organisation:
-    '#type': textfield
-    '#title': 'Your organisation'
-    '#required': true
-    '#required_error': "Please let us know which organisation you're representing"
-  your_organisation_s_address:
-    '#type': pca_address_php
-    '#title': "Your organisation's address"
-    '#required': true
-  privacy:
+  title:
     '#type': processed_text
-    '#text': '<h3>How we''ll use your data</h3><p>We''ll use the email address and/or phone number you provide to let you know when registration for the 2026 Dragon Boat Race opens.</p><p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in <a href="/uk/privacy">our Privacy Policy</a>. We may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications, please contact us on 0207 793 4594 or at&nbsp;<a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see <a href="/uk/privacy">our Privacy Policy</a>.</p>'
+    '#text': '<h2>Add your name</h2>'
     '#format': basic_html
+  first_name:
+    '#type': textfield
+    '#title': 'First name'
+    '#required': true
+  last_name:
+    '#type': textfield
+    '#title': 'Last name'
+    '#required': true
+  test_all_countries:
+    '#type': select
+    '#title': 'Where do you live?'
+    '#options': country_names
+    '#required': true
+  postcode:
+    '#type': textfield
+    '#title': Postcode
+    '#more_title': 'Why do we ask for this?'
+    '#more': '<p class="fine-print">Your postcode helps us understand where in the UK our supporters are based and, if you agree to hear from us, allows us to tailor our communications to be more relevant to you.</p>'
+    '#placeholder': 'Please include the space, e.g. E14 5NN'
+    '#required': true
+    '#required_error': 'Please let us know your postcode'
+    '#states':
+      visible:
+        ':input[name="test_all_countries"]':
+          value: 'United Kingdom'
+  email_address:
+    '#type': email
+    '#title': 'Email address'
+    '#required': true
+    '#required_error': 'Please let us know your email address'
+    '#loqate_validation_refuse_disposable': false
+  comms_opt_in:
+    '#type': processed_text
+    '#text': "<h3>Can we keep in touch?</h3><p>We'd love to keep you updated on how your support is making change happen. If you agree, we'll send you information about our work, campaigns, opportunities to get involved, and fundraising appeals.</p>"
+    '#format': basic_html
+  communications_preferences:
+    '#type': flexible_options
+    '#title': 'Communications preferences'
+    '#title_display': none
+    '#options': communication_preferences_email
+  privacy_uk:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="test_all_countries"]':
+          value: 'United Kingdom'
+    '#text': '<h3 class="fine-print">Your data</h3><p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our privacy policy. We may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our <a href="/uk/privacy-notice">privacy policy</a>.</p>'
+    '#format': basic_html
+  privacy_other:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="test_all_countries"]':
+          '!value': 'United Kingdom'
+    '#text': '<h3>Your data</h3><p class="fine-print">Your data will be processed in the UK by WaterAid. WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our privacy policy. We may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications, please email <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our <a href="/uk/privacy-notice">privacy policy</a>.</p>'
+    '#format': basic_html
+  submission_url:
+    '#type': hidden
+    '#title': 'Submission URL'
+    '#default_value': '[current-page:url]'
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
-    '#submit__label': 'Register your interest'
+    '#submit__label': 'Sign the open letter'
 css: ''
 javascript: ''
 settings:
@@ -114,9 +140,9 @@ settings:
   ajax_progress_type: ''
   ajax_effect: ''
   ajax_speed: null
-  page: true
-  page_submit_path: /get-involved/events/dragon-boat-race/register-interest
-  page_confirm_path: /get-involved/events/dragon-boat-race/register-interest/thanks
+  page: false
+  page_submit_path: ''
+  page_confirm_path: ''
   page_theme_name: ''
   form_title: source_entity_webform
   form_submit_once: false
@@ -128,7 +154,7 @@ settings:
   form_confidential_message: ''
   form_disable_remote_addr: false
   form_convert_anonymous: false
-  form_prepopulate: false
+  form_prepopulate: true
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
@@ -190,7 +216,7 @@ settings:
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
-  wizard_toggle: true
+  wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
   wizard_page_type: container
@@ -210,10 +236,10 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: page
-  confirmation_url: ''
-  confirmation_title: 'Thank you'
-  confirmation_message: "<p>Thanks for registering your interest in the 2026 Dragon Boat Race – we'll be in touch as soon as full registration opens!</p>"
+  confirmation_type: url
+  confirmation_url: /uk/get-involved/campaign-with-us/water-cant-wait/thanks
+  confirmation_title: ''
+  confirmation_message: ''
   confirmation_attributes: {  }
   confirmation_back: false
   confirmation_back_label: ''
@@ -290,36 +316,36 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_notification:
+  email:
     id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: 'To team each time form is submitted'
+    handler_id: email
+    label: Email
+    notes: Opt-in
     status: false
-    conditions: {  }
+    conditions:
+      enabled:
+        ':input[name="communications_preferences[opt_in_email]"]':
+          checked: true
     weight: 0
     settings:
       states:
         - completed
-      to_mail: dragonboatrace@wateraid.org
+      to_mail: '[webform_submission:values:email_address:raw]'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
-      from_mail: _default
+      from_mail: campaigns@wateraid.org
       from_options: {  }
-      from_name: _default
+      from_name: 'WaterAid Campaigns Team'
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: 'Dragon boat race interest'
-      body: '<p>Submitted on [webform_submission:created]</p><p>[webform_submission:values]</p>'
-      excluded_elements:
-        intro: intro
-        captcha: captcha
-        privacy: privacy
+      subject: 'Thanks for adding your name!'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p><strong>Thank you so much for lending your name, and your voice, to our open letter.</strong></p><p>COP30 in Brazil represents a critical opportunity to accelerate change on the water and climate crisis.</p><p>We''ll keep you informed about more actions you can take to support our campaign in the lead-up to this very important international meeting in November.</p><p>In the meantime, will you help us spread the word by letting more people know that <strong>water can''t wait</strong>?</p><p><a class="button button__primary" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wateraid.org/uk/get-involved/campaign-with-us/water-cant-wait">Share the open letter on Facebook</a></p><p>Or copy <a href="https://www.wateraid.org/water-cant-wait"><strong>wateraid.org/water-cant-wait</strong></a> to share with your contacts.</p><p>Thank you once again,<br><strong>WaterAid Campaigns Team</strong></p>'
+      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false
@@ -331,32 +357,35 @@ handlers:
       langcode: ''
       parameters: {  }
       debug: false
-  email:
+  email_1:
     id: email
-    handler_id: email
-    label: 'Confirmation email'
-    notes: 'To registrant'
+    handler_id: email_1
+    label: Email
+    notes: 'No opt-in'
     status: false
-    conditions: {  }
-    weight: 0
+    conditions:
+      enabled:
+        ':input[name="communications_preferences[opt_in_email]"]':
+          unchecked: true
+    weight: 1
     settings:
       states:
         - completed
-      to_mail: '[webform_submission:values:your_email_address:email:raw]'
+      to_mail: '[webform_submission:values:email_address:raw]'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
-      from_mail: dragonboatrace@wateraid.org
+      from_mail: campaigns@wateraid.org
       from_options: {  }
-      from_name: 'WaterAid Events Team'
-      reply_to: dragonboatrace@wateraid.org
+      from_name: 'WaterAid Campaigns Team'
+      reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: "Thanks for your interest in next year's Dragon Boat Race"
-      body: "<p>Hi [webform_submission:values:your_first_name]</p><p>Thanks for registering your interest in next year's Dragon Boat Race – we'll be in touch early in 2026 with more details on how to take part.</p><p>Best wishes,<br>WaterAid Events Team</p>"
+      subject: 'Thanks for adding your name!'
+      body: '<p>Dear [webform_submission:values:first_name],</p><p><strong>Thank you so much for lending your name, and your voice, to our open letter.</strong></p><p>COP30 in Brazil represents a critical opportunity to accelerate change on the water and climate crisis – and with the support of people like you, we can get governments to take action.</p><p>Thank you once again,<br><strong>WaterAid Campaigns Team</strong></p>'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

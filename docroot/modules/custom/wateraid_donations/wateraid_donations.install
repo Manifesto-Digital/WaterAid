@@ -1,0 +1,157 @@
+<?php
+
+/**
+ * @file
+ * Install file for wateraid_donation feature module.
+ */
+
+/**
+ * Remove the legacy webforms that are no longer needed.
+ */
+function wateraid_donations_update_8001(): void {
+  $validForms = [
+    "claim_your_free_online_will",
+    "contact_us",
+    "download_gifts_in_wills_pack",
+    "dragon_boat_race_interest",
+    "gifts_in_wills_pack",
+    "gift_aid",
+    "gift_aid_sms_campaign",
+    "increase_your_direct_debit_final",
+    "mission_water_pledge",
+    "oasis_golden_questions",
+    "order_festival_merchandise",
+    "order_harvest_appeal_pack_2020",
+    "order_your_lent_appeal_pack_v2",
+    "pay_in_your_fundraising",
+    "plan_your_own_fundraising",
+    "pupil_pipeline",
+    "request_an_educational_workshop",
+    "request_a_speaker",
+    "request_your_free_will_informati",
+    "sign_up_for_schools_newsletter",
+    "sign_up_to_our_student_newslette",
+    "speaker_network_application_form",
+    "test_download_pdf",
+    "the_wateraid_alumni_network",
+    "update_your_details",
+    "volunteer_application",
+    "volunteer_expenses_claim",
+    "volunteer_code_of_conduct",
+    "volunteer_code_of_conduct_update",
+    "test_open_letter",
+    "water_warriors",
+    "wateraid_event_services_interest",
+    "oasis_golden_questions",
+    "zakat_calculator",
+    "donation_form_diwali",
+    "donation_form_hv_spring_25",
+    "donation_form_in_memory",
+    "donation_form_sadaqah_monthly",
+    "donation_form_sadaqah_one_off",
+    "donation_form_sadaqah_one_off_v2",
+    "donation_form_start_a_new_direct",
+    "donation_form_start_your_new_mon",
+    "donation_form_sv_spring_25",
+    "donation_form_wateraid_no_email",
+    "donation_form_wateraid_v2",
+    "donation_form_wateraid_v2_monthl",
+    "donation_form_wateraid_v2_one_of",
+    "donation_form_wave_main_form",
+    "donation_form_wave_one_off_form",
+    "donation_form_wave_rg_form",
+    "donation_form_zakat_bangladesh_p",
+    "donation_form_zakat_mali_project",
+    "donation_form_zakat_pakistan_pro",
+    "donation_form_zakat_v2"
+  ];
+
+  $database = \Drupal::database();
+  $query = $database->select('webform', 'wf');
+  $query->fields('wf', ['webform_id']);
+
+  $result = $query->execute();
+  foreach ($result as $record) {
+    if (!in_array($record->webform_id, $validForms)) {
+      \Drupal::messenger()->addMessage("Delete form {$record->webform_id}"  . PHP_EOL);
+
+      $webform_entity = \Drupal::entityTypeManager()->getStorage('webform')->load($record->webform_id);
+
+      if (!is_null($webform_entity)) {
+        $webform_entity->delete();
+      }
+    }
+  }
+
+//  throw new \Exception("Error out");
+}
+
+/**
+ * Disable legacy handlers and attached the new azure_blob_storage to all forms.
+ */
+function wateraid_donations_update_8002(): void {
+
+  $validHandlers = [
+    "wateraid_donations",
+    "confirmation_page_in_memory_",
+    "flexible_options_modifier",
+    "confirmation_page",
+    "azure_blob_storage",
+    "settings",
+    "confirmation_download_and_post",
+    "confirmation_post_only",
+    "order_confirmation_product_1_only",
+    "order_confirmation_product_2_only",
+    "order_confirmation_products_1_and_2",
+    "download_school",
+    "download_faith",
+    "post_all",
+    "confirmation_download_only",
+    "confirmation_post_and_download",
+    "confirmation_post_and_download_1",
+    "confirmation_post_and_download_1",
+  ];
+
+  $database = \Drupal::database();
+  $query = $database->select('config', 'config');
+  $query->fields('config');
+  $query->condition("name", "webform.webform.%", "LIKE");
+  $result = $query->execute();
+
+  foreach ($result as $record) {
+    $data = unserialize($record->data);
+
+    if (isset($data["handlers"])) {
+      foreach ($data["handlers"] as $key => $handler) {
+        if (!in_array($handler["handler_id"], $validHandlers)) {
+          $data["handlers"][$key]["status"] = false;
+        }
+      }
+    }
+    else {
+      \Drupal::messenger()->addMessage(print_r($record->name, 1)  . PHP_EOL);
+    }
+
+    if (!isset($data["handlers"]["azure_blob_storage"])) {
+      $data["handlers"]["azure_blob_storage"] = [
+        "id"         => "azure_blob_storage_handler",
+        "handler_id" => "azure_blob_storage",
+        "label"      => "Azure Blob Storage",
+        "notes"      => "",
+        "status"     => true,
+        "conditions" => [],
+        "weight"     => 0,
+        "settings"   => []
+      ];
+    }
+
+    $database->update('config')
+      ->fields([
+        'data' => serialize($data)
+      ])
+      ->condition('name', $record->name, '=')
+      ->execute();
+  }
+
+//  throw new \Exception("Error out");
+}

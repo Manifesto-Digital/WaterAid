@@ -3,6 +3,7 @@ langcode: en
 status: open
 dependencies:
   module:
+    - azure_blob_storage
     - wateraid_donation_forms
     - wateraid_donation_stripe
     - wateraid_forms
@@ -618,6 +619,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   order_confirmation_product_2_only:
     id: wateraid_email
     handler_id: order_confirmation_product_2_only
@@ -664,6 +666,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   order_confirmation_products_1_and_2:
     id: wateraid_email
     handler_id: order_confirmation_products_1_and_2
@@ -711,6 +714,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   azure_blob_storage:
     id: azure_blob_storage_handler
     handler_id: azure_blob_storage
