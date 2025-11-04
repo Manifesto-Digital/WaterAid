@@ -11,7 +11,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: rgba(255, 255, 255, -0.9);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
       z-index: 20;
     }
@@ -26,15 +26,19 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      padding: 1rem 1.25rem;
     }
   }
 
   &__image {
-    @include grid-item-span(12, 3, 6);
+    @include grid-item-span(12, 3, 5);
     width: 100%;
     grid-row: 2;
     @include tablet() {
       grid-row: 1;
+    }
+    @include breakpoint-lg {
+      grid-column: 2 / 7;
     }
 
     .image,
@@ -53,7 +57,7 @@
   }
 
   &__content {
-    @include grid-item-span(12, 3, 6);
+    @include grid-item-span(12, 3, 5);
     position: relative;
     display: flex;
     gap: $wa-spacing-06;
