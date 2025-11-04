@@ -1,0 +1,6 @@
+services:
+  ren_core.twig_extension:
+    class: Drupal\wateraid_core\Twig\WateraidCoreTwigExtension
+    arguments: ['@theme.manager']
+    tags:
+      - { name: twig.extension }

@@ -120,6 +120,7 @@ module:
   wa_orange_dam: 0
   wateraid_blocks: 0
   wateraid_content: 0
+  wateraid_core: 0
   wateraid_donation_forms: 0
   wateraid_donation_gmo: 0
   wateraid_donation_google_pay: 0
