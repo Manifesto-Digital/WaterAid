@@ -51,7 +51,7 @@
   {{ include('wateraid:modal', {
     title: content.field_title,
     copy: content.field_rich_text|render,
-    cta: cta,
+    continueDonation: true,
     image: content.field_image,
     caption: paragraph.field_caption.value ? content.field_caption,
     credit: paragraph.field_credit.value ? content.field_credit,

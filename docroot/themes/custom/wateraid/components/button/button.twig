@@ -1,13 +1,14 @@
-{%
-  set button_attributes = create_attribute(attributes|default({}))
-  .addClass('button', 'button--' ~ type, 'button--' ~ theme)
+{% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
+{% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
+{% set button_attributes = create_attribute(attributes|default({}))
+  .addClass(all_classes)
   .setAttribute('aria-label', text)
 %}
 
 {% if link %}
-<a href="{{ link }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}">
+<a href="{{ link }}" class="{{ all_classes|join(' ') }}" aria-label="{{ text }}">
   {% else %}
-  <button {{ button_attributes }} id="{{ id }}" class="button button--{{ type }} button--{{ theme }}" aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} >
+  <button {{ button_attributes }} id="{{ id }}" aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} >
     {% endif %}
 
     {% if type == 'primary' or type == 'secondary' %}

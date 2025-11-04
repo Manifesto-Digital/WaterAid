@@ -33,11 +33,20 @@
       </div>
 
       <div class="modal__cta">
-        {{ include('wateraid:button', {
-          text: cta.title,
-          link: cta.url,
-          type: 'donate'
-        }) }}
+        {% if cta %}
+          {{ include('wateraid:button', {
+            text: cta.title,
+            link: cta.url,
+            type: 'donate'
+          }) }}
+        {% elseif continueDonation %}
+          {{ include('wateraid:button', {
+            text: 'Continue my donation',
+            link: '#',
+            classes: ['continue-donation-button'],
+            type: 'donate',
+          }) }}
+        {% endif %}
       </div>
     </div>
   </div>
