@@ -1,0 +1,385 @@
+uuid: dc8d6142-07a8-4a50-8217-52f51d8fa5ac
+langcode: en
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+third_party_settings:
+  wateraid_donation_forms:
+    currency: GBP
+    donation_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: ''
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_extra:
+    one_page: false
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  wateraid_forms:
+    style_version: v1
+_core:
+  default_config_hash: W8QDMdZhpXffMYRY7zq361fviC6lzyyVlazfxeg7QwE
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: zakat_calculator
+title: 'Zakat Calculator'
+description: 'To help supporters calculate donation amount and pass this to a Zakat donation form. Form cannot be submitted.'
+categories:
+  - Admin
+elements: |-
+  form_title:
+    '#type': webform_markup
+    '#markup': '<h1>Zakat calculator</h1>'
+  zakat_calculator:
+    '#type': container
+    '#states':
+      visible:
+        ':input[name="do_you_know_how_much_you_would_like_donate_"]':
+          value: "No, I'd like to calculate my Zakat donation"
+    zakat_intro:
+      '#type': webform_markup
+      '#markup': '<p>Current Nisab threshold (as of 27 February 2025):</p><ul><li>Using value of silver (0.73 per gram) – approximately £446.41</li><li>Using value of gold (66.62 per gram) – approximately £5,827.74</li></ul>'
+    gold_silver_heading:
+      '#type': webform_markup
+      '#markup': '<h3>Gold and silver</h3>'
+    value_of_gold_and_silver_you_possess:
+      '#type': number
+      '#title': 'Value of gold and silver you possess (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-assets'
+      '#min': 0
+      '#step': 0.01
+    money_heading:
+      '#type': webform_markup
+      '#markup': '<h3>Money</h3>'
+    cash_at_home_and_in_bank_accounts:
+      '#type': number
+      '#title': 'Cash at home and in bank accounts (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-assets'
+      '#min': 0
+      '#step': 0.01
+    other_savings:
+      '#type': number
+      '#title': 'Other savings (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-assets'
+      '#min': 0
+      '#step': 0.01
+    investment_and_share_values:
+      '#type': number
+      '#title': 'Investment and share values (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-assets'
+      '#min': 0
+      '#step': 0.01
+    money_owed_to_you:
+      '#type': number
+      '#title': 'Money owed to you (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-assets'
+      '#min': 0
+      '#step': 0.01
+    business_assets:
+      '#type': webform_markup
+      '#markup': '<h3>Business assets</h3>'
+    stock_value:
+      '#type': number
+      '#title': 'Stock value (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-assets'
+      '#min': 0
+      '#step': 0.01
+    short_term_liabilities:
+      '#type': webform_markup
+      '#markup': '<h3>Short term liabilities</h3>'
+    money_you_owe:
+      '#type': number
+      '#title': 'Money you owe (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-liabilities'
+      '#min': 0
+      '#step': 0.01
+    other_outgoings_due:
+      '#type': number
+      '#title': 'Other outgoings due (£)'
+      '#attributes':
+        class:
+          - 'js-zakat-input js-zakat-liabilities'
+      '#min': 0
+      '#step': 0.01
+    your_zakat_donation_heading:
+      '#type': webform_markup
+      '#markup': '<h3>Your Zakat donation</h3>'
+    net_assets:
+      '#type': number
+      '#title': 'Net assets (£)'
+      '#readonly': true
+      '#attributes':
+        class:
+          - js-zakat-net-assets
+      '#min': 0
+      '#step': 0.01
+    nisab_threshold:
+      '#type': number
+      '#title': 'Nisab threshold (£)'
+      '#readonly': true
+      '#default_value': '446.41'
+      '#attributes':
+        class:
+          - js-zakat-nisab-threshold
+      '#min': 0
+      '#step': 0.01
+    yes_i_d_like_to_increase_my_donation_in_order_to_cover_wateraid_:
+      '#type': checkbox
+      '#title': "Yes, I'd like to increase my donation in order to cover WaterAid’s fundraising and administration costs"
+      '#description': 'WaterAid spends 74p in every &pound;1 on delivering services and making change happen, with the remaining 26p spent on raising more funds to support our work. If you&rsquo;d like to ensure that the full value of your Zakat is spent on our projects, please tick the box below to cover WaterAid&rsquo;s fundraising and administration costs.'
+      '#description_display': before
+  donation_amount:
+    '#type': number
+    '#title': 'Your Zakat donation (£)'
+  donate_button:
+    '#type': webform_markup
+    '#markup': '<p><a>Donate</a></p>'
+  project:
+    '#type': hidden
+    '#title': project
+    '#prepopulate': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit_hide': true
+css: "#edit-step-1 h3 {\r\n    text-align: left;\r\n    margin-bottom: 0;\r\n}\r\n.webform-element-description {\r\n    line-height: 1.6;\r\n    margin-bottom: 16px;\r\n}\r\n#edit-donation-amount--wrapper {\r\n    margin: 0;\r\n}\r\n#edit-your-payment-details h1 {\r\n    padding: 0; \r\n}\r\n#edit-payment--wrapper {\r\n  margin: 0;\r\n}\r\n#edit-payment-payment-methods-one-off-methods {\r\n    border-top: 0;\r\n    margin: 0;\r\n}\r\n.form-item-yes-i-d-like-to-increase-my-donation-in-order-to-cover-wateraid- {\r\n   display: none; \r\n}\r\n.webform-readonly input[type=\"number\"] {\r\n  color: #717171 !important;\r\n  border-color: #bbb !important;\r\n  background: #ededed !important;\r\n}"
+javascript: "// BEGIN custom javascript\r\njQuery(document).ready(function(){\r\n    \r\n\tvar amountKnown = jQuery('#edit-do-you-know-how-much-you-would-like-donate-');\r\n\tvar nisabThreshold = parseInt(jQuery('.js-zakat-nisab-threshold').val());\r\n\tvar donationAmountWrapper =jQuery('.js-form-item-donation-amount');\r\n\tvar donationAmountField = jQuery('#edit-donation-amount');\r\n\tvar netAssetsField = jQuery('.js-zakat-net-assets');\t\r\n\tvar increaseDonation = false;\r\n\tvar increaseDonationField = jQuery('#edit-yes-i-d-like-to-increase-my-donation-in-order-to-cover-wateraid-');\r\n  \tvar donateButton = jQuery('.form-item--donate-button a');\r\n    var projectId = jQuery('input[name=\"project\"]').val();\r\n  \r\n    donateButton.hide();\r\n  \r\n\tamountKnown.change(function(){\r\n\t\tif ( jQuery(this).val() == \"Yes, I know how much I'd like to give\" ) {\r\n\t\t   donationAmountWrapper.removeClass('webform-readonly');\r\n\t\t   donationAmountField.removeAttr('readonly');\r\n\t\t} if ( jQuery(this).val() == \"No, I'd like to calculate my Zakat donation\" ) {\r\n\t\t  donationAmountWrapper.addClass('webform-readonly');\r\n\t\t  donationAmountField.attr('readonly', 'readonly');\r\n          nisabThreshold = parseInt(jQuery('.js-zakat-nisab-threshold').val());\r\n          donateButton.hide();\r\n\t\t}\r\n\t});\r\n  \t\r\n\tfunction calculateZakat() {\r\n\t\tvar totalAssets = 0;\r\n\t\tjQuery('.js-zakat-assets').each(function(){\r\n\t\t\tvar thisAmount = Math.round(jQuery(this).val() * 100) / 100;\t\t\t\r\n\t\t\ttotalAssets = totalAssets + thisAmount;\r\n\t\t});\r\n\t\tvar totalLiabilities = 0;\r\n\t\tjQuery('.js-zakat-liabilities').each(function(){\r\n\t\t\tvar thisAmount = Math.round(jQuery(this).val() * 100) / 100;\r\n\t\t\ttotalLiabilities = totalLiabilities + thisAmount;\r\n\t\t});\r\n\t\tvar netAssets = (totalAssets - totalLiabilities).toFixed(2);\r\n\t\tnetAssetsField.val(netAssets);\r\n\t\tvar zakatDonation = 0;\r\n        nisabThreshold = parseInt(jQuery('.js-zakat-nisab-threshold').val());\r\n\t\tif (netAssets < nisabThreshold) {\r\n\t\t\tzakatDonation = 0;\r\n\t\t} else {\r\n\t\t\tif (increaseDonation === true) {\r\n\t\t\t\tzakatDonation = ((netAssets * 0.025) * 1.26).toFixed(2);\r\n\t\t\t} else {\r\n\t\t\t\tzakatDonation = (netAssets * 0.025).toFixed(2);\r\n\t\t\t}\r\n\t\t}\t\t\r\n\t\tdonationAmountField.val(zakatDonation);\r\n        if (projectId) {\r\n          donateButton.attr('href', '/donate/donation-form-zakat-' + projectId + '?fq=one_off&val=' + zakatDonation);\r\n        } else {\r\n          donateButton.attr('href', '/donate/donation-form-zakat?fq=one_off&val=' + zakatDonation);\r\n        }      \r\n        donateButton.show();\r\n\t}\r\n\t\r\n\tjQuery('.js-zakat-input').change(function(){\r\n\t\tcalculateZakat();\r\n\t});\r\n\t\r\n\tincreaseDonationField.click(function(){\r\n\t\tif(jQuery(this).is(':checked')){\r\n\t\t\tincreaseDonation = true;\r\n\t\t\tcalculateZakat();\r\n\t\t}\r\n\t\telse if(jQuery(this).is(':not(:checked)')){\r\n\t\t\tincreaseDonation = false;\r\n\t\t\tcalculateZakat();\r\n\t\t}\r\n\t}); \r\n  \r\n    donationAmountField.keyup(function(){\r\n      if (jQuery(this).val()) {        \r\n        if (projectId) {\r\n          donateButton.attr('href', '/donate/donation-form-zakat-' + projectId + '?fq=one_off&val=' + jQuery(this).val());\r\n        } else {\r\n          donateButton.attr('href', '/donate/donation-form-zakat?fq=one_off&val=' + jQuery(this).val());\r\n        }   \r\n        donateButton.show();\r\n      } \r\n      else {\r\n        donateButton.hide();\r\n      }\r\n    });\r\n  \r\n  jQuery('.go-back').click(function(){\r\n    history.back();\r\n  });\r\n});"
+settings:
+  ajax: false
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: false
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: "<p>We are currently experiencing technical issues with our online donation forms, and are working to get this up and running again soon.</p>\r\n\r\n<p>In the meantime you can still support WaterAid by donating over the phone.&nbsp;</p>\r\n\r\n<p><strong>Simply&nbsp;call 0300 123 4341 at a local rate.</strong></p>\r\n\r\n<p>Please note calls to this line&nbsp;are recorded for training purposes and to ensure our high standards are maintained.</p>"
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
+variants: {  }

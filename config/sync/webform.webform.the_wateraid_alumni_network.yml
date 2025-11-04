@@ -1,10 +1,9 @@
-uuid: 35d23cd9-c960-4646-a3e2-90f0e33eb7a2
+uuid: 5bdd4bb6-63c7-473b-9a7e-a945d012610b
 langcode: en
 status: open
 dependencies:
   module:
     - wateraid_donation_forms
-    - wateraid_donation_stripe
     - wateraid_forms
     - webform_pdf_receipt
     - webform_wizard_extra
@@ -33,11 +32,6 @@ third_party_settings:
     direct_debit_guarantee:
       value: ''
       format: basic_html
-  wateraid_donation_stripe:
-    test_secret_key: ''
-    test_public_key: ''
-    live_secret_key: ''
-    live_public_key: ''
   webform_pdf_receipt:
     pdf_text:
       value: ''
@@ -49,63 +43,52 @@ third_party_settings:
 weight: 0
 open: null
 close: null
-uid: 1
+uid: 33116
 template: false
 archive: false
-id: dragon_boat_race_interest
-title: 'Canary Wharf dragon boat race interest'
-description: 'To express interest to hear when full registration opens'
+id: the_wateraid_alumni_network
+title: 'The WaterAid Alumni Network'
+description: ''
 categories:
-  - Admin
-elements: |-
-  intro:
-    '#type': processed_text
-    '#text': "<h1>Register your interest in the 2026 Dragon Boat Race</h1><p>Complete the form below and we'll be in touch as soon as registration for the 2026 event opens!</p>"
-    '#format': basic_html
+  - Newsletter
+elements: |
   captcha:
     '#type': captcha
     '#captcha_type': recaptcha_v3/default
-  your_first_name:
-    '#type': textfield
-    '#title': 'Your first name'
-    '#required': true
-  your_last_name:
-    '#type': textfield
-    '#title': 'Your last name'
-    '#required': true
-  your_email_address:
-    '#type': loqate_email_composite
-    '#title': 'Your email address'
-    '#required': true
-    '#loqate_validation_refuse_disposable': false
-    '#email__title': 'Your email address'
-    '#email__required': true
-    '#loqate_validation': false
-  your_phone_number:
-    '#type': number
-    '#title': 'Your phone number'
-    '#required': true
-  job_title:
-    '#type': textfield
-    '#title': 'Your job title/role within your organisation'
-    '#required': true
-  your_organisation:
-    '#type': textfield
-    '#title': 'Your organisation'
-    '#required': true
-    '#required_error': "Please let us know which organisation you're representing"
-  your_organisation_s_address:
-    '#type': pca_address_php
-    '#title': "Your organisation's address"
-    '#required': true
-  privacy:
+  intro:
     '#type': processed_text
-    '#text': '<h3>How we''ll use your data</h3><p>We''ll use the email address and/or phone number you provide to let you know when registration for the 2026 Dragon Boat Race opens.</p><p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in <a href="/uk/privacy">our Privacy Policy</a>. We may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications, please contact us on 0207 793 4594 or at&nbsp;<a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see <a href="/uk/privacy">our Privacy Policy</a>.</p>'
+    '#text': |
+      <h2>Join the WaterAid Alumni Network</h2>
+
+      <p>As a WaterAider, you are part of a global community, and we would love to keep in touch with you.</p>
+
+      <p>As a member of The WaterAid Alumni Network you will receive a special quarterly alumni newsletter, sharing our latest news and updates from around the world as we continue on our mission to transform the lives of the poorest and most marginalised people by improving access to safe water, sanitation and hygiene. We will also send links to our current vacancies.<br />
+      <br />
+      If you would like to join The WaterAid Alumni Network, please complete the form below.</p>
     '#format': basic_html
-  actions:
-    '#type': webform_actions
-    '#title': 'Submit button(s)'
-    '#submit__label': 'Register your interest'
+  contact_name:
+    '#type': wateraid_forms_webform_name
+    '#title': 'Contact name'
+    '#title__required': true
+    '#first__title': 'First name'
+    '#first__required': true
+    '#last__title': 'Last name'
+    '#last__required': true
+  email_address:
+    '#type': loqate_email_composite
+    '#title': 'Email address'
+    '#required': true
+    '#email__title': 'Email address'
+    '#email__required': true
+  communications_preference:
+    '#type': flexible_options
+    '#title': 'Keeping you updated on WaterAid''s work'
+    '#description': '<p>We would like to keep you updated on how your support is making change happen. We will send you information about our work, campaigns, opportunities to get involved and fundraising. Simply let us know if you would like to hear from us.&nbsp;</p>'
+    '#description_display': before
+    '#options': communication_preferences_email
+  privacy_policy:
+    '#type': webform_markup
+    '#markup': '<p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in our Privacy Policy. We may use the information you share with us and background information about you that we obtain from publicly available sources to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications please contact us on 0207 793 4594 or at <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see our Privacy Policy at <a href="/uk/node/1211/">www.wateraid.org/uk/privacy</a>.</p>'
 css: ''
 javascript: ''
 settings:
@@ -115,10 +98,10 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: /get-involved/events/dragon-boat-race/register-interest
-  page_confirm_path: /get-involved/events/dragon-boat-race/register-interest/thanks
+  page_submit_path: /the-wateraid-alumni-network
+  page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -190,7 +173,7 @@ settings:
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
-  wizard_toggle: true
+  wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
   wizard_page_type: container
@@ -212,8 +195,8 @@ settings:
   draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_url: ''
-  confirmation_title: 'Thank you'
-  confirmation_message: "<p>Thanks for registering your interest in the 2026 Dragon Boat Race – we'll be in touch as soon as full registration opens!</p>"
+  confirmation_title: 'Thank you for signing up to the WaterAid Alumni Network'
+  confirmation_message: "<p>Keep&nbsp;an eye out for your first newsletter&nbsp;in your inbox!</p>\r\n\r\n<p>Thanks<br />\r\nYour WaterAid Alumni Team</p>"
   confirmation_attributes: {  }
   confirmation_back: false
   confirmation_back_label: ''
@@ -233,8 +216,8 @@ settings:
   entity_limit_total_interval: null
   entity_limit_user: null
   entity_limit_user_interval: null
-  purge: none
-  purge_days: null
+  purge: all
+  purge_days: 90
   results_disabled: false
   results_disabled_ignore: false
   results_customize: false
@@ -290,73 +273,32 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_notification:
+  confirmation_email:
     id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: 'To team each time form is submitted'
+    handler_id: confirmation_email
+    label: 'Confirmation email'
+    notes: ''
     status: false
     conditions: {  }
     weight: 0
     settings:
       states:
         - completed
-      to_mail: dragonboatrace@wateraid.org
+      to_mail: '[webform_submission:values:email_address:email:raw]'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
       cc_mail: ''
       cc_options: {  }
-      from_mail: _default
+      from_mail: alumni@wateraid.org
       from_options: {  }
-      from_name: _default
+      from_name: 'Rachel Westcott'
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: 'Dragon boat race interest'
-      body: '<p>Submitted on [webform_submission:created]</p><p>[webform_submission:values]</p>'
-      excluded_elements:
-        intro: intro
-        captcha: captcha
-        privacy: privacy
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
-      debug: false
-  email:
-    id: email
-    handler_id: email
-    label: 'Confirmation email'
-    notes: 'To registrant'
-    status: false
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:your_email_address:email:raw]'
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: dragonboatrace@wateraid.org
-      from_options: {  }
-      from_name: 'WaterAid Events Team'
-      reply_to: dragonboatrace@wateraid.org
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: "Thanks for your interest in next year's Dragon Boat Race"
-      body: "<p>Hi [webform_submission:values:your_first_name]</p><p>Thanks for registering your interest in next year's Dragon Boat Race – we'll be in touch early in 2026 with more details on how to take part.</p><p>Best wishes,<br>WaterAid Events Team</p>"
+      subject: 'Thank you for joining The WaterAid Alumni Network'
+      body: "<p style=\"font-family: Arial, sans-serif;\">Dear WaterAider,<br />\r\n<br />\r\nThis email is to confirm that you have been added to our alumni scheme, The WaterAid Alumni Network.<br />\r\n<br />\r\nAlthough we have hundreds of thousands of supporters around the world, you are part of a select group of people who have been a part of our WaterAid global family &ndash; and we want to be able to stay connected to you.<br />\r\n<br />\r\nEvery quarter you will receive a special alumni newsletter keeping you up to date with what has been happening across the organisation and will point you towards any upcoming vacancies. We may also contact you occasionally to ask for your help, or to invite you to share your views on certain subjects. If you are already part of our supporter database (which many people are), this will not affect your existing communication preferences.<br />\r\n<br />\r\nThere are several other ways that you can stay in touch with what is happening in the WaterAid world, including:</p>\r\n\r\n<ul style=\"font-family: Arial, sans-serif;\">\r\n\t<li><a href=\"https://washmatters.wateraid.org/newsletter-sign-up\">Signing up to WASH Matters </a>&ndash; our quarterly update on the big issues affecting water, sanitation and hygiene</li>\r\n\t<li>Following us on <a href=\"https://twitter.com/WaterAidUK\">Twitter</a> and <a href=\"https://www.instagram.com/wateraid/\">Instagram</a></li>\r\n\t<li>Liking our <a href=\"https://www.facebook.com/wateraid/\" target=\"_blank\">Facebook page</a></li>\r\n</ul>\r\n\r\n<p style=\"font-family: Arial, sans-serif;\">You can also join the <a href=\"https://www.facebook.com/groups/760909670698823/\" target=\"_blank\">WaterAid Alumni (Once a WaterAider always a WaterAider) group on Facebook</a> &ndash; which was set up by former WaterAiders.<br />\r\n<br />\r\nWaterAid has always had a strong sense of global community and togetherness &ndash; which, for many, endures long after they have left the organisation. People often use the phrase &ldquo;Once a WaterAider, always a WaterAider&rdquo; and we really hope that it feels like that for you!<br />\r\n<br />\r\nBest wishes<br />\r\n<br />\r\nRachel Westcott<br />\r\nDirector of People and Organisational Development</p>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

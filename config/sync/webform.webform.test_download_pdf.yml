@@ -1,4 +1,4 @@
-uuid: 35d23cd9-c960-4646-a3e2-90f0e33eb7a2
+uuid: 9894504d-cbfb-401f-9cde-bce2bbff5725
 langcode: en
 status: open
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
     - wateraid_donation_stripe
     - wateraid_forms
     - webform_pdf_receipt
-    - webform_wizard_extra
+    - webform_wizard_single_page
 third_party_settings:
   wateraid_donation_forms:
     currency: GBP
@@ -33,79 +33,41 @@ third_party_settings:
     direct_debit_guarantee:
       value: ''
       format: basic_html
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+    confirmation_image_url: ''
   wateraid_donation_stripe:
     test_secret_key: ''
     test_public_key: ''
     live_secret_key: ''
     live_public_key: ''
+  wateraid_forms:
+    style_version: v2
   webform_pdf_receipt:
     pdf_text:
       value: ''
       format: wateraid_pdf
-  webform_wizard_extra:
-    one_page: false
-  wateraid_forms:
-    style_version: v1
+  webform_wizard_single_page:
+    single_page: false
 weight: 0
 open: null
 close: null
 uid: 1
 template: false
 archive: false
-id: dragon_boat_race_interest
-title: 'Canary Wharf dragon boat race interest'
-description: 'To express interest to hear when full registration opens'
-categories:
-  - Admin
+id: test_download_pdf
+title: 'Test - download PDF'
+description: '<p>Testing using CAPTCHA before download to avoid bots.</p><p>No user data collected.</p>'
+categories: {  }
 elements: |-
-  intro:
-    '#type': processed_text
-    '#text': "<h1>Register your interest in the 2026 Dragon Boat Race</h1><p>Complete the form below and we'll be in touch as soon as registration for the 2026 event opens!</p>"
-    '#format': basic_html
   captcha:
     '#type': captcha
     '#captcha_type': recaptcha_v3/default
-  your_first_name:
-    '#type': textfield
-    '#title': 'Your first name'
-    '#required': true
-  your_last_name:
-    '#type': textfield
-    '#title': 'Your last name'
-    '#required': true
-  your_email_address:
-    '#type': loqate_email_composite
-    '#title': 'Your email address'
-    '#required': true
-    '#loqate_validation_refuse_disposable': false
-    '#email__title': 'Your email address'
-    '#email__required': true
-    '#loqate_validation': false
-  your_phone_number:
-    '#type': number
-    '#title': 'Your phone number'
-    '#required': true
-  job_title:
-    '#type': textfield
-    '#title': 'Your job title/role within your organisation'
-    '#required': true
-  your_organisation:
-    '#type': textfield
-    '#title': 'Your organisation'
-    '#required': true
-    '#required_error': "Please let us know which organisation you're representing"
-  your_organisation_s_address:
-    '#type': pca_address_php
-    '#title': "Your organisation's address"
-    '#required': true
-  privacy:
-    '#type': processed_text
-    '#text': '<h3>How we''ll use your data</h3><p>We''ll use the email address and/or phone number you provide to let you know when registration for the 2026 Dragon Boat Race opens.</p><p class="fine-print">WaterAid and WaterAid Trading will use your personal details to communicate with you in the ways you have agreed to, and as explained in <a href="/uk/privacy">our Privacy Policy</a>. We may use the information you share with us, and background information about you that we obtain from publicly available sources, to carry out analysis (sometimes using suppliers) to tailor our communications to be more appropriate and relevant to your interests. You can withdraw your consent at any time. To change your preferences, or request to stop receiving communications, please contact us on 0207 793 4594 or at&nbsp;<a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. For full details, including information about your privacy rights, see <a href="/uk/privacy">our Privacy Policy</a>.</p>'
-    '#format': basic_html
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
-    '#submit__label': 'Register your interest'
+    '#submit__label': 'Download your information pack (PDF)'
 css: ''
 javascript: ''
 settings:
@@ -115,10 +77,10 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: /get-involved/events/dragon-boat-race/register-interest
-  page_confirm_path: /get-involved/events/dragon-boat-race/register-interest/thanks
+  page_submit_path: ''
+  page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -190,7 +152,7 @@ settings:
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
-  wizard_toggle: true
+  wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
   wizard_page_type: container
@@ -210,12 +172,12 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: page
-  confirmation_url: ''
-  confirmation_title: 'Thank you'
-  confirmation_message: "<p>Thanks for registering your interest in the 2026 Dragon Boat Race – we'll be in touch as soon as full registration opens!</p>"
+  confirmation_type: url
+  confirmation_url: /uk/request-gifts-in-wills-pack/download
+  confirmation_title: ''
+  confirmation_message: ''
   confirmation_attributes: {  }
-  confirmation_back: false
+  confirmation_back: true
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
@@ -290,85 +252,6 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_notification:
-    id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: 'To team each time form is submitted'
-    status: false
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: dragonboatrace@wateraid.org
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: 'Dragon boat race interest'
-      body: '<p>Submitted on [webform_submission:created]</p><p>[webform_submission:values]</p>'
-      excluded_elements:
-        intro: intro
-        captcha: captcha
-        privacy: privacy
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
-      debug: false
-  email:
-    id: email
-    handler_id: email
-    label: 'Confirmation email'
-    notes: 'To registrant'
-    status: false
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:your_email_address:email:raw]'
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: dragonboatrace@wateraid.org
-      from_options: {  }
-      from_name: 'WaterAid Events Team'
-      reply_to: dragonboatrace@wateraid.org
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: "Thanks for your interest in next year's Dragon Boat Race"
-      body: "<p>Hi [webform_submission:values:your_first_name]</p><p>Thanks for registering your interest in next year's Dragon Boat Race – we'll be in touch early in 2026 with more details on how to take part.</p><p>Best wishes,<br>WaterAid Events Team</p>"
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
-      debug: false
   azure_blob_storage:
     id: azure_blob_storage_handler
     handler_id: azure_blob_storage

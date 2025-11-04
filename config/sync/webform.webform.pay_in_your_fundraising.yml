@@ -3,6 +3,7 @@ langcode: en
 status: open
 dependencies:
   module:
+    - azure_blob_storage
     - wateraid_donation_forms
     - wateraid_forms
     - webform_wizard_extra
@@ -765,6 +766,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   email_to_staff:
     id: email
     handler_id: email_to_staff

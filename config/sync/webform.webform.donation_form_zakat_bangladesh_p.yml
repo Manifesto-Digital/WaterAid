@@ -3,6 +3,7 @@ langcode: en
 status: open
 dependencies:
   module:
+    - azure_blob_storage
     - wateraid_donation_forms
     - wateraid_donation_stripe
     - wateraid_forms
@@ -541,6 +542,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   wateraid_donation_email_recurring:
     id: wateraid_email
     handler_id: wateraid_donation_email_recurring
@@ -584,6 +586,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   confirmation_page_in_memory_:
     id: confirmation_page
     handler_id: confirmation_page_in_memory_
@@ -645,6 +648,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: in_memory
       fallback_message: '<p>Dear [webform_submission:values:contact_name],</p><p>We''ve received your Zakat and I can''t thank you enough.</p><p>You have just made the most thoughtful decision. You’ve chosen to give the gift of clean water&nbsp;to school children in Bangladesh in memory of [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss, my thoughts are with you and your loved ones.</p><p>If you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href="https://wateraid.dedicationpage.org/inmemory">our WaterAid Remembers page</a>.</p><p>Your Zakat will help transform two Madrassas with clean water, decent toilets and handwashing facilities. As lockdown ends and children return to school, you will be helping them stay safe, healthy and dignified. Your Zakat will help bring accessible facilities to all students, so that they’re able to unlock their potential.</p><p>What’s really exciting is that your impact will be even greater than these two Madrassas. The Bangladesh Government will be using our designs to improve facilities in hundreds of other schools in Bangladesh too!</p><p>So when you next turn on a tap and hear the sound of water gushing out, think of that same sound happening in a school in Bangladesh, thanks to you.</p><p>With clean water, decent toilets and good hygiene, you’re making sure that people can change their own lives forever. We cannot thank you enough for your support.</p><p>Below you’ll find confirmation of your donation, so please check the details and keep this email safe. If you have any questions about WaterAid or your gift, please give us a call on 020 7793 4594 or email us on <a href="mailto:supportercare@wateraid.org">supportercare@wateraid.org</a>. We''d love to hear from you.</p><p>Best wishes and thanks for your support.</p><p>Yours sincerely,</p><p>Tim Wainwright</p><p>Chief Executive</p><p>WaterAid UK</p><p>[webform_submission:values] Transaction ID: [webform_submission:donation-transaction-id] [webform_submission:gift-aid-confirmation-text] [webform_submission:dd-bankaccount-email-text]</p>'
+      langcode: ''
   azure_blob_storage:
     id: azure_blob_storage_handler
     handler_id: azure_blob_storage
