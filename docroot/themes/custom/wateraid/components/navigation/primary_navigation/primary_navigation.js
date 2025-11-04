@@ -26,18 +26,23 @@
 
     initNav(nav, context) {
       const header = document.querySelector('.js-site-header');
+
       const megaNav = nav.querySelector('.meganav');
+      const meganavPanels = megaNav.querySelectorAll('[data-meganav-panel-id]');
+
       const mobileNav = nav.querySelector('.mobile-nav');
       const menuButton = document.querySelector('.js-menu-open-close-btn');
-      const meganavPanels = megaNav.querySelectorAll('[data-meganav-panel-id]');
+      const mobileNavBackButtons = document.querySelectorAll('.js-mobile-nav-back-btn');
 
       const level2Triggers = nav.querySelectorAll('[data-level2-trigger]');
       const level3Triggers = nav.querySelectorAll('[data-level3-trigger]');
 
       // Get the meganav open/close transition time from CSS var, make it
-      // unitless (nb. Must be in milliseconds).
+      // unit-less (nb. Must be in milliseconds).
       const meganavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--meganav-transition-time');
       const meganavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
+      const mobileNavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--mobile-nav-transition-time');
+      const mobileNavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
 
 
       menuButton.addEventListener('click', (e) => {
@@ -49,7 +54,6 @@
           e.preventDefault();
           const isMeganavTrigger = megaNav.contains(e.target);
           const triggerId = e.target.dataset.level2Trigger;
-          console.log(triggerId);
           this.state.activeLevel2 = isMeganavTrigger && this.state.activeLevel2 === triggerId ? null : triggerId;
         });
       });
@@ -59,6 +63,18 @@
           const isMeganavTrigger = megaNav.contains(e.target);
           const triggerId = e.target.dataset.level3Trigger;
           this.state.activeLevel3 = isMeganavTrigger && this.state.activeLevel3 === triggerId ? null : triggerId;
+        });
+      });
+
+      mobileNavBackButtons.forEach((el) => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (this.state.activeLevel3 !== null) {
+            this.state.activeLevel3 = null;
+          }
+          else if (this.state.activeLevel2 !== null) {
+            this.state.activeLevel2 = null;
+          }
         });
       });
 
@@ -75,16 +91,28 @@
           isOpen: [
             (newValue, oldValue) => {
              if (newValue !== oldValue) {
-               // menuButton.setAttribute('aria-expanded', newValue);
-               document.body.classList.toggle('primary-menu-open');
+               menuButton.setAttribute('aria-expanded', newValue);
+               document.body.classList.add('primary-menu-open');
+
+               if (!newValue) {
+                 console.log('Close');
+                 document.body.classList.remove('primary-menu-open');
+                 mobileNav.classList.remove('mobile-nav-static');
+                 this.state.activeLevel2 = null;
+                 this.state.activeLevel3 = null;
+               }
              }
+
             }
           ],
 
           // Listener for activeLevel2 property change.
           activeLevel2: [
             (newValue, oldValue) => {
-              nav.classList.add('meganav-animating');
+
+              header.setAttribute('data-mobile-menu-level-active', '2');
+              megaNav.classList.add('meganav-animating');
+              mobileNav.classList.remove('mobile-nav-static');
 
               meganavPanels.forEach((el) => {
                 el.classList.remove('active');
@@ -95,6 +123,7 @@
               });
 
               if (newValue) {
+                this.state.isOpen = true;
                 document.body.classList.add('primary-menu-open');
                 // Changing meganav panel.
                 const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');
@@ -104,25 +133,38 @@
                 nav.querySelectorAll('[data-level2-trigger="' + newValue + '"]').forEach((el) => {
                   el.classList.add('active');
                 });
+                mobileNav.querySelector('[data-mobile-submenu-id="' + newValue + '"]').classList.add('active');
               }
               else {
-                // Closing meganav.
-                document.body.classList.remove('primary-menu-open');
                 this.state.activeLevel3 = null;
+                // Closing meganav.
+                header.setAttribute('data-mobile-menu-level-active', '1');
               }
 
+              // MegaNav is animating timeout.
               setTimeout(() => { meganavPanels.forEach((el) => {
-                // Remove any 'animating' class flags after a timeout that
-                // matches with the menu transition time.
+                // Remove any 'animating' class flags after a timeout period
+                // that matches with the menu CSS transition time.
                 nav.querySelectorAll('[data-meganav-panel-id]').forEach((el) => { el.classList.remove('panel-animating-in'); });
                 nav.classList.remove('meganav-animating');
               })}, meganavTransitionTime)
+
+              // Mobile nav is animating timeout.
+              setTimeout(() => {
+                // Add a class to prevent transition animations outside of
+                // intentional menu animations.
+                mobileNav.classList.add('mobile-nav-static');
+                if (newValue === null) {
+                  mobileNav.querySelectorAll('[data-mobile-submenu-id]').forEach((el) => { el.classList.remove('active'); });
+                }
+              }, mobileNavTransitionTime)
             }
           ],
 
           // Listener for activeLevel3 property change.
           activeLevel3: [
             (newValue, oldValue) => {
+              mobileNav.classList.remove('mobile-nav-static');
 
               nav.querySelectorAll('[data-level3-trigger]').forEach((el) => { el.classList.remove('active'); });
               nav.querySelectorAll('[data-level-3-id]').forEach((el) => {
@@ -130,11 +172,31 @@
                 el.setAttribute('aria-expanded', false);
               });
 
-              if (newValue !== oldValue && newValue !== null) {
-                nav.querySelector('[data-level3-trigger="' + newValue + '"]').classList.add('active');
-                const elementToOpen = nav.querySelector('[data-level-3-id="' + newValue + '"]');
-                elementToOpen.classList.add('show');
-                elementToOpen.setAttribute('aria-expanded', true);
+              if (newValue !== oldValue) {
+                if (newValue !== null) {
+                  this.state.isOpen = true;
+
+                  nav.querySelector('[data-level3-trigger="' + newValue + '"]').classList.add('active');
+                  const elementToOpen = nav.querySelector('[data-level-3-id="' + newValue + '"]');
+                  elementToOpen.classList.add('show');
+                  elementToOpen.setAttribute('aria-expanded', true);
+
+                  // Mobile nav
+                  mobileNav
+                    .querySelector('[data-mobile-submenu-id="'+ this.state.activeLevel2 +'"]')
+                    .querySelector('[data-mobile-submenu-id="'+ this.state.activeLevel3 +'"]')
+                    .classList.add('active');
+
+                  header.setAttribute('data-mobile-menu-level-active', '3');
+                }
+                else {
+                  header.setAttribute('data-mobile-menu-level-active', '2');
+                }
+
+                // Mobile nav is animating timeout.
+                setTimeout(() => {
+                  mobileNav.classList.add('mobile-nav-static');
+                }, mobileNavTransitionTime)
               }
             }
           ]

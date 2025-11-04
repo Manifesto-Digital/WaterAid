@@ -1,8 +1,9 @@
 @import "./../../../sass/base";
-
-$navigation_bottom_spacing: 0;
+@import "./../../site_header/site_header";
 
 .primary-navigation {
+  align-self: flex-end;
+
   ul {
     list-style: none;
   }
@@ -38,7 +39,7 @@ $navigation_bottom_spacing: 0;
     @include tablet {
       flex-direction: row;
       gap: $wa-spacing-04;
-      padding-bottom: $navigation_bottom_spacing;
+      padding-bottom: $header-padding-bottom;
     }
     @include desktop {
       gap: $wa-spacing-05;
@@ -140,7 +141,7 @@ $navigation_bottom_spacing: 0;
     }
 
     &.active {
-      transform: translate(0, $navigation_bottom_spacing);
+      transform: translate(0, $header-padding-bottom);
       visibility: visible;
     }
   }
@@ -182,6 +183,9 @@ $navigation_bottom_spacing: 0;
 }
 
 .mobile-nav {
+  // Declare this in ms only - this is picked up by our JS behaviour too.
+  --mobile-nav-transition-time: 400ms;
+
   position: fixed;
   left: 0;
   width: 100%;
@@ -195,10 +199,31 @@ $navigation_bottom_spacing: 0;
   body.primary-menu-open & {
     visibility: visible;
     opacity: 1;
-    height: 100vw;
+    height: 100vh;
 
     @include tablet {
       display: none;
+    }
+  }
+
+  ul {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__slider {
+    height: 100%;
+    transform: translateX(0);
+
+    &:not(.mobile-nav-static &) {
+      @include wa-transition-motion-flow(transform, var(--mobile-nav-transition-time));
+    }
+
+    [data-mobile-menu-level-active='2'] & {
+      transform: translateX(-100vw);
+    }
+    [data-mobile-menu-level-active='3'] & {
+      transform: translateX(-200vw);
     }
   }
 
@@ -212,20 +237,41 @@ $navigation_bottom_spacing: 0;
 
   &__level-2,
   &__level-3 {
-    transform: translateX(100vw);
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     background: white;
+    height: 100%;
 
     &.active {
-      transform: translateX(0);
+      display: block;
     }
+  }
+
+  &__level-2 {
+    transform: translateX(100vw);
+    background-color: $wa-blue;
+  }
+  &__level-3 {
+    // Level 3 is nested under level 2, so just 100vw nudge again.
+    transform: translateX(100vw);
+    background-color: $wa-navy;
+  }
+
+  &__back-btn {
+    display: block;
+    color: $wa-white;
   }
 }
 
 body.primary-menu-open {
   overflow: hidden;
+  position: fixed;
+
+  @include tablet {
+    position: unset;
+  }
 }
 
 

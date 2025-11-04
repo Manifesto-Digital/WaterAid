@@ -134,6 +134,242 @@ strong {
   font-family: "Noto Sans Bold";
 }
 
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, .pseudo-h1 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.625rem;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h1, .pseudo-h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2, .pseudo-h2 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2, .pseudo-h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3, .pseudo-h3 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h3, .pseudo-h3 {
+    font-size: 2.25rem;
+  }
+}
+
+h4, .pseudo-h4 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h5, .pseudo-h5 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h6, .pseudo-h6 {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+strong {
+  font-family: "Noto Sans Bold";
+}
+
+/**
+ * Non-printing base stylesheets (i.e. no CSS output). This is what should
+ * be imported into SDC components, not styles.scss.
+ */
+
+.site-header {
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .site-header {
+    padding-bottom: 1rem;
+  }
+}
+
+.site-header__colour-wrapper {
+  background: #fff;
+}
+
+.site-header__container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .site-header__container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .site-header__container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .site-header__container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.site-header__logo {
+  width: 6.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .site-header__logo {
+    width: 12.5rem;
+    padding: 1rem 0;
+  }
+}
+
+.site-header__logo-link {
+  display: block;
+}
+
+.site-header__logo-image {
+  fill: currentColor;
+  color: #006bd9;
+  max-width: 100%;
+  aspect-ratio: 3.2;
+  display: block;
+  transition: all .2s cubic-bezier(.6, 0, .4, 1) 0s;
+}
+
+@media only screen and (min-width: 768px) {
+  .site-header__open-close-mobile-menu-btn {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .site-header[data-menu-level-active="2"] .site-header__colour-wrapper {
+    background: #006bd9;
+  }
+
+  .site-header[data-menu-level-active="2"] .site-header__logo-image {
+    color: #fff;
+  }
+
+  .site-header[data-menu-level-active="3"] .site-header__colour-wrapper {
+    background: #151435;
+  }
+
+  .site-header[data-menu-level-active="3"] .site-header__logo-image {
+    color: #fff;
+  }
+}
+
+.primary-navigation {
+  align-self: flex-end;
+}
+
 .primary-navigation ul {
   list-style: none;
 }
@@ -234,7 +470,7 @@ strong {
   .meganav__level-1 {
     flex-direction: row;
     gap: 1rem;
-    padding-bottom: 0;
+    padding-bottom: 1rem;
   }
 }
 
@@ -362,7 +598,7 @@ strong {
 }
 
 .meganav__panel.active {
-  transform: translate(0, 0);
+  transform: translate(0, 1rem);
   visibility: visible;
 }
 
@@ -465,6 +701,7 @@ strong {
 }
 
 .mobile-nav {
+  --mobile-nav-transition-time: 400ms;
   position: fixed;
   left: 0;
   width: 100%;
@@ -479,13 +716,35 @@ strong {
 body.primary-menu-open .mobile-nav {
   visibility: visible;
   opacity: 1;
-  height: 100vw;
+  height: 100vh;
 }
 
 @media only screen and (min-width: 768px) {
   body.primary-menu-open .mobile-nav {
     display: none;
   }
+}
+
+.mobile-nav ul {
+  height: 100%;
+  width: 100%;
+}
+
+.mobile-nav__slider {
+  height: 100%;
+  transform: translateX(0);
+}
+
+.mobile-nav__slider:not(.mobile-nav-static .mobile-nav__slider) {
+  transition: transform var(--mobile-nav-transition-time) cubic-bezier(.6, 0, .4, 1) 0s;
+}
+
+[data-mobile-menu-level-active="2"] .mobile-nav__slider {
+  transform: translateX(-100vw);
+}
+
+[data-mobile-menu-level-active="3"] .mobile-nav__slider {
+  transform: translateX(-200vw);
 }
 
 .mobile-nav__container {
@@ -514,19 +773,42 @@ body.primary-menu-open .mobile-nav {
 }
 
 .mobile-nav__level-2, .mobile-nav__level-3 {
-  transform: translateX(100vw);
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   background: white;
+  height: 100%;
 }
 
 .mobile-nav__level-2.active, .mobile-nav__level-3.active {
-  transform: translateX(0);
+  display: block;
+}
+
+.mobile-nav__level-2 {
+  transform: translateX(100vw);
+  background-color: #006bd9;
+}
+
+.mobile-nav__level-3 {
+  transform: translateX(100vw);
+  background-color: #151435;
+}
+
+.mobile-nav__back-btn {
+  display: block;
+  color: #fff;
 }
 
 body.primary-menu-open {
   overflow: hidden;
+  position: fixed;
+}
+
+@media only screen and (min-width: 768px) {
+  body.primary-menu-open {
+    position: unset;
+  }
 }
 
 

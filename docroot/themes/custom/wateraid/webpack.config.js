@@ -185,7 +185,7 @@ module.exports = {
         }
       },
       styles: {
-        filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
+        filename: path.resolve(__dirname, 'sass/1-tools/_svg-sprite.scss'),
         keepAttributes: true,
         // Fragment now works with Firefox 84+ and 91esr+
         format: 'fragment',
