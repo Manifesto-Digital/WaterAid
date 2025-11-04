@@ -1,0 +1,142 @@
+@import "../../sass/base";
+
+/**
+ * Local Tasks (Tabs) Styling
+ *
+ * Styles for primary and secondary local tasks/tabs using WaterAid theme design system
+ */
+
+.local-tasks {
+  margin-bottom: $wa-spacing-06;
+
+  &__primary,
+  &__secondary {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0.5rem;
+
+
+    li {
+      margin-right: $wa-spacing-01;
+      position: relative;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        display: block;
+        font-weight: bold;
+        padding: $wa-spacing-03 $wa-spacing-05;
+        color: $wa-navy;
+        text-decoration: none;
+        border: calculate-rem(1) solid $wa-blue;
+        border-radius: $radius-xs;
+        font-size: calculate-rem(16);
+        line-height: calculate-rem(20);
+        font-weight: 400;
+        transition: all 200ms ease;
+        position: relative;
+
+        &.is-active {
+          background-color: $wa-navy-10;
+        }
+        &:hover {
+          background-color: $wa-blue;
+          color: $wa-white;
+        }
+
+        &:focus-visible {
+          outline: $wa-plum $wa-spacing-01 solid;
+          outline-offset: $wa-spacing-01;
+          border-color: $wa-navy-10;
+        }
+      }
+    }
+  }
+
+  &__secondary {
+    border-top: calculate-rem(1) solid $wa-navy-10;
+    border-bottom: none;
+    margin-top: -1px;
+    padding-top: $wa-spacing-02;
+
+    li a {
+      padding: $wa-spacing-02 $wa-spacing-04;
+      background-color: transparent;
+      border: none;
+      border-radius: $radius-xs;
+      font-size: calculate-rem(14);
+      line-height: calculate-rem(18);
+
+      &:hover {
+        background-color: $wa-cream;
+        color: $wa-navy;
+      }
+
+      &:focus-visible {
+        outline: $wa-pink $wa-spacing-01 solid;
+        outline-offset: -$wa-spacing-01;
+        background-color: transparent;
+      }
+    }
+
+    li.is-active a {
+      background-color: $wa-navy-10;
+      color: $wa-navy;
+      font-weight: 600;
+
+      &::after {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $wa-navy-10;
+      }
+    }
+  }
+
+  &--secondary {
+    margin-top: 0;
+    margin-bottom: $wa-spacing-07;
+  }
+}
+
+// Responsive adjustments
+@include to-breakpoint($medium-device-max-width) {
+  .local-tasks {
+    &__primary,
+    &__secondary {
+      flex-direction: column;
+      border-bottom: none;
+
+      li {
+        margin-right: 0;
+        margin-bottom: $wa-spacing-01;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          border-radius: $radius-xs;
+          border: calculate-rem(1) solid $wa-navy-10;
+          width: 100%;
+        }
+
+        &.is-active a::after {
+          display: none;
+        }
+      }
+    }
+
+    &__secondary {
+      border-top: none;
+      padding-top: 0;
+      margin-top: $wa-spacing-04;
+    }
+  }
+}

@@ -1465,5 +1465,282 @@ input[type=radio]:focus-visible {
   background-color: #fff;
 }
 
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, .pseudo-h1 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.625rem;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h1, .pseudo-h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2, .pseudo-h2 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2, .pseudo-h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3, .pseudo-h3 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h3, .pseudo-h3 {
+    font-size: 2.25rem;
+  }
+}
+
+h4, .pseudo-h4 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h5, .pseudo-h5 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h6, .pseudo-h6 {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+strong {
+  font-family: "Noto Sans Bold";
+}
+
+/**
+ * Non-printing base stylesheets (i.e. no CSS output). This is what should
+ * be imported into SDC components, not styles.scss.
+ */
+
+/**
+ * Local Tasks (Tabs) Styling
+ *
+ * Styles for primary and secondary local tasks/tabs using WaterAid theme design system
+ */
+
+.local-tasks {
+  margin-bottom: 1.5rem;
+}
+
+.local-tasks__primary, .local-tasks__secondary {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+  gap: .5rem;
+}
+
+.local-tasks__primary li, .local-tasks__secondary li {
+  margin-right: .25rem;
+  position: relative;
+}
+
+.local-tasks__primary li:last-child, .local-tasks__secondary li:last-child {
+  margin-right: 0;
+}
+
+.local-tasks__primary li a, .local-tasks__secondary li a {
+  display: block;
+  font-weight: bold;
+  padding: .75rem 1.25rem;
+  color: #151435;
+  text-decoration: none;
+  border: .0625rem solid #006bd9;
+  border-radius: .25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  transition: all 200ms ease;
+  position: relative;
+}
+
+.local-tasks__primary li a.is-active, .local-tasks__secondary li a.is-active {
+  background-color: #e8e8eb;
+}
+
+.local-tasks__primary li a:hover, .local-tasks__secondary li a:hover {
+  background-color: #006bd9;
+  color: #fff;
+}
+
+.local-tasks__primary li a:focus-visible, .local-tasks__secondary li a:focus-visible {
+  outline: #730e49 .25rem solid;
+  outline-offset: .25rem;
+  border-color: #e8e8eb;
+}
+
+.local-tasks__secondary {
+  border-top: .0625rem solid #e8e8eb;
+  border-bottom: none;
+  margin-top: -1px;
+  padding-top: .5rem;
+}
+
+.local-tasks__secondary li a {
+  padding: .5rem 1rem;
+  background-color: transparent;
+  border: none;
+  border-radius: .25rem;
+  font-size: .875rem;
+  line-height: 1.125rem;
+}
+
+.local-tasks__secondary li a:hover {
+  background-color: #f8f0e4;
+  color: #151435;
+}
+
+.local-tasks__secondary li a:focus-visible {
+  outline: #ff96e6 .25rem solid;
+  outline-offset: -0.25rem;
+  background-color: transparent;
+}
+
+.local-tasks__secondary li.is-active a {
+  background-color: #e8e8eb;
+  color: #151435;
+  font-weight: 600;
+}
+
+.local-tasks__secondary li.is-active a::after {
+  display: none;
+}
+
+.local-tasks__secondary li.is-active a:hover {
+  background-color: #e8e8eb;
+}
+
+.local-tasks--secondary {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .local-tasks__primary, .local-tasks__secondary {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .local-tasks__primary li, .local-tasks__secondary li {
+    margin-right: 0;
+    margin-bottom: .25rem;
+  }
+
+  .local-tasks__primary li:last-child, .local-tasks__secondary li:last-child {
+    margin-bottom: 0;
+  }
+
+  .local-tasks__primary li a, .local-tasks__secondary li a {
+    border-radius: .25rem;
+    border: .0625rem solid #e8e8eb;
+    width: 100%;
+  }
+
+  .local-tasks__primary li.is-active a::after, .local-tasks__secondary li.is-active a::after {
+    display: none;
+  }
+
+  .local-tasks__secondary {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 1rem;
+  }
+}
+
 
 /*# sourceMappingURL=styles.css.map*/
