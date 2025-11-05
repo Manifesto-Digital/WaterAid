@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_metatags
     - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
@@ -24,6 +25,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - metatag
     - options
     - user
 id: node.publication.default
@@ -106,6 +108,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 111
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_regions:
     type: list_default

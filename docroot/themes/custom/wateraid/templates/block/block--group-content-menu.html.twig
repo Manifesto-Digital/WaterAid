@@ -1,0 +1,5 @@
+{{ include ('wateraid:primary_navigation', {
+  menu: content
+}, false) }}
+
+{{ content|without(['#items']) }}

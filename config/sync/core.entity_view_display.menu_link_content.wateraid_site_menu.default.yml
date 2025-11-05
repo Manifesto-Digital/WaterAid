@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.menu_link_content.wateraid_site_menu.field_attributes
     - field.field.menu_link_content.wateraid_site_menu.field_classes
+    - field.field.menu_link_content.wateraid_site_menu.field_description
   module:
     - menu_link_content
 id: menu_link_content.wateraid_site_menu.default
@@ -16,6 +17,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   entity_print_view_epub: true

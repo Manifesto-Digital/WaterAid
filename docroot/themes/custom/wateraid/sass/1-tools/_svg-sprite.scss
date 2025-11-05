@@ -1,0 +1,668 @@
+$sprites: (
+    'complete': "../../images/sprite.svg#complete-view",
+    'current': "../../images/sprite.svg#current-view",
+    'direct-debit': "../../images/sprite.svg#direct-debit-view",
+    'facebook': "../../images/sprite.svg#facebook-view",
+    'instagram': "../../images/sprite.svg#instagram-view",
+    'linkedin': "../../images/sprite.svg#linkedin-view",
+    'next': "../../images/sprite.svg#next-view",
+    'select': "../../images/sprite.svg#select-view",
+    'tiktok': "../../images/sprite.svg#tiktok-view",
+    'wa-apple': "../../images/sprite.svg#wa-apple-view",
+    'wa-container-lg-tall': "../../images/sprite.svg#wa-container-lg-tall-view",
+    'wa-container-lg-wide': "../../images/sprite.svg#wa-container-lg-wide-view",
+    'wa-container-rectangle-wide': "../../images/sprite.svg#wa-container-rectangle-wide-view",
+    'wa-container-sm-circle-border': "../../images/sprite.svg#wa-container-sm-circle-border-view",
+    'wa-container-sm-circle-cream': "../../images/sprite.svg#wa-container-sm-circle-cream-view",
+    'wa-container-sm-circle-navy': "../../images/sprite.svg#wa-container-sm-circle-navy-view",
+    'wa-container-sm-circle-white': "../../images/sprite.svg#wa-container-sm-circle-white-view",
+    'wa-container-sm-circle': "../../images/sprite.svg#wa-container-sm-circle-view",
+    'wa-container-sm-rectangle': "../../images/sprite.svg#wa-container-sm-rectangle-view",
+    'wa-container-sm-square-white': "../../images/sprite.svg#wa-container-sm-square-white-view",
+    'wa-container-sm-square': "../../images/sprite.svg#wa-container-sm-square-view",
+    'wa-container-sm-tall': "../../images/sprite.svg#wa-container-sm-tall-view",
+    'wa-container-sm-wide-border-dark': "../../images/sprite.svg#wa-container-sm-wide-border-dark-view",
+    'wa-container-sm-wide-border-donate': "../../images/sprite.svg#wa-container-sm-wide-border-donate-view",
+    'wa-container-sm-wide-border-light': "../../images/sprite.svg#wa-container-sm-wide-border-light-view",
+    'wa-container-sm-wide-navy': "../../images/sprite.svg#wa-container-sm-wide-navy-view",
+    'wa-container-sm-wide-white': "../../images/sprite.svg#wa-container-sm-wide-white-view",
+    'wa-container-sm-wide': "../../images/sprite.svg#wa-container-sm-wide-view",
+    'wa-curve-high-blue': "../../images/sprite.svg#wa-curve-high-blue-view",
+    'wa-curve-low-cream': "../../images/sprite.svg#wa-curve-low-cream-view",
+    'wa-direct-debit': "../../images/sprite.svg#wa-direct-debit-view",
+    'wa-edge-bottom-1-blue': "../../images/sprite.svg#wa-edge-bottom-1-blue-view",
+    'wa-edge-bottom-1': "../../images/sprite.svg#wa-edge-bottom-1-view",
+    'wa-edge-bottom-2': "../../images/sprite.svg#wa-edge-bottom-2-view",
+    'wa-edge-top-1': "../../images/sprite.svg#wa-edge-top-1-view",
+    'wa-edge-top-2': "../../images/sprite.svg#wa-edge-top-2-view",
+    'wa-form-check': "../../images/sprite.svg#wa-form-check-view",
+    'wa-fr-logo': "../../images/sprite.svg#wa-fr-logo-view",
+    'wa-google': "../../images/sprite.svg#wa-google-view",
+    'wa-icon-baby': "../../images/sprite.svg#wa-icon-baby-view",
+    'wa-icon-campaign': "../../images/sprite.svg#wa-icon-campaign-view",
+    'wa-icon-children': "../../images/sprite.svg#wa-icon-children-view",
+    'wa-icon-clipboard': "../../images/sprite.svg#wa-icon-clipboard-view",
+    'wa-icon-community': "../../images/sprite.svg#wa-icon-community-view",
+    'wa-icon-crop': "../../images/sprite.svg#wa-icon-crop-view",
+    'wa-icon-disabled': "../../images/sprite.svg#wa-icon-disabled-view",
+    'wa-icon-education': "../../images/sprite.svg#wa-icon-education-view",
+    'wa-icon-female': "../../images/sprite.svg#wa-icon-female-view",
+    'wa-icon-fundraising': "../../images/sprite.svg#wa-icon-fundraising-view",
+    'wa-icon-globe': "../../images/sprite.svg#wa-icon-globe-view",
+    'wa-icon-health': "../../images/sprite.svg#wa-icon-health-view",
+    'wa-icon-heart': "../../images/sprite.svg#wa-icon-heart-view",
+    'wa-icon-hygiene': "../../images/sprite.svg#wa-icon-hygiene-view",
+    'wa-icon-jerry-can': "../../images/sprite.svg#wa-icon-jerry-can-view",
+    'wa-icon-location': "../../images/sprite.svg#wa-icon-location-view",
+    'wa-icon-mail': "../../images/sprite.svg#wa-icon-mail-view",
+    'wa-icon-male': "../../images/sprite.svg#wa-icon-male-view",
+    'wa-icon-megaphone': "../../images/sprite.svg#wa-icon-megaphone-view",
+    'wa-icon-partnership': "../../images/sprite.svg#wa-icon-partnership-view",
+    'wa-icon-party': "../../images/sprite.svg#wa-icon-party-view",
+    'wa-icon-periods': "../../images/sprite.svg#wa-icon-periods-view",
+    'wa-icon-phone': "../../images/sprite.svg#wa-icon-phone-view",
+    'wa-icon-pump': "../../images/sprite.svg#wa-icon-pump-view",
+    'wa-icon-quote-mark': "../../images/sprite.svg#wa-icon-quote-mark-view",
+    'wa-icon-rain': "../../images/sprite.svg#wa-icon-rain-view",
+    'wa-icon-recycle': "../../images/sprite.svg#wa-icon-recycle-view",
+    'wa-icon-speech-bubble': "../../images/sprite.svg#wa-icon-speech-bubble-view",
+    'wa-icon-sun': "../../images/sprite.svg#wa-icon-sun-view",
+    'wa-icon-tap': "../../images/sprite.svg#wa-icon-tap-view",
+    'wa-icon-toilet-seat': "../../images/sprite.svg#wa-icon-toilet-seat-view",
+    'wa-icon-toilet-squat': "../../images/sprite.svg#wa-icon-toilet-squat-view",
+    'wa-icon-volunteer': "../../images/sprite.svg#wa-icon-volunteer-view",
+    'wa-icon': "../../images/sprite.svg#wa-icon-view",
+    'wa-mastercard': "../../images/sprite.svg#wa-mastercard-view",
+    'wa-paypal': "../../images/sprite.svg#wa-paypal-view",
+    'wa-pointer': "../../images/sprite.svg#wa-pointer-view",
+    'wa-pound': "../../images/sprite.svg#wa-pound-view",
+    'wa-shape-arrow': "../../images/sprite.svg#wa-shape-arrow-view",
+    'wa-shape-arrows': "../../images/sprite.svg#wa-shape-arrows-view",
+    'wa-shape-circle': "../../images/sprite.svg#wa-shape-circle-view",
+    'wa-shape-drop': "../../images/sprite.svg#wa-shape-drop-view",
+    'wa-shape-ripple': "../../images/sprite.svg#wa-shape-ripple-view",
+    'wa-shape-underscore': "../../images/sprite.svg#wa-shape-underscore-view",
+    'wa-shape-wave': "../../images/sprite.svg#wa-shape-wave-view",
+    'wa-triangle': "../../images/sprite.svg#wa-triangle-view",
+    'wa-utility-arrow-blue': "../../images/sprite.svg#wa-utility-arrow-blue-view",
+    'wa-utility-arrow-right': "../../images/sprite.svg#wa-utility-arrow-right-view",
+    'wa-utility-arrow': "../../images/sprite.svg#wa-utility-arrow-view",
+    'wa-utility-calendar': "../../images/sprite.svg#wa-utility-calendar-view",
+    'wa-utility-chevron': "../../images/sprite.svg#wa-utility-chevron-view",
+    'wa-utility-close': "../../images/sprite.svg#wa-utility-close-view",
+    'wa-utility-coffee': "../../images/sprite.svg#wa-utility-coffee-view",
+    'wa-utility-confirmation-no': "../../images/sprite.svg#wa-utility-confirmation-no-view",
+    'wa-utility-cookie': "../../images/sprite.svg#wa-utility-cookie-view",
+    'wa-utility-expand': "../../images/sprite.svg#wa-utility-expand-view",
+    'wa-utility-fastfood': "../../images/sprite.svg#wa-utility-fastfood-view",
+    'wa-utility-florist': "../../images/sprite.svg#wa-utility-florist-view",
+    'wa-utility-information': "../../images/sprite.svg#wa-utility-information-view",
+    'wa-utility-lock': "../../images/sprite.svg#wa-utility-lock-view",
+    'wa-utility-menu': "../../images/sprite.svg#wa-utility-menu-view",
+    'wa-utility-minus': "../../images/sprite.svg#wa-utility-minus-view",
+    'wa-utility-opne-in-new': "../../images/sprite.svg#wa-utility-opne-in-new-view",
+    'wa-utility-pause': "../../images/sprite.svg#wa-utility-pause-view",
+    'wa-utility-person': "../../images/sprite.svg#wa-utility-person-view",
+    'wa-utility-pizza': "../../images/sprite.svg#wa-utility-pizza-view",
+    'wa-utility-play': "../../images/sprite.svg#wa-utility-play-view",
+    'wa-utility-plus': "../../images/sprite.svg#wa-utility-plus-view",
+    'wa-utility-restaurant': "../../images/sprite.svg#wa-utility-restaurant-view",
+    'wa-utility-schedule': "../../images/sprite.svg#wa-utility-schedule-view",
+    'wa-utility-search': "../../images/sprite.svg#wa-utility-search-view",
+    'wa-utility-tick': "../../images/sprite.svg#wa-utility-tick-view",
+    'wa-utility-tune': "../../images/sprite.svg#wa-utility-tune-view",
+    'wa-utility-volume-mute': "../../images/sprite.svg#wa-utility-volume-mute-view",
+    'wa-utility-volume-up': "../../images/sprite.svg#wa-utility-volume-up-view",
+    'wa-utility-wine': "../../images/sprite.svg#wa-utility-wine-view",
+    'wa-visa': "../../images/sprite.svg#wa-visa-view",
+    'wateraid-logo': "../../images/sprite.svg#wateraid-logo-view",
+    'wateraid': "../../images/sprite.svg#wateraid-view",
+    'youtube': "../../images/sprite.svg#youtube-view"
+);
+
+$sizes: (
+    'complete': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'current': (
+        'width': 49px,
+        'height': 48px
+    ),
+    'direct-debit': (
+        'width': 2280px,
+        'height': 738px
+    ),
+    'facebook': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'instagram': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'linkedin': (
+        'width': 24px,
+        'height': 23px
+    ),
+    'next': (
+        'width': 49px,
+        'height': 48px
+    ),
+    'select': (
+        'width': 12px,
+        'height': 10px
+    ),
+    'tiktok': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-apple': (
+        'width': 84px,
+        'height': 58px
+    ),
+    'wa-container-lg-tall': (
+        'width': 712px,
+        'height': 1020px
+    ),
+    'wa-container-lg-wide': (
+        'width': 1272px,
+        'height': 1020px
+    ),
+    'wa-container-rectangle-wide': (
+        'width': 288px,
+        'height': 48px
+    ),
+    'wa-container-sm-circle-border': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'wa-container-sm-circle-cream': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'wa-container-sm-circle-navy': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'wa-container-sm-circle-white': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'wa-container-sm-circle': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'wa-container-sm-rectangle': (
+        'width': 300px,
+        'height': 160px
+    ),
+    'wa-container-sm-square-white': (
+        'width': 53px,
+        'height': 53px
+    ),
+    'wa-container-sm-square': (
+        'width': 160px,
+        'height': 160px
+    ),
+    'wa-container-sm-tall': (
+        'width': 160px,
+        'height': 300px
+    ),
+    'wa-container-sm-wide-border-dark': (
+        'width': 241px,
+        'height': 53px
+    ),
+    'wa-container-sm-wide-border-donate': (
+        'width': 241px,
+        'height': 53px
+    ),
+    'wa-container-sm-wide-border-light': (
+        'width': 241px,
+        'height': 53px
+    ),
+    'wa-container-sm-wide-navy': (
+        'width': 300px,
+        'height': 60px
+    ),
+    'wa-container-sm-wide-white': (
+        'width': 300px,
+        'height': 60px
+    ),
+    'wa-container-sm-wide': (
+        'width': 300px,
+        'height': 60px
+    ),
+    'wa-curve-high-blue': (
+        'width': 1440px,
+        'height': 56px
+    ),
+    'wa-curve-low-cream': (
+        'width': 1440px,
+        'height': 73px
+    ),
+    'wa-direct-debit': (
+        'width': 84px,
+        'height': 58px
+    ),
+    'wa-edge-bottom-1-blue': (
+        'width': 2056px,
+        'height': 56px
+    ),
+    'wa-edge-bottom-1': (
+        'width': 2056px,
+        'height': 56px
+    ),
+    'wa-edge-bottom-2': (
+        'width': 2056px,
+        'height': 56px
+    ),
+    'wa-edge-top-1': (
+        'width': 2056px,
+        'height': 56px
+    ),
+    'wa-edge-top-2': (
+        'width': 2056px,
+        'height': 56px
+    ),
+    'wa-form-check': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-fr-logo': (
+        'width': 178px,
+        'height': 48px
+    ),
+    'wa-google': (
+        'width': 84px,
+        'height': 58px
+    ),
+    'wa-icon-baby': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-campaign': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-children': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-clipboard': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-community': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-crop': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-disabled': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-education': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-female': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-fundraising': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-globe': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-health': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-heart': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-hygiene': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-jerry-can': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-location': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-mail': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-icon-male': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-megaphone': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-partnership': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-party': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-periods': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-phone': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-icon-pump': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-quote-mark': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-rain': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-recycle': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-speech-bubble': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-sun': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-tap': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-toilet-seat': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-toilet-squat': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-volunteer': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon': (
+        'width': 60px,
+        'height': 60px
+    ),
+    'wa-mastercard': (
+        'width': 84px,
+        'height': 58px
+    ),
+    'wa-paypal': (
+        'width': 84px,
+        'height': 58px
+    ),
+    'wa-pointer': (
+        'width': 32px,
+        'height': 16px
+    ),
+    'wa-pound': (
+        'width': 10px,
+        'height': 15px
+    ),
+    'wa-shape-arrow': (
+        'width': 259px,
+        'height': 252px
+    ),
+    'wa-shape-arrows': (
+        'width': 384px,
+        'height': 205px
+    ),
+    'wa-shape-circle': (
+        'width': 254px,
+        'height': 255px
+    ),
+    'wa-shape-drop': (
+        'width': 189px,
+        'height': 284px
+    ),
+    'wa-shape-ripple': (
+        'width': 302px,
+        'height': 283px
+    ),
+    'wa-shape-underscore': (
+        'width': 353px,
+        'height': 49px
+    ),
+    'wa-shape-wave': (
+        'width': 480px,
+        'height': 135px
+    ),
+    'wa-triangle': (
+        'width': 12px,
+        'height': 12px
+    ),
+    'wa-utility-arrow-blue': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-arrow-right': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-arrow': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-calendar': (
+        'width': 20px,
+        'height': 22px
+    ),
+    'wa-utility-chevron': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-close': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-coffee': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-confirmation-no': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-cookie': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-expand': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-fastfood': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-florist': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-information': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-lock': (
+        'width': 24px,
+        'height': 25px
+    ),
+    'wa-utility-menu': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-minus': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-opne-in-new': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-pause': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-person': (
+        'width': 18px,
+        'height': 19px
+    ),
+    'wa-utility-pizza': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-play': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-plus': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-restaurant': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-schedule': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-search': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-tick': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-tune': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-volume-mute': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-volume-up': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-wine': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-visa': (
+        'width': 84px,
+        'height': 58px
+    ),
+    'wateraid-logo': (
+        'width': 1785.8px,
+        'height': 551.6px
+    ),
+    'wateraid': (
+        'width': 204px,
+        'height': 64px
+    ),
+    'youtube': (
+        'width': 24px,
+        'height': 24px
+    )
+);
+
+$variables: (
+    /* EMPTY */
+);
+
+// https://github.com/waldemarfm/sass-svg-uri/blob/v1.0.0/_svg-uri.scss
+@function sprite-str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if type-of($replace) == 'null' {
+        $replace: '';
+    }
+
+    @if ( $index ) {
+        @return str-slice($string, 1, $index - 1) + $replace + sprite-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function sprite-svg-uri($value) {
+    $output: $value;
+
+    $output: sprite-str-replace($output, '"', "'");
+    $output: sprite-str-replace($output, '<', '%3C');
+    $output: sprite-str-replace($output, '>', '%3E');
+    $output: sprite-str-replace($output, '&', '%26');
+    $output: sprite-str-replace($output, '#', '%23');
+
+    @return $output;
+}
+
+@mixin sprite($name, $user-variables: (), $include-size: false, $property: 'background') {
+    $sprite: map-get($sprites, $name);
+
+    @if $sprite == null {
+        @error 'Sprite \'#{$name}\' does not exists';
+    }
+
+    // Inject variables
+    $default-variables: map-get($variables, $name);
+    @if type-of($default-variables) == 'map' {
+        @each $key, $value in map-merge($default-variables, $user-variables) {
+            @if ( not map-has-key($default-variables, $key) ) {
+                @warn 'Sprite \'#{$name}\' does not support variable named \'#{$key}\'';
+            }
+
+            $sprite: sprite-str-replace($sprite, '___#{$key}___', sprite-svg-uri(quote(#{$value})));
+        }
+    } @else if type-of($user-variables) == 'map' {
+        @warn 'Sprite \'#{$name}\' does not contain any variables';
+    }
+
+    #{$property}: url($sprite) center no-repeat;
+
+    @if $include-size {
+        $size: map-get($sizes, $name);
+        $width: map-get($size, width);
+        $height: map-get($size, height);
+
+        @if $include-size == true {
+            #{$property}-size: $width $height;
+        } @else if $include-size == 'box' {
+            width: $width;
+            height: $height;
+        }
+    }
+}

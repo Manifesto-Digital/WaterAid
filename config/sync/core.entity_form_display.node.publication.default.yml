@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_metatags
     - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
@@ -26,6 +27,7 @@ dependencies:
     - field_group
     - layout_paragraphs
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -227,6 +229,14 @@ content:
     weight: 32
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_regions:
     type: options_select

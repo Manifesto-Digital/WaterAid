@@ -52,19 +52,19 @@ $large-device-max-width: calc($large-device-min-width - 1px);
 }
 
 // Fallback to-breakpoint mixins.
-@mixin breakpoint-sm-down {
+@mixin mobile-down {
   @include to-breakpoint($small-device-max-width) {
     @content;
   }
 }
 
-@mixin breakpoint-md-down {
+@mixin tablet-down {
   @include to-breakpoint($medium-device-max-width) {
     @content;
   }
 }
 
-@mixin breakpoint-lg-down {
+@mixin desktop-down {
   @include to-breakpoint($large-device-max-width) {
     @content;
   }

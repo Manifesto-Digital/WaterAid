@@ -18,10 +18,12 @@ dependencies:
     - field.field.node.landing_page.field_get_involved_section_title
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_key_stage
+    - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
     - field.field.node.landing_page.field_registration_link
     - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
+    - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_subject_area
     - field.field.node.landing_page.field_synopsis
     - field.field.node.landing_page.field_synopsis_background_colour
@@ -77,6 +79,7 @@ hidden:
   field_get_involved_section_title: true
   field_hero: true
   field_key_stage: true
+  field_metatags: true
   field_regions: true
   field_registration_link: true
   field_resources: true

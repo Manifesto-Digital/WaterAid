@@ -86,8 +86,11 @@ process:
         - menu_cta
         - resource_link_with_description
         - faqs
+        - view_more_teasers
+        - aside_link_item
+        - info_section
+        - quote_simple
       source: field_modules
-      no_stub: true
   field_content:
     plugin: merge_without_exception
     source:
@@ -105,9 +108,4 @@ migration_dependencies:
     - subject_areas
     - topic
     - users
-    - general_text_area
-    - wysiwyg
-    - menu_cta
-    - resource_link_with_description
-    - faqs
 include: null

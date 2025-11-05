@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_content
+    - field.field.node.page.field_metatags
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
@@ -15,6 +16,7 @@ dependencies:
     - field_group
     - layout_paragraphs
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -119,6 +121,14 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_review_date:
     type: datetime_default

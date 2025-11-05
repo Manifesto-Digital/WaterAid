@@ -1,0 +1,20 @@
+uuid: 575b037a-9e13-4fcd-a49f-d6333242a5b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_description
+  module:
+    - menu_link_content
+id: menu_link_content.wateraid_site_menu.field_description
+field_name: field_description
+entity_type: menu_link_content
+bundle: wateraid_site_menu
+label: Description
+description: 'The description is only visible for top level menu items, on the mega menu and mobile menu.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

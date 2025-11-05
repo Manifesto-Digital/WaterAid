@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.standard_page.field_job_id
     - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
+    - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
@@ -36,6 +37,7 @@ dependencies:
     - layout_paragraphs
     - link
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -259,6 +261,14 @@ content:
     weight: 32
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_minimal_header:
     type: boolean_checkbox

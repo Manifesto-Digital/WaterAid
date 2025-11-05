@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.donation.field_content
     - field.field.node.donation.field_display_donation_reminder
     - field.field.node.donation.field_hero
+    - field.field.node.donation.field_metatags
     - field.field.node.donation.field_minimal_header
     - field.field.node.donation.field_page_template
     - field.field.node.donation.field_review_date
@@ -54,6 +55,7 @@ hidden:
   field_content: true
   field_display_donation_reminder: true
   field_hero: true
+  field_metatags: true
   field_minimal_header: true
   field_page_template: true
   field_review_date: true
