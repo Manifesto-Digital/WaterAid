@@ -10,18 +10,30 @@
       <div class="site-header__container">
 
         <div class="site-header__logo">
-          <a href="/" class="site-header__logo-link">
+          <a href="{{ url('<front>') }}" class="site-header__logo-link">
             <svg class="site-header__logo-image">
               <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
             </svg>
           </a>
         </div>
 
-        <button type="button" class="site-header__open-close-mobile-menu-btn js-menu-open-close-btn">Show/hide menu</button>
+        <div class="site-header__mobile-actions">
+          {{ include('wateraid:button', {
+            attributes: create_attribute().addClass([
+                'site-header__open-close-mobile-menu-btn',
+                'js-menu-open-close-btn'
+              ]).setAttribute('aria-controls', 'mobile-nav'),
+            text: 'Open / close menu',
+            type: 'menu',
+            icon: 'wa-utility-menu',
+          }, false) }}
+        </div>
 
-        {{ include ('wateraid:primary_navigation', {
-          menu: primary_menu
-        }, false) }}
+        {{ blocks.wateraid_wateraidsitemenu }}
+
+        <div class="site-header__ctas">
+
+        </div>
 
       </div>
     </div>

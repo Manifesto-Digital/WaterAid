@@ -12,7 +12,5 @@ props:
   type: object
   properties: {}
 slots:
-  primary_menu:
+  blocks:
     title: Primary navigation items
-  secondary_menu:
-    title: Secondary navigation items

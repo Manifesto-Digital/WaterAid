@@ -20,14 +20,6 @@
     .icon-chevron-right {
       @include wa-transition-motion-flow(transform, 200ms);
       transform: rotate(90deg);
-      display: block;
-      fill: currentColor;
-      width: $wa-spacing-04;
-
-      svg {
-        max-width: 100%;
-        aspect-ratio: 1;
-      }
     }
   }
   &__level-1-link {
@@ -41,6 +33,21 @@
   &__level-3-link {
     @include nav-level-3-link;
     padding: $wa-spacing-02 $wa-spacing-03;
+  }
+
+  &__link-with-icon {
+    .icon {
+      @include wa-transition-motion-flow(transform, 200ms);
+      display: block;
+      fill: currentColor;
+      width: $wa-spacing-04;
+      pointer-events: none;
+    }
+
+    svg {
+      max-width: 100%;
+      aspect-ratio: 1;
+    }
   }
 }
 
@@ -83,14 +90,6 @@
     .icon-chevron-down {
       @include wa-transition-motion-flow(transform, 200ms);
       transform: rotate(180deg);
-      display: block;
-      fill: currentColor;
-      width: $wa-spacing-04;
-
-      svg {
-        max-width: 100%;
-        aspect-ratio: 1;
-      }
     }
 
     &:focus-visible {
@@ -126,7 +125,7 @@
     }
 
     &:hover,
-    &.active{
+    &.active {
       border-top-color: transparent;
       border-bottom-color: transparent;
 
@@ -247,12 +246,6 @@
     }
   }
 
-  ul {
-    height: 100%;
-    width: 100%;
-    padding-top: $wa-spacing-05;
-  }
-
   &__slider {
     height: 100%;
     transform: translateX(0);
@@ -262,21 +255,26 @@
     }
 
     [data-mobile-menu-level-active='2'] & {
-      transform: translateX(-100vw);
+      transform: translateX(-100%);
     }
     [data-mobile-menu-level-active='3'] & {
-      transform: translateX(-200vw);
+      transform: translateX(-200%);
     }
   }
 
   &__container {
     @include page-container;
+    height: 100%;
+    width: 100%;
+    padding-top: $wa-spacing-05;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   &__level-1 {
     position: relative;
 
-    > li {
+    .mobile-nav__container > li {
       border-bottom: 2px solid $wa-blue;
     }
   }
@@ -288,7 +286,9 @@
     top: 0;
     left: 0;
     background: white;
-    height: 100%;
+    width: 100%;
+    // @todo Should probably make the height dynamic.
+    height: 90vh;
 
     &.active {
       display: block;
@@ -296,13 +296,25 @@
   }
 
   &__level-2 {
-    transform: translateX(100vw);
+    transform: translateX(100%);
     background-color: $wa-blue;
+
+    .mobile-nav__container > li {
+      border-bottom: 1px solid $wa-white;
+    }
   }
   &__level-3 {
     // Level 3 is nested under level 2, so just 100vw nudge again.
-    transform: translateX(100vw);
+    transform: translateX(100%);
     background-color: $wa-navy;
+
+    .mobile-nav__container > li {
+      border-bottom-color: $wa-blue
+    }
+    .mobile-nav__level-submenu-heading-link {
+      font-family: $bold-font;
+      margin-bottom: 0;
+    }
   }
 
   &__back-btn {
@@ -314,15 +326,29 @@
     .icon-arrow-left {
       @include wa-transition-motion-flow(transform, 200ms);
       transform: rotate(180deg);
-      display: block;
-      fill: currentColor;
-      width: $wa-spacing-04;
-
-      svg {
-        max-width: 100%;
-        aspect-ratio: 1;
-      }
     }
+  }
+
+  &__level-submenu-heading-link {
+    display: inline-flex;
+    justify-content: unset;
+    gap: $wa-spacing-02;
+    margin-top: $wa-spacing-05;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.mobile-nav__level-2-submenu-heading-link {
+      margin-bottom: $wa-spacing-04;
+    }
+    &.mobile-nav__level-3-submenu-heading-link {
+      border-bottom: 2px solid $wa-white;
+    }
+  }
+  &__level-submenu-heading-description {
+
+
+    margin-bottom: $wa-spacing-04;
+    color: $wa-white
   }
 }
 

@@ -349,6 +349,65 @@ strong {
   width: 16px;
 }
 
+.button--menu {
+  padding: .75rem;
+  color: #006bd9;
+  text-decoration: none;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square-white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.button--menu .icon {
+  display: block;
+  width: 1.5rem;
+}
+
+.button--menu .icon svg {
+  fill: currentColor;
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+
+.button--menu .icon__menu-button-close {
+  display: none;
+}
+
+.primary-menu-open .button--menu .icon__menu-button-open {
+  display: none;
+}
+
+.primary-menu-open .button--menu .icon__menu-button-close {
+  display: block;
+}
+
+.button--menu::before {
+  transition: transform 200ms;
+  will-change: transform;
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.button--menu:hover::before {
+  transform: translateX(-0.5rem) translateY(.5rem);
+  height: 100%;
+  width: 100%;
+}
+
+.button--menu:focus-visible {
+  background: url("/themes/custom/wateraid/images/icons/wa-container-sm-square-white.svg") #fff no-repeat;
+  background-size: contain;
+}
+
 .button__svg {
   -moz-text-align-last: center;
        text-align-last: center;

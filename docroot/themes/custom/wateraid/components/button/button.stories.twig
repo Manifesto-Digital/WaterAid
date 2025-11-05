@@ -173,4 +173,26 @@
     }) }}
   {% endstory %}
 
+
+  {% story MenuButton with {
+    name: 'MenuButton',
+    args: {
+      id: 'wa-menu-open-close',
+      link: '',
+      text: 'Open/close menu'|t,
+      type: 'menu',
+      theme: 'light',
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      id,
+      type,
+      theme,
+      icon
+    }) }}
+  {% endstory %}
+
 {% endstories %}

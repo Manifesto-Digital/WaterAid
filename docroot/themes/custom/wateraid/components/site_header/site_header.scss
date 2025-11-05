@@ -1,6 +1,6 @@
 @import "./sass/base";
 
-$header-padding-bottom: $wa-spacing-04;
+$header-padding-bottom: 0;
 
 .site-header {
   position: relative;
@@ -13,6 +13,9 @@ $header-padding-bottom: $wa-spacing-04;
   &__colour-wrapper {
     background: $white;
     width: 100vw;
+
+    padding-top: $wa-spacing-05;
+    padding-bottom: $wa-spacing-06;
   }
 
   &__container {
@@ -26,6 +29,7 @@ $header-padding-bottom: $wa-spacing-04;
 
   &__logo {
     width: calculate-rem(104);
+    padding-bottom: $wa-spacing-03;
 
     @include tablet {
       width: calculate-rem(200);
@@ -41,6 +45,21 @@ $header-padding-bottom: $wa-spacing-04;
       aspect-ratio: 3.2;
       display: block;
       @include wa-transition-motion-flow(all, 0.2s)
+    }
+    @include tablet {
+      margin: 0;
+    }
+  }
+
+  &__mobile-actions {
+    position: absolute;
+    top: 20px;
+    right: $container-padding-mobile;
+    left: calc(100vw - 85px);
+    z-index: 1;
+
+    @include tablet {
+      display: none;
     }
   }
 

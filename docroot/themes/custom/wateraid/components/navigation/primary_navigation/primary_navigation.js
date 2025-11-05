@@ -134,6 +134,8 @@
           // Listener for activeLevel2 property change.
           activeLevel2: [
             (newValue, oldValue) => {
+              this.state.activeLevel3 = null;
+
               header.setAttribute('data-mobile-menu-level-active', '2');
               megaNav.classList.add('meganav-animating');
               mobileNav.classList.remove('mobile-nav-static');
@@ -160,7 +162,6 @@
                 mobileNav.querySelector('[data-mobile-submenu-id="' + newValue + '"]').classList.add('active');
               }
               else {
-                this.state.activeLevel3 = null;
                 // Closing meganav.
                 header.setAttribute('data-mobile-menu-level-active', '1');
               }
@@ -169,8 +170,8 @@
               setTimeout(() => { meganavPanels.forEach((el) => {
                 // Remove any 'animating' class flags after a timeout period
                 // that matches with the menu CSS transition time.
-                nav.querySelectorAll('[data-meganav-panel-id]').forEach((el) => { el.classList.remove('panel-animating-in'); });
-                nav.classList.remove('meganav-animating');
+                megaNav.querySelectorAll('[data-meganav-panel-id]').forEach((el) => { el.classList.remove('panel-animating-in'); });
+                megaNav.classList.remove('meganav-animating');
               })}, meganavTransitionTime)
 
               // Mobile nav is animating timeout.
