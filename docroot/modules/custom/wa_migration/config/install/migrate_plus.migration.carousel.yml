@@ -22,11 +22,14 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  field_images:
+  temp_media:
     plugin: migration_lookup
-    source: field_one_column_image_target_id
+    source: field_image
     migration: media
     no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
 destination:
   plugin: 'entity:paragraph'
   default_bundle: image_gallery

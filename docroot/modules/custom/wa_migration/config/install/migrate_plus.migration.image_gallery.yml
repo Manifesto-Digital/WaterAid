@@ -23,9 +23,10 @@ process:
       default_value: en
   status: status
   field_images:
-    plugin: migration_lookup
-    source: field_one_column_image_target_id
-    migration: image
+    plugin: paragraph_migration_lookup
+    source: field_one_column_image
+    migrations:
+    - image
     no_stub: true
 destination:
   plugin: 'entity:paragraph'

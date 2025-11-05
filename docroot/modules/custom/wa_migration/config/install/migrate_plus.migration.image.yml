@@ -24,7 +24,7 @@ process:
   status: status
   field_image:
     plugin: migration_lookup
-    source: field_paragraph_image_target_id
+    source: field_paragraph_image
     migration: media
     no_stub: true
 destination:
