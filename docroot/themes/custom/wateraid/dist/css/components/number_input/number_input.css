@@ -141,6 +141,7 @@ strong {
 .number-input-wrapper {
   position: relative;
   display: flex;
+  flex-flow: row wrap;
 }
 
 .number-input__buttons {
@@ -148,6 +149,9 @@ strong {
   flex-direction: row;
   margin-left: -65px;
   padding: 10px 0;
+  position: absolute;
+  right: .5rem;
+  top: .5rem;
 }
 
 .number-input__button {

@@ -6,6 +6,7 @@
   &-wrapper {
     position: relative;
     display: flex;
+    flex-flow: row wrap;
   }
 
   &__buttons {
@@ -13,6 +14,9 @@
     flex-direction: row;
     margin-left: -65px;
     padding: 10px 0;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
   }
 
   &__button {
