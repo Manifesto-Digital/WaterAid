@@ -26,8 +26,10 @@ module.exports = {
     'components/image_gallery/image_gallery': ['./components/image_gallery/image_gallery.scss'],
     'components/link/link': ['./components/link/link.scss'],
     'components/listing/listing': ['./components/listing/listing.scss'],
+    'components/navigation/primary_navigation/primary_navigation': ['./components/navigation/primary_navigation/primary_navigation.scss'],
     'components/modal/modal': ['./components/modal/modal.scss'],
     'components/number_input/number_input': ['./components/number_input/number_input.scss'],
+    'components/site_header/site_header': ['./components/site_header/site_header.scss'],
     'components/properties/properties': ['./components/properties/properties.scss'],
     'components/quote/quote': ['./components/quote/quote.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
@@ -155,9 +157,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
-    new SVGSpritemapPlugin(path.resolve(__dirname, 'media/icons/**/*.svg'), {
+    new SVGSpritemapPlugin(path.resolve(__dirname, 'images/icons/**/*.svg'), {
       output: {
-        filename: 'media/sprite.svg',
+        filename: 'images/sprite.svg',
         svg: {
           sizes: false
         },
@@ -183,7 +185,7 @@ module.exports = {
         }
       },
       styles: {
-        filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
+        filename: path.resolve(__dirname, 'sass/1-tools/_svg-sprite.scss'),
         keepAttributes: true,
         // Fragment now works with Firefox 84+ and 91esr+
         format: 'fragment',

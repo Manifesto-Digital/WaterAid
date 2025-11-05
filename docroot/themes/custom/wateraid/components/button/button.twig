@@ -36,6 +36,21 @@
       {{ include(icon_url) }}
     {% endif %}
 
+
+    {% if type == 'menu' %}
+      <span class="icon icon__menu-button-open">
+        <svg>
+          <use xlink:href="{{ get_spritemap() }}#wa-utility-menu"></use>
+        </svg>
+      </span>
+      <span class="icon icon__menu-button-close">
+        <svg>
+          <use xlink:href="{{ get_spritemap() }}#wa-utility-close"></use>
+        </svg>
+      </span>
+    {% endif %}
+
+
     {% if link %}
 </a>
 {% else %}

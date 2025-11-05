@@ -35,7 +35,7 @@ install: ## Initialise project containers & install Drupal.
 	make install-storybook
 
 local-settings: ## Add local Drupal development settings.
-	cp docroot/sites/default/example.settings.local.php docroot/sites/default/settings.local.php
+	cp docroot/sites/example.settings.local.php docroot/sites/default/settings.local.php
 	echo "Created \`docroot/sites/default/settings.local.php\` from \`docroot/sites/default/example.settings.local.php\`"
 
 mysql:
