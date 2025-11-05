@@ -1,0 +1,22 @@
+uuid: e4e5fc2d-8363-4051-8b54-0d2d1e20c7dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webform
+label: Webform
+type: 'canonical_entities:node'
+pattern: '/donate/[node:title]'
+selection_criteria:
+  3988aad6-30e8-4ef0-b3aa-9ab6ee051566:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 3988aad6-30e8-4ef0-b3aa-9ab6ee051566
+    context_mapping:
+      node: node
+    bundles:
+      webform: webform
+selection_logic: and
+weight: 1
+relationships: {  }

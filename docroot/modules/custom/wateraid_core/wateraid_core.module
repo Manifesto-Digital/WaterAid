@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Hooks for wateraid_core module.
+ */
+
+use Drupal\pathauto\PathautoPatternInterface;
+
+/**
+ * Implements hook_pathauto_pattern_alter().
+ */
+function wateraid_core_tokens_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
+  // Only alter for node patterns.
+  if ($context['module'] != 'node' || empty($context['data']['node'])) {
+    return;
+  }
+
+  $node = $context['data']['node'];
+
+  // Only alter for 'webform' content type (adjust to your content type machine name).
+  if ($node->bundle() != 'webform') {
+    return;
+  }
+
+  // // $category = _my_pathauto_tokens_get_webform_category($node);
+  //  // If category is 'Donation', use donate prefix.
+  //  if ($category === 'Donation') {
+  //    $pattern->setPattern('donate/[node:title]');
+  //  }
+  //  else {
+  //    // Otherwise, just use the title at root level.
+  //    $pattern->setPattern('[node:title]');
+  //  }
+}

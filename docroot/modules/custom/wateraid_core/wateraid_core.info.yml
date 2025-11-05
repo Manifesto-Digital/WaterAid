@@ -1,0 +1,5 @@
+name: 'WaterAid Core'
+type: module
+description: 'Functionality that does not pertain to any single feature.'
+package: Custom
+core_version_requirement: ^10 || ^11
