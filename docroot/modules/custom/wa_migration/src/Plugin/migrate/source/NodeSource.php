@@ -100,6 +100,7 @@ final class NodeSource extends SqlBase {
                   'field_column_2',
                   'field_section_item',
                   'field_vcm_main',
+                  'field_enhanced_carousel_items',
                 ] as $table) {
                   if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
                     ->fields('p')
