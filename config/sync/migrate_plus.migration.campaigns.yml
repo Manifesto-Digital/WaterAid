@@ -100,6 +100,7 @@ process:
         - content_with_large_image
         - aside_with_image
         - quote
+        - listing
       source: field_modules
   field_content:
     plugin: merge_without_exception

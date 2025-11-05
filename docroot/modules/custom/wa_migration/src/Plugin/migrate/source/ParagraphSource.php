@@ -16,7 +16,7 @@ use Drupal\migrate\Row;
  *   source_module = "wa_migration",
  * )
  */
-final class ParagraphSource extends SqlBase {
+class ParagraphSource extends SqlBase {
 
   /**
    * {@inheritdoc}
