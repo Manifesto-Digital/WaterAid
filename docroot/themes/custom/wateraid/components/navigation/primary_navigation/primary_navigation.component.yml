@@ -1,0 +1,19 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Primary navigation
+status: stable
+description: Primary navigation menu
+libraryOverrides:
+  dependencies:
+    - core/once
+  css:
+    theme:
+      ../../../dist/css/components/navigation/primary_navigation/primary_navigation.css: { }
+  js:
+    primary_navigation.js: {}
+props:
+  type: object
+  properties:
+    menu:
+      type: object
+      title: Menu
+      description: Renderable navigation menu.

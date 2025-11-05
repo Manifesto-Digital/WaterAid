@@ -1,0 +1,41 @@
+<header role="banner" {{ attributes.addClass(['site-header', 'js-site-header']).setAttribute('role', 'banner') }}>
+
+  <div class="site-header__utility">
+
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__colour-wrapper">
+
+      <div class="site-header__container">
+
+        <div class="site-header__logo">
+          <a href="{{ url('<front>') }}" class="site-header__logo-link">
+            <svg class="site-header__logo-image">
+              <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="site-header__mobile-actions">
+          {{ include('wateraid:button', {
+            attributes: create_attribute().addClass([
+                'site-header__open-close-mobile-menu-btn',
+                'js-menu-open-close-btn'
+              ]).setAttribute('aria-controls', 'mobile-nav'),
+            text: 'Open / close menu',
+            type: 'menu',
+            icon: 'wa-utility-menu',
+          }, false) }}
+        </div>
+
+        {{ blocks.wateraid_wateraidsitemenu }}
+
+        <div class="site-header__ctas">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

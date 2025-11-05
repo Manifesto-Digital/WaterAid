@@ -15,6 +15,17 @@ foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK() for pages.
+ */
+function wateraid_preprocess_page(&$variables) {
+  /** @var \Drupal\Core\Block\BlockManagerInterface $block_manager */
+  $block_manager = \Drupal::service('plugin.manager.block');
+  /** @var \Drupal\group_content_menu\Plugin\Block\GroupMenuBlock $group_menu_block */
+  $group_menu_block = $block_manager->createInstance('group_content_menu:wateraid_site_menu', ['level' => 1, 'depth' => 3]);
+  $variables['primary_menu'] = $group_menu_block->access(\Drupal::currentUser()) ? $group_menu_block->build() : [];
+}
+
+/**
  * Implements hook_preprocess_image_widget().
  */
 function wateraid_preprocess_image_widget(array &$variables) {
