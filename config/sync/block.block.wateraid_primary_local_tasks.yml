@@ -2,6 +2,8 @@ uuid: b969466f-a354-4979-9721-7b32101557ab
 langcode: en
 status: true
 dependencies:
+  module:
+    - user
   theme:
     - wateraid
 _core:
@@ -17,6 +19,14 @@ settings:
   label: 'Primary tabs'
   label_display: '0'
   provider: core
-  primary: true
+  primary: false
   secondary: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      wateraid_super_admin: wateraid_super_admin
+      administrator: administrator
