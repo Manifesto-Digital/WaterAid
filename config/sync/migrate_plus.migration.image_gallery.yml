@@ -28,7 +28,7 @@ process:
     plugin: paragraph_migration_lookup
     source: field_one_column_image
     migrations:
-     - image
+      - image
     no_stub: true
 destination:
   plugin: 'entity:paragraph'
