@@ -43,7 +43,27 @@ process:
   field_country_code/value: field_country_code
   field_is_current_site/value: field_is_current_site
   field_sequence_number/value: field_sequence_number
-  field_url/uri: field_url
+  field_url/uri:
+    -
+      plugin: link_migration_lookup
+      migration:
+        - articles
+        - campaigns
+        - country_details
+        - donation_forms
+        - donation_landing_pages
+        - events
+        - filtered_landing_pages
+        - flexible_content
+        - get_involved_node
+        - jobs
+        - press_and_media
+        - press_and_media_biographies
+        - publication
+        - standard_page
+        - stories
+        - webforms
+      source: field_url
   parent:
     plugin: migration_lookup
     migration: countries

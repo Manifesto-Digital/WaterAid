@@ -91,7 +91,33 @@ final class NodeSource extends SqlBase {
               $value[] = $values[$field . '_value'];
             }
             elseif (isset($values[$field . '_target_id'])) {
-              $value[] = $values[$field . '_target_id'];
+
+              // Check if we have values nested inside the structural paragraphs
+              // we are no longer using.
+              if ($field == 'field_modules') {
+                foreach ([
+                  'field_column_1',
+                  'field_column_2',
+                  'field_section_item',
+                  'field_vcm_main',
+                ] as $table) {
+                  if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
+                    ->fields('p')
+                    ->condition('entity_id', $values['field_modules_target_id'])
+                    ->execute()
+                    ->fetchAll()
+                  ) {
+                    foreach ($sub_paragraphs as $sub) {
+                      if (isset($sub[$table . '_target_id'])) {
+                        $value[] = $sub[$table . '_target_id'];
+                      }
+                    }
+                  }
+                }
+              }
+              else {
+                $value[] = $values[$field . '_target_id'];
+              }
             }
             elseif ((isset($values[$field . '_uri']))) {
               $row->setSourceProperty($field . '_uri', $values[$field . '_uri']);
