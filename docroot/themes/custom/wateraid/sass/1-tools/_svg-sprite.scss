@@ -18,6 +18,7 @@ $sprites: (
     'wa-container-sm-circle-white': "../../images/sprite.svg#wa-container-sm-circle-white-view",
     'wa-container-sm-circle': "../../images/sprite.svg#wa-container-sm-circle-view",
     'wa-container-sm-rectangle': "../../images/sprite.svg#wa-container-sm-rectangle-view",
+    'wa-container-sm-square-white': "../../images/sprite.svg#wa-container-sm-square-white-view",
     'wa-container-sm-square': "../../images/sprite.svg#wa-container-sm-square-view",
     'wa-container-sm-tall': "../../images/sprite.svg#wa-container-sm-tall-view",
     'wa-container-sm-wide-border-dark': "../../images/sprite.svg#wa-container-sm-wide-border-dark-view",
@@ -70,6 +71,7 @@ $sprites: (
     'wa-icon-toilet-seat': "../../images/sprite.svg#wa-icon-toilet-seat-view",
     'wa-icon-toilet-squat': "../../images/sprite.svg#wa-icon-toilet-squat-view",
     'wa-icon-volunteer': "../../images/sprite.svg#wa-icon-volunteer-view",
+    'wa-icon': "../../images/sprite.svg#wa-icon-view",
     'wa-mastercard': "../../images/sprite.svg#wa-mastercard-view",
     'wa-paypal': "../../images/sprite.svg#wa-paypal-view",
     'wa-pointer': "../../images/sprite.svg#wa-pointer-view",
@@ -194,6 +196,10 @@ $sizes: (
     'wa-container-sm-rectangle': (
         'width': 300px,
         'height': 160px
+    ),
+    'wa-container-sm-square-white': (
+        'width': 53px,
+        'height': 53px
     ),
     'wa-container-sm-square': (
         'width': 160px,
@@ -402,6 +408,10 @@ $sizes: (
     'wa-icon-volunteer': (
         'width': 240px,
         'height': 240px
+    ),
+    'wa-icon': (
+        'width': 60px,
+        'height': 60px
     ),
     'wa-mastercard': (
         'width': 84px,
