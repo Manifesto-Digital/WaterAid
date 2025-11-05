@@ -93,6 +93,7 @@ process:
         - aside_with_image
         - quote
         - listing
+        - biography_item
       source: field_modules
   field_content:
     plugin: merge_without_exception
