@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.dam_image.field_caption
+    - field.field.media.dam_image.field_credit
     - field.field.media.dam_image.field_media_dam_image
     - image.style.large
     - media.type.dam_image
@@ -13,6 +15,22 @@ targetEntityType: media
 bundle: dam_image
 mode: default
 content:
+  field_caption:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_credit:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_media_dam_image:
     type: wa_orange_dam_image_formater
     label: visually_hidden

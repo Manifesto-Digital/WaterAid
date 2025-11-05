@@ -77,3 +77,6 @@ watch-all-stories: ## Watch all Storybook stories for changes
 
 generate-sdc: ## Generate SDC template files
 	ddev drush generate single-directory-component
+
+coding-standards:
+	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice --ignore=*.js,*.css,*.js docroot/modules/custom/ docroot/themes/custom/

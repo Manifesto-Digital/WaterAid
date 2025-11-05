@@ -74,8 +74,12 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
         $types = ['Images*'];
         break;
 
-      case 'dam_videojhgjk':
+      case 'dam_video':
         $types = ['Videos*'];
+        break;
+
+      case 'dam_file':
+        $types = ['Audio*', 'Others*'];
         break;
 
       default:
@@ -133,18 +137,23 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
 
     if ($value = $form_state->getValue($field)) {
       if (isset($value[0]['system_identifier'])) {
+        $system_identifier = $value[0]['system_identifier'];
         if ($api_result = $this->waOrangeDamApi->search([
-          'query' => 'SystemIdentifier:' . $value[0]['system_identifier'],
+          'query' => 'SystemIdentifier:' . $system_identifier,
         ])) {
           if (!empty($api_result['APIResponse']['Items'][0])) {
+            $apiResponseItem = $api_result['APIResponse']['Items'][0];
 
             // The id works, so this is now valid.
             $valid = TRUE;
 
-            // Add the width and height properties.
-            foreach (['Width', 'Height'] as $key) {
-              if (isset($api_result['APIResponse']['Items'][0]['path_TR1'][$key])) {
-                $value[0][strtolower($key)] = $api_result['APIResponse']['Items'][0]['path_TR1'][$key];
+            // Add the DAM properties to the Media.
+            if (isset($apiResponseItem['path_TR1'])) {
+              if (isset($apiResponseItem['path_TR1']['Width'])) {
+                $value[0]['width'] = $apiResponseItem['path_TR1']['Width'];
+              }
+              if (isset($apiResponseItem['path_TR1']['Height'])) {
+                $value[0]['height'] = $apiResponseItem['path_TR1']['Height'];
               }
             }
 
@@ -152,7 +161,6 @@ final class DamWidget extends WidgetBase implements ContainerFactoryPluginInterf
             $form_state->setValue($field, $value);
           }
         }
-
 
       }
     }

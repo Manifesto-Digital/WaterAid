@@ -40,12 +40,12 @@ final class Api {
    * @return array
    *   The return from the search call. Empty on error.
    */
-  public function search(array $query = [], array $fields = [], string $bearer = NULL): array {
+  public function search(array $query = [], array $fields = [], string|null $bearer = NULL): array {
     $fields = array_merge([
       'SystemIdentifier',
       'Title',
-      'CaptionShort',
-      'CaptionLong',
+      'customfield.Credit',
+      'CustomField.Caption',
       'MIMEtype',
       'path_TR1',
       'MediaType',
