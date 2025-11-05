@@ -1,0 +1,21 @@
+uuid: b59e4c4b-7c25-496b-82ca-1599426a002b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.donation
+  module:
+    - metatag
+id: node.donation.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: donation
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

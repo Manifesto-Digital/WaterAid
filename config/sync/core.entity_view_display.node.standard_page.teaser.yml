@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.standard_page.field_job_id
     - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
+    - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
@@ -121,6 +122,7 @@ hidden:
   field_job_id: true
   field_job_url: true
   field_key_stages: true
+  field_metatags: true
   field_minimal_header: true
   field_population: true
   field_regions: true

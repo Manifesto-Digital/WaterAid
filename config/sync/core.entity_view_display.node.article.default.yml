@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.article.field_get_involved
     - field.field.node.article.field_hero
     - field.field.node.article.field_hide_related_content
+    - field.field.node.article.field_metatags
     - field.field.node.article.field_override_related_content
     - field.field.node.article.field_post_description
     - field.field.node.article.field_related_content
@@ -24,6 +25,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - metatag
     - text
     - user
 _core:
@@ -91,6 +93,13 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 11
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_override_related_content:
     type: boolean

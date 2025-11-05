@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_metatags
     - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
@@ -102,6 +103,7 @@ hidden:
   field_force_open: true
   field_hero: true
   field_key_stages: true
+  field_metatags: true
   field_regions: true
   field_review_date: true
   field_search_phrases: true

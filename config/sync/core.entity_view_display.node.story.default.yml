@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.story.field_hide_from_listing
     - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_metatags
     - field.field.node.story.field_override_related_content
     - field.field.node.story.field_related_content
     - field.field.node.story.field_related_content_type
@@ -23,12 +24,20 @@ dependencies:
     - field.field.node.story.field_weight
     - node.type.story
   module:
+    - metatag
     - user
 id: node.story.default
 targetEntityType: node
 bundle: story
 mode: default
 content:
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_teaser_image:
     type: entity_reference_label
     label: hidden

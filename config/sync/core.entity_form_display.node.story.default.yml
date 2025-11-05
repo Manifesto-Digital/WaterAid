@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.story.field_hide_from_listing
     - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
+    - field.field.node.story.field_metatags
     - field.field.node.story.field_override_related_content
     - field.field.node.story.field_related_content
     - field.field.node.story.field_related_content_type
@@ -28,6 +29,7 @@ dependencies:
     - layout_paragraphs
     - link
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -223,6 +225,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_override_related_content:
     type: boolean_checkbox
