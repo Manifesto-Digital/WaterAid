@@ -72,6 +72,7 @@ process:
         - quote
         - listing
         - biography_item
+        - activation_bar_item
       source: field_modules
   field_content:
     plugin: merge_without_exception
