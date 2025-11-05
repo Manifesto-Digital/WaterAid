@@ -1,4 +1,4 @@
-uuid: 69a2dcf2-f58e-4e58-b194-bacd34411722
+uuid: bfa0c745-2826-44c9-bbe5-4ffc9ee0f5c8
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,9 @@ dependencies:
 id: menu_link_content.field_description
 field_name: field_description
 entity_type: menu_link_content
-type: string
+type: string_long
 settings:
-  max_length: 255
   case_sensitive: false
-  is_ascii: false
 module: core
 locked: false
 cardinality: 1

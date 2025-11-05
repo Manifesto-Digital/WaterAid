@@ -206,7 +206,7 @@
               {% set menu_level_2_heading_description = parent_link.original_link.getEntity().field_description.0.value %}
               {% if menu_level_2_heading_description is not empty %}
                 <div class="mobile-nav__level-submenu-heading-description">
-                  <p>{{ menu_level_2_heading_description }}</p>
+                  <p>{{ menu_level_2_heading_description|raw|nl2br }}</p>
                 </div>
               {% endif %}
             {% endif %}
