@@ -83,6 +83,7 @@ process:
         - tabbed_item
         - content_with_large_image
         - aside_with_image
+        - quote
       source: field_modules
   field_content:
     plugin: merge_without_exception
