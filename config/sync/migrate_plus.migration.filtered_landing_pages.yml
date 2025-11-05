@@ -65,6 +65,7 @@ process:
         - image
         - image_gallery
         - video
+        - carousel
       source: field_modules
   field_content:
     plugin: merge_without_exception
