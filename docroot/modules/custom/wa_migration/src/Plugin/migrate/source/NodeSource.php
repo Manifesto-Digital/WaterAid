@@ -95,12 +95,15 @@ final class NodeSource extends SqlBase {
               // Check if we have values nested inside the structural paragraphs
               // we are no longer using.
               if ($field == 'field_modules') {
+                $value_found = FALSE;
+
                 foreach ([
                   'field_column_1',
                   'field_column_2',
                   'field_section_item',
                   'field_vcm_main',
                   'field_enhanced_carousel_items',
+                  'field_tab_items',
                 ] as $table) {
                   if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
                     ->fields('p')
@@ -108,12 +111,24 @@ final class NodeSource extends SqlBase {
                     ->execute()
                     ->fetchAll()
                   ) {
+                    $value_found = TRUE;
+
+                    // If we've found sub-paragraphs, add these into the value
+                    // instead of the parent id, because it is only the children
+                    // we've migrated in for the paragraphs with these fields.
                     foreach ($sub_paragraphs as $sub) {
                       if (isset($sub[$table . '_target_id'])) {
                         $value[] = $sub[$table . '_target_id'];
                       }
                     }
                   }
+                }
+
+                // If we haven't found any data linking this target idea to
+                // sub-paragraphs, we'll add it into the values so the migration
+                // lookup can find any paragraphs it relates to.
+                if (!$value_found) {
+                  $value[] = $values[$field . '_target_id'];
                 }
               }
               else {

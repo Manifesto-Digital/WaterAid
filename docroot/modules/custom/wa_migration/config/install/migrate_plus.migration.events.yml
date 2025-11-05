@@ -146,6 +146,7 @@ process:
         - carousel
         - content_carousel
         - enhanced_carousel_item
+        - tabbed_item
       source: field_modules
   field_content:
     plugin: merge_without_exception
