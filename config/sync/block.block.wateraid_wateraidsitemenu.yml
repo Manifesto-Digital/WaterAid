@@ -11,8 +11,8 @@ dependencies:
     - wateraid
 id: wateraid_wateraidsitemenu
 theme: wateraid
-region: content
-weight: -6
+region: header
+weight: 1
 provider: null
 plugin: 'group_content_menu:wateraid_site_menu'
 settings:
