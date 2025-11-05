@@ -180,10 +180,7 @@ elements: |-
     '#title': 'Your Zakat donation (£)'
   donate_button:
     '#type': webform_markup
-    '#wrapper_attributes':
-      class:
-        - form-item--donate-button
-    '#markup': '<p><a class="webform-button--submit button button--primary button--light hidden">Donate</a></p>'
+    '#markup': '<p><a>Donate</a></p>'
   project:
     '#type': hidden
     '#title': project
@@ -375,5 +372,14 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

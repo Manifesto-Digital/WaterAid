@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.listing_page.field_initial_items
     - field.field.node.listing_page.field_introduction
     - field.field.node.listing_page.field_items_to_display
+    - field.field.node.listing_page.field_metatags
     - field.field.node.listing_page.field_review_date
     - field.field.node.listing_page.field_rss_feed
     - field.field.node.listing_page.field_search_phrases
@@ -21,6 +22,7 @@ dependencies:
     - datetime
     - entity_reference_revisions
     - link
+    - metatag
     - user
     - viewsreference
 id: node.listing_page.default
@@ -80,6 +82,13 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 108
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_review_date:
     type: datetime_time_ago

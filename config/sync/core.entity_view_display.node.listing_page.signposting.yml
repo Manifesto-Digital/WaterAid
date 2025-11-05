@@ -10,8 +10,10 @@ dependencies:
     - field.field.node.listing_page.field_initial_items
     - field.field.node.listing_page.field_introduction
     - field.field.node.listing_page.field_items_to_display
+    - field.field.node.listing_page.field_metatags
     - field.field.node.listing_page.field_review_date
     - field.field.node.listing_page.field_rss_feed
+    - field.field.node.listing_page.field_search_phrases
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - field.field.node.listing_page.field_view
@@ -55,8 +57,10 @@ hidden:
   field_initial_items: true
   field_introduction: true
   field_items_to_display: true
+  field_metatags: true
   field_review_date: true
   field_rss_feed: true
+  field_search_phrases: true
   field_view: true
   field_weight: true
   langcode: true

@@ -11,6 +11,7 @@ use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -41,6 +42,14 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     private readonly QueueInterface $queue,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+
+    if (Settings::get('azure_blob_storage_accountname')) {
+      $this->azureBlobStorageApi->setAccountName(Settings::get('azure_blob_storage_accountname'));
+    }
+
+    if (Settings::get('azure_blob_storage_container')) {
+      $this->azureBlobStorageApi->setContainer(Settings::get('azure_blob_storage_container'));
+    }
   }
 
   /**
@@ -88,8 +97,8 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
         'webform_id' => $data['webform_id'],
       ])) {
       if (count($submissions) == 1) {
-        $name = $data['webform_id'] . '-' . $data['sid'];
         $submission = reset($submissions);
+        $name = $data['webform_id'] . '-' . $submission->uuid() . '.json';
 
         if ($this->azureBlobStorageApi->blobPut($name, $this->generateBlobArray($submission), TRUE)) {
           // The submission has been successfully stored in the blob, so we can
@@ -135,7 +144,7 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     $date = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
 
     return [
-      'id' => $submission->id(),
+      'id' => $submission->uuid(),
       'webform' => $webform->id(),
       'webform_owner' => ($owner) ? $owner->label() : 'Anonymous',
       'webform_last_updated' => '',

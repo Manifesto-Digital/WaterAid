@@ -444,7 +444,7 @@ handlers:
     handler_id: email_download_only
     label: 'Email - all - download or both'
     notes: '= download only OR download + post'
-    status: true
+    status: false
     conditions:
       enabled:
         -
@@ -533,7 +533,7 @@ handlers:
     handler_id: email_post_only
     label: 'Email - all - post only'
     notes: 'email sent to all segments, post only'
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="how_would_you_like_to_receive_your_resources"]':
@@ -688,4 +688,13 @@ handlers:
       langcode: ''
       parameters: {  }
       debug: false
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

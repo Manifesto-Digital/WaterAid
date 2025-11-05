@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.event.field_event_type
     - field.field.node.event.field_get_involved
     - field.field.node.event.field_hero
+    - field.field.node.event.field_metatags
     - field.field.node.event.field_properties
     - field.field.node.event.field_regions
     - field.field.node.event.field_registration_link
@@ -110,6 +111,7 @@ hidden:
   field_event_start_date: true
   field_event_type: true
   field_hero: true
+  field_metatags: true
   field_properties: true
   field_regions: true
   field_registration_link: true

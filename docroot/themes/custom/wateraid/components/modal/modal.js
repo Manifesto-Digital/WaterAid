@@ -37,6 +37,17 @@
       function closeModal(modal) {
         const closeButton = modal.querySelector(".modal__close button");
 
+        const continueDonation = modal.querySelector(
+          "a.continue-donation-button",
+        );
+        if (continueDonation) {
+          continueDonation.addEventListener("click", (e) => {
+            e.preventDefault();
+            modal.classList.remove("open");
+            document.querySelector("body").classList.remove("modal-open");
+          });
+        }
+
         closeButton.addEventListener("click", function () {
           modal.classList.remove("open");
         });
@@ -54,10 +65,12 @@
           const modal = context.querySelector(
             '[data-component-id="wateraid:modal"]',
           );
-          const closeButton = modal.querySelector(".modal__close button");
-          closeButton.addEventListener("click", function () {
-            window.location = item.href;
-          });
+          if (modal) {
+            const closeButton = modal.querySelector(".modal__close button");
+            closeButton.addEventListener("click", function () {
+              window.location = item.href;
+            });
+          }
         };
       };
 
@@ -67,9 +80,13 @@
           closeModal(modal);
         });
 
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", exitEventListener(link));
-      });
+      if (document.body.classList.contains("user-logged-in") === false) {
+        document
+          .querySelectorAll("a:not(.continue-donation-button)")
+          .forEach((link) => {
+            link.addEventListener("click", exitEventListener(link));
+          });
+      }
 
       setupTimers();
     },

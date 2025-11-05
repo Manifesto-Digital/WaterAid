@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.donation.field_content
     - field.field.node.donation.field_display_donation_reminder
     - field.field.node.donation.field_hero
+    - field.field.node.donation.field_metatags
     - field.field.node.donation.field_minimal_header
     - field.field.node.donation.field_page_template
     - field.field.node.donation.field_review_date
@@ -22,6 +23,7 @@ dependencies:
     - field_group
     - layout_paragraphs
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -152,6 +154,14 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_minimal_header:
     type: boolean_checkbox

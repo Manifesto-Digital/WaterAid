@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.article.field_get_involved
     - field.field.node.article.field_hero
     - field.field.node.article.field_hide_related_content
+    - field.field.node.article.field_metatags
     - field.field.node.article.field_override_related_content
     - field.field.node.article.field_post_description
     - field.field.node.article.field_related_content
@@ -26,6 +27,7 @@ dependencies:
     - field_group
     - layout_paragraphs
     - media_library
+    - metatag
     - path
     - text
 third_party_settings:
@@ -211,6 +213,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_override_related_content:
     type: boolean_checkbox
