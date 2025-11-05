@@ -5,31 +5,34 @@
  * Hooks for wateraid_core module.
  */
 
+use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\pathauto\PathautoPatternInterface;
 
 /**
  * Implements hook_pathauto_pattern_alter().
  */
-function wateraid_core_tokens_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
+function wateraid_core_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
   // Only alter for node patterns.
-  if ($context['module'] != 'node' || empty($context['data']['node'])) {
+  if ($context['module'] !== 'node' || empty($context['data']['node'])) {
     return;
   }
 
+  /** @var \Drupal\node\NodeInterface $node */
   $node = $context['data']['node'];
-
-  // Only alter for 'webform' content type (adjust to your content type machine name).
-  if ($node->bundle() != 'webform') {
-    return;
+  if ($node->bundle() === 'webform') {
+    $has_donate_webform = FALSE;
+    /** @var \Drupal\webform\WebformInterface|false $webform */
+    $webform = !$node->get('webform')->isEmpty() ? $node->get('webform')->first()->entity : FALSE;
+    if ($webform && in_array('Donation', $webform->get('categories'))) {
+      $has_donate_webform = TRUE;
+    }
+    // If the webform node type references a donate webform, we change the
+    // pathauto path.
+    if ($has_donate_webform) {
+      $pattern->setPattern(PathautoPattern::load('webform_with_donate_form')->getPattern());
+    }
+    else {
+      $pattern->setPattern(PathautoPattern::load('webform')->getPattern());
+    }
   }
-
-  // // $category = _my_pathauto_tokens_get_webform_category($node);
-  //  // If category is 'Donation', use donate prefix.
-  //  if ($category === 'Donation') {
-  //    $pattern->setPattern('donate/[node:title]');
-  //  }
-  //  else {
-  //    // Otherwise, just use the title at root level.
-  //    $pattern->setPattern('[node:title]');
-  //  }
 }

@@ -5,14 +5,14 @@ dependencies:
   module:
     - node
 id: webform
-label: Webform
+label: 'Webform (programmatically set - see wateraid_core.module)'
 type: 'canonical_entities:node'
-pattern: '/donate/[node:title]'
+pattern: '/[node:title]'
 selection_criteria:
-  3988aad6-30e8-4ef0-b3aa-9ab6ee051566:
+  07f00e58-5334-4a70-abf9-66350c744c9e:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3988aad6-30e8-4ef0-b3aa-9ab6ee051566
+    uuid: 07f00e58-5334-4a70-abf9-66350c744c9e
     context_mapping:
       node: node
     bundles:

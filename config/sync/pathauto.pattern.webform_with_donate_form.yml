@@ -1,0 +1,22 @@
+uuid: 18d670f9-587b-4702-a9f1-a3120f4dbb29
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webform_with_donate_form
+label: "Webform with donate form\_(programmatically set - see wateraid_core.module)"
+type: 'canonical_entities:node'
+pattern: '/donate/[node:title]'
+selection_criteria:
+  eb6550bb-76fc-41bb-b614-207496b30d51:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: eb6550bb-76fc-41bb-b614-207496b30d51
+    context_mapping:
+      node: node
+    bundles:
+      webform: webform
+selection_logic: and
+weight: 2
+relationships: {  }
