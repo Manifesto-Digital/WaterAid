@@ -8,7 +8,6 @@
 
       OrangeDAMContentBrowser.open({
         onAssetSelected: (assets) => {
-          console.log('Selected assets:', assets);
           document.getElementById('orange-dam-identifier').value = assets[0].extraFields['CoreField.Identifier'];
 
           const name = document.querySelector('[data-drupal-selector="edit-name-0-value"]');
