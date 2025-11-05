@@ -104,6 +104,7 @@ final class NodeSource extends SqlBase {
                   'field_vcm_main',
                   'field_enhanced_carousel_items',
                   'field_tab_items',
+                  'field_quotes_quote',
                 ] as $table) {
                   if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
                     ->fields('p')
