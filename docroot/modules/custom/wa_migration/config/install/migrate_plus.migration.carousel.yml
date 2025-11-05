@@ -25,7 +25,7 @@ process:
   field_images:
     plugin: migration_lookup
     source: field_one_column_image_target_id
-    migration: image
+    migration: media
     no_stub: true
 destination:
   plugin: 'entity:paragraph'
@@ -33,5 +33,5 @@ destination:
 idMap: {  }
 migration_dependencies:
   required:
-    - image
+    - media
 include: null
