@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      icon_library: icon_library
+      donation_icon_library: donation_icon_library
     sort:
       field: _none
       direction: ASC
