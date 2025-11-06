@@ -8,24 +8,17 @@ dependencies:
     - field.field.media.dam_image.field_credit
     - field.field.media.dam_image.field_media_dam_image
     - media.type.dam_image
-  module:
-    - wa_orange_dam
 id: media.dam_image.media_library
 targetEntityType: media
 bundle: dam_image
 mode: media_library
-content:
-  field_media_dam_image:
-    type: wa_orange_dam
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
+content: {  }
 hidden:
   created: true
   directory: true
   field_caption: true
   field_credit: true
+  field_media_dam_image: true
   langcode: true
   name: true
   path: true
