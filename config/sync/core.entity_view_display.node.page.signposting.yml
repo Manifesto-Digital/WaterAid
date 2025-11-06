@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.signposting
     - field.field.node.page.field_content
     - field.field.node.page.field_metatags
+    - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
@@ -47,6 +48,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_metatags: true
+  field_minimal_header: true
   field_review_date: true
   field_search_phrases: true
   langcode: true

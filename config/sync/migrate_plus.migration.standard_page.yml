@@ -74,7 +74,7 @@ process:
       - '@temp_paragraphs'
 destination:
   plugin: 'entity:node'
-  default_bundle: standard_page
+  default_bundle: page
 idMap: {  }
 migration_dependencies:
   required:
