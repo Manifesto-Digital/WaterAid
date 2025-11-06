@@ -91,6 +91,8 @@ final class AjaxMediaController extends ControllerBase {
     $response = new AjaxResponse();
     $valid = FALSE;
     $systemIdentifier = $request->request->get('asset_id');
+    $drupalMediaType = $request->request->get('drupal_media_type');
+
     $damItemData = [];
 
     if ($systemIdentifier) {
@@ -126,13 +128,19 @@ final class AjaxMediaController extends ControllerBase {
     }
 
     // Create the media entity.
-    $media = $this->createMedia('dam_image', $systemIdentifier, $damItemData);
+    $media = $this->createMedia($drupalMediaType, $systemIdentifier, $damItemData);
 
-    if (isset($apiResponseItem['CustomField.Caption'])) {
-      $media->set('field_caption', $apiResponseItem['CustomField.Caption']);
-    }
-    if (isset($apiResponseItem['customfield.Credit']) && isset($apiResponseItem['customfield.Credit']['Value'])) {
-      $media->set('field_credit', $apiResponseItem['customfield.Credit']['Value']);
+    if (in_array($drupalMediaType, ['dam_image', 'dam_video'])) {
+      // Set alt text if available.
+      if (isset($apiResponseItem['CoreField']['Title'])) {
+        $media->set('field_media_image_alt', $apiResponseItem['CoreField']['Title']);
+      }
+      if (isset($apiResponseItem['CustomField.Caption'])) {
+        $media->set('field_caption', $apiResponseItem['CustomField.Caption']);
+      }
+      if (isset($apiResponseItem['customfield.Credit']) && isset($apiResponseItem['customfield.Credit']['Value'])) {
+        $media->set('field_credit', $apiResponseItem['customfield.Credit']['Value']);
+      }
     }
 
     if ($media) {

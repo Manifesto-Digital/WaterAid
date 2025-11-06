@@ -15,13 +15,69 @@
         component.dataset.numberInputAttached = 'true';
 
         /**
+         * Gets the step value for the input field.
+         * If step="any", returns 1. If no step is defined, returns 1.
+         * Otherwise returns the numeric step value.
+         */
+        const getStepValue = () => {
+          const stepAttr = input.getAttribute('step');
+          if (!stepAttr || stepAttr === 'any') {
+            return 1;
+          }
+          const stepValue = parseFloat(stepAttr).toFixed(2);
+          return isNaN(stepValue) ? 1 : stepValue;
+        };
+
+        /**
+         * Custom stepUp implementation that respects the step attribute
+         * and handles min/max constraints.
+         */
+        const stepUp = () => {
+          const currentValue = parseFloat(input.value) || 0;
+          const stepValue = getStepValue();
+          const maxValue = parseFloat(input.max);
+          let newValue = currentValue + stepValue;
+          console.log('stepUp',stepValue, currentValue)
+
+          // Respect max value constraint
+          if (!isNaN(maxValue) && newValue > maxValue) {
+            newValue = maxValue;
+          }
+
+          input.value = newValue;
+          input.dispatchEvent(new Event('input', {bubbles: true}));
+          input.dispatchEvent(new Event('change', {bubbles: true}));
+        };
+
+        /**
+         * Custom stepDown implementation that respects the step attribute
+         * and handles min/max constraints.
+         */
+        const stepDown = () => {
+          const currentValue = parseFloat(input.value) || 0;
+          const stepValue = getStepValue();
+          const minValue = parseFloat(input.min);
+          let newValue = currentValue - stepValue;
+          console.log('stepDown',stepValue, currentValue)
+
+          // Respect min value constraint
+          if (!isNaN(minValue) && newValue < minValue) {
+            newValue = minValue;
+          }
+
+          input.value = newValue;
+          input.dispatchEvent(new Event('input', {bubbles: true}));
+          input.dispatchEvent(new Event('change', {bubbles: true}));
+        };
+
+        /**
          * Checks the current value and disables/enables buttons
          * based on the input's min/max attributes.
          */
         const updateButtonStates = () => {
           const minValue = parseFloat(input.min);
           const maxValue = parseFloat(input.max);
-          const currentValue = parseFloat(input.value);
+          const currentValue = parseFloat(input.value) || 0;
 
           btnDecrement.disabled = !isNaN(minValue) && currentValue <= minValue;
           btnIncrement.disabled = !isNaN(maxValue) && currentValue >= maxValue;
@@ -29,14 +85,12 @@
 
         // Event listener for the increment button
         btnIncrement.addEventListener('click', () => {
-          input.stepUp();
-          input.dispatchEvent(new Event('input', {bubbles: true}));
+          stepUp();
         });
 
         // Event listener for the decrement button
         btnDecrement.addEventListener('click', () => {
-          input.stepDown();
-          input.dispatchEvent(new Event('input', {bubbles: true}));
+          stepDown();
         });
 
         input.addEventListener('input', updateButtonStates);

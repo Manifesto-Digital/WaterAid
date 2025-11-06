@@ -29,6 +29,7 @@
                   submit: {
                     media_type: types,
                     asset_id: assets[0].extraFields['CoreField.Identifier'],
+                    drupal_media_type: settings.wa_orange_dam?.drupal_media_type || 'dam_image',
                   },
                   progress: {
                     type: 'throbber',

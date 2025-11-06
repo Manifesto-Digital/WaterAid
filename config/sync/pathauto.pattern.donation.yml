@@ -1,0 +1,22 @@
+uuid: c08f7342-cca8-43bc-a9b8-7e1835fc0fe8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: donation
+label: Donation
+type: 'canonical_entities:node'
+pattern: '/donate/[node:title]'
+selection_criteria:
+  e45468dd-d3cc-40a4-9e68-16be0035e9e6:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e45468dd-d3cc-40a4-9e68-16be0035e9e6
+    context_mapping:
+      node: node
+    bundles:
+      donation: donation
+selection_logic: and
+weight: -4
+relationships: {  }
