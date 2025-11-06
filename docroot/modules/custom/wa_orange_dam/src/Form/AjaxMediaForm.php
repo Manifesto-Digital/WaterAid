@@ -93,6 +93,7 @@ class AjaxMediaForm extends FormBase {
         'drupalSettings' => [
           'wa_orange_dam' => [
             'types' => $types,
+            'drupal_media_type' => $this->getDefaultMediaType(),
             'form_wrapper' => 'dam-media-form-wrapper',
           ],
         ],
