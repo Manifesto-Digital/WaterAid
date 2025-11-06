@@ -12,7 +12,7 @@ _core:
 id: webform_crm_failure_logs
 label: 'Webform CRM failure logs'
 module: views
-description: 'Recent log messages'
+description: 'Recent log messages pertaining to Webform CRM failures'
 tag: ''
 base_table: watchdog
 base_field: wid
