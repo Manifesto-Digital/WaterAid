@@ -43,6 +43,7 @@ dependencies:
     - node
     - node_co_authors
     - path
+    - preview_link
     - quick_node_clone
     - system
     - taxonomy
@@ -192,6 +193,7 @@ permissions:
   - 'edit terms in subject_areas'
   - 'edit terms in themes'
   - 'edit terms in topic'
+  - 'generate preview links'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert donation revisions'

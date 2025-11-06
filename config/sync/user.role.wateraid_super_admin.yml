@@ -43,6 +43,7 @@ dependencies:
     - node_co_authors
     - path
     - pathauto
+    - preview_link
     - quick_node_clone
     - redirect_bulk
     - system
@@ -261,6 +262,7 @@ permissions:
   - 'edit terms in themes'
   - 'edit terms in topic'
   - 'edit webform assets'
+  - 'generate preview links'
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
   - 'revert any audio media revisions'
