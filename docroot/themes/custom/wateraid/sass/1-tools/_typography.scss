@@ -1,0 +1,280 @@
+@use "../0-settings/spacing";
+@use "../0-settings/colors";
+@use "breakpoints";
+@use "functions";
+@use "animations";
+
+$font-family: "Noto Sans";
+$bold-font: "Noto Sans Bold";
+$heading-font: 'RB Nylo Black', sans-serif;
+
+@mixin title {
+  font-family: $heading-font;
+  font-size: functions.calculate-rem(48);
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  @include breakpoints.tablet {
+    font-size: functions.calculate-rem(96);
+  }
+}
+
+@mixin h1 {
+  font-family: $heading-font;
+  font-size: functions.calculate-rem(42);
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: colors.$wa-blue;
+  @include breakpoints.desktop {
+    font-size: functions.calculate-rem(60);
+  }
+}
+
+@mixin h2 {
+  font-family: $heading-font;
+  font-size: functions.calculate-rem(36);
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: colors.$wa-blue;
+  @include breakpoints.desktop {
+    font-size: functions.calculate-rem(44);
+  }
+}
+
+@mixin h3 {
+  font-family: $heading-font;
+  font-size: functions.calculate-rem(32);
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: colors.$wa-blue;
+  @include breakpoints.desktop {
+    font-size: functions.calculate-rem(36);
+  }
+}
+
+@mixin h4 {
+  font-family: $heading-font;
+  font-size: functions.calculate-rem(28);
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@mixin h5 {
+  font-family: $heading-font;
+  font-size: functions.calculate-rem(24);
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@mixin h6 {
+  font-family: $bold-font;
+  font-size: functions.calculate-rem(22);
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@mixin paragraph-lg {
+  font-family: $font-family;
+  font-size: functions.calculate-rem(20);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+  @include breakpoints.tablet {
+    font-size: functions.calculate-rem(24);
+  }
+}
+
+@mixin paragraph-md {
+  font-family: $font-family;
+  font-size: functions.calculate-rem(18);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+  @include breakpoints.desktop {
+    font-size: functions.calculate-rem(20);
+  }
+}
+
+@mixin paragraph-sm {
+  font-family: $font-family;
+  font-size: functions.calculate-rem(16);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@mixin paragraph-xs {
+  font-family: $font-family;
+  font-size: functions.calculate-rem(14);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@mixin link {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    color: colors.$wa-navy;
+    background-color: colors.$wa-pink;
+    border-bottom: solid colors.$wa-navy functions.calculate-rem(3);
+    outline: none;
+  }
+}
+
+@mixin text-link {
+  color: colors.$wa-blue;
+  font-family: $bold-font;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: functions.calculate-rem(20);
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    color: colors.$wa-navy;
+    background-color: colors.$wa-pink;
+    border-bottom: solid colors.$wa-navy functions.calculate-rem(3);
+    outline: none;
+  }
+}
+
+@mixin nav-level-1-link {
+  @include animations.link-transition;
+
+  font-family: $heading-font;
+  font-weight: 900;
+  font-size: functions.calculate-rem(24);
+  line-height: 1.2;
+  color: colors.$wa-blue;
+  text-decoration: none;
+  text-decoration-thickness: 2px;
+  background-color: colors.$wa-white;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: colors.$wa-cream;
+  }
+
+  &:focus-visible {
+    background-color: colors.$wa-pink;
+  }
+
+  &:hover,
+  &:focus-visible{
+    color: colors.$wa-navy;
+  }
+}
+
+@mixin nav-level-2-link {
+  @include animations.link-transition;
+
+  font-family: $bold-font;
+  font-weight: 400;
+  font-size: functions.calculate-rem(20);
+  line-height: 1.5;
+  color: colors.$wa-white;
+  text-decoration: none;
+  text-decoration-thickness: 2px;
+
+  &:hover,
+  &.active {
+    text-decoration: underline;
+    background-color: colors.$wa-navy;
+    color: colors.$wa-white;
+  }
+
+  &:focus-visible {
+    border: 3px solid colors.$wa-navy;
+    outline: 3px solid colors.$wa-pink;
+    background-color: colors.$wa-blue;
+  }
+}
+
+@mixin nav-level-3-link {
+  @include animations.link-transition;
+
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: functions.calculate-rem(20);
+  line-height: 1.5;
+  color: colors.$wa-white;
+  text-decoration: none;
+  text-decoration-thickness: 2px;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: colors.$wa-blue;
+    color: colors.$wa-white;
+  }
+
+  &:focus-visible {
+    border: 3px solid colors.$wa-navy;
+    outline: 3px solid colors.$wa-pink;
+    background-color: colors.$wa-navy;
+  }
+}
+
+h1, .pseudo-h1 {
+  @include h1();
+}
+
+h2, .pseudo-h2 {
+  @include h2();
+}
+
+h3, .pseudo-h3 {
+  @include h3();
+}
+
+h4, .pseudo-h4 {
+  @include h4();
+}
+
+h5, .pseudo-h5 {
+  @include h5();
+}
+
+h6, .pseudo-h6 {
+  @include h6();
+}
+
+p {
+  @include paragraph-md();
+}
+
+p.paragraph-lg {
+  @include paragraph-lg();
+}
+
+p.paragraph-sm {
+  @include paragraph-sm();
+}
+
+strong {
+  font-family: $bold-font;
+}

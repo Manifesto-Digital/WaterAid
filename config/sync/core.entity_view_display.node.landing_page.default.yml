@@ -17,10 +17,12 @@ dependencies:
     - field.field.node.landing_page.field_get_involved_section_title
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_key_stage
+    - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
     - field.field.node.landing_page.field_registration_link
     - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
+    - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_subject_area
     - field.field.node.landing_page.field_synopsis
     - field.field.node.landing_page.field_synopsis_background_colour
@@ -34,6 +36,7 @@ dependencies:
     - datetime
     - entity_reference_revisions
     - link
+    - metatag
     - options
     - user
 id: node.landing_page.default
@@ -156,6 +159,13 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_regions:
     type: list_default
     label: above
@@ -252,6 +262,10 @@ content:
     region: content
 hidden:
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_search_phrases: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true

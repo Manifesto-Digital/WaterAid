@@ -7,8 +7,10 @@ dependencies:
     - field.field.node.webform.field_donation_menu
     - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
+    - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
     - field.field.node.webform.field_title_colour
@@ -17,6 +19,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - metatag
     - options
     - user
     - webform
@@ -65,22 +68,38 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_options:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 5
     region: content
   field_review_date:
     type: datetime_time_ago
-    label: above
+    label: hidden
     settings:
       future_format: '@interval hence'
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_sidebar_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 108
     region: content
   field_title_colour:
     type: list_default
@@ -105,11 +124,11 @@ content:
     region: content
 hidden:
   co_authors: true
-  field_teaser_image: true
-  field_teaser_text: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_teaser_image: true
+  field_teaser_text: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true

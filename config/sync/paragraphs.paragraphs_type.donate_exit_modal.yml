@@ -1,0 +1,10 @@
+uuid: 80ab2fa1-f778-4cbc-b1f4-60e3eeec11c2
+langcode: en
+status: true
+dependencies: {  }
+id: donate_exit_modal
+label: 'Donate exit modal'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

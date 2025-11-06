@@ -1,0 +1,72 @@
+{% set classes = [
+  'footer',
+  'footer--' ~ variant
+] %}
+
+<footer {{ attributes.addClass(classes) }}>
+
+  <div class="footer__top">
+    <div class="footer__site-logo">
+      {{ include('@wateraid/images/icons/wateraid.svg') }}
+    </div>
+    <div class="footer__donate">
+      {% if donate_title %}
+        <h2 class="pseudo-h4">{{ donate_title }}</h2>
+      {% endif %}
+      <div class="footer__contact">
+        {% if donate_text %}
+          {{ donate_text }}
+        {% endif %}
+        {% if contact_details.tel %}
+          <div class="footer__contact--tel">
+            {{ include('@wateraid/images/icons/wa-icon-phone.svg') }}
+
+            {{ include('wateraid:link', {
+              text: contact_details.tel,
+              link: 'tel:' ~ contact_details.tel,
+              type: 'inline'
+            }) }}
+          </div>
+        {% endif %}
+        {% if contact_details.mail %}
+          <div class="footer__contact--mail">
+            {{ include('@wateraid/images/icons/wa-icon-mail.svg') }}
+
+            {{ include('wateraid:link', {
+              text: contact_details.mail,
+              link: 'mailto:' ~ contact_details.mail,
+              type: 'inline'
+            }) }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="footer__main">
+    <div class="footer__info"></div>
+    <div class="footer__menus">
+      <div class="footer__menu--donate">
+        <ul>
+          {% for link in donate_menu %}
+            <li class="menu-item">
+              {{ include('wateraid:link', {
+                text: link.title,
+                link: link.url,
+                type: 'footer'
+              }) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% if copy %}
+    <div class="footer__bottom">
+      <div class="footer__copy">
+        {{ copy }}
+      </div>
+    </div>
+  {% endif %}
+
+</footer>

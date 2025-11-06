@@ -1,0 +1,79 @@
+uuid: 6a8d5766-cdd0-494a-afd3-d24d84993e94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sidebar_content
+    - node.type.webform
+    - paragraphs.paragraphs_type.cancel_anytime
+  module:
+    - entity_reference_revisions
+id: node.webform.field_sidebar_content
+field_name: field_sidebar_content
+entity_type: node
+bundle: webform
+label: 'Sidebar content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cancel_anytime: cancel_anytime
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: false
+      accordion_item:
+        weight: 19
+        enabled: false
+      call_to_action:
+        weight: 20
+        enabled: false
+      cancel_anytime:
+        weight: 21
+        enabled: true
+      facts_and_stats:
+        weight: 22
+        enabled: false
+      hero_basic:
+        weight: 23
+        enabled: false
+      hero_image:
+        weight: 24
+        enabled: false
+      hero_news:
+        weight: 25
+        enabled: false
+      hero_video:
+        weight: 26
+        enabled: false
+      image:
+        weight: 27
+        enabled: false
+      image_gallery:
+        weight: 28
+        enabled: false
+      quote:
+        weight: 29
+        enabled: false
+      rich_text:
+        weight: 30
+        enabled: false
+      stats_item:
+        weight: 31
+        enabled: false
+      text_media:
+        weight: 32
+        enabled: false
+      video:
+        weight: 33
+        enabled: false
+      webform_poc:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,11 @@
+uuid: f84a2d00-acc7-4fc1-8d05-c2ae5c86f7e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+id: taxonomy_term.dam_media
+target_entity_type_id: taxonomy_term
+target_bundle: dam_media
+default_langcode: site_default
+language_alterable: false

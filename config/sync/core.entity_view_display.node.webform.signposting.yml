@@ -1,0 +1,66 @@
+uuid: 36eb914b-586b-4cb4-bdd7-52c26eee5653
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.signposting
+    - field.field.node.webform.field_content
+    - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_form_to_overlap_with_hero
+    - field.field.node.webform.field_hero
+    - field.field.node.webform.field_metatags
+    - field.field.node.webform.field_options
+    - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_sidebar_content
+    - field.field.node.webform.field_teaser_image
+    - field.field.node.webform.field_teaser_text
+    - field.field.node.webform.field_title_colour
+    - field.field.node.webform.webform
+    - node.type.webform
+  module:
+    - user
+_core:
+  default_config_hash: 3r1i0UMUbeNHhvmiqHDYznoS4G9XR1jq6lQ49r80lDE
+id: node.webform.signposting
+targetEntityType: node
+bundle: webform
+mode: signposting
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_content: true
+  field_donation_menu: true
+  field_form_to_overlap_with_hero: true
+  field_hero: true
+  field_metatags: true
+  field_options: true
+  field_review_date: true
+  field_sidebar_content: true
+  field_title_colour: true
+  langcode: true
+  node_read_time: true
+  search_api_excerpt: true
+  webform: true

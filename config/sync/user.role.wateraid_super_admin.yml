@@ -6,6 +6,8 @@ dependencies:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
+    - media.type.dam_image
+    - media.type.dam_video
     - media.type.document
     - media.type.donation_icon_library
     - media.type.icon_library
@@ -30,6 +32,7 @@ dependencies:
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
   module:
+    - config_pages
     - content_translation
     - filter
     - group
@@ -39,7 +42,9 @@ dependencies:
     - node
     - node_co_authors
     - path
+    - pathauto
     - quick_node_clone
+    - redirect_bulk
     - system
     - taxonomy
     - toolbar
@@ -51,6 +56,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access config_pages overview'
   - 'access content overview'
   - 'access group overview'
   - 'access media overview'
@@ -61,13 +67,17 @@ permissions:
   - 'access webform help'
   - 'access webform overview'
   - 'access webform submission user'
+  - 'administer bulk redirects'
   - 'administer group'
+  - 'administer menu'
   - 'administer url aliases'
   - 'administer users'
   - 'administer webform'
   - 'administer webform element access'
   - 'administer webform overview'
   - 'administer webform submission'
+  - 'bulk delete aliases'
+  - 'bulk update aliases'
   - 'change own username'
   - 'clone article content'
   - 'clone donation content'
@@ -92,6 +102,8 @@ permissions:
   - 'create article content'
   - 'create audio media'
   - 'create content translations'
+  - 'create dam_image media'
+  - 'create dam_video media'
   - 'create document media'
   - 'create donation content'
   - 'create donation_icon_library media'
@@ -122,6 +134,10 @@ permissions:
   - 'delete any article content'
   - 'delete any audio media'
   - 'delete any audio media revisions'
+  - 'delete any dam_image media'
+  - 'delete any dam_image media revisions'
+  - 'delete any dam_video media'
+  - 'delete any dam_video media revisions'
   - 'delete any document media'
   - 'delete any document media revisions'
   - 'delete any donation content'
@@ -153,6 +169,8 @@ permissions:
   - 'delete media'
   - 'delete own article content'
   - 'delete own audio media'
+  - 'delete own dam_image media'
+  - 'delete own dam_video media'
   - 'delete own document media'
   - 'delete own donation content'
   - 'delete own donation_icon_library media'
@@ -190,6 +208,8 @@ permissions:
   - 'delete webform revisions'
   - 'edit any article content'
   - 'edit any audio media'
+  - 'edit any dam_image media'
+  - 'edit any dam_video media'
   - 'edit any document media'
   - 'edit any donation content'
   - 'edit any donation_icon_library media'
@@ -209,8 +229,12 @@ permissions:
   - 'edit co-authors of all content'
   - 'edit co-authors of co-authored content'
   - 'edit co-authors of own content'
+  - 'edit config_pages entity'
+  - 'edit footer config page entity'
   - 'edit own article content'
   - 'edit own audio media'
+  - 'edit own dam_image media'
+  - 'edit own dam_video media'
   - 'edit own document media'
   - 'edit own donation content'
   - 'edit own donation_icon_library media'
@@ -228,6 +252,7 @@ permissions:
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
+  - 'edit site_settings config page entity'
   - 'edit terms in audiences'
   - 'edit terms in countries'
   - 'edit terms in event_types'
@@ -239,6 +264,8 @@ permissions:
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
   - 'revert any audio media revisions'
+  - 'revert any dam_image media revisions'
+  - 'revert any dam_video media revisions'
   - 'revert any document media revisions'
   - 'revert any donation_icon_library media revisions'
   - 'revert any image media revisions'
@@ -277,6 +304,8 @@ permissions:
   - 'view all revisions'
   - 'view all taxonomy revisions'
   - 'view any audio media revisions'
+  - 'view any dam_image media revisions'
+  - 'view any dam_video media revisions'
   - 'view any document media revisions'
   - 'view any donation_icon_library media revisions'
   - 'view any icon_library media revisions'
@@ -285,8 +314,10 @@ permissions:
   - 'view any video media revisions'
   - 'view any webform submission'
   - 'view article revisions'
+  - 'view config_pages entity'
   - 'view donation revisions'
   - 'view event revisions'
+  - 'view footer config page entity'
   - 'view landing_page revisions'
   - 'view listing_page revisions'
   - 'view own unpublished content'
@@ -294,6 +325,7 @@ permissions:
   - 'view own webform submission'
   - 'view page revisions'
   - 'view publication revisions'
+  - 'view site_settings config page entity'
   - 'view standard_page revisions'
   - 'view story revisions'
   - 'view term revisions in audiences'

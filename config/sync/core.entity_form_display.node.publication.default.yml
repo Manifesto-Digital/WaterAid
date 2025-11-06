@@ -13,8 +13,10 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_metatags
     - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
+    - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
     - field.field.node.publication.field_teaser_text
@@ -25,6 +27,7 @@ dependencies:
     - field_group
     - layout_paragraphs
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -67,6 +70,7 @@ third_party_settings:
     group_content:
       children:
         - field_content
+        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs
@@ -86,7 +90,6 @@ third_party_settings:
         - field_country
         - field_theme
         - field_get_involved
-        - field_key_stage
         - field_subject_area
       label: Tags
       region: content
@@ -227,6 +230,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_regions:
     type: options_select
     weight: 33
@@ -238,6 +249,14 @@ content:
     weight: 26
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_search_phrases:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_subject_area:
     type: entity_reference_autocomplete

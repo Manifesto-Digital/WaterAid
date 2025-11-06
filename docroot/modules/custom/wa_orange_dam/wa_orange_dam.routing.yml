@@ -1,0 +1,19 @@
+wa_orange_dam.ajax_media_form:
+  path: '/admin/orange-dam/ajax/media-form/{media_type}'
+  defaults:
+    _controller: '\Drupal\wa_orange_dam\Controller\AjaxMediaController::mediaSelectionForm'
+    _title: 'Select DAM Asset'
+    media_type: 'dam_image'
+  methods: [GET, POST]
+  requirements:
+    _permission: 'create media'
+    media_type: 'dam_image|dam_video|dam_file'
+
+wa_orange_dam.ajax_create_media:
+  path: '/admin/orange-dam/ajax/create-media'
+  defaults:
+    _controller: '\Drupal\wa_orange_dam\Controller\AjaxMediaController::createMediaEntity'
+  methods: [POST]
+  requirements:
+    _permission: 'create media'
+

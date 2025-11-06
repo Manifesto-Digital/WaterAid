@@ -7,7 +7,8 @@
       text: 'Click to view more'|t,
       link: 'https://www.google.com'|t,
       type: 'primary',
-      theme: 'light'
+      theme: 'light',
+      classes: ['custom-class', 'another-class']
     }
   } %}
 
@@ -15,7 +16,8 @@
       text,
       link,
       type,
-      theme
+      theme,
+      classes
     }) }}
   {% endstory %}
 
@@ -160,6 +162,48 @@
       type: 'icon-small',
       theme: 'dark',
       icon: 'wa-utility-close'
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      link,
+      id,
+      type,
+      theme,
+      icon
+    }) }}
+  {% endstory %}
+
+  {% story ButtonWithClasses with {
+    name: 'ButtonWithClasses',
+    args: {
+      id: 'custom-button',
+      text: 'Button with custom classes'|t,
+      type: 'primary',
+      theme: 'light',
+      classes: ['js-custom-button', 'has-tooltip']
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      id,
+      type,
+      theme,
+      classes
+    }) }}
+  {% endstory %}
+
+
+  {% story MenuButton with {
+    name: 'MenuButton',
+    args: {
+      id: 'wa-menu-open-close',
+      link: '',
+      text: 'Open/close menu'|t,
+      type: 'menu',
+      theme: 'light',
     }
   } %}
 

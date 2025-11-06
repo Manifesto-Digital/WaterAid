@@ -5,7 +5,25 @@
  * Functions to support theming.
  */
 
-use Drupal\Component\Utility\Html;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+
+// Require all the theme includes.
+$theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
+  require_once $file;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for pages.
+ */
+function wateraid_preprocess_page(&$variables) {
+  /** @var \Drupal\Core\Block\BlockManagerInterface $block_manager */
+  $block_manager = \Drupal::service('plugin.manager.block');
+  /** @var \Drupal\group_content_menu\Plugin\Block\GroupMenuBlock $group_menu_block */
+  $group_menu_block = $block_manager->createInstance('group_content_menu:wateraid_site_menu', ['level' => 1, 'depth' => 3]);
+  $variables['primary_menu'] = $group_menu_block->access(\Drupal::currentUser()) ? $group_menu_block->build() : [];
+}
 
 /**
  * Implements hook_preprocess_image_widget().
@@ -23,17 +41,143 @@ function wateraid_preprocess_image_widget(array &$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_form_element().
+ *
+ * Pass the element #type to the label's render array using a custom property
+ * to avoid a recursive rendering loop.
  */
-function wateraid_preprocess_paragraph(&$variables): void {
-  if ($variables['paragraph']->bundle() == 'quote') {
-    $variables['attributes']['class'][] = 'quote-type--' . Html::cleanCssIdentifier($variables['paragraph']->get('field_quote_type')->getString());
+function wateraid_preprocess_form_element(&$variables) {
+  if (isset($variables['label']) && isset($variables['element']['#type'])) {
+    $variables['label']['#element_type'] = $variables['element']['#type'];
   }
-
-  $request = \Drupal::request();
-  $route_match = \Drupal::routeMatch();
-  $variables['page_title'] = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-
-  $variables['#cache']['contexts'][] = 'url';
 }
 
+/**
+ * Implements hook_preprocess_form_element_label().
+ *
+ * Create the 'type' variable for the form element label template.
+ */
+function wateraid_preprocess_form_element_label(&$variables) {
+  if (isset($variables['element']['#element_type'])) {
+    $variables['type'] = $variables['element']['#element_type'];
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Targets webform wizard buttons to be rendered as <button> elements
+ * instead of <input> elements by adding a custom flag for the theme layer.
+ */
+function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['#webform_id'])) {
+    if (isset($form['actions']['wizard_prev'])) {
+      $form['actions']['wizard_prev']['#button_type'] = 'previous';
+    }
+    if (isset($form['actions']['wizard_next'])) {
+      $form['actions']['wizard_next']['#button_type'] = 'next';
+    }
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['#button_type'] = 'submit';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_input().
+ *
+ * Checks for the custom flag and creates a simple boolean variable
+ * for the input.html.twig template to use.
+ */
+function wateraid_preprocess_input(&$variables) {
+  // Check if our custom property from hook_form_alter() exists.
+  if (isset($variables['element']['#button_type'])) {
+    // Pass its value (e.g., 'next' or 'previous') to a simple Twig variable.
+    $variables['button_type'] = $variables['element']['#button_type'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__donation_widget().
+ *
+ * This function now calls a helper to process the monthly and one-off
+ * donation amount fields, then passes the structured arrays to Twig.
+ */
+function wateraid_preprocess_paragraph__donation_widget(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Process the 'monthly' amounts field using the helper function.
+  $monthly_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_monthly_donation_amounts');
+
+  // Process the 'one-off' amounts field using the same helper function.
+  $one_off_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_one_off_donation_amounts');
+
+  // Add the static 'other' option to both arrays.
+  $other_option = [
+    'amount' => 'other',
+    'title' => '',
+    'description' => '',
+    'image' => '',
+    'credit' => '',
+  ];
+  $monthly_amounts[] = $other_option;
+  $one_off_amounts[] = $other_option;
+
+  $variables['monthly_donation_amounts'] = $monthly_amounts;
+  $variables['one_off_donation_amounts'] = $one_off_amounts;
+}
+
+/**
+ * Helper function to extract and format donation amount data from a paragraph.
+ */
+function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string $field_name): array {
+  $donation_amounts = [];
+
+  if ($paragraph->hasField($field_name) && !$paragraph->get($field_name)->isEmpty()) {
+    $referenced_paragraphs = $paragraph->get($field_name)->referencedEntities();
+
+    foreach ($referenced_paragraphs as $donation_paragraph) {
+      if ($donation_paragraph instanceof Paragraph && $donation_paragraph->bundle() === 'donation_amount') {
+        $image_url = '';
+        $icon_url = '';
+        $credit = '';
+
+        if (!$donation_paragraph->get('field_image')->isEmpty()) {
+          /** @var \Drupal\media\Entity\Media $media_entity */
+          if ($media_entity = $donation_paragraph->get('field_image')->entity) {
+            /** @var \Drupal\file\Entity\File $file */
+            if ($file = $media_entity->field_media_image->entity) {
+              $image_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+            }
+          }
+        }
+
+        if (!$donation_paragraph->get('field_icon')->isEmpty()) {
+          /** @var \Drupal\media\Entity\Media $media_entity */
+          if ($media_entity = $donation_paragraph->get('field_icon')->entity) {
+            /** @var \Drupal\file\Entity\File $file */
+            if ($file = $media_entity->field_media_svg->entity) {
+              $icon_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+            }
+          }
+        }
+
+        if (!$donation_paragraph->get('field_credit')->isEmpty()) {
+          $credit = $donation_paragraph->get('field_credit')->value;
+        }
+
+        $donation_amounts[] = [
+          'amount' => $donation_paragraph->get('field_donation_amount')->value,
+          'title' => $donation_paragraph->get('field_title')->value,
+          'description' => $donation_paragraph->get('field_description')->value,
+          'image' => $image_url,
+          'icon' => $icon_url,
+          'credit' => $credit,
+        ];
+      }
+    }
+  }
+
+  return $donation_amounts;
+}

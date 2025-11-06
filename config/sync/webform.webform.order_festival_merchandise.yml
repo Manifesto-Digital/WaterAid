@@ -3,7 +3,7 @@ langcode: en
 status: open
 dependencies:
   module:
-    - wateraid_azure_storage
+    - azure_blob_storage
     - wateraid_donation_forms
     - wateraid_donation_stripe
     - wateraid_forms
@@ -573,308 +573,6 @@ handlers:
         customer_address: contact_address
         customer_email: contact_email
         customer_phone: contact_phone
-  wateraid_azure_storage_queue:
-    id: wateraid_azure_storage_queue
-    handler_id: wateraid_azure_storage_queue
-    label: 'WaterAid Azure Storage Queue'
-    notes: ''
-    status: false
-    conditions: {  }
-    weight: -49
-    settings:
-      message_submission_data:
-        -
-          original_key: serial
-          new_key: serial_number
-          parent_key: null
-        -
-          original_key: sid
-          new_key: submission_id
-          parent_key: null
-        -
-          original_key: uri
-          new_key: submission_uri
-          parent_key: null
-        -
-          original_key: created
-          new_key: created
-          parent_key: null
-        -
-          original_key: completed
-          new_key: completed
-          parent_key: null
-        -
-          original_key: changed
-          new_key: changed
-          parent_key: null
-        -
-          original_key: in_draft
-          new_key: is_draft
-          parent_key: null
-        -
-          original_key: current_page
-          new_key: current_page
-          parent_key: null
-        -
-          original_key: remote_addr
-          new_key: remote_ip_address
-          parent_key: null
-        -
-          original_key: uid
-          new_key: id
-          parent_key: null
-        -
-          original_key: langcode
-          new_key: language
-          parent_key: null
-        -
-          original_key: entity_type
-          new_key: submitted_to_entity_type
-          parent_key: null
-        -
-          original_key: entity_id
-          new_key: submitted_to_entity_id
-          parent_key: null
-        -
-          original_key: sticky
-          new_key: sticky
-          parent_key: null
-        -
-          original_key: notes
-          new_key: notes
-          parent_key: null
-        -
-          original_key: url_params
-          new_key: url_parameters
-          parent_key: null
-        -
-          original_key: uid_title
-          new_key: submittedbytitle
-          parent_key: null
-        -
-          original_key: uid_url
-          new_key: url
-          parent_key: null
-        -
-          original_key: entity_title
-          new_key: submitted_to_entity_title
-          parent_key: null
-        -
-          original_key: entity_url
-          new_key: submitted_to_entity_url
-          parent_key: null
-        -
-          original_key: url_params_utm_campaign
-          new_key: utm_campaign
-          parent_key: null
-        -
-          original_key: url_params_utm_source
-          new_key: utm_source
-          parent_key: null
-        -
-          original_key: url_params_utm_content
-          new_key: utm_content
-          parent_key: null
-        -
-          original_key: url_params_utm_medium
-          new_key: utm_medium
-          parent_key: null
-        -
-          original_key: url_params_fund_code
-          new_key: fund_code
-          parent_key: null
-        -
-          original_key: url_params_package_id
-          new_key: package_id
-          parent_key: null
-        -
-          original_key: url_params_campaign
-          new_key: campaign
-          parent_key: null
-        -
-          original_key: url_params_segment_code
-          new_key: segment_code
-          parent_key: null
-        -
-          original_key: title
-          new_key: title
-          parent_key: contact_name
-        -
-          original_key: first
-          new_key: first_name
-          parent_key: contact_name
-        -
-          original_key: last
-          new_key: last_name
-          parent_key: contact_name
-        -
-          original_key: address
-          new_key: address_1
-          parent_key: contact_address
-        -
-          original_key: address_2
-          new_key: address_2
-          parent_key: contact_address
-        -
-          original_key: city
-          new_key: city_town
-          parent_key: contact_address
-        -
-          original_key: state_province
-          new_key: county
-          parent_key: contact_address
-        -
-          original_key: postal_code
-          new_key: zip_postal_code
-          parent_key: contact_address
-        -
-          original_key: country
-          new_key: country
-          parent_key: contact_address
-        -
-          original_key: paf
-          new_key: paf
-          parent_key: contact_address
-        -
-          original_key: contact_email
-          new_key: contact_email
-          parent_key: null
-        -
-          original_key: contact_phone
-          new_key: contact_phone
-          parent_key: null
-        -
-          original_key: opt_in
-          new_key: opt_in
-          parent_key: gift_aid
-        -
-          original_key: date_made
-          new_key: date_made
-          parent_key: gift_aid
-        -
-          original_key: communication_preferences_opt_in_email
-          new_key: communication_preferences_opt_in_email
-          parent_key: communication_preferences
-        -
-          original_key: communication_preferences_opt_in_phone
-          new_key: communication_preferences_opt_in_phone
-          parent_key: communication_preferences
-        -
-          original_key: communication_preferences_opt_in_sms
-          new_key: communication_preferences_opt_in_sms
-          parent_key: communication_preferences
-        -
-          original_key: communication_preferences_opt_in_post
-          new_key: communication_preferences_opt_in_post
-          parent_key: communication_preferences
-        -
-          original_key: prompt_reason
-          new_key: reason_for_donating
-          parent_key: null
-        -
-          original_key: in_memory_title
-          new_key: in_memory_title
-          parent_key: in_memory
-        -
-          original_key: in_memory_firstname
-          new_key: in_memory_firstname
-          parent_key: in_memory
-        -
-          original_key: in_memory_lastname
-          new_key: in_memory_lastname
-          parent_key: in_memory
-        -
-          original_key: in_memory_relationship
-          new_key: in_memory_relationship
-          parent_key: in_memory
-        -
-          original_key: donation_currency
-          new_key: donation_currency
-          parent_key: payment
-        -
-          original_key: donation_amount
-          new_key: donation_amount
-          parent_key: payment
-        -
-          original_key: donation_date
-          new_key: donation_date
-          parent_key: payment
-        -
-          original_key: donation_fulfillment_letter
-          new_key: donation_fulfillment_letter
-          parent_key: payment
-        -
-          original_key: donation_status
-          new_key: donation_status
-          parent_key: payment
-        -
-          original_key: donation_transaction_id
-          new_key: donation_transaction_id
-          parent_key: payment
-        -
-          original_key: donation_payment_method
-          new_key: donation_payment_method
-          parent_key: payment
-        -
-          original_key: dd_currency
-          new_key: dd_currency
-          parent_key: payment
-        -
-          original_key: dd_amount
-          new_key: dd_amount
-          parent_key: payment
-        -
-          original_key: dd_date
-          new_key: dd_date
-          parent_key: payment
-        -
-          original_key: dd_fulfillment_letter
-          new_key: dd_fulfillment_letter
-          parent_key: payment
-        -
-          original_key: dd_status
-          new_key: dd_status
-          parent_key: payment
-        -
-          original_key: dd_first_payment_date
-          new_key: dd_first_payment_date
-          parent_key: payment
-        -
-          original_key: dd_frequency
-          new_key: dd_frequency
-          parent_key: payment
-        -
-          original_key: dd_sort_code
-          new_key: dd_sort_code
-          parent_key: payment
-        -
-          original_key: dd_account_number
-          new_key: dd_account_number
-          parent_key: payment
-        -
-          original_key: dd_account_name
-          new_key: dd_account_name
-          parent_key: payment
-        -
-          original_key: dd_instruction_reference
-          new_key: dd_instruction_reference
-          parent_key: payment
-      message_metadata:
-        -
-          key: webform_name
-          value: donation_form_start_your_new_mon
-        -
-          key: message_processor
-          value: drupal_webform_donations_winter
-      cron:
-        queue_retry: true
-      protocol: null
-      account_name: null
-      test_account_key: null
-      live_account_key: null
-      endpoint_suffix: null
-      queue_name: integrations-prod-inbound
-      queue_mode_bypass: false
   order_confirmation_product_1_only:
     id: wateraid_email
     handler_id: order_confirmation_product_1_only
@@ -921,6 +619,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   order_confirmation_product_2_only:
     id: wateraid_email
     handler_id: order_confirmation_product_2_only
@@ -967,6 +666,7 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
   order_confirmation_products_1_and_2:
     id: wateraid_email
     handler_id: order_confirmation_products_1_and_2
@@ -1014,4 +714,14 @@ handlers:
       exclude_attachments: 0
       fallback_plugin: null
       fallback_message: null
+      langcode: ''
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

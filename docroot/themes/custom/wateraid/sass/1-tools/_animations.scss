@@ -1,0 +1,9 @@
+$wa-motion-flow-bezier: cubic-bezier(0.6, 0, 0.4, 1);
+
+@mixin wa-transition-motion-flow($property, $duration: 1.6s, $delay: 0s) {
+  transition: $property $duration $wa-motion-flow-bezier $delay;
+}
+
+@mixin link-transition {
+  transition: all 0.1s $wa-motion-flow-bezier;
+}

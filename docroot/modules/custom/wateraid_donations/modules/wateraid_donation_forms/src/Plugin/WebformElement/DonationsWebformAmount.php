@@ -35,7 +35,8 @@ class DonationsWebformAmount extends WebformCompositeBase {
     // Check if a frequency or amount has already been set in form state.
     $input_frequency = $form_state->get(DonationsWebformAmountElement::STORAGE_FREQUENCY);
     $input_amount = $form_state->get(DonationsWebformAmountElement::STORAGE_AMOUNT);
-    $input_duration = $form_state->get(DonationsWebformAmountElement::STORAGE_AMOUNT);
+    $input_duration = $form_state->get(DonationsWebformAmountElement::STORAGE_DURATION);
+
     if (empty($input_frequency) && empty($input_amount)) {
       // Pull pre-selected frequency and amount options from query parameters.
       $request = \Drupal::request();

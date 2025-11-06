@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.menu_link_content.wateraid_site_menu.field_attributes
     - field.field.menu_link_content.wateraid_site_menu.field_classes
+    - field.field.menu_link_content.wateraid_site_menu.field_description
   module:
     - key_value_field
     - link
@@ -17,7 +18,7 @@ mode: default
 content:
   field_attributes:
     type: key_value_textfield
-    weight: 22
+    weight: 6
     region: content
     settings:
       size: 60
@@ -33,10 +34,18 @@ content:
     third_party_settings: {  }
   field_classes:
     type: string_textfield
-    weight: 21
+    weight: 5
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   langcode:
@@ -48,20 +57,20 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   view_mode:
     type: menu_item_extras_view_mode_selector_select
-    weight: 0
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

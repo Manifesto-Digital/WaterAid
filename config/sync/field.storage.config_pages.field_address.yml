@@ -1,0 +1,19 @@
+uuid: 2ea9aef9-29ae-4128-a458-f04ea35d316a
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - config_pages
+id: config_pages.field_address
+field_name: field_address
+entity_type: config_pages
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

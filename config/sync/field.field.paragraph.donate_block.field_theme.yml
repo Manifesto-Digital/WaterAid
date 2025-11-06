@@ -1,0 +1,23 @@
+uuid: 7bc0e99c-5222-45fd-b436-22770628cc79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.donate_block
+  module:
+    - options
+id: paragraph.donate_block.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: donate_block
+label: Theme
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: light
+default_value_callback: ''
+settings: {  }
+field_type: list_string

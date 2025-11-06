@@ -1,23 +1,12 @@
-label: Övervakning
-description: 'Senaste loggmeddelanden'
 display:
   default:
-    display_title: Förvald
     display_options:
-      title: 'Senaste loggmeddelanden'
       fields:
-        nothing:
-          admin_label: Ikon
-        severity:
-          label: Grad
         type:
           label: Typ
-        timestamp:
-          label: Datum
-        message:
-          label: Meddelande
         name:
           label: Användare
+          separator: ', '
         link:
           label: Funktioner
       pager:
@@ -33,16 +22,7 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      empty:
-        area:
-          admin_label: 'Inga loggmeddelanden tillgängliga.'
-          content: 'Inga loggmeddelanden tillgängliga.'
       filters:
         type:
           expose:
             label: Typ
-        severity:
-          expose:
-            label: Grad
-  page:
-    display_title: Sida

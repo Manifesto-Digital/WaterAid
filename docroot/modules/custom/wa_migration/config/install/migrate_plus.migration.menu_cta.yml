@@ -22,7 +22,27 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  field_primary_cta/uri: field_call_to_action_link_uri
+  field_primary_cta/uri:
+    -
+      plugin: link_migration_lookup
+      migration:
+        - articles
+        - campaigns
+        - country_details
+        - donation_forms
+        - donation_landing_pages
+        - events
+        - filtered_landing_pages
+        - flexible_content
+        - get_involved_node
+        - jobs
+        - press_and_media
+        - press_and_media_biographies
+        - publication
+        - standard_page
+        - stories
+        - webforms
+      source: field_call_to_action_link_uri
   field_primary_cta/title: field_call_to_action_link_title
 destination:
   plugin: 'entity:paragraph'

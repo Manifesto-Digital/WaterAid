@@ -5,33 +5,50 @@
         const videoElement = video.querySelector("video");
         const playButton = video.querySelector(".video__play");
         const iframe = video.querySelector("iframe");
+        const thumbnail = video.querySelector(".video__thumbnail");
 
         if (iframe && playButton) {
-          playButton.addEventListener("click", function () {
+          playButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+
             playButton.style.display = "none";
             video.classList.add("playing");
             iframe.style.visibility = "visible";
+
+            if (thumbnail) {
+              thumbnail.style.display = "none";
+            }
           });
         }
 
-        if (videoElement) {
+        if (videoElement && playButton) {
           videoElement.controls = false;
 
-          playButton.addEventListener("click", function () {
+          playButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+
             videoElement.controls = true;
             videoElement.play();
             playButton.style.display = "none";
             video.classList.add("playing");
+            if (thumbnail) {
+              thumbnail.style.display = "none";
+            }
           });
 
-          if(videoElement.paused){
-            videoElement.addEventListener("click", function () {
-              videoElement.controls = false;
-              videoElement.pause();
-              playButton.style.display = "block";
-              video.classList.remove("playing");
-            });
-          }
+          videoElement.addEventListener("click", function (event) {
+            event.stopPropagation();
+            videoElement.controls = false;
+            videoElement.pause();
+            playButton.style.display = "block";
+            video.classList.remove("playing");
+          });
+
+          videoElement.addEventListener("ended", function () {
+            playButton.style.display = "block";
+            video.classList.remove("playing");
+            videoElement.controls = false;
+          });
         }
       }
 

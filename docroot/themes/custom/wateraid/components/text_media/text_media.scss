@@ -1,4 +1,4 @@
-@import "./sass/styles";
+@import "../../sass/base";
 
 .m-text-media {
   @include grid();
@@ -14,6 +14,18 @@
       $col-span-tablet: 3,
       $col-span-desktop: 6
     );
+  }
+
+
+
+  &__text {
+    [data-component-id="wateraid:rich_text"] {
+      margin: 0;
+    }
+  }
+
+  .link--text {
+    margin-top: $wa-spacing-07;
   }
 
   &__media {

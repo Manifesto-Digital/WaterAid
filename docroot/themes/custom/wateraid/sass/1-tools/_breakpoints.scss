@@ -1,0 +1,71 @@
+$small-device-min-width: 390px;
+$medium-device-min-width: 768px;
+$large-device-min-width: 1440px;
+$small-device-max-width: calc($small-device-min-width - 1px);
+$medium-device-max-width: calc($medium-device-min-width - 1px);
+$large-device-max-width: calc($large-device-min-width - 1px);
+
+// From width $width.
+@mixin from-breakpoint($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+// Up to width $width.
+@mixin to-breakpoint($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+// Breakpoint-specific mixins. Prefer to use these and build mobile-first.
+@mixin breakpoint-sm {
+  @include from-breakpoint($small-device-min-width) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md {
+  @include from-breakpoint($medium-device-min-width) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg {
+  @include from-breakpoint($large-device-min-width) {
+    @content;
+  }
+}
+
+// Shorthand: just faster to type while coding.
+@mixin tablet {
+  @include breakpoint-md {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include breakpoint-lg {
+    @content;
+  }
+}
+
+// Fallback to-breakpoint mixins.
+@mixin mobile-down {
+  @include to-breakpoint($small-device-max-width) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @include to-breakpoint($medium-device-max-width) {
+    @content;
+  }
+}
+
+@mixin desktop-down {
+  @include to-breakpoint($large-device-max-width) {
+    @content;
+  }
+}

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_image
+    - media.type.dam_image
     - media.type.icon_library
     - media.type.image
     - paragraphs.paragraphs_type.image
@@ -21,6 +22,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      dam_image: dam_image
       icon_library: icon_library
       image: image
     sort:

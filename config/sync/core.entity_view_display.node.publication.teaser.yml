@@ -14,8 +14,10 @@ dependencies:
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
+    - field.field.node.publication.field_metatags
     - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
+    - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
     - field.field.node.publication.field_teaser_image
     - field.field.node.publication.field_teaser_text
@@ -91,6 +93,9 @@ content:
     region: content
 hidden:
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_author_override: true
   field_content: true
   field_download_link_placement: true
@@ -98,8 +103,10 @@ hidden:
   field_force_open: true
   field_hero: true
   field_key_stages: true
+  field_metatags: true
   field_regions: true
   field_review_date: true
+  field_search_phrases: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true

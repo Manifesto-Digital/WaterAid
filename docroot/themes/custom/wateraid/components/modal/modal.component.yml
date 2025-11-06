@@ -1,0 +1,34 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: modal
+status: stable
+description: Modal component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+    copy:
+      type: string
+      title: Copy
+    cta:
+      type: [ "object", "null" ]
+      title: CTA
+    continueDonation:
+      type: boolean
+      title: "Continue donation button"
+    caption:
+      type: string
+      title: Caption
+    credit:
+      type: string
+      title: Credit
+  slots:
+    image:
+      title: Image
+      description: Image
+      required: true
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/modal/modal.css: {}

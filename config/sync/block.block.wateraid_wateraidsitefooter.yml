@@ -1,0 +1,25 @@
+uuid: 5720a195-b0c2-4115-a030-367a163e8a6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - wateraid_blocks
+  theme:
+    - wateraid
+id: wateraid_wateraidsitefooter
+theme: wateraid
+region: footer
+weight: 0
+provider: null
+plugin: wateraid_site_footer
+settings:
+  id: wateraid_site_footer
+  label: 'WaterAid: Site footer'
+  label_display: '0'
+  provider: wateraid_blocks
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/donate/*'

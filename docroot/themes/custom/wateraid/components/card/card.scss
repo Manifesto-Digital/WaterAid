@@ -1,4 +1,4 @@
-@import "./sass/styles";
+@import "../../sass/base";
 
 .card {
   position: relative;
@@ -36,6 +36,8 @@
   &__image img {
     display: block;
     max-width: 100%;
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
   }
 
   &__body {
@@ -65,18 +67,8 @@
     font-family: $bold-font;
   }
 
-  &__authors {
-    display: flex;
-    gap: $wa-spacing-02;
-    align-items: center;
-
-    svg {
-      color: $wa-blue;
-      width: $wa-spacing-02;
-      height: auto;
-    }
-  }
-
+  &__authors,
+  &__date,
   &__read-time {
     display: flex;
     gap: $wa-spacing-02;
@@ -84,6 +76,8 @@
 
     svg {
       color: $wa-blue;
+      width: $wa-spacing-06;
+      height: $wa-spacing-06;
     }
   }
 
@@ -100,16 +94,24 @@
     &:hover {
       background-color: $wa-white;
     }
-    &__heading {
+
+    .card__heading {
       @include h6();
       padding-bottom: $wa-spacing-02;
+    }
+
+    .card__authors {
+      svg {
+        width: $wa-spacing-02;
+        height: auto;
+      }
     }
   }
 
   &--stats {
     justify-items: center;
     padding: $wa-spacing-06;
-    height: calc(100% - 3rem);
+    height: 100%;
 
     &.card--link:hover::before {
       transform: translateX(-$wa-spacing-04) translateY(-$wa-spacing-02);
@@ -135,9 +137,38 @@
     }
   }
 
+  &--signposting {
+    background-color: $wa-white;
+
+    .card__body {
+      padding: $wa-spacing-06;
+    }
+
+    &.card--large {
+      @include desktop() {
+        @include grid();
+
+        &__image,
+        &__body {
+          @include grid-item-span(4, 6, 6);
+          align-self: center;
+          padding-left: 0;
+        }
+        &__description {
+          @include paragraph-md();
+        }
+      }
+    }
+  }
+
   // Colour variants.
   &--cream {
     background-color: $wa-cream;
+    color: $wa-navy;
+  }
+
+  &--white {
+    background-color: $wa-white;
     color: $wa-navy;
   }
 

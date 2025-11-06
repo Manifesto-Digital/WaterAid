@@ -1,0 +1,62 @@
+@import "../../sass/base";
+
+.card-collection {
+  padding: $wa-spacing-07 $wa-spacing-05;
+  z-index: 0;
+  position: relative;
+  @include desktop() {
+    padding: $wa-spacing-09;
+  }
+
+  &__wrapper {
+    @include grid();
+    z-index: 10;
+  }
+
+  // Columns
+  &--1-column .card {
+    @include grid-item-span(4, 6, 12);
+    @include desktop() {
+      @include grid();
+
+      &__image,
+      &__body {
+        @include grid-item-span(4, 6, 6);
+        align-self: center;
+        padding-left: 0;
+      }
+      &__description {
+        @include paragraph-md();
+      }
+    }
+  }
+
+  &--2-columns .card {
+    @include grid-item-span(4, 6, 6);
+  }
+
+  &--3-columns .card {
+    @include grid-item-span(4, 6, 4);
+  }
+
+  &--4-columns .card {
+    @include grid-item-span(4, 6, 3);
+  }
+
+  // Colour variants
+  &--white {
+    .card {
+      background-color: $wa-cream;
+      color: $wa-navy;
+    }
+  }
+
+  &--cream {
+    background-color: $wa-cream;
+
+    .card {
+      background-color: $wa-white;
+      color: $wa-navy;
+    }
+  }
+}

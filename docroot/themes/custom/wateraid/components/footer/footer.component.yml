@@ -1,0 +1,55 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Footer
+status: stable
+slots:
+  site_logo:
+    title: Site logo
+  variant:
+    type: string
+    title: Variant
+  copy:
+    type: string
+    title: Copy
+  cta:
+    title: CTA
+  primary_menu:
+    title: Primary menu
+    description: Primary menu
+  secondary_menu:
+    title: Secondary menu
+    description: Secondary menu
+  donate_menu:
+    title: Secondary menu
+    description: Secondary menu
+  facebook_url:
+    title: Facebook
+    description: Facebook link
+  instagram_url:
+    title: Instagram
+    description: Instagram link
+  tiktok_url:
+    title: TikTok
+    description: TikTok link
+  linkedin_url:
+    title: LinkedIn
+    description: LinkedIn link
+  youtube_url:
+    title: Youtube
+    description: Youtube link
+  contact_details:
+    title: Footer contact details
+    description: Footer contact details
+  donate_title:
+    title: Donate title
+    description: Donate title
+  donate_text:
+    title: Donate text
+    description: Donate text
+  logos:
+    title: Logos
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/footer/footer.css: {}
+  dependencies:
+    - wateraid/main

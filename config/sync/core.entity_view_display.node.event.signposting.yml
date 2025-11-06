@@ -1,0 +1,97 @@
+uuid: d94fd37a-829c-4863-a48a-b617f1eadfd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.signposting
+    - field.field.node.event.field_additional_links
+    - field.field.node.event.field_audience
+    - field.field.node.event.field_colour_selector
+    - field.field.node.event.field_content
+    - field.field.node.event.field_country
+    - field.field.node.event.field_cta_supporting_text
+    - field.field.node.event.field_cta_title
+    - field.field.node.event.field_event_end_date
+    - field.field.node.event.field_event_information_bg_colou
+    - field.field.node.event.field_event_start_date
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_get_involved
+    - field.field.node.event.field_hero
+    - field.field.node.event.field_metatags
+    - field.field.node.event.field_properties
+    - field.field.node.event.field_regions
+    - field.field.node.event.field_registration_link
+    - field.field.node.event.field_review_date
+    - field.field.node.event.field_search_phrases
+    - field.field.node.event.field_synopsis
+    - field.field.node.event.field_teaser_image
+    - field.field.node.event.field_teaser_text
+    - field.field.node.event.field_theme
+    - field.field.node.event.field_weight
+    - node.type.event
+  module:
+    - datetime
+    - user
+id: node.event.signposting
+targetEntityType: node
+bundle: event
+mode: signposting
+content:
+  field_event_start_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_additional_links: true
+  field_audience: true
+  field_colour_selector: true
+  field_content: true
+  field_country: true
+  field_cta_supporting_text: true
+  field_cta_title: true
+  field_event_end_date: true
+  field_event_information_bg_colou: true
+  field_event_type: true
+  field_get_involved: true
+  field_hero: true
+  field_metatags: true
+  field_properties: true
+  field_regions: true
+  field_registration_link: true
+  field_review_date: true
+  field_search_phrases: true
+  field_synopsis: true
+  field_theme: true
+  field_weight: true
+  langcode: true
+  node_read_time: true
+  search_api_excerpt: true

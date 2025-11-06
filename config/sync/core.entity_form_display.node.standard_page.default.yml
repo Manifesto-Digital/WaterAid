@@ -16,10 +16,12 @@ dependencies:
     - field.field.node.standard_page.field_job_id
     - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
+    - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_shortcode
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
@@ -35,6 +37,7 @@ dependencies:
     - layout_paragraphs
     - link
     - media_library
+    - metatag
     - path
 third_party_settings:
   field_group:
@@ -76,6 +79,7 @@ third_party_settings:
       children:
         - field_content
         - group_tags
+        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs
@@ -109,8 +113,6 @@ third_party_settings:
     group_tags:
       children:
         - field_get_involved
-        - field_age
-        - field_key_stage
         - field_subject_area
         - field_topic
       label: Tags
@@ -260,6 +262,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_minimal_header:
     type: boolean_checkbox
     weight: 29
@@ -286,6 +296,14 @@ content:
     weight: 26
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_search_phrases:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_shortcode:
     type: string_textfield

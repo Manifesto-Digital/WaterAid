@@ -1,0 +1,279 @@
+@import "../../sass/base";
+
+.donate-widget {
+ &[data-component-id="wateraid:donate_widget"] {
+   background-color: $wa-blue;
+   color: $wa-white;
+   padding: $wa-spacing-07 $wa-spacing-05;
+   margin-top: $wa-spacing-07;
+
+   @include tablet {
+     padding: $wa-spacing-09 $wa-spacing-07;
+   }
+
+   @include desktop {
+     margin-top: $wa-spacing-09;
+   }
+ }
+  &__heading {
+    margin-bottom: $wa-spacing-06;
+
+    h1,
+    h2 {
+      color: $wa-white;
+    }
+  }
+
+  &__form {
+    &--submit {
+      z-index: 10;
+      position: relative;
+      margin: 0 0 $wa-spacing-06 0;
+      button {
+        max-width: none;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-06;
+  }
+
+  &__additional-link {
+    text-align: center;
+
+    a {
+      color: $wa-white;
+      font-size: calculate-rem(20);
+    }
+  }
+
+  &__payment-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: $wa-spacing-03;
+    gap: $wa-spacing-02;
+    svg {
+      max-width: 75px;
+    }
+  }
+
+  &__fr-logo {
+    margin: 0 auto;
+  }
+}
+
+/* Element: Options Group (Fieldset) */
+.donate-widget__options-group {
+  border: none;
+  padding: 0;
+  margin: 0 0 $wa-spacing-06 0;
+  &.is-hidden {
+    display: none;
+  }
+}
+
+/* Element: Legend */
+.donate-widget__legend {
+  color: $wa-white;
+  font-family: $bold-font;
+  font-size: calculate-rem(20);
+  margin-bottom: $wa-spacing-03;
+}
+
+/* Element: Options Wrapper */
+.donate-widget__options-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: $wa-spacing-03;
+  background-color: $wa-navy;
+  color: $wa-white;
+}
+
+.donate-widget__custom-amount {
+  display: flex;
+  flex-direction: column;
+  margin-top: $wa-spacing-03;
+  label {
+    margin: $wa-spacing-03 0;
+    font-size: calculate-rem(20);
+  }
+  input {
+    height: 54px;
+    padding: $wa-spacing-03 $wa-spacing-03 $wa-spacing-03 $wa-spacing-08;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-pound.svg");
+    background-position: 20px center;
+    background-repeat: no-repeat;
+    color: $wa-navy;
+    background-color: $wa-white;
+    font-size: calculate-rem(20);
+    border-radius: $radius-xxs;
+    border: 2px solid $wa-navy;
+  }
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.donate-widget {
+  &__amount-details {
+    margin: $wa-spacing-03 0;
+
+    &--detail {
+     background-color: $wa-cream;
+     padding: $wa-spacing-03;
+     display: flex;
+     flex-direction: column;
+     gap: $wa-spacing-06;
+
+      &.is-hidden {
+        display: none;
+      }
+
+     @include tablet {
+       flex-direction: row;
+     }
+     .donate-widget__amount--image {
+       @include tablet {
+         max-width: 33%;
+       }
+        img {
+          width: 100%;
+        }
+     }
+     .donate-widget__amount--meta {
+       display: flex;
+       flex-direction: column;
+       gap: $wa-spacing-02;
+
+       .icon img {
+          width: $wa-spacing-06;
+       }
+
+       .title {
+         align-items: center;
+         display: flex;
+         gap: $wa-spacing-02;
+         font-size: calculate-rem(16);
+         font-family: $bold-font;
+         color: $wa-navy;
+       }
+       .description {
+         font-size: calculate-rem(16);
+         line-height: 1.5;
+         color: $wa-navy;
+       }
+       &--credit {
+         color: $wa-navy-80;
+       }
+     }
+   }
+  }
+}
+
+/* Element: Individual Option */
+.donate-widget__option {
+  /* Each option grows equally to fill the space */
+  flex: 1 1 auto;
+  position: relative;
+}
+
+/* Element: The actual radio input */
+.donate-widget__radio-input {
+  /* This is the key: hide the radio button visually but keep it accessible */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+/* Element: The styled label that acts as a button */
+.donate-widget__radio-label {
+  display: block;
+  width: 100%;
+  font-size: calculate-rem(20);
+  font-family: $bold-font;
+  padding: $wa-spacing-03;
+  text-align: center;
+  cursor: pointer;
+}
+
+.donate-widget__increase-impact {
+  display: none;
+  position: absolute;
+  background: $wa-white;
+  padding: $wa-spacing-02 $wa-spacing-03;
+  color: $wa-blue;
+  font-family: $bold-font;
+  background-size: cover;
+  left: 50%;
+  width: max-content;
+  bottom: calc(100% + 24px);
+  &:after {
+    content: '';
+    background-image: url("/themes/custom/wateraid/images/icons/wa-triangle.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    height: 12px;
+    width: 12px;
+  }
+  @include tablet {
+    display: block;
+  }
+  &.is-hidden {
+    display: none;
+  }
+}
+
+/* Add a hover effect for interactivity */
+.donate-widget__radio-label:hover {
+  background-color: var(--bg-light);
+  border-color: var(--brand-secondary);
+}
+
+/* Modifier: Active State */
+/* This is the magic selector. When the input is checked,
+   style the label that immediately follows it. */
+.donate-widget__radio-input:checked + .donate-widget__radio-label {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-rectangle-wide.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $wa-navy;
+  border-radius: 0;
+  &.amount {
+    &:after {
+      content: '';
+      width: 32px;
+      height: 16px;
+      position: absolute;
+      bottom: -15px;
+      left: calc(50% - 16px);
+      background-image: url("/themes/custom/wateraid/images/icons/wa-pointer.svg");
+    }
+  }
+}
+
+.donate-widget__option:focus-within {
+  box-shadow: 0 0 0 8px $wa-pink;
+  outline: $wa-navy 4px solid;
+  border: none;
+  background: $wa-lime;
+}
+
+/* Add a focus state for keyboard navigation accessibility */
+.donate-widget__radio-input:focus + .donate-widget__radio-label {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 2px;
+}

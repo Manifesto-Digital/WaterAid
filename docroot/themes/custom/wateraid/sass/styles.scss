@@ -1,32 +1,12 @@
-// @import '_breakpoint';
+// Non-printing.
+@import 'base';
 
-/**
-  * Libs
-  */
-// @import '0-lib/reset';
+// Generic
+@import '2-generic/reset';
 
-/**
-  * Base
-  */
-@import '1-base/breakpoints';
-@import '1-base/colors';
-@import '1-base/form';
-@import '1-base/grid';
-@import '1-base/mixins';
-@import '1-base/radius';
-@import '1-base/spacing';
-@import '1-base/typography';
+// Elements
+@import '3-elements/typography';
 
-/**
-  * Elements
-  */
-// @import '2-elements/containers';
-
-/**
-  * Components - mostly controlled within SCD
-  */
-
-/**
-  * Layout
-  */
-@import '4-layout/drupal';
+// Components - mostly output separately via SCD but there will be outliers.
+@import '5-components/drupal';
+@import '5-components/form';

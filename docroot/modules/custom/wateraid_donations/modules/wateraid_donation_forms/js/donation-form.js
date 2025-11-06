@@ -36,7 +36,7 @@
             if (formElements[i].offsetParent !== null) {
               const radios = formElements[i].closest('.form-radios');
               if (
-                formElements[i].classList.contains('form-radio') &&
+                formElements[i].classList.contains('form-radio') && radios &&
                 radios.querySelectorAll('.form-radio[checked="checked"]').length
               ) {
                 radios

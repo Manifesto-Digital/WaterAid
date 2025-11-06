@@ -9,8 +9,10 @@ dependencies:
     - field.field.node.listing_page.field_initial_items
     - field.field.node.listing_page.field_introduction
     - field.field.node.listing_page.field_items_to_display
+    - field.field.node.listing_page.field_metatags
     - field.field.node.listing_page.field_review_date
     - field.field.node.listing_page.field_rss_feed
+    - field.field.node.listing_page.field_search_phrases
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - field.field.node.listing_page.field_view
@@ -22,6 +24,7 @@ dependencies:
     - layout_paragraphs
     - link
     - media_library
+    - metatag
     - path
     - viewsreference
 third_party_settings:
@@ -63,8 +66,8 @@ third_party_settings:
     group_content:
       children:
         - field_view
-        - field_show_filters
         - field_content
+        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs
@@ -169,6 +172,14 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
@@ -182,6 +193,14 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_search_phrases:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget

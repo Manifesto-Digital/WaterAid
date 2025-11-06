@@ -53,6 +53,17 @@ final class AzureApi {
    * @param string $container
    *   An alternative container to use.
    */
+  public function setAccountName(string $accountName): void {
+    $this->accountName = $accountName;
+  }
+
+
+  /**
+   * Allows the user to override the default container.
+   *
+   * @param string $container
+   *   An alternative container to use.
+   */
   public function setContainer(string $container): void {
     $this->container = $container;
   }
@@ -64,7 +75,7 @@ final class AzureApi {
    *   The shared key.
    */
   private function sharedKey(): string {
-    return Settings::get('azure_blob_storage');
+    return Settings::get('azure_blob_storage_key');
   }
 
   /**
@@ -105,6 +116,10 @@ final class AzureApi {
       $xmsHeaders,
       "/$this->accountName/$this->container/$blob_name"
     );
+
+    $this->logger->debug("accountName: ". $this->accountName);
+    $this->logger->debug("container: ". $this->container);
+    $this->logger->debug("blob_name: ". $blob_name);
 
     $encodedSignature = base64_encode(
       hash_hmac(

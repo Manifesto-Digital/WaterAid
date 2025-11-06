@@ -48,8 +48,8 @@
     }
   } %}
 
-    {# Defaults #}
-    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
     {% set tags = ['Content tag 1', 'Content tag 2', 'Content tag 3'] %}
     {% set authors = ['Author 1', 'Author 2'] %}
     {{ include('wateraid:hero', {
@@ -80,8 +80,8 @@
     }
   } %}
 
-    {# Defaults #}
-    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
     {% set tags = ['Content tag 1', 'Content tag 2', 'Content tag 3'] %}
     {% set authors = ['Author 1', 'Author 2'] %}
     {{ include('wateraid:hero', {
@@ -100,7 +100,7 @@
   {% endstory %}
 
   {% story DefaultVideo with {
-    name: 'Default (video)',
+    name: 'Hero (video)',
     args: {
       title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
       standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
@@ -137,4 +137,31 @@
       variant: 'default'
     }) }}
   {% endstory %}
+
+  {% story Donate with {
+    name: 'Hero (donate)',
+    args: {
+      title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+      quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore',
+      quote_citation: 'Lorem ipsum dolor sit amet.',
+    }
+  } %}
+
+    {% set image %}
+      <img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>
+    {% endset %}
+
+    {{ include('wateraid:hero', {
+      title,
+      image,
+      media_caption,
+      media_credit,
+      quote,
+      quote_citation,
+      variant: 'donate'
+    }) }}
+  {% endstory %}
+
 {% endstories %}

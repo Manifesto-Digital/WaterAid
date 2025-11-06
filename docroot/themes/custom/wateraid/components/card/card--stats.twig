@@ -5,7 +5,7 @@
   url ? 'card--link' : 'card--no-link',
 ] %}
 
-<div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
+<div {{ attributes.addClass(classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
 
   <div class="card__image">
     <img src="{{ image_url }}" alt="" />

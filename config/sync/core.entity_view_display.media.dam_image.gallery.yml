@@ -1,0 +1,41 @@
+uuid: e5f9eb05-d31a-4404-9907-e3d098a042ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.gallery
+    - field.field.media.dam_image.field_caption
+    - field.field.media.dam_image.field_credit
+    - field.field.media.dam_image.field_media_dam_image
+    - image.style.scale_crop_5_3
+    - media.type.dam_image
+  module:
+    - wa_orange_dam
+id: media.dam_image.gallery
+targetEntityType: media
+bundle: dam_image
+mode: gallery
+content:
+  field_media_dam_image:
+    type: wa_orange_dam_image_formater
+    label: visually_hidden
+    settings:
+      image_style: scale_crop_5_3
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_caption: true
+  field_credit: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,10 @@
+uuid: d33e9a98-4324-41f3-8f7e-d12c59a04ed8
+langcode: en
+status: true
+dependencies: {  }
+id: hero_donate
+label: 'Hero (donate)'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

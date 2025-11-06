@@ -28,7 +28,27 @@ process:
   title: title
   field_full_title: field_full_title
   field_job_id: field_job_id
-  field_job_url/uri: field_job_url_uri
+  field_job_url/uri:
+    -
+      plugin: link_migration_lookup
+      migration:
+        - articles
+        - campaigns
+        - country_details
+        - donation_forms
+        - donation_landing_pages
+        - events
+        - filtered_landing_pages
+        - flexible_content
+        - get_involved_node
+        - jobs
+        - press_and_media
+        - press_and_media_biographies
+        - publication
+        - standard_page
+        - stories
+        - webforms
+      source: field_job_url_uri
   field_job_url/title: field_job_url_title
   field_shortcode: field_shortcode
   uid:

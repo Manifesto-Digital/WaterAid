@@ -261,7 +261,7 @@ handlers:
     handler_id: wateraid_donation_email
     label: 'Good loo hire interest form completion'
     notes: ''
-    status: true
+    status: false
     conditions: {  }
     weight: 0
     settings:
@@ -297,4 +297,13 @@ handlers:
       payment_frequency: ''
       fallback_plugin: null
       fallback_message: null
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

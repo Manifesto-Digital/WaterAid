@@ -17,10 +17,12 @@ dependencies:
     - field.field.node.event.field_event_type
     - field.field.node.event.field_get_involved
     - field.field.node.event.field_hero
+    - field.field.node.event.field_metatags
     - field.field.node.event.field_properties
     - field.field.node.event.field_regions
     - field.field.node.event.field_registration_link
     - field.field.node.event.field_review_date
+    - field.field.node.event.field_search_phrases
     - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
@@ -96,11 +98,11 @@ content:
     region: content
 hidden:
   co_authors: true
-  field_additional_links: true
-  field_colour_selector: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_additional_links: true
+  field_colour_selector: true
   field_content: true
   field_cta_supporting_text: true
   field_cta_title: true
@@ -109,10 +111,12 @@ hidden:
   field_event_start_date: true
   field_event_type: true
   field_hero: true
+  field_metatags: true
   field_properties: true
   field_regions: true
   field_registration_link: true
   field_review_date: true
+  field_search_phrases: true
   field_synopsis: true
   field_weight: true
   langcode: true

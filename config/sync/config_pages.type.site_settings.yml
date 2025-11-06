@@ -1,0 +1,17 @@
+uuid: f5a33720-35ab-4d9b-b57c-e8ceb94abe3d
+langcode: en
+status: true
+dependencies: {  }
+id: site_settings
+label: 'Site settings'
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: ''
+  weight: 0
+  description: ''

@@ -321,7 +321,7 @@ handlers:
     handler_id: email
     label: Email
     notes: Opt-in
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="communications_preferences[opt_in_email]"]':
@@ -362,7 +362,7 @@ handlers:
     handler_id: email_1
     label: Email
     notes: 'No opt-in'
-    status: true
+    status: false
     conditions:
       enabled:
         ':input[name="communications_preferences[opt_in_email]"]':
@@ -398,4 +398,13 @@ handlers:
       langcode: ''
       parameters: {  }
       debug: false
+  azure_blob_storage:
+    id: azure_blob_storage_handler
+    handler_id: azure_blob_storage
+    label: 'Azure Blob Storage'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }

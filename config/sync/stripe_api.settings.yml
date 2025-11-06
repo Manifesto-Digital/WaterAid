@@ -2,7 +2,7 @@ test_secret_key: stripe_test_secret_key
 test_public_key: stripe_test_public_key
 live_secret_key: stripe_live_secret_key
 live_public_key: stripe_live_public_key
-log_webhooks: 1
-mode: live
+mode: test
 api_version: custom
 api_version_custom: '2020-08-27'
+log_webhooks: true

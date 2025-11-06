@@ -5,8 +5,6 @@ dependencies:
   enforced:
     module:
       - wa_migration
-_core:
-  default_config_hash: zgiNfDJ8fGk8SWqOylSkjIxpO4n2XmN8kHBK1LpNozU
 id: wateraid_uk
 label: 'WaterAid UK migration'
 description: 'Content from the wateraid.org/uk site'

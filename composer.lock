@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27e6a5cd28d2f25b1d89edc625df5766",
+    "content-hash": "ffde4c65f1cb927e7f1a78a00632fa1d",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -3132,6 +3132,115 @@
             }
         },
         {
+            "name": "drupal/config_override_warn",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_override_warn.git",
+                "reference": "8.x-1.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_override_warn-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "5a36e4367bebd6cea0eda42cf6f685bd56bc4afa"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.5",
+                    "datestamp": "1758571050",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "dave reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "prudloff",
+                    "homepage": "https://www.drupal.org/user/3611858"
+                }
+            ],
+            "description": "Provide a warning message on configuration forms when any values on the form are possibly being overridden.",
+            "homepage": "https://www.drupal.org/project/config_override_warn",
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_override_warn"
+            }
+        },
+        {
+            "name": "drupal/config_pages",
+            "version": "2.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_pages.git",
+                "reference": "8.x-2.19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_pages-8.x-2.19.zip",
+                "reference": "8.x-2.19",
+                "shasum": "8791c8558b2095c72e605b76cfd26a514dab1e42"
+            },
+            "require": {
+                "drupal/core": "^8.5 | ^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.19",
+                    "datestamp": "1756896072",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "m.krestnicov",
+                    "homepage": "https://www.drupal.org/user/3193903"
+                },
+                {
+                    "name": "qwaygon",
+                    "homepage": "https://www.drupal.org/user/636624"
+                },
+                {
+                    "name": "shumer",
+                    "homepage": "https://www.drupal.org/user/2297432"
+                }
+            ],
+            "description": "ConfigPages module",
+            "homepage": "http://drupal.org/project/config_pages",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/config_pages",
+                "issues": "http://drupal.org/project/issues/config_pages"
+            }
+        },
+        {
             "name": "drupal/config_split",
             "version": "2.0.2",
             "source": {
@@ -6084,6 +6193,62 @@
             }
         },
         {
+            "name": "drupal/menu_item_fields",
+            "version": "1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/menu_item_fields.git",
+                "reference": "8.x-1.11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/menu_item_fields-8.x-1.11.zip",
+                "reference": "8.x-1.11",
+                "shasum": "bdb1fc4e355e3d7172b72ebb3faf157b78308284"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "require-dev": {
+                "upstreamable/md-to-html": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.11",
+                    "datestamp": "1723290860",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "scripts": {
+                "md-to-html": [
+                    "MdToHtml\\composer\\ScriptHandler::transform"
+                ],
+                "generate-readme": [
+                    "@md-to-html --remove-first-line README.md README.html"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "rodrigoaguilera",
+                    "homepage": "https://www.drupal.org/user/408170"
+                }
+            ],
+            "description": "Makes the menu link content entity type fieldable",
+            "homepage": "https://www.drupal.org/project/menu_item_fields",
+            "support": {
+                "source": "https://gitlab.com/upstreamable/drupal-item-fields",
+                "issues": "https://gitlab.com/upstreamable/drupal-item-fields/issues"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "2.2.0",
             "source": {
@@ -7209,6 +7374,67 @@
             "homepage": "https://www.drupal.org/project/redirect",
             "support": {
                 "source": "https://git.drupalcode.org/project/redirect"
+            }
+        },
+        {
+            "name": "drupal/redirect_bulk",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/redirect_bulk.git",
+                "reference": "1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/redirect_bulk-1.0.3.zip",
+                "reference": "1.0.3",
+                "shasum": "342c58ebc1a038043e11dda9dee2fc97b701cbbc"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10 || ^11",
+                "drupal/redirect": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.3",
+                    "datestamp": "1741866701",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "gurkawal",
+                    "homepage": "https://www.drupal.org/user/3810058"
+                },
+                {
+                    "name": "manpreet_singh",
+                    "homepage": "https://www.drupal.org/user/3692674"
+                },
+                {
+                    "name": "pankaj_lnweb",
+                    "homepage": "https://www.drupal.org/user/3600604"
+                },
+                {
+                    "name": "shiks",
+                    "homepage": "https://www.drupal.org/user/2930533"
+                },
+                {
+                    "name": "vivek_lnwebworks",
+                    "homepage": "https://www.drupal.org/user/3665529"
+                }
+            ],
+            "description": "Allows users to redirect from old URLs to new URLs in bulk.",
+            "homepage": "https://www.drupal.org/project/redirect_bulk",
+            "support": {
+                "source": "https://git.drupalcode.org/project/redirect_bulk"
             }
         },
         {
@@ -16425,6 +16651,80 @@
             "time": "2025-05-14T07:11:14+00:00"
         },
         {
+            "name": "drupal/kint-kint",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/kint.git",
+                "reference": "2.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/kint-2.2.0.zip",
+                "reference": "2.2.0",
+                "shasum": "03df4e3ced96a5dca715238a2587269b5e044f11"
+            },
+            "require": {
+                "drupal/core": ">= 9",
+                "kint-php/kint": "^6.0.1",
+                "kint-php/kint-twig": "^6",
+                "php": ">= 8"
+            },
+            "conflict": {
+                "drupal/devel": "<5.3.0"
+            },
+            "require-dev": {
+                "drupal/coder": "^8.3",
+                "drupal/csp": "^2",
+                "drupal/devel": "^5",
+                "mglaman/phpstan-drupal": "^2",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2",
+                "phpstan/phpstan-deprecation-rules": "^2"
+            },
+            "suggest": {
+                "drupal/devel": "Various blocks, pages, and functions for developers."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.0",
+                    "datestamp": "1761312653",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "kint": {
+                    "disable-helpers": true
+                }
+            },
+            "autoload": {
+                "files": [
+                    "init.php"
+                ]
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "alexander_danilenko",
+                    "homepage": "https://www.drupal.org/user/1072104"
+                },
+                {
+                    "name": "jnvsor",
+                    "homepage": "https://www.drupal.org/user/254489"
+                }
+            ],
+            "description": "Kint dumping tool, drupal-specific kint configs, and devel integration",
+            "homepage": "https://www.drupal.org/project/kint",
+            "support": {
+                "source": "https://git.drupalcode.org/project/kint"
+            }
+        },
+        {
             "name": "google/protobuf",
             "version": "v4.33.0",
             "source": {
@@ -16542,6 +16842,122 @@
                 "source": "https://github.com/jsonrainbow/json-schema/tree/6.6.0"
             },
             "time": "2025-10-10T11:34:09+00:00"
+        },
+        {
+            "name": "kint-php/kint",
+            "version": "6.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint.git",
+                "reference": "2bd133be30a0d4f5523e3d7d8e94b788d95978e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/2bd133be30a0d4f5523e3d7d8e94b788d95978e6",
+                "reference": "2bd133be30a0d4f5523e3d7d8e94b788d95978e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "phpunit/phpunit": "^9",
+                "seld/phar-utils": "^1",
+                "symfony/finder": ">=7",
+                "vimeo/psalm": "^5"
+            },
+            "suggest": {
+                "kint-php/kint-helpers": "Provides extra helper functions",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "homepage": "https://github.com/jnvsor"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
+                }
+            ],
+            "description": "Kint - Advanced PHP dumper",
+            "homepage": "https://kint-php.github.io/kint/",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "support": {
+                "issues": "https://github.com/kint-php/kint/issues",
+                "source": "https://github.com/kint-php/kint/tree/6.0.1"
+            },
+            "time": "2025-01-01T23:10:26+00:00"
+        },
+        {
+            "name": "kint-php/kint-twig",
+            "version": "6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint-twig.git",
+                "reference": "bff198664d985fed6a911ae7762880ce4fc3c826"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint-twig/zipball/bff198664d985fed6a911ae7762880ce4fc3c826",
+                "reference": "bff198664d985fed6a911ae7762880ce4fc3c826",
+                "shasum": ""
+            },
+            "require": {
+                "kint-php/kint": "^6",
+                "php": ">=7.4",
+                "twig/twig": "^2.4 || ^3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kint\\Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "email": "jnvsor@gmail.com"
+                }
+            ],
+            "description": "Twig extension for Kint integration",
+            "homepage": "https://kint-php.github.io/kint/",
+            "keywords": [
+                "debug",
+                "dump",
+                "twig"
+            ],
+            "support": {
+                "issues": "https://github.com/kint-php/kint-twig/issues",
+                "source": "https://github.com/kint-php/kint-twig/tree/6.0"
+            },
+            "time": "2024-11-20T18:01:12+00:00"
         },
         {
             "name": "lullabot/mink-selenium2-driver",

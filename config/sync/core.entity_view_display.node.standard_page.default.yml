@@ -16,10 +16,12 @@ dependencies:
     - field.field.node.standard_page.field_job_id
     - field.field.node.standard_page.field_job_url
     - field.field.node.standard_page.field_key_stages
+    - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_population
     - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_review_date
+    - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_shortcode
     - field.field.node.standard_page.field_sticky_button_text
     - field.field.node.standard_page.field_subject_area
@@ -30,39 +32,14 @@ dependencies:
     - field.field.node.standard_page.field_weight
     - node.type.standard_page
   module:
-    - datetime
     - entity_reference_revisions
-    - link
-    - options
+    - metatag
     - user
 id: node.standard_page.default
 targetEntityType: node
 bundle: standard_page
 mode: default
 content:
-  field_age_range:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 110
-    region: content
-  field_area:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 113
-    region: content
-  field_capital:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 114
-    region: content
   field_content:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -70,49 +47,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 1
-    region: content
-  field_country:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 102
-    region: content
-  field_event_type:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 102
-    region: content
-  field_force_download:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 120
-    region: content
-  field_full_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 116
-    region: content
-  field_get_involved:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 104
+    weight: 2
     region: content
   field_hero:
     type: entity_reference_revisions_entity_view
@@ -123,126 +58,47 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_job_id:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 117
-    region: content
-  field_job_url:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 118
-    region: content
-  field_key_stages:
-    type: list_default
+  field_metatags:
+    type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 111
-    region: content
-  field_minimal_header:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 107
-    region: content
-  field_population:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 115
-    region: content
-  field_regions:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 112
-    region: content
-  field_review_date:
-    type: datetime_time_ago
-    label: above
-    settings:
-      future_format: '@interval hence'
-      past_format: '@interval ago'
-      granularity: 2
-    third_party_settings: {  }
-    weight: 104
-    region: content
-  field_shortcode:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 119
-    region: content
-  field_sticky_button_text:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 109
-    region: content
-  field_subject_area:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 108
-    region: content
-  field_theme:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 103
-    region: content
-  field_topic:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 107
-    region: content
-  field_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 106
+    weight: 15
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_age_range: true
+  field_area: true
+  field_capital: true
+  field_country: true
+  field_event_type: true
+  field_force_download: true
+  field_full_title: true
+  field_get_involved: true
+  field_job_id: true
+  field_job_url: true
+  field_key_stages: true
+  field_minimal_header: true
+  field_population: true
+  field_regions: true
+  field_review_date: true
+  field_search_phrases: true
+  field_shortcode: true
+  field_sticky_button_text: true
+  field_subject_area: true
   field_teaser_image: true
   field_teaser_text: true
+  field_theme: true
+  field_topic: true
+  field_weight: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true

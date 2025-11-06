@@ -6,6 +6,8 @@ dependencies:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.audio
+    - media.type.dam_image
+    - media.type.dam_video
     - media.type.document
     - media.type.image
     - media.type.remote_video
@@ -29,6 +31,7 @@ dependencies:
     - taxonomy.vocabulary.topic
   module:
     - comment
+    - config_pages
     - content_translation
     - contextual
     - file
@@ -53,6 +56,7 @@ weight: -8
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access config_pages overview'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
@@ -61,6 +65,7 @@ permissions:
   - 'access own webform configuration'
   - 'access toolbar'
   - 'access webform help'
+  - 'administer menu'
   - 'administer url aliases'
   - 'change own username'
   - 'clone own publication content'
@@ -70,6 +75,8 @@ permissions:
   - 'create article content'
   - 'create audio media'
   - 'create content translations'
+  - 'create dam_image media'
+  - 'create dam_video media'
   - 'create document media'
   - 'create donation content'
   - 'create event content'
@@ -110,6 +117,8 @@ permissions:
   - 'delete media'
   - 'delete own article content'
   - 'delete own audio media'
+  - 'delete own dam_image media'
+  - 'delete own dam_video media'
   - 'delete own document media'
   - 'delete own donation content'
   - 'delete own event content'
@@ -153,9 +162,13 @@ permissions:
   - 'edit co-authors of all content'
   - 'edit co-authors of co-authored content'
   - 'edit co-authors of own content'
+  - 'edit config_pages entity'
+  - 'edit footer config page entity'
   - 'edit own article content'
   - 'edit own audio media'
   - 'edit own comments'
+  - 'edit own dam_image media'
+  - 'edit own dam_video media'
   - 'edit own document media'
   - 'edit own donation content'
   - 'edit own event content'
@@ -171,6 +184,7 @@ permissions:
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
+  - 'edit site_settings config page entity'
   - 'edit terms in audiences'
   - 'edit terms in countries'
   - 'edit terms in event_types'
@@ -207,14 +221,17 @@ permissions:
   - 'use text format wateraid_pdf'
   - 'view all revisions'
   - 'view article revisions'
+  - 'view config_pages entity'
   - 'view donation revisions'
   - 'view event revisions'
+  - 'view footer config page entity'
   - 'view landing_page revisions'
   - 'view listing_page revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view own webform submission'
   - 'view page revisions'
+  - 'view site_settings config page entity'
   - 'view standard_page revisions'
   - 'view story revisions'
   - 'view term revisions in audiences'

@@ -1,0 +1,19 @@
+uuid: 6054fc7c-c35f-407d-9851-a006093cf989
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: donation_widget
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

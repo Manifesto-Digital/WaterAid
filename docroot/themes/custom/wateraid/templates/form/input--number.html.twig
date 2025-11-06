@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' element with type="number".
+ *
+ * This template adds custom increment/decrement buttons for a better UX.
+ */
+#}
+{%
+  set classes = [
+  'custom-number-input',
+]
+%}
+
+{{ include('wateraid:number_input') }}
+

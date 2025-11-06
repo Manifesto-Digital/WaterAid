@@ -14,19 +14,28 @@ module.exports = {
     'components/accordion_item/accordion_item': ['./components/accordion_item/accordion_item.scss'],
     'components/button/button': ['./components/button/button.scss'],
     'components/call_to_action/call_to_action': ['./components/call_to_action/call_to_action.scss'],
+    'components/cancel_anytime/cancel_anytime': ['./components/cancel_anytime/cancel_anytime.scss'],
     'components/card/card': ['./components/card/card.scss'],
+    'components/card_collection/card_collection': ['./components/card_collection/card_collection.scss'],
     'components/content_tag/content_tag': ['./components/content_tag/content_tag.scss'],
+    'components/donate_block/donate_block': ['./components/donate_block/donate_block.scss'],
+    'components/donate_widget/donate_widget': ['./components/donate_widget/donate_widget.scss'],
+    'components/footer/footer': ['./components/footer/footer.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],
     'components/image_gallery/image_gallery': ['./components/image_gallery/image_gallery.scss'],
     'components/link/link': ['./components/link/link.scss'],
     'components/listing/listing': ['./components/listing/listing.scss'],
+    'components/navigation/primary_navigation/primary_navigation': ['./components/navigation/primary_navigation/primary_navigation.scss'],
+    'components/modal/modal': ['./components/modal/modal.scss'],
+    'components/number_input/number_input': ['./components/number_input/number_input.scss'],
+    'components/site_header/site_header': ['./components/site_header/site_header.scss'],
     'components/properties/properties': ['./components/properties/properties.scss'],
     'components/quote/quote': ['./components/quote/quote.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
     'components/statistics/statistics': ['./components/statistics/statistics.scss'],
-    'components/video/video': ['./components/video/video.scss'],
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
+    'components/video/video': ['./components/video/video.scss'],
   },
   output: {
     filename: 'js/[name].js',
@@ -117,7 +126,7 @@ module.exports = {
               additionalData: `
                 @use "sass:color";
                 @use "sass:math";
-                @import "./sass/1-base/_colors.scss";
+                @import "./sass/0-settings/_colors.scss";
               `,
             },
           },
@@ -148,9 +157,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
-    new SVGSpritemapPlugin(path.resolve(__dirname, 'media/icons/**/*.svg'), {
+    new SVGSpritemapPlugin(path.resolve(__dirname, 'images/icons/**/*.svg'), {
       output: {
-        filename: 'media/sprite.svg',
+        filename: 'images/sprite.svg',
         svg: {
           sizes: false
         },
@@ -176,7 +185,7 @@ module.exports = {
         }
       },
       styles: {
-        filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
+        filename: path.resolve(__dirname, 'sass/1-tools/_svg-sprite.scss'),
         keepAttributes: true,
         // Fragment now works with Firefox 84+ and 91esr+
         format: 'fragment',

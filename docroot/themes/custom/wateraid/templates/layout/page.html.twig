@@ -44,12 +44,12 @@
 #}
 <div class="layout-container">
 
-  <header role="banner">
-    {{ page.header }}
-  </header>
+  {{ include ('wateraid:site_header', {
+    blocks: page.header
+  }, with_context = false) }}
+
 
   <div class="page-container">
-    {{ page.primary_menu }}
     {{ page.breadcrumb }}
   </div>
 

@@ -1,8 +1,5 @@
-label: Mediabibliotek
-description: 'Hitta och hantera media.'
 display:
   default:
-    display_title: Förvald
     display_options:
       fields:
         media_bulk_form:
@@ -15,28 +12,12 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: 'Applicera filter'
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      empty:
-        area_text_custom:
-          content: 'Ingen media tillgänglig.'
-      sorts:
-        created:
-          expose:
-            label: 'Nyaste först'
-        name:
-          expose:
-            label: 'Namn (A-Z)'
-        name_1:
-          expose:
-            label: 'Namn (Z-A)'
       filters:
         status:
-          expose:
-            label: 'Status för publicering'
           group_info:
             label: Publicerad
             group_items:
@@ -47,29 +28,17 @@ display:
         name:
           expose:
             label: Namn
-        bundle:
-          expose:
-            label: Mediatyp
-          group_info:
-            label: Mediatyp
         langcode:
           expose:
             label: Språk
   page:
-    display_title: Sida
     display_options:
       fields:
         media_bulk_form:
           action_title: Åtgärd
-        edit_media:
-          alter:
-            text: 'Redigera {{ name }}'
-            alt: 'Redigera {{ name }}'
-          text: Redigera
+        name:
+          separator: ', '
         delete_media:
-          alter:
-            text: 'Radera {{ name }}'
-            alt: 'Radera {{ name }}'
           text: Radera
   widget:
     display_options:
@@ -81,23 +50,13 @@ display:
         name:
           expose:
             label: Namn
-      header:
-        display_link_grid:
-          label: Rutnät
-        display_link_table:
-          label: Tabell
   widget_table:
-    display_title: 'Gränssnittskomponent (tabell)'
     display_options:
       fields:
-        thumbnail__target_id:
-          label: Miniatyr
         name:
           label: Namn
         uid:
           label: Författare
-        changed:
-          label: Uppdaterad
       arguments:
         bundle:
           exception:
@@ -106,8 +65,3 @@ display:
         name:
           expose:
             label: Namn
-      header:
-        display_link_grid:
-          label: Rutnät
-        display_link_table:
-          label: Tabell

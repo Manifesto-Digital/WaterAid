@@ -45,6 +45,8 @@
     "drupal/block_visibility_groups": "^2.0",
     "drupal/clientside_validation": "^4.1",
     "drupal/config_ignore": "^3.3",
+    "drupal/config_override_warn": "^1.5",
+    "drupal/config_pages": "^2.19",
     "drupal/config_split": "^2.0",
     "drupal/core-composer-scaffold": "^10.5",
     "drupal/core-project-message": "^10.5",
@@ -71,6 +73,7 @@
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
     "drupal/media_directories": "^2.2@beta",
+    "drupal/menu_item_fields": "^1.11",
     "drupal/metatag": "^2.0",
     "drupal/migrate_plus": "^6.0",
     "drupal/migrate_tools": "^6.1",
@@ -86,6 +89,7 @@
     "drupal/real_aes": "^2.6",
     "drupal/recaptcha_v3": "^2.0",
     "drupal/redirect": "^1.10",
+    "drupal/redirect_bulk": "^1.0",
     "drupal/scheduler": "^2.2",
     "drupal/scheduler_content_moderation_integration": "^3.0",
     "drupal/schema_metatag": "^3.0",
@@ -121,6 +125,7 @@
   },
   "require-dev": {
     "drupal/core-dev": "^10.5",
+    "drupal/kint-kint": "^2.2",
     "mglaman/phpstan-drupal": "^1.2",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan-deprecation-rules": "^1.2",
@@ -215,5 +220,8 @@
           "docroot/modules/contrib/webform/composer.libraries.json"
       ]
     }
+  },
+  "scripts": {
+    "post-acli-pull-database": [ "./scripts/drush-common.sh site.prod" ]
   }
 }

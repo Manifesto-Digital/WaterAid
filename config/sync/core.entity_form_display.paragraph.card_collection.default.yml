@@ -1,0 +1,61 @@
+uuid: 3f747f80-c51f-417a-96ab-b6ce80019744
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_collection.field_background_colour
+    - field.field.paragraph.card_collection.field_card_columns
+    - field.field.paragraph.card_collection.field_cards
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - entity_reference_revisions
+    - field_group
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - field_background_colour
+        - field_card_columns
+      label: Settings
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.card_collection.default
+targetEntityType: paragraph
+bundle: card_collection
+mode: default
+content:
+  field_background_colour:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_card_columns:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_cards:
+    type: entity_reference_revisions_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

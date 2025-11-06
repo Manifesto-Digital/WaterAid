@@ -1,0 +1,81 @@
+{% stories donate_widget with { title: 'wateraid/Molecules/Donate widget' } %}
+  {% story donate_widget with {
+    name: 'Donate widget',
+    args: {
+      heading: 'Donate to Wateraid'|t,
+      button_text: 'Donate securely now',
+      monthly_default: '1',
+      additional_link: {
+        title: 'Pay in money raised from a collection or fundraiser',
+        href: '/'
+      },
+      monthly_amounts: [
+        {
+          amount: '2',
+          title: '£2 can buy you...',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu dapibus lorem. Nullam vitae ante id purus malesuada tristique. Donec sed imperdiet urna.',
+          image: 'https://placehold.co/300x200',
+          credit: 'image credit'
+        },
+        {
+          amount: '5',
+          title: '£5 can buy you...',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu dapibus lorem. Nullam vitae ante id purus malesuada tristique. Donec sed imperdiet urna.',
+          image: 'https://placehold.co/300x200',
+          credit: 'image credit'
+        },
+        {
+          amount: '10',
+          title: '£10 can buy you...',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu dapibus lorem. Nullam vitae ante id purus malesuada tristique. Donec sed imperdiet urna.',
+          image: 'https://placehold.co/300x200',
+          credit: 'image credit'
+        },
+        {
+          amount: 'other',
+          title: '',
+          description: '',
+          image: '',
+          credit: ''
+        },
+      ],
+      one_off_amounts: [
+        {
+          amount: '20',
+          title: '£20 can buy you...',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu dapibus lorem. Nullam vitae ante id purus malesuada tristique. Donec sed imperdiet urna.',
+          image: 'https://placehold.co/300x200',
+          credit: 'image credit'
+        },
+        {
+          amount: '50',
+          title: '£50 can buy you...',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu dapibus lorem. Nullam vitae ante id purus malesuada tristique. Donec sed imperdiet urna.',
+          image: 'https://placehold.co/300x200',
+          credit: 'image credit'
+        },
+        {
+          amount: '100',
+          title: '£100 can buy you...',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu dapibus lorem. Nullam vitae ante id purus malesuada tristique. Donec sed imperdiet urna.',
+          image: 'https://placehold.co/300x200',
+          credit: 'image credit'
+        },
+        {
+          amount: 'other',
+          title: '',
+          description: '',
+          image: '',
+          credit: ''
+        },
+      ],
+    }
+  } %}
+
+    {{ include('wateraid:donate_widget', {
+      heading,
+      additional_link,
+      button_text,
+    }) }}
+  {% endstory %}
+{% endstories %}

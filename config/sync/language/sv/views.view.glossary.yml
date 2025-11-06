@@ -1,16 +1,11 @@
-label: Ordlista
-description: 'All innehåll, i bokstavsordning.'
 display:
   default:
-    display_title: Förvald
     display_options:
       fields:
         title:
           label: Titel
         name:
           label: Författare
-        changed:
-          label: 'Senaste uppdatering'
       pager:
         options:
           expose:
@@ -19,15 +14,7 @@ display:
             offset_label: Kompensera
       exposed_form:
         options:
-          submit_button: Applicera
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-  attachment_1:
-    display_title: Bilaga
-  page_1:
-    display_title: Sida
-    display_options:
-      menu:
-        title: Ordlista
