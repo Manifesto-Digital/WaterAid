@@ -19,11 +19,9 @@ source:
   fields:
     - field_audiences
     - field_countries
-    - field_single_link
     - field_get_involved_terms
     - field_meta_tags
     - field_themes
-    - field_weight
     - field_modules
 process:
   langcode:
@@ -43,28 +41,6 @@ process:
     migration: countries
     source: field_countries
     no_stub: true
-  field_full_story_link/uri:
-    -
-      plugin: link_migration_lookup
-      migration:
-        - articles
-        - campaigns
-        - country_details
-        - donation_forms
-        - donation_landing_pages
-        - events
-        - filtered_landing_pages
-        - flexible_content
-        - get_involved_node
-        - jobs
-        - press_and_media
-        - press_and_media_biographies
-        - publication
-        - standard_page
-        - stories
-        - webforms
-      source: field_single_link_uri
-  field_full_story_link/title: field_single_link_title
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
@@ -81,7 +57,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph

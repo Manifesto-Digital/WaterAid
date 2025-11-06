@@ -17,28 +17,18 @@ source:
   plugin: node_source
   bundle: get_involved
   fields:
-    - field_link
-    - field_age
     - field_audiences
-    - field_banner_title
-    - field_banner_title_space
-    - field_colour_selector
     - field_countries
-    - field_event_registration_link
-    - field_event_cta_title
     - field_event_type
     - field_get_involved_terms
-    - field_get_involved_section_title
     - field_key_stage
     - field_meta_tags
     - field_regions
     - field_resources
     - field_subject_areas
     - field_synopsis
-    - field_synopsis_background_colour
     - field_themes
     - field_topic
-    - field_weight
 process:
   langcode:
     -
@@ -47,71 +37,21 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
-  field_additional_links/uri:
-    -
-      plugin: link_migration_lookup
-      migration:
-        - articles
-        - campaigns
-        - country_details
-        - donation_forms
-        - donation_landing_pages
-        - events
-        - filtered_landing_pages
-        - flexible_content
-        - get_involved_node
-        - jobs
-        - press_and_media
-        - press_and_media_biographies
-        - publication
-        - standard_page
-        - stories
-        - webforms
-      source: field_link_uri
-  field_additional_links/title: field_link_title
-  field_age_range: field_age
   field_audience:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
     no_stub: true
-  field_banner_title: field_banner_title
-  field_banner_title_space: field_banner_title_space
-  field_colour_selector: field_colour_selector
   field_country:
     plugin: migration_lookup
     migration: countries
     source: field_countries
     no_stub: true
-  field_registration_link/uri:
-    -
-      plugin: link_migration_lookup
-      migration:
-        - articles
-        - campaigns
-        - country_details
-        - donation_forms
-        - donation_landing_pages
-        - events
-        - filtered_landing_pages
-        - flexible_content
-        - get_involved_node
-        - jobs
-        - press_and_media
-        - press_and_media_biographies
-        - publication
-        - standard_page
-        - stories
-        - webforms
-      source: field_event_registration_link_uri
-  field_registration_link/title: field_event_registration_link_title
-  field_cta_title: field_event_cta_title
   field_event_type:
     plugin: migration_lookup
     migration: event_types
     source: field_event_type
     no_stub: true
-  field_get_involved_section_title: field_get_involved_section_title
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved
@@ -148,7 +88,6 @@ process:
     source: field_subject_areas
     no_stub: true
   field_synopsis: field_synopsis
-  field_synopsis_background_colour: field_synopsis_background_colour
   field_theme:
     plugin: migration_lookup
     migration: themes
@@ -164,7 +103,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   field_content:
     -
       plugin: body_to_paragraph

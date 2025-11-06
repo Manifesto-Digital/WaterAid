@@ -17,7 +17,6 @@ source:
   fields:
     - field_header_style
     - field_meta_tags
-    - field_weight
     - field_modules
 process:
   langcode:
@@ -33,7 +32,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   field_minimal_header: field_header_style
   temp_body:
     -

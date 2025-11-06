@@ -21,10 +21,7 @@ source:
     - field_display_donation_reminder
     - field_meta_tags
     - field_header_style
-    - field_wa_donation_page_template
     - field_subtext
-    - field_wa_donation_template
-    - field_weight
     - field_modules
 process:
   langcode:
@@ -37,20 +34,13 @@ process:
   field_administrative_description: field_wa_admin_description
   field_display_donation_reminder: field_display_donation_reminder
   field_minimal_header: field_header_style
-  field_wa_donation_page_template:
-    plugin: migration_lookup
-    migration: donation_landing_pages
-    source: field_wa_donation_page_template
-    no_stub: true
   field_meta_tags: field_meta_tags
   field_subtext: field_subtext
-  field_template: field_wa_donation_template
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph

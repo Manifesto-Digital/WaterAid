@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
-    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
@@ -13,7 +12,6 @@ dependencies:
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
-    - field.field.node.webform.field_title_colour
     - field.field.node.webform.webform
     - node.type.webform
   module:
@@ -48,16 +46,6 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 107
-    region: content
-  field_form_to_overlap_with_hero:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 105
     region: content
   field_hero:
     type: entity_reference_revisions_entity_view
@@ -100,13 +88,6 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 108
-    region: content
-  field_title_colour:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 106
     region: content
   links:
     settings: {  }

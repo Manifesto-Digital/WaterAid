@@ -11,17 +11,14 @@ dependencies:
     - field.field.node.listing_page.field_items_to_display
     - field.field.node.listing_page.field_metatags
     - field.field.node.listing_page.field_review_date
-    - field.field.node.listing_page.field_rss_feed
     - field.field.node.listing_page.field_search_phrases
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - field.field.node.listing_page.field_view
-    - field.field.node.listing_page.field_weight
     - node.type.listing_page
   module:
     - datetime
     - entity_reference_revisions
-    - link
     - metatag
     - user
     - viewsreference
@@ -100,18 +97,6 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
-  field_rss_feed:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 109
-    region: content
   field_view:
     type: viewsreference_formatter
     label: hidden
@@ -120,15 +105,6 @@ content:
         - block
     third_party_settings: {  }
     weight: 105
-    region: content
-  field_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 106
     region: content
   links:
     settings: {  }

@@ -22,8 +22,6 @@ source:
     - field_introduction
     - field_pg_items_to_display
     - field_meta_tags
-    - field_rss
-    - field_weight
     - field_modules
 process:
   langcode:
@@ -38,8 +36,6 @@ process:
   field_initial_items: field_pg_initial_items
   field_introduction: field_introduction
   field_items_to_display: field_pg_items_to_display
-  field_rss_feed: field_rss
-  field_weight: field_weight
   uid:
     plugin: migration_lookup
     migration: users

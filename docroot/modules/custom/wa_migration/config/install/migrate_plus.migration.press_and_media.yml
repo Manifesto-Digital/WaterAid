@@ -22,7 +22,6 @@ source:
     - field_get_involved_terms
     - field_meta_tags
     - field_themes
-    - field_weight
     - field_modules
 process:
   langcode:
@@ -64,7 +63,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph

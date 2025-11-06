@@ -20,7 +20,6 @@ source:
     - field_audiences
     - field_countries
     - field_get_involved_terms
-    - field_hide_from_listing
     - field_hide_related_content
     - field_meta_tags
     - field_override_related
@@ -28,7 +27,6 @@ source:
     - field_related_content_type
     - field_summary
     - field_themes
-    - field_weight
 process:
   langcode:
     -
@@ -52,7 +50,6 @@ process:
     migration: get_involved
     source: field_get_involved_terms
     no_stub: true
-  field_hide_from_listing: field_hide_from_listing
   field_hide_related_content: field_hide_related_content
   field_meta_tags: field_meta_tags
   field_override_related_content: field_override_related
@@ -185,7 +182,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
 destination:
   plugin: 'entity:node'
   default_bundle: story

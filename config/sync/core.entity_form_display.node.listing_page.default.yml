@@ -11,18 +11,15 @@ dependencies:
     - field.field.node.listing_page.field_items_to_display
     - field.field.node.listing_page.field_metatags
     - field.field.node.listing_page.field_review_date
-    - field.field.node.listing_page.field_rss_feed
     - field.field.node.listing_page.field_search_phrases
     - field.field.node.listing_page.field_teaser_image
     - field.field.node.listing_page.field_teaser_text
     - field.field.node.listing_page.field_view
-    - field.field.node.listing_page.field_weight
     - node.type.listing_page
   module:
     - datetime
     - field_group
     - layout_paragraphs
-    - link
     - media_library
     - metatag
     - path
@@ -186,14 +183,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_rss_feed:
-    type: link_default
-    weight: 31
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_search_phrases:
     type: string_textarea
     weight: 7
@@ -222,13 +211,6 @@ content:
     weight: 27
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_weight:
-    type: number
-    weight: 28
-    region: content
-    settings:
-      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
