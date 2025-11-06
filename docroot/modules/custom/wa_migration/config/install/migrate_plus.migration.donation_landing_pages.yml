@@ -22,6 +22,7 @@ source:
     - field_subtext
     - field_modules
     - field_hero
+    - field_teaser_image
 process:
   langcode:
     -
@@ -36,6 +37,11 @@ process:
     no_stub: true
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_administrative_description: field_wa_admin_description
   field_display_donation_reminder: field_display_donation_reminder
   field_minimal_header: field_header_style
@@ -87,4 +93,5 @@ migration_dependencies:
   required:
     - users
     - hero
+    - media
 include: null

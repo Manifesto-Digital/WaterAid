@@ -23,6 +23,7 @@ source:
     - field_themes
     - field_modules
     - field_hero
+    - field_teaser_image
 process:
   langcode:
     -
@@ -31,6 +32,11 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_hero:
     plugin: paragraph_migration_lookup
     migrations:
@@ -106,4 +112,5 @@ migration_dependencies:
     - themes
     - users
     - hero
+    - media
 include: null

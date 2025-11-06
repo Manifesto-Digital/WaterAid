@@ -27,6 +27,7 @@ source:
     - field_related_content_type
     - field_summary
     - field_themes
+    - field_teaser_image
 process:
   langcode:
     -
@@ -35,6 +36,11 @@ process:
   status: status
   title: title
   field_teaser_text: field_summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_audience:
     plugin: migration_lookup
     migration: audiences
@@ -206,4 +212,5 @@ migration_dependencies:
     - themes
     - users
     - articles
+    - media
 include: null

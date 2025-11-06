@@ -20,6 +20,7 @@ source:
     - field_header_style
     - field_meta_tags
     - field_modules
+    - field_teaser_image
 process:
   langcode:
     -
@@ -28,6 +29,11 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_meta_tags: field_meta_tags
   uid:
     plugin: migration_lookup
@@ -79,4 +85,5 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - media
 include: null
