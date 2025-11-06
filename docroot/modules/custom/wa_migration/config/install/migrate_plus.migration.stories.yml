@@ -21,6 +21,8 @@ source:
     - field_meta_tags
     - field_themes
     - field_modules
+    - field_article_hero_image
+    - field_article_hero_video
 process:
   langcode:
     -
@@ -28,6 +30,16 @@ process:
       default_value: en
   status: status
   title: title
+  temp_image:
+    plugin: migration_lookup
+    source: field_article_hero_image
+    migration: media
+    no_stub: true
+  field_hero:
+    plugin: image_or_video_to_hero
+    source:
+      - '@temp_image'
+      - field_media_video_embed_field
   field_teaser_text: body__summary
   field_audience:
     plugin: migration_lookup
@@ -103,4 +115,5 @@ migration_dependencies:
     - get_involved
     - themes
     - users
+    - media
 include: null
