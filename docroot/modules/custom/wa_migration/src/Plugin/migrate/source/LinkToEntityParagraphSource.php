@@ -24,13 +24,15 @@ class LinkToEntityParagraphSource extends ParagraphSource {
   public function prepareRow(Row $row): bool {
     $value = [];
 
-    foreach ($this->select('paragraph__field_call_to_action_link', 'c')
+    $field = $this->configuration['bundle'] == 'rainbow_link_item' ? 'field_call_to_action_link_single' : 'field_call_to_action_link';
+
+    foreach ($this->select('paragraph__' . $field, 'c')
       ->fields('c')
       ->condition('entity_id', $row->getSourceProperty('id'))
       ->execute()->fetchAll() as $datum) {
-      if (isset($datum['field_call_to_action_link_uri'])) {
-        if (str_starts_with($datum['field_call_to_action_link_uri'], 'entity:node/')) {
-          $value[] = substr($datum['field_call_to_action_link_uri'], 12);
+      if (isset($datum[$field . '_uri'])) {
+        if (str_starts_with($datum[$field . '_uri'], 'entity:node/')) {
+          $value[] = substr($datum[$field . '_uri'], 12);
         }
       }
     }

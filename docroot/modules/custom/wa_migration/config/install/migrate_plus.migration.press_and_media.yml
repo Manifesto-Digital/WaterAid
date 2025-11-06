@@ -95,6 +95,7 @@ process:
         - listing
         - biography_item
         - activation_bar_item
+        - rainbow_link_item
       source: field_modules
   field_content:
     plugin: merge_without_exception

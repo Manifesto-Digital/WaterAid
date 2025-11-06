@@ -106,7 +106,8 @@ final class NodeSource extends SqlBase {
                   'field_tab_items',
                   'field_quotes_quote',
                   'field_biography_item',
-                  '	field_activation_bar_item',
+                  'field_activation_bar_item',
+                  'field_rainbow_links',
                 ] as $table) {
                   if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
                     ->fields('p')
