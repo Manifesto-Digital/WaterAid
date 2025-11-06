@@ -103,7 +103,7 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
         if ($this->azureBlobStorageApi->blobPut($name, $this->generateBlobArray($submission), TRUE)) {
           // The submission has been successfully stored in the blob, so we can
           // delete it from the website.
-          $submission->delete();
+//          $submission->delete();
         }
         else {
           $error = TRUE;
