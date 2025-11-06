@@ -24,6 +24,7 @@ source:
     - field_synopsis
     - field_themes
     - field_modules
+    - field_event_logo
 process:
   langcode:
     -
@@ -32,6 +33,16 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
+  temp_hero:
+    plugin: migration_lookup
+    migration: media
+    source: field_event_logo
+    no_stub: true
+  field_hero:
+    plugin: image_to_hero
+    hero_type: hero_image
+    source:
+      - '@temp_hero'
   field_audience:
     plugin: migration_lookup
     migration: audiences
@@ -112,4 +123,5 @@ migration_dependencies:
     - get_involved
     - themes
     - users
+    - media
 include: null

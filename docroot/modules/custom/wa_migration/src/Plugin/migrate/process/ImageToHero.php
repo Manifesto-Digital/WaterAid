@@ -64,9 +64,12 @@ final class ImageToHero extends ProcessPluginBase implements ContainerFactoryPlu
         $paragraph = $this->entityTypeManager->getStorage('paragraph')->create([
           'type' => $this->configuration['hero_type'],
         ]);
-        $paragraph->set('field_image', $media);
 
-        if (!empty($value[1])) {
+        if ($paragraph->hasField('field_image')) {
+          $paragraph->set('field_image', $media);
+        }
+
+        if (!empty($value[1]) && $paragraph->hasField('field_authors')) {
           $paragraph->set('field_authors', $value[1]);
         }
 
