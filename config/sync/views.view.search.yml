@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_content
     - search_api.index.search
   module:
-    - entity_reference_revisions
+    - better_exposed_filters
     - search_api
     - user
 id: search
@@ -116,17 +115,41 @@ display:
             offset: false
             offset_label: Offset
       exposed_form:
-        type: input_required
+        type: bef
         options:
           submit_button: Apply
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Enter your keywords and click on Apply to see results'
+          text_input_required: ''
           text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: true
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  placeholder_text: 'Enter your search'
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       access:
         type: perm
         options:
@@ -178,8 +201,8 @@ display:
           exposed: true
           expose:
             operator_id: search_api_fulltext_op
-            label: Keywords
-            description: 'To search for exact phrases, use "your phrase"'
+            label: 'Search the website'
+            description: ''
             use_operator: false
             operator: search_api_fulltext_op
             operator_limit_selection: false
@@ -254,14 +277,12 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_content'
         - 'config:search_api.index.search'
         - 'search_api_list:search'
   search:
@@ -276,13 +297,11 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_content'
         - 'config:search_api.index.search'
         - 'search_api_list:search'
