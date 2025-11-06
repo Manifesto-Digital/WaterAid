@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_teaser_image
+    - media.type.dam_image
     - node.type.donation
 id: node.donation.field_teaser_image
 field_name: field_teaser_image
@@ -18,7 +19,8 @@ default_value_callback: ''
 settings:
   handler: 'default:media'
   handler_settings:
-    target_bundles: {  }
+    target_bundles:
+      dam_image: dam_image
     sort:
       field: _none
       direction: ASC
