@@ -62,6 +62,7 @@ permissions:
   - 'access media overview'
   - 'access own webform configuration'
   - 'access site in maintenance mode'
+  - 'access site reports'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access webform help'

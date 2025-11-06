@@ -63,6 +63,7 @@ permissions:
   - 'access group overview'
   - 'access media overview'
   - 'access own webform configuration'
+  - 'access site reports'
   - 'access toolbar'
   - 'access webform help'
   - 'administer menu'
