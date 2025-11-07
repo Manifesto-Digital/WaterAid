@@ -16,15 +16,31 @@ use Drupal\migrate\Row;
  *   source_module = "wa_migration",
  * )
  */
-final class NodeSource extends SqlBase {
+class NodeSource extends SqlBase {
+
+  /**
+   * Helper to get the query separately so we can minimise code duplication.
+   *
+   * @return \Drupal\Core\Database\Query\SelectInterface
+   *   The select query.
+   */
+  public function getQuery(): SelectInterface {
+    return $this->select('node_field_data', 'n')
+      ->fields('n')
+      ->condition('n.type', $this->configuration['bundle'])
+      ->condition('n.status', 1)
+      ->condition('n.nid', 16086, '<>');
+  }
 
   /**
    * {@inheritdoc}
    */
   public function query(): SelectInterface {
-    $query = $this->select('node_field_data', 'n')
-      ->fields('n')
-      ->condition('n.type', $this->configuration['bundle']);
+
+    // We want a single node to not be migrated to the same content type as
+    // other nodes of its type. We'll exclude it here and create a custom
+    // migration for it.
+    $query = $this->getQuery();
 
     if (isset($this->configuration['fields'])) {
       if (in_array('field_wa_donation_page_template', $this->configuration['fields'])) {
@@ -127,6 +143,7 @@ final class NodeSource extends SqlBase {
                     'field_biography_item',
                     'field_activation_bar_item',
                     'field_rainbow_links',
+                    'field_donation_cta_widget',
                   ] as $table) {
                     if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
                       ->fields('p')
