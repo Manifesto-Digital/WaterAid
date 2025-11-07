@@ -774,7 +774,7 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * @see https://docs.acquia.com/acquia-cloud/manage/code/require-line/
  */
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/manifestopartner/manifestopartner-settings.inc';
+  require '/var/www/site-php/wateraidace/wateraidace-settings.inc';
 }
 
 
