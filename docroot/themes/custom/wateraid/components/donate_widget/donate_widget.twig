@@ -24,7 +24,7 @@
 ] %}
 
 <div {{ attributes.addClass(classes) }}>
-  {# Heading  #}
+  {# Heading #}
   {% if heading %}
     <div class="donate-widget__heading">
       {% if variant == 'hero' %}
@@ -42,17 +42,21 @@
       <legend class="donate-widget__legend">How often can you donate?</legend>
       <div class="donate-widget__options-wrapper">
         <!-- Option: Monthly -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
-                 {% if monthly_default == '1' %}checked{% endif %}>
-          <label class="donate-widget__radio-label" for="freq-monthly">Monthly</label>
-        </div>
+        {% if monthly_amounts|length %}
+          <div class="donate-widget__option">
+            <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
+              {% if monthly_default == '1' or one_off_amounts|length <= 0 %}checked{% endif %}>
+            <label class="donate-widget__radio-label" for="freq-monthly">Monthly</label>
+          </div>
+        {% endif %}
         <!-- Option: One off -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off"
-                 {% if monthly_default == '0' %}checked{% endif %}>
-          <label class="donate-widget__radio-label" for="freq-one-off">One off</label>
-        </div>
+        {% if one_off_amounts|length %}
+          <div class="donate-widget__option">
+            <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off"
+              {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
+            <label class="donate-widget__radio-label" for="freq-one-off">One off</label>
+          </div>
+        {% endif %}
       </div>
     </fieldset>
 

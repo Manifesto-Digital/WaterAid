@@ -138,7 +138,7 @@
           }
         }
 
-        const redirectUrl = location + '?fq=' + frequencyValue + '&val=' + amountValue;
+        const redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_') + '&val=' + amountValue;
 
         window.location.href = redirectUrl;
 
