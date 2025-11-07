@@ -30,6 +30,7 @@ module:
   datetime: 0
   dblog: 0
   diff: 0
+  dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -87,6 +88,7 @@ module:
   path: 0
   path_alias: 0
   phpass: 0
+  preview_link: 0
   quick_node_clone: 0
   rabbit_hole: 0
   recaptcha_v3: 0

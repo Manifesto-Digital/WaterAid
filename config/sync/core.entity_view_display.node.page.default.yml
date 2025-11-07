@@ -5,11 +5,11 @@ dependencies:
   config:
     - field.field.node.page.field_content
     - field.field.node.page.field_metatags
+    - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
-    - field.field.node.page.field_weight
     - node.type.page
   module:
     - datetime
@@ -39,6 +39,16 @@ content:
     third_party_settings: {  }
     weight: 15
     region: content
+  field_minimal_header:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
   field_review_date:
     type: datetime_time_ago
     label: above
@@ -48,15 +58,6 @@ content:
       granularity: 2
     third_party_settings: {  }
     weight: 104
-    region: content
-  field_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 106
     region: content
   links:
     settings: {  }

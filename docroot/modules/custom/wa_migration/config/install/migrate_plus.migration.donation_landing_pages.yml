@@ -19,36 +19,39 @@ source:
     - field_display_donation_reminder
     - field_meta_tags
     - field_header_style
-    - field_wa_donation_page_template
     - field_subtext
-    - field_wa_donation_template
-    - field_weight
     - field_modules
+    - field_hero
+    - field_teaser_image
 process:
   langcode:
     -
       plugin: default_value
       default_value: en
   status: status
+  field_hero:
+    plugin: paragraph_migration_lookup
+    migrations:
+      - hero
+    source: field_hero
+    no_stub: true
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_administrative_description: field_wa_admin_description
   field_display_donation_reminder: field_display_donation_reminder
   field_minimal_header: field_header_style
-  field_wa_donation_page_template:
-    plugin: migration_lookup
-    migration: donation_landing_pages
-    source: field_wa_donation_page_template
-    no_stub: true
   field_meta_tags: field_meta_tags
   field_subtext: field_subtext
-  field_template: field_wa_donation_template
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph
@@ -66,6 +69,16 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -79,4 +92,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - hero
+    - media
 include: null

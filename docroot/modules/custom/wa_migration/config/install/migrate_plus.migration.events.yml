@@ -15,22 +15,17 @@ source:
   plugin: node_source
   bundle: event
   fields:
-    - field_link
     - field_audiences
-    - field_colour_selector
     - field_countries
-    - field_event_cta_supporting_text
-    - field_event_cta_title
-    - field_event_info_bg_colour
     - field_event_type
     - field_get_involved_terms
     - field_meta_tags
     - field_regions
-    - field_event_registration_link
     - field_synopsis
     - field_themes
-    - field_weight
     - field_modules
+    - field_event_logo
+    - field_teaser_image
 process:
   langcode:
     -
@@ -39,43 +34,32 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
-  field_additional_links/uri:
-    -
-      plugin: link_migration_lookup
-      migration:
-        - articles
-        - campaigns
-        - country_details
-        - donation_forms
-        - donation_landing_pages
-        - events
-        - filtered_landing_pages
-        - flexible_content
-        - get_involved_node
-        - jobs
-        - press_and_media
-        - press_and_media_biographies
-        - publication
-        - standard_page
-        - stories
-        - webforms
-      source: field_link_uri
-  field_additional_links/title: field_link_title
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
+  temp_hero:
+    plugin: migration_lookup
+    migration: media
+    source: field_event_logo
+    no_stub: true
+  field_hero:
+    plugin: image_to_hero
+    hero_type: hero_image
+    source:
+      - '@temp_hero'
   field_audience:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
     no_stub: true
-  field_colour_selector: field_colour_selector
   field_country:
     plugin: migration_lookup
     migration: countries
     source: field_countries
     no_stub: true
-  field_cta_supporting_text: field_event_cta_supporting_text
-  field_cta_title: field_event_cta_title
   field_event_end_date: field_event_date_end
-  field_event_information_bg_colou: field_event_info_bg_colour
   field_event_start_date: field_event_date_start
   field_event_type:
     plugin: migration_lookup
@@ -89,28 +73,6 @@ process:
     no_stub: true
   field_meta_tags: field_meta_tags
   field_regions: field_regions
-  field_registration_link/uri:
-    -
-      plugin: link_migration_lookup
-      migration:
-        - articles
-        - campaigns
-        - country_details
-        - donation_forms
-        - donation_landing_pages
-        - events
-        - filtered_landing_pages
-        - flexible_content
-        - get_involved_node
-        - jobs
-        - press_and_media
-        - press_and_media_biographies
-        - publication
-        - standard_page
-        - stories
-        - webforms
-      source: field_event_registration_link_uri
-  field_registration_link/title: field_event_registration_link_title
   field_synopsis: field_synopsis
   field_theme:
     plugin: migration_lookup
@@ -122,7 +84,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph
@@ -140,6 +101,16 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -158,4 +129,5 @@ migration_dependencies:
     - get_involved
     - themes
     - users
+    - media
 include: null

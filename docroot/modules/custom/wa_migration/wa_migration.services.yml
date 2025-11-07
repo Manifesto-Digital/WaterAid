@@ -1,0 +1,6 @@
+services:
+  wa_migration.event_subscriber:
+    class: Drupal\wa_migration\EventSubscriber\WaMigrationSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

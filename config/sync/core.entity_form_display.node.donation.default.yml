@@ -9,14 +9,11 @@ dependencies:
     - field.field.node.donation.field_hero
     - field.field.node.donation.field_metatags
     - field.field.node.donation.field_minimal_header
-    - field.field.node.donation.field_page_template
     - field.field.node.donation.field_review_date
     - field.field.node.donation.field_search_phrases
     - field.field.node.donation.field_subtext
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
-    - field.field.node.donation.field_template
-    - field.field.node.donation.field_weight
     - node.type.donation
   module:
     - datetime
@@ -170,16 +167,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  field_page_template:
-    type: entity_reference_autocomplete
-    weight: 32
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
@@ -215,20 +202,6 @@ content:
     region: content
     settings:
       rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_template:
-    type: boolean_checkbox
-    weight: 31
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_weight:
-    type: number
-    weight: 28
-    region: content
-    settings:
       placeholder: ''
     third_party_settings: {  }
   langcode:
