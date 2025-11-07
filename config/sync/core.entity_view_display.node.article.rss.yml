@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.rss
-    - field.field.node.article.body
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
@@ -44,7 +43,6 @@ content:
     weight: 1
     region: content
 hidden:
-  body: true
   co_authors: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
