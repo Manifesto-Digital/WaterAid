@@ -13,7 +13,7 @@ use Drupal\wa_orange_dam\Service\Api;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a asset_to_orange_dam plugin.
+ * Provides an asset_to_orange_dam plugin.
  *
  * Usage:
  *
@@ -66,7 +66,7 @@ final class AssetToOrangeDam extends ProcessPluginBase implements ContainerFacto
       else {
 
         // For the files, we'll search only by file name.
-        $result = $this->api->search(['query' => 'CoreField.OriginalFileName:' . $value]);
+        $result = $this->api->search(['query' => 'Filename:' . $value]);
       }
 
       if (!empty($result['APIResponse']['Items']) && count($result['APIResponse']['Items']) > 1) {
