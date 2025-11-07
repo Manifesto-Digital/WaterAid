@@ -6,6 +6,11 @@
     margin-top: $wa-spacing-09;
   }
 
+  &__content {
+    h2 {
+      padding-bottom: $wa-spacing-07;
+    }
+  }
   &__search {
     display: flex;
     flex-direction: column;
