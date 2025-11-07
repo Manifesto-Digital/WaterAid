@@ -24,12 +24,13 @@ source:
     - field_meta_tags
     - field_post_description
     - field_themes
-    - field_weight
     - field_hide_related_content
     - field_modules
     - field_override_related
     - field_related_content
     - field_related_content_type
+    - field_article_hero_image
+    - field_teaser_image
 process:
   langcode:
     -
@@ -38,6 +39,11 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_audience:
     plugin: migration_lookup
     migration: audiences
@@ -54,11 +60,12 @@ process:
     source: field_get_involved_terms
     no_stub: true
   field_meta_tags: field_meta_tags
-  co_authors:
+  temp_authors:
     plugin: migration_lookup
     migration: users
     source: field_author
     no_stub: true
+  co_authors: '@temp_authors'
   field_post_description: field_post_description
   field_theme:
     plugin: migration_lookup
@@ -70,7 +77,17 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
+  temp_hero:
+    plugin: migration_lookup
+    migration: media
+    source: field_article_hero_image
+    no_stub: true
+  field_hero:
+    plugin: image_to_hero
+    hero_type: hero_news
+    source:
+      - '@temp_hero'
+      - '@temp_authors'
   field_hide_related_content: field_hide_related_content
   field_override_related_content: field_override_related
   temp_articles:
@@ -203,6 +220,20 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -232,4 +263,5 @@ migration_dependencies:
     - stories
     - themes
     - users
+    - media
 include: null

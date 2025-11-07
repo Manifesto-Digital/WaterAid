@@ -22,16 +22,32 @@ source:
     - field_get_involved_terms
     - field_meta_tags
     - field_themes
-    - field_weight
     - field_modules
+    - field_publication_image
+    - field_teaser_image
 process:
   langcode:
     -
       plugin: default_value
       default_value: en
   status: status
+  temp_hero:
+    plugin: migration_lookup
+    migration: media
+    source: field_publication_image
+    no_stub: true
+  field_hero:
+    plugin: image_to_hero
+    hero_type: hero_image
+    source:
+      - '@temp_hero'
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_audience:
     plugin: migration_lookup
     migration: audiences
@@ -64,7 +80,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph
@@ -82,6 +97,20 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -99,4 +128,5 @@ migration_dependencies:
     - get_involved
     - themes
     - users
+    - media
 include: null

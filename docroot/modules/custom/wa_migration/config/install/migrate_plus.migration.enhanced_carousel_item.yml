@@ -1,0 +1,68 @@
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: enhanced_carousel_item
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_uk
+label: Enhanced Carousel
+source:
+  plugin: paragraph_source
+  bundle: enhanced_carousel_item
+  fields:
+    - field_scroll_carousel_image
+    - field_scroll_carousel_content
+    - field_scroll_carousel_link
+    - field_enhanced_carousel_title
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_title: field_enhanced_carousel_title
+  field_rich_text/value: field_scroll_carousel_content
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_link:
+    plugin: link_migration_lookup
+    migration:
+      - articles
+      - campaigns
+      - country_details
+      - donation_forms
+      - donation_landing_pages
+      - events
+      - filtered_landing_pages
+      - flexible_content
+      - get_involved_node
+      - jobs
+      - press_and_media
+      - press_and_media_biographies
+      - publication
+      - standard_page
+      - stories
+      - webforms
+    source: field_scroll_carousel_link
+  temp_media:
+    plugin: migration_lookup
+    source: field_scroll_carousel_image
+    migration: media
+    no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies:
+  required:
+    - media
+include: null

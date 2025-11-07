@@ -17,11 +17,10 @@ source:
   plugin: node_source
   bundle: webform
   fields:
-    - field_c_w_overlap_hero
-    - field_c_w_title_colour
     - field_c_w_donation_menu
     - field_meta_tags
-    - field_weight
+    - field_hero
+    - webform
 process:
   langcode:
     -
@@ -29,11 +28,15 @@ process:
       default_value: en
   status: status
   title: title
-  field_form_to_overlap_with_hero: field_c_w_overlap_hero
-  field_title_colour: field_c_w_title_colour
+  webform: webform
+  field_hero:
+    plugin: paragraph_migration_lookup
+    migrations:
+      - hero
+    source: field_hero
+    no_stub: true
   field_donation_menu: field_c_w_donation_menu
   field_meta_tags: field_meta_tags
-  field_weight: field_weight
   uid:
     plugin: migration_lookup
     migration: users
@@ -45,4 +48,5 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - hero
 include: null

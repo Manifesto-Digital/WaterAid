@@ -3,15 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_additional_links
     - field.field.node.event.field_audience
-    - field.field.node.event.field_colour_selector
     - field.field.node.event.field_content
     - field.field.node.event.field_country
-    - field.field.node.event.field_cta_supporting_text
-    - field.field.node.event.field_cta_title
     - field.field.node.event.field_event_end_date
-    - field.field.node.event.field_event_information_bg_colou
     - field.field.node.event.field_event_start_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_get_involved
@@ -19,20 +14,17 @@ dependencies:
     - field.field.node.event.field_metatags
     - field.field.node.event.field_properties
     - field.field.node.event.field_regions
-    - field.field.node.event.field_registration_link
     - field.field.node.event.field_review_date
     - field.field.node.event.field_search_phrases
     - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - field.field.node.event.field_theme
-    - field.field.node.event.field_weight
     - node.type.event
   module:
     - datetime
     - entity_reference_revisions
     - key_value_field
-    - link
     - metatag
     - options
     - user
@@ -41,18 +33,6 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  field_additional_links:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 107
-    region: content
   field_audience:
     type: entity_reference_label
     label: hidden
@@ -60,13 +40,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 101
-    region: content
-  field_colour_selector:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 108
     region: content
   field_content:
     type: entity_reference_revisions_entity_view
@@ -85,21 +58,6 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
-  field_cta_supporting_text:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 109
-    region: content
-  field_cta_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 110
-    region: content
   field_event_end_date:
     type: datetime_default
     label: above
@@ -108,13 +66,6 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 106
-    region: content
-  field_event_information_bg_colou:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 111
     region: content
   field_event_start_date:
     type: datetime_default
@@ -172,18 +123,6 @@ content:
     third_party_settings: {  }
     weight: 112
     region: content
-  field_registration_link:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 113
-    region: content
   field_review_date:
     type: datetime_time_ago
     label: above
@@ -209,15 +148,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 103
-    region: content
-  field_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 106
     region: content
   links:
     settings: {  }

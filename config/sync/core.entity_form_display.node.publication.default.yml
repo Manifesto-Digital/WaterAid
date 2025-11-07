@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
+    - field.field.node.publication.field_documents
     - field.field.node.publication.field_download_link_placement
     - field.field.node.publication.field_force_download
     - field.field.node.publication.field_force_open
@@ -181,6 +182,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_documents:
+    type: media_library_widget
+    weight: 124
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   field_download_link_placement:
     type: options_select

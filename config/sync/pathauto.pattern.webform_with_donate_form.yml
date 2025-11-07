@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: webform_with_donate_form
-label: "Webform with donate form (programmatically set - see wateraid_core.module)"
+label: 'Webform with donate form (programmatically set - see wateraid_core.module)'
 type: 'canonical_entities:node'
 pattern: '/donate/[node:title]'
 selection_criteria:

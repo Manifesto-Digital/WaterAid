@@ -21,7 +21,6 @@ dependencies:
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
-    - field.field.node.article.field_weight
     - node.type.article
   module:
     - user
@@ -65,7 +64,6 @@ hidden:
   field_search_phrases: true
   field_teaser_image: true
   field_theme: true
-  field_weight: true
   langcode: true
   node_read_time: true
   reading_time: true
