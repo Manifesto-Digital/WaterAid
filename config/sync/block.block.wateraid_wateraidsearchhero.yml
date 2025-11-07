@@ -1,0 +1,25 @@
+uuid: a8509f8c-aceb-48ee-ac51-8b013f6e5093
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - wateraid_blocks
+  theme:
+    - wateraid
+id: wateraid_wateraidsearchhero
+theme: wateraid
+region: content
+weight: -7
+provider: null
+plugin: wateraid_search_hero
+settings:
+  id: wateraid_search_hero
+  label: 'WaterAid: Search hero'
+  label_display: '0'
+  provider: wateraid_blocks
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search
