@@ -871,41 +871,6 @@ strong {
  * be imported into SDC components, not styles.scss.
  */
 
-header {
-  padding: 24px 0;
-  border-bottom: #000 solid 1px;
-}
-
-header > div {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-@media only screen and (min-width: 768px) {
-  header > div {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  header > div {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-}
-
-header > div {
-  margin-left: 0;
-}
-
-header img {
-  display: block;
-  width: 200px;
-}
-
 .page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1014,6 +979,11 @@ header img {
 
 body {
   font-family: "Noto Sans";
+}
+
+.gin-secondary-toolbar--frontend {
+  background: #fff;
+  opacity: 1;
 }
 
 /**
