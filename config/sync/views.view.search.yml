@@ -243,16 +243,16 @@ display:
         options:
           view_modes:
             'entity:node':
-              ':default': teaser
-              article: ':default'
-              donation: ':default'
-              event: ':default'
-              landing_page: ':default'
-              listing_page: ':default'
-              page: ':default'
-              publication: ':default'
-              standard_page: ':default'
-              story: ':default'
+              ':default': search_listing
+              article: search_listing
+              donation: search_listing
+              event: search_listing
+              landing_page: search_listing
+              listing_page: search_listing
+              page: search_listing
+              publication: search_listing
+              standard_page: search_listing
+              story: search_listing
       query:
         type: search_api_query
         options:
@@ -270,8 +270,8 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: result
-          empty: false
-          content: 'Displaying @start - @end of @total'
+          empty: true
+          content: '<strong>@start - @end</strong> of <strong>@total</strong> results'
       footer: {  }
       display_extenders: {  }
     cache_metadata:

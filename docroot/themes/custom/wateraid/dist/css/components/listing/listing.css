@@ -488,6 +488,18 @@ strong {
   display: none;
 }
 
+.listing--search .listing__header {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
 .listing--search .views-exposed-form {
   position: relative;
   margin-bottom: 3rem;

@@ -161,6 +161,46 @@
     }
   }
 
+  &--search {
+    @include grid();
+    padding: $wa-spacing-06 0;
+    border-bottom: 2px solid $wa-cream;
+
+    &:hover {
+      cursor: pointer;
+
+      h2 a {
+        text-decoration: underline;
+        text-decoration-color: $wa-navy;
+      }
+    }
+
+    .card__body {
+      @include grid-item-span(4, 4, 9);
+      padding-left: 0;
+      grid-gap: 0;
+    }
+
+    .card__tag {
+      width: fit-content;
+      margin-bottom: $wa-spacing-04;
+    }
+
+    .card__heading {
+      margin-bottom: $wa-spacing-04;
+    }
+
+    .card__image {
+      display: none;
+
+      @include tablet() {
+        @include grid-item-span(4, 2, 3);
+        display: block;
+        padding-left: 0;
+      }
+    }
+  }
+
   // Colour variants.
   &--cream {
     background-color: $wa-cream;
