@@ -96,82 +96,84 @@
     }
   }
 
-  &__pager {
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+  &--default {
+    .listing__pager {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-    .button {
-      align-items: center;
-      background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-plus-blue.svg");
-      background-position: $wa-spacing-06 center;
-      background-repeat: no-repeat;
-      color: $wa-blue;
-      max-width: fit-content;
-      padding: $wa-spacing-03 $wa-spacing-06 $wa-spacing-03 $wa-spacing-10;
+      .button {
+        align-items: center;
+        background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-plus-blue.svg");
+        background-position: $wa-spacing-06 center;
+        background-repeat: no-repeat;
+        color: $wa-blue;
+        max-width: fit-content;
+        padding: $wa-spacing-03 $wa-spacing-06 $wa-spacing-03 $wa-spacing-10;
 
-      &::after {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
+        &::after {
+          background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
+        }
       }
     }
-  }
 
-  .button,
-  .form-actions {
-    align-items: center;
-    display: flex;
-    font-family: "Noto Sans Bold";
-    font-size: 1.5rem;
-    gap: $wa-spacing-02;
-    justify-self: center;
-    text-decoration: none;
-    justify-content: center;
-    width: 100%;
-
-
-    &::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      content: "";
-      display: block;
-      height: 0;
-      position: absolute;
-      transition: transform 200ms;
-      width: 0;
-      will-change: transform;
-      z-index: -1;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:hover::before {
-      transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
-      left: 0;
-      height: 100%;
+    .button,
+    .form-actions {
+      align-items: center;
+      display: flex;
+      font-family: "Noto Sans Bold";
+      font-size: 1.5rem;
+      gap: $wa-spacing-02;
+      justify-self: center;
+      text-decoration: none;
+      justify-content: center;
       width: 100%;
-    }
 
-    &:focus-visible {
-      outline: $wa-pink $wa-spacing-01 solid;
-      border: none;
-      background: none;
-    }
 
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      z-index: -1;
-      left: 0;
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
+      &::before {
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        content: "";
+        display: block;
+        height: 0;
+        position: absolute;
+        transition: transform 200ms;
+        width: 0;
+        will-change: transform;
+        z-index: -1;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:hover::before {
+        transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      &:focus-visible {
+        outline: $wa-pink $wa-spacing-01 solid;
+        border: none;
+        background: none;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        left: 0;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
     }
   }
 
@@ -219,7 +221,7 @@
       display: block;
       margin-bottom: $wa-spacing-06;
     }
-    
+
     .views-exposed-form {
       position: relative;
       margin-bottom: $wa-spacing-09;
