@@ -141,6 +141,9 @@ class DamBase extends File {
         ])) {
           if (isset($api_result['APIResponse']['Items'][0]['CustomField.Caption'])) {
             $alt = $api_result['APIResponse']['Items'][0]['CustomField.Caption'];
+
+            // Ensure long captions aren't too long for the database.
+            $alt = substr($alt, 0, 250);
           }
         }
 

@@ -42,6 +42,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_metatags: true
+  field_minimal_header: true
   field_review_date: true
   field_search_phrases: true
   langcode: true
