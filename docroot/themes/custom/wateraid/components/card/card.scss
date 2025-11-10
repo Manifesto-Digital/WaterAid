@@ -177,7 +177,7 @@
 
     .card__body {
       @include grid-item-span(4, 4, 9);
-      padding-left: 0;
+      padding: 0;
       grid-gap: 0;
     }
 
