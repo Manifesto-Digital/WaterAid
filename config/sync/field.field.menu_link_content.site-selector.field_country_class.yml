@@ -1,0 +1,20 @@
+uuid: 4cdbc40e-bd96-4ea0-bd1e-ea9ac832c4b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_country_class
+  module:
+    - menu_link_content
+id: menu_link_content.site-selector.field_country_class
+field_name: field_country_class
+entity_type: menu_link_content
+bundle: site-selector
+label: 'Country class'
+description: "This is to allow you to associate the country with the correct flag. Please provide the three-letter ISO 3166-1 alpha-3 code in caps, see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3\r\n\r\nFor 'Global' enter 'GLOBAL'."
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
