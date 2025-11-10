@@ -10,14 +10,11 @@ dependencies:
     - field.field.node.donation.field_hero
     - field.field.node.donation.field_metatags
     - field.field.node.donation.field_minimal_header
-    - field.field.node.donation.field_page_template
     - field.field.node.donation.field_review_date
     - field.field.node.donation.field_search_phrases
     - field.field.node.donation.field_subtext
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
-    - field.field.node.donation.field_template
-    - field.field.node.donation.field_weight
     - node.type.donation
   module:
     - user
@@ -52,12 +49,9 @@ hidden:
   field_hero: true
   field_metatags: true
   field_minimal_header: true
-  field_page_template: true
   field_review_date: true
   field_search_phrases: true
-  field_subtext: true
-  field_template: true
-  field_weight: true
+  field_subtext: tru
   langcode: true
   links: true
   node_read_time: true

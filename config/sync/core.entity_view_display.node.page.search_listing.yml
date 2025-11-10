@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
-    - field.field.node.page.field_weight
     - node.type.page
   module:
     - user
@@ -45,7 +44,6 @@ hidden:
   field_metatags: true
   field_review_date: true
   field_search_phrases: true
-  field_weight: true
   langcode: true
   links: true
   node_read_time: true
