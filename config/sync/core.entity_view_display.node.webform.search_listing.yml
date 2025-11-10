@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.search_listing
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
-    - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
@@ -14,7 +13,6 @@ dependencies:
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
-    - field.field.node.webform.field_title_colour
     - field.field.node.webform.webform
     - node.type.webform
   module:
@@ -48,13 +46,11 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_donation_menu: true
-  field_form_to_overlap_with_hero: true
   field_hero: true
   field_metatags: true
   field_options: true
   field_review_date: true
   field_sidebar_content: true
-  field_title_colour: true
   langcode: true
   links: true
   node_read_time: true
