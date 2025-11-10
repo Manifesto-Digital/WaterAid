@@ -1,0 +1,27 @@
+uuid: 881f6648-0f45-4118-9292-1f2387840bac
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-group_node-story
+id: group_relationship.wateraid_site-group_node-story.default
+targetEntityType: group_relationship
+bundle: wateraid_site-group_node-story
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true
