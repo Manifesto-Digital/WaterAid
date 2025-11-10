@@ -51,7 +51,7 @@ hidden:
   field_minimal_header: true
   field_review_date: true
   field_search_phrases: true
-  field_subtext: tru
+  field_subtext: true
   langcode: true
   links: true
   node_read_time: true
