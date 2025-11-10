@@ -5,26 +5,15 @@ display:
       fields:
         title:
           label: Titel
-          separator: ', '
         type:
           label: Innehållstyp
-          separator: ', '
         status:
+          label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
-          separator: ', '
         dropbutton:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            first: '« Första'
-            last: 'Sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           reset_button_label: Återställ
@@ -46,6 +35,3 @@ display:
                 title: Publicerad
               2:
                 title: 'Ej publicerad'
-        type:
-          expose:
-            label: Typ
