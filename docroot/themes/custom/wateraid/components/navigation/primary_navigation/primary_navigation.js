@@ -91,6 +91,7 @@
 
       document.addEventListener('click', (e) => {
         const target = e.target;
+        console.log('CLICK');
         if (this.state.isOpen && !header.contains(target)) {
           this.state.isOpen = false;
         }

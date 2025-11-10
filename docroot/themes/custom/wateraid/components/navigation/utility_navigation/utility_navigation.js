@@ -1,9 +1,11 @@
-(function(Drupal) {
+(function(Drupal, once) {
 
-  Drupal.behaviors.utilityNavigation = {
-    attach(context) {
-      console.log('@todo Replace me with the real JS behavior.');
-    },
-  };
+  // Drupal.behaviors.utilityNavigation = {
+  //   attach(context) {
+  //     once(context).forEach((nav) => {
+  //
+  //     });
+  //   },
+  // };
 
-})(Drupal);
+})(Drupal, once);

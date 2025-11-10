@@ -34,7 +34,7 @@
   }
 }
 
-
+// Generic styles for the desktop and mobile versions of the site selector.
 .site-selector {
   background-color: $wa-cream;
 
@@ -150,8 +150,11 @@
       margin-bottom: $wa-spacing-10;
       flex-direction: column;
 
+      &:first-child {
+        margin-top: $wa-spacing-00;
+      }
       &:last-child {
-        margin-bottom: 0;
+        margin-bottom: $wa-spacing-00;
       }
     }
   }

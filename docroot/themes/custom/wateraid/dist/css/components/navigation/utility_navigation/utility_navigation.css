@@ -338,8 +338,12 @@
   flex-direction: column;
 }
 
+.utility-menu--desktop .site-selector__site-group:first-child {
+  margin-top: 0rem;
+}
+
 .utility-menu--desktop .site-selector__site-group:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0rem;
 }
 
 

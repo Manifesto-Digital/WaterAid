@@ -158,6 +158,14 @@ function wateraid_preprocess_menu(&$variables) {
       }
       $group['items'][$key] = $item;
     }
+
+    // For each group, sort the items alphabetically.
+    foreach ($grouped_items as &$group) {
+      uasort($group['items'], function ($a, $b) {
+        return strcasecmp($a['title'], $b['title']);
+      });
+    }
+
     $variables['grouped_items'] = $grouped_items;
 
     // Get config pages field date for panel.
