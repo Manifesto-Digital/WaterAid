@@ -785,17 +785,7 @@ if (!empty($acquia_env)) {
   // Add environment value to variable.
   $settings['site_env'] = $acquia_env;
 
-  print_r('Acquia ENV');
-
-  $databases['migrate']['default'] = [
-    'driver' => 'mysql',
-    'database' => $_ENV['MIGRATION_DB'] ?? getenv('MIGRATION_DB'),
-    'username' => $_ENV['MIGRATION_DB_USER'] ?? getenv('MIGRATION_DB_USER'),
-    'password' => $_ENV['MIGRATION_DB_PASSWORD'] ?? getenv('MIGRATION_DB_PASSWORD'),
-    'host' => $_ENV['MIGRATION_DB_HOST'] ?? getenv('MIGRATION_DB_HOST'),
-    'port' => 3306,
-    'prefix' => '',
-  ];
+  $databases['migrate']['default'] = $databases['uk_site_migration']['default'];
 
   print_r($databases);
 
