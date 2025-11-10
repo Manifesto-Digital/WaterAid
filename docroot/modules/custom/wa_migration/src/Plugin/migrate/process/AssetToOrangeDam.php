@@ -66,7 +66,7 @@ final class AssetToOrangeDam extends ProcessPluginBase implements ContainerFacto
       else {
 
         // For the files, we'll search only by file name.
-        $result = $this->api->search(['query' => 'Filename:' . $value]);
+        $result = $this->api->search(['query' => 'Filename:"' . $value . '"']);
       }
 
       if (!empty($result['APIResponse']['Items']) && count($result['APIResponse']['Items']) > 1) {
