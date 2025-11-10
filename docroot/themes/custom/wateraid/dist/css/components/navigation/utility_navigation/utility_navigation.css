@@ -1,0 +1,346 @@
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.utility-menu {
+  color: #151435;
+}
+
+.utility-menu ul {
+  list-style: none;
+}
+
+.utility-menu__menu-link {
+  font-family: "Noto Sans";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #151435;
+  text-decoration: none;
+}
+
+.utility-menu__menu-link:hover {
+  text-decoration: underline;
+  background-color: #006bd9;
+  color: #fff;
+}
+
+.utility-menu__menu-link:focus-visible {
+  border: 3px solid #151435;
+  outline: 3px solid #ff96e6;
+}
+
+.utility-menu--desktop {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .utility-menu--desktop {
+    display: block;
+    background: #f8f0e4;
+  }
+}
+
+.utility-menu--desktop .utility-menu__container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .utility-menu--desktop .utility-menu__container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .utility-menu__container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.utility-menu--desktop .utility-menu__menu {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: .75rem 0;
+  gap: 1rem;
+}
+
+.site-selector {
+  background-color: #f8f0e4;
+}
+
+.site-selector__title {
+  font-family: "Noto Sans Bold";
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.site-selector__site-group-heading {
+  font-family: "Noto Sans Bold";
+  font-size: 1rem;
+  color: #151435;
+}
+
+.site-selector__site-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.site-selector__country {
+  position: relative;
+  display: inline-block;
+  padding-left: 1.25rem;
+  color: #151435;
+  text-decoration: none;
+}
+
+.site-selector__country:hover {
+  text-decoration: underline;
+}
+
+.site-selector__country:focus-visible {
+  outline: 3px solid #ff96e6;
+}
+
+.site-selector__country:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: .25rem;
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+
+.site-selector__country--GLOBAL:before {
+  background-image: url("/themes/custom/wateraid/images/flags/UKN.png");
+}
+
+.site-selector__country--AUS:before {
+  background-image: url("/themes/custom/wateraid/images/flags/AUS.png");
+}
+
+.site-selector__country--BGD:before {
+  background-image: url("/themes/custom/wateraid/images/flags/BGD.png");
+}
+
+.site-selector__country--CAN:before {
+  background-image: url("/themes/custom/wateraid/images/flags/CAN.png");
+}
+
+.site-selector__country--DNK:before {
+  background-image: url("/themes/custom/wateraid/images/flags/DNK.png");
+}
+
+.site-selector__country--ETH:before {
+  background-image: url("/themes/custom/wateraid/images/flags/ETH.png");
+}
+
+.site-selector__country--GBR:before {
+  background-image: url("/themes/custom/wateraid/images/flags/GBR.png");
+}
+
+.site-selector__country--GHA:before {
+  background-image: url("/themes/custom/wateraid/images/flags/GHA.png");
+}
+
+.site-selector__country--UKN:before {
+  background-image: url("/themes/custom/wateraid/images/flags/UKN.png");
+}
+
+.site-selector__country--IND:before {
+  background-image: url("/themes/custom/wateraid/images/flags/IND.png");
+}
+
+.site-selector__country--JPN:before {
+  background-image: url("/themes/custom/wateraid/images/flags/JPN.png");
+}
+
+.site-selector__country--MWI:before {
+  background-image: url("/themes/custom/wateraid/images/flags/MWI.png");
+}
+
+.site-selector__country--MOZ:before {
+  background-image: url("/themes/custom/wateraid/images/flags/MOZ.png");
+}
+
+.site-selector__country--NGA:before {
+  background-image: url("/themes/custom/wateraid/images/flags/NGA.png");
+}
+
+.site-selector__country--PAK:before {
+  background-image: url("/themes/custom/wateraid/images/flags/PAK.png");
+}
+
+.site-selector__country--SWE:before {
+  background-image: url("/themes/custom/wateraid/images/flags/SWE.png");
+}
+
+.site-selector__country--TZA:before {
+  background-image: url("/themes/custom/wateraid/images/flags/TZA.png");
+}
+
+.site-selector__country--UGA:before {
+  background-image: url("/themes/custom/wateraid/images/flags/TZA.png");
+}
+
+.site-selector__country--USA:before {
+  background-image: url("/themes/custom/wateraid/images/flags/USA.png");
+}
+
+.utility-menu--desktop .site-selector:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  background: transparent url("/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg") bottom center no-repeat;
+  background-size: cover;
+  height: 3.5rem;
+}
+
+.utility-menu--desktop .site-selector__inner {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .utility-menu--desktop .site-selector__inner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__inner {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.utility-menu--desktop .site-selector__panel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .utility-menu--desktop .site-selector__panel {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__panel {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.utility-menu--desktop .site-selector__panel {
+  padding-top: 3rem;
+}
+
+.utility-menu--desktop .site-selector__col {
+  grid-column: span 4;
+}
+
+@media only screen and (min-width: 768px) {
+  .utility-menu--desktop .site-selector__col {
+    grid-column: span 1;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__col {
+    grid-column: span 2;
+  }
+}
+
+.utility-menu--desktop .site-selector__col--first {
+  /* prettier-ignore */
+  grid-column: 1/5;
+}
+
+@media only screen and (min-width: 768px) {
+  .utility-menu--desktop .site-selector__col--first {
+    /* prettier-ignore */
+    grid-column: 1/3;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__col--first {
+    /* prettier-ignore */
+    grid-column: 2/6;
+  }
+}
+
+.utility-menu--desktop .site-selector__col:nth-child(2) {
+  grid-column: 4/span 1;
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__col:nth-child(2) {
+    grid-column: 6/span 2;
+  }
+}
+
+.utility-menu--desktop .site-selector__col:nth-child(3) {
+  grid-column: 5/span 1;
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__col:nth-child(3) {
+    grid-column: 8/span 2;
+  }
+}
+
+.utility-menu--desktop .site-selector__col:nth-child(4) {
+  grid-column: 6/span 1;
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-menu--desktop .site-selector__col:nth-child(4) {
+    grid-column: 10/span 2;
+  }
+}
+
+.utility-menu--desktop .site-selector__site-group {
+  margin-bottom: 3.5rem;
+  flex-direction: column;
+}
+
+.utility-menu--desktop .site-selector__site-group:last-child {
+  margin-bottom: 0;
+}
+
+
+/*# sourceMappingURL=utility_navigation.css.map*/
