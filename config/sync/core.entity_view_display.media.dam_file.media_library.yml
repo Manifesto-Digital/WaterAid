@@ -4,8 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
-    - field.field.media.dam_file.field_caption
-    - field.field.media.dam_file.field_credit
     - field.field.media.dam_file.field_media_dam_file
     - image.style.medium
     - media.type.dam_file
@@ -36,8 +34,6 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_caption: true
-  field_credit: true
   field_media_dam_file: true
   langcode: true
   name: true

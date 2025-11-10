@@ -3,8 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.dam_file.field_caption
-    - field.field.media.dam_file.field_credit
     - field.field.media.dam_file.field_media_dam_file
     - media.type.dam_file
   module:
@@ -26,22 +24,6 @@ content:
     weight: 2
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_caption:
-    type: string_textfield
-    weight: 101
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_credit:
-    type: string_textfield
-    weight: 102
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_media_dam_file:
     type: wa_orange_dam
