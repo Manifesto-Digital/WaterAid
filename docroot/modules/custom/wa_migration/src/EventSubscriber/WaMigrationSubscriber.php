@@ -39,7 +39,7 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
             foreach ($this->entityTypeManager->getStorage('group')->loadMultiple() as $group) {
               if ($group->bundle() == 'wateraid_site' && $group->label() == 'WaterAid UK') {
                 $type = $node->bundle();
-                $group->addRelationship($node, 'group_node:' . $type);
+                $group->addRelationship($node, 'group_node:' . $type, ['uid' => 1]);
               }
             }
           }
