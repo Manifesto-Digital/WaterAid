@@ -27,6 +27,7 @@
       align-items: center;
       display: flex;
       gap: $wa-spacing-01;
+
       &::after {
         content: "";
         display: block;
@@ -80,4 +81,20 @@
       margin-top: 0;
     }
   }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote {
+    padding-bottom: $wa-spacing-07;
+  }
+
+  p,
+  ul,
+  ol {
+    padding-bottom: $wa-spacing-06;
+  }
 }
+
