@@ -787,8 +787,6 @@ if (!empty($acquia_env)) {
 
   $databases['migrate']['default'] = $databases['uk_site_migration']['default'];
 
-  print_r($databases);
-
   $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $acquia_env . '/' . $site_path . '/files-private';
 
   // Set correct solr search core.
