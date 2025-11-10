@@ -21,6 +21,9 @@ slots:
   footer:
     title: Footer
     description: Drupal view footer
+  keywords:
+    title: Keywords
+    description: Drupal view keywords
 libraryOverrides:
   css:
     theme:

@@ -1,0 +1,31 @@
+{% set classes = [
+  'card',
+  'card--' ~ variant,
+] %}
+
+<div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
+
+  <div class="card__body">
+
+    <div class="card__tag">
+      {{ include('wateraid:content_tag', {
+        text: bundle,
+        size: 'small',
+        theme: 'light'
+      }) }}
+    </div>
+
+    <h2 class="card__heading pseudo-h6">
+      <a href="{{ url }}" class="card__link">{{ heading }}</a>
+    </h2>
+
+    <div class="card__description">
+      {{ description }}
+    </div>
+
+  </div>
+
+  <div class="card__image">
+    <img src="{{ image_url }}" alt=""/>
+  </div>
+</div>

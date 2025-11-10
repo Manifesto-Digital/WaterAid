@@ -248,6 +248,7 @@
       .icon__menu-button-open {
         display: none;
       }
+
       .icon__menu-button-close {
         display: block;
       }
@@ -295,5 +296,17 @@
 
   &__svg--left svg {
     transform: rotate(180deg);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    &:hover {
+      cursor: unset;
+      &::before {
+        display: none;
+      }
+    }
   }
 }

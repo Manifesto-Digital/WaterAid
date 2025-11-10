@@ -9,7 +9,11 @@
   </div>
 
   <div class="listing__header">
-    {{ header }}
+    {% if keywords %}
+      {{ header }} {{ " for "|t }} <strong>"{{ keywords }}"</strong>
+    {% else %}
+      {{ header }}
+    {% endif %}
   </div>
 
   <div class="listing__content">

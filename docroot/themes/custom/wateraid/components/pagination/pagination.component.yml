@@ -1,0 +1,11 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Pagination
+status: stable
+description: Pagination component
+slots:
+  items:
+    title: Items
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/pagination/pagination.css: {}

@@ -37,10 +37,12 @@
   dom_id ? 'js-view-dom-id-' ~ dom_id,
 ]
 %}
+
 <div{{ attributes.addClass(classes) }}>
   {{ feed_icons }}
   {{ include('wateraid:listing', {
     header,
+    keywords,
     search: exposed,
     rows,
     empty,
