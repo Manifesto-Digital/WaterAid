@@ -1,0 +1,10 @@
+<div {{ attributes }}>
+  <div class="language-switcher">
+    <a href="#" class="language">{{ 'Language'|t }}</a>
+    <select aria-label="{{ 'Language'|t }}">
+      {% for lang, link in links %}
+        <option data-jump-url="{{ link.url }}">{{ link.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>

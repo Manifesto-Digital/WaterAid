@@ -253,6 +253,23 @@
     <nav class="mobile-nav" id="mobile-nav">
     <div class="mobile-nav__slider">
       {{ menus.menu_links(items, attributes, 1, null, {}, null) }}
+      <div class="mobile-nav__utility-menu">
+        <button data-level2-trigger="site-selector">Site selector</button>
+      </div>
+      <div class="mobile-nav__site-selector" data-mobile-submenu-id="site-selector">
+      <div class="mobile-nav__site-selector-inner">
+
+        <button class="mobile-nav__back-btn js-mobile-nav-back-btn primary-navigation__link-with-icon">
+          <span class="icon icon-arrow-left">
+            <svg>
+              <use href="{{ get_spritemap() }}#wa-shape-arrow" />
+            </svg>
+          </span>
+          Back
+        </button>
+
+        {{ drupal_block('system_menu_block:site-selector') }}
+      </div>
     </div>
     <div class="mobile-nav__search-btn">
 

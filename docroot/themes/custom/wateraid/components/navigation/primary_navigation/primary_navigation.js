@@ -41,8 +41,8 @@
       // unit-less (nb. Must be in milliseconds).
       const meganavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--meganav-transition-time');
       const meganavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
-      const mobileNavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--mobile-nav-transition-time');
-      const mobileNavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
+      const mobileNavTransitionTimeString = getComputedStyle(mobileNav).getPropertyValue('--mobile-nav-transition-time');
+      const mobileNavTransitionTime = parseInt(mobileNavTransitionTimeString.replace('ms', ''));
 
 
       menuButton.addEventListener('click', (e) => {
@@ -135,8 +135,9 @@
           activeLevel2: [
             (newValue, oldValue) => {
               this.state.activeLevel3 = null;
-
-              header.setAttribute('data-mobile-menu-level-active', '2');
+              // If the new level isn't numeric, set the menu level active to
+              // the new value.
+              header.setAttribute('data-mobile-menu-level-active', isNaN(newValue) ? newValue : '2');
               megaNav.classList.add('meganav-animating');
               mobileNav.classList.remove('mobile-nav-static');
 
@@ -153,8 +154,10 @@
                 document.body.classList.add('primary-menu-open');
                 // Changing meganav panel.
                 const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');
-                newPanel.classList.add('active', 'panel-animating-in');
-                newPanel.setAttribute('aria-expanded', true);
+                if (newPanel) {
+                  newPanel.classList.add('active', 'panel-animating-in');
+                  newPanel.setAttribute('aria-expanded', true);
+                }
                 // Active class on level 1 nav button.
                 nav.querySelectorAll('[data-level2-trigger="' + newValue + '"]').forEach((el) => {
                   el.classList.add('active');

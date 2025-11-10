@@ -254,6 +254,7 @@
       @include wa-transition-motion-flow(transform, var(--mobile-nav-transition-time));
     }
 
+    [data-mobile-menu-level-active='site-selector'] &,
     [data-mobile-menu-level-active='2'] & {
       transform: translateX(-100%);
     }
@@ -280,7 +281,8 @@
   }
 
   &__level-2,
-  &__level-3 {
+  &__level-3,
+  &__site-selector {
     display: none;
     position: absolute;
     top: 0;
@@ -345,10 +347,18 @@
     }
   }
   &__level-submenu-heading-description {
-
-
     margin-bottom: $wa-spacing-04;
     color: $wa-white
+  }
+
+  &__site-selector {
+    transform: translateX(100%);
+    background-color: $wa-cream;
+
+    &-inner {
+      @include page-container;
+    }
+
   }
 }
 

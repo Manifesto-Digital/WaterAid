@@ -10,26 +10,6 @@ $header-padding-bottom: 0;
     padding-bottom: $header-padding-bottom;
   }
 
-  &__utility {
-    display: none;
-
-    @include tablet {
-      display: block;
-      background: $wa-cream;
-    }
-
-    &-container {
-      @include page-container;
-    }
-    &-menu {
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      padding: $wa-spacing-03 0;
-      gap: $wa-spacing-04;
-    }
-  }
-
   &__colour-wrapper {
     background: $white;
     width: 100vw;
@@ -112,8 +92,14 @@ $header-padding-bottom: 0;
         color: $wa-white;
       }
     }
+
+    &[data-mobile-menu-level-active='site-selector'] {
+      .site-header__colour-wrapper {
+        background-color: $wa-cream;
+      }
+      .site-header__logo-image {
+      }
+    }
   }
 
 }
-
-

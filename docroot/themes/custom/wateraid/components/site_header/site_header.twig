@@ -1,14 +1,9 @@
 <header role="banner" {{ attributes.addClass(['site-header', 'js-site-header']).setAttribute('role', 'banner') }}>
 
-  <div class="site-header__utility" role="navigation" aria-label="Utility menu">
-    <nav class="site-header__utility-container">
-      <ul class="site-header__utility-menu">
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link2</a></li>
-      </ul>
-    </nav>
-
-  </div>
+  {{ include('wateraid:utility_navigation', {
+    language_switcher: blocks.wateraid_languageswitcher,
+    site_selector: blocks.wateraid_siteselector,
+  }, false) }}
 
   <div class="site-header__main">
     <div class="site-header__colour-wrapper">
