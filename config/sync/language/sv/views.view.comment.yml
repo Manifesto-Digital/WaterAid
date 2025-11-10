@@ -4,21 +4,10 @@ display:
       fields:
         comment_bulk_form:
           action_title: Åtgärd
-        subject:
-          separator: ', '
-        uid:
-          separator: ', '
         name:
           label: Författare
-          separator: ', '
-        entity_id:
-          separator: ', '
-        changed:
-          separator: ', '
         operations:
           label: Funktioner
-        name_1:
-          separator: ', '
       pager:
         options:
           tags:
@@ -26,10 +15,6 @@ display:
             previous: '‹ föregående'
             first: '« första'
             last: 'sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           submit_button: Filtrera
@@ -46,21 +31,10 @@ display:
       fields:
         comment_bulk_form:
           action_title: Åtgärd
-        subject:
-          separator: ', '
-        uid:
-          separator: ', '
         name:
           label: Författare
-          separator: ', '
-        entity_id:
-          separator: ', '
-        changed:
-          separator: ', '
         operations:
           label: Funktioner
-        name_1:
-          separator: ', '
       filters:
         langcode:
           expose:

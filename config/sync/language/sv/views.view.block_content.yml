@@ -2,21 +2,8 @@ display:
   default:
     display_options:
       fields:
-        info:
-          separator: ', '
-        type:
-          separator: ', '
         operations:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            next: 'Nästa ›'
-            previous: '‹ Föregående'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           reset_button_label: Återställ

@@ -5,23 +5,9 @@ display:
         name:
           label: Användarnamn
         status:
-          settings:
-            format_custom_true: Aktiv
+          label: Status
         operations:
           label: Funktioner
-        mail:
-          separator: ', '
-      pager:
-        options:
-          tags:
-            next: 'Nästa ›'
-            previous: '‹ Föregående'
-            first: '« Första'
-            last: 'Sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           submit_button: Filtrera
@@ -32,6 +18,4 @@ display:
       filters:
         status:
           group_info:
-            group_items:
-              1:
-                title: Aktiv
+            label: Status

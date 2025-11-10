@@ -4,12 +4,6 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           reset_button_label: Återställ
@@ -25,9 +19,6 @@ display:
                 title: Publicerad
               2:
                 title: 'Ej publicerad'
-        name:
-          expose:
-            label: Namn
         langcode:
           expose:
             label: Språk
@@ -36,8 +27,6 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
-        name:
-          separator: ', '
         delete_media:
           text: Radera
   widget:
@@ -46,22 +35,12 @@ display:
         bundle:
           exception:
             title: Alla
-      filters:
-        name:
-          expose:
-            label: Namn
   widget_table:
     display_options:
       fields:
-        name:
-          label: Namn
         uid:
           label: Författare
       arguments:
         bundle:
           exception:
             title: Alla
-      filters:
-        name:
-          expose:
-            label: Namn

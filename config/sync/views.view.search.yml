@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.search
+    - search_api.index.searchstax_index
   module:
     - better_exposed_filters
     - search_api
@@ -13,7 +13,7 @@ label: Search
 module: views
 description: ''
 tag: ''
-base_table: search_api_index_search
+base_table: search_api_index_searchstax_index
 base_field: search_api_id
 display:
   default:
@@ -26,7 +26,7 @@ display:
       fields:
         field_content:
           id: field_content
-          table: search_api_index_search
+          table: search_api_index_searchstax_index
           field: field_content
           relationship: none
           group_type: group
@@ -177,7 +177,7 @@ display:
       sorts:
         search_api_relevance:
           id: search_api_relevance
-          table: search_api_index_search
+          table: search_api_index_searchstax_index
           field: search_api_relevance
           relationship: none
           group_type: group
@@ -192,7 +192,7 @@ display:
       filters:
         search_api_fulltext:
           id: search_api_fulltext
-          table: search_api_index_search
+          table: search_api_index_searchstax_index
           field: search_api_fulltext
           relationship: none
           group_type: group
@@ -286,8 +286,8 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:search_api.index.search'
-        - 'search_api_list:search'
+        - 'config:search_api.index.searchstax_index'
+        - 'search_api_list:searchstax_index'
   search:
     id: search
     display_title: Search
@@ -306,5 +306,5 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:search_api.index.search'
-        - 'search_api_list:search'
+        - 'config:search_api.index.searchstax_index'
+        - 'search_api_list:searchstax_index'

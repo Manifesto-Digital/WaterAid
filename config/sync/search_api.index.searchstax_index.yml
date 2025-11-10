@@ -1,4 +1,4 @@
-uuid: e01b37e0-8502-40ae-92c2-c871691e9d17
+uuid: 8be37e3a-1735-4518-b70c-c4296645879a
 langcode: en
 status: true
 dependencies:
@@ -25,7 +25,7 @@ dependencies:
     - field.storage.paragraph.field_stat_items
     - field.storage.paragraph.field_subtitle
     - field.storage.paragraph.field_title
-    - search_api.server.acquia_search_server
+    - search_api.server.searchstax_server
   module:
     - node
     - paragraphs
@@ -78,9 +78,9 @@ third_party_settings:
         en: '0'
         sv: '0'
       use_universal_collation: false
-id: search
-name: Search
-description: 'Index for the main site search.'
+id: searchstax_index
+name: 'SearchStax index'
+description: 'Copy of index <em class="placeholder">Search</em>.'
 read_only: false
 field_settings:
   field_caption:
@@ -654,25 +654,6 @@ field_settings:
         - field.storage.paragraph.field_rich_text
       module:
         - paragraphs
-  rendered_item:
-    label: 'Rendered HTML output'
-    property_path: rendered_item
-    type: text
-    configuration:
-      roles:
-        - anonymous
-      view_mode:
-        'entity:node':
-          ':default': default
-          article: ':default'
-          donation: ':default'
-          event: ':default'
-          landing_page: ':default'
-          listing_page: ':default'
-          page: ':default'
-          publication: ':default'
-          standard_page: ':default'
-          story: ':default'
   status:
     label: Boolean
     datasource_id: 'entity:node'
@@ -872,7 +853,6 @@ processor_settings:
       - processed_7
       - processed_8
       - processed_9
-      - rendered_item
       - title
       - title_1
       - title_2
@@ -908,4 +888,4 @@ options:
   delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
-server: acquia_search_server
+server: searchstax_server
