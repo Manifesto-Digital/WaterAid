@@ -2,5 +2,15 @@
   position: relative;
 }
 
+.language-switcher__dropdown {
+  visibility: hidden;
+  position: absolute;
+}
+
+.language-switcher__dropdown.show {
+  visibility: visible;
+  transform: translateY(100%);
+}
+
 
 /*# sourceMappingURL=language_switcher.css.map*/

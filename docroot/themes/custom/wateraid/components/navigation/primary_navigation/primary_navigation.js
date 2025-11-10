@@ -61,6 +61,7 @@
             }
             else {
               this.state.activeLevel2 = triggerId;
+              this.state.isOpen = true;
             }
           }
           else {
@@ -91,8 +92,7 @@
 
       document.addEventListener('click', (e) => {
         const target = e.target;
-        console.log('CLICK');
-        if (this.state.isOpen && !header.contains(target)) {
+        if (this.state.isOpen && !nav.contains(target)) {
           this.state.isOpen = false;
         }
       });
@@ -136,6 +136,7 @@
           activeLevel2: [
             (newValue, oldValue) => {
               this.state.activeLevel3 = null;
+
               // If the new level isn't numeric, set the menu level active to
               // the new value.
               header.setAttribute('data-mobile-menu-level-active', isNaN(newValue) ? newValue : '2');
@@ -151,7 +152,6 @@
               });
 
               if (newValue) {
-                //this.state.isOpen = true;
                 document.body.classList.add('primary-menu-open');
                 // Changing meganav panel.
                 const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');

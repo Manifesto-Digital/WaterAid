@@ -1,6 +1,6 @@
 @import "./../../../sass/base";
 
-.utility-menu {
+.utility-navigation {
   color: $wa-navy;
 
   ul {
@@ -19,11 +19,11 @@
       background: $wa-cream;
     }
 
-    .utility-menu__container {
+    .utility-navigation__container {
       @include page-container;
     }
 
-    .utility-menu__menu {
+    .utility-navigation__menu {
       list-style: none;
       display: flex;
       justify-content: flex-end;
@@ -101,8 +101,34 @@
   }
 }
 
-.utility-menu--desktop {
+.utility-navigation--desktop {
+  position: relative;
+  z-index: 1;
+
+  .utility-navigation__container {
+    background: $wa-cream;
+  }
+
   .site-selector {
+    --site-selector-transition-time: 800ms;
+
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transform: translateY(-120%);
+    z-index: -2;
+    backface-visibility: hidden;
+    visibility: hidden;
+    @include wa-transition-motion-flow(transform, var(--site-selector-transition-time));
+
+    &.active {
+      transform: translateY(0%);
+      visibility: visible;
+    }
+
+    .site-selector-panel-animating & {
+      visibility: visible;
+    }
 
     &:after {
       content: '';

@@ -2,20 +2,14 @@
 
   Drupal.behaviors.languageSwitcher = {
     attach(context) {
-      // console.dir(context)
       once('language-switcher', '.language-switcher', context).forEach((switcher) => {
-        const link = switcher.querySelector('a');
-        const select = switcher.querySelector('select');
-        link.addEventListener('click', (e) => {
-          // console.log('click');
+        const button = switcher.querySelector('.js-language-switcher-trigger');
+        const dropdown = switcher.querySelector('.js-language-switcher-dropdown');
+        button.addEventListener('click', (e) => {
           e.preventDefault();
-          select.dispatchEvent(new Event('click'));
+          this.isOpen = !this.isOpen;
+          dropdown.classList.toggle('show');
         })
-        select.addEventListener('change', (e) => {
-          // console.log('change');
-          const el = e.target;
-          // console.log(e.target);
-        });
       });
     },
   };

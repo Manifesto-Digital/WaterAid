@@ -1,15 +1,18 @@
-<div class="site-header__utility-menu utility-menu utility-menu--desktop" role="navigation" aria-label="Utility menu">
-  <nav class="utility-menu__container">
-    <ul class="utility-menu__menu">
-      <li><a class="utility-menu__menu-link" href="#">WASH Matters</a></li>
-      <li>
-        {{ language_switcher }}
-      </li>
-      <li><a href="#" class="utility-menu__menu-link js-site-selector-btn" >Site selector</a></li>
-    </ul>
-  </nav>
-  <div class="utility-menu__site-selector">
-    {{ site_selector }}
+<div {{ attributes }}>
+  <div class="site-header__utility-navigation utility-navigation utility-navigation--desktop" role="navigation" aria-label="Utility menu">
+    <nav class="utility-navigation__container">
+      <ul class="utility-navigation__menu">
+        <li><a class="utility-navigation__menu-link" href="#">WASH Matters</a></li>
+        <li>
+          {{ language_switcher }}
+        </li>
+        <li>
+          <button class="utility-navigation__menu-link js-site-selector-btn" aria-expanded="false" aria-controls="site-selector-panel">Site selector</button>
+          <div id="site-selector-panel" class="utility-navigation__site-selector js-site-selector-panel">
+            {{ site_selector }}
+          </div>
+        </li>
+      </ul>
+    </nav>
   </div>
-
 </div>

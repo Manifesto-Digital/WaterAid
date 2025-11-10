@@ -1,13 +1,13 @@
 .language-switcher {
   position: relative;
 
-  select {
-    //display: none;
+  &__dropdown {
+    visibility: hidden;
+    position: absolute;
 
-    //&:focus {
-    //  display: block;
-    //  position: absolute;
-    //  transform: translateY(100%);
-    //}
+    &.show {
+      visibility: visible;
+      transform: translateY(100%);
+    }
   }
 }

@@ -160,8 +160,7 @@
   &__panel {
     overflow: hidden;
     color: white;
-    min-height: 400px;
-    transform: translate(0, -100%);
+    transform: translateY(-100%);
     z-index: -2;
     position: absolute;
     width: 100%;
