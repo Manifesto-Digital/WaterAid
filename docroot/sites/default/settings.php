@@ -787,10 +787,10 @@ if (!empty($acquia_env)) {
 
   $databases['migrate']['default'] = [
     'driver' => 'mysql',
-    'database' => getenv('MIGRATION_DB'),
-    'username' => getenv('MIGRATION_DB_USER'),
-    'password' => getenv('MIGRATION_DB_PASSWORD'),
-    'host' => getenv('MIGRATION_DB_HOST'),
+    'database' => $_ENV['MIGRATION_DB'] ?? getenv('MIGRATION_DB'),
+    'username' => $_ENV['MIGRATION_DB_USER'] ?? getenv('MIGRATION_DB_USER'),
+    'password' => $_ENV['MIGRATION_DB_PASSWORD'] ?? getenv('MIGRATION_DB_PASSWORD'),
+    'host' => $_ENV['MIGRATION_DB_HOST'] ?? getenv('MIGRATION_DB_HOST'),
     'port' => 3306,
     'prefix' => '',
   ];
