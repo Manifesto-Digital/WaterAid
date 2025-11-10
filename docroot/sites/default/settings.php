@@ -785,6 +785,8 @@ if (!empty($acquia_env)) {
   // Add environment value to variable.
   $settings['site_env'] = $acquia_env;
 
+  print_r('Acquia ENV');
+
   $databases['migrate']['default'] = [
     'driver' => 'mysql',
     'database' => $_ENV['MIGRATION_DB'] ?? getenv('MIGRATION_DB'),
@@ -794,6 +796,8 @@ if (!empty($acquia_env)) {
     'port' => 3306,
     'prefix' => '',
   ];
+
+  print_r($databases);
 
   $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $acquia_env . '/' . $site_path . '/files-private';
 
