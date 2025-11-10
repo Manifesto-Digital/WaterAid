@@ -111,6 +111,11 @@ process:
         - content_with_large_image
         - aside_with_image
         - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
+        - donation_cta_widget_embed
       source: field_modules
   field_content:
     plugin: merge_without_exception

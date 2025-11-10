@@ -26,6 +26,7 @@ source:
     - field_article_hero_image
     - field_article_hero_video
     - field_teaser_image
+    - field_view_reference
 process:
   langcode:
     -
@@ -54,6 +55,7 @@ process:
   field_initial_items: field_pg_initial_items
   field_introduction: field_introduction
   field_items_to_display: field_pg_items_to_display
+  field_view: field_view_reference
   uid:
     plugin: migration_lookup
     migration: users
@@ -86,6 +88,11 @@ process:
         - content_with_large_image
         - aside_with_image
         - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
+        - donation_cta_widget_embed
       source: field_modules
   field_content:
     plugin: merge_without_exception

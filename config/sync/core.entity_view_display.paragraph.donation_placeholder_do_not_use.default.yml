@@ -1,0 +1,26 @@
+uuid: 34b76c7b-d94f-45db-b201-1ff98dc4a68e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.donation_placeholder_do_not_use.field_rich_text
+    - paragraphs.paragraphs_type.donation_placeholder_do_not_use
+  module:
+    - text
+id: paragraph.donation_placeholder_do_not_use.default
+targetEntityType: paragraph
+bundle: donation_placeholder_do_not_use
+mode: default
+content:
+  field_rich_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

@@ -1,0 +1,10 @@
+uuid: ab0494d0-d15e-425d-afb2-32c7e2116892
+langcode: en
+status: true
+dependencies: {  }
+id: donation_placeholder_do_not_use
+label: 'Donation Placeholder (DO NOT USE)'
+icon_uuid: null
+icon_default: null
+description: 'A temporary placeholder for manual replacing with a Donation Widget. This is required because of incompatibilities between the old and new donation widgets.'
+behavior_plugins: {  }

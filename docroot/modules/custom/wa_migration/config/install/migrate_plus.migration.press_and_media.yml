@@ -111,6 +111,7 @@ process:
         - biography_item
         - activation_bar_item
         - rainbow_link_item
+        - donation_cta_widget_embed
       source: field_modules
   field_content:
     plugin: merge_without_exception
