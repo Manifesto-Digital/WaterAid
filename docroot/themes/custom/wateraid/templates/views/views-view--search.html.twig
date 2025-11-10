@@ -42,7 +42,7 @@
   {{ feed_icons }}
   {{ include('wateraid:listing', {
     header,
-    keywords,
+    keywords: keywords ? keywords : '',
     search: exposed,
     rows,
     empty,

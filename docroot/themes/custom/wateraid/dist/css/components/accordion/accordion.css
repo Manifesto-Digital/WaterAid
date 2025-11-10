@@ -154,6 +154,10 @@ strong {
   padding-bottom: 2rem;
 }
 
+.accordion__description {
+  padding-bottom: 1.5rem;
+}
+
 .accordion__search {
   display: flex;
   flex-direction: column;
