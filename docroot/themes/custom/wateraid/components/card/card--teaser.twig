@@ -18,6 +18,11 @@
     {% if date %}
       <div class="card__date">
         {{ date|date("l j F Y") }}
+
+        {% if end_date and (date|date("l j F Y") != end_date|date("l j F Y")) %}
+          - {{ end_date|date("l j F Y") }}
+        {% endif %}
+
       </div>
     {% endif %}
 
