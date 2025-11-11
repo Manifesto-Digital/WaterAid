@@ -1,4 +1,4 @@
-{% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
+{% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme, disabled == 'true' ? 'button--disabled' : ''] %}
 {% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
 {% set button_attributes = create_attribute(attributes|default({}))
   .addClass(all_classes)
@@ -6,9 +6,9 @@
 %}
 
 {% if link %}
-<a href="{{ link }}" class="{{ all_classes|join(' ') }}" aria-label="{{ text }}">
+<a href="{{ link }}" class="{{ all_classes|join(' ') }}" aria-label="{{ text }}" tabindex="{{ disabled == 'true' ? '-1' : '0'}}">
   {% else %}
-  <button {{ button_attributes }} id="{{ id }}" aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} >
+  <button {{ button_attributes }} id="{{ id }}" aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} tabindex="{{ disabled == 'true' ? '-1' : '0'}}">
     {% endif %}
 
     {% if type == 'primary' or type == 'secondary' %}

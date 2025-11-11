@@ -5,13 +5,9 @@ dependencies:
   config:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
-    - media.type.audio
     - media.type.dam_image
     - media.type.dam_video
-    - media.type.document
-    - media.type.image
     - media.type.remote_video
-    - media.type.video
     - node.type.article
     - node.type.donation
     - node.type.event
@@ -43,6 +39,7 @@ dependencies:
     - node
     - node_co_authors
     - path
+    - preview_link
     - quick_node_clone
     - system
     - taxonomy
@@ -74,14 +71,11 @@ permissions:
   - 'clone publication content'
   - 'clone webform content'
   - 'create article content'
-  - 'create audio media'
   - 'create content translations'
   - 'create dam_image media'
   - 'create dam_video media'
-  - 'create document media'
   - 'create donation content'
   - 'create event content'
-  - 'create image media'
   - 'create landing_page content'
   - 'create listing_page content'
   - 'create media'
@@ -98,7 +92,6 @@ permissions:
   - 'create terms in themes'
   - 'create terms in topic'
   - 'create url aliases'
-  - 'create video media'
   - 'create webform'
   - 'create webform content'
   - 'delete any article content'
@@ -117,14 +110,11 @@ permissions:
   - 'delete listing_page revisions'
   - 'delete media'
   - 'delete own article content'
-  - 'delete own audio media'
   - 'delete own dam_image media'
   - 'delete own dam_video media'
-  - 'delete own document media'
   - 'delete own donation content'
   - 'delete own event content'
   - 'delete own files'
-  - 'delete own image media'
   - 'delete own landing_page content'
   - 'delete own listing_page content'
   - 'delete own page content'
@@ -132,7 +122,6 @@ permissions:
   - 'delete own remote_video media'
   - 'delete own standard_page content'
   - 'delete own story content'
-  - 'delete own video media'
   - 'delete own webform'
   - 'delete own webform content'
   - 'delete own webform submission'
@@ -166,14 +155,11 @@ permissions:
   - 'edit config_pages entity'
   - 'edit footer config page entity'
   - 'edit own article content'
-  - 'edit own audio media'
   - 'edit own comments'
   - 'edit own dam_image media'
   - 'edit own dam_video media'
-  - 'edit own document media'
   - 'edit own donation content'
   - 'edit own event content'
-  - 'edit own image media'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
   - 'edit own page content'
@@ -181,7 +167,6 @@ permissions:
   - 'edit own remote_video media'
   - 'edit own standard_page content'
   - 'edit own story content'
-  - 'edit own video media'
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
@@ -193,6 +178,7 @@ permissions:
   - 'edit terms in subject_areas'
   - 'edit terms in themes'
   - 'edit terms in topic'
+  - 'generate preview links'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert donation revisions'

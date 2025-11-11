@@ -1,0 +1,35 @@
+{% set classes = [
+  'listing',
+  'listing--search'
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="listing__search">
+    {{ search }}
+  </div>
+
+  <div class="listing__header">
+    {% if keywords %}
+      {{ header }} {{ " for "|t }} <strong>"{{ keywords }}"</strong>
+    {% else %}
+      {{ header }}
+    {% endif %}
+  </div>
+
+  <div class="listing__content">
+    {{ rows }}
+
+    <div class="listing__empty">
+      {{ empty }}
+    </div>
+
+    <div class="listing__pager">
+      {{ pager }}
+    </div>
+  </div>
+
+
+  <div class="listing__footer">
+    {{ footer }}
+  </div>
+</div>

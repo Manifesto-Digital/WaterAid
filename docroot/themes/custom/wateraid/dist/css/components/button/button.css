@@ -421,5 +421,19 @@ strong {
   transform: rotate(180deg);
 }
 
+.button--disabled {
+  cursor: not-allowed;
+  opacity: .5;
+  text-decoration: none;
+}
+
+.button--disabled:hover {
+  cursor: unset;
+}
+
+.button--disabled:hover::before {
+  display: none;
+}
+
 
 /*# sourceMappingURL=button.css.map*/

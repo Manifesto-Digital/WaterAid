@@ -26,3 +26,26 @@ function wateraid_content_update_10001(&$sandbox): void {
     $storage->delete($storage->loadMultiple($tids));
   }
 }
+
+
+/**
+ * Delete the unused media types.
+ */
+function wateraid_content_update_10002(): void {
+
+  /** @var \Drupal\taxonomy\TermStorageInterface $storage */
+  $storage = \Drupal::entityTypeManager()->getStorage('media');
+  foreach ([
+    'audio',
+    'document',
+    'image',
+    'video',
+  ] as $bundle) {
+    $mids = $storage->getQuery()
+      ->condition('bundle', $bundle)
+      ->accessCheck()
+      ->execute();
+
+    $storage->delete($storage->loadMultiple($mids));
+  }
+}

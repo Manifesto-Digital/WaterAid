@@ -206,13 +206,9 @@ function wateraid_preprocess_node(&$variables) {
     $variables['content']['first_step_as_widget'] = !($fq_param !== null && $val_param !== null);
 
     // Add custom JS to handle FE behaviour.
-    // echo '<pre>';
-    // die(var_dump(
-    //   array_keys($variables['attributes']['class'][] = )
-    // ));
-    // Hide fields except for edit when widget is shown.
-
     $variables['#attached']['library'][] = 'wateraid/webform-behavior';
+
+    // Hide fields except for edit when widget is shown.
     $variables['#attached']['drupalSettings']['wateraid']['firstStepAsWidget'] = $variables['content']['first_step_as_widget'];
   }
 }
@@ -229,5 +225,12 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
       && isset($variables['element']['#attributes']['value']) && !str_contains($variables['element']['#attributes']['value'], 'step')) {
       $suggestions[] = 'input__submit__secure';
     }
+  }
+}
+
+function wateraid_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  if ($view->id() === 'search') {
+    $variables['keywords'] = $view->getExposedInput()['keywords'];
   }
 }

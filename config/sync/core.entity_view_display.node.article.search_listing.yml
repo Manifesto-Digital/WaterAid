@@ -1,0 +1,71 @@
+uuid: f0b4fcb3-ce0c-4b34-9dff-28114bd83fbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_listing
+    - field.field.node.article.field_audience
+    - field.field.node.article.field_content
+    - field.field.node.article.field_country
+    - field.field.node.article.field_get_involved
+    - field.field.node.article.field_hero
+    - field.field.node.article.field_hide_related_content
+    - field.field.node.article.field_metatags
+    - field.field.node.article.field_override_related_content
+    - field.field.node.article.field_post_description
+    - field.field.node.article.field_related_content
+    - field.field.node.article.field_related_content_type
+    - field.field.node.article.field_review_date
+    - field.field.node.article.field_search_phrases
+    - field.field.node.article.field_teaser_image
+    - field.field.node.article.field_teaser_text
+    - field.field.node.article.field_theme
+    - node.type.article
+  module:
+    - user
+_core:
+  default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
+id: node.article.search_listing
+targetEntityType: node
+bundle: article
+mode: search_listing
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_audience: true
+  field_content: true
+  field_country: true
+  field_get_involved: true
+  field_hero: true
+  field_hide_related_content: true
+  field_metatags: true
+  field_override_related_content: true
+  field_post_description: true
+  field_related_content: true
+  field_related_content_type: true
+  field_review_date: true
+  field_search_phrases: true
+  field_theme: true
+  langcode: true
+  links: true
+  node_read_time: true
+  reading_time: true
+  search_api_excerpt: true

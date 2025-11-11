@@ -1,0 +1,891 @@
+uuid: 8be37e3a-1735-4518-b70c-c4296645879a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - field.storage.node.field_event_type
+    - field.storage.node.field_hero
+    - field.storage.node.field_key_stages
+    - field.storage.node.field_post_description
+    - field.storage.node.field_regions
+    - field.storage.node.field_search_phrases
+    - field.storage.node.field_subtext
+    - field.storage.node.field_teaser_text
+    - field.storage.paragraph.field_accordion_content
+    - field.storage.paragraph.field_accordion_items
+    - field.storage.paragraph.field_caption
+    - field.storage.paragraph.field_citation
+    - field.storage.paragraph.field_credit
+    - field.storage.paragraph.field_link
+    - field.storage.paragraph.field_primary_cta
+    - field.storage.paragraph.field_quote
+    - field.storage.paragraph.field_rich_text
+    - field.storage.paragraph.field_standfirst
+    - field.storage.paragraph.field_stat_items
+    - field.storage.paragraph.field_subtitle
+    - field.storage.paragraph.field_title
+    - search_api.server.searchstax_server
+  module:
+    - node
+    - paragraphs
+    - search_api_solr
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
+      fuzzy_analyzer: true
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: true
+      include_language_independent: true
+      use_language_undefined_as_fallback_language: false
+      specific_languages:
+        en: '0'
+        sv: '0'
+      use_universal_collation: false
+id: searchstax_index
+name: 'SearchStax index'
+description: 'Copy of index <em class="placeholder">Search</em>.'
+read_only: false
+field_settings:
+  field_caption:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Caption'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_caption'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_caption
+      module:
+        - paragraphs
+  field_caption_1:
+    label: 'Content » Paragraph » Caption'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_caption'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_caption
+      module:
+        - paragraphs
+  field_citation:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Citation'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_citation'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_citation
+      module:
+        - paragraphs
+  field_citation_1:
+    label: 'Content » Paragraph » Citation'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_citation'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_citation
+      module:
+        - paragraphs
+  field_citation_2:
+    label: 'Content » Paragraph » Stat items » Paragraph » Citation'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_citation'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_citation
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  field_citation_3:
+    label: 'Hero » Paragraph » Citation'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_citation'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_citation
+      module:
+        - paragraphs
+  field_credit:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Credit'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_credit'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_credit
+      module:
+        - paragraphs
+  field_credit_1:
+    label: 'Content » Paragraph » Credit'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_credit'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_credit
+      module:
+        - paragraphs
+  field_event_type:
+    label: 'Event type'
+    datasource_id: 'entity:node'
+    property_path: field_event_type
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_event_type
+  field_key_stages:
+    label: 'Key Stage'
+    datasource_id: 'entity:node'
+    property_path: field_key_stages
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_key_stages
+  field_post_description:
+    label: 'Post description'
+    datasource_id: 'entity:node'
+    property_path: field_post_description
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_post_description
+  field_quote:
+    label: 'Content » Paragraph » Accordion content » Paragraph » Quote'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_content:entity:field_quote'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_quote
+      module:
+        - paragraphs
+  field_quote_1:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Stat items » Paragraph » Quote'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_quote'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_quote
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  field_quote_2:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Quote'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_quote'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_quote
+      module:
+        - paragraphs
+  field_quote_3:
+    label: 'Content » Paragraph » Quote'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_quote'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_quote
+      module:
+        - paragraphs
+  field_quote_4:
+    label: 'Content » Paragraph » Stat items » Paragraph » Quote'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_quote'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_quote
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  field_quote_5:
+    label: 'Hero » Paragraph » Quote'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_quote'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_quote
+      module:
+        - paragraphs
+  field_regions:
+    label: Regions
+    datasource_id: 'entity:node'
+    property_path: field_regions
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_regions
+  field_rich_text:
+    label: 'Hero » Paragraph » Description'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_rich_text'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_rich_text
+      module:
+        - paragraphs
+  field_search_phrases:
+    label: 'Search Phrases'
+    datasource_id: 'entity:node'
+    property_path: field_search_phrases
+    type: text
+    boost: 21.0
+    dependencies:
+      config:
+        - field.storage.node.field_search_phrases
+  field_subtext:
+    label: Subtext
+    datasource_id: 'entity:node'
+    property_path: field_subtext
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_subtext
+  field_subtitle:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Subtitle'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_subtitle'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  field_teaser_text:
+    label: 'Teaser text'
+    datasource_id: 'entity:node'
+    property_path: field_teaser_text
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_teaser_text
+  field_title:
+    label: 'Content » Paragraph » Accordion content » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_content:entity:field_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  field_title_1:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Stat items » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_stat_items
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  field_title_2:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  field_title_3:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  field_title_4:
+    label: 'Content » Paragraph » Stat items » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_stat_items
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  field_title_5:
+    label: 'Content » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  field_title_6:
+    label: 'Hero » Paragraph » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_title'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_title
+      module:
+        - paragraphs
+  langcode:
+    label: Language
+    datasource_id: 'entity:node'
+    property_path: langcode
+    type: string
+    dependencies:
+      module:
+        - node
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  processed:
+    label: 'Content » Paragraph » Accordion content » Paragraph » Description » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_content:entity:field_rich_text:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_rich_text
+      module:
+        - paragraphs
+  processed_1:
+    label: 'Content » Paragraph » Accordion content » Paragraph » Subtitle » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_content:entity:field_subtitle:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  processed_10:
+    label: 'Content » Paragraph » Standfirst » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_standfirst:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_standfirst
+      module:
+        - paragraphs
+  processed_11:
+    label: 'Content » Paragraph » Stat items » Paragraph » Description » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_rich_text:processed'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_rich_text
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  processed_12:
+    label: 'Content » Paragraph » Stat items » Paragraph » Standfirst » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_standfirst:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_standfirst
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  processed_13:
+    label: 'Content » Paragraph » Stat items » Paragraph » Subtitle » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_subtitle:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_stat_items
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  processed_14:
+    label: 'Content » Paragraph » Subtitle » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_subtitle:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  processed_15:
+    label: 'Hero » Paragraph » Description » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_rich_text:processed'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_rich_text
+      module:
+        - paragraphs
+  processed_16:
+    label: 'Hero » Paragraph » Standfirst » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_standfirst:processed'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_standfirst
+      module:
+        - paragraphs
+  processed_17:
+    label: 'Hero » Paragraph » Subtitle » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_subtitle:processed'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  processed_2:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Description » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_rich_text:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_rich_text
+      module:
+        - paragraphs
+  processed_3:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Standfirst » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_standfirst:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_standfirst
+      module:
+        - paragraphs
+  processed_4:
+    label: 'Accordion Stat Rich Text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_rich_text:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_rich_text
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  processed_5:
+    label: 'Accordion Stat Subtitle'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_subtitle:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_stat_items
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  processed_6:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Subtitle » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_subtitle:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_subtitle
+      module:
+        - paragraphs
+  processed_7:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Description » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_rich_text:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_rich_text
+      module:
+        - paragraphs
+  processed_8:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Standfirst » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_standfirst:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_standfirst
+      module:
+        - paragraphs
+  processed_9:
+    label: 'Content » Paragraph » Description » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_rich_text:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_rich_text
+      module:
+        - paragraphs
+  status:
+    label: Boolean
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: 5.0
+    dependencies:
+      module:
+        - node
+  title_1:
+    label: 'accordion Stat Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_primary_cta:title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_primary_cta
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  title_2:
+    label: 'Content » Paragraph » Accordion items » Paragraph » Primary cta » Link text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_accordion_items:entity:field_primary_cta:title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_accordion_items
+        - field.storage.paragraph.field_primary_cta
+      module:
+        - paragraphs
+  title_3:
+    label: 'Content » Paragraph » Primary cta » Link text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_primary_cta:title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_primary_cta
+      module:
+        - paragraphs
+  title_4:
+    label: 'Content » Paragraph » Stat items » Paragraph » Link » Link text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_link:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_link
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  title_5:
+    label: 'Content » Paragraph » Stat items » Paragraph » Primary cta » Link text'
+    datasource_id: 'entity:node'
+    property_path: 'field_content:entity:field_stat_items:entity:field_primary_cta:title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_content
+        - field.storage.paragraph.field_primary_cta
+        - field.storage.paragraph.field_stat_items
+      module:
+        - paragraphs
+  title_6:
+    label: 'Hero » Paragraph » Primary cta » Link text'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_primary_cta:title'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_primary_cta
+      module:
+        - paragraphs
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    boost: 8.0
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Entity reference'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected:
+        - webform
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  custom_value: {  }
+  entity_status: {  }
+  entity_type: {  }
+  highlight:
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_always: false
+    excerpt_length: 256
+    exclude_fields:
+      - field_rich_text
+      - field_search_phrases
+      - field_teaser_text
+      - type
+    highlight: always
+    highlight_partial: false
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: true
+    fields:
+      - field_caption
+      - field_caption_1
+      - field_citation
+      - field_citation_1
+      - field_citation_2
+      - field_citation_3
+      - field_credit
+      - field_credit_1
+      - field_key_stages
+      - field_post_description
+      - field_quote
+      - field_quote_1
+      - field_quote_2
+      - field_quote_3
+      - field_quote_4
+      - field_quote_5
+      - field_regions
+      - field_rich_text
+      - field_search_phrases
+      - field_subtext
+      - field_subtitle
+      - field_teaser_text
+      - field_title
+      - field_title_1
+      - field_title_2
+      - field_title_3
+      - field_title_4
+      - field_title_5
+      - field_title_6
+      - langcode
+      - processed
+      - processed_1
+      - processed_10
+      - processed_11
+      - processed_12
+      - processed_13
+      - processed_14
+      - processed_15
+      - processed_16
+      - processed_17
+      - processed_2
+      - processed_3
+      - processed_4
+      - processed_5
+      - processed_6
+      - processed_7
+      - processed_8
+      - processed_9
+      - title
+      - title_1
+      - title_2
+      - title_3
+      - title_4
+      - title_5
+      - title_6
+      - type
+    title: true
+    alt: true
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+  language_with_fallback: {  }
+  rendered_item: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+  type_boost:
+    weights:
+      preprocess_index: 0
+    boosts:
+      'entity:node':
+        datasource_boost: 1.0
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: searchstax_server

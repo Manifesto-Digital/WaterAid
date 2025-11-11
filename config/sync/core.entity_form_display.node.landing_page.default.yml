@@ -3,34 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.landing_page.field_additional_links
-    - field.field.node.landing_page.field_age_range
     - field.field.node.landing_page.field_audience
-    - field.field.node.landing_page.field_banner_title
-    - field.field.node.landing_page.field_banner_title_space
-    - field.field.node.landing_page.field_colour_selector
     - field.field.node.landing_page.field_content
     - field.field.node.landing_page.field_country
-    - field.field.node.landing_page.field_cta_title
     - field.field.node.landing_page.field_event_type
     - field.field.node.landing_page.field_get_involved
-    - field.field.node.landing_page.field_get_involved_section_title
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_key_stage
     - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
-    - field.field.node.landing_page.field_registration_link
     - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_subject_area
     - field.field.node.landing_page.field_synopsis
-    - field.field.node.landing_page.field_synopsis_background_colour
     - field.field.node.landing_page.field_teaser_image
     - field.field.node.landing_page.field_teaser_text
     - field.field.node.landing_page.field_theme
     - field.field.node.landing_page.field_topic
-    - field.field.node.landing_page.field_weight
     - node.type.landing_page
   module:
     - datetime
@@ -131,20 +121,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_additional_links:
-    type: link_default
-    weight: 30
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_age_range:
-    type: options_select
-    weight: 31
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_audience:
     type: entity_reference_autocomplete
     weight: 14
@@ -154,26 +130,6 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_banner_title:
-    type: string_textfield
-    weight: 32
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_banner_title_space:
-    type: options_select
-    weight: 33
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_colour_selector:
-    type: options_select
-    weight: 31
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_content:
     type: layout_paragraphs
@@ -197,14 +153,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_cta_title:
-    type: string_textfield
-    weight: 33
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_event_type:
     type: entity_reference_autocomplete
     weight: 2
@@ -222,14 +170,6 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_get_involved_section_title:
-    type: string_textfield
-    weight: 36
-    region: content
-    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
@@ -268,14 +208,6 @@ content:
     weight: 33
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_registration_link:
-    type: link_default
-    weight: 35
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_resources:
     type: link_default
@@ -317,12 +249,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_synopsis_background_colour:
-    type: options_select
-    weight: 38
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
     weight: 5
@@ -356,13 +282,6 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_weight:
-    type: number
-    weight: 28
-    region: content
-    settings:
       placeholder: ''
     third_party_settings: {  }
   langcode:

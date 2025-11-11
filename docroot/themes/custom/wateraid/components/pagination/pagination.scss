@@ -1,0 +1,41 @@
+@import "../../sass/base";
+
+.pagination {
+  justify-items: center;
+  margin-top: $wa-spacing-09;
+  &__prev .button {
+    rotate: 180deg;
+  }
+
+  &__items {
+    @include paragraph-md();
+    font-family: $bold-font;
+    display: flex;
+    gap: $wa-spacing-02;
+    list-style: none;
+    align-items: center;
+  }
+
+  &__item {
+    width: $wa-spacing-09;
+    height: $wa-spacing-09;
+    align-content: center;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: $wa-navy;
+    }
+  }
+
+  .is-active {
+    background-image: url("/themes/custom/wateraid/images/icons/wa-shape-circle-border.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  &__ellipsis {
+    padding: 0 $wa-spacing-01;
+  }
+}
+

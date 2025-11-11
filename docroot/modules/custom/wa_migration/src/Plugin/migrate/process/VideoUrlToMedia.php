@@ -1,0 +1,72 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Drupal\wa_migration\Plugin\migrate\process;
+
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\migrate\MigrateExecutableInterface;
+use Drupal\migrate\ProcessPluginBase;
+use Drupal\migrate\Row;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+/**
+ * Provides a video_url_to_media plugin.
+ *
+ * Usage:
+ *
+ * @code
+ * process:
+ *   bar:
+ *     plugin: video_url_to_media
+ *     source: foo
+ * @endcode
+ *
+ * @MigrateProcessPlugin(id = "video_url_to_media")
+ */
+final class VideoUrlToMedia extends ProcessPluginBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Constructs the plugin instance.
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
+    return new self(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
+    if ($value) {
+      $media = $this->entityTypeManager->getStorage('media')->create([
+        'bundle' => 'remote_video',
+        'uid' => 1,
+      ]);
+      $media->set('field_media_oembed_video', $value);
+
+      return $media;
+    }
+    else {
+      return NULL;
+    }
+  }
+
+}

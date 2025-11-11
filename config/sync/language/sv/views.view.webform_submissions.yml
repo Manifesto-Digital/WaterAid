@@ -8,24 +8,7 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      pager:
-        options:
-          tags:
-            first: '« Första'
-            last: 'Sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       fields:
-        sid:
-          separator: ', '
-        in_draft:
-          separator: ', '
-        created:
-          separator: ', '
-        remote_addr:
-          separator: ', '
         view_webform_submission:
           label: Funktioner
       arguments:
@@ -37,20 +20,6 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: Åtgärd
-        sid:
-          separator: ', '
-        in_draft:
-          separator: ', '
-        sticky:
-          separator: ', '
-        locked:
-          separator: ', '
-        created:
-          separator: ', '
-        completed:
-          separator: ', '
-        remote_addr:
-          separator: ', '
         operations:
           label: Funktioner
   embed_manage:
@@ -58,20 +27,6 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: Åtgärd
-        sid:
-          separator: ', '
-        in_draft:
-          separator: ', '
-        sticky:
-          separator: ', '
-        locked:
-          separator: ', '
-        created:
-          separator: ', '
-        completed:
-          separator: ', '
-        remote_addr:
-          separator: ', '
         view_webform_submission:
           label: Funktioner
         edit_webform_submission:
@@ -79,19 +34,5 @@ display:
   embed_review:
     display_options:
       fields:
-        sid:
-          separator: ', '
-        in_draft:
-          separator: ', '
-        sticky:
-          separator: ', '
-        locked:
-          separator: ', '
-        created:
-          separator: ', '
-        completed:
-          separator: ', '
-        remote_addr:
-          separator: ', '
         view_webform_submission:
           label: Funktioner

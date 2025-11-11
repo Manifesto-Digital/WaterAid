@@ -1,9 +1,6 @@
 display:
   default:
     display_options:
-      fields:
-        changed:
-          separator: ', '
       exposed_form:
         options:
           reset_button_label: Återställ

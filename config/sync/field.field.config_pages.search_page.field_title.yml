@@ -1,0 +1,19 @@
+uuid: 8617e52f-cacd-4703-a96a-83f8bf235c3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.search_page
+    - field.storage.config_pages.field_title
+id: config_pages.search_page.field_title
+field_name: field_title
+entity_type: config_pages
+bundle: search_page
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -14,7 +14,6 @@ dependencies:
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
-    - field.field.node.webform.field_title_colour
     - field.field.node.webform.webform
     - node.type.webform
   module:
@@ -110,13 +109,6 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 108
-    region: content
-  field_title_colour:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 106
     region: content
   links:
     settings: {  }

@@ -4,36 +4,15 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
-        thumbnail__target_id:
-          separator: ', '
-        name:
-          separator: ', '
-        bundle:
-          label: Typ
-          separator: ', '
         uid:
           label: Författare
-          separator: ', '
         status:
+          label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
-          separator: ', '
-        changed:
-          separator: ', '
         operations:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            next: 'Nästa ›'
-            previous: '‹ Föregående'
-            first: '« Första'
-            last: 'Sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           submit_button: Filtrera
@@ -42,9 +21,6 @@ display:
           sort_asc_label: Stigande
           sort_desc_label: Fallande
       filters:
-        bundle:
-          expose:
-            label: Typ
         status:
           group_info:
             label: 'Status för publicering'

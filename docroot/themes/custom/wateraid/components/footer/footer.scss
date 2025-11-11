@@ -3,8 +3,12 @@
 .footer {
   &[data-component-id="wateraid:footer"] {
     color: $wa-white;
-    margin-top: $wa-spacing-10;
+    margin-top: $wa-spacing-14;
     position: relative;
+
+    @include desktop {
+      margin-top: calculate-rem(152);
+    }
 
     &::after {
       content: "";

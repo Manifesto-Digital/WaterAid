@@ -56,7 +56,8 @@ final class UserSource extends SqlBase {
   public function query(): SelectInterface {
     $query = $this->select('users_field_data', 'u')
       ->fields('u')
-      ->condition('u.uid', 1, '>');
+      ->condition('u.uid', 1, '>')
+      ->condition('u.status', 1);
 
     // Exclude any accounts for agencies looking after the old site.
     $and = $query->andConditionGroup();

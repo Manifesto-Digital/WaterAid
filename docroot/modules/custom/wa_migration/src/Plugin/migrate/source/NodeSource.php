@@ -16,15 +16,31 @@ use Drupal\migrate\Row;
  *   source_module = "wa_migration",
  * )
  */
-final class NodeSource extends SqlBase {
+class NodeSource extends SqlBase {
+
+  /**
+   * Helper to get the query separately so we can minimise code duplication.
+   *
+   * @return \Drupal\Core\Database\Query\SelectInterface
+   *   The select query.
+   */
+  public function getQuery(): SelectInterface {
+    return $this->select('node_field_data', 'n')
+      ->fields('n')
+      ->condition('n.type', $this->configuration['bundle'])
+      ->condition('n.status', 1)
+      ->condition('n.nid', 16086, '<>');
+  }
 
   /**
    * {@inheritdoc}
    */
   public function query(): SelectInterface {
-    $query = $this->select('node_field_data', 'n')
-      ->fields('n')
-      ->condition('n.type', $this->configuration['bundle']);
+
+    // We want a single node to not be migrated to the same content type as
+    // other nodes of its type. We'll exclude it here and create a custom
+    // migration for it.
+    $query = $this->getQuery();
 
     if (isset($this->configuration['fields'])) {
       if (in_array('field_wa_donation_page_template', $this->configuration['fields'])) {
@@ -82,53 +98,94 @@ final class NodeSource extends SqlBase {
       foreach ($this->configuration['fields'] as $field) {
         $value = [];
 
-        if ($data = $this->select('node__' . $field, 'f')
-          ->fields('f')
-          ->condition('entity_id', $row->getSourceProperty('nid'))
-          ->execute()->fetchAll()) {
-          foreach ($data as $values) {
-            if (isset($values[$field . '_value'])) {
-              $value[] = $values[$field . '_value'];
-            }
-            elseif (isset($values[$field . '_target_id'])) {
-
-              // Check if we have values nested inside the structural paragraphs
-              // we are no longer using.
-              if ($field == 'field_modules') {
-                foreach ([
-                  'field_column_1',
-                  'field_column_2',
-                  'field_section_item',
-                  'field_vcm_main',
-                ] as $table) {
-                  if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
-                    ->fields('p')
-                    ->condition('entity_id', $values['field_modules_target_id'])
-                    ->execute()
-                    ->fetchAll()
-                  ) {
-                    foreach ($sub_paragraphs as $sub) {
-                      if (isset($sub[$table . '_target_id'])) {
-                        $value[] = $sub[$table . '_target_id'];
-                      }
-                    }
-                  }
+        if ($field == 'field_article_hero_video') {
+          if ($data = $this->select('node__field_article_hero_video', 'f')
+            ->fields('f')
+            ->condition('entity_id', $row->getSourceProperty('nid'))
+            ->execute()->fetchAssoc()
+          ) {
+            if ($data['field_article_hero_video_target_id']) {
+              if ($media = $this->select('media__field_media_video_embed_field', 'm')
+                ->fields('m')
+                ->condition('entity_id', $data['field_article_hero_video_target_id'])
+                ->execute()->fetchAssoc()
+              ) {
+                if ($media['field_media_video_embed_field_value']) {
+                  $row->setSourceProperty('field_media_video_embed_field', $media['field_media_video_embed_field_value']);
                 }
               }
-              else {
-                $value[] = $values[$field . '_target_id'];
-              }
-            }
-            elseif ((isset($values[$field . '_uri']))) {
-              $row->setSourceProperty($field . '_uri', $values[$field . '_uri']);
-              $row->setSourceProperty($field . '_title', $values[$field . '_title']);
             }
           }
         }
+        else {
+          if ($data = $this->select('node__' . $field, 'f')
+            ->fields('f')
+            ->condition('entity_id', $row->getSourceProperty('nid'))
+            ->execute()->fetchAll()) {
+            foreach ($data as $values) {
+              if (isset($values[$field . '_value'])) {
+                $value[] = $values[$field . '_value'];
+              }
+              elseif (isset($values[$field . '_target_id'])) {
+                // Check if we have values nested inside the structural paragraphs
+                // we are no longer using.
+                if ($field == 'field_modules') {
+                  $value_found = FALSE;
 
-        $value = (empty($value)) ? NULL : $value;
+                  foreach ([
+                    'field_column_1',
+                    'field_column_2',
+                    'field_section_item',
+                    'field_vcm_main',
+                    'field_enhanced_carousel_items',
+                    'field_tab_items',
+                    'field_quotes_quote',
+                    'field_biography_item',
+                    'field_activation_bar_item',
+                    'field_rainbow_links',
+                    'field_donation_cta_widget',
+                  ] as $table) {
+                    if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
+                      ->fields('p')
+                      ->condition('entity_id', $values['field_modules_target_id'])
+                      ->execute()
+                      ->fetchAll()
+                    ) {
+                      $value_found = TRUE;
 
-        $row->setSourceProperty($field, $value);
+                      // If we've found sub-paragraphs, add these into the value
+                      // instead of the parent id, because it is only the children
+                      // we've migrated in for the paragraphs with these fields.
+                      foreach ($sub_paragraphs as $sub) {
+                        if (isset($sub[$table . '_target_id'])) {
+                          $value[] = $sub[$table . '_target_id'];
+                        }
+                      }
+                    }
+                  }
+
+                  // If we haven't found any data linking this target idea to
+                  // sub-paragraphs, we'll add it into the values so the migration
+                  // lookup can find any paragraphs it relates to.
+                  if (!$value_found) {
+                    $value[] = $values[$field . '_target_id'];
+                  }
+                }
+                else {
+                  $value[] = $values[$field . '_target_id'];
+                }
+              }
+              elseif ((isset($values[$field . '_uri']))) {
+                $row->setSourceProperty($field . '_uri', $values[$field . '_uri']);
+                $row->setSourceProperty($field . '_title', $values[$field . '_title']);
+              }
+            }
+          }
+
+          $value = (empty($value)) ? NULL : $value;
+
+          $row->setSourceProperty($field, $value);
+        }
       }
     }
 

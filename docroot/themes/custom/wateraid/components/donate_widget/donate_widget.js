@@ -135,7 +135,7 @@
         const frequencyValue = selectedFrequency.value;
         let amountValue = selectedRadio.value;
 
-        if (amountValue === 'other') {
+        if (monthlyCustomAmountInput.value || oneOffCustomAmountInput.value) {
           if (selectedFrequency.value === "monthly") {
             amountValue = monthlyCustomAmountInput.value;
           } else {

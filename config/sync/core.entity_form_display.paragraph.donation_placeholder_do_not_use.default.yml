@@ -1,0 +1,25 @@
+uuid: 96fbf61e-3241-427d-9b75-5f1018b9544b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.donation_placeholder_do_not_use.field_rich_text
+    - paragraphs.paragraphs_type.donation_placeholder_do_not_use
+  module:
+    - text
+id: paragraph.donation_placeholder_do_not_use.default
+targetEntityType: paragraph
+bundle: donation_placeholder_do_not_use
+mode: default
+content:
+  field_rich_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

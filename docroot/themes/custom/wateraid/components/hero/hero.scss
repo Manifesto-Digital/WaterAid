@@ -276,4 +276,20 @@
       }
     }
   }
+
+  &--search {
+    .hero__content {
+      max-width: calculate-rem(888);
+      margin: 3rem auto 0 auto;
+      padding: 0 $wa-spacing-05;
+
+      @include desktop() {
+        padding: 0;
+      }
+    }
+
+    h1 {
+      color: $wa-blue;
+    }
+  }
 }

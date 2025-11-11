@@ -15,7 +15,6 @@ dependencies:
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
-    - field.field.node.webform.field_title_colour
     - field.field.node.webform.webform
     - node.type.webform
   module:
@@ -61,7 +60,6 @@ hidden:
   field_options: true
   field_review_date: true
   field_sidebar_content: true
-  field_title_colour: true
   field_webform: true
   langcode: true
   node_read_time: true
