@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_show_spend_module
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
@@ -61,8 +62,8 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - webform
         - field_content
+        - webform
       label: Content
       region: content
       parent_name: group_tabs
@@ -78,9 +79,10 @@ third_party_settings:
         required_fields: true
     group_sidebar_content:
       children:
+        - field_show_spend_module
         - field_sidebar_content
       label: 'Sidebar content'
-      region: hidden
+      region: content
       parent_name: group_tabs
       weight: 2
       format_type: tab
@@ -166,9 +168,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_show_spend_module:
+    type: boolean_checkbox
+    weight: 122
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_sidebar_content:
     type: layout_paragraphs
-    weight: 12
+    weight: 123
     region: content
     settings:
       view_mode: default
