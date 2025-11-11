@@ -6,32 +6,49 @@
     args: {
       title: 'Title',
       copy: 'Lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit.',
-      sg_1_figure: '73p',
-      sg_1_title: 'is spent on making change happen',
-      sg_2_figure: '27p',
-      sg_2_title: 'is spent on fundraising',
+      sg_1_amount: '73p',
+      sg_1_description: 'is spent on making change happen',
+      sg_2_amount: '27p',
+      sg_2_description: 'is spent on fundraising',
     }
   } %}
 
-    {% set sg_1_copy %}
-      <p>28p supporting local partners to deliver sustainable solutions</p>
-      <p>23p strengthening local and national capacity to deliver services</p>
-      <p>16p influencing policy in water, sanitation and hygiene</p>
-      <p>6p supporting WaterAid globally</p>
-    {% endset %}
-    {% set sg_2_copy %}
-      <p>Generating future income so together, we can keep changing the world through water.</p>
-    {% endset %}
+    {% set sg_1_items = {
+      1 : {
+        key : '28p',
+        value : 'supporting local partners to deliver sustainable solutions'
+      },
+      2 : {
+        key : '23p',
+        value : 'strengthening local and national capacity to deliver services'
+      },
+      3 : {
+        key : '16p',
+        value : 'influencing policy in water, sanitation and hygiene'
+      },
+      4 : {
+        key : '6p',
+        value : 'supporting WaterAid globally'
+      },
+    } %}
+
+    {% set sg_1_items = {
+        1 : {
+          key : '23p',
+          value : 'generating future income so together, we can keep changing the world through water.'
+        },
+    } %}
+
 
     {{ include('wateraid:spend', {
       title,
       copy,
-      sg_1_figure,
-      sg_1_title,
-      sg_1_copy,
-      sg_2_figure,
-      sg_2_title,
-      sg_2_copy
+      sg_1_amount,
+      sg_1_description,
+      sg_1_items,
+      sg_2_amount,
+      sg_2_description,
+      sg_2_items
     }) }}
   {% endstory %}
 

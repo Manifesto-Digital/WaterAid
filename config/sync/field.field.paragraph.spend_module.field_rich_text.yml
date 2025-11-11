@@ -1,0 +1,26 @@
+uuid: 384ef309-e84e-4366-ad00-199abfc2f807
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rich_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.spend_module
+  module:
+    - text
+id: paragraph.spend_module.field_rich_text
+field_name: field_rich_text
+entity_type: paragraph
+bundle: spend_module
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+field_type: text_long

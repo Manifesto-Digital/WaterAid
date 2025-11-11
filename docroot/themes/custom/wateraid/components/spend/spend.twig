@@ -45,10 +45,12 @@
     </figure>
     <div class="spend__info">
       <h3 class="spend__info-title">
-        <span class="spend__amount pseudo-h5">{{ sg_1_figure }}</span>
-        {{ sg_1_title }}
+        <span class="spend__amount pseudo-h5">{{ sg_1_amount }}</span>
+        {{ sg_1_description }}
       </h3>
-      {{ sg_1_copy }}
+      {% for key,item in sg_1_items%}
+        <p><strong>{{ item.key }}</strong> {{ item.value }}</p>
+      {% endfor %}
     </div>
   </div>
   <div class="spend__diagram diagram-2">
@@ -76,10 +78,12 @@
     </figure>
     <div class="spend__info">
       <h3 class="spend__info-title">
-        <span class="spend__amount pseudo-h5">{{ sg_2_figure }}</span>
-        {{ sg_2_title }}
+        <span class="spend__amount pseudo-h5">{{ sg_2_amount }}</span>
+        {{ sg_2_description }}
       </h3>
-      {{ sg_2_copy }}
+      {% for key,item in sg_1_items%}
+        <p><strong>{{ item.key }}</strong> {{ item.value }}</p>
+      {% endfor %}
     </div>
   </div>
 
