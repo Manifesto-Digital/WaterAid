@@ -213,6 +213,16 @@ strong {
   margin: 0 auto;
 }
 
+.donate-widget .custom-amount {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .donate-widget .custom-amount {
+    display: block;
+  }
+}
+
 /* Element: Options Group (Fieldset) */
 
 .donate-widget__options-group {
@@ -256,6 +266,22 @@ strong {
   font-size: 1.25rem;
 }
 
+@media only screen and (min-width: 768px) {
+  .donate-widget__custom-amount label .mobile {
+    display: none;
+  }
+}
+
+.donate-widget__custom-amount label .tablet {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .donate-widget__custom-amount label .tablet {
+    display: block;
+  }
+}
+
 .donate-widget__custom-amount input {
   height: 54px;
   padding: .75rem .75rem .75rem 2.5rem;
@@ -269,8 +295,10 @@ strong {
   border: 2px solid #151435;
 }
 
-.donate-widget__custom-amount.is-hidden {
-  display: none;
+@media only screen and (min-width: 768px) {
+  .donate-widget__custom-amount.is-hidden {
+    display: none;
+  }
 }
 
 .donate-widget__amount-details {
