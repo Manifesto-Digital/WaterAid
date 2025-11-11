@@ -7,6 +7,7 @@ namespace Drupal\wa_migration\EventSubscriber;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\migrate\Event\MigrateEvents;
 use Drupal\migrate\Event\MigratePostRowSaveEvent;
+use Drupal\migrate\Event\MigratePreRowSaveEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -48,12 +49,42 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
     }
   }
 
+  public function onMigratePreRowSave(MigratePreRowSaveEvent $event): void {
+
+    // We only need to do this for redirects.
+    if ($event->getMigration()->id() == 'redirect') {
+
+      // Create the redirect entity so we can check whether it is a duplicate.
+      $storage = $this->entityTypeManager->getStorage('redirect');
+
+      /** @var \Drupal\redirect\Entity\Redirect $redirect */
+      $redirect = $storage->create($event->getRow()->getDestination());
+      $redirect->preSave($storage);
+
+      // The hash is calculated in the presave function, so call that.
+      $hash = $redirect->getHash();
+
+      $existing = $storage->loadByProperties([
+        'hash' => $hash,
+      ]);
+
+      if (!empty($existing)) {
+        foreach ($existing as $entity) {
+
+          // Delete the entity so the duplicate can be saved without issue.
+          $entity->delete();
+        }
+      }
+    }
+  }
+
   /**
    * {@inheritdoc}
    */
   public static function getSubscribedEvents(): array {
     return [
       MigrateEvents::POST_ROW_SAVE => ['onMigratePostRowSave'],
+      MigrateEvents::PRE_ROW_SAVE => ['onMigratePreRowSave'],
     ];
   }
 
