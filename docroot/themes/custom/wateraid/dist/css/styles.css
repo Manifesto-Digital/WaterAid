@@ -871,41 +871,6 @@ strong {
  * be imported into SDC components, not styles.scss.
  */
 
-header {
-  padding: 24px 0;
-  border-bottom: #000 solid 1px;
-}
-
-header > div {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-@media only screen and (min-width: 768px) {
-  header > div {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  header > div {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-}
-
-header > div {
-  margin-left: 0;
-}
-
-header img {
-  display: block;
-  width: 200px;
-}
-
 .page-container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1014,6 +979,36 @@ header img {
 
 body {
   font-family: "Noto Sans";
+}
+
+.gin-secondary-toolbar--frontend {
+  background: #fff;
+  opacity: 1;
+}
+
+div[data-drupal-messages] {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  div[data-drupal-messages] {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  div[data-drupal-messages] {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+div[data-drupal-messages] {
+  margin-top: 2rem;
 }
 
 /**
@@ -1469,6 +1464,10 @@ input[type=radio]:focus-visible {
   border-color: #d14200;
 }
 
+.form-item .stripe-card-element {
+  padding: 1rem;
+}
+
 .form-item textarea {
   border-radius: 2px;
   width: 100%;
@@ -1615,6 +1614,7 @@ input[type=radio]:focus-visible {
   line-height: normal;
 }
 
+.pca .pcaautocomplete,
 .pcaautocomplete .pcatext {
   border-color: transparent !important;
 }
@@ -1626,8 +1626,7 @@ input[type=radio]:focus-visible {
   line-height: 150%;
   position: absolute;
   left: .5rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: .75rem;
 }
 
 .webform-buttons-other-input_currency-sign + input[type=number] {
@@ -1662,20 +1661,28 @@ fieldset.prev-form-step legend .step-title__text {
   font-size: 2rem;
 }
 
+fieldset.next-form-step button,
 fieldset.next-form-step input[value=Edit],
+fieldset.prev-form-step button,
 fieldset.prev-form-step input[value=Edit] {
   color: inherit;
   font-weight: 400;
   text-decoration: underline;
 }
 
-fieldset.next-form-step input[value=Edit]:hover, fieldset.next-form-step input[value=Edit]:focus-visible,
+fieldset.next-form-step button:hover, fieldset.next-form-step button:focus-visible,
+fieldset.next-form-step input[value=Edit]:hover,
+fieldset.next-form-step input[value=Edit]:focus-visible,
+fieldset.prev-form-step button:hover,
+fieldset.prev-form-step button:focus-visible,
 fieldset.prev-form-step input[value=Edit]:hover,
 fieldset.prev-form-step input[value=Edit]:focus-visible {
   text-decoration: none;
 }
 
+fieldset.next-form-step button:focus-visible,
 fieldset.next-form-step input[value=Edit]:focus-visible,
+fieldset.prev-form-step button:focus-visible,
 fieldset.prev-form-step input[value=Edit]:focus-visible {
   color: #151435;
   background-color: #ff96e6;
@@ -1729,6 +1736,242 @@ fieldset.next-form-step .step-title__text {
   line-height: 3rem;
   background: url("/themes/custom/wateraid/images/icons/current.svg") no-repeat;
   margin-bottom: 1rem;
+}
+
+.webform-donation-widget-wrapper + .field--name-webform form [data-drupal-selector=edit-step-title],
+.webform-donation-widget-wrapper + .field--name-webform form [data-drupal-selector=edit-step-1],
+.webform-donation-widget-wrapper + .field--name-webform form [data-drupal-selector=edit-actions] {
+  display: none !important;
+}
+
+.node--type-webform .single-option,
+.node--type-webform .single-frequency-label,
+.node--type-webform .single-amount-label .js-form-type-radio {
+  display: none !important;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button {
+  position: relative;
+  border: none;
+  background: none;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  left: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button:focus-visible {
+  outline: #ff96e6 .25rem solid;
+  border: none;
+  background: none;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button:hover {
+  cursor: pointer;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button {
+  font-size: 1.5rem;
+  font-family: "Noto Sans Bold";
+  padding: .75rem 1rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  text-decoration: none;
+  color: #fff;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button::before {
+  transition: transform 200ms;
+  will-change: transform;
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  z-index: -1;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button:hover::before {
+  transform: translateX(-0.5rem) translateY(.5rem);
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.node--type-webform [data-donations-method=stripe] .payment-button::after {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide.svg");
+}
+
+.node--type-webform div[data-once=webform-buttons],
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .node--type-webform div[data-once=webform-buttons],
+  .node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side {
+    flex-wrap: nowrap;
+  }
+}
+
+.node--type-webform div[data-once=webform-buttons] label,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label {
+  position: relative;
+  border: none;
+  background: none;
+}
+
+.node--type-webform div[data-once=webform-buttons] label::after,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  left: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.node--type-webform div[data-once=webform-buttons] label:focus-visible,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label:focus-visible {
+  outline: #ff96e6 .25rem solid;
+  border: none;
+  background: none;
+}
+
+.node--type-webform div[data-once=webform-buttons] label:hover,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label:hover {
+  cursor: pointer;
+}
+
+.node--type-webform div[data-once=webform-buttons] label,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label {
+  font-size: 1.5rem;
+  font-family: "Noto Sans Bold";
+  padding: .75rem 1rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  text-decoration: none;
+  color: #fff;
+}
+
+.node--type-webform div[data-once=webform-buttons] label::before,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label::before {
+  transition: transform 200ms;
+  will-change: transform;
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  z-index: -1;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.node--type-webform div[data-once=webform-buttons] label:hover::before,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label:hover::before {
+  transform: translateX(-0.5rem) translateY(.5rem);
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.node--type-webform div[data-once=webform-buttons] label::after,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label::after {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide.svg");
+}
+
+.node--type-webform div[data-once=webform-buttons] label,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  flex: 1 1 100%;
+  justify-content: center;
+}
+
+.node--type-webform div[data-once=webform-buttons] label:hover,
+.node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label:hover {
+  background-color: #006bd9;
+  border-color: #006bd9;
+  border-radius: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .node--type-webform div[data-once=webform-buttons] label,
+  .node--type-webform .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side label {
+    width: auto;
+    max-width: 25%;
+  }
+}
+
+fieldset.wa-donation-methods {
+  border: none;
+}
+
+fieldset.wa-donation-methods .fieldset-legend {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  word-wrap: normal;
+}
+
+fieldset.wa-donation-methods [data-donations-method=stripe]::before {
+  display: inline-block;
+  font-family: "Noto Sans Bold";
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.webform-confirmation {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .webform-confirmation {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .webform-confirmation {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.webform-confirmation {
+  margin-bottom: 6rem;
 }
 
 @font-face {
