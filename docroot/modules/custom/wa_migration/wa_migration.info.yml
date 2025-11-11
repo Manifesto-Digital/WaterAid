@@ -6,3 +6,4 @@ core_version_requirement: ^10 || ^11
 dependencies:
   - migrate_plus:migrate_plus
   - migrate_tools:migrate_tools
+  - wa_orange_dam:wa_orange_dam

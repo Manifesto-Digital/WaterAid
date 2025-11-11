@@ -1,0 +1,34 @@
+uuid: 4696b5b9-d162-48d2-84b6-a6c5c49b6b5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.search_page
+    - field.field.config_pages.search_page.field_subtitle
+    - field.field.config_pages.search_page.field_title
+id: config_pages.search_page.default
+targetEntityType: config_pages
+bundle: search_page
+mode: default
+content:
+  field_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

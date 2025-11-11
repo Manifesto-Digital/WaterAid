@@ -12,8 +12,8 @@ on:
         options: [dev, test, prod]
         default: dev
 env:
-  ACQUIA_SITE: ${{ vars.ACQUIA_SITE }}
-  ACQUIA_GIT_HOST: ${{ vars.ACQUIA_GIT_HOST }}
+  ACQUIA_SITE: ${{ vars.WA_ACQUIA_SITE }}
+  ACQUIA_GIT_HOST: ${{ vars.WA_ACQUIA_GIT_HOST }}
   ACQUIA_CLI_NO_INTERACTION: 1
 jobs:
   deploy:
@@ -108,5 +108,5 @@ jobs:
       - name: Drush commands
         working-directory: ${{ github.workspace }}
         run: |
-          acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
+           acli remote:drush $ACQUIA_SITE.$ENVIRONMENT -- deploy -y
 

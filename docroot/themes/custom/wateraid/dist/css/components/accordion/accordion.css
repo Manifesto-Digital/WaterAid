@@ -22,6 +22,7 @@
 h1, .pseudo-h1 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.625rem;
+  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
@@ -37,6 +38,7 @@ h1, .pseudo-h1 {
 h2, .pseudo-h2 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.25rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -52,6 +54,7 @@ h2, .pseudo-h2 {
 h3, .pseudo-h3 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -67,6 +70,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -75,6 +79,7 @@ h4, .pseudo-h4 {
 h5, .pseudo-h5 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -83,6 +88,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -142,6 +148,14 @@ strong {
   .accordion {
     margin-top: 3rem;
   }
+}
+
+.accordion__content h2 {
+  padding-bottom: 2rem;
+}
+
+.accordion__description {
+  padding-bottom: 1.5rem;
 }
 
 .accordion__search {
@@ -233,3 +247,5 @@ strong {
   background: #e8e8eb;
 }
 
+
+/*# sourceMappingURL=accordion.css.map*/

@@ -43,13 +43,22 @@ final class Api {
   public function search(array $query = [], array $fields = [], string|null $bearer = NULL): array {
     $fields = array_merge([
       'SystemIdentifier',
-      'Title',
-      'customfield.Credit',
-      'CustomField.Caption',
       'MIMEtype',
       'path_TR1',
       'MediaType',
-      'Representative_DO'], $fields);
+      'Representative_DO',
+      'Path',
+      'CustomField.Project-Code',
+      'CustomField.Caption',
+      'customfield.Credit',
+      'customfield.Batch-Number',
+      'customfield.Image-Code',
+      'image-id-(asset-bank).Image-ID-(Asset-Bank)',
+      'customfield.other.Credit',
+      'CoreField.OriginalFileName',
+      'CoreField.Title',
+      'Document.FileNameWithoutExtension',
+      ], $fields);
 
     $query = array_merge([
       'format' => 'JSON',
@@ -112,6 +121,16 @@ final class Api {
     $url = $this->base . '/webapi/objectmanagement/share/getlink_4HZ_v1?' . http_build_query($query);
 
     return $this->call($url, 'GET', $bearer);
+  }
+
+  /**
+   * Call the list fields endpoint.
+   *
+   * @return array
+   *   The result of the API call.
+   */
+  public function listFields(): array {
+    return $this->call($this->base . '/API/search/v3.0/ListFields?format=json', 'POST');
   }
 
   /**

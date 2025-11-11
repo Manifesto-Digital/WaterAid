@@ -1,20 +1,21 @@
 @import "../../sass/base";
 
 .donate-widget {
- &[data-component-id="wateraid:donate_widget"] {
-   background-color: $wa-blue;
-   color: $wa-white;
-   padding: $wa-spacing-07 $wa-spacing-05;
-   margin-top: $wa-spacing-07;
+  &[data-component-id="wateraid:donate_widget"] {
+    background-color: $wa-blue;
+    color: $wa-white;
+    padding: $wa-spacing-07 $wa-spacing-05;
+    margin-top: $wa-spacing-07;
 
-   @include tablet {
-     padding: $wa-spacing-09 $wa-spacing-07;
-   }
+    @include tablet {
+      padding: $wa-spacing-09 $wa-spacing-07;
+    }
 
-   @include desktop {
-     margin-top: $wa-spacing-09;
-   }
- }
+    @include desktop {
+      margin-top: $wa-spacing-09;
+    }
+  }
+
   &__heading {
     margin-bottom: $wa-spacing-06;
 
@@ -29,6 +30,7 @@
       z-index: 10;
       position: relative;
       margin: 0 0 $wa-spacing-06 0;
+
       button {
         max-width: none;
         justify-content: center;
@@ -60,6 +62,7 @@
     flex-direction: row;
     margin-top: $wa-spacing-03;
     gap: $wa-spacing-02;
+
     svg {
       max-width: 75px;
     }
@@ -68,6 +71,13 @@
   &__fr-logo {
     margin: 0 auto;
   }
+
+  .custom-amount {
+    display: none;
+    @include tablet() {
+      display: block;
+    }
+  }
 }
 
 /* Element: Options Group (Fieldset) */
@@ -75,6 +85,7 @@
   border: none;
   padding: 0;
   margin: 0 0 $wa-spacing-06 0;
+
   &.is-hidden {
     display: none;
   }
@@ -102,10 +113,25 @@
   display: flex;
   flex-direction: column;
   margin-top: $wa-spacing-03;
+
   label {
     margin: $wa-spacing-03 0;
     font-size: calculate-rem(20);
+
+    .mobile {
+      @include tablet() {
+        display: none;
+      }
+    }
+
+    .tablet {
+      display: none;
+      @include tablet() {
+        display: block;
+      }
+    }
   }
+
   input {
     height: 54px;
     padding: $wa-spacing-03 $wa-spacing-03 $wa-spacing-03 $wa-spacing-08;
@@ -118,8 +144,11 @@
     border-radius: $radius-xxs;
     border: 2px solid $wa-navy;
   }
+
   &.is-hidden {
-    display: none;
+    @include tablet() {
+      display: none;
+    }
   }
 }
 
@@ -128,54 +157,59 @@
     margin: $wa-spacing-03 0;
 
     &--detail {
-     background-color: $wa-cream;
-     padding: $wa-spacing-03;
-     display: flex;
-     flex-direction: column;
-     gap: $wa-spacing-06;
+      background-color: $wa-cream;
+      padding: $wa-spacing-03;
+      display: flex;
+      flex-direction: column;
+      gap: $wa-spacing-06;
 
       &.is-hidden {
         display: none;
       }
 
-     @include tablet {
-       flex-direction: row;
-     }
-     .donate-widget__amount--image {
-       @include tablet {
-         max-width: 33%;
-       }
+      @include tablet {
+        flex-direction: row;
+      }
+
+      .donate-widget__amount--image {
+        @include tablet {
+          max-width: 33%;
+        }
+
         img {
           width: 100%;
         }
-     }
-     .donate-widget__amount--meta {
-       display: flex;
-       flex-direction: column;
-       gap: $wa-spacing-02;
+      }
 
-       .icon img {
+      .donate-widget__amount--meta {
+        display: flex;
+        flex-direction: column;
+        gap: $wa-spacing-02;
+
+        .icon img {
           width: $wa-spacing-06;
-       }
+        }
 
-       .title {
-         align-items: center;
-         display: flex;
-         gap: $wa-spacing-02;
-         font-size: calculate-rem(16);
-         font-family: $bold-font;
-         color: $wa-navy;
-       }
-       .description {
-         font-size: calculate-rem(16);
-         line-height: 1.5;
-         color: $wa-navy;
-       }
-       &--credit {
-         color: $wa-navy-80;
-       }
-     }
-   }
+        .title {
+          align-items: center;
+          display: flex;
+          gap: $wa-spacing-02;
+          font-size: calculate-rem(16);
+          font-family: $bold-font;
+          color: $wa-navy;
+        }
+
+        .description {
+          font-size: calculate-rem(16);
+          line-height: 1.5;
+          color: $wa-navy;
+        }
+
+        &--credit {
+          color: $wa-navy-80;
+        }
+      }
+    }
   }
 }
 
@@ -218,6 +252,7 @@
   left: 50%;
   width: max-content;
   bottom: calc(100% + 24px);
+
   &:after {
     content: '';
     background-image: url("/themes/custom/wateraid/images/icons/wa-triangle.svg");
@@ -229,9 +264,11 @@
     height: 12px;
     width: 12px;
   }
+
   @include tablet {
     display: block;
   }
+
   &.is-hidden {
     display: none;
   }
@@ -252,6 +289,7 @@
   background-repeat: no-repeat;
   color: $wa-navy;
   border-radius: 0;
+
   &.amount {
     &:after {
       content: '';

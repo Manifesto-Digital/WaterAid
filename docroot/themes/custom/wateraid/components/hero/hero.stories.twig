@@ -164,4 +164,21 @@
     }) }}
   {% endstory %}
 
+  {% story Search with {
+    name: 'Hero (search)',
+    args: {
+      title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
+      standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+      colour: 'white',
+    }
+  } %}
+
+    {{ include('wateraid:hero', {
+      title,
+      standfirst,
+      colour,
+      variant: 'search'
+    }) }}
+  {% endstory %}
+
 {% endstories %}

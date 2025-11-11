@@ -17,15 +17,13 @@ source:
   plugin: node_source
   bundle: country_details
   fields:
-    - field_area
     - field_audiences
-    - field_capital
     - field_country
     - field_meta_tags
-    - field_population
     - field_themes
-    - field_weight
     - field_modules
+    - field_hero
+    - field_teaser_image
 process:
   langcode:
     -
@@ -34,20 +32,28 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
-  field_area: field_area
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
+  field_hero:
+    plugin: paragraph_migration_lookup
+    migrations:
+      - hero
+    source: field_hero
+    no_stub: true
   field_audience:
     plugin: migration_lookup
     migration: audiences
     source: field_audiences
     no_stub: true
-  field_capital: field_capital
   field_country:
     plugin: migration_lookup
     migration: countries
     source: field_country
     no_stub: true
   field_meta_tags: field_meta_tags
-  field_population: field_population
   field_theme:
     plugin: migration_lookup
     migration: themes
@@ -58,7 +64,6 @@ process:
     migration: users
     source: uid
     no_stub: true
-  field_weight: field_weight
   temp_body:
     -
       plugin: body_to_paragraph
@@ -76,6 +81,21 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
+        - donation_cta_widget_embed
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -92,4 +112,6 @@ migration_dependencies:
     - countries
     - themes
     - users
+    - hero
+    - media
 include: null

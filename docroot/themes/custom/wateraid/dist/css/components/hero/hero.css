@@ -453,3 +453,21 @@ strong {
   }
 }
 
+.hero--search .hero__content {
+  max-width: 55.5rem;
+  margin: 3rem auto 0 auto;
+  padding: 0 1.25rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero--search .hero__content {
+    padding: 0;
+  }
+}
+
+.hero--search h1 {
+  color: #006bd9;
+}
+
+
+/*# sourceMappingURL=hero.css.map*/

@@ -4,34 +4,24 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.landing_page.field_additional_links
-    - field.field.node.landing_page.field_age_range
     - field.field.node.landing_page.field_audience
-    - field.field.node.landing_page.field_banner_title
-    - field.field.node.landing_page.field_banner_title_space
-    - field.field.node.landing_page.field_colour_selector
     - field.field.node.landing_page.field_content
     - field.field.node.landing_page.field_country
-    - field.field.node.landing_page.field_cta_title
     - field.field.node.landing_page.field_event_type
     - field.field.node.landing_page.field_get_involved
-    - field.field.node.landing_page.field_get_involved_section_title
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_key_stage
     - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
-    - field.field.node.landing_page.field_registration_link
     - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_subject_area
     - field.field.node.landing_page.field_synopsis
-    - field.field.node.landing_page.field_synopsis_background_colour
     - field.field.node.landing_page.field_teaser_image
     - field.field.node.landing_page.field_teaser_text
     - field.field.node.landing_page.field_theme
     - field.field.node.landing_page.field_topic
-    - field.field.node.landing_page.field_weight
     - node.type.landing_page
   module:
     - user
@@ -129,24 +119,14 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_additional_links: true
-  field_age_range: true
-  field_banner_title: true
-  field_banner_title_space: true
-  field_colour_selector: true
   field_content: true
-  field_cta_title: true
-  field_get_involved_section_title: true
   field_hero: true
   field_metatags: true
   field_regions: true
-  field_registration_link: true
   field_resources: true
   field_review_date: true
   field_search_phrases: true
   field_synopsis: true
-  field_synopsis_background_colour: true
-  field_weight: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true

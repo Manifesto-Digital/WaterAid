@@ -22,7 +22,10 @@
     {% if date %}
       <div class="card__date">
         {{ include('@wateraid/images/icons/wa-utility-calendar.svg') }}
-        {{ date|date("l j F Y") }}
+        {{ date|date("j F Y") }}
+        {% if end_date and (date|date("j F Y") != end_date|date("j F Y")) %}
+          - {{ end_date|date("j F Y") }}
+        {% endif %}
       </div>
     {% endif %}
 

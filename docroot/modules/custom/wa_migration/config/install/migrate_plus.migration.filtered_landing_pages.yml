@@ -20,9 +20,11 @@ source:
     - field_introduction
     - field_pg_items_to_display
     - field_meta_tags
-    - field_rss
-    - field_weight
     - field_modules
+    - field_article_hero_image
+    - field_article_hero_video
+    - field_teaser_image
+    - field_view_reference
 process:
   langcode:
     -
@@ -30,14 +32,28 @@ process:
       default_value: en
   status: status
   title: title
+  temp_image:
+    plugin: migration_lookup
+    source: field_article_hero_image
+    migration: media
+    no_stub: true
+  field_hero:
+    plugin: image_or_video_to_hero
+    source:
+      - '@temp_image'
+      - field_media_video_embed_field
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_meta_tags: field_meta_tags
   field_include_search: field_include_search
   field_initial_items: field_pg_initial_items
   field_introduction: field_introduction
   field_items_to_display: field_pg_items_to_display
-  field_rss_feed: field_rss
-  field_weight: field_weight
+  field_view: field_view_reference
   uid:
     plugin: migration_lookup
     migration: users
@@ -60,6 +76,21 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
+        - donation_cta_widget_embed
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -73,4 +104,5 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
+    - media
 include: null

@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_content
-    - search_api.index.search
+    - search_api.index.searchstax_index
   module:
-    - entity_reference_revisions
+    - better_exposed_filters
     - search_api
     - user
 id: search
@@ -14,7 +13,7 @@ label: Search
 module: views
 description: ''
 tag: ''
-base_table: search_api_index_search
+base_table: search_api_index_searchstax_index
 base_field: search_api_id
 display:
   default:
@@ -27,7 +26,7 @@ display:
       fields:
         field_content:
           id: field_content
-          table: search_api_index_search
+          table: search_api_index_searchstax_index
           field: field_content
           relationship: none
           group_type: group
@@ -97,16 +96,18 @@ display:
             multi_type: separator
             multi_separator: ', '
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 25
+          items_per_page: 10
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -115,18 +116,43 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 100
       exposed_form:
-        type: input_required
+        type: bef
         options:
           submit_button: Apply
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Enter your keywords and click on Apply to see results'
+          text_input_required: ''
           text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: true
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  placeholder_text: 'Enter your search'
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       access:
         type: perm
         options:
@@ -151,7 +177,7 @@ display:
       sorts:
         search_api_relevance:
           id: search_api_relevance
-          table: search_api_index_search
+          table: search_api_index_searchstax_index
           field: search_api_relevance
           relationship: none
           group_type: group
@@ -166,7 +192,7 @@ display:
       filters:
         search_api_fulltext:
           id: search_api_fulltext
-          table: search_api_index_search
+          table: search_api_index_searchstax_index
           field: search_api_fulltext
           relationship: none
           group_type: group
@@ -178,8 +204,8 @@ display:
           exposed: true
           expose:
             operator_id: search_api_fulltext_op
-            label: Keywords
-            description: 'To search for exact phrases, use "your phrase"'
+            label: 'Search the website'
+            description: ''
             use_operator: false
             operator: search_api_fulltext_op
             operator_limit_selection: false
@@ -220,16 +246,16 @@ display:
         options:
           view_modes:
             'entity:node':
-              ':default': teaser
-              article: ':default'
-              donation: ':default'
-              event: ':default'
-              landing_page: ':default'
-              listing_page: ':default'
-              page: ':default'
-              publication: ':default'
-              standard_page: ':default'
-              story: ':default'
+              ':default': search_listing
+              article: search_listing
+              donation: search_listing
+              event: search_listing
+              landing_page: search_listing
+              listing_page: search_listing
+              page: search_listing
+              publication: search_listing
+              standard_page: search_listing
+              story: search_listing
       query:
         type: search_api_query
         options:
@@ -247,23 +273,21 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: result
-          empty: false
-          content: 'Displaying @start - @end of @total'
+          empty: true
+          content: '<strong>@start - @end</strong> of <strong>@total</strong> results'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_content'
-        - 'config:search_api.index.search'
-        - 'search_api_list:search'
+        - 'config:search_api.index.searchstax_index'
+        - 'search_api_list:searchstax_index'
   search:
     id: search
     display_title: Search
@@ -276,13 +300,11 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_content'
-        - 'config:search_api.index.search'
-        - 'search_api_list:search'
+        - 'config:search_api.index.searchstax_index'
+        - 'search_api_list:searchstax_index'

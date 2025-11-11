@@ -3,15 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_additional_links
     - field.field.node.event.field_audience
-    - field.field.node.event.field_colour_selector
     - field.field.node.event.field_content
     - field.field.node.event.field_country
-    - field.field.node.event.field_cta_supporting_text
-    - field.field.node.event.field_cta_title
     - field.field.node.event.field_event_end_date
-    - field.field.node.event.field_event_information_bg_colou
     - field.field.node.event.field_event_start_date
     - field.field.node.event.field_event_type
     - field.field.node.event.field_get_involved
@@ -19,21 +14,18 @@ dependencies:
     - field.field.node.event.field_metatags
     - field.field.node.event.field_properties
     - field.field.node.event.field_regions
-    - field.field.node.event.field_registration_link
     - field.field.node.event.field_review_date
     - field.field.node.event.field_search_phrases
     - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - field.field.node.event.field_theme
-    - field.field.node.event.field_weight
     - node.type.event
   module:
     - datetime
     - field_group
     - key_value_field
     - layout_paragraphs
-    - link
     - media_library
     - metatag
     - path
@@ -164,14 +156,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_additional_links:
-    type: link_default
-    weight: 30
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_audience:
     type: entity_reference_autocomplete
     weight: 14
@@ -181,12 +165,6 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_colour_selector:
-    type: options_select
-    weight: 31
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_content:
     type: layout_paragraphs
@@ -210,31 +188,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_cta_supporting_text:
-    type: string_textarea
-    weight: 32
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_cta_title:
-    type: string_textfield
-    weight: 33
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_event_end_date:
     type: datetime_default
     weight: 28
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_event_information_bg_colou:
-    type: options_select
-    weight: 34
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -306,14 +262,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_registration_link:
-    type: link_default
-    weight: 35
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
@@ -359,13 +307,6 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_weight:
-    type: number
-    weight: 28
-    region: content
-    settings:
       placeholder: ''
     third_party_settings: {  }
   langcode:

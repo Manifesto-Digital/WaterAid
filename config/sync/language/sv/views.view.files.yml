@@ -1,23 +1,11 @@
-label: Filer
 display:
   default:
     display_options:
-      title: Filer
       fields:
-        filename:
-          label: Namn
-          separator: ', '
+        status:
+          label: Status
         operations:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            next: 'Nästa ›'
-            previous: '‹ Föregående'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           submit_button: Filtrera
@@ -25,21 +13,12 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-  page_1:
-    display_options:
-      menu:
-        title: Filer
+      filters:
+        status:
+          expose:
+            label: Status
   page_2:
     display_options:
-      pager:
-        options:
-          tags:
-            next: 'Nästa ›'
-            previous: '‹ Föregående'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       arguments:
         fid:
           exception:

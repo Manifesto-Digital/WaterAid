@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: ZgciLYODuKTolJYTXZVirdair5wZTviKy56nEgHNL_Y
+analytics_key: ''
+analytics_url: 'https://app.searchstax.com'
+configure_via_searchstudio: true
+discard_parameters:
+  - highlight
+  - keys
+  - sort
+  - spellcheck
+js_version: '3'
+search_specific_analytics_keys: {  }
+searches_via_searchstudio: true
+untracked_roles: {  }

@@ -1,0 +1,60 @@
+uuid: 719ff4aa-08af-42d9-9fc5-ac5e6408e956
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_listing
+    - field.field.node.listing_page.field_content
+    - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_include_search
+    - field.field.node.listing_page.field_initial_items
+    - field.field.node.listing_page.field_introduction
+    - field.field.node.listing_page.field_items_to_display
+    - field.field.node.listing_page.field_metatags
+    - field.field.node.listing_page.field_review_date
+    - field.field.node.listing_page.field_search_phrases
+    - field.field.node.listing_page.field_teaser_image
+    - field.field.node.listing_page.field_teaser_text
+    - field.field.node.listing_page.field_view
+    - node.type.listing_page
+  module:
+    - user
+id: node.listing_page.search_listing
+targetEntityType: node
+bundle: listing_page
+mode: search_listing
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_content: true
+  field_hero: true
+  field_include_search: true
+  field_initial_items: true
+  field_introduction: true
+  field_items_to_display: true
+  field_metatags: true
+  field_review_date: true
+  field_search_phrases: true
+  field_view: true
+  langcode: true
+  links: true
+  node_read_time: true
+  search_api_excerpt: true

@@ -1,0 +1,22 @@
+uuid: e4e5fc2d-8363-4051-8b54-0d2d1e20c7dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webform
+label: 'Webform (programmatically set - see wateraid_core.module)'
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  07f00e58-5334-4a70-abf9-66350c744c9e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 07f00e58-5334-4a70-abf9-66350c744c9e
+    context_mapping:
+      node: node
+    bundles:
+      webform: webform
+selection_logic: and
+weight: 1
+relationships: {  }

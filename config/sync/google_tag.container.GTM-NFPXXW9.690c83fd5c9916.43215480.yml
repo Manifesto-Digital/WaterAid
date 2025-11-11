@@ -1,0 +1,34 @@
+uuid: c8e8f54b-7e26-4dd9-a747-ec1d7422ce6f
+langcode: en
+status: true
+dependencies: {  }
+id: GTM-NFPXXW9.690c83fd5c9916.43215480
+label: GTM-NFPXXW9
+weight: 0
+tag_container_ids:
+  - GTM-NFPXXW9
+  - ''
+advanced_settings:
+  consent_mode: true
+  gtm:
+    GTM-NFPXXW9:
+      data_layer: dataLayer
+      include_classes: false
+      allowlist_classes: ''
+      blocklist_classes: ''
+      include_environment: false
+      environment_id: ''
+      environment_token: ''
+dimensions_metrics: {  }
+conditions: {  }
+events:
+  webform_purchase: {  }
+  custom: {  }
+  login:
+    method: CMS
+  search: {  }
+  sign_up:
+    method: CMS
+  generate_lead:
+    value: ''
+    currency: ''

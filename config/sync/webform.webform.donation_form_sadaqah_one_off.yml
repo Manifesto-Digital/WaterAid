@@ -9,31 +9,44 @@ dependencies:
     - wateraid_forms
     - webform_pdf_receipt
     - webform_wizard_extra
+    - webform_wizard_single_page
 third_party_settings:
   wateraid_donation_forms:
     currency: GBP
     donation_confirmation:
-      value: "<h2>Your donation details:</h2>\r\n\r\n<p><strong>Date</strong><br />\r\n[webform_submission:donation-date]</p>\r\n\r\n<p><strong>Frequency of donation</strong><br />\r\n[webform_submission:donation-frequency]</p>\r\n\r\n<p><strong>Donation amount</strong><br />\r\n£[webform_submission:donation-amount]</p>\r\n"
+      value: '<h2>Your donation details:</h2><p><strong>Date</strong><br>[webform_submission:donation-date]</p><p><strong>Frequency of donation</strong><br>[webform_submission:donation-frequency]</p><p><strong>Donation amount</strong><br>£[webform_submission:donation-amount]</p>'
       format: basic_html
     gift_aid_confirmation:
-      value: "<h2><strong>Gift Aid confirmation</strong></h2>\r\n\r\n<p>We confirm that from [webform_submission:donation-date] WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make. Please see the confirmation email for more details on the Gift Aid scheme.&nbsp;</p>\r\n"
+      value: '<h2><strong>Gift Aid confirmation</strong></h2><p>We confirm that from [webform_submission:donation-date] WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make. Please see the confirmation email for more details on the Gift Aid scheme.&nbsp;</p>'
       format: basic_html
     gift_aid_email_confirmation:
-      value: "<h2>Gift Aid declaration</h2>\r\n\r\n<p>Thank you for submitting your Gift Aid online declaration. The Gift Aid scheme gives WaterAid an extra 25p for each pound donated, allowing us to reach even more communities in desperate need.</p>\r\n\r\n<p>We confirm that from [webform_submission:donation-date]&nbsp;WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make.&nbsp;You have confirmed that you pay an amount of income tax/capital gains tax which is at least equal to the amount we (or any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.</p>\r\n\r\n<p>Adding 25p to every pound really makes your gift go further.</p>\r\n\r\n<p><span><span><span><span>You do not need to do anything further for us to reclaim the tax on your gifts. If any of the details above are incorrect please let us know. You also have the option of withdrawing from the Gift Aid scheme within 30 days of this confirmation.</span></span></span></span></p>\r\n\r\n<p><span><span><span><span><span><span><span><span><span><span><span>If you do stop paying tax in the future, we would appreciate it if you could inform us so that we can adjust our records accordingly. If you have any queries please do not hesitate to contact our Supporter Care team on 020 7793 4594.</span></span></span></span></span></span></span></span></span></span></span></p>\r\n"
+      value: '<h2>Gift Aid declaration</h2><p>Thank you for submitting your Gift Aid online declaration. The Gift Aid scheme gives WaterAid an extra 25p for each pound donated, allowing us to reach even more communities in desperate need.</p><p>We confirm that from [webform_submission:donation-date]&nbsp;WaterAid will reclaim the tax you have paid on all your donations made in the last four years, and any future donations your make.&nbsp;You have confirmed that you pay an amount of income tax/capital gains tax which is at least equal to the amount we (or any other organisation you may support) will reclaim in each tax year (6 April to 5 April), currently 25p for every £1 you donate. If you pay less it is your responsibility to pay back any difference. Gift Aid will be used to fund WaterAid’s general work.</p><p>Adding 25p to every pound really makes your gift go further.</p><p>You do not need to do anything further for us to reclaim the tax on your gifts. If any of the details above are incorrect please let us know. You also have the option of withdrawing from the Gift Aid scheme within 30 days of this confirmation.</p><p>If you do stop paying tax in the future, we would appreciate it if you could inform us so that we can adjust our records accordingly. If you have any queries please do not hesitate to contact our Supporter Care team on 020 7793 4594.</p>'
       format: basic_html
     social_share_title:
-      value: "<p>Spread the word to help reach even more people around the world:</p>\r\n"
+      value: '<p>Spread the word to help reach even more people around the world:</p>'
       format: basic_html
     social_share_text: ' I just donated to @WaterAidUK. You can too: wateraid.org/uk/donate'
     after_confirmation_footer:
-      value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you. Please do not send your bank details by email.</p>\r\n"
+      value: "<p>If there is an error in this information call our Supporter Care team on +44 (0)20 7793 4594 and we'll be happy to help you. Please do not send your bank details by email.</p>"
       format: basic_html
     after_confirmation_cta:
-      value: "<h2>&nbsp;</h2>\r\n\r\n<p>&nbsp;</p>\r\n"
+      value: ''
       format: basic_html
     direct_debit_guarantee:
-      value: "<p><strong>The Direct Debit Guarantee</strong></p>\r\n\r\n<ul>\r\n\t<li>This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.</li>\r\n\t<li>If there are any changes to the amount, date or frequency of your Direct Debit WaterAid will notify you 10 working days in advance of your account being debited or as otherwise agreed. If you request WaterAid to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</li>\r\n\t<li>If an error is made in the payment of your Direct Debit by WaterAid or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your Bank or Building Society.</li>\r\n\t<li>If you receive a refund you are not entitled to, you must pay it back when WaterAid asks you to.</li>\r\n\t<li>You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify us.</li>\r\n</ul>\r\n\r\n<p>To get in touch you can give us a call on 020 7793 4594 or email us on <a href=\"\">supportercare@wateraid.org</a>.</p>\r\n\r\n<p><strong>Service User Name: </strong>WaterAid</p>\r\n\r\n<p><strong>Service User Number: </strong>406789</p>\r\n"
+      value: '<p><strong>The Direct Debit Guarantee</strong></p><ul><li>This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.</li><li>If there are any changes to the amount, date or frequency of your Direct Debit WaterAid will notify you 10 working days in advance of your account being debited or as otherwise agreed. If you request WaterAid to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</li><li>If an error is made in the payment of your Direct Debit by WaterAid or your Bank or Building Society, you are entitled to a full and immediate refund of the amount paid from your Bank or Building Society.</li><li>If you receive a refund you are not entitled to, you must pay it back when WaterAid asks you to.</li><li>You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify us.</li></ul><p>To get in touch you can give us a call on 020 7793 4594 or email us on <a href="">supportercare@wateraid.org</a>.</p><p><strong>Service User Name: </strong>WaterAid</p><p><strong>Service User Number: </strong>406789</p>'
       format: basic_html
+    donation_upsell_confirmation:
+      donation_upsell_image: {  }
+      donation_upsell_text:
+        value: ''
+        format: basic_html
+      donation_upsell_discount_widget:
+        donation_upsell_discount_code: ''
+        donation_upsell_exclusions: ''
+    bank_transfer_instructions:
+      value: ''
+      format: basic_html
+    confirmation_image_url: ''
   webform_pdf_receipt:
     pdf_text:
       value: ''
@@ -47,6 +60,8 @@ third_party_settings:
     live_public_key: ''
   wateraid_forms:
     style_version: v1
+  webform_wizard_single_page:
+    single_page: false
 _core:
   default_config_hash: W8QDMdZhpXffMYRY7zq361fviC6lzyyVlazfxeg7QwE
 weight: 0
@@ -57,7 +72,7 @@ template: false
 archive: false
 id: donation_form_sadaqah_one_off
 title: 'Donation form | Sadaqah One-Off'
-description: 'Cash only donation form for Sadaqah activity (February 2022).'
+description: '<p>Cash only donation form for Sadaqah activity (February 2022).</p>'
 categories:
   - Donation
 elements: |-
@@ -178,7 +193,7 @@ elements: |-
 css: "/* Payment methods margin */\r\n#edit-payment-payment-methods-one-off-selection {\r\n  margin-bottom: 24px;\r\n}\r\n/* Hide border above credit card field, and remove margin */\r\n#edit-payment-payment-methods-one-off-methods {\r\n    border-top: none;\r\n    margin: 0;\r\n}\r\n/* BEGIN Security icons */\r\n.webform-security-icons,\r\n.webform-security-icons p, {\r\n    text-align: center;\r\n    font-size: 16px;\r\n}\r\n.payment-methods {\r\n    display: inline-block;\r\n    margin: 20px;\r\n    height: 30px;\r\n}\r\n.payment-methods--appeal-logo,\r\n.payment-methods.payment-methods--appeal-logo img {\r\n    height: 95px;\r\n}\r\n.payment-methods--hidden {\r\n    display: none;\r\n}\r\n.donation-cta-widget--new .wateraid-donations .webform-security-icons .field-name-body, .webform-page.webform-donations-page .wateraid-donations .webform-security-icons .field-name-body {\r\n  display: block;\r\n}\r\n/* END Security icons */"
 javascript: "// BEGIN custom javascript\r\njQuery(document).ready(function(){\r\n  \r\n    // BEGIN Donation amount text\r\n\r\n\t// Function to change donation amount text\r\n\tvar changetext = function()\r\n\t{\r\n\t\tif(Drupal.wateraidDonationForms.model.get(\"frequency\") == \"recurring\") {\r\n\t\t\tjQuery('.donation-amount-info').text(\"You are making a monthly donation of £\" + Drupal.wateraidDonationForms.model.get(\"amount\") + \".\");\r\n\t\t} else {\r\n\t\t\tjQuery('.donation-amount-info').text(\"You are making a one-off donation of £\" + Drupal.wateraidDonationForms.model.get(\"amount\") + \".\");\r\n\t\t}\r\n\t}\r\n\t\r\n\t// Call function on page load\r\n\tchangetext();\r\n\t\r\n\t// Call function on 'Donate' button click on step 1\r\n\tjQuery(\"#edit-next\").click(function() {\r\n\t\tchangetext();\r\n\t});\r\n\r\n\t// Call function when user types other amount\r\n\tjQuery(\"#edit-donation-amount-amount-one-off-amounts-other\").keyup(function() {\r\n\t\tchangetext();\r\n\t});\r\n\r\n\t// Clear donation amount text on back button click, to ensure incorrect text is not displayed on step 1\r\n\tjQuery(\"span, input.webform-button--previous\").click(function() {\r\n\t   jQuery('.donation-amount-info').text(\"\");\r\n\t});\r\n\t\r\n\t//Hide the text if on the first step\r\n\tif(jQuery('#edit-step-1').is(':visible')) {\t\t\r\n\t\tjQuery('.progress-bar__donation-amount-info').addClass('hidden');\r\n\t}\r\n\t\r\n\t// END Donation amount text\r\n  \r\n\t// BEGIN Security icons\t  \r\n    var paymentMethodsOneOff = jQuery('.payment-methods--one-off');\r\n\tvar paymentMethodsMonthly = jQuery('.payment-methods--monthly');\r\n\tvar showOneOff = function() {\r\n\t\tpaymentMethodsOneOff.removeClass('payment-methods--hidden');\r\n\t\tpaymentMethodsMonthly.addClass('payment-methods--hidden');\r\n\t}\r\n\tvar showMonthly= function() {\r\n\t\tpaymentMethodsOneOff.addClass('payment-methods--hidden');\r\n\t\tpaymentMethodsMonthly.removeClass('payment-methods--hidden');\r\n\t}\r\n\t// On page load, if frequency is one off, hide direct debit logo\r\n\tif (Drupal.wateraidDonationForms.model.get('frequency') == 'one_off') {\r\n\t\tshowOneOff();\r\n\t} else {\r\n\t\tshowMonthly();\r\n\t}\r\n\t// Function to handle toggling security icons\r\n\tvar toggleSecurityIcons= function() {\r\n\t\tif (jQuery(this).attr('for') == 'edit-donation-amount-frequency-one-off') {\r\n\t\t\tshowOneOff();\r\n\t\t}\r\n\t\telse {\r\n\t\t\tshowMonthly();\r\n\t\t}\r\n\t}\r\n\t// Call function on click of one off / monthly buttons\r\n\tjQuery('#edit-donation-amount-frequency label').click(toggleSecurityIcons);\r\n  \r\n  // END Security icons   \r\n\r\n\t// Add label for Stripe field\r\n\tjQuery('#edit-payment-payment-methods-one-off-methods-stripe').prepend('<label for=\"stripe-token\">Enter your card details</label>');\r\n});"
 settings:
-  ajax: false
+  ajax: true
   ajax_scroll_top: ''
   ajax_progress_type: ''
   ajax_effect: ''
@@ -190,7 +205,7 @@ settings:
   form_title: source_entity_webform
   form_submit_once: true
   form_open_message: ''
-  form_close_message: "<p>We are currently experiencing technical issues with our online donation forms, and are working to get this up and running again soon.</p>\r\n\r\n<p>In the meantime you can still support WaterAid by donating over the phone.&nbsp;</p>\r\n\r\n<p><strong>Simply&nbsp;call 0300 123 4341 at a local rate.</strong></p>\r\n\r\n<p>Please note calls to this line&nbsp;are recorded for training purposes and to ensure our high standards are maintained.</p>"
+  form_close_message: '<p>We are currently experiencing technical issues with our online donation forms, and are working to get this up and running again soon.</p><p>In the meantime you can still support WaterAid by donating over the phone.&nbsp;</p><p><strong>Simply&nbsp;call 0300 123 4341 at a local rate.</strong></p><p>Please note calls to this line&nbsp;are recorded for training purposes and to ensure our high standards are maintained.</p>'
   form_exception_message: ''
   form_previous_submissions: false
   form_confidential: false
@@ -216,6 +231,7 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_file_limit_message: ''
   form_attributes: {  }
   form_method: ''
   form_action: ''
@@ -251,7 +267,7 @@ settings:
   wizard_progress_states: false
   wizard_start_label: ''
   wizard_preview_link: false
-  wizard_confirmation: false
+  wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_auto_forward: true
   wizard_auto_forward_hide_next_button: false
@@ -377,31 +393,50 @@ handlers:
       one_off:
         option_label: 'One off'
         enabled: 1
+        new_frequency: 0
         payment_methods:
+          - googlepay
           - paypal_express
           - applepay
           - stripe
-          - googlepay
         default_payment_method: stripe
         amounts:
           -
             amount: '15'
+            image: null
+            icon: null
             benefit: 'Your £15 donation could help buy 25mm water supply distribution pipe in Zambia.'
+            body: ''
           -
             amount: '30'
+            image: null
+            icon: null
             benefit: 'Your £30 donation could help buy a handwashing facility for one family in Mali.'
+            body: ''
           -
             amount: '50'
+            image: null
+            icon: null
             benefit: 'Your £50 donation could help provide community awareness training to stop open defecation in Zambia.'
+            body: ''
           -
             amount: ''
+            image: null
+            icon: null
             benefit: ''
+            body: ''
           -
             amount: ''
+            image: null
+            icon: null
             benefit: ''
+            body: ''
           -
             amount: ''
+            image: null
+            icon: null
             benefit: ''
+            body: ''
         default_amount: '1'
         allow_other_amount: true
         minimum_amount: '2'
@@ -409,29 +444,49 @@ handlers:
       recurring:
         option_label: Monthly
         enabled: 0
+        new_frequency: 0
         payment_methods:
           - bank_account
         default_payment_method: bank_account
         amounts:
           -
             amount: '2'
+            image: null
+            icon: null
             benefit: 'Become a WaterAider! Your monthly donation over a year could help buy tools to dig a trench for a water pipe.'
+            body: ''
           -
             amount: '5'
+            image: null
+            icon: null
             benefit: 'Join us! Your monthly donation over a year could help buy a clean water tank for a school.'
+            body: ''
           -
             amount: '10'
+            image: null
+            icon: null
             benefit: 'Make change happen! Your monthly donation over a year could help train a person to maintain a water pump.'
+            body: ''
           -
             amount: ''
+            image: null
+            icon: null
             benefit: ''
+            body: ''
           -
             amount: ''
+            image: null
+            icon: null
             benefit: ''
+            body: ''
           -
             amount: ''
+            image: null
+            icon: null
             benefit: ''
+            body: ''
         default_amount: '1'
+        upsell: ''
         allow_other_amount: true
         minimum_amount: '2'
         progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount].'
@@ -443,153 +498,82 @@ handlers:
         customer_address: contact_address
         customer_email: contact_email
         customer_phone: contact_phone
-  wateraid_donation_email:
-    id: wateraid_email
-    handler_id: wateraid_donation_email
-    label: 'Wateraid Donation Email'
-    notes: ''
-    status: false
-    conditions:
-      enabled:
-        ':input[name="prompt_reason[radios]"]':
-          '!value': 'In memory'
-    weight: -46
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:contact_email:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: 'Thank you so much for your Sadaqah donation'
-      body: "<p>Hi&nbsp;[webform_submission:values:contact_name],</p>\r\n\r\n<h2>We&#39;ve received your Sadaqah donation and I&nbsp;can&#39;t thank you enough!</h2>\r\n\r\n<p>Health. Happiness. Safety. A chance at a better education or a better job. It&#39;s amazing what clean water, decent toilets and good hygiene can bring. And that&#39;s the gift that you&#39;ve just given. Your donation will help somebody change their life for good.</p>\r\n\r\n<p>Below you&rsquo;ll find confirmation of your donation, so please check the details and keep this email safe. If you have any questions about WaterAid or your gift, please give us a call on 020 7793 4594 or email us on <a href=\"mailto:supportercare@wateraid.org\">supportercare@wateraid.org</a>. We&#39;d love to hear from you.</p>\r\n\r\n<p>Best wishes and thanks for your support.</p>\r\n\r\n<p>Yours sincerely,</p>\r\n\r\n<p>Tim Wainwright</p>\r\n\r\n<p>Chief Executive</p>\r\n\r\n<p>WaterAid UK</p>\r\n\r\n<p>[webform_submission:values]<br />\r\nTransaction ID: [webform_submission:donation-transaction-id]<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
-      excluded_elements: {  }
-      html: true
-      attachments: 0
-      debug: false
-      reply_to: ''
-      return_path: ''
-      payment_frequency: one_off
-      ignore_access: 0
-      exclude_empty: true
-      exclude_empty_checkbox: 0
-      twig: false
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-      parameters: {  }
-      exclude_attachments: 0
-      fallback_plugin: null
-      fallback_message: null
-      langcode: ''
-  wateraid_donation_email_recurring:
-    id: wateraid_email
-    handler_id: wateraid_donation_email_recurring
-    label: 'Wateraid Donation Email recurring'
-    notes: ''
-    status: false
-    conditions:
-      enabled:
-        ':input[name="prompt_reason[radios]"]':
-          '!value': 'In memory'
-    weight: -45
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:contact_email:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: 'Thank you so much for your monthly donation'
-      body: "<p>Hi&nbsp;[webform_submission:values:contact_name],</p>\r\n\r\n<h2>We&#39;ve received your donation and I&nbsp;can&#39;t thank you enough!</h2>\r\n\r\n<p>Health. Happiness. Safety. A chance at a better education or a better job. It&#39;s amazing what clean water, decent toilets and good hygiene can bring. And that&#39;s the gift that you&#39;ve just given. Your monthly donation will help somebody change their life for good.</p>\r\n\r\n<p>Below you&rsquo;ll find confirmation of your donation, so please check the details and keep this email safe. If you have any questions about WaterAid or your gift, please give us a call on 020 7793 4594 or email us on <a href=\"mailto:supportercare@wateraid.org\">supportercare@wateraid.org</a>. We&#39;d love to hear from you.</p>\r\n\r\n<p>Best wishes and thanks for your support.</p>\r\n\r\n<p>Yours sincerely,</p>\r\n\r\n<p>Tim Wainwright</p>\r\n\r\n<p>Chief Executive</p>\r\n\r\n<p>WaterAid UK</p>\r\n\r\n<p><strong>Important: please find below confirmation of the set-up of your Direct Debit Instruction, including future payment schedule&nbsp;</strong></p>\r\n\r\n<p>[webform_submission:values]<br />\r\n<br />\r\n[webform_submission:gift-aid-confirmation-text]<br />\r\n<br />\r\n[webform_submission:dd-bankaccount-email-text]</p>"
-      excluded_elements: {  }
-      html: true
-      attachments: 0
-      debug: false
-      reply_to: ''
-      return_path: ''
-      payment_frequency: recurring
-      ignore_access: 0
-      exclude_empty: true
-      exclude_empty_checkbox: 0
-      twig: false
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-      parameters: {  }
-      exclude_attachments: 0
-      fallback_plugin: null
-      fallback_message: null
-      langcode: ''
-  confirmation_page_in_memory_:
-    id: confirmation_page
-    handler_id: confirmation_page_in_memory_
-    label: 'Confirmation Page (In Memory)'
-    notes: ''
-    status: false
-    conditions:
-      enabled:
-        ':input[name="prompt_reason[radios]"]':
-          value: 'In memory'
-    weight: -49
-    settings:
-      payment_frequency: null
-      confirmation_title: null
-      confirmation_message: '<p>Thank you so much for your incredibly thoughtful gift in memory of your [webform_submission:in-memory:relationship:lowercase] [webform_submission:in-memory:name-fallback]. You&rsquo;re giving hope to those who need it most. You will receive a confirmation email with details of your donation.</p>'
-      fallback_plugin: in_memory
-      fallback_message: '<p>Thank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. You&rsquo;re giving hope to those who need it most. You will receive a confirmation email with details of your donation.</p>'
-      donation_confirmation: null
-  wateraid_donation_email_in_memory_:
-    id: wateraid_email
-    handler_id: wateraid_donation_email_in_memory_
-    label: 'Wateraid Donation Email (In Memory)'
-    notes: ''
-    status: false
-    conditions: {  }
-    weight: -48
-    settings:
-      states:
-        - completed
-      to_mail: '[webform_submission:values:contact_email:email:raw]'
-      to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      subject: 'Thank you so much for your donation'
-      body: '<p>Dear [webform_submission:values:contact_name],<br><br>Thank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br><br>If you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href="https://wateraid.dedicationpage.org/inmemory">our WaterAid Remembers page</a>.<br><br>If you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href="mailto:d.abranson@wateraid.org">d.abranson@wateraid.org</a>. &nbsp;I’d love to hear from you.<br><br>Below you’ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br><br>With very best wishes,&nbsp;<br><br>Dominique Abranson<br>Gifts in Memory Team<br>WaterAid UK<br>[webform_submission:values]<br>Transaction ID: [webform_submission:donation-transaction-id]<br>[webform_submission:gift-aid-confirmation-text]<br>[webform_submission:dd-bankaccount-email-text]</p>'
-      excluded_elements: {  }
-      html: true
-      attachments: 0
-      debug: false
-      reply_to: ''
-      return_path: ''
-      payment_frequency: one_off
-      ignore_access: 0
-      exclude_empty: true
-      exclude_empty_checkbox: 0
-      twig: false
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-      parameters: {  }
-      exclude_attachments: 0
-      fallback_plugin: in_memory
-      fallback_message: '<p>Dear [webform_submission:values:contact_name],<br><br>Thank you so much for your incredibly thoughtful gift in memory of [webform_submission:in-memory:name-fallback]. I am very sorry to hear of your loss. My thoughts are with you and your loved ones.&nbsp;<br><br>If you have not created a dedication already, I would like to invite you to add a dedication to your loved one on <a href="https://wateraid.dedicationpage.org/inmemory">our WaterAid Remembers page</a>.<br><br>If you need any assistance creating your dedication, have any questions about our work or would like to share more about your love one, please do get in touch with me on 020 7793 4594 or <a href="mailto:d.abranson@wateraid.org">d.abranson@wateraid.org</a>. &nbsp;I’d love to hear from you.<br><br>Below you’ll find confirmation of your kind gift, which will help people change their lives forever with access to clean water, decent toilets and good hygiene. What an incredible way to honour and remember your loved one. Please check the details and keep this email safe.<br><br>With very best wishes,&nbsp;<br><br>Dominique Abranson<br>Gifts in Memory Team<br>WaterAid UK<br>[webform_submission:values]<br>Transaction ID: [webform_submission:donation-transaction-id]<br>[webform_submission:gift-aid-confirmation-text]<br>[webform_submission:dd-bankaccount-email-text]</p>'
-      langcode: ''
+      desktop_cancellation_message:
+        value: ''
+        format: full_html
+      mobile_cancellation_message:
+        value: ''
+        format: full_html
+      impact_statistics:
+        value: ''
+        format: restricted_html
+      fixed_period:
+        option_label: ''
+        enabled: 0
+        new_frequency: 0
+        payment_methods: {  }
+        default_payment_method: ''
+        amounts:
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '2'
+        progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount] for [donation:duration] months.'
+        durations:
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+        default_duration: '0'
   azure_blob_storage:
     id: azure_blob_storage_handler
     handler_id: azure_blob_storage
