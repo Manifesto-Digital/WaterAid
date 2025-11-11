@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_form_to_overlap_with_hero
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
@@ -63,6 +64,7 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
+        - field_donation_widget
         - webform
         - field_content
       label: Content
@@ -103,7 +105,7 @@ mode: default
 content:
   co_authors:
     type: entity_reference_autocomplete_tags
-    weight: 17
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -113,13 +115,13 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   field_content:
     type: layout_paragraphs
-    weight: 0
+    weight: 3
     region: content
     settings:
       view_mode: default
@@ -131,14 +133,26 @@ content:
     third_party_settings: {  }
   field_donation_menu:
     type: boolean_checkbox
-    weight: 29
+    weight: 13
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
+  field_donation_widget:
+    type: layout_paragraphs
+    weight: 1
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 1
+      empty_message: ''
+    third_party_settings: {  }
   field_form_to_overlap_with_hero:
     type: boolean_checkbox
-    weight: 27
+    weight: 11
     region: content
     settings:
       display_label: true
@@ -157,7 +171,7 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 26
+    weight: 9
     region: content
     settings:
       sidebar: true
@@ -165,13 +179,13 @@ content:
     third_party_settings: {  }
   field_options:
     type: options_select
-    weight: 121
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
-    weight: 26
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -189,14 +203,14 @@ content:
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
-    weight: 4
+    weight: 2
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_teaser_text:
     type: string_textarea
-    weight: 3
+    weight: 1
     region: content
     settings:
       rows: 5
@@ -204,7 +218,7 @@ content:
     third_party_settings: {  }
   field_title_colour:
     type: options_select
-    weight: 28
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -217,27 +231,27 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 15
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 120
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -252,7 +266,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -261,13 +275,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   webform:
     type: webform_entity_reference_select
-    weight: 1
+    weight: 2
     region: content
     settings:
       default_data: true
