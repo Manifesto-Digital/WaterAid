@@ -78,6 +78,16 @@
   <div class="page-container layout__two-column">
     <div class="layout__two-column--main">
       {{ content.field_content }}
+
+      {% if content.first_step_as_widget %}
+        <div class="webform-donation-widget-wrapper">
+          <div class="step-header">
+            <span class="step-title__icon">1</span>
+          </div>
+          {{ content.field_donation_widget }}
+        </div>
+      {% endif %}
+
       {{ content.webform }}
     </div>
     <div class="layout__two-column--side">
