@@ -179,7 +179,7 @@
         if ($form.valid()) {
           event.preventDefault();
           let action = $form.attr('action');
-          let freq = this.model.get('frequency');
+          let freq = this.model.get('frequency').replace('-', '_');
           let value = this.model.get('amount');
           let duration = this.model.get('fixedDuration');
 
