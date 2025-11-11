@@ -1,0 +1,106 @@
+uuid: b05e1634-a947-4758-a4d8-7412cfa9e7ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_spend_module
+    - group.type.wateraid_site
+    - paragraphs.paragraphs_type.spend_module
+  module:
+    - entity_reference_revisions
+id: group.wateraid_site.field_spend_module
+field_name: field_spend_module
+entity_type: group
+bundle: wateraid_site
+label: 'Spend module'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      spend_module: spend_module
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 27
+        enabled: false
+      accordion_item:
+        weight: 28
+        enabled: false
+      call_to_action:
+        weight: 29
+        enabled: false
+      cancel_anytime:
+        weight: 30
+        enabled: false
+      card_collection:
+        weight: 31
+        enabled: false
+      donate_block:
+        weight: 32
+        enabled: false
+      donate_exit_modal:
+        weight: 33
+        enabled: false
+      donation_amount:
+        weight: 34
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 35
+        enabled: false
+      donation_widget:
+        weight: 36
+        enabled: false
+      facts_and_stats:
+        weight: 37
+        enabled: false
+      hero_basic:
+        weight: 38
+        enabled: false
+      hero_donate:
+        weight: 39
+        enabled: false
+      hero_image:
+        weight: 40
+        enabled: false
+      hero_news:
+        weight: 41
+        enabled: false
+      hero_video:
+        weight: 42
+        enabled: false
+      image:
+        weight: 43
+        enabled: false
+      image_gallery:
+        weight: 44
+        enabled: false
+      quote:
+        weight: 45
+        enabled: false
+      rich_text:
+        weight: 46
+        enabled: false
+      spend_item:
+        weight: 47
+        enabled: false
+      spend_module:
+        weight: 48
+        enabled: true
+      stats_item:
+        weight: 49
+        enabled: false
+      text_media:
+        weight: 50
+        enabled: false
+      video:
+        weight: 51
+        enabled: false
+      webform_poc:
+        weight: 52
+        enabled: false
+field_type: entity_reference_revisions

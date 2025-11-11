@@ -1,12 +1,12 @@
-uuid: 5430f962-c6bd-42e5-a03e-31faa8edb477
+uuid: 6ca78dd1-65e9-46e3-b473-c8fdaf3d51c4
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_value
+    - field.storage.paragraph.field_spend_amount
     - paragraphs.paragraphs_type.spend_item
-id: paragraph.spend_item.field_value
-field_name: field_value
+id: paragraph.spend_item.field_spend_amount
+field_name: field_spend_amount
 entity_type: paragraph
 bundle: spend_item
 label: 'Lead statistic amount'

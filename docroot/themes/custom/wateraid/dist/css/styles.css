@@ -69,6 +69,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -85,6 +86,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -548,6 +550,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -564,6 +567,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -663,6 +667,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -679,6 +684,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -799,6 +805,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -815,6 +822,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -1060,6 +1068,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -1076,6 +1085,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -1770,6 +1780,7 @@ h3, .pseudo-h3 {
 h4, .pseudo-h4 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -1786,6 +1797,7 @@ h5, .pseudo-h5 {
 h6, .pseudo-h6 {
   font-family: "Noto Sans Bold";
   font-size: 1.375rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;

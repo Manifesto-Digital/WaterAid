@@ -46,7 +46,7 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ] %}
 
-{{ dump(paragraph.field_item_2[0].entity.field_items) }}
+{{ dump(paragraph.field_item_2[0].entity.field_items['#items']) }}
 {{ dump(paragraph.field_item_1[0].entity.field_items) }}
 
 {% block paragraph %}
@@ -54,10 +54,14 @@
     {{ include('wateraid:spend', {
       title: content.field_title,
       copy: content.field_rich_text,
-      sg_1_amount: paragraph.field_item_1[0].entity.field_value.value,
+      sg_1_value: paragraph.field_item_1[0].entity.field_spend_value.value,
+      sg_1_amount: paragraph.field_item_1[0].entity.field_spend_amount.value,
       sg_1_description: paragraph.field_item_1[0].entity.field_title.value,
-      sg_2_amount: paragraph.field_item_2[0].entity.field_value.value,
+      sg_1_items: paragraph.field_item_1[0].entity.field_items,
+      sg_2_value: paragraph.field_item_2[0].entity.field_spend_value.value,
+      sg_2_amount: paragraph.field_item_2[0].entity.field_spend_amount.value,
       sg_2_description: paragraph.field_item_2[0].entity.field_title.value,
+      sg_2_items: paragraph.field_item_2[0].entity.field_items,
     }, only) }}
   </div>
 {% endblock paragraph %}

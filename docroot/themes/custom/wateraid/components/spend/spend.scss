@@ -20,14 +20,6 @@
     margin-bottom: $wa-spacing-06;
   }
 
-  &__diagram {
-    display: none;
-
-    &.active {
-      display: block;
-    }
-  }
-
   &__figure {
     margin: $wa-spacing-06 auto;
     width: calculate-rem(272);
@@ -42,11 +34,24 @@
 
   &__segment {
     position: absolute;
+    cursor: pointer;
+    stroke-width: 8;
+
+    &.active {
+      stroke-width: 10;
+    }
   }
 
-  &__info p {
-    margin-bottom: $wa-spacing-04;
-    color: $white;
+  &__info {
+    display: none;
+    &.active {
+      display: block;
+    }
+
+    p {
+      margin-bottom: $wa-spacing-04;
+      color: $white;
+    }
   }
 
   &__info-title {
@@ -64,68 +69,10 @@
     margin-right: calculate-rem(6);
   }
 
-  .diagram-1 {
-    .segment-2 {
-      cursor: pointer;
-    }
-  }
-
-  .diagram-2 {
-    .segment-1 {
-      cursor: pointer;
-    }
-
-    .segment-2 {
-      bottom: calculate-rem(2);
-      left: calculate-rem(7);
-      @include tablet() {
-        bottom: calculate-rem(5);
-        left: calculate-rem(6);
-      }
-
-      svg {
-        width: calculate-rem(145);
-        height: auto;
-        @include tablet() {
-          width: calculate-rem(182);
-        }
-      }
-    }
-
+  .segment-2 {
     .spend__amount {
       color: $wa-navy;
       background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-rectangle-pink.svg");
-    }
-  }
-
-  .segment-1 {
-    svg {
-      width: calculate-rem(272);
-      height: calculate-rem(272);
-      position: absolute;
-
-      @include tablet() {
-        width: calculate-rem(336);
-        height: calculate-rem(336);
-      }
-    }
-  }
-
-  .segment-2 {
-    bottom: calculate-rem(-5);
-    left: calculate-rem(1);
-
-    @include tablet() {
-      bottom: calculate-rem(-3);
-    }
-
-    svg {
-      width: calculate-rem(150);
-      height: auto;
-
-      @include tablet() {
-        width: calculate-rem(185);
-      }
     }
   }
 

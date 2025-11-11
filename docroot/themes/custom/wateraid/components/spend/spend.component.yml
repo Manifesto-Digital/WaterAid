@@ -29,6 +29,14 @@ props:
       description: The lead description for segment 2
 
 slots:
+  sg_1_value:
+    type: integer
+    title: Value - Segment 1
+    description: The numeric value for segment 2
+  sg_2_value:
+    type: integer
+    title: Value - Segment 1
+    description: The numeric value for segment 2
   sg_1_items:
     title: Items - Segment 1
   sg_2_items:

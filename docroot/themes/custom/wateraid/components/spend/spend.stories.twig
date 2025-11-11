@@ -6,8 +6,10 @@
     args: {
       title: 'Title',
       copy: 'Lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit.',
+      sg_1_value: 73,
       sg_1_amount: '73p',
       sg_1_description: 'is spent on making change happen',
+      sg_2_value: 27,
       sg_2_amount: '27p',
       sg_2_description: 'is spent on fundraising',
     }
@@ -32,7 +34,7 @@
       },
     } %}
 
-    {% set sg_1_items = {
+    {% set sg_2_items = {
         1 : {
           key : '23p',
           value : 'generating future income so together, we can keep changing the world through water.'
@@ -43,9 +45,11 @@
     {{ include('wateraid:spend', {
       title,
       copy,
+      sg_1_value,
       sg_1_amount,
       sg_1_description,
       sg_1_items,
+      sg_2_value,
       sg_2_amount,
       sg_2_description,
       sg_2_items

@@ -1,17 +1,16 @@
-uuid: 1f62464d-7a78-498c-b14b-caa91883588a
+uuid: 92835fa9-6fb4-495e-af8f-26a7d52ccd83
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_value
-field_name: field_value
+id: paragraph.field_spend_value
+field_name: field_spend_value
 entity_type: paragraph
-type: string
+type: integer
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1
