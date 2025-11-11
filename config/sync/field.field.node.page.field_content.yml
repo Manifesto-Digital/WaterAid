@@ -13,6 +13,8 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.spend_item
+    - paragraphs.paragraphs_type.spend_module
     - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
@@ -39,6 +41,8 @@ settings:
       donation_amount: donation_amount
       hero_donate: hero_donate
       donate_exit_modal: donate_exit_modal
+      spend_item: spend_item
+      spend_module: spend_module
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -65,6 +69,9 @@ settings:
       donation_amount:
         weight: 19
         enabled: true
+      donation_placeholder_do_not_use:
+        weight: 35
+        enabled: false
       donation_widget:
         weight: 20
         enabled: false
@@ -98,6 +105,12 @@ settings:
       rich_text:
         weight: -25
         enabled: false
+      spend_item:
+        weight: 47
+        enabled: true
+      spend_module:
+        weight: 48
+        enabled: true
       stats_item:
         weight: -15
         enabled: true
