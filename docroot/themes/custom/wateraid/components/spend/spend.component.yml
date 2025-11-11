@@ -1,0 +1,41 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: spend
+status: stable
+description: Spend component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+    copy:
+      type: string
+      title: Copy
+    sg_1_figure:
+      type: string
+      title: Figure - Segment 1
+      description: The figure for segment 1
+    sg_1_title:
+      type: string
+      title: Title - Segment 1
+      description: The title for segment 1
+    sg_1_copy:
+      type: string
+      title: Copy - Segment 1
+      description: The copy for segment 1
+    sg_2_figure:
+      type: string
+      title: Figure - Segment 2
+      description: The figure for segment 2
+    sg_2_title:
+      type: string
+      title: Title - Segment 2
+      description: The title for segment 2
+    sg_2_copy:
+      type: string
+      title: Copy - Segment 2
+      description: The copy for segment 2
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/spend/spend.css: {}

@@ -1,0 +1,310 @@
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, .pseudo-h1 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.625rem;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h1, .pseudo-h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2, .pseudo-h2 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2, .pseudo-h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3, .pseudo-h3 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  color: #006bd9;
+}
+
+@media only screen and (min-width: 1440px) {
+  h3, .pseudo-h3 {
+    font-size: 2.25rem;
+  }
+}
+
+h4, .pseudo-h4 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h5, .pseudo-h5 {
+  font-family: "RB Nylo Black", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h6, .pseudo-h6 {
+  font-family: "Noto Sans Bold";
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+p.paragraph-lg {
+  font-family: "Noto Sans";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 768px) {
+  p.paragraph-lg {
+    font-size: 1.5rem;
+  }
+}
+
+p.paragraph-sm {
+  font-family: "Noto Sans";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+strong {
+  font-family: "Noto Sans Bold";
+}
+
+.spend {
+  background: #151435;
+  max-width: 27rem;
+  padding: 1rem 1.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.spend__title {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.spend__copy {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  .spend__copy {
+    font-size: 1.25rem;
+  }
+}
+
+.spend__copy {
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.spend__diagram {
+  display: none;
+}
+
+.spend__diagram.active {
+  display: block;
+}
+
+.spend__figure {
+  margin: 1.5rem auto;
+  width: 17rem;
+  height: 17rem;
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend__figure {
+    width: 21.25rem;
+    height: 21.25rem;
+  }
+}
+
+.spend__segment {
+  position: absolute;
+}
+
+.spend__info p {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.spend__info-title {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  .spend__info-title {
+    font-size: 1.25rem;
+  }
+}
+
+.spend__info-title {
+  font-family: "Noto Sans Bold";
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.spend__amount {
+  color: #fff;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-rectangle.svg");
+  background-size: 100% 100%;
+  padding: 0 .1875rem;
+  margin-right: .375rem;
+}
+
+.spend .diagram-1 .segment-2 {
+  cursor: pointer;
+}
+
+.spend .diagram-2 .segment-1 {
+  cursor: pointer;
+}
+
+.spend .diagram-2 .segment-2 {
+  bottom: .125rem;
+  left: .4375rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend .diagram-2 .segment-2 {
+    bottom: .3125rem;
+    left: .375rem;
+  }
+}
+
+.spend .diagram-2 .segment-2 svg {
+  width: 9.0625rem;
+  height: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend .diagram-2 .segment-2 svg {
+    width: 11.375rem;
+  }
+}
+
+.spend .diagram-2 .spend__amount {
+  color: #151435;
+  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-rectangle-pink.svg");
+}
+
+.spend .segment-1 svg {
+  width: 17rem;
+  height: 17rem;
+  position: absolute;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend .segment-1 svg {
+    width: 21rem;
+    height: 21rem;
+  }
+}
+
+.spend .segment-2 {
+  bottom: -0.3125rem;
+  left: .0625rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend .segment-2 {
+    bottom: -0.1875rem;
+  }
+}
+
+.spend .segment-2 svg {
+  width: 9.375rem;
+  height: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .spend .segment-2 svg {
+    width: 11.5625rem;
+  }
+}
+
+
+/*# sourceMappingURL=spend.css.map*/

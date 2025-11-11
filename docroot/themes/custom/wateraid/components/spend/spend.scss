@@ -1,0 +1,132 @@
+@import "../../sass/base";
+
+.spend {
+  background: $wa-navy;
+  max-width: calculate-rem(432);
+  padding: $wa-spacing-04 $wa-spacing-06;
+
+  @include tablet() {
+    padding: $wa-spacing-06 $wa-spacing-07;
+  }
+
+  &__title {
+    color: $wa-white;
+    margin-bottom: $wa-spacing-04;
+  }
+
+  &__copy {
+    @include paragraph-md();
+    color: $wa-white;
+    margin-bottom: $wa-spacing-06;
+  }
+
+  &__diagram {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__figure {
+    margin: $wa-spacing-06 auto;
+    width: calculate-rem(272);
+    height: calculate-rem(272);
+    position: relative;
+
+    @include tablet() {
+      width: calculate-rem(340);
+      height: calculate-rem(340);
+    }
+  }
+
+  &__segment {
+    position: absolute;
+  }
+
+  &__info p {
+    margin-bottom: $wa-spacing-04;
+    color: $white;
+  }
+
+  &__info-title {
+    @include paragraph-md();
+    font-family: $bold-font;
+    color: $white;
+    margin-bottom: $wa-spacing-04;
+  }
+
+  &__amount {
+    color: $wa-white;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-rectangle.svg");
+    background-size: 100% 100%;
+    padding: 0 calculate-rem(3);
+    margin-right: calculate-rem(6);
+  }
+
+  .diagram-1 {
+    .segment-2 {
+      cursor: pointer;
+    }
+  }
+
+  .diagram-2 {
+    .segment-1 {
+      cursor: pointer;
+    }
+
+    .segment-2 {
+      bottom: calculate-rem(2);
+      left: calculate-rem(7);
+      @include tablet() {
+        bottom: calculate-rem(5);
+        left: calculate-rem(6);
+      }
+
+      svg {
+        width: calculate-rem(145);
+        height: auto;
+        @include tablet() {
+          width: calculate-rem(182);
+        }
+      }
+    }
+
+    .spend__amount {
+      color: $wa-navy;
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-rectangle-pink.svg");
+    }
+  }
+
+  .segment-1 {
+    svg {
+      width: calculate-rem(272);
+      height: calculate-rem(272);
+      position: absolute;
+
+      @include tablet() {
+        width: calculate-rem(336);
+        height: calculate-rem(336);
+      }
+    }
+  }
+
+  .segment-2 {
+    bottom: calculate-rem(-5);
+    left: calculate-rem(1);
+
+    @include tablet() {
+      bottom: calculate-rem(-3);
+    }
+
+    svg {
+      width: calculate-rem(150);
+      height: auto;
+
+      @include tablet() {
+        width: calculate-rem(185);
+      }
+    }
+  }
+
+}
