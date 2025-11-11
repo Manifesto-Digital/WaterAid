@@ -1,4 +1,5 @@
 uuid: a523d7a0-8617-4128-a236-a1412ef3c2c2
+langcode: en
 status: true
 dependencies:
   enforced:
@@ -15,15 +16,15 @@ label: Redirects
 source:
   plugin: redirect_source
   constants:
-    uk_site: 'uk/'
+    uk_site: uk/
 process:
   language:
     plugin: default_value
-    default_value: 'en'
+    default_value: en
   redirect_source/path:
     plugin: concat
     source:
-      - 'constants/uk_site'
+      - constants/uk_site
       - redirect_source__path
   redirect_redirect/uri:
     -
@@ -43,7 +44,8 @@ process:
         - stories
         - webforms
       source: redirect_redirect__uri
-    - plugin: skip_on_empty
+    -
+      plugin: skip_on_empty
       method: row
   uid:
     plugin: migration_lookup

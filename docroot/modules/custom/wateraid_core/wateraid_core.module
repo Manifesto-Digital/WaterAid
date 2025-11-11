@@ -11,7 +11,7 @@ use Drupal\pathauto\PathautoPatternInterface;
 /**
  * Implements hook_pathauto_pattern_alter().
  */
-function wateraid_core_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
+function wateraid_core_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context): void {
   // Only alter for node patterns.
   if ($context['module'] !== 'node' || empty($context['data']['node'])) {
     return;
