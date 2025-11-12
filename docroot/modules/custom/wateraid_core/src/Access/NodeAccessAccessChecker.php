@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\wateraid_core\Access;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -39,12 +40,12 @@ final class NodeAccessAccessChecker implements AccessInterface {
   /**
    * Access callback.
    */
-  public function access($node, AccountInterface $account): AccessResult {
+  public function access($node, AccountInterface $account): AccessResultInterface {
     $entity = $this->entityTypeManager->getStorage('node')->load($node);
     $relationships = GroupRelationship::loadByEntity($entity);
 
     if (empty($relationships)) {
-      return AccessResult::neutral()->cachePerUser();
+      return $entity->access('view', $account, TRUE);
     }
 
     if ($account->hasPermission('access nodes directly')) {
