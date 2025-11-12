@@ -1,0 +1,34 @@
+uuid: 659458d2-83cd-4860-9586-8c8ebe74693a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_search.field_hero_subtitle
+    - field.field.paragraph.hero_search.field_title
+    - paragraphs.paragraphs_type.hero_search
+id: paragraph.hero_search.default
+targetEntityType: paragraph
+bundle: hero_search
+mode: default
+content:
+  field_hero_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
