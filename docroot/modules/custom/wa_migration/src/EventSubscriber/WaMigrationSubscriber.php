@@ -10,6 +10,7 @@ use Drupal\migrate\Event\MigrateEvents;
 use Drupal\migrate\Event\MigratePostRowSaveEvent;
 use Drupal\migrate\Event\MigratePreRowSaveEvent;
 use Drupal\migrate\Event\MigrateRollbackEvent;
+use Drupal\migrate\Event\MigrateRowDeleteEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -57,18 +58,18 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
   /**
    * Delete the group relationship on rollback.
    *
-   * @param \Drupal\migrate\Event\MigrateRollbackEvent $event
+   * @param \Drupal\migrate\Event\MigrateRowDeleteEvent $event
    *   The event.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public function onMigratePreRollback(MigrateRollbackEvent $event): void {
+  public function onMigratePreRowDelete(MigrateRowDeleteEvent $event): void {
     $migration = $event->getMigration()->getPluginDefinition();
-    if (isset($migration['migration_group']) && $migration['migration_group'] == 'wateraid_uk_nodes') {
+    if (isset($migration['migration_group']) && $migration['migration_group'] == 'wateraid_uk_nodes' && $migration['id'] !== 'redirect') {
       $storage = $this->entityTypeManager->getStorage('node');
-      foreach ($event->getMigration()->getDestinationIds() as $id) {
+      foreach ($event->getDestinationIdValues() as $id) {
 
         /** @var \Drupal\node\NodeInterface $node */
         if ($node = $storage->load($id)) {
@@ -128,7 +129,7 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
     return [
       MigrateEvents::POST_ROW_SAVE => ['onMigratePostRowSave'],
       MigrateEvents::PRE_ROW_SAVE => ['onMigratePreRowSave'],
-      MigrateEvents::PRE_ROLLBACK => ['onMigratePostRollback'],
+      MigrateEvents::PRE_ROW_DELETE => ['onMigratePreRowDelete'],
     ];
   }
 
