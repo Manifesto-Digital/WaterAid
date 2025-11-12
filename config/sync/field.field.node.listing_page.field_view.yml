@@ -25,6 +25,7 @@ settings:
   plugin_types:
     block: block
   preselect_views:
+    blogs: blogs
     events: events
   enabled_settings: {  }
 field_type: viewsreference
