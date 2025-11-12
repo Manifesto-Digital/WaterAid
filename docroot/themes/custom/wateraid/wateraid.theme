@@ -5,7 +5,6 @@
  * Functions to support theming.
  */
 
-use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\paragraphs\Entity\Paragraph;
 
@@ -119,54 +118,6 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
- */
-function wateraid_preprocess_menu(&$variables) {
-
-  if ($variables['menu_name'] === 'site-selector') {
-    $grouped_items = [];
-    foreach ($variables['items'] as $key => $item) {
-      /** @var \Drupal\menu_link_content\MenuLinkContentInterface $menu_link_content */
-      $menu_link_content = $item['entity'];
-      /** @var \Drupal\Core\Template\Attribute $menu_item_attrs */
-      $menu_item_attrs = $item['attributes'];
-
-      // Add class to each menu item for flags.
-      if (!$menu_link_content->get('field_country_class')->isEmpty()) {
-        $menu_item_attrs->addClass('site-selector__country--' . $menu_link_content->get('field_country_class')->first()->value);
-      }
-
-      // Group menu items by region.
-      $group_id = !$menu_link_content->get('field_region')->isEmpty() ? $menu_link_content->get('field_region')->first()->value : NULL;
-      $field_region_options = $menu_link_content->getFieldDefinition('field_region')->getItemDefinition()->getSetting('allowed_values');
-
-      $group = &$grouped_items[$group_id ?? 'global'];
-
-      if (empty($subgroup)) {
-        $group['title'] = $group_id ? $field_region_options[$group_id] : NULL;
-      }
-      $group['items'][$key] = $item;
-    }
-
-    // For each group, sort the items alphabetically.
-    foreach ($grouped_items as &$group) {
-      uasort($group['items'], function ($a, $b) {
-        return strcasecmp($a['title'], $b['title']);
-      });
-    }
-
-    $variables['grouped_items'] = $grouped_items;
-
-    // Get config pages field date for panel.
-    $site_selector_config_page = config_pages_config('global_site_selector');
-    if ($site_selector_config_page instanceof ConfigPagesInterface) {
-      $variables['panel_title'] = $site_selector_config_page->get('field_title')->value;
-      $variables['panel_description'] = config_pages_config('global_site_selector')->get('field_description')->value;
-    }
-  }
-}
-
-/**
  * Helper function to extract and format donation amount data from a paragraph.
  */
 function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string $field_name): array {
@@ -220,7 +171,9 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
   return $donation_amounts;
 }
 
-
+/**
+ *
+ */
 function wateraid_preprocess_views_view(&$variables) {
   $view = $variables['view'];
   if ($view->id() === 'search') {
