@@ -45,6 +45,7 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - wateraid_core
     - webform
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
@@ -57,6 +58,7 @@ permissions:
   - 'access content overview'
   - 'access group overview'
   - 'access media overview'
+  - 'access nodes directly'
   - 'access own webform configuration'
   - 'access site in maintenance mode'
   - 'access site reports'
