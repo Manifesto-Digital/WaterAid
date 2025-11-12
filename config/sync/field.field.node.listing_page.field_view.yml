@@ -27,5 +27,6 @@ settings:
   preselect_views:
     blogs: blogs
     events: events
+    press_releases: press_releases
   enabled_settings: {  }
 field_type: viewsreference
