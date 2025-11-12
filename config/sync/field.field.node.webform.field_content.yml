@@ -12,6 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_item
     - paragraphs.paragraphs_type.spend_module
     - paragraphs.paragraphs_type.stats_item
@@ -40,6 +41,7 @@ settings:
       hero_donate: hero_donate
       stats_item: stats_item
       spend_item: spend_item
+      spend: spend
       spend_module: spend_module
     negate: 1
     target_bundles_drag_drop:
@@ -103,6 +105,9 @@ settings:
       rich_text:
         weight: -25
         enabled: false
+      spend:
+        weight: 48
+        enabled: true
       spend_item:
         weight: 47
         enabled: true

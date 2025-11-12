@@ -1,0 +1,16 @@
+uuid: 7ae03612-d8cd-4eb5-b948-e4316fee09c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.spend
+id: paragraph.spend.default
+targetEntityType: paragraph
+bundle: spend
+mode: default
+content: {  }
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
