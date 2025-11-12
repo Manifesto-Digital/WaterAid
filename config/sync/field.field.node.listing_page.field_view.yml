@@ -27,5 +27,6 @@ settings:
   preselect_views:
     blogs: blogs
     events: events
+    stories: stories
   enabled_settings: {  }
 field_type: viewsreference
