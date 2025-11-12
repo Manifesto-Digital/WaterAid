@@ -1,0 +1,51 @@
+uuid: ba554c12-ad1f-40ef-a623-cd27e650fade
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_listing
+    - field.field.node.page.field_content
+    - field.field.node.page.field_metatags
+    - field.field.node.page.field_review_date
+    - field.field.node.page.field_search_phrases
+    - field.field.node.page.field_teaser_image
+    - field.field.node.page.field_teaser_text
+    - node.type.page
+  module:
+    - user
+_core:
+  default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
+id: node.page.search_listing
+targetEntityType: node
+bundle: page
+mode: search_listing
+content:
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_content: true
+  field_metatags: true
+  field_minimal_header: true
+  field_review_date: true
+  field_search_phrases: true
+  langcode: true
+  links: true
+  node_read_time: true
+  search_api_excerpt: true

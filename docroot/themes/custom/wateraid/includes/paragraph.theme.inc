@@ -18,7 +18,8 @@ function wateraid_preprocess_paragraph(&$variables): void {
 
   $request = \Drupal::request();
   $route_match = \Drupal::routeMatch();
-  $variables['page_title'] = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
+  $variables['page_title'] = ($route = $route_match->getRouteObject()) ? \Drupal::service('title_resolver')->getTitle($request, $route) : '';
 
   $variables['#cache']['contexts'][] = 'url';
 }

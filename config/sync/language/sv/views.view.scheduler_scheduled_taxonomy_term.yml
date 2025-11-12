@@ -11,10 +11,6 @@ display:
           sort_desc_label: Fallande
       pager:
         options:
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
           tags:
             previous: '‹ föregående'
             next: 'nästa ›'
@@ -23,25 +19,21 @@ display:
       fields:
         taxonomy_term_bulk_form:
           action_title: Åtgärd
-        name:
-          separator: ', '
-        vid:
-          separator: ', '
         status:
+          label: Status
           settings:
             format_custom_true: Publicerad
             format_custom_false: 'Ej publicerad'
-          separator: ', '
         publish_on:
           label: 'Publicera den'
-          separator: ', '
         unpublish_on:
           label: 'Avpublicera den'
-          separator: ', '
         operations:
           label: Funktioner
       filters:
         status:
+          expose:
+            label: Status
           group_info:
             label: 'Status för publicering'
             group_items:

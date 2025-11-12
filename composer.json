@@ -95,6 +95,7 @@
     "drupal/schema_metatag": "^3.0",
     "drupal/search_api": "^1.39",
     "drupal/search_api_solr": "^4.3",
+    "drupal/searchstax": "^1.8",
     "drupal/seckit": "^2.0",
     "drupal/security_review": "^3.0",
     "drupal/sharethis": "^3.1",

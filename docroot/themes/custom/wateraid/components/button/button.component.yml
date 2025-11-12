@@ -29,6 +29,9 @@ props:
       items:
         type: string
       examples: []
+slots:
+  disabled:
+    title: Disabled
 libraryOverrides:
   css:
     theme:

@@ -5,24 +5,8 @@ display:
       fields:
         name:
           label: Användare
-          separator: ', '
-        group_roles:
-          separator: ', '
-        changed:
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            first: '« Första'
-            last: 'Sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
       exposed_form:
         options:
           reset_button_label: Återställ

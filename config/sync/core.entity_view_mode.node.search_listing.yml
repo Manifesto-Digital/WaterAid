@@ -1,0 +1,11 @@
+uuid: 26581b29-4ec5-49c6-a84f-3de5965974af
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.search_listing
+label: 'Search listing'
+description: ''
+targetEntityType: node
+cache: true

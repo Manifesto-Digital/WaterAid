@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.article.body
     - field.field.node.article.field_audience
     - field.field.node.article.field_content
     - field.field.node.article.field_country
@@ -20,7 +19,6 @@ dependencies:
     - field.field.node.article.field_teaser_image
     - field.field.node.article.field_teaser_text
     - field.field.node.article.field_theme
-    - field.field.node.article.field_weight
     - node.type.article
   module:
     - datetime
@@ -29,7 +27,6 @@ dependencies:
     - media_library
     - metatag
     - path
-    - text
 third_party_settings:
   field_group:
     group_tabs:
@@ -127,16 +124,6 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 13
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   co_authors:
     type: entity_reference_autocomplete_tags
     weight: 11
@@ -294,13 +281,6 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_weight:
-    type: number
-    weight: 14
-    region: content
-    settings:
       placeholder: ''
     third_party_settings: {  }
   langcode:

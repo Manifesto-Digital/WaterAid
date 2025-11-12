@@ -1,0 +1,17 @@
+uuid: fda2cba0-e8f3-42e1-910b-dbf45c4fca67
+langcode: en
+status: true
+dependencies: {  }
+id: search_page
+label: 'Search page'
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: ''
+  weight: 0
+  description: ''

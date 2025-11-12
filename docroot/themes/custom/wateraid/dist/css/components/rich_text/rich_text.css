@@ -136,6 +136,7 @@
 [data-component-id="wateraid:rich_text"] blockquote {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -160,10 +161,26 @@
 [data-component-id="wateraid:rich_text"] blockquote p {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
+  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   margin-top: 0;
+}
+
+[data-component-id="wateraid:rich_text"] h2,
+[data-component-id="wateraid:rich_text"] h3,
+[data-component-id="wateraid:rich_text"] h4,
+[data-component-id="wateraid:rich_text"] h5,
+[data-component-id="wateraid:rich_text"] h6,
+[data-component-id="wateraid:rich_text"] blockquote {
+  padding-bottom: 2rem;
+}
+
+[data-component-id="wateraid:rich_text"] p,
+[data-component-id="wateraid:rich_text"] ul,
+[data-component-id="wateraid:rich_text"] ol {
+  padding-bottom: 1.5rem;
 }
 
 

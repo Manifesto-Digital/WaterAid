@@ -19,6 +19,7 @@ source:
     - field_meta_tags
     - field_themes
     - field_modules
+    - field_teaser_image
 process:
   langcode:
     -
@@ -27,6 +28,11 @@ process:
   status: status
   title: title
   field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media
+    source: field_teaser_image
+    no_stub: true
   field_country:
     plugin: migration_lookup
     migration: countries
@@ -60,6 +66,21 @@ process:
         - aside_link_item
         - info_section
         - quote_simple
+        - image
+        - image_gallery
+        - video
+        - carousel
+        - content_carousel
+        - enhanced_carousel_item
+        - tabbed_item
+        - content_with_large_image
+        - aside_with_image
+        - quote
+        - listing
+        - biography_item
+        - activation_bar_item
+        - rainbow_link_item
+        - donation_cta_widget_embed
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -75,4 +96,5 @@ migration_dependencies:
     - countries
     - themes
     - users
+    - media
 include: null

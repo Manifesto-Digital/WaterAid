@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.pagination {
+  justify-items: center;
+  margin-top: 3rem;
+}
+
+.pagination__prev .button {
+  rotate: 180deg;
+}
+
+.pagination__items {
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media only screen and (min-width: 1440px) {
+  .pagination__items {
+    font-size: 1.25rem;
+  }
+}
+
+.pagination__items {
+  font-family: "Noto Sans Bold";
+  display: flex;
+  gap: .5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.pagination__item {
+  width: 3rem;
+  height: 3rem;
+  align-content: center;
+  text-align: center;
+}
+
+.pagination__item a {
+  text-decoration: none;
+  color: #151435;
+}
+
+.pagination .is-active {
+  background-image: url("/themes/custom/wateraid/images/icons/wa-shape-circle-border.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.pagination__ellipsis {
+  padding: 0 .25rem;
+}
+
+
+/*# sourceMappingURL=pagination.css.map*/

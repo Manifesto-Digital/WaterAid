@@ -8,7 +8,7 @@
       date: 'Wednesday 30 September 2025',
       time_to_read: '7 min read',
       url: '#',
-      image: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+      image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
       variant: 'teaser'
     }
   } %}
@@ -79,6 +79,28 @@
       image_url,
       bundle,
       size,
+      variant
+    }) }}
+  {% endstory %}
+
+  {% story Search with {
+    name: 'Search',
+    args: {
+      heading: 'Heading lorem ipsum dolor sit amet consectetur',
+      description: 'Description lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed. Eget faucibus nisl dignissim suspendisse egestas et sagittis morbi.',
+      url: '#',
+      bundle: 'Content type',
+      image_url: 'https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg',
+      variant: 'search'
+    }
+  } %}
+
+    {{ include('wateraid:card', {
+      heading,
+      description,
+      url,
+      bundle,
+      image_url,
       variant
     }) }}
   {% endstory %}

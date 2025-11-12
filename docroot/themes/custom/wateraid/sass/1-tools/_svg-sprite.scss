@@ -65,6 +65,8 @@ $sprites: (
     'wa-icon-quote-mark': "../../images/sprite.svg#wa-icon-quote-mark-view",
     'wa-icon-rain': "../../images/sprite.svg#wa-icon-rain-view",
     'wa-icon-recycle': "../../images/sprite.svg#wa-icon-recycle-view",
+    'wa-icon-search-white': "../../images/sprite.svg#wa-icon-search-white-view",
+    'wa-icon-search': "../../images/sprite.svg#wa-icon-search-view",
     'wa-icon-speech-bubble': "../../images/sprite.svg#wa-icon-speech-bubble-view",
     'wa-icon-sun': "../../images/sprite.svg#wa-icon-sun-view",
     'wa-icon-tap': "../../images/sprite.svg#wa-icon-tap-view",
@@ -78,6 +80,7 @@ $sprites: (
     'wa-pound': "../../images/sprite.svg#wa-pound-view",
     'wa-shape-arrow': "../../images/sprite.svg#wa-shape-arrow-view",
     'wa-shape-arrows': "../../images/sprite.svg#wa-shape-arrows-view",
+    'wa-shape-circle-border': "../../images/sprite.svg#wa-shape-circle-border-view",
     'wa-shape-circle': "../../images/sprite.svg#wa-shape-circle-view",
     'wa-shape-drop': "../../images/sprite.svg#wa-shape-drop-view",
     'wa-shape-ripple': "../../images/sprite.svg#wa-shape-ripple-view",
@@ -385,6 +388,14 @@ $sizes: (
         'width': 240px,
         'height': 240px
     ),
+    'wa-icon-search-white': (
+        'width': 19px,
+        'height': 19px
+    ),
+    'wa-icon-search': (
+        'width': 19px,
+        'height': 19px
+    ),
     'wa-icon-speech-bubble': (
         'width': 240px,
         'height': 240px
@@ -436,6 +447,10 @@ $sizes: (
     'wa-shape-arrows': (
         'width': 384px,
         'height': 205px
+    ),
+    'wa-shape-circle-border': (
+        'width': 48px,
+        'height': 48px
     ),
     'wa-shape-circle': (
         'width': 254px,

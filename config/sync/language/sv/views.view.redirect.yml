@@ -16,10 +16,3 @@ display:
             next: 'nästa ›'
             first: '« första'
             last: 'sista »'
-          expose:
-            items_per_page_label: 'Inlägg per sida'
-            items_per_page_options_all_label: '- Alla -'
-            offset_label: Kompensera
-      fields:
-        redirect_source__path:
-          separator: ', '

@@ -16,14 +16,14 @@ use Drupal\migrate\Row;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a lookup_migration_lookup plugin.
+ * Provides a link_migration_lookup plugin.
  *
  * Usage:
  *
  * @code
  * process:
  *   bar:
- *     plugin: paragraph_migration_lookup
+ *     plugin: link_migration_lookup
  *     source: foo
  *     migrations:
  *       - migration1

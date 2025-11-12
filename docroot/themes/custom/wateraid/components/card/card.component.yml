@@ -28,6 +28,9 @@ slots:
   date:
     type: string
     title: Publish date
+  end_date:
+    type: string
+    title: End date
   authors:
     type: ["object", "null"]
     title: Authors

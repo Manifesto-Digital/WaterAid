@@ -7823,6 +7823,68 @@
             }
         },
         {
+            "name": "drupal/searchstax",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/searchstax.git",
+                "reference": "1.8.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/searchstax-1.8.1.zip",
+                "reference": "1.8.1",
+                "shasum": "15e74cf04b96dcce146095dc7f4b7b2cf765114a"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10 || ^11",
+                "drupal/search_api": "^1",
+                "ext-libxml": "*"
+            },
+            "require-dev": {
+                "drupal/acquia_search": "3.1.x-dev||3.1.11",
+                "drupal/search_api_attachments": ">=10||1.0.0-beta19",
+                "drupal/search_api_autocomplete": "1.x-dev||1.6.0",
+                "drupal/search_api_page": "1.x-dev||1.0.0-beta3",
+                "drupal/search_api_solr": "4.x-dev||4.2.1",
+                "phpcompatibility/php-compatibility": "^9.3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.8.1",
+                    "datestamp": "1759215194",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "azovsky",
+                    "homepage": "https://www.drupal.org/user/330533"
+                },
+                {
+                    "name": "drunken monkey",
+                    "homepage": "https://www.drupal.org/user/205582"
+                },
+                {
+                    "name": "searchstax",
+                    "homepage": "https://www.drupal.org/user/3557783"
+                }
+            ],
+            "description": "Integrates with SearchStax and SearchStudio.",
+            "homepage": "https://www.drupal.org/project/searchstax",
+            "support": {
+                "source": "https://git.drupalcode.org/project/searchstax"
+            }
+        },
+        {
             "name": "drupal/seckit",
             "version": "2.0.3",
             "source": {

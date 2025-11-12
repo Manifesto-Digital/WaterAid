@@ -1,0 +1,95 @@
+<nav class="pager pagination" role="navigation">
+  <ul class="pagination__items js-pager__items">
+
+    {# Previous page button #}
+    <li class="pagination__prev">
+      {{ include('wateraid:button', {
+        text: 'Go to previous page'|t,
+        link: items.previous.href ? items.previous.href : '',
+        type: 'icon',
+        theme: 'light',
+        icon: 'wa-utility-arrow',
+        attribute: {
+          attr: 'rel',
+          value: 'prev'
+        },
+        disabled: items.previous ? 'false' : 'true',
+      }) }}
+    </li>
+
+    {% for key, item in items.pages %}
+      {# First item #}
+      {% if loop.first %}
+        <li class="pagination__item {{ current == key ? 'is-active' : '' }}">
+          {% if current == key %}
+            {% set title = 'Current page'|t %}
+          {% else %}
+            {% set title = 'Go to page @key'|t({'@key': key}) %}
+          {% endif %}
+          <a href="{{ item.href }}" title="{{ title }}"{{ item.attributes|without('href', 'title') }}>
+            <span class="visually-hidden">
+              {{ 'Page'|t }}
+            </span>
+            {{- key -}}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if not (loop.last or loop.first) and current == key %}
+        {% if current != '2' %}
+          <li class="pagination__ellipsis" role="presentation">&hellip;</li>
+        {% endif %}
+
+        {# Current item #}
+        <li class="pagination__item {{ current == key ? 'is-active' : '' }}">
+          <a href="{{ item.href }}" title="'Current page'|t"{{ item.attributes|without('href', 'title') }}>
+            <span class="visually-hidden">
+              {{ 'Page'|t }}
+            </span>
+            {{- key -}}
+          </a>
+        </li>
+      {% endif %}
+
+      {# Last item #}
+      {% if loop.last %}
+        {% if current != items.pages|length - 1 %}
+          <li class="pagination__ellipsis" role="presentation">&hellip;</li>
+        {% endif %}
+
+        <li class="pagination__item {{ current == key ? 'is-active' : '' }}">
+          {% if current == key %}
+            {% set title = 'Current page'|t %}
+          {% else %}
+            {% set title = 'Go to page @key'|t({'@key': key}) %}
+          {% endif %}
+          <a href="{{ item.href }}" title="{{ title }}"{{ item.attributes|without('href', 'title') }}>
+            <span class="visually-hidden">
+              {{ 'Page'|t }}
+            </span>
+            {{- key -}}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+
+    {# Next page button #}
+    <li class="pagination__next">
+      {{ include('wateraid:button', {
+        text: 'Go to next page'|t,
+        link: items.next.href ? items.next.href : '',
+        type: 'icon',
+        theme: 'light',
+        icon: 'wa-utility-arrow',
+        attribute: {
+          attr: 'rel',
+          value: 'next'
+        },
+        disabled: items.next ? 'false' : 'true',
+      }) }}
+    </li>
+  </ul>
+</nav>
+
+

@@ -1,19 +1,14 @@
 <?php
 
 namespace Drupal\wa_orange_dam\Plugin\media\Source;
-
-use Drupal\Component\Utility\Crypt;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\FieldTypePluginManagerInterface;
-use Drupal\Core\File\Exception\FileException;
-use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\field\FieldConfigInterface;
-use Drupal\media\Attribute\MediaSource;
 use Drupal\media\MediaInterface;
 use Drupal\media\MediaTypeInterface;
 use Drupal\media\Plugin\media\Source\File;
@@ -141,6 +136,9 @@ class DamBase extends File {
         ])) {
           if (isset($api_result['APIResponse']['Items'][0]['CustomField.Caption'])) {
             $alt = $api_result['APIResponse']['Items'][0]['CustomField.Caption'];
+
+            // Ensure long captions aren't too long for the database.
+            $alt = Html::escape(substr($alt, 0, 250));
           }
         }
 

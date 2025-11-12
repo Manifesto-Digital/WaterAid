@@ -4,3 +4,14 @@ services:
     arguments: ['@theme.manager', '@messenger', '@language_manager']
     tags:
       - { name: twig.extension }
+
+  wateraid_core.route_subscriber:
+    class: Drupal\wateraid_core\EventSubscriber\WateraidCoreRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  access_check.wateraid_core.node_access:
+    class: Drupal\wateraid_core\Access\NodeAccessAccessChecker
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: access_check, applies_to: _direct_node_access }

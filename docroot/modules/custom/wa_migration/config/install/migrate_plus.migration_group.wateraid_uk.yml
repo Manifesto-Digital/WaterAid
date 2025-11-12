@@ -1,3 +1,4 @@
+langcode: en
 status: true
 dependencies:
   enforced:
@@ -10,6 +11,6 @@ source_type: Database
 module: null
 shared_configuration:
   source:
-    key: migrate
+    key: uk_site_migration
   migration_tags:
     - wateraid_uk

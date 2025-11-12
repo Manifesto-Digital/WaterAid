@@ -19,3 +19,24 @@ dev:
   uri: https://wateraid-dev.manifesto.sh/
   paths:
     drush-script: '/var/www/html/manifestopartnerhfgeeshxaz/vendor/bin/drush'
+wa_dev:
+  host: wateraidacedev.ssh.prod.acquia-sites.com
+  user: wateraidace.dev
+  root: /var/www/html/docroot/
+  uri: https://wateraidacedev.prod.acquia-sites.com/
+  paths:
+    drush-script: '/var/www/html/vendor/bin/drush'
+wa_test:
+  host: wateraidacestage.ssh.prod.acquia-sites.com
+  user: wateraidace.stage
+  root: /var/www/html/docroot/
+  uri: https://wateraidacestage.prod.acquia-sites.com/
+  paths:
+    drush-script: '/var/www/html/vendor/bin/drush'
+wa_prod:
+  host: wateraidaceprod.ssh.prod.acquia-sites.com
+  user: wateraidace.prod
+  root: /var/www/html/docroot/
+  uri: https://wateraidaceprod.prod.acquia-sites.com/
+  paths:
+    drush-script: '/var/www/html/vendor/bin/drush'
