@@ -29,7 +29,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -45,7 +45,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -61,7 +61,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -104,7 +104,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -144,7 +144,7 @@ strong {
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion {
     margin-top: 3rem;
   }
@@ -165,7 +165,7 @@ strong {
   margin-bottom: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search {
     margin-bottom: 3rem;
   }
@@ -178,7 +178,7 @@ strong {
   gap: 1rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search--wrapper {
     flex-direction: row;
     gap: .25rem;
@@ -207,7 +207,7 @@ strong {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search label {
     font-size: 1.25rem;
   }
@@ -237,7 +237,7 @@ strong {
   justify-content: center;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search button {
     min-width: unset;
   }
@@ -247,5 +247,3 @@ strong {
   background: #e8e8eb;
 }
 
-
-/*# sourceMappingURL=accordion.css.map*/

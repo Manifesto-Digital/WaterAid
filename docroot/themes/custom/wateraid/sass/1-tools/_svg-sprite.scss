@@ -80,6 +80,7 @@ $sprites: (
     'wa-pound': "../../images/sprite.svg#wa-pound-view",
     'wa-shape-arrow': "../../images/sprite.svg#wa-shape-arrow-view",
     'wa-shape-arrows': "../../images/sprite.svg#wa-shape-arrows-view",
+    'wa-shape-circle-border': "../../images/sprite.svg#wa-shape-circle-border-view",
     'wa-shape-circle': "../../images/sprite.svg#wa-shape-circle-view",
     'wa-shape-drop': "../../images/sprite.svg#wa-shape-drop-view",
     'wa-shape-ripple': "../../images/sprite.svg#wa-shape-ripple-view",
@@ -446,6 +447,10 @@ $sizes: (
     'wa-shape-arrows': (
         'width': 384px,
         'height': 205px
+    ),
+    'wa-shape-circle-border': (
+        'width': 48px,
+        'height': 48px
     ),
     'wa-shape-circle': (
         'width': 254px,
