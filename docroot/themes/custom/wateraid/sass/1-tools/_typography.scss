@@ -239,7 +239,7 @@ $heading-font: 'RB Nylo Black', sans-serif;
   }
 }
 
-@mixin secondary-nav-link {
+@mixin utility-nav-link {
   font-family: $font-family;
   font-weight: 400;
   font-size: functions.calculate-rem(16);
@@ -249,8 +249,6 @@ $heading-font: 'RB Nylo Black', sans-serif;
 
   &:hover {
     text-decoration: underline;
-    background-color: colors.$wa-blue;
-    color: colors.$wa-white;
   }
 
   &:focus-visible {

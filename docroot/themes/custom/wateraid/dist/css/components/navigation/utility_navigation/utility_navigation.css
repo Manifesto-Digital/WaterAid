@@ -38,13 +38,29 @@
 
 .utility-navigation__menu-link:hover {
   text-decoration: underline;
-  background-color: #006bd9;
-  color: #fff;
 }
 
 .utility-navigation__menu-link:focus-visible {
   border: 3px solid #151435;
   outline: 3px solid #ff96e6;
+}
+
+.utility-navigation__link-with-icon {
+  display: flex;
+  gap: .375rem;
+}
+
+.utility-navigation__link-with-icon .icon {
+  transition: transform 200ms cubic-bezier(.6, 0, .4, 1) 0s;
+  display: block;
+  fill: currentColor;
+  width: .5625rem;
+  pointer-events: none;
+}
+
+.utility-navigation__link-with-icon svg {
+  max-width: 100%;
+  aspect-ratio: .8;
 }
 
 .utility-navigation--desktop {
@@ -85,6 +101,14 @@
   justify-content: flex-end;
   padding: .75rem 0;
   gap: 1rem;
+}
+
+.utility-navigation--desktop .language-switcher {
+  padding-right: 1rem;
+}
+
+.utility-navigation--desktop .language-switcher .icon {
+  right: 0;
 }
 
 .site-selector {
@@ -217,6 +241,14 @@
 .utility-navigation--desktop {
   position: relative;
   z-index: 1;
+}
+
+.utility-navigation--desktop .utility-navigation__menu-link--site-selector-btn .icon {
+  transform: rotate(180deg);
+}
+
+.utility-navigation--desktop .utility-navigation__menu-link--site-selector-btn[aria-expanded=true] .icon {
+  transform: rotate(0deg);
 }
 
 .utility-navigation--desktop .utility-navigation__container {

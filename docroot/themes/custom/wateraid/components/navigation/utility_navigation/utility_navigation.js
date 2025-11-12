@@ -21,6 +21,7 @@
     });
   }
 
+  // Behavior for the desktop version of the utility menu.
   Drupal.behaviors.utilityNavigation = {
     state: null,
 

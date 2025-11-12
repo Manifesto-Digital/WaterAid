@@ -10,3 +10,5 @@ libraryOverrides:
 slots:
   links:
     title: The language switch links
+  additional_classes:
+    title: Additional classes (array)

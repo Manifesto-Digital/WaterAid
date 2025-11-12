@@ -27,6 +27,10 @@ $header-padding-bottom: 0;
     }
   }
 
+  &__main {
+    overflow: hidden;
+  }
+
   &__logo {
     width: calculate-rem(104);
     padding-bottom: $wa-spacing-03;

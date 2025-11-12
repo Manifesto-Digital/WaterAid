@@ -90,9 +90,12 @@
         });
       });
 
+      // If nav is open, click outside the nav closes the nav.
       document.addEventListener('click', (e) => {
         const target = e.target;
-        if (this.state.isOpen && !nav.contains(target)) {
+        console.dir(target)
+        console.dir(menuButton)
+        if (this.state.isOpen && !nav.contains(target) && !menuButton.contains(target)) {
           this.state.isOpen = false;
         }
       });
@@ -129,7 +132,7 @@
               else {
                 this.closeNav();
               }
-             }
+            }
           ],
 
           // Listener for activeLevel2 property change.
@@ -145,10 +148,11 @@
 
               meganavPanels.forEach((el) => {
                 el.classList.remove('active');
-                el.setAttribute('aria-expanded', false);
+
               });
               level2Triggers.forEach((el) => {
                 el.classList.remove('active');
+                el.setAttribute('aria-expanded', false);
               });
 
               if (newValue) {
@@ -157,11 +161,11 @@
                 const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');
                 if (newPanel) {
                   newPanel.classList.add('active', 'panel-animating-in');
-                  newPanel.setAttribute('aria-expanded', true);
                 }
                 // Active class on level 1 nav button.
                 nav.querySelectorAll('[data-level2-trigger="' + newValue + '"]').forEach((el) => {
                   el.classList.add('active');
+                  el.setAttribute('aria-expanded', true);
                 });
                 mobileNav.querySelector('[data-mobile-submenu-id="' + newValue + '"]').classList.add('active');
               }
@@ -195,17 +199,23 @@
             (newValue, oldValue) => {
               mobileNav.classList.remove('mobile-nav-static');
 
-              nav.querySelectorAll('[data-level3-trigger]').forEach((el) => { el.classList.remove('active'); });
+              nav.querySelectorAll('[data-level3-trigger]').forEach((el) => {
+                el.classList.remove('active');
+                el.setAttribute('aria-expanded', false);
+              });
               nav.querySelectorAll('[data-level-3-id]').forEach((el) => {
                 el.classList.remove('show');
-                el.setAttribute('aria-expanded', false);
               });
 
               if (newValue !== oldValue) {
                 if (newValue !== null) {
                   //this.state.isOpen = true;
+                  const triggers = nav.querySelectorAll('[data-level3-trigger="' + newValue + '"]');
+                  triggers.forEach((el) => {
+                    el.classList.add('active');
+                    el.setAttribute('aria-expanded', true);
+                  })
 
-                  nav.querySelector('[data-level3-trigger="' + newValue + '"]').classList.add('active');
                   const elementToOpen = nav.querySelector('[data-level-3-id="' + newValue + '"]');
                   elementToOpen.classList.add('show');
                   elementToOpen.setAttribute('aria-expanded', true);

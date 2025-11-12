@@ -8,7 +8,25 @@
   }
 
   &__menu-link {
-    @include secondary-nav-link;
+    @include utility-nav-link;
+  }
+
+  &__link-with-icon {
+    display: flex;
+    gap: calculate-rem(6);
+
+    .icon {
+      @include wa-transition-motion-flow(transform, 200ms);
+      display: block;
+      fill: currentColor;
+      width: calculate-rem(9);
+      pointer-events: none;
+    }
+
+    svg {
+      max-width: 100%;
+      aspect-ratio: 0.8;
+    }
   }
 
   &--desktop {
@@ -30,6 +48,12 @@
       padding: $wa-spacing-03 0;
       gap: $wa-spacing-04;
 
+    }
+    .language-switcher {
+      padding-right: $wa-spacing-04;
+      .icon {
+        right: 0;
+      }
     }
   }
 }
@@ -104,6 +128,17 @@
 .utility-navigation--desktop {
   position: relative;
   z-index: 1;
+
+  .utility-navigation__menu-link--site-selector-btn {
+    .icon {
+      transform: rotate(180deg);
+    }
+    &[aria-expanded="true"] {
+      .icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
 
   .utility-navigation__container {
     background: $wa-cream;
