@@ -1,0 +1,10 @@
+uuid: 5a3789ec-bce8-4aa2-9f3c-d11c2a2f2c4c
+langcode: en
+status: true
+dependencies: {  }
+id: internal_card
+label: 'Internal card'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

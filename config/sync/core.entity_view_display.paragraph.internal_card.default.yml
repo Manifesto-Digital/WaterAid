@@ -1,0 +1,25 @@
+uuid: 99bf85b4-4397-4e53-8947-b4ce38bb89d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.internal_card.field_internal_card
+    - paragraphs.paragraphs_type.internal_card
+id: paragraph.internal_card.default
+targetEntityType: paragraph
+bundle: internal_card
+mode: default
+content:
+  field_internal_card:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
