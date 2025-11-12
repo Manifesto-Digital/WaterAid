@@ -9,7 +9,6 @@ use Drupal\group\Entity\GroupRelationship;
 use Drupal\migrate\Event\MigrateEvents;
 use Drupal\migrate\Event\MigratePostRowSaveEvent;
 use Drupal\migrate\Event\MigratePreRowSaveEvent;
-use Drupal\migrate\Event\MigrateRollbackEvent;
 use Drupal\migrate\Event\MigrateRowDeleteEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
