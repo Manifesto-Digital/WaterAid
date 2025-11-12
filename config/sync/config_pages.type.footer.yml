@@ -8,11 +8,11 @@ token: false
 context:
   show_warning: true
   group:
-    group: true
+    wateraid_site_group: true
     language: false
   fallback:
     language: ''
-    group: ''
+    wateraid_site_group: ''
 menu:
   path: ''
   weight: 0

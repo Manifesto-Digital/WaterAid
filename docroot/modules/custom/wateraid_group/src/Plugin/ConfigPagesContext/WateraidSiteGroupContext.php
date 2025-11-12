@@ -14,11 +14,11 @@ use Symfony\Component\HttpFoundation\Request;
  * Provides a group context for config pages.
  *
  * @ConfigPagesContext(
- *   id = "group",
+ *   id = "wateraid_site_group",
  *   label = @Translation("WaterAid site group"),
  * )
  */
-class GroupContext extends ConfigPagesContextBase {
+class WateraidSiteGroupContext extends ConfigPagesContextBase {
 
   /**
    * The route match service.
@@ -97,7 +97,7 @@ class GroupContext extends ConfigPagesContextBase {
       if ($group_id) {
         /** @var \Drupal\group\Entity\GroupInterface $group */
         $group = $this->entityTypeManager->getStorage('group')->load($group_id);
-        return $group;
+        return $group instanceof GroupInterface ? $group : NULL;
       }
     }
     return NULL;
