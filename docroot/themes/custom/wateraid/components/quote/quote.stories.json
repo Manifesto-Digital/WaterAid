@@ -48,6 +48,20 @@
           "id": "eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3dhdGVyYWlkXC9jb21wb25lbnRzXC9xdW90ZVwvcXVvdGUuc3Rvcmllcy50d2lnIiwiaWQiOiJRdW90ZUltYWdlQmVsb3cifQ%3D%3D"
         }
       }
+    },
+    {
+      "name": "SideBar",
+      "args": {
+        "type": "sidebar",
+        "quote": "Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.",
+        "citation": "Optional citation",
+        "image_caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      "parameters": {
+        "server": {
+          "id": "eyJwYXRoIjoidGhlbWVzXC9jdXN0b21cL3dhdGVyYWlkXC9jb21wb25lbnRzXC9xdW90ZVwvcXVvdGUuc3Rvcmllcy50d2lnIiwiaWQiOiJRdW90ZUltYWdlQmVsb3cifQ%3D%3D"
+        }
+      }
     }
   ]
 }

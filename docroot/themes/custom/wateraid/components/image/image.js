@@ -8,10 +8,10 @@
 
         if (openButton) {
           openButton.addEventListener("click", function () {
-            wrapper.classList.toggle("open");
+            wrapper.classList.add("open");
           });
           closeButton.addEventListener("click", function () {
-            wrapper.classList.toggle("open");
+            wrapper.classList.remove("open");
           });
         }
       }

@@ -1,6 +1,6 @@
 {% block content %}
   <div class="quote quote--{{ type|replace({'_':'-'}) }}">
-    {% if type == 'image_left_above' %}
+    {% if type in ['image_left_above', 'sidebar'] %}
       <div class="quote__image">
         {{ include('wateraid:image', {
           image: image,
