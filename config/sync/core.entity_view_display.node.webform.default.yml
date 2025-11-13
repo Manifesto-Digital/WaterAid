@@ -5,11 +5,11 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
-    - field.field.node.webform.field_show_spend_module
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
@@ -47,6 +47,15 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 107
+    region: content
+  field_donation_widget:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 109
     region: content
   field_hero:
     type: entity_reference_revisions_entity_view

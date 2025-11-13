@@ -6,7 +6,6 @@ dependencies:
     - field.storage.node.field_content
     - node.type.landing_page
     - paragraphs.paragraphs_type.accordion_item
-    - paragraphs.paragraphs_type.donate_exit_modal
     - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.external_card
     - paragraphs.paragraphs_type.hero_basic
@@ -44,13 +43,6 @@ settings:
       accordion_item: accordion_item
       donation_amount: donation_amount
       hero_donate: hero_donate
-      donate_exit_modal: donate_exit_modal
-      external_card: external_card
-      internal_card: internal_card
-      spend_item: spend_item
-      spend_module: spend_module
-      spend: spend
-      hero_search: hero_search
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -73,7 +65,7 @@ settings:
         enabled: false
       donate_exit_modal:
         weight: 30
-        enabled: true
+        enabled: false
       donation_amount:
         weight: 19
         enabled: true

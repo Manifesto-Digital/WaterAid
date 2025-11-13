@@ -50,6 +50,7 @@
 
         closeButton.addEventListener("click", function () {
           modal.classList.remove("open");
+          document.querySelector("body").classList.remove("modal-open");
         });
 
         document.querySelector("body").classList.remove("modal-open");

@@ -72,8 +72,6 @@ hidden:
   field_related_content_type: true
   field_review_date: true
   field_search_phrases: true
-  field_teaser_image: true
-  field_teaser_text: true
   field_theme: true
   langcode: true
   node_read_time: true

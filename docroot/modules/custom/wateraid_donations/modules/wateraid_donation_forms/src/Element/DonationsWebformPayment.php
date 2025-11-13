@@ -196,7 +196,7 @@ class DonationsWebformPayment extends WebformCompositeBase {
                 'wa-donation-methods',
               ],
             ],
-            '#title' => t('Payment options for @type payment', ['@type' => $type]),
+            '#title' => t('Payment options for @type payment', ['@type' => ($type === 'one_off' ? t('one-time') : t('monthly'))]),
           ];
 
           foreach ($payment_providers as $payment_provider_id => $payment_provider) {

@@ -44,3 +44,8 @@ body {
   background: $wa-white;
   opacity: 1;
 }
+
+div[data-drupal-messages] {
+  @include page-container;
+  margin-top: 2rem
+}

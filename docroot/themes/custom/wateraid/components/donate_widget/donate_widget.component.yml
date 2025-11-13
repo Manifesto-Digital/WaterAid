@@ -24,6 +24,9 @@ props:
     webform_node:
       type: string
       title: Webform node url
+    heading_prefix:
+      type: string
+      title: Heading prefix
 slots:
   heading:
     type: string
