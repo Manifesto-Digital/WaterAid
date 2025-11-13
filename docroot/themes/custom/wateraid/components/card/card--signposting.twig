@@ -16,7 +16,8 @@
       {{ bundle }}
     </div>
     <h3 class="card__heading">
-      <a href="{{ url }}" class="card__link">{{ heading }}</a>
+      <a href="{{ url }}" class="card__link">{{ heading }}{% if is_external %}<span class="visually-hidden"> - {{ 'external' }}</span>{% endif %}
+      </a>
     </h3>
 
     {% if date %}
@@ -54,5 +55,10 @@
       {{ description }}
     </div>
 
+    {% if is_external %}
+      <div class="card__external">
+        {{ include('@wateraid/images/icons/wa-external.svg') }}
+      </div>
+    {% endif %}
   </div>
 </div>
