@@ -24,7 +24,7 @@ process:
   status: status
   field_cards:
     -
-      plugin: migration_lookup
+      plugin: card_migration_lookup
       migration:
         - articles
         - campaigns
@@ -43,6 +43,8 @@ process:
         - stories
         - webforms
       source: field_listing_item
+    - plugin: skip_on_empty
+      method: row
   field_card_columns:
     plugin: static_map
     source: field_items_per_row

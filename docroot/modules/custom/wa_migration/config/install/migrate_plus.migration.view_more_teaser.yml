@@ -22,21 +22,16 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  temp_flexible_content:
-    -
-      plugin: migration_lookup
-      migration: flexible_content
-      source: field_related_content
-  temp_get_involved:
-    -
-      plugin: migration_lookup
-      migration: get_involved_node
-      source: field_related_content
   field_cards:
-    plugin: merge_without_exception
-    source:
-      - '@temp_flexible_content'
-      - '@temp_get_involved'
+    -
+      plugin: card_migration_lookup
+      migration:
+        - get_involved_node
+        - flexible_content
+      source: field_get_involved_content
+    -
+      plugin: skip_on_empty
+      method: row
 destination:
   plugin: 'entity:paragraph'
   default_bundle: card_collection
