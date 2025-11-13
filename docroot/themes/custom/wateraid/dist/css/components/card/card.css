@@ -230,6 +230,14 @@ strong {
   margin-top: .25rem;
 }
 
+.card__external {
+  margin: 0 0 0 auto;
+}
+
+.card__external svg {
+  color: #006bd9;
+}
+
 .card--teaser {
   border: .25rem #fff solid;
   height: 100%;

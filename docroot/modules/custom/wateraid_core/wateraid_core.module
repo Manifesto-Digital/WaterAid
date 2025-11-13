@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\node\NodeInterface;
 use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\pathauto\PathautoPatternInterface;
 
@@ -56,14 +57,14 @@ function wateraid_core_token_info_alter(&$data): void {
 function wateraid_core_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
   $replacements = [];
 
-  if (isset($data['entity_type']) && $data['entity_type'] == 'group_relationship') {
+  if (isset($data['entity_type']) && $data['entity_type'] == 'group_relationship' && isset($data['entity'])) {
     $token_service = \Drupal::token();
+    $entity =  $data['entity']->getEntity();
 
-    /** @var \Drupal\group\Entity\GroupRelationshipInterface $relationship */
-    $relationship = $data['entity'];
-
-    if ($node_tokens = $token_service->findWithPrefix($tokens, 'node')) {
-      $replacements += $token_service->generate('node', $node_tokens, ['node' => $relationship->getEntity()], $options, $bubbleable_metadata);
+    if ($entity instanceof NodeInterface) {
+      if ($node_tokens = $token_service->findWithPrefix($tokens, 'node')) {
+        $replacements += $token_service->generate('node', $node_tokens, ['node' => $entity], $options, $bubbleable_metadata);
+      }
     }
   }
 

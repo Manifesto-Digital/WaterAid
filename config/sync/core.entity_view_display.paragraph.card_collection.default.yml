@@ -31,12 +31,12 @@ content:
     region: content
   field_cards:
     type: entity_reference_revisions_entity_view
-    label: hidden
+    label: above
     settings:
-      view_mode: signposting
+      view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 0
+    weight: 7
     region: content
 hidden:
   entity_print_view_epub: true

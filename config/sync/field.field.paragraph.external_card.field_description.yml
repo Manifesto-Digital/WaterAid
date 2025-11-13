@@ -1,0 +1,19 @@
+uuid: 0ba7526b-8407-4bd7-acc2-f2875ad606c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.external_card
+id: paragraph.external_card.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: external_card
+label: 'Search description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
