@@ -199,11 +199,13 @@
             ]) %}
             <a href="{{ parent_link.url }}" {{ parent_link_attrs }}>
               {{ parent_link.title }}
-              <span class="icon icon-arrow-right">
-                <svg>
-                  <use href="{{ get_spritemap() }}#wa-shape-arrow" />
-                </svg>
-              </span>
+              {% if menu_level == 2 %}
+                <span class="icon icon-arrow-right">
+                  <svg>
+                    <use href="{{ get_spritemap() }}#wa-shape-arrow" />
+                  </svg>
+                </span>
+              {% endif %}
             </a>
 
             {% if menu_level == 2 and parent_link.original_link %}
