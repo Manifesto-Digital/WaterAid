@@ -1,0 +1,41 @@
+uuid: b159c9db-9240-4f1e-ae74-871c5af0d3e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.site-selector.field_country_class
+    - field.field.menu_link_content.site-selector.field_region
+  module:
+    - menu_link_content
+    - options
+id: menu_link_content.site-selector.default
+targetEntityType: menu_link_content
+bundle: site-selector
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_country_class:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_region:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true

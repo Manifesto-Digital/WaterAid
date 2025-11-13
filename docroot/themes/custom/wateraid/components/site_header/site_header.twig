@@ -1,8 +1,10 @@
 <header role="banner" {{ attributes.addClass(['site-header', 'js-site-header']).setAttribute('role', 'banner') }}>
 
-  <div class="site-header__utility">
-
-  </div>
+  {{ include('wateraid:utility_navigation', {
+    is_desktop: true,
+    language_switcher: blocks.wateraid_languageswitcher,
+    site_selector: blocks.wateraid_siteselector,
+  }, false) }}
 
   <div class="site-header__main">
     <div class="site-header__colour-wrapper">
@@ -29,12 +31,8 @@
           }, false) }}
         </div>
 
+
         {{ blocks.wateraid_wateraidsitemenu }}
-
-        <div class="site-header__ctas">
-
-        </div>
-
       </div>
     </div>
   </div>

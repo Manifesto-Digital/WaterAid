@@ -241,42 +241,20 @@ $heading-font: 'RB Nylo Black', sans-serif;
   }
 }
 
-h1, .pseudo-h1 {
-  @include h1();
-}
+@mixin utility-nav-link {
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: functions.calculate-rem(16);
+  line-height: 1.5;
+  color: colors.$wa-navy;
+  text-decoration: none;
 
-h2, .pseudo-h2 {
-  @include h2();
-}
+  &:hover {
+    text-decoration: underline;
+  }
 
-h3, .pseudo-h3 {
-  @include h3();
-}
-
-h4, .pseudo-h4 {
-  @include h4();
-}
-
-h5, .pseudo-h5 {
-  @include h5();
-}
-
-h6, .pseudo-h6 {
-  @include h6();
-}
-
-p {
-  @include paragraph-md();
-}
-
-p.paragraph-lg {
-  @include paragraph-lg();
-}
-
-p.paragraph-sm {
-  @include paragraph-sm();
-}
-
-strong {
-  font-family: $bold-font;
+  &:focus-visible {
+    border: 3px solid colors.$wa-navy;
+    outline: 3px solid colors.$wa-pink;
+  }
 }

@@ -1,0 +1,14 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Language switcher
+status: stable
+libraryOverrides:
+  dependencies:
+    - core/once
+  css:
+    theme:
+      ../../dist/css/components/language_switcher/language_switcher.css: { }
+slots:
+  links:
+    title: The language switch links
+  additional_classes:
+    title: Additional classes (array)

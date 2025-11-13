@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "RB Nylo Black";
+  src: url("../../fonts/RBNylo-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("../../fonts/NotoSans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.language-switcher {
+  position: relative;
+}
+
+.language-switcher__select {
+  font-family: "Noto Sans";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #151435;
+  text-decoration: none;
+}
+
+.language-switcher__select:hover {
+  text-decoration: underline;
+}
+
+.language-switcher__select:focus-visible {
+  border: 3px solid #151435;
+  outline: 3px solid #ff96e6;
+}
+
+.language-switcher__select option[value=""][disabled] {
+  display: none;
+}
+
+.language-switcher__select:hover {
+  text-decoration: underline;
+}
+
+.language-switcher .icon {
+  color: #151435;
+  position: absolute;
+  right: 1rem;
+  transition: transform 200ms cubic-bezier(.6, 0, .4, 1) 0s;
+  fill: currentColor;
+  width: .5625rem;
+  pointer-events: none;
+  transform: rotate(180deg);
+}
+
+.language-switcher .icon svg {
+  max-width: 100%;
+  aspect-ratio: .6;
+}
+
+
+/*# sourceMappingURL=language_switcher.css.map*/
