@@ -73,7 +73,6 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
       white-space: nowrap;
-
       &::after {
         content: "";
         display: block;
@@ -242,6 +241,10 @@ input[type='radio'] {
     &.error {
       border-color: base.$wa-orange
     }
+  }
+
+  .stripe-card-element {
+    padding: 1rem;
   }
 
   textarea {
@@ -419,6 +422,7 @@ input[type='radio'] {
   }
 }
 
+.pca .pcaautocomplete,
 .pcaautocomplete .pcatext {
     border-color: transparent !important;
 }
@@ -430,8 +434,7 @@ input[type='radio'] {
   line-height: 150%;
   position: absolute;
   left: .5rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0.75rem;
   + input[type=number] {
     padding-left: 1.5rem;
   }
@@ -457,6 +460,7 @@ fieldset.prev-form-step {
     }
   }
 
+  button,
   input[value="Edit"] {
     @include link();
   }
@@ -505,4 +509,69 @@ fieldset.next-form-step {
     background: url('/themes/custom/wateraid/images/icons/current.svg') no-repeat;
     margin-bottom: 1rem;
   }
+}
+
+// One off and monthly donation form styles
+.webform-donation-widget-wrapper + .field--name-webform form {
+  [data-drupal-selector="edit-step-title"],
+  [data-drupal-selector="edit-step-1"],
+  [data-drupal-selector="edit-actions"] {
+    display: none!important;
+  }
+}
+.node--type-webform {
+  .single-option,
+  .single-frequency-label,
+  .single-amount-label .js-form-type-radio {
+    display: none!important;
+  }
+  [data-donations-method="stripe"] .payment-button {
+    @include base.button-primary();
+  }
+  div[data-once="webform-buttons"],
+  .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    @include breakpoint-md {
+      flex-wrap: nowrap;
+    }
+    label {
+      @include base.button-primary();
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+      flex: 1 1 100%;
+      justify-content: center;
+      &:hover {
+        background-color: base.$wa-blue;
+        border-color: base.$wa-blue;
+        border-radius: 0;
+      }
+      @include breakpoint-md {
+        width: auto;
+        max-width: 25%;
+      }
+    }
+  }
+}
+
+fieldset.wa-donation-methods {
+  border: none;
+  .fieldset-legend {
+    @include visually-hidden();
+  }
+
+  [data-donations-method="stripe"]::before {
+    display: inline-block;
+    font-family: base.$bold-font;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+}
+
+.webform-confirmation {
+  @include page-container;
+  margin-bottom: 6rem;
 }

@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: donation_widget
 label: 'Monthly donation amounts'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -34,14 +34,32 @@ settings:
       call_to_action:
         weight: 18
         enabled: false
+      cancel_anytime:
+        weight: 27
+        enabled: false
+      card_collection:
+        weight: 28
+        enabled: false
+      donate_block:
+        weight: 29
+        enabled: false
+      donate_exit_modal:
+        weight: 30
+        enabled: false
       donation_amount:
         weight: 19
         enabled: true
       donation_widget:
         weight: 20
         enabled: false
+      facts_and_stats:
+        weight: 33
+        enabled: false
       hero_basic:
         weight: 21
+        enabled: false
+      hero_donate:
+        weight: 35
         enabled: false
       hero_image:
         weight: 22
@@ -64,10 +82,16 @@ settings:
       rich_text:
         weight: 28
         enabled: false
+      stats_item:
+        weight: 43
+        enabled: false
       text_media:
         weight: 29
         enabled: false
       video:
         weight: 30
+        enabled: false
+      webform_poc:
+        weight: 46
         enabled: false
 field_type: entity_reference_revisions

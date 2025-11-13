@@ -29,6 +29,7 @@ example.gitignore
 ~*.xlsx
 *.sql*
 .ddev/.env.web
+.ddev/.env
 
 
 # Ignore local persistent files.
