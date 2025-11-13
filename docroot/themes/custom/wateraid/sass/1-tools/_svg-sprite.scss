@@ -65,8 +65,6 @@ $sprites: (
     'wa-icon-quote-mark': "../../images/sprite.svg#wa-icon-quote-mark-view",
     'wa-icon-rain': "../../images/sprite.svg#wa-icon-rain-view",
     'wa-icon-recycle': "../../images/sprite.svg#wa-icon-recycle-view",
-    'wa-icon-search-white': "../../images/sprite.svg#wa-icon-search-white-view",
-    'wa-icon-search': "../../images/sprite.svg#wa-icon-search-view",
     'wa-icon-speech-bubble': "../../images/sprite.svg#wa-icon-speech-bubble-view",
     'wa-icon-sun': "../../images/sprite.svg#wa-icon-sun-view",
     'wa-icon-tap': "../../images/sprite.svg#wa-icon-tap-view",
@@ -386,14 +384,6 @@ $sizes: (
     'wa-icon-recycle': (
         'width': 240px,
         'height': 240px
-    ),
-    'wa-icon-search-white': (
-        'width': 19px,
-        'height': 19px
-    ),
-    'wa-icon-search': (
-        'width': 19px,
-        'height': 19px
     ),
     'wa-icon-speech-bubble': (
         'width': 240px,
