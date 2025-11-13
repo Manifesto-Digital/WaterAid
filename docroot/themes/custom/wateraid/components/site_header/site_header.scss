@@ -11,7 +11,7 @@ $header-padding-bottom: 0;
   }
 
   .main-site-link {
-    display: block;
+    display: none;
   }
 
   &__colour-wrapper {
@@ -119,7 +119,7 @@ $header-padding-bottom: 0;
 }
 
 
-.page-type--shorthand-story {
+.page-node-type-shorthand-story {
   .site-header__container {
     display: flex;
     justify-content: space-between;
