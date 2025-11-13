@@ -40,11 +40,10 @@
   mail: config_pages_field('footer', 'field_email')|render|striptags|trim,
   address: config_pages_field('footer', 'field_address'),
 } %}
-
 <div{{ attributes }}>
   {{ include('wateraid:footer', {
-    primary_menu: drupal_menu('footer')['#items'],
-    secondary_menu: drupal_menu('secondary-footer')['#items'],
+    primary_menu: footer_primary_menu ? footer_primary_menu['#items'] : [],
+    secondary_menu: footer_secondary_menu ? footer_secondary_menu['#items'] : [],
     facebook_url: facebook|render ? facebook,
     instagram_url: instagram|render ? instagram,
     tiktok_url: tiktok|render ? tiktok,
@@ -60,3 +59,5 @@
 </div>
 
 {% set catch_cache = content|render %}
+{{ footer_primary_menu|without(['#items']) }}
+{{ footer_secondary_menu|without(['#items']) }}
