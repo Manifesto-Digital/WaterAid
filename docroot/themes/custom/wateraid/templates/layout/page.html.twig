@@ -42,12 +42,10 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
-
+<div class="layout-container page-type--{{ bundle|replace({"_":"-"}) }}">
   {{ include ('wateraid:site_header', {
     blocks: page.header
   }, with_context = false) }}
-
 
   <div class="page-container">
     {{ page.breadcrumb }}

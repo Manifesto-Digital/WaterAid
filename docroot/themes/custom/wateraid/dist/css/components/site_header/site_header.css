@@ -30,6 +30,10 @@
   }
 }
 
+.site-header .main-site-link {
+  display: block;
+}
+
 .site-header__colour-wrapper {
   background: #fff;
   width: 100vw;
@@ -144,6 +148,31 @@
   .site-header[data-mobile-menu-level-active=site-selector] .site-header__colour-wrapper {
     background-color: #f8f0e4;
   }
+}
+
+.page-type--shorthand-story .site-header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-type--shorthand-story .primary-navigation,
+.page-type--shorthand-story .site-header__mobile-actions {
+  display: none;
+}
+
+.page-type--shorthand-story .main-site-link {
+  align-content: center;
+  color: #151435;
+  display: block;
+  text-decoration: none;
+}
+
+.page-type--shorthand-story .main-site-link:visited {
+  color: #151435;
+}
+
+.page-type--shorthand-story .main-site-link:hover {
+  text-decoration: underline;
 }
 
 
