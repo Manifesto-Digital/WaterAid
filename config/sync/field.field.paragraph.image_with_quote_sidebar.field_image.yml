@@ -1,0 +1,29 @@
+uuid: 9f8ed67f-0755-44a5-b5a0-7b16e53a700b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.dam_image
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+id: paragraph.image_with_quote_sidebar.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: image_with_quote_sidebar
+label: Image
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      dam_image: dam_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

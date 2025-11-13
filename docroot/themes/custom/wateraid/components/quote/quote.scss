@@ -79,4 +79,17 @@
       max-width: calculate-rem(888);
     }
   }
+
+  &--sidebar {
+    .quote__content {
+      padding: $wa-spacing-06 $wa-spacing-06 $wa-spacing-06 $wa-spacing-05;
+    }
+    .quote__content--quote {
+      font-size: calculate-rem(24);
+    }
+    .quote__content--citation {
+      margin-top: $wa-spacing-03;
+    }
+  }
+
 }
