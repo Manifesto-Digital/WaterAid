@@ -43,6 +43,7 @@
     "drupal/better_exposed_filters": "^7.0",
     "drupal/block_class": "^4.0",
     "drupal/block_visibility_groups": "^2.0",
+    "drupal/cdn": "^5.0@alpha",
     "drupal/clientside_validation": "^4.1",
     "drupal/config_ignore": "^3.3",
     "drupal/config_override_warn": "^1.5",
