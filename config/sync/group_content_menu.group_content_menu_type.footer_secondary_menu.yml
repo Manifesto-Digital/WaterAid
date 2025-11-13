@@ -1,0 +1,6 @@
+uuid: d757343b-0ae8-46e1-bd23-f7a2a66d4916
+langcode: en
+status: true
+dependencies: {  }
+id: footer_secondary_menu
+label: 'Footer secondary menu'
