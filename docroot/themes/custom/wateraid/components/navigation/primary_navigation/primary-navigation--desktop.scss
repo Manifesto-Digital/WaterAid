@@ -159,15 +159,6 @@
     }
   }
 
-  //&__col {
-  //  @include grid-item-span(4, 2, 3);
-  //
-  //  &--first {
-  //    @include grid-item-span(4, 2, 5);
-  //    padding-top: $wa-spacing-06;
-  //  }
-  //}
-
   &__level-2 {
     position: relative;
     padding: $wa-spacing-04 0;
