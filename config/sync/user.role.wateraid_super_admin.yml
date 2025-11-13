@@ -17,6 +17,7 @@ dependencies:
     - node.type.listing_page
     - node.type.page
     - node.type.publication
+    - node.type.shorthand_story
     - node.type.standard_page
     - node.type.story
     - node.type.webform
@@ -42,6 +43,7 @@ dependencies:
     - preview_link
     - quick_node_clone
     - redirect_bulk
+    - shorthand
     - system
     - taxonomy
     - toolbar
@@ -113,6 +115,7 @@ permissions:
   - 'create page content'
   - 'create publication content'
   - 'create remote_video media'
+  - 'create shorthand_story content'
   - 'create standard_page content'
   - 'create story content'
   - 'create terms in audiences'
@@ -143,6 +146,7 @@ permissions:
   - 'delete any publication content'
   - 'delete any remote_video media'
   - 'delete any remote_video media revisions'
+  - 'delete any shorthand_story content'
   - 'delete any standard_page content'
   - 'delete any story content'
   - 'delete any webform'
@@ -166,6 +170,7 @@ permissions:
   - 'delete own page content'
   - 'delete own publication content'
   - 'delete own remote_video media'
+  - 'delete own shorthand_story content'
   - 'delete own standard_page content'
   - 'delete own story content'
   - 'delete own webform'
@@ -173,6 +178,7 @@ permissions:
   - 'delete own webform submission'
   - 'delete page revisions'
   - 'delete publication revisions'
+  - 'delete shorthand_story revisions'
   - 'delete standard_page revisions'
   - 'delete story revisions'
   - 'delete term revisions in audiences'
@@ -190,6 +196,7 @@ permissions:
   - 'delete terms in themes'
   - 'delete terms in topic'
   - 'delete webform revisions'
+  - 'download shorthand content'
   - 'edit any article content'
   - 'edit any dam_image media'
   - 'edit any dam_video media'
@@ -202,6 +209,7 @@ permissions:
   - 'edit any page content'
   - 'edit any publication content'
   - 'edit any remote_video media'
+  - 'edit any shorthand_story content'
   - 'edit any standard_page content'
   - 'edit any story content'
   - 'edit any webform'
@@ -223,6 +231,7 @@ permissions:
   - 'edit own page content'
   - 'edit own publication content'
   - 'edit own remote_video media'
+  - 'edit own shorthand_story content'
   - 'edit own standard_page content'
   - 'edit own story content'
   - 'edit own webform'
@@ -251,6 +260,7 @@ permissions:
   - 'revert listing_page revisions'
   - 'revert page revisions'
   - 'revert publication revisions'
+  - 'revert shorthand_story revisions'
   - 'revert standard_page revisions'
   - 'revert story revisions'
   - 'revert term revisions in audiences'
@@ -294,6 +304,7 @@ permissions:
   - 'view own webform submission'
   - 'view page revisions'
   - 'view publication revisions'
+  - 'view shorthand_story revisions'
   - 'view site_settings config page entity'
   - 'view standard_page revisions'
   - 'view story revisions'

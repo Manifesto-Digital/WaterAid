@@ -1,0 +1,82 @@
+uuid: d3a35fdc-703a-4662-a751-c76d3a680337
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.shorthand_story.field_audience
+    - field.field.node.shorthand_story.field_country
+    - field.field.node.shorthand_story.field_get_involved
+    - field.field.node.shorthand_story.field_shorthand_story
+    - field.field.node.shorthand_story.field_teaser_image
+    - field.field.node.shorthand_story.field_teaser_text
+    - field.field.node.shorthand_story.field_theme
+    - node.type.shorthand_story
+  module:
+    - user
+id: node.shorthand_story.teaser
+targetEntityType: node
+bundle: shorthand_story
+mode: teaser
+content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_teaser_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_shorthand_story: true
+  langcode: true
+  node_read_time: true
+  search_api_excerpt: true
