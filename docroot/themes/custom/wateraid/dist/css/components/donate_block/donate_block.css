@@ -22,14 +22,13 @@
 h1, .pseudo-h1 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.625rem;
-  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -38,14 +37,13 @@ h1, .pseudo-h1 {
 h2, .pseudo-h2 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.25rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -54,14 +52,13 @@ h2, .pseudo-h2 {
 h3, .pseudo-h3 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -79,7 +76,6 @@ h4, .pseudo-h4 {
 h5, .pseudo-h5 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -104,7 +100,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -153,7 +149,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .donate-block {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -163,7 +159,7 @@ strong {
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .donate-block {
     margin-top: 3rem;
   }
@@ -179,7 +175,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .donate-block__wrapper {
     grid-column: span 6;
   }
@@ -211,7 +207,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .donate-block__widget {
     grid-column: span 6;
   }
@@ -230,7 +226,7 @@ strong {
   margin-top: 0;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .donate-block .donate-widget[data-component-id="wateraid:donate_widget"] {
     margin-top: 0;
   }
@@ -250,7 +246,7 @@ strong {
   padding: 2rem 1.25rem 0 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .donate-block--dark .donate-block__wrapper {
     padding: 3rem 0 3rem 3rem;
   }

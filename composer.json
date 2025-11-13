@@ -61,6 +61,7 @@
     "drupal/entity_usage": "^2.0@beta",
     "drupal/facets": "^3.0",
     "drupal/field_group": "^4.0",
+    "drupal/field_group_markup": "^1.0",
     "drupal/focal_point": "^2.1",
     "drupal/gin": "^4.1",
     "drupal/google_tag": "^2.0",

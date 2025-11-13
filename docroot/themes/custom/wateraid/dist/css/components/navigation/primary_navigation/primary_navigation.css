@@ -22,14 +22,13 @@
 h1, .pseudo-h1 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.625rem;
-  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -38,14 +37,13 @@ h1, .pseudo-h1 {
 h2, .pseudo-h2 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.25rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -54,14 +52,13 @@ h2, .pseudo-h2 {
 h3, .pseudo-h3 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -79,7 +76,6 @@ h4, .pseudo-h4 {
 h5, .pseudo-h5 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -104,7 +100,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -164,14 +160,13 @@ strong {
 h1, .pseudo-h1 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.625rem;
-  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -180,14 +175,13 @@ h1, .pseudo-h1 {
 h2, .pseudo-h2 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.25rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -196,14 +190,13 @@ h2, .pseudo-h2 {
 h3, .pseudo-h3 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -221,7 +214,6 @@ h4, .pseudo-h4 {
 h5, .pseudo-h5 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -246,7 +238,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -319,7 +311,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .site-header__container {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -551,7 +543,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__level-1 {
     gap: 1.25rem;
   }
@@ -696,7 +688,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__panel-inner {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -716,7 +708,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__panel-inner {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -732,7 +724,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__col {
     grid-column: span 3;
   }
@@ -748,7 +740,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__col--first {
     grid-column: span 5;
   }
@@ -836,7 +828,7 @@ body.primary-menu-open .mobile-nav {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .mobile-nav__container {
     padding-left: 3rem;
     padding-right: 3rem;

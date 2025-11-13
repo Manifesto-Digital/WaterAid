@@ -17,6 +17,8 @@ $sprites: (
     'wa-container-sm-circle-navy': "../../images/sprite.svg#wa-container-sm-circle-navy-view",
     'wa-container-sm-circle-white': "../../images/sprite.svg#wa-container-sm-circle-white-view",
     'wa-container-sm-circle': "../../images/sprite.svg#wa-container-sm-circle-view",
+    'wa-container-sm-rectangle--blue': "../../images/sprite.svg#wa-container-sm-rectangle--blue-view",
+    'wa-container-sm-rectangle-pink': "../../images/sprite.svg#wa-container-sm-rectangle-pink-view",
     'wa-container-sm-rectangle': "../../images/sprite.svg#wa-container-sm-rectangle-view",
     'wa-container-sm-square-white': "../../images/sprite.svg#wa-container-sm-square-white-view",
     'wa-container-sm-square': "../../images/sprite.svg#wa-container-sm-square-view",
@@ -35,6 +37,7 @@ $sprites: (
     'wa-edge-bottom-2': "../../images/sprite.svg#wa-edge-bottom-2-view",
     'wa-edge-top-1': "../../images/sprite.svg#wa-edge-top-1-view",
     'wa-edge-top-2': "../../images/sprite.svg#wa-edge-top-2-view",
+    'wa-external': "../../images/sprite.svg#wa-external-view",
     'wa-form-check': "../../images/sprite.svg#wa-form-check-view",
     'wa-fr-logo': "../../images/sprite.svg#wa-fr-logo-view",
     'wa-google': "../../images/sprite.svg#wa-google-view",
@@ -196,6 +199,14 @@ $sizes: (
         'width': 48px,
         'height': 48px
     ),
+    'wa-container-sm-rectangle--blue': (
+        'width': 300px,
+        'height': 160px
+    ),
+    'wa-container-sm-rectangle-pink': (
+        'width': 300px,
+        'height': 160px
+    ),
     'wa-container-sm-rectangle': (
         'width': 300px,
         'height': 160px
@@ -267,6 +278,10 @@ $sizes: (
     'wa-edge-top-2': (
         'width': 2056px,
         'height': 56px
+    ),
+    'wa-external': (
+        'width': 24px,
+        'height': 24px
     ),
     'wa-form-check': (
         'width': 24px,

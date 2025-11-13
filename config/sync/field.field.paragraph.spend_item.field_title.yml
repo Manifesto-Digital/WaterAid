@@ -1,0 +1,19 @@
+uuid: b5cbac9b-d812-49e6-bbed-7a753007d452
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.spend_item
+id: paragraph.spend_item.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: spend_item
+label: 'Lead statistic description'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

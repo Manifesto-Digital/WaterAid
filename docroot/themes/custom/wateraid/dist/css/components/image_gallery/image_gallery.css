@@ -22,14 +22,13 @@
 h1, .pseudo-h1 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.625rem;
-  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -38,14 +37,13 @@ h1, .pseudo-h1 {
 h2, .pseudo-h2 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.25rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -54,14 +52,13 @@ h2, .pseudo-h2 {
 h3, .pseudo-h3 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -79,7 +76,6 @@ h4, .pseudo-h4 {
 h5, .pseudo-h5 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -104,7 +100,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -154,7 +150,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery[data-component-id="wateraid:image_gallery"] {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -168,7 +164,7 @@ strong {
   padding: 1.5rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery[data-component-id="wateraid:image_gallery"] {
     margin-top: 3rem;
     margin-left: 0;
@@ -190,7 +186,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery__wrapper {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -206,7 +202,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery__content {
     grid-column: span 4;
   }
@@ -244,7 +240,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery__controls.mobile {
     grid-column: span 8;
   }
@@ -255,7 +251,7 @@ strong {
   justify-content: flex-end;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery__controls.mobile {
     display: none;
   }
@@ -266,7 +262,7 @@ strong {
   margin-top: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery__controls.desktop {
     display: flex;
     width: -moz-fit-content;
@@ -284,7 +280,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery__items {
     grid-column: span 8;
   }
@@ -299,7 +295,7 @@ strong {
   background-size: 100% 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .image-gallery--dark[data-component-id="wateraid:image_gallery"] {
     background-color: transparent;
     background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");

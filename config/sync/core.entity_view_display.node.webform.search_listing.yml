@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_show_spend_module
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
@@ -50,6 +51,7 @@ hidden:
   field_metatags: true
   field_options: true
   field_review_date: true
+  field_show_spend_module: true
   field_sidebar_content: true
   langcode: true
   links: true

@@ -22,14 +22,13 @@
 h1, .pseudo-h1 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.625rem;
-  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -38,14 +37,13 @@ h1, .pseudo-h1 {
 h2, .pseudo-h2 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2.25rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -54,14 +52,13 @@ h2, .pseudo-h2 {
 h3, .pseudo-h3 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 2rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -79,7 +76,6 @@ h4, .pseudo-h4 {
 h5, .pseudo-h5 {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -104,7 +100,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -164,7 +160,7 @@ strong {
   display: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__image--desktop {
     display: block;
   }
@@ -174,7 +170,7 @@ strong {
   display: block;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__image--mobile {
     display: none;
   }
@@ -216,13 +212,12 @@ strong {
 .hero__quote .quote__content--quote {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__donate {
     position: absolute;
     top: 6rem;
@@ -241,7 +236,7 @@ strong {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content {
     font-size: 1.25rem;
   }
@@ -255,7 +250,7 @@ strong {
   flex-direction: column;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content {
     padding: 3rem;
   }
@@ -293,7 +288,7 @@ strong {
   gap: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content--ctas {
     flex-direction: row;
     align-items: center;
@@ -317,7 +312,7 @@ strong {
   gap: .5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content--details {
     flex-direction: row;
     gap: .75rem;
@@ -328,7 +323,7 @@ strong {
   display: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content--details svg {
     display: block;
     width: .75rem;
@@ -356,7 +351,7 @@ strong {
   padding: 2rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--basic .cta__content {
     padding: 3rem;
   }
@@ -369,7 +364,7 @@ strong {
   padding: 2rem 1.25rem .25rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--blue .hero__content {
     margin-bottom: 3.5rem;
     padding: 3rem 3rem .25rem 3rem;
@@ -390,7 +385,7 @@ strong {
   bottom: -3rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--blue .hero__content::after {
     height: 3.5rem;
     bottom: -3.5rem;
@@ -428,7 +423,7 @@ strong {
   margin-bottom: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--news .hero__content--tags {
     margin-bottom: 2rem;
   }
@@ -454,7 +449,7 @@ strong {
   margin-top: 0;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--donate .donate-widget[data-component-id="wateraid:donate_widget"] {
     margin-top: 0;
   }
@@ -466,7 +461,7 @@ strong {
   padding: 0 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--search .hero__content {
     padding: 0;
   }

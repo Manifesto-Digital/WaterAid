@@ -1,0 +1,19 @@
+uuid: 57f53972-c099-4632-9a28-5d10f971f504
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.hero_search
+id: paragraph.hero_search.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: hero_search
+label: Title
+description: 'Enter the title for your hero'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
