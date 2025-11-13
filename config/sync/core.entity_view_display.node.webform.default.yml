@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
+    - field.field.node.webform.field_show_spend_module
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
     - field.field.node.webform.field_teaser_text
@@ -39,7 +40,7 @@ content:
     region: content
   field_donation_menu:
     type: boolean
-    label: above
+    label: hidden
     settings:
       format: default
       format_custom_false: ''
@@ -79,6 +80,16 @@ content:
       granularity: 2
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_show_spend_module:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 109
     region: content
   field_sidebar_content:
     type: entity_reference_revisions_entity_view

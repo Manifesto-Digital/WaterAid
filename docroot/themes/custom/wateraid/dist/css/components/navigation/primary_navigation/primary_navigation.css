@@ -77,7 +77,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .site-header__container {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -383,7 +383,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .site-header__container {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -507,7 +507,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__level-1 {
     gap: 1.25rem;
   }
@@ -652,7 +652,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__panel-inner {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -672,7 +672,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__panel-inner {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -688,7 +688,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__col {
     grid-column: span 3;
   }
@@ -704,7 +704,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .meganav__col--first {
     grid-column: span 5;
   }
@@ -820,7 +820,7 @@ body.primary-menu-open {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .site-header__container {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -971,7 +971,7 @@ body.primary-menu-open .mobile-nav {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .mobile-nav__container {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -1080,7 +1080,7 @@ body.primary-menu-open .mobile-nav {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .mobile-nav__utility-menu {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -1175,7 +1175,7 @@ body.primary-menu-open .mobile-nav {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .mobile-nav__site-selector-inner {
     padding-left: 3rem;
     padding-right: 3rem;

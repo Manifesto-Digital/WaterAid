@@ -36,6 +36,7 @@ module.exports = {
     'components/quote/quote': ['./components/quote/quote.scss'],
     'components/rich_text/rich_text': ['./components/rich_text/rich_text.scss'],
     'components/site_header/site_header': ['./components/site_header/site_header.scss'],
+    'components/spend/spend': ['./components/spend/spend.scss'],
     'components/statistics/statistics': ['./components/statistics/statistics.scss'],
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
     'components/video/video': ['./components/video/video.scss'],

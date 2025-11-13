@@ -43,7 +43,7 @@
   display: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__image--desktop {
     display: block;
   }
@@ -53,7 +53,7 @@
   display: block;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__image--mobile {
     display: none;
   }
@@ -95,13 +95,12 @@
 .hero__quote .quote__content--quote {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__donate {
     position: absolute;
     top: 6rem;
@@ -120,7 +119,7 @@
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content {
     font-size: 1.25rem;
   }
@@ -134,7 +133,7 @@
   flex-direction: column;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content {
     padding: 3rem;
   }
@@ -172,7 +171,7 @@
   gap: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content--ctas {
     flex-direction: row;
     align-items: center;
@@ -196,7 +195,7 @@
   gap: .5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content--details {
     flex-direction: row;
     gap: .75rem;
@@ -207,7 +206,7 @@
   display: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero__content--details svg {
     display: block;
     width: .75rem;
@@ -235,7 +234,7 @@
   padding: 2rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--basic .cta__content {
     padding: 3rem;
   }
@@ -248,7 +247,7 @@
   padding: 2rem 1.25rem .25rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--blue .hero__content {
     margin-bottom: 3.5rem;
     padding: 3rem 3rem .25rem 3rem;
@@ -269,7 +268,7 @@
   bottom: -3rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--blue .hero__content::after {
     height: 3.5rem;
     bottom: -3.5rem;
@@ -307,7 +306,7 @@
   margin-bottom: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--news .hero__content--tags {
     margin-bottom: 2rem;
   }
@@ -333,7 +332,7 @@
   margin-top: 0;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--donate .donate-widget[data-component-id="wateraid:donate_widget"] {
     margin-top: 0;
   }
@@ -345,7 +344,7 @@
   padding: 0 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .hero--search .hero__content {
     padding: 0;
   }

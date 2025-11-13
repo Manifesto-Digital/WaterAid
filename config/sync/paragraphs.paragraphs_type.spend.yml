@@ -1,0 +1,10 @@
+uuid: e4767d6e-eaa0-4940-9222-7551651dbeac
+langcode: en
+status: true
+dependencies: {  }
+id: spend
+label: Spend
+icon_uuid: null
+icon_default: null
+description: 'To edit the site wide module you need to edit the Spending module on the Group.'
+behavior_plugins: {  }

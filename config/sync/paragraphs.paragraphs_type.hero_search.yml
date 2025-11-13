@@ -1,0 +1,10 @@
+uuid: 770c16bd-9726-4f8c-96af-9479c1707710
+langcode: en
+status: true
+dependencies: {  }
+id: hero_search
+label: 'Hero (search)'
+icon_uuid: null
+icon_default: null
+description: 'Adds the global search hero header on a per-page basis.'
+behavior_plugins: {  }

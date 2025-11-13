@@ -59,7 +59,7 @@
   transition: max-height .2s ease-out;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion-item__content .container-sm {
     margin: 0;
   }

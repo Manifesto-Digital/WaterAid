@@ -51,7 +51,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .site-header__container {
     padding-left: 3rem;
     padding-right: 3rem;

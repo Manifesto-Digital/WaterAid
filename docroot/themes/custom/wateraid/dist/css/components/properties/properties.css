@@ -37,7 +37,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .properties__items {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -60,7 +60,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .properties__item {
     grid-column: span 4;
   }
@@ -76,7 +76,7 @@
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .properties__item {
     font-size: 1.25rem;
   }

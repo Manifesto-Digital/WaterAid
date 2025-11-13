@@ -24,7 +24,7 @@
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   [data-component-id="wateraid:rich_text"] {
     margin-top: 3rem;
   }
@@ -40,7 +40,7 @@
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   [data-component-id="wateraid:rich_text"] {
     font-size: 1.25rem;
   }
@@ -136,7 +136,6 @@
 [data-component-id="wateraid:rich_text"] blockquote {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -161,7 +160,6 @@
 [data-component-id="wateraid:rich_text"] blockquote p {
   font-family: "RB Nylo Black", sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;

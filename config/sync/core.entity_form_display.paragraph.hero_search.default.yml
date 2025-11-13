@@ -1,0 +1,32 @@
+uuid: 39e32c02-58a7-4daa-a4b4-2607aa2fc04b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_search.field_hero_subtitle
+    - field.field.paragraph.hero_search.field_title
+    - paragraphs.paragraphs_type.hero_search
+id: paragraph.hero_search.default
+targetEntityType: paragraph
+bundle: hero_search
+mode: default
+content:
+  field_hero_subtitle:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

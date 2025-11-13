@@ -148,6 +148,7 @@ final class AjaxMediaController extends ControllerBase {
 
       // Trigger modal reload.
       $response->addCommand(new InvokeCommand('a[data-title*="DAM"].active', 'click'));
+      $response->addCommand(new InvokeCommand('.media-library-widget-modal input[type="submit"][value="Apply filters"]', 'click'));
     }
     else {
       $response->addCommand(new ReplaceCommand('#dam-messages',

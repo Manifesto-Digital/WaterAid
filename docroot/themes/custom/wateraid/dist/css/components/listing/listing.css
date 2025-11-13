@@ -36,7 +36,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing__wrapper {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -56,7 +56,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing__wrapper--button {
     grid-column: span 4;
   }
@@ -68,7 +68,7 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing__wrapper--button {
     width: calc(100% - 90px);
   }
@@ -149,7 +149,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing__content {
     grid-column: span 12;
   }
@@ -168,7 +168,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing__content .views-infinite-scroll-content-wrapper {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -188,7 +188,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing__content .views-infinite-scroll-content-wrapper .views-row {
     grid-column: span 4;
   }
@@ -289,7 +289,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing--filters-open {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -309,7 +309,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing--filters-open .listing__filters {
     grid-column: span 4;
   }
@@ -320,7 +320,7 @@
   padding-bottom: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing--filters-open .listing__filters {
     padding-right: 5.625rem;
   }
@@ -336,7 +336,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing--filters-open .listing__content {
     grid-column: span 8;
   }
@@ -352,7 +352,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing--filters-open .listing__content .views-row {
     grid-column: span 6;
   }
@@ -364,7 +364,7 @@
   padding: 0 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .listing--search {
     padding: 0;
   }

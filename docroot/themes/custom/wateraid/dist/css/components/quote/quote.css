@@ -25,7 +25,7 @@
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .quote {
     margin-top: 3rem;
   }
@@ -40,7 +40,7 @@
   align-items: start;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .quote__content {
     padding: 3rem;
   }
@@ -88,7 +88,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .quote--image-left-above, .quote--image-right-below {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -109,7 +109,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .quote--image-left-above .quote__content, .quote--image-right-below .quote__content {
     grid-column: span 6;
   }
@@ -129,7 +129,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .quote--image-left-above .quote__image, .quote--image-right-below .quote__image {
     grid-column: span 6;
   }

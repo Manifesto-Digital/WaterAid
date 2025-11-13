@@ -32,7 +32,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .m-text-media {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -58,7 +58,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .m-text-media__text, .m-text-media__media {
     grid-column: span 6;
   }

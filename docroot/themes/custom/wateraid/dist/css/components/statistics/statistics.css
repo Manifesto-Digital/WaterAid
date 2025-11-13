@@ -23,7 +23,7 @@
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics {
     margin-top: 3rem;
   }
@@ -50,7 +50,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics__items {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -60,7 +60,7 @@
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics__items {
     margin-top: 3rem;
   }
@@ -70,7 +70,7 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--2-column .statistics__items {
     max-width: 69.75rem;
     margin-left: 7.125rem;
@@ -87,7 +87,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--2-column .statistics__items--item {
     grid-column: span 6;
   }
@@ -97,7 +97,7 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--3-columns .statistics__items {
     max-width: 69.75rem;
     margin-left: 7.125rem;
@@ -114,7 +114,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--3-columns .statistics__items--item {
     grid-column: span 4;
   }
@@ -130,7 +130,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--4-columns .statistics__items--item {
     grid-column: span 3;
   }

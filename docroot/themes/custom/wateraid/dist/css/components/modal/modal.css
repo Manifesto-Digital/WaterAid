@@ -48,7 +48,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .modal[data-component-id="wateraid:modal"] .modal__wrapper {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -77,7 +77,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .modal__image {
     grid-column: span 5;
   }
@@ -94,7 +94,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .modal__image {
     grid-column: 2/7;
   }
@@ -125,7 +125,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .modal__content {
     grid-column: span 5;
   }

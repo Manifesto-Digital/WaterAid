@@ -23,7 +23,7 @@
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion {
     margin-top: 3rem;
   }
@@ -44,7 +44,7 @@
   margin-bottom: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search {
     margin-bottom: 3rem;
   }
@@ -57,7 +57,7 @@
   gap: 1rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search--wrapper {
     flex-direction: row;
     gap: .25rem;
@@ -86,7 +86,7 @@
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search label {
     font-size: 1.25rem;
   }
@@ -116,7 +116,7 @@
   justify-content: center;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .accordion__search button {
     min-width: unset;
   }

@@ -109,6 +109,14 @@
   margin-top: .25rem;
 }
 
+.card__external {
+  margin: 0 0 0 auto;
+}
+
+.card__external svg {
+  color: #006bd9;
+}
+
 .card--teaser {
   border: .25rem #fff solid;
   height: 100%;
@@ -171,7 +179,7 @@
   padding: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card--signposting.card--large {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -179,20 +187,20 @@
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 768px) {
+@media only screen and (min-width: 1024px) and (min-width: 768px) {
   .card--signposting.card--large {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) and (min-width: 1024px) {
   .card--signposting.card--large {
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card--signposting.card--large__image, .card--signposting.card--large__body {
     grid-column: span 4;
     align-self: center;
@@ -200,19 +208,19 @@
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 768px) {
+@media only screen and (min-width: 1024px) and (min-width: 768px) {
   .card--signposting.card--large__image, .card--signposting.card--large__body {
     grid-column: span 6;
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) and (min-width: 1024px) {
   .card--signposting.card--large__image, .card--signposting.card--large__body {
     grid-column: span 6;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card--signposting.card--large__description {
     font-family: "Noto Sans";
     font-size: 1.125rem;
@@ -224,7 +232,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) and (min-width: 1024px) {
   .card--signposting.card--large__description {
     font-size: 1.25rem;
   }
@@ -243,7 +251,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card--search {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -273,7 +281,7 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card--search .card__body {
     grid-column: span 9;
   }
@@ -312,7 +320,7 @@
   }
 }
 
-@media only screen and (min-width: 768px) and (min-width: 1440px) {
+@media only screen and (min-width: 768px) and (min-width: 1024px) {
   .card--search .card__image {
     grid-column: span 3;
   }
