@@ -94,6 +94,7 @@ jobs:
           git status
           git add -f docroot/themes/custom/wateraid/dist/
           git commit --amend --no-edit || echo "No changes to commit"
+          git checkout .
 
       - name: Authenticate
         working-directory: ${{ github.workspace }}
