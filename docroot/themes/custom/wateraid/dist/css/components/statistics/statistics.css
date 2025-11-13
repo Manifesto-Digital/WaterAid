@@ -28,7 +28,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -43,7 +43,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -58,7 +58,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -100,7 +100,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -140,7 +140,7 @@ strong {
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics {
     margin-top: 3rem;
   }
@@ -167,7 +167,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics__items {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -177,7 +177,7 @@ strong {
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics__items {
     margin-top: 3rem;
   }
@@ -187,7 +187,7 @@ strong {
   width: 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--2-column .statistics__items {
     max-width: 69.75rem;
     margin-left: 7.125rem;
@@ -204,7 +204,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--2-column .statistics__items--item {
     grid-column: span 6;
   }
@@ -214,7 +214,7 @@ strong {
   width: 100%;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--3-columns .statistics__items {
     max-width: 69.75rem;
     margin-left: 7.125rem;
@@ -231,7 +231,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--3-columns .statistics__items--item {
     grid-column: span 4;
   }
@@ -247,7 +247,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .statistics--4-columns .statistics__items--item {
     grid-column: span 3;
   }

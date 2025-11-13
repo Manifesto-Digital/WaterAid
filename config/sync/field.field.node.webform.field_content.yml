@@ -7,11 +7,13 @@ dependencies:
     - node.type.webform
     - paragraphs.paragraphs_type.accordion_item
     - paragraphs.paragraphs_type.donation_amount
+    - paragraphs.paragraphs_type.external_card
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.internal_card
     - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_item
     - paragraphs.paragraphs_type.spend_module
@@ -40,6 +42,8 @@ settings:
       donation_amount: donation_amount
       hero_donate: hero_donate
       stats_item: stats_item
+      external_card: external_card
+      internal_card: internal_card
       spend_item: spend_item
       spend: spend
       spend_module: spend_module
@@ -75,6 +79,9 @@ settings:
       donation_widget:
         weight: 23
         enabled: false
+      external_card:
+        weight: 37
+        enabled: true
       facts_and_stats:
         weight: 24
         enabled: false
@@ -99,6 +106,9 @@ settings:
       image_gallery:
         weight: -21
         enabled: false
+      internal_card:
+        weight: 46
+        enabled: true
       quote:
         weight: -20
         enabled: false

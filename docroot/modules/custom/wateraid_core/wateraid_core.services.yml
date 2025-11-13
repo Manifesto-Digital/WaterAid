@@ -5,6 +5,12 @@ services:
     tags:
       - { name: twig.extension }
 
+  wateraid_core.twig_extension:
+    class: Drupal\wateraid_core\Twig\DamImageTwigExtension
+    arguments: ['@wa_orange_dam.api']
+    tags:
+      - { name: twig.extension }
+
   wateraid_core.route_subscriber:
     class: Drupal\wateraid_core\EventSubscriber\WateraidCoreRouteSubscriber
     tags:

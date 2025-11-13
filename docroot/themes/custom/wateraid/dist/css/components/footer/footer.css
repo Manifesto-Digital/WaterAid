@@ -28,7 +28,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -43,7 +43,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -58,7 +58,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -100,7 +100,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -142,7 +142,7 @@ strong {
   position: relative;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer[data-component-id="wateraid:footer"] {
     margin-top: 9.5rem;
   }
@@ -169,7 +169,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer[data-component-id="wateraid:footer"]::after {
     height: 3.5rem;
     top: -3.5rem;
@@ -185,7 +185,7 @@ strong {
   justify-content: center;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer .button--donate {
     max-width: -moz-fit-content;
     max-width: fit-content;
@@ -210,7 +210,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__top, .footer__main {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -227,7 +227,7 @@ strong {
   gap: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__top {
     padding: 3rem 3rem 0 3rem;
   }
@@ -237,7 +237,7 @@ strong {
   padding: 0 1.25rem 2rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__main {
     padding: 3rem;
   }
@@ -256,7 +256,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__bottom {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -267,7 +267,7 @@ strong {
   padding: 2rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__bottom {
     padding: 3rem;
   }
@@ -313,7 +313,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__site-logo, .footer__info, .footer__socials {
     grid-column: span 3;
   }
@@ -329,7 +329,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__donate, .footer__menus, .footer__copy {
     grid-column: span 9;
   }
@@ -386,7 +386,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__menu--primary ul {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -406,7 +406,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__menu--primary ul .menu-item {
     grid-column: span 4;
   }
@@ -422,7 +422,7 @@ strong {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__menu--primary ul .link {
     font-size: 1.25rem;
   }
@@ -442,7 +442,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__menu--secondary ul, .footer__menu--donate ul {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin-top: 3rem;
@@ -456,7 +456,7 @@ strong {
   justify-content: space-between;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer__menu--secondary ul li:not(:last-of-type):after, .footer__menu--donate ul li:not(:last-of-type):after {
     background-image: url("/themes/custom/wateraid/images/icons/wa-shape-drop.svg");
     background-size: contain;
@@ -479,7 +479,7 @@ strong {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer--donate .footer__top {
     font-size: 1.25rem;
   }
@@ -500,7 +500,7 @@ strong {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer--donate .footer__contact a {
     font-size: 1.25rem;
   }
@@ -530,7 +530,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .footer--donate .footer__copy {
     grid-column: span 12;
   }
