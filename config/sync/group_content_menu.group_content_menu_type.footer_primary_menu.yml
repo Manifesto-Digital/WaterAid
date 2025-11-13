@@ -1,0 +1,6 @@
+uuid: 06e81685-95f6-4114-b31c-e7b557bfb961
+langcode: en
+status: true
+dependencies: {  }
+id: footer_primary_menu
+label: 'Footer primary menu'

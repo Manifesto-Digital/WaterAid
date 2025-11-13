@@ -1,6 +1,13 @@
 @import "../../sass/base";
 
 .footer {
+  &__inner {
+    background-color: $wa-blue;
+  }
+  &__container {
+    @include page-container;
+  }
+
   &[data-component-id="wateraid:footer"] {
     color: $wa-white;
     margin-top: $wa-spacing-14;
@@ -59,28 +66,46 @@
     z-index: 0;
     position: relative;
   }
+  &__top-wrapper,
+  &__main-wrapper{
+    background-color: $wa-blue;
+    width: 100%;
+  }
 
   &__top {
-    padding: $wa-spacing-07 $wa-spacing-05;
+    @include page-container;
+    padding-top: $wa-spacing-07;
+    padding-bottom: $wa-spacing-07;
     gap: $wa-spacing-07;
     @include desktop() {
-      padding: $wa-spacing-09 $wa-spacing-09 0 $wa-spacing-09;
+      padding-top: $wa-spacing-09;
+      padding-bottom: $wa-spacing-09;
     }
   }
 
   &__main {
-    padding: 0 $wa-spacing-05 $wa-spacing-07 $wa-spacing-05;
+    @include page-container;
+    padding-top: 0;
+    padding-bottom: $wa-spacing-07;
     @include desktop() {
-      padding: $wa-spacing-09;
+      padding-top: $wa-spacing-09;
+      padding-bottom: $wa-spacing-09;
     }
   }
 
+  &__bottom-wrapper {
+    background-color: $wa-navy;
+    width: 100%;
+  }
   &__bottom {
+    @include page-container;
     @include grid();
     background-color: $wa-navy;
-    padding: $wa-spacing-07 $wa-spacing-05;
+    padding-top: $wa-spacing-07;
+    padding-bottom: $wa-spacing-07;
     @include desktop() {
-      padding: $wa-spacing-09;
+      padding-top: $wa-spacing-09;
+      padding-bottom: $wa-spacing-09;
     }
   }
 
