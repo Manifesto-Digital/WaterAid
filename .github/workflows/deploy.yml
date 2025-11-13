@@ -92,6 +92,7 @@ jobs:
       - name: Commit build front end assets
         run: |
           git status
+          rm docroot/themes/custom/wateraid/.gitignore
           git add -f docroot/themes/custom/wateraid/dist/
           git commit --amend --no-edit || echo "No changes to commit"
           git checkout .
