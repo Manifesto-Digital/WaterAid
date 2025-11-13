@@ -13,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
+    - paragraphs.paragraphs_type.hero_search
     - paragraphs.paragraphs_type.hero_video
     - paragraphs.paragraphs_type.internal_card
     - paragraphs.paragraphs_type.stats_item
@@ -41,6 +42,7 @@ settings:
       donation_amount: donation_amount
       hero_donate: hero_donate
       donate_exit_modal: donate_exit_modal
+      hero_search: hero_search
       external_card: external_card
       internal_card: internal_card
     negate: 1
@@ -92,6 +94,9 @@ settings:
         enabled: true
       hero_news:
         weight: -16
+        enabled: true
+      hero_search:
+        weight: 41
         enabled: true
       hero_video:
         weight: -15

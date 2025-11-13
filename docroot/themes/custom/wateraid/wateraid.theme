@@ -130,6 +130,14 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
 
 /**
  * Helper function to extract and format donation amount data from a paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ * @param string $field_name
+ *   The field name.
+ *
+ * @return array
+ *   The amounts.
  */
 function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string $field_name): array {
   $donation_amounts = [];
@@ -182,10 +190,13 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
   return $donation_amounts;
 }
 
-
-function wateraid_preprocess_views_view(&$variables) {
+/**
+ * Implements hook_preprocess_HOOK.
+ */
+function wateraid_preprocess_views_view(&$variables): void {
   $view = $variables['view'];
   if ($view->id() === 'search') {
-    $variables['keywords'] = $view->getExposedInput()['keywords'];
+    $input = $view->getExposedInput();
+    $variables['keywords'] = $input['keywords'] ?? '';
   }
 }

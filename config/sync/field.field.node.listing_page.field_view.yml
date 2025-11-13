@@ -28,6 +28,7 @@ settings:
     blogs: blogs
     events: events
     press_releases: press_releases
+    search: search
     stories: stories
   enabled_settings: {  }
 field_type: viewsreference
