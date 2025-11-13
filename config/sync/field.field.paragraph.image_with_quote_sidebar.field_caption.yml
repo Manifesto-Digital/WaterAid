@@ -1,0 +1,19 @@
+uuid: 68ff502d-011c-499c-8654-7a8cdd7634f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+id: paragraph.image_with_quote_sidebar.field_caption
+field_name: field_caption
+entity_type: paragraph
+bundle: image_with_quote_sidebar
+label: Caption
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

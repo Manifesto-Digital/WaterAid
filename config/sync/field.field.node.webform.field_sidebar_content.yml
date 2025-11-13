@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_sidebar_content
     - node.type.webform
     - paragraphs.paragraphs_type.cancel_anytime
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.spend
   module:
     - entity_reference_revisions
@@ -25,6 +26,7 @@ settings:
     target_bundles:
       cancel_anytime: cancel_anytime
       spend: spend
+      image_with_quote_sidebar: image_with_quote_sidebar
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -57,6 +59,9 @@ settings:
       donation_widget:
         weight: 37
         enabled: false
+      external_card:
+        weight: 42
+        enabled: false
       facts_and_stats:
         weight: 22
         enabled: false
@@ -72,6 +77,9 @@ settings:
       hero_news:
         weight: 25
         enabled: false
+      hero_search:
+        weight: 48
+        enabled: false
       hero_video:
         weight: 26
         enabled: false
@@ -80,6 +88,12 @@ settings:
         enabled: false
       image_gallery:
         weight: 28
+        enabled: false
+      image_with_quote_sidebar:
+        weight: 52
+        enabled: true
+      internal_card:
+        weight: 53
         enabled: false
       quote:
         weight: 29
