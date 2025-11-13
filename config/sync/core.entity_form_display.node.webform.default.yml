@@ -78,7 +78,6 @@ third_party_settings:
         required_fields: true
     group_sidebar_content:
       children:
-        - field_show_spend_module
         - field_sidebar_content
       label: 'Sidebar content'
       region: content
@@ -166,13 +165,6 @@ content:
     weight: 26
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_show_spend_module:
-    type: boolean_checkbox
-    weight: 122
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_sidebar_content:
     type: layout_paragraphs
