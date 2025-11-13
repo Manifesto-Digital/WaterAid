@@ -21,11 +21,8 @@
       const submitButton = widget.querySelector('#donate_submit');
 
       // Exit if we don't have the necessary elements
-      if (
-        !amountRadios.length ||
-        !oneOffCustomAmountContainer ||
-        !monthlyCustomAmountContainer ||
-        !detailElements.length
+      if ((!amountRadios.length || !detailElements.length) &&
+        !(oneOffCustomAmountContainer || monthlyCustomAmountContainer)
       ) {
         return;
       }
@@ -50,15 +47,19 @@
         // Toggle visibility of the custom amount text input
         if (selectedRadio.value === "other") {
           if (selectedFrequency.value === "monthly") {
-            monthlyCustomAmountContainer.classList.remove("is-hidden");
+            monthlyCustomAmountContainer?.classList.remove("is-hidden");
           } else {
-            oneOffCustomAmountContainer.classList.remove("is-hidden");
+            oneOffCustomAmountContainer?.classList.remove("is-hidden");
           }
         } else {
-            monthlyCustomAmountContainer.classList.add("is-hidden");
-            monthlyCustomAmountInput.value = ""; // Clear input when hidden
-            oneOffCustomAmountContainer.classList.add("is-hidden");
-            oneOffCustomAmountInput.value = ""; // Clear input when hidden
+            monthlyCustomAmountContainer?.classList.add("is-hidden");
+            if (monthlyCustomAmountInput) {
+              monthlyCustomAmountInput.value = ""; // Clear input when hidden
+            }
+            oneOffCustomAmountContainer?.classList.add("is-hidden");
+            if (oneOffCustomAmountInput) {
+              oneOffCustomAmountInput.value = ""; // Clear input when hidden
+            }
         }
 
         // Toggle the visible detail description
@@ -94,7 +95,9 @@
 
         // Show / hide relevant donation amount options based on frequency selection.
         if (selectedFrequency.value === "monthly") {
-          oneOffContainer.classList.add("is-hidden");
+          if (oneOffContainer) {
+            oneOffContainer.classList.add("is-hidden");
+          }
           monthlyContainer.classList.remove("is-hidden");
 
           // Set first radio as checked.
@@ -103,7 +106,9 @@
           updateAmountSelection();
         } else {
           oneOffContainer.classList.remove("is-hidden");
-          monthlyContainer.classList.add("is-hidden");
+          if (monthlyContainer) {
+            monthlyContainer.classList.add("is-hidden");
+          }
 
           // Set first radio as checked.
           const oneOffAmounts = oneOffContainer.querySelectorAll('input[name="one_off_amount"]');
@@ -138,7 +143,7 @@
           }
         }
 
-        const redirectUrl = location + '?fq=' + frequencyValue + '&val=' + amountValue;
+        const redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue;
 
         window.location.href = redirectUrl;
 

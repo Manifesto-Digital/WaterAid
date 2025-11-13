@@ -3,6 +3,12 @@ main:
     theme:
       dist/css/styles.css: {}
 
+webform-behavior:
+  js:
+    js/webform-behavior.js: { minified: true }
+  dependencies:
+    - core/drupal
+
 listing:
   js:
     components/listing/listing.js: { }

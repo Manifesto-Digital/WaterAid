@@ -6,7 +6,6 @@ dependencies:
     - field.storage.node.field_content
     - node.type.publication
     - paragraphs.paragraphs_type.accordion_item
-    - paragraphs.paragraphs_type.donate_exit_modal
     - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
@@ -38,7 +37,6 @@ settings:
       accordion_item: accordion_item
       donation_amount: donation_amount
       hero_donate: hero_donate
-      donate_exit_modal: donate_exit_modal
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -61,7 +59,7 @@ settings:
         enabled: false
       donate_exit_modal:
         weight: 30
-        enabled: true
+        enabled: false
       donation_amount:
         weight: 19
         enabled: true
