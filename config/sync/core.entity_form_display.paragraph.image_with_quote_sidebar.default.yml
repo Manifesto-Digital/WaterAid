@@ -17,7 +17,7 @@ mode: default
 content:
   field_caption:
     type: string_textfield
-    weight: 6
+    weight: 1
     region: content
     settings:
       size: 60
@@ -25,7 +25,7 @@ content:
     third_party_settings: {  }
   field_citation:
     type: string_textarea
-    weight: 2
+    weight: 3
     region: content
     settings:
       rows: 2
@@ -33,14 +33,14 @@ content:
     third_party_settings: {  }
   field_image:
     type: media_library_widget
-    weight: 5
+    weight: 0
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_quote:
     type: string_textarea
-    weight: 1
+    weight: 2
     region: content
     settings:
       rows: 5
