@@ -2,6 +2,7 @@
 
 namespace Drupal\wateraid_core\Twig;
 
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
@@ -23,6 +24,7 @@ class WateraidCoreTwigExtension extends AbstractExtension {
   public function __construct(
     protected ThemeManagerInterface $themeManager,
     protected MessengerInterface $messenger,
+    protected LanguageManagerInterface $languageManager,
   ) {}
 
   /**
@@ -31,6 +33,7 @@ class WateraidCoreTwigExtension extends AbstractExtension {
   public function getFunctions(): array {
     return [
       new TwigFunction('get_spritemap', [$this, 'getSpritemap']),
+      new TwigFunction('get_current_language_id', [$this, 'getCurrentLanguageId']),
     ];
   }
 
@@ -62,6 +65,16 @@ class WateraidCoreTwigExtension extends AbstractExtension {
     }
 
     return '/' . $sprite_path;
+  }
+
+  /**
+   * Get the current language ID.
+   *
+   * @return string
+   *   Current language ID.
+   */
+  public function getCurrentLanguageId(): string {
+    return $this->languageManager->getCurrentLanguage()->getId();
   }
 
 }

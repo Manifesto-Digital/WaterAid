@@ -1,0 +1,17 @@
+uuid: 80ad6c83-04b5-41ab-97c0-7bc89020c643
+langcode: en
+status: true
+dependencies: {  }
+id: global_site_selector
+label: 'Global site selector'
+token: true
+context:
+  show_warning: true
+  group:
+    language: true
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/system/wateraid-global-settings/site-selector
+  weight: 0
+  description: ''

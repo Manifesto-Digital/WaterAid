@@ -1,0 +1,33 @@
+uuid: 2fe0b005-b9dd-4e61-9b44-84995a957e4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+    - options
+id: menu_link_content.field_region
+field_name: field_region
+entity_type: menu_link_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: asia_and_pacific
+      label: 'Asia and Pacific'
+    -
+      value: africa
+      label: Africa
+    -
+      value: americas
+      label: Americas
+    -
+      value: europe
+      label: Europe
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
