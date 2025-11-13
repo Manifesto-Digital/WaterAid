@@ -71,9 +71,10 @@ final class ListingParagraphSource extends ParagraphSource {
         ->condition('entity_id', $pids, 'IN')
         ->execute()->fetchAll() as $datum) {
         if (isset($datum['field_call_to_action_link_uri'])) {
-          if (str_starts_with($datum['field_call_to_action_link_uri'], 'entity:node/')) {
-            $value[] = substr($datum['field_call_to_action_link_uri'], 12);
-          }
+          $value[] = [
+            $datum['field_call_to_action_link_uri'],
+            $datum['field_call_to_action_link_title']
+          ];
         }
       }
     }

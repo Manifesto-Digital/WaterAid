@@ -12,9 +12,10 @@ migration_tags:
 migration_group: wateraid_uk
 label: 'Activation Bar'
 source:
-  plugin: link_to_entity_paragraph_source
+  plugin: paragraph_source
   bundle: activation_bar_item
-  fields: { }
+  fields:
+    - field_call_to_action_link
 process:
   langcode:
     -
@@ -23,7 +24,7 @@ process:
   status: status
   field_cards:
     -
-      plugin: migration_lookup
+      plugin: card_migration_lookup
       migration:
         - articles
         - campaigns
@@ -41,7 +42,11 @@ process:
         - standard_page
         - stories
         - webforms
-      source: field_call_to_action_link
+      source:
+        - field_call_to_action_link_uri
+        - field_call_to_action_link_title
+    - plugin: skip_on_empty
+      method: row
   field_card_columns:
     plugin: default_value
     default_value: 2_columns
