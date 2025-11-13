@@ -44,6 +44,7 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - wateraid_core
     - webform
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
@@ -59,6 +60,7 @@ permissions:
   - 'access files overview'
   - 'access group overview'
   - 'access media overview'
+  - 'access nodes directly'
   - 'access own webform configuration'
   - 'access site reports'
   - 'access toolbar'

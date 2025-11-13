@@ -1,0 +1,8 @@
+uuid: 43289b5e-6c29-43e7-bc94-0a18027aef8c
+langcode: und
+status: true
+dependencies: {  }
+id: site-selector
+label: 'Site selector'
+description: 'Utility menu pertaining to regional sites'
+locked: false

@@ -1,0 +1,62 @@
+uuid: 1569880d-03be-4f30-82c2-aa4c31e316b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.wateraid_site.field_spend_module
+    - group.type.wateraid_site
+  module:
+    - layout_paragraphs
+    - path
+id: group.wateraid_site.default
+targetEntityType: group
+bundle: wateraid_site
+mode: default
+content:
+  field_spend_module:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

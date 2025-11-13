@@ -1,0 +1,16 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Utility navigation
+status: stable
+description: Global utility navigation, for language and site selection. Only for desktop - on mobile its integrated into the mobile menu.
+libraryOverrides:
+  dependencies:
+    - core/once
+  css:
+    theme:
+      ../../../dist/css/components/navigation/utility_navigation/utility_navigation.css: { }
+slots:
+  language_switcher:
+    title: Language switcher
+  site_selector:
+    title: Site selector panel
+

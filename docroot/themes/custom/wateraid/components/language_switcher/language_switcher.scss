@@ -1,0 +1,32 @@
+@import '../../sass/base';
+
+.language-switcher {
+  position: relative;
+
+  &__select {
+    @include utility-nav-link;
+
+    option[value=""][disabled] {
+      display: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .icon {
+    color: $wa-navy;
+    position: absolute;
+    right: $wa-spacing-04;
+    @include wa-transition-motion-flow(transform, 200ms);;
+    fill: currentColor;
+    width: calculate-rem(9);
+    pointer-events: none;
+    transform: rotate(180deg);
+
+    svg {
+      max-width: 100%;
+      aspect-ratio: 0.6;
+    }
+  }
+}

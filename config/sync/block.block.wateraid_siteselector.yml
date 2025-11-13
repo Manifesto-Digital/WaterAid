@@ -1,0 +1,25 @@
+uuid: 7d42b4b8-5816-40af-9110-3dd7b99882c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.site-selector
+  module:
+    - system
+  theme:
+    - wateraid
+id: wateraid_siteselector
+theme: wateraid
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:site-selector'
+settings:
+  id: 'system_menu_block:site-selector'
+  label: 'Site selector'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

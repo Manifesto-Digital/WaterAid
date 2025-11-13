@@ -14,6 +14,8 @@ listing:
     components/listing/listing.js: { }
   dependencies:
     - core/jquery
+    - core/drupal
+    - core/drupalSettings
 
 image-gallery:
   js:

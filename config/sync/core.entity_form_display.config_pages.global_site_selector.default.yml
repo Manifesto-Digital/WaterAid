@@ -1,0 +1,31 @@
+uuid: 556ce531-e3a4-4573-976f-a1e4d59aba49
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.global_site_selector
+    - field.field.config_pages.global_site_selector.field_description
+    - field.field.config_pages.global_site_selector.field_title
+id: config_pages.global_site_selector.default
+targetEntityType: config_pages
+bundle: global_site_selector
+mode: default
+content:
+  field_description:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  label: true

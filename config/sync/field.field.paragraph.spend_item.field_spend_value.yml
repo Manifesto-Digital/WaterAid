@@ -1,0 +1,23 @@
+uuid: 3a3d49b1-bcc7-4a6d-bed8-fc34a4b125e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_spend_value
+    - paragraphs.paragraphs_type.spend_item
+id: paragraph.spend_item.field_spend_value
+field_name: field_spend_value
+entity_type: paragraph
+bundle: spend_item
+label: Value
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -59,6 +59,7 @@ hidden:
   field_metatags: true
   field_options: true
   field_review_date: true
+  field_show_spend_module: true
   field_sidebar_content: true
   langcode: true
   node_read_time: true

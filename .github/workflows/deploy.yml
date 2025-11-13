@@ -89,10 +89,13 @@ jobs:
           git config --global user.name "Jenkins"
           git config --global user.email "jenkins@manifesto.co.uk"
 
-      - name: Commit build artifacts
+      - name: Commit build front end assets
         run: |
           git status
-          git checkout .
+          rm docroot/themes/custom/wateraid/.gitignore
+          git add -f docroot/themes/custom/wateraid/dist/
+          git add .
+          git commit --amend --no-edit || echo "No changes to commit"
 
       - name: Authenticate
         working-directory: ${{ github.workspace }}

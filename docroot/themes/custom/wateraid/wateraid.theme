@@ -6,23 +6,13 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
 
 // Require all the theme includes.
 $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
 foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
   require_once $file;
-}
-
-/**
- * Implements hook_preprocess_HOOK() for pages.
- */
-function wateraid_preprocess_page(&$variables) {
-  /** @var \Drupal\Core\Block\BlockManagerInterface $block_manager */
-  $block_manager = \Drupal::service('plugin.manager.block');
-  /** @var \Drupal\group_content_menu\Plugin\Block\GroupMenuBlock $group_menu_block */
-  $group_menu_block = $block_manager->createInstance('group_content_menu:wateraid_site_menu', ['level' => 1, 'depth' => 3]);
-  $variables['primary_menu'] = $group_menu_block->access(\Drupal::currentUser()) ? $group_menu_block->build() : [];
 }
 
 /**
@@ -136,6 +126,14 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
 
 /**
  * Helper function to extract and format donation amount data from a paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ * @param string $field_name
+ *   The field name.
+ *
+ * @return array
+ *   The amounts.
  */
 function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string $field_name): array {
   $donation_amounts = [];
@@ -231,6 +229,26 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
 function wateraid_preprocess_views_view(&$variables) {
   $view = $variables['view'];
   if ($view->id() === 'search') {
-    $variables['keywords'] = $view->getExposedInput()['keywords'];
+    $input = $view->getExposedInput();
+    $variables['keywords'] = $input['keywords'] ?? '';
   }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__spend().
+ *
+ * This function creates a variable for Group's spending module.
+ */
+function wateraid_preprocess_paragraph__spend(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $parentEntity = $paragraph->getParentEntity();
+  $relationships = GroupRelationship::loadByEntity($parentEntity);
+
+  $relationship = reset($relationships);
+
+  $group = $relationship->getGroup();
+
+  $variables['spend'] = $group->field_spend_module->view();
 }

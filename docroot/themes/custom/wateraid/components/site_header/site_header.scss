@@ -27,6 +27,10 @@ $header-padding-bottom: 0;
     }
   }
 
+  &__main {
+    overflow: hidden;
+  }
+
   &__logo {
     width: calculate-rem(104);
     padding-bottom: $wa-spacing-03;
@@ -92,8 +96,14 @@ $header-padding-bottom: 0;
         color: $wa-white;
       }
     }
+
+    &[data-mobile-menu-level-active='site-selector'] {
+      .site-header__colour-wrapper {
+        background-color: $wa-cream;
+      }
+      .site-header__logo-image {
+      }
+    }
   }
 
 }
-
-

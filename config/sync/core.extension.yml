@@ -14,6 +14,7 @@ module:
   block_content: 0
   breakpoint: 0
   captcha: 0
+  cdn: 0
   ckeditor5: 0
   comment: 0
   config: 0
@@ -38,6 +39,7 @@ module:
   facets_exposed_filters: 0
   field: 0
   field_group: 0
+  field_group_markup: 0
   field_ui: 0
   file: 0
   filter: 0

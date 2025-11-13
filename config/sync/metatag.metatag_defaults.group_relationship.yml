@@ -1,0 +1,14 @@
+uuid: c8df4b30-ffd4-4729-8c61-0c9583c9d7ef
+langcode: en
+status: true
+dependencies: {  }
+id: group_relationship
+label: 'Group relationship'
+tags:
+  description: '[group_relationship:node:field_teaser_text]'
+  og_description: '[group_relationship:node:field_teaser_text]'
+  og_title: '[group_relationship:content_name]'
+  schema_web_page_description: '[group_relationship:node:field_teaser_text]'
+  title: '[group_relationship:content_name] | [group_relationship:group:title]'
+  twitter_cards_description: '[group_relationship:content:field_teaser_text]'
+  twitter_cards_title: '[group_relationship:content_name]'
