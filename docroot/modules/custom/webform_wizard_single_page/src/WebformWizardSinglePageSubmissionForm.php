@@ -126,7 +126,7 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
       $elements['section_goto_page_' . $page_id] = [
         '#type' => 'fieldset',
         '#title' => '<i class="fa fa-check-circle"></i>' . $page['#title'],
-        '#attributes' => ['class' => 'prev-form-step'],
+        '#attributes' => ['class' => ['prev-form-step']],
       ];
 
       // Create a link back to each previous step.

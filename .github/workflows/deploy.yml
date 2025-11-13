@@ -9,7 +9,7 @@ on:
         description: "Environment"
         required: true
         type: choice
-        options: [dev, test, prod]
+        options: [dev, stage, prod]
         default: dev
 env:
   ACQUIA_SITE: ${{ vars.WA_ACQUIA_SITE }}
@@ -30,10 +30,10 @@ jobs:
           echo "ENVIRONMENT=${{ inputs.environment || 'dev' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
 
-      - name: Set test ENV vars
+      - name: Set stage ENV vars
         if: github.ref_name == 'staging'
         run: |
-          echo "ENVIRONMENT=${{ inputs.environment || 'test' }}" >> $GITHUB_ENV
+          echo "ENVIRONMENT=${{ inputs.environment || 'stage' }}" >> $GITHUB_ENV
           echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Set prod ENV vars
