@@ -56,6 +56,7 @@ final class WateraidConfigPagesGroupContextSubscriber implements EventSubscriber
         $group_query = $this->entityTypeManager->getStorage('group')->getQuery();
         $group_query->condition('type', 'wateraid_site')
           ->accessCheck(FALSE)
+          ->condition('status', 1)
           ->range(0, 1)
           ->sort('id');
         $group = $group_query->execute();
