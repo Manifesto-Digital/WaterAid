@@ -22,7 +22,6 @@ $heading-font: 'RB Nylo Black', sans-serif;
 @mixin h1 {
   font-family: $heading-font;
   font-size: functions.calculate-rem(42);
-  font-weight: 900;
   line-height: 1.1;
   text-decoration: none;
   text-transform: none;
@@ -35,7 +34,6 @@ $heading-font: 'RB Nylo Black', sans-serif;
 @mixin h2 {
   font-family: $heading-font;
   font-size: functions.calculate-rem(36);
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -48,7 +46,6 @@ $heading-font: 'RB Nylo Black', sans-serif;
 @mixin h3 {
   font-family: $heading-font;
   font-size: functions.calculate-rem(32);
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;
@@ -70,7 +67,6 @@ $heading-font: 'RB Nylo Black', sans-serif;
 @mixin h5 {
   font-family: $heading-font;
   font-size: functions.calculate-rem(24);
-  font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
   text-transform: none;

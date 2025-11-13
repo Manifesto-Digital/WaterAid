@@ -1,0 +1,10 @@
+uuid: 99c8c4e6-a206-42a2-9494-5510e017ce56
+langcode: en
+status: true
+dependencies: {  }
+id: spend_item
+label: 'Spend item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

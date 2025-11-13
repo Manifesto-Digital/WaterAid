@@ -16,6 +16,9 @@ dependencies:
     - paragraphs.paragraphs_type.hero_search
     - paragraphs.paragraphs_type.hero_video
     - paragraphs.paragraphs_type.internal_card
+    - paragraphs.paragraphs_type.spend
+    - paragraphs.paragraphs_type.spend_item
+    - paragraphs.paragraphs_type.spend_module
     - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
@@ -42,6 +45,9 @@ settings:
       donation_amount: donation_amount
       hero_donate: hero_donate
       donate_exit_modal: donate_exit_modal
+      spend_item: spend_item
+      spend: spend
+      spend_module: spend_module
       external_card: external_card
       internal_card: internal_card
       hero_search: hero_search
@@ -116,6 +122,15 @@ settings:
       rich_text:
         weight: -25
         enabled: false
+      spend:
+        weight: 48
+        enabled: true
+      spend_item:
+        weight: 47
+        enabled: true
+      spend_module:
+        weight: 48
+        enabled: true
       stats_item:
         weight: -15
         enabled: true

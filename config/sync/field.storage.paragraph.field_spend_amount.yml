@@ -1,0 +1,21 @@
+uuid: f9bdb316-894c-41b7-a621-f5793c0af400
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_spend_amount
+field_name: field_spend_amount
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

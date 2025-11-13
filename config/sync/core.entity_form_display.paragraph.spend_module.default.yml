@@ -1,0 +1,61 @@
+uuid: 738175b9-3d54-41af-b96e-df3c99be5889
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spend_module.field_item_1
+    - field.field.paragraph.spend_module.field_item_2
+    - field.field.paragraph.spend_module.field_rich_text
+    - field.field.paragraph.spend_module.field_title
+    - paragraphs.paragraphs_type.spend_module
+  module:
+    - layout_paragraphs
+    - text
+id: paragraph.spend_module.default
+targetEntityType: paragraph
+bundle: spend_module
+mode: default
+content:
+  field_item_1:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_item_2:
+    type: layout_paragraphs
+    weight: 3
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_rich_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

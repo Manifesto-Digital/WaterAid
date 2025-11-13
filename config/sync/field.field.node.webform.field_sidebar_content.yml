@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_sidebar_content
     - node.type.webform
     - paragraphs.paragraphs_type.cancel_anytime
+    - paragraphs.paragraphs_type.spend
   module:
     - entity_reference_revisions
 id: node.webform.field_sidebar_content
@@ -23,6 +24,7 @@ settings:
   handler_settings:
     target_bundles:
       cancel_anytime: cancel_anytime
+      spend: spend
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -37,11 +39,32 @@ settings:
       cancel_anytime:
         weight: 21
         enabled: true
+      card_collection:
+        weight: 32
+        enabled: false
+      donate_block:
+        weight: 33
+        enabled: false
+      donate_exit_modal:
+        weight: 34
+        enabled: false
+      donation_amount:
+        weight: 35
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 36
+        enabled: false
+      donation_widget:
+        weight: 37
+        enabled: false
       facts_and_stats:
         weight: 22
         enabled: false
       hero_basic:
         weight: 23
+        enabled: false
+      hero_donate:
+        weight: 40
         enabled: false
       hero_image:
         weight: 24
@@ -63,6 +86,15 @@ settings:
         enabled: false
       rich_text:
         weight: 30
+        enabled: false
+      spend:
+        weight: 48
+        enabled: true
+      spend_item:
+        weight: 49
+        enabled: false
+      spend_module:
+        weight: 50
         enabled: false
       stats_item:
         weight: 31
