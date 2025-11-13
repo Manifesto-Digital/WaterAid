@@ -29,7 +29,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -45,7 +45,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -61,7 +61,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -104,7 +104,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -144,7 +144,7 @@ strong {
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta {
     margin-top: 3rem;
   }
@@ -217,7 +217,7 @@ strong {
   margin: 0;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta__links {
     align-content: end;
     justify-items: end;
@@ -230,7 +230,7 @@ strong {
   gap: 1.5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta__links--wrapper {
     flex-direction: row;
     align-items: center;
@@ -263,7 +263,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta--default {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -274,7 +274,7 @@ strong {
   padding: 2rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta--default {
     padding: 3rem;
   }
@@ -292,7 +292,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta--default .cta__links,
   .cta--default .cta__content {
     grid-column: span 6;
@@ -303,7 +303,7 @@ strong {
   margin-top: 2rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta--default .cta__links {
     margin: 0;
   }
@@ -318,7 +318,7 @@ strong {
   padding: 2rem 1.25rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta--media .cta__content {
     position: absolute;
     left: 3rem;
@@ -335,7 +335,7 @@ strong {
   margin-top: .5rem;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .cta--media .cta__links {
     flex-direction: row;
     align-items: center;

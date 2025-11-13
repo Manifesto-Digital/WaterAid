@@ -29,7 +29,7 @@ h1, .pseudo-h1 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h1, .pseudo-h1 {
     font-size: 3.75rem;
   }
@@ -45,7 +45,7 @@ h2, .pseudo-h2 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h2, .pseudo-h2 {
     font-size: 2.75rem;
   }
@@ -61,7 +61,7 @@ h3, .pseudo-h3 {
   color: #006bd9;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   h3, .pseudo-h3 {
     font-size: 2.25rem;
   }
@@ -104,7 +104,7 @@ p {
   text-transform: none;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   p {
     font-size: 1.25rem;
   }
@@ -146,7 +146,7 @@ strong {
   position: relative;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection {
     padding: 3rem;
   }
@@ -165,7 +165,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection__wrapper {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -185,13 +185,13 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--1-column .card {
     grid-column: span 12;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--1-column .card {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -199,20 +199,20 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 768px) {
+@media only screen and (min-width: 1024px) and (min-width: 768px) {
   .card-collection--1-column .card {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) and (min-width: 1024px) {
   .card-collection--1-column .card {
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--1-column .card__image, .card-collection--1-column .card__body {
     grid-column: span 4;
     align-self: center;
@@ -220,19 +220,19 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 768px) {
+@media only screen and (min-width: 1024px) and (min-width: 768px) {
   .card-collection--1-column .card__image, .card-collection--1-column .card__body {
     grid-column: span 6;
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) and (min-width: 1024px) {
   .card-collection--1-column .card__image, .card-collection--1-column .card__body {
     grid-column: span 6;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--1-column .card__description {
     font-family: "Noto Sans";
     font-size: 1.125rem;
@@ -244,7 +244,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) and (min-width: 1024px) {
   .card-collection--1-column .card__description {
     font-size: 1.25rem;
   }
@@ -260,7 +260,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--2-columns .card {
     grid-column: span 6;
   }
@@ -276,7 +276,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--3-columns .card {
     grid-column: span 4;
   }
@@ -292,7 +292,7 @@ strong {
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .card-collection--4-columns .card {
     grid-column: span 3;
   }
