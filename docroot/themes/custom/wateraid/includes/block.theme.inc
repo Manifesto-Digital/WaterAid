@@ -5,6 +5,7 @@
  * Hooks pertaining to blocks.
  */
 
+use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group_content_menu\GroupContentMenuInterface;
 
@@ -41,11 +42,21 @@ function wateraid_preprocess_block(&$variables) {
             $tree = $menu_tree->transform($tree, $manipulators);
             // Build as renderable.
             $menu = $menu_tree->build($tree);
+            // Add cacheability metadata.
+            $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+
             $variables[$var_name] = $menu;
           }
         }
-
       }
+    }
+  }
+
+  if ($variables['plugin_id'] === 'system_menu_block:site-selector') {
+    // If site selector config pages values change, invalidate the block cache.
+    $site_selector_config_page = config_pages_config('global_site_selector');
+    if ($site_selector_config_page instanceof ConfigPagesInterface) {
+      $variables['#cache']['tags'][] = 'config_pages:' . $site_selector_config_page->id();
     }
   }
 }
