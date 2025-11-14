@@ -215,6 +215,9 @@
         "drupal/group_content_menu": {
             "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"
         },
+        "drupal/redirect": {
+            "2879648 - Redirects from aliased paths aren't triggered": "https://www.drupal.org/files/issues/2025-09-09/redirect-redirects-from-aliased-paths-arent-triggered-2879648-212.patch"
+        },
         "drupal/webform_rest": {
             "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
         }
