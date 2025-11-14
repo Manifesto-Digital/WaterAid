@@ -62,9 +62,9 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - field_search_phrases
         - field_view
         - field_content
+        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs
