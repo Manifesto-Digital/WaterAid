@@ -83,8 +83,8 @@ final class ListingParagraphSource extends ParagraphSource {
         $value[] = [
           $datum['field_call_to_action_link_uri'],
           $datum['field_call_to_action_link_title'],
-          $datum['field_listing_item_details_value'],
-          $datum['field_listing_item_title_value'],
+          isset($datum['field_listing_item_details_value']) ? strip_tags($datum['field_listing_item_details_value']) : '',
+          isset($datum['field_listing_item_title_value']) ? strip_tags($datum['field_listing_item_title_value']) : '',
           $datum['field_image_target_id'],
         ];
       }
