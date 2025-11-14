@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
@@ -78,7 +79,6 @@ third_party_settings:
         required_fields: true
     group_sidebar_content:
       children:
-        - field_show_spend_module
         - field_sidebar_content
       label: 'Sidebar content'
       region: content
@@ -200,7 +200,11 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 160
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   langcode:
     type: language_select
     weight: 2
@@ -267,6 +271,7 @@ content:
       webforms: {  }
     third_party_settings: {  }
 hidden:
+  field_donation_widget: true
   publish_on: true
   publish_state: true
   unpublish_on: true
