@@ -93,8 +93,6 @@
       // If nav is open, click outside the nav closes the nav.
       document.addEventListener('click', (e) => {
         const target = e.target;
-        console.dir(target)
-        console.dir(menuButton)
         if (this.state.isOpen && !nav.contains(target) && !menuButton.contains(target)) {
           this.state.isOpen = false;
         }
