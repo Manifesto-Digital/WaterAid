@@ -80,29 +80,25 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
+    if (!$value) {
+      return NULL;
+    }
+
     $return = NULL;
     $storage = $this->entityTypeManager->getStorage('paragraph');
 
-    $new_value = NULL;
-    $key = 0;
-
-    // Look for the new id in all the paragraph migrations.
-    while (!$new_value && array_key_exists($key, $this->configuration['migrations'])) {
-      $this->configuration['migration'] = $this->configuration['migrations'][$key];
-
-      $new_value = parent::transform($value, $migrate_executable, $row, $destination_property);
-
-      $key++;
-    }
-
-    if ($new_value) {
+    if ($new_value = parent::transform($value, $migrate_executable, $row, $destination_property)) {
       if ($paragraph = $storage->load($new_value)) {
         $return = $paragraph;
       }
     }
 
-    // If the array is empty, return a null value so the field is left empty.
-    return $return;
+    if (!$return) {
+      return NULL;
+    }
+    else {
+      return $return;
+    }
   }
 
 }

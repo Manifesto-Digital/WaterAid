@@ -212,5 +212,4 @@ migration_dependencies:
     - themes
     - users
     - articles
-    - media
 include: null

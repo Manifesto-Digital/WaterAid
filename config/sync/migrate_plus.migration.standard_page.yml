@@ -48,7 +48,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -86,5 +86,4 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
-    - media
 include: null

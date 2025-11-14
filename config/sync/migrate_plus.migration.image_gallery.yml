@@ -27,7 +27,7 @@ process:
   field_images:
     plugin: paragraph_migration_lookup
     source: field_one_column_image
-    migrations:
+    migration:
       - image
     no_stub: true
 destination:

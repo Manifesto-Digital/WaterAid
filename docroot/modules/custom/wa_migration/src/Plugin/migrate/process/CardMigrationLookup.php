@@ -81,55 +81,70 @@ final class CardMigrationLookup extends MigrationLookup implements ContainerFact
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
+    $paragraph = [];
 
-    // No need to do anything if we don't have a URI.
-    if (empty($value[0])) {
-      return NULL;
+    if (!is_array($value) && $new_nid = parent::transform($value, $migrate_executable, $row, $destination_property)) {
+      $paragraph['type'] = 'internal_card';
+      $paragraph['field_internal_card'] = ['target_id' => $new_nid];
     }
+    else{
+      if (isset($value[0])) {
+        if (str_starts_with($value[0], 'entity:node/') || str_starts_with($value[0], 'internal:node/')) {
+          $nid = (str_starts_with($value[0], 'entity:node/')) ? substr($value[0], 12) : substr($value[0], 15);
 
-    $storage = $this->entityTypeManager->getStorage('paragraph');
-
-    if (str_starts_with($value[0], 'entity:node/') || str_starts_with($value[0], 'internal:node/')) {
-      $nid = (str_starts_with($value[0], 'entity:node/')) ? substr($value[0], 12) : substr($value[0], 15);
-
-      if (!$new_nid = parent::transform($nid, $migrate_executable, $row, $destination_property)) {
-
-        // If this links to a node we don't recognise, the link will 404 so
-        // we'll get rid of it.
-        return NULL;
+          if ($new_nid = parent::transform($nid, $migrate_executable, $row, $destination_property)) {
+            $paragraph['type'] = 'internal_card';
+            $paragraph['field_internal_card'] = ['target_id' => $new_nid];
+          }
+        }
+        else {
+          $paragraph['type'] = 'external_card';
+          $paragraph['field_link'] = [
+            'uri' => $value[0],
+            'title' => $value[1],
+          ];
+        }
+      }
+      elseif (isset($value[2]) || $value[3] || $value[4]) {
+        $paragraph['type'] = 'external_card';
       }
 
-      $return = $storage->create([
-        'type' => 'internal_card'
-      ]);
+      if (isset($paragraph['type']) && $paragraph['type'] == 'external_card') {
+        if (isset($value[2]) || isset($value[3])) {
+          $text = (isset($value[3])) ? $value[3] : '';
+          $text .= (isset($value[2])) ? $value[2] : '';
 
-      $return->set('field_internal_card', ['target_id' => $new_nid]);
+          if ($text !== '') {
+            $paragraph['field_description'] = $text;
+          }
+        }
+        if (isset($value[4])) {
+
+          // Store the old config so we can put it back.
+          $old_config = $this->configuration['migration'];
+          $this->configuration['migration'] = 'media';
+          $this->configuration['no_stub'] = TRUE;
+
+          if ($mid = parent::transform($value[4], $migrate_executable, $row, $destination_property)) {
+            $paragraph['field_media'] = [
+              'target_id' => $mid,
+            ];
+          }
+
+          // Put the old config back so we don't break the next link look-up.
+          $this->configuration['migration'] = $old_config;
+        }
+      }
     }
-    elseif (!is_array($value) && $new_nid = parent::transform($value, $migrate_executable, $row, $destination_property)) {
 
-      // If we've been given an nid, let's use it.
-      $return = $storage->create([
-        'type' => 'internal_card'
-      ]);
+    if (!empty($paragraph)) {
+      $entity = $this->entityTypeManager->getStorage('paragraph')->create($paragraph);
+      $entity->enforceIsNew();
 
-      $return->set('field_internal_card', ['target_id' => $new_nid]);
-    }
-    else {
-
-      // Any other type of link we can treat as external.
-      /** @var \Drupal\paragraphs\ParagraphInterface $return */
-      $return = $storage->create([
-        'type' => 'external_card'
-      ]);
-      $return->set('field_link', [
-        'uri' => $value[0],
-        'title' => $value[1],
-      ]);
+      return $entity;
     }
 
-    $return->enforceIsNew();
-
-    return $return;
+    return NULL;
   }
 
 }
