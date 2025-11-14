@@ -91,7 +91,17 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
           if (is_array($item)) {
             foreach ($item as $sub) {
               if (!empty($sub)) {
-                $return[] = $sub;
+                if (is_array($sub)) {
+
+                  // Only the VCM migration lookup returns items nested this
+                  // deep, so we know this must be a paragraph already.
+                  foreach ($sub as $sub_paragraph) {
+                    $return[] = $sub_paragraph;
+                  }
+                }
+                else {
+                  $return[] = $sub;
+                }
               }
             }
           }

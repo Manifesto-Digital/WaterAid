@@ -98,6 +98,7 @@ process:
         - stories
         - webforms
         - hero_in_content
+        - variable_content_module
       source: field_resources_uri
   field_resources/title: field_resources_title
   field_subject_area:

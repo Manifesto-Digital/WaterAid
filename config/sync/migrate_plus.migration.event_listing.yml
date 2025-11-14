@@ -86,6 +86,7 @@ process:
         - rainbow_link_item
         - donation_cta_widget_embed
         - hero_in_content
+        - variable_content_module
       source: field_modules
   field_content:
     plugin: merge_without_exception

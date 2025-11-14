@@ -14,7 +14,7 @@ migration_tags:
 migration_group: wateraid_uk
 label: 'Variable Content Module'
 source:
-  plugin: paragraph_source
+  plugin: vcm_paragraph_source
   bundle: variable_content_module
   fields:
     - field_aside_section
@@ -89,7 +89,7 @@ process:
     source: field_vcm_main
     no_stub: true
   field_links:
-    plugin: link_migration_lookup
+    plugin: links_migration_lookup
     migration:
       - articles
       - campaigns
