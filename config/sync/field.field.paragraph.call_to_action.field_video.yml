@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_video
+    - media.type.dam_video
     - paragraphs.paragraphs_type.call_to_action
 id: paragraph.call_to_action.field_video
 field_name: field_video
@@ -18,7 +19,8 @@ default_value_callback: ''
 settings:
   handler: 'default:media'
   handler_settings:
-    target_bundles: {  }
+    target_bundles:
+      dam_video: dam_video
     sort:
       field: _none
       direction: ASC
