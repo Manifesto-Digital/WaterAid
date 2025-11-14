@@ -136,7 +136,6 @@ class NodeSource extends SqlBase {
                     'field_column_1',
                     'field_column_2',
                     'field_section_item',
-                    'field_vcm_main',
                     'field_enhanced_carousel_items',
                     'field_tab_items',
                     'field_quotes_quote',
