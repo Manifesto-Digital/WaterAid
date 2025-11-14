@@ -1,9 +1,11 @@
 @import "../../sass/base";
 
 .cta {
-  margin-top: $wa-spacing-07;
-  @include desktop {
-    margin-top: $wa-spacing-09;
+  &[data-component-id="wateraid:call_to_action"] {
+    margin-top: $wa-spacing-07;
+    @include desktop {
+      margin-top: $wa-spacing-09;
+    }
   }
 
   &__image {
@@ -94,13 +96,16 @@
   }
 
   &--default {
-    @include grid();
+    &[data-component-id="wateraid:call_to_action"] {
+      @include grid();
 
-    background-color: $wa-blue;
-    padding: $wa-spacing-07 $wa-spacing-05;
+      background-color: $wa-blue;
+      padding: $wa-spacing-07 $wa-spacing-05;
 
-    @include desktop {
-      padding: $wa-spacing-09;
+      @include desktop {
+        padding: $wa-spacing-09;
+      }
+
     }
 
     .cta__links,
@@ -118,8 +123,10 @@
   }
 
   &--media {
-    position: relative;
-
+    &[data-component-id="wateraid:call_to_action"] {
+      position: relative;
+    }
+    
     .cta__content {
       background-color: $wa-blue;
       padding: $wa-spacing-07 $wa-spacing-05;

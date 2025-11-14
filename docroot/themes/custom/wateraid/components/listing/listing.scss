@@ -6,7 +6,7 @@
   &__wrapper {
     @include grid();
 
-    .button {
+    .button:not(.button--icon) {
       max-width: 100%;
     }
   }
@@ -16,6 +16,7 @@
     justify-self: left;
     padding-bottom: $wa-spacing-07;
     width: 100%;
+    max-height: calculate-rem(56);
 
     @include desktop {
       width: calc(100% - 90px);
@@ -104,7 +105,7 @@
         list-style: none;
       }
 
-      .button {
+      .button:not(.button--icon) {
         align-items: center;
         background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-plus-blue.svg");
         background-position: $wa-spacing-06 center;
@@ -119,7 +120,7 @@
       }
     }
 
-    .button,
+    .button:not(.button--icon),
     .form-actions {
       align-items: center;
       display: flex;
