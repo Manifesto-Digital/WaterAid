@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Drupal\wa_migration\Plugin\migrate\process;
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
+use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -91,6 +93,9 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
               if (!empty($sub)) {
                 $return[] = $sub;
               }
+              else {
+                $one = 1;
+              }
             }
           }
           else {
@@ -109,7 +114,10 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
       $storage = $this->entityTypeManager->getStorage($entity_type);
 
       foreach ($return as $key => $item) {
-        if (is_int($item) || is_string($item)) {
+        if ($item instanceof ContentEntityInterface) {
+          $return[$key] = $item;
+        }
+        elseif (is_int($item) || is_string($item)) {
 
           /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
           if ($entity = $storage->load($item)) {
