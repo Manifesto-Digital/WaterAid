@@ -125,6 +125,7 @@ process:
         - activation_bar_item
         - rainbow_link_item
         - donation_cta_widget_embed
+        - hero_in_content
       source: field_modules
   field_content:
     plugin: merge_without_exception

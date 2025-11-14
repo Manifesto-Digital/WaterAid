@@ -83,11 +83,13 @@ final class CardMigrationLookup extends MigrationLookup implements ContainerFact
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
     $paragraph = [];
 
-    if (!is_array($value) && $new_nid = parent::transform($value, $migrate_executable, $row, $destination_property)) {
-      $paragraph['type'] = 'internal_card';
-      $paragraph['field_internal_card'] = ['target_id' => $new_nid];
+    if (!is_array($value)) {
+      if ($new_nid = parent::transform($value, $migrate_executable, $row, $destination_property)) {
+        $paragraph['type'] = 'internal_card';
+        $paragraph['field_internal_card'] = ['target_id' => $new_nid];
+      }
     }
-    else{
+    else {
       if (isset($value[0])) {
         if (str_starts_with($value[0], 'entity:node/') || str_starts_with($value[0], 'internal:node/')) {
           $nid = (str_starts_with($value[0], 'entity:node/')) ? substr($value[0], 12) : substr($value[0], 15);

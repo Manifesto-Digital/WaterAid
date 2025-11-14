@@ -97,6 +97,7 @@ process:
         - standard_page
         - stories
         - webforms
+        - hero_in_content
       source: field_resources_uri
   field_resources/title: field_resources_title
   field_subject_area:
