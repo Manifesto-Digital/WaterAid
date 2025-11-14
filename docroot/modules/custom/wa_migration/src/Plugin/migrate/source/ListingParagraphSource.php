@@ -66,16 +66,24 @@ final class ListingParagraphSource extends ParagraphSource {
         }
       }
 
-      foreach ($this->select('paragraph__field_call_to_action_link', 'c')
+      $query = $this->select('paragraph__field_call_to_action_link', 'c')
         ->fields('c')
-        ->condition('entity_id', $pids, 'IN')
-        ->execute()->fetchAll() as $datum) {
-        if (isset($datum['field_call_to_action_link_uri'])) {
-          $value[] = [
-            $datum['field_call_to_action_link_uri'],
-            $datum['field_call_to_action_link_title']
-          ];
-        }
+        ->condition('c.entity_id', $pids, 'IN');
+      $query->leftJoin('paragraph__field_listing_item_details', 'd', 'd.entity_id = c.entity_id');
+      $query->fields('d');
+      $query->leftJoin('paragraph__field_listing_item_title', 't', 't.entity_id = c.entity_id');
+      $query->fields('t');
+      $query->leftJoin('paragraph__field_image', 'i', 'i.entity_id = c.entity_id');
+      $query->fields('i');
+
+      foreach ($query->execute()->fetchAll() as $datum) {
+        $value[] = [
+          $datum['field_call_to_action_link_uri'],
+          $datum['field_call_to_action_link_title'],
+          $datum['field_listing_item_details_value'],
+          $datum['field_listing_item_title_value'],
+          $datum['field_image_target_id'],
+        ];
       }
     }
 
