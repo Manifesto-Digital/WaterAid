@@ -62,7 +62,8 @@
 
     &--social {
       .button__hover {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-primary.svg");
+        z-index: 0;
       }
     }
 
