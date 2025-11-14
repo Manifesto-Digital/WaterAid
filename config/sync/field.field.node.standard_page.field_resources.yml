@@ -1,0 +1,23 @@
+uuid: 8ea5ed60-f651-4a71-887e-eb106cad7305
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resources
+    - node.type.standard_page
+  module:
+    - link
+id: node.standard_page.field_resources
+field_name: field_resources
+entity_type: node
+bundle: standard_page
+label: Resources
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

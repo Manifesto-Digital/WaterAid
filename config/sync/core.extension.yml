@@ -66,6 +66,7 @@ module:
   loqate: 0
   loqate_email: 0
   masquerade: 0
+  maxlength: 0
   media: 0
   media_directories: 0
   media_library: 0

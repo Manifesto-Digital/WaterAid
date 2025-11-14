@@ -1,0 +1,70 @@
+uuid: b0007384-0d06-4e18-b3fe-f23e98cea5d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.temp_paragraph.field_aside_section
+    - field.field.paragraph.temp_paragraph.field_intro
+    - field.field.paragraph.temp_paragraph.field_links
+    - field.field.paragraph.temp_paragraph.field_main
+    - field.field.paragraph.temp_paragraph.field_vcm_title
+    - paragraphs.paragraphs_type.temp_paragraph
+  module:
+    - entity_reference_revisions
+    - link
+id: paragraph.temp_paragraph.default
+targetEntityType: paragraph
+bundle: temp_paragraph
+mode: default
+content:
+  field_aside_section:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_intro:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_main:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_vcm_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

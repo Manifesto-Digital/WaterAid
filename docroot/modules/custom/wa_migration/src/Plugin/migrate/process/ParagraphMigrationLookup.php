@@ -12,6 +12,7 @@ use Drupal\migrate\MigrateStubInterface;
 use Drupal\migrate\Plugin\migrate\process\MigrationLookup;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Row;
+use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -80,6 +81,9 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
+    if ($value == 92751) {
+      $one = 1;
+    }
     if (!$value) {
       return NULL;
     }
@@ -88,8 +92,14 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
     $storage = $this->entityTypeManager->getStorage('paragraph');
 
     if ($new_value = parent::transform($value, $migrate_executable, $row, $destination_property)) {
+      /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
       if ($paragraph = $storage->load($new_value)) {
-        $return = $paragraph;
+        if ($paragraph->bundle() == 'temp_paragraph') {
+          $return = $this->handleTempParagraph($paragraph);
+        }
+        else {
+          $return = $paragraph;
+        }
       }
     }
 
@@ -99,6 +109,66 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
     else {
       return $return;
     }
+  }
+
+  /**
+   * Helper to create/load sub-paragraphs from the temp_paragraph.
+   *
+   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
+   *   A temp_paragraph Paragraph.
+   *
+   * @return array
+   *   An array of paragraphs, in order.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function handleTempParagraph(ParagraphInterface $paragraph): array {
+    $return = [];
+
+    $storage = $this->entityTypeManager->getStorage('paragraph');
+
+    $title = $paragraph->get('field_vcm_title')->getString();
+    $intro = $paragraph->get('field_intro')->getString();
+
+    if ($title || $intro) {
+      $text = ($title) ? '<h3>' . $title . '</h3>' : '';
+      $text .= ($intro) ? '<p>' . $intro . '</p>' : '';
+
+      /** @var \Drupal\paragraphs\ParagraphInterface $entity */
+      $entity = $storage->create([
+        'type' => 'rich_text',
+        'field_rich_text' => [
+          'value' => $text,
+          'format' => 'full_html',
+        ],
+      ]);
+      $entity->enforceIsNew();
+      $return[] = $entity;
+    }
+
+    if ($links = $paragraph->get('field_links')->getValue()) {
+      foreach ($links as $link) {
+
+        /** @var \Drupal\paragraphs\ParagraphInterface $entity */
+        $entity = $storage->create([
+          'type' => 'call_to_action',
+          'field_link' => $link,
+          'field_variant' => 'text_only',
+        ]);
+        $entity->enforceIsNew();
+        $return[] = $entity;
+      }
+    }
+
+    foreach (['field_main', 'field_aside_section'] as $field) {
+      /** @var \Drupal\paragraphs\ParagraphInterface $entity */
+      foreach ($paragraph->get($field)->referencedEntities() as $entity) {
+        $return[] = $entity;
+      }
+    }
+
+    return $return;
   }
 
 }

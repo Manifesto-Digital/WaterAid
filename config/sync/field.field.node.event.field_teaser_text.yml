@@ -10,7 +10,7 @@ field_name: field_teaser_text
 entity_type: node
 bundle: event
 label: 'Teaser text'
-description: ''
+description: 'Summary text is displayed in teasers, for example if this page is displayed on a filtered landing page, and by default is used for meta descriptions on search engines and social platforms. Leave blank to use trimmed value of full text as the summary.'
 required: false
 translatable: false
 default_value: {  }

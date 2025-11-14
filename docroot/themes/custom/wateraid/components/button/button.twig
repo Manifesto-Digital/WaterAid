@@ -1,10 +1,10 @@
-{% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme, disabled == 'true' ? 'button--disabled' : ''] %}
+{% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
 {% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
 {% set button_attributes = create_attribute(attributes|default({}))
   .addClass(all_classes)
   .setAttribute('aria-label', text) %}
 
-<div class="button__wrapper button__wrapper--{{ type }}">
+<div class="button__wrapper button__wrapper--{{ type }} {{ disabled == 'true' ? ' button--disabled' : '' }}">
   {% if link %}
   <a href="{{ link }}" class="{{ all_classes|join(' ') }}" aria-label="{{ text }}"
      tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
