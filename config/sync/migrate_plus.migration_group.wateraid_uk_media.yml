@@ -1,12 +1,13 @@
+uuid: 64ea8ba1-3c62-4047-b0dc-b2e9c6428dc0
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - wa_migration
-id: wateraid_uk_terms
-label: 'WaterAid UK migration (Terms)'
-description: 'Taxonomy terms from the wateraid.org/uk site'
+id: wateraid_uk_media
+label: 'WaterAid UK migration (Media)'
+description: 'Media from the wateraid.org/uk site'
 source_type: Database
 module: null
 shared_configuration:

@@ -51,8 +51,8 @@ third_party_settings:
     group_content:
       children:
         - field_content
-        - field_search_phrases
         - group_tags
+        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs

@@ -115,7 +115,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -164,6 +164,5 @@ migration_dependencies:
     - resource_link_with_description
     - faqs
     - view_more_teasers
-    - documents
     - teaser
 include: null
