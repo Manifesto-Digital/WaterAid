@@ -66,9 +66,9 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
+        - field_search_phrases
         - field_content
         - group_tags
-        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs
@@ -264,7 +264,11 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 160
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   field_theme:
     type: entity_reference_autocomplete
     weight: 17

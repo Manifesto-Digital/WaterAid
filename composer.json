@@ -74,6 +74,7 @@
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
+    "drupal/maxlength": "^3.1",
     "drupal/media_directories": "^2.2@beta",
     "drupal/menu_item_fields": "^1.11",
     "drupal/metatag": "^2.0",
