@@ -89,7 +89,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -131,5 +131,4 @@ migration_dependencies:
     - get_involved
     - themes
     - users
-    - media
 include: null

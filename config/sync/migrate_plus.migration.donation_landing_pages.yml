@@ -33,7 +33,7 @@ process:
   status: status
   field_hero:
     plugin: paragraph_migration_lookup
-    migrations:
+    migration:
       - hero
     source: field_hero
     no_stub: true
@@ -61,7 +61,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -100,5 +100,4 @@ migration_dependencies:
   required:
     - users
     - hero
-    - media
 include: null
