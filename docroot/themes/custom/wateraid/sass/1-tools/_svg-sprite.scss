@@ -81,6 +81,7 @@ $sprites: (
     'wa-paypal': "../../images/sprite.svg#wa-paypal-view",
     'wa-pointer': "../../images/sprite.svg#wa-pointer-view",
     'wa-pound': "../../images/sprite.svg#wa-pound-view",
+    'wa-radio-checked': "../../images/sprite.svg#wa-radio-checked-view",
     'wa-shape-arrow': "../../images/sprite.svg#wa-shape-arrow-view",
     'wa-shape-arrows': "../../images/sprite.svg#wa-shape-arrows-view",
     'wa-shape-circle-border': "../../images/sprite.svg#wa-shape-circle-border-view",
@@ -454,6 +455,10 @@ $sizes: (
     'wa-pound': (
         'width': 10px,
         'height': 15px
+    ),
+    'wa-radio-checked': (
+        'width': 24px,
+        'height': 24px
     ),
     'wa-shape-arrow': (
         'width': 259px,

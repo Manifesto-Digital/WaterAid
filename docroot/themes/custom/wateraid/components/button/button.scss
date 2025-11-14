@@ -120,6 +120,8 @@
     z-index: 10;
     align-items: center;
     justify-content: center;
+    transition: transform 200ms;
+    will-change: transform;
 
     &::before {
       content: "";
@@ -175,7 +177,7 @@
     }
 
     &:hover::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-primary.svg");
     }
 
     &:focus-visible {
