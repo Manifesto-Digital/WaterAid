@@ -117,6 +117,21 @@ class NodeSource extends SqlBase {
             }
           }
         }
+        elseif ($field == 'field_resources') {
+          if ($data = $this->select('paragraph__' . $field, 'f')
+            ->fields('f')
+            ->condition('entity_id', $row->getSourceProperty('id'))
+            ->execute()->fetchAll()) {
+            foreach ($data as $datum) {
+              if (isset($datum[$field . '_uri'])) {
+                $value[] = [
+                  $datum[$field . '_uri'],
+                  $datum[$field . '_title'],
+                ];
+              }
+            }
+          }
+        }
         else {
           if ($data = $this->select('node__' . $field, 'f')
             ->fields('f')

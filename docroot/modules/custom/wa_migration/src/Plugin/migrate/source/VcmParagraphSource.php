@@ -34,7 +34,6 @@ class VcmParagraphSource extends ParagraphSource {
             ->fields('f')
             ->condition('entity_id', $row->getSourceProperty('id'))
             ->execute()->fetchAll()) {
-            $one = 1;
             foreach ($data as $datum) {
               if (isset($datum[$field . '_uri'])) {
                 $value[] = [

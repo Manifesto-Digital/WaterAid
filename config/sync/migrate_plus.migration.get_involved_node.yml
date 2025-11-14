@@ -54,11 +54,6 @@ process:
     migration: media
     source: field_teaser_image
     no_stub: true
-  field_audience:
-    plugin: migration_lookup
-    migration: audiences
-    source: field_audiences
-    no_stub: true
   field_country:
     plugin: migration_lookup
     migration: countries
@@ -77,9 +72,9 @@ process:
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
   field_regions: field_regions
-  field_resources/uri:
+  field_resources:
     -
-      plugin: link_migration_lookup
+      plugin: links_migration_lookup
       migration:
         - articles
         - campaigns
@@ -99,14 +94,12 @@ process:
         - webforms
         - hero_in_content
         - variable_content_module
-      source: field_resources_uri
-  field_resources/title: field_resources_title
+      source: field_resources
   field_subject_area:
     plugin: migration_lookup
     migration: subject_areas
     source: field_subject_areas
     no_stub: true
-  field_synopsis: field_synopsis
   field_theme:
     plugin: migration_lookup
     migration: themes
@@ -128,7 +121,7 @@ process:
       source: body__value
 destination:
   plugin: 'entity:node'
-  default_bundle: landing_page
+  default_bundle: standard_page
 idMap: {  }
 migration_dependencies:
   required:
