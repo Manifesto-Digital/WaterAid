@@ -93,9 +93,6 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
               if (!empty($sub)) {
                 $return[] = $sub;
               }
-              else {
-                $one = 1;
-              }
             }
           }
           else {

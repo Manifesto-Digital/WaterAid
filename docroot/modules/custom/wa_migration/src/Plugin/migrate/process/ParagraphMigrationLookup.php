@@ -85,11 +85,6 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
     }
 
     $return = NULL;
-
-    if ($value == 84971) {
-      $one = 1;
-    }
-
     $storage = $this->entityTypeManager->getStorage('paragraph');
 
     if ($new_value = parent::transform($value, $migrate_executable, $row, $destination_property)) {

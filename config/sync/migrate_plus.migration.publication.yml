@@ -164,6 +164,5 @@ migration_dependencies:
     - resource_link_with_description
     - faqs
     - view_more_teasers
-    - documents
     - teaser
 include: null
