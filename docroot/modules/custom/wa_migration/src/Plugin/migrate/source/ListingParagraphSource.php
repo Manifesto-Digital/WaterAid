@@ -66,22 +66,25 @@ final class ListingParagraphSource extends ParagraphSource {
         }
       }
 
-      $query = $this->select('paragraph__field_call_to_action_link', 'c')
-        ->fields('c')
-        ->condition('c.entity_id', $pids, 'IN');
-      $query->leftJoin('paragraph__field_listing_item_details', 'd', 'd.entity_id = c.entity_id');
+      $query = $this->select('paragraphs_item_field_data', 'p')
+        ->fields('p')
+        ->condition('p.id', $pids, 'IN');
+
+      $query->leftJoin('paragraph__field_call_to_action_link', 'c', 'p.id = c.entity_id');
+      $query->fields('c');
+      $query->leftJoin('paragraph__field_listing_item_details', 'd', 'd.entity_id = p.id');
       $query->fields('d');
-      $query->leftJoin('paragraph__field_listing_item_title', 't', 't.entity_id = c.entity_id');
+      $query->leftJoin('paragraph__field_listing_item_title', 't', 't.entity_id = p.id');
       $query->fields('t');
-      $query->leftJoin('paragraph__field_image', 'i', 'i.entity_id = c.entity_id');
+      $query->leftJoin('paragraph__field_image', 'i', 'i.entity_id = p.id');
       $query->fields('i');
 
       foreach ($query->execute()->fetchAll() as $datum) {
         $value[] = [
           $datum['field_call_to_action_link_uri'],
           $datum['field_call_to_action_link_title'],
-          $datum['field_listing_item_details_value'],
-          $datum['field_listing_item_title_value'],
+          isset($datum['field_listing_item_details_value']) ? strip_tags($datum['field_listing_item_details_value']) : '',
+          isset($datum['field_listing_item_title_value']) ? strip_tags($datum['field_listing_item_title_value']) : '',
           $datum['field_image_target_id'],
         ];
       }

@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_regions
+    - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
@@ -25,6 +26,7 @@ dependencies:
     - datetime
     - field_group
     - layout_paragraphs
+    - link
     - media_library
     - metatag
     - path
@@ -225,6 +227,14 @@ content:
     weight: 33
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_resources:
+    type: link_default
+    weight: 37
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_review_date:
     type: datetime_default

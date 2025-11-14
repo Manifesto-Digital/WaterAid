@@ -6,7 +6,7 @@ props:
   type: object
   properties:
     heading:
-      type: string
+      type: ["string", "null"]
       title: Heading
     description:
       type: string
@@ -16,7 +16,7 @@ props:
       title: Card variant type
 slots:
   url:
-    type: string
+    type: ["string", "null"]
     title: URL
     description: Card url
   time_to_read:
@@ -35,7 +35,7 @@ slots:
     type: ["object", "null"]
     title: Authors
   link_text:
-    type: string
+    type: ["string", "null"]
     title: Link text
     description: Link text
   colour:

@@ -117,6 +117,21 @@ class NodeSource extends SqlBase {
             }
           }
         }
+        elseif ($field == 'field_resources') {
+          if ($data = $this->select('node__' . $field, 'f')
+            ->fields('f')
+            ->condition('entity_id', $row->getSourceProperty('id'))
+            ->execute()->fetchAll()) {
+            foreach ($data as $datum) {
+              if (isset($datum[$field . '_uri'])) {
+                $value[] = [
+                  $datum[$field . '_uri'],
+                  $datum[$field . '_title'],
+                ];
+              }
+            }
+          }
+        }
         else {
           if ($data = $this->select('node__' . $field, 'f')
             ->fields('f')
@@ -136,7 +151,6 @@ class NodeSource extends SqlBase {
                     'field_column_1',
                     'field_column_2',
                     'field_section_item',
-                    'field_vcm_main',
                     'field_enhanced_carousel_items',
                     'field_tab_items',
                     'field_quotes_quote',

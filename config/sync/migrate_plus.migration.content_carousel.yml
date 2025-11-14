@@ -45,5 +45,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: image_gallery
 idMap: {  }
-migration_dependencies: {}
+migration_dependencies: {  }
 include: null
