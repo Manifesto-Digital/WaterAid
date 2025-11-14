@@ -118,7 +118,7 @@ class NodeSource extends SqlBase {
           }
         }
         elseif ($field == 'field_resources') {
-          if ($data = $this->select('paragraph__' . $field, 'f')
+          if ($data = $this->select('node__' . $field, 'f')
             ->fields('f')
             ->condition('entity_id', $row->getSourceProperty('id'))
             ->execute()->fetchAll()) {
