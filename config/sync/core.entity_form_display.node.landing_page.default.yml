@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.landing_page.field_event_type
     - field.field.node.landing_page.field_get_involved
     - field.field.node.landing_page.field_hero
-    - field.field.node.landing_page.field_key_stage
+    - field.field.node.landing_page.field_key_stages
     - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
     - field.field.node.landing_page.field_resources
@@ -185,15 +185,11 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
-  field_key_stage:
-    type: entity_reference_autocomplete
-    weight: 4
+  field_key_stages:
+    type: options_select
+    weight: 32
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
