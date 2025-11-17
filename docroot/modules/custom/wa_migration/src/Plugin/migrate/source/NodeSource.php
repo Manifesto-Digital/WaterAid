@@ -29,7 +29,27 @@ class NodeSource extends SqlBase {
       ->fields('n')
       ->condition('n.type', $this->configuration['bundle'])
       ->condition('n.status', 1)
-      ->condition('n.nid', 16086, '<>');
+      ->condition('n.nid', [
+        656,
+        7861,
+        14671,
+        16391,
+        16431,
+        14601,
+        17911,
+        14606,
+        14591,
+        15176,
+        16396,
+        17746,
+        4671,
+        16141,
+        16146,
+        13486,
+        15616,
+        16976,
+        16086,
+      ], 'NOT IN');
   }
 
   /**
@@ -144,7 +164,7 @@ class NodeSource extends SqlBase {
               elseif (isset($values[$field . '_target_id'])) {
                 // Check if we have values nested inside the structural paragraphs
                 // we are no longer using.
-                if ($field == 'field_modules') {
+                if ($field == 'field_modules' || $field == 'field_wa_page_sections') {
                   $value_found = FALSE;
 
                   foreach ([
@@ -161,7 +181,7 @@ class NodeSource extends SqlBase {
                   ] as $table) {
                     if ($sub_paragraphs = $this->select('paragraph__' . $table, 'p')
                       ->fields('p')
-                      ->condition('entity_id', $values['field_modules_target_id'])
+                      ->condition('entity_id', $values[$field . '_target_id'])
                       ->execute()
                       ->fetchAll()
                     ) {

@@ -10,7 +10,7 @@ dependencies:
     - field.field.node.landing_page.field_event_type
     - field.field.node.landing_page.field_get_involved
     - field.field.node.landing_page.field_hero
-    - field.field.node.landing_page.field_key_stage
+    - field.field.node.landing_page.field_key_stages
     - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
     - field.field.node.landing_page.field_resources
@@ -56,7 +56,7 @@ hidden:
   field_event_type: true
   field_get_involved: true
   field_hero: true
-  field_key_stage: true
+  field_key_stages: true
   field_metatags: true
   field_regions: true
   field_resources: true
