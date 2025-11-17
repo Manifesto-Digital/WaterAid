@@ -114,5 +114,31 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: temp_paragraph
 idMap: {  }
-migration_dependencies: {  }
+migration_dependencies:
+  required:
+    - general_text_area
+    - wysiwyg
+    - menu_cta
+    - resource_link_with_description
+    - faqs
+    - view_more_teasers
+    - aside_link_item
+    - info_section
+    - quote_simple
+    - image
+    - image_gallery
+    - video
+    - carousel
+    - content_carousel
+    - enhanced_carousel_item
+    - tabbed_item
+    - content_with_large_image
+    - aside_with_image
+    - quote
+    - listing
+    - biography_item
+    - activation_bar_item
+    - rainbow_link_item
+    - donation_cta_widget_embed
+    - hero_in_content
 include: null
