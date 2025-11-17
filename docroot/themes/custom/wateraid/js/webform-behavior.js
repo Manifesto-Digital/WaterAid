@@ -3,7 +3,6 @@
 
 
   const replaceSubmit = (findSubmit) => {
-    console.log('Replacing submit button', findSubmit);
     const newElement = document.createElement('button');
     newElement.textContent = findSubmit.value;
     findSubmit.parentNode.replaceChild(newElement, findSubmit);
