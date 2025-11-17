@@ -3,6 +3,10 @@
 .listing {
   margin-bottom: $wa-spacing-07;
 
+  .button__wrapper .button__hover {
+    height: calculate-rem(56);
+  }
+
   &__wrapper {
     @include grid();
 

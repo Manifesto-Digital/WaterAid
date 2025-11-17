@@ -1,10 +1,4 @@
-{% set classes = [
-  'accordion',
-  'container-sm',
-  search == '1' ? 'accordion--search' : 'accordion--default'
-] %}
-
-<div {{ attributes.addClass(classes) }}>
+<div class="container-sm accordion {{ search == '1' ? 'accordion--search' : 'accordion--default'}}">
   <div class="accordion__content">
     {% if title %}
       <h2>{{ title }}</h2>
