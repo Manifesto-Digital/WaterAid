@@ -107,7 +107,7 @@ final class CardMigrationLookup extends MigrationLookup implements ContainerFact
           ];
         }
       }
-      elseif (isset($value[2]) || $value[3] || $value[4]) {
+      elseif (isset($value[2]) || isset($value[3]) || isset($value[4])) {
         $paragraph['type'] = 'external_card';
       }
 
