@@ -6,7 +6,7 @@
 
 <div {{ attributes.addClass(classes) }}>
   <div class="hero__content">
-
+    <div class="hero__content-wrapper">
     {% if tags %}
       <div class="hero__content--tags">
         {% for tag in tags %}
@@ -61,7 +61,7 @@
         </div>
       {% endif %}
     </div>
-
+    </div>
   </div>
 
   {% if image %}
