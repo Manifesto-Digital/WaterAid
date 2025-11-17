@@ -5,7 +5,7 @@
 ] %}
 
 <div {{ attributes.addClass(classes) }}>
-  {% if mobile_image %}
+  {% if mobile_image|render %}
     <div class="hero__image hero__image--mobile">
       {{ include('wateraid:image', {
         image: mobile_image,
@@ -18,7 +18,7 @@
   {% endif %}
 
   {% if image %}
-    <div class="hero__image {{ mobile_image ? "hero__image--desktop" }}">
+    <div class="hero__image {{ mobile_image|render ? "hero__image--desktop" }}">
       {{ include('wateraid:image', {
         image: image,
         caption: media_caption,
