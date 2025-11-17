@@ -93,3 +93,10 @@
   }
 
 }
+
+.paragraph--type--quote {
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+}
