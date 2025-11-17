@@ -69,6 +69,7 @@
     @include desktop {
       display: block;
     }
+
     .quote {
       background-color: $wa-navy;
       justify-self: flex-end;
@@ -193,6 +194,15 @@
     }
   }
 
+  &--media,
+  &--news {
+    .hero__content-wrapper {
+      display: flex;
+      gap: $wa-spacing-06;
+      flex-direction: column;
+    }
+  }
+
   &--blue {
     .hero__content {
       background-color: $wa-blue;
@@ -285,6 +295,7 @@
     .hero__image {
       max-height: calculate-rem(720);
     }
+
     .image__credit {
       width: 50%;
       max-width: calculate-rem(660);
