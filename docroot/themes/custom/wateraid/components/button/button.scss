@@ -62,7 +62,8 @@
 
     &--social {
       .button__hover {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-primary.svg");
+        z-index: 0;
       }
     }
 
@@ -150,7 +151,8 @@
     z-index: 10;
     align-items: center;
     justify-content: center;
-    transition: 200ms;
+    transition: transform 200ms;
+    will-change: transform;
 
     &:hover {
       transform: translateX($wa-spacing-01) translateY(-$wa-spacing-01);
@@ -188,7 +190,7 @@
     }
 
     &:hover::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-primary.svg");
     }
 
     &:focus-visible {
