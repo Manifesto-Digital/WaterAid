@@ -41,6 +41,9 @@
 
             const legends = listing.querySelectorAll(".listing__filters legend");
             legends.forEach((legend) => {
+              legend.setAttribute('tabindex', 0);
+              legend.setAttribute('role', 'button');
+
               legend.addEventListener("click", () => {
                 toggleFilter(legend);
               });
