@@ -62,7 +62,7 @@
 
     &--social {
       .button__hover {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-primary.svg");
+        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
         z-index: 0;
       }
     }
@@ -178,19 +178,11 @@
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
       }
     }
-
-    &:hover::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-navy.svg");
-    }
   }
 
   &--social {
     &::after {
       background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-border.svg");
-    }
-
-    &:hover::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-primary.svg");
     }
 
     &:focus-visible {
@@ -214,10 +206,7 @@
 
     &:hover {
       cursor: pointer;
-
-      &::before {
-        transform: translateX(-2px) translateY(2px);
-      }
+      transform: translateX(2px) translateY(-2px);
 
       &::after {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-cream.svg");
@@ -276,30 +265,6 @@
       }
     }
 
-    //&::before {
-    //  transition: transform 200ms;
-    //  will-change: transform;
-    //  content: "";
-    //  display: block;
-    //  position: absolute;
-    //  height: 0;
-    //  width: 0;
-    //  top: 0;
-    //  left: 0;
-    //  z-index: -1;
-    //  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square.svg");
-    //  background-size: contain;
-    //  background-repeat: no-repeat;
-    //}
-    //
-    //&:hover {
-    //  &::before {
-    //    transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
-    //    height: 100%;
-    //    width: 100%;
-    //  }
-    //}
-
     &:focus-visible {
       background: url("/themes/custom/wateraid/images/icons/wa-container-sm-square-white.svg") $wa-white no-repeat;
       background-size: contain;
@@ -314,19 +279,18 @@
     }
   }
 
-  &__svg--left svg {
-    transform: rotate(180deg);
-  }
-
   &--disabled {
     cursor: not-allowed;
     opacity: 0.5;
     text-decoration: none;
 
     &:hover {
-      cursor: unset;
+      .button {
+        transform: none;
+        cursor: default;
+      }
 
-      &::before {
+      .button__hover {
         display: none;
       }
     }

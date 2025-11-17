@@ -3,9 +3,6 @@
 .pagination {
   justify-items: center;
   margin-top: $wa-spacing-09;
-  &__prev .button {
-    rotate: 180deg;
-  }
 
   &__items {
     @include paragraph-md();
