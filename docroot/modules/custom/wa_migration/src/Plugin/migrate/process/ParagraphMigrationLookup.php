@@ -81,9 +81,6 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
-    if ($value == 92751) {
-      $one = 1;
-    }
     if (!$value) {
       return NULL;
     }

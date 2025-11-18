@@ -9,7 +9,7 @@ props:
       type: string
       title: Title
     description:
-      type: string
+      type: ["string", "null"]
       title: Description
     cta:
       type: ["object", "null"]
