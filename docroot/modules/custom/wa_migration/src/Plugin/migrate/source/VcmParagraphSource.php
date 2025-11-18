@@ -26,42 +26,24 @@ class VcmParagraphSource extends ParagraphSource {
 
     if (isset($this->configuration['fields'])) {
       foreach ($this->configuration['fields'] as $field) {
-        $value = NULL;
+        $value = [];
 
-        if ($field == 'field_vcm_links') {
-          $value = [];
-          if ($data = $this->select('paragraph__' . $field, 'f')
-            ->fields('f')
-            ->condition('entity_id', $row->getSourceProperty('id'))
-            ->execute()->fetchAll()) {
-            foreach ($data as $datum) {
-              if (isset($datum[$field . '_uri'])) {
-                $value[] = [
-                  $datum[$field . '_uri'],
-                  $datum[$field . '_title'],
-                ];
-              }
+        if ($data = $this->select('paragraph__' . $field, 'f')
+          ->fields('f')
+          ->condition('entity_id', $row->getSourceProperty('id'))
+          ->execute()->fetchAll()) {
+          foreach ($data as $datum) {
+            if (isset($datum[$field . '_value'])) {
+              $value[] = $datum[$field . '_value'];
             }
-          }
-
-          if (empty($value)) {
-            $value = NULL;
-          }
-        }
-        else {
-          if ($data = $this->select('paragraph__' . $field, 'f')
-            ->fields('f')
-            ->condition('entity_id', $row->getSourceProperty('id'))
-            ->execute()->fetchAssoc()) {
-            if (isset($data[$field . '_value'])) {
-              $value = $data[$field . '_value'];
+            elseif (isset($datum[$field . '_target_id'])) {
+              $value[] = $datum[$field . '_target_id'];
             }
-            elseif (isset($data[$field . '_target_id'])) {
-              $value = $data[$field . '_target_id'];
-            }
-            elseif ((isset($data[$field . '_uri']))) {
-              $row->setSourceProperty($field . '_uri', $data[$field . '_uri']);
-              $row->setSourceProperty($field . '_title', $data[$field . '_title']);
+            elseif (isset($datum[$field . '_uri'])) {
+              $value[] = [
+                $datum[$field . '_uri'],
+                $datum[$field . '_title'],
+              ];
             }
           }
         }
