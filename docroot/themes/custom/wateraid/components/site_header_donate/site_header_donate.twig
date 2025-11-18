@@ -18,23 +18,22 @@
             attributes: create_attribute(),
             title: 'Are you sure you want to leave your donation?'|t,
             instance_id: modal_instance_id,
-
+            include_close_button: 0,
           } only %}
             {% block modal_content %}
 
               <div class="modal__actions">
                 {{ include('wateraid:button', {
+                  text: 'Return to homepage'|t,
+                  link: get_frontpage_url(),
+                  type: 'secondary',
+                }, false) }}
+
+                {{ include('wateraid:button', {
                   attributes: create_attribute().setAttribute('data-modal-close-id', instance_id),
                   text: 'Stay in donation process'|t,
                   link: '#',
                   type: 'donate',
-                  include_close_button: 0,
-                }, false) }}
-
-                {{ include('wateraid:button', {
-                  text: 'Return to homepage'|t,
-                  link: get_frontpage_url(),
-                  type: 'secondary',
                 }, false) }}
               </div>
             {% endblock %}

@@ -15,6 +15,7 @@ $sprites: (
     'wa-container-sm-circle-border': "../../images/sprite.svg#wa-container-sm-circle-border-view",
     'wa-container-sm-circle-cream': "../../images/sprite.svg#wa-container-sm-circle-cream-view",
     'wa-container-sm-circle-navy': "../../images/sprite.svg#wa-container-sm-circle-navy-view",
+    'wa-container-sm-circle-primary': "../../images/sprite.svg#wa-container-sm-circle-primary-view",
     'wa-container-sm-circle-white': "../../images/sprite.svg#wa-container-sm-circle-white-view",
     'wa-container-sm-circle': "../../images/sprite.svg#wa-container-sm-circle-view",
     'wa-container-sm-rectangle--blue': "../../images/sprite.svg#wa-container-sm-rectangle--blue-view",
@@ -189,6 +190,10 @@ $sizes: (
         'height': 48px
     ),
     'wa-container-sm-circle-navy': (
+        'width': 48px,
+        'height': 48px
+    ),
+    'wa-container-sm-circle-primary': (
         'width': 48px,
         'height': 48px
     ),
