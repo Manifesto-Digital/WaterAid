@@ -3,11 +3,15 @@
   'card--' ~ variant,
   'card--link',
 ] %}
-{% set image = image_url ? image_url : '/themes/custom/wateraid/images/png/card-fallback.png' %}
+
 <div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
 
   <div class="card__image">
-    <img src="{{ image }}" alt=""/>
+    {% if image|render %}
+      {{ image }}
+    {% else %}
+      <img src="/themes/custom/wateraid/images/png/card-fallback.png" alt=""/>
+    {% endif %}
   </div>
 
   <div class="card__body">
