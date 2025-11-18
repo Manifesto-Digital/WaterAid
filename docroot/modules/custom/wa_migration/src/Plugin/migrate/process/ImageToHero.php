@@ -57,26 +57,36 @@ final class ImageToHero extends ProcessPluginBase implements ContainerFactoryPlu
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): ?ParagraphInterface {
-    if (!empty($value[0][0])) {
-      if ($media = $this->entityTypeManager->getStorage('media')->load($value[0][0])) {
+    if (!empty($value[0]) || !empty($value[1]) || !empty($value[2])) {
 
-        /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
-        $paragraph = $this->entityTypeManager->getStorage('paragraph')->create([
-          'type' => $this->configuration['hero_type'],
-        ]);
+      /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+      $paragraph = $this->entityTypeManager->getStorage('paragraph')->create([
+        'type' => $this->configuration['hero_type'],
+      ]);
 
-        if ($paragraph->hasField('field_image')) {
-          $paragraph->set('field_image', $media);
+      if (isset($value[0][0])) {
+        if ($media = $this->entityTypeManager->getStorage('media')
+          ->load($value[0][0])) {
+          if ($paragraph->hasField('field_image')) {
+            $paragraph->set('field_image', $media);
+          }
         }
-
-        if (!empty($value[1]) && $paragraph->hasField('field_authors')) {
-          $paragraph->set('field_authors', $value[1]);
-        }
-
-        $paragraph->enforceIsNew();
-
-        return $paragraph;
       }
+
+      if (!empty($value[1]) && $paragraph->hasField('field_authors')) {
+        $paragraph->set('field_authors', $value[1]);
+      }
+
+      if (!empty($value[2]) && $paragraph->hasField('field_standfirst')) {
+        $paragraph->set('field_standfirst', [
+          'value' => $value[2],
+          'format' => 'basic_html',
+        ]);
+      }
+
+      $paragraph->enforceIsNew();
+
+      return $paragraph;
     }
 
     return NULL;
