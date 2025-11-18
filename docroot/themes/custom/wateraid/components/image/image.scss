@@ -70,6 +70,7 @@
     line-height: 1.5;
     margin-top: -$wa-spacing-01;
     border-radius: 0 0 calculate-rem(2) calculate-rem(2);
+    color: $wa-navy;
   }
 
   &__credit {
@@ -132,3 +133,9 @@
   }
 }
 
+.paragraph--type--image {
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
+}

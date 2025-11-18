@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_image
+    - media.type.dam_image
     - paragraphs.paragraphs_type.call_to_action
 id: paragraph.call_to_action.field_image
 field_name: field_image
@@ -18,7 +19,8 @@ default_value_callback: ''
 settings:
   handler: 'default:media'
   handler_settings:
-    target_bundles: {  }
+    target_bundles:
+      dam_image: dam_image
     sort:
       field: _none
       direction: ASC

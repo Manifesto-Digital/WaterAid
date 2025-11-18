@@ -9,7 +9,7 @@ props:
       type: string
       title: Type
       description: The type of quote component
-      examples: ["text_only", "image_right_below", "image_left_above"]
+      examples: ["text_only", "image_right_below", "image_left_above", "image_with_quote_sidebar"]
     quote:
       type: string
       title: Quote

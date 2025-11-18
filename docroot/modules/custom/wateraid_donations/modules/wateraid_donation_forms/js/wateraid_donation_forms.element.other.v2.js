@@ -76,6 +76,10 @@
         // Uncheck pre-selected amounts when 'other' is clicked.
         // Make the field required so an empty amount can't be submitted
         $otherField.click(function () {
+          // If other already selected, do nothing
+          if ($buttons.filter('[value="_other_"]').is(':checked')) {
+            return;
+          }
           $buttons.filter(':checked').prop('checked', false).trigger('change');
           // Select the 'other' option
           $buttons.filter('[value="_other_"]').prop('checked', true).trigger('change');

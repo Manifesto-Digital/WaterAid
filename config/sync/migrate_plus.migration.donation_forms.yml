@@ -49,5 +49,4 @@ idMap: {  }
 migration_dependencies:
   required:
     - users
-    - media
 include: null

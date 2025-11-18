@@ -42,7 +42,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: quote
 idMap: {  }
-migration_dependencies:
-  required:
-    - media
+migration_dependencies: {  }
 include: null

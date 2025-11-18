@@ -1,0 +1,19 @@
+uuid: 1f8a5699-68af-4aeb-9cc0-64201947f217
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_citation
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+id: paragraph.image_with_quote_sidebar.field_citation
+field_name: field_citation
+entity_type: paragraph
+bundle: image_with_quote_sidebar
+label: Citation
+description: 'Enter a citation related to this quote.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

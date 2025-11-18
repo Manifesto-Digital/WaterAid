@@ -1,0 +1,51 @@
+uuid: c9b0f45f-81eb-43cf-b3c3-34b480bc36d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_with_quote_sidebar.field_caption
+    - field.field.paragraph.image_with_quote_sidebar.field_citation
+    - field.field.paragraph.image_with_quote_sidebar.field_image
+    - field.field.paragraph.image_with_quote_sidebar.field_quote
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+id: paragraph.image_with_quote_sidebar.default
+targetEntityType: paragraph
+bundle: image_with_quote_sidebar
+mode: default
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_citation:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_quote:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

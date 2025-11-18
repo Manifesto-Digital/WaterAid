@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Drupal\wa_migration\Plugin\migrate\process;
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
+use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -89,7 +91,17 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
           if (is_array($item)) {
             foreach ($item as $sub) {
               if (!empty($sub)) {
-                $return[] = $sub;
+                if (is_array($sub)) {
+
+                  // Only the VCM migration lookup returns items nested this
+                  // deep, so we know this must be a paragraph already.
+                  foreach ($sub as $sub_paragraph) {
+                    $return[] = $sub_paragraph;
+                  }
+                }
+                else {
+                  $return[] = $sub;
+                }
               }
             }
           }
@@ -109,7 +121,10 @@ class MergeWithoutException extends ProcessPluginBase implements ContainerFactor
       $storage = $this->entityTypeManager->getStorage($entity_type);
 
       foreach ($return as $key => $item) {
-        if (is_int($item) || is_string($item)) {
+        if ($item instanceof ContentEntityInterface) {
+          $return[$key] = $item;
+        }
+        elseif (is_int($item) || is_string($item)) {
 
           /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
           if ($entity = $storage->load($item)) {

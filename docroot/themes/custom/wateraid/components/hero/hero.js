@@ -4,6 +4,7 @@
       const video = context.querySelector("video");
       const playButton = context.querySelector(".hero__video--play");
       const pauseButton = context.querySelector(".hero__video--pause");
+      let width = document.body.clientWidth;
 
       if (video) {
         pauseButton.style.display = "none";
@@ -20,6 +21,33 @@
           playButton.style.display = "block";
           pauseButton.style.display = "none";
         });
+      }
+
+      const setHeroMargin = (hero, isDesktop) => {
+        const heroHeight = hero.offsetHeight;
+        const donateHeight = context.querySelector(".hero__donate").offsetHeight;
+        let calculatedMargin = 0;
+
+        if (heroHeight > 720 && isDesktop) {
+          calculatedMargin = donateHeight - heroHeight + 156;
+        }
+
+        hero.style.marginBottom = calculatedMargin + "px";
+      };
+
+      const onresize = function() {
+        width = document.body.clientWidth;
+        context.querySelectorAll('.hero--donate').forEach((hero) => {
+        if (width > 1024) {
+          setHeroMargin(hero, true);
+        } else {
+          setHeroMargin(hero, false);
+        }
+        });
+      };
+      window.addEventListener("resize", onresize);
+      if (width > 1024) {
+        onresize();
       }
     },
   };

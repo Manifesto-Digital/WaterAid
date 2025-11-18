@@ -1,0 +1,19 @@
+uuid: 27b71457-4a0d-4d61-8625-31c258a53f06
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - group_content_menu.group_content_menu_type.footer_primary_menu
+  module:
+    - group_content_menu
+id: wateraid_site-d387b335c99fbc98b5
+group_type: wateraid_site
+content_plugin: 'group_content_menu:footer_primary_menu'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false
+  auto_create_group_menu: true
+  auto_create_home_link: false
+  auto_create_home_link_title: Home

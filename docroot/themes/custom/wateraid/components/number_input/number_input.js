@@ -15,36 +15,20 @@
         component.dataset.numberInputAttached = 'true';
 
         /**
-         * Gets the step value for the input field.
-         * If step="any", returns 1. If no step is defined, returns 1.
-         * Otherwise returns the numeric step value.
-         */
-        const getStepValue = () => {
-          const stepAttr = input.getAttribute('step');
-          if (!stepAttr || stepAttr === 'any') {
-            return 1;
-          }
-          const stepValue = parseFloat(stepAttr).toFixed(2);
-          return isNaN(stepValue) ? 1 : stepValue;
-        };
-
-        /**
          * Custom stepUp implementation that respects the step attribute
          * and handles min/max constraints.
          */
         const stepUp = () => {
           const currentValue = parseFloat(input.value) || 0;
-          const stepValue = getStepValue();
           const maxValue = parseFloat(input.max);
-          let newValue = currentValue + stepValue;
-          console.log('stepUp',stepValue, currentValue)
+          let newValue = currentValue + 1;
 
           // Respect max value constraint
           if (!isNaN(maxValue) && newValue > maxValue) {
             newValue = maxValue;
           }
 
-          input.value = newValue;
+          input.value = newValue.toFixed(2);
           input.dispatchEvent(new Event('input', {bubbles: true}));
           input.dispatchEvent(new Event('change', {bubbles: true}));
         };
@@ -55,17 +39,15 @@
          */
         const stepDown = () => {
           const currentValue = parseFloat(input.value) || 0;
-          const stepValue = getStepValue();
           const minValue = parseFloat(input.min);
-          let newValue = currentValue - stepValue;
-          console.log('stepDown',stepValue, currentValue)
+          let newValue = currentValue - 1;
 
           // Respect min value constraint
           if (!isNaN(minValue) && newValue < minValue) {
             newValue = minValue;
           }
 
-          input.value = newValue;
+          input.value = newValue.toFixed(2);
           input.dispatchEvent(new Event('input', {bubbles: true}));
           input.dispatchEvent(new Event('change', {bubbles: true}));
         };

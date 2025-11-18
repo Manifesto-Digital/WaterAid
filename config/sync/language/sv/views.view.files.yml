@@ -4,6 +4,8 @@ display:
       fields:
         status:
           label: Status
+        count:
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: Funktioner
       exposed_form:

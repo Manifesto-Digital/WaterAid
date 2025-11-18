@@ -8,9 +8,6 @@ props:
     caption:
       type: string
       title: Caption
-    credit:
-      type: string
-      title: Credit
     width:
       type: string
       title: Width
@@ -22,6 +19,9 @@ props:
       title: Image
       description: Image
       required: true
+    credit:
+      title: Credit
+      description: Image credit
 libraryOverrides:
   css:
     theme:

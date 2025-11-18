@@ -38,7 +38,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: text_media
 idMap: {  }
-migration_dependencies:
-  required:
-    - media
+migration_dependencies: {  }
 include: null

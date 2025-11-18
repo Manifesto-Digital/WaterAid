@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_regions
+    - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
@@ -64,6 +65,7 @@ hidden:
   field_metatags: true
   field_minimal_header: true
   field_regions: true
+  field_resources: true
   field_review_date: true
   field_search_phrases: true
   field_subject_area: true

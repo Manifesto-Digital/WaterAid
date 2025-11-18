@@ -46,6 +46,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_donation_menu: true
+  field_donation_widget: true
   field_hero: true
   field_metatags: true
   field_options: true

@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.signposting
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
@@ -51,6 +52,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_donation_menu: true
+  field_donation_widget: true
   field_hero: true
   field_metatags: true
   field_options: true

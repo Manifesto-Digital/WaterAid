@@ -32,6 +32,7 @@ module:
   dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
+  email_registration: 0
   entity: 0
   entity_reference_revisions: 0
   entity_usage: 0
@@ -65,6 +66,7 @@ module:
   loqate: 0
   loqate_email: 0
   masquerade: 0
+  maxlength: 0
   media: 0
   media_directories: 0
   media_library: 0
@@ -136,6 +138,7 @@ module:
   wateraid_donation_paypal: 0
   wateraid_donation_stripe: 0
   wateraid_forms: 0
+  wateraid_group: 0
   wateraid_just_giving: 0
   webform: 0
   webform_bankaccount: 0

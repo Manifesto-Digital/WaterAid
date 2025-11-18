@@ -1,0 +1,10 @@
+uuid: df471e30-13fa-47ad-8807-5f64bd7ccb9b
+langcode: en
+status: true
+dependencies: {  }
+id: image_with_quote_sidebar
+label: 'Image with quote (sidebar)'
+icon_uuid: null
+icon_default: null
+description: 'Allows you to add a quote to content.'
+behavior_plugins: {  }

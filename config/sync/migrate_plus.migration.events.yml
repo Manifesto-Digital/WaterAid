@@ -93,7 +93,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -118,6 +118,8 @@ process:
         - activation_bar_item
         - rainbow_link_item
         - donation_cta_widget_embed
+        - hero_in_content
+        - variable_content_module
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -136,5 +138,4 @@ migration_dependencies:
     - get_involved
     - themes
     - users
-    - media
 include: null

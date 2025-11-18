@@ -57,6 +57,7 @@
     "drupal/devel": "^5.4",
     "drupal/diff": "^2.0@beta",
     "drupal/ds": "^3.30",
+    "drupal/email_registration": "^1.4",
     "drupal/encrypt": "^3.2",
     "drupal/entity_print": "^2.18",
     "drupal/entity_usage": "^2.0@beta",
@@ -74,6 +75,7 @@
     "drupal/layout_paragraphs": "^2.1",
     "drupal/linkit": "^7.0@alpha",
     "drupal/masquerade": "^2.0",
+    "drupal/maxlength": "^3.1",
     "drupal/media_directories": "^2.2@beta",
     "drupal/menu_item_fields": "^1.11",
     "drupal/metatag": "^2.0",
@@ -214,6 +216,9 @@
     "patches": {
         "drupal/group_content_menu": {
             "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"
+        },
+        "drupal/redirect": {
+            "2879648 - Redirects from aliased paths aren't triggered": "https://www.drupal.org/files/issues/2025-09-09/redirect-redirects-from-aliased-paths-arent-triggered-2879648-212.patch"
         },
         "drupal/webform_rest": {
             "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
