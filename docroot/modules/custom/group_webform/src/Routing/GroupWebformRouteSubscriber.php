@@ -21,12 +21,6 @@ class GroupWebformRouteSubscriber extends RouteSubscriberBase {
       switch ($route_name) {
         // WEBFORM-RELATED ROUTES.
         // Webform/Webform Group Permission: 'administer webform'.
-        case 'entity.webform_options.add_form':
-        case 'entity.webform_options.edit_form':
-        case 'entity.webform_options.collection':
-        case 'entity.webform_options.duplicate_form':
-        case 'entity.webform_options.delete_form':
-        case 'entity.webform_options.autocomplete':
         case 'entity.webform.results_clear':
         case 'entity.webform.duplicate_form':
         case 'entity.webform.export_form':
