@@ -5,6 +5,7 @@
  * Functions to support theming.
  */
 
+use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
@@ -13,6 +14,21 @@ use Drupal\paragraphs\Entity\Paragraph;
 $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
 foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
   require_once $file;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for pages.
+ */
+function wateraid_preprocess_page(&$variables) {
+  $route_match = \Drupal::routeMatch();
+  $params = $route_match->getParameters();
+  $donate_header = FALSE;
+
+  if ($params->get('node') instanceof NodeInterface) {
+    $donate_header = TRUE;
+  }
+  $donate_header = TRUE;
+  $variables['donate_header'] = $donate_header;
 }
 
 /**
@@ -201,7 +217,7 @@ function wateraid_preprocess_node(&$variables) {
     $val_param = $request->query->get('val');
 
     // If both fq and val query parameters exist, hide the donation widget field.
-    $variables['content']['first_step_as_widget'] = !($fq_param !== null && $val_param !== null);
+    $variables['content']['first_step_as_widget'] = !($fq_param !== NULL && $val_param !== NULL);
 
     // Add custom JS to handle FE behaviour.
     $variables['#attached']['library'][] = 'wateraid/webform-behavior';
@@ -226,6 +242,9 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
   }
 }
 
+/**
+ *
+ */
 function wateraid_preprocess_views_view(&$variables) {
   $view = $variables['view'];
   if ($view->id() === 'search') {

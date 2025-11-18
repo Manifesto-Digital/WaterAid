@@ -1,17 +1,16 @@
 {% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
 {% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
-{% set button_attributes = create_attribute(attributes|default({}))
-  .addClass(all_classes)
-  .setAttribute('aria-label', text) %}
+{% set attributes = attributes.addClass(all_classes) %}
 
 <div class="button__wrapper button__wrapper--{{ type }} {{ disabled == 'true' ? ' button--disabled' : '' }}">
   {% if link %}
-  <a href="{{ link }}" class="{{ all_classes|join(' ') }}" aria-label="{{ text }}"
+  <a href="{{ link }}" {{ attributes }}
      tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
     {% else %}
-    <button {{ button_attributes }} id="{{ id }}"
-                                    aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
-                                    tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
+    <button {{ attributes.setAttribute('aria-label', text)  }}
+        id="{{ id }}"
+        aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
+        tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
       {% endif %}
 
       {% if type == 'primary' or type == 'secondary' %}

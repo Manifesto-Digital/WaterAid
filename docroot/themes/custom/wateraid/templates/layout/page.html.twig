@@ -44,9 +44,13 @@
 #}
 <div class="layout-container">
 
-  {{ include ('wateraid:site_header', {
-    blocks: page.header
-  }, with_context = false) }}
+  {% if donate_header %}
+    {{ include ('wateraid:site_header_donate', {}, with_context = false) }}
+  {% else %}
+    {{ include ('wateraid:site_header', {
+      blocks: page.header
+    }, with_context = false) }}
+  {% endif %}
 
 
   <div class="page-container">

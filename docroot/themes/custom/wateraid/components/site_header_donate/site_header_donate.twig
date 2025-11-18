@@ -1,0 +1,47 @@
+{% set modal_instance_id = 'donate-exit-journey' %}
+{% set exit_journey_modal_callback = true %}
+
+<header role="banner" {{ attributes.addClass(['site-header-donate']).setAttribute('role', 'banner') }}>
+
+  <div class="site-header__main">
+    <div class="site-header__colour-wrapper">
+
+      <div class="site-header__container">
+
+        <div class="site-header__logo">
+          <a href="{{ get_frontpage_url() }}" class="site-header__logo-link" {% if exit_journey_modal_callback %}data-modal-trigger-id="{{ modal_instance_id }}"{% endif %}>
+            <svg class="site-header__logo-image">
+              <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
+            </svg>
+          </a>
+          {% embed 'wateraid:modal' with {
+            attributes: create_attribute(),
+            title: 'Are you sure you want to leave your donation?'|t,
+            instance_id: modal_instance_id,
+
+          } only %}
+            {% block modal_content %}
+
+              <div class="modal__actions">
+                {{ include('wateraid:button', {
+                  attributes: create_attribute().setAttribute('data-modal-close-id', instance_id),
+                  text: 'Stay in donation process'|t,
+                  link: '#',
+                  type: 'donate',
+                  include_close_button: 0,
+                }, false) }}
+
+                {{ include('wateraid:button', {
+                  text: 'Return to homepage'|t,
+                  link: get_frontpage_url(),
+                  type: 'secondary',
+                }, false) }}
+              </div>
+            {% endblock %}
+          {% endembed %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,33 +1,31 @@
-@import "../../sass/base";
+@import "../../../sass/base";
 
-.modal {
-  &[data-component-id="wateraid:modal"] {
-    display: none;
+.inactivity-modal {
+  display: none;
 
-    &.open {
-      display: block;
-      height: 100vh;
-      width: 100vw;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      z-index: 20;
-    }
+  &.open {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    z-index: 20;
+  }
 
-    .modal__wrapper {
-      @include grid();
-      column-gap: 0;
-      row-gap: 0;
-      position: absolute;
-      width: 100%;
-      max-width: calculate-rem(1113);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 1rem 1.25rem;
-    }
+  .modal__wrapper {
+    @include grid();
+    column-gap: 0;
+    row-gap: 0;
+    position: absolute;
+    width: 100%;
+    max-width: calculate-rem(1113);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 1.25rem;
   }
 
   &__image {
@@ -96,7 +94,6 @@
     position: fixed;
     overflow: hidden;
   }
-
 }
 
 

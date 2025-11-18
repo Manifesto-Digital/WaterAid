@@ -1,0 +1,39 @@
+{#
+  Modal component.
+
+  - To trigger a modal you'll need an element with data attribute `data-modal-trigger-id={instance_id}`
+  - To close a modal use an element with data attribute `data-modal-close-id={instance_id}`
+  - Modal instances are stored on Drupal.wateraidModalInstances, so you can open and close an instance remotely.
+
+#}
+
+{% set classes = [
+  'modal',
+  'modal--instance-' ~ instance_id | replace({'_': '-'})
+] %}
+
+<div {{ attributes.addClass(classes).setAttribute('data-modal-instance-id', instance_id) }}>
+  <div class="modal__wrapper">
+
+    <div class="modal__container">
+      {% if include_close_button is empty or include_close_button != 0 %}
+        <div class="modal__close">
+          {{ include('wateraid:button', {
+            attributes: create_attribute().setAttribute('data-modal-close-id', instance_id),
+            text: 'Close',
+            link: '',
+            id: 'modal-close',
+            type: 'icon-small',
+            icon: 'wa-utility-close',
+            theme: 'dark',
+          }, false) }}
+        </div>
+      {% endif %}
+
+      <div class="modal__content">
+        <h2 class="modal__title">{{ title }}</h2>
+        {% block modal_content %}{% endblock%}
+      </div>
+    </div>
+  </div>
+</div>
