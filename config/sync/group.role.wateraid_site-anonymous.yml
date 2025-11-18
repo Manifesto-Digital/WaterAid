@@ -28,6 +28,8 @@ permissions:
   - 'view group_node:page relationship'
   - 'view group_node:publication entity'
   - 'view group_node:publication relationship'
+  - 'view group_node:shorthand_story entity'
+  - 'view group_node:shorthand_story relationship'
   - 'view group_node:standard_page entity'
   - 'view group_node:standard_page relationship'
   - 'view group_node:story entity'
