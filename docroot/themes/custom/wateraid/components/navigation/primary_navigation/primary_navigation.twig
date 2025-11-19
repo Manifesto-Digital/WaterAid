@@ -10,21 +10,46 @@
         {% set level_1_index = loop.index %}
         <li>
           {% if link.below %}
-            <button
-              class="meganav__level-1-link primary-navigation__level-1-link primary-navigation__link-with-icon"
-              type="button"
-              data-level2-trigger="{{ level_1_index }}"
-              aria-controls="meganav-level-2-child-of-{{ level_1_index }}"
-              aria-expanded="false"
-            >{{ link.title }}
-              <span class="icon icon-chevron-down">
-                <svg>
-                  <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-                </svg>
-              </span>
-            </button>
+            {% set is_donate_menu_parent_link = link.original_link.getEntity().field_donate_menu_parent.0.value %}
+            {% if is_donate_menu_parent_link %}
+              {# Donate menu parent has a different style. #}
+              {{ include('wateraid:button', {
+                attributes: create_attribute()
+                  .addClass('meganav__donate-link')
+                  .setAttribute("data-level2-trigger", level_1_index)
+                  .setAttribute("aria-expanded", 'false')
+                  .setAttribute("aria-controls", "meganav-level-2-child-of-" ~ level_1_index),
+                text: link.title,
+                type: 'primary-meganav-donate-menu-parent',
+              }, false) }}
+            {% else %}
+              <button
+                class="meganav__level-1-link primary-navigation__level-1-link primary-navigation__link-with-icon"
+                type="button"
+                data-level2-trigger="{{ level_1_index }}"
+                aria-controls="meganav-level-2-child-of-{{ level_1_index }}"
+                aria-expanded="false"
+              >{{ link.title }}
+                <span class="icon icon-chevron-down">
+                  <svg>
+                    <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                  </svg>
+                </span>
+              </button>
+            {% endif %}
           {% else %}
-            <a class="meganav__level-1-link primary-navigation__level-1-link" href="{{ link.url }}">{{ link.title }}</a>
+            {% set is_donate_link = link.original_link.getEntity().field_donate_link.0.value %}
+            {% if is_donate_link %}
+              {# Donate link has a different style. #}
+              {{ include('wateraid:button', {
+                attributes: create_attribute().setAttribute('data-modal-close-id', instance_id).addClass('meganav__donate-link'),
+                text: link.title,
+                link: link.url,
+                type: 'donate',
+              }, false) }}
+            {% else %}
+              <a class="meganav__level-1-link primary-navigation__level-1-link" href="{{ link.url }}">{{ link.title }}</a>
+            {% endif %}
           {% endif %}
 
           {% if link.below %}

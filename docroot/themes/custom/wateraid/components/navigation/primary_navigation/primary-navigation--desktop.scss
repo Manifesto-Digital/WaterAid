@@ -106,6 +106,12 @@
     }
   }
 
+  &__donate-link {
+    .button__svg {
+      display: none;
+    }
+  }
+
   &__panel {
     overflow: hidden;
     color: white;
