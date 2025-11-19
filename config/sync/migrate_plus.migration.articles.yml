@@ -38,6 +38,8 @@ process:
       default_value: en
   status: status
   title: title
+  created: created
+  changed: changed
   field_teaser_text: body__summary
   field_teaser_image:
     plugin: migration_lookup
@@ -203,6 +205,8 @@ process:
         press_and_media_flexible: standard_page
         shorthand_story: story
         stories: story
+        article: article
+      default: ''
   temp_body:
     -
       plugin: body_to_paragraph
