@@ -111,6 +111,7 @@ module:
   serialization: 0
   shield: 0
   shortcut: 0
+  shorthand: 0
   storybook: 0
   svg_image: 0
   svg_image_field: 0

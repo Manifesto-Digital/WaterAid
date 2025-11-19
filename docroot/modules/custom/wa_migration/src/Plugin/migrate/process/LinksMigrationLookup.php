@@ -49,10 +49,13 @@ final class LinksMigrationLookup extends MigrationLookup implements ContainerFac
     if ($value[0]) {
       if (str_starts_with($value[0], 'entity:node/') || str_starts_with($value[0], 'internal:node/')) {
         $nid = (str_starts_with($value[0], 'entity:node/')) ? substr($value[0], 12) : substr($value[0], 15);
+        $link['title'] = $value[1];
 
         if ($new_nid = parent::transform($nid, $migrate_executable, $row, $destination_property)) {
           $link['url'] = 'internal:node/' . $new_nid;
-          $link['title'] = $value[1];
+        }
+        else {
+          $link['url'] = 'internal:node/' . $nid;
         }
       }
       else {

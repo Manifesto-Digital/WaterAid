@@ -44,6 +44,9 @@
             icon: 'wa-utility-menu',
           }, false) }}
         </div>
+
+        <a href="{{ url('<front>') }}" class="main-site-link">{{ "Main site"|t }}</a>
+
         {% if primary_navigation %}
           {{ include ('wateraid:primary_navigation', {
             menu: primary_navigation,

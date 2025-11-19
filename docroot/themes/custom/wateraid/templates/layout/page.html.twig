@@ -42,7 +42,7 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
+<div class="layout-container page-node-type-{{ bundle|replace({"_":"-"}) }}">
 
   {% if donate_header %}
     {{ include ('wateraid:site_header_donate', {}, with_context = false) }}

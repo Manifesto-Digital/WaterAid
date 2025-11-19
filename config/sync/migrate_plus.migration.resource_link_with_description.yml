@@ -47,7 +47,7 @@ process:
         - webforms
       source: field_resource_link_single_uri
   field_primary_cta/title: field_resource_link_single_title
-  field_rich_text/value: field_resource_link_description_value
+  field_rich_text/value: field_resource_link_description
   field_rich_text/format:
     plugin: default_value
     default_value: full_html

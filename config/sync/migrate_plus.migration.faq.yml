@@ -29,7 +29,7 @@ process:
   field_accordion_content:
     -
       plugin: body_to_paragraph
-      source: field_faq_answer_value
+      source: field_faq_answer
 destination:
   plugin: 'entity:paragraph'
   default_bundle: accordion_item

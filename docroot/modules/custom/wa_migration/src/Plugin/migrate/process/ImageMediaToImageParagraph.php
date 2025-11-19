@@ -13,7 +13,7 @@ use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides ab image_media_to_image_paragraph plugin.
+ * Provides an image_media_to_image_paragraph plugin.
  *
  * Usage:
  *

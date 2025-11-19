@@ -22,6 +22,12 @@
     a {
       text-decoration: none;
       color: $wa-navy;
+      &:focus-visible {
+        color: $wa-navy;
+        background-color: $wa-pink;
+        border-bottom: solid $wa-navy calculate-rem(3);
+        outline: none;
+      }
     }
   }
 
