@@ -104,6 +104,7 @@
     "drupal/security_review": "^3.0",
     "drupal/sharethis": "^3.1",
     "drupal/shield": "^1.8",
+    "drupal/shorthand": "^5.0@beta",
     "drupal/social_media_links": "^2.10",
     "drupal/stage_file_proxy": "^3.1",
     "drupal/storybook": "^1.0@beta",
@@ -221,6 +222,9 @@
         },
         "drupal/webform_rest": {
             "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
+        },
+        "drupal/shorthand": {
+            "Issue #3546012 - 4.0.24 is broken Class \"Drupal\\shorthand\\Drush\\Commands\\ShorthandCommands\" does not exist": "https://git.drupalcode.org/project/shorthand/-/merge_requests/56.patch"
         }
     },
     "merge-plugin": {

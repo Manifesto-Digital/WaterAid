@@ -1,0 +1,11 @@
+uuid: 81a96dc0-d04d-4d1d-a441-0025a155dcaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story
+target_entity_type_id: node
+target_bundle: shorthand_story
+default_langcode: site_default
+language_alterable: false

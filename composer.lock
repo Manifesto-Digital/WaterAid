@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7813b8657fa128c3888e9c0675cb8777",
+    "content-hash": "b93a5ff667f49bdeb592e5672f3721de",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -8432,6 +8432,85 @@
             "homepage": "https://www.drupal.org/project/shield",
             "support": {
                 "source": "https://git.drupalcode.org/project/shield"
+            }
+        },
+        {
+            "name": "drupal/shorthand",
+            "version": "5.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/shorthand.git",
+                "reference": "5.0.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/shorthand-5.0.0-beta1.zip",
+                "reference": "5.0.0-beta1",
+                "shasum": "9b9dbd0bb40e1f4e15b80bb3b842222042f491d5"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11.0"
+            },
+            "require-dev": {
+                "drupal/metatag": "2.0.x"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "5.0.0-beta1",
+                    "datestamp": "1756651934",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Dekker (simultech)",
+                    "homepage": "https://www.drupal.org/u/simultech",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Deji Akala (dejiakala)",
+                    "homepage": "https://www.drupal.org/u/dejiakala",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ben Hoad (benhoad)",
+                    "homepage": "https://www.drupal.org/u/benhoad",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Vladimir Roudakov (vladimiraus)",
+                    "homepage": "https://www.drupal.org/u/vladimiraus",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "shorthand",
+                    "homepage": "https://www.drupal.org/user/3522895"
+                },
+                {
+                    "name": "vladimiraus",
+                    "homepage": "https://www.drupal.org/user/673120"
+                },
+                {
+                    "name": "benhoad",
+                    "homepage": "https://www.drupal.org/user/3666864"
+                }
+            ],
+            "description": "A module that allows the publishing of Shorthand stories directly to Drupal.",
+            "homepage": "https://www.drupal.org/project/shorthand",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/shorthand",
+                "issues": "https://www.drupal.org/project/issues/shorthand"
             }
         },
         {
@@ -21856,6 +21935,7 @@
         "drupal/media_directories": 10,
         "drupal/preview_link": 15,
         "drupal/rabbit_hole": 15,
+        "drupal/shorthand": 10,
         "drupal/storybook": 10,
         "drupal/viewsreference": 10,
         "drupal/webform": 10,

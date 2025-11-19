@@ -26,6 +26,10 @@
   </div>
 
   <div class="card__image">
-    <img src="{{ image_url }}" alt=""/>
+    {% if image|render %}
+      {{ image }}
+    {% else %}
+      <img src="/themes/custom/wateraid/images/png/card-fallback.png" alt=""/>
+    {% endif %}
   </div>
 </div>
