@@ -236,8 +236,11 @@
     background-size: contain;
     background-repeat: no-repeat;
     transition: 200ms;
-    height: $wa-spacing-09;
-    width: $wa-spacing-09;
+    height: calculate-rem(58);
+    width: calculate-rem(58);
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
     &:hover {
       transform: translateX($wa-spacing-02) translateY(-$wa-spacing-02);
@@ -246,6 +249,7 @@
     .icon {
       display: block;
       width: $wa-spacing-06;
+      margin-top: calculate-rem(5);
 
       svg {
         fill: currentColor;
@@ -296,6 +300,17 @@
     }
   }
 
+  &--search-btn {
+    .icon {
+      width: $wa-spacing-06;
+
+      svg {
+        aspect-ratio: 1;
+      }
+    }
+
+  }
+
   &__svg {
     text-align-last: center;
 
@@ -319,5 +334,8 @@
         display: none;
       }
     }
+  }
+  svg {
+    fill: currentColor;
   }
 }

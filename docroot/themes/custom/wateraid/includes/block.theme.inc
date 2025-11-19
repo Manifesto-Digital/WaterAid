@@ -29,23 +29,9 @@ function wateraid_preprocess_block(&$variables) {
             $group_content_menu = $group_menu_relationship->getEntity();
             // The menu name is derived from the group menu content entity.
             $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
-            /** @var \Drupal\Core\Menu\MenuLinkTreeInterface $menu_tree */
-            $menu_tree = \Drupal::service('menu.link_tree');
-            $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
-            $parameters->setMaxDepth(1);
-            // Load the tree and apply manipulators.
-            $tree = $menu_tree->load($menu_name, $parameters);
-            $manipulators = [
-              ['callable' => 'menu.default_tree_manipulators:checkAccess'],
-              ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
-            ];
-            $tree = $menu_tree->transform($tree, $manipulators);
-            // Build as renderable.
-            $menu = $menu_tree->build($tree);
+            $variables[$var_name] = _wateraid_build_menu($menu_name, 1);
             // Add cacheability metadata.
             $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
-
-            $variables[$var_name] = $menu;
           }
         }
       }

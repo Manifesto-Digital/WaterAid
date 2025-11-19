@@ -1,0 +1,167 @@
+
+{% import _self as menus %}
+{% macro menu_links(items, attributes, menu_level, parent_index, parent_link, level_2_prefix) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% set menu_level_attrs = create_attribute().addClass(['mobile-nav__level-' ~ menu_level]) %}
+    {% if menu_level > 1 %}
+      {% set menu_level_attrs = menu_level_attrs
+        .setAttribute('data-mobile-submenu-id', parent_index)
+        .setAttribute('id', 'meganav-level-' ~ menu_level ~ '-child-of-' ~ parent_index)
+      %}
+    {% endif %}
+    <div {{ menu_level_attrs }}>
+      <ul class="mobile-nav__container">
+
+        {% if menu_level > 1 %}
+          <button class="mobile-nav__back-btn js-mobile-nav-back-btn primary-navigation__link-with-icon">
+            <span class="icon icon-arrow-left">
+              <svg>
+                <use href="{{ get_spritemap() }}#wa-shape-arrow" />
+              </svg>
+            </span>
+            Back
+          </button>
+        {% endif %}
+
+        {% if parent_link %}
+          {% set parent_link_attrs = create_attribute().addClass([
+            'mobile-nav__level-submenu-heading-link',
+            'mobile-nav__level-' ~ menu_level ~ '-submenu-heading-link',
+            'mobile-nav__level-' ~ menu_level ~ '-link',
+            'primary-navigation__level-' ~ menu_level ~'-link',
+            'primary-navigation__link-with-icon',
+          ]) %}
+          <a href="{{ parent_link.url }}" {{ parent_link_attrs }}>
+            {{ parent_link.title }}
+            {% if menu_level == 2 %}
+              <span class="icon icon-arrow-right">
+                <svg>
+                  <use href="{{ get_spritemap() }}#wa-shape-arrow" />
+                </svg>
+              </span>
+            {% endif %}
+          </a>
+
+          {% if menu_level == 2 and parent_link.original_link %}
+            {% set menu_level_2_heading_description = parent_link.original_link.getEntity().field_description.0.value %}
+            {% if menu_level_2_heading_description is not empty %}
+              <div class="mobile-nav__level-submenu-heading-description">
+                <p>{{ menu_level_2_heading_description|raw|nl2br }}</p>
+              </div>
+            {% endif %}
+          {% endif %}
+
+        {% endif %}
+
+        {% for item in items %}
+          {# Build composite index for level 2 items with children #}
+          {% if menu_level == 2 and item.below %}
+            {% set index = level_2_prefix ~ '-' ~ loop.index %}
+          {% elseif menu_level == 1 %}
+            {% set index = loop.index %}
+          {% else %}
+            {% set index = parent_index ~ '-' ~ loop.index %}
+          {% endif %}
+
+          {% set is_donate_link = item.original_link.getEntity().field_donate_link.0.value %}
+          {% set is_search_link = item.original_link.getEntity().field_search_link.0.value %}
+          {# Don't output the search and donate links here. #}
+          {% if not is_donate_link and not is_search_link %}
+            <li{{ item.attributes }}>
+              {% if item.below %}
+                <button
+                  class="mobile-nav__level-{{ menu_level }}-link primary-navigation__level-{{ menu_level }}-link primary-navigation__link-with-icon"
+                  type="button"
+                  data-level{{ menu_level + 1 }}-trigger="{{ index }}"
+                  aria-controls="meganav-level-{{ menu_level + 1 }}-child-of-{{ index }}"
+                  aria-expanded="false"
+                >{{ item.title }}
+                  <span class="icon icon-chevron-right">
+                    <svg>
+                      <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                    </svg>
+                  </span>
+                </button>
+                {# Pass the current index as prefix for level 2 #}
+                {% set next_prefix = menu_level == 1 ? loop.index : level_2_prefix %}
+                {{ menus.menu_links(item.below, attributes, menu_level + 1, index, {title: item.title, url: item.url, original_link: item.original_link}, next_prefix) }}
+              {% else %}
+                {{ link(item.title, item.url, {'class': ['mobile-nav__level-' ~ menu_level ~ '-link', 'primary-navigation__level-' ~ menu_level ~'-link']}) }}
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+
+{% set donate_link = 0 %}
+{% set search_link = 0 %}
+{% for link in items %}
+  {% if link.original_link.getEntity().field_donate_link.0.value %}
+    {% set donate_link = link %}
+  {% endif %}
+  {% if link.original_link.getEntity().field_search_link.0.value %}
+    {% set search_link = link %}
+  {% endif %}
+{% endfor %}
+
+
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav__slider">
+
+    {{ menus.menu_links(items, attributes, 1, null, {}, null) }}
+
+    <ul class="mobile-nav__utility-menu">
+      <li class="mobile-nav__utility-menu-item">
+        <button class="utility-nav__link" data-level2-trigger="site-selector">
+          Site selector
+          <span class="icon icon-chevron-right">
+              <svg>
+                <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+              </svg>
+            </span>
+        </button>
+        <div class="mobile-nav__site-selector" data-mobile-submenu-id="site-selector">
+          <div class="mobile-nav__site-selector-inner">
+            <button class="mobile-nav__back-btn js-mobile-nav-back-btn primary-navigation__link-with-icon">
+                <span class="icon icon-arrow-left">
+                  <svg>
+                    <use href="{{ get_spritemap() }}#wa-shape-arrow" />
+                  </svg>
+                </span>
+              Back
+            </button>
+            {{ drupal_block('system_menu_block:site-selector') }}
+          </div>
+        </div>
+      </li>
+      <li class="mobile-nav__utility-menu-item">{{ drupal_block('language_block:language_interface') }}</li>
+      {% if wash_matters_url %}
+        <li class="mobile-nav__utility-menu-item">
+          {{ link('WASH Matters (policy and practice)'|t, wash_matters_url, {'class': ['mobile-nav__utility-menu-item']}) }}
+        </li>
+      {% endif %}
+    </ul>
+
+  </div>
+
+  {% if search_link %}
+    <div class="mobile-nav__search">
+      {{ include('wateraid:button', {
+        attributes: create_attribute()
+          .addClass(['button--search-btn', 'mobile-nav__search-btn']),
+        text: search_link.title,
+        url: search_link.url.toString(),
+        type: 'secondary',
+        theme: 'light',
+        icon: 'wa-utility-search',
+        icon_position: 'before',
+      }, false) }}
+    </div>
+  {% endif %}
+
+</nav>

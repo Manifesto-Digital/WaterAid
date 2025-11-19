@@ -102,6 +102,12 @@
       this.openNav = () => {
         menuButton.setAttribute('aria-expanded', 'true');
         document.body.classList.add('primary-menu-open');
+        document.body.classList.add('mobile-menu-animating');
+        setTimeout(() => {
+          // Add a class to prevent transition animations outside of
+          // intentional menu animations.
+          document.body.classList.remove('mobile-menu-animating');
+        }, mobileNavTransitionTime)
       }
       // Close the navigation.
       this.closeNav = () => {

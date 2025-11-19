@@ -31,6 +31,12 @@
     }
   }
 
+  &__level-1-item {
+    &--donate {
+      margin-right: calculate-rem(-10);
+    }
+  }
+
   &__level-1-link {
     border-bottom: 3px transparent solid;
     display: flex;

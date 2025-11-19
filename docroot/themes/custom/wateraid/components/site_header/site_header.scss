@@ -20,11 +20,8 @@ $header-padding-bottom: 0;
 
   &__container {
     @include page-container;
-
-    @include tablet {
-      display: flex;
-      justify-content: space-between;
-    }
+    display: flex;
+    justify-content: space-between;
   }
 
   &__main {
@@ -32,7 +29,7 @@ $header-padding-bottom: 0;
   }
 
   &__logo {
-    width: calculate-rem(104);
+    width: calculate-rem(140);
     padding-bottom: $wa-spacing-03;
 
     @include tablet {
@@ -55,16 +52,27 @@ $header-padding-bottom: 0;
     }
   }
 
-  &__mobile-actions {
+  .primary-navigation {
     position: absolute;
-    top: 20px;
-    right: $container-padding-mobile;
-    left: calc(100vw - 85px);
-    z-index: 1;
+
+    @include tablet {
+      position: static;
+    }
+  }
+
+  &__mobile-actions {
+    display: flex;
+    gap: $wa-spacing-03;
+    margin-right: calculate-rem(10);
 
     @include tablet {
       display: none;
     }
+  }
+
+  &__mobile-donate-btn {
+    padding-left: $wa-spacing-06;
+    padding-right: $wa-spacing-06;
   }
 
 

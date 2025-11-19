@@ -5,6 +5,8 @@
  * Functions to support theming.
  */
 
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\group_content_menu\GroupContentMenuInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
@@ -23,12 +25,12 @@ foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
  */
 function wateraid_preprocess_page(&$variables) {
   $route_match = \Drupal::routeMatch();
-
   $params = $route_match->getParameters();
   $node = $params->get('node');
   $group = $params->get('group');
-  $donate_header = FALSE;
 
+  // Determine if we should be rendering the donate header or standard.
+  $donate_header = FALSE;
   if ($node instanceof NodeInterface) {
     switch ($node->bundle()) {
       case 'donation':
@@ -61,6 +63,22 @@ function wateraid_preprocess_page(&$variables) {
     }
     elseif ($group instanceof GroupInterface && $group->bundle() == 'wateraid_site') {
       $variables['wash_matters_url'] = (bool) $group->get('field_is_wash_matters_site')->value ? NULL : $wash_matters_group->toUrl();
+    }
+  }
+
+  // Provide the primary navigation menu to the page template.
+  if ($group instanceof GroupInterface) {
+    $group_menu_relationships = group_content_menu_get_menus_per_group($group);
+    foreach ($group_menu_relationships as $group_menu_relationship) {
+      if ($group_menu_relationship->getPluginId() === 'group_content_menu:wateraid_site_menu') {
+        /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
+        $group_content_menu = $group_menu_relationship->getEntity();
+        // The group menu name is derived from the group menu content entity.
+        $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
+        $variables['primary_navigation'] = _wateraid_build_menu($menu_name, 3);
+        // Add cacheability metadata.
+        $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+      }
     }
   }
 }
@@ -304,4 +322,32 @@ function wateraid_preprocess_paragraph__spend(&$variables) {
   $group = $relationship->getGroup();
 
   $variables['spend'] = $group->field_spend_module->view();
+}
+
+/**
+ * Helper to build a renderable menu.
+ *
+ * @param $menu_name
+ *   Menu name.
+ * @param int $max_depth
+ *   Render depth of the tree.
+ *
+ * @return array
+ */
+function _wateraid_build_menu($menu_name, int $max_depth): array {
+  /** @var \Drupal\Core\Menu\MenuLinkTreeInterface $menu_tree */
+  $menu_tree = \Drupal::service('menu.link_tree');
+  // Start with fresh parameters instead of route-based ones.
+  $parameters = new MenuTreeParameters();
+  $parameters->setMaxDepth($max_depth);
+  $parameters->expandedParents = [];
+  // Load the tree and apply manipulators.
+  $tree = $menu_tree->load($menu_name, $parameters);
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menu_tree->transform($tree, $manipulators);
+  // Return as built renderable.
+  return $menu_tree->build($tree);
 }

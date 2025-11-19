@@ -13,22 +13,35 @@
       {% endif %}
 
       {% if type == 'primary' or type == 'secondary' %}
-        {{ text }}
+
         {% if icon|render %}
-          <span class="button__svg">
-        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-            {{ include(icon_url) }}
-      </span>
+          {% if icon_position == 'before' %}
+            <span class="icon button__svg">
+              <svg>
+                <use xlink:href="{{ get_spritemap() }}#{{ icon }}"></use>
+              </svg>
+            </span>
+            {{ text }}
+          {% else %}
+            {{ text }}
+              <span class="button__svg">
+              {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+                {{ include(icon_url) }}
+              </span>
+          {% endif %}
+        {% else %}
+          {{ text }}
         {% endif %}
+
       {% endif %}
 
       {% if type == 'donate' %}
         <span class="button__svg">
-      {% if icon|render %}
-        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-        {{ include(icon_url) }}
-      {% endif %}
-      </span>
+        {% if icon|render %}
+          {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+          {{ include(icon_url) }}
+        {% endif %}
+        </span>
         {{ text }}
       {% endif %}
 

@@ -21,6 +21,19 @@
         </div>
 
         <div class="site-header__mobile-actions">
+          {% if primary_navigation['#items'] is not empty %}
+            {% for link in primary_navigation['#items'] %}
+              {% if link.original_link.getEntity().field_donate_link.0.value %}
+                {{ include('wateraid:button', {
+                  attributes: create_attribute().addClass('site-header__mobile-donate-btn'),
+                  text: link.title,
+                  url: link.url.toString(),
+                  type: 'donate',
+                }, false) }}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
           {{ include('wateraid:button', {
             attributes: create_attribute().addClass([
                 'site-header__open-close-mobile-menu-btn',
@@ -32,7 +45,10 @@
           }, false) }}
         </div>
 
-        {{ blocks.wateraid_wateraidsitemenu }}
+        {{ include ('wateraid:primary_navigation', {
+          menu: primary_navigation,
+          wash_matters_url: wash_matters_url,
+        }, false) }}
 
       </div>
     </div>
