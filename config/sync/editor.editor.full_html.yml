@@ -26,6 +26,7 @@ settings:
       - numberedList
       - '|'
       - blockQuote
+      - citationCke5
       - insertTable
       - horizontalLine
       - '|'
@@ -98,6 +99,9 @@ settings:
         -
           label: 'Standfirst (large paragraph)'
           element: '<p class="paragraph-lg">'
+        -
+          label: 'Small paragraph'
+          element: '<p class="paragraph-sm">'
         -
           label: 'Text link'
           element: '<a class="link link--text">'
