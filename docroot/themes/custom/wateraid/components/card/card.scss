@@ -182,6 +182,13 @@
       }
     }
 
+    &:focus-within h2 a {
+      color: $wa-navy;
+      background-color: $wa-pink;
+      border-bottom: solid $wa-navy calculate-rem(3);
+      outline: none;
+    }
+
     .card__body {
       @include grid-item-span(4, 4, 9);
       padding: 0;
