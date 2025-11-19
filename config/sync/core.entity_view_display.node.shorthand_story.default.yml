@@ -1,0 +1,75 @@
+uuid: ae4f74b4-c14e-4256-a91b-bb66d5dbfadf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.shorthand_story.field_audience
+    - field.field.node.shorthand_story.field_country
+    - field.field.node.shorthand_story.field_get_involved
+    - field.field.node.shorthand_story.field_shorthand_story
+    - field.field.node.shorthand_story.field_teaser_image
+    - field.field.node.shorthand_story.field_teaser_text
+    - field.field.node.shorthand_story.field_theme
+    - node.type.shorthand_story
+  module:
+    - shorthand
+    - user
+id: node.shorthand_story.default
+targetEntityType: node
+bundle: shorthand_story
+mode: default
+content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_shorthand_story:
+    type: shorthand_local_story_render
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  co_authors: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_teaser_image: true
+  field_teaser_text: true
+  langcode: true
+  node_read_time: true
+  search_api_excerpt: true

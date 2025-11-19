@@ -7,10 +7,12 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\GroupRelationship;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
 
 // Require all the theme includes.
-$theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+$theme_path = Drupal::theme()->getActiveTheme()->getPath();
 foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
   require_once $file;
 }
@@ -152,7 +154,7 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
           if ($media_entity = $donation_paragraph->get('field_image')->entity) {
             /** @var \Drupal\file\Entity\File $file */
             if ($file = $media_entity->field_media_image->entity) {
-              $image_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+              $image_url = Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
             }
           }
         }
@@ -162,7 +164,7 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
           if ($media_entity = $donation_paragraph->get('field_icon')->entity) {
             /** @var \Drupal\file\Entity\File $file */
             if ($file = $media_entity->field_media_svg->entity) {
-              $icon_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+              $icon_url = Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
             }
           }
         }
@@ -251,4 +253,13 @@ function wateraid_preprocess_paragraph__spend(&$variables) {
   $group = $relationship->getGroup();
 
   $variables['spend'] = $group->field_spend_module->view();
+}
+
+function wateraid_preprocess_page(&$variables) {
+  if ($relationship = \Drupal::routeMatch()->getParameter('group_relationship')) {
+    $node = $relationship->getEntity();
+    if ($node instanceof NodeInterface) {
+      $variables['bundle'] = $node->getType();
+    }
+  }
 }

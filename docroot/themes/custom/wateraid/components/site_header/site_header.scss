@@ -10,6 +10,10 @@ $header-padding-bottom: 0;
     padding-bottom: $header-padding-bottom;
   }
 
+  .main-site-link {
+    display: none;
+  }
+
   &__colour-wrapper {
     background: $white;
     width: 100vw;
@@ -39,9 +43,11 @@ $header-padding-bottom: 0;
       width: calculate-rem(200);
       padding: $wa-spacing-04 0;
     }
+
     &-link {
       display: block;
     }
+
     &-image {
       fill: currentColor;
       color: $wa-blue;
@@ -50,6 +56,7 @@ $header-padding-bottom: 0;
       display: block;
       @include wa-transition-motion-flow(all, 0.2s)
     }
+
     @include tablet {
       margin: 0;
     }
@@ -83,6 +90,7 @@ $header-padding-bottom: 0;
       .site-header__colour-wrapper {
         background-color: $wa-blue;
       }
+
       .site-header__logo-image {
         color: $wa-white;
       }
@@ -92,6 +100,7 @@ $header-padding-bottom: 0;
       .site-header__colour-wrapper {
         background-color: $wa-navy;
       }
+
       .site-header__logo-image {
         color: $wa-white;
       }
@@ -101,9 +110,38 @@ $header-padding-bottom: 0;
       .site-header__colour-wrapper {
         background-color: $wa-cream;
       }
+
       .site-header__logo-image {
       }
     }
   }
 
+}
+
+
+.page-node-type-shorthand-story {
+  .site-header__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .primary-navigation,
+  .site-header__mobile-actions {
+    display: none;
+  }
+
+  .main-site-link {
+    align-content: center;
+    color: $wa-navy;
+    display: block;
+    text-decoration: none;
+
+    &:visited {
+      color: $wa-navy;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
