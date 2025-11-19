@@ -11,6 +11,7 @@ use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
+use Drupal\Core\Queue\RequeueException;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\webform\WebformSubmissionInterface;
@@ -28,6 +29,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactoryPluginInterface {
 
   use StringTranslationTrait;
+
+  private array $optionList = [];
 
   /**
    * Constructs a new BlobStorageQueue instance.
@@ -50,6 +53,8 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     if (Settings::get('azure_blob_storage_container')) {
       $this->azureBlobStorageApi->setContainer(Settings::get('azure_blob_storage_container'));
     }
+
+    $this->loadWebformOptions();
   }
 
   /**
@@ -67,6 +72,76 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     );
   }
 
+  /**
+   * Load the ids of all the available webforms.
+   *
+   */
+  public function loadWebformOptions() {
+    $config_factory = \Drupal::configFactory();
+
+    $database = \Drupal::database();
+    $result   = $database->select('config', 'conf')
+      ->fields('conf', ['name'])
+      ->condition('name', 'webform.webform_options.communication%', 'LIKE')
+      ->execute();
+
+    $ids = [];
+
+    foreach ($result as $record) {
+      $ids[] = $record->name;
+    }
+
+    $option_config = $config_factory->loadMultiple($ids);
+
+    foreach ($option_config as $key => $config_item) {
+      $option_key  = str_replace("webform.webform_options.", "", $key);
+      $raw_options = $config_item->getRawData()['options'];
+
+      if(!empty($raw_options)) {
+        foreach (explode(PHP_EOL, $raw_options) as $value) {
+          $option_value = str_replace("'", "", explode(":", $value)[0]);
+
+          if (!empty($option_value)) {
+            $this->optionList[$option_key][] = $option_value;
+          }
+        }
+      }
+    }
+
+  }
+
+  /**
+   * Map the given item to the desired standard structure.
+   *
+   * @param WebformSubmissionInterface $submission
+   *   The submission to process
+   *
+   * @return array
+   *   The mapped data
+   */
+  public function mapStandardItem(WebformSubmissionInterface $submission): array {
+    $data    = $submission->getData();
+    $webform = $submission->getWebform();
+    $fields  = $webform->getElementsDecodedAndFlattened();
+
+    foreach ($fields as $fieldKey => $fieldDefinition) {
+      if (isset($fieldDefinition["#options"]) && is_string($fieldDefinition["#options"])) {
+        if (!empty($this->optionList[$fieldDefinition["#options"]])) {
+          $options = $this->optionList[$fieldDefinition["#options"]];
+          $values  = $data[$fieldKey];
+
+          $data[$fieldKey] = [];
+
+          foreach ($options as $option) {
+            $data[$fieldKey][$option] = (in_array($option, $values)) ? TRUE : NULL;
+
+          }
+        }
+      }
+    }
+
+    return $data;
+  }
 
   /**
    * Map the given item to the desired donation structure.
@@ -95,17 +170,18 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
         "state_province" => $submissionData["contact_address"]["state_province"],
       ],
       "communication_preferences" => [
-        "opt_in_email"        => null,
-        "opt_in_phone"        => null,
-        "opt_in_sms"          => null,
-        "opt_in_social_media" => null,
-        "opt_in_post"         => TRUE
+        "opt_in_email"        => NULL,
+        "opt_in_phone"        => NULL,
+        "opt_in_sms"          => NULL,
+        "opt_in_social_media" => NULL,
+        "opt_out_post"        => TRUE
       ],
       "reason_for_donating"         => $submissionData["prompt_reason"],
       "in_memory_firstname"         => "",
       "in_memory_lastname"          => "",
       "in_memory_relationship"      => "",
       "in_memory_title"             => "",
+      "gift_aid"                    => (isset($submissionData["gift_aid"]) && !empty($submissionData["gift_aid"]["opt_in"])) ? TRUE  : NULL,
       "donation_currency"           => $submissionData["donation__currency"],
       "donation_amount"             => $submissionData["donation__amount"],
       "donation_date"               => $submissionData["donation__date"],
@@ -146,7 +222,7 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     }
 
     if (!empty($submissionData["communication_preferences"]["opt_in_post"])) {
-      $mappedData["communication_preferences"]["opt_in_post"] = FALSE;
+      $mappedData["communication_preferences"]["opt_out_post"] = TRUE;
     }
 
     if ($submissionData["donation__payment_method"] === "bank_account") {
@@ -214,7 +290,8 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
 
         }
 
-        if ($this->azureBlobStorageApi->blobPut($name, $this->generateBlobArray($submission, $is_donation), TRUE)) {
+
+        if ($this->azureBlobStorageApi->blobPut($this->getPrefixedName($name, $is_donation), $this->generateBlobArray($submission, $is_donation), TRUE)) {
           // The submission has been successfully stored in the blob, so we can
           // delete it from the website.
 //          $submission->delete();
@@ -285,13 +362,15 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
 
     $date = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
 
+    $this->loggerChannel->notice(print_r($submission->getData(), TRUE));
+
     return [
       'id'                        => $submission->uuid(),
       'webform'                   => $this->getPrefixedName($webform->id(), $isDonationSubmission),
       'webform_owner'             => ($owner) ? $owner->label() : 'Anonymous',
       'webform_last_updated'      => '',
       "submission_remote_address" => $submission->getRemoteAddr(),
-      'submission_data'           => $isDonationSubmission ? self::mapDonationItem($submission) : $submission->getData(),
+      'submission_data'           => $isDonationSubmission ? self::mapDonationItem($submission) : $this->mapStandardItem($submission),
       'submission_date'           => $date->format(\DateTimeInterface::ATOM),
     ];
   }
