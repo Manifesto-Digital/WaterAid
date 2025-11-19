@@ -81,12 +81,19 @@ final class CardMigrationLookup extends MigrationLookup implements ContainerFact
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
-    $paragraph = [];
+    $paragraph = [
+      'type' => 'external_card',
+    ];
 
     if (!is_array($value)) {
+      $paragraph['type'] = 'internal_card';
       if ($new_nid = parent::transform($value, $migrate_executable, $row, $destination_property)) {
-        $paragraph['type'] = 'internal_card';
         $paragraph['field_internal_card'] = ['target_id' => $new_nid];
+      }
+      else {
+
+        // Add a broken link.
+        $paragraph['field_internal_card'] = ['target_id' => $value];
       }
     }
     else {
@@ -98,20 +105,22 @@ final class CardMigrationLookup extends MigrationLookup implements ContainerFact
             $paragraph['type'] = 'internal_card';
             $paragraph['field_internal_card'] = ['target_id' => $new_nid];
           }
+          else {
+            $paragraph['field_link'] = [
+              'uri' => $value[0],
+              'title' => $value[1],
+            ];
+          }
         }
         else {
-          $paragraph['type'] = 'external_card';
           $paragraph['field_link'] = [
             'uri' => $value[0],
             'title' => $value[1],
           ];
         }
       }
-      elseif (isset($value[2]) || isset($value[3]) || isset($value[4])) {
-        $paragraph['type'] = 'external_card';
-      }
 
-      if (isset($paragraph['type']) && $paragraph['type'] == 'external_card') {
+      if ($paragraph['type'] == 'external_card') {
         if (isset($value[2]) || isset($value[3])) {
           $text = (isset($value[3])) ? $value[3] : '';
           $text .= (isset($value[2])) ? $value[2] : '';
@@ -139,14 +148,10 @@ final class CardMigrationLookup extends MigrationLookup implements ContainerFact
       }
     }
 
-    if (!empty($paragraph)) {
-      $entity = $this->entityTypeManager->getStorage('paragraph')->create($paragraph);
-      $entity->enforceIsNew();
+    $entity = $this->entityTypeManager->getStorage('paragraph')->create($paragraph);
+    $entity->enforceIsNew();
 
-      return $entity;
-    }
-
-    return NULL;
+    return $entity;
   }
 
 }
