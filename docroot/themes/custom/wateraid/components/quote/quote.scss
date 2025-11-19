@@ -100,3 +100,15 @@
     margin-top: $wa-spacing-09;
   }
 }
+
+.paragraph--type--image-with-quote-sidebar {
+  .quote__content {
+    padding: $wa-spacing-06 $wa-spacing-04;
+    @include desktop {
+      padding: $wa-spacing-06;
+    }
+  }
+  .quote__content--quote {
+    @include h5();
+  }
+}
