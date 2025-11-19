@@ -1,10 +1,10 @@
-{% set classes = [
+{% set gallery_classes = [
   'image-gallery',
   'image-gallery--' ~ theme,
 ] %}
 
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(gallery_classes) }}>
   <div class="image-gallery__wrapper">
     <div class="image-gallery__content">
       {% if title %}

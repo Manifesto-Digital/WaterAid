@@ -1,4 +1,4 @@
-{% set classes = [
+{% set stats_classes = [
   'statistics',
   'statistics--' ~ columns,
 ] %}
@@ -12,7 +12,7 @@
   {% endif %}
 {% endset %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(stats_classes) }}>
   <div class="statistics__content container-sm">
     {% if title %}
       <h2 class="statistics__content--title">{{ title }}</h2>
