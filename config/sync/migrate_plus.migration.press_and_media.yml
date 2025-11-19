@@ -40,9 +40,11 @@ process:
     no_stub: true
   field_hero:
     plugin: image_to_hero
-    hero_type: hero_image
+    hero_type: hero_basic
     source:
-      - '@temp_hero'
+      - ''
+      - ''
+      - body__value
   title: title
   field_teaser_text: body__summary
   field_teaser_image:
@@ -82,10 +84,9 @@ process:
     migration: users
     source: uid
     no_stub: true
-  temp_body:
-    -
-      plugin: body_to_paragraph
-      source: body__value
+  temp_image:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_hero'
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
@@ -120,7 +121,7 @@ process:
   field_content:
     plugin: merge_without_exception
     source:
-      - '@temp_body'
+      - '@temp_image'
       - '@temp_paragraphs'
 destination:
   plugin: 'entity:node'

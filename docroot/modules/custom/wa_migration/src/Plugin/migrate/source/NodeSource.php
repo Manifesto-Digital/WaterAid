@@ -152,6 +152,33 @@ class NodeSource extends SqlBase {
             }
           }
         }
+        elseif ($field == 'field_wa_properties') {
+          if ($data = $this->select('node__' . $field, 'f')
+            ->fields('f')
+            ->condition('entity_id', $row->getSourceProperty('nid'))
+            ->execute()->fetchAll()) {
+            foreach ($data as $datum) {
+              if (isset($datum[$field . '_target_id'])) {
+                $query = $this->select('paragraphs_item_field_data', 'p')
+                  ->fields('p')
+                  ->condition('p.id', $datum[$field . '_target_id']);
+                $query->leftJoin('paragraph__field_property_label', 'l', 'l.entity_id = p.id');
+                $query->fields('l', ['field_property_label_value']);
+                $query->leftJoin('paragraph__field_property_value', 'v', 'v.entity_id = p.id');
+                $query->fields('v', ['field_property_value_value']);
+
+                if ($results = $query->execute()->fetchAll()) {
+                  foreach ($results as $result) {
+                    $value[] = [
+                      'key' => $result['field_property_label_value'],
+                      'value' => $result['field_property_value_value'],
+                    ];
+                  }
+                }
+              }
+            }
+          }
+        }
         else {
           if ($data = $this->select('node__' . $field, 'f')
             ->fields('f')
@@ -164,7 +191,12 @@ class NodeSource extends SqlBase {
               elseif (isset($values[$field . '_target_id'])) {
                 // Check if we have values nested inside the structural paragraphs
                 // we are no longer using.
-                if ($field == 'field_modules' || $field == 'field_wa_page_sections') {
+                $body_fields = [
+                  'field_wa_page_sections',
+                  'field_listing',
+                  'field_modules',
+                ];
+                if (in_array($field, $body_fields)) {
                   $value_found = FALSE;
 
                   foreach ([
@@ -215,11 +247,10 @@ class NodeSource extends SqlBase {
               }
             }
           }
-
-          $value = (empty($value)) ? NULL : $value;
-
-          $row->setSourceProperty($field, $value);
         }
+
+        $value = (empty($value)) ? NULL : $value;
+        $row->setSourceProperty($field, $value);
       }
     }
 
