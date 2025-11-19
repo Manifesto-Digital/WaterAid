@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_content
+    - field.field.node.page.field_hero
     - field.field.node.page.field_metatags
     - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
@@ -31,6 +32,15 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_metatags:
     type: metatag_empty_formatter
