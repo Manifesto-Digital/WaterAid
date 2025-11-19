@@ -1,4 +1,5 @@
 {% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
+{% set icon_position = icon_position ? icon_position : 'after' %}
 {% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
 {% set button_attributes = create_attribute(attributes|default({}))
   .addClass(all_classes)
@@ -15,8 +16,14 @@
       {% endif %}
 
       {% if type == 'primary' or type == 'secondary' %}
+        {% if icon|render and icon_position == 'before' %}
+          <span class="button__svg">
+        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+            {{ include(icon_url) }}
+      </span>
+        {% endif %}
         {{ text }}
-        {% if icon|render %}
+        {% if icon|render and icon_position == 'after' %}
           <span class="button__svg">
         {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
             {{ include(icon_url) }}
