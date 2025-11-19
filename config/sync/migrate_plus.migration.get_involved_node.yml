@@ -93,8 +93,6 @@ process:
         - standard_page
         - stories
         - webforms
-        - hero_in_content
-        - variable_content_module
       source: field_resources
   field_subject_area:
     plugin: migration_lookup
