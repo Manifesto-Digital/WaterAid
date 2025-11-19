@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.spend.field_enabled
     - paragraphs.paragraphs_type.spend
   module:
     - field_group
@@ -23,11 +24,26 @@ third_party_settings:
         markup:
           value: '<p>To edit the site wide module you need to edit the Spending module on the Group settings page. <a href="https://wateraid.ddev.site/admin/group">View your available groups.</a></p>'
           format: basic_html
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
 id: paragraph.spend.default
 targetEntityType: paragraph
 bundle: spend
 mode: default
-content: {  }
+content:
+  field_enabled:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

@@ -1,0 +1,23 @@
+uuid: 9a4eb255-b93f-4797-886e-a93a31aa6c2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_enabled
+    - paragraphs.paragraphs_type.spend
+id: paragraph.spend.field_enabled
+field_name: field_enabled
+entity_type: paragraph
+bundle: spend
+label: 'Show spend module'
+description: 'The spend module content is derived from the spend module content on the site group edit form.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

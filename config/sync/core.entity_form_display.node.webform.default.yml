@@ -17,6 +17,7 @@ dependencies:
     - node.type.webform
   module:
     - datetime
+    - default_paragraphs
     - field_group
     - layout_paragraphs
     - media_library
@@ -190,16 +191,35 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_sidebar_content:
-    type: layout_paragraphs
+    type: default_paragraphs
     weight: 4
     region: content
     settings:
-      view_mode: default
-      preview_view_mode: default
-      form_display_mode: default
-      nesting_depth: 0
-      require_layouts: 0
-      empty_message: ''
+      title: 'content item'
+      title_plural: 'content items'
+      closed_mode: summary
+      autocollapse: none
+      add_mode: modal
+      form_display_mode: simple_form
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: 0
+        convert: 0
+      default_paragraph_types:
+        cancel_anytime:
+          edit_mode: closed
+          weight: '0'
+          value: 0
+        spend:
+          value: '1'
+          edit_mode: closed
+          weight: '0'
+        image_with_quote_sidebar:
+          edit_mode: closed
+          weight: '0'
+          value: 0
+      edit_mode: closed
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
@@ -286,7 +306,6 @@ content:
       webforms: {  }
     third_party_settings: {  }
 hidden:
-  field_donation_widget: true
   publish_on: true
   publish_state: true
   unpublish_on: true

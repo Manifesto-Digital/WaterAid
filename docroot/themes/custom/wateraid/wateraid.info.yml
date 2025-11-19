@@ -9,9 +9,7 @@ package: WaterAid
 core_version_requirement: ^10
 generator: 'starterkit_theme:10.3.2'
 ckeditor5-stylesheets:
-  - dist/css/styles.css
-  - dist/css/components/link/link.css
-  - dist/css/components/rich_text/rich_text.css
+  - dist/css/ckeditor-styles.css
 
 regions:
   header: 'Header'
