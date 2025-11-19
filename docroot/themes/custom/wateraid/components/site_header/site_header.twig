@@ -21,7 +21,7 @@
         </div>
 
         <div class="site-header__mobile-actions">
-          {% if primary_navigation['#items'] is not empty %}
+          {% if primary_navigation %}
             {% for link in primary_navigation['#items'] %}
               {% if link.original_link.getEntity().field_donate_link.0.value %}
                 {{ include('wateraid:button', {
@@ -44,11 +44,12 @@
             icon: 'wa-utility-menu',
           }, false) }}
         </div>
-
-        {{ include ('wateraid:primary_navigation', {
-          menu: primary_navigation,
-          wash_matters_url: wash_matters_url,
-        }, false) }}
+        {% if primary_navigation %}
+          {{ include ('wateraid:primary_navigation', {
+            menu: primary_navigation,
+            wash_matters_url: wash_matters_url,
+          }, false) }}
+        {% endif %}
 
       </div>
     </div>
