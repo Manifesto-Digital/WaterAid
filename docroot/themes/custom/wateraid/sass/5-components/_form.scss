@@ -7,6 +7,13 @@
   flex-direction: column;
   gap: base.$wa-spacing-07;
 
+  .ssl-logo svg {
+    max-width: 88px;
+    height: 35px;
+    margin: 0 auto;
+    display: block;
+  }
+
   .form-wrapper {
     display: flex;
     flex-direction: column;
@@ -47,7 +54,7 @@
   .form-actions {
     margin: base.$wa-spacing-09 0;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     gap: base.$wa-spacing-06;
 
     .webform-page-help {
