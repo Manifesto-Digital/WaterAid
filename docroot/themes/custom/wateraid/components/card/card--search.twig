@@ -1,9 +1,9 @@
-{% set classes = [
+{% set card_classes = [
   'card',
   'card--' ~ variant,
 ] %}
 
-<div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
+<div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card') }}>
 
   <div class="card__body">
 

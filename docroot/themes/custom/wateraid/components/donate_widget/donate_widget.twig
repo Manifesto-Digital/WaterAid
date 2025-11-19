@@ -1,4 +1,4 @@
-{% set classes = [
+{% set donate_widget_classes = [
   'donate-widget',
 ] %}
 
@@ -23,7 +23,7 @@
   },
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(donate_widget_classes) }}>
   {# Heading #}
   {% if heading %}
     <div class="donate-widget__heading">
