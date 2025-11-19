@@ -48,7 +48,8 @@
     {{ include ('wateraid:site_header_donate', {}, with_context = false) }}
   {% else %}
     {{ include ('wateraid:site_header', {
-      blocks: page.header
+      blocks: page.header,
+      wash_matters_url: wash_matters_url
     }, with_context = false) }}
   {% endif %}
 

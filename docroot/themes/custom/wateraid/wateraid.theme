@@ -5,6 +5,8 @@
  * Functions to support theming.
  */
 
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\GroupRelationship;
@@ -21,14 +23,46 @@ foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
  */
 function wateraid_preprocess_page(&$variables) {
   $route_match = \Drupal::routeMatch();
+
   $params = $route_match->getParameters();
+  $node = $params->get('node');
+  $group = $params->get('group');
   $donate_header = FALSE;
 
-  if ($params->get('node') instanceof NodeInterface) {
-    $donate_header = TRUE;
+  if ($node instanceof NodeInterface) {
+    switch ($node->bundle()) {
+      case 'donation':
+        $donate_header = (bool) $node->get('field_minimal_header')->value;
+        break;
+
+      case 'webform':
+        $donate_header = (bool) $node->get('field_donation_menu')->value;
+        break;
+    }
   }
-  $donate_header = TRUE;
   $variables['donate_header'] = $donate_header;
+
+  // Provide the link to the WASH Matters site, if it exists and if either we're
+  // not in any group, nor we're not on a page that's in the WASH Matters group
+  // context.
+  /** @var \Drupal\group\Entity\GroupInterface[] $wash_matters_group */
+  $variables['wash_matters_url'] = NULL;
+  $wash_matters_group_ids = \Drupal::entityQuery('group')
+    ->accessCheck(FALSE)
+    ->condition('status', TRUE)
+    ->condition('type', 'wateraid_site')
+    ->condition('field_is_wash_matters_site', TRUE)
+    ->execute();
+  $wash_matters_group_id = !empty($wash_matters_group_ids) ? reset($wash_matters_group_ids) : NULL;
+  if ($wash_matters_group_id) {
+    $wash_matters_group = Group::load($wash_matters_group_id);
+    if (empty($group)) {
+      $variables['wash_matters_url'] = $wash_matters_group->toUrl();
+    }
+    elseif ($group instanceof GroupInterface && $group->bundle() == 'wateraid_site') {
+      $variables['wash_matters_url'] = (bool) $group->get('field_is_wash_matters_site')->value ? NULL : $wash_matters_group->toUrl();
+    }
+  }
 }
 
 /**
