@@ -23,86 +23,104 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      external_card: external_card
       internal_card: internal_card
+      external_card: external_card
     negate: 0
     target_bundles_drag_drop:
       accordion:
-        weight: 27
+        weight: -65
         enabled: false
       accordion_item:
-        weight: 28
+        weight: -64
         enabled: false
       call_to_action:
-        weight: 29
+        weight: -63
         enabled: false
       cancel_anytime:
-        weight: 30
+        weight: -62
         enabled: false
       card_collection:
-        weight: 31
+        weight: -61
         enabled: false
       donate_block:
-        weight: 32
+        weight: -60
         enabled: false
       donate_exit_modal:
-        weight: 33
+        weight: -59
         enabled: false
       donation_amount:
-        weight: 34
+        weight: -58
         enabled: false
       donation_placeholder_do_not_use:
-        weight: 35
+        weight: -57
         enabled: false
       donation_widget:
-        weight: 36
+        weight: -56
         enabled: false
       external_card:
-        weight: 37
+        weight: -54
         enabled: true
       facts_and_stats:
-        weight: 38
+        weight: -53
         enabled: false
       hero_basic:
-        weight: 39
+        weight: -52
         enabled: false
       hero_donate:
-        weight: 40
+        weight: -51
         enabled: false
       hero_image:
-        weight: 41
+        weight: -50
         enabled: false
       hero_news:
-        weight: 42
+        weight: -49
+        enabled: false
+      hero_search:
+        weight: -43
         enabled: false
       hero_video:
-        weight: 43
+        weight: -48
         enabled: false
       image:
-        weight: 44
+        weight: -47
         enabled: false
       image_gallery:
-        weight: 45
+        weight: -46
+        enabled: false
+      image_with_quote_sidebar:
+        weight: -38
         enabled: false
       internal_card:
-        weight: 46
+        weight: -55
         enabled: true
       quote:
-        weight: 47
+        weight: -45
         enabled: false
       rich_text:
-        weight: 48
+        weight: -44
+        enabled: false
+      spend:
+        weight: -37
+        enabled: false
+      spend_item:
+        weight: -36
+        enabled: false
+      spend_module:
+        weight: -35
         enabled: false
       stats_item:
-        weight: 49
+        weight: -42
+        enabled: false
+      temp_paragraph:
+        weight: -34
         enabled: false
       text_media:
-        weight: 50
+        weight: -41
         enabled: false
       video:
-        weight: 51
+        weight: -40
         enabled: false
       webform_poc:
-        weight: 52
+        weight: -39
         enabled: false
 field_type: entity_reference_revisions
