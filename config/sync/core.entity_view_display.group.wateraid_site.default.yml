@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group.wateraid_site.field_is_wash_matters_site
     - field.field.group.wateraid_site.field_spend_module
     - group.type.wateraid_site
   module:
@@ -19,7 +20,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: -4
+    weight: 1
     region: content
   label:
     type: string
@@ -27,7 +28,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: -5
+    weight: 0
     region: content
 hidden:
   changed: true
@@ -35,6 +36,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_is_wash_matters_site: true
   langcode: true
   search_api_excerpt: true
   uid: true

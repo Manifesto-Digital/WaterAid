@@ -6,6 +6,8 @@ dependencies:
     - field.field.menu_link_content.wateraid_site_menu.field_attributes
     - field.field.menu_link_content.wateraid_site_menu.field_classes
     - field.field.menu_link_content.wateraid_site_menu.field_description
+    - field.field.menu_link_content.wateraid_site_menu.field_donate_link
+    - field.field.menu_link_content.wateraid_site_menu.field_donate_menu_parent
   module:
     - menu_link_content
 id: menu_link_content.wateraid_site_menu.default
@@ -24,6 +26,26 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_donate_link:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_donate_menu_parent:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   entity_print_view_epub: true
