@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
+    - media.type.dam_file
     - media.type.dam_image
     - media.type.dam_video
     - media.type.remote_video
@@ -76,6 +77,7 @@ permissions:
   - 'clone webform content'
   - 'create article content'
   - 'create content translations'
+  - 'create dam_file media'
   - 'create dam_image media'
   - 'create dam_video media'
   - 'create donation content'
@@ -166,6 +168,7 @@ permissions:
   - 'edit footer config page entity'
   - 'edit own article content'
   - 'edit own comments'
+  - 'edit own dam_file media'
   - 'edit own dam_image media'
   - 'edit own dam_video media'
   - 'edit own donation content'

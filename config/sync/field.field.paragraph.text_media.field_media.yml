@@ -6,6 +6,9 @@ dependencies:
     - field.storage.paragraph.field_media
     - media.type.dam_image
     - media.type.dam_video
+    - media.type.local_image
+    - media.type.local_video
+    - media.type.remote_video
     - paragraphs.paragraphs_type.text_media
 id: paragraph.text_media.field_media
 field_name: field_media
@@ -23,6 +26,9 @@ settings:
     target_bundles:
       dam_image: dam_image
       dam_video: dam_video
+      local_image: local_image
+      local_video: local_video
+      remote_video: remote_video
     sort:
       field: _none
       direction: ASC

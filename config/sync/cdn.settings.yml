@@ -3,12 +3,12 @@ _core:
 status: false
 mapping:
   type: simple
-  domain: null
   conditions:
     not:
       extensions:
         - css
         - js
+  domain: null
 scheme: //
 farfuture:
   status: true
