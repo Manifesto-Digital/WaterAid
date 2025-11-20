@@ -55,10 +55,11 @@ content:
     weight: 5
     region: content
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
