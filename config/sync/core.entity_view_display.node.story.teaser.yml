@@ -53,10 +53,11 @@ content:
     weight: 5
     region: content
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -85,7 +86,6 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_audience: true
   field_content: true
   field_hero: true
   field_hide_related_content: true

@@ -63,10 +63,11 @@ content:
     weight: 6
     region: content
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -83,7 +84,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 6
+    weight: 8
     region: content
   field_topic:
     type: entity_reference_label
@@ -91,7 +92,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 9
+    weight: 7
     region: content
   links:
     settings: {  }

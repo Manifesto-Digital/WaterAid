@@ -31,10 +31,11 @@ bundle: standard_page
 mode: signposting
 content:
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -69,8 +70,6 @@ hidden:
   field_review_date: true
   field_search_phrases: true
   field_subject_area: true
-  field_teaser_image: true
-  field_teaser_text: true
   field_theme: true
   field_topic: true
   langcode: true
