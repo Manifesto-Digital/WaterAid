@@ -38,5 +38,8 @@
  * @ingroup themeable
  */
 #}
-
-{{ spend }}
+{# If the enabled field hasn't been set (pre-existing content) or is set
+   to true, show the spend module. #}
+{% if paragraph.field_enabled.0.value == 1 or paragraph.field_enabled.isEmpty() %}
+  {{ spend }}
+{% endif %}
