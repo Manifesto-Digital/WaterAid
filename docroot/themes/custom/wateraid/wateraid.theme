@@ -5,16 +5,90 @@
  * Functions to support theming.
  */
 
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\group_content_menu\GroupContentMenuInterface;
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\GroupRelationship;
-use Drupal\node\Entity\Node;
-use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
 
 // Require all the theme includes.
 $theme_path = Drupal::theme()->getActiveTheme()->getPath();
 foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
   require_once $file;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for pages.
+ */
+function wateraid_preprocess_page(&$variables) {
+  $route_match = \Drupal::routeMatch();
+  $params = $route_match->getParameters();
+  $node = $params->get('node');
+  $group = $params->get('group');
+
+  // Determine if we should be rendering the donate header or standard.
+  $donate_header = FALSE;
+  if ($node instanceof NodeInterface) {
+    switch ($node->bundle()) {
+      case 'donation':
+        $donate_header = (bool) $node->get('field_minimal_header')->value;
+        break;
+
+      case 'webform':
+        $donate_header = (bool) $node->get('field_donation_menu')->value;
+        break;
+    }
+  }
+  $variables['donate_header'] = $donate_header;
+
+  // Provide the link to the WASH Matters site, if it exists and if either we're
+  // not in any group, or we're not on a page that's in the WASH Matters group
+  // context.
+  /** @var \Drupal\group\Entity\GroupInterface[] $wash_matters_group */
+  $variables['wash_matters_url'] = NULL;
+  $wash_matters_group_ids = \Drupal::entityQuery('group')
+    ->accessCheck(FALSE)
+    ->condition('status', TRUE)
+    ->condition('type', 'wateraid_site')
+    ->condition('field_is_wash_matters_site', TRUE)
+    ->execute();
+  $wash_matters_group_id = !empty($wash_matters_group_ids) ? reset($wash_matters_group_ids) : NULL;
+  if ($wash_matters_group_id) {
+    $wash_matters_group = Group::load($wash_matters_group_id);
+    if (empty($group)) {
+      $variables['wash_matters_url'] = $wash_matters_group->toUrl();
+    }
+    elseif ($group instanceof GroupInterface && $group->bundle() == 'wateraid_site') {
+      $variables['wash_matters_url'] = (bool) $group->get('field_is_wash_matters_site')->value ? NULL : $wash_matters_group->toUrl();
+    }
+  }
+
+  // Provide the primary navigation menu to the page template.
+  if ($group instanceof GroupInterface) {
+    $group_menu_relationships = group_content_menu_get_menus_per_group($group);
+    foreach ($group_menu_relationships as $group_menu_relationship) {
+      if ($group_menu_relationship->getPluginId() === 'group_content_menu:wateraid_site_menu') {
+        /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
+        $group_content_menu = $group_menu_relationship->getEntity();
+        // The group menu name is derived from the group menu content entity.
+        $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
+        $variables['primary_navigation'] = _wateraid_build_menu($menu_name, 3);
+        // Add cacheability metadata.
+        $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+      }
+    }
+    $variables['#cache']['tags'][] = 'group:' . $group->id();
+  }
+
+  if ($relationship = \Drupal::routeMatch()->getParameter('group_relationship')) {
+    $node = $relationship->getEntity();
+    if ($node instanceof NodeInterface) {
+      $variables['bundle'] = $node->getType();
+    }
+  }
 }
 
 /**
@@ -203,7 +277,7 @@ function wateraid_preprocess_node(&$variables) {
     $val_param = $request->query->get('val');
 
     // If both fq and val query parameters exist, hide the donation widget field.
-    $variables['content']['first_step_as_widget'] = !($fq_param !== null && $val_param !== null);
+    $variables['content']['first_step_as_widget'] = !($fq_param !== NULL && $val_param !== NULL);
 
     // Add custom JS to handle FE behaviour.
     $variables['#attached']['library'][] = 'wateraid/webform-behavior';
@@ -228,6 +302,9 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
   }
 }
 
+/**
+ *
+ */
 function wateraid_preprocess_views_view(&$variables) {
   $view = $variables['view'];
   if ($view->id() === 'search') {
@@ -255,11 +332,30 @@ function wateraid_preprocess_paragraph__spend(&$variables) {
   $variables['spend'] = $group->field_spend_module->view();
 }
 
-function wateraid_preprocess_page(&$variables) {
-  if ($relationship = \Drupal::routeMatch()->getParameter('group_relationship')) {
-    $node = $relationship->getEntity();
-    if ($node instanceof NodeInterface) {
-      $variables['bundle'] = $node->getType();
-    }
-  }
+/**
+ * Helper to build a renderable menu.
+ *
+ * @param $menu_name
+ *   Menu name.
+ * @param int $max_depth
+ *   Render depth of the tree.
+ *
+ * @return array
+ */
+function _wateraid_build_menu($menu_name, int $max_depth): array {
+  /** @var \Drupal\Core\Menu\MenuLinkTreeInterface $menu_tree */
+  $menu_tree = \Drupal::service('menu.link_tree');
+  // Start with fresh parameters instead of route-based ones.
+  $parameters = new MenuTreeParameters();
+  $parameters->setMaxDepth($max_depth);
+  $parameters->expandedParents = [];
+  // Load the tree and apply manipulators.
+  $tree = $menu_tree->load($menu_name, $parameters);
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menu_tree->transform($tree, $manipulators);
+  // Return as built renderable.
+  return $menu_tree->build($tree);
 }

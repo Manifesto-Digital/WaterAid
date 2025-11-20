@@ -1,7 +1,11 @@
 services:
   ren_core.twig_extension:
     class: Drupal\wateraid_core\Twig\WateraidCoreTwigExtension
-    arguments: ['@theme.manager', '@messenger', '@language_manager']
+    arguments:
+      - '@theme.manager'
+      - '@messenger'
+      - '@language_manager'
+      - '@current_route_match'
     tags:
       - { name: twig.extension }
 

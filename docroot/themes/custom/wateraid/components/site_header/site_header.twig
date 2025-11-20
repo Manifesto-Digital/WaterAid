@@ -4,6 +4,7 @@
     is_desktop: true,
     language_switcher: blocks.wateraid_languageswitcher,
     site_selector: blocks.wateraid_siteselector,
+    wash_matters_url: wash_matters_url
   }, false) }}
 
   <div class="site-header__main">
@@ -20,6 +21,19 @@
         </div>
 
         <div class="site-header__mobile-actions">
+          {% if primary_navigation %}
+            {% for link in primary_navigation['#items'] %}
+              {% if link.original_link.getEntity().field_donate_link.0.value %}
+                {{ include('wateraid:button', {
+                  attributes: create_attribute().addClass('site-header__mobile-donate-btn'),
+                  text: link.title,
+                  url: link.url.toString(),
+                  type: 'donate',
+                }, false) }}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
           {{ include('wateraid:button', {
             attributes: create_attribute().addClass([
                 'site-header__open-close-mobile-menu-btn',
@@ -31,9 +45,15 @@
           }, false) }}
         </div>
 
-
         <a href="{{ url('<front>') }}" class="main-site-link">{{ "Main site"|t }}</a>
-        {{ blocks.wateraid_wateraidsitemenu }}
+
+        {% if primary_navigation %}
+          {{ include ('wateraid:primary_navigation', {
+            menu: primary_navigation,
+            wash_matters_url: wash_matters_url,
+          }, false) }}
+        {% endif %}
+
       </div>
     </div>
   </div>

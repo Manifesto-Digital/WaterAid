@@ -1,4 +1,4 @@
-{% stories modal with { title: 'wateraid/Molecules/Modal' } %}
+{% stories inactivityModal with { title: 'wateraid/Molecules/Modal/InactivityModal' } %}
   {% story default with {
     name: 'Default',
     args: {
@@ -15,7 +15,7 @@
 
     {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
 
-    {{ include('wateraid:modal', {
+    {{ include('wateraid:inactivity_modal', {
       image,
       title,
       copy,

@@ -1,0 +1,21 @@
+uuid: 96c5c279-a9fa-4afb-8147-feff4728a144
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_is_wash_matters_site
+    - group.type.wateraid_site
+id: group.wateraid_site.field_is_wash_matters_site
+field_name: field_is_wash_matters_site
+entity_type: group
+bundle: wateraid_site
+label: 'WASH Matters site'
+description: 'Indicate that this site is the WASH Matters site. Used in the global utility nav to provide the WASH Matters link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

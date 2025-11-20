@@ -4,8 +4,11 @@ namespace Drupal\wateraid_core\Twig;
 
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\GroupInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -25,6 +28,7 @@ class WateraidCoreTwigExtension extends AbstractExtension {
     protected ThemeManagerInterface $themeManager,
     protected MessengerInterface $messenger,
     protected LanguageManagerInterface $languageManager,
+    protected RouteMatchInterface $routeMatch,
   ) {}
 
   /**
@@ -34,6 +38,7 @@ class WateraidCoreTwigExtension extends AbstractExtension {
     return [
       new TwigFunction('get_spritemap', [$this, 'getSpritemap']),
       new TwigFunction('get_current_language_id', [$this, 'getCurrentLanguageId']),
+      new TwigFunction('get_frontpage_url', [$this, 'getFrontpageUrl']),
     ];
   }
 
@@ -75,6 +80,24 @@ class WateraidCoreTwigExtension extends AbstractExtension {
    */
   public function getCurrentLanguageId(): string {
     return $this->languageManager->getCurrentLanguage()->getId();
+  }
+
+  /**
+   * Get the group-aware homepage URL for a site, fall back to global homepage.
+   *
+   * @return \Drupal\Core\Url
+   *   URL object.
+   *
+   * @throws \Drupal\Core\Entity\EntityMalformedException
+   */
+  public function getFrontpageUrl(): Url {
+    $route_params = $this->routeMatch->getParameters();
+    $site_group = $route_params->get('group');
+    $url = Url::fromRoute('<front>');
+    if ($site_group instanceof GroupInterface && $site_group->bundle() === 'wateraid_site') {
+      $url = $site_group->toUrl();
+    }
+    return $url;
   }
 
 }

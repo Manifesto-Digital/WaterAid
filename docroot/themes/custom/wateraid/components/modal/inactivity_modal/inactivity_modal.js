@@ -1,9 +1,9 @@
 (function ($, Drupal) {
-  Drupal.behaviors.modal = {
+  Drupal.behaviors.inactivityModal = {
     attach(context) {
       function openModal() {
         context
-          .querySelectorAll('[data-component-id="wateraid:modal"]')
+          .querySelectorAll('[data-component-id="wateraid:inactivity_modal"]')
           .forEach((modal) => {
             modal.classList.add("open");
           });
@@ -64,7 +64,7 @@
             link.removeEventListener("click", exitEventListener);
           });
           const modal = context.querySelector(
-            '[data-component-id="wateraid:modal"]',
+            '[data-component-id="wateraid:inactivity_modal"]',
           );
           if (modal) {
             const closeButton = modal.querySelector(".modal__close button");
@@ -76,7 +76,7 @@
       };
 
       context
-        .querySelectorAll('[data-component-id="wateraid:modal"]')
+        .querySelectorAll('[data-component-id="wateraid:inactivity_modal"]')
         .forEach((modal) => {
           closeModal(modal);
         });
@@ -88,6 +88,10 @@
             link.addEventListener("click", exitEventListener(link));
           });
       }
+      // Allow this modal to be closed externally.
+      Drupal.inactivityModal = {
+        closeModal: closeModal,
+      };
 
       setupTimers();
     },

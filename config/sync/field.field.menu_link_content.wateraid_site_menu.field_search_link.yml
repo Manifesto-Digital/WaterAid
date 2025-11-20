@@ -1,0 +1,22 @@
+uuid: 949a0d05-5d47-41e1-9eb3-89fc47a2a013
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_search_link
+  module:
+    - menu_link_content
+id: menu_link_content.wateraid_site_menu.field_search_link
+field_name: field_search_link
+entity_type: menu_link_content
+bundle: wateraid_site_menu
+label: 'Top level search link'
+description: 'The top-level search link, linking directly to search. This menu link must be top level, not have any children and must only be selected on one item in the menu. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
