@@ -207,7 +207,6 @@ class NodeSource extends SqlBase {
                     'field_tab_items',
                     'field_quotes_quote',
                     'field_biography_item',
-                    'field_activation_bar_item',
                     'field_rainbow_links',
                     'field_donation_cta_widget',
                   ] as $table) {

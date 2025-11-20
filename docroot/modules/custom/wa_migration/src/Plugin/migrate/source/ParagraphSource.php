@@ -83,8 +83,6 @@ class ParagraphSource extends SqlBase {
                       $link['field_call_to_action_link_title'],
                     ];
                   }
-
-                  $field = 'field_call_to_action_link';
                 }
               }
               else {
@@ -98,6 +96,10 @@ class ParagraphSource extends SqlBase {
               ];
             }
           }
+        }
+
+        if ($field == 'field_activation_bar_item') {
+          $field = 'field_call_to_action_link';
         }
 
         $row->setSourceProperty($field, $value);
