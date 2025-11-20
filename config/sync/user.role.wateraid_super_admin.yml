@@ -46,6 +46,7 @@ dependencies:
     - pathauto
     - preview_link
     - quick_node_clone
+    - redirect
     - redirect_bulk
     - shorthand
     - system
@@ -78,6 +79,8 @@ permissions:
   - 'administer group'
   - 'administer menu'
   - 'administer permissions'
+  - 'administer redirect settings'
+  - 'administer redirects'
   - 'administer url aliases'
   - 'administer users'
   - 'administer webform'
