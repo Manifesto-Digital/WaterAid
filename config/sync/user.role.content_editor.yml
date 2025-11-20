@@ -28,7 +28,6 @@ dependencies:
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
   module:
-    - comment
     - config_pages
     - content_translation
     - contextual
@@ -167,7 +166,6 @@ permissions:
   - 'edit config_pages entity'
   - 'edit footer config page entity'
   - 'edit own article content'
-  - 'edit own comments'
   - 'edit own dam_file media'
   - 'edit own dam_image media'
   - 'edit own dam_video media'
