@@ -1,5 +1,4 @@
 @import "./../../../sass/base";
-@import "./../../site_header/site_header";
 
 .mobile-nav {
   // Declare this in ms only - this is picked up by our JS behaviour too.
@@ -18,7 +17,7 @@
   body.primary-menu-open & {
     visibility: visible;
     opacity: 1;
-    height: 100vh;
+    height: 84vh;
 
     @include tablet {
       display: none;
@@ -199,15 +198,52 @@
     }
 
     .site-selector {
+      &__col:first-child {
+        padding-bottom: $wa-spacing-04;
+      }
       &__site-group {
         flex-wrap: wrap;
-        margin-top: $wa-spacing-07;
+        margin-top: $wa-spacing-04;
       }
       &__site-group-heading {
         flex: 0 0 100%;
+        margin-top: $wa-spacing-07;
       }
       &__site-group-item {
         flex: 0 0 48%;
+      }
+    }
+
+  }
+
+  &__search {
+    @include page-container;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    bottom: $wa-spacing-06;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include wa-transition-motion-flow(all, 200ms);
+
+
+    .primary-menu-open:not(.mobile-menu-animating) & {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .button {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+      text-align: center;
+
+      &__wrapper,
+      &:after,
+      .button__hover {
+        width: 100%;
+        max-width: 300px;
       }
     }
 

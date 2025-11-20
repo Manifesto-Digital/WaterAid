@@ -15,9 +15,9 @@ migration_group: wateraid_uk
 label: 'Activation Bar'
 source:
   plugin: paragraph_source
-  bundle: activation_bar_item
+  bundle: activation_bar
   fields:
-    - field_call_to_action_link
+    - field_activation_bar_item
 process:
   langcode:
     -
@@ -44,9 +44,7 @@ process:
         - standard_page
         - stories
         - webforms
-      source:
-        - field_call_to_action_link_uri
-        - field_call_to_action_link_title
+      source: field_call_to_action_link
     -
       plugin: skip_on_empty
       method: row

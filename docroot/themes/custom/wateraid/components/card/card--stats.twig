@@ -1,11 +1,11 @@
-{% set classes = [
+{% set card_classes = [
   'card',
   'card--' ~ variant,
   'card--' ~ colour,
   url ? 'card--link' : 'card--no-link',
 ] %}
 
-<div {{ attributes.addClass(classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
+<div {{ attributes.addClass(card_classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
 
   <div class="card__image">
     <img src="{{ image_url }}" alt="" />

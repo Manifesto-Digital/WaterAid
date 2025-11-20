@@ -75,7 +75,7 @@
   attributes: attributes,
   heading: label,
   description: content.field_teaser_text,
-  image_url: file_url(node.field_teaser_image[0].entity.field_media_image.entity.uri.value),
+  image: content.field_teaser_image,
   date: node.created.value,
   authors: authors,
   time_to_read: node.node_read_time.0.value,

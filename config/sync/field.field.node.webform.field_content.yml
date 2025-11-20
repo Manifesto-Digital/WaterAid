@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_content
     - node.type.webform
     - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.cancel_anytime
     - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.external_card
     - paragraphs.paragraphs_type.hero_basic
@@ -14,6 +15,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_search
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.internal_card
     - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_item
@@ -41,14 +43,16 @@ settings:
       hero_video: hero_video
       accordion_item: accordion_item
       donation_amount: donation_amount
+      cancel_anytime: cancel_anytime
       hero_donate: hero_donate
       stats_item: stats_item
       external_card: external_card
+      hero_search: hero_search
       internal_card: internal_card
       spend_item: spend_item
       spend: spend
       spend_module: spend_module
-      hero_search: hero_search
+      image_with_quote_sidebar: image_with_quote_sidebar
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -62,7 +66,7 @@ settings:
         enabled: false
       cancel_anytime:
         weight: 27
-        enabled: false
+        enabled: true
       card_collection:
         weight: 28
         enabled: false
@@ -111,6 +115,9 @@ settings:
       image_gallery:
         weight: -21
         enabled: false
+      image_with_quote_sidebar:
+        weight: 53
+        enabled: true
       internal_card:
         weight: 46
         enabled: true
@@ -132,6 +139,9 @@ settings:
       stats_item:
         weight: 33
         enabled: true
+      temp_paragraph:
+        weight: 61
+        enabled: false
       text_media:
         weight: 25
         enabled: false

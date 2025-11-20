@@ -8,6 +8,8 @@ dependencies:
     - paragraphs.paragraphs_type.cancel_anytime
     - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.spend
+  content:
+    - 'paragraph:spend:85f46baf-544f-40b4-86ed-3fe6fdaf946c'
   module:
     - entity_reference_revisions
 id: node.webform.field_sidebar_content
@@ -18,7 +20,10 @@ label: 'Sidebar content'
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 85f46baf-544f-40b4-86ed-3fe6fdaf946c
+    target_revision_id: null
 default_value_callback: ''
 settings:
   handler: 'default:paragraph'
@@ -112,6 +117,9 @@ settings:
         enabled: false
       stats_item:
         weight: 31
+        enabled: false
+      temp_paragraph:
+        weight: 61
         enabled: false
       text_media:
         weight: 32

@@ -1,0 +1,26 @@
+uuid: 569f09e0-9c58-4e43-8ba2-45b6b812191f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.local_video.field_media_video_file
+    - media.type.local_video
+id: media.local_video.media_library
+targetEntityType: media
+bundle: local_video
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  directory: true
+  field_media_video_file: true
+  langcode: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  status: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true

@@ -93,8 +93,6 @@
       // If nav is open, click outside the nav closes the nav.
       document.addEventListener('click', (e) => {
         const target = e.target;
-        console.dir(target)
-        console.dir(menuButton)
         if (this.state.isOpen && !nav.contains(target) && !menuButton.contains(target)) {
           this.state.isOpen = false;
         }
@@ -104,6 +102,12 @@
       this.openNav = () => {
         menuButton.setAttribute('aria-expanded', 'true');
         document.body.classList.add('primary-menu-open');
+        document.body.classList.add('mobile-menu-animating');
+        setTimeout(() => {
+          // Add a class to prevent transition animations outside of
+          // intentional menu animations.
+          document.body.classList.remove('mobile-menu-animating');
+        }, mobileNavTransitionTime)
       }
       // Close the navigation.
       this.closeNav = () => {

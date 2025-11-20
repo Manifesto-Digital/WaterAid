@@ -1,0 +1,32 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: modal
+status: stable
+description: Modal component
+
+props:
+  type: object
+  properties:
+    instance_id:
+      type: string
+      title: Unique instance ID
+      description: Separate the modal instances on the page, if there are more than one. This will also be added as a class modifier.
+    title:
+      type: string
+      title: Title
+
+slots:
+  modal_content:
+    title: Modal content (block content)
+    description: Twig block of content to display in the modal
+    required: true
+  include_close_button:
+    title: Include the modal close button
+    description: Bool, defaults to true. If false (0), you must provide another way to close the modal.
+
+libraryOverrides:
+  css:
+    theme:
+      ../../../dist/css/components/modal/modal/modal.css: {}
+  dependencies:
+    - core/drupal
+    - core/once

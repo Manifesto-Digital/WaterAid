@@ -29,8 +29,8 @@ process:
     -
       plugin: concat
       source:
-        - field_information_lead_in_text
-        - field_information_body
+        - field_information_lead_in_text/0
+        - field_information_body/0
   field_rich_text/format:
     -
       plugin: default_value

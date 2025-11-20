@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
+    - field.field.node.publication.field_documents
     - field.field.node.publication.field_download_link_placement
     - field.field.node.publication.field_force_download
     - field.field.node.publication.field_force_open
@@ -31,10 +32,11 @@ bundle: publication
 mode: search_listing
 content:
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 0
     region: content

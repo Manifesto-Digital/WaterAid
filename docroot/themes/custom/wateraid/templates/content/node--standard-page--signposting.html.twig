@@ -62,13 +62,11 @@
  */
 #}
 
-{% set dam_field_value = node.field_teaser_image[0].entity.field_media_dam_image[0].getValue() %}
-
 {{ include('wateraid:card', {
   attributes: attributes,
   heading: label,
   description: content.field_teaser_text,
-  image_url: dam_image_url(dam_field_value),
+  image: content.field_teaser_image,
   url: url,
   variant: 'signposting'
 }, false) }}

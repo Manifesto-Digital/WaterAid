@@ -72,7 +72,22 @@ class ParagraphSource extends SqlBase {
               $value[] = $datum[$field . '_value'];
             }
             elseif (isset($datum[$field . '_target_id'])) {
-              $value[] = $datum[$field . '_target_id'];
+              if ($field == 'field_activation_bar_item') {
+                if ($links = $this->select('paragraph__field_call_to_action_link', 'p')
+                  ->fields('p')
+                  ->condition('entity_id', $datum[$field . '_target_id'])
+                  ->execute()->fetchAll()) {
+                  foreach ($links as $link) {
+                    $value[] = [
+                      $link['field_call_to_action_link_uri'],
+                      $link['field_call_to_action_link_title'],
+                    ];
+                  }
+                }
+              }
+              else {
+                $value[] = $datum[$field . '_target_id'];
+              }
             }
             elseif (isset($datum[$field . '_uri'])) {
               $value[] = [
@@ -81,6 +96,10 @@ class ParagraphSource extends SqlBase {
               ];
             }
           }
+        }
+
+        if ($field == 'field_activation_bar_item') {
+          $field = 'field_call_to_action_link';
         }
 
         $row->setSourceProperty($field, $value);

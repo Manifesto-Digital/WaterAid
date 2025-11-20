@@ -22,10 +22,11 @@ props:
       description: Button is primary or secondary
       # @todo Add examples here.
       examples: []
+
     classes:
       type: array
       title: classes
-      description: Additional CSS classes to add to the button
+      description: Additional CSS classes to add to the button. (DEPRECATED - You can pass create_attribute.addClass() to the attribute key when calling the component.)
       items:
         type: string
       examples: []

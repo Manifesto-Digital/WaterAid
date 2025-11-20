@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_image
     - media.type.dam_image
+    - media.type.local_image
     - paragraphs.paragraphs_type.call_to_action
 id: paragraph.call_to_action.field_image
 field_name: field_image
@@ -21,9 +22,10 @@ settings:
   handler_settings:
     target_bundles:
       dam_image: dam_image
+      local_image: local_image
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: dam_image
 field_type: entity_reference

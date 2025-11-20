@@ -44,6 +44,7 @@
     "drupal/block_class": "^4.0",
     "drupal/block_visibility_groups": "^2.0",
     "drupal/cdn": "^5.0@alpha",
+    "drupal/ckeditor_citation": "^1.0",
     "drupal/clientside_validation": "^4.1",
     "drupal/config_ignore": "^3.3",
     "drupal/config_override_warn": "^1.5",
@@ -54,9 +55,11 @@
     "drupal/core-recommended": "^10.5",
     "drupal/currency": "^3.4",
     "drupal/datalayer": "^2.1",
+    "drupal/default_paragraphs": "^2.0",
     "drupal/devel": "^5.4",
     "drupal/diff": "^2.0@beta",
     "drupal/ds": "^3.30",
+    "drupal/email_registration": "^1.4",
     "drupal/encrypt": "^3.2",
     "drupal/entity_print": "^2.18",
     "drupal/entity_usage": "^2.0@beta",
@@ -103,6 +106,7 @@
     "drupal/security_review": "^3.0",
     "drupal/sharethis": "^3.1",
     "drupal/shield": "^1.8",
+    "drupal/shorthand": "^5.0@beta",
     "drupal/social_media_links": "^2.10",
     "drupal/stage_file_proxy": "^3.1",
     "drupal/storybook": "^1.0@beta",
@@ -220,6 +224,9 @@
         },
         "drupal/webform_rest": {
             "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
+        },
+        "drupal/shorthand": {
+            "Issue #3546012 - 4.0.24 is broken Class \"Drupal\\shorthand\\Drush\\Commands\\ShorthandCommands\" does not exist": "https://git.drupalcode.org/project/shorthand/-/merge_requests/56.patch"
         }
     },
     "merge-plugin": {

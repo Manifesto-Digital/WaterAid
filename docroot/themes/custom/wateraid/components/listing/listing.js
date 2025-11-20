@@ -1,6 +1,7 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
       Drupal.behaviors.listing = {
-        attach() {
+        attach(context) {
+
           function toggleFilter(legend) {
             legend.classList.toggle("listing__filter--open");
             const content = legend.nextElementSibling;
@@ -26,6 +27,9 @@
 
             const wrapper = listing.querySelector(".listing__wrapper");
 
+            if (!showButton || !hideButton || !wrapper) {
+              return;
+            }
 
             showButton.addEventListener("click", function () {
               wrapper.classList.toggle("listing--filters-open");
@@ -37,6 +41,9 @@
 
             const legends = listing.querySelectorAll(".listing__filters legend");
             legends.forEach((legend) => {
+              legend.setAttribute('tabindex', 0);
+              legend.setAttribute('role', 'button');
+
               legend.addEventListener("click", () => {
                 toggleFilter(legend);
               });
@@ -48,24 +55,25 @@
                 }
               });
             });
+
           }
 
           setTimeout(function() {
-              document.querySelectorAll(".listing").forEach((listing) => {
-                attachEventListeners(listing);
-              });
+            // Use once() to ensure initialization happens only once per element
+            once('listing-init', '.listing[data-component-id="wateraid:listing"]', context).forEach((listing) => {
+              attachEventListeners(listing);
+            });
           }, 300);
 
           $(document).ajaxComplete(function (event, xhr, settings) {
             if (typeof settings.extraData !== 'undefined' && settings.extraData.hasOwnProperty('view_display_id')) {
-              document.querySelectorAll(".listing").forEach((listing) => {
+              once('listing-ajax', '.listing[data-component-id="wateraid:listing"]', context).forEach((listing) => {
                 const wrapper = listing.querySelector(".listing__wrapper");
                 wrapper.classList.add("listing--filters-open");
-                attachEventListeners(listing);
               });
             }
           });
         }
       };
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);
 

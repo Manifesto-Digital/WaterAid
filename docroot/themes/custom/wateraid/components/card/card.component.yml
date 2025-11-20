@@ -9,7 +9,7 @@ props:
       type: ["string", "null"]
       title: Heading
     description:
-      type: string
+      type: ["string", "null"]
       title: Description
     variant:
       type: string

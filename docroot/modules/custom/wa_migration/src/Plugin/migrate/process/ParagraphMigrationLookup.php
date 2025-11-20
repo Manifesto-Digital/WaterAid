@@ -81,9 +81,6 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): mixed {
-    if ($value == 92751) {
-      $one = 1;
-    }
     if (!$value) {
       return NULL;
     }
@@ -153,7 +150,7 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
         /** @var \Drupal\paragraphs\ParagraphInterface $entity */
         $entity = $storage->create([
           'type' => 'call_to_action',
-          'field_link' => $link,
+          'field_primary_cta' => $link,
           'field_variant' => 'text_only',
         ]);
         $entity->enforceIsNew();

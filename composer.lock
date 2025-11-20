@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7813b8657fa128c3888e9c0675cb8777",
+    "content-hash": "33c534f7ea4b0f6d6d1ce53eb770dbe5",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -3056,6 +3056,54 @@
             }
         },
         {
+            "name": "drupal/ckeditor_citation",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ckeditor_citation.git",
+                "reference": "1.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ckeditor_citation-1.0.1.zip",
+                "reference": "1.0.1",
+                "shasum": "0b37603fc4157624f6f50fc101e451ea8726589a"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11 || ^12"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.1",
+                    "datestamp": "1757532291",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "mazz0016",
+                    "homepage": "https://www.drupal.org/user/2544878"
+                },
+                {
+                    "name": "ldenna",
+                    "homepage": "https://www.drupal.org/user/3548646"
+                }
+            ],
+            "description": "Integrates the CKEditor 5 citations plugin.",
+            "homepage": "https://www.drupal.org/project/ckeditor_citation",
+            "support": {
+                "source": "https://git.drupalcode.org/project/ckeditor_citation"
+            }
+        },
+        {
             "name": "drupal/clientside_validation",
             "version": "4.1.2",
             "source": {
@@ -3988,6 +4036,60 @@
             }
         },
         {
+            "name": "drupal/default_paragraphs",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/default_paragraphs.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/default_paragraphs-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "2501c45d6915cf3622bc71ebb9a2355befc8f821"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11",
+                "drupal/paragraphs": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1728297686",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "nikolabintev",
+                    "homepage": "https://www.drupal.org/user/3411551"
+                },
+                {
+                    "name": "nmitev",
+                    "homepage": "https://www.drupal.org/user/3491031"
+                },
+                {
+                    "name": "robpowell",
+                    "homepage": "https://www.drupal.org/user/3417529"
+                }
+            ],
+            "description": "Provides Paragraphs widget that allows us to select multiple paragraph types as defaults.",
+            "homepage": "https://www.drupal.org/project/default_paragraphs",
+            "support": {
+                "source": "https://git.drupalcode.org/project/default_paragraphs",
+                "issues": "https://www.drupal.org/project/issues/default_paragraphs"
+            }
+        },
+        {
             "name": "drupal/devel",
             "version": "5.4.0",
             "source": {
@@ -4286,6 +4388,82 @@
                 "source": "http://cgit.drupalcode.org/dynamic_entity_reference",
                 "issues": "http://drupal.org/project/dynamic_entity_reference",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
+            "name": "drupal/email_registration",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/email_registration.git",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "fe7a91b858a98533fc1d7550b0917fc80523f186"
+            },
+            "require": {
+                "drupal/core": "^9.1 || ^10"
+            },
+            "conflict": {
+                "drupal/commerce": "<2.12"
+            },
+            "require-dev": {
+                "drupal/commerce": "^2.0",
+                "drupal/token": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1700548925",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Knaddison (greggles)",
+                    "homepage": "https://www.drupal.org/u/greggles",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Andrey Postnikov (andypost)",
+                    "homepage": "https://www.drupal.org/u/andypost",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Chris Herberte",
+                    "homepage": "https://www.drupal.org/u/chris-herberte",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Moshe Weitzman (moshe weitzman)",
+                    "homepage": "https://www.drupal.org/u/moshe-weitzman",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "moshe weitzman",
+                    "homepage": "https://www.drupal.org/user/23"
+                }
+            ],
+            "description": "Allows users to register with an email address as their username.",
+            "homepage": "https://www.drupal.org/project/email_registration",
+            "support": {
+                "source": "https://git.drupalcode.org/project/email_registration",
+                "issues": "http://drupal.org/project/issues/email_registration"
             }
         },
         {
@@ -8356,6 +8534,85 @@
             "homepage": "https://www.drupal.org/project/shield",
             "support": {
                 "source": "https://git.drupalcode.org/project/shield"
+            }
+        },
+        {
+            "name": "drupal/shorthand",
+            "version": "5.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/shorthand.git",
+                "reference": "5.0.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/shorthand-5.0.0-beta1.zip",
+                "reference": "5.0.0-beta1",
+                "shasum": "9b9dbd0bb40e1f4e15b80bb3b842222042f491d5"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11.0"
+            },
+            "require-dev": {
+                "drupal/metatag": "2.0.x"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "5.0.0-beta1",
+                    "datestamp": "1756651934",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Dekker (simultech)",
+                    "homepage": "https://www.drupal.org/u/simultech",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Deji Akala (dejiakala)",
+                    "homepage": "https://www.drupal.org/u/dejiakala",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ben Hoad (benhoad)",
+                    "homepage": "https://www.drupal.org/u/benhoad",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Vladimir Roudakov (vladimiraus)",
+                    "homepage": "https://www.drupal.org/u/vladimiraus",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "shorthand",
+                    "homepage": "https://www.drupal.org/user/3522895"
+                },
+                {
+                    "name": "vladimiraus",
+                    "homepage": "https://www.drupal.org/user/673120"
+                },
+                {
+                    "name": "benhoad",
+                    "homepage": "https://www.drupal.org/user/3666864"
+                }
+            ],
+            "description": "A module that allows the publishing of Shorthand stories directly to Drupal.",
+            "homepage": "https://www.drupal.org/project/shorthand",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/shorthand",
+                "issues": "https://www.drupal.org/project/issues/shorthand"
             }
         },
         {
@@ -21780,6 +22037,7 @@
         "drupal/media_directories": 10,
         "drupal/preview_link": 15,
         "drupal/rabbit_hole": 15,
+        "drupal/shorthand": 10,
         "drupal/storybook": 10,
         "drupal/viewsreference": 10,
         "drupal/webform": 10,

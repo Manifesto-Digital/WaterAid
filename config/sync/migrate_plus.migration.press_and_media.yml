@@ -33,6 +33,8 @@ process:
       plugin: default_value
       default_value: en
   status: status
+  created: created
+  changed: changed
   temp_hero:
     plugin: migration_lookup
     migration: media
@@ -117,6 +119,8 @@ process:
         - donation_cta_widget_embed
         - hero_in_content
         - variable_content_module
+        - statistics
+        - statistics_icons
       source: field_modules
   field_content:
     plugin: merge_without_exception

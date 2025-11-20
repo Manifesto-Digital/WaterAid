@@ -6,6 +6,13 @@
     position: relative;
   }
 
+  &__content-wrapper {
+    @include desktop {
+      @include page-container;
+    }
+    position: relative;
+  }
+
   &__image {
     width: 100%;
     display: inline;
@@ -58,12 +65,21 @@
 
   &__quote {
     background-color: $wa-navy;
+    display: none;
+    @include desktop {
+      display: block;
+    }
 
     .quote {
       background-color: $wa-navy;
       justify-self: flex-end;
       margin-top: 0;
-      width: calculate-rem(660);
+      width: 50%;
+      max-width: calculate-rem(660);
+    }
+
+    .quote__content {
+      padding-right: 0;
     }
 
     .quote__content--quote {
@@ -72,11 +88,12 @@
   }
 
   &__donate {
-    @include desktop {
+    @include desktop() {
       position: absolute;
-      top: $wa-spacing-13;
+      top: calculate-rem(-624);
       left: $wa-spacing-09;
-      width: calculate-rem(660);
+      width: 50%;
+      max-width: calculate-rem(660);
     }
   }
 
@@ -89,7 +106,7 @@
     gap: $wa-spacing-06;
     flex-direction: column;
 
-    @include desktop {
+    @include tablet {
       padding: $wa-spacing-09;
     }
 
@@ -112,7 +129,7 @@
       flex-direction: column;
       gap: $wa-spacing-06;
 
-      @include desktop {
+      @include tablet {
         flex-direction: row;
         align-items: center;
       }
@@ -134,7 +151,7 @@
       flex-direction: column;
       gap: $wa-spacing-02;
 
-      @include desktop {
+      @include tablet {
         flex-direction: row;
         gap: $wa-spacing-03;
       }
@@ -142,7 +159,7 @@
       svg {
         display: none;
 
-        @include desktop {
+        @include tablet {
           display: block;
           width: $wa-spacing-03;
           height: auto;
@@ -171,9 +188,18 @@
     .cta__content {
       padding: $wa-spacing-07 $wa-spacing-05;
 
-      @include desktop {
+      @include tablet {
         padding: $wa-spacing-09;
       }
+    }
+  }
+
+  &--media,
+  &--news {
+    .hero__content-wrapper {
+      display: flex;
+      gap: $wa-spacing-06;
+      flex-direction: column;
     }
   }
 
@@ -264,7 +290,14 @@
   }
 
   &--donate {
+    background-color: $wa-navy;
+
+    .hero__image {
+      max-height: calculate-rem(720);
+    }
+
     .image__credit {
+      width: 50%;
       max-width: calculate-rem(660);
     }
 

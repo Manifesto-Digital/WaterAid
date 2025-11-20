@@ -3,6 +3,14 @@
 .listing {
   margin-bottom: $wa-spacing-07;
 
+  .bef-exposed-form {
+    display: none;
+  }
+
+  .button__wrapper .button__hover {
+    height: calculate-rem(56);
+  }
+
   &__wrapper {
     @include grid();
 
@@ -27,6 +35,10 @@
   &__filters {
     display: none;
 
+    .fieldset-wrapper {
+      display: none;
+    }
+
     legend {
       @include h6();
       background-color: transparent;
@@ -48,8 +60,15 @@
         cursor: pointer;
       }
 
+      &:focus-visible {
+        background-color: $wa-pink;
+      }
+
       &.listing__filter--open {
         background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-chevron-up.svg");
+        & + div.fieldset-wrapper {
+          display: block;
+        }
       }
     }
 
@@ -180,6 +199,10 @@
 
   &--filters-open {
     @include grid();
+
+    .bef-exposed-form {
+      display: block;
+    }
 
     .listing__wrapper--button {
       display: none;

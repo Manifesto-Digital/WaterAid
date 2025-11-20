@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.search_listing
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
@@ -25,10 +26,11 @@ bundle: webform
 mode: search_listing
 content:
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -46,6 +48,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_donation_menu: true
+  field_donation_widget: true
   field_hero: true
   field_metatags: true
   field_options: true

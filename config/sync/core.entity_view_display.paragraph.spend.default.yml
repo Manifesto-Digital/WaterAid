@@ -3,12 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.spend.field_enabled
     - paragraphs.paragraphs_type.spend
 id: paragraph.spend.default
 targetEntityType: paragraph
 bundle: spend
 mode: default
-content: {  }
+content:
+  field_enabled:
+    type: boolean
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true

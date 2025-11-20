@@ -48,6 +48,30 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
                 $group->addRelationship($node, 'group_node:' . $type, ['uid' => 1]);
               }
             }
+
+            if ($event->getMigration()->id() == 'press_and_media') {
+              if ($node->hasField('field_get_involved')) {
+                $values = [];
+
+                // Handle any existing values.
+                if ($existing = $node->get('field_get_involved')->getValue()) {
+                  foreach ($existing[0] as $item) {
+                    $values[] = ['target_id' => $item];
+                  }
+                }
+
+                /** @var \Drupal\taxonomy\TermInterface $term */
+                $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties([
+                  'vid' => 'get_involved',
+                  'name' => 'Press Release',
+                ]);
+                $term = reset($terms);
+
+                $values[] = ['target_id' => $term->id()];
+                $node->set('field_get_involved', $values);
+                $node->save();
+              }
+            }
           }
         }
       }

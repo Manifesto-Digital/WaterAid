@@ -109,6 +109,8 @@ process:
         - donation_cta_widget_embed
         - hero_in_content
         - variable_content_module
+        - statistics
+        - statistics_icons
       source: field_modules
   field_content:
     plugin: merge_without_exception

@@ -1,0 +1,22 @@
+uuid: 19324d26-4335-4c59-bd37-e2935e9afafe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_donate_menu_parent
+  module:
+    - menu_link_content
+id: menu_link_content.wateraid_site_menu.field_donate_menu_parent
+field_name: field_donate_menu_parent
+entity_type: menu_link_content
+bundle: wateraid_site_menu
+label: "'Ways to donate' menu parent"
+description: "The top-level 'Ways to donate' menu link, which contains child menu items that open in a meganav panel. This must only be enabled on the top level link and must only be selected on one item in the menu. "
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

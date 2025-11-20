@@ -1,0 +1,14 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Site header - Donate
+status: stable
+description: Donate site header.
+libraryOverrides:
+  dependencies:
+    - core/once
+  css:
+    theme:
+      ../../dist/css/components/site_header_donate/site_header_donate.css: {}
+props:
+  type: object
+  properties: {}
+

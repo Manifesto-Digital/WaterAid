@@ -47,7 +47,8 @@
 
     &--primary,
     &--secondary,
-    &--donate {
+    &--donate,
+    &--primary-meganav-donate-menu-parent {
       .button__hover {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
       }
@@ -63,6 +64,7 @@
     &--social {
       .button__hover {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
+        z-index: 0;
       }
     }
 
@@ -75,7 +77,8 @@
 
   &--primary,
   &--secondary,
-  &--donate {
+  &--donate,
+  &--primary-meganav-donate-menu-parent {
     font-size: calculate-rem(24);
     font-family: "Noto Sans Bold";
     padding: $wa-spacing-03 $wa-spacing-04;
@@ -124,7 +127,8 @@
     }
   }
 
-  &--donate {
+  &--donate,
+  &--primary-meganav-donate-menu-parent {
     color: $wa-lime;
 
     &::after {
@@ -150,7 +154,8 @@
     z-index: 10;
     align-items: center;
     justify-content: center;
-    transition: 200ms;
+    transition: transform 200ms;
+    will-change: transform;
 
     &:hover {
       transform: translateX($wa-spacing-01) translateY(-$wa-spacing-01);
@@ -176,19 +181,11 @@
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
       }
     }
-
-    &:hover::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-navy.svg");
-    }
   }
 
   &--social {
     &::after {
       background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-border.svg");
-    }
-
-    &:hover::before {
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-white.svg");
     }
 
     &:focus-visible {
@@ -212,10 +209,7 @@
 
     &:hover {
       cursor: pointer;
-
-      &::before {
-        transform: translateX(-2px) translateY(2px);
-      }
+      transform: translateX(2px) translateY(-2px);
 
       &::after {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-circle-cream.svg");
@@ -242,8 +236,11 @@
     background-size: contain;
     background-repeat: no-repeat;
     transition: 200ms;
-    height: $wa-spacing-09;
-    width: $wa-spacing-09;
+    height: calculate-rem(58);
+    width: calculate-rem(58);
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
     &:hover {
       transform: translateX($wa-spacing-02) translateY(-$wa-spacing-02);
@@ -252,6 +249,7 @@
     .icon {
       display: block;
       width: $wa-spacing-06;
+      margin-top: calculate-rem(5);
 
       svg {
         fill: currentColor;
@@ -274,34 +272,43 @@
       }
     }
 
-    //&::before {
-    //  transition: transform 200ms;
-    //  will-change: transform;
-    //  content: "";
-    //  display: block;
-    //  position: absolute;
-    //  height: 0;
-    //  width: 0;
-    //  top: 0;
-    //  left: 0;
-    //  z-index: -1;
-    //  background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square.svg");
-    //  background-size: contain;
-    //  background-repeat: no-repeat;
-    //}
-    //
-    //&:hover {
-    //  &::before {
-    //    transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
-    //    height: 100%;
-    //    width: 100%;
-    //  }
-    //}
-
     &:focus-visible {
       background: url("/themes/custom/wateraid/images/icons/wa-container-sm-square-white.svg") $wa-white no-repeat;
       background-size: contain;
     }
+  }
+
+  &--primary-meganav-donate-menu-parent {
+    .icon {
+      display: block;
+      width: $wa-spacing-06;
+      transform: rotate(180deg);
+      pointer-events: none;
+      @include wa-transition-motion-flow(transform, 0.2s);
+
+      svg {
+        fill: currentColor;
+        max-width: 100%;
+        aspect-ratio: 1.1;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &--search-btn {
+    .icon {
+      width: $wa-spacing-06;
+
+      svg {
+        aspect-ratio: 1;
+      }
+    }
+
   }
 
   &__svg {
@@ -312,21 +319,23 @@
     }
   }
 
-  &__svg--left svg {
-    transform: rotate(180deg);
-  }
-
   &--disabled {
     cursor: not-allowed;
     opacity: 0.5;
     text-decoration: none;
 
     &:hover {
-      cursor: unset;
+      .button {
+        transform: none;
+        cursor: default;
+      }
 
-      &::before {
+      .button__hover {
         display: none;
       }
     }
+  }
+  svg {
+    fill: currentColor;
   }
 }

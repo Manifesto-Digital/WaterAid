@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.signposting
     - field.field.node.page.field_content
+    - field.field.node.page.field_hero
     - field.field.node.page.field_metatags
     - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
@@ -22,10 +23,11 @@ bundle: page
 mode: signposting
 content:
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -47,6 +49,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_content: true
+  field_hero: true
   field_metatags: true
   field_minimal_header: true
   field_review_date: true

@@ -25,9 +25,9 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  field_primary_cta/uri:
+  field_primary_cta:
     -
-      plugin: link_migration_lookup
+      plugin: links_migration_lookup
       migration:
         - articles
         - campaigns
@@ -45,9 +45,8 @@ process:
         - standard_page
         - stories
         - webforms
-      source: field_resource_link_single_uri
-  field_primary_cta/title: field_resource_link_single_title
-  field_rich_text/value: field_resource_link_description
+      source: field_resource_link_single
+  field_rich_text/value: field_resource_link_description/0
   field_rich_text/format:
     plugin: default_value
     default_value: full_html

@@ -1,10 +1,10 @@
-{% set classes = [
+{% set hero_classes = [
   'hero',
   'hero--' ~ colour,
   'hero--' ~ variant
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(hero_classes) }}>
   {% if image %}
     <div class="hero__image">
       {{ include('wateraid:image', {
@@ -17,6 +17,7 @@
     </div>
   {% endif %}
 
+  <div class="hero__content-wrapper">
   {% if donate_widget %}
     <div class="hero__donate">
       {{ donate_widget }}
@@ -32,4 +33,5 @@
       }) }}
     </div>
   {% endif %}
+  </div>
 </div>

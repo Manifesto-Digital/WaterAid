@@ -1,0 +1,22 @@
+{% stories modal with { title: 'wateraid/Molecules/Modal/Modal' } %}
+  {% story default with {
+    name: 'Default',
+    args: {
+      title: 'Lorem ipsum dolor sit amet.',
+      copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      cta: {
+        url: '/',
+        title: 'Button label'|t,
+      },
+    }
+  } %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+
+    {{ include('wateraid:modal', {
+      title,
+      copy,
+      cta,
+    }) }}
+  {% endstory %}
+{% endstories %}

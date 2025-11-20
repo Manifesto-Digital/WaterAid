@@ -93,8 +93,6 @@ process:
         - standard_page
         - stories
         - webforms
-        - hero_in_content
-        - variable_content_module
       source: field_resources
   field_subject_area:
     plugin: migration_lookup
@@ -150,6 +148,8 @@ process:
         - donation_cta_widget_embed
         - hero_in_content
         - variable_content_module
+        - statistics
+        - statistics_icons
       source: field_wa_page_sections
   field_content:
     plugin: merge_without_exception

@@ -1,9 +1,9 @@
-{% set classes = [
+{% set hero_classes = [
   'hero',
   'hero--search',
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(hero_classes) }}>
   <div class="hero__content">
     <h1 class="hero__content--title">{{ title }}</h1>
 
@@ -46,3 +46,4 @@
     {% endif %}
   </div>
 </div>
+

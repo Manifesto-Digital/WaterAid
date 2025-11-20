@@ -24,7 +24,7 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  field_rich_text/value: field_paragraph_content
+  field_rich_text/value: field_paragraph_content/0
   field_rich_text/format:
     -
       plugin: default_value

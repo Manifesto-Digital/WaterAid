@@ -25,7 +25,7 @@
         <div class="site-selector__title">{{ panel_title }}</div>
         <div class="site-selector__description">{{ panel_description|nl2br }}</div>
       </div>
-      <div class="site-selector__col site-selector__col">
+      <div class="site-selector__col">
         {% if grouped_items.global %}
         <ul class="site-selector__site-group">
           {% set global_items = grouped_items.global.items %}
@@ -46,7 +46,7 @@
         {% endif %}
       </div>
 
-      <div class="site-selector__col site-selector__col">
+      <div class="site-selector__col">
         {% if grouped_items.africa %}
           {% set items_group = grouped_items.africa %}
           <h3 class="site-selector__site-group-heading">{{ items_group.title }}</h3>
@@ -58,7 +58,7 @@
         {% endif %}
       </div>
 
-      <div class="site-selector__col site-selector__col">
+      <div class="site-selector__col">
         {% if grouped_items.americas %}
           {% set items_group = grouped_items.americas %}
           <h3 class="site-selector__site-group-heading">{{ items_group.title }}</h3>

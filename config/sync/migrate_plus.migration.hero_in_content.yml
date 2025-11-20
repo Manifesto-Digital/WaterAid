@@ -34,12 +34,12 @@ process:
   status: status
   temp_media:
     plugin: migration_lookup
-    source: field_hero_image
+    source: field_hero_image/0
     migration: media
     no_stub: true
   temp_video:
     plugin: video_url_to_media
-    source: field_hero_video
+    source: field_hero_video/0
   field_media:
     plugin: concat
     source:
@@ -49,10 +49,10 @@ process:
     plugin: concat
     source:
       - constants/head_start
-      - field_paragraph_hero_title
+      - field_paragraph_hero_title/0
       - constants/head_end
       - constants/p_start
-      - field_paragraph_hero_subtext
+      - field_paragraph_hero_subtext/0
       - constants/p_end
   field_rich_text/format:
     plugin: default_value

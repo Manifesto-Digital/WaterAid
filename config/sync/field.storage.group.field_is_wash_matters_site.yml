@@ -1,0 +1,18 @@
+uuid: 055a097e-4a16-4d1c-9325-1e5442b14a2c
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_is_wash_matters_site
+field_name: field_is_wash_matters_site
+entity_type: group
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

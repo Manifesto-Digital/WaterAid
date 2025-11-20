@@ -12,7 +12,7 @@ dependencies:
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
   content:
-    - 'taxonomy_term:get_involved:262e8340-2c3a-4af0-8420-b4f574aacb3c'
+    - 'taxonomy_term:get_involved:ab96ca1a-2459-4ce7-997e-763004ce8c1f'
   module:
     - better_exposed_filters
     - node
@@ -332,7 +332,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            637: 637
+            1167: 1167
           group: 1
           exposed: false
           expose:

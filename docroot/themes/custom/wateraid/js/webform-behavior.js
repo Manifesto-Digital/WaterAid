@@ -15,7 +15,7 @@
 
   Drupal.behaviors.wateraidWebformBehavior = {
     attach: function (context, settings) {
-      let findSubmit = document.querySelector('.field--name-webform form fieldset:first-of-type input[type="submit"]');
+      let findSubmit = document.querySelector('.field--name-webform form fieldset:first-of-type input[type="submit"]:not([data-drupal-selector="edit-contact-address-manual"])');
       if (!findSubmit) {
         findSubmit = context.querySelector('.webform-submission-form form [data-edit-step="step_1"]');
       }
