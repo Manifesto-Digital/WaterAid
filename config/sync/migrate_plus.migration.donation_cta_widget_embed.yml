@@ -30,7 +30,7 @@ process:
     plugin: concat
     source:
       - constants/body
-      - field_cta_widget_donation_form
+      - field_cta_widget_donation_form/0
   field_rich_text/format:
     plugin: default_value
     default_value: full_html

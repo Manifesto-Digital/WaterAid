@@ -1,9 +1,9 @@
-{% set classes = [
+{% set cta_classes = [
   'cta',
   'cta--' ~ variant
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(cta_classes) }}>
   {% if image %}
     <div class="cta__image">
       {{ include('wateraid:image', {

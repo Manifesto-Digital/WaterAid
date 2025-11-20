@@ -10,7 +10,7 @@ id: node.standard_page.field_get_involved
 field_name: field_get_involved
 entity_type: node
 bundle: standard_page
-label: 'Get involved'
+label: 'Content Type'
 description: ''
 required: false
 translatable: false

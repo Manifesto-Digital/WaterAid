@@ -1,10 +1,10 @@
-{% set classes = [
+{% set image_classes = [
   'image',
   'image--' ~ width,
   'image--' ~ caption_display|replace({'_':'-'})
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(image_classes) }}>
   <div class="image__wrapper">
     <figure class="image__content">
       {{ image }}

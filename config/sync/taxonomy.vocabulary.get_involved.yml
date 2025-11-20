@@ -18,7 +18,7 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: 'Get Involved'
+name: 'Content Types'
 vid: get_involved
 description: null
 weight: 0

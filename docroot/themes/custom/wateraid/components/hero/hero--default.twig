@@ -1,10 +1,10 @@
-{% set classes = [
+{% set hero_classes = [
   'hero',
   'hero--'~colour,
   image or video ? 'hero--media' : 'hero--basic'
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(hero_classes) }}>
   {% if mobile_image|render %}
     <div class="hero__image hero__image--mobile">
       {{ include('wateraid:image', {

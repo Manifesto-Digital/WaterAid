@@ -1,8 +1,8 @@
-{% set classes = [
+{% set modal_classes = [
   'inactivity-modal'
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(modal_classes) }}>
   <div class="modal__wrapper">
     <div class="modal__image">
       {{ include('wateraid:image', {

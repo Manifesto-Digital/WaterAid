@@ -1,9 +1,9 @@
-{% set classes = [
+{% set text_media_classes = [
   'm-text-media',
   'm-text-media--' ~ alignment,
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(text_media_classes) }}>
   <div class="m-text-media__text">
     {{ include('wateraid:rich_text', { text: text }, with_context = false) }}
 

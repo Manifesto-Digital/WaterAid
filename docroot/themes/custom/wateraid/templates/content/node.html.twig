@@ -74,7 +74,11 @@
 ]) %}
 
 <article{{ attributes.addClass(node_classes).removeAttribute('role') }}>
-  {{ content.field_hero }}
+  {% if content.field_hero|render %}
+    {{ content.field_hero }}
+  {% else %}
+    <h1>{{ label }}</h1>
+  {% endif %}
   <div class="page-container">
     {{ content.field_content }}
   </div>

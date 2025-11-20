@@ -1,4 +1,5 @@
 {% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
+{% set icon_position = icon_position ? icon_position : 'after' %}
 {% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
 {% set attributes = attributes.addClass(all_classes) %}
 

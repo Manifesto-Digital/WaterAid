@@ -1,10 +1,10 @@
-{% set classes = [
+{% set hero_classes = [
   'hero',
   'hero--' ~ colour,
   'hero--' ~ variant
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(hero_classes) }}>
   <div class="hero__content">
     <div class="hero__content-wrapper">
     {% if tags %}

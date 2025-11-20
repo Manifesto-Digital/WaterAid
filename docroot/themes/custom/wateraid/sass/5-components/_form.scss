@@ -5,7 +5,14 @@
   @include base.container-sm();
   display: flex;
   flex-direction: column;
-  gap: base.$wa-spacing-07;
+  gap: base.$wa-spacing-04;
+
+  .ssl-logo svg {
+    max-width: 88px;
+    height: 35px;
+    margin: 0 auto;
+    display: block;
+  }
 
   .form-wrapper {
     display: flex;
@@ -17,7 +24,7 @@
         display: inline-block;
         font-family: base.$bold-font;
         font-size: base.calculate-rem(20);
-        margin-bottom: base.$wa-spacing-02;
+        margin-bottom: base.$wa-spacing-04;
       }
     }
 
@@ -37,8 +44,14 @@
     }
   }
 
+  div[data-drupal-messages] {
+    padding: 0;
+    margin: 0;
+  }
+
   .wa-subelement-wrapper-capture-plus {
     flex-flow: row wrap;
+
     .capture-manual {
       @include text-link();
     }
@@ -47,7 +60,7 @@
   .form-actions {
     margin: base.$wa-spacing-09 0;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     gap: base.$wa-spacing-06;
 
     .webform-page-help {
@@ -73,6 +86,7 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
       white-space: nowrap;
+
       &::after {
         content: "";
         display: block;
@@ -213,6 +227,7 @@ input[type='radio'] {
   .visually-hidden + span {
     @include visually-hidden();
   }
+
   label {
     display: inline-block;
     font-family: base.$bold-font;
@@ -242,6 +257,7 @@ input[type='radio'] {
     border: 2px solid base.$wa-navy;
     padding: base.$wa-spacing-03;
     font-size: base.calculate-rem(18);
+
     &.error {
       border-color: base.$wa-orange
     }
@@ -249,6 +265,7 @@ input[type='radio'] {
     &:active {
       border: 3px solid base.$wa-navy;
     }
+
     &:focus {
       outline: 3px solid base.$wa-pink;
     }
@@ -297,10 +314,12 @@ input[type='radio'] {
         position: relative;
         top: -10px;
       }
+
       &:after {
         background-color: base.$wa-cream;
       }
     }
+
     &:hover {
       .progress-marker {
         &:before {
@@ -313,12 +332,14 @@ input[type='radio'] {
   .progress-step {
     .progress-marker {
       color: base.$wa-navy;
+
       &:before {
         background-color: base.$wa-cream;
         background-image: url("/themes/custom/wateraid/images/icons/next.svg");
         width: 51px;
         height: 48px;
       }
+
       &:hover {
         .progress-marker {
           &:before {
@@ -336,6 +357,7 @@ input[type='radio'] {
           background-image: url("/themes/custom/wateraid/images/icons/complete.svg");
         }
       }
+
       &:hover {
         .progress-marker {
           &:before {
@@ -435,7 +457,7 @@ input[type='radio'] {
 
 .pca .pcaautocomplete,
 .pcaautocomplete .pcatext {
-    border-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .webform-buttons-other-input_currency-sign {
@@ -446,6 +468,7 @@ input[type='radio'] {
   position: absolute;
   left: .5rem;
   top: 0.75rem;
+
   + input[type=number] {
     padding-left: 1.5rem;
   }
@@ -454,17 +477,23 @@ input[type='radio'] {
 fieldset.next-form-step,
 fieldset.prev-form-step {
   border: 0;
-  padding: 7rem 0 2rem;
+  padding: 10rem 0 2rem;
   position: relative;
   margin-bottom: 2rem;
-  &:not(:last-of-type) {
-    border-bottom: 2px solid $wa-cream;
+  @include desktop {
+    padding: 3.75rem 0 2rem;
   }
+
+  &:not(:last-of-type) {
+    border-bottom: 2px solid base.$wa-cream;
+  }
+
   legend {
     position: absolute;
-    top: 3rem;
+    top: base.$wa-spacing-09;
     left: 0;
     width: 100%;
+
     .fieldset-legend,
     .step-title__text {
       font-size: 2rem;
@@ -476,11 +505,13 @@ fieldset.prev-form-step {
     @include link();
   }
 }
+
 fieldset.prev-form-step {
   background: url('/themes/custom/wateraid/images/icons/complete.svg') no-repeat;
   background-position: top left;
   order: -1;
 }
+
 fieldset.next-form-step {
   .step-title {
     position: absolute;
@@ -488,6 +519,7 @@ fieldset.next-form-step {
     left: 0;
     width: 100%;
   }
+
   .fa-stack-1x {
     font-size: base.calculate-rem(22);
     position: absolute;
@@ -499,10 +531,18 @@ fieldset.next-form-step {
     line-height: 3rem;
     background: url('/themes/custom/wateraid/images/icons/next.svg') no-repeat;
   }
+
   .step-title__text {
+    font-family: "RB Nylo Black", sans-serif !important;
+    color: base.$wa-navy-80;
     position: absolute;
+    left: 0;
     top: 4rem;
     width: 100%;
+    @include base.desktop {
+      top: 0;
+      left: 4rem;
+    }
   }
 }
 
@@ -510,6 +550,7 @@ fieldset.next-form-step {
   position: relative;
   color: $wa-navy;
   font-size: 2rem;
+
   .step-title__icon {
     display: block;
     font-size: base.calculate-rem(22);
@@ -518,7 +559,6 @@ fieldset.next-form-step {
     text-align: center;
     line-height: 3rem;
     background: url('/themes/custom/wateraid/images/icons/current.svg') no-repeat;
-    margin-bottom: 1rem;
   }
 }
 
@@ -527,53 +567,152 @@ fieldset.next-form-step {
   [data-drupal-selector="edit-step-title"],
   [data-drupal-selector="edit-step-1"],
   [data-drupal-selector="edit-actions"] {
-    display: none!important;
+    display: none !important;
   }
 }
+
 .node--type-webform {
   .single-option,
   .single-frequency-label,
   .single-amount-label .js-form-type-radio {
-    display: none!important;
+    display: none !important;
   }
+
   [data-donations-method="stripe"] .payment-button {
     @include base.button-primary();
   }
+
   div[data-once="webform-buttons"],
   .wa-element-wrapper-webform-buttons.webform-options-display-side-by-side {
     display: flex;
     flex-flow: row wrap;
     gap: 1rem;
-    margin-bottom: 1rem;
     @include breakpoint-md {
       flex-wrap: nowrap;
+      padding: base.$wa-spacing-04 base.$wa-spacing-04 base.$wa-spacing-03 base.$wa-spacing-04;
+      background-color: base.$wa-cream;
+      position: relative;
     }
+
     label {
       @include base.button-primary();
       max-width: 100%;
       width: 100%;
+      max-height: base.$wa-spacing-09;
       text-align: center;
       flex: 1 1 100%;
       justify-content: center;
+      z-index: 1;
+
       &:hover {
         background-color: base.$wa-blue;
         border-color: base.$wa-blue;
         border-radius: 0;
       }
+
       @include breakpoint-md {
         width: auto;
-        max-width: 25%;
       }
     }
+  }
+
+  .form-actions {
+    .button__wrapper {
+      width: 100%;
+    }
+
+    .button--primary {
+      min-width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .button[value='Edit'] {
+    align-self: start;
+    @include base.desktop {
+      left: 4rem;
+    }
+  }
+
+  .capture-manual {
+    @include base.text-link;
+  }
+
+  .pca .pcaautocomplete {
+    border: none !important;
+  }
+
+  .pca-wrapper {
+    .wa-element-wrapper-textfield {
+      width: 100%;
+    }
+  }
+
+  .gift-aid-logo {
+    margin-top: -2rem;
+    @include base.desktop {
+      margin-left: 2rem;
+    }
+  }
+
+  .js-form-type-checkbox {
+    padding: 0;
+    display: flex;
+    align-items: self-start;
+    margin-top: 1rem;
+    gap: 0;
+
+    label {
+      margin-left: 1rem;
+    }
+  }
+
+  fieldset.prev-form-step legend {
+    position: absolute;
+    left: 0;
+    top: 4rem;
+    width: 100%;
+    font-family: "RB Nylo Black", sans-serif !important;
+    @include base.desktop {
+      top: 0;
+      left: 4rem;
+    }
+  }
+
+  h2:not(.step-header),
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding-bottom: $wa-spacing-07;
+  }
+
+  .description a {
+    @include base.link;
+  }
+
+  .fieldset-wrapper {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .ajax-progress {
     position: absolute;
   }
+
+  .step-title {
+    @include base.desktop {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
 }
 
 fieldset.wa-donation-methods {
   border: none;
+
   .fieldset-legend {
     @include visually-hidden();
   }
