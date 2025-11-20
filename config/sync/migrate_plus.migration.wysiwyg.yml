@@ -24,7 +24,7 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  field_rich_text/value: field_wysiwyg_text_block
+  field_rich_text/value: field_wysiwyg_text_block/0
   field_rich_text/format:
     -
       plugin: default_value

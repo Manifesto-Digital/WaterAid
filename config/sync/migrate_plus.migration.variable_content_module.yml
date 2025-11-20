@@ -56,6 +56,8 @@ process:
       - rainbow_link_item
       - donation_cta_widget_embed
       - hero_in_content
+      - statistics
+      - statistics_icons
     source: field_aside_section
     no_stub: true
   field_main:
@@ -86,6 +88,8 @@ process:
       - rainbow_link_item
       - donation_cta_widget_embed
       - hero_in_content
+      - statistics
+      - statistics_icons
     source: field_vcm_main
     no_stub: true
   field_links:

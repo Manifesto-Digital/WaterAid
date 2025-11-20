@@ -27,7 +27,7 @@ process:
       default_value: en
   status: status
   field_title: field_tab_header
-  field_rich_text/value: field_tab_content
+  field_rich_text/value: field_tab_content/0
   field_rich_text/format:
     plugin: default_value
     default_value: full_html
