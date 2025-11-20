@@ -45,7 +45,7 @@ function wateraid_preprocess_page(&$variables) {
   $variables['donate_header'] = $donate_header;
 
   // Provide the link to the WASH Matters site, if it exists and if either we're
-  // not in any group, nor we're not on a page that's in the WASH Matters group
+  // not in any group, or we're not on a page that's in the WASH Matters group
   // context.
   /** @var \Drupal\group\Entity\GroupInterface[] $wash_matters_group */
   $variables['wash_matters_url'] = NULL;
@@ -80,6 +80,7 @@ function wateraid_preprocess_page(&$variables) {
         $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
       }
     }
+    $variables['#cache']['tags'][] = 'group:' . $group->id();
   }
 
   if ($relationship = \Drupal::routeMatch()->getParameter('group_relationship')) {
