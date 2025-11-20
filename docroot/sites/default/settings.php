@@ -250,16 +250,6 @@ $databases = [];
  * @endcode
  */
 
- $databases['migrate']['default'] = [
-  'database' => "db",
-  'username' => "db",
-  'password' => "db",
-  'host' => "localhost",
-  'driver' => "mysql",
-  'port' => "3306",
-  'prefix' => "",
-];
-
 /**
  * Location of the site configuration files.
  *
@@ -858,3 +848,10 @@ $settings['orange_dam_bearer'] = $_ENV['ORANGE_DAM_BEARER'] ?? getenv('ORANGE_DA
 $settings['azure_blob_storage_key'] = $_ENV['BLOB_STORAGE_KEY'] ?? getenv('BLOB_STORAGE_KEY');
 $settings['azure_blob_storage_accountname'] = $_ENV['BLOB_STORAGE_ACCOUNT'] ?? getenv('BLOB_STORAGE_ACCOUNT');
 $settings['azure_blob_storage_container'] = $_ENV['BLOB_STORAGE_CONTAINER'] ?? getenv('BLOB_STORAGE_CONTAINER');
+
+$cdn_domain = $_ENV['CDN_DOMAIN'] ?? getenv('CDN_DOMAIN');
+
+if ($cdn_domain) {
+  $config['cdn.settings']['status'] = TRUE;
+  $config['cdn.settings']['mapping']['domain'] = $cdn_domain;
+}

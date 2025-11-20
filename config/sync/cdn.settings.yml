@@ -1,10 +1,10 @@
 _core:
   default_config_hash: _QWheLY4erYyAlt1vdLtxMirLer05mMexNbeoNJd_As
-status: true
+status: false
 mapping:
   type: simple
   conditions: {  }
-  domain: wateraid-stage.manifesto.sh
+  domain: null
 scheme: 'https://'
 farfuture:
   status: false
