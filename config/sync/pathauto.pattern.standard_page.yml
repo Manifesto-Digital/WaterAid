@@ -18,5 +18,5 @@ selection_criteria:
     bundles:
       standard_page: standard_page
 selection_logic: and
-weight: -1
+weight: -2
 relationships: {  }
