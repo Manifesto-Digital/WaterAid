@@ -34,12 +34,12 @@ process:
   status: status
   temp_media:
     plugin: migration_lookup
-    source: field_hero_image
+    source: field_hero_image/0
     migration: media
     no_stub: true
   temp_video:
     plugin: video_url_to_media
-    source: field_hero_video
+    source: field_hero_video/0
   field_media:
     plugin: concat
     source:

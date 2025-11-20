@@ -24,7 +24,10 @@ process:
     plugin: default_value
     default_value: en
   status: status
-  field_figure: field_heading
+  field_figure:
+    plugin: callback
+    callable: strip_tags
+    source: field_heading/0
   field_description/value: field_subheading/0
   field_description/format:
     plugin: default_value

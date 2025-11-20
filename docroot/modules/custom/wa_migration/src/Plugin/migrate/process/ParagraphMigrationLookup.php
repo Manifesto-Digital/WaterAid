@@ -150,7 +150,7 @@ final class ParagraphMigrationLookup extends MigrationLookup implements Containe
         /** @var \Drupal\paragraphs\ParagraphInterface $entity */
         $entity = $storage->create([
           'type' => 'call_to_action',
-          'field_link' => $link,
+          'field_primary_cta' => $link,
           'field_variant' => 'text_only',
         ]);
         $entity->enforceIsNew();

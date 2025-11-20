@@ -45,7 +45,6 @@ process:
         - stories
         - webforms
       source: field_call_to_action_link
-  field_primary_cta/title: field_call_to_action_link_title
 destination:
   plugin: 'entity:paragraph'
   default_bundle: call_to_action

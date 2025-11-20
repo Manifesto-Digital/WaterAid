@@ -46,7 +46,6 @@ process:
         - stories
         - webforms
       source: field_resource_link_single
-  field_primary_cta/title: field_resource_link_single_title/0
   field_rich_text/value: field_resource_link_description/0
   field_rich_text/format:
     plugin: default_value
