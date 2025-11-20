@@ -10,6 +10,7 @@ module.exports = {
   // todo: remove entry point from webpack and automate it.
   entry: {
     'styles': ['./sass/styles.scss'],
+    'ckeditor-styles': ['./sass/ckeditor-styles.scss'],
     'components/accordion/accordion': ['./components/accordion/accordion.scss'],
     'components/accordion_item/accordion_item': ['./components/accordion_item/accordion_item.scss'],
     'components/button/button': ['./components/button/button.scss'],
