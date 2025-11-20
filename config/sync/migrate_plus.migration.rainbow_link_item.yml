@@ -44,9 +44,7 @@ process:
         - standard_page
         - stories
         - webforms
-      source:
-        - field_call_to_action_link_single_uri
-        - field_call_to_action_link_single_title
+      source: field_call_to_action_link_single
     -
       plugin: skip_on_empty
       method: row

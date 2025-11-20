@@ -28,12 +28,12 @@ process:
       default_value: en
   status: status
   field_title: field_enhanced_carousel_title
-  field_rich_text/value: field_scroll_carousel_content
+  field_rich_text/value: field_scroll_carousel_content/0
   field_rich_text/format:
     plugin: default_value
     default_value: full_html
   field_link:
-    plugin: link_migration_lookup
+    plugin: links_migration_lookup
     migration:
       - articles
       - campaigns
