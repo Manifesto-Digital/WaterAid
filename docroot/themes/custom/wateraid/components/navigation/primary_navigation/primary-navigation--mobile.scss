@@ -198,12 +198,16 @@
     }
 
     .site-selector {
+      &__col:first-child {
+        padding-bottom: $wa-spacing-04;
+      }
       &__site-group {
         flex-wrap: wrap;
-        margin-top: $wa-spacing-07;
+        margin-top: $wa-spacing-04;
       }
       &__site-group-heading {
         flex: 0 0 100%;
+        margin-top: $wa-spacing-07;
       }
       &__site-group-item {
         flex: 0 0 48%;
