@@ -29,6 +29,10 @@
     @include desktop {
       gap: $wa-spacing-05;
     }
+
+    .button__hover {
+      z-index: 0;
+    }
   }
 
   &__level-1-item {

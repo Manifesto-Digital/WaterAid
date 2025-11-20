@@ -1,6 +1,6 @@
 
 {% import _self as menus %}
-{% macro menu_links(items, attributes, menu_level, parent_index, parent_link, level_2_prefix) %}
+{% macro menu_links(items, attributes, menu_level, parent_index, parent_link, level_2_prefix, additional_menu) %}
   {% import _self as menus %}
   {% if items %}
     {% set menu_level_attrs = create_attribute().addClass(['mobile-nav__level-' ~ menu_level]) %}
@@ -93,6 +93,7 @@
           {% endif %}
         {% endfor %}
       </ul>
+      {{ additional_menu }}
     </div>
   {% endif %}
 {% endmacro %}
@@ -113,8 +114,7 @@
 <nav class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav__slider">
 
-    {{ menus.menu_links(items, attributes, 1, null, {}, null) }}
-
+    {% set additional_menu %}
     <ul class="mobile-nav__utility-menu">
       <li class="mobile-nav__utility-menu-item">
         <button class="utility-nav__link" data-level2-trigger="site-selector">
@@ -146,6 +146,9 @@
         </li>
       {% endif %}
     </ul>
+    {% endset %}
+
+    {{ menus.menu_links(items, attributes, 1, null, {}, null, additional_menu) }}
 
   </div>
 

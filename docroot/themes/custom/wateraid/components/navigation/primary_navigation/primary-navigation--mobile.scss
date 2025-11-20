@@ -17,7 +17,7 @@
   body.primary-menu-open & {
     visibility: visible;
     opacity: 1;
-    height: 100vh;
+    height: 84vh;
 
     @include tablet {
       display: none;
@@ -75,7 +75,7 @@
       display: block;
     }
   }
-
+  
   &__level-2 {
     transform: translateX(100%);
     background-color: $wa-blue;

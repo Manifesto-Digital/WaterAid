@@ -75,6 +75,10 @@ $header-padding-bottom: 0;
     @include tablet {
       display: none;
     }
+
+    .button__hover {
+      z-index: 0;
+    }
   }
 
   &__mobile-donate-btn {
