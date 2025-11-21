@@ -72,5 +72,5 @@ destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: countries
 idMap: {  }
-migration_dependencies: {}
+migration_dependencies: {  }
 include: null
