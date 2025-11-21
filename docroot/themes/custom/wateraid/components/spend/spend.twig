@@ -1,12 +1,10 @@
 {% set percent_1 = (sg_1_value / (sg_2_value + sg_1_value) * 100) %}
 {% set percent_2 = (sg_2_value / (sg_2_value + sg_1_value) * 100) %}
 {% set offset = 100 - percent_1 + 50 %}
+{% set tag = heading_level ? heading_level : 'h2' %}
 
 <div class="spend">
-
-  <h2 class="spend__title pseudo-h4">
-    {{ title }}
-  </h2>
+  <{{ tag }} class="spend__title pseudo-h4">{{ title }}</{{ tag }}>
   <div class="spend__copy">
     {{ copy }}
   </div>

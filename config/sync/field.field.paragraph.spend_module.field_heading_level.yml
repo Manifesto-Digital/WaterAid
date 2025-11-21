@@ -1,0 +1,23 @@
+uuid: a02b0266-5c16-4734-83ac-0a1c8bdeef01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_level
+    - paragraphs.paragraphs_type.spend_module
+  module:
+    - options
+id: paragraph.spend_module.field_heading_level
+field_name: field_heading_level
+entity_type: paragraph
+bundle: spend_module
+label: 'Heading level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

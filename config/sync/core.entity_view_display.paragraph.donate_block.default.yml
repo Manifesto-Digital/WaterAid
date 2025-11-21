@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.donate_block.field_donate_content
     - field.field.paragraph.donate_block.field_donate_widget
+    - field.field.paragraph.donate_block.field_heading_level
     - field.field.paragraph.donate_block.field_theme
     - field.field.paragraph.donate_block.field_title
     - paragraphs.paragraphs_type.donate_block
@@ -33,6 +34,13 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_heading_level:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_theme:
     type: list_default

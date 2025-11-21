@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.donate_block.field_donate_content
     - field.field.paragraph.donate_block.field_donate_widget
+    - field.field.paragraph.donate_block.field_heading_level
     - field.field.paragraph.donate_block.field_theme
     - field.field.paragraph.donate_block.field_title
     - paragraphs.paragraphs_type.donate_block
@@ -17,7 +18,7 @@ mode: default
 content:
   field_donate_content:
     type: layout_paragraphs
-    weight: 2
+    weight: 3
     region: content
     settings:
       view_mode: default
@@ -29,7 +30,7 @@ content:
     third_party_settings: {  }
   field_donate_widget:
     type: layout_paragraphs
-    weight: 3
+    weight: 4
     region: content
     settings:
       view_mode: default
@@ -38,6 +39,12 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_heading_level:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_theme:
     type: options_select

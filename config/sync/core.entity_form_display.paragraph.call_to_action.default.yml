@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.call_to_action.field_caption
     - field.field.paragraph.call_to_action.field_credit
+    - field.field.paragraph.call_to_action.field_heading_level
     - field.field.paragraph.call_to_action.field_image
     - field.field.paragraph.call_to_action.field_link
     - field.field.paragraph.call_to_action.field_primary_cta
@@ -24,7 +25,7 @@ mode: default
 content:
   field_caption:
     type: string_textfield
-    weight: 6
+    weight: 7
     region: content
     settings:
       size: 60
@@ -32,22 +33,28 @@ content:
     third_party_settings: {  }
   field_credit:
     type: string_textfield
-    weight: 7
+    weight: 8
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_heading_level:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_image:
     type: media_library_widget
-    weight: 5
+    weight: 6
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 4
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -55,7 +62,7 @@ content:
     third_party_settings: {  }
   field_primary_cta:
     type: link_default
-    weight: 3
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
@@ -63,7 +70,7 @@ content:
     third_party_settings: {  }
   field_rich_text:
     type: text_textarea
-    weight: 2
+    weight: 3
     region: content
     settings:
       rows: 2
@@ -85,7 +92,7 @@ content:
     third_party_settings: {  }
   field_video:
     type: media_library_widget
-    weight: 8
+    weight: 9
     region: content
     settings:
       media_types: {  }

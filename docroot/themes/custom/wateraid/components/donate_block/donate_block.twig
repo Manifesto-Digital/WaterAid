@@ -1,3 +1,4 @@
+{% set tag = heading_level ? heading_level : 'h2' %}
 {% set donate_block_classes = [
   'donate-block',
   'donate-block--' ~ theme,
@@ -6,7 +7,7 @@
 <div {{ attributes.addClass(donate_block_classes) }}>
   <div class="donate-block__wrapper">
     {% if title %}
-      <h2 class="donate-block__title">{{ title }}</h2>
+      <{{ tag }} class="donate-block__title pseudo-h2">{{ title }}</{{ tag }}>
     {% endif %}
 
     {% if content %}

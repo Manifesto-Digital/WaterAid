@@ -56,6 +56,7 @@
 {% block paragraph %}
   {{ include('wateraid:cancel_anytime', {
     title: content.field_title,
+    heading_level: paragraph.field_heading_level.value,
     copy: content.field_rich_text|render,
   }, only) }}
 {% endblock paragraph %}

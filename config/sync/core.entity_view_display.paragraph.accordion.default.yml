@@ -6,12 +6,14 @@ dependencies:
     - field.field.paragraph.accordion.field_accordion_items
     - field.field.paragraph.accordion.field_description
     - field.field.paragraph.accordion.field_display_search
+    - field.field.paragraph.accordion.field_heading_level
     - field.field.paragraph.accordion.field_label
     - field.field.paragraph.accordion.field_rich_text
     - field.field.paragraph.accordion.field_title
     - paragraphs.paragraphs_type.accordion
   module:
     - entity_reference_revisions
+    - options
     - text
 id: paragraph.accordion.default
 targetEntityType: paragraph
@@ -43,6 +45,13 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_heading_level:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_label:
     type: string

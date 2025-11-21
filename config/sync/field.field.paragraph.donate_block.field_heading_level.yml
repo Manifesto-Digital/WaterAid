@@ -1,0 +1,23 @@
+uuid: 666e25d0-d220-4744-87cc-77a6279c058d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_level
+    - paragraphs.paragraphs_type.donate_block
+  module:
+    - options
+id: paragraph.donate_block.field_heading_level
+field_name: field_heading_level
+entity_type: paragraph
+bundle: donate_block
+label: 'Heading level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

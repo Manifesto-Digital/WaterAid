@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.call_to_action.field_caption
     - field.field.paragraph.call_to_action.field_credit
+    - field.field.paragraph.call_to_action.field_heading_level
     - field.field.paragraph.call_to_action.field_image
     - field.field.paragraph.call_to_action.field_link
     - field.field.paragraph.call_to_action.field_primary_cta
@@ -37,6 +38,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_heading_level:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_image:
     type: entity_reference_entity_view

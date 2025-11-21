@@ -1,3 +1,4 @@
+{% set tag = heading_level ? heading_level : 'h2' %}
 {% set donate_widget_classes = [
   'donate-widget',
 ] %}
@@ -30,7 +31,7 @@
       {% if variant == 'hero' %}
         <h1>{{ heading }}</h1>
       {% else %}
-        <h2>{{ heading }}</h2>
+        <{{ tag }} class="pseudo-h2">{{ heading }}</{{ tag }}>
       {% endif %}
     </div>
   {% endif %}

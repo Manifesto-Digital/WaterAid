@@ -1,0 +1,23 @@
+uuid: 3b79d44f-1d77-4eea-995c-46b1e9a64403
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_level
+    - paragraphs.paragraphs_type.call_to_action
+  module:
+    - options
+id: paragraph.call_to_action.field_heading_level
+field_name: field_heading_level
+entity_type: paragraph
+bundle: call_to_action
+label: 'Heading level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

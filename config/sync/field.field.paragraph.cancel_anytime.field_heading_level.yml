@@ -1,0 +1,23 @@
+uuid: a1925c6b-d120-4e04-b904-645d92d3ab09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_level
+    - paragraphs.paragraphs_type.cancel_anytime
+  module:
+    - options
+id: paragraph.cancel_anytime.field_heading_level
+field_name: field_heading_level
+entity_type: paragraph
+bundle: cancel_anytime
+label: 'Heading level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.spend_module.field_heading_level
     - field.field.paragraph.spend_module.field_item_1
     - field.field.paragraph.spend_module.field_item_2
     - field.field.paragraph.spend_module.field_rich_text
@@ -10,12 +11,20 @@ dependencies:
     - paragraphs.paragraphs_type.spend_module
   module:
     - entity_reference_revisions
+    - options
     - text
 id: paragraph.spend_module.default
 targetEntityType: paragraph
 bundle: spend_module
 mode: default
 content:
+  field_heading_level:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_item_1:
     type: entity_reference_revisions_entity_view
     label: hidden

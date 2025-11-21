@@ -50,6 +50,7 @@
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:spend', {
       title: content.field_title,
+      heading_level: paragraph.field_heading_level.value,
       copy: content.field_rich_text,
       sg_1_value: paragraph.field_item_1[0].entity.field_spend_value.value,
       sg_1_amount: paragraph.field_item_1[0].entity.field_spend_amount.value,
