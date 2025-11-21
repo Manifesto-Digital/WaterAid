@@ -1,10 +1,10 @@
-uuid: 51e5ab75-ba8b-426e-8219-23dbeb914ec6
+uuid: 4445aef5-be0a-4eac-aa68-5eeec2babcd6
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hero
-    - node.type.page
+    - field.storage.group.field_hero
+    - group.type.wateraid_site
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
@@ -13,13 +13,13 @@ dependencies:
     - paragraphs.paragraphs_type.hero_video
   module:
     - entity_reference_revisions
-id: node.page.field_hero
+id: group.wateraid_site.field_hero
 field_name: field_hero
-entity_type: node
-bundle: page
+entity_type: group
+bundle: wateraid_site
 label: Hero
-description: ''
-required: true
+description: 'Add a hero to the Home Page'
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -30,70 +30,70 @@ settings:
       hero_basic: hero_basic
       hero_donate: hero_donate
       hero_image: hero_image
-      hero_video: hero_video
       hero_news: hero_news
       hero_search: hero_search
+      hero_video: hero_video
     negate: 0
     target_bundles_drag_drop:
       accordion:
-        weight: -33
+        weight: 33
         enabled: false
       accordion_item:
-        weight: -32
-        enabled: false
-      call_to_action:
-        weight: -31
-        enabled: false
-      cancel_anytime:
-        weight: 29
-        enabled: false
-      card_collection:
-        weight: 30
-        enabled: false
-      donate_block:
-        weight: 31
-        enabled: false
-      donate_exit_modal:
-        weight: 32
-        enabled: false
-      donation_amount:
-        weight: -30
-        enabled: false
-      donation_placeholder_do_not_use:
         weight: 34
         enabled: false
+      call_to_action:
+        weight: 35
+        enabled: false
+      cancel_anytime:
+        weight: 36
+        enabled: false
+      card_collection:
+        weight: 37
+        enabled: false
+      donate_block:
+        weight: 38
+        enabled: false
+      donate_exit_modal:
+        weight: 39
+        enabled: false
+      donation_amount:
+        weight: 40
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 41
+        enabled: false
       donation_widget:
-        weight: -29
+        weight: 42
         enabled: false
       external_card:
         weight: 43
         enabled: false
       facts_and_stats:
-        weight: -28
+        weight: 44
         enabled: false
       hero_basic:
-        weight: -39
+        weight: 45
         enabled: true
       hero_donate:
-        weight: -38
+        weight: 46
         enabled: true
       hero_image:
-        weight: -37
+        weight: 47
         enabled: true
       hero_news:
-        weight: -27
+        weight: 48
         enabled: true
       hero_search:
-        weight: 41
+        weight: 49
         enabled: true
       hero_video:
-        weight: -36
+        weight: 50
         enabled: true
       image:
-        weight: -34
+        weight: 51
         enabled: false
       image_gallery:
-        weight: -26
+        weight: 52
         enabled: false
       image_with_quote_sidebar:
         weight: 53
@@ -102,10 +102,10 @@ settings:
         weight: 54
         enabled: false
       quote:
-        weight: -25
+        weight: 55
         enabled: false
       rich_text:
-        weight: -35
+        weight: 56
         enabled: false
       spend:
         weight: 57
@@ -117,18 +117,18 @@ settings:
         weight: 59
         enabled: false
       stats_item:
-        weight: -24
+        weight: 60
         enabled: false
       temp_paragraph:
         weight: 61
         enabled: false
       text_media:
-        weight: -23
+        weight: 62
         enabled: false
       video:
-        weight: -22
+        weight: 63
         enabled: false
       webform_poc:
-        weight: -21
+        weight: 64
         enabled: false
 field_type: entity_reference_revisions
