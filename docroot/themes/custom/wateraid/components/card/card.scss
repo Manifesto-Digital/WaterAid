@@ -92,6 +92,13 @@
     }
   }
 
+  .image {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
   // Card variants.
   &--teaser {
     border: $wa-spacing-01 $wa-white solid;

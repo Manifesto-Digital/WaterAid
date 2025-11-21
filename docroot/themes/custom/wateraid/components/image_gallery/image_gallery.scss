@@ -67,6 +67,13 @@
     @include grid-item-span(4, 6, 8);
   }
 
+  .image {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
   &--light {
     padding: 0;
   }

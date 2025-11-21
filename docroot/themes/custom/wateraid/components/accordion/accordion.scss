@@ -68,4 +68,11 @@
   mark {
     background: $wa-navy-10;
   }
+
+  .image {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
 }
