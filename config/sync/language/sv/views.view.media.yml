@@ -4,6 +4,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
+        thumbnail__target_id:
+          label: Thumbnail
         uid:
           label: Författare
         status:
