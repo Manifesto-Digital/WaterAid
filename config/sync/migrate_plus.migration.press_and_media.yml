@@ -124,7 +124,8 @@ process:
         - statistics_icons
       source: field_modules
   temp_body:
-    - plugin: body_to_paragraph
+    -
+      plugin: body_to_paragraph
       source: body__value
   field_content:
     plugin: merge_without_exception
