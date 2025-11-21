@@ -48,7 +48,7 @@
 
 {% set authors = [] %}
 {% for item in paragraph.field_authors %}
-  {% set authors = authors|merge([item.entity.name.value]) %}
+  {% set authors = authors|merge([item.entity.label()]) %}
 {% endfor %}
 
 {% block paragraph %}

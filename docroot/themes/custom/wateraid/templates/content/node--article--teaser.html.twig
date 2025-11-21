@@ -69,7 +69,7 @@
 
 {% set authors = [] %}
 {% for item in node.field_hero.0.entity.field_authors %}
-  {% set authors = authors|merge([item.entity.name.value]) %}
+  {% set authors = authors|merge([item.entity.label()]) %}
 {% endfor %}
 
 {{ include('wateraid:card', {

@@ -70,3 +70,12 @@ function wateraid_core_tokens($type, $tokens, array $data, array $options, Bubbl
 
   return $replacements;
 }
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function wateraid_core_entity_type_alter(array &$entity_types): void {
+  if (isset($entity_types['user'])) {
+    $entity_types['user']->setClass('\Drupal\wateraid_core\Entity\WaUser');
+  }
+}
