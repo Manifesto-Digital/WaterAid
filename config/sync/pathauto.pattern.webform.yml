@@ -18,5 +18,5 @@ selection_criteria:
     bundles:
       webform: webform
 selection_logic: and
-weight: 1
+weight: 0
 relationships: {  }
