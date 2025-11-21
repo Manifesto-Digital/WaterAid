@@ -1,0 +1,111 @@
+display:
+  default:
+    display_options:
+      fields:
+        view_node:
+          label: Sökväg
+          text: visa
+        view_taxonomy_term:
+          label: Sökväg
+          text: visa
+        view_user:
+          label: Sökväg
+          text: visa
+        page_path:
+          admin_label: Editoria11y
+        page_title_1:
+          label: Titel
+        page_path_1:
+          label: Sökväg
+        uid:
+          label: Författare
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      filters:
+        page_title:
+          expose:
+            label: Titel
+        type:
+          expose:
+            label: Innehållstyp
+        entity_type:
+          expose:
+            label: Objektstyp
+        status:
+          expose:
+            label: 'Status för publicering'
+  block_recent_issues:
+    display_options:
+      fields:
+        result_name:
+          label: Avvikelse
+        view_node:
+          label: Sökväg
+          text: visa
+        view_taxonomy_term:
+          label: Sökväg
+          text: visa
+        view_user:
+          label: Sökväg
+          text: visa
+        page_path:
+          admin_label: Editoria11y
+        page_title_1:
+          label: Titel
+      block_category: Editoria11y
+  block_top_issues:
+    display_options:
+      fields:
+        result_name:
+          label: Avvikelse
+      block_category: Editoria11y
+  issues_by_page__page:
+    display_options:
+      fields:
+        view_node:
+          label: Sökväg
+          text: visa
+        view_taxonomy_term:
+          label: Sökväg
+          text: visa
+        view_user:
+          label: Sökväg
+          text: visa
+        page_path:
+          admin_label: Editoria11y
+        page_title_1:
+          label: Titel
+        uid:
+          label: Författare
+      arguments:
+        ed11y_page:
+          exception:
+            title: Alla
+  pages_by_issue__page:
+    display_options:
+      fields:
+        view_node:
+          label: Sökväg
+          text: visa
+        view_taxonomy_term:
+          label: Sökväg
+          text: visa
+        view_user:
+          label: Sökväg
+          text: visa
+        page_path:
+          admin_label: Editoria11y
+        page_title_1:
+          label: Titel
+        page_path_1:
+          label: Sökväg
+        uid:
+          label: Författare
+      arguments:
+        result_key:
+          exception:
+            title: Alla

@@ -1,0 +1,51 @@
+display:
+  default:
+    display_options:
+      fields:
+        view_node:
+          text: visa
+        view_taxonomy_term:
+          text: visa
+        view_user:
+          text: visa
+        page_title:
+          label: Sida
+        name_2:
+          label: Författare
+        type:
+          label: Innehållstyp
+        entity_type:
+          label: Typ
+        langcode:
+          label: Språk
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      filters:
+        page_title:
+          expose:
+            label: Titel
+        type_26:
+          expose:
+            label: Innehållstyp
+        status_13:
+          expose:
+            label: Publicerad
+  block_1:
+    display_options:
+      fields:
+        view_node:
+          text: visa
+        view_taxonomy_term:
+          text: visa
+        view_user:
+          text: visa
+        page_title:
+          label: Titel
+        name_2:
+          label: Författare
+  page_1:
+    display_title: Sida

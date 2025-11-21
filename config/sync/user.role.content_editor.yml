@@ -31,6 +31,7 @@ dependencies:
     - config_pages
     - content_translation
     - contextual
+    - editoria11y
     - file
     - filter
     - group
@@ -191,6 +192,7 @@ permissions:
   - 'edit terms in themes'
   - 'edit terms in topic'
   - 'generate preview links'
+  - 'mark as hidden in editoria11y'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert donation revisions'
@@ -223,6 +225,7 @@ permissions:
   - 'view article revisions'
   - 'view config_pages entity'
   - 'view donation revisions'
+  - 'view editoria11y checker'
   - 'view event revisions'
   - 'view footer config page entity'
   - 'view landing_page revisions'

@@ -1,0 +1,108 @@
+display:
+  default:
+    display_options:
+      fields:
+        view_node:
+          text: visa
+        view_taxonomy_term:
+          text: visa
+        view_user:
+          text: visa
+        page_title:
+          label: Titel
+        created:
+          label: 'On'
+        name:
+          label: Av
+        id:
+          label: Återställ
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      sorts:
+        page_title:
+          expose:
+            label: Sidtitel
+  dismissals__page:
+    display_options:
+      fields:
+        view_node:
+          text: visa
+        view_taxonomy_term:
+          text: visa
+        view_user:
+          text: visa
+        page_title:
+          label: Sida
+        created:
+          label: 'On'
+        name:
+          label: Av
+        stale_date:
+          alter:
+            text: Nej
+        id:
+          label: Återställ
+      filters:
+        combine_1:
+          admin_label: Titel
+          expose:
+            label: Titel
+        combine:
+          admin_label: Sökväg
+          expose:
+            label: Sökväg
+        stale_date:
+          group_info:
+            group_items:
+              1:
+                title: Ja
+              2:
+                title: Nej
+  page_1:
+    display_options:
+      fields:
+        view_node:
+          text: visa
+        view_taxonomy_term:
+          text: visa
+        view_user:
+          text: visa
+        page_title:
+          label: Sida
+        created:
+          label: 'On'
+        name:
+          label: Av
+        id:
+          label: Återställ
+        stale_date:
+          alter:
+            text: Nej
+      arguments:
+        result_key:
+          exception:
+            title: Alla
+      filters:
+        combine_1:
+          admin_label: Titel
+          expose:
+            label: Titel
+        combine:
+          admin_label: Sökväg
+          expose:
+            label: Sökväg
+        stale_date:
+          group_info:
+            group_items:
+              1:
+                title: Ja
+              2:
+                title: Nej
+  recent_dismissals:
+    display_title: 'Nyligen avskrivna'
+    display_options:
+      block_category: Editoria11y
