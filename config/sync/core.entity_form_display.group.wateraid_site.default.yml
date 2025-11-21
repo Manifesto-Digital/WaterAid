@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group.wateraid_site.field_content
+    - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
     - field.field.group.wateraid_site.field_spend_module
     - group.type.wateraid_site
@@ -14,16 +16,40 @@ targetEntityType: group
 bundle: wateraid_site
 mode: default
 content:
+  field_content:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_hero:
+    type: layout_paragraphs
+    weight: 1
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
   field_is_wash_matters_site:
     type: boolean_checkbox
-    weight: 26
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_spend_module:
     type: layout_paragraphs
-    weight: 2
+    weight: 3
     region: content
     settings:
       view_mode: default
@@ -43,26 +69,26 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 1
+    weight: 4
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 4
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 9
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   translation:
-    weight: 3
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

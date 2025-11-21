@@ -42,11 +42,12 @@ process:
     no_stub: true
   field_hero:
     plugin: image_to_hero
-    hero_type: hero_basic
+    hero_type: hero_news
     source:
       - ''
       - ''
-      - body__value
+      - ''
+      - created
   title: title
   field_teaser_text: body__summary
   field_teaser_image:
@@ -122,14 +123,18 @@ process:
         - statistics
         - statistics_icons
       source: field_modules
+  temp_body:
+    - plugin: body_to_paragraph
+      source: body__value
   field_content:
     plugin: merge_without_exception
     source:
       - '@temp_image'
+      - '@temp_body'
       - '@temp_paragraphs'
 destination:
   plugin: 'entity:node'
-  default_bundle: standard_page
+  default_bundle: page
 idMap: {  }
 migration_dependencies:
   required:

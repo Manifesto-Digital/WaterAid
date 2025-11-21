@@ -1,25 +1,35 @@
-uuid: 51e5ab75-ba8b-426e-8219-23dbeb914ec6
+uuid: 6ba78558-c909-4322-889c-86ef2fb47c1d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hero
-    - node.type.page
+    - field.storage.group.field_content
+    - group.type.wateraid_site
+    - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.donation_placeholder_do_not_use
+    - paragraphs.paragraphs_type.external_card
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
     - paragraphs.paragraphs_type.hero_search
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.internal_card
+    - paragraphs.paragraphs_type.spend
+    - paragraphs.paragraphs_type.spend_item
+    - paragraphs.paragraphs_type.spend_module
+    - paragraphs.paragraphs_type.stats_item
+    - paragraphs.paragraphs_type.temp_paragraph
+    - paragraphs.paragraphs_type.webform_poc
   module:
     - entity_reference_revisions
-id: node.page.field_hero
-field_name: field_hero
-entity_type: node
-bundle: page
-label: Hero
-description: ''
-required: true
+id: group.wateraid_site.field_content
+field_name: field_content
+entity_type: group
+bundle: wateraid_site
+label: Content
+description: 'Add the content for your homepage.'
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -27,108 +37,118 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      accordion_item: accordion_item
+      donation_placeholder_do_not_use: donation_placeholder_do_not_use
+      external_card: external_card
       hero_basic: hero_basic
       hero_donate: hero_donate
       hero_image: hero_image
-      hero_video: hero_video
       hero_news: hero_news
       hero_search: hero_search
-    negate: 0
+      hero_video: hero_video
+      internal_card: internal_card
+      spend: spend
+      spend_item: spend_item
+      spend_module: spend_module
+      stats_item: stats_item
+      temp_paragraph: temp_paragraph
+      webform_poc: webform_poc
+    negate: 1
     target_bundles_drag_drop:
       accordion:
-        weight: -33
+        weight: 33
         enabled: false
       accordion_item:
-        weight: -32
-        enabled: false
+        weight: 34
+        enabled: true
       call_to_action:
-        weight: -31
+        weight: 35
         enabled: false
       cancel_anytime:
-        weight: 29
+        weight: 36
         enabled: false
       card_collection:
-        weight: 30
+        weight: 37
         enabled: false
       donate_block:
-        weight: 31
+        weight: 38
         enabled: false
       donate_exit_modal:
-        weight: 32
+        weight: 39
         enabled: false
       donation_amount:
-        weight: -30
+        weight: 40
         enabled: false
       donation_placeholder_do_not_use:
-        weight: 34
-        enabled: false
+        weight: 41
+        enabled: true
       donation_widget:
-        weight: -29
+        weight: 42
         enabled: false
       external_card:
         weight: 43
-        enabled: false
+        enabled: true
       facts_and_stats:
-        weight: -28
+        weight: 44
         enabled: false
       hero_basic:
-        weight: -39
+        weight: 45
         enabled: true
       hero_donate:
-        weight: -38
+        weight: 46
         enabled: true
       hero_image:
-        weight: -37
+        weight: 47
         enabled: true
       hero_news:
-        weight: -27
+        weight: 48
         enabled: true
       hero_search:
-        weight: 41
+        weight: 49
         enabled: true
       hero_video:
-        weight: -36
+        weight: 50
         enabled: true
       image:
-        weight: -34
+        weight: 51
         enabled: false
       image_gallery:
-        weight: -26
+        weight: 52
         enabled: false
       image_with_quote_sidebar:
         weight: 53
         enabled: false
       internal_card:
         weight: 54
-        enabled: false
+        enabled: true
       quote:
-        weight: -25
+        weight: 55
         enabled: false
       rich_text:
-        weight: -35
+        weight: 56
         enabled: false
       spend:
         weight: 57
-        enabled: false
+        enabled: true
       spend_item:
         weight: 58
-        enabled: false
+        enabled: true
       spend_module:
         weight: 59
-        enabled: false
+        enabled: true
       stats_item:
-        weight: -24
-        enabled: false
+        weight: 60
+        enabled: true
       temp_paragraph:
         weight: 61
-        enabled: false
+        enabled: true
       text_media:
-        weight: -23
+        weight: 62
         enabled: false
       video:
-        weight: -22
+        weight: 63
         enabled: false
       webform_poc:
-        weight: -21
-        enabled: false
+        weight: 64
+        enabled: true
 field_type: entity_reference_revisions
