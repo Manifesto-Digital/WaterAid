@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.image_gallery.field_heading_level
     - field.field.paragraph.image_gallery.field_images
     - field.field.paragraph.image_gallery.field_link
     - field.field.paragraph.image_gallery.field_rich_text
@@ -18,6 +19,12 @@ targetEntityType: paragraph
 bundle: image_gallery
 mode: default
 content:
+  field_heading_level:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_images:
     type: layout_paragraphs
     weight: 4

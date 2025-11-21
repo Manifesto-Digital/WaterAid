@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cancel_anytime.field_heading_level
     - field.field.paragraph.cancel_anytime.field_rich_text
     - field.field.paragraph.cancel_anytime.field_title
     - paragraphs.paragraphs_type.cancel_anytime
@@ -13,6 +14,12 @@ targetEntityType: paragraph
 bundle: cancel_anytime
 mode: default
 content:
+  field_heading_level:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_rich_text:
     type: text_textarea
     weight: 1

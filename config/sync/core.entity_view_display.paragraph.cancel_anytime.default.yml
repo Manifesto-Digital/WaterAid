@@ -3,16 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cancel_anytime.field_heading_level
     - field.field.paragraph.cancel_anytime.field_rich_text
     - field.field.paragraph.cancel_anytime.field_title
     - paragraphs.paragraphs_type.cancel_anytime
   module:
+    - options
     - text
 id: paragraph.cancel_anytime.default
 targetEntityType: paragraph
 bundle: cancel_anytime
 mode: default
 content:
+  field_heading_level:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_rich_text:
     type: text_default
     label: hidden

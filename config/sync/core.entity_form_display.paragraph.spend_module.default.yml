@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.spend_module.field_heading_level
     - field.field.paragraph.spend_module.field_item_1
     - field.field.paragraph.spend_module.field_item_2
     - field.field.paragraph.spend_module.field_rich_text
@@ -16,6 +17,12 @@ targetEntityType: paragraph
 bundle: spend_module
 mode: default
 content:
+  field_heading_level:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_item_1:
     type: layout_paragraphs
     weight: 2

@@ -57,6 +57,7 @@
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:statistics', {
       title: paragraph.field_title.value,
+      heading_level: paragraph.field_heading_level.value,
       description: content.field_rich_text,
       link,
       stats_items: content.field_stat_items|children,

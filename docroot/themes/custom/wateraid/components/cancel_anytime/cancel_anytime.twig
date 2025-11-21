@@ -1,6 +1,7 @@
+{% set tag = heading_level ? heading_level : 'h3' %}
 <div class="cancel-anytime">
   <span class="cancel-anytime__icon">{{ include('@wateraid/images/icons/direct-debit.svg') }}</span>
-  <h3 class="cancel-anytime__title">{{ title }}</h3>
+  <{{ tag }} class="cancel-anytime__title pseudo-h3">{{ title }}</{{ tag }}>
   <div class="cancel-anytime__copy">{{ copy }}</div>
 </div>
 
