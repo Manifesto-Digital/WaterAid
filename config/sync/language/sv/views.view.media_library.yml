@@ -38,6 +38,8 @@ display:
   widget_table:
     display_options:
       fields:
+        thumbnail__target_id:
+          label: Thumbnail
         uid:
           label: Författare
       arguments:

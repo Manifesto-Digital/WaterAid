@@ -90,6 +90,8 @@ process:
     source:
       - '@temp_hero'
       - '@temp_authors'
+      - ''
+      - created
   field_hide_related_content: field_hide_related_content
   field_override_related_content: field_override_related
   temp_articles:

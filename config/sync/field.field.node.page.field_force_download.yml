@@ -1,0 +1,21 @@
+uuid: 18eb5263-bd5f-4735-b4ea-d4531f275a3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_force_download
+    - node.type.page
+id: node.page.field_force_download
+field_name: field_force_download
+entity_type: node
+bundle: page
+label: 'Force download'
+description: 'Force the user to download the document.  The HTML version of the page will not be available, instead the <em>first</em> document uploaded will be downloaded.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Force Download'
+  off_label: 'View Page'
+field_type: boolean
