@@ -59,6 +59,7 @@
     "drupal/devel": "^5.4",
     "drupal/diff": "^2.0@beta",
     "drupal/ds": "^3.30",
+    "drupal/editoria11y": "^3.0@alpha",
     "drupal/email_registration": "^1.4",
     "drupal/encrypt": "^3.2",
     "drupal/entity_print": "^2.18",
