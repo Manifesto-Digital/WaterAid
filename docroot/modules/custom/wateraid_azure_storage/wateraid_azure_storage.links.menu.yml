@@ -1,5 +1,0 @@
-wateraid_azure_storage.settings_form.webform:
-  title: 'Azure Storage Webform'
-  route_name: wateraid_azure_storage.settings_form.webform
-  description: 'Configure Azure Storage Webform Settings'
-  parent: azure_storage.settings_form
