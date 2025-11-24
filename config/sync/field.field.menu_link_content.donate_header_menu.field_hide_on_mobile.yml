@@ -1,0 +1,24 @@
+uuid: aced374b-2dab-4272-adf3-6d37fc4ea6cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_hide_on_mobile
+  module:
+    - menu_link_content
+id: menu_link_content.donate_header_menu.field_hide_on_mobile
+field_name: field_hide_on_mobile
+entity_type: menu_link_content
+bundle: donate_header_menu
+label: 'Hide on mobile'
+description: 'Hide this menu link up to the tablet breakpoint.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
