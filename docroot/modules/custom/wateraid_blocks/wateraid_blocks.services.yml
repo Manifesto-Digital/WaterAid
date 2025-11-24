@@ -1,0 +1,6 @@
+services:
+  cache_context.group:
+    class: Drupal\wateraid_blocks\Cache\Context\GroupCacheContext
+    arguments: ['@request_stack']
+    tags:
+      - { name: cache.context}
