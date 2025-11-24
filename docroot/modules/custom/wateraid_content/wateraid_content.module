@@ -7,6 +7,7 @@
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
@@ -47,6 +48,25 @@ function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_
 function wateraid_content_form_node_publication_form_alter(&$form, FormStateInterface $form_state): void {
   if (isset($form['field_author_override'])) {
     $form['field_author_override']['#group'] = (isset($form['author'])) ? 'author' : NULL;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function wateraid_content_paragraph_presave(ParagraphInterface $paragraph): void {
+  if ($paragraph->hasField('field_image')) {
+    if ($medias = $paragraph->get('field_image')->referencedEntities()) {
+
+      /** @var \Drupal\media\MediaInterface $media */
+      if ($media = reset($medias)) {
+        foreach (['field_caption', 'field_credit'] as $field) {
+          if ($paragraph->get($field)->isEmpty()) {
+            $paragraph->set($field, $media->get($field)->getValue());
+          }
+        }
+      }
+    }
   }
 }
 
