@@ -11,6 +11,7 @@ use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
 
@@ -375,4 +376,16 @@ function _wateraid_build_menu($menu_name, int $max_depth): array {
   $tree = $menu_tree->transform($tree, $manipulators);
   // Return as built renderable.
   return $menu_tree->build($tree);
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function wateraid_preprocess(&$variables) {
+  // Adds the current group's canonical URL to template variables where exists.
+  $group = \Drupal::routeMatch()->getParameter('group');
+  if ($group instanceof Group) {
+    $url = Url::fromRoute('entity.group.canonical', ['group' => $group->id()]);
+    $variables['current_group_path'] = $url->toString();
+  }
 }
