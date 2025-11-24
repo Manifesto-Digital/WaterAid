@@ -1,0 +1,34 @@
+uuid: aaeaef67-c77d-46b7-b043-b445a6b1efb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.donate_header_menu.field_hide_on_mobile
+  module:
+    - menu_link_content
+id: menu_link_content.donate_header_menu.default
+targetEntityType: menu_link_content
+bundle: donate_header_menu
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hide_on_mobile:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true
