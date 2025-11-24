@@ -13,6 +13,14 @@
     position: relative;
   }
 
+  .image,
+  .video {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
   &__image {
     width: 100%;
     display: inline;
