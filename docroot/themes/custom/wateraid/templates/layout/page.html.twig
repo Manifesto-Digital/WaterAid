@@ -45,7 +45,9 @@
 <div class="layout-container page-node-type-{{ bundle|replace({"_":"-"}) }}">
 
   {% if donate_header %}
-    {{ include ('wateraid:site_header_donate', {}, with_context = false) }}
+    {{ include ('wateraid:site_header_donate', {
+      donate_header_menu: donate_header_menu
+    }, with_context = false) }}
   {% else %}
     {{ include ('wateraid:site_header', {
       blocks: page.header,

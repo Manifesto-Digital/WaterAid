@@ -5,6 +5,7 @@
  * Menu theme hooks.
  */
 
+use Drupal\group_content_menu\Entity\GroupContentMenu;
 use Drupal\config_pages\ConfigPagesInterface;
 
 /**
@@ -51,6 +52,22 @@ function wateraid_preprocess_menu(&$variables) {
     if ($site_selector_config_page instanceof ConfigPagesInterface) {
       $variables['panel_title'] = $site_selector_config_page->get('field_title')->value;
       $variables['panel_description'] = config_pages_config('global_site_selector')->get('field_description')->value;
+    }
+  }
+
+  // Pretty nasty to have to do a string search to discover this menu is type
+  // group content menu.
+  if (str_starts_with($variables['menu_name'], 'group_menu_link_content-')) {
+    $group_content_menu_id = str_replace('group_menu_link_content-', '', $variables['menu_name']);
+    $group_content_menu = GroupContentMenu::load($group_content_menu_id);
+    if ($group_content_menu->bundle() === 'donate_header_menu') {
+      foreach ($variables['items'] as &$item) {
+        /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $menu_link_content */
+        $menu_link_content = $item['original_link'];
+        if ((bool) $menu_link_content->getEntity()->get('field_hide_on_mobile')->value) {
+          $item['attributes']->addClass('donate-header-menu-item--hide-on-mobile');
+        }
+      }
     }
   }
 }
