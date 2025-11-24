@@ -56,7 +56,7 @@
       heading: paragraph.field_title.value,
       heading_level: paragraph.field_heading_level.value,
       button_text: 'Donate securely now',
-      webform_node: path('entity.node.canonical', {'node':  paragraph.field_webform_node.entity.id}),
+      webform_node: current_group_path ?? '' ~ path('entity.node.canonical', {'node': paragraph.field_webform_node.entity.id}),
       monthly_amounts: monthly_donation_amounts,
       one_off_amounts: one_off_donation_amounts,
       monthly_default: paragraph.field_monthly_default.value,
