@@ -61,7 +61,7 @@ function wateraid_content_paragraph_presave(ParagraphInterface $paragraph): void
       /** @var \Drupal\media\MediaInterface $media */
       if ($media = reset($medias)) {
         foreach (['field_caption', 'field_credit'] as $field) {
-          if ($paragraph->get($field)->isEmpty()) {
+          if ($media->hasField($field) && $paragraph->get($field)->isEmpty()) {
             $paragraph->set($field, $media->get($field)->getValue());
           }
         }
