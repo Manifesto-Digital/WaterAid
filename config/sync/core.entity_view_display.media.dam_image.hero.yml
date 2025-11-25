@@ -1,0 +1,55 @@
+uuid: 6003b85f-c980-4224-ba3e-ca19a2c6f080
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.hero
+    - field.field.media.dam_image.field_caption
+    - field.field.media.dam_image.field_credit
+    - field.field.media.dam_image.field_media_dam_image
+    - image.style.hero
+    - media.type.dam_image
+  module:
+    - wa_orange_dam
+id: media.dam_image.hero
+targetEntityType: media
+bundle: dam_image
+mode: hero
+content:
+  field_caption:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_credit:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_media_dam_image:
+    type: wa_orange_dam_image_formater
+    label: visually_hidden
+    settings:
+      image_style: hero
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
