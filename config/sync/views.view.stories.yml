@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - node.type.shorthand_story
     - node.type.story
     - taxonomy.vocabulary.audiences
     - taxonomy.vocabulary.countries
@@ -245,6 +246,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
+            shorthand_story: shorthand_story
             story: story
           group: 1
           exposed: false

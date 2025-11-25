@@ -20,7 +20,13 @@
     );
   }
 
-
+  .image,
+  .video {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
 
   &__text {
     [data-component-id="wateraid:rich_text"] {

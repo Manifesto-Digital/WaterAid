@@ -2,7 +2,10 @@
 
 [data-component-id="wateraid:video"] {
   @include grid();
-  margin-bottom: $wa-spacing-06;
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
+  }
 
   .video {
     margin: 0;
@@ -90,7 +93,7 @@
     .contextual-region,
     .field,
     div {
-      height: 100%;
+      height: fit-content;
     }
 
     iframe {

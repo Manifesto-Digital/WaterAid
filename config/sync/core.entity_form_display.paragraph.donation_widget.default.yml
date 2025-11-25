@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.donation_widget.field_heading_level
     - field.field.paragraph.donation_widget.field_monthly_default
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
@@ -50,6 +51,7 @@ third_party_settings:
     group_content:
       children:
         - field_title
+        - field_heading_level
         - field_webform_node
         - field_monthly_default
       label: Content
@@ -102,9 +104,15 @@ targetEntityType: paragraph
 bundle: donation_widget
 mode: default
 content:
+  field_heading_level:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_monthly_default:
     type: boolean_checkbox
-    weight: 23
+    weight: 24
     region: content
     settings:
       display_label: true
@@ -155,7 +163,7 @@ content:
     third_party_settings: {  }
   field_webform_node:
     type: entity_reference_autocomplete
-    weight: 22
+    weight: 23
     region: content
     settings:
       match_operator: CONTAINS

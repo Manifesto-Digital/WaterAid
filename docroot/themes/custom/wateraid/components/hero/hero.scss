@@ -7,10 +7,20 @@
   }
 
   &__content-wrapper {
+    width: 100%;
+
     @include desktop {
       @include page-container;
     }
     position: relative;
+  }
+
+  .image,
+  .video {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
   }
 
   &__image {
@@ -20,7 +30,7 @@
     img {
       display: block;
       max-width: 100%;
-      max-height: calculate-rem(720);
+      max-height: calculate-rem(480);
       object-fit: cover;
       object-position: center;
     }
@@ -194,6 +204,7 @@
     }
   }
 
+  &--basic,
   &--media,
   &--news {
     .hero__content-wrapper {

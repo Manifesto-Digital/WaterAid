@@ -14,6 +14,7 @@
     width: 100%;
     z-index: -1;
     left: 0;
+    top: 0;
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
@@ -35,7 +36,6 @@
 
     .button__hover {
       z-index: -1;
-      background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
       background-size: 100% 100%;
       background-repeat: no-repeat;
       height: 100%;

@@ -10,7 +10,7 @@ field_name: field_credit
 entity_type: paragraph
 bundle: image
 label: Credit
-description: ''
+description: 'Leave empty to use the default credit from the media item.'
 required: false
 translatable: false
 default_value: {  }

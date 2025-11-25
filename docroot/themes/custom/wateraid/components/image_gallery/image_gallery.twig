@@ -1,3 +1,4 @@
+{% set tag = heading_level ? heading_level : 'h2' %}
 {% set gallery_classes = [
   'image-gallery',
   'image-gallery--' ~ theme,
@@ -8,7 +9,7 @@
   <div class="image-gallery__wrapper">
     <div class="image-gallery__content">
       {% if title %}
-        <h2 class="image-gallery__content--title">{{ title }}</h2>
+        <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ title }}</{{ tag }}>
       {% endif %}
       {% if description %}
         <div class="image-gallery__content--description">{{ description }}</div>

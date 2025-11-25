@@ -64,7 +64,7 @@
 {% set authors = [author_name|render|striptags|trim] %}
 {% if node.co_authors %}
   {% for item in node.co_authors %}
-    {% set authors = authors|merge([item.entity.name.value]) %}
+    {% set authors = authors|merge([item.entity.label()]) %}
   {% endfor %}
 {% endif %}
 {% if node.field_author_override.value %}

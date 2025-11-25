@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.facts_and_stats.field_column_count
+    - field.field.paragraph.facts_and_stats.field_heading_level
     - field.field.paragraph.facts_and_stats.field_link
     - field.field.paragraph.facts_and_stats.field_rich_text
     - field.field.paragraph.facts_and_stats.field_stat_items
@@ -21,6 +22,12 @@ content:
   field_column_count:
     type: options_select
     weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading_level:
+    type: options_select
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

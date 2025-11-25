@@ -15,10 +15,9 @@
     &__container {
       @include page-container;
 
-      @include tablet {
-        display: flex;
-        justify-content: space-between;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     &__main {
@@ -26,11 +25,10 @@
     }
 
     &__logo {
-      width: calculate-rem(104);
+      width: calculate-rem(95);
       padding-bottom: $wa-spacing-03;
 
       @include tablet {
-        width: calculate-rem(200);
         padding: $wa-spacing-04 0;
       }
 
@@ -49,6 +47,25 @@
 
       @include tablet {
         margin: 0;
+      }
+    }
+
+    &__donate-header-menu {
+
+      ul {
+        list-style: none;
+        display: flex;
+        gap: $wa-spacing-06;
+      }
+      a {
+        @include utility-nav-link;
+      }
+      .donate-header-menu-item--hide-on-mobile {
+        display: none;
+
+        @include tablet {
+          display: block;
+        }
       }
     }
   }

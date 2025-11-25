@@ -1,0 +1,23 @@
+uuid: 28402ce8-bfba-46f6-b281-f419cd14ea19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_level
+    - paragraphs.paragraphs_type.accordion
+  module:
+    - options
+id: paragraph.accordion.field_heading_level
+field_name: field_heading_level
+entity_type: paragraph
+bundle: accordion
+label: 'Heading level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

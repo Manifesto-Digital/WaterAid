@@ -1,17 +1,28 @@
 <div {{ attributes.addClass('properties') }}>
   <ul class="properties__items">
-    {% if start_date %}
-      <li class="properties__item">
-        <span class="properties__item--key"><strong>{{ 'Start date'|t }}</strong></span>
-        <span class="properties__item--value">{{ start_date|date("l j F Y") }}</span>
-      </li>
-    {% endif %}
+    {% if start_date or end_date %}
+      {% set start = start_date|date("l j F Y") %}
+      {% set end = end_date|date("l j F Y") %}
+      {% if start == end %}
+        <li class="properties__item">
+          <span class="properties__item--key"><strong>{{ 'Date'|t }}</strong></span>
+          <span class="properties__item--value">{{ start }}</span>
+        </li>
+      {% else %}
+        {% if start %}
+          <li class="properties__item">
+            <span class="properties__item--key"><strong>{{ 'Start date'|t }}</strong></span>
+            <span class="properties__item--value">{{ start }}</span>
+          </li>
+        {% endif %}
 
-    {% if end_date %}
-      <li class="properties__item">
-        <span class="properties__item--key"><strong>{{ 'End date'|t }}</strong></span>
-        <span class="properties__item--value">{{ end_date|date("l j F Y") }}</span>
-      </li>
+        {% if end %}
+          <li class="properties__item">
+            <span class="properties__item--key"><strong>{{ 'End date'|t }}</strong></span>
+            <span class="properties__item--value">{{ end }}</span>
+          </li>
+        {% endif %}
+      {% endif %}
     {% endif %}
 
     {% for key,item in items['#items'] %}

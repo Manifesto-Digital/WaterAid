@@ -35,6 +35,7 @@ dependencies:
   module:
     - config_pages
     - content_translation
+    - editoria11y
     - filter
     - group
     - group_content_menu
@@ -277,6 +278,7 @@ permissions:
   - 'edit terms in topic'
   - 'edit webform assets'
   - 'generate preview links'
+  - 'mark as hidden in editoria11y'
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
   - 'revert any dam_file media revisions'
@@ -333,6 +335,7 @@ permissions:
   - 'view article revisions'
   - 'view config_pages entity'
   - 'view donation revisions'
+  - 'view editoria11y checker'
   - 'view event revisions'
   - 'view footer config page entity'
   - 'view landing_page revisions'

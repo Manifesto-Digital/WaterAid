@@ -11,4 +11,8 @@ libraryOverrides:
 props:
   type: object
   properties: {}
+slots:
+  donate_header_menu:
+    title: Donate header menu
+    description: Donate header menu render array.
 

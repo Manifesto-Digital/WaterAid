@@ -11,6 +11,7 @@ use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
 
@@ -28,6 +29,11 @@ function wateraid_preprocess_page(&$variables) {
   $params = $route_match->getParameters();
   $node = $params->get('node');
   $group = $params->get('group');
+  $relationship = $params->get('group_relationship');
+  if ($relationship && $relationship->getEntity() instanceof NodeInterface) {
+    $node = $relationship->getEntity();
+    $variables['bundle'] = $node->getType();
+  }
 
   // Determine if we should be rendering the donate header or standard.
   $donate_header = FALSE;
@@ -43,6 +49,25 @@ function wateraid_preprocess_page(&$variables) {
     }
   }
   $variables['donate_header'] = $donate_header;
+
+  // Add the donate header menu as a variable if we're showing donate header.
+  if ($donate_header) {
+    if ($group instanceof GroupInterface) {
+      $group_menu_relationships = group_content_menu_get_menus_per_group($group);
+      foreach ($group_menu_relationships as $group_menu_relationship) {
+        if ($group_menu_relationship->getPluginId() === 'group_content_menu:donate_header_menu') {
+          /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
+          $group_content_menu = $group_menu_relationship->getEntity();
+          // The menu name is derived from the group menu content entity.
+          $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
+          $variables['donate_header_menu'] = _wateraid_build_menu($menu_name, 1);
+          // Add cacheability metadata.
+          $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+          break;
+        }
+      }
+    }
+  }
 
   // Provide the link to the WASH Matters site, if it exists and if either we're
   // not in any group, or we're not on a page that's in the WASH Matters group
@@ -81,13 +106,6 @@ function wateraid_preprocess_page(&$variables) {
       }
     }
     $variables['#cache']['tags'][] = 'group:' . $group->id();
-  }
-
-  if ($relationship = \Drupal::routeMatch()->getParameter('group_relationship')) {
-    $node = $relationship->getEntity();
-    if ($node instanceof NodeInterface) {
-      $variables['bundle'] = $node->getType();
-    }
   }
 }
 
@@ -358,4 +376,16 @@ function _wateraid_build_menu($menu_name, int $max_depth): array {
   $tree = $menu_tree->transform($tree, $manipulators);
   // Return as built renderable.
   return $menu_tree->build($tree);
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function wateraid_preprocess(&$variables) {
+  // Adds the current group's canonical URL to template variables where exists.
+  $group = \Drupal::routeMatch()->getParameter('group');
+  if ($group instanceof Group) {
+    $url = Url::fromRoute('entity.group.canonical', ['group' => $group->id()]);
+    $variables['current_group_path'] = $url->toString();
+  }
 }

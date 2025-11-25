@@ -21,6 +21,11 @@ class SiteFooterBlock extends BlockBase {
   public function build() {
     return [
       '#markup' => '<h1>WaterAid site footer block</h1>',
+      '#cache' => [
+        'contexts' => [
+          'group',
+        ],
+      ],
     ];
   }
 
