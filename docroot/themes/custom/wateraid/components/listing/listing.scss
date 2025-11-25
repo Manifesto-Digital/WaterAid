@@ -140,6 +140,8 @@
       position: relative;
     }
     .pager__item {
+      width: fit-content;
+      margin: auto;
       &::after {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
       }
