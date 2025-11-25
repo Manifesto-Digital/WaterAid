@@ -57,6 +57,9 @@ final class Api {
       'customfield.other.Credit',
       'CoreField.OriginalFileName',
       'CoreField.Title',
+      'customfield.Expiry-Date',
+      'CoreField.ModelReleaseExpirationDate',
+      'CoreField.PropertyReleaseExpirationDate',
       'Document.FileNameWithoutExtension',
       ], $fields);
 
