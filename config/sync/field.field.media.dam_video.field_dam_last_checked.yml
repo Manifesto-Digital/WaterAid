@@ -1,0 +1,19 @@
+uuid: 275f19b2-3241-4633-98a2-2b6562393e63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_dam_last_checked
+    - media.type.dam_video
+id: media.dam_video.field_dam_last_checked
+field_name: field_dam_last_checked
+entity_type: media
+bundle: dam_video
+label: 'Expiry Last Checked'
+description: 'The date this file was last checked against the DAM.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

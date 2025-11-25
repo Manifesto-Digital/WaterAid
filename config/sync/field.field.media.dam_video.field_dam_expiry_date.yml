@@ -1,0 +1,19 @@
+uuid: 591ee41e-0629-4023-82a2-155cf2c8cc02
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_dam_expiry_date
+    - media.type.dam_video
+id: media.dam_video.field_dam_expiry_date
+field_name: field_dam_expiry_date
+entity_type: media
+bundle: dam_video
+label: 'Expiry Date'
+description: 'The expiry date of this image in the Orange DAM.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
