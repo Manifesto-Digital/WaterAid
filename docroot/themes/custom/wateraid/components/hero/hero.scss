@@ -7,6 +7,8 @@
   }
 
   &__content-wrapper {
+    width: 100%;
+
     @include desktop {
       @include page-container;
     }
@@ -202,6 +204,7 @@
     }
   }
 
+  &--basic,
   &--media,
   &--news {
     .hero__content-wrapper {
