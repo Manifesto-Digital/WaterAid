@@ -5,6 +5,9 @@
  * Install and update hooks for the editor experience.
  */
 
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+
 /**
  * Delete test webform nodes.
  */
@@ -13,5 +16,35 @@ function wa_editor_experience_update_10001(): void {
     'type' => 'webform',
   ]) as $node) {
     $node->delete();
+  }
+}
+
+/**
+ * Repair broken dates in events.
+ */
+function wa_editor_experience_update_10002(): void {
+  $db = \Drupal::database();
+
+  foreach (['field_event_start_date', 'field_event_end_date'] as $field) {
+    if ($data = $db->select('node__' . $field, 'f')
+      ->fields('f')
+      ->execute()->fetchAll()) {
+      foreach ($data as $row) {
+        if ($date = $row->{$field . '_value'}) {
+          if (strlen($date) == 10) {
+            $new_date = DrupalDateTime::createFromFormat('Y-m-d', $date);
+            $new_date->setTime(0, 0);
+            $value = $new_date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+
+            $db->update('node__' . $field)
+              ->fields([
+                $field . '_value' => $value,
+              ])
+              ->condition('entity_id', $row->entity_id)
+              ->execute();
+          }
+        }
+      }
+    }
   }
 }
