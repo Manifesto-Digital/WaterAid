@@ -34,7 +34,7 @@ $header-padding-bottom: 0;
 
   &__logo {
     width: calculate-rem(140);
-    padding-bottom: $wa-spacing-03;
+    padding: 0 $wa-spacing-03 $wa-spacing-03 0;
 
     @include tablet {
       width: calculate-rem(200);
