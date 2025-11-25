@@ -343,6 +343,11 @@ function wateraid_preprocess_paragraph__spend(&$variables) {
   $parentEntity = $paragraph->getParentEntity();
   $relationships = GroupRelationship::loadByEntity($parentEntity);
 
+  // There is no group relationship -> no group to get the spend data from.
+  if (empty($relationships)) {
+    return;
+  }
+
   $relationship = reset($relationships);
 
   $group = $relationship->getGroup();
