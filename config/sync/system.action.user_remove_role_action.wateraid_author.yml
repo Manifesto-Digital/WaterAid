@@ -1,0 +1,14 @@
+uuid: cccf23dd-3f17-49ff-8ed6-16948a2f8d45
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wateraid_author
+  module:
+    - user
+id: user_remove_role_action.wateraid_author
+label: 'Remove the WaterAid Author role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wateraid_author
