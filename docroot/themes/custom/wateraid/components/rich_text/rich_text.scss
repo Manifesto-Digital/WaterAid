@@ -93,6 +93,12 @@
     font-style: normal;
   }
 
+  blockquote + p > cite {
+    display: block;
+    padding-left: $wa-spacing-07;
+    margin-top: -$wa-spacing-09;
+  }
+
   h2,
   h3,
   h4,
