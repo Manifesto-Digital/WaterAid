@@ -27,8 +27,9 @@
     flex-direction: column;
     gap: $wa-spacing-06;
 
-    &--title {
+    h2.image-gallery__content--title {
       margin: 0;
+      padding: 0;
     }
 
     &--description p:first-of-type {
@@ -89,6 +90,8 @@
       }
     }
 
+    h2,
+    h3,
     .image-gallery__content--title,
     .image-gallery__content--description,
     .image__credit,
@@ -100,5 +103,20 @@
       background-color: $wa-navy;
       color: $wa-white;
     }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote {
+    padding-bottom: $wa-spacing-07;
+  }
+
+  p,
+  ul,
+  ol {
+    padding-bottom: $wa-spacing-06;
   }
 }
