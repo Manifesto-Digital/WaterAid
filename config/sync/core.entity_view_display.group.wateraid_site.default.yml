@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.group.wateraid_site.field_content
+    - field.field.group.wateraid_site.field_group_language
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
     - field.field.group.wateraid_site.field_spend_module
@@ -47,6 +48,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_group_language: true
   field_is_wash_matters_site: true
   field_spend_module: true
   langcode: true

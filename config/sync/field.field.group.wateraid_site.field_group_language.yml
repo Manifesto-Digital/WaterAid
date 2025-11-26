@@ -1,0 +1,23 @@
+uuid: 4a6f1c9b-01fa-433d-a8aa-88bc02a4a96e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_language
+    - group.type.wateraid_site
+id: group.wateraid_site.field_group_language
+field_name: field_group_language
+entity_type: group
+bundle: wateraid_site
+label: 'Default Language'
+description: "Select the Group's default language. This will be the language used if no URL parameter is provided when a user visits content within the group."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:configurable_language'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference
