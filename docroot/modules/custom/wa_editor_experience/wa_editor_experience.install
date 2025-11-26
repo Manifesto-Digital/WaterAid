@@ -90,4 +90,31 @@ function wa_editor_experience_update_10003(): void {
   }
 }
 
+/**
+ * Add page_path to editoria11y tables.
+ */
+function wa_editor_experience_update_10004(): void {
+  $database = \Drupal::database();
+  $schema = $database->schema();
 
+  // Define the new fields.
+  $page_path_field = [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'default' => NULL,
+    'description' => 'The page path of the entity the data is attached to.',
+  ];
+
+  // Tables to update.
+  $tables = ['editoria11y_dismissals'];
+
+  foreach ($tables as $table) {
+    if ($schema->tableExists($table)) {
+      // Add entity_id field if it doesn't exist.
+      if (!$schema->fieldExists($table, 'page_path')) {
+        $schema->addField($table, 'page_path', $page_path_field);
+      }
+    }
+  }
+}
