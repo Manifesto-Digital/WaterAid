@@ -1050,6 +1050,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $payment_result = $form_state->get(DonationsWebformPayment::STORAGE_PAYMENT_RESULT);
     $payment_details = $form_state->get(DonationsWebformPayment::STORAGE_PAYMENT_DETAILS);
 
+    $payment_response = '';
     if ($form_state->get(DonationsWebformPayment::STORAGE_PAYMENT_RESPONSE)) {
       $payment_response = Json::decode($form_state->get(DonationsWebformPayment::STORAGE_PAYMENT_RESPONSE));
     }

@@ -13,9 +13,14 @@
         // in favour of the payment provider specific buttons. If the button
         // is hidden in this way, we should ensure our wrapper and secure image
         // are also hidden.
-        const formActions = element?.closest('form')?.querySelector('[data-drupal-selector="edit-actions"]');
-        if (formActions) {
-          formActions.style.display = 'none';
+        const form = element?.closest('form');
+        if (form) {
+          if( form.querySelector('input[name="payment[payment_frequency]"]').value !== 'recurring') {
+            const formActions = form?.querySelector('[data-drupal-selector="edit-actions"]');
+            if (formActions) {
+              formActions.style.display = 'none';
+            }
+          }
         }
       });
     }
