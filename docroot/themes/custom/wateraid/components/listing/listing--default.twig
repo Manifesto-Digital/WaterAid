@@ -9,31 +9,33 @@
   </div>
 
   <div class="listing__wrapper">
-    <div class="listing__wrapper--button">
-      {{ include('wateraid:button', {
-        text: 'Show filters',
-        link: '',
-        id: 'show-filters',
-        type: 'secondary',
-        icon: 'wa-utility-tune',
-        theme: 'light',
-      }) }}
-    </div>
-
-    <div class="listing__filters">
-      <div class="listing__filters--button">
+    {% if filters|render %}
+      <div class="listing__wrapper--button">
         {{ include('wateraid:button', {
-          text: 'Hide filters',
+          text: 'Show filters',
           link: '',
-          id: 'hide-filters',
+          id: 'show-filters',
           type: 'secondary',
           icon: 'wa-utility-tune',
           theme: 'light',
         }) }}
       </div>
 
-      {{ filters }}
-    </div>
+      <div class="listing__filters">
+        <div class="listing__filters--button">
+          {{ include('wateraid:button', {
+            text: 'Hide filters',
+            link: '',
+            id: 'hide-filters',
+            type: 'secondary',
+            icon: 'wa-utility-tune',
+            theme: 'light',
+          }) }}
+        </div>
+
+        {{ filters }}
+      </div>
+    {% endif %}
 
     <div class="listing__content">
       {{ rows }}

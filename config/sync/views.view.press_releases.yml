@@ -11,7 +11,7 @@ dependencies:
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
   content:
-    - 'taxonomy_term:get_involved:18ad35b4-2d80-457a-897d-84a7b68a626a'
+    - 'taxonomy_term:get_involved:38b22b41-28bb-4597-b9d2-584af9bcd2ab'
   module:
     - better_exposed_filters
     - node
@@ -697,10 +697,11 @@ display:
       tags: {  }
   block_1:
     id: block_1
-    display_title: Block
+    display_title: 'With filters'
     display_plugin: block
     position: 1
     display_options:
+      display_description: ''
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -708,6 +709,92 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_2:
+    id: block_2
+    display_title: 'Without filters'
+    display_plugin: block
+    position: 1
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        field_get_involved_target_id:
+          id: field_get_involved_target_id
+          table: node__field_get_involved
+          field: field_get_involved_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            1171: 1171
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_get_involved_target_id_op
+            label: 'Get Involved'
+            description: ''
+            use_operator: false
+            operator: field_get_involved_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_get_involved_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              wateraid_super_admin: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: get_involved
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
