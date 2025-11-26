@@ -245,8 +245,18 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
           /** @var \Drupal\media\Entity\Media $media_entity */
           if ($media_entity = $donation_paragraph->get('field_image')->entity) {
             /** @var \Drupal\file\Entity\File $file */
-            if ($file = $media_entity->field_media_image->entity) {
+            if ($media_entity->field_media_image) {
+              $file = $media_entity->field_media_image->entity;
               $image_url = Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+            }
+            elseif ($file = $media_entity->field_media_dam_image) {
+              $dam_reference = $media_entity->field_media_dam_image->getValue();
+              if ($dam_reference && $dam_reference[0]['system_identifier']) {
+                /** @var \Drupal\wa_orange_dam\Service\Api $dam_api */
+                $dam_ai = \Drupal::service('wa_orange_dam.api');
+                $dam_image_data = $dam_ai->getPublicLink($dam_reference[0]['system_identifier']);
+                $image_url = $dam_image_data['link'] ?? NULL;
+              }
             }
           }
         }
