@@ -1,0 +1,4 @@
+view.moderated_content.page_1:
+  title: 'My Content'
+  route_name: view.moderated_content.page_1
+  base_route: entity.user.canonical

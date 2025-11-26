@@ -1,0 +1,14 @@
+uuid: eeb4f92d-f41c-4352-bcca-4225bb5fb078
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wateraid_author
+  module:
+    - user
+id: user_add_role_action.wateraid_author
+label: 'Add the WaterAid Author role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wateraid_author

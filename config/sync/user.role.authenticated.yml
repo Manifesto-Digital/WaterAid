@@ -4,13 +4,17 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.restricted_html
+    - filter.format.wateraid_pdf
     - filter.format.webform_default
   module:
+    - captcha
     - contact
     - file
     - filter
     - media
     - shortcut
+    - storybook
     - system
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
@@ -23,6 +27,10 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'delete own files'
+  - 'render storybook stories'
+  - 'skip CAPTCHA'
   - 'use text format basic_html'
+  - 'use text format restricted_html'
+  - 'use text format wateraid_pdf'
   - 'use text format webform_default'
   - 'view media'
