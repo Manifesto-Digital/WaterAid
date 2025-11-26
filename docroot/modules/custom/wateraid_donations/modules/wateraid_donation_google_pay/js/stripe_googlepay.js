@@ -41,8 +41,7 @@
     },
     createToken: function (event) {},
     addBehaviour: function () {
-      const publishableKey = drupalSettings.webformStripe.public_key;
-      this.stripe = Stripe(publishableKey, {
+      this.stripe = Stripe(drupalSettings.webformStripe.public_key, {
         apiVersion: '2020-08-27',
       });
 
