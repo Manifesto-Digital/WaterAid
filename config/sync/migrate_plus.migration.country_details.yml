@@ -39,7 +39,7 @@ process:
     no_stub: true
   field_hero:
     plugin: paragraph_migration_lookup
-    migrations:
+    migration:
       - hero
     source: field_hero
     no_stub: true
@@ -71,7 +71,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -96,6 +96,10 @@ process:
         - activation_bar_item
         - rainbow_link_item
         - donation_cta_widget_embed
+        - hero_in_content
+        - variable_content_module
+        - statistics
+        - statistics_icons
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -113,5 +117,4 @@ migration_dependencies:
     - themes
     - users
     - hero
-    - media
 include: null

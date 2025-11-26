@@ -1,0 +1,38 @@
+uuid: 746c21a7-b43b-4227-ba9c-8576592eb27e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.spend.field_enabled
+    - paragraphs.paragraphs_type.spend
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_spend_module:
+      children: {  }
+      label: 'Spend module'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: markup
+      format_settings:
+        classes: form-wrapper
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        markup:
+          value: '<p>Placeholder for site wide spend module</p>'
+          format: basic_html
+id: paragraph.spend.preview
+targetEntityType: paragraph
+bundle: spend
+mode: preview
+content: {  }
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_enabled: true
+  search_api_excerpt: true

@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_regions
+    - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
@@ -25,6 +26,7 @@ dependencies:
     - datetime
     - field_group
     - layout_paragraphs
+    - link
     - media_library
     - metatag
     - path
@@ -66,9 +68,9 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
+        - field_search_phrases
         - field_content
         - group_tags
-        - field_search_phrases
       label: Content
       region: content
       parent_name: group_tabs
@@ -226,6 +228,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_resources:
+    type: link_default
+    weight: 37
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 26
@@ -264,7 +274,11 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 160
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   field_theme:
     type: entity_reference_autocomplete
     weight: 17

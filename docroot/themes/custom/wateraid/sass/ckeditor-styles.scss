@@ -1,0 +1,32 @@
+@import 'base';
+
+.ck-content {
+  h1 {
+    @include h1;
+  }
+  h2 {
+    @include h1;
+  }
+  h3 {
+    @include h1;
+  }
+  h4 {
+    @include h1;
+  }
+  h5 {
+    @include h1;
+  }
+  h6 {
+    @include h1;
+  }
+  p {
+    @include paragraph-md;
+
+    strong {
+      font-family: $bold-font;
+    }
+  }
+  a {
+    @include link;
+  }
+}

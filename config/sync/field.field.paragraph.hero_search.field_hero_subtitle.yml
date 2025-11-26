@@ -1,0 +1,19 @@
+uuid: 8be7ee20-2384-4f11-b7a8-c2a26fced45a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hero_subtitle
+    - paragraphs.paragraphs_type.hero_search
+id: paragraph.hero_search.field_hero_subtitle
+field_name: field_hero_subtitle
+entity_type: paragraph
+bundle: hero_search
+label: Subtitle
+description: 'Enter a subtitle for your content'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

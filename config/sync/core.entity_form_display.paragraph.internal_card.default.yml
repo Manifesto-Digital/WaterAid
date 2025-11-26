@@ -1,0 +1,25 @@
+uuid: 370b2c6d-e824-4022-9c3f-f1fc50f4d2c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.internal_card.field_internal_card
+    - paragraphs.paragraphs_type.internal_card
+id: paragraph.internal_card.default
+targetEntityType: paragraph
+bundle: internal_card
+mode: default
+content:
+  field_internal_card:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,21 @@
+uuid: ef90ca5b-cb44-4b29-a50e-f2c5b5acaf05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_region
+  module:
+    - menu_link_content
+    - options
+id: menu_link_content.site-selector.field_region
+field_name: field_region
+entity_type: menu_link_content
+bundle: site-selector
+label: Region
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

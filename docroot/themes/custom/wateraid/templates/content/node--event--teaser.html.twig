@@ -68,14 +68,14 @@
 
 {% set authors = [] %}
 {% for item in node.field_hero.0.entity.field_authors %}
-  {% set authors = authors|merge([item.entity.name.value]) %}
+  {% set authors = authors|merge([item.entity.label()]) %}
 {% endfor %}
 
 {{ include('wateraid:card', {
   attributes: attributes,
   heading: label,
   description: content.field_teaser_text,
-  image_url: file_url(node.field_teaser_image[0].entity.field_media_image.entity.uri.value),
+  image: content.field_teaser_image,
   authors: authors,
   tags: tags,
   date: node.field_event_start_date.value,

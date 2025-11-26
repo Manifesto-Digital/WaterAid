@@ -5,11 +5,18 @@
  * Functions to support theming.
  */
 
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\group_content_menu\GroupContentMenuInterface;
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
 
 // Require all the theme includes.
-$theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+$theme_path = Drupal::theme()->getActiveTheme()->getPath();
 foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
   require_once $file;
 }
@@ -18,11 +25,88 @@ foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
  * Implements hook_preprocess_HOOK() for pages.
  */
 function wateraid_preprocess_page(&$variables) {
-  /** @var \Drupal\Core\Block\BlockManagerInterface $block_manager */
-  $block_manager = \Drupal::service('plugin.manager.block');
-  /** @var \Drupal\group_content_menu\Plugin\Block\GroupMenuBlock $group_menu_block */
-  $group_menu_block = $block_manager->createInstance('group_content_menu:wateraid_site_menu', ['level' => 1, 'depth' => 3]);
-  $variables['primary_menu'] = $group_menu_block->access(\Drupal::currentUser()) ? $group_menu_block->build() : [];
+  $route_match = \Drupal::routeMatch();
+  $params = $route_match->getParameters();
+  $node = $params->get('node');
+  $group = $params->get('group');
+  $relationship = $params->get('group_relationship');
+  if ($relationship && $relationship->getEntity() instanceof NodeInterface) {
+    $node = $relationship->getEntity();
+    $variables['bundle'] = $node->getType();
+  }
+
+  // Determine if we should be rendering the donate header or standard.
+  $donate_header = FALSE;
+  if ($node instanceof NodeInterface) {
+    switch ($node->bundle()) {
+      case 'donation':
+        $donate_header = (bool) $node->get('field_minimal_header')->value;
+        break;
+
+      case 'webform':
+        $donate_header = (bool) $node->get('field_donation_menu')->value;
+        break;
+    }
+  }
+  $variables['donate_header'] = $donate_header;
+
+  // Add the donate header menu as a variable if we're showing donate header.
+  if ($donate_header) {
+    if ($group instanceof GroupInterface) {
+      $group_menu_relationships = group_content_menu_get_menus_per_group($group);
+      foreach ($group_menu_relationships as $group_menu_relationship) {
+        if ($group_menu_relationship->getPluginId() === 'group_content_menu:donate_header_menu') {
+          /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
+          $group_content_menu = $group_menu_relationship->getEntity();
+          // The menu name is derived from the group menu content entity.
+          $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
+          $variables['donate_header_menu'] = _wateraid_build_menu($menu_name, 1);
+          // Add cacheability metadata.
+          $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+          break;
+        }
+      }
+    }
+  }
+
+  // Provide the link to the WASH Matters site, if it exists and if either we're
+  // not in any group, or we're not on a page that's in the WASH Matters group
+  // context.
+  /** @var \Drupal\group\Entity\GroupInterface[] $wash_matters_group */
+  $variables['wash_matters_url'] = NULL;
+  $wash_matters_group_ids = \Drupal::entityQuery('group')
+    ->accessCheck(FALSE)
+    ->condition('status', TRUE)
+    ->condition('type', 'wateraid_site')
+    ->condition('field_is_wash_matters_site', TRUE)
+    ->execute();
+  $wash_matters_group_id = !empty($wash_matters_group_ids) ? reset($wash_matters_group_ids) : NULL;
+  if ($wash_matters_group_id) {
+    $wash_matters_group = Group::load($wash_matters_group_id);
+    if (empty($group)) {
+      $variables['wash_matters_url'] = $wash_matters_group->toUrl();
+    }
+    elseif ($group instanceof GroupInterface && $group->bundle() == 'wateraid_site') {
+      $variables['wash_matters_url'] = (bool) $group->get('field_is_wash_matters_site')->value ? NULL : $wash_matters_group->toUrl();
+    }
+  }
+
+  // Provide the primary navigation menu to the page template.
+  if ($group instanceof GroupInterface) {
+    $group_menu_relationships = group_content_menu_get_menus_per_group($group);
+    foreach ($group_menu_relationships as $group_menu_relationship) {
+      if ($group_menu_relationship->getPluginId() === 'group_content_menu:wateraid_site_menu') {
+        /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
+        $group_content_menu = $group_menu_relationship->getEntity();
+        // The group menu name is derived from the group menu content entity.
+        $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
+        $variables['primary_navigation'] = _wateraid_build_menu($menu_name, 3);
+        // Add cacheability metadata.
+        $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+      }
+    }
+    $variables['#cache']['tags'][] = 'group:' . $group->id();
+  }
 }
 
 /**
@@ -121,8 +205,14 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
     'image' => '',
     'credit' => '',
   ];
-  $monthly_amounts[] = $other_option;
-  $one_off_amounts[] = $other_option;
+
+  if (!empty($monthly_amounts)) {
+    $monthly_amounts[] = $other_option;
+  }
+
+  if (!empty($one_off_amounts)) {
+    $one_off_amounts[] = $other_option;
+  }
 
   $variables['monthly_donation_amounts'] = $monthly_amounts;
   $variables['one_off_donation_amounts'] = $one_off_amounts;
@@ -130,6 +220,14 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
 
 /**
  * Helper function to extract and format donation amount data from a paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ * @param string $field_name
+ *   The field name.
+ *
+ * @return array
+ *   The amounts.
  */
 function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string $field_name): array {
   $donation_amounts = [];
@@ -148,7 +246,7 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
           if ($media_entity = $donation_paragraph->get('field_image')->entity) {
             /** @var \Drupal\file\Entity\File $file */
             if ($file = $media_entity->field_media_image->entity) {
-              $image_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+              $image_url = Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
             }
           }
         }
@@ -158,7 +256,7 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
           if ($media_entity = $donation_paragraph->get('field_icon')->entity) {
             /** @var \Drupal\file\Entity\File $file */
             if ($file = $media_entity->field_media_svg->entity) {
-              $icon_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+              $icon_url = Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
             }
           }
         }
@@ -182,10 +280,112 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
   return $donation_amounts;
 }
 
+/**
+ * Implements hook_preprocess_node().
+ */
+function wateraid_preprocess_node(&$variables) {
+  /** @var \Drupal\node\Entity\Node $node */
+  $node = $variables['node'];
+  $view_mode = $variables['view_mode'];
 
+  // Hide field_donation_widget if fq and val query parameters exist because another widget already set it.
+  if ($node->getType() === 'webform' && in_array($view_mode, ['full', 'default']) && isset($variables['content']['field_donation_widget'][0])) {
+    $request = \Drupal::request();
+    $fq_param = $request->query->get('fq');
+    $val_param = $request->query->get('val');
+
+    // If both fq and val query parameters exist, hide the donation widget field.
+    $variables['content']['first_step_as_widget'] = !($fq_param !== NULL && $val_param !== NULL);
+
+    // Add custom JS to handle FE behaviour.
+    $variables['#attached']['library'][] = 'wateraid/webform-behavior';
+
+    // Hide fields except for edit when widget is shown.
+    $variables['#attached']['drupalSettings']['wateraid']['firstStepAsWidget'] = $variables['content']['first_step_as_widget'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for input.
+ */
+function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$variables): void {
+  if ($variables['theme_hook_original'] === 'input__submit') {
+    // Use the secure input template if the "secure_logo" property is enabled
+    // on the element, or the element is a payment method button except for
+    // Apple Pay.
+    if ((!empty($variables['element']['#secure_logo']) || (str_contains($variables['element']['#id'], 'payment-payment-method') && !str_contains($variables['element']['#id'], 'applepay')))
+      && isset($variables['element']['#attributes']['value']) && !str_contains($variables['element']['#attributes']['value'], 'step')) {
+      $suggestions[] = 'input__submit__secure';
+    }
+  }
+}
+
+/**
+ *
+ */
 function wateraid_preprocess_views_view(&$variables) {
   $view = $variables['view'];
   if ($view->id() === 'search') {
-    $variables['keywords'] = $view->getExposedInput()['keywords'];
+    $input = $view->getExposedInput();
+    $variables['keywords'] = $input['keywords'] ?? '';
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__spend().
+ *
+ * This function creates a variable for Group's spending module.
+ */
+function wateraid_preprocess_paragraph__spend(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $parentEntity = $paragraph->getParentEntity();
+  $relationships = GroupRelationship::loadByEntity($parentEntity);
+
+  $relationship = reset($relationships);
+
+  $group = $relationship->getGroup();
+
+  $variables['spend'] = $group->field_spend_module->view();
+}
+
+/**
+ * Helper to build a renderable menu.
+ *
+ * @param $menu_name
+ *   Menu name.
+ * @param int $max_depth
+ *   Render depth of the tree.
+ *
+ * @return array
+ */
+function _wateraid_build_menu($menu_name, int $max_depth): array {
+  /** @var \Drupal\Core\Menu\MenuLinkTreeInterface $menu_tree */
+  $menu_tree = \Drupal::service('menu.link_tree');
+  // Start with fresh parameters instead of route-based ones.
+  $parameters = new MenuTreeParameters();
+  $parameters->setMaxDepth($max_depth);
+  $parameters->expandedParents = [];
+  // Load the tree and apply manipulators.
+  $tree = $menu_tree->load($menu_name, $parameters);
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menu_tree->transform($tree, $manipulators);
+  // Return as built renderable.
+  return $menu_tree->build($tree);
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function wateraid_preprocess(&$variables) {
+  // Adds the current group's canonical URL to template variables where exists.
+  $group = \Drupal::routeMatch()->getParameter('group');
+  if ($group instanceof Group) {
+    $url = Url::fromRoute('entity.group.canonical', ['group' => $group->id()]);
+    $variables['current_group_path'] = $url->toString();
   }
 }

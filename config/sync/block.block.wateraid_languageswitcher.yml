@@ -1,0 +1,20 @@
+uuid: c21a67b1-0590-487c-81d2-25bd59373d57
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - wateraid
+id: wateraid_languageswitcher
+theme: wateraid
+region: header
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  label_display: '0'
+  provider: language
+visibility: {  }

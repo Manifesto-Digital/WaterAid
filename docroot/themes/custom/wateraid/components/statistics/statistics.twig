@@ -1,21 +1,13 @@
-{% set classes = [
+{% set tag = heading_level ? heading_level : 'h2' %}
+{% set stats_classes = [
   'statistics',
   'statistics--' ~ columns,
 ] %}
 
-{% set text %}
-  {% if title %}
-    <h2>{{ title }}</h2>
-  {% endif %}
-  {% if description %}
-    <div>{{ description }}</div>
-  {% endif %}
-{% endset %}
-
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(stats_classes) }}>
   <div class="statistics__content container-sm">
     {% if title %}
-      <h2 class="statistics__content--title">{{ title }}</h2>
+      <{{ tag }} class="statistics__content--title pseudo-h2">{{ title }}</{{ tag }}>
     {% endif %}
     {% if description %}
       <div class="statistics__content--description">{{ description }}</div>

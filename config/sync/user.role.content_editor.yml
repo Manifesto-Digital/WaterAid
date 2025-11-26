@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
+    - media.type.dam_file
     - media.type.dam_image
     - media.type.dam_video
     - media.type.remote_video
@@ -15,6 +16,7 @@ dependencies:
     - node.type.listing_page
     - node.type.page
     - node.type.publication
+    - node.type.shorthand_story
     - node.type.standard_page
     - node.type.story
     - node.type.webform
@@ -26,10 +28,10 @@ dependencies:
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
   module:
-    - comment
     - config_pages
     - content_translation
     - contextual
+    - editoria11y
     - file
     - filter
     - group
@@ -41,9 +43,11 @@ dependencies:
     - path
     - preview_link
     - quick_node_clone
+    - shorthand
     - system
     - taxonomy
     - toolbar
+    - wateraid_core
     - webform
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
@@ -59,6 +63,7 @@ permissions:
   - 'access files overview'
   - 'access group overview'
   - 'access media overview'
+  - 'access nodes directly'
   - 'access own webform configuration'
   - 'access site reports'
   - 'access toolbar'
@@ -72,6 +77,7 @@ permissions:
   - 'clone webform content'
   - 'create article content'
   - 'create content translations'
+  - 'create dam_file media'
   - 'create dam_image media'
   - 'create dam_video media'
   - 'create donation content'
@@ -82,6 +88,7 @@ permissions:
   - 'create page content'
   - 'create publication content'
   - 'create remote_video media'
+  - 'create shorthand_story content'
   - 'create standard_page content'
   - 'create story content'
   - 'create terms in audiences'
@@ -100,6 +107,7 @@ permissions:
   - 'delete any landing_page content'
   - 'delete any listing_page content'
   - 'delete any page content'
+  - 'delete any shorthand_story content'
   - 'delete any standard_page content'
   - 'delete any story content'
   - 'delete article revisions'
@@ -120,12 +128,14 @@ permissions:
   - 'delete own page content'
   - 'delete own publication content'
   - 'delete own remote_video media'
+  - 'delete own shorthand_story content'
   - 'delete own standard_page content'
   - 'delete own story content'
   - 'delete own webform'
   - 'delete own webform content'
   - 'delete own webform submission'
   - 'delete page revisions'
+  - 'delete shorthand_story revisions'
   - 'delete standard_page revisions'
   - 'delete story revisions'
   - 'delete term revisions in audiences'
@@ -142,11 +152,13 @@ permissions:
   - 'delete terms in subject_areas'
   - 'delete terms in themes'
   - 'delete terms in topic'
+  - 'download shorthand content'
   - 'edit any article content'
   - 'edit any event content'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
   - 'edit any page content'
+  - 'edit any shorthand_story content'
   - 'edit any standard_page content'
   - 'edit any story content'
   - 'edit co-authors of all content'
@@ -155,7 +167,7 @@ permissions:
   - 'edit config_pages entity'
   - 'edit footer config page entity'
   - 'edit own article content'
-  - 'edit own comments'
+  - 'edit own dam_file media'
   - 'edit own dam_image media'
   - 'edit own dam_video media'
   - 'edit own donation content'
@@ -165,6 +177,7 @@ permissions:
   - 'edit own page content'
   - 'edit own publication content'
   - 'edit own remote_video media'
+  - 'edit own shorthand_story content'
   - 'edit own standard_page content'
   - 'edit own story content'
   - 'edit own webform'
@@ -179,6 +192,7 @@ permissions:
   - 'edit terms in themes'
   - 'edit terms in topic'
   - 'generate preview links'
+  - 'mark as hidden in editoria11y'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert donation revisions'
@@ -186,6 +200,7 @@ permissions:
   - 'revert landing_page revisions'
   - 'revert listing_page revisions'
   - 'revert page revisions'
+  - 'revert shorthand_story revisions'
   - 'revert standard_page revisions'
   - 'revert story revisions'
   - 'revert term revisions in audiences'
@@ -210,6 +225,7 @@ permissions:
   - 'view article revisions'
   - 'view config_pages entity'
   - 'view donation revisions'
+  - 'view editoria11y checker'
   - 'view event revisions'
   - 'view footer config page entity'
   - 'view landing_page revisions'
@@ -218,6 +234,7 @@ permissions:
   - 'view own unpublished media'
   - 'view own webform submission'
   - 'view page revisions'
+  - 'view shorthand_story revisions'
   - 'view site_settings config page entity'
   - 'view standard_page revisions'
   - 'view story revisions'

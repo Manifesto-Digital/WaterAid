@@ -1,0 +1,72 @@
+@import "./sass/base";
+
+.site-header-donate {
+
+  .site-header {
+
+    &__colour-wrapper {
+      background: $white;
+      width: 100vw;
+
+      padding-top: $wa-spacing-05;
+      padding-bottom: $wa-spacing-06;
+    }
+
+    &__container {
+      @include page-container;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__main {
+      overflow: hidden;
+    }
+
+    &__logo {
+      width: calculate-rem(95);
+      padding-bottom: $wa-spacing-03;
+
+      @include tablet {
+        padding: $wa-spacing-04 0;
+      }
+
+      &-link {
+        display: block;
+      }
+
+      &-image {
+        fill: currentColor;
+        color: $wa-blue;
+        max-width: 100%;
+        aspect-ratio: 3.2;
+        display: block;
+        @include wa-transition-motion-flow(all, 0.2s)
+      }
+
+      @include tablet {
+        margin: 0;
+      }
+    }
+
+    &__donate-header-menu {
+
+      ul {
+        list-style: none;
+        display: flex;
+        gap: $wa-spacing-06;
+      }
+      a {
+        @include utility-nav-link;
+      }
+      .donate-header-menu-item--hide-on-mobile {
+        display: none;
+
+        @include tablet {
+          display: block;
+        }
+      }
+    }
+  }
+}

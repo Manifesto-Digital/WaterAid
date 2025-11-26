@@ -48,7 +48,7 @@
 
 
 {% block paragraph %}
-  {{ include('wateraid:modal', {
+  {{ include('wateraid:inactivity_modal', {
     title: content.field_title,
     copy: content.field_rich_text|render,
     continueDonation: true,

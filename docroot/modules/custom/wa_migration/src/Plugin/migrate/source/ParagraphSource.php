@@ -61,22 +61,45 @@ class ParagraphSource extends SqlBase {
   public function prepareRow(Row $row): bool {
     if (isset($this->configuration['fields'])) {
       foreach ($this->configuration['fields'] as $field) {
-        $value = NULL;
+        $value = [];
 
         if ($data = $this->select('paragraph__' . $field, 'f')
           ->fields('f')
           ->condition('entity_id', $row->getSourceProperty('id'))
-          ->execute()->fetchAssoc()) {
-          if (isset($data[$field . '_value'])) {
-            $value = $data[$field . '_value'];
+          ->execute()->fetchAll()) {
+          foreach ($data as $datum) {
+            if (isset($datum[$field . '_value'])) {
+              $value[] = $datum[$field . '_value'];
+            }
+            elseif (isset($datum[$field . '_target_id'])) {
+              if ($field == 'field_activation_bar_item') {
+                if ($links = $this->select('paragraph__field_call_to_action_link', 'p')
+                  ->fields('p')
+                  ->condition('entity_id', $datum[$field . '_target_id'])
+                  ->execute()->fetchAll()) {
+                  foreach ($links as $link) {
+                    $value[] = [
+                      $link['field_call_to_action_link_uri'],
+                      $link['field_call_to_action_link_title'],
+                    ];
+                  }
+                }
+              }
+              else {
+                $value[] = $datum[$field . '_target_id'];
+              }
+            }
+            elseif (isset($datum[$field . '_uri'])) {
+              $value[] = [
+                $datum[$field . '_uri'],
+                $datum[$field . '_title'],
+              ];
+            }
           }
-          elseif (isset($data[$field . '_target_id'])) {
-            $value = $data[$field . '_target_id'];
-          }
-          elseif ((isset($data[$field . '_uri']))) {
-            $row->setSourceProperty($field . '_uri', $data[$field . '_uri']);
-            $row->setSourceProperty($field . '_title', $data[$field . '_title']);
-          }
+        }
+
+        if ($field == 'field_activation_bar_item') {
+          $field = 'field_call_to_action_link';
         }
 
         $row->setSourceProperty($field, $value);

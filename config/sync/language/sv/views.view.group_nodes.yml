@@ -2,6 +2,7 @@ display:
   default:
     display_title: Huvud
     display_options:
+      title: Content
       fields:
         title:
           label: Titel
@@ -12,6 +13,14 @@ display:
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Funktioner
       exposed_form:
@@ -24,6 +33,7 @@ display:
         gid:
           exception:
             title: Alla
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:
@@ -35,3 +45,7 @@ display:
                 title: Publicerad
               2:
                 title: 'Ej publicerad'
+  page_1:
+    display_options:
+      menu:
+        title: Content

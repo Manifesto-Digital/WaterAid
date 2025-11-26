@@ -4,7 +4,9 @@
   padding: $wa-spacing-07 $wa-spacing-05;
   z-index: 0;
   position: relative;
-  @include desktop() {
+  margin-top: $wa-spacing-07;
+  @include desktop {
+    margin-top: $wa-spacing-09;
     padding: $wa-spacing-09;
   }
 

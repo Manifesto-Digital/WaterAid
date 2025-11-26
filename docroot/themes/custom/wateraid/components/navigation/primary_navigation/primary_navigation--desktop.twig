@@ -1,0 +1,197 @@
+<nav class="meganav" id="meganav">
+  <ul class="meganav__level-1">
+    {# Iterate menu links. #}
+    {% for link in items %}
+      {% set level_1_index = loop.index %}
+      {% set is_donate_link = link.original_link.getEntity().field_donate_link.0.value %}
+      {% set is_search_link = link.original_link.getEntity().field_search_link.0.value %}
+      <li class="meganav__level-1-item{% if is_donate_link %} meganav__level-1-item--donate{% endif %}">
+        {% if link.below %}
+          {% set is_donate_menu_parent_link = link.original_link.getEntity().field_donate_menu_parent.0.value %}
+          {% if is_donate_menu_parent_link %}
+            {# Donate menu parent has a different style. #}
+            {{ include('wateraid:button', {
+              attributes: create_attribute()
+                .addClass('meganav__donate-link')
+                .setAttribute("data-level2-trigger", level_1_index)
+                .setAttribute("aria-expanded", 'false')
+                .setAttribute("aria-controls", "meganav-level-2-child-of-" ~ level_1_index),
+              text: link.title,
+              type: 'primary-meganav-donate-menu-parent',
+            }, false) }}
+          {% else %}
+            <button
+              class="meganav__level-1-link primary-navigation__level-1-link primary-navigation__link-with-icon"
+              type="button"
+              data-level2-trigger="{{ level_1_index }}"
+              aria-controls="meganav-level-2-child-of-{{ level_1_index }}"
+              aria-expanded="false"
+            >{{ link.title }}
+              <span class="icon icon-chevron-down">
+                  <svg>
+                    <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                  </svg>
+                </span>
+            </button>
+          {% endif %}
+        {% else %}
+          {% if is_donate_link %}
+            {# Donate link has a different style. #}
+            {{ include('wateraid:button', {
+              attributes: create_attribute().setAttribute('data-modal-close-id', instance_id).addClass('meganav__donate-link'),
+              text: link.title,
+              link: link.url,
+              type: 'donate',
+            }, false) }}
+          {% elseif is_search_link %}
+            {# Search link has a different style. #}
+            {{ include('wateraid:button', {
+              attributes: create_attribute()
+                .addClass(['button--search-btn']),
+              text: link.title,
+              link: link.url,
+              type: 'secondary',
+              theme: 'light',
+              icon: 'wa-utility-search',
+              icon_position: 'before',
+            }, false) }}
+          {% else %}
+            <a class="meganav__level-1-link primary-navigation__level-1-link" href="{{ link.url }}">{{ link.title }}</a>
+          {% endif %}
+        {% endif %}
+
+        {% if link.below %}
+          {# Start building meganav panel for each level 1 item with children. #}
+          <div id="meganav-level-2-child-of-{{ level_1_index }}" class="meganav__panel" data-meganav-panel-id="{{ level_1_index }}">
+            <div class="meganav__panel-inner">
+              <div class="meganav__col meganav__col--first">
+                <a class="meganav__level-1-panel-title-link" href="{{ link.url }}">{{ link.title }}</a>
+                {% set menu_level_2_heading_description = link.original_link.getEntity().field_description.0.value %}
+                {% if menu_level_2_heading_description is not empty %}
+                  <div class="description">
+                    <p>{{ menu_level_2_heading_description|raw|nl2br }}</p>
+                  </div>
+                {% endif %}
+              </div>
+              {% if link.below %}
+                {% set level_2_items = link.below %}
+
+                {# Check if any level 2 items have a level 3 menu available. #}
+                {% set has_any_level_3_items = false %}
+                {% for link in level_2_items %}
+                  {% if link.below is not empty %}
+                    {% set has_any_level_3_items = true %}
+                  {% endif %}
+                {% endfor %}
+
+                {# Start rendering out level 2 items. #}
+                {% if has_any_level_3_items %}
+
+                  <div class="meganav__col meganav__col--second">
+                    <ul class="meganav__level-2">
+                      {% for link in level_2_items %}
+                        {% set level_2_index = loop.index %}
+                        {% set level_3_id = level_1_index ~ '-' ~ level_2_index %}
+                        <li class="meganav__level-2-item">
+                          {% if link.below is empty %}
+                            {{ link(link.title, link.url,
+                              {'class': [
+                                'meganav__level-2-link',
+                                'primary-navigation__level-2-link',
+                              ]}) }}
+                          {% else %}
+                            <button
+                              class="meganav__level-2-link  primary-navigation__level-2-link primary-navigation__link-with-icon"
+                              {% if link.below %}data-level3-trigger="{{ level_3_id }}"{% endif %}
+                              aria-controls="meganav-level-3-child-of-{{ level_3_id }}"
+                              aria-expanded="false"
+                            >
+                              {{ link.title }}
+                              <span class="icon icon-chevron-right">
+                                  <svg>
+                                    <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+                                  </svg>
+                                </span>
+                            </button>
+                            {# Start rendering out level 3 items. #}
+                            {% set level_3_items = link.below %}
+                            <div id="meganav-level-3-child-of-{{ level_3_id }}" class="meganav__level-3" data-level-3-id="{{ level_3_id }}">
+                              {{ link(link.title,link.url,
+                                {'class': [
+                                  'meganav__level-3-heading-link',
+                                  'meganav__level-3-link',
+                                  'primary-navigation__level-3-link',
+                                ]}) }}
+                              <ul>
+                                {% for link in level_3_items %}
+                                  <li>
+                                    {{ link(link.title,link.url,
+                                      {'class': [
+                                        'meganav__level-3-link',
+                                        'primary-navigation__level-3-link',
+                                      ]}) }}
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                {% else %}
+
+                  {# If no level 3 items at all in this panel then the level
+                    2 items can occupy both cols. #}
+                  {% if level_2_items|length > 8 %}
+                    {{ dump(level_2_items) }}
+                    {# Split into 2 groups. If it's an add number, always make
+                      sure the first col gets the additional. #}
+                    {% set split_point = (level_2_items|length / 2)|round(0, 'ceil') %}
+                    {% set level_2_first_col_links = level_2_items|slice(0, split_point) %}
+                    {% set level_2_second_col_links = level_2_items|slice(split_point) %}
+                  {% else %}
+                    {% set level_2_first_col_links = level_2_items %}
+                  {% endif %}
+
+                  <div class="meganav__col meganav__col--second">
+                    <ul class="meganav__level-2">
+                      {% for link in level_2_first_col_links %}
+                        <li class="meganav__level-2-item">
+                          {{ link(link.title, link.url,
+                            {'class': [
+                              'meganav__level-2-link',
+                              'primary-navigation__level-2-link',
+                            ]}) }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                  {% if level_2_second_col_links %}
+                    <div class="meganav__col meganav__col--third">
+                      <ul class="meganav__level-2">
+                        {% for link in level_2_second_col_links %}
+                          <li class="meganav__level-2-item">
+                            {{ link(link.title, link.url,
+                              {'class': [
+                                'meganav__level-2-link',
+                                'primary-navigation__level-2-link',
+                              ]}) }}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
+
+                {% endif %}
+
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

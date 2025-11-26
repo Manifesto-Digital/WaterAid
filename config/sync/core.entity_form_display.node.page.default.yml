@@ -3,13 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.field_audience
     - field.field.node.page.field_content
+    - field.field.node.page.field_country
+    - field.field.node.page.field_force_download
+    - field.field.node.page.field_get_involved
+    - field.field.node.page.field_hero
     - field.field.node.page.field_metatags
     - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_theme
     - node.type.page
   module:
     - datetime
@@ -110,12 +116,61 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_audience:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_content:
     type: layout_paragraphs
     weight: 4
     region: content
     settings:
       view_mode: preview
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings: {  }
+  field_country:
+    type: entity_reference_autocomplete
+    weight: 19
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_force_download:
+    type: boolean_checkbox
+    weight: 41
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_get_involved:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hero:
+    type: layout_paragraphs
+    weight: 2
+    region: content
+    settings:
+      view_mode: default
       preview_view_mode: default
       form_display_mode: default
       nesting_depth: 0
@@ -164,6 +219,20 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: 160
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+  field_theme:
+    type: entity_reference_autocomplete
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:

@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ *  Update and install functions for the WA Migration module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function wa_migration_install($is_syncing): void {
+  wa_migration_add_terms();
+}
+
+/**
+ * Add the required terms to the Content Type taxonomy.
+ */
+function wa_migration_update_10000(&$sandbox): void {
+  wa_migration_add_terms();
+}
+
+/**
+ * Add the required custom terms to the Content Type taxonomy.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function wa_migration_add_terms(): void {
+  $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+  foreach (['Press Release'] as $name) {
+    if (!$storage->loadByProperties([
+      'name' => $name,
+      'vid' => 'get_involved',
+    ])) {
+      $term = $storage->create([
+        'vid' => 'get_involved',
+        'name' => $name,
+      ]);
+      $term->save();
+    }
+  }
+}

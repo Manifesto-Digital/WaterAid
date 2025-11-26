@@ -7,6 +7,8 @@ $sprites: (
     'linkedin': "../../images/sprite.svg#linkedin-view",
     'next': "../../images/sprite.svg#next-view",
     'select': "../../images/sprite.svg#select-view",
+    'ssl-light': "../../images/sprite.svg#ssl-light-view",
+    'ssl': "../../images/sprite.svg#ssl-view",
     'tiktok': "../../images/sprite.svg#tiktok-view",
     'wa-apple': "../../images/sprite.svg#wa-apple-view",
     'wa-container-lg-tall': "../../images/sprite.svg#wa-container-lg-tall-view",
@@ -15,8 +17,11 @@ $sprites: (
     'wa-container-sm-circle-border': "../../images/sprite.svg#wa-container-sm-circle-border-view",
     'wa-container-sm-circle-cream': "../../images/sprite.svg#wa-container-sm-circle-cream-view",
     'wa-container-sm-circle-navy': "../../images/sprite.svg#wa-container-sm-circle-navy-view",
+    'wa-container-sm-circle-primary': "../../images/sprite.svg#wa-container-sm-circle-primary-view",
     'wa-container-sm-circle-white': "../../images/sprite.svg#wa-container-sm-circle-white-view",
     'wa-container-sm-circle': "../../images/sprite.svg#wa-container-sm-circle-view",
+    'wa-container-sm-rectangle--blue': "../../images/sprite.svg#wa-container-sm-rectangle--blue-view",
+    'wa-container-sm-rectangle-pink': "../../images/sprite.svg#wa-container-sm-rectangle-pink-view",
     'wa-container-sm-rectangle': "../../images/sprite.svg#wa-container-sm-rectangle-view",
     'wa-container-sm-square-white': "../../images/sprite.svg#wa-container-sm-square-white-view",
     'wa-container-sm-square': "../../images/sprite.svg#wa-container-sm-square-view",
@@ -35,6 +40,7 @@ $sprites: (
     'wa-edge-bottom-2': "../../images/sprite.svg#wa-edge-bottom-2-view",
     'wa-edge-top-1': "../../images/sprite.svg#wa-edge-top-1-view",
     'wa-edge-top-2': "../../images/sprite.svg#wa-edge-top-2-view",
+    'wa-external': "../../images/sprite.svg#wa-external-view",
     'wa-form-check': "../../images/sprite.svg#wa-form-check-view",
     'wa-fr-logo': "../../images/sprite.svg#wa-fr-logo-view",
     'wa-google': "../../images/sprite.svg#wa-google-view",
@@ -76,8 +82,10 @@ $sprites: (
     'wa-paypal': "../../images/sprite.svg#wa-paypal-view",
     'wa-pointer': "../../images/sprite.svg#wa-pointer-view",
     'wa-pound': "../../images/sprite.svg#wa-pound-view",
+    'wa-radio-checked': "../../images/sprite.svg#wa-radio-checked-view",
     'wa-shape-arrow': "../../images/sprite.svg#wa-shape-arrow-view",
     'wa-shape-arrows': "../../images/sprite.svg#wa-shape-arrows-view",
+    'wa-shape-circle-border': "../../images/sprite.svg#wa-shape-circle-border-view",
     'wa-shape-circle': "../../images/sprite.svg#wa-shape-circle-view",
     'wa-shape-drop': "../../images/sprite.svg#wa-shape-drop-view",
     'wa-shape-ripple': "../../images/sprite.svg#wa-shape-ripple-view",
@@ -85,7 +93,7 @@ $sprites: (
     'wa-shape-wave': "../../images/sprite.svg#wa-shape-wave-view",
     'wa-triangle': "../../images/sprite.svg#wa-triangle-view",
     'wa-utility-arrow-blue': "../../images/sprite.svg#wa-utility-arrow-blue-view",
-    'wa-utility-arrow-right': "../../images/sprite.svg#wa-utility-arrow-right-view",
+    'wa-utility-arrow-left': "../../images/sprite.svg#wa-utility-arrow-left-view",
     'wa-utility-arrow': "../../images/sprite.svg#wa-utility-arrow-view",
     'wa-utility-calendar': "../../images/sprite.svg#wa-utility-calendar-view",
     'wa-utility-chevron': "../../images/sprite.svg#wa-utility-chevron-view",
@@ -153,6 +161,14 @@ $sizes: (
         'width': 12px,
         'height': 10px
     ),
+    'ssl-light': (
+        'width': 391px,
+        'height': 170px
+    ),
+    'ssl': (
+        'width': 391px,
+        'height': 174px
+    ),
     'tiktok': (
         'width': 24px,
         'height': 24px
@@ -185,6 +201,10 @@ $sizes: (
         'width': 48px,
         'height': 48px
     ),
+    'wa-container-sm-circle-primary': (
+        'width': 48px,
+        'height': 48px
+    ),
     'wa-container-sm-circle-white': (
         'width': 48px,
         'height': 48px
@@ -192,6 +212,14 @@ $sizes: (
     'wa-container-sm-circle': (
         'width': 48px,
         'height': 48px
+    ),
+    'wa-container-sm-rectangle--blue': (
+        'width': 300px,
+        'height': 160px
+    ),
+    'wa-container-sm-rectangle-pink': (
+        'width': 300px,
+        'height': 160px
     ),
     'wa-container-sm-rectangle': (
         'width': 300px,
@@ -264,6 +292,10 @@ $sizes: (
     'wa-edge-top-2': (
         'width': 2056px,
         'height': 56px
+    ),
+    'wa-external': (
+        'width': 24px,
+        'height': 24px
     ),
     'wa-form-check': (
         'width': 24px,
@@ -410,8 +442,8 @@ $sizes: (
         'height': 240px
     ),
     'wa-icon': (
-        'width': 60px,
-        'height': 60px
+        'width': 582.5px,
+        'height': 1325.1px
     ),
     'wa-mastercard': (
         'width': 84px,
@@ -429,6 +461,10 @@ $sizes: (
         'width': 10px,
         'height': 15px
     ),
+    'wa-radio-checked': (
+        'width': 24px,
+        'height': 24px
+    ),
     'wa-shape-arrow': (
         'width': 259px,
         'height': 252px
@@ -436,6 +472,10 @@ $sizes: (
     'wa-shape-arrows': (
         'width': 384px,
         'height': 205px
+    ),
+    'wa-shape-circle-border': (
+        'width': 48px,
+        'height': 48px
     ),
     'wa-shape-circle': (
         'width': 254px,
@@ -465,7 +505,7 @@ $sizes: (
         'width': 24px,
         'height': 24px
     ),
-    'wa-utility-arrow-right': (
+    'wa-utility-arrow-left': (
         'width': 24px,
         'height': 24px
     ),

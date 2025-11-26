@@ -432,8 +432,8 @@ function wateraid_donation_forms_preprocess_node__webform(&$variables) {
         $message = $handler->getSetting('desktop_cancellation_message') ?? [];
         $variables['cancellation_message'] = [
           '#type' => 'processed_text',
-          '#text' => $message['value'],
-          '#format' => $message['format'],
+          '#text' => $message['value'] ?? '',
+          '#format' => $message['format'] ?? 'basic_html',
         ];
         break;
       }

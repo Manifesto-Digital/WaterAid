@@ -85,6 +85,20 @@
     margin-top: $wa-spacing-01;
   }
 
+  &__external {
+    margin: 0 0 0 auto;
+    svg {
+      color: $wa-blue;
+    }
+  }
+
+  .image {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
   // Card variants.
   &--teaser {
     border: $wa-spacing-01 $wa-white solid;
@@ -173,6 +187,13 @@
         text-decoration: underline;
         text-decoration-color: $wa-navy;
       }
+    }
+
+    &:focus-within h2 a {
+      color: $wa-navy;
+      background-color: $wa-pink;
+      border-bottom: solid $wa-navy calculate-rem(3);
+      outline: none;
     }
 
     .card__body {

@@ -1,9 +1,10 @@
-{% set classes = [
+{% set cta_classes = [
   'cta',
   'cta--' ~ variant
 ] %}
+{% set tag = heading_level ? heading_level : 'h2' %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(cta_classes) }}>
   {% if image %}
     <div class="cta__image">
       {{ include('wateraid:image', {
@@ -45,6 +46,7 @@
 
   <div class="cta__content">
     <h2 class="cta__content--title">{{ title }}</h2>
+    <{{ tag }} class="cta__content--title pseudo-h2">{{ title }}</{{ tag }}>
 
     {% if description %}
       <div class="cta__content--description">

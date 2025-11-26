@@ -1,0 +1,65 @@
+uuid: 7497ce21-36ef-41b6-b6f5-f900477da4e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spend_module.field_heading_level
+    - field.field.paragraph.spend_module.field_item_1
+    - field.field.paragraph.spend_module.field_item_2
+    - field.field.paragraph.spend_module.field_rich_text
+    - field.field.paragraph.spend_module.field_title
+    - paragraphs.paragraphs_type.spend_module
+  module:
+    - entity_reference_revisions
+    - options
+    - text
+id: paragraph.spend_module.default
+targetEntityType: paragraph
+bundle: spend_module
+mode: default
+content:
+  field_heading_level:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_item_1:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_item_2:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_rich_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

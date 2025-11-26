@@ -14,8 +14,10 @@ module:
   block_content: 0
   breakpoint: 0
   captcha: 0
+  cdn: 0
+  cdn_ui: 0
   ckeditor5: 0
-  comment: 0
+  ckeditor_citation: 0
   config: 0
   config_ignore: 0
   config_override_warn: 0
@@ -27,10 +29,13 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
+  default_paragraphs: 0
   diff: 0
   dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
+  editoria11y: 0
+  email_registration: 0
   entity: 0
   entity_reference_revisions: 0
   entity_usage: 0
@@ -38,6 +43,7 @@ module:
   facets_exposed_filters: 0
   field: 0
   field_group: 0
+  field_group_markup: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -63,6 +69,7 @@ module:
   loqate: 0
   loqate_email: 0
   masquerade: 0
+  maxlength: 0
   media: 0
   media_directories: 0
   media_library: 0
@@ -107,6 +114,7 @@ module:
   serialization: 0
   shield: 0
   shortcut: 0
+  shorthand: 0
   storybook: 0
   svg_image: 0
   svg_image_field: 0
@@ -133,6 +141,7 @@ module:
   wateraid_donation_paypal: 0
   wateraid_donation_stripe: 0
   wateraid_forms: 0
+  wateraid_group: 0
   wateraid_just_giving: 0
   webform: 0
   webform_bankaccount: 0
@@ -148,7 +157,6 @@ module:
   workflows: 0
   address: 1
   anonymous_token: 1
-  azure_storage: 1
   clientside_validation: 1
   clientside_validation_jquery: 1
   crop: 1

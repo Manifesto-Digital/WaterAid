@@ -10,7 +10,7 @@ dependencies:
     - field.field.node.landing_page.field_event_type
     - field.field.node.landing_page.field_get_involved
     - field.field.node.landing_page.field_hero
-    - field.field.node.landing_page.field_key_stage
+    - field.field.node.landing_page.field_key_stages
     - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_regions
     - field.field.node.landing_page.field_resources
@@ -62,14 +62,6 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-  field_key_stage:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_subject_area:
     type: entity_reference_label
     label: hidden
@@ -79,10 +71,11 @@ content:
     weight: 7
     region: content
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -121,6 +114,7 @@ hidden:
   entity_print_view_word_docx: true
   field_content: true
   field_hero: true
+  field_key_stages: true
   field_metatags: true
   field_regions: true
   field_resources: true

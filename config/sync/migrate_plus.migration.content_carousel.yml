@@ -28,7 +28,7 @@ process:
       default_value: en
   status: status
   field_title: field_vcm_title
-  field_rich_text/value: field_vcm_intro
+  field_rich_text/value: field_vcm_intro/0
   field_rich_text/format:
     plugin: default_value
     default_value: full_html
@@ -45,7 +45,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: image_gallery
 idMap: {  }
-migration_dependencies:
-  required:
-    - media
+migration_dependencies: {  }
 include: null

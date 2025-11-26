@@ -1,0 +1,19 @@
+uuid: 60b4aaa3-8fc0-42d9-b4c8-9673919ade21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.spend_module
+id: paragraph.spend_module.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: spend_module
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

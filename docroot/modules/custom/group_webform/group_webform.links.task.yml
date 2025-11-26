@@ -8,11 +8,6 @@ group_webform.settings:
   base_route: 'entity.group.collection'
   route_name: 'group_webform.settings'
   weight: 20
-entity.group_content_menu.edit_form:
-  route_name: entity.group_content_menu.edit_form
-  base_route: 'entity.group.canonical'
-  title: 'Menu'
-  weight: 50
 group_webform.remove_confirm:
   route_name: group_webform.remove_confirm
   base_route: entity.node.canonical

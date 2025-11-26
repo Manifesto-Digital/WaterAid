@@ -6,12 +6,20 @@ dependencies:
     - field.storage.node.field_content
     - node.type.webform
     - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.cancel_anytime
     - paragraphs.paragraphs_type.donation_amount
+    - paragraphs.paragraphs_type.external_card
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
     - paragraphs.paragraphs_type.hero_news
+    - paragraphs.paragraphs_type.hero_search
     - paragraphs.paragraphs_type.hero_video
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+    - paragraphs.paragraphs_type.internal_card
+    - paragraphs.paragraphs_type.spend
+    - paragraphs.paragraphs_type.spend_item
+    - paragraphs.paragraphs_type.spend_module
     - paragraphs.paragraphs_type.stats_item
   module:
     - entity_reference_revisions
@@ -35,8 +43,16 @@ settings:
       hero_video: hero_video
       accordion_item: accordion_item
       donation_amount: donation_amount
+      cancel_anytime: cancel_anytime
       hero_donate: hero_donate
       stats_item: stats_item
+      external_card: external_card
+      hero_search: hero_search
+      internal_card: internal_card
+      spend_item: spend_item
+      spend: spend
+      spend_module: spend_module
+      image_with_quote_sidebar: image_with_quote_sidebar
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -50,7 +66,7 @@ settings:
         enabled: false
       cancel_anytime:
         weight: 27
-        enabled: false
+        enabled: true
       card_collection:
         weight: 28
         enabled: false
@@ -63,9 +79,15 @@ settings:
       donation_amount:
         weight: 22
         enabled: true
+      donation_placeholder_do_not_use:
+        weight: 35
+        enabled: false
       donation_widget:
         weight: 23
         enabled: false
+      external_card:
+        weight: 37
+        enabled: true
       facts_and_stats:
         weight: 24
         enabled: false
@@ -81,6 +103,9 @@ settings:
       hero_news:
         weight: -16
         enabled: true
+      hero_search:
+        weight: 41
+        enabled: true
       hero_video:
         weight: -15
         enabled: true
@@ -90,15 +115,33 @@ settings:
       image_gallery:
         weight: -21
         enabled: false
+      image_with_quote_sidebar:
+        weight: 53
+        enabled: true
+      internal_card:
+        weight: 46
+        enabled: true
       quote:
         weight: -20
         enabled: false
       rich_text:
         weight: -25
         enabled: false
+      spend:
+        weight: 48
+        enabled: true
+      spend_item:
+        weight: 47
+        enabled: true
+      spend_module:
+        weight: 48
+        enabled: true
       stats_item:
         weight: 33
         enabled: true
+      temp_paragraph:
+        weight: 61
+        enabled: false
       text_media:
         weight: 25
         enabled: false

@@ -1,0 +1,10 @@
+uuid: e4767d6e-eaa0-4940-9222-7551651dbeac
+langcode: en
+status: true
+dependencies: {  }
+id: spend
+label: Spend
+icon_uuid: null
+icon_default: null
+description: "Paragraph type to add the spending module to a node. Non-configurable - the module is derived from the node's group."
+behavior_plugins: {  }

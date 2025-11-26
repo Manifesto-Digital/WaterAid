@@ -61,4 +61,26 @@
     }) }}
   {% endstory %}
 
+  {% story ImageWithQuoteSidebar with {
+    name: 'ImageWithQuoteSidebar',
+    args: {
+      type: 'image_with_quote_sidebar',
+      quote: 'Quote lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.'|t,
+      citation: 'Optional citation',
+      image_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      image_credit: 'Lorem ipsum dolor sit amet'
+    }
+  } %}
+
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>{% endset %}
+    {{ include('wateraid:quote', {
+      type,
+      quote,
+      citation,
+      image,
+      image_caption
+    }) }}
+  {% endstory %}
+
+
 {% endstories %}

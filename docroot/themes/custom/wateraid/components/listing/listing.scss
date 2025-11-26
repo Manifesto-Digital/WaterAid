@@ -3,10 +3,14 @@
 .listing {
   margin-bottom: $wa-spacing-07;
 
+  .button__wrapper .button__hover {
+    height: calculate-rem(56);
+  }
+
   &__wrapper {
     @include grid();
 
-    .button {
+    .button:not(.button--icon) {
       max-width: 100%;
     }
   }
@@ -16,6 +20,7 @@
     justify-self: left;
     padding-bottom: $wa-spacing-07;
     width: 100%;
+    max-height: calculate-rem(56);
 
     @include desktop {
       width: calc(100% - 90px);
@@ -25,6 +30,10 @@
 
   &__filters {
     display: none;
+
+    .fieldset-wrapper {
+      display: none;
+    }
 
     legend {
       @include h6();
@@ -47,8 +56,16 @@
         cursor: pointer;
       }
 
+      &:focus-visible {
+        background-color: $wa-pink;
+      }
+
       &.listing__filter--open {
         background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-chevron-up.svg");
+
+        & + div.fieldset-wrapper {
+          display: block;
+        }
       }
     }
 
@@ -104,7 +121,7 @@
         list-style: none;
       }
 
-      .button {
+      .button:not(.button--icon) {
         align-items: center;
         background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-plus-blue.svg");
         background-position: $wa-spacing-06 center;
@@ -119,7 +136,7 @@
       }
     }
 
-    .button,
+    .button:not(.button--icon),
     .form-actions {
       align-items: center;
       display: flex;
@@ -130,7 +147,6 @@
       text-decoration: none;
       justify-content: center;
       width: 100%;
-
 
       &::before {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
@@ -174,11 +190,19 @@
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
+
+      .bef-exposed-form {
+        display: none;
+      }
     }
   }
 
   &--filters-open {
     @include grid();
+
+    .bef-exposed-form {
+      display: block;
+    }
 
     .listing__wrapper--button {
       display: none;
@@ -210,6 +234,10 @@
 
     @include desktop() {
       padding: 0;
+    }
+
+    .bef-exposed-form {
+      display: block;
     }
 
     .optional {

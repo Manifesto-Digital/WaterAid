@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webform.field_content
     - field.field.node.webform.field_donation_menu
+    - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
     - field.field.node.webform.field_options
@@ -16,10 +17,12 @@ dependencies:
     - node.type.webform
   module:
     - datetime
+    - default_paragraphs
     - field_group
     - layout_paragraphs
     - media_library
     - metatag
+    - paragraphs
     - path
     - webform
 third_party_settings:
@@ -61,8 +64,9 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - webform
         - field_content
+        - field_donation_widget
+        - webform
       label: Content
       region: content
       parent_name: group_tabs
@@ -80,7 +84,7 @@ third_party_settings:
       children:
         - field_sidebar_content
       label: 'Sidebar content'
-      region: hidden
+      region: content
       parent_name: group_tabs
       weight: 2
       format_type: tab
@@ -101,7 +105,7 @@ mode: default
 content:
   co_authors:
     type: entity_reference_autocomplete_tags
-    weight: 17
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -111,7 +115,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -129,10 +133,30 @@ content:
     third_party_settings: {  }
   field_donation_menu:
     type: boolean_checkbox
-    weight: 29
+    weight: 11
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_donation_widget:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: 'Donation widget'
+      title_plural: 'Donation widget'
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: donation_widget
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        convert: '0'
+        duplicate: '0'
     third_party_settings: {  }
   field_hero:
     type: layout_paragraphs
@@ -148,7 +172,7 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 26
+    weight: 9
     region: content
     settings:
       sidebar: true
@@ -156,43 +180,66 @@ content:
     third_party_settings: {  }
   field_options:
     type: options_select
-    weight: 121
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
-    weight: 26
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_sidebar_content:
-    type: layout_paragraphs
-    weight: 12
+    type: default_paragraphs
+    weight: 4
     region: content
     settings:
-      view_mode: default
-      preview_view_mode: default
-      form_display_mode: default
-      nesting_depth: 0
-      require_layouts: 0
-      empty_message: ''
+      title: 'content item'
+      title_plural: 'content items'
+      closed_mode: summary
+      autocollapse: none
+      add_mode: modal
+      form_display_mode: simple_form
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: 0
+        convert: 0
+      default_paragraph_types:
+        cancel_anytime:
+          edit_mode: closed
+          weight: '0'
+          value: 0
+        spend:
+          value: '1'
+          edit_mode: closed
+          weight: '0'
+        image_with_quote_sidebar:
+          edit_mode: closed
+          weight: '0'
+          value: 0
+      edit_mode: closed
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
-    weight: 4
+    weight: 2
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_teaser_text:
     type: string_textarea
-    weight: 3
+    weight: 1
     region: content
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 160
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   langcode:
     type: language_select
     weight: 2
@@ -202,27 +249,27 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 15
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 120
+    weight: 14
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -237,7 +284,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -246,13 +293,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   webform:
     type: webform_entity_reference_select
-    weight: 1
+    weight: 2
     region: content
     settings:
       default_data: true

@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{{ attach_library('wateraid_donation_forms/secure_donate_button') }}
+
+{% set text = attributes.value %}
+{{ include('wateraid:button', {
+  text: text,
+  type: theme|default('primary'),
+  attributes: attributes.addClass('input--submit--secure'),
+  icon: 'wa-utility-lock',
+  icon_position: 'before',
+  theme: 'light',
+}) }}
+
+<div class="ssl-logo">
+  {{ include('@wateraid/images/icons/ssl.svg') }}
+</div>

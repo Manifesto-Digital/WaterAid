@@ -9,10 +9,10 @@ _core:
 id: group_relationship
 label: 'Group relationship'
 type: 'canonical_entities:group_relationship'
-pattern: '[group_relationship:group:title]/[group_relationship:content_name]'
+pattern: '[group_relationship:group:title]/[group_relationship:node:url:path]'
 selection_criteria: {  }
 selection_logic: and
-weight: -9
+weight: 3
 relationships:
   'group_relationship:langcode:language':
     label: Language

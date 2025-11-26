@@ -1,0 +1,222 @@
+@import "./../../../sass/base";
+
+.utility-navigation {
+  color: $wa-navy;
+
+  ul {
+    list-style: none;
+  }
+
+  &__menu-link {
+    @include utility-nav-link;
+  }
+
+  &__link-with-icon {
+    display: flex;
+    gap: calculate-rem(6);
+
+    .icon {
+      @include wa-transition-motion-flow(transform, 200ms);
+      display: block;
+      fill: currentColor;
+      width: calculate-rem(9);
+      pointer-events: none;
+    }
+
+    svg {
+      max-width: 100%;
+      aspect-ratio: 0.8;
+    }
+  }
+
+  &--desktop {
+    display: none;
+
+    @include tablet {
+      display: block;
+      background: $wa-cream;
+    }
+
+    .utility-navigation__container {
+      @include page-container;
+    }
+
+    .utility-navigation__menu {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      padding: $wa-spacing-03 0;
+      gap: $wa-spacing-04;
+
+    }
+    .language-switcher {
+      padding-right: $wa-spacing-04;
+      .icon {
+        right: 0;
+      }
+    }
+  }
+}
+
+// Generic styles for the desktop and mobile versions of the site selector.
+.site-selector {
+  background-color: $wa-cream;
+
+  &__title {
+    font-family: $bold-font;
+    font-size: calculate-rem(20);
+    margin-bottom: $wa-spacing-04;
+  }
+  &__site-group-heading {
+    font-family: $bold-font;
+    font-size: calculate-rem(16);
+    color: $wa-navy;
+  }
+  &__site-group {
+    display: flex;
+    gap: $wa-spacing-04;
+    margin-top: $wa-spacing-04;
+  }
+  &__country {
+    position: relative;
+    display: inline-block;
+    padding-left: calculate-rem(20);
+    color: $wa-navy;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+    &:focus-visible {
+      outline: 3px solid $wa-pink;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: calculate-rem(4);
+      background-repeat: no-repeat;
+      background-position: center left;
+      background-size: contain;
+      width: 16px;
+      height: 16px;
+    }
+    &--GLOBAL:before {background-image: url('/themes/custom/wateraid/images/flags/UKN.png')}
+    &--AUS:before {background-image: url('/themes/custom/wateraid/images/flags/AUS.png')}
+    &--BGD:before {background-image: url('/themes/custom/wateraid/images/flags/BGD.png')}
+    &--CAN:before {background-image: url('/themes/custom/wateraid/images/flags/CAN.png')}
+    &--DNK:before {background-image: url('/themes/custom/wateraid/images/flags/DNK.png')}
+    &--ETH:before {background-image: url('/themes/custom/wateraid/images/flags/ETH.png')}
+    &--GBR:before {background-image: url('/themes/custom/wateraid/images/flags/GBR.png')}
+    &--GHA:before {background-image: url('/themes/custom/wateraid/images/flags/GHA.png')}
+    &--UKN:before {background-image: url('/themes/custom/wateraid/images/flags/UKN.png')}
+    &--IND:before {background-image: url('/themes/custom/wateraid/images/flags/IND.png')}
+    &--JPN:before {background-image: url('/themes/custom/wateraid/images/flags/JPN.png')}
+    &--MWI:before {background-image: url('/themes/custom/wateraid/images/flags/MWI.png')}
+    &--MOZ:before {background-image: url('/themes/custom/wateraid/images/flags/MOZ.png')}
+    &--NGA:before {background-image: url('/themes/custom/wateraid/images/flags/NGA.png')}
+    &--PAK:before {background-image: url('/themes/custom/wateraid/images/flags/PAK.png')}
+    &--SWE:before {background-image: url('/themes/custom/wateraid/images/flags/SWE.png')}
+    &--TZA:before {background-image: url('/themes/custom/wateraid/images/flags/TZA.png')}
+    &--UGA:before {background-image: url('/themes/custom/wateraid/images/flags/TZA.png')}
+    &--USA:before {background-image: url('/themes/custom/wateraid/images/flags/USA.png')}
+  }
+}
+
+.utility-navigation--desktop {
+  position: relative;
+  z-index: 5;
+
+  .utility-navigation__menu-link--site-selector-btn {
+    .icon {
+      transform: rotate(180deg);
+    }
+    &[aria-expanded="true"] {
+      .icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .utility-navigation__container {
+    background: $wa-cream;
+  }
+
+  .site-selector {
+    --site-selector-transition-time: 800ms;
+
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transform: translateY(-120%);
+    z-index: -2;
+    backface-visibility: hidden;
+    visibility: hidden;
+    @include wa-transition-motion-flow(transform, var(--site-selector-transition-time));
+
+    &.active {
+      transform: translateY(0%);
+      visibility: visible;
+    }
+
+    .site-selector-panel-animating & {
+      visibility: visible;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      background: transparent url('/themes/custom/wateraid/images/icons/wa-curve-low-cream.svg') bottom center no-repeat;
+      background-size: cover;
+      height: calculate-rem(56);
+    }
+
+    &__inner {
+      @include page-container;
+    }
+    &__panel {
+      @include grid;
+      padding-top: $wa-spacing-09;
+    }
+    &__col {
+      @include grid-item-span(4, 1, 2);
+
+      &--first {
+        @include grid-item(4, 2, 4, 1, 1, 2);
+      }
+      &:nth-child(2) {
+        grid-column: 4/span 1;
+        @include desktop {
+          grid-column: 6/span 2;
+        }
+      }
+      &:nth-child(3) {
+        grid-column: 5/span 1;
+        @include desktop {
+          grid-column: 8/span 2;
+        }
+      }
+      &:nth-child(4) {
+        grid-column: 6/span 1;
+        @include desktop {
+          grid-column: 10/span 2;
+        }
+      }
+    }
+    &__site-group {
+      margin-bottom: $wa-spacing-10;
+      flex-direction: column;
+
+      &:first-child {
+        margin-top: $wa-spacing-00;
+      }
+      &:last-child {
+        margin-bottom: $wa-spacing-00;
+      }
+    }
+  }
+}

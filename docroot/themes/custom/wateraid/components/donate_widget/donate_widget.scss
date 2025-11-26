@@ -20,7 +20,8 @@
     margin-bottom: $wa-spacing-06;
 
     h1,
-    h2 {
+    h2,
+    h3 {
       color: $wa-white;
     }
   }
@@ -31,10 +32,21 @@
       position: relative;
       margin: 0 0 $wa-spacing-06 0;
 
+      .button__wrapper {
+        width: 100%;
+      }
+
       button {
         max-width: none;
         justify-content: center;
         width: 100%;
+      }
+
+      .ssl-logo svg {
+        max-width: 88px;
+        height: 35px;
+        margin: $wa-spacing-06 auto 0 auto;
+        display: block;
       }
     }
   }

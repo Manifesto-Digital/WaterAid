@@ -1,8 +1,9 @@
-{% set classes = [
-  'listing'
+{% set listing_classes = [
+  'listing',
+  'listing--default'
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(listing_classes) }}>
   <div class="listing__header">
     {{ header }}
   </div>

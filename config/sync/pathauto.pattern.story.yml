@@ -9,14 +9,15 @@ label: Story
 type: 'canonical_entities:node'
 pattern: '/stories/[node:title]'
 selection_criteria:
-  1677d8e2-e645-468f-956b-24aaaf2009dc:
+  1a538ab0-839f-431e-84d4-94fafce45361:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 1677d8e2-e645-468f-956b-24aaaf2009dc
+    uuid: 1a538ab0-839f-431e-84d4-94fafce45361
     context_mapping:
       node: node
     bundles:
+      shorthand_story: shorthand_story
       story: story
 selection_logic: and
-weight: 0
+weight: -1
 relationships: {  }

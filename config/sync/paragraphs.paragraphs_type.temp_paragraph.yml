@@ -1,0 +1,10 @@
+uuid: 6f14ef7a-5eab-4693-80eb-440aa4af3f6e
+langcode: en
+status: true
+dependencies: {  }
+id: temp_paragraph
+label: 'Temp Paragraph'
+icon_uuid: null
+icon_default: null
+description: 'A paragraph to temporarily hold the values from the Variable Content module. DO NOT USE.'
+behavior_plugins: {  }

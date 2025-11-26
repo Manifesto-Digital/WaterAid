@@ -3,9 +3,6 @@
 .pagination {
   justify-items: center;
   margin-top: $wa-spacing-09;
-  &__prev .button {
-    rotate: 180deg;
-  }
 
   &__items {
     @include paragraph-md();
@@ -25,6 +22,12 @@
     a {
       text-decoration: none;
       color: $wa-navy;
+      &:focus-visible {
+        color: $wa-navy;
+        background-color: $wa-pink;
+        border-bottom: solid $wa-navy calculate-rem(3);
+        outline: none;
+      }
     }
   }
 

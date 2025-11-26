@@ -48,13 +48,13 @@ process:
     plugin: concat
     source:
       - constants/title_start
-      - field_paragraph_hero_title
+      - field_paragraph_hero_title/0
       - constants/title_end
   temp_content:
     plugin: concat
     source:
       - constants/p_start
-      - field_paragraph_hero_subtext
+      - field_paragraph_hero_subtext/0
       - constants/p_end
   field_standfirst/value:
     plugin: concat
@@ -63,7 +63,7 @@ process:
       - '@temp_content'
   field_standfirst/format:
     plugin: default_value
-    default_value: full_html
+    default_value: basic_html
   field_link: field_paragraph_hero_link
 destination:
   plugin: 'entity:paragraph'

@@ -1,0 +1,19 @@
+uuid: 81033576-b2ff-4a24-a01d-3e8c1107dd44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+id: paragraph.image_with_quote_sidebar.field_quote
+field_name: field_quote
+entity_type: paragraph
+bundle: image_with_quote_sidebar
+label: Quote
+description: 'Enter your quote.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

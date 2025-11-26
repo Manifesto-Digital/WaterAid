@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
+    - paragraphs.paragraphs_type.hero_search
     - paragraphs.paragraphs_type.hero_video
   module:
     - entity_reference_revisions
@@ -29,6 +30,7 @@ settings:
       hero_donate: hero_donate
       hero_image: hero_image
       hero_video: hero_video
+      hero_search: hero_search
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -40,8 +42,23 @@ settings:
       call_to_action:
         weight: -31
         enabled: false
+      cancel_anytime:
+        weight: 29
+        enabled: false
+      card_collection:
+        weight: 30
+        enabled: false
+      donate_block:
+        weight: 31
+        enabled: false
+      donate_exit_modal:
+        weight: 32
+        enabled: false
       donation_amount:
         weight: -30
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 34
         enabled: false
       donation_widget:
         weight: -29
@@ -61,6 +78,9 @@ settings:
       hero_news:
         weight: -27
         enabled: false
+      hero_search:
+        weight: 41
+        enabled: true
       hero_video:
         weight: -36
         enabled: true

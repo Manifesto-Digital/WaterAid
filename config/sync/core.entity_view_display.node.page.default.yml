@@ -3,13 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.field_audience
     - field.field.node.page.field_content
+    - field.field.node.page.field_country
+    - field.field.node.page.field_force_download
+    - field.field.node.page.field_get_involved
+    - field.field.node.page.field_hero
     - field.field.node.page.field_metatags
     - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_theme
     - node.type.page
   module:
     - datetime
@@ -23,6 +29,14 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_content:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -31,6 +45,41 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_force_download:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 120
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_metatags:
     type: metatag_empty_formatter
@@ -58,6 +107,14 @@ content:
       granularity: 2
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   links:
     settings: {  }

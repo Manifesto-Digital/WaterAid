@@ -3,8 +3,12 @@
 .m-text-media {
   @include grid();
   gap: $wa-spacing-07;
+  margin-top: $wa-spacing-07;
   @include tablet {
     gap: $wa-spacing-06
+  }
+  @include desktop {
+    margin-top: $wa-spacing-09;
   }
 
   &__text,
@@ -16,7 +20,13 @@
     );
   }
 
-
+  .image,
+  .video {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
 
   &__text {
     [data-component-id="wateraid:rich_text"] {

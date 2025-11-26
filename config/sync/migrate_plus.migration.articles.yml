@@ -38,6 +38,8 @@ process:
       default_value: en
   status: status
   title: title
+  created: created
+  changed: changed
   field_teaser_text: body__summary
   field_teaser_image:
     plugin: migration_lookup
@@ -88,6 +90,8 @@ process:
     source:
       - '@temp_hero'
       - '@temp_authors'
+      - ''
+      - created
   field_hide_related_content: field_hide_related_content
   field_override_related_content: field_override_related
   temp_articles:
@@ -203,6 +207,8 @@ process:
         press_and_media_flexible: standard_page
         shorthand_story: story
         stories: story
+        article: article
+      default: ''
   temp_body:
     -
       plugin: body_to_paragraph
@@ -210,7 +216,7 @@ process:
   temp_paragraphs:
     -
       plugin: paragraph_migration_lookup
-      migrations:
+      migration:
         - general_text_area
         - wysiwyg
         - menu_cta
@@ -235,6 +241,10 @@ process:
         - activation_bar_item
         - rainbow_link_item
         - donation_cta_widget_embed
+        - hero_in_content
+        - variable_content_module
+        - statistics
+        - statistics_icons
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -264,5 +274,4 @@ migration_dependencies:
     - stories
     - themes
     - users
-    - media
 include: null

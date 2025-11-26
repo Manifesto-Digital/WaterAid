@@ -10,6 +10,10 @@ $header-padding-bottom: 0;
     padding-bottom: $header-padding-bottom;
   }
 
+  .main-site-link {
+    display: none;
+  }
+
   &__colour-wrapper {
     background: $white;
     width: 100vw;
@@ -20,24 +24,27 @@ $header-padding-bottom: 0;
 
   &__container {
     @include page-container;
+    display: flex;
+    justify-content: space-between;
+  }
 
-    @include tablet {
-      display: flex;
-      justify-content: space-between;
-    }
+  &__main {
+    overflow: hidden;
   }
 
   &__logo {
-    width: calculate-rem(104);
-    padding-bottom: $wa-spacing-03;
+    width: calculate-rem(140);
+    padding: 0 $wa-spacing-03 $wa-spacing-03 0;
 
     @include tablet {
       width: calculate-rem(200);
       padding: $wa-spacing-04 0;
     }
+
     &-link {
       display: block;
     }
+
     &-image {
       fill: currentColor;
       color: $wa-blue;
@@ -46,21 +53,37 @@ $header-padding-bottom: 0;
       display: block;
       @include wa-transition-motion-flow(all, 0.2s)
     }
+
     @include tablet {
       margin: 0;
     }
   }
 
-  &__mobile-actions {
+  .primary-navigation {
     position: absolute;
-    top: 20px;
-    right: $container-padding-mobile;
-    left: calc(100vw - 85px);
-    z-index: 1;
+
+    @include tablet {
+      position: static;
+    }
+  }
+
+  &__mobile-actions {
+    display: flex;
+    gap: $wa-spacing-03;
+    margin-right: calculate-rem(10);
 
     @include tablet {
       display: none;
     }
+
+    .button__hover {
+      z-index: 0;
+    }
+  }
+
+  &__mobile-donate-btn {
+    padding-left: $wa-spacing-06;
+    padding-right: $wa-spacing-06;
   }
 
 
@@ -79,6 +102,7 @@ $header-padding-bottom: 0;
       .site-header__colour-wrapper {
         background-color: $wa-blue;
       }
+
       .site-header__logo-image {
         color: $wa-white;
       }
@@ -88,8 +112,18 @@ $header-padding-bottom: 0;
       .site-header__colour-wrapper {
         background-color: $wa-navy;
       }
+
       .site-header__logo-image {
         color: $wa-white;
+      }
+    }
+
+    &[data-mobile-menu-level-active='site-selector'] {
+      .site-header__colour-wrapper {
+        background-color: $wa-cream;
+      }
+
+      .site-header__logo-image {
       }
     }
   }
@@ -97,3 +131,29 @@ $header-padding-bottom: 0;
 }
 
 
+.page-node-type-shorthand-story {
+  .site-header__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .primary-navigation,
+  .site-header__mobile-actions {
+    display: none;
+  }
+
+  .main-site-link {
+    align-content: center;
+    color: $wa-navy;
+    display: block;
+    text-decoration: none;
+
+    &:visited {
+      color: $wa-navy;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

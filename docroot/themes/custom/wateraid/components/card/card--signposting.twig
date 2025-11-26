@@ -1,14 +1,18 @@
-{% set classes = [
+{% set card_classes = [
   'card',
   'card--' ~ variant,
   'card--' ~ size,
   'card--link',
 ] %}
 
-<div {{ attributes.addClass(classes).setAttribute('data-component', 'card') }}>
-
+<div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card') }}>
+  
   <div class="card__image">
-    <img src="{{ image_url }}" alt=""/>
+    {% if image|render %}
+      {{ image }}
+    {% else %}
+      <img src="/themes/custom/wateraid/images/png/card-fallback.png" alt=""/>
+    {% endif %}
   </div>
 
   <div class="card__body">
@@ -16,7 +20,8 @@
       {{ bundle }}
     </div>
     <h3 class="card__heading">
-      <a href="{{ url }}" class="card__link">{{ heading }}</a>
+      <a href="{{ url }}" class="card__link">{{ heading }}{% if is_external %}<span class="visually-hidden"> - {{ 'external' }}</span>{% endif %}
+      </a>
     </h3>
 
     {% if date %}
@@ -54,5 +59,10 @@
       {{ description }}
     </div>
 
+    {% if is_external %}
+      <div class="card__external">
+        {{ include('@wateraid/images/icons/wa-external.svg') }}
+      </div>
+    {% endif %}
   </div>
 </div>

@@ -42,12 +42,19 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
+<div class="layout-container page-node-type-{{ bundle|replace({"_":"-"}) }}">
 
-  {{ include ('wateraid:site_header', {
-    blocks: page.header
-  }, with_context = false) }}
-
+  {% if donate_header %}
+    {{ include ('wateraid:site_header_donate', {
+      donate_header_menu: donate_header_menu
+    }, with_context = false) }}
+  {% else %}
+    {{ include ('wateraid:site_header', {
+      blocks: page.header,
+      primary_navigation: primary_navigation,
+      wash_matters_url: wash_matters_url
+    }, with_context = false) }}
+  {% endif %}
 
   <div class="page-container">
     {{ page.breadcrumb }}

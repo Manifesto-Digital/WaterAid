@@ -1,0 +1,10 @@
+uuid: 401dea54-528c-4947-a39a-0ccf9b4e67a3
+langcode: en
+status: true
+dependencies: {  }
+id: external_card
+label: 'External card'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

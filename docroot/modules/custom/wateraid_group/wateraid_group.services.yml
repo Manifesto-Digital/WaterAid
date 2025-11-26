@@ -1,0 +1,6 @@
+services:
+  wateraid_group.config_pages_group_context_subscriber:
+    class: Drupal\wateraid_group\EventSubscriber\WateraidConfigPagesGroupContextSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

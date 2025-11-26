@@ -1,13 +1,8 @@
-{% set classes = [
-  'accordion',
-  'container-sm',
-  search == '1' ? 'accordion--search' : 'accordion--default'
-] %}
-
-<div {{ attributes.addClass(classes) }}>
+{% set tag = heading_level ? heading_level : 'h2' %}
+<div class="container-sm accordion {{ search == '1' ? 'accordion--search' : 'accordion--default'}}">
   <div class="accordion__content">
     {% if title %}
-      <h2>{{ title }}</h2>
+      <{{ tag }} class="pseudo-h2">{{ title }}</{{ tag }}>
     {% endif %}
     {% if description %}
       <div class="accordion__description">{{ description }}</div>

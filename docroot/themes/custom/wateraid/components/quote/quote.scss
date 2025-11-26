@@ -79,4 +79,34 @@
       max-width: calculate-rem(888);
     }
   }
+
+  &--sidebar {
+    .quote__content {
+      padding: $wa-spacing-06 $wa-spacing-06 $wa-spacing-06 $wa-spacing-05;
+    }
+    .quote__content--quote {
+      font-size: calculate-rem(24);
+    }
+    .quote__content--citation {
+      margin-top: $wa-spacing-03;
+    }
+  }
+  .image {
+    margin-top: 0;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+}
+
+.paragraph--type--image-with-quote-sidebar {
+  .quote__content {
+    padding: $wa-spacing-06 $wa-spacing-04;
+    @include desktop {
+      padding: $wa-spacing-06;
+    }
+  }
+  .quote__content--quote {
+    @include h5();
+  }
 }

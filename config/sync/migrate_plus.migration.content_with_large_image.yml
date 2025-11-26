@@ -32,18 +32,37 @@ process:
       plugin: default_value
       default_value: en
   status: status
-  field_link: field_vcm_links
+  field_link:
+    plugin: links_migration_lookup
+    source: field_vcm_links
+    migration:
+      - articles
+      - campaigns
+      - country_details
+      - donation_forms
+      - donation_landing_pages
+      - events
+      - filtered_landing_pages
+      - flexible_content
+      - get_involved_node
+      - jobs
+      - press_and_media
+      - press_and_media_biographies
+      - publication
+      - standard_page
+      - stories
+      - webforms
   temp_title:
     plugin: concat
     source:
       - constants/title_start
-      - field_vcm_title
+      - field_vcm_title/0
       - constants/title_end
   temp_content:
     plugin: concat
     source:
       - constants/p_start
-      - field_vcm_intro
+      - field_vcm_intro/0
       - constants/p_end
   field_rich_text/value:
     plugin: concat
@@ -53,7 +72,7 @@ process:
   field_rich_text/format:
     plugin: default_value
     default_value: full_html
-  field_images:
+  field_media:
     plugin: migration_lookup
     source: field_hero_image
     migration: media
@@ -62,7 +81,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: text_media
 idMap: {  }
-migration_dependencies:
-  required:
-    - media
+migration_dependencies: {  }
 include: null

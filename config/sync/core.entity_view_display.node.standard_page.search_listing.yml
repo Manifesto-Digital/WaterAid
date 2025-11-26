@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_regions
+    - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
@@ -30,10 +31,11 @@ bundle: standard_page
 mode: search_listing
 content:
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 0
     region: content
@@ -59,6 +61,7 @@ hidden:
   field_metatags: true
   field_minimal_header: true
   field_regions: true
+  field_resources: true
   field_review_date: true
   field_search_phrases: true
   field_subject_area: true

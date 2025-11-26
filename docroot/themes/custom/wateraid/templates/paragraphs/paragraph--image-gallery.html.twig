@@ -59,6 +59,7 @@
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:image_gallery', {
       title: paragraph.field_title.value,
+      heading_level: paragraph.field_heading_level.value,
       description: content.field_rich_text,
       link: link,
       theme: paragraph.field_theme.value,

@@ -1,0 +1,251 @@
+@import "./../../../sass/base";
+
+.mobile-nav {
+  // Declare this in ms only - this is picked up by our JS behaviour too.
+  --mobile-nav-transition-time: 400ms;
+
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: $wa-white;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  @include wa-transition-motion-flow(height, var(--mobile-nav-transition-time));
+
+  body.primary-menu-open & {
+    visibility: visible;
+    opacity: 1;
+    height: 84vh;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__slider {
+    height: 100%;
+    transform: translateX(0);
+
+    &:not(.mobile-nav-static &) {
+      // Avoid transition animations occurring when resizing the viewport.
+      @include wa-transition-motion-flow(transform, var(--mobile-nav-transition-time));
+    }
+
+    [data-mobile-menu-level-active='2'] &,
+    [data-mobile-menu-level-active='site-selector'] & {
+      transform: translateX(-100%);
+    }
+    [data-mobile-menu-level-active='3'] & {
+      transform: translateX(-200%);
+    }
+  }
+
+  &__container {
+    @include page-container;
+    height: 100%;
+    width: 100%;
+    padding-top: $wa-spacing-05;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &__level-1 {
+    position: relative;
+
+    .mobile-nav__container > li {
+      border-bottom: 2px solid $wa-blue;
+    }
+  }
+
+  &__level-2,
+  &__level-3,
+  &__site-selector {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%;
+    // @todo Should probably make the height dynamic.
+    height: 90vh;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__level-2 {
+    transform: translateX(100%);
+    background-color: $wa-blue;
+
+    .mobile-nav__container > li {
+      border-bottom: 1px solid $wa-white;
+    }
+  }
+  &__level-3 {
+    // Level 3 is nested under level 2, so just 100vw nudge again.
+    transform: translateX(100%);
+    background-color: $wa-navy;
+
+    .mobile-nav__container > li {
+      border-bottom-color: $wa-blue
+    }
+    .mobile-nav__level-submenu-heading-link {
+      font-family: $bold-font;
+      margin-bottom: 0;
+    }
+  }
+
+  &__back-btn {
+    display: flex;
+    color: $wa-white;
+    gap: $wa-spacing-02;
+    text-decoration: underline;
+    margin-top: $wa-spacing-05;
+    margin-bottom: $wa-spacing-05;
+
+    .icon-arrow-left {
+      @include wa-transition-motion-flow(transform, 200ms);
+      transform: rotate(180deg);
+    }
+  }
+
+  &__level-submenu-heading-link {
+    display: inline-flex;
+    justify-content: unset;
+    gap: $wa-spacing-02;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.mobile-nav__level-2-submenu-heading-link {
+      margin-bottom: $wa-spacing-04;
+    }
+    &.mobile-nav__level-3-submenu-heading-link {
+      border-bottom: 2px solid $wa-white;
+    }
+  }
+  &__level-submenu-heading-description {
+    margin-bottom: $wa-spacing-04;
+    color: $wa-white
+  }
+
+  &__utility-menu {
+    @include page-container;
+
+    margin-top: $wa-spacing-07;
+    display: flex;
+    flex-direction: column;
+    gap: $wa-spacing-02;
+
+    &-item > a,
+    &-item > button,
+    &-item .language-switcher__select {
+      @include utility-nav-link;
+      @include link-transition;
+
+      display: block;
+      padding: $wa-spacing-03;
+      width: 100%;
+      text-align: left;
+      text-decoration: none;
+      color: $wa-navy;
+
+      &:hover {
+        background: $wa-cream;
+        text-decoration: underline;
+      }
+    }
+    &-item .language-switcher__select {
+      border: 2px solid $wa-navy;
+      border-radius: $radius-xxs;
+    }
+    .utility-nav__link[data-level2-trigger] {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .icon {
+        @include wa-transition-motion-flow(transform, 200ms);
+        display: block;
+        fill: currentColor;
+        width: calculate-rem(9);
+        pointer-events: none;
+        transform: rotate(90deg);
+
+        svg {
+          max-width: 100%;
+          aspect-ratio: 1;
+        }
+      }
+    }
+    .language-switcher .icon {
+      top: $wa-spacing-03;
+    }
+  }
+
+  &__site-selector {
+    transform: translateX(100%);
+    background-color: $wa-cream;
+
+    &-inner {
+      @include page-container;
+    }
+
+    .mobile-nav__back-btn {
+      color: $wa-navy;
+    }
+
+    .site-selector {
+      &__col:first-child {
+        padding-bottom: $wa-spacing-04;
+      }
+      &__site-group {
+        flex-wrap: wrap;
+        margin-top: $wa-spacing-04;
+      }
+      &__site-group-heading {
+        flex: 0 0 100%;
+        margin-top: $wa-spacing-07;
+      }
+      &__site-group-item {
+        flex: 0 0 48%;
+      }
+    }
+
+  }
+
+  &__search {
+    @include page-container;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    bottom: $wa-spacing-06;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include wa-transition-motion-flow(all, 200ms);
+
+
+    .primary-menu-open:not(.mobile-menu-animating) & {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .button {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+      text-align: center;
+
+      &__wrapper,
+      &:after,
+      .button__hover {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+  }
+}

@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
     - field.field.node.standard_page.field_regions
+    - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
@@ -23,6 +24,7 @@ dependencies:
     - node.type.standard_page
   module:
     - entity_reference_revisions
+    - link
     - metatag
     - user
 id: node.standard_page.default
@@ -54,6 +56,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 15
+    region: content
+  field_resources:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 115
     region: content
   links:
     settings: {  }

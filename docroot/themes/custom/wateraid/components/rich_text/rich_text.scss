@@ -14,6 +14,11 @@
     @include paragraph-lg();
   }
 
+  .paragraph-sm,
+  .paragraph-sm a {
+    @include paragraph-sm();
+  }
+
   strong {
     font-family: $bold-font;
   }
@@ -80,6 +85,12 @@
 
       margin-top: 0;
     }
+  }
+
+  cite {
+    @include paragraph-sm();
+    color: $wa-navy-80;
+    font-style: normal;
   }
 
   h2,

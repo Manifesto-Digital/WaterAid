@@ -26,7 +26,7 @@ process:
   status: status
   field_cards:
     -
-      plugin: migration_lookup
+      plugin: card_migration_lookup
       migration:
         - articles
         - campaigns

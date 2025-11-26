@@ -33,7 +33,5 @@ destination:
   plugin: 'entity:paragraph'
   default_bundle: image
 idMap: {  }
-migration_dependencies:
-  required:
-    - media
+migration_dependencies: {  }
 include: null

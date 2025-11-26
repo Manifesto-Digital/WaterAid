@@ -1,14 +1,15 @@
-{% set classes = [
+{% set tag = heading_level ? heading_level : 'h2' %}
+{% set gallery_classes = [
   'image-gallery',
   'image-gallery--' ~ theme,
 ] %}
 
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(gallery_classes) }}>
   <div class="image-gallery__wrapper">
     <div class="image-gallery__content">
       {% if title %}
-        <h2 class="image-gallery__content--title">{{ title }}</h2>
+        <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ title }}</{{ tag }}>
       {% endif %}
       {% if description %}
         <div class="image-gallery__content--description">{{ description }}</div>
@@ -30,7 +31,7 @@
           link: '',
           type: 'icon',
           theme,
-          icon: 'wa-utility-arrow-right',
+          icon: 'wa-utility-arrow-left',
           attribute: {
             attr: 'data-controls',
             value: 'previous'
@@ -69,7 +70,7 @@
         link: '',
         type: 'icon',
         theme,
-        icon: 'wa-utility-arrow-right',
+        icon: 'wa-utility-arrow-left',
         attribute: {
           attr: 'data-controls',
           value: 'previous'

@@ -1,0 +1,10 @@
+uuid: f947d96a-c45d-49e5-bbaf-cd769b2dfd37
+langcode: en
+status: true
+dependencies: {  }
+id: spend_module
+label: 'Spend module'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,17 @@
+uuid: 807fc555-e6a6-4a52-98c0-b28b0dbb91b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - node.type.shorthand_story
+  module:
+    - gnode
+    - node
+id: wateraid_site-9f5c3884f2c8146904
+group_type: wateraid_site
+content_plugin: 'group_node:shorthand_story'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: true

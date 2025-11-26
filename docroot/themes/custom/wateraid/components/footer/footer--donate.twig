@@ -1,11 +1,12 @@
-{% set classes = [
+{% set footer_classes = [
   'footer',
   'footer--' ~ variant
 ] %}
 
-<footer {{ attributes.addClass(classes) }}>
+<footer {{ attributes.addClass(footer_classes) }}>
 
-  <div class="footer__top">
+  <div class="footer__top-wrapper">
+    <div class="footer__top">
     <div class="footer__site-logo">
       {{ include('@wateraid/images/icons/wateraid.svg') }}
     </div>
@@ -42,7 +43,10 @@
       </div>
     </div>
   </div>
-  <div class="footer__main">
+  </div>
+
+  <div class="footer__main-wrapper">
+    <div class="footer__main">
     <div class="footer__info"></div>
     <div class="footer__menus">
       <div class="footer__menu--donate">
@@ -60,11 +64,14 @@
       </div>
     </div>
   </div>
+  </div>
 
   {% if copy %}
-    <div class="footer__bottom">
-      <div class="footer__copy">
-        {{ copy }}
+    <div class="footer__bottom-wrapper">
+      <div class="footer__bottom">
+        <div class="footer__copy">
+          {{ copy }}
+        </div>
       </div>
     </div>
   {% endif %}

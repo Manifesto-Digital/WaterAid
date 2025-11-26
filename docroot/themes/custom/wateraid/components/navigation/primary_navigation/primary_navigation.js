@@ -41,8 +41,8 @@
       // unit-less (nb. Must be in milliseconds).
       const meganavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--meganav-transition-time');
       const meganavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
-      const mobileNavTransitionTimeString = getComputedStyle(megaNav).getPropertyValue('--mobile-nav-transition-time');
-      const mobileNavTransitionTime = parseInt(meganavTransitionTimeString.replace('ms', ''));
+      const mobileNavTransitionTimeString = getComputedStyle(mobileNav).getPropertyValue('--mobile-nav-transition-time');
+      const mobileNavTransitionTime = parseInt(mobileNavTransitionTimeString.replace('ms', ''));
 
 
       menuButton.addEventListener('click', (e) => {
@@ -61,6 +61,7 @@
             }
             else {
               this.state.activeLevel2 = triggerId;
+              this.state.isOpen = true;
             }
           }
           else {
@@ -89,9 +90,10 @@
         });
       });
 
+      // If nav is open, click outside the nav closes the nav.
       document.addEventListener('click', (e) => {
         const target = e.target;
-        if (this.state.isOpen && !header.contains(target)) {
+        if (this.state.isOpen && !nav.contains(target) && !menuButton.contains(target)) {
           this.state.isOpen = false;
         }
       });
@@ -100,6 +102,12 @@
       this.openNav = () => {
         menuButton.setAttribute('aria-expanded', 'true');
         document.body.classList.add('primary-menu-open');
+        document.body.classList.add('mobile-menu-animating');
+        setTimeout(() => {
+          // Add a class to prevent transition animations outside of
+          // intentional menu animations.
+          document.body.classList.remove('mobile-menu-animating');
+        }, mobileNavTransitionTime)
       }
       // Close the navigation.
       this.closeNav = () => {
@@ -128,7 +136,7 @@
               else {
                 this.closeNav();
               }
-             }
+            }
           ],
 
           // Listener for activeLevel2 property change.
@@ -136,28 +144,32 @@
             (newValue, oldValue) => {
               this.state.activeLevel3 = null;
 
-              header.setAttribute('data-mobile-menu-level-active', '2');
+              // If the new level isn't numeric, set the menu level active to
+              // the new value.
+              header.setAttribute('data-mobile-menu-level-active', isNaN(newValue) ? newValue : '2');
               megaNav.classList.add('meganav-animating');
               mobileNav.classList.remove('mobile-nav-static');
 
               meganavPanels.forEach((el) => {
                 el.classList.remove('active');
-                el.setAttribute('aria-expanded', false);
+
               });
               level2Triggers.forEach((el) => {
                 el.classList.remove('active');
+                el.setAttribute('aria-expanded', false);
               });
 
               if (newValue) {
-                //this.state.isOpen = true;
                 document.body.classList.add('primary-menu-open');
                 // Changing meganav panel.
                 const newPanel = megaNav.querySelector('[data-meganav-panel-id="' + newValue + '"]');
-                newPanel.classList.add('active', 'panel-animating-in');
-                newPanel.setAttribute('aria-expanded', true);
+                if (newPanel) {
+                  newPanel.classList.add('active', 'panel-animating-in');
+                }
                 // Active class on level 1 nav button.
                 nav.querySelectorAll('[data-level2-trigger="' + newValue + '"]').forEach((el) => {
                   el.classList.add('active');
+                  el.setAttribute('aria-expanded', true);
                 });
                 mobileNav.querySelector('[data-mobile-submenu-id="' + newValue + '"]').classList.add('active');
               }
@@ -191,17 +203,23 @@
             (newValue, oldValue) => {
               mobileNav.classList.remove('mobile-nav-static');
 
-              nav.querySelectorAll('[data-level3-trigger]').forEach((el) => { el.classList.remove('active'); });
+              nav.querySelectorAll('[data-level3-trigger]').forEach((el) => {
+                el.classList.remove('active');
+                el.setAttribute('aria-expanded', false);
+              });
               nav.querySelectorAll('[data-level-3-id]').forEach((el) => {
                 el.classList.remove('show');
-                el.setAttribute('aria-expanded', false);
               });
 
               if (newValue !== oldValue) {
                 if (newValue !== null) {
                   //this.state.isOpen = true;
+                  const triggers = nav.querySelectorAll('[data-level3-trigger="' + newValue + '"]');
+                  triggers.forEach((el) => {
+                    el.classList.add('active');
+                    el.setAttribute('aria-expanded', true);
+                  })
 
-                  nav.querySelector('[data-level3-trigger="' + newValue + '"]').classList.add('active');
                   const elementToOpen = nav.querySelector('[data-level-3-id="' + newValue + '"]');
                   elementToOpen.classList.add('show');
                   elementToOpen.setAttribute('aria-expanded', true);

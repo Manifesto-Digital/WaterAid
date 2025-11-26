@@ -1,4 +1,5 @@
-{% set classes = [
+{% set tag = heading_level ? heading_level : 'h2' %}
+{% set donate_widget_classes = [
   'donate-widget',
 ] %}
 
@@ -23,14 +24,14 @@
   },
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
-  {# Heading  #}
+<div {{ attributes.addClass(donate_widget_classes) }}>
+  {# Heading #}
   {% if heading %}
     <div class="donate-widget__heading">
       {% if variant == 'hero' %}
         <h1>{{ heading }}</h1>
       {% else %}
-        <h2>{{ heading }}</h2>
+        <{{ tag }} class="pseudo-h2">{{ heading }}</{{ tag }}>
       {% endif %}
     </div>
   {% endif %}
@@ -42,154 +43,160 @@
       <legend class="donate-widget__legend">{{ 'How often can you donate?'|t }}</legend>
       <div class="donate-widget__options-wrapper">
         <!-- Option: Monthly -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
-                 {% if monthly_default == '1' %}checked{% endif %}>
-          <label class="donate-widget__radio-label" for="freq-monthly">{{ 'Monthly'|t }}</label>
-        </div>
+        {% if monthly_amounts|length %}
+          <div class="donate-widget__option">
+            <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
+              {% if monthly_default == '1' or one_off_amounts|length <= 0 %}checked{% endif %}>
+            <label class="donate-widget__radio-label" for="freq-monthly">Monthly</label>
+          </div>
+        {% endif %}
         <!-- Option: One off -->
-        <div class="donate-widget__option">
-          <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off"
-                 {% if monthly_default == '0' %}checked{% endif %}>
-          <label class="donate-widget__radio-label" for="freq-one-off">{{ 'One off'|t }}</label>
-        </div>
+        {% if one_off_amounts|length %}
+          <div class="donate-widget__option">
+            <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off"
+              {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
+            <label class="donate-widget__radio-label" for="freq-one-off">One off</label>
+          </div>
+        {% endif %}
       </div>
     </fieldset>
 
     <!-- Monthly Options -->
-    <fieldset class="donate-widget__options-group donate-widget__options-group--monthly">
-      <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
-      <div class="donate-widget__options-wrapper">
-        {% for item in monthly_amounts %}
-          {% set radio_id = 'monthly-amount-' ~ item.amount %}
+    {% if monthly_amounts|length %}
+      <fieldset class="donate-widget__options-group donate-widget__options-group--monthly">
+        <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
+        <div class="donate-widget__options-wrapper">
+          {% for item in monthly_amounts %}
+            {% set radio_id = 'monthly-amount-' ~ item.amount %}
 
-          <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}">
-            {% if loop.revindex == 2 %}
-              <div class="donate-widget__increase-impact">
-                {{ 'Increase your input'|t }}
-              </div>
-            {% endif %}
-            <input class="donate-widget__radio-input"
-                   type="radio"
-                   id="{{ radio_id }}"
-                   name="monthly_amount"
-                   value="{{ item.amount }}"
-                   {% if loop.index == 1 %}checked{% endif %}>
-            <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-              {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
-            </label>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="donate-widget__amount-details">
-        {% for item in monthly_amounts %}
-          {% set id = 'details-monthly-amount-' ~ item.amount %}
-
-          {% if item.title and item.description %}
-            <div id="{{ id }}" class="donate-widget__amount-details--detail">
-              {% if item.image %}
-                <div class="donate-widget__amount--image">
-                  <img loading="lazy" alt="" src="{{ item.image }}"/>
+            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}">
+              {% if loop.revindex == 2 %}
+                <div class="donate-widget__increase-impact">
+                  {{ 'Increase your input'|t }}
                 </div>
               {% endif %}
-              <div class="donate-widget__amount--meta">
-                <div class="title">
-                  {% if item.icon %}
-                    <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
-                  {% endif %}
-                  {{ item.title }}
-                </div>
-                <div class="description">{{ item.description }}</div>
-                {% if item.credit %}
-                  <div class="donate-widget__amount--meta--credit">
-                    {{ item.credit }}
+              <input class="donate-widget__radio-input"
+                     type="radio"
+                     id="{{ radio_id }}"
+                     name="monthly_amount"
+                     value="{{ item.amount }}"
+                     {% if loop.index == 1 %}checked{% endif %}>
+              <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
+                {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="donate-widget__amount-details">
+          {% for item in monthly_amounts %}
+            {% set id = 'details-monthly-amount-' ~ item.amount %}
+
+            {% if item.title and item.description %}
+              <div id="{{ id }}" class="donate-widget__amount-details--detail">
+                {% if item.image %}
+                  <div class="donate-widget__amount--image">
+                    <img loading="lazy" alt="" src="{{ item.image }}"/>
                   </div>
                 {% endif %}
+                <div class="donate-widget__amount--meta">
+                  <div class="title">
+                    {% if item.icon %}
+                      <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                    {% endif %}
+                    {{ item.title }}
+                  </div>
+                  <div class="description">{{ item.description }}</div>
+                  {% if item.credit %}
+                    <div class="donate-widget__amount--meta--credit">
+                      {{ item.credit }}
+                    </div>
+                  {% endif %}
+                </div>
               </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
+            {% endif %}
+          {% endfor %}
+        </div>
 
-      <div class="donate-widget__custom-amount donate-widget__custom-amount--monthly">
-        <label for="custom_amount_monthly">
-          <span class="mobile">{{ 'Or enter a custom amount:'|t }}</span>
-          <span class="tablet">{{ 'Enter a custom amount:'|t }}</span>
-        </label>
-        <input type="text"
-               id="custom_amount_monthly"
-               name="custom_amount_monthly"/>
-      </div>
-    </fieldset>
-
+        <div class="donate-widget__custom-amount donate-widget__custom-amount--monthly">
+          <label for="custom_amount_monthly">
+            <span class="mobile">{{ 'Or enter a custom amount:'|t }}</span>
+            <span class="tablet">{{ 'Enter a custom amount:'|t }}</span>
+          </label>
+          <input type="text"
+                 id="custom_amount_monthly"
+                 name="custom_amount_monthly"/>
+        </div>
+      </fieldset>
+    {% endif %}
     <!-- One off Options -->
-    <fieldset class="donate-widget__options-group donate-widget__options-group--one-off is-hidden">
-      <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
-      <div class="donate-widget__options-wrapper">
-        {% for item in one_off_amounts %}
-          {% set radio_id = 'amount-' ~ item.amount %}
+    {% if one_off_amounts|length %}
+      <fieldset class="donate-widget__options-group donate-widget__options-group--one-off is-hidden">
+        <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
+        <div class="donate-widget__options-wrapper">
+          {% for item in one_off_amounts %}
+            {% set radio_id = 'amount-' ~ item.amount %}
 
-          <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}">
-            {% if loop.revindex == 2 %}
-              <div class="donate-widget__increase-impact">
-                {{ 'Increase your input'|t }}
-              </div>
-            {% endif %}
-            <input class="donate-widget__radio-input"
-                   type="radio"
-                   id="{{ radio_id }}"
-                   name="one_off_amount"
-                   value="{{ item.amount }}"
-                   {% if loop.index == 1 %}checked{% endif %}>
-            <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-              {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
-            </label>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="donate-widget__amount-details">
-        {% for item in one_off_amounts %}
-          {% set id = 'details-amount-' ~ item.amount %}
-
-          {% if item.title and item.description %}
-            <div id="{{ id }}" class="donate-widget__amount-details--detail">
-              {% if item.image %}
-                <div class="donate-widget__amount--image">
-                  <img loading="lazy" alt="" src="{{ item.image }}"/>
+            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}">
+              {% if loop.revindex == 2 %}
+                <div class="donate-widget__increase-impact">
+                  {{ 'Increase your input'|t }}
                 </div>
               {% endif %}
-              <div class="donate-widget__amount--meta">
-                <div class="title">
-                  {% if item.icon %}
-                    <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
-                  {% endif %}
-                  {{ item.title }}
-                </div>
-                <div class="description">{{ item.description }}</div>
-                {% if item.credit %}
-                  <div class="donate-widget__amount--meta--credit">
-                    {{ item.credit }}
+              <input class="donate-widget__radio-input"
+                     type="radio"
+                     id="{{ radio_id }}"
+                     name="one_off_amount"
+                     value="{{ item.amount }}"
+                     {% if loop.index == 1 %}checked{% endif %}>
+              <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
+                {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="donate-widget__amount-details">
+          {% for item in one_off_amounts %}
+            {% set id = 'details-amount-' ~ item.amount %}
+
+            {% if item.title and item.description %}
+              <div id="{{ id }}" class="donate-widget__amount-details--detail">
+                {% if item.image %}
+                  <div class="donate-widget__amount--image">
+                    <img loading="lazy" alt="" src="{{ item.image }}"/>
                   </div>
                 {% endif %}
+                <div class="donate-widget__amount--meta">
+                  <div class="title">
+                    {% if item.icon %}
+                      <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                    {% endif %}
+                    {{ item.title }}
+                  </div>
+                  <div class="description">{{ item.description }}</div>
+                  {% if item.credit %}
+                    <div class="donate-widget__amount--meta--credit">
+                      {{ item.credit }}
+                    </div>
+                  {% endif %}
+                </div>
               </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
+            {% endif %}
+          {% endfor %}
+        </div>
 
-      <div class="donate-widget__custom-amount donate-widget__custom-amount--one-off">
-        <label for="custom_amount_one_off">
-          <span class="mobile">{{ 'Or enter a custom amount:'|t }}</span>
-          <span class="tablet">{{ 'Enter a custom amount:'|t }}</span>
-        </label>
-        <input type="text"
-               id="custom_amount_one_off"
-               name="custom_amount_one_off"/>
-      </div>
-    </fieldset>
-
+        <div class="donate-widget__custom-amount donate-widget__custom-amount--one-off">
+          <label for="custom_amount_one_off">
+            <span class="mobile">{{ 'Or enter a custom amount:'|t }}</span>
+            <span class="tablet">{{ 'Enter a custom amount:'|t }}</span>
+          </label>
+          <input type="text"
+                 id="custom_amount_one_off"
+                 name="custom_amount_one_off"/>
+        </div>
+      </fieldset>
+    {% endif %}
     <div class="donate-widget__form--submit">
       {{ include('wateraid:button', {
         text: button_text,
@@ -202,6 +209,11 @@
           value: webform_node,
         },
       }) }}
+
+      <div class="ssl-logo">
+        {{ include('@wateraid/images/icons/ssl-light.svg') }}
+      </div>
+
     </div>
   </form>
 

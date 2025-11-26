@@ -10,7 +10,7 @@ props:
       title: Title
       examples: []
     description:
-      type: string
+      type: ["string", "null"]
       title: Subtitle
       examples: [ ]
     search:

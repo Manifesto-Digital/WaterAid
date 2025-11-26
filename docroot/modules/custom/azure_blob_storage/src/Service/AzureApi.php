@@ -117,9 +117,11 @@ final class AzureApi {
       "/$this->accountName/$this->container/$blob_name"
     );
 
-    $this->logger->debug("accountName: ". $this->accountName);
-    $this->logger->debug("container: ". $this->container);
-    $this->logger->debug("blob_name: ". $blob_name);
+    if (getenv('BLOB_STORAGE_DEBUG') == 'true') {
+      $this->logger->debug("accountName: " . $this->accountName);
+      $this->logger->debug("container: " . $this->container);
+      $this->logger->debug("blob_name: " . $blob_name);
+    }
 
     $encodedSignature = base64_encode(
       hash_hmac(

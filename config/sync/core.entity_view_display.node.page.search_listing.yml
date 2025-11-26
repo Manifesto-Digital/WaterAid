@@ -4,12 +4,19 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_listing
+    - field.field.node.page.field_audience
     - field.field.node.page.field_content
+    - field.field.node.page.field_country
+    - field.field.node.page.field_force_download
+    - field.field.node.page.field_get_involved
+    - field.field.node.page.field_hero
     - field.field.node.page.field_metatags
+    - field.field.node.page.field_minimal_header
     - field.field.node.page.field_review_date
     - field.field.node.page.field_search_phrases
     - field.field.node.page.field_teaser_image
     - field.field.node.page.field_teaser_text
+    - field.field.node.page.field_theme
     - node.type.page
   module:
     - user
@@ -21,10 +28,11 @@ bundle: page
 mode: search_listing
 content:
   field_teaser_image:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: gallery
+      link: false
     third_party_settings: {  }
     weight: 1
     region: content
@@ -40,11 +48,17 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_audience: true
   field_content: true
+  field_country: true
+  field_force_download: true
+  field_get_involved: true
+  field_hero: true
   field_metatags: true
   field_minimal_header: true
   field_review_date: true
   field_search_phrases: true
+  field_theme: true
   langcode: true
   links: true
   node_read_time: true

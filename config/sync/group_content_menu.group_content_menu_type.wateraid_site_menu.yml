@@ -3,4 +3,4 @@ langcode: en
 status: true
 dependencies: {  }
 id: wateraid_site_menu
-label: 'WaterAid Site Menu'
+label: 'WaterAid Site menu'

@@ -1,8 +1,8 @@
-{% set classes = [
+{% set accordion_classes = [
   'accordion-item',
 ] %}
 
-<div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(accordion_classes) }}>
   <button aria-expanded="false" class="accordion-item__title">
     <span>{{ title }}</span>
     {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}

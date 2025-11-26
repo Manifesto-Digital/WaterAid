@@ -6,4 +6,4 @@ id: communication_preferences_post
 label: 'Communication preferences post'
 category: WaterAid
 likert: false
-options: "opt_in_post: 'No thank you, please do not contact me by post'"
+options: "opt_out_post: 'No thank you, please do not contact me by post'"

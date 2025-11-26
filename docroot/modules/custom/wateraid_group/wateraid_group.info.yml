@@ -1,0 +1,5 @@
+name: 'WaterAid Group'
+type: module
+description: 'Functionality that pertaining to Group module.'
+package: Custom
+core_version_requirement: ^10 || ^11

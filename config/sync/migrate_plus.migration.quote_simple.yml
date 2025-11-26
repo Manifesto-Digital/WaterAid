@@ -25,7 +25,7 @@ process:
     default_value: en
   status: status
   field_citation: field_quote_attribution
-  field_quote/value: field_quote_text_value
+  field_quote/value: field_quote_text/0
   field_quote/format:
     plugin: default_value
     default_value: full_html

@@ -1,0 +1,12 @@
+_core:
+  default_config_hash: _QWheLY4erYyAlt1vdLtxMirLer05mMexNbeoNJd_As
+status: false
+mapping:
+  type: simple
+  conditions: {  }
+  domain: null
+scheme: 'https://'
+farfuture:
+  status: false
+stream_wrappers:
+  - public

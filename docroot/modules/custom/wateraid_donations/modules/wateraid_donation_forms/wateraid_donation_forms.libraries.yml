@@ -121,3 +121,8 @@ webform:
   js:
     js/webform.js: {}
     js/accessibility.js: {}
+
+secure_donate_button:
+  version: 1.0.0
+  js:
+    js/secure-donate-button.js: {}
