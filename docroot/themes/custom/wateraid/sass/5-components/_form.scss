@@ -627,6 +627,11 @@ fieldset.next-form-step {
   .form-actions {
     .button__wrapper {
       width: 100%;
+      .button--secondary {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+      }
     }
 
     .button--primary {
@@ -728,4 +733,8 @@ fieldset.wa-donation-methods {
 .webform-confirmation {
   @include page-container;
   margin-bottom: 6rem;
+}
+
+input[type=checkbox] + label {
+  width: calc(100% - 1.5rem);
 }

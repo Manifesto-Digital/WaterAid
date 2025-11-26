@@ -47,5 +47,33 @@ body {
 
 div[data-drupal-messages] {
   @include page-container;
-  margin-top: 2rem
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+// Status messages
+.messages__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: $wa-navy;
+  width: 100%;
+
+  .messages {
+    width: 100%;
+    padding: 1rem;
+    &--status{
+      background-color: $wa-dark-green;
+      color: $wa-white;
+    }
+    &--warning {
+      background-color: $wa-yellow;
+    }
+    &--error {
+      background-color: $wa-orange;
+      color: $wa-white;
+    }
+  }
 }
