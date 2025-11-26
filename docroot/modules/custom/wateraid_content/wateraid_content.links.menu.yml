@@ -1,0 +1,6 @@
+view.moderated_content.page_1:
+  title: 'My Content'
+  description: 'Content needing changes pending review'
+  parent: entity.user.canonical
+  route_name: view.moderated_content.page_1
+  weight: 40
