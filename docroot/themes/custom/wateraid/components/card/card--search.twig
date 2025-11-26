@@ -7,13 +7,15 @@
 
   <div class="card__body">
 
-    <div class="card__tag">
-      {{ include('wateraid:content_tag', {
-        text: bundle,
-        size: 'small',
-        theme: 'light'
-      }) }}
-    </div>
+    {% if bundle %}
+      <div class="card__tag">
+        {{ include('wateraid:content_tag', {
+          text: bundle,
+          size: 'small',
+          theme: 'light'
+        }) }}
+      </div>
+    {% endif %}
 
     <h2 class="card__heading pseudo-h6">
       <a href="{{ url }}" class="card__link">{{ heading }}</a>
