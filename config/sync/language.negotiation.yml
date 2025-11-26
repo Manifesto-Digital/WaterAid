@@ -7,7 +7,9 @@ url:
   prefixes:
     en: ''
     sv: sv
+    hi: hi
   domains:
     en: ''
     sv: ''
+    hi: ''
 selected_langcode: site_default
