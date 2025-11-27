@@ -1,0 +1,9 @@
+{{ include('wateraid:card', {
+  attributes: attributes,
+  heading: paragraph.field_title.0.value,
+  description: paragraph.field_description.0.value,
+  image: content.field_image,
+  url: '',
+  variant: 'default',
+  is_external: false,
+}, false) }}
