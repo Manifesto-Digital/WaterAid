@@ -162,7 +162,7 @@ function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       $form['actions']['wizard_next']['#button_type'] = 'next';
     }
     if (isset($form['actions']['submit'])) {
-      $form['actions']['#button_type'] = 'submit';
+      $form['actions']['submit']['#button_type'] = 'webform-submit';
     }
   }
 }

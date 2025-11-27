@@ -217,4 +217,28 @@
     }) }}
   {% endstory %}
 
+  {% story InputButton with {
+    name: 'Input button',
+    args: {
+      text: 'Open/close menu'|t,
+      type: 'primary',
+      theme: 'dark',
+      attributes: {
+        'aria-label': 'Click button',
+        "data-once": "drupal-ajax",
+        "name": "op",
+        "value": "Next step"
+      },
+      isInput: true,
+    }
+  } %}
+
+    {{ include('wateraid:button', {
+      text,
+      type,
+      theme,
+      inputProps,
+    }) }}
+  {% endstory %}
+
 {% endstories %}

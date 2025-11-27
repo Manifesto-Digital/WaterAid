@@ -8,15 +8,27 @@
  */
 #}
 {% if button_type is defined and button_type %}
-  {% set text = attributes.value %}
-  {% set theme = (button_type == 'next' or button_type == 'primary') ? 'primary' : 'secondary' %}
+  {% if button_type == 'previous' or button_type == 'next' or button_type == 'webform-submit' %}
+    {% set theme = (button_type == 'next' or button_type == 'webform-submit') ? 'primary' : 'secondary' %}
 
-  {{ include('wateraid:button', {
-    text: text,
-    type: theme|default('primary'),
-    attributes: attributes,
-    theme: 'light',
-  }) }}
+    {{ include('wateraid:button', {
+      type: theme|default('primary'),
+      attributes: attributes,
+      theme: 'light',
+      isInput: true,
+    }) }}
+
+  {% else %}
+    {% set text = attributes.value %}
+    {% set theme = button_type == 'primary' ? 'primary' : 'secondary' %}
+
+    {{ include('wateraid:button', {
+      text: text,
+      type: theme|default('primary'),
+      attributes: attributes,
+      theme: 'light',
+    }) }}
+  {% endif %}
 
 {% else %}
   <input{{ attributes }} />{{ children }}

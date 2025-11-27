@@ -7,7 +7,9 @@
   {% if link %}
   <a href="{{ link }}" class="{{ all_classes|join(' ') }}"
      tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
-    {% else %}
+  {% elseif isInput %}
+    <input {{ attributes }}/>
+  {% else %}
     <button id="{{ id }}" aria-label="{{ text }}" class="{{ all_classes|join(' ') }}"
       aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
       tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
