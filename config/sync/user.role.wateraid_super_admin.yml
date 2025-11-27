@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - filter.format.full_html
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
@@ -32,17 +33,26 @@ dependencies:
     - taxonomy.vocabulary.subject_areas
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
+    - workflows.workflow.editorial
   module:
+    - block_content
+    - captcha
     - config_pages
+    - content_moderation
     - content_translation
+    - contextual
+    - currency
     - editoria11y
+    - entity_usage
     - filter
     - group
     - group_content_menu
+    - language
     - media
     - menu_link_content
     - node
     - node_co_authors
+    - paragraphs
     - path
     - pathauto
     - preview_link
@@ -54,16 +64,21 @@ dependencies:
     - taxonomy
     - toolbar
     - wateraid_core
+    - wateraid_donations
     - webform
+    - webform_node
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
-weight: -7
+weight: -6
 is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access block library'
   - 'access config_pages overview'
   - 'access content overview'
+  - 'access contextual links'
+  - 'access entity usage statistics'
   - 'access group overview'
   - 'access media overview'
   - 'access nodes directly'
@@ -73,11 +88,13 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
+  - 'access wateraid donations report'
   - 'access webform help'
   - 'access webform overview'
   - 'access webform submission user'
   - 'administer bulk redirects'
   - 'administer group'
+  - 'administer languages'
   - 'administer menu'
   - 'administer permissions'
   - 'administer redirect settings'
@@ -103,15 +120,18 @@ permissions:
   - 'clone own listing_page content'
   - 'clone own page content'
   - 'clone own publication content'
+  - 'clone own shorthand_story content'
   - 'clone own standard_page content'
   - 'clone own story content'
   - 'clone own webform content'
   - 'clone page content'
   - 'clone publication content'
+  - 'clone shorthand_story content'
   - 'clone standard_page content'
   - 'clone story content'
   - 'clone webform content'
   - 'create article content'
+  - 'create basic block content'
   - 'create content translations'
   - 'create dam_file media'
   - 'create dam_image media'
@@ -142,8 +162,13 @@ permissions:
   - 'create wateraid_site group'
   - 'create webform'
   - 'create webform content'
+  - currency.currency.view
+  - currency.currency_locale.view
+  - 'delete all revisions'
   - 'delete all taxonomy revisions'
   - 'delete any article content'
+  - 'delete any basic block content'
+  - 'delete any basic block content revisions'
   - 'delete any dam_file media'
   - 'delete any dam_file media revisions'
   - 'delete any dam_image media'
@@ -223,6 +248,7 @@ permissions:
   - 'delete webform revisions'
   - 'download shorthand content'
   - 'edit any article content'
+  - 'edit any basic block content'
   - 'edit any dam_file media'
   - 'edit any dam_image media'
   - 'edit any dam_video media'
@@ -247,6 +273,7 @@ permissions:
   - 'edit co-authors of own content'
   - 'edit config_pages entity'
   - 'edit footer config page entity'
+  - 'edit global_site_selector config page entity'
   - 'edit own article content'
   - 'edit own dam_file media'
   - 'edit own dam_image media'
@@ -268,6 +295,7 @@ permissions:
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
+  - 'edit search_page config page entity'
   - 'edit site_settings config page entity'
   - 'edit terms in audiences'
   - 'edit terms in countries'
@@ -279,8 +307,10 @@ permissions:
   - 'edit webform assets'
   - 'generate preview links'
   - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
+  - 'revert any basic block content revisions'
   - 'revert any dam_file media revisions'
   - 'revert any dam_image media revisions'
   - 'revert any dam_video media revisions'
@@ -307,8 +337,11 @@ permissions:
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
   - 'revert webform revisions'
+  - 'select account cancellation method'
+  - 'skip CAPTCHA'
   - 'translate any entity'
   - 'translate article node'
+  - 'translate editable entities'
   - 'translate get_involved taxonomy_term'
   - 'translate group_content_menu'
   - 'translate menu_link_content'
@@ -318,11 +351,19 @@ permissions:
   - 'update any media'
   - 'update content translations'
   - 'update media'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition request_changes'
+  - 'use editorial transition send_for_review'
   - 'use text format full_html'
   - 'use text format wateraid_pdf'
   - 'view all media revisions'
   - 'view all revisions'
   - 'view all taxonomy revisions'
+  - 'view any basic block content history'
   - 'view any dam_file media revisions'
   - 'view any dam_image media revisions'
   - 'view any dam_video media revisions'
@@ -331,6 +372,7 @@ permissions:
   - 'view any local_image media revisions'
   - 'view any local_video media revisions'
   - 'view any remote_video media revisions'
+  - 'view any unpublished content'
   - 'view any webform submission'
   - 'view article revisions'
   - 'view config_pages entity'
@@ -338,13 +380,16 @@ permissions:
   - 'view editoria11y checker'
   - 'view event revisions'
   - 'view footer config page entity'
+  - 'view global_site_selector config page entity'
   - 'view landing_page revisions'
+  - 'view latest version'
   - 'view listing_page revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view own webform submission'
   - 'view page revisions'
   - 'view publication revisions'
+  - 'view search_page config page entity'
   - 'view shorthand_story revisions'
   - 'view site_settings config page entity'
   - 'view standard_page revisions'
@@ -357,6 +402,9 @@ permissions:
   - 'view term revisions in themes'
   - 'view term revisions in topic'
   - 'view the administration theme'
+  - 'view unpublished paragraphs'
   - 'view user email addresses'
   - 'view vocabulary labels'
   - 'view webform revisions'
+  - 'view webform submissions any node'
+  - 'view webform submissions own node'

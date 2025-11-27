@@ -294,8 +294,10 @@
       // Set required for 'other' inputs
       // Not compatible with v2 styling
       if ($(this.el).parents('.webform-style-v2').length === 0) {
-        $(amounts_container_selector, this.el).find('.webform-buttons-other-input input').prop('required', true);
-        $('.wa_donation_amounts_container', this.el).not(amounts_container_selector).find('.webform-buttons-other-input input').prop('required', false);
+        if (this.el.closest('form')?.querySelectorAll('input[value="_other_"]:checked').length > 0) {
+          $(amounts_container_selector, this.el).find('.webform-buttons-other-input input').prop('required', true);
+          $('.wa_donation_amounts_container', this.el).not(amounts_container_selector).find('.webform-buttons-other-input input').prop('required', false);
+        }
       }
     },
     handleFrequencyChange: function (event) {
