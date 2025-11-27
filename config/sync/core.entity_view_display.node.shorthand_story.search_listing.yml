@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.shorthand_story.field_audience
     - field.field.node.shorthand_story.field_country
     - field.field.node.shorthand_story.field_get_involved
+    - field.field.node.shorthand_story.field_metatags
     - field.field.node.shorthand_story.field_shorthand_story
     - field.field.node.shorthand_story.field_teaser_image
     - field.field.node.shorthand_story.field_teaser_text
@@ -19,6 +20,11 @@ targetEntityType: node
 bundle: shorthand_story
 mode: search_listing
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
     label: hidden
@@ -48,6 +54,7 @@ hidden:
   field_audience: true
   field_country: true
   field_get_involved: true
+  field_metatags: true
   field_shorthand_story: true
   field_theme: true
   langcode: true
