@@ -27,7 +27,7 @@
         const heroHeight = hero.offsetHeight;
         const donateHeight = context.querySelector(".hero__donate").offsetHeight;
         let calculatedMargin = 0;
-        
+
         if (heroHeight > 720 && isDesktop) {
           calculatedMargin = donateHeight - heroHeight + 156;
         }
@@ -46,9 +46,9 @@
         });
       };
       window.addEventListener("resize", onresize);
-      if (width > 1024) {
-        onresize();
-      }
+
+      setTimeout(onresize, 500);
+
     },
   };
 })(Drupal);
