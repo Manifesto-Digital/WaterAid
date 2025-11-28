@@ -26,19 +26,19 @@
  */
 #}
 {# Footer variables #}
-{% set facebook = config_pages_field('site_settings', 'field_facebook').0['#title'] %}
-{% set instagram = config_pages_field('site_settings', 'field_instagram').0['#title'] %}
-{% set tiktok = config_pages_field('site_settings', 'field_tiktok').0['#title'] %}
-{% set linkedin = config_pages_field('site_settings', 'field_linkedin').0['#title'] %}
-{% set youtube = config_pages_field('site_settings', 'field_youtube').0['#title'] %}
+{% set facebook = field_facebook.0['#title'] %}
+{% set instagram = field_instagram.0['#title'] %}
+{% set tiktok = field_tiktok.0['#title'] %}
+{% set linkedin = field_linkedin.0['#title'] %}
+{% set youtube = field_youtube.0['#title'] %}
 {% set cta = {
-  link: config_pages_field('footer', 'field_donate_link').0['#url'],
-  text: config_pages_field('footer', 'field_donate_link').0['#title']
+  link: field_donate_link.0['#url'],
+  text: field_donate_link.0['#title']
 } %}
 {% set contact_details = {
-  tel: config_pages_field('footer', 'field_phone_number')|render|striptags|trim,
-  mail: config_pages_field('footer', 'field_email')|render|striptags|trim,
-  address: config_pages_field('footer', 'field_address'),
+  tel: field_phone_number|render|striptags|trim,
+  mail: field_email|render|striptags|trim,
+  address: field_address,
 } %}
 <div{{ attributes }}>
   {{ include('wateraid:footer', {
@@ -51,9 +51,9 @@
     youtube_url: youtube|render ? youtube,
     cta: cta,
     contact_details: contact_details,
-    copy: config_pages_field('footer', 'field_copy'),
-    logos: config_pages_field('footer', 'field_logos'),
-    site_logo: config_pages_field('site_settings', 'field_site_logo'),
+    copy: field_copy,
+    logos: field_logos,
+    site_logo: field_site_logo,
     variant: 'default'
   }, only) }}
 </div>
