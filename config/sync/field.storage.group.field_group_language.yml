@@ -1,0 +1,20 @@
+uuid: 905aba4f-34d3-4f33-b4f4-14911a135e93
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - language
+id: group.field_group_language
+field_name: field_group_language
+entity_type: group
+type: entity_reference
+settings:
+  target_type: configurable_language
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

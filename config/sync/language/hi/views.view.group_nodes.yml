@@ -1,0 +1,55 @@
+display:
+  default:
+    display_options:
+      title: नोड्स
+      fields:
+        title:
+          label: शीर्षक
+          separator: ', '
+        type:
+          label: 'सामग्री प्रकार'
+          separator: ', '
+        status:
+          label: अवस्था
+          settings:
+            format_custom_false: अप्रकाशित
+            format_custom_true: प्रकाशित
+          separator: ', '
+        dropbutton:
+          label: कार्यवाही
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« पहला'
+            last: 'आखरी »'
+          expose:
+            items_per_page_label: 'विषय प्रति पृष्ठ'
+            items_per_page_options_all_label: '-सभी-'
+      exposed_form:
+        options:
+          submit_button: 'लागू करें'
+          reset_button_label: 'दोबारा से स्थापित करें|'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
+          sort_desc_label: अवरोही
+      arguments:
+        gid:
+          exception:
+            title: सभी
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                title: प्रकाशित
+              2:
+                title: अप्रकाशित
+        type:
+          expose:
+            label: प्रकार
+  page_1:
+    display_title: पृष्ठ
+    display_options:
+      menu:
+        title: नोड्स

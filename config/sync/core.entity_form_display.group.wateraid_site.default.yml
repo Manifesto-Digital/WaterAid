@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.group.wateraid_site.field_content
+    - field.field.group.wateraid_site.field_group_language
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
     - field.field.group.wateraid_site.field_spend_module
@@ -27,6 +28,12 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_group_language:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_hero:
     type: layout_paragraphs
