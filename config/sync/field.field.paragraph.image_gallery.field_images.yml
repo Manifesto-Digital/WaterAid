@@ -4,15 +4,18 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_images
+    - paragraphs.paragraphs_type.external_card
+    - paragraphs.paragraphs_type.gallery_item
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.internal_card
   module:
     - entity_reference_revisions
 id: paragraph.image_gallery.field_images
 field_name: field_images
 entity_type: paragraph
 bundle: image_gallery
-label: Images
+label: Content
 description: ''
 required: false
 translatable: false
@@ -23,6 +26,9 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      external_card: external_card
+      gallery_item: gallery_item
+      internal_card: internal_card
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -34,14 +40,50 @@ settings:
       call_to_action:
         weight: 15
         enabled: false
+      cancel_anytime:
+        weight: 37
+        enabled: false
+      card_collection:
+        weight: 38
+        enabled: false
+      donate_block:
+        weight: 39
+        enabled: false
+      donate_exit_modal:
+        weight: 40
+        enabled: false
+      donation_amount:
+        weight: 41
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 42
+        enabled: false
+      donation_widget:
+        weight: 43
+        enabled: false
+      external_card:
+        weight: 44
+        enabled: true
+      facts_and_stats:
+        weight: 45
+        enabled: false
+      gallery_item:
+        weight: 46
+        enabled: true
       hero_basic:
         weight: 16
+        enabled: false
+      hero_donate:
+        weight: 48
         enabled: false
       hero_image:
         weight: 17
         enabled: false
       hero_news:
         weight: 18
+        enabled: false
+      hero_search:
+        weight: 51
         enabled: false
       hero_video:
         weight: 19
@@ -52,13 +94,40 @@ settings:
       image_gallery:
         weight: 21
         enabled: false
+      image_with_quote_sidebar:
+        weight: 55
+        enabled: false
+      internal_card:
+        weight: 56
+        enabled: true
       quote:
         weight: 22
         enabled: false
       rich_text:
         weight: 23
         enabled: false
+      spend:
+        weight: 59
+        enabled: false
+      spend_item:
+        weight: 60
+        enabled: false
+      spend_module:
+        weight: 61
+        enabled: false
+      stats_item:
+        weight: 62
+        enabled: false
+      temp_paragraph:
+        weight: 63
+        enabled: false
+      text_media:
+        weight: 64
+        enabled: false
       video:
         weight: 24
+        enabled: false
+      webform_poc:
+        weight: 66
         enabled: false
 field_type: entity_reference_revisions
