@@ -1,0 +1,19 @@
+uuid: cef133d4-5077-4758-845f-68dbe4b2b313
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_spend_amount
+    - paragraphs.paragraphs_type.spend_amount
+id: paragraph.spend_amount.field_spend_amount
+field_name: field_spend_amount
+entity_type: paragraph
+bundle: spend_amount
+label: 'Statistic amount'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

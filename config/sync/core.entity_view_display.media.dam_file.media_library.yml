@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.field.media.dam_file.field_dam_expired
+    - field.field.media.dam_file.field_dam_expiry_date
+    - field.field.media.dam_file.field_dam_last_checked
     - field.field.media.dam_file.field_media_dam_file
     - image.style.medium
     - media.type.dam_file
@@ -14,6 +17,36 @@ targetEntityType: media
 bundle: dam_file
 mode: media_library
 content:
+  field_dam_expired:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dam_expiry_date:
+    type: timestamp
+    label: above
+    settings:
+      date_format: short
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+        description: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   thumbnail:
     type: image
     label: hidden
@@ -34,6 +67,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_dam_last_checked: true
   field_media_dam_file: true
   langcode: true
   name: true

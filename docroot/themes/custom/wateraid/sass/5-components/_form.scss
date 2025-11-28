@@ -173,6 +173,12 @@
   .webform-type-checkbox,
   .webform-type-radio {
     display: flex;
+    flex-flow: row wrap;
+    + label.error {
+        width: 100%;
+        flex: 1 1 100%;
+        order: -1;
+    }
   }
 }
 

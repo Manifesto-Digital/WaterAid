@@ -15,7 +15,9 @@ dependencies:
     - field.field.node.webform.field_teaser_text
     - field.field.node.webform.webform
     - node.type.webform
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - datetime
     - default_paragraphs
     - field_group
@@ -32,6 +34,8 @@ third_party_settings:
         - group_general
         - group_content
         - group_sidebar_content
+        - group_teaser
+        - group_meta_tags
       label: Tabs
       region: content
       parent_name: ''
@@ -49,6 +53,7 @@ third_party_settings:
         - title
         - field_hero
         - langcode
+        - field_donation_menu
       label: General
       region: content
       parent_name: group_tabs
@@ -67,6 +72,7 @@ third_party_settings:
         - field_content
         - field_donation_widget
         - webform
+        - field_options
       label: Content
       region: content
       parent_name: group_tabs
@@ -96,6 +102,39 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+    group_teaser:
+      children:
+        - field_teaser_text
+        - field_teaser_image
+      label: Teaser
+      region: content
+      parent_name: group_tabs
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_meta_tags:
+      children:
+        - field_metatags
+      label: 'Meta tags'
+      region: content
+      parent_name: group_tabs
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
 _core:
   default_config_hash: A3evv2pt6d-bKCPcgjXA5VGTemXWOxG3lSXvWiRWcck
 id: node.webform.default
@@ -105,7 +144,7 @@ mode: default
 content:
   co_authors:
     type: entity_reference_autocomplete_tags
-    weight: 8
+    weight: 6
     region: content
     settings:
       match_operator: CONTAINS
@@ -115,7 +154,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -133,14 +172,14 @@ content:
     third_party_settings: {  }
   field_donation_menu:
     type: boolean_checkbox
-    weight: 11
+    weight: 3
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_donation_widget:
     type: paragraphs
-    weight: 1
+    weight: 2
     region: content
     settings:
       title: 'Donation widget'
@@ -172,27 +211,27 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 9
+    weight: 7
     region: content
     settings:
-      sidebar: true
-      use_details: true
+      sidebar: false
+      use_details: false
     third_party_settings: {  }
   field_options:
     type: options_select
-    weight: 15
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
-    weight: 10
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   field_sidebar_content:
     type: default_paragraphs
-    weight: 4
+    weight: 6
     region: content
     settings:
       title: 'content item'
@@ -223,7 +262,7 @@ content:
     third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
-    weight: 2
+    weight: 3
     region: content
     settings:
       media_types: {  }
@@ -247,29 +286,35 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 6
+    weight: 4
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 14
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 7
+    weight: 5
     region: content
     settings:
       display_label: true
@@ -284,7 +329,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -293,13 +338,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 13
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   webform:
     type: webform_entity_reference_select
-    weight: 2
+    weight: 3
     region: content
     settings:
       default_data: true
