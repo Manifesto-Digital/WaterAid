@@ -1,0 +1,33 @@
+uuid: 8d585ead-d1f0-42af-95bd-8b02c6e41059
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spend_amount.field_description
+    - field.field.paragraph.spend_amount.field_spend_amount
+    - paragraphs.paragraphs_type.spend_amount
+id: paragraph.spend_amount.default
+targetEntityType: paragraph
+bundle: spend_amount
+mode: default
+content:
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_spend_amount:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

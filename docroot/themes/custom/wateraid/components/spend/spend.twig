@@ -5,42 +5,53 @@
 
 <div class="spend">
   <{{ tag }} class="spend__title pseudo-h4">{{ title }}</{{ tag }}>
-  <div class="spend__copy">
-    {{ copy }}
+<div class="spend__copy">
+  {{ copy }}
+</div>
+
+<div class="spend__diagram">
+  <figure class="spend__figure">
+    <svg width="100%" height="100%" viewBox="0 0 42 42" class="spend__svg">
+      <circle class="spend__svg--hole" cx="21" cy="21" r="15.91549430918954" fill="#151435"></circle>
+      <circle class="spend__segment segment-1 active" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+              stroke="#006BD9"
+              stroke-width="10" stroke-dasharray="{{ percent_1 }} {{ percent_2 }}" stroke-dashoffset="50"></circle>
+      <circle class="spend__segment segment-2" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#FF96E6"
+              stroke-width="8" stroke-dasharray="{{ percent_2 }} {{ percent_1 }}"
+              stroke-dashoffset="{{ offset }}"></circle>
+    </svg>
+  </figure>
+
+  <div class="spend__info segment-1 active">
+    <h3 class="spend__info-title">
+      <span class="spend__amount pseudo-h5">{{ sg_1_amount }}</span>
+      {{ sg_1_description }}
+    </h3>
+    {% for key,item in sg_1_items %}
+      <p>
+        {% if item.entity.field_spend_amount.value %}
+          <strong>{{ item.entity.field_spend_amount.value }}</strong>
+        {% endif %}
+        {{ item.entity.field_description.value }}
+      </p>
+    {% endfor %}
   </div>
 
-  <div class="spend__diagram">
-    <figure class="spend__figure">
-      <svg width="100%" height="100%" viewBox="0 0 42 42" class="spend__svg">
-        <circle class="spend__svg--hole" cx="21" cy="21" r="15.91549430918954" fill="#151435"></circle>
-        <circle class="spend__segment segment-1 active" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#006BD9"
-                stroke-width="10" stroke-dasharray="{{ percent_1 }} {{ percent_2 }}" stroke-dashoffset="50"></circle>
-        <circle class="spend__segment segment-2" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#FF96E6"
-                stroke-width="8" stroke-dasharray="{{ percent_2 }} {{ percent_1 }}"
-                stroke-dashoffset="{{ offset }}"></circle>
-      </svg>
-    </figure>
-
-    <div class="spend__info segment-1 active">
-      <h3 class="spend__info-title">
-        <span class="spend__amount pseudo-h5">{{ sg_1_amount }}</span>
-        {{ sg_1_description }}
-      </h3>
-      {% for key,item in sg_1_items %}
-        <p><strong>{{ item.key }}</strong> {{ item.value }}</p>
-      {% endfor %}
-    </div>
-
-    <div class="spend__info segment-2">
-      <h3 class="spend__info-title">
-        <span class="spend__amount pseudo-h5">{{ sg_2_amount }}</span>
-        {{ sg_2_description }}
-      </h3>
-      {% for key,item in sg_2_items %}
-        <p><strong>{{ item.key }}</strong> {{ item.value }}</p>
-      {% endfor %}
-    </div>
+  <div class="spend__info segment-2">
+    <h3 class="spend__info-title">
+      <span class="spend__amount pseudo-h5">{{ sg_2_amount }}</span>
+      {{ sg_2_description }}
+    </h3>
+    {% for key,item in sg_2_items %}
+      <p>
+        {% if item.entity.field_spend_amount.value %}
+          <strong>{{ item.entity.field_spend_amount.value }}</strong>
+        {% endif %}
+        {{ item.entity.field_description.value }}
+      </p>
+    {% endfor %}
   </div>
+</div>
 
 
 </div>

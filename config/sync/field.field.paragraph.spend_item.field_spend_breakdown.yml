@@ -1,0 +1,127 @@
+uuid: d9e7824d-dc55-42c9-a41a-72c4bcf5eaaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_spend_breakdown
+    - paragraphs.paragraphs_type.spend_amount
+    - paragraphs.paragraphs_type.spend_item
+  module:
+    - entity_reference_revisions
+id: paragraph.spend_item.field_spend_breakdown
+field_name: field_spend_breakdown
+entity_type: paragraph
+bundle: spend_item
+label: 'Spend breakdown'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      spend_amount: spend_amount
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 34
+        enabled: false
+      accordion_item:
+        weight: 35
+        enabled: false
+      call_to_action:
+        weight: 36
+        enabled: false
+      cancel_anytime:
+        weight: 37
+        enabled: false
+      card_collection:
+        weight: 38
+        enabled: false
+      donate_block:
+        weight: 39
+        enabled: false
+      donate_exit_modal:
+        weight: 40
+        enabled: false
+      donation_amount:
+        weight: 41
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 42
+        enabled: false
+      donation_widget:
+        weight: 43
+        enabled: false
+      external_card:
+        weight: 44
+        enabled: false
+      facts_and_stats:
+        weight: 45
+        enabled: false
+      hero_basic:
+        weight: 46
+        enabled: false
+      hero_donate:
+        weight: 47
+        enabled: false
+      hero_image:
+        weight: 48
+        enabled: false
+      hero_news:
+        weight: 49
+        enabled: false
+      hero_search:
+        weight: 50
+        enabled: false
+      hero_video:
+        weight: 51
+        enabled: false
+      image:
+        weight: 52
+        enabled: false
+      image_gallery:
+        weight: 53
+        enabled: false
+      image_with_quote_sidebar:
+        weight: 54
+        enabled: false
+      internal_card:
+        weight: 55
+        enabled: false
+      quote:
+        weight: 56
+        enabled: false
+      rich_text:
+        weight: 57
+        enabled: false
+      spend:
+        weight: 58
+        enabled: false
+      spend_amount:
+        weight: 59
+        enabled: true
+      spend_item:
+        weight: 60
+        enabled: false
+      spend_module:
+        weight: 61
+        enabled: false
+      stats_item:
+        weight: 62
+        enabled: false
+      temp_paragraph:
+        weight: 63
+        enabled: false
+      text_media:
+        weight: 64
+        enabled: false
+      video:
+        weight: 65
+        enabled: false
+      webform_poc:
+        weight: 66
+        enabled: false
+field_type: entity_reference_revisions
