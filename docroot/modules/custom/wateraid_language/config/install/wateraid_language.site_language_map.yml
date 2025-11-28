@@ -1,0 +1,45 @@
+# Site to Language code mappings for WaterAid multisite
+# This defines which URL prefixes map to which groups and languages
+# allowing us to avoid double-prefixing (e.g., /jp/jp)
+
+# Format:
+# prefix: The URL prefix to use
+# group_label: The group label to match
+# language: The language code for this combination
+# skip_language_prefix: Whether to omit the standard Drupal language prefix
+
+# Example: Japan site - Japanese only
+# URL: /jp (not /jp/jp)
+jp:
+  prefix: 'jp'
+  group_label: 'Japan'
+  language: 'ja'
+  skip_language_prefix: true
+
+# Example: UK site - English (default)
+# URL: /uk or just content paths
+uk:
+  prefix: 'uk'
+  group_label: 'WaterAid UK'
+  language: 'en'
+  skip_language_prefix: true
+
+# Example: India site - English version
+# URL: /in
+in:
+  prefix: 'in'
+  group_label: 'India'
+  language: 'en'
+  skip_language_prefix: true
+
+# Example: India site - Hindi version
+# URL: /in/hi
+in_hi:
+  prefix: 'in/hi'
+  group_label: 'India'
+  language: 'hi'
+  skip_language_prefix: false
+
+# Example: Sweden site - Swedish version
+# URL: /sv (already configured via standard language prefix)
+# This is an example where standard Drupal language detection can work

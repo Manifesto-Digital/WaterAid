@@ -4,10 +4,11 @@ status: true
 dependencies:
   module:
     - group
+    - wateraid_language
 id: site_groups
 label: 'Site Groups'
 type: 'canonical_entities:group'
-pattern: '[group:title]'
+pattern: '[group:url-prefix]'
 selection_criteria:
   73143c30-ab0d-417c-9b65-eb400ff1b71e:
     id: 'entity_bundle:group'

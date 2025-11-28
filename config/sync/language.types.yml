@@ -12,8 +12,10 @@ negotiation:
       language-interface: 0
   language_url:
     enabled:
+      wateraid-site-language: -9
       language-url: 0
       language-url-fallback: 1
   language_interface:
     enabled:
+      wateraid-site-language: -9
       language-url: 0

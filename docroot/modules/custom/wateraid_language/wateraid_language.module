@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for WaterAid Language module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wateraid_language_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.wateraid_language':
+      return '<p>' . t('Manages custom language and URL prefix handling for WaterAid multi-site setup.') . '</p>';
+  }
+}

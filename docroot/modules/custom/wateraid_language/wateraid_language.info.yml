@@ -1,0 +1,10 @@
+name: WaterAid Language
+type: module
+description: 'Custom language and URL prefix handling for WaterAid multi-site setup'
+core_version_requirement: ^10 || ^11
+package: WaterAid
+dependencies:
+  - drupal:language
+  - drupal:path
+  - pathauto:pathauto
+  - group:group
