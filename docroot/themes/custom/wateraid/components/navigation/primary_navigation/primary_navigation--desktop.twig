@@ -145,7 +145,6 @@
                   {# If no level 3 items at all in this panel then the level
                     2 items can occupy both cols. #}
                   {% if level_2_items|length > 8 %}
-                    {{ dump(level_2_items) }}
                     {# Split into 2 groups. If it's an add number, always make
                       sure the first col gets the additional. #}
                     {% set split_point = (level_2_items|length / 2)|round(0, 'ceil') %}
