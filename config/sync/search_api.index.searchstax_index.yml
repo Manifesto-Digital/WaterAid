@@ -27,6 +27,8 @@ dependencies:
     - field.storage.paragraph.field_title
     - search_api.server.searchstax_server
   module:
+    - entitygroupfield
+    - group
     - node
     - paragraphs
     - search_api_solr
@@ -419,6 +421,15 @@ field_settings:
         - field.storage.paragraph.field_title
       module:
         - paragraphs
+  gid:
+    label: 'Groups » Group relationship » Parent group'
+    datasource_id: 'entity:node'
+    property_path: 'entitygroupfield:entity:gid'
+    type: integer
+    dependencies:
+      module:
+        - entitygroupfield
+        - group
   langcode:
     label: Language
     datasource_id: 'entity:node'
