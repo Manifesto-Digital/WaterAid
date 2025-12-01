@@ -1,4 +1,4 @@
-(function (Drupal) {
+(function (Drupal, once) {
   Drupal.behaviors.imageGallery = {
     attach(context) {
       function initSlider(gallery) {
@@ -25,11 +25,10 @@
           });
       }
 
-      context
-        .querySelectorAll('[data-component-id="wateraid:image_gallery"]')
-        .forEach((gallery) => {
+      const elements = once('wateraid:image_gallery', '[data-component-id="wateraid:image_gallery"]', context);
+      elements.forEach((gallery) => {
           initSlider(gallery);
         });
     },
   };
-})(Drupal);
+})(Drupal, once);

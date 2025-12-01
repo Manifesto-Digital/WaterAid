@@ -1,0 +1,10 @@
+uuid: 54beb75d-5c3a-4b6e-bdad-33b480f1d763
+langcode: en
+status: true
+dependencies: {  }
+id: gallery_item
+label: 'Gallery Item'
+icon_uuid: null
+icon_default: null
+description: 'Add a title, image, and description as an item in the image gallery.'
+behavior_plugins: {  }

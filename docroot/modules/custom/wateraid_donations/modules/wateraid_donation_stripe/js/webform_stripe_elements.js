@@ -18,8 +18,6 @@
       this.listenTo(this.model, 'submitForm', this.submitFormHandler);
       this.listenTo(this.model, 'refresh', this.render);
       this.mounted = false;
-
-      console.log('initialize stripe view', options, this.model);
     },
     render: function () {
       if (this.model.isCurrentPaymentMethod(this)) {
@@ -110,9 +108,6 @@
       });
     },
     createPaymentMethod: function (event) {
-
-      console.log('createPaymentMethod called');
-
       /**
        *  Remove the card number field and submit button from view
        *  upon a user submitting them to prevent multiple submissions
@@ -248,7 +243,6 @@
                       paymentIntent.client_secret, {payment_method: paymentMethodId}
                     ).then(function (result) {
                       // The paymentIntent here is a property of the Stripe result obj.
-                      console.log('stripe result',result, JSON.stringify(result, null, 2));
                       document.getElementById('payment-response-result').value = JSON.stringify(result, null, 2);
 
                       if (result.error) {
