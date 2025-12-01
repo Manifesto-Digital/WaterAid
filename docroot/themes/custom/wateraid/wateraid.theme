@@ -450,6 +450,7 @@ function _wateraid_build_menu($menu_name, int $max_depth): array {
 function wateraid_preprocess(&$variables) {
   // Adds the current group's canonical URL to template variables where exists.
   $group = \Drupal::routeMatch()->getParameter('group');
+  $variables['current_group_path'] = '/';
   if ($group instanceof Group) {
     $url = Url::fromRoute('entity.group.canonical', ['group' => $group->id()]);
     $variables['current_group_path'] = $url->toString();

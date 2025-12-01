@@ -243,6 +243,10 @@ input[type='radio'] {
 
 
 .form-item {
+  &[required="required"] span.optional {
+      display: none;
+  }
+
   // Hide "Optional" after visually hidden text.
   .visually-hidden + span {
     @include visually-hidden();
@@ -253,6 +257,10 @@ input[type='radio'] {
     font-family: base.$bold-font;
     font-size: base.calculate-rem(20);
     margin-bottom: base.$wa-spacing-02;
+
+    &.form-required + span.optional {
+      display: none;
+    }
   }
 
   .optional {
