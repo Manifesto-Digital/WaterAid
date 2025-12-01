@@ -1,0 +1,48 @@
+uuid: ce18c76b-c1ff-48c8-b8e7-f69c5e7e39bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spend_item.field_spend_amount
+    - field.field.paragraph.spend_item.field_spend_breakdown
+    - field.field.paragraph.spend_item.field_spend_value
+    - field.field.paragraph.spend_item.field_title
+    - paragraphs.paragraphs_type.spend_item
+  module:
+    - entity_reference_revisions
+id: paragraph.spend_item.default
+targetEntityType: paragraph
+bundle: spend_item
+mode: default
+content:
+  field_spend_amount:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_spend_breakdown:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_spend_value: true
+  search_api_excerpt: true

@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.donate_exit_modal
     - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.external_card
+    - paragraphs.paragraphs_type.gallery_item
     - paragraphs.paragraphs_type.hero_basic
     - paragraphs.paragraphs_type.hero_donate
     - paragraphs.paragraphs_type.hero_image
@@ -51,6 +52,7 @@ settings:
       external_card: external_card
       hero_search: hero_search
       spend_item: spend_item
+      gallery_item: gallery_item
       internal_card: internal_card
       spend_module: spend_module
       spend: spend
@@ -93,6 +95,9 @@ settings:
       facts_and_stats:
         weight: -24
         enabled: false
+      gallery_item:
+        weight: 46
+        enabled: true
       hero_basic:
         weight: -18
         enabled: true

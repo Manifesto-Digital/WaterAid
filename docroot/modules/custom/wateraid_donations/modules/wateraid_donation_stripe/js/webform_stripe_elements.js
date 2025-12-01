@@ -108,7 +108,6 @@
       });
     },
     createPaymentMethod: function (event) {
-
       /**
        *  Remove the card number field and submit button from view
        *  upon a user submitting them to prevent multiple submissions

@@ -1,0 +1,20 @@
+label: संपादकीय
+type_settings:
+  states:
+    archived:
+      label: संग्रहीत
+    draft:
+      label: प्रारूप
+    published:
+      label: प्रकाशित
+  transitions:
+    archive:
+      label: पुरालेख
+    archived_draft:
+      label: 'प्रारूप में  पुनर्स्थापित करें'
+    archived_published:
+      label: पुनर्स्थापित
+    create_new_draft:
+      label: 'नया ड्राफ्ट बनाएं'
+    publish:
+      label: 'प्रकाशित करना'

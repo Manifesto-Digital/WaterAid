@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: image_gallery
-label: 'Image gallery'
+label: Gallery
 icon_uuid: null
 icon_default: null
-description: ''
+description: 'A gallery of different kinds of content.'
 behavior_plugins: {  }

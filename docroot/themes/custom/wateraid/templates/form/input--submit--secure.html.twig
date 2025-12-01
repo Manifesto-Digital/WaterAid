@@ -12,14 +12,13 @@
 #}
 {{ attach_library('wateraid_donation_forms/secure_donate_button') }}
 
-{% set text = attributes.value %}
 {{ include('wateraid:button', {
-  text: text,
   type: theme|default('primary'),
   attributes: attributes.addClass('input--submit--secure'),
   icon: 'wa-utility-lock',
   icon_position: 'before',
   theme: 'light',
+  isInput: true,
 }) }}
 
 <div class="ssl-logo">

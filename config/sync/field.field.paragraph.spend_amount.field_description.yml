@@ -1,0 +1,19 @@
+uuid: c50bc47f-9ef8-40ce-abae-f7447e593541
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.spend_amount
+id: paragraph.spend_amount.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: spend_amount
+label: Description
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

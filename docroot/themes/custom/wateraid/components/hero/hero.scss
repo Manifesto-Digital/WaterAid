@@ -12,7 +12,6 @@
     @include desktop {
       @include page-container;
     }
-    position: relative;
   }
 
   .image,
@@ -30,7 +29,6 @@
     img {
       display: block;
       max-width: 100%;
-      max-height: calculate-rem(480);
       object-fit: cover;
       object-position: center;
     }
@@ -90,6 +88,7 @@
 
     .quote__content {
       padding-right: 0;
+      width: 100%;
     }
 
     .quote__content--quote {
@@ -100,7 +99,7 @@
   &__donate {
     @include desktop() {
       position: absolute;
-      top: calculate-rem(-624);
+      top: 6rem;
       left: $wa-spacing-09;
       width: 50%;
       max-width: calculate-rem(660);
@@ -211,6 +210,11 @@
       display: flex;
       gap: $wa-spacing-06;
       flex-direction: column;
+      position: relative;
+    }
+
+    .hero__image img {
+      max-height: calculate-rem(480);
     }
   }
 

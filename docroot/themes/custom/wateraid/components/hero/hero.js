@@ -1,7 +1,7 @@
 (function (Drupal) {
   Drupal.behaviors.hero = {
     attach(context) {
-      const video = context.querySelector("video");
+      const video = context.querySelector(".hero__video video");
       const playButton = context.querySelector(".hero__video--play");
       const pauseButton = context.querySelector(".hero__video--pause");
       let width = document.body.clientWidth;
@@ -46,9 +46,9 @@
         });
       };
       window.addEventListener("resize", onresize);
-      if (width > 1024) {
-        onresize();
-      }
+
+      setTimeout(onresize, 500);
+
     },
   };
 })(Drupal);

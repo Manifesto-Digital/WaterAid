@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb073207b5ab6bd6cda6e88a7713f995",
+    "content-hash": "1fb83699fd93803a906578139ada4c82",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -4392,20 +4392,20 @@
         },
         {
             "name": "drupal/editoria11y",
-            "version": "3.0.0-alpha2",
+            "version": "2.2.18",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/editoria11y.git",
-                "reference": "3.0.0-alpha2"
+                "reference": "2.2.18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/editoria11y-3.0.0-alpha2.zip",
-                "reference": "3.0.0-alpha2",
-                "shasum": "2495e55f48a2eccdc715c69931054b5d46faa02c"
+                "url": "https://ftp.drupal.org/files/projects/editoria11y-2.2.18.zip",
+                "reference": "2.2.18",
+                "shasum": "ffac7da7e2c1f5cfda53f84e2b590af7193531d2"
             },
             "require": {
-                "drupal/core": "^10.3 || ^11"
+                "drupal/core": "^9 || ^10 || ^11"
             },
             "conflict": {
                 "drupal/csp": "<1.24"
@@ -4413,11 +4413,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.0-alpha2",
-                    "datestamp": "1761384871",
+                    "version": "2.2.18",
+                    "datestamp": "1759332668",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -5135,6 +5135,61 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_usage",
                 "issues": "http://drupal.org/project/issues/entity_usage"
+            }
+        },
+        {
+            "name": "drupal/entitygroupfield",
+            "version": "2.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/entitygroupfield.git",
+                "reference": "2.0.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entitygroupfield-2.0.0-rc1.zip",
+                "reference": "2.0.0-rc1",
+                "shasum": "6e20f8639c597d29658a9bdc3ed2aba984f521f2"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10 || ^11",
+                "drupal/group": "^2.0 || ^3.0"
+            },
+            "require-dev": {
+                "drupal/variationcache": "~1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-rc1",
+                    "datestamp": "1762562467",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Derek Wright",
+                    "homepage": "https://www.drupal.org/u/dww",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ivan Duarte",
+                    "homepage": "https://www.drupal.org/u/jidrone",
+                    "role": "Co-Maintainer"
+                }
+            ],
+            "description": "Defines a field to view and edit the groups associated with content.",
+            "homepage": "http://drupal.org/project/entitygroupfield",
+            "support": {
+                "source": "https://git.drupalcode.org/project/entitygroupfield",
+                "issues": "https://drupal.org/project/issues/entitygroupfield"
             }
         },
         {
@@ -22095,8 +22150,8 @@
         "drupal/anonymous_token": 10,
         "drupal/cdn": 15,
         "drupal/diff": 10,
-        "drupal/editoria11y": 15,
         "drupal/entity_usage": 10,
+        "drupal/entitygroupfield": 5,
         "drupal/group_content_menu_bundles": 15,
         "drupal/linkit": 15,
         "drupal/media_directories": 10,

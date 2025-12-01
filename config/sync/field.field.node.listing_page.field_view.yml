@@ -30,5 +30,6 @@ settings:
     press_releases: press_releases
     search: search
     stories: stories
-  enabled_settings: {  }
+  enabled_settings:
+    argument: argument
 field_type: viewsreference

@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.call_to_action
     - paragraphs.paragraphs_type.donation_amount
     - paragraphs.paragraphs_type.external_card
+    - paragraphs.paragraphs_type.gallery_item
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.internal_card
     - paragraphs.paragraphs_type.quote
@@ -34,6 +35,7 @@ settings:
       quote: quote
       donation_amount: donation_amount
       external_card: external_card
+      gallery_item: gallery_item
       internal_card: internal_card
     negate: 0
     target_bundles_drag_drop:
@@ -73,6 +75,9 @@ settings:
       facts_and_stats:
         weight: 38
         enabled: false
+      gallery_item:
+        weight: 46
+        enabled: true
       hero_basic:
         weight: 10
         enabled: false
@@ -85,6 +90,9 @@ settings:
       hero_news:
         weight: 12
         enabled: false
+      hero_search:
+        weight: 51
+        enabled: false
       hero_video:
         weight: 13
         enabled: false
@@ -93,6 +101,9 @@ settings:
         enabled: true
       image_gallery:
         weight: 26
+        enabled: false
+      image_with_quote_sidebar:
+        weight: 55
         enabled: false
       internal_card:
         weight: 46
@@ -103,8 +114,20 @@ settings:
       rich_text:
         weight: 2
         enabled: true
+      spend:
+        weight: 59
+        enabled: false
+      spend_item:
+        weight: 60
+        enabled: false
+      spend_module:
+        weight: 61
+        enabled: false
       stats_item:
         weight: 49
+        enabled: false
+      temp_paragraph:
+        weight: 63
         enabled: false
       text_media:
         weight: 29

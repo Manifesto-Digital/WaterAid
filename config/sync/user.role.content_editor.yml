@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - filter.format.full_html
     - filter.format.wateraid_pdf
     - group.type.wateraid_site
     - media.type.dam_file
@@ -27,11 +29,17 @@ dependencies:
     - taxonomy.vocabulary.subject_areas
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
+    - workflows.workflow.editorial
   module:
+    - block_content
+    - captcha
     - config_pages
+    - content_moderation
     - content_translation
     - contextual
+    - currency
     - editoria11y
+    - entity_usage
     - file
     - filter
     - group
@@ -40,42 +48,71 @@ dependencies:
     - menu_link_content
     - node
     - node_co_authors
+    - paragraphs
     - path
     - preview_link
     - quick_node_clone
+    - redirect
     - shorthand
     - system
     - taxonomy
     - toolbar
     - wateraid_core
+    - wateraid_donations
     - webform
+    - webform_node
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
 label: 'WaterAid Administrator'
-weight: -8
+weight: -7
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access config_pages overview'
   - 'access content overview'
   - 'access contextual links'
+  - 'access entity usage statistics'
   - 'access files overview'
   - 'access group overview'
   - 'access media overview'
   - 'access nodes directly'
   - 'access own webform configuration'
+  - 'access site in maintenance mode'
   - 'access site reports'
   - 'access toolbar'
+  - 'access wateraid donations report'
   - 'access webform help'
   - 'administer menu'
+  - 'administer redirect settings'
+  - 'administer redirects'
   - 'administer url aliases'
   - 'change own username'
+  - 'clone article content'
+  - 'clone donation content'
+  - 'clone event content'
+  - 'clone landing_page content'
+  - 'clone listing_page content'
+  - 'clone own article content'
+  - 'clone own donation content'
+  - 'clone own event content'
+  - 'clone own landing_page content'
+  - 'clone own listing_page content'
+  - 'clone own page content'
   - 'clone own publication content'
+  - 'clone own shorthand_story content'
+  - 'clone own standard_page content'
+  - 'clone own story content'
   - 'clone own webform content'
+  - 'clone page content'
   - 'clone publication content'
+  - 'clone shorthand_story content'
+  - 'clone standard_page content'
+  - 'clone story content'
   - 'clone webform content'
   - 'create article content'
+  - 'create basic block content'
   - 'create content translations'
   - 'create dam_file media'
   - 'create dam_image media'
@@ -101,15 +138,22 @@ permissions:
   - 'create url aliases'
   - 'create webform'
   - 'create webform content'
+  - currency.currency.view
+  - currency.currency_locale.view
+  - 'delete all revisions'
   - 'delete any article content'
+  - 'delete any basic block content'
+  - 'delete any basic block content revisions'
   - 'delete any donation content'
   - 'delete any event content'
   - 'delete any landing_page content'
   - 'delete any listing_page content'
   - 'delete any page content'
+  - 'delete any publication content'
   - 'delete any shorthand_story content'
   - 'delete any standard_page content'
   - 'delete any story content'
+  - 'delete any webform content'
   - 'delete article revisions'
   - 'delete content translations'
   - 'delete donation revisions'
@@ -135,6 +179,7 @@ permissions:
   - 'delete own webform content'
   - 'delete own webform submission'
   - 'delete page revisions'
+  - 'delete publication revisions'
   - 'delete shorthand_story revisions'
   - 'delete standard_page revisions'
   - 'delete story revisions'
@@ -152,20 +197,26 @@ permissions:
   - 'delete terms in subject_areas'
   - 'delete terms in themes'
   - 'delete terms in topic'
+  - 'delete webform revisions'
   - 'download shorthand content'
   - 'edit any article content'
+  - 'edit any basic block content'
+  - 'edit any donation content'
   - 'edit any event content'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
   - 'edit any page content'
+  - 'edit any publication content'
   - 'edit any shorthand_story content'
   - 'edit any standard_page content'
   - 'edit any story content'
+  - 'edit any webform content'
   - 'edit co-authors of all content'
   - 'edit co-authors of co-authored content'
   - 'edit co-authors of own content'
   - 'edit config_pages entity'
   - 'edit footer config page entity'
+  - 'edit global_site_selector config page entity'
   - 'edit own article content'
   - 'edit own dam_file media'
   - 'edit own dam_image media'
@@ -183,6 +234,7 @@ permissions:
   - 'edit own webform'
   - 'edit own webform content'
   - 'edit own webform submission'
+  - 'edit search_page config page entity'
   - 'edit site_settings config page entity'
   - 'edit terms in audiences'
   - 'edit terms in countries'
@@ -194,12 +246,14 @@ permissions:
   - 'generate preview links'
   - 'mark as hidden in editoria11y'
   - 'revert all revisions'
+  - 'revert any basic block content revisions'
   - 'revert article revisions'
   - 'revert donation revisions'
   - 'revert event revisions'
   - 'revert landing_page revisions'
   - 'revert listing_page revisions'
   - 'revert page revisions'
+  - 'revert publication revisions'
   - 'revert shorthand_story revisions'
   - 'revert standard_page revisions'
   - 'revert story revisions'
@@ -210,8 +264,11 @@ permissions:
   - 'revert term revisions in subject_areas'
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
+  - 'revert webform revisions'
+  - 'skip CAPTCHA'
   - 'translate any entity'
   - 'translate article node'
+  - 'translate editable entities'
   - 'translate get_involved taxonomy_term'
   - 'translate group_content_menu'
   - 'translate menu_link_content'
@@ -220,20 +277,34 @@ permissions:
   - 'translate wateraid_site group'
   - 'update content translations'
   - 'update media'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition request_changes'
+  - 'use editorial transition send_for_review'
+  - 'use text format full_html'
   - 'use text format wateraid_pdf'
   - 'view all revisions'
+  - 'view any basic block content history'
+  - 'view any unpublished content'
   - 'view article revisions'
   - 'view config_pages entity'
   - 'view donation revisions'
   - 'view editoria11y checker'
   - 'view event revisions'
   - 'view footer config page entity'
+  - 'view global_site_selector config page entity'
   - 'view landing_page revisions'
+  - 'view latest version'
   - 'view listing_page revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view own webform submission'
   - 'view page revisions'
+  - 'view publication revisions'
+  - 'view search_page config page entity'
   - 'view shorthand_story revisions'
   - 'view site_settings config page entity'
   - 'view standard_page revisions'
@@ -246,3 +317,7 @@ permissions:
   - 'view term revisions in themes'
   - 'view term revisions in topic'
   - 'view the administration theme'
+  - 'view unpublished paragraphs'
+  - 'view webform revisions'
+  - 'view webform submissions any node'
+  - 'view webform submissions own node'

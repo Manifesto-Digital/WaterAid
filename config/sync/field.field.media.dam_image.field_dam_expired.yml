@@ -1,0 +1,21 @@
+uuid: ecde6e72-fe20-4ab3-9ac4-f507077ff78f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_dam_expired
+    - media.type.dam_image
+id: media.dam_image.field_dam_expired
+field_name: field_dam_expired
+entity_type: media
+bundle: dam_image
+label: Expired
+description: 'Whether this file has expired and/or been removed from the DAM.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Expired
+  off_label: Active
+field_type: boolean

@@ -48,3 +48,73 @@ function wa_editor_experience_update_10002(): void {
     }
   }
 }
+
+/**
+ * Add entity_id and route_name fields to editoria11y tables.
+ */
+function wa_editor_experience_update_10003(): void {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+
+  // Define the new fields.
+  $entity_id_field = [
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'description' => 'The entity id this data is attached to',
+  ];
+
+  $route_name_field = [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'default' => NULL,
+    'description' => 'The machine name of a defined Symfony Route this menu link represents.',
+  ];
+
+  // Tables to update.
+  $tables = ['editoria11y_dismissals', 'editoria11y_results'];
+
+  foreach ($tables as $table) {
+    if ($schema->tableExists($table)) {
+      // Add entity_id field if it doesn't exist.
+      if (!$schema->fieldExists($table, 'entity_id')) {
+        $schema->addField($table, 'entity_id', $entity_id_field);
+      }
+
+      // Add route_name field if it doesn't exist.
+      if (!$schema->fieldExists($table, 'route_name')) {
+        $schema->addField($table, 'route_name', $route_name_field);
+      }
+    }
+  }
+}
+
+/**
+ * Add page_path to editoria11y tables.
+ */
+function wa_editor_experience_update_10004(): void {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+
+  // Define the new fields.
+  $page_path_field = [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'default' => NULL,
+    'description' => 'The page path of the entity the data is attached to.',
+  ];
+
+  // Tables to update.
+  $tables = ['editoria11y_dismissals'];
+
+  foreach ($tables as $table) {
+    if ($schema->tableExists($table)) {
+      // Add entity_id field if it doesn't exist.
+      if (!$schema->fieldExists($table, 'page_path')) {
+        $schema->addField($table, 'page_path', $page_path_field);
+      }
+    }
+  }
+}

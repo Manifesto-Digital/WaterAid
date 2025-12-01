@@ -21,7 +21,9 @@ dependencies:
     - field.field.node.event.field_teaser_text
     - field.field.node.event.field_theme
     - node.type.event
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - datetime
     - field_group
     - key_value_field
@@ -35,7 +37,9 @@ third_party_settings:
       children:
         - group_general
         - group_content
+        - group_tags
         - group_teaser
+        - group_meta_tags
       label: Tabs
       region: content
       parent_name: ''
@@ -52,7 +56,6 @@ third_party_settings:
       children:
         - field_content
         - field_search_phrases
-        - group_tags
       label: Content
       region: content
       parent_name: group_tabs
@@ -73,7 +76,7 @@ third_party_settings:
       label: Teaser
       region: content
       parent_name: group_tabs
-      weight: 22
+      weight: 23
       format_type: tab
       format_settings:
         classes: ''
@@ -87,7 +90,9 @@ third_party_settings:
       children:
         - title
         - field_hero
+        - field_synopsis
         - group_properties
+        - langcode
       label: General
       region: content
       parent_name: group_tabs
@@ -103,11 +108,16 @@ third_party_settings:
         required_fields: true
     group_tags:
       children:
+        - field_audience
+        - field_country
         - field_event_type
+        - field_get_involved
+        - field_regions
+        - field_theme
       label: Tags
       region: content
-      parent_name: group_content
-      weight: 9
+      parent_name: group_tabs
+      weight: 22
       format_type: details
       format_settings:
         classes: ''
@@ -125,7 +135,7 @@ third_party_settings:
       label: Properties
       region: content
       parent_name: group_general
-      weight: 3
+      weight: 4
       format_type: details
       format_settings:
         classes: ''
@@ -135,6 +145,22 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+    group_meta_tags:
+      children:
+        - field_metatags
+      label: 'Meta tags'
+      region: content
+      parent_name: group_tabs
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -142,7 +168,7 @@ mode: default
 content:
   co_authors:
     type: entity_reference_autocomplete_tags
-    weight: 17
+    weight: 11
     region: content
     settings:
       match_operator: CONTAINS
@@ -152,13 +178,13 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   field_audience:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
@@ -180,7 +206,7 @@ content:
     third_party_settings: {  }
   field_country:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 11
     region: content
     settings:
       match_operator: CONTAINS
@@ -202,7 +228,7 @@ content:
     third_party_settings: {  }
   field_event_type:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 12
     region: content
     settings:
       match_operator: CONTAINS
@@ -212,7 +238,7 @@ content:
     third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 13
     region: content
     settings:
       match_operator: CONTAINS
@@ -234,11 +260,11 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 26
+    weight: 14
     region: content
     settings:
-      sidebar: true
-      use_details: true
+      sidebar: false
+      use_details: false
     third_party_settings: {  }
   field_properties:
     type: key_value_textfield
@@ -258,13 +284,13 @@ content:
     third_party_settings: {  }
   field_regions:
     type: options_select
-    weight: 33
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
-    weight: 26
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -278,7 +304,7 @@ content:
     third_party_settings: {  }
   field_synopsis:
     type: string_textfield
-    weight: 36
+    weight: 3
     region: content
     settings:
       size: 60
@@ -315,34 +341,40 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 5
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 8
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 12
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 9
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -357,7 +389,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -366,7 +398,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 11
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }

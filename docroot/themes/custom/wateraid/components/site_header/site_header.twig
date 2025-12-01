@@ -25,7 +25,7 @@
             {% for link in primary_navigation['#items'] %}
               {% if link.original_link.getEntity().field_donate_link.0.value %}
                 {{ include('wateraid:button', {
-                  attributes: create_attribute().addClass('site-header__mobile-donate-btn'),
+                  classes: ['site-header__mobile-donate-btn'],
                   text: link.title,
                   url: link.url.toString(),
                   type: 'donate',
@@ -35,10 +35,14 @@
           {% endif %}
 
           {{ include('wateraid:button', {
-            attributes: create_attribute().addClass([
+            classes:[
                 'site-header__open-close-mobile-menu-btn',
                 'js-menu-open-close-btn'
-              ]).setAttribute('aria-controls', 'mobile-nav'),
+              ],
+            attribute: {
+              attr: 'aria-controls',
+              value: 'mobile-nav'
+            },
             text: 'Open / close menu',
             type: 'menu',
             icon: 'wa-utility-menu',
