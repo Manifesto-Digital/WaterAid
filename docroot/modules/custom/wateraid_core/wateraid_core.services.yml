@@ -6,6 +6,7 @@ services:
       - '@messenger'
       - '@language_manager'
       - '@current_route_match'
+      - '@file_url_generator'
     tags:
       - { name: twig.extension }
 
