@@ -132,6 +132,14 @@
   &.wa-donation-methods {
     border: none;
   }
+
+  // Show/hide Loqate manual capture fields
+  fieldset.wa-subelement-wrapper-capture-plus {
+    display: none;
+    &[data-pcamanual="pcamanual"] {
+      display: block;
+    }
+  }
 }
 
 // Checkboxes & Radios
