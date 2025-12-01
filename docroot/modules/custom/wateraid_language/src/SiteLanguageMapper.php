@@ -50,6 +50,25 @@ class SiteLanguageMapper {
    *   The URL prefix or NULL if not found.
    */
   public function getPrefix(GroupInterface $group, string $langcode): ?string {
+    // Check if the group has a field_slug field.
+    if ($group->hasField('field_slug')) {
+      // Get the translation of the group for the specified language.
+      if ($group->hasTranslation($langcode)) {
+        $translated_group = $group->getTranslation($langcode);
+        $slug = $translated_group->get('field_slug')->value;
+        if ($slug) {
+          // Remove leading slash if present.
+          return ltrim($slug, '/');
+        }
+      }
+      // Fallback to the default language if no translation exists.
+      $slug = $group->get('field_slug')->value;
+      if ($slug) {
+        return ltrim($slug, '/');
+      }
+    }
+
+    // Fallback to configuration-based mapping if field_slug is not available.
     $mappings = $this->getMappings();
     $group_label = $group->label();
 
