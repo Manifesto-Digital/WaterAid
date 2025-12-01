@@ -143,7 +143,6 @@ module:
   wateraid_forms: 0
   wateraid_group: 0
   wateraid_just_giving: 0
-  wateraid_language: 0
   webform: 0
   webform_bankaccount: 0
   webform_capture_plus: 0
@@ -191,7 +190,6 @@ module:
   content_translation: 10
   views: 10
   paragraphs: 11
-  standard: 1000
 theme:
   claro: 0
   gin: 0
