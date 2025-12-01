@@ -2,6 +2,7 @@
 
 namespace Drupal\wateraid_core\Twig;
 
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -23,12 +24,21 @@ class WateraidCoreTwigExtension extends AbstractExtension {
    *
    * @param \Drupal\Core\Theme\ThemeManagerInterface $themeManager
    *   Theme manager service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   Messenger service.
+   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
+   *   Language manager service.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   Route match service.
+   * @param \Drupal\Core\File\FileUrlGeneratorInterface $fileUrlGenerator
+   *   File URL generator service.
    */
   public function __construct(
     protected ThemeManagerInterface $themeManager,
     protected MessengerInterface $messenger,
     protected LanguageManagerInterface $languageManager,
     protected RouteMatchInterface $routeMatch,
+    protected FileUrlGeneratorInterface $fileUrlGenerator,
   ) {}
 
   /**
@@ -69,7 +79,8 @@ class WateraidCoreTwigExtension extends AbstractExtension {
       return '';
     }
 
-    return '/' . $sprite_path;
+    // Use file URL generator to ensure CDN module can process this URL.
+    return $this->fileUrlGenerator->generateAbsoluteString($sprite_path);
   }
 
   /**
