@@ -1,4 +1,0 @@
-services:
-  wateraid_language.site_language_mapper:
-    class: Drupal\wateraid_language\SiteLanguageMapper
-    arguments: ['@config.factory']
