@@ -245,6 +245,55 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     return $mappedData;
   }
 
+  public static function mapSafeValue(array $submissionData, string $key) {
+    if (isset($submissionData[$key])) {
+      return $submissionData[$key];
+    }
+
+    return NULL;
+  }
+
+  /**
+   * Map the given item to the desired donation structure.
+   *
+   * @param WebformSubmissionInterface $submission
+   *   The submission to process
+   *
+   * @return array
+   *   The mapped data
+   */
+  public static function mapPayInFundraising(WebformSubmissionInterface $submission): array {
+    $mappedData = self::mapDonationItem($submission);
+    $submissionData = $submission->getData();
+
+    $keys = [
+      'have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_' => 'have_you_had_a_talk_or_workshop_from_a_wateraid_speaker',
+      'how_was_the_money_raised_' => 'how_was_the_money_raised',
+      'organisation_name' => 'organisation_name',
+      'organisation_name_company' => 'organisation_name_company',
+      'organisation_type' => 'organisation_type',
+      'team_name' => 'team_name',
+      'type_of_service_organisation_or_club' => 'type_of_service_organisation_or_club',
+      'university_name' => 'university_name',
+      'what_event_did_you_take_part_in_company' => 'what_event_did_you_take_part_in_company',
+      'what_event_did_you_take_part_in_individual' => 'what_event_did_you_take_part_in_individual',
+      'what_kind_of_event_challenge_company_' => 'what_kind_of_event_challenge_company',
+      'what_kind_of_event_challenge_faith_group_' => 'what_kind_of_event_challenge_faith_group',
+      'what_kind_of_event_challenge_individual_' => 'what_kind_of_event_challenge_individual',
+      'what_kind_of_event_challenge_school_' => 'what_kind_of_event_challenge_school',
+      'what_was_the_name_of_the_event_' => 'what_was_the_name_of_the_event',
+      'what_was_the_name_of_the_event_water_company_event' => 'what_was_the_name_of_the_event_water_company_event',
+      'when_did_the_event_take_place_company' => 'when_did_the_event_take_place_company',
+      'when_did_the_event_take_place_individual' => 'when_did_the_event_take_place_individual',
+    ];
+
+    foreach ($keys as $sourceKey => $destinationKey) {
+      $mappedData[$destinationKey] = self::mapSafeValue($submissionData, $sourceKey);
+    }
+
+    return $mappedData;
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -277,6 +326,7 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
       if (count($submissions) == 1) {
         $submission = reset($submissions);
         $name = $data['webform_id'] . '-' . $submission->uuid() . '.json';
+
         $is_donation = FALSE;
 
         try {
@@ -330,7 +380,7 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
    */
   private function getPrefixedName(string $name, bool $isDonationSubmission = false): string {
     if ($isDonationSubmission) {
-      if (str_starts_with($name, 'donation_')) {
+      if (str_starts_with($name, 'donation_') || str_starts_with($name, 'pay_in_your_fundraising')) {
         return $name;
       }
       else {
@@ -357,16 +407,29 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     $owner = $webform->getOwner();
     $date = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
 
-    $this->loggerChannel->notice(print_r($submission->getData(), TRUE));
+//    $this->loggerChannel->notice(print_r($submission->getData(), TRUE));
+
+    if ($isDonationSubmission) {
+      if ($webform->id() === 'pay_in_your_fundraising') {
+        $submission_data = self::mapPayInFundraising($submission);
+      }
+      else {
+        $submission_data = self::mapDonationItem($submission);
+      }
+
+    }
+    else {
+      $submission_data = $this->mapStandardItem($submission);
+    }
 
     return [
-      'id' => $submission->uuid(),
-      'webform' => $this->getPrefixedName($webform->id(), $isDonationSubmission),
-      'webform_owner' => ($owner) ? $owner->label() : 'Anonymous',
-      'webform_last_updated' => '',
-      'submission_remote_address' => $submission->getRemoteAddr(),
-      'submission_data' => $isDonationSubmission ? self::mapDonationItem($submission) : $this->mapStandardItem($submission),
-      'submission_date' => $date->format(\DateTimeInterface::ATOM),
+      'id'                        => $submission->uuid(),
+      'webform'                   => $this->getPrefixedName($webform->id(), $isDonationSubmission),
+      'webform_owner'             => ($owner) ? $owner->label() : 'Anonymous',
+      'webform_last_updated'      => '',
+      "submission_remote_address" => $submission->getRemoteAddr(),
+      'submission_data'           => $submission_data,
+      'submission_date'           => $date->format(\DateTimeInterface::ATOM),
     ];
   }
 

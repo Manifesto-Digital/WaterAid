@@ -44,10 +44,10 @@ class StripePaymentProvider extends StripePaymentProviderBase {
       '#title' => $this->t('Card details'),
     ];
 
-    $submit_button_label = $this->t('Submit');
-    if (!empty($complete_form['elements']['actions']['#submit__label'])) {
-      $submit_button_label = $complete_form['elements']['actions']['#submit__label'];
-    }
+    $submit_button_label = $this->t('Pay now');
+//    if (!empty($complete_form['elements']['actions']['#submit__label'])) {
+//      $submit_button_label = $complete_form['elements']['actions']['#submit__label'];
+//    }
 
     $element['pay_and_submit'] = [
       '#type' => 'button',
