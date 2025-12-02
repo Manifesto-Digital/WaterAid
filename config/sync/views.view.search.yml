@@ -171,7 +171,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: '<p>There are no results for your search: please amend your keywords and try again. If you have use an exact phrase search with quote marks, try removing them.</p>'
+            value: '<p>Sorry, no results matched your search.</p>'
             format: full_html
           tokenize: false
       sorts:
@@ -330,27 +330,6 @@ display:
         use_ajax: false
       use_ajax: true
       display_extenders: {  }
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_interface'
-        - route
-        - url
-        - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:search_api.index.searchstax_index'
-        - 'search_api_list:searchstax_index'
-  search:
-    id: search
-    display_title: Search
-    display_plugin: page
-    position: 1
-    display_options:
-      display_description: 'Search page from Solr'
-      display_extenders: {  }
-      path: search
     cache_metadata:
       max-age: -1
       contexts:

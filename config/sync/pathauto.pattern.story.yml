@@ -7,7 +7,7 @@ dependencies:
 id: story
 label: Story
 type: 'canonical_entities:node'
-pattern: '/stories/[node:title]'
+pattern: '[node:group-slug]/stories/[node:title]'
 selection_criteria:
   1a538ab0-839f-431e-84d4-94fafce45361:
     id: 'entity_bundle:node'

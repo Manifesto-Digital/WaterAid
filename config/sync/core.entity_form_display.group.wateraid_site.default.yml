@@ -6,6 +6,7 @@ dependencies:
     - field.field.group.wateraid_site.field_content
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
+    - field.field.group.wateraid_site.field_slug
     - field.field.group.wateraid_site.field_spend_module
     - group.type.wateraid_site
   module:
@@ -46,6 +47,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_slug:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_spend_module:
     type: layout_paragraphs

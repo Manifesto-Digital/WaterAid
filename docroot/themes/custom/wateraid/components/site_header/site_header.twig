@@ -13,7 +13,7 @@
       <div class="site-header__container">
 
         <div class="site-header__logo">
-          <a href="{{ url('<front>') }}" class="site-header__logo-link">
+          <a href="{{ home_page_url }}" class="site-header__logo-link">
             <svg class="site-header__logo-image">
               <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
             </svg>
@@ -49,7 +49,7 @@
           }, false) }}
         </div>
 
-        <a href="{{ url('<front>') }}" class="main-site-link">{{ "Main site"|t }}</a>
+        <a href="{{ home_page_url }}" class="main-site-link">{{ "Main site"|t }}</a>
 
         {% if primary_navigation %}
           {{ include ('wateraid:primary_navigation', {

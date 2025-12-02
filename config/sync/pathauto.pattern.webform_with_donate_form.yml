@@ -7,7 +7,7 @@ dependencies:
 id: webform_with_donate_form
 label: 'Webform with donate form (programmatically set - see wateraid_core.module)'
 type: 'canonical_entities:node'
-pattern: '/donate/[node:title]'
+pattern: '[node:group-slug]/donate/[node:title]'
 selection_criteria:
   eb6550bb-76fc-41bb-b614-207496b30d51:
     id: 'entity_bundle:node'

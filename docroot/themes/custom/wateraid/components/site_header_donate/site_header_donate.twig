@@ -9,7 +9,7 @@
       <div class="site-header__container">
 
         <div class="site-header__logo">
-          <a href="{{ get_frontpage_url() }}" class="site-header__logo-link" {% if exit_journey_modal_callback %}data-modal-trigger-id="{{ modal_instance_id }}"{% endif %}>
+          <a href="{{ home_page_url }}" class="site-header__logo-link" {% if exit_journey_modal_callback %}data-modal-trigger-id="{{ modal_instance_id }}"{% endif %}>
             <svg class="site-header__logo-image">
               <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
             </svg>
