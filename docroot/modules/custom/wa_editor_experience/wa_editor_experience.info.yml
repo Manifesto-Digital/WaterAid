@@ -1,7 +1,6 @@
 name: 'WaterAid Editor Experience'
 type: module
-description: 'Functionality related to the content editing experience'
+description: 'Stub to allow proper disabling'
 package: Content
+hidden: true
 core_version_requirement: ^10 || ^11
-dependencies:
-  - paragraphs:paragraphs

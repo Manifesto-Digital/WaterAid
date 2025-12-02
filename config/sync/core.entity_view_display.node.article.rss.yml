@@ -52,6 +52,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_audience: true
   field_content: true
   field_country: true
