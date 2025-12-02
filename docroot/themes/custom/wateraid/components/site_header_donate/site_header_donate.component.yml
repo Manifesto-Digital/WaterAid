@@ -10,7 +10,11 @@ libraryOverrides:
       ../../dist/css/components/site_header_donate/site_header_donate.css: {}
 props:
   type: object
-  properties: {}
+  properties:
+    home_page_url:
+      type: string
+      title: HomePageUrl
+      description: Group suffixed home page URL.
 slots:
   donate_header_menu:
     title: Donate header menu

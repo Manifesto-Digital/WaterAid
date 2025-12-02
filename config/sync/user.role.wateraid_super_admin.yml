@@ -83,6 +83,7 @@ permissions:
   - 'access media overview'
   - 'access nodes directly'
   - 'access own webform configuration'
+  - 'access shorthand story overview'
   - 'access site in maintenance mode'
   - 'access site reports'
   - 'access taxonomy overview'

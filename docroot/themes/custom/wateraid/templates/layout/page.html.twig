@@ -46,13 +46,15 @@
 
   {% if donate_header %}
     {{ include ('wateraid:site_header_donate', {
-      donate_header_menu: donate_header_menu
+      donate_header_menu: donate_header_menu,
+      home_page_url: current_group_path,
     }, with_context = false) }}
   {% else %}
     {{ include ('wateraid:site_header', {
       blocks: page.header,
       primary_navigation: primary_navigation,
-      wash_matters_url: wash_matters_url
+      wash_matters_url: wash_matters_url,
+      home_page_url: current_group_path
     }, with_context = false) }}
   {% endif %}
 
