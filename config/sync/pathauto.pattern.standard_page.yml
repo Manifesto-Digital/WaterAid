@@ -7,7 +7,7 @@ dependencies:
 id: standard_page
 label: 'Standard page'
 type: 'canonical_entities:node'
-pattern: '/[node:title]'
+pattern: '[node:group-slug]/[node:title]'
 selection_criteria:
   f6755e0f-f760-494f-82f5-3f2c0dcad50d:
     id: 'entity_bundle:node'
