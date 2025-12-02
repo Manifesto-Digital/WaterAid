@@ -7,7 +7,7 @@ dependencies:
 id: webform
 label: 'Webform (programmatically set - see wateraid_core.module)'
 type: 'canonical_entities:node'
-pattern: '/[node:title]'
+pattern: '[node:group-slug]/[node:title]'
 selection_criteria:
   07f00e58-5334-4a70-abf9-66350c744c9e:
     id: 'entity_bundle:node'

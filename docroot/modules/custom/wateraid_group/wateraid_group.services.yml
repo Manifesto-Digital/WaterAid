@@ -4,3 +4,15 @@ services:
     arguments: ['@entity_type.manager']
     tags:
       - { name: event_subscriber }
+
+  wateraid_group.group_from_node_param_converter:
+    class: Drupal\wateraid_group\Routing\GroupFromNodeParamConverter
+    arguments: ['@entity_type.manager']
+    tags:
+      # Negative priority to run AFTER entity param converter upcasts the node
+      - { name: paramconverter, priority: -200 }
+
+  wateraid_group.group_node_route_subscriber:
+    class: Drupal\wateraid_group\Routing\GroupNodeRouteSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -101,6 +101,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_content: true
   field_hero: true
   field_hide_related_content: true

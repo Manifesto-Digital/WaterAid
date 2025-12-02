@@ -7,7 +7,7 @@ dependencies:
 id: donation
 label: Donation
 type: 'canonical_entities:node'
-pattern: '/donate/[node:title]'
+pattern: '[node:group-slug]/donate/[node:title]'
 selection_criteria:
   e45468dd-d3cc-40a4-9e68-16be0035e9e6:
     id: 'entity_bundle:node'

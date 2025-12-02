@@ -1,0 +1,12 @@
+diff --git a/shorthand.permissions.yml b/shorthand.permissions.yml
+index 1234567..abcdefg 100644
+--- a/shorthand.permissions.yml
++++ b/shorthand.permissions.yml
+@@ -5,3 +5,7 @@ administer shorthand:
+ download shorthand content:
+   title: 'Download shorthand stories'
+   description: 'Download remote shorthand stories locally.'
++
++access shorthand story overview:
++  title: 'Access shorthand story overview'
++  description: 'Access the shorthand story overview page to view remote stories.'
