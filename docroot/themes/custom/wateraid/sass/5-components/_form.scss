@@ -338,6 +338,10 @@ input[type='radio'] {
     &:focus-visible {
       outline: base.$wa-pink base.$wa-spacing-01 solid;
     }
+
+    &.error {
+      border-color: base.$wa-orange
+    }
   }
 }
 
