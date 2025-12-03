@@ -28,6 +28,12 @@ function wateraid_donation_forms_theme(): array {
         'upsell' => NULL,
       ],
     ],
+    'wateraid_donation_forms_banner' => [
+      'variables' => [
+        'amount' => NULL,
+        'uri' => NULL,
+      ],
+    ],
   ];
 }
 

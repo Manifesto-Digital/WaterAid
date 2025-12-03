@@ -982,7 +982,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
         $session->set('wa_donation', [
           'freq' => $payment_frequency,
-          'amount' => $amount,
+          'amount' => $this->formatAmount($amount, 'symbol')->render(),
           'url' => $uri->toString(),
         ]);
       }
@@ -1264,10 +1264,10 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * @param string|null $symbol_code
    *   Either symbol or code.
    *
-   * @return \Drupal\Core\StringTranslation\TranslatableMarkup
+   * @return \Drupal\Core\StringTranslation\TranslatableMarkup|string
    *   Formatted amount.
    */
-  public function formatAmount(string $amount, ?string $symbol_code = NULL): TranslatableMarkup {
+  public function formatAmount(string $amount, ?string $symbol_code = NULL): TranslatableMarkup|string {
     /** @var \Drupal\currency\Entity\CurrencyInterface $currency */
     $currency = Currency::load($this->getCurrency());
 
