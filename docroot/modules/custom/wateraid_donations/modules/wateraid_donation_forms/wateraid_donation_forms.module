@@ -135,7 +135,6 @@ function wateraid_donation_forms_webform_submission_create(WebformSubmissionInte
   // If we get to this stage then all validity checks have passed, and we can
   // safely update the current page to "step 2".
   $webform_submission->setCurrentPage($step_2);
-
 }
 
 /**

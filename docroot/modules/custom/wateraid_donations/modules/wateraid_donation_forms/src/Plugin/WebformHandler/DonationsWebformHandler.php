@@ -712,20 +712,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
             ];
 
             $image_file = NULL;
-//            if (!empty($amount_details['image'])) {
-//              /** @var \Drupal\media\Entity\Media $image */
-//              $image = Media::load($amount_details['image']);
-//              $image_fid = $image->getSource()->getSourceFieldValue($image);
-//              $image_file = File::load($image_fid);
-//            }
-//
             $icon_file = NULL;
-//            if (!empty($amount_details['icon'])) {
-//              /** @var \Drupal\media\Entity\Media $icon */
-//              $icon = Media::load($amount_details['icon']);
-//              $icon_fid = $icon->getSource()->getSourceFieldValue($icon);
-//              $icon_file = File::load($icon_fid);
-//            }
 
             /** @var \Drupal\Core\Render\Renderer $renderer */
             $renderer = \Drupal::service('renderer');
@@ -952,10 +939,54 @@ class DonationsWebformHandler extends WebformHandlerBase {
           }
         }
       }
-
     }
 
     return $new_frequencies;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareForm(WebformSubmissionInterface $webform_submission, $operation, FormStateInterface $form_state): void {
+    $amount = $form_state->get(DonationsWebformAmount::STORAGE_AMOUNT) ?? $this->request->get('val');
+    $payment_frequency = $form_state->get(DonationsWebformAmount::STORAGE_FREQUENCY) ?? $this->request->get('fq');
+
+    // If we don't have a one_off payment with an amount, we don't have anything
+    // to do so may as well leave now.
+    if (!$amount || $payment_frequency !== 'one_off') {
+      return;
+    }
+
+    // Otherwise, store the data for the reminder to use.
+    if ($session = $this->request->getSession()) {
+      $data = $session->get('wa_donation');
+
+      // If the session data hasn't been set, or the user has changed the
+      // amount in the form, update the data.
+      if (!$data || $data['amount'] !== $amount) {
+
+        // Build the correct URL for the amount we have, if the user has changed
+        // the amount.
+        $uri = Url::fromUserInput($this->request->getRequestUri());
+
+        if ($data && $data['amount'] !== $amount) {
+          $options = [
+            'query' => [
+              'fq' => $payment_frequency,
+              'val' => $amount,
+            ],
+          ];
+          $options = $options + $uri->getOptions();
+          $uri->setOptions($options);
+        }
+
+        $session->set('wa_donation', [
+          'freq' => $payment_frequency,
+          'amount' => $amount,
+          'url' => $uri->toString(),
+        ]);
+      }
+    }
   }
 
   /**
@@ -1040,7 +1071,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
     // Get custom "donations_webform_amount" element values from the storage.
     // If empty attempt to get value from request (values can be passed to form
-    // step 2 which bypasses the oportunity to enter these values manually)
+    // step 2 which bypasses the opportunity to enter these values manually)
     $amount = $form_state->get(DonationsWebformAmount::STORAGE_AMOUNT) ?? $this->request->get('val');
     $payment_frequency = $form_state->get(DonationsWebformAmount::STORAGE_FREQUENCY) ?? $this->request->get('fq');
     $payment_duration = $form_state->get(DonationsWebformAmount::STORAGE_DURATION) ?? $this->request->get('dur', '');
@@ -1102,7 +1133,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
         try {
           $result = $payment_provider_plugin->processPayment($params, $webform_submission->getWebform());
 
-          // Reset status incase the payment failed before.
+          // Reset status in case the payment failed before.
           $data[DonationConstants::DONATION_PREFIX . 'status'] = NULL;
           $webform_submission->setData($data);
         }
@@ -1177,25 +1208,24 @@ class DonationsWebformHandler extends WebformHandlerBase {
     // forms confirm path, including any query parameters from the redirect in
     // Form State.
     else {
+
+      // Since we know the payment was successful, we can clear any data we have
+      // stored in the user's session.
+      if ($session = $this->request->getSession()) {
+        if ($session->get('wa_donation')) {
+          $session->remove('wa_donation');
+        }
+      }
+
       $frequency = $data[$prefix . 'frequency'] ?? NULL;
       if ($source_entity instanceof Node) {
         // Use the internal path to ensure prefixes are not added at this stage.
         $confirm_path = Url::fromRoute('entity.node.webform.confirmation', [
           'node' => $source_entity->id(),
         ])->getInternalPath();
-
-        // @todo remove debug.
-        $this->getLogger('wateraid_donation_forms')->debug($this->t('Webform Node confirmation path: @path', [
-          '@path' => $confirm_path,
-        ]));
       }
       else {
         $confirm_path = _wateraid_donation_forms_get_confirm_path($webform);
-
-        // @todo remove debug.
-        $this->getLogger('wateraid_donation_forms')->debug($this->t('Webform Submit confirmation path: @path', [
-          '@path' => $confirm_path,
-        ]));
       }
 
       $options = [
@@ -1222,11 +1252,6 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
       // Create the URL and set the redirect.
       $url = Url::fromUri('base:' . $confirm_path, $options);
-
-      // @todo remove debug.
-      $this->getLogger('wateraid_donation_forms')->debug($this->t('Redirect URL: @url', [
-        '@url' => print_r($url, TRUE),
-      ]));
       $form_state->setRedirectUrl($url);
     }
   }
