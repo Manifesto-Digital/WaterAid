@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
+    - field.field.node.landing_page.field_show_donation_reminder
     - field.field.node.landing_page.field_subject_area
     - field.field.node.landing_page.field_synopsis
     - field.field.node.landing_page.field_teaser_image
@@ -30,6 +31,11 @@ targetEntityType: node
 bundle: landing_page
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_audience:
     type: entity_reference_label
     label: hidden
@@ -112,6 +118,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_content: true
   field_hero: true
   field_key_stages: true
@@ -120,6 +127,7 @@ hidden:
   field_resources: true
   field_review_date: true
   field_search_phrases: true
+  field_show_donation_reminder: true
   field_synopsis: true
   langcode: true
   node_read_time: true
