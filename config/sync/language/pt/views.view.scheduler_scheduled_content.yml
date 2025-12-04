@@ -1,0 +1,74 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filtro
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+      pager:
+        options:
+          tags:
+            previous: '‹ anterior'
+            next: 'seguinte ›'
+            first: '« primeira'
+            last: 'última »'
+      fields:
+        node_bulk_form:
+          action_title: Ação
+        title:
+          label: Título
+          separator: ', '
+        type:
+          separator: ', '
+        name:
+          label: Autor
+          separator: ', '
+        status:
+          label: Estado
+          settings:
+            format_custom_true: Publicado
+            format_custom_false: 'Não publicado'
+          separator: ', '
+        publish_on:
+          separator: ', '
+        unpublish_on:
+          separator: ', '
+        operations:
+          label: Operações
+      filters:
+        title:
+          expose:
+            label: Título
+        type:
+          expose:
+            label: 'Tipo de conteúdo'
+        status:
+          expose:
+            label: Estado
+          group_info:
+            label: 'Estado da publicação'
+            group_items:
+              1:
+                title: Publicado
+              2:
+                title: 'Não publicado'
+        langcode:
+          expose:
+            label: Idioma
+    display_title: Principal
+  overview:
+    display_options:
+      tab_options:
+        title: Conteúdo
+  user_page:
+    display_options:
+      tab_options:
+        title: Conteúdo
+      arguments:
+        uid:
+          exception:
+            title: Todos
+    display_title: Utilizador
