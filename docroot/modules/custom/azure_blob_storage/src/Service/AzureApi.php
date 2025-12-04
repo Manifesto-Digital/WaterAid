@@ -71,10 +71,10 @@ final class AzureApi {
   /**
    * Gets the private key from settings.
    *
-   * @return string
-   *   The shared key.
+   * @return string|FALSE
+   *   The shared key, or FALSE on error.
    */
-  private function sharedKey(): string {
+  private function sharedKey(): string|bool {
     return Settings::get('azure_blob_storage_key');
   }
 
