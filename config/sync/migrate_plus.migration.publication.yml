@@ -41,16 +41,27 @@ process:
       default_value: en
   status: status
   title: title
+  created: created
+  changed: changed
   temp_hero:
     plugin: migration_lookup
     migration: media
     source: field_publication_image
     no_stub: true
+  temp_authors:
+    plugin: migration_lookup
+    migration: users
+    source: field_author
+    no_stub: true
+  co_authors: '@temp_authors'
   field_hero:
     plugin: image_to_hero
-    hero_type: hero_image
+    hero_type: hero_news
     source:
       - '@temp_hero'
+      - '@temp_authors'
+      - ''
+      - created
   field_documents:
     plugin: migration_lookup
     migration: documents
@@ -88,11 +99,6 @@ process:
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
   field_regions: field_regions
-  co_authors:
-    plugin: migration_lookup
-    migration: users
-    source: field_author
-    no_stub: true
   field_subject_area:
     plugin: migration_lookup
     migration: subject_areas
