@@ -1,39 +1,18 @@
-prod:
-  host: manifestopartnerenzsusjtp5.ssh.devcloud.acquia-sites.com
-  user: manifestopartner.prod
-  root: /var/www/html/manifestopartnerenzsusjtp5/docroot/
-  uri: https://wateraid.manifesto.sh/
-  paths:
-    drush-script: '/var/www/html/manifestopartnerenzsusjtp5/vendor/bin/drush'
-test:
-  host: manifestopartner6tcmrc8dpw.ssh.devcloud.acquia-sites.com
-  user: manifestopartner.test
-  root: /var/www/html/manifestopartner6tcmrc8dpw/docroot/
-  uri: https://wateraid-stage.manifesto.sh/
-  paths:
-    drush-script: '/var/www/html/manifestopartner6tcmrc8dpw/vendor/bin/drush'
 dev:
-  host: srv-5032.devcloud.hosting.acquia.com
-  user: manifestopartner.dev
-  root: /var/www/html/manifestopartnerhfgeeshxaz/docroot/
-  uri: https://wateraid-dev.manifesto.sh/
-  paths:
-    drush-script: '/var/www/html/manifestopartnerhfgeeshxaz/vendor/bin/drush'
-wa_dev:
   host: wateraidacedev.ssh.prod.acquia-sites.com
   user: wateraidace.dev
   root: /var/www/html/docroot/
   uri: https://wateraid-dev.manifesto.sh/
   paths:
     drush-script: '/var/www/html/vendor/bin/drush'
-wa_test:
+test:
   host: wateraidacestage.ssh.prod.acquia-sites.com
   user: wateraidace.stage
   root: /var/www/html/docroot/
   uri: https://wateraid-stage.manifesto.sh/
   paths:
     drush-script: '/var/www/html/vendor/bin/drush'
-wa_prod:
+prod:
   host: wateraidaceprod.ssh.prod.acquia-sites.com
   user: wateraidace.prod
   root: /var/www/html/docroot/

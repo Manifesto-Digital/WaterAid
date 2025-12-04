@@ -19,22 +19,6 @@ targetEntityType: media
 bundle: dam_image
 mode: hero
 content:
-  field_caption:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_credit:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_media_dam_image:
     type: wa_orange_dam_image_formater
     label: visually_hidden
@@ -51,6 +35,8 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_caption: true
+  field_credit: true
   field_dam_expired: true
   field_dam_expiry_date: true
   field_dam_last_checked: true

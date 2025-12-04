@@ -1,0 +1,15 @@
+{% stories donation_banner with { title: 'wateraid/Molecules/DonationBanner' } %}
+  {% story Default with {
+    name: 'Default',
+    args: {
+      amount: '£15'|t,
+      url: '/donate?fq=one_off&v=15',
+    }
+  } %}
+
+    {{ include('wateraid:donation_banner', {
+      amount,
+      url
+    }) }}
+  {% endstory %}
+{% endstories %}

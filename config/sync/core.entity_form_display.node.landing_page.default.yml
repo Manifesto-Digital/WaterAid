@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
+    - field.field.node.landing_page.field_show_donation_reminder
     - field.field.node.landing_page.field_subject_area
     - field.field.node.landing_page.field_synopsis
     - field.field.node.landing_page.field_teaser_image
@@ -38,9 +39,9 @@ third_party_settings:
       children:
         - group_general
         - group_content
+        - group_tag
         - group_teaser
         - group_meta_tags
-        - group_tag
       label: Tabs
       region: content
       parent_name: ''
@@ -60,6 +61,7 @@ third_party_settings:
         - field_synopsis
         - field_resources
         - langcode
+        - field_show_donation_reminder
       label: General
       region: content
       parent_name: group_tabs
@@ -135,7 +137,7 @@ third_party_settings:
         - field_theme
         - field_topic
       label: Tags
-      region: hidden
+      region: content
       parent_name: group_tabs
       weight: 22
       format_type: tab
@@ -274,6 +276,13 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_show_donation_reminder:
+    type: boolean_checkbox
+    weight: 26
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_subject_area:
     type: entity_reference_autocomplete
     weight: 12
@@ -395,6 +404,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true
