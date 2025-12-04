@@ -23,7 +23,7 @@ process:
   status: status
   field_real_name/value: field_real_name_value
 destination:
-  plugin: 'entity:user'
+  plugin: 'wa_user:user'
 idMap: {  }
 migration_dependencies: null
 include: null
