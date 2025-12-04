@@ -76,11 +76,11 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
    * Load the ids of all the available webforms.
    *
    */
-  public function loadWebformOptions() {
+  public function loadWebformOptions(): void {
     $config_factory = \Drupal::configFactory();
 
     $database = \Drupal::database();
-    $result   = $database->select('config', 'conf')
+    $result = $database->select('config', 'conf')
       ->fields('conf', ['name'])
       ->condition('name', 'webform.webform_options.communication%', 'LIKE')
       ->execute();
@@ -94,12 +94,12 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     $option_config = $config_factory->loadMultiple($ids);
 
     foreach ($option_config as $key => $config_item) {
-      $option_key  = str_replace("webform.webform_options.", "", $key);
+      $option_key  = str_replace('webform.webform_options.', '', $key);
       $raw_options = $config_item->getRawData()['options'];
 
       if(!empty($raw_options)) {
         foreach (explode(PHP_EOL, $raw_options) as $value) {
-          $option_value = str_replace("'", "", explode(":", $value)[0]);
+          $option_value = str_replace("'", '', explode(':', $value)[0]);
 
           if (!empty($option_value)) {
             $this->optionList[$option_key][] = $option_value;
@@ -107,7 +107,6 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
         }
       }
     }
-
   }
 
   /**
@@ -120,14 +119,14 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
    *   The mapped data
    */
   public function mapStandardItem(WebformSubmissionInterface $submission): array {
-    $data    = $submission->getData();
+    $data = $submission->getData();
     $webform = $submission->getWebform();
-    $fields  = $webform->getElementsDecodedAndFlattened();
+    $fields = $webform->getElementsDecodedAndFlattened();
 
     foreach ($fields as $fieldKey => $fieldDefinition) {
-      if (isset($fieldDefinition["#options"]) && is_string($fieldDefinition["#options"])) {
-        if (!empty($this->optionList[$fieldDefinition["#options"]])) {
-          $options = $this->optionList[$fieldDefinition["#options"]];
+      if (isset($fieldDefinition['#options']) && is_string($fieldDefinition['#options'])) {
+        if (!empty($this->optionList[$fieldDefinition['#options']])) {
+          $options = $this->optionList[$fieldDefinition['#options']];
           $values  = $data[$fieldKey];
 
           $data[$fieldKey] = [];
@@ -156,91 +155,91 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     $submissionData = $submission->getData();
 
     $mappedData = [
-      "contact_name_first" => $submissionData["contact_name"]["first"],
-      "contact_name_last"  => $submissionData["contact_name"]["last"],
-      "contact_name_title" => $submissionData["contact_name"]["title"],
-      "contact_email"      => $submissionData["contact_email"]["email"],
-      "contact_address"    => [
-        "address"        => $submissionData["contact_address"]["address"],
-        "address_2"      => $submissionData["contact_address"]["address_2"],
-        "city"           => $submissionData["contact_address"]["city"],
-        "country"        => $submissionData["contact_address"]["country"],
-        "paf_validated"  => $submissionData["contact_address"]["paf"],
-        "postal_code"    => $submissionData["contact_address"]["postal_code"],
-        "state_province" => $submissionData["contact_address"]["state_province"],
+      'contact_name_first' => $submissionData['contact_name']['first'],
+      'contact_name_last' => $submissionData['contact_name']['last'],
+      'contact_name_title' => $submissionData['contact_name']['title'],
+      'contact_email' => $submissionData['contact_email']['email'],
+      'contact_address' => [
+        'address' => $submissionData['contact_address']['address'],
+        'address_2' => $submissionData['contact_address']['address_2'],
+        'city' => $submissionData['contact_address']['city'],
+        'country' => $submissionData['contact_address']['country'],
+        'paf_validated' => $submissionData['contact_address']['paf'],
+        'postal_code' => $submissionData['contact_address']['postal_code'],
+        'state_province' => $submissionData['contact_address']['state_province'],
       ],
-      "communication_preferences" => [
-        "opt_in_email"        => NULL,
-        "opt_in_phone"        => NULL,
-        "opt_in_sms"          => NULL,
-        "opt_in_social_media" => NULL,
-        "opt_out_post"        => TRUE
+      'communication_preferences' => [
+        'opt_in_email' => NULL,
+        'opt_in_phone' => NULL,
+        'opt_in_sms' => NULL,
+        'opt_in_social_media' => NULL,
+        'opt_out_post' => TRUE
       ],
-      "reason_for_donating"         => $submissionData["prompt_reason"],
-      "in_memory_firstname"         => "",
-      "in_memory_lastname"          => "",
-      "in_memory_relationship"      => "",
-      "in_memory_title"             => "",
-      "gift_aid"                    => (isset($submissionData["gift_aid"]) && !empty($submissionData["gift_aid"]["opt_in"])) ? TRUE  : NULL,
-      "donation_currency"           => $submissionData["donation__currency"],
-      "donation_amount"             => $submissionData["donation__amount"],
-      "donation_date"               => $submissionData["donation__date"],
-      "donation_fulfillment_letter" => $submissionData["donation__fulfillment_letter"],
-      "donation_status"             => $submissionData["donation__status"],
-      "donation_transaction_id"     => "",
-      "donation_payment_method"     => $submissionData["donation__payment_method"],
-      "dd_currency"                 => "",
-      "dd_amount"                   => "",
-      "dd_date"                     => "",
-      "dd_fulfillment_letter"       => "",
-      "dd_status"                   => "",
-      "dd_first_payment_date"       => "",
-      "dd_frequency"                => "",
-      "dd_sort_code"                => "",
-      "dd_account_number"           => "",
-      "dd_account_name"             => "",
-      "dd_instruction_reference"    => "",
-      "utm_campaign"                => "",
-      "utm_source"                  => "",
-      "utm_content"                 => "",
-      "utm_medium"                  => "",
-      "fund_code"                   => "",
-      "package_id"                  => $submissionData["donation__package_code"],
-      "campaign"                    => "",
-      "segment_code"                => ""
+      'reason_for_donating' => $submissionData['prompt_reason'],
+      'in_memory_firstname' => '',
+      'in_memory_lastname' => '',
+      'in_memory_relationship' => '',
+      'in_memory_title' => '',
+      'gift_aid' => (isset($submissionData['gift_aid']) && !empty($submissionData['gift_aid']['opt_in'])) ? TRUE  : NULL,
+      'donation_currency' => $submissionData['donation__currency'],
+      'donation_amount' => $submissionData['donation__amount'],
+      'donation_date' => $submissionData['donation__date'],
+      'donation_fulfillment_letter' => $submissionData['donation__fulfillment_letter'],
+      'donation_status' => $submissionData['donation__status'],
+      'donation_transaction_id' => '',
+      'donation_payment_method' => $submissionData['donation__payment_method'],
+      'dd_currency' => '',
+      'dd_amount' => '',
+      'dd_date' => '',
+      'dd_fulfillment_letter' => '',
+      'dd_status' => '',
+      'dd_first_payment_date' => '',
+      'dd_frequency' => '',
+      'dd_sort_code' => '',
+      'dd_account_number' => '',
+      'dd_account_name' => '',
+      'dd_instruction_reference' => '',
+      'utm_campaign' => '',
+      'utm_source' => '',
+      'utm_content' => '',
+      'utm_medium' => '',
+      'fund_code' => '',
+      'package_id' => $submissionData['donation__package_code'],
+      'campaign' => '',
+      'segment_code' => ''
     ];
 
-    if (isset($submissionData["in_memory"])) {
-      $mappedData["in_memory_firstname"]    = $submissionData["in_memory"]["in_memory_firstname"];
-      $mappedData["in_memory_lastname"]     = $submissionData["in_memory"]["in_memory_lastname"];
-      $mappedData["in_memory_relationship"] = $submissionData["in_memory"]["in_memory_relationship"];
-      $mappedData["in_memory_title"]        = $submissionData["in_memory"]["in_memory_title"];
+    if (isset($submissionData['in_memory'])) {
+      $mappedData['in_memory_firstname'] = $submissionData['in_memory']['in_memory_firstname'];
+      $mappedData['in_memory_lastname'] = $submissionData['in_memory']['in_memory_lastname'];
+      $mappedData['in_memory_relationship'] = $submissionData['in_memory']['in_memory_relationship'];
+      $mappedData['in_memory_title'] = $submissionData['in_memory']['in_memory_title'];
     }
 
-    if (!empty($submissionData["communication_preferences"]["opt_in_email"])) {
-      $mappedData["communication_preferences"]["opt_in_email"] = TRUE;
+    if (!empty($submissionData['communication_preferences']['opt_in_email'])) {
+      $mappedData['communication_preferences']['opt_in_email'] = TRUE;
     }
 
-    if (!empty($submissionData["communication_preferences"]["opt_in_post"])) {
-      $mappedData["communication_preferences"]["opt_out_post"] = TRUE;
+    if (!empty($submissionData['communication_preferences']['opt_in_post'])) {
+      $mappedData['communication_preferences']['opt_out_post'] = TRUE;
     }
 
-    if ($submissionData["donation__payment_method"] === "bank_account") {
-      $mappedData["dd_currency"]              = $submissionData["payment"]["currency"];
-      $mappedData["dd_amount"]                = $submissionData["payment"]["amount"];
-      $mappedData["dd_date"]                  = $submissionData["payment"]["date"];
-      $mappedData["dd_fulfillment_letter"]    = $submissionData["payment"]["fulfillment_letter"];
-      $mappedData["dd_status"]                = $submissionData["payment"]["dd_status"];
-      $mappedData["dd_first_payment_date"]    = $submissionData["payment"]["first_payment_date"];
-      $mappedData["dd_frequency"]             = $submissionData["payment"]["frequency"];
-      $mappedData["dd_sort_code"]             = $submissionData["payment"]["sort_code"];
-      $mappedData["dd_account_number"]        = $submissionData["payment"]["account_number"];
-      $mappedData["dd_account_name"]          = $submissionData["payment"]["account_name"];
-      $mappedData["dd_instruction_reference"] = $submissionData["payment"]["instruction_reference"];
+    if ($submissionData['donation__payment_method'] === 'bank_account') {
+      $mappedData['dd_currency'] = $submissionData['payment']['currency'];
+      $mappedData['dd_amount'] = $submissionData['payment']['amount'];
+      $mappedData['dd_date'] = $submissionData['payment']['date'];
+      $mappedData['dd_fulfillment_letter'] = $submissionData['payment']['fulfillment_letter'];
+      $mappedData['dd_status'] = $submissionData['payment']['dd_status'];
+      $mappedData['dd_first_payment_date'] = $submissionData['payment']['first_payment_date'];
+      $mappedData['dd_frequency'] = $submissionData['payment']['frequency'];
+      $mappedData['dd_sort_code'] = $submissionData['payment']['sort_code'];
+      $mappedData['dd_account_number'] = $submissionData['payment']['account_number'];
+      $mappedData['dd_account_name'] = $submissionData['payment']['account_name'];
+      $mappedData['dd_instruction_reference'] = $submissionData['payment']['instruction_reference'];
     }
 
-    if (!empty($submissionData["donation__transaction_id"])) {
-      $mappedData["donation_transaction_id"] = $submissionData["donation__transaction_id"];
+    if (!empty($submissionData['donation__transaction_id'])) {
+      $mappedData['donation_transaction_id'] = $submissionData['donation__transaction_id'];
     }
 
     return $mappedData;
@@ -283,7 +282,7 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
         $is_donation = FALSE;
 
         try {
-          $submission->getWebform()->getHandler("wateraid_donations");
+          $submission->getWebform()->getHandler('wateraid_donations');
           $is_donation = TRUE;
         }
         catch (\Exception $e) {
@@ -365,13 +364,13 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     $this->loggerChannel->notice(print_r($submission->getData(), TRUE));
 
     return [
-      'id'                        => $submission->uuid(),
-      'webform'                   => $this->getPrefixedName($webform->id(), $isDonationSubmission),
-      'webform_owner'             => ($owner) ? $owner->label() : 'Anonymous',
-      'webform_last_updated'      => '',
-      "submission_remote_address" => $submission->getRemoteAddr(),
-      'submission_data'           => $isDonationSubmission ? self::mapDonationItem($submission) : $this->mapStandardItem($submission),
-      'submission_date'           => $date->format(\DateTimeInterface::ATOM),
+      'id' => $submission->uuid(),
+      'webform' => $this->getPrefixedName($webform->id(), $isDonationSubmission),
+      'webform_owner' => ($owner) ? $owner->label() : 'Anonymous',
+      'webform_last_updated' => '',
+      'submission_remote_address' => $submission->getRemoteAddr(),
+      'submission_data' => $isDonationSubmission ? self::mapDonationItem($submission) : $this->mapStandardItem($submission),
+      'submission_date' => $date->format(\DateTimeInterface::ATOM),
     ];
   }
 
