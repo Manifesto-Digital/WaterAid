@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\wa_migration\Plugin\migrate\source;
 
 use Drupal\Core\Database\Query\SelectInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
@@ -270,10 +272,10 @@ class NodeSource extends SqlBase {
 
       foreach ($data as $values) {
         if (isset($values['field_event_date_value'])) {
-          $start[] = $values['field_event_date_value'];
+          $start[] = $this->dateFormat($values['field_event_date_value']);
         }
         if (isset($values['field_event_date_end_value'])) {
-          $end[] = $values['field_event_date_end_value'];
+          $end[] = $this->dateFormat($values['field_event_date_end_value']);
         }
       }
 
@@ -282,6 +284,25 @@ class NodeSource extends SqlBase {
     }
 
     return parent::prepareRow($row);
+  }
+
+  /**
+   * Helper to update a date to the right format.
+   *
+   * @param string $date
+   *   A date string.
+   *
+   * @return string
+   *   the updated date.
+   */
+  private function dateFormat(string $date): string {
+    if (strlen($date) == 10) {
+      $new_date = DrupalDateTime::createFromFormat('Y-m-d', $date);
+      $new_date->setTime(0, 0);
+      $date = $new_date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+    }
+
+    return $date;
   }
 
 }
