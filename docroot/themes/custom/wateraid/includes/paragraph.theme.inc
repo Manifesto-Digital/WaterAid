@@ -7,6 +7,7 @@
 
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Component\Utility\Html;
+use Drupal\group\Entity\Group;
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -20,6 +21,20 @@ function wateraid_preprocess_paragraph(&$variables): void {
   $route_match = \Drupal::routeMatch();
 
   $variables['page_title'] = ($route = $route_match->getRouteObject()) ? \Drupal::service('title_resolver')->getTitle($request, $route) : '';
+
+  // Override page title for group pages in full view mode
+  if ($route_match && $route_match->getRouteName() === 'entity.group.canonical' && $route_match->getParameter('group')) {
+    $group = $route_match->getParameter('group');
+    if ($group instanceof Group) {
+      // Check if we're viewing the group in full view mode
+      $view_mode = $route_match->getParameter('view_mode');
+      if ($view_mode === 'full' || !$view_mode) { // Default view mode is typically 'full'
+        if ($group->hasField('field_title') && !$group->get('field_title')->isEmpty()) {
+          $variables['page_title'] = $group->get('field_title')->value;
+        }
+      }
+    }
+  }
 
   $variables['#cache']['contexts'][] = 'url';
 }

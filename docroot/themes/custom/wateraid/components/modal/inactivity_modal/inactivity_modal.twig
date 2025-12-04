@@ -3,8 +3,8 @@
 ] %}
 
 <div {{ attributes.addClass(modal_classes) }}>
-  <div class="modal__wrapper">
-    <div class="modal__image">
+  <div class="inactivity-modal__wrapper">
+    <div class="inactivity-modal__image">
       {{ include('wateraid:image', {
         image: image,
         caption: caption,
@@ -15,8 +15,8 @@
     </div>
 
 
-    <div class="modal__content">
-      <div class="modal__close">
+    <div class="inactivity-modal__content">
+      <div class="inactivity-modal__close">
         {{ include('wateraid:button', {
           text: 'Close',
           link: '',
@@ -26,13 +26,13 @@
           theme: 'dark',
         }) }}
       </div>
-      <h2 class="modal__title">{{ title }}</h2>
+      <h2 class="inactivity-modal__title">{{ title }}</h2>
 
-      <div class="modal__copy">
+      <div class="inactivity-modal__copy">
         {{ copy }}
       </div>
 
-      <div class="modal__cta">
+      <div class="inactivity-modal__cta">
         {% if cta %}
           {{ include('wateraid:button', {
             text: cta.title,

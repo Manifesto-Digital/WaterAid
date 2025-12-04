@@ -4,7 +4,7 @@
   display: none;
 
   &.open {
-    display: block;
+    display: flex;
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -13,37 +13,45 @@
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
     z-index: 20;
+    overflow: auto;
+    flex-flow: row wrap;
   }
 
-  .modal__wrapper {
-    @include grid();
-    column-gap: 0;
-    row-gap: 0;
-    position: absolute;
+  &__wrapper {
+    display: flex;
+    flex-flow: row wrap;
     width: 100%;
     max-width: calculate-rem(1113);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 1rem 1.25rem;
+    margin: auto;
   }
 
   &__image {
-    @include grid-item-span(12, 3, 5);
     width: 100%;
-    grid-row: 2;
-    @include tablet() {
-      grid-row: 1;
-    }
-    @include breakpoint-lg {
-      grid-column: 2 / 7;
+    order: 1;
+    @include tablet {
+      width: 50%;
+      order: 0;
     }
 
-    .image,
-    .image__wrapper,
-    .image__content,
-    .image__content div {
+    .image {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
       height: 100%;
+      margin-top: 0;
+    }
+
+    .image__wrapper {
+      display: flex;
+    }
+    .image__content div {
+      width: 100%;
+      aspect-ratio: 350 / 281;
+      @include tablet {
+        height: 100%;
+        aspect-ratio: unset;
+      }
     }
 
     img {
@@ -55,7 +63,6 @@
   }
 
   &__content {
-    @include grid-item-span(12, 3, 5);
     position: relative;
     display: flex;
     gap: $wa-spacing-06;
@@ -63,6 +70,20 @@
     background-color: $wa-blue;
     padding: calculate-rem(44) $wa-spacing-06;
     grid-row: 1;
+    @include tablet {
+      width: 50%;
+    }
+    .button__wrapper {
+      width: 100%;
+      @include tablet {
+        width: fit-content;
+      }
+      a {
+        display: block;
+        max-width: 100%;
+        text-align: center;
+      }
+    }
   }
 
   &__close {
@@ -96,4 +117,7 @@
   }
 }
 
-
+body.modal-open {
+  height: 100vh;
+  overflow: hidden;
+}

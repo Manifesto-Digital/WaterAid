@@ -14,4 +14,4 @@ method: 0
 paths: ''
 allowlist: ''
 http_method_allowlist: {  }
-domains: wateraid.ddev.site
+domains: "wateraid.ddev.site\r\nwww.wateraid.org"
