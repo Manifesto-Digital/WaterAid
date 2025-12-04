@@ -1,0 +1,23 @@
+uuid: 81ebe2f7-88af-4824-942c-d75349689b36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_donation_reminder
+    - node.type.landing_page
+id: node.landing_page.field_show_donation_reminder
+field_name: field_show_donation_reminder
+entity_type: node
+bundle: landing_page
+label: 'Show Donation Reminder'
+description: 'Select to show a donation reminder to any users who abandon a one-off donation before completing it.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Show Reminder'
+  off_label: 'No Reminder'
+field_type: boolean
