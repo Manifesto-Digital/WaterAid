@@ -1,0 +1,70 @@
+display:
+  default:
+    display_title: Predefinido
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Aplicar
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+  block_top_issues:
+    display_options:
+      fields:
+        result_name_count:
+          label: Contagem
+  issues__page:
+    display_options:
+      fields:
+        result_name_count:
+          label: Contagem
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Primeira'
+            last: 'Última »'
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+  issues_by_page__page:
+    display_options:
+      fields:
+        result_name_count:
+          label: Contagem
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Primeira'
+            last: 'Última »'
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+  pages_by_issue__page:
+    display_options:
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+  recent__page:
+    display_options:
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento

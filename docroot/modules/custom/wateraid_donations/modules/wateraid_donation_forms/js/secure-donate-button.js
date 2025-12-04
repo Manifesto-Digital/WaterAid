@@ -15,7 +15,7 @@
         // are also hidden.
         const form = element?.closest('form');
         if (form) {
-          if( form.querySelector('input[name="payment[payment_frequency]"]').value !== 'recurring') {
+          if( form.querySelector('input[name="payment[payment_frequency]"]')?.value !== 'recurring') {
             const formActions = form?.querySelector('[data-drupal-selector="edit-actions"]');
             if (formActions) {
               formActions.style.display = 'none';

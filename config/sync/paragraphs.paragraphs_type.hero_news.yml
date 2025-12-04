@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: hero_news
-label: 'Hero (news)'
+label: 'Hero (article)'
 icon_uuid: null
 icon_default: null
 description: ''

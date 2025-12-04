@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ *  Install and update hooks.
+ */
+
+/**
+ * Set the test fails variable so we can test storage failures.
+ */
+function azure_blob_storage_update_10001(): void {
+  \Drupal::state()->set('azure_blog_storage_test_fails', 0);
+}
