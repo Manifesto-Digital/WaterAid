@@ -14,7 +14,7 @@ migration_tags:
 migration_group: wateraid_uk_nodes
 label: Articles
 source:
-  plugin: node_source
+  plugin: uk_node_source
   bundle: article
   fields:
     - field_audiences

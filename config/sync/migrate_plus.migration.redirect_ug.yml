@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: redirect_ug
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ug_nodes
+label: 'Redirects UG'
+source:
+  plugin: redirect_source
+  constants:
+    uk_site: uk/
+process:
+  language:
+    plugin: default_value
+    default_value: en
+  redirect_source/path:
+    plugin: concat
+    source:
+      - constants/uk_site
+      - redirect_source__path
+  redirect_redirect/uri:
+    -
+      plugin: redirect_migration_lookup
+      migration:
+        - campaigns_ug
+        - country_details_ug
+        - events_ug
+        - filtered_landing_pages_ug
+        - flexible_content_ug
+        - get_involved_node_ug
+        - press_and_media_ug
+        - press_and_media_biographies_ug
+        - publication_ug
+        - standard_page_ug
+        - shorthand_story_ug
+        - stories_ug
+        - webforms_ug
+      source: redirect_redirect__uri
+    -
+      plugin: skip_on_empty
+      method: row
+  uid:
+    plugin: migration_lookup
+    migration: users_ug
+    source: uid
+    no_stub: true
+destination:
+  plugin: 'entity:redirect'
+idMap: {  }
+migration_dependencies:
+  required:
+    - campaigns_ug
+    - country_details_ug
+    - events_ug
+    - filtered_landing_pages_ug
+    - flexible_content_ug
+    - get_involved_node_ug
+    - press_and_media_ug
+    - press_and_media_biographies_ug
+    - publication_ug
+    - standard_page_ug
+    - stories_ug
+    - webforms_ug
+include: null

@@ -14,7 +14,7 @@ migration_tags:
 migration_group: wateraid_uk_nodes
 label: 'Get Involved (nodes)'
 source:
-  plugin: node_source
+  plugin: uk_node_source
   bundle: get_involved
   fields:
     - field_audiences

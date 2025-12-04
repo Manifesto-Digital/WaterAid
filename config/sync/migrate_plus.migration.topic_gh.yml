@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: topic_gh
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_gh_terms
+label: 'Topic GH'
+source:
+  plugin: term_source
+  bundle: topic
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  name: name
+  description/value: description__value
+  description/format:
+    -
+      plugin: default_value
+      default_value: full_html
+  weight: weight
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: topic
+idMap: {  }
+migration_dependencies: null
+include: null

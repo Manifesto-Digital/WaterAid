@@ -14,7 +14,7 @@ migration_tags:
 migration_group: wateraid_uk_nodes
 label: 'Donation Landing Pages'
 source:
-  plugin: node_source
+  plugin: uk_node_source
   bundle: donation_landing_page
   fields:
     - field_wa_admin_description

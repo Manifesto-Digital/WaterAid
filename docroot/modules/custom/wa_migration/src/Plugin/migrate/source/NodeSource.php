@@ -30,28 +30,7 @@ class NodeSource extends SqlBase {
     return $this->select('node_field_data', 'n')
       ->fields('n')
       ->condition('n.type', $this->configuration['bundle'])
-      ->condition('n.status', 1)
-      ->condition('n.nid', [
-        656,
-        7861,
-        14671,
-        16391,
-        16431,
-        14601,
-        17911,
-        14606,
-        14591,
-        15176,
-        16396,
-        17746,
-        4671,
-        16141,
-        16146,
-        13486,
-        15616,
-        16976,
-        16086,
-      ], 'NOT IN');
+      ->condition('n.status', 1);
   }
 
   /**

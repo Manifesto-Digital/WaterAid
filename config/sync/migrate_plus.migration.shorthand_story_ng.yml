@@ -1,0 +1,214 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: shorthand_story_ng
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ng_nodes
+label: 'Shorthand Stories NG'
+source:
+  plugin: node_source
+  bundle: shorthand_story
+  fields:
+    - field_audiences
+    - field_countries
+    - field_get_involved_terms
+    - field_hide_related_content
+    - field_meta_tags
+    - field_override_related
+    - field_related_content
+    - field_related_content_type
+    - field_summary
+    - field_themes
+    - field_teaser_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  title: title
+  field_teaser_text: field_summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media_ng
+    source: field_teaser_image
+    no_stub: true
+  field_audience:
+    plugin: migration_lookup
+    migration: audiences_ng
+    source: field_audiences
+    no_stub: true
+  field_country:
+    plugin: migration_lookup
+    migration: countries_ng
+    source: field_countries
+    no_stub: true
+  field_get_involved:
+    plugin: migration_lookup
+    migration: get_involved_ng
+    source: field_get_involved_terms
+    no_stub: true
+  field_hide_related_content: field_hide_related_content
+  field_meta_tags: field_meta_tags
+  field_override_related_content: field_override_related
+  temp_articles:
+    -
+      plugin: migration_lookup
+      migration: articles_ng
+      source: field_related_content
+      no_stub: true
+  temp_campaigns:
+    -
+      plugin: migration_lookup
+      migration: campaigns_ng
+      source: field_related_content
+      no_stub: true
+  temp_country_details:
+    -
+      plugin: migration_lookup
+      migration: country_details_ng
+      source: field_related_content
+      no_stub: true
+  temp_events:
+    -
+      plugin: migration_lookup
+      migration: events_ng
+      source: field_related_content
+      no_stub: true
+  temp_filtered_landing_pages:
+    -
+      plugin: migration_lookup
+      migration: filtered_landing_pages_ng
+      source: field_related_content
+      no_stub: true
+  temp_flexible_content:
+    -
+      plugin: migration_lookup
+      migration: flexible_content_ng
+      source: field_related_content
+      no_stub: true
+  temp_get_involved:
+    -
+      plugin: migration_lookup
+      migration: get_involved_node_ng
+      source: field_related_content
+      no_stub: true
+  temp_press_and_media:
+    plugin: migration_lookup
+    migration: press_and_media_ng
+    source: field_related_content
+    no_stub: true
+  temp_jobs:
+    -
+      plugin: migration_lookup
+      migration: jobs_ng
+      source: field_related_content
+      no_stub: true
+  temp_press_and_media_biographies:
+    -
+      plugin: migration_lookup
+      migration: press_and_media_biographies_ng
+      source: field_related_content
+      no_stub: true
+  temp_publication:
+    -
+      plugin: migration_lookup
+      migration: publication_ng
+      source: field_related_content
+      no_stub: true
+  temp_shorthand_story:
+    -
+      plugin: migration_lookup
+      migration: shorthand_story_ng
+      source: field_related_content
+      no_stub: true
+  temp_standard_page:
+    -
+      plugin: migration_lookup
+      migration: standard_page_ng
+      source: field_related_content
+      no_stub: true
+  temp_stories:
+    -
+      plugin: migration_lookup
+      migration: stories_ng
+      source: field_related_content
+      no_stub: true
+  field_related_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_articles'
+      - '@temp_campaigns'
+      - '@temp_country_details'
+      - '@temp_events'
+      - '@temp_filtered_landing_pages'
+      - '@temp_flexible_content'
+      - '@temp_get_involved'
+      - '@temp_press_and_media'
+      - '@temp_jobs'
+      - '@temp_press_and_media_biographies'
+      - '@temp_publication'
+      - '@temp_shorthand_story'
+      - '@temp_standard_page'
+      - '@temp_stories'
+  field_related_content_type:
+    -
+      plugin: skip_on_empty
+      source: field_related_content_type
+      method: process
+    -
+      plugin: static_map
+      source: field_related_content_type
+      map:
+        campaign: standard_page
+        country_details: standard_page
+        filtered_landing_page: listing_page
+        flexible_content: standard_page
+        get_involved: landing_page
+        job: standard_page
+        press_and_media: standard_page
+        press_and_media_flexible: standard_page
+        shorthand_story: story
+        stories: story
+  field_theme:
+    plugin: migration_lookup
+    migration: themes_ng
+    source: field_themes
+    no_stub: true
+  uid:
+    plugin: migration_lookup
+    migration: users_ng
+    source: uid
+    no_stub: true
+destination:
+  plugin: 'entity:node'
+  default_bundle: story
+idMap: {  }
+migration_dependencies:
+  required:
+    - audiences_ng
+    - campaigns_ng
+    - countries_ng
+    - country_details_ng
+    - events_ng
+    - filtered_landing_pages_ng
+    - flexible_content_ng
+    - get_involved_ng
+    - get_involved_node_ng
+    - jobs_ng
+    - press_and_media_ng
+    - press_and_media_biographies_ng
+    - publication_ng
+    - standard_page_ng
+    - stories_ng
+    - themes_ng
+    - users_ng
+    - articles_ng
+include: null

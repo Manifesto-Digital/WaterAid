@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: faq_db
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_db
+label: 'FAQ DB'
+source:
+  plugin: paragraph_source
+  bundle: faq
+  fields:
+    - field_faq_answer
+    - field_faq_question
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_title: field_faq_question
+  field_accordion_content:
+    -
+      plugin: body_to_paragraph
+      source: field_faq_answer
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: accordion_item
+idMap: {  }
+migration_dependencies: {  }
+include: null

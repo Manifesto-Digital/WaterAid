@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: donation_cta_widget_embed_et
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_et
+label: 'Donation Form CTA Widget ET'
+source:
+  plugin: paragraph_source
+  bundle: donation_cta_widget_embed
+  constants:
+    body: '<p>This is a placeholder for a Donation Widget. Please manually replace this item. The original widget referenced the donation form below.</p>'
+  fields:
+    - field_cta_widget_donation_form
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_rich_text/value:
+    plugin: concat
+    source:
+      - constants/body
+      - field_cta_widget_donation_form/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: donation_placeholder_do_not_use
+idMap: {  }
+migration_dependencies: {  }
+include: null

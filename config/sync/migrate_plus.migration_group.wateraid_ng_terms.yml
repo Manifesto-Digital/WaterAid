@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_ng_terms
+label: 'WaterAid NG migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/ng site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: ng_site_migration
+  migration_tags:
+    - wateraid_ng

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_gh_terms
+label: 'WaterAid GH migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/gh site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: gh_site_migration
+  migration_tags:
+    - wateraid_gh
