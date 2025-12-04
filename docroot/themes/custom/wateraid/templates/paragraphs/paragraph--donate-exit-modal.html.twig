@@ -39,14 +39,6 @@
  */
 #}
 
-  {% if not paragraph.field_primary_cta.isEmpty() %}
-    {% set cta = {
-      url: paragraph.field_primary_cta.0.url,
-      title: paragraph.field_primary_cta.0.title,
-    }%}
-  {% endif %}
-
-
 {% block paragraph %}
   {{ include('wateraid:inactivity_modal', {
     title: content.field_title,

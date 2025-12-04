@@ -1,6 +1,9 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   Drupal.behaviors.inactivityModal = {
     attach(context) {
+
+      let exitRedirectLink = document.querySelector('.site-header__container a').href || '/';
+
       function openModal() {
         context
           .querySelectorAll('[data-component-id="wateraid:inactivity_modal"]')
@@ -35,7 +38,7 @@
 
       // Close modal functionality.
       function closeModal(modal) {
-        const closeButton = modal.querySelector(".modal__close button");
+        const closeButton = modal.querySelector(".inactivity-modal__close button");
 
         const continueDonation = modal.querySelector(
           "a.continue-donation-button",
@@ -51,6 +54,11 @@
         closeButton.addEventListener("click", function () {
           modal.classList.remove("open");
           document.querySelector("body").classList.remove("modal-open");
+
+          // Redirect to clicked link.
+          if (exitRedirectLink) {
+            window.location = exitRedirectLink;
+          }
         });
 
         document.querySelector("body").classList.remove("modal-open");
@@ -59,17 +67,25 @@
       const exitEventListener = (item) => {
         return function (event) {
           event.preventDefault();
+
+          // Check if the event was a click on a link and store the href
+          const targetLink = event.target.closest('a');
+          if (targetLink) {
+            exitRedirectLink = targetLink.href;
+          }
+
           openModal();
           document.querySelectorAll("a").forEach((link) => {
             link.removeEventListener("click", exitEventListener);
           });
           const modal = context.querySelector(
-            '[data-component-id="wateraid:inactivity_modal"]',
+            '[data-component-id="wateraid:inactivity-modal"]',
           );
           if (modal) {
-            const closeButton = modal.querySelector(".modal__close button");
+            const closeButton = modal.querySelector(".inactivity-modal__close button");
             closeButton.addEventListener("click", function () {
-              window.location = item.href;
+              // Use the clicked link href if available, otherwise fall back to the original item href
+              window.location = clickedLinkHref || item.href;
             });
           }
         };
@@ -96,4 +112,4 @@
       setupTimers();
     },
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);
