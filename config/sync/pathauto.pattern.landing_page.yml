@@ -7,7 +7,7 @@ dependencies:
 id: landing_page
 label: 'Landing page'
 type: 'canonical_entities:node'
-pattern: '/get-involved/[node:title]'
+pattern: '[node:group-slug]/get-involved/[node:title]'
 selection_criteria:
   79697729-37b2-4b47-ab02-4fad3304848f:
     id: 'entity_bundle:node'

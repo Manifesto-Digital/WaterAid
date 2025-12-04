@@ -13,7 +13,7 @@
       <div class="site-header__container">
 
         <div class="site-header__logo">
-          <a href="{{ url('<front>') }}" class="site-header__logo-link">
+          <a href="{{ home_page_url }}" class="site-header__logo-link">
             <svg class="site-header__logo-image">
               <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
             </svg>
@@ -25,7 +25,7 @@
             {% for link in primary_navigation['#items'] %}
               {% if link.original_link.getEntity().field_donate_link.0.value %}
                 {{ include('wateraid:button', {
-                  attributes: create_attribute().addClass('site-header__mobile-donate-btn'),
+                  classes: ['site-header__mobile-donate-btn'],
                   text: link.title,
                   url: link.url.toString(),
                   type: 'donate',
@@ -35,17 +35,21 @@
           {% endif %}
 
           {{ include('wateraid:button', {
-            attributes: create_attribute().addClass([
+            classes:[
                 'site-header__open-close-mobile-menu-btn',
                 'js-menu-open-close-btn'
-              ]).setAttribute('aria-controls', 'mobile-nav'),
+              ],
+            attribute: {
+              attr: 'aria-controls',
+              value: 'mobile-nav'
+            },
             text: 'Open / close menu',
             type: 'menu',
             icon: 'wa-utility-menu',
           }, false) }}
         </div>
 
-        <a href="{{ url('<front>') }}" class="main-site-link">{{ "Main site"|t }}</a>
+        <a href="{{ home_page_url }}" class="main-site-link">{{ "Main site"|t }}</a>
 
         {% if primary_navigation %}
           {{ include ('wateraid:primary_navigation', {

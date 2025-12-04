@@ -1,13 +1,8 @@
-
-
-{% set dam_field_value = paragraph.field_media[0].entity.field_media_dam_image[0].getValue() %}
-{% set image_url = dam_image_url(dam_field_value) %}
-
 {{ include('wateraid:card', {
   attributes: attributes,
   heading: paragraph.field_link.0.title,
   description: paragraph.field_description.0.value,
-  image_url: image_url,
+  image: content.field_media,
   url: paragraph.field_link.0.uri,
   variant: 'signposting',
   is_external: paragraph.field_link.0.external,

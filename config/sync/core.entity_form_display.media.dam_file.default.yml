@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.dam_file.field_dam_expired
+    - field.field.media.dam_file.field_dam_expiry_date
+    - field.field.media.dam_file.field_dam_last_checked
     - field.field.media.dam_file.field_media_dam_file
     - media.type.dam_file
   module:
@@ -70,6 +73,9 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_dam_expired: true
+  field_dam_expiry_date: true
+  field_dam_last_checked: true
   publish_on: true
   publish_state: true
   unpublish_on: true

@@ -30,6 +30,11 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_audience:
     type: entity_reference_label
     label: hidden
@@ -96,6 +101,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_content: true
   field_hero: true
   field_hide_related_content: true

@@ -24,7 +24,7 @@ foreach (glob("{$theme_path}/includes/*.theme.inc") as $file) {
 /**
  * Implements hook_preprocess_HOOK() for pages.
  */
-function wateraid_preprocess_page(&$variables) {
+function wateraid_preprocess_page(&$variables): void {
   $route_match = \Drupal::routeMatch();
   $params = $route_match->getParameters();
   $node = $params->get('node');
@@ -33,6 +33,12 @@ function wateraid_preprocess_page(&$variables) {
   if ($relationship && $relationship->getEntity() instanceof NodeInterface) {
     $node = $relationship->getEntity();
     $variables['bundle'] = $node->getType();
+  }
+  elseif ($node) {
+    $variables['bundle'] = $node->bundle();
+  }
+  elseif ($group) {
+    $variables['bundle'] = $group->bundle();
   }
 
   // Determine if we should be rendering the donate header or standard.
@@ -53,19 +59,7 @@ function wateraid_preprocess_page(&$variables) {
   // Add the donate header menu as a variable if we're showing donate header.
   if ($donate_header) {
     if ($group instanceof GroupInterface) {
-      $group_menu_relationships = group_content_menu_get_menus_per_group($group);
-      foreach ($group_menu_relationships as $group_menu_relationship) {
-        if ($group_menu_relationship->getPluginId() === 'group_content_menu:donate_header_menu') {
-          /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
-          $group_content_menu = $group_menu_relationship->getEntity();
-          // The menu name is derived from the group menu content entity.
-          $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
-          $variables['donate_header_menu'] = _wateraid_build_menu($menu_name, 1);
-          // Add cacheability metadata.
-          $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
-          break;
-        }
-      }
+      wateraid_add_group_menus($group, ['donate_header_menu' => 'group_content_menu:donate_header_menu'], $variables);
     }
   }
 
@@ -93,19 +87,49 @@ function wateraid_preprocess_page(&$variables) {
 
   // Provide the primary navigation menu to the page template.
   if ($group instanceof GroupInterface) {
-    $group_menu_relationships = group_content_menu_get_menus_per_group($group);
-    foreach ($group_menu_relationships as $group_menu_relationship) {
-      if ($group_menu_relationship->getPluginId() === 'group_content_menu:wateraid_site_menu') {
+    wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables);
+  }
+  else {
+    $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
+  }
+}
+
+/**
+ * Helper to add Group Menus to a variables array.
+ *
+ * @param \Drupal\group\Entity\GroupInterface $group
+ *   The Group to get the menus for.
+ * @param array $menu_map
+ *   A map of ['variable_name' => 'group menu plugin id']
+ * @param array $variables
+ *   The template variables array to add the menus to.
+ */
+function wateraid_add_group_menus(GroupInterface $group, array $menu_map, array &$variables): void {
+  foreach (['tags', 'contexts'] as $tag) {
+    if (!isset($variables['#cache'][$tag])) {
+      $variables['#cache'][$tag] = [];
+    }
+  }
+
+  $variables['#cache']['tags'] = array_merge($variables['#cache']['tags'], $group->getCacheTags());
+  $variables['#cache']['contexts'] = array_merge($variables['#cache']['contexts'], $group->getCacheContexts());
+
+  foreach (group_content_menu_get_menus_per_group($group) as $group_menu_relationship) {
+    foreach ($menu_map as $var_name => $plugin_id) {
+      if ($group_menu_relationship->getPluginId() === $plugin_id) {
+
         /** @var \Drupal\group_content_menu\GroupContentMenuInterface $group_content_menu */
         $group_content_menu = $group_menu_relationship->getEntity();
-        // The group menu name is derived from the group menu content entity.
+
+        // The menu name is derived from the group menu content entity.
         $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
-        $variables['primary_navigation'] = _wateraid_build_menu($menu_name, 3);
+        $variables[$var_name] = _wateraid_build_menu($menu_name, 1);
+
         // Add cacheability metadata.
-        $variables['#cache']['tags'][] = 'group_content_menu:' . $group_content_menu->id();
+        $variables['#cache']['tags'] = array_merge($variables['#cache']['tags'], $group_content_menu->getCacheTags());
+        $variables['#cache']['contexts'] = array_merge($variables['#cache']['contexts'], $group_content_menu->getCacheContexts());
       }
     }
-    $variables['#cache']['tags'][] = 'group:' . $group->id();
   }
 }
 
@@ -162,7 +186,7 @@ function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       $form['actions']['wizard_next']['#button_type'] = 'next';
     }
     if (isset($form['actions']['submit'])) {
-      $form['actions']['#button_type'] = 'submit';
+      $form['actions']['submit']['#button_type'] = 'webform-submit';
     }
   }
 }
@@ -426,6 +450,7 @@ function _wateraid_build_menu($menu_name, int $max_depth): array {
 function wateraid_preprocess(&$variables) {
   // Adds the current group's canonical URL to template variables where exists.
   $group = \Drupal::routeMatch()->getParameter('group');
+  $variables['current_group_path'] = '/';
   if ($group instanceof Group) {
     $url = Url::fromRoute('entity.group.canonical', ['group' => $group->id()]);
     $variables['current_group_path'] = $url->toString();

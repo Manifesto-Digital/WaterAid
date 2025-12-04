@@ -1,83 +1,107 @@
 {% set base_classes = ['button', 'button--' ~ type, 'button--' ~ theme] %}
 {% set icon_position = icon_position ? icon_position : 'after' %}
 {% set all_classes = classes ? base_classes|merge(classes) : base_classes %}
+{% set inputAttributes = create_attribute(attributes|merge({})) %}
 {% set attributes = attributes.addClass(all_classes) %}
+
+{% set donateIcon %}
+  {% if type == 'donate' %}
+    <span class="button__svg">
+    {% if icon|render %}
+      {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+      {{ include(icon_url) }}
+    {% endif %}
+    </span>
+    {{ text }}
+  {% endif %}
+{% endset %}
+
+{% set mainIconRender %}
+  {% if type == 'primary' or type == 'secondary' %}
+    {% if icon|render %}
+      {% if icon_position == 'before' %}
+        <span class="icon button__svg">
+          <svg>
+            <use xlink:href="{{ get_spritemap() }}#{{ icon }}"></use>
+          </svg>
+        </span>
+        {{ text }}
+      {% else %}
+        {{ text }}
+          <span class="button__svg">
+          {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+            {{ include(icon_url) }}
+          </span>
+      {% endif %}
+    {% else %}
+      {{ text }}
+    {% endif %}
+
+  {% endif %}
+{% endset %}
+
+{% set simpleIconRender %}
+  {% if type in ['icon', 'social', 'icon-small'] %}
+    {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+    {{ include(icon_url) }}
+  {% endif %}
+{% endset %}
+
+{% set menuIconRender %}
+  {% if type == 'menu' %}
+    <span class="icon icon__menu-button-open">
+      <svg>
+        <use xlink:href="{{ get_spritemap() }}#wa-utility-menu"></use>
+      </svg>
+    </span>
+    <span class="icon icon__menu-button-close">
+      <svg>
+        <use xlink:href="{{ get_spritemap() }}#wa-utility-close"></use>
+      </svg>
+    </span>
+  {% endif %}
+{% endset %}
+
+{% set donateIconRender %}
+  {% if type == 'primary-meganav-donate-menu-parent' %}
+    <span class="icon icon__chevron">
+      <svg>
+        <use href="{{ get_spritemap() }}#wa-utility-chevron" />
+      </svg>
+    </span>
+  {% endif %}
+{% endset %}
+
+
+{% set inputContentRender %}
+  {{ mainIconRender }}
+
+  {{ donateIcon }}
+
+  {{ simpleIconRender }}
+
+  {{ menuIconRender }}
+
+  {{ donateIconRender }}
+{% endset %}
 
 <div data-component-id="wateraid:button" class="button__wrapper button__wrapper--{{ type }} {{ disabled == 'true' ? ' button--disabled' : '' }}">
   {% if link %}
-  <a href="{{ link }}" class="{{ all_classes|join(' ') }}"
-     tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
-    {% else %}
+    <a href="{{ link }}" class="{{ all_classes|join(' ') }}"
+      tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
+      {{ inputContentRender }}
+    </a>
+  {% elseif isInput %}
+    <label for="{{ inputAttributes.id }}" class="button__input-button-wrapper {{ all_classes|join(' ') }}">
+      <input {{ inputAttributes.addClass('button--input-wrapped') }}/>
+      {{ inputContentRender }}
+    </label>
+  {% else %}
     <button id="{{ id }}" aria-label="{{ text }}" class="{{ all_classes|join(' ') }}"
       aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
       tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
-      {% endif %}
-
-      {% if type == 'primary' or type == 'secondary' %}
-
-        {% if icon|render %}
-          {% if icon_position == 'before' %}
-            <span class="icon button__svg">
-              <svg>
-                <use xlink:href="{{ get_spritemap() }}#{{ icon }}"></use>
-              </svg>
-            </span>
-            {{ text }}
-          {% else %}
-            {{ text }}
-              <span class="button__svg">
-              {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-                {{ include(icon_url) }}
-              </span>
-          {% endif %}
-        {% else %}
-          {{ text }}
-        {% endif %}
-
-      {% endif %}
-
-      {% if type == 'donate' %}
-        <span class="button__svg">
-        {% if icon|render %}
-          {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-          {{ include(icon_url) }}
-        {% endif %}
-        </span>
-        {{ text }}
-      {% endif %}
-
-      {% if type in ['icon', 'social', 'icon-small'] %}
-        {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-        {{ include(icon_url) }}
-      {% endif %}
-
-
-      {% if type == 'menu' %}
-        <span class="icon icon__menu-button-open">
-          <svg>
-            <use xlink:href="{{ get_spritemap() }}#wa-utility-menu"></use>
-          </svg>
-        </span>
-        <span class="icon icon__menu-button-close">
-          <svg>
-            <use xlink:href="{{ get_spritemap() }}#wa-utility-close"></use>
-          </svg>
-        </span>
-      {% endif %}
-
-      {% if type == 'primary-meganav-donate-menu-parent' %}
-        <span class="icon icon__chevron">
-          <svg>
-            <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-          </svg>
-        </span>
-      {% endif %}
-
-
-      {% if link %}
-  </a>
-{% else %}
-  </button>
+      {{ inputContentRender }}
+    </button>
   {% endif %}
 
   <span class="button__hover"></span>

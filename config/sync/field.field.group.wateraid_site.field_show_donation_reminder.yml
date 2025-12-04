@@ -1,0 +1,23 @@
+uuid: 91c0b138-007d-46ba-aca1-b447f399fb58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_show_donation_reminder
+    - group.type.wateraid_site
+id: group.wateraid_site.field_show_donation_reminder
+field_name: field_show_donation_reminder
+entity_type: group
+bundle: wateraid_site
+label: 'Show Donation Reminder'
+description: 'Select to show a donation reminder to any users who abandon a one-off donation before completing it. This will show on the site homepage, and optionally on Landing Pages.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Show Reminder'
+  off_label: 'No Reminder'
+field_type: boolean

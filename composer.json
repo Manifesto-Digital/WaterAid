@@ -64,6 +64,7 @@
     "drupal/encrypt": "^3.2",
     "drupal/entity_print": "^2.18",
     "drupal/entity_usage": "^2.0@beta",
+    "drupal/entitygroupfield": "^2.0@RC",
     "drupal/facets": "^3.0",
     "drupal/field_group": "^4.0",
     "drupal/field_group_markup": "^1.0",
@@ -227,7 +228,8 @@
             "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
         },
         "drupal/shorthand": {
-            "Issue #3546012 - 4.0.24 is broken Class \"Drupal\\shorthand\\Drush\\Commands\\ShorthandCommands\" does not exist": "https://git.drupalcode.org/project/shorthand/-/merge_requests/56.patch"
+            "Issue #3546012 - 4.0.24 is broken Class \"Drupal\\shorthand\\Drush\\Commands\\ShorthandCommands\" does not exist": "https://git.drupalcode.org/project/shorthand/-/merge_requests/56.patch",
+            "Add missing access shorthand story overview permission": "patches/shorthand-add-access-story-overview-permission.patch"
         }
     },
     "merge-plugin": {

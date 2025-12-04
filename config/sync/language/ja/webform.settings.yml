@@ -1,0 +1,14 @@
+settings:
+  default_submit_button_label: 送信
+  default_reset_button_label: リセット
+  default_delete_button_label: 削除
+  default_wizard_confirmation_label: 完了
+  default_preview_next_button_label: プレビュー
+  default_preview_label: プレビュー
+  dialog_options:
+    narrow:
+      title: 幅狭
+    wide:
+      title: ワイド
+element:
+  default_more_title: 続き

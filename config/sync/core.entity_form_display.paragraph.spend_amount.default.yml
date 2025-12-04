@@ -1,0 +1,38 @@
+uuid: a275dfc7-99a0-4441-95d6-1752c40a7f15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spend_amount.field_description
+    - field.field.paragraph.spend_amount.field_spend_amount
+    - paragraphs.paragraphs_type.spend_amount
+  module:
+    - maxlength
+id: paragraph.spend_amount.default
+targetEntityType: paragraph
+bundle: spend_amount
+mode: default
+content:
+  field_description:
+    type: string_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+  field_spend_amount:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

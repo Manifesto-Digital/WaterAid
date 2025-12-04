@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for WaterAid Group module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\GroupRelationship;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form.
+ */
+function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Only show warning on node creation (not edit).
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+  if (!$node->isNew()) {
+    return;
+  }
+
+  // Check if we're in a group context by looking at the route.
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  // If we're already in a group creation route, don't show the warning.
+  if (strpos($route_name, 'entity.group_relationship.create_form') === 0) {
+    return;
+  }
+
+  // Display warning message directing users to create content within a Site.
+  $group_list_url = Url::fromRoute('entity.group.collection')->toString();
+  \Drupal::messenger()->addWarning(
+    t('Content should be created from within a Site (Group). Please navigate to <a href="@url">Sites</a> and create content there to ensure proper organization and URL structure.', [
+      '@url' => $group_list_url,
+    ])
+  );
+}

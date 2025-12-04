@@ -3,34 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.spend_item.field_items
     - field.field.paragraph.spend_item.field_spend_amount
+    - field.field.paragraph.spend_item.field_spend_breakdown
     - field.field.paragraph.spend_item.field_spend_value
     - field.field.paragraph.spend_item.field_title
     - paragraphs.paragraphs_type.spend_item
   module:
-    - key_value_field
+    - layout_paragraphs
 id: paragraph.spend_item.default
 targetEntityType: paragraph
 bundle: spend_item
 mode: default
 content:
-  field_items:
-    type: key_value_textfield
-    weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-      key_label: Amount
-      value_label: Description
-      description_label: Description
-      description_rows: 5
-      key_size: 60
-      key_placeholder: ''
-      description_enabled: false
-      description_placeholder: ''
-    third_party_settings: {  }
   field_spend_amount:
     type: string_textfield
     weight: 1
@@ -38,6 +22,18 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_spend_breakdown:
+    type: layout_paragraphs
+    weight: 3
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
     third_party_settings: {  }
   field_spend_value:
     type: number

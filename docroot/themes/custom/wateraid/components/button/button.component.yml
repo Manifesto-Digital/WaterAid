@@ -30,6 +30,13 @@ props:
       items:
         type: string
       examples: []
+    isInput:
+      type: boolean
+      title: isInput
+      description: If set true display input instead of button.
+      items:
+        type: string
+      examples: []
 slots:
   disabled:
     title: Disabled

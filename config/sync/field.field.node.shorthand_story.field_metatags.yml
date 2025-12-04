@@ -1,0 +1,23 @@
+uuid: 2a01e54a-8621-434c-bf3c-00d1864a9e06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.shorthand_story
+  module:
+    - metatag
+id: node.shorthand_story.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: shorthand_story
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '{"schema_organization_image":"a:5:{s:5:\u0022@type\u0022;s:11:\u0022ImageObject\u0022;s:20:\u0022representativeOfPage\u0022;s:5:\u0022False\u0022;s:3:\u0022url\u0022;s:57:\u0022[site:url]themes\/custom\/wateraid\/wateraid-social-logo.png\u0022;s:5:\u0022width\u0022;s:3:\u0022600\u0022;s:6:\u0022height\u0022;s:2:\u002260\u0022;}","schema_web_page_author":"a:5:{s:5:\u0022@type\u0022;s:12:\u0022Organization\u0022;s:3:\u0022@id\u0022;s:25:\u0022https:\/\/www.wateraid.org\/\u0022;s:4:\u0022name\u0022;s:8:\u0022WaterAid\u0022;s:3:\u0022url\u0022;s:25:\u0022https:\/\/www.wateraid.org\/\u0022;s:4:\u0022logo\u0022;a:5:{s:5:\u0022@type\u0022;s:11:\u0022ImageObject\u0022;s:20:\u0022representativeOfPage\u0022;s:5:\u0022False\u0022;s:3:\u0022url\u0022;s:57:\u0022[site:url]themes\/custom\/wateraid\/wateraid-social-logo.png\u0022;s:5:\u0022width\u0022;s:3:\u0022600\u0022;s:6:\u0022height\u0022;s:2:\u002260\u0022;}}","schema_web_page_publisher":"a:5:{s:5:\u0022@type\u0022;s:12:\u0022Organization\u0022;s:3:\u0022@id\u0022;s:25:\u0022https:\/\/www.wateraid.org\/\u0022;s:4:\u0022name\u0022;s:8:\u0022WaterAid\u0022;s:3:\u0022url\u0022;s:25:\u0022https:\/\/www.wateraid.org\/\u0022;s:4:\u0022logo\u0022;a:5:{s:5:\u0022@type\u0022;s:11:\u0022ImageObject\u0022;s:20:\u0022representativeOfPage\u0022;s:5:\u0022False\u0022;s:3:\u0022url\u0022;s:57:\u0022[site:url]themes\/custom\/wateraid\/wateraid-social-logo.png\u0022;s:5:\u0022width\u0022;s:3:\u0022600\u0022;s:6:\u0022height\u0022;s:2:\u002260\u0022;}}"}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

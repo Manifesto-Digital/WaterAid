@@ -46,9 +46,9 @@
         });
       };
       window.addEventListener("resize", onresize);
-      if (width > 1024) {
-        onresize();
-      }
+
+      setTimeout(onresize, 500);
+
     },
   };
 })(Drupal);

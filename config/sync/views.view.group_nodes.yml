@@ -24,6 +24,72 @@ display:
     display_options:
       title: Content
       fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         view_group_relationship:
           id: view_group_relationship
           table: group_relationship
@@ -91,9 +157,9 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: ''
-            make_link: true
-            path: '{{ view_group_relationship }}'
+            text: '<a href="/node/{{ nid }}">{{ title }}</a>'
+            make_link: false
+            path: '/node/{{ nid }}'
             absolute: false
             external: false
             replace_spaces: false
@@ -416,17 +482,18 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        delete_group_relationship:
-          id: delete_group_relationship
-          table: group_relationship
-          field: delete_group_relationship
-          relationship: group_relationship
+        langcode_1:
+          id: langcode_1
+          table: node_revision
+          field: langcode
+          relationship: none
           group_type: group
-          admin_label: 'Delete relation link'
-          entity_type: group_relationship
-          plugin_id: entity_link_delete
-          label: 'Link to delete Group relationship'
-          exclude: true
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: field_language
+          label: Language
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -466,9 +533,21 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: 'Remove from Site'
-          output_url_as_text: false
-          absolute: false
+          click_sort_column: value
+          type: language
+          settings:
+            link_to_entity: false
+            native_language: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         edit_node:
           id: edit_node
           table: node
@@ -520,6 +599,59 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: Edit
+          output_url_as_text: false
+          absolute: false
+        delete_group_relationship:
+          id: delete_group_relationship
+          table: group_relationship
+          field: delete_group_relationship
+          relationship: group_relationship
+          group_type: group
+          admin_label: 'Delete relation link'
+          entity_type: group_relationship
+          plugin_id: entity_link_delete
+          label: 'Link to delete Group relationship'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Remove from Site'
           output_url_as_text: false
           absolute: false
         delete_node:
@@ -627,14 +759,66 @@ display:
           destination: true
           fields:
             delete_group_relationship: delete_group_relationship
-            edit_node: edit_node
-            delete_node: delete_node
             view_group_relationship: '0'
             title: '0'
             type: '0'
             created: '0'
             uid: '0'
             status: '0'
+            langcode_1: '0'
+            edit_node: '0'
+            delete_node: '0'
+        operations:
+          id: operations
+          table: node_revision
+          field: operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_operations
+          label: 'Operations links'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: false
       pager:
         type: full
         options:
@@ -686,7 +870,23 @@ display:
           empty: true
           content: 'No content available.'
           tokenize: false
-      sorts: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: 'Authored on'
+            field_identifier: created
+          exposed: true
+          granularity: second
       arguments:
         gid:
           id: gid
@@ -1043,6 +1243,8 @@ display:
         - route.group
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user.group_permissions
         - 'user.node_grants:view'
       tags: {  }
@@ -1072,6 +1274,8 @@ display:
         - route.group
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user.group_permissions
         - 'user.node_grants:view'
       tags: {  }

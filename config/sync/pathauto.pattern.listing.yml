@@ -7,7 +7,7 @@ dependencies:
 id: listing
 label: Listing
 type: 'canonical_entities:node'
-pattern: '/listing/[node:title]'
+pattern: '[node:group-slug]/listing/[node:title]'
 selection_criteria:
   0af7ab69-96d6-4b34-aeb3-fb98582ec6c4:
     id: 'entity_bundle:node'

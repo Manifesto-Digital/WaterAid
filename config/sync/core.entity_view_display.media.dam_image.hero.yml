@@ -6,6 +6,9 @@ dependencies:
     - core.entity_view_mode.media.hero
     - field.field.media.dam_image.field_caption
     - field.field.media.dam_image.field_credit
+    - field.field.media.dam_image.field_dam_expired
+    - field.field.media.dam_image.field_dam_expiry_date
+    - field.field.media.dam_image.field_dam_last_checked
     - field.field.media.dam_image.field_media_dam_image
     - image.style.hero
     - media.type.dam_image
@@ -16,22 +19,6 @@ targetEntityType: media
 bundle: dam_image
 mode: hero
 content:
-  field_caption:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_credit:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_media_dam_image:
     type: wa_orange_dam_image_formater
     label: visually_hidden
@@ -48,6 +35,11 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_caption: true
+  field_credit: true
+  field_dam_expired: true
+  field_dam_expiry_date: true
+  field_dam_last_checked: true
   langcode: true
   name: true
   search_api_excerpt: true
