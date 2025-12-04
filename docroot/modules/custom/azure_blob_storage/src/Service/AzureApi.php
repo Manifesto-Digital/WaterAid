@@ -123,14 +123,19 @@ final class AzureApi {
       $this->logger->debug("blob_name: " . $blob_name);
     }
 
-    $encodedSignature = base64_encode(
-      hash_hmac(
-        "sha256",
-        mb_convert_encoding($signature, 'UTF-8', 'ISO-8859-1'),
-        base64_decode($this->sharedKey()),
-        TRUE
-      )
-    );
+    if ($key = $this->sharedKey()) {
+      $encodedSignature = base64_encode(
+        hash_hmac(
+          "sha256",
+          mb_convert_encoding($signature, 'UTF-8', 'ISO-8859-1'),
+          base64_decode($key),
+          TRUE
+        )
+      );
+    }
+    else {
+      return FALSE;
+    }
 
     $headers = array_merge(
       [

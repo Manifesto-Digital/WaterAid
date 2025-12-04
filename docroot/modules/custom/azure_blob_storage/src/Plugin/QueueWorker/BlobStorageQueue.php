@@ -365,9 +365,8 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
    *   A structured array of data.
    */
   private function generateBlobArray(WebformSubmissionInterface $submission, bool $isDonationSubmission = false): array {
-    $webform     = $submission->getWebform();
-    $owner       = $webform->getOwner();
-
+    $webform = $submission->getWebform();
+    $owner = $webform->getOwner();
     $date = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
 
     $this->loggerChannel->notice(print_r($submission->getData(), TRUE));
