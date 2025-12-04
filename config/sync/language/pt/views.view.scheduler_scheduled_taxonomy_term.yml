@@ -1,0 +1,61 @@
+display:
+  default:
+    display_title: Principal
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filtro
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+          tags:
+            previous: '‹ anterior'
+            next: 'seguinte ›'
+            first: '« primeira'
+            last: 'última »'
+      fields:
+        taxonomy_term_bulk_form:
+          label: 'Atualização em massa'
+          action_title: Ação
+        name:
+          label: Termo
+          separator: ', '
+        vid:
+          label: Vocabulário
+          separator: ', '
+        status:
+          label: Estado
+          settings:
+            format_custom_true: Publicado
+            format_custom_false: 'Não publicado'
+          separator: ', '
+        publish_on:
+          separator: ', '
+        unpublish_on:
+          separator: ', '
+        operations:
+          label: Operações
+      filters:
+        name:
+          expose:
+            label: 'Nome do termo'
+        vid:
+          expose:
+            label: Vocabulário
+        status:
+          expose:
+            label: Estado
+          group_info:
+            label: 'Estado da publicação'
+            group_items:
+              1:
+                title: Publicado
+              2:
+                title: 'Não publicado'

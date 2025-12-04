@@ -9,9 +9,11 @@ url:
     sv: sv
     ja: ja
     hi: hi
+    pt: pt
   domains:
     en: ''
     sv: ''
     ja: ''
     hi: ''
+    pt: ''
 selected_langcode: site_default

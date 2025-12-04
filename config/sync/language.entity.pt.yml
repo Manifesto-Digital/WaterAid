@@ -1,0 +1,9 @@
+uuid: cdc12153-d1e0-4e1f-a891-6d8196d196fe
+langcode: en
+status: true
+dependencies: {  }
+id: pt
+label: 'Portuguese, International'
+direction: ltr
+weight: 4
+locked: false
