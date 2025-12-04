@@ -1185,6 +1185,18 @@ class DonationsWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
+  public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
+    
+    datalayer_add([
+
+    ], TRUE);
+
+    $one = 1;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function confirmForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
 
     $prefix = DonationConstants::DONATION_PREFIX;
