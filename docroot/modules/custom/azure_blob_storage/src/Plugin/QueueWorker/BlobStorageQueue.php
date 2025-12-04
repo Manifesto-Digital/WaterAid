@@ -257,25 +257,13 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
     // the first try because our code will definitely add the number.
     $tries = $data['tries'] ?? 0;
 
-    // For testing purposes, we'll let 5 attempts trigger an error.
-    $test_fail = \Drupal::state()->get('azure_blog_storage_test_fails', 5);
-
     // If we've had five tries, we'll give up.
-    if ($tries >= 5 || $test_fail < 5) {
+    if ($tries >= 5) {
       $this->loggerChannel->critical($this->t('Error sending submission :sid from the :webform webform to the Azure storage blob', [
         ':sid' => $data['sid'],
         ':webform' => $data['webform_id'],
       ]));
-
-      // If tries are more than five, do not continue. Otherwise, let our fake
-      // fails also push to storage so we do not lose data.
-      if ($tries >= 5) {
-        return;
-      }
-      else {
-        $test_fail++;
-        \Drupal::state()->set('azure_blog_storage_test_fails', $test_fail);
-      }
+      return;
     }
 
     $error = FALSE;
