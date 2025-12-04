@@ -146,7 +146,7 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
   public function onMigratePreRowSave(MigratePreRowSaveEvent $event): void {
 
     // We only need to do this for redirects.
-    if ($event->getMigration()->id() == 'redirect') {
+    if (str_starts_with($event->getMigration()->id(), 'redirect')) {
 
       // Create the redirect entity so we can check whether it is a duplicate.
       $storage = $this->entityTypeManager->getStorage('redirect');

@@ -29,6 +29,13 @@ process:
       plugin: default_value
       default_value: en
   status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      '0': draft
+      '1': published
   title: title
   field_teaser_text: body__summary
   field_teaser_image:
