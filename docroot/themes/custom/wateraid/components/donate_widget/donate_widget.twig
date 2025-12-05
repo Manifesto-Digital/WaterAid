@@ -214,7 +214,11 @@
       }) }}
 
       <div class="ssl-logo">
-        {{ include('@wateraid/images/icons/ssl-light.svg') }}
+        {% if config.ssl_logo_dark == true %}
+          {{ include('@wateraid/images/icons/ssl.svg') }}
+        {% else %}
+          {{ include('@wateraid/images/icons/ssl-light.svg') }}
+        {% endif %}
       </div>
 
     </div>
