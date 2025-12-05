@@ -1,0 +1,53 @@
+uuid: a0dae06d-ed2e-4ccd-89d6-a705eaaf0c5e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: menu_cta_mw
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_mw
+label: 'Menu CTA MW'
+source:
+  plugin: paragraph_source
+  bundle: menu_cta
+  fields:
+    - field_call_to_action_link
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_primary_cta:
+    -
+      plugin: links_migration_lookup
+      migration:
+        - articles_mw
+        - campaigns_mw
+        - country_details_mw
+        - donation_forms_mw
+        - donation_landing_pages_mw
+        - events_mw
+        - filtered_landing_pages_mw
+        - flexible_content_mw
+        - get_involved_node_mw
+        - jobs_mw
+        - press_and_media_mw
+        - press_and_media_biographies_mw
+        - publication_mw
+        - standard_page_mw
+        - stories_mw
+        - webforms_mw
+      source: field_call_to_action_link
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: call_to_action
+idMap: {  }
+migration_dependencies: {  }
+include: null

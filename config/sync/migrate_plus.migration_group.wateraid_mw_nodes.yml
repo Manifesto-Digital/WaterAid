@@ -1,0 +1,17 @@
+uuid: 58cbd3d4-e991-4c1f-947f-5ddd89de89aa
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_mw_nodes
+label: 'WaterAid MW migration (Nodes)'
+description: 'Nodes from the wateraid.org/mw site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: mw_site_migration
+  migration_tags:
+    - wateraid_mw

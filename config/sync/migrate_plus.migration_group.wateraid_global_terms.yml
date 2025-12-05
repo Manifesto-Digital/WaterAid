@@ -1,0 +1,17 @@
+uuid: 500fcc37-9bd0-40bb-b683-1fc6cf02ad42
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_global_terms
+label: 'WaterAid GLOBAL migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/global site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: global_site_migration
+  migration_tags:
+    - wateraid_global

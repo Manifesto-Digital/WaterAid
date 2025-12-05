@@ -1,0 +1,30 @@
+uuid: 92ee832d-1b4b-43b1-9787-7dc1b5091f4b
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: users_mz
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_mz
+label: 'Users MZ'
+source:
+  plugin: user_source
+process:
+  name: name
+  langcode: langcode
+  mail: name
+  pass: pass
+  timezone: timezone
+  status: status
+  field_real_name/value: field_real_name_value
+destination:
+  plugin: 'wa_user:user'
+idMap: {  }
+migration_dependencies: null
+include: null

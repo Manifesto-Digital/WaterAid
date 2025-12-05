@@ -1,0 +1,17 @@
+uuid: e47acab7-cfe3-44c1-8886-7d5f16a571e8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_mz
+label: 'WaterAid MZ migration'
+description: 'Content from the wateraid.org/mz site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: mz_site_migration
+  migration_tags:
+    - wateraid_mz

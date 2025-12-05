@@ -1,0 +1,47 @@
+uuid: d166b4dc-a96d-4895-a3be-c4c61942dfc3
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: tabbed_item_bd
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_bd
+label: 'Tabbed Content BD'
+source:
+  plugin: paragraph_source
+  bundle: tabbed_item
+  fields:
+    - field_tab_content
+    - field_tab_header
+    - field_tab_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_title: field_tab_header
+  field_rich_text/value: field_tab_content/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  temp_media:
+    plugin: migration_lookup
+    source: field_tab_image
+    migration: media_bd
+    no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies: {  }
+include: null

@@ -1,0 +1,17 @@
+uuid: 5f7a22fd-9fff-44e4-9560-37c993a23053
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_et_terms
+label: 'WaterAid ET migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/et site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: et_site_migration
+  migration_tags:
+    - wateraid_et

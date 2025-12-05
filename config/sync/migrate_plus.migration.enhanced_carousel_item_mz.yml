@@ -1,0 +1,68 @@
+uuid: e80aea70-4c72-48ea-8c47-824ddc4840c1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: enhanced_carousel_item_mz
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_mz
+label: 'Enhanced Carousel MZ'
+source:
+  plugin: paragraph_source
+  bundle: enhanced_carousel_item
+  fields:
+    - field_scroll_carousel_image
+    - field_scroll_carousel_content
+    - field_scroll_carousel_link
+    - field_enhanced_carousel_title
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: pt
+  status: status
+  field_title: field_enhanced_carousel_title
+  field_rich_text/value: field_scroll_carousel_content/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_link:
+    plugin: links_migration_lookup
+    migration:
+      - articles_mz
+      - campaigns_mz
+      - country_details_mz
+      - donation_forms_mz
+      - donation_landing_pages_mz
+      - events_mz
+      - filtered_landing_pages_mz
+      - flexible_content_mz
+      - get_involved_node_mz
+      - jobs_mz
+      - press_and_media_mz
+      - press_and_media_biographies_mz
+      - publication_mz
+      - standard_page_mz
+      - stories_mz
+      - webforms_mz
+    source: field_scroll_carousel_link
+  temp_media:
+    plugin: migration_lookup
+    source: field_scroll_carousel_image
+    migration: media_mz
+    no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies: {  }
+include: null

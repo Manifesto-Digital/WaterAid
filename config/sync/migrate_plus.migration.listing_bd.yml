@@ -1,0 +1,60 @@
+uuid: da442d0e-8bfc-4599-86ae-bf4c55daf2f0
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: listing_bd
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_bd
+label: 'Listing BD'
+source:
+  plugin: listing_paragraph_source
+  bundle: listing
+  fields:
+    - field_items_per_row
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - articles_bd
+        - campaigns_bd
+        - country_details_bd
+        - donation_forms_bd
+        - donation_landing_pages_bd
+        - events_bd
+        - filtered_landing_pages_bd
+        - flexible_content_bd
+        - get_involved_node_bd
+        - jobs_bd
+        - press_and_media_bd
+        - press_and_media_biographies_bd
+        - publication_bd
+        - standard_page_bd
+        - stories_bd
+        - webforms_bd
+      source: field_listing_item
+  field_card_columns:
+    plugin: static_map
+    source: field_items_per_row
+    map:
+      three_row: 3_columns
+      four_row: 4_columns
+    default_value: 2_columns
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null
