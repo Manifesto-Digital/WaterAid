@@ -27,6 +27,9 @@ props:
     heading_prefix:
       type: string
       title: Heading prefix
+    config:
+      type: object
+      title: Widget configuration
 slots:
   heading:
     type: string

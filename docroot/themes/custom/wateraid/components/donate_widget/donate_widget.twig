@@ -3,6 +3,9 @@
   'donate-widget',
 ] %}
 
+{% set default_monthly_index = config.monthly_index ?? '1'%}
+{% set default_one_off_index = config.one_off_index ?? '1'%}
+
 {% set payment_logos = [
   { src: 'wa-visa.svg',
     alt: 'Visa'
@@ -69,7 +72,7 @@
           {% for item in monthly_amounts %}
             {% set radio_id = 'monthly-amount-' ~ item.amount %}
 
-            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}">
+            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_mobile_monthly == item.amount %} hide-on-mobile{% endif %}">
               {% if loop.revindex == 2 %}
                 <div class="donate-widget__increase-impact">
                   {{ 'Increase your input'|t }}
@@ -80,7 +83,7 @@
                      id="{{ radio_id }}"
                      name="monthly_amount"
                      value="{{ item.amount }}"
-                     {% if loop.index == 1 %}checked{% endif %}>
+                     {% if loop.index == default_monthly_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
                 {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
               </label>
@@ -137,7 +140,7 @@
           {% for item in one_off_amounts %}
             {% set radio_id = 'amount-' ~ item.amount %}
 
-            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}">
+            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_mobile_one_off == item.amount %} hide-on-mobile{% endif %}">
               {% if loop.revindex == 2 %}
                 <div class="donate-widget__increase-impact">
                   {{ 'Increase your input'|t }}
@@ -148,7 +151,7 @@
                      id="{{ radio_id }}"
                      name="one_off_amount"
                      value="{{ item.amount }}"
-                     {% if loop.index == 1 %}checked{% endif %}>
+                     {% if loop.index == default_one_off_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
                 {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
               </label>

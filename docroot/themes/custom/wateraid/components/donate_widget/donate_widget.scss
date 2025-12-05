@@ -230,6 +230,11 @@
   /* Each option grows equally to fill the space */
   flex: 1 1 auto;
   position: relative;
+  &.hide-on-mobile {
+    @include tablet-down {
+      display: none;
+    }
+  }
 }
 
 /* Element: The actual radio input */
