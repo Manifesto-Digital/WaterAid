@@ -31,8 +31,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   field_hero:
     plugin: paragraph_migration_lookup
     migration:

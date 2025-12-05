@@ -1,3 +1,4 @@
+uuid: 540c5ebe-a00b-40cb-ba78-6630e3e42134
 langcode: en
 status: true
 dependencies:
@@ -35,8 +36,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   field_hero:
     plugin: paragraph_migration_lookup
     migration:

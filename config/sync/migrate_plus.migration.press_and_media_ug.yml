@@ -1,3 +1,4 @@
+uuid: 1ecadffe-d23d-4114-9348-be8a4eab1d50
 langcode: en
 status: true
 dependencies:
@@ -37,8 +38,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   created: created
   changed: changed
   temp_hero:

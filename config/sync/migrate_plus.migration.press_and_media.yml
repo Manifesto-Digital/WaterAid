@@ -38,8 +38,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   created: created
   changed: changed
   temp_hero:

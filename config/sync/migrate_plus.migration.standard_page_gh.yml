@@ -1,3 +1,4 @@
+uuid: 305f3575-d81f-4278-9c04-d84c23349991
 langcode: en
 status: true
 dependencies:
@@ -31,8 +32,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   title: title
   field_teaser_text: body__summary
   field_teaser_image:

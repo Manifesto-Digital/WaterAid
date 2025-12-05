@@ -1,3 +1,4 @@
+uuid: 9251d472-29e7-4fd4-a7c6-9d53c5f0f810
 langcode: en
 status: true
 dependencies:
@@ -52,8 +53,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   title: title
   field_teaser_text: body__summary
   field_teaser_image:

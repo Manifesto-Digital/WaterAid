@@ -1,3 +1,4 @@
+uuid: 7621a803-af6a-4715-a407-f3a0ee2c883c
 langcode: en
 status: true
 dependencies:
@@ -37,8 +38,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   title: title
   temp_image:
     plugin: migration_lookup

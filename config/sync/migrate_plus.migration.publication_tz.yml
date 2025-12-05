@@ -1,3 +1,4 @@
+uuid: ed86f907-35f1-4980-ae61-a4fabb1662cd
 langcode: en
 status: true
 dependencies:
@@ -44,8 +45,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   title: title
   created: created
   changed: changed

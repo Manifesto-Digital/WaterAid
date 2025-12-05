@@ -1,3 +1,4 @@
+uuid: 146f2fae-ac63-4a70-a134-60513b38dbc5
 langcode: en
 status: true
 dependencies:
@@ -41,8 +42,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   title: title
   created: created
   changed: changed

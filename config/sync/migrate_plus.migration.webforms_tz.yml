@@ -1,3 +1,4 @@
+uuid: 6b1f1955-4614-40c4-bcc4-c8a5477647db
 langcode: en
 status: true
 dependencies:
@@ -31,8 +32,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   title: title
   webform: webform
   field_hero:

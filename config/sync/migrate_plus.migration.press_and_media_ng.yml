@@ -1,3 +1,4 @@
+uuid: 9b818696-8815-44a4-beea-ed360598fc09
 langcode: en
 status: true
 dependencies:
@@ -37,8 +38,8 @@ process:
     source: status
     default_value: draft
     map:
-      '0': draft
-      '1': published
+      - draft
+      - published
   created: created
   changed: changed
   temp_hero:
