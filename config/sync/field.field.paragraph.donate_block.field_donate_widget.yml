@@ -43,14 +43,26 @@ settings:
       donate_block:
         weight: 28
         enabled: false
+      donate_exit_modal:
+        weight: 41
+        enabled: false
       donation_amount:
         weight: 23
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 43
         enabled: false
       donation_widget:
         weight: 24
         enabled: true
+      external_card:
+        weight: 45
+        enabled: false
       facts_and_stats:
         weight: 25
+        enabled: false
+      gallery_item:
+        weight: 47
         enabled: false
       hero_basic:
         weight: 26
@@ -64,6 +76,9 @@ settings:
       hero_news:
         weight: 29
         enabled: false
+      hero_search:
+        weight: 52
+        enabled: false
       hero_video:
         weight: 30
         enabled: false
@@ -73,14 +88,35 @@ settings:
       image_gallery:
         weight: 32
         enabled: false
+      image_with_quote_sidebar:
+        weight: 56
+        enabled: false
+      internal_card:
+        weight: 57
+        enabled: false
       quote:
         weight: 33
         enabled: false
       rich_text:
         weight: 34
         enabled: false
+      spend:
+        weight: 60
+        enabled: false
+      spend_amount:
+        weight: 61
+        enabled: false
+      spend_item:
+        weight: 62
+        enabled: false
+      spend_module:
+        weight: 63
+        enabled: false
       stats_item:
         weight: 35
+        enabled: false
+      temp_paragraph:
+        weight: 65
         enabled: false
       text_media:
         weight: 36

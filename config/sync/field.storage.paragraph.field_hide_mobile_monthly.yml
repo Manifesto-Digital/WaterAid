@@ -1,0 +1,20 @@
+uuid: 538ee0d8-9c6e-4d6a-a84d-6054c4b10fa2
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_hide_mobile_monthly
+field_name: field_hide_mobile_monthly
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
