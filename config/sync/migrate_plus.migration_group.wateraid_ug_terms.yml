@@ -1,0 +1,17 @@
+uuid: 1d964e6c-f315-4316-ac5e-6becb82dd2ba
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_ug_terms
+label: 'WaterAid UG migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/ug site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: ug_site_migration
+  migration_tags:
+    - wateraid_ug

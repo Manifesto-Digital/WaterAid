@@ -1,0 +1,17 @@
+uuid: 5d66aac3-f45d-4062-b304-b5efbbe0f6bd
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_gh_nodes
+label: 'WaterAid GH migration (Nodes)'
+description: 'Nodes from the wateraid.org/gh site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: gh_site_migration
+  migration_tags:
+    - wateraid_gh

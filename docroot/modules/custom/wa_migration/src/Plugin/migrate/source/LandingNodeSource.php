@@ -14,7 +14,7 @@ use Drupal\Core\Database\Query\SelectInterface;
  *   source_module = "wa_migration",
  * )
  */
-class LandingNodeSource extends NodeSource {
+class LandingNodeSource extends UkNodeSource {
 
   /**
    * Helper to get the query separately so we can minimise code duplication.

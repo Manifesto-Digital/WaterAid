@@ -14,7 +14,7 @@ migration_tags:
 migration_group: wateraid_uk_nodes
 label: 'Shorthand Stories'
 source:
-  plugin: node_source
+  plugin: uk_node_source
   bundle: shorthand_story
   fields:
     - field_audiences
@@ -34,6 +34,13 @@ process:
       plugin: default_value
       default_value: en
   status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      - draft
+      - published
   title: title
   field_teaser_text: field_summary
   field_teaser_image:

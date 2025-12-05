@@ -1,0 +1,37 @@
+uuid: 0d0ab339-9a75-432a-afee-3069a4115b4f
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: general_text_area_ng
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ng
+label: 'General Text Area NG'
+source:
+  plugin: paragraph_source
+  bundle: general_text_area
+  fields:
+    - field_paragraph_content
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_rich_text/value: field_paragraph_content/0
+  field_rich_text/format:
+    -
+      plugin: default_value
+      default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: rich_text
+idMap: {  }
+migration_dependencies: {  }
+include: null

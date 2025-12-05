@@ -1,0 +1,49 @@
+uuid: a7f5e783-16c0-4977-9fad-41cea744d049
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: content_carousel_bd
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_bd
+label: 'Carousel (Two Column) BD'
+source:
+  plugin: paragraph_source
+  bundle: content_carousel
+  fields:
+    - field_image
+    - field_vcm_intro
+    - field_vcm_title
+    - field_vcm_links
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_title: field_vcm_title
+  field_rich_text/value: field_vcm_intro/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_link: field_vcm_links
+  temp_media:
+    plugin: migration_lookup
+    source: field_image
+    migration: media_bd
+    no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies: {  }
+include: null

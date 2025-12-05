@@ -1,0 +1,17 @@
+uuid: 5cb2c814-030d-4a7b-b732-09d9060df0e8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_ng_media
+label: 'WaterAid NG migration (Media)'
+description: 'Media from the wateraid.org/ng site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: ng_site_migration
+  migration_tags:
+    - wateraid_ng

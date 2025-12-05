@@ -1,0 +1,17 @@
+uuid: 27138e8c-f0f1-4d4b-83e7-5cf6f28f5464
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_bd
+label: 'WaterAid BD migration'
+description: 'Content from the wateraid.org/bd site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: bd_site_migration
+  migration_tags:
+    - wateraid_bd
