@@ -1,0 +1,17 @@
+uuid: 96a603b3-fef3-43e2-808e-ba26e039319d
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_global_media
+label: 'WaterAid GLOBAL migration (Media)'
+description: 'Media from the wateraid.org/global site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: global_site_migration
+  migration_tags:
+    - wateraid_global

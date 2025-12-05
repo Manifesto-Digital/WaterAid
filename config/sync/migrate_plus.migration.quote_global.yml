@@ -1,0 +1,46 @@
+uuid: 4aae1349-6b11-4dd3-9693-df10c1224c48
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: quote_global
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_global
+label: 'Quote GLOBAL'
+source:
+  plugin: paragraph_source
+  bundle: quote
+  fields:
+    - field_quote_attribution
+    - field_quote_text
+    - field_quote_image
+process:
+  langcode:
+    plugin: default_value
+    default_value: en
+  status: status
+  field_citation: field_quote_attribution
+  field_quote/value: field_quote_text/0
+  field_quote/format:
+    plugin: default_value
+    default_value: full_html
+  field_quote_type:
+    plugin: default_value
+    default_value: image_left_above
+  field_image:
+    plugin: migration_lookup
+    migration: media_global
+    source: field_quote_image
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: quote
+idMap: {  }
+migration_dependencies: {  }
+include: null

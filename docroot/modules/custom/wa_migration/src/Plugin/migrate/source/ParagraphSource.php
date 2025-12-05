@@ -69,7 +69,12 @@ class ParagraphSource extends SqlBase {
           ->execute()->fetchAll()) {
           foreach ($data as $datum) {
             if (isset($datum[$field . '_value'])) {
-              $value[] = $datum[$field . '_value'];
+              if ($field == 'field_vcm_intro') {
+                $value[] = substr($datum[$field . '_value'], 0, 252);
+              }
+              else {
+                $value[] = $datum[$field . '_value'];
+              }
             }
             elseif (isset($datum[$field . '_target_id'])) {
               if ($field == 'field_activation_bar_item') {

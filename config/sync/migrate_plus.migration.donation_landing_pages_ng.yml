@@ -1,0 +1,114 @@
+uuid: 5b5ade66-3d65-4669-809f-9f5cbffcb6f4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: donation_landing_pages_ng
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ng_nodes
+label: 'Donation Landing Pages NG'
+source:
+  plugin: node_source
+  bundle: donation_landing_page
+  fields:
+    - field_wa_admin_description
+    - field_display_donation_reminder
+    - field_meta_tags
+    - field_header_style
+    - field_subtext
+    - field_modules
+    - field_hero
+    - field_teaser_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      - draft
+      - published
+  field_hero:
+    plugin: paragraph_migration_lookup
+    migration:
+      - hero_ng
+    source: field_hero
+    no_stub: true
+  title: title
+  field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media_ng
+    source: field_teaser_image
+    no_stub: true
+  field_administrative_description: field_wa_admin_description
+  field_display_donation_reminder: field_display_donation_reminder
+  field_minimal_header: field_header_style
+  field_meta_tags: field_meta_tags
+  field_subtext: field_subtext
+  uid:
+    plugin: migration_lookup
+    migration: users_ng
+    source: uid
+    no_stub: true
+  temp_body:
+    -
+      plugin: body_to_paragraph
+      source: body__value
+  temp_paragraphs:
+    -
+      plugin: paragraph_migration_lookup
+      migration:
+        - general_text_area_ng
+        - wysiwyg_ng
+        - menu_cta_ng
+        - resource_link_with_description_ng
+        - faqs_ng
+        - view_more_teasers_ng
+        - aside_link_item_ng
+        - info_section_ng
+        - quote_simple_ng
+        - image_ng
+        - image_gallery_ng
+        - video_ng
+        - carousel_ng
+        - content_carousel_ng
+        - enhanced_carousel_item_ng
+        - tabbed_item_ng
+        - content_with_large_image_ng
+        - aside_with_image_ng
+        - quote_ng
+        - listing_ng
+        - biography_item_ng
+        - activation_bar_item_ng
+        - rainbow_link_item_ng
+        - donation_cta_widget_embed_ng
+        - hero_in_content_ng
+        - variable_content_module_ng
+        - statistics_ng
+        - statistics_icons_ng
+      source: field_modules
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_paragraphs'
+destination:
+  plugin: 'entity:node'
+  default_bundle: donation
+idMap: {  }
+migration_dependencies:
+  required:
+    - users_ng
+    - hero_ng
+include: null

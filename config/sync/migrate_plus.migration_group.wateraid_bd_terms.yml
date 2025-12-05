@@ -1,0 +1,17 @@
+uuid: 4b27c342-5624-47b4-85ca-13ebffe4cccf
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_bd_terms
+label: 'WaterAid BD migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/bd site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: bd_site_migration
+  migration_tags:
+    - wateraid_bd
