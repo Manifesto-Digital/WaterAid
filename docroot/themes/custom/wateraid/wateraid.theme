@@ -240,6 +240,10 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
 
   $variables['monthly_donation_amounts'] = $monthly_amounts;
   $variables['one_off_donation_amounts'] = $one_off_amounts;
+
+  // Set SSL logo to dark if in webform nodes.
+  $parentEntity = $paragraph->getParentEntity();
+  $variables['ssl_logo_dark'] = $parentEntity && $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
 }
 
 /**
