@@ -61,7 +61,7 @@ final class UserSource extends SqlBase {
 
     // Exclude any accounts for agencies looking after the old site.
     $and = $query->andConditionGroup();
-    $and->condition('u.name', '%@weareaccess%', 'NOT LIKE');
+    $and->condition('u.name', '%access%', 'NOT LIKE');
     $and->condition('u.name', '%@manifesto.co.uk%', 'NOT LIKE');
     $query->condition($and);
 

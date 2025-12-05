@@ -1,0 +1,37 @@
+uuid: a49fd79a-07b4-4373-a9be-226b8ee205da
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: subject_areas_mz
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_mz_terms
+label: 'Subject Areas MZ'
+source:
+  plugin: term_source
+  bundle: subject_areas
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: pt
+  status: status
+  name: name
+  description/value: description__value
+  description/format:
+    -
+      plugin: default_value
+      default_value: full_html
+  weight: weight
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: subject_areas
+idMap: {  }
+migration_dependencies: null
+include: null

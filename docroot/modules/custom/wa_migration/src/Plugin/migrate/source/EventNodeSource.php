@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Drupal\wa_migration\Plugin\migrate\source;
 
 use Drupal\Core\Database\Query\SelectInterface;
-use Drupal\migrate\Plugin\migrate\source\SqlBase;
-use Drupal\migrate\Row;
 
 /**
  * The 'event_node_source' source plugin.
@@ -16,7 +14,7 @@ use Drupal\migrate\Row;
  *   source_module = "wa_migration",
  * )
  */
-final class EventNodeSource extends NodeSource {
+final class EventNodeSource extends UkNodeSource {
 
   /**
    * Helper to get the query separately so we can minimise code duplication.

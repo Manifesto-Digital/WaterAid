@@ -1,0 +1,17 @@
+uuid: c80893be-ed94-4c22-a5df-0db6a5357c76
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_ug_media
+label: 'WaterAid UG migration (Media)'
+description: 'Media from the wateraid.org/ug site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: ug_site_migration
+  migration_tags:
+    - wateraid_ug

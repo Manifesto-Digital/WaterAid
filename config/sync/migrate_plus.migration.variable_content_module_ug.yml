@@ -1,0 +1,148 @@
+uuid: 9dd1f449-ae9c-4872-ad55-c8e8eb79299a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: variable_content_module_ug
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ug
+label: 'Variable Content Module UG'
+source:
+  plugin: paragraph_source
+  bundle: variable_content_module
+  fields:
+    - field_aside_section
+    - field_vcm_intro
+    - field_vcm_links
+    - field_vcm_main
+    - field_vcm_title
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_aside_section:
+    plugin: paragraph_migration_lookup
+    migration:
+      - general_text_area_ug
+      - wysiwyg_ug
+      - menu_cta_ug
+      - resource_link_with_description_ug
+      - faqs_ug
+      - view_more_teasers_ug
+      - aside_link_item_ug
+      - info_section_ug
+      - quote_simple_ug
+      - image_ug
+      - image_gallery_ug
+      - video_ug
+      - carousel_ug
+      - content_carousel_ug
+      - enhanced_carousel_item_ug
+      - tabbed_item_ug
+      - content_with_large_image_ug
+      - aside_with_image_ug
+      - quote_ug
+      - listing_ug
+      - biography_item_ug
+      - activation_bar_item_ug
+      - rainbow_link_item_ug
+      - donation_cta_widget_embed_ug
+      - hero_in_content_ug
+      - statistics_ug
+      - statistics_icons_ug
+    source: field_aside_section
+    no_stub: true
+  field_main:
+    plugin: paragraph_migration_lookup
+    migration:
+      - general_text_area_ug
+      - wysiwyg_ug
+      - menu_cta_ug
+      - resource_link_with_description_ug
+      - faqs_ug
+      - view_more_teasers_ug
+      - aside_link_item_ug
+      - info_section_ug
+      - quote_simple_ug
+      - image_ug
+      - image_gallery_ug
+      - video_ug
+      - carousel_ug
+      - content_carousel_ug
+      - enhanced_carousel_item_ug
+      - tabbed_item_ug
+      - content_with_large_image_ug
+      - aside_with_image_ug
+      - quote_ug
+      - listing_ug
+      - biography_item_ug
+      - activation_bar_item_ug
+      - rainbow_link_item_ug
+      - donation_cta_widget_embed_ug
+      - hero_in_content_ug
+      - statistics_ug
+      - statistics_icons_ug
+    source: field_vcm_main
+    no_stub: true
+  field_links:
+    plugin: links_migration_lookup
+    migration:
+      - articles_ug
+      - campaigns_ug
+      - country_details_ug
+      - donation_forms_ug
+      - donation_landing_pages_ug
+      - events_ug
+      - filtered_landing_pages_ug
+      - flexible_content_ug
+      - get_involved_node_ug
+      - jobs_ug
+      - press_and_media_ug
+      - press_and_media_biographies_ug
+      - publication_ug
+      - standard_page_ug
+      - stories_ug
+      - webforms_ug
+    source: field_vcm_links
+  field_intro: field_vcm_intro
+  field_vcm_title: field_vcm_title
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: temp_paragraph
+idMap: {  }
+migration_dependencies:
+  required:
+    - general_text_area_ug
+    - wysiwyg_ug
+    - menu_cta_ug
+    - resource_link_with_description_ug
+    - faqs_ug
+    - view_more_teasers_ug
+    - aside_link_item_ug
+    - info_section_ug
+    - quote_simple_ug
+    - image_ug
+    - image_gallery_ug
+    - video_ug
+    - carousel_ug
+    - content_carousel_ug
+    - enhanced_carousel_item_ug
+    - tabbed_item_ug
+    - content_with_large_image_ug
+    - aside_with_image_ug
+    - quote_ug
+    - listing_ug
+    - biography_item_ug
+    - activation_bar_item_ug
+    - rainbow_link_item_ug
+    - donation_cta_widget_embed_ug
+    - hero_in_content_ug
+include: null

@@ -1,0 +1,60 @@
+uuid: 1cde3728-eacd-49fe-90bb-5416552e6c86
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: statistic_tz
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_tz
+label: 'Statistic TZ'
+source:
+  plugin: paragraph_source
+  bundle: statistic
+  fields:
+    - field_call_to_action_link
+    - field_statistic_details
+    - field_statistic_title
+process:
+  langcode:
+    plugin: default_value
+    default_value: en
+  status: status
+  field_figure:
+    plugin: callback
+    callable: strip_tags
+    source: field_statistic_title/0
+  field_description/value: field_statistic_details/0
+  field_description/format:
+    plugin: default_value
+    default_value: full_html
+  field_link:
+    plugin: links_migration_lookup
+    source: field_call_to_action_link
+    migration:
+      - campaigns_tz
+      - country_details_tz
+      - donation_forms_tz
+      - donation_landing_pages_tz
+      - events_tz
+      - filtered_landing_pages_tz
+      - flexible_content_tz
+      - get_involved_node_tz
+      - jobs_tz
+      - press_and_media_tz
+      - press_and_media_biographies_tz
+      - publication_tz
+      - standard_page_tz
+      - stories_tz
+      - webforms_tz
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: stats_item
+idMap: {  }
+migration_dependencies: {  }
+include: null

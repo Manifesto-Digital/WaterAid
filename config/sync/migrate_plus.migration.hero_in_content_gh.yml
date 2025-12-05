@@ -1,0 +1,65 @@
+uuid: 6cfad874-31d3-4b0d-9844-c14600025072
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: hero_in_content_gh
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_gh
+label: 'Hero in Content GH'
+source:
+  plugin: paragraph_source
+  bundle: hero_in_content
+  constants:
+    head_start: '<h2>'
+    head_end: '</h2>'
+    p_start: '<p>'
+    p_end: '</p>'
+  fields:
+    - field_hero_image
+    - field_paragraph_hero_title
+    - field_paragraph_hero_subtext
+    - field_hero_video
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  temp_media:
+    plugin: migration_lookup
+    source: field_hero_image/0
+    migration: media_gh
+    no_stub: true
+  temp_video:
+    plugin: video_url_to_media
+    source: field_hero_video/0
+  field_media:
+    plugin: concat
+    source:
+      - '@temp_media'
+      - '@temp_video'
+  field_rich_text/value:
+    plugin: concat
+    source:
+      - constants/head_start
+      - field_paragraph_hero_title/0
+      - constants/head_end
+      - constants/p_start
+      - field_paragraph_hero_subtext/0
+      - constants/p_end
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: text_media
+idMap: {  }
+migration_dependencies: {  }
+include: null
