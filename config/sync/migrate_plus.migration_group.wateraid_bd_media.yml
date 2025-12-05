@@ -1,0 +1,17 @@
+uuid: 076e2434-8803-4885-8ce1-227a6467433c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_bd_media
+label: 'WaterAid BD migration (Media)'
+description: 'Media from the wateraid.org/bd site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: bd_site_migration
+  migration_tags:
+    - wateraid_bd

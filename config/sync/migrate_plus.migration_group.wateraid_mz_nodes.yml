@@ -1,0 +1,17 @@
+uuid: 1675c9cf-929f-4e54-a8bb-44f77c24321b
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_mz_nodes
+label: 'WaterAid MZ migration (Nodes)'
+description: 'Nodes from the wateraid.org/mz site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: mz_site_migration
+  migration_tags:
+    - wateraid_mz

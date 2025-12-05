@@ -1,0 +1,44 @@
+uuid: 8eb4240c-da02-4748-b5a1-96df0dc26146
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: audiences_mz
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_mz_terms
+label: 'Audiences MZ'
+source:
+  plugin: term_source
+  bundle: audiences
+  fields:
+    - field_get_involved_access
+    - field_get_involv_category_title
+    - field_get_involved_description
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: pt
+  status: status
+  name: name
+  description/value: description__value
+  description/format:
+    -
+      plugin: default_value
+      default_value: full_html
+  weight: weight
+  field_get_involved_access/value: field_get_involved_access
+  field_category_title/value: field_get_involv_category_title
+  field_category_description/value: field_get_involved_description
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: audiences
+idMap: {  }
+migration_dependencies: null
+include: null

@@ -1,0 +1,32 @@
+uuid: 33834c6c-8c43-4dcf-8bfc-8f71bc4564d7
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: remote_video_ng
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ng
+label: 'Remote Video NG'
+source:
+  plugin: remote_video_source
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  field_media_oembed_video: field_media_video_embed_field_value
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:media'
+  default_bundle: remote_video
+idMap: {  }
+migration_dependencies: {  }
+include: null
