@@ -9,6 +9,7 @@ use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
@@ -1179,6 +1180,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       // Add normalised payment data back to the data object & assign
       // normalised data object back onto the submission.
       $webform_submission->setData(array_merge($webform_submission->getData(), $payment_data));
+      $form_state->setValue('payment_data', $payment_data);
     }
   }
 
@@ -1186,133 +1188,155 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    $values = $form_state->getValues();
+    $this->sendTracking($form_state->getValues());
+  }
 
-    $frequency = ($values['donation_amount']['frequency']) ?? NULL;
+  /**
+   * Send tracking data to the dataLayer.
+   *
+   * @param array $values
+   *   The form submit values.
+   */
+  private function sendTracking(array $values): void {
+    if (!isset($values['payment_data'])) {
+      $values['payment_data'] = [];
+    }
 
-    $one = 1;
+    if (!isset($values['gift_aid'])) {
+      $values['gift_aid'] = [];
+    }
+
+    // Amount
+    if (!$amount = ($values['donation_amount']['amount']) ?? NULL) {
+      $amount = ($values['payment_data']['donation__amount']) ?? NULL;
+    }
+
+
+    // Frequency value.
+    if (!$frequency = ($values['donation_amount']['frequency']) ?? NULL) {
+      $frequency = ($values['payment']['payment_frequency']) ?? NULL;
+    }
+
+    if ($frequency) {
+      $frequency = ($frequency == 'one_off') ? 'One-off' : 'Monthly';
+    }
+
+    // Org Name value.
+    $org_name = NULL;
+
+    foreach ([
+      'organisation_name',
+      'university_name',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $org_name = $value;
+      }
+    }
+
+    // Event type value
+    $event_type = NULL;
+
+    foreach ([
+      'what_kind_of_event_challenge_company_',
+      'what_kind_of_event_challenge_faith_group_',
+      'what_kind_of_event_challenge_school_',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $event_type = $value;
+      }
+    }
+
+    // Event name
+    $event_name = NULL;
+
+    foreach ([
+      'what_event_did_you_take_part_in_individual',
+      'what_event_did_you_take_part_in_company',
+      'what_was_the_name_of_the_event_',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $event_name = $value;
+      }
+    }
+
+    $comms = [];
+
+    foreach ($values['communication_preferences'] as $pref) {
+      switch ($pref) {
+        case 'opt_out_post':
+          $comms[] = 'None';
+          break;
+
+        case 'opt_in_email':
+          $comms[] = 'Email';
+          break;
+
+        case 'opt_in_phone':
+          $comms[] = 'Phone';
+          break;
+
+        case 'opt_in_sms':
+          $comms[] = 'SMS';
+          break;
+
+      }
+    }
+
+    // Event date.
+    $event_date = NULL;
+
+    foreach ([
+      'when_did_the_event_take_place_individual',
+      'when_did_the_event_take_place_company',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $event_date = $value;
+      }
+    }
+
     $ecommerce = [
       'event' => 'ecommerce',
-      'donation_id' => '',
+      'donation_id' => $values['payment_data']['donation__transaction_id'] ?? '',
       'donation_form_id' => $this->webform->id(),
-      'donation_date' => $this->dateFormatter->format(time(), 'uk_date'),
-      'donation_payment_method' => '',
-      'donation_payment_type' => '',
-      'donation_fund_code' => '',
-      'donation_package_Code' => '',
-      'referral_source' => '',
-      'notification_preferences' => '',
+      'donation_date' => $values['payment_data']['donation__date'] ?? '',
+      'donation_payment_method' => $values['payment_data']['donation__payment_method'] ?? '',
+      'donation_payment_type' => $values['payment_data']['donation__payment_type'] ?? '',
+      'donation_fund_code' => $values['payment_data']['donation__fund_code'] ?? '',
+      'donation_package_Code' => $values['payment_data']['donation__package_code'] ?? '',
+      'referral_source' => $values['prompt_reason'] ?? '',
+      'notification_preferences' => $comms ?? [],
     ];
 
     $purchase = [
       'event' => 'purchase',
-      'transaction_id' => '',
-      'value' => $values['donation_amount']['amount'],
-      'currency' => '',
+      'transaction_id' => $values['payment_data']['donation__transaction_id'] ?? '',
+      'value' => $amount,
+      'currency' => $values['payment_data']['donation__currency'] ?? '',
       'items' => [
+        //The item’s SKU, unique to that type of donation.
         'item_id' => '',
+        //The item’s name, unique to that type of donation.
         'item_name' => '',
-        'item_donation_frequency' => '',
+        'item_donation_frequency' => $frequency,
+        //The type of donation – Standard/Fundraising/Zakat/Sadaqah/etc.
         'item_donation_category' => '',
-        'item_giftaid' => '',
+        'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
         'item_brand' => 'WaterAid',
         'item_category' => 'Donation',
-        'item_category2' => '',
-        'price' => '',
+        'item_category2' => $frequency,
+        'price' => $values['donation_amount']['amount'] ?? '',
         'quantity' => '1',
-        'item_donation_fundraising_method' => '',
-        'item_donation_fundraising_org_type' => '',
-        'item_donation_fundraising_org_name' => '',
-        'item_donation_fundraising_club_type' => '',
-        'item_donation_fundraising_wateraid_talk' => '',
-        'item_donation_fundraising_event_type' => '',
-        'item_donation_fundraising_event_name' => '',
-        'item_donation_fundraising_event_date' => '20/01/2025',
-        'item_donation_fundraising_team_name' => '',
+        'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
+        'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
+        'item_donation_fundraising_org_name' => $org_name,
+        'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
+        'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
+        'item_donation_fundraising_event_type' => $event_type,
+        'item_donation_fundraising_event_name' => $event_name,
+        'item_donation_fundraising_event_date' => $event_date,
+        'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
       ],
     ];
-
-/*
-
-dataLayer.push({
-
-  event: "purchase",
-
-      donation_id: "1123", // The donation’s unique identifer.
-
-      donation_form_id: "donation_form_wateraid_v2_one_of", // The donation form's unique identifer.
-
-      donation_date: "12/11/2025", // Donation’s Date.
-
-      donation_payment_method: "Strip",
-
-      donation_payment_type: "card",
-
-      donation_fund_code: "UN0000",
-
-      donation_package_Code: "RA/NAZ/01A",
-
-      referral_source: "TV advert",  //Checklist from Help us to reach more people(Step 5 of 6)
-
-      notification_preferences: "SMS",  // Checkbox from Stay updated(Step 4 of 6)/SMS,Email,Phone,None
-
-  ecommerce: {
-
-      transaction_id: "012345", //An identifier for the order/donation. Do not use entityUuid. Use a unique order number that references that specific donation.
-
-      value: 25.50, // The total value.
-
-      currency: "GBP", // The currency code (3-letter ISO currency code)
-
-      items: [
-
-        {
-
-          item_id:'DONATIONONEOFFFUNDRAISING', //The item’s SKU, unique to that type of donation.
-
-          item_name:'Donation | One-off | Fundraising', //The item’s name, unique to that type of donation.
-
-          item_donation_frequency:'One-off', //'One-off' or 'Monthly'.
-
-          item_donation_category:'Fundraising', //The type of donation – Standard/Fundraising/Zakat/Sadaqah/etc.
-
-          item_giftaid:'No', //Whether gift-aid was applied.
-
-          item_brand:'WaterAid', //This should always be 'WaterAid'.
-
-          item_category:'Donation', //This should always be 'Donation', used by GA4's built-in standard reports.
-
-          item_category2:'One-off', //'One-off' or 'Monthly', used by GA4's built-in standard reports.
-
-          price: 10, //The total value of the donation
-
-          quantity: 1, //For donations this will likely always be '1'
-
-          item_donation_fundraising_method:'As an organisation', //Answer to 'How was the money raised?'
-
-          item_donation_fundraising_org_type:'Company', //Answer to 'Organisation Type'
-
-          item_donation_fundraising_org_name:'Armani', //Answer to 'Organisation name' or 'University Name'
-
-          item_donation_fundraising_club_type:'', //Answer to 'Type of service organisation or club'
-
-          item_donation_fundraising_wateraid_talk:'No', //Answer to 'Have you had a talk or workshop from a WaterAid speaker?'
-
-          item_donation_fundraising_event_type:'We Organised our own event', //Answer to 'What kind of event / challenge?'
-
-          item_donation_fundraising_event_name:'', //Answer to 'What was the name of the event' or 'Which event did you take part in?'
-
-          item_donation_fundraising_event_date:'20/01/2025', //Answer to 'When did the event take place?'
-
-          item_donation_fundraising_team_name:'', //Answer to 'Team Name'
-
-        }
-
-      ]
-
-  }
-
-});*/
 
     datalayer_add($ecommerce, TRUE);
     datalayer_add($purchase, TRUE);
