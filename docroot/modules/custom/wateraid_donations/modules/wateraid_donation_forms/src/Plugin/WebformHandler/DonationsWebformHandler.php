@@ -1186,12 +1186,136 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    
-    datalayer_add([
+    $values = $form_state->getValues();
 
-    ], TRUE);
+    $frequency = ($values['donation_amount']['frequency']) ?? NULL;
 
     $one = 1;
+    $ecommerce = [
+      'event' => 'ecommerce',
+      'donation_id' => '',
+      'donation_form_id' => $this->webform->id(),
+      'donation_date' => $this->dateFormatter->format(time(), 'uk_date'),
+      'donation_payment_method' => '',
+      'donation_payment_type' => '',
+      'donation_fund_code' => '',
+      'donation_package_Code' => '',
+      'referral_source' => '',
+      'notification_preferences' => '',
+    ];
+
+    $purchase = [
+      'event' => 'purchase',
+      'transaction_id' => '',
+      'value' => $values['donation_amount']['amount'],
+      'currency' => '',
+      'items' => [
+        'item_id' => '',
+        'item_name' => '',
+        'item_donation_frequency' => '',
+        'item_donation_category' => '',
+        'item_giftaid' => '',
+        'item_brand' => 'WaterAid',
+        'item_category' => 'Donation',
+        'item_category2' => '',
+        'price' => '',
+        'quantity' => '1',
+        'item_donation_fundraising_method' => '',
+        'item_donation_fundraising_org_type' => '',
+        'item_donation_fundraising_org_name' => '',
+        'item_donation_fundraising_club_type' => '',
+        'item_donation_fundraising_wateraid_talk' => '',
+        'item_donation_fundraising_event_type' => '',
+        'item_donation_fundraising_event_name' => '',
+        'item_donation_fundraising_event_date' => '20/01/2025',
+        'item_donation_fundraising_team_name' => '',
+      ],
+    ];
+
+/*
+
+dataLayer.push({
+
+  event: "purchase",
+
+      donation_id: "1123", // The donation’s unique identifer.
+
+      donation_form_id: "donation_form_wateraid_v2_one_of", // The donation form's unique identifer.
+
+      donation_date: "12/11/2025", // Donation’s Date.
+
+      donation_payment_method: "Strip",
+
+      donation_payment_type: "card",
+
+      donation_fund_code: "UN0000",
+
+      donation_package_Code: "RA/NAZ/01A",
+
+      referral_source: "TV advert",  //Checklist from Help us to reach more people(Step 5 of 6)
+
+      notification_preferences: "SMS",  // Checkbox from Stay updated(Step 4 of 6)/SMS,Email,Phone,None
+
+  ecommerce: {
+
+      transaction_id: "012345", //An identifier for the order/donation. Do not use entityUuid. Use a unique order number that references that specific donation.
+
+      value: 25.50, // The total value.
+
+      currency: "GBP", // The currency code (3-letter ISO currency code)
+
+      items: [
+
+        {
+
+          item_id:'DONATIONONEOFFFUNDRAISING', //The item’s SKU, unique to that type of donation.
+
+          item_name:'Donation | One-off | Fundraising', //The item’s name, unique to that type of donation.
+
+          item_donation_frequency:'One-off', //'One-off' or 'Monthly'.
+
+          item_donation_category:'Fundraising', //The type of donation – Standard/Fundraising/Zakat/Sadaqah/etc.
+
+          item_giftaid:'No', //Whether gift-aid was applied.
+
+          item_brand:'WaterAid', //This should always be 'WaterAid'.
+
+          item_category:'Donation', //This should always be 'Donation', used by GA4's built-in standard reports.
+
+          item_category2:'One-off', //'One-off' or 'Monthly', used by GA4's built-in standard reports.
+
+          price: 10, //The total value of the donation
+
+          quantity: 1, //For donations this will likely always be '1'
+
+          item_donation_fundraising_method:'As an organisation', //Answer to 'How was the money raised?'
+
+          item_donation_fundraising_org_type:'Company', //Answer to 'Organisation Type'
+
+          item_donation_fundraising_org_name:'Armani', //Answer to 'Organisation name' or 'University Name'
+
+          item_donation_fundraising_club_type:'', //Answer to 'Type of service organisation or club'
+
+          item_donation_fundraising_wateraid_talk:'No', //Answer to 'Have you had a talk or workshop from a WaterAid speaker?'
+
+          item_donation_fundraising_event_type:'We Organised our own event', //Answer to 'What kind of event / challenge?'
+
+          item_donation_fundraising_event_name:'', //Answer to 'What was the name of the event' or 'Which event did you take part in?'
+
+          item_donation_fundraising_event_date:'20/01/2025', //Answer to 'When did the event take place?'
+
+          item_donation_fundraising_team_name:'', //Answer to 'Team Name'
+
+        }
+
+      ]
+
+  }
+
+});*/
+
+    datalayer_add($ecommerce, TRUE);
+    datalayer_add($purchase, TRUE);
   }
 
   /**
