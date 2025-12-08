@@ -1,5 +1,5 @@
 wateraid_donation_stripe.charge:
-  path: '/wateraid_donation_stripe/charge'
+  path: '/wateraid-donation-stripe-v2/charge'
   defaults:
     _title: 'Stripe AJAX charge routing'
     _controller: '\Drupal\wateraid_donation_stripe\Controller\StripeController::chargeApplePay'
@@ -9,7 +9,7 @@ wateraid_donation_stripe.charge:
   methods: [POST]
 
 wateraid_donation_stripe.stripe_payment_intent_controller_create_intent:
-  path: '/wateraid_donation_stripe/sca/payment_intent'
+  path: '/wateraid-donation-stripe-v2/sca/payment_intent'
   defaults:
     _controller: '\Drupal\wateraid_donation_stripe\Controller\StripePaymentIntentController::createIntent'
     _title: 'Stripe PaymentIntent Create'
@@ -22,7 +22,7 @@ wateraid_donation_stripe.stripe_payment_intent_controller_create_intent:
   methods: [POST]
 
 wateraid_donation_stripe.idempotency_key:
-  path: '/wateraid-donation-stripe/sca/idempotency-key'
+  path: '/wateraid-donation-stripe-v2/sca/idempotency-key'
   defaults:
     _controller: '\Drupal\wateraid_donation_stripe\Controller\StripePaymentIntentController::getIdempotencyKey'
     _title: 'Stripe PaymentIntent Idempotency Key'

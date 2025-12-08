@@ -85,7 +85,7 @@ class StripePaymentIntentController extends ControllerBase {
 
     // Create a new CSRF token as the seed will have been cleared upon entering
     // this route.
-    $csrf_token = $this->csrfTokenGenerator->get('wateraid_donation_stripe/sca/payment_intent');
+    $csrf_token = $this->csrfTokenGenerator->get('wateraid-donation-stripe-v2/sca/payment_intent');
 
     if ($request->isXmlHttpRequest() === FALSE) {
       // Error out in this case.

@@ -82,7 +82,7 @@
             model.paymentTokenCreated(result.token.id);
           }
           else {
-            $.post(Drupal.url('wateraid_donation_stripe/charge'), {
+            $.post(Drupal.url('wateraid-donation-stripe-v2/charge'), {
               paymentRequest: paymentRequest,
               tokenId: result.token.id,
               webformId: drupalSettings.wateraidDonationForms.webform_id,

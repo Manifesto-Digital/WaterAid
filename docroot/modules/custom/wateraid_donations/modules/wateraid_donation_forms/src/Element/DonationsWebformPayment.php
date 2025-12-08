@@ -109,7 +109,7 @@ class DonationsWebformPayment extends WebformCompositeBase {
       // CSRF token hidden field.
       $element['token'] = [
         '#type' => 'hidden',
-        '#value' => $csrf_token->get('wateraid_donation_stripe/sca/payment_intent'),
+        '#value' => $csrf_token->get('wateraid-donation-stripe-v2/sca/payment_intent'),
         '#attributes' => ['id' => ['token']],
       ];
 
