@@ -22,6 +22,29 @@ function wa_migration_update_10000(&$sandbox): void {
 }
 
 /**
+ * Delete malformed redirects.
+ */
+function wa_migration_update_10001(&$sandbox): void {
+  $storage = \Drupal::entityTypeManager()->getStorage('redirect');
+
+  if (!isset($sandbox['ids'])) {
+    $query = $storage->getQuery();
+    $sandbox['ids'] = $query
+      ->condition('status_code', 0)
+      ->accessCheck(FALSE)
+      ->execute();
+    $sandbox['max'] = count($sandbox['ids']);
+  }
+
+  if ($id = array_pop($sandbox['ids'])) {
+    $redirect = $storage->load($id);
+    $redirect->delete();
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
+
+/**
  * Add the required custom terms to the Content Type taxonomy.
  *
  * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
