@@ -97,7 +97,7 @@
       this.addBehaviour();
     },
     getIdempotencyKey: function () {
-      $.ajax(Drupal.url('wateraid-donation-stripe-v2/sca/idempotency-key'), {
+      $.ajax(Drupal.url('wateraid-donation-v2/stripe/sca/idempotency-key'), {
         method: 'POST',
         dataType: 'json',
         headers: {
@@ -195,7 +195,7 @@
             let scatoken = document.getElementById('token').value;
             // Remove any url from token.
             scatoken = scatoken.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-            $.ajax(Drupal.url('wateraid-donation-stripe-v2/sca/payment_intent' + '?token=' + scatoken), {
+            $.ajax(Drupal.url('wateraid-donation-v2/stripe/sca/payment_intent' + '?token=' + scatoken), {
               method: 'POST',
               dataType: 'json',
               headers: {

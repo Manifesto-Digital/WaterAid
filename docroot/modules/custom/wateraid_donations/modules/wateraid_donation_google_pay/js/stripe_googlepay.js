@@ -110,7 +110,7 @@
           donor_meta_details = Drupal.wateraidDonationForms.model.attributes.contactAddressSweden;
         }
 
-        $.ajax(Drupal.url('wateraid-donation-stripe-v2/sca/payment_intent' + '?token=' + scatoken), {
+        $.ajax(Drupal.url('wateraid-donation-v2/stripe/sca/payment_intent' + '?token=' + scatoken), {
           method: 'POST',
           dataType: 'json',
           headers: {
