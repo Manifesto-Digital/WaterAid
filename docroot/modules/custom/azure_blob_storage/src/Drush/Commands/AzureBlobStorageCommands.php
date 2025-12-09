@@ -136,6 +136,7 @@ final class AzureBlobStorageCommands extends DrushCommands {
       $item = [
         'webform_id' => $submission->webform_id,
         'sid'        => $submission->sid,
+        'tries'      => 0,
       ];
 
       $this->queue->createItem($item);

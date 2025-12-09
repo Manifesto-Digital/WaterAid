@@ -49,7 +49,8 @@ class AzureWebformHandler extends WebformHandlerBase {
     // confirmation page displaying.
     $item = [
       'webform_id' => $webform_submission->getWebform()->id(),
-      'sid' => $webform_submission->id(),
+      'sid'        => $webform_submission->id(),
+      'tries'      => 0,
     ];
 
     $this->queue->createItem($item);
