@@ -161,7 +161,7 @@ final class DamImageFormater extends ImageFormatter {
         '#uri' => $data['link'],
         '#width' => $width,
         '#height' => $height,
-        '#alt' => Html::escape(substr($search['APIResponse']['Items'][0]['CustomField.Caption'], 0, 250)) ?? '',
+        '#alt' => substr($search['APIResponse']['Items'][0]['CustomField.Caption'], 0, 250) ?? '',
         '#attributes' => [],
         '#cache' => $cache,
       ];
