@@ -168,12 +168,13 @@ final class BlobStorageQueue extends QueueWorkerBase implements ContainerFactory
         'postal_code' => $submissionData['contact_address']['postal_code'],
         'state_province' => $submissionData['contact_address']['state_province'],
       ],
-      'communication_preferences' => [
-        'opt_in_email' => NULL,
-        'opt_in_phone' => NULL,
-        'opt_in_sms' => NULL,
-        'opt_in_social_media' => NULL,
-        'opt_out_post' => TRUE
+      "contact_phone"      => $submissionData["contact_phone"],
+      "communication_preferences" => [
+        "opt_in_email"        => NULL,
+        "opt_in_phone"        => NULL,
+        "opt_in_sms"          => NULL,
+        "opt_in_social_media" => NULL,
+        "opt_out_post"        => TRUE
       ],
       'reason_for_donating' => $submissionData['prompt_reason'],
       'in_memory_firstname' => '',
