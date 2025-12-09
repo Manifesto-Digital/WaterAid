@@ -98,16 +98,26 @@ final class ExpiryChecker extends QueueWorkerBase implements ContainerFactoryPlu
 
               // Now check expiry dates.
               if (isset($api_result['APIResponse']['Items'][0]['customfield.Expiry-Date'])) {
-
                 // Set the updated expiry date whatever it is.
-                $date = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $api_result['APIResponse']['Items'][0]['customfield.Expiry-Date']);
-                $media->set('field_dam_expiry_date', $date->getTimestamp());
+                try {
+                  $date = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $api_result['APIResponse']['Items'][0]['customfield.Expiry-Date']);
+                  $media->set('field_dam_expiry_date', $date->getTimestamp());
 
-                $now = new DrupalDateTime();
+                  $now = new DrupalDateTime();
 
-                // And if the date has passed, mark this as expired.
-                if ($date <= $now) {
-                  $media->set('field_dam_expired', TRUE);
+                  // And if the date has passed, mark this as expired.
+                  if ($date <= $now) {
+                    $media->set('field_dam_expired', TRUE);
+                  }
+                }
+                catch (\Exception $e) {
+
+                  // Temp code to log this error so we can identify the problem
+                  // ids.
+                  \Drupal::logger('wa_orange_dam')->error(t('Unable to create date for :sysid - :error', [
+                    ':sysid' => $system_id,
+                    ':error' => $e->getMessage(),
+                  ]));
                 }
               }
             }
