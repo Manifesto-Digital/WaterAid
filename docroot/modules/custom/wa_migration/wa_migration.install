@@ -45,6 +45,64 @@ function wa_migration_update_10001(&$sandbox): void {
 }
 
 /**
+ * Merge duplicate taxonomy terms.
+ */
+function wa_migration_update_10002(&$sandbox): void {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $database = \Drupal::database();
+
+  if (!isset($sandbox['ids'])) {
+    $sandbox['ids'] = $entity_type_manager->getStorage('taxonomy_vocabulary')->getQuery()->accessCheck(FALSE)->execute();
+    $sandbox['max'] = count($sandbox['ids']);
+    $fields = $entity_type_manager->getStorage('field_storage_config')->loadByProperties([
+      'type' => 'entity_reference',
+      'settings' => ['target_type' => 'taxonomy_term'],
+    ]);
+
+    foreach (array_keys($fields) as $field) {
+      $sandbox['fields'][] = substr($field, 5);
+    }
+  }
+
+  if ($vocab = array_pop($sandbox['ids'])) {
+    $canon = [];
+
+    /** @var \Drupal\taxonomy\TermInterface $term */
+    foreach ($entity_type_manager->getStorage('taxonomy_term')->loadByProperties([
+      'vid' => $vocab,
+    ]) as $term) {
+      if (array_key_exists($term->label(), $canon)) {
+        $tid = $term->id();
+        $new_tid = $canon[$term->label()];
+
+        // Update all the duplicate TIDs in the database to be the original.
+        foreach ($sandbox['fields'] as $field) {
+          foreach (['node__', 'node_revision__'] as $prefix) {
+            $table = $prefix . $field;
+            $db_field = $field . '_target_id';
+
+            $database->update($table)
+              ->fields([$db_field => $new_tid])
+              ->condition($db_field, $tid)
+              ->execute();
+          }
+        }
+
+        // When that's done, we can delete the duplicate.
+        $term->delete();
+      }
+      else {
+
+        // This term is going to be our canonical one for this label.
+        $canon[$term->label()] = $term->id();
+      }
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
+
+/**
  * Add the required custom terms to the Content Type taxonomy.
  *
  * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
