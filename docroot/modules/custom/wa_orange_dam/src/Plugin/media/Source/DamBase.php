@@ -138,7 +138,7 @@ class DamBase extends File {
             $alt = $api_result['APIResponse']['Items'][0]['CustomField.Caption'];
 
             // Ensure long captions aren't too long for the database.
-            $alt = Html::escape(substr($alt, 0, 250));
+            $alt = substr(strip_tags($alt), 0, 250);
           }
         }
 

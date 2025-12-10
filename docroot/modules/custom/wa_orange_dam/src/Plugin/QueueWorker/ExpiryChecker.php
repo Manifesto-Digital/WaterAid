@@ -91,7 +91,7 @@ final class ExpiryChecker extends QueueWorkerBase implements ContainerFactoryPlu
                   }
 
                   if ($value) {
-                    $media->set($field, substr($value, 0, 250));
+                    $media->set($field, substr(strip_tags($value), 0, 250));
                   }
                 }
               }
