@@ -840,7 +840,7 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   $config['recaptcha_v3.settings']['secret_key'] = '6LfmHCkdAAAAABYZksQxxKhum3Y8KJuFRi64gX-C';
 
   // Enable local split.
-  $config['config_split.config_split.local']['status'] = FALSE;
+  $config['config_split.config_split.local']['status'] = TRUE;
 }
 
 $repo_root = dirname(DRUPAL_ROOT);

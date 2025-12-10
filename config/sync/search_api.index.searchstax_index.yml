@@ -88,10 +88,13 @@ third_party_settings:
       specific_languages:
         en: '0'
         sv: '0'
+        ja: '0'
+        hi: '0'
+        pt: '0'
       use_universal_collation: false
 id: searchstax_index
 name: 'SearchStax index'
-description: 'Copy of index <em class="placeholder">Search</em>.'
+description: 'Search index on SearchStax.'
 read_only: false
 field_settings:
   field_audience:
