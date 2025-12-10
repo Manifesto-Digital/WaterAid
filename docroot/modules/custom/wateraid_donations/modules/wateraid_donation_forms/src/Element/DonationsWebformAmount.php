@@ -51,9 +51,13 @@ class DonationsWebformAmount extends WebformCompositeBase {
     $elements = [];
 
     $elements['impact_statistics'] = [
-      '#markup' => '',
-      '#prefix' => '<div class="wa-donations--impact-statistics impact-statistics">',
-      '#suffix' => '</div>',
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => [
+          'wa-donations--impact-statistics',
+          'impact-statistics',
+        ],
+      ],
       '#weight' => -2,
     ];
 
