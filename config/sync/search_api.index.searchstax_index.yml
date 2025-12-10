@@ -3,15 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_audience
     - field.storage.node.field_content
+    - field.storage.node.field_country
+    - field.storage.node.field_event_end_date
+    - field.storage.node.field_event_start_date
     - field.storage.node.field_event_type
+    - field.storage.node.field_get_involved
     - field.storage.node.field_hero
     - field.storage.node.field_key_stages
     - field.storage.node.field_post_description
+    - field.storage.node.field_properties
     - field.storage.node.field_regions
     - field.storage.node.field_search_phrases
+    - field.storage.node.field_subject_area
     - field.storage.node.field_subtext
     - field.storage.node.field_teaser_text
+    - field.storage.node.field_theme
+    - field.storage.node.field_topic
     - field.storage.paragraph.field_accordion_content
     - field.storage.paragraph.field_accordion_items
     - field.storage.paragraph.field_caption
@@ -85,6 +94,14 @@ name: 'SearchStax index'
 description: 'Copy of index <em class="placeholder">Search</em>.'
 read_only: false
 field_settings:
+  field_audience:
+    label: Audience
+    datasource_id: 'entity:node'
+    property_path: field_audience
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_audience
   field_caption:
     label: 'Content » Paragraph » Accordion items » Paragraph » Caption'
     datasource_id: 'entity:node'
@@ -156,6 +173,14 @@ field_settings:
         - field.storage.paragraph.field_citation
       module:
         - paragraphs
+  field_country:
+    label: Country
+    datasource_id: 'entity:node'
+    property_path: field_country
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_country
   field_credit:
     label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Credit'
     datasource_id: 'entity:node'
@@ -180,6 +205,22 @@ field_settings:
         - field.storage.paragraph.field_credit
       module:
         - paragraphs
+  field_event_end_date:
+    label: 'Event end date'
+    datasource_id: 'entity:node'
+    property_path: field_event_end_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_event_end_date
+  field_event_start_date:
+    label: 'Event start date'
+    datasource_id: 'entity:node'
+    property_path: field_event_start_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_event_start_date
   field_event_type:
     label: 'Event type'
     datasource_id: 'entity:node'
@@ -188,6 +229,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_event_type
+  field_get_involved:
+    label: 'Get Involved'
+    datasource_id: 'entity:node'
+    property_path: field_get_involved
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_get_involved
   field_key_stages:
     label: 'Key Stage'
     datasource_id: 'entity:node'
@@ -204,6 +253,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_post_description
+  field_properties:
+    label: Properties
+    datasource_id: 'entity:node'
+    property_path: field_properties
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_properties
   field_quote:
     label: 'Content » Paragraph » Accordion content » Paragraph » Quote'
     datasource_id: 'entity:node'
@@ -306,6 +363,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_search_phrases
+  field_subject_area:
+    label: 'Subject Area'
+    datasource_id: 'entity:node'
+    property_path: field_subject_area
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_subject_area
   field_subtext:
     label: Subtext
     datasource_id: 'entity:node'
@@ -335,6 +400,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_teaser_text
+  field_theme:
+    label: Theme
+    datasource_id: 'entity:node'
+    property_path: field_theme
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_theme
   field_title:
     label: 'Content » Paragraph » Accordion content » Paragraph » Title'
     datasource_id: 'entity:node'
@@ -421,6 +494,14 @@ field_settings:
         - field.storage.paragraph.field_title
       module:
         - paragraphs
+  field_topic:
+    label: Topic
+    datasource_id: 'entity:node'
+    property_path: field_topic
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_topic
   gid:
     label: 'Groups » Group relationship » Parent group'
     datasource_id: 'entity:node'
@@ -826,6 +907,7 @@ processor_settings:
       - field_credit_1
       - field_key_stages
       - field_post_description
+      - field_properties
       - field_quote
       - field_quote_1
       - field_quote_2

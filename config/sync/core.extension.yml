@@ -45,6 +45,7 @@ module:
   field: 0
   field_group: 0
   field_group_markup: 0
+  field_ui: 0
   file: 0
   filter: 0
   flexible_permissions: 0
@@ -127,6 +128,7 @@ module:
   update: 0
   user: 0
   views_infinite_scroll: 0
+  views_ui: 0
   viewsreference: 0
   wa_migration: 0
   wa_orange_dam: 0
