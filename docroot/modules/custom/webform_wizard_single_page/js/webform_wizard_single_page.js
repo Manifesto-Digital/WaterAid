@@ -49,7 +49,7 @@
       // Do nothing unless the context element is the whole v2 form. This
       // prevents scrolling on the initial page load or reacting to unrelated
       // attach events.
-      if ($(context).hasClass('webform-style-v2')) {
+      if ($(context).hasClass('webform-donations-page')) {
         let scrollToElement = $('[data-webform-single-page-scroll]', context);
 
         // Use once so that sub-elements of the form (e.g. switch address from
