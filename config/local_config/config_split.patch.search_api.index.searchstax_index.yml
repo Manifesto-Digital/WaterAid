@@ -1,0 +1,17 @@
+adding:
+  dependencies:
+    config:
+      - search_api.server.ddev_solr_local
+  third_party_settings:
+    search_api_solr:
+      multilingual:
+        specific_languages:
+          ja: '0'
+          hi: '0'
+          pt: '0'
+  server: ddev_solr_local
+removing:
+  dependencies:
+    config:
+      - search_api.server.searchstax_server
+  server: null
