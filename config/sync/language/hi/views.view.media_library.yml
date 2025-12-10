@@ -8,9 +8,6 @@ display:
           action_title: कार्रवाई
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'विषय प्रति पृष्ठ'
             items_per_page_options_all_label: '-सभी-'
@@ -47,8 +44,6 @@ display:
       fields:
         media_bulk_form:
           action_title: कार्रवाई
-        name:
-          separator: ', '
         edit_media:
           text: 'संपादित करें'
         delete_media:

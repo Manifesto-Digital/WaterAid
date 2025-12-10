@@ -6,10 +6,8 @@ display:
       fields:
         info:
           label: ブロックの説明
-          separator: ', '
         type:
           label: ブロックタイプ
-          separator: ', '
         changed:
           label: 更新
         operations:

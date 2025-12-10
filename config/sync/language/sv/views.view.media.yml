@@ -4,8 +4,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
-        thumbnail__target_id:
-          label: Thumbnail
+        bundle:
+          label: Type
         uid:
           label: Författare
         status:
@@ -23,6 +23,9 @@ display:
           sort_asc_label: Stigande
           sort_desc_label: Fallande
       filters:
+        bundle:
+          expose:
+            label: Type
         status:
           group_info:
             label: 'Status för publicering'

@@ -11,6 +11,7 @@ display:
       fields:
         view_webform_submission:
           label: Funktioner
+          text: view
       arguments:
         in_draft:
           exception:
@@ -29,6 +30,7 @@ display:
           action_title: Åtgärd
         view_webform_submission:
           label: Funktioner
+          text: view
         edit_webform_submission:
           label: Funktioner
   embed_review:
@@ -36,3 +38,4 @@ display:
       fields:
         view_webform_submission:
           label: Funktioner
+          text: view

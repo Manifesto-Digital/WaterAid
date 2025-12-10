@@ -5,9 +5,6 @@ display:
     display_title: デフォルト
     display_options:
       title: 最近のコンテンツ
-      fields:
-        changed:
-          separator: ', '
       exposed_form:
         options:
           submit_button: 適用

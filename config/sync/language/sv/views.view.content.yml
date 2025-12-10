@@ -47,6 +47,7 @@ display:
           expose:
             label: Språk
   page_1:
+    display_title: Page
     display_options:
       menu:
         title: Innehåll

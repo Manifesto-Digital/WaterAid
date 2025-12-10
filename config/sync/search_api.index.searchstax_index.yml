@@ -118,7 +118,7 @@ field_settings:
       module:
         - paragraphs
   field_caption_1:
-    label: 'Caption'
+    label: Caption
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_caption'
     type: text
@@ -142,7 +142,7 @@ field_settings:
       module:
         - paragraphs
   field_citation_1:
-    label: 'Citation'
+    label: Citation
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_citation'
     type: text
@@ -198,7 +198,7 @@ field_settings:
       module:
         - paragraphs
   field_credit_1:
-    label: 'Credit'
+    label: Credit
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_credit'
     type: text
@@ -303,7 +303,7 @@ field_settings:
       module:
         - paragraphs
   field_quote_3:
-    label: 'Quote'
+    label: Quote
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_quote'
     type: text
@@ -506,7 +506,7 @@ field_settings:
       config:
         - field.storage.node.field_topic
   gid:
-    label: 'Group'
+    label: Group
     datasource_id: 'entity:node'
     property_path: 'entitygroupfield:entity:gid'
     type: integer

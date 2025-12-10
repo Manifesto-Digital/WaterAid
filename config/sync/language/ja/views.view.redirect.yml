@@ -24,7 +24,6 @@ display:
       fields:
         redirect_source__path:
           label: 送信元
-          separator: ', '
         created:
           label: 作成
       filters:

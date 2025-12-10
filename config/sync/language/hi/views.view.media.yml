@@ -7,25 +7,17 @@ display:
       fields:
         media_bulk_form:
           action_title: कार्रवाई
-        thumbnail__target_id:
-          separator: ', '
-        name:
-          separator: ', '
         bundle:
           label: प्रकार
-          separator: ', '
         uid:
           label: लेखक
-          separator: ', '
         status:
           label: अवस्था
           settings:
             format_custom_false: अप्रकाशित
             format_custom_true: प्रकाशित
-          separator: ', '
         changed:
           label: अद्यतित
-          separator: ', '
         operations:
           label: कार्यवाही
       pager:

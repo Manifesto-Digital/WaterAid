@@ -10,7 +10,7 @@ dependencies:
 id: wateraid_wateraidsearchhero
 theme: wateraid
 region: content
-weight: -7
+weight: -4
 provider: null
 plugin: wateraid_search_hero
 settings:
