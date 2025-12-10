@@ -361,13 +361,41 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
 }
 
 /**
- *
+ *  Preprocess views.
  */
-function wateraid_preprocess_views_view(&$variables) {
+function wateraid_preprocess_views_view(&$variables): void {
   $view = $variables['view'];
   if ($view->id() === 'search') {
     $input = $view->getExposedInput();
     $variables['keywords'] = $input['keywords'] ?? '';
+  }
+
+  if ($view->id() == 'events_solr') {
+    $block_manager = \Drupal::service('plugin.manager.block');
+    $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:events_solr-block_1', [
+      'visible_filters' => [
+        'keywords' => 'keywords',
+      ],
+      'no_groups' => FALSE,
+      'no_reset' => FALSE,
+      'no_sort' => FALSE,
+      'no_pager' => FALSE,
+    ]);
+
+    $variables['header'] = $plugin_block->build();
+
+    $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:events_solr-block_1', [
+      'visible_filters' => [
+        'type' => 'type',
+        'regions' => 'regions',
+      ],
+      'no_groups' => FALSE,
+      'no_reset' => FALSE,
+      'no_sort' => FALSE,
+      'no_pager' => FALSE,
+    ]);
+
+    $variables['exposed'] = $plugin_block->build();
   }
 }
 
