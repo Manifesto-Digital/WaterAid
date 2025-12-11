@@ -25,8 +25,7 @@ settings:
   plugin_types:
     block: block
   preselect_views:
-    blogs: blogs
-    events: events
+    blogs_solr: blogs_solr
     events_solr: events_solr
     press_releases: press_releases
     search: search

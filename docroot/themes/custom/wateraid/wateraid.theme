@@ -5,6 +5,7 @@
  * Functions to support theming.
  */
 
+use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\group_content_menu\GroupContentMenuInterface;
 use Drupal\group\Entity\Group;
@@ -364,38 +365,65 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
  *  Preprocess views.
  */
 function wateraid_preprocess_views_view(&$variables): void {
+
+  /** @var \Drupal\views\ViewExecutable $view */
   $view = $variables['view'];
   if ($view->id() === 'search') {
     $input = $view->getExposedInput();
     $variables['keywords'] = $input['keywords'] ?? '';
   }
 
-  if ($view->id() == 'events_solr') {
-    $block_manager = \Drupal::service('plugin.manager.block');
-    $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:events_solr-block_1', [
-      'visible_filters' => [
-        'keywords' => 'keywords',
-      ],
-      'no_groups' => FALSE,
-      'no_reset' => FALSE,
-      'no_sort' => FALSE,
-      'no_pager' => FALSE,
-    ]);
-
-    $variables['header'] = $plugin_block->build();
-
-    $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:events_solr-block_1', [
-      'visible_filters' => [
+  $map = [
+    'events_solr' => [
+      'block_1' => [
         'type' => 'type',
         'regions' => 'regions',
       ],
-      'no_groups' => FALSE,
-      'no_reset' => FALSE,
-      'no_sort' => FALSE,
-      'no_pager' => FALSE,
-    ]);
+    ],
+    'blogs_solr' => [
+      'block_1' => [
+        'audience' => 'audience',
+        'country' => 'country',
+        'get_involved' => 'get_involved',
+        'theme' => 'theme',
+      ],
+    ],
+  ];
 
-    $variables['exposed'] = $plugin_block->build();
+  $view_id = $view->id();
+
+  if (in_array($view_id, array_keys($map))) {
+    $display = $view->current_display;
+
+    if (array_key_exists($view->current_display, $map[$view_id])) {
+      $settings = [
+        'visible_filters' => [
+          'keywords' => 'keywords',
+        ],
+        'no_groups' => FALSE,
+        'no_reset' => FALSE,
+        'no_sort' => FALSE,
+        'no_pager' => FALSE,
+      ];
+
+      /** @var \Drupal\Core\Block\BlockManagerInterface $block_manager */
+      $block_manager = \Drupal::service('plugin.manager.block');
+      $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
+
+      if (!$plugin_block instanceof Broken) {
+        $variables['header'] = $plugin_block->build();
+      }
+
+      $settings['visible_filters'] = $map[$view_id][$display];
+
+      $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
+
+      if (!$plugin_block instanceof Broken) {
+        $variables['exposed'] = $plugin_block->build();
+      }
+
+      $one = 1;
+    }
   }
 }
 

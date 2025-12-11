@@ -28,6 +28,7 @@ dependencies:
     - field.storage.paragraph.field_credit
     - field.storage.paragraph.field_link
     - field.storage.paragraph.field_primary_cta
+    - field.storage.paragraph.field_published_date
     - field.storage.paragraph.field_quote
     - field.storage.paragraph.field_rich_text
     - field.storage.paragraph.field_standfirst
@@ -97,6 +98,14 @@ name: 'SearchStax index'
 description: 'Search index on SearchStax.'
 read_only: false
 field_settings:
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
   field_audience:
     label: Audience
     datasource_id: 'entity:node'
@@ -264,6 +273,17 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_properties
+  field_published_date:
+    label: 'Hero » Paragraph » Published date'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_published_date'
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_published_date
+      module:
+        - paragraphs
   field_quote:
     label: 'Accordion Quote'
     datasource_id: 'entity:node'
