@@ -455,9 +455,7 @@ function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array 
       'press_releases_solr',
       'stories_solr',
     ])) {
-      if ($variables['view']->current_display == 'block_1') {
-        $suggestions[] = 'views_view__full_text';
-      }
+      $suggestions[] = 'views_view__full_text';
     }
   }
 }
