@@ -10,25 +10,18 @@ display:
       pager:
         options:
           tags:
-            previous: ‹‹
-            next: ››
             first: '« पहला'
             last: 'आखरी »'
           expose:
             items_per_page_label: 'विषय प्रति पृष्ठ'
             items_per_page_options_all_label: '-सभी-'
       fields:
-        sid:
-          separator: ', '
         in_draft:
           label: प्रारूप
-          separator: ', '
         created:
           label: निर्मित
-          separator: ', '
         remote_addr:
           label: 'आईपी अड्रेस'
-          separator: ', '
         view_webform_submission:
           label: कार्यवाही
           text: देखें
@@ -41,25 +34,16 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: कार्रवाई
-        sid:
-          separator: ', '
         in_draft:
           label: प्रारूप
-          separator: ', '
         sticky:
           label: मुख्य
-          separator: ', '
         locked:
           label: अवरोधित
-          separator: ', '
         created:
           label: निर्मित
-          separator: ', '
-        completed:
-          separator: ', '
         remote_addr:
           label: 'आईपी अड्रेस'
-          separator: ', '
         operations:
           label: कार्यवाही
       filters:
@@ -74,25 +58,16 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: कार्रवाई
-        sid:
-          separator: ', '
         in_draft:
           label: प्रारूप
-          separator: ', '
         sticky:
           label: मुख्य
-          separator: ', '
         locked:
           label: अवरोधित
-          separator: ', '
         created:
           label: निर्मित
-          separator: ', '
-        completed:
-          separator: ', '
         remote_addr:
           label: 'आईपी अड्रेस'
-          separator: ', '
         view_webform_submission:
           label: कार्यवाही
           text: देखें
@@ -109,25 +84,16 @@ display:
   embed_review:
     display_options:
       fields:
-        sid:
-          separator: ', '
         in_draft:
           label: प्रारूप
-          separator: ', '
         sticky:
           label: मुख्य
-          separator: ', '
         locked:
           label: अवरोधित
-          separator: ', '
         created:
           label: निर्मित
-          separator: ', '
-        completed:
-          separator: ', '
         remote_addr:
           label: 'आईपी अड्रेस'
-          separator: ', '
         view_webform_submission:
           label: कार्यवाही
           text: देखें

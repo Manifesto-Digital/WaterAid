@@ -16,16 +16,17 @@ display:
           label: Av
         id:
           label: Återställ
+      sorts:
+        page_title:
+          expose:
+            label: Sidtitel
       exposed_form:
         options:
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      sorts:
-        page_title:
-          expose:
-            label: Sidtitel
+      use_more_text: 'Reset filters'
   dismissals__page:
     display_options:
       fields:
@@ -35,17 +36,15 @@ display:
           text: visa
         view_user:
           text: visa
-        page_title:
-          label: Sida
-        created:
-          label: 'On'
-        name:
-          label: Av
         stale_date:
           alter:
             text: Nej
         id:
           label: Återställ
+        page_title:
+          label: Sida
+        name:
+          label: 'Dismissed by'
       filters:
         combine_1:
           admin_label: Titel
@@ -62,6 +61,12 @@ display:
                 title: Ja
               2:
                 title: Nej
+        uid:
+          expose:
+            label: 'Dismissed by'
+      use_more_text: 'Reset filters'
+      menu:
+        title: Dismissals
   page_1:
     display_options:
       fields:
@@ -104,5 +109,4 @@ display:
                 title: Nej
   recent_dismissals:
     display_title: 'Nyligen avskrivna'
-    display_options:
-      block_category: Editoria11y
+label: 'Editoria11y: Dismissals'

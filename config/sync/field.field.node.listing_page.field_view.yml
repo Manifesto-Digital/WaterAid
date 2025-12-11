@@ -25,11 +25,11 @@ settings:
   plugin_types:
     block: block
   preselect_views:
-    blogs: blogs
-    events: events
-    press_releases: press_releases
+    blogs_solr: blogs_solr
+    events_solr: events_solr
+    press_releases_solr: press_releases_solr
     search: search
-    stories: stories
+    stories_solr: stories_solr
   enabled_settings:
     argument: argument
 field_type: viewsreference

@@ -13,6 +13,7 @@ $sprites: (
     'wa-apple': "../../images/sprite.svg#wa-apple-view",
     'wa-container-lg-tall': "../../images/sprite.svg#wa-container-lg-tall-view",
     'wa-container-lg-wide': "../../images/sprite.svg#wa-container-lg-wide-view",
+    'wa-container-rectangle-wide-dark': "../../images/sprite.svg#wa-container-rectangle-wide-dark-view",
     'wa-container-rectangle-wide': "../../images/sprite.svg#wa-container-rectangle-wide-view",
     'wa-container-sm-circle-border': "../../images/sprite.svg#wa-container-sm-circle-border-view",
     'wa-container-sm-circle-cream': "../../images/sprite.svg#wa-container-sm-circle-cream-view",
@@ -82,6 +83,7 @@ $sprites: (
     'wa-icon': "../../images/sprite.svg#wa-icon-view",
     'wa-mastercard': "../../images/sprite.svg#wa-mastercard-view",
     'wa-paypal': "../../images/sprite.svg#wa-paypal-view",
+    'wa-pointer-dark': "../../images/sprite.svg#wa-pointer-dark-view",
     'wa-pointer': "../../images/sprite.svg#wa-pointer-view",
     'wa-pound': "../../images/sprite.svg#wa-pound-view",
     'wa-radio-checked': "../../images/sprite.svg#wa-radio-checked-view",
@@ -93,6 +95,7 @@ $sprites: (
     'wa-shape-ripple': "../../images/sprite.svg#wa-shape-ripple-view",
     'wa-shape-underscore': "../../images/sprite.svg#wa-shape-underscore-view",
     'wa-shape-wave': "../../images/sprite.svg#wa-shape-wave-view",
+    'wa-triangle-dark': "../../images/sprite.svg#wa-triangle-dark-view",
     'wa-triangle': "../../images/sprite.svg#wa-triangle-view",
     'wa-utility-arrow-blue': "../../images/sprite.svg#wa-utility-arrow-blue-view",
     'wa-utility-arrow-left': "../../images/sprite.svg#wa-utility-arrow-left-view",
@@ -186,6 +189,10 @@ $sizes: (
     'wa-container-lg-wide': (
         'width': 1272px,
         'height': 1020px
+    ),
+    'wa-container-rectangle-wide-dark': (
+        'width': 288px,
+        'height': 48px
     ),
     'wa-container-rectangle-wide': (
         'width': 288px,
@@ -463,6 +470,10 @@ $sizes: (
         'width': 84px,
         'height': 58px
     ),
+    'wa-pointer-dark': (
+        'width': 32px,
+        'height': 16px
+    ),
     'wa-pointer': (
         'width': 32px,
         'height': 16px
@@ -506,6 +517,10 @@ $sizes: (
     'wa-shape-wave': (
         'width': 480px,
         'height': 135px
+    ),
+    'wa-triangle-dark': (
+        'width': 12px,
+        'height': 12px
     ),
     'wa-triangle': (
         'width': 12px,

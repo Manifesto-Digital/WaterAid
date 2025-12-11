@@ -10,9 +10,6 @@ display:
           action_title: アクション
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: ページ毎の件数
             items_per_page_options_all_label: '- 全て -'
@@ -65,8 +62,6 @@ display:
       fields:
         media_bulk_form:
           action_title: アクション
-        name:
-          separator: ', '
         edit_media:
           alter:
             text: '{{ name }}を編集'

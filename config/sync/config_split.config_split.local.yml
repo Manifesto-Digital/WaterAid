@@ -1,0 +1,21 @@
+uuid: 1878582b-8eee-4012-900b-437297cc3787
+langcode: en
+status: false
+dependencies: {  }
+id: local
+label: Local
+description: 'Settings for local development'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/local_config
+module:
+  views_ui: 0
+  devel: 0
+theme: {  }
+complete_list:
+  - search_api.server.ddev_solr_local
+partial_list:
+  - search_api.index.searchstax_index
+  - search_api.server.searchstax_server

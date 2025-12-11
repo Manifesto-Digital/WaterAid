@@ -10,7 +10,6 @@ display:
           label: 'ऍफ़ आई डी'
         filename:
           label: नाम
-          separator: ', '
         filemime:
           label: 'माइम प्रकार'
         filesize:
@@ -22,6 +21,8 @@ display:
             format_custom_true: स्थाई
         created:
           label: 'अपलोड की तारीख'
+        count:
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: कार्यवाही
       pager:
