@@ -100,9 +100,6 @@
           }
           monthlyContainer.classList.remove("is-hidden");
 
-          // Set first radio as checked.
-          const monthlyAmounts = monthlyContainer.querySelectorAll('input[name="monthly_amount"]');
-          monthlyAmounts[0].checked = true;
           updateAmountSelection();
         } else {
           oneOffContainer.classList.remove("is-hidden");
@@ -110,9 +107,6 @@
             monthlyContainer.classList.add("is-hidden");
           }
 
-          // Set first radio as checked.
-          const oneOffAmounts = oneOffContainer.querySelectorAll('input[name="one_off_amount"]');
-          oneOffAmounts[0].checked = true;
           updateAmountSelection();
         }
       };

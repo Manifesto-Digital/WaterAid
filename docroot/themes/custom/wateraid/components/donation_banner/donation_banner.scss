@@ -3,6 +3,7 @@
 .donation-banner {
   display: flex;
   justify-content: center;
+  position: relative;
 
   @include desktop {
     justify-content: flex-end;

@@ -1,0 +1,23 @@
+uuid: a4918fc8-fa03-4af8-811a-d59897f2dd63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_one_off_index
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - options
+id: paragraph.donation_widget.field_one_off_index
+field_name: field_one_off_index
+entity_type: paragraph
+bundle: donation_widget
+label: 'One off donations default item'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 2
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

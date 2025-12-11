@@ -688,8 +688,14 @@ fieldset.next-form-step {
   }
 
   .pca-wrapper {
+    position: relative;
     .wa-element-wrapper-textfield {
       width: 100%;
+    }
+    .ajax-progress.ajax-progress-throbber {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 

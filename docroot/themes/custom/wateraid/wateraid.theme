@@ -87,7 +87,7 @@ function wateraid_preprocess_page(&$variables): void {
 
   // Provide the primary navigation menu to the page template.
   if ($group instanceof GroupInterface) {
-    wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables);
+    wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables, 3);
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
@@ -103,8 +103,10 @@ function wateraid_preprocess_page(&$variables): void {
  *   A map of ['variable_name' => 'group menu plugin id']
  * @param array $variables
  *   The template variables array to add the menus to.
+ * @param int $depth
+ *   The depth to render the menu to.
  */
-function wateraid_add_group_menus(GroupInterface $group, array $menu_map, array &$variables): void {
+function wateraid_add_group_menus(GroupInterface $group, array $menu_map, array &$variables, int $depth = 1): void {
   foreach (['tags', 'contexts'] as $tag) {
     if (!isset($variables['#cache'][$tag])) {
       $variables['#cache'][$tag] = [];
@@ -123,7 +125,7 @@ function wateraid_add_group_menus(GroupInterface $group, array $menu_map, array 
 
         // The menu name is derived from the group menu content entity.
         $menu_name = GroupContentMenuInterface::MENU_PREFIX . $group_content_menu->id();
-        $variables[$var_name] = _wateraid_build_menu($menu_name, 1);
+        $variables[$var_name] = _wateraid_build_menu($menu_name, $depth);
 
         // Add cacheability metadata.
         $variables['#cache']['tags'] = array_merge($variables['#cache']['tags'], $group_content_menu->getCacheTags());
@@ -240,6 +242,10 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
 
   $variables['monthly_donation_amounts'] = $monthly_amounts;
   $variables['one_off_donation_amounts'] = $one_off_amounts;
+
+  // Set SSL logo to dark if in webform nodes.
+  $parentEntity = $paragraph->getParentEntity();
+  $variables['ssl_logo_dark'] = $parentEntity && $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
 }
 
 /**
