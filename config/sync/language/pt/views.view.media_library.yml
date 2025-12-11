@@ -2,15 +2,11 @@ display:
   default:
     display_title: Predefinido
     display_options:
-      title: Media
       fields:
         media_bulk_form:
           action_title: Ação
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Itens por página'
             items_per_page_options_all_label: '- Todos -'
@@ -48,14 +44,11 @@ display:
       fields:
         media_bulk_form:
           action_title: Ação
-        name:
-          separator: ', '
         edit_media:
           text: Editar
         delete_media:
           text: Eliminar
   widget:
-    display_title: Widget
     display_options:
       arguments:
         bundle:

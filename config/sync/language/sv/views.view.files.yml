@@ -21,6 +21,9 @@ display:
             label: Status
   page_2:
     display_options:
+      fields:
+        type:
+          label: 'Entity type'
       arguments:
         fid:
           exception:

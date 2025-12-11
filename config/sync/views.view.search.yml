@@ -127,7 +127,7 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: ''
+          text_input_required: '<p>Please enter a search term to see results.</p>'
           text_input_required_format: full_html
           bef:
             general:
@@ -240,12 +240,13 @@ display:
             operator_limit_selection: false
             operator_list: {  }
             identifier: keywords
-            required: false
+            required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              wateraid_author: '0'
               content_editor: '0'
               wateraid_super_admin: '0'
               administrator: '0'

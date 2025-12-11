@@ -23,8 +23,6 @@ display:
           label: 'Último acesso'
         operations:
           label: Operações
-        mail:
-          separator: ', '
       pager:
         options:
           tags:

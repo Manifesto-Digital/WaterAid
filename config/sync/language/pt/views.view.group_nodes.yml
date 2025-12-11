@@ -6,23 +6,26 @@ display:
       fields:
         title:
           label: Título
-          separator: ', '
         type:
           label: 'Tipo de conteúdo'
-          separator: ', '
         status:
           label: Estado
           settings:
             format_custom_false: 'Não publicado'
             format_custom_true: Publicado
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Operações
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primeira'
             last: 'Última »'
           expose:
@@ -43,6 +46,7 @@ display:
         gid:
           exception:
             title: Todos
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:

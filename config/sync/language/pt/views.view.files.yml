@@ -6,11 +6,8 @@ display:
     display_options:
       title: Ficheiros
       fields:
-        fid:
-          label: Fid
         filename:
           label: Nome
-          separator: ', '
         filemime:
           label: 'Tipo MIME'
         filesize:
@@ -26,6 +23,7 @@ display:
           label: 'Data alterada'
         count:
           label: 'Utilizado em'
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: Operações
       pager:

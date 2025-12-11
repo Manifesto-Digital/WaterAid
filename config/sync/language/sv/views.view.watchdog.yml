@@ -2,6 +2,8 @@ display:
   default:
     display_options:
       fields:
+        type:
+          label: Type
         name:
           label: Användare
         link:
@@ -13,3 +15,9 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
+      filters:
+        type:
+          expose:
+            label: Type
+  page:
+    display_title: Page

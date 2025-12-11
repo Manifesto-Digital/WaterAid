@@ -33,6 +33,9 @@ display:
         operations:
           label: Funktioner
       filters:
+        bundle:
+          expose:
+            label: Type
         status:
           expose:
             label: Status
