@@ -274,7 +274,7 @@ field_settings:
       config:
         - field.storage.node.field_properties
   field_published_date:
-    label: 'Hero » Paragraph » Published date'
+    label: 'Hero Published date'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_published_date'
     type: date
@@ -550,7 +550,7 @@ field_settings:
     type_locked: true
     hidden: true
   processed:
-    label: 'Accordion content » Description ext'
+    label: 'Accordion content » Description text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_content:entity:field_rich_text:processed'
     type: text
