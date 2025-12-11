@@ -1,0 +1,26 @@
+uuid: 0eac9c4f-47dc-4c1e-8bf1-41edade9d0a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.download_widget.field_files
+    - paragraphs.paragraphs_type.download_widget
+id: paragraph.download_widget.default
+targetEntityType: paragraph
+bundle: download_widget
+mode: default
+content:
+  field_files:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

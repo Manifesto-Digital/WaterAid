@@ -1,0 +1,41 @@
+uuid: a8a7b46c-0f2c-45c6-ae5b-728cc6f8251d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.local_file.field_media_file
+    - image.style.medium
+    - media.type.local_file
+  module:
+    - svg_image
+id: media.local_file.media_library
+targetEntityType: media
+bundle: local_file
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_media_file: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true
