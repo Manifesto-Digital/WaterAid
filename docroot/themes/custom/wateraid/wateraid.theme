@@ -388,6 +388,17 @@ function wateraid_preprocess_views_view(&$variables): void {
         'theme' => 'theme',
       ],
     ],
+    'press_releases_solr' => [
+      'block_1' => [
+        'country' => 'country',
+        'event_type' => 'event_type',
+        'key_stage' => 'key_stage',
+        'regions' => 'regions',
+        'subject_area' => 'subject_area',
+        'theme' => 'theme',
+        'topic' => 'topic',
+      ],
+    ],
   ];
 
   $view_id = $view->id();
@@ -433,6 +444,7 @@ function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array 
     if (in_array($variables["view"]->id(), [
       'events_solr',
       'blogs_solr',
+      'press_releases_solr',
     ])) {
       $suggestions[] = 'views_view__full_text';
     }
