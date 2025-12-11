@@ -1,0 +1,18 @@
+{# web/themes/custom/wateraid/components/download_widget.stories.twig #}
+{% stories download_widget with { title: 'wateraid/Molecules/DownloadWidget' } %}
+
+  {% story DownloadWidget with {
+    name: 'Download widget',
+    args: {
+      files: {
+        0: 'Test file 1',
+        1: 'Test file 2'
+      },
+    }
+  } %}
+
+    {{ include('wateraid:download_widget', {
+      files,
+    }) }}
+  {% endstory %}
+{% endstories %}
