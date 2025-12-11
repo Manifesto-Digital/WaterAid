@@ -1,0 +1,17 @@
+uuid: 8cee5acb-3a4a-4d94-87ea-e1ba02294661
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_orange_dam
+title: 'Default cron handler'
+id: wa_orange_dam_cron
+weight: 0
+module: wa_orange_dam
+callback: 'wa_orange_dam#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

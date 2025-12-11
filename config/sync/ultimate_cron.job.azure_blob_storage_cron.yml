@@ -1,0 +1,17 @@
+uuid: fdd60c55-c1f9-440d-97cc-1203c5e91f3e
+langcode: en
+status: true
+dependencies:
+  module:
+    - azure_blob_storage
+title: 'Default cron handler'
+id: azure_blob_storage_cron
+weight: 0
+module: azure_blob_storage
+callback: 'azure_blob_storage#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
