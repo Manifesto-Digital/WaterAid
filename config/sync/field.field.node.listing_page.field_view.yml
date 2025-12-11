@@ -29,7 +29,7 @@ settings:
     events_solr: events_solr
     press_releases_solr: press_releases_solr
     search: search
-    stories: stories
+    stories_solr: stories_solr
   enabled_settings:
     argument: argument
 field_type: viewsreference
