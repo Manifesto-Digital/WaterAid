@@ -10,7 +10,7 @@
           .forEach((modal) => {
             modal.classList.add("open");
           });
-        document.querySelector("body").classList.add("modal-open");
+        document.documentElement.classList.add("modal-open");
       }
 
       // After 60 seconds of inactivity open the modal.
@@ -47,13 +47,13 @@
           continueDonation.addEventListener("click", (e) => {
             e.preventDefault();
             modal.classList.remove("open");
-            document.querySelector("body").classList.remove("modal-open");
+            document.documentElement.classList.remove("modal-open");
           });
         }
 
         closeButton.addEventListener("click", function () {
           modal.classList.remove("open");
-          document.querySelector("body").classList.remove("modal-open");
+          document.documentElement.classList.remove("modal-open");
 
           // Redirect to clicked link.
           if (exitRedirectLink) {
@@ -61,7 +61,7 @@
           }
         });
 
-        document.querySelector("body").classList.remove("modal-open");
+        document.documentElement.classList.remove("modal-open");
       }
 
       const exitEventListener = (item) => {

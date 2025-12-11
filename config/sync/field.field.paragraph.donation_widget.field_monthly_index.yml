@@ -1,0 +1,23 @@
+uuid: 8f4b3fff-8428-4041-8fa8-1ebcb613b8ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_monthly_index
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - options
+id: paragraph.donation_widget.field_monthly_index
+field_name: field_monthly_index
+entity_type: paragraph
+bundle: donation_widget
+label: 'Monthly donations default item'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 2
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

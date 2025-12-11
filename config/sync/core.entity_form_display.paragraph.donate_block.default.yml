@@ -35,7 +35,7 @@ content:
     settings:
       view_mode: default
       preview_view_mode: default
-      form_display_mode: simple_form
+      form_display_mode: default
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''

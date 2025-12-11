@@ -5,9 +5,14 @@ dependencies:
   config:
     - core.entity_form_mode.paragraph.simple_form
     - field.field.paragraph.donation_widget.field_heading_level
+    - field.field.paragraph.donation_widget.field_hide_mobile_monthly
+    - field.field.paragraph.donation_widget.field_hide_mobile_one_off
     - field.field.paragraph.donation_widget.field_monthly_default
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
+    - field.field.paragraph.donation_widget.field_monthly_index
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
+    - field.field.paragraph.donation_widget.field_one_off_index
+    - field.field.paragraph.donation_widget.field_payin_link
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
     - paragraphs.paragraphs_type.donation_widget
@@ -159,5 +164,10 @@ content:
 hidden:
   created: true
   field_heading_level: true
+  field_hide_mobile_monthly: true
+  field_hide_mobile_one_off: true
+  field_monthly_index: true
+  field_one_off_index: true
+  field_payin_link: true
   field_title: true
   status: true

@@ -4,21 +4,28 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.donation_widget.field_heading_level
+    - field.field.paragraph.donation_widget.field_hide_mobile_monthly
+    - field.field.paragraph.donation_widget.field_hide_mobile_one_off
     - field.field.paragraph.donation_widget.field_monthly_default
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
+    - field.field.paragraph.donation_widget.field_monthly_index
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
+    - field.field.paragraph.donation_widget.field_one_off_index
+    - field.field.paragraph.donation_widget.field_payin_link
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
     - paragraphs.paragraphs_type.donation_widget
   module:
     - field_group
+    - link
     - paragraphs
 third_party_settings:
   field_group:
     group_tabs:
       children:
         - group_content
-        - group_donation_amounts
+        - group_one_off
+        - group_monthly
       label: Tabs
       region: content
       parent_name: ''
@@ -31,28 +38,12 @@ third_party_settings:
         label_as_html: false
         direction: horizontal
         width_breakpoint: 640
-    group_donation_amounts:
-      children:
-        - group_one_off
-        - group_monthly
-      label: 'Donation amounts'
-      region: content
-      parent_name: group_tabs
-      weight: 22
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: true
     group_content:
       children:
         - field_title
         - field_heading_level
         - field_webform_node
+        - field_payin_link
         - field_monthly_default
       label: Content
       region: content
@@ -70,35 +61,41 @@ third_party_settings:
     group_monthly:
       children:
         - field_monthly_donation_amounts
+        - field_monthly_index
+        - field_hide_mobile_monthly
       label: Monthly
       region: content
-      parent_name: group_donation_amounts
+      parent_name: group_tabs
       weight: 22
-      format_type: details
+      format_type: tab
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
-        open: false
+        formatter: closed
         description: ''
         required_fields: true
+        open: false
     group_one_off:
       children:
         - field_one_off_donation_amounts
+        - field_one_off_index
+        - field_hide_mobile_one_off
       label: 'One off'
       region: content
-      parent_name: group_donation_amounts
-      weight: 20
-      format_type: details
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
-        open: false
+        formatter: closed
         description: ''
         required_fields: true
+        open: false
 id: paragraph.donation_widget.default
 targetEntityType: paragraph
 bundle: donation_widget
@@ -110,9 +107,23 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_hide_mobile_monthly:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_mobile_one_off:
+    type: number
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_monthly_default:
     type: boolean_checkbox
-    weight: 24
+    weight: 25
     region: content
     settings:
       display_label: true
@@ -135,6 +146,12 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+  field_monthly_index:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_one_off_donation_amounts:
     type: paragraphs
     weight: 25
@@ -152,6 +169,20 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_one_off_index:
+    type: options_buttons
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_payin_link:
+    type: link_default
+    weight: 24
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_title:
     type: string_textfield

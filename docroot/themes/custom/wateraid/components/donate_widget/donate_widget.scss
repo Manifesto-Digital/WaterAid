@@ -230,6 +230,11 @@
   /* Each option grows equally to fill the space */
   flex: 1 1 auto;
   position: relative;
+  &.hide-on-mobile {
+    @include tablet-down {
+      display: none;
+    }
+  }
 }
 
 /* Element: The actual radio input */
@@ -326,4 +331,52 @@
 .donate-widget__radio-input:focus + .donate-widget__radio-label {
   outline: 2px solid var(--brand-secondary);
   outline-offset: 2px;
+}
+
+// Donate widget in a webform node.
+.webform-donation-widget-wrapper {
+  .donate-widget[data-component-id="wateraid:donate_widget"] {
+    background: transparent;
+    color: $wa-navy;
+    padding: 0;
+  }
+  .donate-widget__legend {
+    color: $wa-navy;
+  }
+  .donate-widget__amount-details--detail {
+    background-color: transparent
+  }
+  .donate-widget__options-wrapper {
+    color: $wa-navy;
+    background-color: $wa-cream;
+  }
+  .donate-widget__heading *,
+  .donate-widget__additional-link a {
+    color: $wa-navy;
+  }
+  .donate-widget__radio-input:checked + .donate-widget__radio-label {
+    background-image: url("/themes/custom/wateraid/images/icons/wa-container-rectangle-wide-dark.svg");
+    color: $wa-white;
+    &.amount:after {
+      background-image: url("/themes/custom/wateraid/images/icons/wa-pointer-dark.svg");
+    }
+  }
+  .donate-widget__option:focus-within {
+    background: $wa-navy;
+  }
+  .donate-widget__increase-impact {
+    background: $wa-navy;
+    color: $white;
+    &::after {
+      background-image: url("/themes/custom/wateraid/images/icons/wa-triangle-dark.svg");
+    }
+  }
+  .button--donate{
+    color: $wa-white;
+    &:hover::after,
+    &::after {
+      background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-wide.svg");
+    }
+  }
+
 }
