@@ -5,23 +5,26 @@ display:
       fields:
         title:
           label: शीर्षक
-          separator: ', '
         type:
           label: 'सामग्री प्रकार'
-          separator: ', '
         status:
           label: अवस्था
           settings:
             format_custom_false: अप्रकाशित
             format_custom_true: प्रकाशित
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: कार्यवाही
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« पहला'
             last: 'आखरी »'
           expose:
@@ -37,6 +40,7 @@ display:
         gid:
           exception:
             title: सभी
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           group_info:

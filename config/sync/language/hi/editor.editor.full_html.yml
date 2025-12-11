@@ -2,7 +2,5 @@ settings:
   plugins:
     ckeditor5_codeBlock:
       languages:
-        0:
+        -
           label: 'सादा टेक्स्ट'
-        9:
-          label: PHP

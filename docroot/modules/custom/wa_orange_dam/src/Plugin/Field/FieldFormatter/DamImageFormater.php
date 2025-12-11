@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\wa_orange_dam\Plugin\Field\FieldFormatter;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -160,7 +161,7 @@ final class DamImageFormater extends ImageFormatter {
         '#uri' => $data['link'],
         '#width' => $width,
         '#height' => $height,
-        '#alt' => $search['APIResponse']['Items'][0]['CustomField.Caption'] ?? '',
+        '#alt' => substr(strip_tags($search['APIResponse']['Items'][0]['CustomField.Caption']), 0, 250) ?? '',
         '#attributes' => [],
         '#cache' => $cache,
       ];

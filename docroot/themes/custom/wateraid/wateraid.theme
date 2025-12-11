@@ -5,6 +5,7 @@
  * Functions to support theming.
  */
 
+use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\group_content_menu\GroupContentMenuInterface;
 use Drupal\group\Entity\Group;
@@ -361,15 +362,107 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
 }
 
 /**
- *
+ *  Preprocess views.
  */
-function wateraid_preprocess_views_view(&$variables) {
+function wateraid_preprocess_views_view(&$variables): void {
+
+  /** @var \Drupal\views\ViewExecutable $view */
   $view = $variables['view'];
   if ($view->id() === 'search') {
     $input = $view->getExposedInput();
     $variables['keywords'] = $input['keywords'] ?? '';
   }
+
+  $map = [
+    'events_solr' => [
+      'block_1' => [
+        'type' => 'type',
+        'regions' => 'regions',
+      ],
+    ],
+    'blogs_solr' => [
+      'block_1' => [
+        'audience' => 'audience',
+        'country' => 'country',
+        'get_involved' => 'get_involved',
+        'theme' => 'theme',
+      ],
+    ],
+    'press_releases_solr' => [
+      'block_1' => [
+        'country' => 'country',
+        'event_type' => 'event_type',
+        'key_stage' => 'key_stage',
+        'regions' => 'regions',
+        'subject_area' => 'subject_area',
+        'theme' => 'theme',
+        'topic' => 'topic',
+      ],
+    ],
+    'stories_solr' => [
+      'block_1' => [
+        'audience' => 'audience',
+        'country' => 'country',
+        'get_involved' => 'get_involved',
+        'theme' => 'theme',
+      ],
+    ],
+  ];
+
+  $view_id = $view->id();
+
+  if (in_array($view_id, array_keys($map))) {
+    $display = $view->current_display;
+
+    if (array_key_exists($view->current_display, $map[$view_id])) {
+      $settings = [
+        'visible_filters' => [
+          'keywords' => 'keywords',
+        ],
+        'no_groups' => FALSE,
+        'no_reset' => FALSE,
+        'no_sort' => FALSE,
+        'no_pager' => FALSE,
+      ];
+
+      /** @var \Drupal\Core\Block\BlockManagerInterface $block_manager */
+      $block_manager = \Drupal::service('plugin.manager.block');
+      $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
+
+      if (!$plugin_block instanceof Broken) {
+        $variables['header'] = $plugin_block->build();
+      }
+
+      $settings['visible_filters'] = $map[$view_id][$display];
+
+      $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
+
+      if (!$plugin_block instanceof Broken) {
+        $variables['exposed'] = $plugin_block->build();
+      }
+    }
+  }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array &$variables): void {
+  if ($variables['view']) {
+    if (in_array($variables['view']->id(), [
+      'events_solr',
+      'blogs_solr',
+      'press_releases_solr',
+      'stories_solr',
+    ])) {
+      if ($variables['view']->current_display == 'block_1') {
+        $suggestions[] = 'views_view__full_text';
+      }
+    }
+  }
+}
+
+
 
 /**
  * Implements hook_preprocess_paragraph__spend().

@@ -16,3 +16,5 @@ display:
             next: 'nästa ›'
             first: '« första'
             last: 'sista »'
+  page_1:
+    display_title: Page

@@ -10,7 +10,6 @@ display:
           label: タイトル
         type:
           label: コンテンツタイプ
-          separator: ', '
         name:
           label: 投稿者
         status:
@@ -22,7 +21,6 @@ display:
           label: 更新
         langcode:
           label: 言語
-          separator: ', '
         operations:
           label: 操作
       pager:

@@ -23,7 +23,6 @@ display:
       fields:
         redirect_source__path:
           label: De
-          separator: ', '
         created:
           label: Criado
       filters:

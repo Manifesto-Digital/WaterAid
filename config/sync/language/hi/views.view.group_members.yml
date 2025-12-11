@@ -4,22 +4,15 @@ display:
       fields:
         name:
           label: प्रयोक्ता
-          separator: ', '
         group_roles:
           label: भूमिका
-          separator: ', '
         changed:
           label: अद्यतित
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: कार्यवाही
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« पहला'
             last: 'आखरी »'
           expose:

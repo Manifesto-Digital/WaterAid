@@ -5,22 +5,15 @@ display:
       fields:
         name:
           label: ユーザー
-          separator: ', '
         group_roles:
           label: 役割
-          separator: ', '
         changed:
           label: 更新
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: 操作
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« 最初'
             last: '最後 »'
           expose:

@@ -19,3 +19,5 @@ display:
         status:
           group_info:
             label: Status
+  page_1:
+    display_title: Page

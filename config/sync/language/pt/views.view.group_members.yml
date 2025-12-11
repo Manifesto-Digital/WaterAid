@@ -5,22 +5,15 @@ display:
       fields:
         name:
           label: Utilizador
-          separator: ', '
         group_roles:
           label: 'Grupos de utilizador'
-          separator: ', '
         changed:
           label: Atualizado
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: Operações
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primeira'
             last: 'Última »'
           expose:

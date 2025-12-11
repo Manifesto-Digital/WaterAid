@@ -1,3 +1,4 @@
+label: 'Editoria11y: Alerts'
 display:
   default:
     display_title: デフォルト
@@ -10,33 +11,40 @@ display:
           sort_asc_label: 昇順
           sort_desc_label: 降順
   block_recent_issues:
+    display_title: 'Block: Recent alerts'
     display_options:
       fields:
         page_path:
           label: ページパス
+      use_more_text: 'Recent alerts'
   block_top_issues:
     display_options:
       fields:
         result_name_count:
           label: カウント
+      use_more_text: 'Alert types'
   issues__page:
+    display_title: 'Alert types'
     display_options:
+      title: 'Alert types'
       fields:
         result_name_count:
           label: カウント
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« 最初'
             last: '最後 »'
           expose:
             items_per_page_label: ページ毎の件数
             items_per_page_options_all_label: '- 全て -'
             offset_label: オフセット
+      menu:
+        title: 'Issue types'
   issues_by_page__page:
+    display_title: 'Alerts on specified page'
     display_options:
+      title: 'Alerts on specified page'
       fields:
         result_name_count:
           label: カウント
@@ -45,33 +53,42 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« 最初'
             last: '最後 »'
           expose:
             items_per_page_label: ページ毎の件数
             items_per_page_options_all_label: '- 全て -'
             offset_label: オフセット
+      header:
+        area_text_custom:
+          content: "<h1>Accessibility issues on: {{page_title_1}}</h1>\r\n{{uid}}{{uid_1}}"
+      footer:
+        area_text_custom_1:
+          content: '<p><a href="../editoria11y/pages" class="button button--primary">All pages with alerts</a></p>'
+      menu:
+        title: 'Issue types'
   pages_by_issue__page:
+    display_title: 'Pages with specified alert'
     display_options:
+      title: 'Pages with a specific alert'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: ページ毎の件数
             items_per_page_options_all_label: '- 全て -'
             offset_label: オフセット
+      footer:
+        area_text_custom:
+          content: '<a href="../editoria11y/alerts" class="button button--primary">All alerts</a>'
   recent__page:
+    display_title: 'Recent alerts'
     display_options:
+      title: 'Recent accessibility alerts'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: ページ毎の件数
             items_per_page_options_all_label: '- 全て -'
             offset_label: オフセット
+      menu:
+        title: 'Recent alerts'

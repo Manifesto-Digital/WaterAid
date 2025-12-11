@@ -50,6 +50,7 @@
     "drupal/config_override_warn": "^1.5",
     "drupal/config_pages": "^2.19",
     "drupal/config_split": "^2.0",
+    "drupal/configurable_views_filter_block": "^1.0",
     "drupal/core-composer-scaffold": "^10.5",
     "drupal/core-project-message": "^10.5",
     "drupal/core-recommended": "^10.5",

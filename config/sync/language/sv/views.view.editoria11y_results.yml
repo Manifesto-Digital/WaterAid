@@ -19,12 +19,6 @@ display:
           label: Sökväg
         uid:
           label: Författare
-      exposed_form:
-        options:
-          reset_button_label: Återställ
-          exposed_sorts_label: 'Sortera efter'
-          sort_asc_label: Stigande
-          sort_desc_label: Fallande
       filters:
         page_title:
           expose:
@@ -38,11 +32,15 @@ display:
         status:
           expose:
             label: 'Status för publicering'
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
   block_recent_issues:
     display_options:
       fields:
-        result_name:
-          label: Avvikelse
         view_node:
           label: Sökväg
           text: visa
@@ -54,15 +52,11 @@ display:
           text: visa
         page_path:
           admin_label: Editoria11y
+          label: 'Recorded path'
         page_title_1:
           label: Titel
-      block_category: Editoria11y
-  block_top_issues:
-    display_options:
-      fields:
-        result_name:
-          label: Avvikelse
-      block_category: Editoria11y
+      use_more_text: 'Recent alerts'
+    display_title: 'Block: Recent alerts'
   issues_by_page__page:
     display_options:
       fields:
@@ -77,14 +71,27 @@ display:
           text: visa
         page_path:
           admin_label: Editoria11y
+          label: 'Recorded path'
         page_title_1:
           label: Titel
         uid:
           label: Författare
+        result_name_count:
+          label: Alerts
       arguments:
         ed11y_page:
           exception:
             title: Alla
+      title: 'Alerts on specified page'
+      header:
+        area_text_custom:
+          content: "<h1>Accessibility issues on: {{page_title_1}}</h1>\r\n{{uid}}{{uid_1}}"
+      footer:
+        area_text_custom_1:
+          content: '<p><a href="../editoria11y/pages" class="button button--primary">All pages with alerts</a></p>'
+      menu:
+        title: 'Issue types'
+    display_title: 'Alerts on specified page'
   pages_by_issue__page:
     display_options:
       fields:
@@ -109,3 +116,30 @@ display:
         result_key:
           exception:
             title: Alla
+      title: 'Pages with a specific alert'
+      footer:
+        area_text_custom:
+          content: '<a href="../editoria11y/alerts" class="button button--primary">All alerts</a>'
+    display_title: 'Pages with specified alert'
+  block_top_issues:
+    display_options:
+      fields:
+        result_name_count:
+          label: Alerts
+      use_more_text: 'Alert types'
+  issues__page:
+    display_title: 'Alert types'
+    display_options:
+      title: 'Alert types'
+      fields:
+        result_name_count:
+          label: Alerts
+      menu:
+        title: 'Issue types'
+  recent__page:
+    display_title: 'Recent alerts'
+    display_options:
+      title: 'Recent accessibility alerts'
+      menu:
+        title: 'Recent alerts'
+label: 'Editoria11y: Alerts'
