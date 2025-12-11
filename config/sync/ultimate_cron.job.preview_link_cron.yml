@@ -1,0 +1,17 @@
+uuid: e99426f2-061c-4e01-bdd5-6d1724f7baa9
+langcode: en
+status: true
+dependencies:
+  module:
+    - preview_link
+title: 'Delete expired preview links'
+id: preview_link_cron
+weight: 0
+module: preview_link
+callback: 'preview_link#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

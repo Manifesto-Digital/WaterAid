@@ -1,0 +1,17 @@
+uuid: 0ab666d2-a22c-4cae-b70e-97505340bb1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - captcha
+title: 'Remove old sessions'
+id: captcha_cron
+weight: 0
+module: captcha
+callback: 'captcha#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
