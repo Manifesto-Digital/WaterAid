@@ -407,10 +407,10 @@ class QueueHandler {
    * A custom method provided by the service.
    */
   public function processQueue(): void {
+    $items_to_enqueue = [];
+
     while($item = $this->mainQueue->claimItem(0)) {
       $data = $item->data;
-
-      $this->loggerChannel->notice("SID: {$data['sid']} - {$data['webform_id']}: {$data['tries']}");
 
       try {
         $this->processQueueItem($data);
@@ -418,16 +418,21 @@ class QueueHandler {
       }
       catch (\Exception $e) {
         $this->loggerChannel->critical($e->getMessage());
+
         $data['tries']++;
         $this->mainQueue->deleteItem($item);
 
-        if ($data['tries'] < 1) {
-          $this->mainQueue->createItem($data);
+        if ($data['tries'] < 5) {
+          $items_to_enqueue[] = $data;;
         }
         else {
           $this->deadLetterQueue->createItem($data);
         }
       }
+    }
+
+    foreach ($items_to_enqueue as $item) {
+      $this->mainQueue->createItem($item);
     }
   }
 
