@@ -1,0 +1,11 @@
+uuid: df7f92ae-2276-4019-8700-323ae57a42cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_file
+id: media.local_file
+target_entity_type_id: media
+target_bundle: local_file
+default_langcode: site_default
+language_alterable: false

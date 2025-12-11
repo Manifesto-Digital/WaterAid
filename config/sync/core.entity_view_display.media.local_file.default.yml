@@ -1,0 +1,32 @@
+uuid: 68ccaf1a-c3d9-4cc1-ad75-57ed597c1da1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.local_file.field_media_file
+    - media.type.local_file
+  module:
+    - file
+id: media.local_file.default
+targetEntityType: media
+bundle: local_file
+mode: default
+content:
+  field_media_file:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

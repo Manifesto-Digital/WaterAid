@@ -1,0 +1,10 @@
+uuid: 1b185b09-6d42-4a22-84fe-1d2f886f2f28
+langcode: en
+status: true
+dependencies: {  }
+id: download_widget
+label: 'Download widget'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

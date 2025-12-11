@@ -1,0 +1,35 @@
+<div class="download-widget">
+  <form class="download-widget__form">
+    <div class="form-item download-widget__select">
+      <select id="file-selector" data-drupal-selector="file-selector" name="file-selector"
+              aria-label="{{ 'Select a file'|t }}" class="form-select">
+        <option>{{ '- Select file -'|t }}</option>
+        {% for file in files %}
+          <option value={{ file.filename }} data-name="{{ file.name }}"
+                  data-url={{ file.url }} data-size="{{ file.size }}"
+                  data-format={{ file.format }}>{{ file.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-item download-widget__button">
+      {{ include('wateraid:button', {
+        text: 'Download'|t,
+        link: '#',
+        id: 'download_submit',
+        type: 'primary',
+        theme: 'light',
+        icon: 'wa-utility-download',
+        disabled: 'true'
+      }) }}
+    </div>
+  </form>
+
+  <div class="download-widget__file-information">
+    <span class="download-widget__name"></span>
+    <div>
+      <span class="download-widget__format"></span>
+      {{ include('@wateraid/images/icons/wa-shape-drop.svg') }}
+      <span class="download-widget__size"></span>
+    </div>
+  </div>
+</div>
