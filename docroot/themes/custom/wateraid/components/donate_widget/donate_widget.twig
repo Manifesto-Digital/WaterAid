@@ -51,18 +51,20 @@
       <div class="donate-widget__options-wrapper">
         <!-- Option: Monthly -->
         {% if monthly_amounts|length %}
+          {% set monthly_id = 'freq-monthly-' ~ id %}
           <div class="donate-widget__option">
-            <input class="donate-widget__radio-input" type="radio" id="freq-monthly" name="frequency" value="monthly"
+            <input class="donate-widget__radio-input" type="radio" id="{{ monthly_id }}" name="frequency" value="monthly"
               {% if monthly_default == '1' or one_off_amounts|length <= 0 %}checked{% endif %}>
-            <label class="donate-widget__radio-label" for="freq-monthly">Monthly</label>
+            <label class="donate-widget__radio-label" for="{{ monthly_id }}">Monthly</label>
           </div>
         {% endif %}
         <!-- Option: One off -->
         {% if one_off_amounts|length %}
+          {% set one_off_id = 'freq-one-off-' ~ id %}
           <div class="donate-widget__option">
-            <input class="donate-widget__radio-input" type="radio" id="freq-one-off" name="frequency" value="one-off"
+            <input class="donate-widget__radio-input" type="radio" id="{{ one_off_id }}" name="frequency" value="one-off"
               {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
-            <label class="donate-widget__radio-label" for="freq-one-off">One off</label>
+            <label class="donate-widget__radio-label" for="{{ one_off_id }}">One off</label>
           </div>
         {% endif %}
       </div>
@@ -74,7 +76,7 @@
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in monthly_amounts %}
-            {% set radio_id = 'monthly-amount-' ~ item.amount %}
+            {% set radio_id = 'monthly-amount-' ~ item.amount ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_mobile_monthly == item.amount %} hide-on-mobile{% endif %}">
               {% if loop.revindex == 2 %}
