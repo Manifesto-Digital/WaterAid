@@ -354,8 +354,7 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
     // Use the secure input template if the "secure_logo" property is enabled
     // on the element, or the element is a payment method button except for
     // Apple Pay.
-    if ((!empty($variables['element']['#secure_logo']) || (str_contains($variables['element']['#id'], 'payment-payment-method') && !str_contains($variables['element']['#id'], 'applepay')))
-      && isset($variables['element']['#attributes']['value']) && !str_contains($variables['element']['#attributes']['value'], 'step')) {
+    if ((!empty($variables['element']['#secure_logo']) || (str_contains($variables['element']['#id'], 'payment-payment-method') && !str_contains($variables['element']['#id'], 'applepay')))) {
       $suggestions[] = 'input__submit__secure';
     }
   }
