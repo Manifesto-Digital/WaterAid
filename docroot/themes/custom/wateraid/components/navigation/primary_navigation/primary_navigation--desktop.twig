@@ -28,10 +28,8 @@
               aria-expanded="false"
             >{{ link.title }}
               <span class="icon icon-chevron-down">
-                  <svg>
-                    <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-                  </svg>
-                </span>
+                {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
+              </span>
             </button>
           {% endif %}
         {% else %}
@@ -108,10 +106,8 @@
                             >
                               {{ link.title }}
                               <span class="icon icon-chevron-right">
-                                  <svg>
-                                    <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-                                  </svg>
-                                </span>
+                                {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
+                              </span>
                             </button>
                             {# Start rendering out level 3 items. #}
                             {% set level_3_items = link.below %}

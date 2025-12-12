@@ -2,7 +2,7 @@
   Drupal.behaviors.inactivityModal = {
     attach(context) {
 
-      let exitRedirectLink = document.querySelector('.site-header__container a').href || '/';
+      let exitRedirectLink;
 
       function openModal() {
         context
@@ -67,7 +67,7 @@
       const exitEventListener = (item) => {
         return function (event) {
           event.preventDefault();
-
+          exitRedirectLink = document.querySelector('.site-header__container a').href;
           // Check if the event was a click on a link and store the href
           const targetLink = event.target.closest('a');
           if (targetLink) {
@@ -85,7 +85,7 @@
             const closeButton = modal.querySelector(".inactivity-modal__close button");
             closeButton.addEventListener("click", function () {
               // Use the clicked link href if available, otherwise fall back to the original item href
-              window.location = clickedLinkHref || item.href;
+              window.location = exitRedirectLink || item.href;
             });
           }
         };
