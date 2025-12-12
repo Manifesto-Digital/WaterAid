@@ -14,9 +14,9 @@
 
         <div class="site-header__logo">
           <a href="{{ home_page_url }}" class="site-header__logo-link">
-            <svg class="site-header__logo-image">
-              <use href="{{ get_spritemap() }}#wateraid-logo" aria-label="Wateraid logo" />
-            </svg>
+            <span class="site-header__logo-image">
+              {{ include('@wateraid/images/icons/wateraid-logo.svg') }}
+            </span>
           </a>
         </div>
 

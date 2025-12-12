@@ -21,16 +21,15 @@
     {% if icon|render %}
       {% if icon_position == 'before' %}
         <span class="icon button__svg">
-          <svg>
-            <use xlink:href="{{ get_spritemap() }}#{{ icon }}"></use>
-          </svg>
+          {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+          {{ include(icon_url) }}
         </span>
         {{ text }}
       {% else %}
         {{ text }}
-          <span class="button__svg">
+        <span class="button__svg">
           {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
-            {{ include(icon_url) }}
+          {{ include(icon_url) }}
           </span>
       {% endif %}
     {% else %}
@@ -50,14 +49,10 @@
 {% set menuIconRender %}
   {% if type == 'menu' %}
     <span class="icon icon__menu-button-open">
-      <svg>
-        <use xlink:href="{{ get_spritemap() }}#wa-utility-menu"></use>
-      </svg>
+      {{ include('@wateraid/images/icons/wa-utility-menu.svg') }}
     </span>
     <span class="icon icon__menu-button-close">
-      <svg>
-        <use xlink:href="{{ get_spritemap() }}#wa-utility-close"></use>
-      </svg>
+       {{ include('@wateraid/images/icons/wa-utility-close.svg') }}
     </span>
   {% endif %}
 {% endset %}
@@ -65,9 +60,7 @@
 {% set donateIconRender %}
   {% if type == 'primary-meganav-donate-menu-parent' %}
     <span class="icon icon__chevron">
-      <svg>
-        <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-      </svg>
+       {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
     </span>
   {% endif %}
 {% endset %}
@@ -85,10 +78,11 @@
   {{ donateIconRender }}
 {% endset %}
 
-<div data-component-id="wateraid:button" class="button__wrapper button__wrapper--{{ type }} {{ disabled == 'true' ? ' button--disabled' : '' }}">
+<div data-component-id="wateraid:button"
+     class="button__wrapper button__wrapper--{{ type }} {{ disabled == 'true' ? ' button--disabled' : '' }}">
   {% if link %}
     <a href="{{ link }}" class="{{ all_classes|join(' ') }}"
-      tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
+       tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
       {{ inputContentRender }}
     </a>
   {% elseif isInput %}
@@ -98,8 +92,8 @@
     </label>
   {% else %}
     <button id="{{ id }}" aria-label="{{ text }}" class="{{ all_classes|join(' ') }}"
-      aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
-      tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
+            aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
+            tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
       {{ inputContentRender }}
     </button>
   {% endif %}

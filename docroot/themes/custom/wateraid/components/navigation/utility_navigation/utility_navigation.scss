@@ -17,10 +17,11 @@
 
     .icon {
       @include wa-transition-motion-flow(transform, 200ms);
-      display: block;
       fill: currentColor;
       width: calculate-rem(9);
       pointer-events: none;
+      display: flex;
+      align-self: center;
     }
 
     svg {

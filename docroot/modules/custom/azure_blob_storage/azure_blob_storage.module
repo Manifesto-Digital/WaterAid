@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ *  Install and update hooks.
+ */
+
+/**
+ * Set the test fails variable so we can test storage failures.
+ */
+function azure_blob_storage_cron(): void {
+  Drupal::service('azure_blob_storage.queue_handler')->processQueue();
+}
