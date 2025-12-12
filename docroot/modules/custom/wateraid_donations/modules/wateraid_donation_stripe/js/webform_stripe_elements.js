@@ -221,17 +221,20 @@
 
                   }, null, 2);
 
-                  if (response.error) {
+                  if (typeof response !== 'undefined') {
+                    if (response.hasOwnProperty('error')) {
+                      document.getElementById('token').value = response.error.token;
+                    }
+                  }
+
+                  if (typeof response !== 'undefined' && response.error) {
                     // Show the card number field and submit button if the payment intent response has an error.
                     hideInputFields(false);
                     that.showErrorMessage(cardMessage);
                     that.getIdempotencyKey();
                     that.model.setDisableCreatePaymentMethod(false);
                     $('.form-actions .webform-button--submit').removeClass('sca-is-disabled');
-
-                    if (typeof response.error !== 'undefined') {
-                      document.getElementById('token').value = response.error.token;
-                    }
+                    document.getElementById('token').value = response.error.token;
                   }
                   else if (paymentIntent && paymentIntent.status === 'succeeded') {
                     // No need to perform additional SCA auth on the payment intent.
@@ -270,8 +273,10 @@
                   that.getIdempotencyKey();
                   that.model.setDisableCreatePaymentMethod(false);
                   $('.form-actions .webform-button--submit').removeClass('sca-is-disabled');
-                  if (typeof response.error !== 'undefined') {
-                    document.getElementById('token').value = response.error.token;
+                  if (typeof response !== 'undefined') {
+                    if (response.hasOwnProperty('error')) {
+                      document.getElementById('token').value = response.error.token;
+                    }
                   }
                 }
               }
@@ -293,7 +298,6 @@
         }
         this.stripe = new Stripe(drupalSettings.webformStripe.public_key, stripeOptions);
         let elements = this.stripe.elements();
-        // let style = drupalSettings.webformStripeElements.style;
 
         let $button_element = $('.stripe-card-element', this.el);
         this.stripe_el = elements.create('card', { hidePostalCode: true});
