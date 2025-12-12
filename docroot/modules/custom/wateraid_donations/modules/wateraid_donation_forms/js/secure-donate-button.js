@@ -18,7 +18,13 @@
           if( form.querySelector('input[name="payment[payment_frequency]"]')?.value !== 'recurring') {
             const formActions = form?.querySelector('[data-drupal-selector="edit-actions"]');
             if (formActions) {
-              formActions.style.display = 'none';
+
+              // If the actions element has our secure submit inside it, we
+              // don't want to hide anything because then you can't submit the
+              // step. But otherwise we can.
+              if (!formActions.contains(element)) {
+                formActions.style.display = 'none';
+              }
             }
           }
         }
