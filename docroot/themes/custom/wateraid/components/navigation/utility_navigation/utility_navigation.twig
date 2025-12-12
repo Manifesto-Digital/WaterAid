@@ -13,9 +13,7 @@
           <button class="utility-navigation__menu-link utility-navigation__menu-link--site-selector-btn utility-navigation__link-with-icon js-site-selector-btn" aria-expanded="false" aria-controls="site-selector-panel">
             Site selector
             <span class="icon icon-chevron-down">
-              <svg>
-                <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-              </svg>
+              {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
             </span>
           </button>
           <div id="site-selector-panel" class="utility-navigation__site-selector js-site-selector-panel">

@@ -23,6 +23,8 @@
     width: calculate-rem(9);
     pointer-events: none;
     transform: rotate(180deg);
+    display: flex;
+    top: 0;
 
     svg {
       max-width: 100%;
