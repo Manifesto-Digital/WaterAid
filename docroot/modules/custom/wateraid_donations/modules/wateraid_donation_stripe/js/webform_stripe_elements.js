@@ -252,7 +252,10 @@
                         that.getIdempotencyKey();
                         that.model.setDisableCreatePaymentMethod(false);
                         $('.form-actions .webform-button--submit').removeClass('sca-is-disabled');
-                        document.getElementById('token').value = response.token;
+
+                        if (typeof response !== 'undefined' && response.error) {
+                          document.getElementById('token').value = response.token;
+                        }
                       }
                       else {
                         $('.webform-button--submit').click();
