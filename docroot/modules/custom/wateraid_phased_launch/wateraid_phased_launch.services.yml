@@ -1,0 +1,11 @@
+services:
+  path_processor.wateraid_phased_launch:
+    class: Drupal\wateraid_phased_launch\PathProcessor\PathProcessorWateraidPhasedLaunch
+    tags:
+      - { name: path_processor_inbound }
+      - { name: path_processor_outbound }
+
+  wateraid_phased_launch.route_subscriber:
+    class: Drupal\wateraid_phased_launch\EventSubscriber\WateraidPhasedLaunchRouteSubscriber
+    tags:
+      - { name: event_subscriber }
