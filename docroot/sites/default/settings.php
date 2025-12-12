@@ -792,7 +792,7 @@ if (!empty($acquia_env)) {
     $config['loqate_email.settings']['mode'] = 'live';
     $config['webform_capture_plus.setting']['mode'] = 'live';
     $config['wateraid_donation_paypal.settings']['mode'] = 'live';
-    $config['stripe_api.settings']['mode'] = 'live';
+    $config['stripe_api.settings']['mode'] = 'test';
     $config['wateraid_donation_gmo.settings']['mode'] = 'live';
   }
 }
