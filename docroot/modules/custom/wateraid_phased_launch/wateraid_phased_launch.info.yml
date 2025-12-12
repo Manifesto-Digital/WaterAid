@@ -1,0 +1,5 @@
+name: 'WaterAid Phased Launch'
+type: module
+description: 'Functions required to support the phased launch of the WaterAid sites.'
+package: WaterAid
+core_version_requirement: ^10 || ^11

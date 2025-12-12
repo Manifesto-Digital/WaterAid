@@ -145,6 +145,7 @@ module:
   wateraid_forms: 0
   wateraid_group: 0
   wateraid_just_giving: 0
+  wateraid_phased_launch: 0
   webform: 0
   webform_bankaccount: 0
   webform_capture_plus: 0
