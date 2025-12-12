@@ -69,7 +69,10 @@
             if (typeof settings.extraData !== 'undefined' && settings.extraData.hasOwnProperty('view_display_id')) {
               once('listing-ajax', '.listing[data-component-id="wateraid:listing"]', context).forEach((listing) => {
                 const wrapper = listing.querySelector(".listing__wrapper");
-                wrapper.classList.add("listing--filters-open");
+
+                if (wrapper) {
+                  wrapper.classList.add("listing--filters-open");
+                }
               });
             }
           });
