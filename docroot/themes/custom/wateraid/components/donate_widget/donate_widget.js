@@ -1,4 +1,4 @@
-(function (Drupal) {
+(function (Drupal, drupalSettings) {
   document.addEventListener("DOMContentLoaded", function () {
     // Find all donation widgets within the current context (e.g., page or AJAX-loaded content)
     // that haven't been processed yet.
@@ -20,6 +20,20 @@
       const oneOffCustomAmountInput = widget.querySelector("#custom_amount_one_off");
       const submitButton = widget.querySelector('#donate_submit');
 
+      let selectedFrequency;
+      let amountValue;
+
+      // Add event listener on input changes.
+      monthlyCustomAmountInput?.addEventListener("input", () => {
+        amountValue = monthlyCustomAmountInput.value;
+        updateDonationSummary();
+      });
+
+      oneOffCustomAmountInput?.addEventListener("input", () => {
+        amountValue = oneOffCustomAmountInput.value;
+        updateDonationSummary();
+      });
+
       // Exit if we don't have the necessary elements
       if ((!amountRadios.length || !detailElements.length) &&
         !(oneOffCustomAmountContainer || monthlyCustomAmountContainer)
@@ -32,7 +46,7 @@
        * based on the currently selected donation amount.
        */
       const updateAmountSelection = () => {
-        const selectedFrequency = widget.querySelector('input[name="frequency"]:checked');
+        selectedFrequency = widget.querySelector('input[name="frequency"]:checked');
 
         let selectedRadio = widget.querySelector('input[name="one_off_amount"]:checked');
 
@@ -46,20 +60,22 @@
 
         // Toggle visibility of the custom amount text input
         if (selectedRadio.value === "other") {
+          amountValue = '';
           if (selectedFrequency.value === "monthly") {
             monthlyCustomAmountContainer?.classList.remove("is-hidden");
           } else {
             oneOffCustomAmountContainer?.classList.remove("is-hidden");
           }
         } else {
-            monthlyCustomAmountContainer?.classList.add("is-hidden");
-            if (monthlyCustomAmountInput) {
-              monthlyCustomAmountInput.value = ""; // Clear input when hidden
-            }
-            oneOffCustomAmountContainer?.classList.add("is-hidden");
-            if (oneOffCustomAmountInput) {
-              oneOffCustomAmountInput.value = ""; // Clear input when hidden
-            }
+          amountValue = selectedRadio.value
+          monthlyCustomAmountContainer?.classList.add("is-hidden");
+          if (monthlyCustomAmountInput) {
+            monthlyCustomAmountInput.value = ""; // Clear input when hidden
+          }
+          oneOffCustomAmountContainer?.classList.add("is-hidden");
+          if (oneOffCustomAmountInput) {
+            oneOffCustomAmountInput.value = ""; // Clear input when hidden
+          }
         }
 
         // Toggle the visible detail description
@@ -73,6 +89,8 @@
             detail.classList.add("is-hidden");
           }
         });
+
+        updateDonationSummary();
       };
 
       // Add a 'change' event listener to each radio button in the group.
@@ -87,7 +105,7 @@
        * Updates donation amounts based on frequency selection.
        */
       const updateFrequencySelection = () => {
-        const selectedFrequency = widget.querySelector('input[name="frequency"]:checked');
+        selectedFrequency = widget.querySelector('input[name="frequency"]:checked');
 
         if (!selectedFrequency) {
           return;
@@ -109,7 +127,32 @@
 
           updateAmountSelection();
         }
+        updateDonationSummary()
       };
+
+      /**
+       * Updates donation summary display.
+       */
+      const updateDonationSummary = () => {
+        const summary = widget.querySelector('.donate-widget__donation-summary');
+        // select donation summery
+        summary.classList.remove('show');
+
+        // If both are found, update the summary display.
+        if (selectedFrequency.value && amountValue) {
+          summary.classList.add('show');
+          // Find donation frequency and amount
+          summary.querySelector('.donate-widget__donation-summary__label').textContent =
+            selectedFrequency.value === 'monthly'
+              ? Drupal.t('You are making a regular donation of:')
+              : Drupal.t('You are making a one-off donation of:');
+
+          // Get amount prefix if exists, eg.: £.
+          summary.querySelector('.donate-widget__donation-summary__amount').textContent =
+            `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value === 'monthly' ? Drupal.t('per month') : ''}`;
+
+        }
+      }
 
       // Add a 'change' event listener to frequency radios.
       frequencyRadios.forEach((radio) => {
@@ -127,7 +170,7 @@
 
         const location = submitButton.getAttribute('data-location');
         const frequencyValue = selectedFrequency.value;
-        let amountValue = selectedRadio.value;
+        amountValue = selectedRadio.value;
 
         if (monthlyCustomAmountInput?.value || oneOffCustomAmountInput?.value) {
           if (selectedFrequency.value === "monthly") {
@@ -196,4 +239,4 @@
 
     });
   });
-})(Drupal);
+})(Drupal, drupalSettings);
