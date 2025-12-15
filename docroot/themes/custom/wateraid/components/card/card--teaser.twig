@@ -10,7 +10,7 @@
     {% if image|render %}
       {{ image }}
     {% else %}
-      <img src="/{{ active_theme_path() }}/images/png/card-fallback.png" alt=""/>
+      <img src="{{ file_url('/themes/custom/wateraid/images/png/card-fallback.png') }}" alt=""/>
     {% endif %}
   </div>
 
