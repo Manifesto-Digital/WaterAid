@@ -68,7 +68,7 @@
 
     .donation__content {
       max-height: 0;
-      overflow: visible;
+      overflow: hidden;
       transition: max-height 0.2s ease-out;
       display: flex;
       align-items: center;
@@ -92,6 +92,7 @@
 
       &[aria-hidden="false"] {
         max-height: 250px;
+        overflow: visible;
 
         @include desktop {
           max-height: 87px;
