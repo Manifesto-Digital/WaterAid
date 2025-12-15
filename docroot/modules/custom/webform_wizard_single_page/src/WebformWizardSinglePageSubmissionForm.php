@@ -75,9 +75,7 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
     $form['elements']['step_title']['#weight'] = -998;
 
     // Add scroll to attribute to the page title.
-    if ($form_state->getTriggeringElement()) {
-      $form['elements']['step_title']['#attributes']['data-webform-single-page-scroll'] = 'scroll-element';
-    }
+    $form['elements']['step_title']['#attributes']['data-webform-single-page-scroll'] = 'scroll-element';
 
     // Show error messages within the current step.
     $form['elements']['status_messages'] = [
