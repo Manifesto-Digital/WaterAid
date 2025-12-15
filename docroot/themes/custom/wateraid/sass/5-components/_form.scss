@@ -549,7 +549,7 @@ fieldset.prev-form-step {
     position: relative;
     align-self: start;
   }
-  
+
   button,
   input[value="Edit"] {
     @include link();
@@ -687,8 +687,18 @@ fieldset.next-form-step {
     @include base.text-link;
   }
 
-  .pca .pcaautocomplete {
-    border: none !important;
+  .pca {
+    .pcaautocomplete {
+      border: none !important;
+    }
+    .pcaitem {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 0.5rem;
+      .pcadescription {
+        margin-left: 0;
+      }
+    }
   }
 
   .pca-wrapper {
