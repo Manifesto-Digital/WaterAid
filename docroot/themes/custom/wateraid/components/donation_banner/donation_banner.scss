@@ -53,6 +53,7 @@
       }
 
       svg {
+        display: block;
         color: $wa-blue;
         transform: rotate(0deg);
         transition: transform 0.2s;
@@ -67,7 +68,7 @@
 
     .donation__content {
       max-height: 0;
-      overflow: hidden;
+      overflow: visible;
       transition: max-height 0.2s ease-out;
       display: flex;
       align-items: center;
