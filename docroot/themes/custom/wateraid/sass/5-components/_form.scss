@@ -662,20 +662,18 @@ fieldset.next-form-step {
     }
   }
 
-  .form-actions {
-    .button__wrapper {
+  .button__wrapper {
+    width: 100%;
+    .button--secondary {
+      max-width: 100%;
       width: 100%;
-      .button--secondary {
-        max-width: 100%;
-        width: 100%;
-        display: block;
-      }
+      display: block;
     }
+  }
 
-    .button--primary {
-      min-width: 100%;
-      justify-content: center;
-    }
+  .button--primary {
+    min-width: 100%;
+    justify-content: center;
   }
 
   .button[value='Edit'] {
