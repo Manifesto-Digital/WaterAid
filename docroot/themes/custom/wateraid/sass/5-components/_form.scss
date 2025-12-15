@@ -544,6 +544,12 @@ fieldset.prev-form-step {
     }
   }
 
+  button {
+    left: 4rem;
+    position: relative;
+    align-self: start;
+  }
+  
   button,
   input[value="Edit"] {
     @include link();
