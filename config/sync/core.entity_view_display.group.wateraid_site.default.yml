@@ -36,14 +36,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
-    region: content
   label:
     type: string
     label: hidden
@@ -62,6 +54,7 @@ hidden:
   field_show_donation_reminder: true
   field_slug: true
   field_spend_module: true
+  field_title: true
   langcode: true
   search_api_excerpt: true
   uid: true
