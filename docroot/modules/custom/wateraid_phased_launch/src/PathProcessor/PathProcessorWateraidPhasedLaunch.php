@@ -18,21 +18,46 @@ final class PathProcessorWateraidPhasedLaunch implements InboundPathProcessorInt
    * {@inheritdoc}
    */
   public function processInbound($path, Request $request): string {
-    if ($path == '/views/ajax') {
-      $path = '/wateraid-donation-v2/views/ajax';
-    }
-    return $path;
+    return $this->alterPath($path);
   }
 
   /**
    * {@inheritdoc}
    */
   public function processOutbound($path, &$options = [], Request $request = NULL, BubbleableMetadata $bubbleable_metadata = NULL): string {
-    if ($path == '/views/ajax') {
-      $path = '/wateraid-donation-v2/views/ajax';
+    return $this->alterPath($path);
+  }
+
+  /**
+   * Alter paths so they end up going to the correct server.
+   *
+   * @param string $path
+   *   The path to alter.
+   *
+   * @return string
+   *   The altered path or the original if no change required.
+   */
+  private function alterPath(string $path): string {
+    foreach ($this->getPaths() as $old) {
+      if ($path == $old) {
+        $path = '/wateraid-donation-v2' . $old;
+      }
     }
 
     return $path;
+  }
+
+  /**
+   * Helper to get the paths that need altering.
+   *
+   * @return string[]
+   *   An array of paths.
+   */
+  private function getPaths(): array {
+    return [
+      '/views/ajax',
+      '/media/oembed',
+    ];
   }
 
 }
