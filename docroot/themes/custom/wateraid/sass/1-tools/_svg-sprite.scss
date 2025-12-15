@@ -69,6 +69,7 @@ $sprites: (
     'wa-icon-periods': "../../images/sprite.svg#wa-icon-periods-view",
     'wa-icon-phone': "../../images/sprite.svg#wa-icon-phone-view",
     'wa-icon-pump': "../../images/sprite.svg#wa-icon-pump-view",
+    'wa-icon-quote-mark-white': "../../images/sprite.svg#wa-icon-quote-mark-white-view",
     'wa-icon-quote-mark': "../../images/sprite.svg#wa-icon-quote-mark-view",
     'wa-icon-rain': "../../images/sprite.svg#wa-icon-rain-view",
     'wa-icon-recycle': "../../images/sprite.svg#wa-icon-recycle-view",
@@ -411,6 +412,10 @@ $sizes: (
         'height': 24px
     ),
     'wa-icon-pump': (
+        'width': 240px,
+        'height': 240px
+    ),
+    'wa-icon-quote-mark-white': (
         'width': 240px,
         'height': 240px
     ),
