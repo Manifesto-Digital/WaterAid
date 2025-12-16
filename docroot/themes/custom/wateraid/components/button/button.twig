@@ -91,8 +91,8 @@
       {{ inputContentRender }}
     </label>
   {% else %}
-    <button id="{{ id }}" aria-label="{{ text }}" class="{{ all_classes|join(' ') }}"
-            aria-label="{{ text }}" {{ attribute ? attribute.attr ~ '=' ~ attribute.value }}
+    <button id="{{ id }}" aria-label="{{ text }}" aria-label="{{ text }}"
+      {{ attribute ? attribute.attr ~ '=' ~ attribute.value }} {{ attributes }}
             tabindex="{{ disabled == 'true' ? '-1' : '0' }}">
       {{ inputContentRender }}
     </button>
