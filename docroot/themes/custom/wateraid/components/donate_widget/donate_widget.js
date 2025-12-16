@@ -27,6 +27,47 @@
         return;
       }
 
+
+      // Check if mobile or tablet detected.
+      function hasTouchSupport() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      }
+
+      // Check device operating system - Android or IOS
+      const isMobile = {
+        Android: function () {
+          return navigator.userAgent.match(/Android/i);
+        },
+        iOS: function () {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+      };
+
+      const payOptions = () => {
+
+        // Hide GooglePay and ApplePay if not compatible.
+        if (!hasTouchSupport()) {
+          const applePay = widget.querySelector('.wa-apple');
+          const googlePay = widget.querySelector('.wa-google');
+          applePay.style.display = 'none';
+          googlePay.style.display = 'none';
+        }
+        // Hide ApplePay on Android device.
+        if (hasTouchSupport() && isMobile.Android()) {
+          const applePay = widget.querySelector('.wa-apple');
+          const googlePay = widget.querySelector('.wa-google');
+          applePay.style.display = 'none';
+          googlePay.style.display = 'block';
+        }
+        // Hide GooglePay on IOS device.
+        if (isMobile.iOS() || window.ApplePaySession) {
+          const applePay = widget.querySelector('.wa-apple');
+          const googlePay = widget.querySelector('.wa-google');
+          applePay.style.display = 'block';
+          googlePay.style.display = 'none';
+        }
+      }
+
       /**
        * Updates visibility of the custom amount field and the active detail description
        * based on the currently selected donation amount.
@@ -93,6 +134,33 @@
           return;
         }
 
+        // Update the logos that are displayed.
+        const apple = widget.querySelector('.wa-apple');
+        const visa = widget.querySelector('.wa-visa');
+        const mastercard = widget.querySelector('.wa-mastercard');
+        const paypal = widget.querySelector('.wa-paypal');
+        const google = widget.querySelector('.wa-google');
+        const direct = widget.querySelector('.wa-direct-debit');
+
+        if (selectedFrequency.value === 'monthly') {
+          apple.style.display = 'none';
+          visa.style.display = 'none';
+          mastercard.style.display = 'none';
+          paypal.style.display = 'none';
+          google.style.display = 'none';
+          direct.style.display = 'block';
+        }
+        else {
+          apple.style.display = 'block';
+          visa.style.display = 'block';
+          mastercard.style.display = 'block'
+          paypal.style.display = 'block';
+          google.style.display = 'block';
+          direct.style.display = 'none';
+        }
+
+        payOptions();
+
         // Show / hide relevant donation amount options based on frequency selection.
         if (selectedFrequency.value === "monthly") {
           if (oneOffContainer) {
@@ -156,44 +224,6 @@
           impactTag.classList.add("is-hidden");
         });
       }, 10000);
-
-      // Check if mobile or tablet detected.
-      function hasTouchSupport() {
-        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      }
-
-      // Check device operating system - Android or IOS
-      const isMobile = {
-        Android: function () {
-          return navigator.userAgent.match(/Android/i);
-        },
-        iOS: function () {
-          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-      };
-
-      // Hide GooglePay and ApplePay if not compatible.
-      if (!hasTouchSupport()) {
-        const applePay = widget.querySelector('.wa-apple');
-        const googlePay = widget.querySelector('.wa-google');
-        applePay.style.display = 'none';
-        googlePay.style.display = 'none';
-      }
-      // Hide ApplePay on Android device.
-      if (hasTouchSupport() && isMobile.Android()) {
-        const applePay = widget.querySelector('.wa-apple');
-        const googlePay = widget.querySelector('.wa-google');
-        applePay.style.display = 'none';
-        googlePay.style.display = 'block';
-      }
-      // Hide GooglePay on IOS device.
-      if (isMobile.iOS() || window.ApplePaySession) {
-        const applePay = widget.querySelector('.wa-apple');
-        const googlePay = widget.querySelector('.wa-google');
-        applePay.style.display = 'block';
-        googlePay.style.display = 'none';
-      }
-
     });
   });
 })(Drupal);
