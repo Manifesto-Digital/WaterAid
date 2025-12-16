@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.group.wateraid_site.field_content
+    - field.field.group.wateraid_site.field_currency_prefix
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
     - field.field.group.wateraid_site.field_show_donation_reminder
@@ -50,6 +51,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_currency_prefix: true
   field_is_wash_matters_site: true
   field_show_donation_reminder: true
   field_slug: true

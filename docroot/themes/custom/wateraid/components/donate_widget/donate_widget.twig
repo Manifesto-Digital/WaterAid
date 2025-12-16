@@ -206,6 +206,10 @@
         </div>
       </fieldset>
     {% endif %}
+    <div class="donate-widget__donation-summary" aria-live="polite" aria-atomic="true">
+      <div class="donate-widget__donation-summary__label"></div>
+      <div class="donate-widget__donation-summary__amount"></div>
+    </div>
     <div class="donate-widget__form--submit">
       {{ include('wateraid:button', {
         text: button_text,
