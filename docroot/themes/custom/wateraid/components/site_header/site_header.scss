@@ -122,9 +122,13 @@ $header-padding-bottom: 0;
   }
 
   &__primary-navigation {
-    display: inline-flex;
     gap: $wa-spacing-05;
     align-self: end;
+    display: none;
+    @include tablet {
+      display: inline-flex;
+      z-index: 1;
+    }
   }
 
   &__toggle-desktop-menu-btn {

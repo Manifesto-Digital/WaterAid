@@ -50,9 +50,11 @@
         this.state.isOpen = !this.state.isOpen;
       });
 
-      toggleButton.addEventListener('click', (e) => {
-        this.state.isDesktopOpen = !this.state.isDesktopOpen;
-      });
+      if (toggleButton) {
+        toggleButton.addEventListener('click', (e) => {
+          this.state.isDesktopOpen = !this.state.isDesktopOpen;
+        });
+      }
 
       level2Triggers.forEach((el) => {
         el.addEventListener('click', (e) => {
