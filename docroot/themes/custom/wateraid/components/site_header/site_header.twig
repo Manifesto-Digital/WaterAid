@@ -7,7 +7,7 @@
     wash_matters_url: wash_matters_url
   }, false) }}
 
-  <div class="site-header__main">
+  <div class="site-header__main site-header--{{ variant }}">
     <div class="site-header__colour-wrapper">
 
       <div class="site-header__container">
@@ -36,9 +36,9 @@
 
           {{ include('wateraid:button', {
             classes:[
-                'site-header__open-close-mobile-menu-btn',
-                'js-menu-open-close-btn'
-              ],
+              'site-header__open-close-mobile-menu-btn',
+              'js-menu-open-close-btn'
+            ],
             attribute: {
               attr: 'aria-controls',
               value: 'mobile-nav'
@@ -49,13 +49,29 @@
           }, false) }}
         </div>
 
-        <a href="{{ home_page_url }}" class="main-site-link">{{ "Main site"|t }}</a>
-
         {% if primary_navigation %}
-          {{ include ('wateraid:primary_navigation', {
-            menu: primary_navigation,
-            wash_matters_url: wash_matters_url,
-          }, false) }}
+          <div class="site-header__primary-navigation">
+            {{ include ('wateraid:primary_navigation', {
+              menu: primary_navigation,
+              wash_matters_url: wash_matters_url,
+            }, false) }}
+
+            {% if variant == 'minimal' %}
+              {{ include('wateraid:button', {
+                classes:[
+                  'site-header__toggle-desktop-menu-btn',
+                  'js-menu-toggle-btn'
+                ],
+                attribute: {
+                  attr: 'aria-controls',
+                  value: 'meganav'
+                },
+                text: 'Open / close menu',
+                type: 'menu',
+                icon: 'wa-utility-menu',
+              }, false) }}
+            {% endif %}
+          </div>
         {% endif %}
 
       </div>

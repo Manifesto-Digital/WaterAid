@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.shorthand_story.field_country
     - field.field.node.shorthand_story.field_get_involved
     - field.field.node.shorthand_story.field_metatags
+    - field.field.node.shorthand_story.field_minimal_header
     - field.field.node.shorthand_story.field_shorthand_story
     - field.field.node.shorthand_story.field_teaser_image
     - field.field.node.shorthand_story.field_teaser_text
@@ -46,6 +47,7 @@ hidden:
   field_country: true
   field_get_involved: true
   field_metatags: true
+  field_minimal_header: true
   field_shorthand_story: true
   field_teaser_image: true
   field_theme: true
