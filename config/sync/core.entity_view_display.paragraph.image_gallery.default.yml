@@ -12,21 +12,11 @@ dependencies:
     - paragraphs.paragraphs_type.image_gallery
   module:
     - entity_reference_revisions
-    - link
-    - options
-    - text
 id: paragraph.image_gallery.default
 targetEntityType: paragraph
 bundle: image_gallery
 mode: default
 content:
-  field_heading_level:
-    type: list_key
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_images:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -36,42 +26,13 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_link:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  field_rich_text:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_theme:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  field_title:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 0
-    region: content
 hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_heading_level: true
+  field_link: true
+  field_rich_text: true
+  field_theme: true
+  field_title: true
   search_api_excerpt: true

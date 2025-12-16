@@ -47,21 +47,9 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
-
-  {% if not paragraph.field_link.isEmpty() %}
-    {% set link = {
-      url: paragraph.field_link.0.url,
-      title: paragraph.field_link.0.title,
-    }%}
-  {% endif %}
-
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:image_gallery', {
-      title: paragraph.field_title.value,
-      heading_level: paragraph.field_heading_level.value,
-      description: content.field_rich_text,
-      link: link,
       theme: paragraph.field_theme.value,
       image_items: content.field_images|children,
     }, with_context = false) }}
