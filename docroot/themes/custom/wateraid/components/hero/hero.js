@@ -28,14 +28,17 @@
         const donateHeight = context.querySelector(".hero__donate").offsetHeight;
         let calculatedMargin = 0;
 
-        if (heroHeight > 720 && isDesktop) {
+        console.log('hero' + heroHeight);
+        console.log('donate' + donateHeight);
+
+        if (heroHeight > 720 && isDesktop && (donateHeight + 96) > heroHeight) {
           calculatedMargin = donateHeight - heroHeight + 156;
         }
 
         hero.style.marginBottom = calculatedMargin + "px";
       };
 
-      const onresize = function() {
+      const onResize = function() {
         width = document.body.clientWidth;
         context.querySelectorAll('.hero--donate').forEach((hero) => {
         if (width > 1024) {
@@ -45,9 +48,13 @@
         }
         });
       };
-      window.addEventListener("resize", onresize);
+      window.addEventListener("resize", onResize);
 
-      setTimeout(onresize, 500);
+      const radios = context.querySelectorAll('.hero__donate input[type="radio"]');
+      radios.forEach((radio) => {
+        radio.addEventListener("change", onResize);
+      });
+      setTimeout(onResize, 500);
 
     },
   };
