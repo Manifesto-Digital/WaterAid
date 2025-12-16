@@ -29,6 +29,7 @@
           }
           else {
             buttonContainer.classList.add('button--disabled');
+            infoContainer.style.display = 'none';
           }
         };
         select.onchange();
