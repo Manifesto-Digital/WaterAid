@@ -7,6 +7,38 @@ body.primary-menu-open {
   @include tablet {
     position: unset;
   }
+
+  .site-header__primary-navigation {
+    position: absolute;
+    display: block;
+    @include tablet {
+      position: unset;
+      display: flex;
+    }
+  }
+
+  .site-header--minimal {
+    .primary-navigation {
+      display: block;
+    }
+  }
+}
+
+.site-header--minimal {
+  .site-header__primary-navigation,
+  .site-header__toggle-desktop-menu-btn {
+    display: none;
+    @include tablet {
+      display: flex;
+      z-index: 1;
+    }
+  }
+
+  .primary-navigation,
+  .meganav__level-1-item--donate,
+  .button__wrapper--donate {
+    display: none;
+  }
 }
 
 // Some styling for both mega and mobile navs.
@@ -30,14 +62,17 @@ body.primary-menu-open {
       transform: rotate(90deg);
     }
   }
+
   &__level-1-link {
     @include nav-level-1-link;
     padding: $wa-spacing-03 $wa-spacing-04;
   }
+
   &__level-2-link {
     @include nav-level-2-link;
     padding: $wa-spacing-02 $wa-spacing-03;
   }
+
   &__level-3-link {
     @include nav-level-3-link;
     padding: $wa-spacing-02 $wa-spacing-03;
@@ -61,8 +96,3 @@ body.primary-menu-open {
 
 @import 'primary-navigation--desktop';
 @import 'primary-navigation--mobile';
-
-
-
-
-

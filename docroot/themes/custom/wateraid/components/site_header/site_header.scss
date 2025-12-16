@@ -4,14 +4,10 @@ $header-padding-bottom: 0;
 
 .site-header {
   position: relative;
-  z-index: 1;
+  z-index: 15;
 
   @include tablet {
     padding-bottom: $header-padding-bottom;
-  }
-
-  .main-site-link {
-    display: none;
   }
 
   &__colour-wrapper {
@@ -122,38 +118,27 @@ $header-padding-bottom: 0;
       .site-header__colour-wrapper {
         background-color: $wa-cream;
       }
-
-      .site-header__logo-image {
-      }
     }
   }
 
-}
-
-
-.page-node-type-shorthand-story {
-  .site-header__container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .primary-navigation,
-  .site-header__mobile-actions {
+  &__primary-navigation {
+    gap: $wa-spacing-05;
+    align-self: end;
     display: none;
+    @include tablet {
+      display: inline-flex;
+      z-index: 1;
+    }
   }
 
-  .main-site-link {
-    align-content: center;
-    color: $wa-navy;
-    display: block;
-    text-decoration: none;
+  &__toggle-desktop-menu-btn {
+    align-self: end;
+  }
 
-    &:visited {
-      color: $wa-navy;
-    }
-
-    &:hover {
-      text-decoration: underline;
+  &--minimal {
+    .site-header__logo-image {
+      max-height: $wa-spacing-08;
     }
   }
 }
+

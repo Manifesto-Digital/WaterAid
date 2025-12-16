@@ -77,8 +77,6 @@
   {{ content.field_hero }}
   <div class="page-container layout__two-column">
     <div class="layout__two-column--main">
-      {{ content.field_content }}
-
       {% if content.first_step_as_widget %}
         <div class="webform-donation-widget-wrapper">
           {{ content.field_donation_widget }}
@@ -86,6 +84,7 @@
       {% endif %}
 
       {{ content.webform }}
+      {{ content.field_content }}
     </div>
     <div class="layout__two-column--side">
       {{ content.field_sidebar_content }}
