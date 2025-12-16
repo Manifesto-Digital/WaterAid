@@ -51,7 +51,8 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:download_widget', {
-      files: files
+      files: files,
+      download_all: download_all,
     }, with_context = false) }}
   </div>
 {% endblock paragraph %}

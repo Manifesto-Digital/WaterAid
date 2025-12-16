@@ -23,7 +23,7 @@
           if (url) {
             buttonContainer.classList.remove('button--disabled');
             button.setAttribute('href', url);
-            button.setAttribute('download', '');
+            button.setAttribute('download', selected.getAttribute("data-name"));
             button.setAttribute('target', '_blank');
             infoContainer.style.display = 'flex';
           }

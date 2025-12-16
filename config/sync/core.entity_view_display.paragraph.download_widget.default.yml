@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.download_widget.field_download_all_file
     - field.field.paragraph.download_widget.field_files
     - paragraphs.paragraphs_type.download_widget
 id: paragraph.download_widget.default
@@ -10,6 +11,15 @@ targetEntityType: paragraph
 bundle: download_widget
 mode: default
 content:
+  field_download_all_file:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_files:
     type: entity_reference_entity_view
     label: hidden
