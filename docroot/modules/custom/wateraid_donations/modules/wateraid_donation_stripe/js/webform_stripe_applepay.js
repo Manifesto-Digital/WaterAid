@@ -3,7 +3,7 @@
  * Javascript behaviors for webform Apple Pay button.
  */
 
-(function ($, Drupal, drupalSettings, Backbone) {
+(function ($, Drupal, drupalSettings, Backbone, once) {
 
   'use strict';
 
@@ -60,45 +60,49 @@
       }
 
       // Handle real-time validation errors from the card Element.
-      $('.apple-pay-button', el).click(function (event) {
-        // Clear any current error.
-        $errorEl.html('');
+      once('apple-pay-click', '.apple-pay-button', el).forEach(function(element) {
+        $(element).click(function (event) {
+          console.log('Apple Pay button clicked');
+          // Clear any current error.
+          $errorEl.html('');
 
-        let paymentRequest = {
-          countryCode: model.get('countryCode'),
-          currencyCode: model.get('currency'),
-          total: {
-            label: 'Payment by Apple Pay',
-            amount: model.get('amount')
-          },
-          customer: drupalSettings.wateraidDonationForms.contact_details
-        };
+          let paymentRequest = {
+            countryCode: model.get('countryCode'),
+            currencyCode: model.get('currency'),
+            total: {
+              label: 'Payment by Apple Pay',
+              amount: model.get('amount')
+            },
+            customer: drupalSettings.wateraidDonationForms.contact_details
+          };
 
-        event.preventDefault();
+          event.preventDefault();
 
-        let session = Stripe.applePay.buildSession(paymentRequest, function (result, completion) {
-          if (serverSidePayment !== 'undefined' && serverSidePayment === true) {
-            // Just save the token to continue with standard card style payment.
-            model.paymentTokenCreated(result.token.id);
-          }
-          else {
-            $.post(Drupal.url('wateraid-donation-v2/stripe/charge'), {
-              paymentRequest: paymentRequest,
-              tokenId: result.token.id,
-              webformId: drupalSettings.wateraidDonationForms.webform_id,
-            }).done(function (result) {
-              completion(ApplePaySession.STATUS_SUCCESS);
-              model.paymentComplete(result.transactionId);
-            }).fail(function () {
-              completion(ApplePaySession.STATUS_FAILURE);
-            });
-          }
-        }, function (error) {
-          $errorEl.html(event.error.message);
+          let session = Stripe.applePay.buildSession(paymentRequest, function (result, completion) {
+            console.log('Apple Pay session result', result);
+            if (serverSidePayment !== 'undefined' && serverSidePayment === true) {
+              // Just save the token to continue with standard card style payment.
+              model.paymentTokenCreated(result.token.id);
+            }
+            else {
+              $.post(Drupal.url('wateraid-donation-v2/stripe/charge'), {
+                paymentRequest: paymentRequest,
+                tokenId: result.token.id,
+                webformId: drupalSettings.wateraidDonationForms.webform_id,
+              }).done(function (result) {
+                completion(ApplePaySession.STATUS_SUCCESS);
+                model.paymentComplete(result.transactionId);
+              }).fail(function () {
+                completion(ApplePaySession.STATUS_FAILURE);
+              });
+            }
+          }, function (error) {
+            $errorEl.html(event.error.message);
+          });
+          session.oncancel = function () {};
+
+          session.begin();
         });
-        session.oncancel = function () {};
-
-        session.begin();
       });
 
       this.mounted = true;
@@ -106,4 +110,4 @@
     removeBehaviour: function () {}
   });
 
-})(jQuery, Drupal, drupalSettings, Backbone);
+})(jQuery, Drupal, drupalSettings, Backbone, once);
