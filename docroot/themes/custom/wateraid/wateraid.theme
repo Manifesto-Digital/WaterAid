@@ -42,8 +42,9 @@ function wateraid_preprocess_page(&$variables): void {
     $variables['bundle'] = $group->bundle();
   }
 
-  // Determine if we should be rendering the donate header or standard.
+  // Determine if we should be rendering the donate header, minimal or standard.
   $donate_header = FALSE;
+  $minimal_header = FALSE;
   if ($node instanceof NodeInterface) {
     switch ($node->bundle()) {
       case 'donation':
@@ -53,9 +54,14 @@ function wateraid_preprocess_page(&$variables): void {
       case 'webform':
         $donate_header = (bool) $node->get('field_donation_menu')->value;
         break;
+
+      case 'shorthand_story':
+        $minimal_header = (bool) $node->get('field_minimal_header')->value;
+        break;
     }
   }
   $variables['donate_header'] = $donate_header;
+  $variables['minimal_header'] = $minimal_header;
 
   // Add the donate header menu as a variable if we're showing donate header.
   if ($donate_header) {
@@ -91,7 +97,7 @@ function wateraid_preprocess_page(&$variables): void {
     wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables, 3);
 
     // Add currency prefix per group if available.
-    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
+//    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);

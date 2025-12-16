@@ -12,19 +12,11 @@ dependencies:
     - paragraphs.paragraphs_type.image_gallery
   module:
     - layout_paragraphs
-    - link
-    - text
 id: paragraph.image_gallery.default
 targetEntityType: paragraph
 bundle: image_gallery
 mode: default
 content:
-  field_heading_level:
-    type: options_select
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_images:
     type: layout_paragraphs
     weight: 4
@@ -37,36 +29,16 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
-  field_link:
-    type: link_default
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_rich_text:
-    type: text_textarea
-    weight: 2
-    region: content
-    settings:
-      rows: 2
-      placeholder: ''
-    third_party_settings: {  }
   field_theme:
     type: options_select
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_title:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
 hidden:
   created: true
+  field_heading_level: true
+  field_link: true
+  field_rich_text: true
+  field_title: true
   status: true

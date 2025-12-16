@@ -29,6 +29,7 @@
 
       const megaNav = nav.querySelector('.meganav');
       const meganavPanels = megaNav.querySelectorAll('[data-meganav-panel-id]');
+      const toggleButton =  document.querySelector('.js-menu-toggle-btn');
 
       const mobileNav = nav.querySelector('.mobile-nav');
       const menuButton = document.querySelector('.js-menu-open-close-btn');
@@ -48,6 +49,12 @@
       menuButton.addEventListener('click', (e) => {
         this.state.isOpen = !this.state.isOpen;
       });
+
+      if (toggleButton) {
+        toggleButton.addEventListener('click', (e) => {
+          this.state.isDesktopOpen = !this.state.isDesktopOpen;
+        });
+      }
 
       level2Triggers.forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -118,6 +125,17 @@
         this.state.activeLevel3 = null;
       }
 
+      // Open the desktop navigation.
+      this.openDesktopNav = () => {
+        menuButton.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('primary-menu-open');
+      };
+      // Close the desktop navigation.
+      this.closeDesktopNav = () => {
+        document.body.classList.remove('primary-menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      };
+
       // Initialize subscribers, listen to property changes and react
       // accordingly.
       this.state = initSubscribers(
@@ -127,6 +145,16 @@
           activeLevel3: null,
         },
         {
+          isDesktopOpen: [
+            (newValue, oldValue) => {
+              if (newValue) {
+                this.openDesktopNav();
+              }
+              else {
+                this.closeDesktopNav();
+              }
+            }
+          ],
           // Listener for isOpen property changes, this is mobile menu only.
           isOpen: [
             (newValue, oldValue) => {
