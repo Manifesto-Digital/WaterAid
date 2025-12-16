@@ -1,4 +1,3 @@
-{% set tag = heading_level ? heading_level : 'h2' %}
 {% set gallery_classes = [
   'image-gallery',
   'image-gallery--' ~ theme,
@@ -6,90 +5,11 @@
 
 
 <div {{ attributes.addClass(gallery_classes) }}>
-  <div class="image-gallery__wrapper">
-    <div class="image-gallery__content">
-      {% if title %}
-        <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ title }}</{{ tag }}>
-      {% endif %}
-      {% if description %}
-        <div class="image-gallery__content--description">{{ description }}</div>
-      {% endif %}
-      {% if link.title and link.url %}
-        <div class="image-gallery__content--link">
-          {{ include('wateraid:link', {
-            text: link.title,
-            link: link.url,
-            type: 'text',
-          }) }}
-        </div>
-      {% endif %}
-
-      <div class="image-gallery__controls desktop">
-        {{ include('wateraid:button', {
-          id: 'previous',
-          text: 'Previous'|t,
-          link: '',
-          type: 'icon',
-          theme,
-          icon: 'wa-utility-arrow-left',
-          attribute: {
-            attr: 'data-controls',
-            value: 'previous'
-          },
-        }, false) }}
-
-        {{ include('wateraid:button', {
-          id: 'next',
-          text: 'Next'|t,
-          link: '',
-          type: 'icon',
-          theme,
-          icon: 'wa-utility-arrow',
-          attribute: {
-            attr: 'data-controls',
-            value: 'next'
-          },
-        }, false) }}
-      </div>
-    </div>
-
-    <div class="image-gallery__items">
-        <div class="image-gallery__slider">
+  <div class="image-gallery--sliders">
       {% for image_item in image_items %}
-        <div class="image-gallery__item">
-          {{ image_item|raw }}
+        <div class="image-gallery--slider"
+          {{ image_item }}
         </div>
       {% endfor %}
-        </div>
-    </div>
-
-    <div class="image-gallery__controls mobile">
-      {{ include('wateraid:button', {
-        id: 'previous-mobile',
-        text: 'Previous'|t,
-        link: '',
-        type: 'icon',
-        theme,
-        icon: 'wa-utility-arrow-left',
-        attribute: {
-          attr: 'data-controls',
-          value: 'previous'
-        },
-      }, false) }}
-
-      {{ include('wateraid:button', {
-        id: 'next-mobile',
-        text: 'Next'|t,
-        link: '',
-        type: 'icon',
-        theme,
-        icon: 'wa-utility-arrow',
-        attribute: {
-          attr: 'data-controls',
-          value: 'next'
-        },
-      }, false) }}
-    </div>
   </div>
-
 </div>

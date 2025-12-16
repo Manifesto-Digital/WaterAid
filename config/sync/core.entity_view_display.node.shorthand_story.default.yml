@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.shorthand_story.field_country
     - field.field.node.shorthand_story.field_get_involved
     - field.field.node.shorthand_story.field_metatags
+    - field.field.node.shorthand_story.field_minimal_header
     - field.field.node.shorthand_story.field_shorthand_story
     - field.field.node.shorthand_story.field_teaser_image
     - field.field.node.shorthand_story.field_teaser_text
@@ -56,6 +57,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 15
+    region: content
+  field_minimal_header:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 107
     region: content
   field_shorthand_story:
     type: shorthand_local_story_render

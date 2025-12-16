@@ -1,0 +1,23 @@
+uuid: 7dce2470-d353-4d64-89c0-072ef6cba2d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_level
+    - paragraphs.paragraphs_type.gallery_item
+  module:
+    - options
+id: paragraph.gallery_item.field_heading_level
+field_name: field_heading_level
+entity_type: paragraph
+bundle: gallery_item
+label: 'Heading level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

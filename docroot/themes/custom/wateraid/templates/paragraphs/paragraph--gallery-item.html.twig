@@ -1,9 +1,85 @@
-{{ include('wateraid:card', {
-  attributes: attributes,
-  heading: paragraph.field_title.0.value,
-  description: paragraph.field_description.0.value,
-  image: content.field_image,
-  url: '',
-  variant: 'default',
-  is_external: false,
-}, false) }}
+{% block paragraph %}
+  <div class="image-gallery__wrapper">
+    {% set tag = paragraph.field_heading_level.value ? paragraph.field_heading_level.value : 'h2' %}
+
+    {% if not paragraph.field_link.isEmpty() %}
+      {% set link = {
+        url: paragraph.field_link.0.url,
+        title: paragraph.field_link.0.title,
+      }%}
+    {% endif %}
+
+    <div class="image-gallery__content">
+      <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ paragraph.field_title.0.value }}</{{ tag }}>
+      {% if paragraph.field_description.0.value %}
+        <div class="image-gallery__content--description">{{ paragraph.field_description.0.value }}</div>
+      {% endif %}
+      {% if link.title and link.url %}
+        <div class="image-gallery__content--link">
+          {{ include('wateraid:link', {
+            text: link.title,
+            link: link.url,
+            type: 'text',
+          }) }}
+        </div>
+      {% endif %}
+      <div class="image-gallery__controls desktop">
+        {{ include('wateraid:button', {
+          id: 'previous',
+          text: 'Previous'|t,
+          link: '',
+          type: 'icon',
+          theme,
+          icon: 'wa-utility-arrow-left',
+          attribute: {
+            attr: 'data-controls',
+            value: 'previous'
+          },
+        }, false) }}
+
+        {{ include('wateraid:button', {
+          id: 'next',
+          text: 'Next'|t,
+          link: '',
+          type: 'icon',
+          theme,
+          icon: 'wa-utility-arrow',
+          attribute: {
+            attr: 'data-controls',
+            value: 'next'
+          },
+        }, false) }}
+      </div>
+    </div>
+    <div class="image-gallery__items">
+      {{ content.field_image_paragraph }}
+    </div>
+    <div class="image-gallery__controls mobile">
+      {{ include('wateraid:button', {
+        id: 'previous-mobile',
+        text: 'Previous'|t,
+        link: '',
+        type: 'icon',
+        theme,
+        icon: 'wa-utility-arrow-left',
+        attribute: {
+          attr: 'data-controls',
+          value: 'previous'
+        },
+      }, false) }}
+
+      {{ include('wateraid:button', {
+        id: 'next-mobile',
+        text: 'Next'|t,
+        link: '',
+        type: 'icon',
+        theme,
+        icon: 'wa-utility-arrow',
+        attribute: {
+          attr: 'data-controls',
+          value: 'next'
+        },
+      }, false) }}
+    </div>
+  </div>
+{% endblock paragraph %}

@@ -1,0 +1,23 @@
+uuid: b9eee778-748c-4a77-b73e-f4bd8153274f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minimal_header
+    - node.type.shorthand_story
+id: node.shorthand_story.field_minimal_header
+field_name: field_minimal_header
+entity_type: node
+bundle: shorthand_story
+label: 'Minimal Header'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

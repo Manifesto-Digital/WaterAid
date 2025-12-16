@@ -2,5 +2,5 @@ mode: test
 log_webhooks: 0
 test_secret_key: paypal_sandbox_secret_key
 test_public_key: paypal_client_id
-live_secret_key: paypal_live_client_id
-live_public_key: paypay_live_secret
+live_secret_key: paypal_live_secret
+live_public_key: paypal_live_client_id
