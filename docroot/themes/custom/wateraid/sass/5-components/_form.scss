@@ -134,10 +134,31 @@
   }
 
   // Show/hide Loqate manual capture fields
-  fieldset.wa-subelement-wrapper-capture-plus {
+  &.webform-category-donation fieldset.wa-subelement-wrapper-capture-plus {
     display: none;
     &[data-pcamanual="pcamanual"] {
       display: block;
+
+      .capture-manual {
+        display: none;
+      }
+    }
+  }
+  &:not(.webform-category-donation) {
+    div.wa-subelement-wrapper-capture-plus {
+      *:not(.capture-manual) {
+        display: none;
+      }
+
+      &[data-pcamanual="pcamanual"] {
+        *:not(.capture-manual) {
+          display: block;
+        }
+
+        .capture-manual {
+          display: none;
+        }
+      }
     }
   }
 }
