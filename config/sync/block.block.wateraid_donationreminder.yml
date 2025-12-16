@@ -8,8 +8,8 @@ dependencies:
     - wateraid
 id: wateraid_donationreminder
 theme: wateraid
-region: breadcrumb
-weight: 0
+region: content
+weight: -2
 provider: null
 plugin: wateraid_donation_forms_donation_reminder
 settings:

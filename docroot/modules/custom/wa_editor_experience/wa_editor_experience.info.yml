@@ -1,6 +1,0 @@
-name: 'WaterAid Editor Experience'
-type: module
-description: 'Stub to allow proper disabling'
-package: Content
-hidden: true
-core_version_requirement: ^10 || ^11

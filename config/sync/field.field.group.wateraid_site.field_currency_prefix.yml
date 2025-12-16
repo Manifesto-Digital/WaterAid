@@ -1,0 +1,19 @@
+uuid: 94d0dc93-9826-4885-8929-d2e9fe340eac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_currency_prefix
+    - group.type.wateraid_site
+id: group.wateraid_site.field_currency_prefix
+field_name: field_currency_prefix
+entity_type: group
+bundle: wateraid_site
+label: 'Currency prefix'
+description: 'Add the currency prefix associated with this site, eg.: £'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

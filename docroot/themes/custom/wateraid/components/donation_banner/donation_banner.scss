@@ -53,6 +53,7 @@
       }
 
       svg {
+        display: block;
         color: $wa-blue;
         transform: rotate(0deg);
         transition: transform 0.2s;
@@ -91,6 +92,7 @@
 
       &[aria-hidden="false"] {
         max-height: 250px;
+        overflow: visible;
 
         @include desktop {
           max-height: 87px;

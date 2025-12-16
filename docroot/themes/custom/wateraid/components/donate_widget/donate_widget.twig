@@ -76,12 +76,12 @@
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in monthly_amounts %}
-            {% set radio_id = 'monthly-amount-' ~ item.amount ~ id %}
+            {% set radio_id = 'monthly-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_mobile_monthly == item.amount %} hide-on-mobile{% endif %}">
               {% if loop.revindex == 2 %}
                 <div class="donate-widget__increase-impact">
-                  {{ 'Increase your input'|t }}
+                  {{ 'Increase your impact'|t }}
                 </div>
               {% endif %}
               <input class="donate-widget__radio-input"
@@ -99,10 +99,10 @@
 
         <div class="donate-widget__amount-details">
           {% for item in monthly_amounts %}
-            {% set id = 'details-monthly-amount-' ~ item.amount %}
+            {% set details_id = 'details-monthly-amount-' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title and item.description %}
-              <div id="{{ id }}" class="donate-widget__amount-details--detail">
+              <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
                 {% if item.image %}
                   <div class="donate-widget__amount--image">
                     <img loading="lazy" alt="" src="{{ item.image }}"/>
@@ -144,12 +144,12 @@
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in one_off_amounts %}
-            {% set radio_id = 'amount-' ~ item.amount %}
+            {% set radio_id = 'amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_mobile_one_off == item.amount %} hide-on-mobile{% endif %}">
               {% if loop.revindex == 2 %}
                 <div class="donate-widget__increase-impact">
-                  {{ 'Increase your input'|t }}
+                  {{ 'Increase your impact'|t }}
                 </div>
               {% endif %}
               <input class="donate-widget__radio-input"
@@ -167,10 +167,10 @@
 
         <div class="donate-widget__amount-details">
           {% for item in one_off_amounts %}
-            {% set id = 'details-amount-' ~ item.amount %}
+            {% set details_id = 'details-amount-' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title and item.description %}
-              <div id="{{ id }}" class="donate-widget__amount-details--detail">
+              <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
                 {% if item.image %}
                   <div class="donate-widget__amount--image">
                     <img loading="lazy" alt="" src="{{ item.image }}"/>
@@ -206,6 +206,10 @@
         </div>
       </fieldset>
     {% endif %}
+    <div class="donate-widget__donation-summary" aria-live="polite" aria-atomic="true">
+      <div class="donate-widget__donation-summary__label"></div>
+      <div class="donate-widget__donation-summary__amount"></div>
+    </div>
     <div class="donate-widget__form--submit">
       {{ include('wateraid:button', {
         text: button_text,

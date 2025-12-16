@@ -19,8 +19,11 @@ final class WateraidPhasedLaunchRouteSubscriber extends RouteSubscriberBase {
 
     // Use a custom path for Views AJAX to prevent it getting rerouted to the
     // live site.
-    if ($route = $collection->get('views.ajax')) {
-      $route->setPath('/wateraid-donation-v2/views/ajax');
+    foreach (['media.oembed_iframe', 'views.ajax'] as $route_name) {
+      if ($route = $collection->get($route_name)) {
+        $path = $route->getPath();
+        $route->setPath('/wateraid-donation-v2' . $path);
+      }
     }
   }
 

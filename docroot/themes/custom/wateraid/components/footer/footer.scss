@@ -170,6 +170,10 @@
     }
   }
 
+  &__contact {
+    flex-flow: row wrap;
+  }
+
   &__socials ul {
     display: flex;
     gap: $wa-spacing-03;
