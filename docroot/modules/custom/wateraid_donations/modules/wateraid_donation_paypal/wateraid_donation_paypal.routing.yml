@@ -9,7 +9,7 @@ wateraid_donation_paypal.admin:
     _admin_route: TRUE
 
 paypal_api.webhook:
-  path: '/paypal/webhook'
+  path: '/wateraid-donation-v2/paypal/webhook'
   methods: [POST]
   defaults:
     _controller: '\Drupal\wateraid_donation_paypal\Controller\PayPalApiWebhook::handleIncomingWebhook'

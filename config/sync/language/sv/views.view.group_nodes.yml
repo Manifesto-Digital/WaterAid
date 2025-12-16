@@ -45,7 +45,11 @@ display:
                 title: Publicerad
               2:
                 title: 'Ej publicerad'
+        type:
+          expose:
+            label: Type
   page_1:
+    display_title: Page
     display_options:
       menu:
         title: Content

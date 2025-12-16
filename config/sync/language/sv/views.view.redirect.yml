@@ -16,3 +16,8 @@ display:
             next: 'nästa ›'
             first: '« första'
             last: 'sista »'
+      fields:
+        created:
+          label: Created
+  page_1:
+    display_title: Page

@@ -5,10 +5,12 @@
  * Module file for wateraid_forms.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\wateraid_forms\WateraidFormsUrl;
+use Drupal\webform\WebformSubmissionForm;
 
 /**
  * Implements hook_theme_registry_alter().
@@ -106,5 +108,22 @@ function wateraid_forms_entity_base_field_info_alter(&$fields, EntityTypeInterfa
       ->setName('url_params')
       ->setLabel(t('Url parameters'))
       ->setTargetEntityTypeId('webform_submission');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function wateraid_forms_form_alter(&$form, &$form_state, $form_id) {
+  // Check if this is a webform submission form.
+  if ($form_state->getFormObject() instanceof WebformSubmissionForm) {
+
+    // Get the category from the webform.
+    $categories = $form_state->getFormObject()->getWebform()->get('categories');
+
+    // Add category as a class to the form if it exists.
+    if (!empty($categories)) {
+      $form['#attributes']['class'][] = 'webform-category-' . Html::getClass(implode(' ', $categories));
+    }
   }
 }

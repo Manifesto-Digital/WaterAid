@@ -9,8 +9,11 @@ display:
           sort_asc_label: Stigande
           sort_desc_label: Fallande
       fields:
+        created:
+          label: Created
         view_webform_submission:
           label: Funktioner
+          text: view
       arguments:
         in_draft:
           exception:
@@ -20,6 +23,8 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: Åtgärd
+        created:
+          label: Created
         operations:
           label: Funktioner
   embed_manage:
@@ -27,12 +32,18 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: Åtgärd
+        created:
+          label: Created
         view_webform_submission:
           label: Funktioner
+          text: view
         edit_webform_submission:
           label: Funktioner
   embed_review:
     display_options:
       fields:
+        created:
+          label: Created
         view_webform_submission:
           label: Funktioner
+          text: view

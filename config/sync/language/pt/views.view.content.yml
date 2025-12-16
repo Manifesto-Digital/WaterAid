@@ -10,7 +10,6 @@ display:
           label: Título
         type:
           label: 'Tipo de conteúdo'
-          separator: ', '
         name:
           label: Autor
         status:
@@ -22,7 +21,6 @@ display:
           label: Atualizado
         langcode:
           label: Idioma
-          separator: ', '
         operations:
           label: Operações
       pager:

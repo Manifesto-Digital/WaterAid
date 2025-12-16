@@ -134,10 +134,31 @@
   }
 
   // Show/hide Loqate manual capture fields
-  fieldset.wa-subelement-wrapper-capture-plus {
+  &.webform-category-donation fieldset.wa-subelement-wrapper-capture-plus {
     display: none;
     &[data-pcamanual="pcamanual"] {
       display: block;
+
+      .capture-manual {
+        display: none;
+      }
+    }
+  }
+  &:not(.webform-category-donation) {
+    div.wa-subelement-wrapper-capture-plus {
+      *:not(.capture-manual) {
+        display: none;
+      }
+
+      &[data-pcamanual="pcamanual"] {
+        *:not(.capture-manual) {
+          display: block;
+        }
+
+        .capture-manual {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -544,6 +565,12 @@ fieldset.prev-form-step {
     }
   }
 
+  button {
+    left: 4rem;
+    position: relative;
+    align-self: start;
+  }
+
   button,
   input[value="Edit"] {
     @include link();
@@ -656,20 +683,18 @@ fieldset.next-form-step {
     }
   }
 
-  .form-actions {
-    .button__wrapper {
+  .button__wrapper {
+    width: 100%;
+    .button--secondary {
+      max-width: 100%;
       width: 100%;
-      .button--secondary {
-        max-width: 100%;
-        width: 100%;
-        display: block;
-      }
+      display: block;
     }
+  }
 
-    .button--primary {
-      min-width: 100%;
-      justify-content: center;
-    }
+  .button--primary {
+    min-width: 100%;
+    justify-content: center;
   }
 
   .button[value='Edit'] {
@@ -683,8 +708,18 @@ fieldset.next-form-step {
     @include base.text-link;
   }
 
-  .pca .pcaautocomplete {
-    border: none !important;
+  .pca {
+    .pcaautocomplete {
+      border: none !important;
+    }
+    .pcaitem {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 0.5rem;
+      .pcadescription {
+        margin-left: 0;
+      }
+    }
   }
 
   .pca-wrapper {

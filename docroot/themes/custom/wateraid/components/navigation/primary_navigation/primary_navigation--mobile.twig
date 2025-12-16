@@ -16,9 +16,7 @@
         {% if menu_level > 1 %}
           <button class="mobile-nav__back-btn js-mobile-nav-back-btn primary-navigation__link-with-icon">
             <span class="icon icon-arrow-left">
-              <svg>
-                <use href="{{ get_spritemap() }}#wa-shape-arrow" />
-              </svg>
+              {{ include('@wateraid/images/icons/wa-shape-arrow.svg') }}
             </span>
             Back
           </button>
@@ -36,9 +34,7 @@
             {{ parent_link.title }}
             {% if menu_level == 2 %}
               <span class="icon icon-arrow-right">
-                <svg>
-                  <use href="{{ get_spritemap() }}#wa-shape-arrow" />
-                </svg>
+                {{ include('@wateraid/images/icons/wa-shape-arrow.svg') }}
               </span>
             {% endif %}
           </a>
@@ -78,9 +74,7 @@
                   aria-expanded="false"
                 >{{ item.title }}
                   <span class="icon icon-chevron-right">
-                    <svg>
-                      <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-                    </svg>
+                    {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
                   </span>
                 </button>
                 {# Pass the current index as prefix for level 2 #}
@@ -120,18 +114,14 @@
         <button class="utility-nav__link" data-level2-trigger="site-selector">
           Site selector
           <span class="icon icon-chevron-right">
-              <svg>
-                <use href="{{ get_spritemap() }}#wa-utility-chevron" />
-              </svg>
-            </span>
+            {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
+          </span>
         </button>
         <div class="mobile-nav__site-selector" data-mobile-submenu-id="site-selector">
           <div class="mobile-nav__site-selector-inner">
             <button class="mobile-nav__back-btn js-mobile-nav-back-btn primary-navigation__link-with-icon">
                 <span class="icon icon-arrow-left">
-                  <svg>
-                    <use href="{{ get_spritemap() }}#wa-shape-arrow" />
-                  </svg>
+                 {{ include('@wateraid/images/icons/wa-shape-arrow.svg') }}
                 </span>
               Back
             </button>

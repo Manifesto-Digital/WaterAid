@@ -3,15 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_audience
     - field.storage.node.field_content
+    - field.storage.node.field_country
+    - field.storage.node.field_event_end_date
+    - field.storage.node.field_event_start_date
     - field.storage.node.field_event_type
+    - field.storage.node.field_get_involved
     - field.storage.node.field_hero
     - field.storage.node.field_key_stages
     - field.storage.node.field_post_description
+    - field.storage.node.field_properties
     - field.storage.node.field_regions
     - field.storage.node.field_search_phrases
+    - field.storage.node.field_subject_area
     - field.storage.node.field_subtext
     - field.storage.node.field_teaser_text
+    - field.storage.node.field_theme
+    - field.storage.node.field_topic
     - field.storage.paragraph.field_accordion_content
     - field.storage.paragraph.field_accordion_items
     - field.storage.paragraph.field_caption
@@ -19,6 +28,7 @@ dependencies:
     - field.storage.paragraph.field_credit
     - field.storage.paragraph.field_link
     - field.storage.paragraph.field_primary_cta
+    - field.storage.paragraph.field_published_date
     - field.storage.paragraph.field_quote
     - field.storage.paragraph.field_rich_text
     - field.storage.paragraph.field_standfirst
@@ -79,14 +89,33 @@ third_party_settings:
       specific_languages:
         en: '0'
         sv: '0'
+        ja: '0'
+        hi: '0'
+        pt: '0'
       use_universal_collation: false
 id: searchstax_index
 name: 'SearchStax index'
-description: 'Copy of index <em class="placeholder">Search</em>.'
+description: 'Search index on SearchStax.'
 read_only: false
 field_settings:
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
+  field_audience:
+    label: Audience
+    datasource_id: 'entity:node'
+    property_path: field_audience
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_audience
   field_caption:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Caption'
+    label: 'Accordion Caption'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_caption'
     type: text
@@ -98,7 +127,7 @@ field_settings:
       module:
         - paragraphs
   field_caption_1:
-    label: 'Content » Paragraph » Caption'
+    label: Caption
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_caption'
     type: text
@@ -109,7 +138,7 @@ field_settings:
       module:
         - paragraphs
   field_citation:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Citation'
+    label: 'Accordion Citation'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_citation'
     type: text
@@ -122,7 +151,7 @@ field_settings:
       module:
         - paragraphs
   field_citation_1:
-    label: 'Content » Paragraph » Citation'
+    label: Citation
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_citation'
     type: text
@@ -133,7 +162,7 @@ field_settings:
       module:
         - paragraphs
   field_citation_2:
-    label: 'Content » Paragraph » Stat items » Paragraph » Citation'
+    label: 'Stat items Citation'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_citation'
     type: text
@@ -145,7 +174,7 @@ field_settings:
       module:
         - paragraphs
   field_citation_3:
-    label: 'Hero » Paragraph » Citation'
+    label: 'Hero Citation'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_citation'
     type: text
@@ -156,8 +185,16 @@ field_settings:
         - field.storage.paragraph.field_citation
       module:
         - paragraphs
+  field_country:
+    label: Country
+    datasource_id: 'entity:node'
+    property_path: field_country
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_country
   field_credit:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Credit'
+    label: 'Accordion Credit'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_credit'
     type: text
@@ -170,7 +207,7 @@ field_settings:
       module:
         - paragraphs
   field_credit_1:
-    label: 'Content » Paragraph » Credit'
+    label: Credit
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_credit'
     type: text
@@ -180,6 +217,22 @@ field_settings:
         - field.storage.paragraph.field_credit
       module:
         - paragraphs
+  field_event_end_date:
+    label: 'Event end date'
+    datasource_id: 'entity:node'
+    property_path: field_event_end_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_event_end_date
+  field_event_start_date:
+    label: 'Event start date'
+    datasource_id: 'entity:node'
+    property_path: field_event_start_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_event_start_date
   field_event_type:
     label: 'Event type'
     datasource_id: 'entity:node'
@@ -188,6 +241,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_event_type
+  field_get_involved:
+    label: 'Get Involved'
+    datasource_id: 'entity:node'
+    property_path: field_get_involved
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_get_involved
   field_key_stages:
     label: 'Key Stage'
     datasource_id: 'entity:node'
@@ -204,8 +265,27 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_post_description
+  field_properties:
+    label: Properties
+    datasource_id: 'entity:node'
+    property_path: field_properties
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_properties
+  field_published_date:
+    label: 'Hero Published date'
+    datasource_id: 'entity:node'
+    property_path: 'field_hero:entity:field_published_date'
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_hero
+        - field.storage.paragraph.field_published_date
+      module:
+        - paragraphs
   field_quote:
-    label: 'Content » Paragraph » Accordion content » Paragraph » Quote'
+    label: 'Accordion Quote'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_content:entity:field_quote'
     type: text
@@ -217,7 +297,7 @@ field_settings:
       module:
         - paragraphs
   field_quote_1:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Stat items » Paragraph » Quote'
+    label: 'Stat items Quote'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_quote'
     type: text
@@ -231,7 +311,7 @@ field_settings:
       module:
         - paragraphs
   field_quote_2:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Quote'
+    label: 'Accordion items Quote'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_quote'
     type: text
@@ -243,7 +323,7 @@ field_settings:
       module:
         - paragraphs
   field_quote_3:
-    label: 'Content » Paragraph » Quote'
+    label: Quote
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_quote'
     type: text
@@ -254,7 +334,7 @@ field_settings:
       module:
         - paragraphs
   field_quote_4:
-    label: 'Content » Paragraph » Stat items » Paragraph » Quote'
+    label: 'Stat items Quote'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_quote'
     type: text
@@ -266,7 +346,7 @@ field_settings:
       module:
         - paragraphs
   field_quote_5:
-    label: 'Hero » Paragraph » Quote'
+    label: 'Hero Quote'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_quote'
     type: text
@@ -286,7 +366,7 @@ field_settings:
       config:
         - field.storage.node.field_regions
   field_rich_text:
-    label: 'Hero » Paragraph » Description'
+    label: 'Hero Description'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_rich_text'
     type: text
@@ -306,6 +386,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_search_phrases
+  field_subject_area:
+    label: 'Subject Area'
+    datasource_id: 'entity:node'
+    property_path: field_subject_area
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_subject_area
   field_subtext:
     label: Subtext
     datasource_id: 'entity:node'
@@ -315,7 +403,7 @@ field_settings:
       config:
         - field.storage.node.field_subtext
   field_subtitle:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Subtitle'
+    label: 'Accordion items Subtitle'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_subtitle'
     type: text
@@ -335,8 +423,16 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_teaser_text
+  field_theme:
+    label: Theme
+    datasource_id: 'entity:node'
+    property_path: field_theme
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_theme
   field_title:
-    label: 'Content » Paragraph » Accordion content » Paragraph » Title'
+    label: 'Accordion content Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_content:entity:field_title'
     type: text
@@ -348,7 +444,7 @@ field_settings:
       module:
         - paragraphs
   field_title_1:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Stat items » Paragraph » Title'
+    label: 'Accordion content » Stat items Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_title'
     type: text
@@ -362,7 +458,7 @@ field_settings:
       module:
         - paragraphs
   field_title_2:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Title'
+    label: 'Accordion content Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_title'
     type: text
@@ -375,7 +471,7 @@ field_settings:
       module:
         - paragraphs
   field_title_3:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Title'
+    label: 'Accordion items Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_title'
     type: text
@@ -387,7 +483,7 @@ field_settings:
       module:
         - paragraphs
   field_title_4:
-    label: 'Content » Paragraph » Stat items » Paragraph » Title'
+    label: 'Stat items Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_title'
     type: text
@@ -399,7 +495,7 @@ field_settings:
       module:
         - paragraphs
   field_title_5:
-    label: 'Content » Paragraph » Title'
+    label: 'Paragraph Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_title'
     type: text
@@ -410,7 +506,7 @@ field_settings:
       module:
         - paragraphs
   field_title_6:
-    label: 'Hero » Paragraph » Title'
+    label: 'Hero Title'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_title'
     type: text
@@ -421,8 +517,16 @@ field_settings:
         - field.storage.paragraph.field_title
       module:
         - paragraphs
+  field_topic:
+    label: Topic
+    datasource_id: 'entity:node'
+    property_path: field_topic
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_topic
   gid:
-    label: 'Groups » Group relationship » Parent group'
+    label: Group
     datasource_id: 'entity:node'
     property_path: 'entitygroupfield:entity:gid'
     type: integer
@@ -446,7 +550,7 @@ field_settings:
     type_locked: true
     hidden: true
   processed:
-    label: 'Content » Paragraph » Accordion content » Paragraph » Description » Processed text'
+    label: 'Accordion content » Description text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_content:entity:field_rich_text:processed'
     type: text
@@ -458,7 +562,7 @@ field_settings:
       module:
         - paragraphs
   processed_1:
-    label: 'Content » Paragraph » Accordion content » Paragraph » Subtitle » Processed text'
+    label: 'Accordion content » Subtitle text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_content:entity:field_subtitle:processed'
     type: text
@@ -470,7 +574,7 @@ field_settings:
       module:
         - paragraphs
   processed_10:
-    label: 'Content » Paragraph » Standfirst » Processed text'
+    label: 'Standfirst text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_standfirst:processed'
     type: text
@@ -481,7 +585,7 @@ field_settings:
       module:
         - paragraphs
   processed_11:
-    label: 'Content » Paragraph » Stat items » Paragraph » Description » Processed text'
+    label: 'Stat items » Description text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_rich_text:processed'
     type: string
@@ -493,7 +597,7 @@ field_settings:
       module:
         - paragraphs
   processed_12:
-    label: 'Content » Paragraph » Stat items » Paragraph » Standfirst » Processed text'
+    label: 'Stat items » Standfirst text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_standfirst:processed'
     type: text
@@ -505,7 +609,7 @@ field_settings:
       module:
         - paragraphs
   processed_13:
-    label: 'Content » Paragraph » Stat items » Paragraph » Subtitle » Processed text'
+    label: 'Stat items » Subtitle text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_subtitle:processed'
     type: text
@@ -517,7 +621,7 @@ field_settings:
       module:
         - paragraphs
   processed_14:
-    label: 'Content » Paragraph » Subtitle » Processed text'
+    label: 'Subtitle text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_subtitle:processed'
     type: text
@@ -528,7 +632,7 @@ field_settings:
       module:
         - paragraphs
   processed_15:
-    label: 'Hero » Paragraph » Description » Processed text'
+    label: 'Hero Description text'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_rich_text:processed'
     type: text
@@ -540,7 +644,7 @@ field_settings:
       module:
         - paragraphs
   processed_16:
-    label: 'Hero » Paragraph » Standfirst » Processed text'
+    label: 'Hero Standfirst text'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_standfirst:processed'
     type: text
@@ -552,7 +656,7 @@ field_settings:
       module:
         - paragraphs
   processed_17:
-    label: 'Hero » Paragraph » Subtitle » Processed text'
+    label: 'Hero Subtitle text'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_subtitle:processed'
     type: text
@@ -564,7 +668,7 @@ field_settings:
       module:
         - paragraphs
   processed_2:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Description » Processed text'
+    label: 'Accordion content Description text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_rich_text:processed'
     type: text
@@ -577,7 +681,7 @@ field_settings:
       module:
         - paragraphs
   processed_3:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Standfirst » Processed text'
+    label: 'Accordion content Standfirst text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_standfirst:processed'
     type: text
@@ -618,7 +722,7 @@ field_settings:
       module:
         - paragraphs
   processed_6:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Accordion content » Paragraph » Subtitle » Processed text'
+    label: 'Accordion content Subtitle text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_subtitle:processed'
     type: text
@@ -631,7 +735,7 @@ field_settings:
       module:
         - paragraphs
   processed_7:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Description » Processed text'
+    label: 'Accordion items Description text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_rich_text:processed'
     type: text
@@ -643,7 +747,7 @@ field_settings:
       module:
         - paragraphs
   processed_8:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Standfirst » Processed text'
+    label: 'Accordion items Standfirst text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_standfirst:processed'
     type: text
@@ -655,7 +759,7 @@ field_settings:
       module:
         - paragraphs
   processed_9:
-    label: 'Content » Paragraph » Description » Processed text'
+    label: 'Description text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_rich_text:processed'
     type: text
@@ -685,7 +789,7 @@ field_settings:
       module:
         - node
   title_1:
-    label: 'accordion Stat Title'
+    label: 'Accordion Stat Title'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_accordion_content:entity:field_stat_items:entity:field_primary_cta:title'
     type: text
@@ -699,7 +803,7 @@ field_settings:
       module:
         - paragraphs
   title_2:
-    label: 'Content » Paragraph » Accordion items » Paragraph » Primary cta » Link text'
+    label: 'Accordion items Link text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_accordion_items:entity:field_primary_cta:title'
     type: text
@@ -711,7 +815,7 @@ field_settings:
       module:
         - paragraphs
   title_3:
-    label: 'Content » Paragraph » Primary cta » Link text'
+    label: 'Primary cta Link text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_primary_cta:title'
     type: text
@@ -722,7 +826,7 @@ field_settings:
       module:
         - paragraphs
   title_4:
-    label: 'Content » Paragraph » Stat items » Paragraph » Link » Link text'
+    label: 'Stat items Link text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_link:title'
     type: string
@@ -734,7 +838,7 @@ field_settings:
       module:
         - paragraphs
   title_5:
-    label: 'Content » Paragraph » Stat items » Paragraph » Primary cta » Link text'
+    label: 'Stat items » Primary cta Link text'
     datasource_id: 'entity:node'
     property_path: 'field_content:entity:field_stat_items:entity:field_primary_cta:title'
     type: text
@@ -746,7 +850,7 @@ field_settings:
       module:
         - paragraphs
   title_6:
-    label: 'Hero » Paragraph » Primary cta » Link text'
+    label: 'Hero Primary cta Link text'
     datasource_id: 'entity:node'
     property_path: 'field_hero:entity:field_primary_cta:title'
     type: text
@@ -826,6 +930,7 @@ processor_settings:
       - field_credit_1
       - field_key_stages
       - field_post_description
+      - field_properties
       - field_quote
       - field_quote_1
       - field_quote_2

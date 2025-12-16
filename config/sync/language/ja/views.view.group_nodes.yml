@@ -6,23 +6,26 @@ display:
       fields:
         title:
           label: タイトル
-          separator: ', '
         type:
           label: コンテンツタイプ
-          separator: ', '
         status:
           label: 状態
           settings:
             format_custom_false: 非掲載
             format_custom_true: 掲載
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: 操作
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« 最初'
             last: '最後 »'
           expose:
@@ -43,6 +46,7 @@ display:
         gid:
           exception:
             title: すべて
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:

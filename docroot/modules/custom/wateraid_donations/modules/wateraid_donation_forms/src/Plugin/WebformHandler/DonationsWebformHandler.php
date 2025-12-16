@@ -1219,10 +1219,11 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
       $frequency = $data[$prefix . 'frequency'] ?? NULL;
       if ($source_entity instanceof Node) {
-        // Use the internal path to ensure prefixes are not added at this stage.
+        // Use the alias as bare node paths will not work until all sites have
+        // been added.
         $confirm_path = Url::fromRoute('entity.node.webform.confirmation', [
           'node' => $source_entity->id(),
-        ])->getInternalPath();
+        ])->toString();
       }
       else {
         $confirm_path = _wateraid_donation_forms_get_confirm_path($webform);

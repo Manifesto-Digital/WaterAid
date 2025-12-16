@@ -8,18 +8,12 @@ display:
       fields:
         title:
           label: शीर्षक
-          separator: ', '
         type:
           label: 'सामग्री प्रकार'
-          separator: ', '
         name:
           label: लेखक
-          separator: ', '
-        moderation_state:
-          separator: ', '
         changed:
           label: अद्यतित
-          separator: ', '
         operations:
           label: कार्यवाही
       pager:

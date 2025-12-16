@@ -97,7 +97,7 @@
       this.addBehaviour();
     },
     getIdempotencyKey: function () {
-      $.ajax(Drupal.url('wateraid-donation-stripe/sca/idempotency-key'), {
+      $.ajax(Drupal.url('wateraid-donation-v2/stripe/sca/idempotency-key'), {
         method: 'POST',
         dataType: 'json',
         headers: {
@@ -195,7 +195,7 @@
             let scatoken = document.getElementById('token').value;
             // Remove any url from token.
             scatoken = scatoken.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-            $.ajax(Drupal.url('wateraid_donation_stripe/sca/payment_intent' + '?token=' + scatoken), {
+            $.ajax(Drupal.url('wateraid-donation-v2/stripe/sca/payment_intent' + '?token=' + scatoken), {
               method: 'POST',
               dataType: 'json',
               headers: {
@@ -221,7 +221,7 @@
 
                   }, null, 2);
 
-                  if (response.error) {
+                  if (typeof response !== 'undefined' && response.error) {
                     // Show the card number field and submit button if the payment intent response has an error.
                     hideInputFields(false);
                     that.showErrorMessage(cardMessage);
@@ -252,7 +252,10 @@
                         that.getIdempotencyKey();
                         that.model.setDisableCreatePaymentMethod(false);
                         $('.form-actions .webform-button--submit').removeClass('sca-is-disabled');
-                        document.getElementById('token').value = response.token;
+
+                        if (typeof response !== 'undefined' && response.error) {
+                          document.getElementById('token').value = response.token;
+                        }
                       }
                       else {
                         $('.webform-button--submit').click();

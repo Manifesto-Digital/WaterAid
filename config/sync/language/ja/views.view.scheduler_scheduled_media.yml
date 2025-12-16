@@ -27,25 +27,19 @@ display:
           action_title: アクション
         name:
           label: メディア名
-          separator: ', '
         bundle:
           label: メディアタイプ
-          separator: ', '
         uid:
           label: 投稿者
-          separator: ', '
         status:
           label: 状態
           settings:
             format_custom_true: 掲載
             format_custom_false: 非掲載
-          separator: ', '
         publish_on:
           label: 公開する
-          separator: ', '
         unpublish_on:
           label: 非公開にする
-          separator: ', '
         operations:
           label: 操作
       filters:

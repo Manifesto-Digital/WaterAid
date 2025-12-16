@@ -17,3 +17,5 @@ display:
         gid:
           exception:
             title: Alla
+  page_1:
+    display_title: Page

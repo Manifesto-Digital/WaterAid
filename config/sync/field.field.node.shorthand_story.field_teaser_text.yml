@@ -10,7 +10,7 @@ field_name: field_teaser_text
 entity_type: node
 bundle: shorthand_story
 label: 'Teaser text'
-description: 'Summary text is displayed in teasers, for example if this page is displayed on a filtered landing page, and by default is used for meta descriptions on search engines and social platforms. Leave blank to use trimmed value of full text as the summary.'
+description: 'Teaser text is displayed on cards, for example on a listing page, card collection or related content. By default it is used for meta descriptions on search engines and social platforms.'
 required: false
 translatable: false
 default_value: {  }

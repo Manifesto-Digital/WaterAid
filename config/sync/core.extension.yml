@@ -24,6 +24,7 @@ module:
   config_pages: 0
   config_split: 0
   config_translation: 0
+  configurable_views_filter_block: 0
   contact: 0
   content_moderation: 0
   contextual: 0
@@ -95,6 +96,7 @@ module:
   path_alias: 0
   phpass: 0
   preview_link: 0
+  queue_ui: 0
   quick_node_clone: 0
   rabbit_hole: 0
   recaptcha_v3: 0
@@ -125,10 +127,10 @@ module:
   token: 0
   toolbar: 0
   twig_tweak: 0
+  ultimate_cron: 0
   update: 0
   user: 0
   views_infinite_scroll: 0
-  views_ui: 0
   viewsreference: 0
   wa_migration: 0
   wa_orange_dam: 0
@@ -143,6 +145,7 @@ module:
   wateraid_forms: 0
   wateraid_group: 0
   wateraid_just_giving: 0
+  wateraid_phased_launch: 0
   webform: 0
   webform_bankaccount: 0
   webform_capture_plus: 0

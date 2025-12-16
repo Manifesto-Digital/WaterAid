@@ -5,9 +5,6 @@ display:
     display_title: Predefinido
     display_options:
       title: 'Conteúdo recente'
-      fields:
-        changed:
-          separator: ', '
       exposed_form:
         options:
           submit_button: Aplicar
