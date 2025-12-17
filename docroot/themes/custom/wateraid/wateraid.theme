@@ -100,7 +100,7 @@ function wateraid_preprocess_page(&$variables): void {
     wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables, 3);
 
     // Add currency prefix per group if available.
-//    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
+    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
