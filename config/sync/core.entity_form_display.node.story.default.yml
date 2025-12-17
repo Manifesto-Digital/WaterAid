@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_metatags
+    - field.field.node.story.field_minimal_header
     - field.field.node.story.field_override_related_content
     - field.field.node.story.field_related_content
     - field.field.node.story.field_related_content_type
@@ -60,6 +61,7 @@ third_party_settings:
         - field_override_related_content
         - field_related_content
         - langcode
+        - field_minimal_header
       label: General
       region: content
       parent_name: group_tabs
@@ -239,6 +241,13 @@ content:
       sidebar: false
       use_details: false
     third_party_settings: {  }
+  field_minimal_header:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_override_related_content:
     type: boolean_checkbox
     weight: 6
@@ -373,6 +382,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true

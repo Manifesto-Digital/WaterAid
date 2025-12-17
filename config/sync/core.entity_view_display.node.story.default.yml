@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_metatags
+    - field.field.node.story.field_minimal_header
     - field.field.node.story.field_override_related_content
     - field.field.node.story.field_related_content
     - field.field.node.story.field_related_content_type
@@ -28,12 +29,27 @@ targetEntityType: node
 bundle: story
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
     weight: 15
+    region: content
+  field_minimal_header:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 107
     region: content
   field_teaser_image:
     type: entity_reference_entity_view
@@ -61,6 +77,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_audience: true
   field_content: true
   field_country: true
