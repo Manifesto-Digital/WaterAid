@@ -577,22 +577,23 @@ function wateraid_preprocess_paragraph__download_widget(&$variables)
   if (isset($download[0])) {
     $download_file = $download->getValue();
     $media = \Drupal::entityTypeManager()->getStorage('media')->load($download_file[0]['target_id']);
+    $sz = 'BKMGTP';
 
-    if($media->bundle() === 'dam_file'){
+    if ($media->bundle() === 'dam_file') {
       $field = $media->get('field_media_dam_file')->first();
-      $data = $field->getDownloadInfo();
+      if ($field) {
+        $data = $field->getDownloadInfo();
 
-      $variables['download_all']['url'] = $data['url'];
-      $variables['download_all']['filename'] = $data['filename'];
-      $variables['download_all']['size'] = $data['file_size'];
-      $variables['download_all']['format'] = $data['file_extension'];
-
+        $variables['download_all']['url'] = $data['url'];
+        $variables['download_all']['filename'] = $data['filename'];
+        $variables['download_all']['size'] = $data['file_size'];
+        $variables['download_all']['format'] = $data['file_extension'];
+      }
     } else {
       $field = $media->get('field_media_file')->first();
       $file = \Drupal::entityTypeManager()->getStorage('file')->load($field->target_id);
       $path = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
 
-      $sz = 'BKMGTP';
       $factor = floor((strlen($file->getSize()) - 1) / 3);
 
       $variables['download_all']['url'] = Url::fromUri($path);
@@ -609,19 +610,19 @@ function wateraid_preprocess_paragraph__download_widget(&$variables)
 
     if($media->bundle() === 'dam_file'){
       $field = $media->get('field_media_dam_file')->first();
-      $data = $field->getDownloadInfo();
+      if ($field) {
+        $data = $field->getDownloadInfo();
 
-      $variables['files'][$key]['url'] = $data['url'];
-      $variables['files'][$key]['filename'] = $data['filename'];
-      $variables['files'][$key]['size'] = $data['file_size'];
-      $variables['files'][$key]['format'] = $data['file_extension'];
-
+        $variables['files'][$key]['url'] = $data['url'];
+        $variables['files'][$key]['filename'] = $data['filename'];
+        $variables['files'][$key]['size'] = $data['file_size'];
+        $variables['files'][$key]['format'] = $data['file_extension'];
+      }
     } else {
       $field = $media->get('field_media_file')->first();
       $file = \Drupal::entityTypeManager()->getStorage('file')->load($field->target_id);
       $path = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
-
-      $sz = 'BKMGTP';
+      
       $factor = floor((strlen($file->getSize()) - 1) / 3);
 
       $variables['files'][$key]['url'] = Url::fromUri($path);
