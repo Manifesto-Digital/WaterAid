@@ -85,6 +85,10 @@
       @include h5();
 
       margin-top: 0;
+
+      &:last-of-type {
+        padding-bottom: $wa-spacing-03;
+      }
     }
   }
 
