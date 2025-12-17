@@ -1,0 +1,16 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: facet_summary
+status: stable
+description: The facet summary block
+props:
+  type: object
+  properties:
+    content:
+      type: array
+      title: Content
+      description: The block content
+      examples: []
+libraryOverrides:
+  css:
+    component:
+      ../../dist/css/components/facet_summary/facet_summary.css: {}
