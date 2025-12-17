@@ -1,0 +1,31 @@
+uuid: 1fdc2c0f-4148-4425-a4f2-659bdb532b44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_download_all_file
+    - media.type.dam_file
+    - media.type.local_file
+    - paragraphs.paragraphs_type.download_widget
+id: paragraph.download_widget.field_download_all_file
+field_name: field_download_all_file
+entity_type: paragraph
+bundle: download_widget
+label: 'Download all file'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      dam_file: dam_file
+      local_file: local_file
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: dam_file
+field_type: entity_reference
