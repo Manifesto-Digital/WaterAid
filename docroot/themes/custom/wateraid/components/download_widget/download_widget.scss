@@ -1,0 +1,74 @@
+@import "../../sass/base";
+
+.download-widget {
+  background-color: $wa-cream;
+  padding: $wa-spacing-04;
+  gap: $wa-spacing-04;
+  @include grid();
+
+  @include desktop {
+    padding: $wa-spacing-06;
+    gap: $wa-spacing-06;
+  }
+
+  &__form {
+    @include grid-item-span(12, 3, 7);
+    display: flex;
+    gap: $wa-spacing-01;
+    flex-direction: column;
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__select {
+    width: 100%;
+
+    select {
+      background-color: $wa-white;
+    }
+  }
+
+  &__button {
+    z-index: 10;
+
+    .button__wrapper {
+      width: 100%;
+      @include desktop {
+        width: fit-content;
+      }
+    }
+
+    .button {
+      max-width: 100%;
+      justify-content: center;
+      @include desktop {
+        max-width: fit-content;
+      }
+    }
+  }
+
+  &__file-information {
+    @include grid-item-span(12, 3, 5);
+    display: none;
+    gap: $wa-spacing-02;
+    flex-direction: column;
+
+    svg {
+      color: $wa-blue;
+      width: calculate-rem(6);
+      height: calculate-rem(9);
+    }
+  }
+
+  &__name {
+    @include paragraph-sm();
+    font-family: $bold-font;
+  }
+
+  &__format,
+  &__size {
+    @include paragraph-xs();
+    color: $wa-navy-80;
+  }
+}
