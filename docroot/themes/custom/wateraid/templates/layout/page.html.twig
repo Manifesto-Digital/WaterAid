@@ -42,6 +42,12 @@
  * @see html.html.twig
  */
 #}
+{% set contact_details = {
+  tel: config_pages_field('footer', 'field_phone_number')|render|striptags|trim,
+  mail: config_pages_field('footer', 'field_email')|render|striptags|trim,
+  address: config_pages_field('footer', 'field_address'),
+} %}
+
 <div class="layout-container page-node-type-{{ bundle|replace({"_":"-"}) }}">
 
   {% if donate_header %}
@@ -70,7 +76,19 @@
   </main>
 
   <footer role="contentinfo">
-    {{ page.footer }}
+    {% if donate_header %}
+      {{ include('wateraid:footer', {
+        donate_menu: donate_footer_menu,
+        contact_details: contact_details,
+        copy: config_pages_field('footer', 'field_copy'),
+        site_logo: config_pages_field('site_settings', 'field_site_logo'),
+        donate_title: config_pages_field('footer', 'field_title'),
+        donate_text: config_pages_field('footer', 'field_subtitle'),
+        variant: 'donate'
+      }, only) }}
+    {% else %}
+      {{ page.footer }}
+    {% endif %}
   </footer>
 
 </div>
