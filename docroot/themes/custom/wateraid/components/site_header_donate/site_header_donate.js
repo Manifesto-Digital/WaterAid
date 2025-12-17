@@ -7,10 +7,10 @@
       const closeCheckButton = context.querySelector('.site-header__check-close');
       const checkContainer = context.querySelector('.site-header__check');
 
-      openCheckButton.addEventListener('click', () => {
+      openCheckButton?.addEventListener('click', () => {
         checkContainer.classList.toggle('open');
       });
-      closeCheckButton.addEventListener('click', () => {
+      closeCheckButton?.addEventListener('click', () => {
         checkContainer.classList.remove('open');
       });
     }
