@@ -195,7 +195,8 @@
     }
   }
 
-  &__menu--secondary ul {
+  &__menu--secondary ul,
+  &__menu--donate ul {
     display: inline-flex;
     flex-wrap: wrap;
     gap: $wa-spacing-06;
@@ -208,7 +209,6 @@
 
     @include desktop() {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      margin-top: $wa-spacing-09;
     }
 
     li {
@@ -259,6 +259,12 @@
 
     .footer__main {
       padding-top: 0;
+    }
+    .footer__menu--donate ul {
+      margin-top: 0;
+      @include tablet() {
+        margin-top: 0;
+      }
     }
 
     .footer__bottom {
