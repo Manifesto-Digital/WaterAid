@@ -56,6 +56,7 @@ function wateraid_preprocess_page(&$variables): void {
         break;
 
       case 'shorthand_story':
+      case 'story':
         $minimal_header = (bool) $node->get('field_minimal_header')->value;
         break;
     }
@@ -67,6 +68,7 @@ function wateraid_preprocess_page(&$variables): void {
   if ($donate_header) {
     if ($group instanceof GroupInterface) {
       wateraid_add_group_menus($group, ['donate_header_menu' => 'group_content_menu:donate_header_menu'], $variables);
+      wateraid_add_group_menus($group, ['donate_footer_menu' => 'group_content_menu:donate_footer_menu'], $variables);
     }
   }
 
@@ -622,7 +624,7 @@ function wateraid_preprocess_paragraph__download_widget(&$variables)
       $field = $media->get('field_media_file')->first();
       $file = \Drupal::entityTypeManager()->getStorage('file')->load($field->target_id);
       $path = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
-      
+
       $factor = floor((strlen($file->getSize()) - 1) / 3);
 
       $variables['files'][$key]['url'] = Url::fromUri($path);

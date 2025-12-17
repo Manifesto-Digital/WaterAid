@@ -4,6 +4,7 @@
   &__inner {
     background-color: $wa-blue;
   }
+
   &__container {
     @include page-container;
   }
@@ -66,8 +67,9 @@
     z-index: 0;
     position: relative;
   }
+
   &__top-wrapper,
-  &__main-wrapper{
+  &__main-wrapper {
     background-color: $wa-blue;
     width: 100%;
   }
@@ -97,6 +99,7 @@
     background-color: $wa-navy;
     width: 100%;
   }
+
   &__bottom {
     @include page-container;
     @include grid();
@@ -192,8 +195,7 @@
     }
   }
 
-  &__menu--secondary ul,
-  &__menu--donate ul {
+  &__menu--secondary ul {
     display: inline-flex;
     flex-wrap: wrap;
     gap: $wa-spacing-06;
@@ -253,6 +255,10 @@
         display: flex;
         gap: $wa-spacing-02;
       }
+    }
+
+    .footer__main {
+      padding-top: 0;
     }
 
     .footer__bottom {
