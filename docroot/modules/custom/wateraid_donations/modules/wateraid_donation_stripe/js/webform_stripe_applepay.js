@@ -83,6 +83,7 @@
             if (serverSidePayment !== 'undefined' && serverSidePayment === true) {
               // Just save the token to continue with standard card style payment.
               model.paymentTokenCreated(result.token.id);
+              console.log('Apple Pay token created for server side processing', result.token.id);
             }
             else {
               $.post(Drupal.url('wateraid-donation-v2/stripe/charge'), {
@@ -90,17 +91,21 @@
                 tokenId: result.token.id,
                 webformId: drupalSettings.wateraidDonationForms.webform_id,
               }).done(function (result) {
+                console.log('Apple Pay charge result - done', result);
                 completion(ApplePaySession.STATUS_SUCCESS);
                 model.paymentComplete(result.transactionId);
-              }).fail(function () {
+              }).fail(function (e) {
+                console.log('Apple Pay charge result - fail', e);
                 completion(ApplePaySession.STATUS_FAILURE);
               });
             }
           }, function (error) {
-            $errorEl.html(event.error.message);
+            console.log('Apple Pay session error', error);
+            $errorEl.html(error.message);
           });
           session.oncancel = function () {};
 
+          console.log('Starting Apple Pay session');
           session.begin();
         });
       });
