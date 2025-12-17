@@ -25,9 +25,11 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
    */
   public function build(): array {
     return [
-      '#lazy_builder' => [
-        self::class . '::lazyBuilder',
-        [],
+      'content' => [
+        '#lazy_builder' => [
+          self::class . '::lazyBuilder',
+          [],
+        ],
       ],
     ];
   }
@@ -74,7 +76,14 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
         $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()]);
         $copy = $params;
         unset($copy['keywords']);
-        $url->setOptions(['query' => $copy]);
+        $url->setOptions([
+          'query' => $copy,
+          'attributes' => [
+            'aria-label' => t('Remove the :search search filter', [
+              ':search' => $params['keywords'],
+            ]),
+          ],
+        ]);
         $links[] = Link::fromTextAndUrl($params['keywords'], $url);
       }
 
@@ -93,6 +102,9 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
                   'class' => [
                     'wa-pill',
                   ],
+                  'aria-label' => t('Remove the :term filter', [
+                    ':term' => $term->label(),
+                  ]),
                 ],
               ]);
               $links[] = Link::fromTextAndUrl($term->label(), $url);
@@ -114,10 +126,15 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
       '#base_plugin_id' => 'wateraid_blocks_facet_summary',
       '#derivative_plugin_id' => 'wateraid_blocks_facet_summary',
       '#theme' => 'block',
+      'content' => [],
     ];
 
     if ($links) {
-      $links[] = Link::createFromRoute('Clear all filters', 'entity.node.canonical', ['node' => $node->id()]);
+      $links[] = Link::createFromRoute('Clear all filters', 'entity.node.canonical', ['node' => $node->id()], [
+        'attributes' => [
+          'aria-label' => t('Remove all search filters'),
+        ],
+      ]);
       $build['content'] = [
         '#theme' => 'item_list',
         '#title' => '',

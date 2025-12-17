@@ -107,6 +107,7 @@ $sprites: (
     'wa-utility-coffee': "../../images/sprite.svg#wa-utility-coffee-view",
     'wa-utility-confirmation-no': "../../images/sprite.svg#wa-utility-confirmation-no-view",
     'wa-utility-cookie': "../../images/sprite.svg#wa-utility-cookie-view",
+    'wa-utility-download': "../../images/sprite.svg#wa-utility-download-view",
     'wa-utility-expand': "../../images/sprite.svg#wa-utility-expand-view",
     'wa-utility-fastfood': "../../images/sprite.svg#wa-utility-fastfood-view",
     'wa-utility-florist': "../../images/sprite.svg#wa-utility-florist-view",
@@ -564,6 +565,10 @@ $sizes: (
         'height': 24px
     ),
     'wa-utility-cookie': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'wa-utility-download': (
         'width': 24px,
         'height': 24px
     ),
