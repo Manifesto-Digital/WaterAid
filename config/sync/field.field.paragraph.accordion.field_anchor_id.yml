@@ -1,17 +1,17 @@
-uuid: c1fe362f-299f-44cd-b263-76cf574d7456
+uuid: 127b37e7-2acf-4989-8c98-1d72013376e6
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_title
+    - field.storage.paragraph.field_anchor_id
     - paragraphs.paragraphs_type.accordion
-id: paragraph.accordion.field_title
-field_name: field_title
+id: paragraph.accordion.field_anchor_id
+field_name: field_anchor_id
 entity_type: paragraph
 bundle: accordion
-label: Title
+label: 'Anchor id'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
