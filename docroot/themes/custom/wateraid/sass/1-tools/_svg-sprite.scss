@@ -43,6 +43,7 @@ $sprites: (
     'wa-edge-top-2': "../../images/sprite.svg#wa-edge-top-2-view",
     'wa-external': "../../images/sprite.svg#wa-external-view",
     'wa-form-check': "../../images/sprite.svg#wa-form-check-view",
+    'wa-fr-logo-colour': "../../images/sprite.svg#wa-fr-logo-colour-view",
     'wa-fr-logo': "../../images/sprite.svg#wa-fr-logo-view",
     'wa-google': "../../images/sprite.svg#wa-google-view",
     'wa-icon-baby': "../../images/sprite.svg#wa-icon-baby-view",
@@ -311,6 +312,10 @@ $sizes: (
     'wa-form-check': (
         'width': 24px,
         'height': 24px
+    ),
+    'wa-fr-logo-colour': (
+        'width': 159px,
+        'height': 46px
     ),
     'wa-fr-logo': (
         'width': 178px,
