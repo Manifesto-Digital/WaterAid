@@ -1,8 +1,30 @@
 @import "./sass/base";
 
 .site-header-donate {
+  position: relative;
+  z-index: 20;
 
   .site-header {
+    &__check {
+      display: none;
+      position: absolute;
+      top: 80px;
+      background: white;
+      padding: 24px;
+      gap: 16px;
+      flex-direction: column;
+
+      &.open {
+        display: flex;
+      }
+
+      .button,
+      .button__wrapper {
+        min-width: 100%;
+        justify-content: center;
+        z-index: 1;
+      }
+    }
 
     &__colour-wrapper {
       background: $white;
@@ -34,6 +56,7 @@
 
       &-link {
         display: block;
+        width: 100%;
       }
 
       &-image {
@@ -57,9 +80,11 @@
         display: flex;
         gap: $wa-spacing-06;
       }
+
       a {
         @include utility-nav-link;
       }
+
       .donate-header-menu-item--hide-on-mobile {
         display: none;
 
