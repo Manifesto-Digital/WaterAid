@@ -1,0 +1,19 @@
+uuid: 67033fbf-c859-4890-a5de-7ea33c3983f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - group_content_menu.group_content_menu_type.donate_footer_menu
+  module:
+    - group_content_menu
+id: wateraid_site-2dbfd00d8b1620b0e5
+group_type: wateraid_site
+content_plugin: 'group_content_menu:donate_footer_menu'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false
+  auto_create_group_menu: true
+  auto_create_home_link: false
+  auto_create_home_link_title: Home

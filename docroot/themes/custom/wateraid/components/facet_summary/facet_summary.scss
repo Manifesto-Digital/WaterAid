@@ -1,0 +1,41 @@
+@import "../../sass/base";
+
+[data-component-id="wateraid:facet_summary"] {
+  padding: $wa-spacing-04;
+
+  ul {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    gap: $wa-spacing-04;
+
+    li {
+      display: block;
+
+      a {
+        color: $wa-navy;
+        text-decoration: none;
+        padding: $wa-spacing-01 $wa-spacing-03 $wa-spacing-01 $wa-spacing-03;
+        height: calc(24px + $wa-spacing-01 + $wa-spacing-01);
+        display: flex;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .wa-pill {
+        border-radius: $wa-spacing-06;
+        background-color: $wa-cream;
+
+        &:after {
+          content: '';
+          background-image: url('/themes/custom/wateraid/images/icons/wa-utility-close.svg');
+          height: 24px;
+          width: 24px;
+          margin-left: $wa-spacing-01;
+        }
+      }
+    }
+  }
+}

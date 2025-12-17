@@ -15,6 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\wateraid_blocks\Plugin\Block\WaFacetSummaryBlock;
 
 // Require all the theme includes.
 $theme_path = Drupal::theme()->getActiveTheme()->getPath();
@@ -56,6 +57,7 @@ function wateraid_preprocess_page(&$variables): void {
         break;
 
       case 'shorthand_story':
+      case 'story':
         $minimal_header = (bool) $node->get('field_minimal_header')->value;
         break;
     }
@@ -67,6 +69,7 @@ function wateraid_preprocess_page(&$variables): void {
   if ($donate_header) {
     if ($group instanceof GroupInterface) {
       wateraid_add_group_menus($group, ['donate_header_menu' => 'group_content_menu:donate_header_menu'], $variables);
+      wateraid_add_group_menus($group, ['donate_footer_menu' => 'group_content_menu:donate_footer_menu'], $variables);
     }
   }
 
@@ -97,7 +100,7 @@ function wateraid_preprocess_page(&$variables): void {
     wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables, 3);
 
     // Add currency prefix per group if available.
-//    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
+    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
@@ -381,41 +384,7 @@ function wateraid_preprocess_views_view(&$variables): void {
     $variables['keywords'] = $input['keywords'] ?? '';
   }
 
-  $map = [
-    'events_solr' => [
-      'block_1' => [
-        'type' => 'type',
-        'regions' => 'regions',
-      ],
-    ],
-    'blogs_solr' => [
-      'block_1' => [
-        'audience' => 'audience',
-        'country' => 'country',
-        'get_involved' => 'get_involved',
-        'theme' => 'theme',
-      ],
-    ],
-    'press_releases_solr' => [
-      'block_1' => [
-        'country' => 'country',
-        'event_type' => 'event_type',
-        'key_stage' => 'key_stage',
-        'regions' => 'regions',
-        'subject_area' => 'subject_area',
-        'theme' => 'theme',
-        'topic' => 'topic',
-      ],
-    ],
-    'stories_solr' => [
-      'block_1' => [
-        'audience' => 'audience',
-        'country' => 'country',
-        'get_involved' => 'get_involved',
-        'theme' => 'theme',
-      ],
-    ],
-  ];
+  $map = WaFacetSummaryBlock::getViewMap();
 
   $view_id = $view->id();
 
@@ -438,7 +407,13 @@ function wateraid_preprocess_views_view(&$variables): void {
       $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
 
       if (!$plugin_block instanceof Broken) {
-        $variables['header'] = $plugin_block->build();
+        $variables['header']['keyword_search'] = $plugin_block->build();
+      }
+
+      $plugin_block = $block_manager->createInstance('wateraid_blocks_facet_summary', []);
+
+      if (!$plugin_block instanceof Broken) {
+        $variables['header']['facets_summary'] = $plugin_block->build();
       }
 
       $settings['visible_filters'] = $map[$view_id][$display];
@@ -446,7 +421,7 @@ function wateraid_preprocess_views_view(&$variables): void {
       $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
 
       if (!$plugin_block instanceof Broken) {
-        $variables['exposed'] = $plugin_block->build();
+        $variables['exposed']['views_filters'] = $plugin_block->build();
       }
     }
   }
@@ -577,22 +552,23 @@ function wateraid_preprocess_paragraph__download_widget(&$variables)
   if (isset($download[0])) {
     $download_file = $download->getValue();
     $media = \Drupal::entityTypeManager()->getStorage('media')->load($download_file[0]['target_id']);
+    $sz = 'BKMGTP';
 
-    if($media->bundle() === 'dam_file'){
+    if ($media->bundle() === 'dam_file') {
       $field = $media->get('field_media_dam_file')->first();
-      $data = $field->getDownloadInfo();
+      if ($field) {
+        $data = $field->getDownloadInfo();
 
-      $variables['download_all']['url'] = $data['url'];
-      $variables['download_all']['filename'] = $data['filename'];
-      $variables['download_all']['size'] = $data['file_size'];
-      $variables['download_all']['format'] = $data['file_extension'];
-
+        $variables['download_all']['url'] = $data['url'];
+        $variables['download_all']['filename'] = $data['filename'];
+        $variables['download_all']['size'] = $data['file_size'];
+        $variables['download_all']['format'] = $data['file_extension'];
+      }
     } else {
       $field = $media->get('field_media_file')->first();
       $file = \Drupal::entityTypeManager()->getStorage('file')->load($field->target_id);
       $path = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
 
-      $sz = 'BKMGTP';
       $factor = floor((strlen($file->getSize()) - 1) / 3);
 
       $variables['download_all']['url'] = Url::fromUri($path);
@@ -609,19 +585,19 @@ function wateraid_preprocess_paragraph__download_widget(&$variables)
 
     if($media->bundle() === 'dam_file'){
       $field = $media->get('field_media_dam_file')->first();
-      $data = $field->getDownloadInfo();
+      if ($field) {
+        $data = $field->getDownloadInfo();
 
-      $variables['files'][$key]['url'] = $data['url'];
-      $variables['files'][$key]['filename'] = $data['filename'];
-      $variables['files'][$key]['size'] = $data['file_size'];
-      $variables['files'][$key]['format'] = $data['file_extension'];
-
+        $variables['files'][$key]['url'] = $data['url'];
+        $variables['files'][$key]['filename'] = $data['filename'];
+        $variables['files'][$key]['size'] = $data['file_size'];
+        $variables['files'][$key]['format'] = $data['file_extension'];
+      }
     } else {
       $field = $media->get('field_media_file')->first();
       $file = \Drupal::entityTypeManager()->getStorage('file')->load($field->target_id);
       $path = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
 
-      $sz = 'BKMGTP';
       $factor = floor((strlen($file->getSize()) - 1) / 3);
 
       $variables['files'][$key]['url'] = Url::fromUri($path);

@@ -6,11 +6,28 @@
       <div class="site-header__container">
 
         <div class="site-header__logo">
-          <a href="{{ home_page_url }}" class="site-header__logo-link">
+          <button class="site-header__logo-link">
             <span class="site-header__logo-image">
               {{ include('@wateraid/images/icons/wateraid-logo.svg') }}
             </span>
-          </a>
+          </button>
+        </div>
+
+        <div class="site-header__check">
+          {{ include('wateraid:button', {
+            classes: ['site-header__check-close'],
+            text: 'Stay in donation process'|t,
+            type: 'primary',
+            theme: 'light'
+          }, false) }}
+
+          {{ include('wateraid:button', {
+            classes: ['site-header__check-redirect'],
+            text: 'Return to homepage'|t,
+            link: home_page_url,
+            type: 'primary',
+            theme: 'light'
+          }, false) }}
         </div>
 
         {% if donate_header_menu %}

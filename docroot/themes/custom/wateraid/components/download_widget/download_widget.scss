@@ -4,11 +4,14 @@
   background-color: $wa-cream;
   padding: $wa-spacing-04;
   gap: $wa-spacing-04;
+  margin-top: $wa-spacing-07;
   @include grid();
 
   @include desktop {
     padding: $wa-spacing-06;
     gap: $wa-spacing-06;
+    margin-top: $wa-spacing-09;
+    margin-left: 0;
   }
 
   &__form {

@@ -1,0 +1,13 @@
+{% stories donation_banner with { title: 'wateraid/Molecules/FacetSummary' } %}
+  {% story Default with {
+    name: 'Default',
+    args: {
+      content: "content": "<ul><li><a href=\"#link\" class=\"wa-pill\">Pill</a></li><li><a href=\"#reset\">Reset</a></li></ul>",
+    }
+  } %}
+
+    {{ include('wateraid:facet_summary', {
+      content
+    }) }}
+  {% endstory %}
+{% endstories %}

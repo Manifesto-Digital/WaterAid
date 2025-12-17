@@ -16,6 +16,6 @@ prod:
   host: wateraidaceprod.ssh.prod.acquia-sites.com
   user: wateraidace.prod
   root: /var/www/html/docroot/
-  uri: https://wateraidaceprod.prod.acquia-sites.com/
+  uri: https://phased-launch-cms.wateraid.org/
   paths:
     drush-script: '/var/www/html/vendor/bin/drush'

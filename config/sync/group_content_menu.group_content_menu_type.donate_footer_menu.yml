@@ -1,0 +1,6 @@
+uuid: 465bf916-425f-40fe-8bdc-ef2945a6b37b
+langcode: en
+status: true
+dependencies: {  }
+id: donate_footer_menu
+label: 'Donate footer menu'
