@@ -240,8 +240,8 @@
   flex: 1 1 auto;
   position: relative;
 
-  &.hide-on-mobile {
-    @include tablet-down {
+  &.hide-on-desktop {
+    @include desktop {
       display: none;
     }
   }
