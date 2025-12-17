@@ -103,10 +103,11 @@
   .quote__content {
     padding: $wa-spacing-06 $wa-spacing-04;
   }
-  
+
   .quote__content--quote {
     @include h5();
   }
+
   .quote__content--citation {
     margin-top: $wa-spacing-03;
   }
