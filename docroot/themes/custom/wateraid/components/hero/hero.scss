@@ -306,6 +306,7 @@
 
   &--donate {
     background-color: $wa-navy;
+    transition: margin 300ms;
 
     .hero__image img {
       max-height: calculate-rem(720);
@@ -318,7 +319,6 @@
 
     .donate-widget[data-component-id="wateraid:donate_widget"] {
       margin-top: 0;
-
       @include desktop {
         margin-top: 0;
       }

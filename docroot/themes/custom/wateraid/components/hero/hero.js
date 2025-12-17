@@ -49,7 +49,9 @@
 
       const radios = context.querySelectorAll('.hero__donate input[type="radio"]');
       radios.forEach((radio) => {
-        radio.addEventListener("change", onResize);
+        radio.addEventListener("change", () => {
+          setTimeout(onResize, 200);
+        });
       });
       setTimeout(onResize, 500);
 
