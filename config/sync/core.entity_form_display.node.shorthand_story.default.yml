@@ -46,6 +46,7 @@ third_party_settings:
         - title
         - field_shorthand_story
         - langcode
+        - field_minimal_header
       label: General
       region: content
       parent_name: group_tabs
@@ -172,7 +173,7 @@ content:
     third_party_settings: {  }
   field_minimal_header:
     type: boolean_checkbox
-    weight: 4
+    weight: 3
     region: content
     settings:
       display_label: true
@@ -276,6 +277,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true

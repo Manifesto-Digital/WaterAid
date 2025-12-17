@@ -9,7 +9,7 @@ _core:
 id: wateraid_primary_admin_actions
 theme: wateraid
 region: breadcrumb
-weight: -6
+weight: -2
 provider: null
 plugin: local_actions_block
 settings:

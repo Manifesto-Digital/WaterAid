@@ -4,6 +4,7 @@
   &__inner {
     background-color: $wa-blue;
   }
+
   &__container {
     @include page-container;
   }
@@ -66,8 +67,9 @@
     z-index: 0;
     position: relative;
   }
+
   &__top-wrapper,
-  &__main-wrapper{
+  &__main-wrapper {
     background-color: $wa-blue;
     width: 100%;
   }
@@ -97,6 +99,7 @@
     background-color: $wa-navy;
     width: 100%;
   }
+
   &__bottom {
     @include page-container;
     @include grid();
@@ -206,7 +209,6 @@
 
     @include desktop() {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      margin-top: $wa-spacing-09;
     }
 
     li {
@@ -252,6 +254,16 @@
         align-items: center;
         display: flex;
         gap: $wa-spacing-02;
+      }
+    }
+
+    .footer__main {
+      padding-top: 0;
+    }
+    .footer__menu--donate ul {
+      margin-top: 0;
+      @include tablet() {
+        margin-top: 0;
       }
     }
 

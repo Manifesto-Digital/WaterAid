@@ -1,16 +1,16 @@
-uuid: 4bea5f0a-ab90-4821-918d-671157e4f48e
+uuid: aabfe1f9-e89d-42eb-a36a-2c68279aa168
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_minimal_header
-    - node.type.page
-id: node.page.field_minimal_header
+    - node.type.story
+id: node.story.field_minimal_header
 field_name: field_minimal_header
 entity_type: node
-bundle: page
-label: 'Use donation menu behaviours'
-description: 'When enabled, the main menu will display in collapsed mode. Clicking the main site logo will also display a redirect prompt.'
+bundle: story
+label: 'Use minimal header'
+description: 'When enabled, the main menu will display in a hamburger.'
 required: false
 translatable: false
 default_value:

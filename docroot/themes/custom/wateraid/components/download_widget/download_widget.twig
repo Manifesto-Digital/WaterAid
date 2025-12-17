@@ -10,11 +10,13 @@
                   data-format={{ download_all.format }}>{{ 'All files'|t }}</option>
         {% endif %}
         {% for file in files %}
-          <option value={{ file.filename }} data-name="{{ file.name }}"
-                  data-url={{ file.url }} data-size="{{ file.size }}"
-                  data-format={{ file.format }} {% if files|length == 1 %}selected{% endif %}>
-            {{ file.name }}
-          </option>
+          {% if file.filename %}
+            <option value={{ file.filename }} data-name="{{ file.name }}"
+                    data-url={{ file.url }} data-size="{{ file.size }}"
+                    data-format={{ file.format }} {% if files|length == 1 %}selected{% endif %}>
+              {{ file.name }}
+            </option>
+          {% endif %}
         {% endfor %}
       </select>
     </div>

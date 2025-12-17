@@ -243,9 +243,13 @@ display:
             format: default_summary
           specify_validation: true
           validate:
-            type: none
+            type: 'entity:group'
             fail: empty
-          validate_options: {  }
+          validate_options:
+            bundles: {  }
+            access: true
+            operation: view
+            multiple: 0
           break_phrase: false
           not: false
       filters:

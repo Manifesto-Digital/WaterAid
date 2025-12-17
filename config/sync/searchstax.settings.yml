@@ -2,7 +2,7 @@ _core:
   default_config_hash: ZgciLYODuKTolJYTXZVirdair5wZTviKy56nEgHNL_Y
 analytics_key: ''
 analytics_url: 'https://app.searchstax.com'
-configure_via_searchstudio: true
+configure_via_searchstudio: false
 discard_parameters:
   - highlight
   - keys
