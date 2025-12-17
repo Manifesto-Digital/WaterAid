@@ -28,9 +28,6 @@
         const donateHeight = context.querySelector(".hero__donate").offsetHeight;
         let calculatedMargin = 0;
 
-        console.log('hero' + heroHeight);
-        console.log('donate' + donateHeight);
-
         if (heroHeight > 720 && isDesktop && (donateHeight + 96) > heroHeight) {
           calculatedMargin = donateHeight - heroHeight + 156;
         }
