@@ -25,11 +25,9 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
    */
   public function build(): array {
     return [
-      'facets_summary' => [
-        '#lazy_builder' => [
-          self::class . '::lazyBuilder',
-          [],
-        ],
+      '#lazy_builder' => [
+        self::class . '::lazyBuilder',
+        [],
       ],
     ];
   }
@@ -72,7 +70,7 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
     if ($view_id && $params = \Drupal::request()->query->all()) {
       $map = self::getViewMap();
 
-      if (isset($params['keywords'])) {
+      if (isset($params['keywords']) && $params['keywords'] !== '') {
         $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()]);
         $copy = $params;
         unset($copy['keywords']);
@@ -108,11 +106,19 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
       '#cache' => [
         'max-age' => 0,
       ],
+      '#attributes' => [],
+      '#configuration' => [
+        'provider' => 'wateraid_block',
+      ],
+      '#plugin_id' => 'wateraid_blocks_facet_summary',
+      '#base_plugin_id' => 'wateraid_blocks_facet_summary',
+      '#derivative_plugin_id' => 'wateraid_blocks_facet_summary',
+      '#theme' => 'block',
     ];
 
     if ($links) {
       $links[] = Link::createFromRoute('Clear all filters', 'entity.node.canonical', ['node' => $node->id()]);
-      $build['list_of_items'] = [
+      $build['content'] = [
         '#theme' => 'item_list',
         '#title' => '',
         '#items' => $links,

@@ -1,0 +1,6 @@
+<div {{ attributes }}>
+  {# Keep the outer div whenever possible it is a nice way to ensure the presence of "attributes" #}
+  {% block facet_summary %}
+    {{ content }}
+  {% endblock %}
+</div>
