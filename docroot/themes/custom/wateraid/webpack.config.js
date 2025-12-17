@@ -22,6 +22,7 @@ module.exports = {
     'components/donate_block/donate_block': ['./components/donate_block/donate_block.scss'],
     'components/donate_widget/donate_widget': ['./components/donate_widget/donate_widget.scss'],
     'components/donation_banner/donation_banner': ['./components/donation_banner/donation_banner.scss'],
+    'components/download_widget/download_widget': ['./components/download_widget/download_widget.scss'],
     'components/footer/footer': ['./components/footer/footer.scss'],
     'components/hero/hero': ['./components/hero/hero.scss'],
     'components/image/image': ['./components/image/image.scss'],
