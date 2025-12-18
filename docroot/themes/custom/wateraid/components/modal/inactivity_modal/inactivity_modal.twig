@@ -17,6 +17,8 @@
 
     <div class="inactivity-modal__content">
       <div class="inactivity-modal__close">
+        {# attributes here is inherited in the close button from attributes above #}
+        {% set attributes = attributes.removeClass('inactivity-modal') %}
         {{ include('wateraid:button', {
           text: 'Close',
           link: '',

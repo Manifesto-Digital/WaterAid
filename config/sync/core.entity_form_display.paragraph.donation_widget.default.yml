@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.donation_widget.field_heading_level
+    - field.field.paragraph.donation_widget.field_hide_desktop_monthly
+    - field.field.paragraph.donation_widget.field_hide_desktop_one_off
     - field.field.paragraph.donation_widget.field_hide_mobile_monthly
     - field.field.paragraph.donation_widget.field_hide_mobile_one_off
     - field.field.paragraph.donation_widget.field_monthly_default
@@ -29,7 +31,7 @@ third_party_settings:
       label: Tabs
       region: content
       parent_name: ''
-      weight: 1
+      weight: 0
       format_type: tabs
       format_settings:
         classes: ''
@@ -62,7 +64,7 @@ third_party_settings:
       children:
         - field_monthly_donation_amounts
         - field_monthly_index
-        - field_hide_mobile_monthly
+        - field_hide_desktop_monthly
       label: Monthly
       region: content
       parent_name: group_tabs
@@ -81,7 +83,7 @@ third_party_settings:
       children:
         - field_one_off_donation_amounts
         - field_one_off_index
-        - field_hide_mobile_one_off
+        - field_hide_desktop_one_off
       label: 'One off'
       region: content
       parent_name: group_tabs
@@ -107,16 +109,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_hide_mobile_monthly:
+  field_hide_desktop_monthly:
     type: number
-    weight: 7
+    weight: 31
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-  field_hide_mobile_one_off:
+  field_hide_desktop_one_off:
     type: number
-    weight: 27
+    weight: 29
     region: content
     settings:
       placeholder: ''
@@ -130,7 +132,7 @@ content:
     third_party_settings: {  }
   field_monthly_donation_amounts:
     type: paragraphs
-    weight: 5
+    weight: 28
     region: content
     settings:
       title: Paragraph
@@ -148,7 +150,7 @@ content:
     third_party_settings: {  }
   field_monthly_index:
     type: options_buttons
-    weight: 6
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -204,4 +206,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_hide_mobile_monthly: true
+  field_hide_mobile_one_off: true
   status: true

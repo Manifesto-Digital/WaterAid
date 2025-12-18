@@ -1,0 +1,25 @@
+uuid: 46f9c93a-c56c-429c-851f-b04173d1453c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_desktop_monthly
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_hide_desktop_monthly
+field_name: field_hide_desktop_monthly
+entity_type: paragraph
+bundle: donation_widget
+label: 'Hide value on desktop - Monthly'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 7
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
