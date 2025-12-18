@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_anchor_id
     - field.field.paragraph.accordion.field_description
     - field.field.paragraph.accordion.field_display_search
     - field.field.paragraph.accordion.field_heading_level
@@ -28,6 +29,14 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_anchor_id:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_description:
     type: basic_string

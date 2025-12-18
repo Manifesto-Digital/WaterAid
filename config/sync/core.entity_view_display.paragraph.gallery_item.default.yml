@@ -7,23 +7,18 @@ dependencies:
     - field.field.paragraph.gallery_item.field_heading_level
     - field.field.paragraph.gallery_item.field_image_paragraph
     - field.field.paragraph.gallery_item.field_link
+    - field.field.paragraph.gallery_item.field_rich_text
     - field.field.paragraph.gallery_item.field_title
     - paragraphs.paragraphs_type.gallery_item
   module:
     - entity_reference_revisions
     - link
+    - text
 id: paragraph.gallery_item.default
 targetEntityType: paragraph
 bundle: gallery_item
 mode: default
 content:
-  field_description:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
   field_image_paragraph:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -45,6 +40,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_rich_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_title:
     type: string
     label: hidden
@@ -57,5 +59,6 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_description: true
   field_heading_level: true
   search_api_excerpt: true

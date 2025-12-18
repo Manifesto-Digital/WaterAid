@@ -83,6 +83,16 @@
 
   &__fr-logo {
     margin: 0 auto;
+
+    a {
+      width: 186px;
+      height: 55px;
+      background-image: url('/themes/custom/wateraid/images/icons/wa-fr-logo.svg');
+      display: block;
+      line-height: 0;
+      font-size: 0;
+      color: transparent;
+    }
   }
 
   .custom-amount {
@@ -240,8 +250,8 @@
   flex: 1 1 auto;
   position: relative;
 
-  &.hide-on-mobile {
-    @include tablet-down {
+  &.hide-on-desktop {
+    @include desktop {
       display: none;
     }
   }
@@ -346,9 +356,22 @@
 // Donate widget in a webform node.
 .webform-donation-widget-wrapper {
   .donate-widget[data-component-id="wateraid:donate_widget"] {
+    width: 100%;
+    max-width: 41.25rem;
     background: transparent;
     color: $wa-navy;
     padding: 0;
+    @include desktop() {
+      margin-left: 7.125rem;
+    }
+  }
+
+  .donate-widget__fr-logo {
+    a {
+      background-image: url('/themes/customwateraid/images/icons/wa-fr-logo-colour.svg');
+      width: 159px;
+      height: 46px;
+    }
   }
 
   .donate-widget__donation-summary.show {

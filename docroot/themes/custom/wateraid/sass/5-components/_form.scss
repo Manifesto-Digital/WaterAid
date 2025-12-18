@@ -711,6 +711,7 @@ fieldset.next-form-step {
   .pca {
     .pcaautocomplete {
       border: none !important;
+      max-width: 100%;
     }
     .pcaitem {
       display: flex;
@@ -744,6 +745,7 @@ fieldset.next-form-step {
   .js-form-type-checkbox {
     padding: 0;
     display: flex;
+    flex-flow: row wrap;
     align-items: self-start;
     margin-top: 1rem;
     gap: 0;
@@ -809,7 +811,7 @@ fieldset.wa-donation-methods {
 }
 
 input[type=checkbox] + label {
-  width: calc(100% - 1.5rem);
+  width: calc(100% - 2.5rem);
 }
 
 label.button__input-button-wrapper {

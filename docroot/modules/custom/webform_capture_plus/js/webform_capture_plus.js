@@ -363,13 +363,7 @@
         }
 
         // Create the base HTML for the autocomplete.
-        // @see: docroot/themes/custom/wateraid_base_theme/js/scripts.js.
-        if (document === context) {
-          $('form.webform-submission-form', context).on('webform-loaded', {context: context}, createPcaHtml);
-        }
-        else {
-          createPcaHtml({data: {context: context}});
-        }
+        createPcaHtml({data: {context: context}});
 
         let hasInput = false;
         let inputValues = [];
