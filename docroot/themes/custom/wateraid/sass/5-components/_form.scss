@@ -837,3 +837,14 @@ label.button__input-button-wrapper {
     height: calc(100% + 2rem);
   }
 }
+
+.facet--amount {
+  text-align: center;
+  color: $wa-white;
+  background-color: $wa-blue;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-left: $wa-spacing-02;
+  display: inline-block;
+}
