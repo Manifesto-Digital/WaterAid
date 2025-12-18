@@ -7,24 +7,18 @@ dependencies:
     - field.field.paragraph.gallery_item.field_heading_level
     - field.field.paragraph.gallery_item.field_image_paragraph
     - field.field.paragraph.gallery_item.field_link
+    - field.field.paragraph.gallery_item.field_rich_text
     - field.field.paragraph.gallery_item.field_title
     - paragraphs.paragraphs_type.gallery_item
   module:
     - link
     - paragraphs
+    - text
 id: paragraph.gallery_item.default
 targetEntityType: paragraph
 bundle: gallery_item
 mode: default
 content:
-  field_description:
-    type: string_textarea
-    weight: 9
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
   field_heading_level:
     type: options_select
     weight: 1
@@ -57,6 +51,14 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_rich_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
   field_title:
     type: string_textfield
     weight: 0
@@ -67,4 +69,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_description: true
   status: true

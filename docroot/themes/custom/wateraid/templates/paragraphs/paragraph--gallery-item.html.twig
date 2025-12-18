@@ -11,8 +11,10 @@
 
     <div class="image-gallery__content">
       <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ paragraph.field_title.0.value }}</{{ tag }}>
-      {% if paragraph.field_description.0.value %}
-        <div class="image-gallery__content--description">{{ paragraph.field_description.0.value }}</div>
+      {% if content.field_rich_text %}
+        <div class="image-gallery__content--description">
+          {{ content.field_rich_text }}
+        </div>
       {% endif %}
       {% if link.title and link.url %}
         <div class="image-gallery__content--link">
