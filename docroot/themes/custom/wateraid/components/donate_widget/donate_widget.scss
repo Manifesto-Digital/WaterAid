@@ -83,6 +83,16 @@
 
   &__fr-logo {
     margin: 0 auto;
+
+    a {
+      background-image: url('/themes/custom/wateraid/images/icons/wa-fr-logo.svg');
+      width: 159px;
+      height: 46px;
+      display: block;
+      line-height: 0;
+      font-size: 0;
+      color: transparent;
+    }
   }
 
   .custom-amount {
@@ -349,6 +359,12 @@
     background: transparent;
     color: $wa-navy;
     padding: 0;
+  }
+
+  .donate-widget__fr-logo {
+    a {
+      background-image: url('/themes/customwateraid/images/icons/wa-fr-logo-colour.svg');
+    }
   }
 
   .donate-widget__donation-summary.show {
