@@ -3,10 +3,6 @@
 .inactivity-modal {
   display: none;
 
-  &.button {
-    display: block
-  }
-
   &.open {
     display: flex;
     height: 100vh;
