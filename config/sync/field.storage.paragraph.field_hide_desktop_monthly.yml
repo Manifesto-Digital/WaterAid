@@ -1,0 +1,20 @@
+uuid: 3f6b16e9-0e4f-45ee-8bf6-a7990d39f909
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_hide_desktop_monthly
+field_name: field_hide_desktop_monthly
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

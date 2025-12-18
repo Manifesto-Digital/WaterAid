@@ -83,3 +83,35 @@ function wateraid_content_update_10003(): void {
 
   \Drupal::logger('wateraid_content')->info('Updated @count donation_widget paragraphs with new field values.', ['@count' => count($paragraphs)]);
 }
+
+/**
+ * Replace hide mobile with hide desktop fields in donation_widget paragraphs.
+ */
+function wateraid_content_update_10004(): void {
+
+  /** @var \Drupal\Core\Entity\EntityStorageInterface $storage */
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+  // Get all donation_widget paragraphs.
+  $pids = $storage->getQuery()
+    ->condition('type', 'donation_widget')
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if (empty($pids)) {
+    return;
+  }
+
+  // Load and update each paragraph.
+  /** @var \Drupal\paragraphs\Entity\Paragraph[] $paragraphs */
+  $paragraphs = $storage->loadMultiple($pids);
+  foreach ($paragraphs as $paragraph) {
+    // Set field values to specified integers.
+    $paragraph->set('field_hide_desktop_one_off', 20);
+    $paragraph->set('field_hide_desktop_monthly', 7);
+
+    $paragraph->save();
+  }
+
+  \Drupal::logger('wateraid_content')->info('Updated @count donation_widget paragraphs with new field values.', ['@count' => count($paragraphs)]);
+}

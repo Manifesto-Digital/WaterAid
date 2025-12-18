@@ -1,0 +1,25 @@
+uuid: 13348cb9-0cc9-4b0c-911c-75a77c0578ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_desktop_one_off
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_hide_desktop_one_off
+field_name: field_hide_desktop_one_off
+entity_type: paragraph
+bundle: donation_widget
+label: 'Hide value on desktop - One off'
+description: "The One-off donation value you want to hide on desktop devices.<br />If it doesn't exist all is displayed."
+required: true
+translatable: false
+default_value:
+  -
+    value: 20
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

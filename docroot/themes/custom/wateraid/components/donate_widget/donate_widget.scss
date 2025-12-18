@@ -240,8 +240,8 @@
   flex: 1 1 auto;
   position: relative;
 
-  &.hide-on-mobile {
-    @include tablet-down {
+  &.hide-on-desktop {
+    @include desktop {
       display: none;
     }
   }
@@ -346,9 +346,14 @@
 // Donate widget in a webform node.
 .webform-donation-widget-wrapper {
   .donate-widget[data-component-id="wateraid:donate_widget"] {
+    width: 100%;
+    max-width: 41.25rem;
     background: transparent;
     color: $wa-navy;
     padding: 0;
+    @include desktop() {
+      margin-left: 7.125rem;
+    }
   }
 
   .donate-widget__donation-summary.show {

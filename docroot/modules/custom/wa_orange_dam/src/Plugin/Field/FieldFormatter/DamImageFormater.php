@@ -11,6 +11,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\image\Plugin\Field\FieldFormatter\ImageFormatter;
 use Drupal\wa_orange_dam\Service\Api;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -165,6 +166,21 @@ final class DamImageFormater extends ImageFormatter {
         '#attributes' => [],
         '#cache' => $cache,
       ];
+
+      $date_value = $search['APIResponse']['Items'][0]['customfield.Expiry-Date'];
+
+      if ($date_value) {
+
+        // Set the updated expiry date whatever it is.
+        $date = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $date_value);
+        $now = new DrupalDateTime();
+
+        // And if the date has passed, mark this as expired.
+        if ($date <= $now) {
+          $element[$delta]['#uri'] = '/themes/custom/wateraid/images/png/card-fallback.png';
+          $element[$delta]['#alt'] = '';
+        }
+      }
     }
 
     return $element;
