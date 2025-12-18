@@ -1,5 +1,5 @@
 {% set tag = heading_level ? heading_level : 'h2' %}
-<div class="container-sm accordion {{ search == '1' ? 'accordion--search' : 'accordion--default'}}">
+<div class="container-sm accordion {{ search == '1' ? 'accordion--search' : 'accordion--default'}}" {{ anchor_id ? 'id=' ~ anchor_id : '' }}>
   <div class="accordion__content">
     {% if title %}
       <{{ tag }} class="pseudo-h2">{{ title }}</{{ tag }}>

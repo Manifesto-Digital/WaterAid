@@ -15,6 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\wateraid_blocks\Plugin\Block\WaFacetSummaryBlock;
 
 // Require all the theme includes.
 $theme_path = Drupal::theme()->getActiveTheme()->getPath();
@@ -99,7 +100,7 @@ function wateraid_preprocess_page(&$variables): void {
     wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables, 3);
 
     // Add currency prefix per group if available.
-//    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
+    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
@@ -383,41 +384,7 @@ function wateraid_preprocess_views_view(&$variables): void {
     $variables['keywords'] = $input['keywords'] ?? '';
   }
 
-  $map = [
-    'events_solr' => [
-      'block_1' => [
-        'type' => 'type',
-        'regions' => 'regions',
-      ],
-    ],
-    'blogs_solr' => [
-      'block_1' => [
-        'audience' => 'audience',
-        'country' => 'country',
-        'get_involved' => 'get_involved',
-        'theme' => 'theme',
-      ],
-    ],
-    'press_releases_solr' => [
-      'block_1' => [
-        'country' => 'country',
-        'event_type' => 'event_type',
-        'key_stage' => 'key_stage',
-        'regions' => 'regions',
-        'subject_area' => 'subject_area',
-        'theme' => 'theme',
-        'topic' => 'topic',
-      ],
-    ],
-    'stories_solr' => [
-      'block_1' => [
-        'audience' => 'audience',
-        'country' => 'country',
-        'get_involved' => 'get_involved',
-        'theme' => 'theme',
-      ],
-    ],
-  ];
+  $map = WaFacetSummaryBlock::getViewMap();
 
   $view_id = $view->id();
 
@@ -440,7 +407,13 @@ function wateraid_preprocess_views_view(&$variables): void {
       $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
 
       if (!$plugin_block instanceof Broken) {
-        $variables['header'] = $plugin_block->build();
+        $variables['header']['keyword_search'] = $plugin_block->build();
+      }
+
+      $plugin_block = $block_manager->createInstance('wateraid_blocks_facet_summary', []);
+
+      if (!$plugin_block instanceof Broken) {
+        $variables['header']['facets_summary'] = $plugin_block->build();
       }
 
       $settings['visible_filters'] = $map[$view_id][$display];
@@ -448,7 +421,7 @@ function wateraid_preprocess_views_view(&$variables): void {
       $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
 
       if (!$plugin_block instanceof Broken) {
-        $variables['exposed'] = $plugin_block->build();
+        $variables['exposed']['views_filters'] = $plugin_block->build();
       }
     }
   }

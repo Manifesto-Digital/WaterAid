@@ -93,6 +93,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_teaser_image: true
   field_teaser_text: true
   langcode: true

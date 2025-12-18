@@ -1,18 +1,20 @@
-<div {{ attributes.addClass('donation-banner') }}>
-  <div class="container">
-    <button aria-expanded="true" class="donation__toggle banner--active">
-      {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
-    </button>
-    <div aria-hidden="false" class="donation__content">
-      <p>You pledge to donate <strong>{{ amount }}</strong></p>
-      {{ include('wateraid:button', {
-        text: 'Complete donation',
-        id: 'donate_submit',
-        type: 'donate',
-        theme: '',
-        icon: 'wa-utility-lock',
-        link: uri
-      }) }}
+<div {{ attributes.addClass('donation-banner-wrapper') }}>
+  <div class="donation-banner">
+    <div class="container">
+      <button aria-expanded="true" class="donation__toggle banner--active">
+        {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
+      </button>
+      <div aria-hidden="false" class="donation__content">
+        <p>You pledge to donate <strong>{{ amount }}</strong></p>
+        {{ include('wateraid:button', {
+          text: 'Complete donation',
+          id: 'donate_submit',
+          type: 'donate',
+          theme: '',
+          icon: 'wa-utility-lock',
+          link: uri
+        }) }}
+      </div>
     </div>
   </div>
 </div>
