@@ -85,9 +85,9 @@
     margin: 0 auto;
 
     a {
+      width: 186px;
+      height: 55px;
       background-image: url('/themes/custom/wateraid/images/icons/wa-fr-logo.svg');
-      width: 159px;
-      height: 46px;
       display: block;
       line-height: 0;
       font-size: 0;
@@ -369,6 +369,8 @@
   .donate-widget__fr-logo {
     a {
       background-image: url('/themes/customwateraid/images/icons/wa-fr-logo-colour.svg');
+      width: 159px;
+      height: 46px;
     }
   }
 
