@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_anchor_id
     - field.field.paragraph.accordion.field_description
     - field.field.paragraph.accordion.field_display_search
     - field.field.paragraph.accordion.field_heading_level
@@ -35,6 +36,22 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+    group_advanced:
+      children:
+        - field_anchor_id
+      label: Advanced
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
 id: paragraph.accordion.default
 targetEntityType: paragraph
 bundle: accordion
@@ -51,6 +68,14 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
+    third_party_settings: {  }
+  field_anchor_id:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_description:
     type: string_textarea
