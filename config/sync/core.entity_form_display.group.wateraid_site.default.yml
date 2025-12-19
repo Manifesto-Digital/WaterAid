@@ -7,6 +7,7 @@ dependencies:
     - field.field.group.wateraid_site.field_currency_prefix
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
+    - field.field.group.wateraid_site.field_minimum_donation
     - field.field.group.wateraid_site.field_show_donation_reminder
     - field.field.group.wateraid_site.field_slug
     - field.field.group.wateraid_site.field_spend_module
@@ -43,6 +44,7 @@ third_party_settings:
         - field_slug
         - field_show_donation_reminder
         - field_currency_prefix
+        - field_minimum_donation
         - langcode
         - path
         - status
@@ -120,6 +122,13 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_minimum_donation:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_show_donation_reminder:
     type: boolean_checkbox
     weight: 6
@@ -137,7 +146,7 @@ content:
     third_party_settings: {  }
   field_spend_module:
     type: layout_paragraphs
-    weight: 12
+    weight: 13
     region: content
     settings:
       view_mode: default
@@ -165,20 +174,20 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 8
+    weight: 9
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 10
+    weight: 11
     region: content
     settings:
       display_label: true

@@ -1,0 +1,20 @@
+uuid: 0886eeef-6d8b-4848-b314-429e8601b7ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_minimum_donation
+field_name: field_minimum_donation
+entity_type: group
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
