@@ -1,0 +1,23 @@
+uuid: 95959b28-181b-43f9-81bc-e175b418c5d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_types
+    - paragraphs.paragraphs_type.related_content
+id: paragraph.related_content.field_content_types
+field_name: field_content_types
+entity_type: paragraph
+bundle: related_content
+label: 'Content Types'
+description: 'Select the types of content to display. Leave empty for all content types.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node_type'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

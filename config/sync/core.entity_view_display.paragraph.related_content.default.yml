@@ -1,0 +1,40 @@
+uuid: 163e0717-db32-420a-8ead-0772e122c410
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.related_content.field_audience
+    - field.field.paragraph.related_content.field_background_colour
+    - field.field.paragraph.related_content.field_card_columns
+    - field.field.paragraph.related_content.field_content_types
+    - field.field.paragraph.related_content.field_country
+    - field.field.paragraph.related_content.field_event_type
+    - field.field.paragraph.related_content.field_get_involved
+    - field.field.paragraph.related_content.field_match_all_terms
+    - field.field.paragraph.related_content.field_rows
+    - field.field.paragraph.related_content.field_subject_area
+    - field.field.paragraph.related_content.field_themes
+    - field.field.paragraph.related_content.field_topic
+    - paragraphs.paragraphs_type.related_content
+id: paragraph.related_content.default
+targetEntityType: paragraph
+bundle: related_content
+mode: default
+content: {  }
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_audience: true
+  field_background_colour: true
+  field_card_columns: true
+  field_content_types: true
+  field_country: true
+  field_event_type: true
+  field_get_involved: true
+  field_match_all_terms: true
+  field_rows: true
+  field_subject_area: true
+  field_themes: true
+  field_topic: true
+  search_api_excerpt: true

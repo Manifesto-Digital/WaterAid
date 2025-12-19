@@ -1,0 +1,29 @@
+uuid: 0a6775fe-e048-4d57-8279-39be5ec1286d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_audience
+    - paragraphs.paragraphs_type.related_content
+    - taxonomy.vocabulary.audiences
+id: paragraph.related_content.field_audience
+field_name: field_audience
+entity_type: paragraph
+bundle: related_content
+label: Audience
+description: 'Filter results by these terms'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      audiences: audiences
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

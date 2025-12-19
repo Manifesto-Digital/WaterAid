@@ -1,0 +1,29 @@
+uuid: db1859d0-6968-4701-b706-d276b6c3f1a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topic
+    - paragraphs.paragraphs_type.related_content
+    - taxonomy.vocabulary.topic
+id: paragraph.related_content.field_topic
+field_name: field_topic
+entity_type: paragraph
+bundle: related_content
+label: Topic
+description: 'Select a Topic to limit the content to'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topic: topic
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

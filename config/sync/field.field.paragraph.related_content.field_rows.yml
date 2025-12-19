@@ -1,0 +1,23 @@
+uuid: d6970054-b997-488e-a555-33375115e010
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rows
+    - paragraphs.paragraphs_type.related_content
+  module:
+    - options
+id: paragraph.related_content.field_rows
+field_name: field_rows
+entity_type: paragraph
+bundle: related_content
+label: Rows
+description: 'Select the. number of rows you want the results to show'
+required: true
+translatable: false
+default_value:
+  -
+    value: 2
+default_value_callback: ''
+settings: {  }
+field_type: list_integer
