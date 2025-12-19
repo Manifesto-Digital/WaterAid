@@ -133,7 +133,8 @@
     "justgiving/justgiving": "^1.0",
     "mikehaertl/phpwkhtmltopdf": "^2.5",
     "npm-asset/jquery-validation": "^1.20",
-    "oomphinc/composer-installers-extender": "^2.0"
+    "oomphinc/composer-installers-extender": "^2.0",
+    "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
     "drupal/core-dev": "^10.5",
@@ -159,7 +160,8 @@
       "oomphinc/composer-installers-extender": true,
       "php-http/discovery": true,
       "phpstan/extension-installer": true,
-      "tbachert/spi": true
+      "tbachert/spi": true,
+      "wikimedia/composer-merge-plugin": true
     },
     "sort-packages": true
   },
