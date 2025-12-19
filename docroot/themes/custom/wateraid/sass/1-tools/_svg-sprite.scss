@@ -43,7 +43,6 @@ $sprites: (
     'wa-edge-top-2': "../../images/sprite.svg#wa-edge-top-2-view",
     'wa-external': "../../images/sprite.svg#wa-external-view",
     'wa-form-check': "../../images/sprite.svg#wa-form-check-view",
-    'wa-fr-logo-colour': "../../images/sprite.svg#wa-fr-logo-colour-view",
     'wa-fr-logo': "../../images/sprite.svg#wa-fr-logo-view",
     'wa-google': "../../images/sprite.svg#wa-google-view",
     'wa-icon-baby': "../../images/sprite.svg#wa-icon-baby-view",
@@ -108,7 +107,6 @@ $sprites: (
     'wa-utility-coffee': "../../images/sprite.svg#wa-utility-coffee-view",
     'wa-utility-confirmation-no': "../../images/sprite.svg#wa-utility-confirmation-no-view",
     'wa-utility-cookie': "../../images/sprite.svg#wa-utility-cookie-view",
-    'wa-utility-download': "../../images/sprite.svg#wa-utility-download-view",
     'wa-utility-expand': "../../images/sprite.svg#wa-utility-expand-view",
     'wa-utility-fastfood': "../../images/sprite.svg#wa-utility-fastfood-view",
     'wa-utility-florist': "../../images/sprite.svg#wa-utility-florist-view",
@@ -312,10 +310,6 @@ $sizes: (
     'wa-form-check': (
         'width': 24px,
         'height': 24px
-    ),
-    'wa-fr-logo-colour': (
-        'width': 159px,
-        'height': 46px
     ),
     'wa-fr-logo': (
         'width': 178px,
@@ -570,10 +564,6 @@ $sizes: (
         'height': 24px
     ),
     'wa-utility-cookie': (
-        'width': 24px,
-        'height': 24px
-    ),
-    'wa-utility-download': (
         'width': 24px,
         'height': 24px
     ),
