@@ -38,6 +38,7 @@ third_party_settings:
         width_breakpoint: 640
     group_settings:
       children:
+        - field_content_types
         - field_background_colour
         - field_card_columns
         - field_rows
@@ -148,7 +149,7 @@ content:
     third_party_settings: {  }
   field_rows:
     type: options_select
-    weight: 8
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
