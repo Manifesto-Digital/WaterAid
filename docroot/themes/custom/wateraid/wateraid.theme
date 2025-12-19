@@ -7,7 +7,6 @@
 
 use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Menu\MenuTreeParameters;
-use Drupal\Core\Render\Element;
 use Drupal\group_content_menu\GroupContentMenuInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
@@ -370,27 +369,6 @@ function wateraid_theme_suggestions_input_alter(array &$suggestions, array &$var
     // Apple Pay.
     if ((!empty($variables['element']['#secure_logo']) || (str_contains($variables['element']['#id'], 'payment-payment-method') && !str_contains($variables['element']['#id'], 'applepay')))) {
       $suggestions[] = 'input__submit__secure';
-    }
-  }
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function wateraid_preprocess_bef_checkboxes(&$variables): void {
-  foreach (Element::children($variables['element']) as $key) {
-    if ($variables['element'][$key]['#type'] == 'checkbox') {
-      $matches = [];
-
-      preg_match('/.*\((\d*)\)/', $variables['element'][$key]['#title'], $matches);
-
-      if (isset($matches[1])) {
-        $amount = $matches[1];
-        $search = '(' . $amount . ')';
-        $replace = '<span class="facet--amount">' . $amount . '</span>';
-
-        $variables['element'][$key]['#title'] = str_replace($search, $replace, $variables['element'][$key]['#title']);
-      }
     }
   }
 }
