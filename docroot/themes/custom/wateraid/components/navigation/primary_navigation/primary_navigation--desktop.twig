@@ -63,7 +63,10 @@
           <div id="meganav-level-2-child-of-{{ level_1_index }}" class="meganav__panel" data-meganav-panel-id="{{ level_1_index }}">
             <div class="meganav__panel-inner">
               <div class="meganav__col meganav__col--first">
-                <a class="meganav__level-1-panel-title-link" href="{{ link.url }}">{{ link.title }}</a>
+                <a class="meganav__level-1-panel-title-link primary-navigation__link-with-icon" href="{{ link.url }}">{{ link.title }}
+                  <span class="icon icon-arrow-right">
+                    {{ include('@wateraid/images/icons/wa-shape-arrow.svg') }}
+                  </span></a>
                 {% set menu_level_2_heading_description = link.original_link.getEntity().field_description.0.value %}
                 {% if menu_level_2_heading_description is not empty %}
                   <div class="description">
