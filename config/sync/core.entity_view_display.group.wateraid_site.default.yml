@@ -7,6 +7,7 @@ dependencies:
     - field.field.group.wateraid_site.field_currency_prefix
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
+    - field.field.group.wateraid_site.field_minimum_donation
     - field.field.group.wateraid_site.field_show_donation_reminder
     - field.field.group.wateraid_site.field_slug
     - field.field.group.wateraid_site.field_spend_module
@@ -53,6 +54,7 @@ hidden:
   entity_print_view_word_docx: true
   field_currency_prefix: true
   field_is_wash_matters_site: true
+  field_minimum_donation: true
   field_show_donation_reminder: true
   field_slug: true
   field_spend_module: true
