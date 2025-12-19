@@ -8,6 +8,11 @@ body.primary-menu-open {
     position: unset;
   }
 
+  .icon-arrow-right {
+    margin-left: $wa-spacing-02;
+    display: inline-block;
+  }
+
   .site-header__primary-navigation {
     position: absolute;
     display: block;
