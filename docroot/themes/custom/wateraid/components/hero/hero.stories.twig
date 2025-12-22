@@ -181,4 +181,63 @@
     }) }}
   {% endstory %}
 
+  {% story HeroStoryImage with {
+    name: 'Hero (story with image)',
+    args: {
+      title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
+      standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+      time_to_read: '7 min read',
+      colour: 'navy',
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set image %}<img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg"
+                        alt="Example image"/>{% endset %}
+
+    {{ include('wateraid:hero', {
+      title,
+      standfirst,
+      time_to_read,
+      image,
+      media_caption,
+      media_credit,
+      colour,
+      variant: 'story'
+    }) }}
+  {% endstory %}
+
+  {% story HeroStoryVideo with {
+    name: 'Hero (story with video)',
+    args: {
+      title: 'Page title lorem ipsum dolor sit amet consectetur'|t,
+      standfirst: 'Lorem ipsum dolor sit amet consectetur. Metus eget maecenas luctus elementum nunc vel. Vel eu aenean a fermentum libero sem sed.',
+      time_to_read: '7 min read',
+      colour: 'navy',
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set video %}
+      <video controls="controls" width="640" height="480">
+        <source src="https://www.pexels.com/download/video/31853732/" type="video/mp4">
+      </video>
+    {% endset %}
+
+    {{ include('wateraid:hero', {
+      title,
+      standfirst,
+      time_to_read,
+      video,
+      media_caption,
+      media_credit,
+      colour,
+      variant: 'story'
+    }) }}
+  {% endstory %}
+
 {% endstories %}
