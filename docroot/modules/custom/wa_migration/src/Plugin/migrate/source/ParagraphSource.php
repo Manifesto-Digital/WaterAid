@@ -26,14 +26,23 @@ class ParagraphSource extends SqlBase {
       ->fields('p')
       ->condition('p.type', $this->configuration['bundle']);
 
+    // If this is one of the curated listing migrations, add the required join.
     if (str_starts_with($this->migration->id(), 'curated_listing')) {
       $query->leftJoin('paragraph__field_cl_override', 'o', 'o.entity_id = p.id');
 
-      $or = $query->orConditionGroup();
-      $or->condition('o.field_cl_override_value', 0);
-      $or->isNull('o.field_cl_override_value');
+      // For overridden listing we want the override value to be TRUE.
+      if (str_starts_with($this->migration->id(), 'curated_listing_overriden')) {
+        $query->condition('o.field_cl_override_value', 1);
+      }
+      else {
 
-      $query->condition($or);
+        // For all others we either want it to be not set or 0.
+        $or = $query->orConditionGroup();
+        $or->condition('o.field_cl_override_value', 0);
+        $or->isNull('o.field_cl_override_value');
+
+        $query->condition($or);
+      }
     }
 
     return $query;
