@@ -49,7 +49,7 @@
   }
 
   &__video {
-    display: block;
+    display: flex;
     width: 100%;
     position: relative;
 
@@ -339,6 +339,30 @@
     h1 {
       color: $wa-blue;
     }
+  }
+
+  &--story {
+    @include desktop {
+      .hero__content {
+        position: absolute;
+        top: $wa-spacing-09;
+        left: $wa-spacing-09;
+        width: calculate-rem(660);
+        padding: $wa-spacing-09;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        &--title {
+          margin-bottom: $wa-spacing-06;
+        }
+
+        &--standfirst {
+          margin-bottom: $wa-spacing-06;
+        }
+      }
+    }
+
   }
 
   .field--name-field-media-oembed-video {

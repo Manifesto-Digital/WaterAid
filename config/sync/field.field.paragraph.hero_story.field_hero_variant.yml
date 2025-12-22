@@ -1,0 +1,23 @@
+uuid: 9cd5726c-203c-46d3-afc9-e6efc0e4d72c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hero_variant
+    - paragraphs.paragraphs_type.hero_story
+  module:
+    - options
+id: paragraph.hero_story.field_hero_variant
+field_name: field_hero_variant
+entity_type: paragraph
+bundle: hero_story
+label: 'Hero variant'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: hero_with_image
+default_value_callback: ''
+settings: {  }
+field_type: list_string

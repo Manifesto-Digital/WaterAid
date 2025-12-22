@@ -8,5 +8,21 @@ reading_time:
       is_activated: 0
     page:
       is_activated: 0
+    donation:
+      is_activated: 0
+    event:
+      is_activated: 0
+    listing_page:
+      is_activated: 0
+    publication:
+      is_activated: 0
+    shorthand_story:
+      is_activated: 0
+    standard_page:
+      is_activated: 0
+    story:
+      is_activated: 1
+    webform:
+      is_activated: 0
   words_per_minute: 225
   unit_of_time: minute

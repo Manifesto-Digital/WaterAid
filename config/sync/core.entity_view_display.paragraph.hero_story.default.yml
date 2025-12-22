@@ -1,0 +1,73 @@
+uuid: 45896c74-27a9-4582-8d83-212b83495048
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_story.field_caption
+    - field.field.paragraph.hero_story.field_credit
+    - field.field.paragraph.hero_story.field_hero_variant
+    - field.field.paragraph.hero_story.field_image
+    - field.field.paragraph.hero_story.field_standfirst
+    - field.field.paragraph.hero_story.field_video
+    - paragraphs.paragraphs_type.hero_story
+  module:
+    - options
+    - text
+id: paragraph.hero_story.default
+targetEntityType: paragraph
+bundle: hero_story
+mode: default
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_hero_variant:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_standfirst:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

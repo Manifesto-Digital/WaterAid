@@ -25,36 +25,48 @@
 
       const setHeroMargin = (hero, isDesktop) => {
         const heroHeight = hero.offsetHeight;
-        const donateHeight = context.querySelector(".hero__donate").offsetHeight;
+        const donateHeight =
+          context.querySelector(".hero__donate").offsetHeight;
         let calculatedMargin = 0;
 
-        if (heroHeight > 720 && isDesktop && (donateHeight + 96) > heroHeight) {
+        if (heroHeight > 720 && isDesktop && donateHeight + 96 > heroHeight) {
           calculatedMargin = donateHeight - heroHeight + 156;
         }
 
         hero.style.marginBottom = calculatedMargin + "px";
       };
 
-      const onResize = function() {
+      const onResize = function () {
         width = document.body.clientWidth;
-        context.querySelectorAll('.hero--donate').forEach((hero) => {
-        if (width > 1024) {
-          setHeroMargin(hero, true);
-        } else {
-          setHeroMargin(hero, false);
-        }
+        context.querySelectorAll(".hero--donate").forEach((hero) => {
+          if (width > 1024) {
+            setHeroMargin(hero, true);
+          } else {
+            setHeroMargin(hero, false);
+          }
+        });
+
+        context.querySelectorAll(".hero--story.hero--video").forEach((hero) => {
+          const video = hero.querySelector(".hero--video video");
+          video.muted = true;
+          if (width > 1024) {
+            video.play();
+            playButton.style.display = "none";
+            pauseButton.style.display = "block";
+          }
         });
       };
       window.addEventListener("resize", onResize);
 
-      const radios = context.querySelectorAll('.hero__donate input[type="radio"]');
+      const radios = context.querySelectorAll(
+        '.hero__donate input[type="radio"]',
+      );
       radios.forEach((radio) => {
         radio.addEventListener("change", () => {
           setTimeout(onResize, 200);
         });
       });
       setTimeout(onResize, 500);
-
     },
   };
 })(Drupal);
