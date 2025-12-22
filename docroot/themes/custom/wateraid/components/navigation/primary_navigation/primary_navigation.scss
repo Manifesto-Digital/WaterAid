@@ -31,7 +31,7 @@ body.primary-menu-open {
 
 .site-header--minimal {
   .site-header__primary-navigation,
-  .site-header__toggle-desktop-menu-btn {
+  .site-header__toggle-desktop-menu-btn{
     display: none;
     @include tablet {
       display: flex;
@@ -42,7 +42,8 @@ body.primary-menu-open {
   .primary-navigation,
   .meganav__level-1-item--donate,
   .button__wrapper--donate,
-  .meganav__donate-link {
+  .meganav__donate-link,
+  .button__wrapper--primary-meganav-donate-menu-parent {
     display: none;
   }
 }
