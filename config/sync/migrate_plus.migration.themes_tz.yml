@@ -37,7 +37,7 @@ process:
   field_category_title/value: field_get_involv_category_title
   field_category_description/value: field_get_involved_description
 destination:
-  plugin: 'entity:taxonomy_term'
+  plugin: 'wa_term:taxonomy_term'
   default_bundle: themes
 idMap: {  }
 migration_dependencies: null
