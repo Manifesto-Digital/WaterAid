@@ -60,5 +60,6 @@ The default URLs for Storybook hangs on Macs, so access Storybook on your local 
 https:/wateraid.ddev.site:6006
 
 ### Acquia
-PRs merging into the main, develop or staging branches will automatically deploy to the Acquia holding environments for
-testing purposes until a live env is created.
+PRs merging into the main, develop or staging branches will automatically deploy to the Acquia holding environments for.
+
+- Make sure Acquia search is re indexed on production after every deployment.
