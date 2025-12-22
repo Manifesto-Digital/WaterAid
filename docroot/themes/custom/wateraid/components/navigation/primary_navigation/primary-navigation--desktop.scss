@@ -12,6 +12,24 @@
     display: block;
   }
 
+  &:before {
+    content: '';
+    display: block;
+    background: $wa-white;
+    width: 100vw;
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    z-index: 0;
+    right: 0;
+  }
+
+  .meganav__level-1-item a,
+  .meganav__level-1-item button{
+    z-index: 20;
+    position: relative;
+  }
+
   ul {
     list-style: none;
   }
@@ -127,7 +145,7 @@
 
   &__panel {
     overflow: hidden;
-    color: white;
+    color: $wa-white;
     transform: translateY(-100%);
     z-index: -2;
     position: absolute;

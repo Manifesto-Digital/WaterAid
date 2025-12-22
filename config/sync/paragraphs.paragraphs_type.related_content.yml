@@ -1,0 +1,10 @@
+uuid: 834ef237-1e1e-4d17-9e44-2abf72baf773
+langcode: en
+status: true
+dependencies: {  }
+id: related_content
+label: 'Related Content'
+icon_uuid: null
+icon_default: null
+description: 'Displays an automated list of content re,ated to the current page, based on settings chosen by the editor.'
+behavior_plugins: {  }

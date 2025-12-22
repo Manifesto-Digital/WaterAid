@@ -101,6 +101,7 @@ function wateraid_preprocess_page(&$variables): void {
 
     // Add currency prefix per group if available.
     $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
+    $variables['#attached']['drupalSettings']['donate_widget']['minimum_donation'] = intval($group->get('field_minimum_donation')->value);
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);

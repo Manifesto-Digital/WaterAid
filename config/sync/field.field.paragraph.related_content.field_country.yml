@@ -1,0 +1,29 @@
+uuid: 6e825788-51a0-48ab-9b30-d3543e3df2e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_country
+    - paragraphs.paragraphs_type.related_content
+    - taxonomy.vocabulary.countries
+id: paragraph.related_content.field_country
+field_name: field_country
+entity_type: paragraph
+bundle: related_content
+label: Country
+description: 'Select countries to limit the results by'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      countries: countries
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

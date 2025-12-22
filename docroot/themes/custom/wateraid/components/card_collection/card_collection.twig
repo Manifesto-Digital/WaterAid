@@ -7,7 +7,7 @@
 <div {{ attributes.addClass(card_collection_classes) }}>
   <div class="card-collection__wrapper">
     {% for card_item in card_items %}
-      {{ card_item|raw }}
+      {{ card_item }}
     {% endfor %}
   </div>
 </div>

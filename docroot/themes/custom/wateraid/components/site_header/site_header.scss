@@ -13,15 +13,14 @@ $header-padding-bottom: 0;
   &__colour-wrapper {
     background: $white;
     width: 100vw;
-
-    padding-top: $wa-spacing-05;
-    padding-bottom: $wa-spacing-06;
   }
 
   &__container {
     @include page-container;
     display: flex;
     justify-content: space-between;
+    padding-top: $wa-spacing-05;
+    padding-bottom: $wa-spacing-06;
   }
 
   &__main {
@@ -35,6 +34,7 @@ $header-padding-bottom: 0;
     @include tablet {
       width: calculate-rem(200);
       padding: $wa-spacing-04 0;
+      z-index: 20;
     }
 
     &-link {

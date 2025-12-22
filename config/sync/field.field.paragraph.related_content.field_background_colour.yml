@@ -1,0 +1,23 @@
+uuid: 55592f76-dab4-4dfe-ae31-969d30fb1c92
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_colour
+    - paragraphs.paragraphs_type.related_content
+  module:
+    - options
+id: paragraph.related_content.field_background_colour
+field_name: field_background_colour
+entity_type: paragraph
+bundle: related_content
+label: 'Background colour'
+description: 'Select the background colour for this component'
+required: true
+translatable: false
+default_value:
+  -
+    value: cream
+default_value_callback: ''
+settings: {  }
+field_type: list_string

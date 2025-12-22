@@ -1,0 +1,29 @@
+uuid: 0da8bf65-9414-4853-b582-821493a7be15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_get_involved
+    - paragraphs.paragraphs_type.related_content
+    - taxonomy.vocabulary.get_involved
+id: paragraph.related_content.field_get_involved
+field_name: field_get_involved
+entity_type: paragraph
+bundle: related_content
+label: 'Content Type'
+description: 'Select tags from the Content Type taxonomy to limit results by.<br /><strong>Note: this is different to the type of content selected above</strong>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      get_involved: get_involved
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

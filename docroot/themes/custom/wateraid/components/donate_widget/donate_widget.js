@@ -20,17 +20,34 @@
       const oneOffCustomAmountInput = widget.querySelector("#custom_amount_one_off");
       const submitButton = widget.querySelector('#donate_submit');
 
+      const minDonationAmount = parseInt(drupalSettings.donate_widget?.minimum_donation);
       let selectedFrequency;
       let amountValue;
 
       // Add event listener on input changes.
       monthlyCustomAmountInput?.addEventListener("input", () => {
+        // Only allow numbers and decimal point
+        monthlyCustomAmountInput.value = monthlyCustomAmountInput.value.replace(/[^0-9.]/g, '');
         amountValue = monthlyCustomAmountInput.value;
+        // Remove error state when user starts typing
+        submitButton.classList.remove('error');
+        const existingError = widget.querySelector('label.error[for="donate_submit"]');
+        if (existingError) {
+          existingError.remove();
+        }
         updateDonationSummary();
       });
 
       oneOffCustomAmountInput?.addEventListener("input", () => {
+        // Only allow numbers and decimal point
+        oneOffCustomAmountInput.value = oneOffCustomAmountInput.value.replace(/[^0-9.]/g, '');
         amountValue = oneOffCustomAmountInput.value;
+        // Remove error state when user starts typing
+        oneOffCustomAmountInput.classList.remove('error');
+        const existingError = widget.querySelector('label.error[for="donate_submit"]');
+        if (existingError) {
+          existingError.remove();
+        }
         updateDonationSummary();
       });
 
@@ -245,6 +262,26 @@
             amountValue = monthlyCustomAmountInput.value;
           } else {
             amountValue = oneOffCustomAmountInput.value;
+          }
+        }
+
+        // Validate custom amount fields
+        if (minDonationAmount && selectedRadio.value === "other") {
+          const floatDonateAmount = parseFloat(amountValue);
+          if (isNaN(floatDonateAmount) || floatDonateAmount < minDonationAmount) {
+            if (widget.querySelector('label.error[for="donate_submit"]')) {
+              return;
+            }
+
+            const errorLabel = document.createElement('label');
+            errorLabel.className = 'error';
+            errorLabel.setAttribute('for', 'donate_submit');
+            errorLabel.setAttribute('role', 'alert');
+            errorLabel.textContent = Drupal.t('Please enter a minimum amount of £2 for monthly donations.');
+            submitButton.parentNode.after(errorLabel);
+            submitButton.classList.add('error');
+
+            return;
           }
         }
 

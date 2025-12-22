@@ -8,6 +8,7 @@
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Render\Element;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformInterface;
@@ -56,6 +57,16 @@ function wateraid_donation_forms_webform_submission_create(WebformSubmissionInte
   if (empty($frequency) || empty($amount) || !is_numeric($amount) || (int) $amount <= 0) {
     return;
   }
+
+  // Site specific validation rules.
+  $params = \Drupal::routeMatch()->getParameters();
+  $group = $params->get('group');
+  if ($group instanceof GroupInterface) {
+    if ((int) $amount < (int) $group->get('field_minimum_donation')->getString()) {
+      return;
+    }
+  }
+
 
   // Fixed period needs a duration.
   if ($frequency === 'fixed_period' && (empty($duration) || !is_numeric($duration) || (int) $duration <= 0)) {

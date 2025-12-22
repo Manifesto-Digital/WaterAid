@@ -1,0 +1,27 @@
+uuid: 0585def7-3a5f-4d23-b2ea-d501797b261c
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_match_all_terms
+field_name: field_match_all_terms
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: and
+      label: 'Match All'
+    -
+      value: or
+      label: 'Match Any'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

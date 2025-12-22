@@ -1,0 +1,29 @@
+uuid: 043ae4c0-5253-44a3-9b60-1a0d1a5b58c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subject_area
+    - paragraphs.paragraphs_type.related_content
+    - taxonomy.vocabulary.subject_areas
+id: paragraph.related_content.field_subject_area
+field_name: field_subject_area
+entity_type: paragraph
+bundle: related_content
+label: 'Subject Area'
+description: 'Select a subject area to limit the content to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      subject_areas: subject_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
