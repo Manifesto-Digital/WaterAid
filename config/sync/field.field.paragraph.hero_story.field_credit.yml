@@ -1,0 +1,19 @@
+uuid: ea9b8497-fef4-47d4-b6f7-b1c1e4467ec4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_credit
+    - paragraphs.paragraphs_type.hero_story
+id: paragraph.hero_story.field_credit
+field_name: field_credit
+entity_type: paragraph
+bundle: hero_story
+label: Credit
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

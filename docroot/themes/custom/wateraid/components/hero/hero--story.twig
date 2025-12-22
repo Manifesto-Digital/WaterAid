@@ -2,11 +2,11 @@
   'hero',
   'hero--'~colour,
   'hero--story',
-  image ? 'hero--video' : 'hero--video',
+  'hero--'~media_type,
 ] %}
 
 <div {{ attributes.addClass(hero_classes) }}>
-  {% if image %}
+  {% if media_type == 'image' and image %}
     <div class="hero__image {{ mobile_image|render ? "hero__image--desktop" }}">
       {{ include('wateraid:image', {
         image: image,
@@ -18,7 +18,7 @@
     </div>
   {% endif %}
 
-  {% if video %}
+  {% if media_type == 'video' and video %}
     <div class="hero__video">
       {{ video }}
 

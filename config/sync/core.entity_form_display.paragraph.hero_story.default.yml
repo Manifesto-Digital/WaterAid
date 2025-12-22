@@ -1,0 +1,67 @@
+uuid: 8d048e12-3d4b-4950-af7b-8493bdcc4000
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_story.field_caption
+    - field.field.paragraph.hero_story.field_credit
+    - field.field.paragraph.hero_story.field_hero_variant
+    - field.field.paragraph.hero_story.field_image
+    - field.field.paragraph.hero_story.field_standfirst
+    - field.field.paragraph.hero_story.field_video
+    - paragraphs.paragraphs_type.hero_story
+  module:
+    - media_library
+    - text
+id: paragraph.hero_story.default
+targetEntityType: paragraph
+bundle: hero_story
+mode: default
+content:
+  field_caption:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hero_variant:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_standfirst:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+  field_video:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

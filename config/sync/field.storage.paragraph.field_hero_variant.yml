@@ -1,0 +1,27 @@
+uuid: 2cf5b9bc-d210-4cda-b876-767721d8d5a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_hero_variant
+field_name: field_hero_variant
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: hero_with_image
+      label: 'Hero with image'
+    -
+      value: hero_with_video
+      label: 'Hero with video'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

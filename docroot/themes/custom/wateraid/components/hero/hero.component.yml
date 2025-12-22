@@ -64,6 +64,9 @@ slots:
   authors:
     type: ["object", "null"]
     title: Authors
+  media_type:
+    type: string
+    title: Media type
 libraryOverrides:
   css:
     theme:

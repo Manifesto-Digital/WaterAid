@@ -1,0 +1,10 @@
+uuid: 10f26a5e-aa9d-48bd-8a62-0bdb3d0adf4d
+langcode: en
+status: true
+dependencies: {  }
+id: hero_story
+label: 'Hero (story)'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
