@@ -48,12 +48,14 @@
 ]
 %}
 
-{% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:card_collection', {
-      card_items: content.field_cards|children,
-      background: paragraph.field_background_colour.value,
-      columns: paragraph.field_card_columns.value|replace({'_' : '-'}),
-    }, only) }}
-  </div>
-{% endblock paragraph %}
+{% if content.field_cards %}
+  {% block paragraph %}
+    <div{{ attributes.addClass(classes) }}>
+      {{ include('wateraid:card_collection', {
+        card_items: content.field_cards|children,
+        background: paragraph.field_background_colour.value,
+        columns: paragraph.field_card_columns.value|replace({'_' : '-'}),
+      }, only) }}
+    </div>
+  {% endblock paragraph %}
+{% endif %}
