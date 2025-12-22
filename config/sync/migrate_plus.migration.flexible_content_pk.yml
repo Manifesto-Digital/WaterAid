@@ -136,6 +136,8 @@ process:
         - variable_content_module_pk
         - statistics_pk
         - statistics_icons_pk
+        - curated_listing_pk
+        - curated_listing_overriden_pk
       source: field_modules
   field_content:
     plugin: merge_without_exception

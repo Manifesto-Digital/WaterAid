@@ -30,6 +30,8 @@ source:
     - field_wa_page_sections
     - field_hero
     - field_teaser_image
+    - curated_listing
+    - curated_listing_overriden
 process:
   langcode:
     -

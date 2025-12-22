@@ -130,6 +130,8 @@ process:
         - variable_content_module_bd
         - statistics_bd
         - statistics_icons_bd
+        - curated_listing_bd
+        - curated_listing_overriden_bd
       source: field_modules
   temp_body:
     -

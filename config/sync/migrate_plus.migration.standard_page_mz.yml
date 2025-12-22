@@ -84,6 +84,8 @@ process:
         - variable_content_module_mz
         - statistics_mz
         - statistics_icons_mz
+        - curated_listing_mz
+        - curated_listing_overriden_mz
       source: field_modules
   field_content:
     plugin: merge_without_exception

@@ -104,6 +104,8 @@ process:
         - variable_content_module_ng
         - statistics_ng
         - statistics_icons_ng
+        - curated_listing_mz
+        - curated_listing_overriden_mz
       source: field_modules
   field_content:
     plugin: merge_without_exception

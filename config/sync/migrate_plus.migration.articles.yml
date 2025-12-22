@@ -252,6 +252,8 @@ process:
         - variable_content_module
         - statistics
         - statistics_icons
+        - curated_listing
+        - curated_listing_overriden
       source: field_modules
   field_content:
     plugin: merge_without_exception

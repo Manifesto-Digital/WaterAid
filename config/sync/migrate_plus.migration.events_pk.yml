@@ -132,6 +132,8 @@ process:
         - variable_content_module_pk
         - statistics_pk
         - statistics_icons_pk
+        - curated_listing_pk
+        - curated_listing_overriden_pk
       source: field_listing
   temp_paragraphs_two:
     -
@@ -165,6 +167,8 @@ process:
         - variable_content_module_pk
         - statistics_pk
         - statistics_icons_pk
+        - curated_listing_pk
+        - curated_listing_overriden_pk
       source: field_wa_page_sections
   field_content:
     plugin: merge_without_exception

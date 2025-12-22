@@ -132,6 +132,8 @@ process:
         - variable_content_module_global
         - statistics_global
         - statistics_icons_global
+        - curated_listing_global
+        - curated_listing_overriden_global
       source: field_listing
   temp_paragraphs_two:
     -
@@ -165,6 +167,8 @@ process:
         - variable_content_module_global
         - statistics_global
         - statistics_icons_global
+        - curated_listing_global
+        - curated_listing_overriden_global
       source: field_wa_page_sections
   field_content:
     plugin: merge_without_exception

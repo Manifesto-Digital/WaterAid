@@ -97,6 +97,8 @@ process:
         - variable_content_module_gh
         - statistics_gh
         - statistics_icons_gh
+        - curated_listing_gh
+        - curated_listing_overriden_gh
       source: field_modules
   field_content:
     plugin: merge_without_exception

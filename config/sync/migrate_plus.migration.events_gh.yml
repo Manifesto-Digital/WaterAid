@@ -132,6 +132,8 @@ process:
         - variable_content_module_gh
         - statistics_gh
         - statistics_icons_gh
+        - curated_listing_gh
+        - curated_listing_overriden_gh
       source: field_listing
   temp_paragraphs_two:
     -
@@ -165,6 +167,8 @@ process:
         - variable_content_module_gh
         - statistics_gh
         - statistics_icons_gh
+        - curated_listing_gh
+        - curated_listing_overriden_gh
       source: field_wa_page_sections
   field_content:
     plugin: merge_without_exception

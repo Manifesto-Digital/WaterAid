@@ -107,6 +107,8 @@ process:
         - variable_content_module_tz
         - statistics_tz
         - statistics_icons_tz
+        - curated_listing_tz
+        - curated_listing_overriden_tz
       source: field_modules
   field_content:
     plugin: merge_without_exception

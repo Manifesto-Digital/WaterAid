@@ -94,6 +94,8 @@ process:
         - variable_content_module_global
         - statistics_global
         - statistics_icons_global
+        - curated_listing_global
+        - curated_listing_overriden_global
       source: field_modules
   field_content:
     plugin: merge_without_exception

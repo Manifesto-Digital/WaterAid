@@ -84,6 +84,8 @@ process:
         - variable_content_module_ug
         - statistics_ug
         - statistics_icons_ug
+        - curated_listing_ug
+        - curated_listing_overriden_ug
       source: field_modules
   field_content:
     plugin: merge_without_exception

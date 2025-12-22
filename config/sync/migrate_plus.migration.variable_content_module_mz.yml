@@ -58,6 +58,8 @@ process:
       - hero_in_content_mz
       - statistics_mz
       - statistics_icons_mz
+      - curated_listing_mz
+      - curated_listing_overriden_mz
     source: field_aside_section
     no_stub: true
   field_main:
@@ -90,6 +92,8 @@ process:
       - hero_in_content_mz
       - statistics_mz
       - statistics_icons_mz
+      - curated_listing_mz
+      - curated_listing_overriden_mz
     source: field_vcm_main
     no_stub: true
   field_links:
@@ -145,4 +149,6 @@ migration_dependencies:
     - rainbow_link_item_mz
     - donation_cta_widget_embed_mz
     - hero_in_content_mz
+    - curated_listing_mz
+    - curated_listing_overriden_mz
 include: null
