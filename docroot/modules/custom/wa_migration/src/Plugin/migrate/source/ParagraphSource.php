@@ -22,9 +22,21 @@ class ParagraphSource extends SqlBase {
    * {@inheritdoc}
    */
   public function query(): SelectInterface {
-    return $this->select('paragraphs_item_field_data', 'p')
+    $query = $this->select('paragraphs_item_field_data', 'p')
       ->fields('p')
       ->condition('p.type', $this->configuration['bundle']);
+
+    if (str_starts_with($this->migration->id(), 'curated_listing')) {
+      $query->leftJoin('paragraph__field_cl_override', 'o', 'o.entity_id = p.id');
+
+      $or = $query->orConditionGroup();
+      $or->condition('o.field_cl_override_value', 0);
+      $or->isNull('o.field_cl_override_value');
+
+      $query->condition($or);
+    }
+
+    return $query;
   }
 
   /**
@@ -72,6 +84,9 @@ class ParagraphSource extends SqlBase {
               if ($field == 'field_vcm_intro') {
                 $value[] = substr($datum[$field . '_value'], 0, 252);
               }
+              elseif ($field == 'field_cl_display') {
+                $value = (int) $datum[$field . '_value'];
+              }
               else {
                 $value[] = $datum[$field . '_value'];
               }
@@ -105,6 +120,30 @@ class ParagraphSource extends SqlBase {
 
         if ($field == 'field_activation_bar_item') {
           $field = 'field_call_to_action_link';
+        }
+        elseif ($field == 'field_cl_display') {
+          $row_value = 1;
+          $column_value = '1_column';
+
+          if ($value) {
+            $value = is_array($value) ? reset($value) : $value;
+
+            if ($value > 4 && $value <= 8) {
+              $row_value = 2;
+              $column_value = '2_column';
+            }
+            elseif ($value > 8 && $value <= 12) {
+              $row_value = 3;
+              $column_value = '3_column';
+            }
+            elseif ($value > 12) {
+              $row_value = 3;
+              $column_value = '4_column';
+            }
+          }
+
+          $row->setSourceProperty('field_rows', $row_value);
+          $row->setSourceProperty('field_card_columns', $column_value);
         }
 
         $row->setSourceProperty($field, $value);
