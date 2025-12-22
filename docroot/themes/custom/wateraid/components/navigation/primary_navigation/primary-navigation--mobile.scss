@@ -105,6 +105,7 @@
     text-decoration: underline;
     margin-top: $wa-spacing-05;
     margin-bottom: $wa-spacing-05;
+    align-items: center;
 
     .icon-arrow-left {
       @include wa-transition-motion-flow(transform, 200ms);

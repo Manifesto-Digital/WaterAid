@@ -1,0 +1,23 @@
+uuid: 49427d88-fde2-4b0b-80de-71890d816b33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_match_all_terms
+    - paragraphs.paragraphs_type.related_content
+  module:
+    - options
+id: paragraph.related_content.field_match_all_terms
+field_name: field_match_all_terms
+entity_type: paragraph
+bundle: related_content
+label: 'Match All Terms'
+description: 'Select whether you want to show content that is tagged with <strong>all</strong> the terms you have selected, or content with <strong>any</strong> of the terms. Selecting "Match All" will mean that if you select Australia and Kenya as countries, only content tagged with both terms will be shown: this means that Match Any is more likely to show results, as it will show content tagged as Australia and content tagged as Kenya.'
+required: true
+translatable: false
+default_value:
+  -
+    value: or
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: 28aa19af-fca9-449a-9d30-a1a92f9a8ec4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_minimum_donation
+    - group.type.wateraid_site
+id: group.wateraid_site.field_minimum_donation
+field_name: field_minimum_donation
+entity_type: group
+bundle: wateraid_site
+label: 'Minimum donation amount'
+description: 'The minimum amount users can donate. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

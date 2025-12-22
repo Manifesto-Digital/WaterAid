@@ -125,7 +125,7 @@
     "drupal/views_bulk_operations": "^4.3",
     "drupal/views_infinite_scroll": "^2.0",
     "drupal/viewsreference": "^2.0@beta",
-    "drupal/webform": "^6.3@beta",
+    "drupal/webform": "^6.2",
     "drupal/webform_rest": "^4.2",
     "drupal/webp": "^1.0@RC",
     "drupal/xmlsitemap": "^2.0",
@@ -133,8 +133,7 @@
     "justgiving/justgiving": "^1.0",
     "mikehaertl/phpwkhtmltopdf": "^2.5",
     "npm-asset/jquery-validation": "^1.20",
-    "oomphinc/composer-installers-extender": "^2.0",
-    "wikimedia/composer-merge-plugin": "^2.1"
+    "oomphinc/composer-installers-extender": "^2.0"
   },
   "require-dev": {
     "drupal/core-dev": "^10.5",
@@ -160,8 +159,7 @@
       "oomphinc/composer-installers-extender": true,
       "php-http/discovery": true,
       "phpstan/extension-installer": true,
-      "tbachert/spi": true,
-      "wikimedia/composer-merge-plugin": true
+      "tbachert/spi": true
     },
     "sort-packages": true
   },
