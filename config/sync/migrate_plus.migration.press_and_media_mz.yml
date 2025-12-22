@@ -47,12 +47,17 @@ process:
     migration: media_mz
     source: field_publication_image
     no_stub: true
+  temp_authors:
+    plugin: migration_lookup
+    migration: users_mz
+    source: field_author
+    no_stub: true
   field_hero:
     plugin: image_to_hero
     hero_type: hero_news
     source:
       - ''
-      - ''
+      - '@temp_authors'
       - ''
       - created
   title: title
@@ -79,11 +84,7 @@ process:
     source: field_get_involved_terms
     no_stub: true
   field_meta_tags: field_meta_tags
-  co_authors:
-    plugin: migration_lookup
-    migration: users_mz
-    source: field_author
-    no_stub: true
+  co_authors: '@temp_authors'
   field_theme:
     plugin: migration_lookup
     migration: themes_mz
