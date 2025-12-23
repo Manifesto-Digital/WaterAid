@@ -53,6 +53,9 @@
     width: 100%;
     position: relative;
 
+    div {
+      display: flex;
+    }
     video {
       width: 100%;
       height: 100%;
