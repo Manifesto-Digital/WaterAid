@@ -118,21 +118,6 @@ process:
       method: process
   field_rows: field_rows
   field_card_columns: field_card_columns
-  0:
-    field_audience:
-      migration: _global
-    field_get_involved:
-      migration: _global
-    field_country:
-      migration: _global
-    field_event_type:
-      migration: _global
-    field_subject_area:
-      migration: _global
-    field_themes:
-      migration: _global
-    field_topic:
-      migration: _global
 destination:
   plugin: 'entity:paragraph'
   default_bundle: related_content

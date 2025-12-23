@@ -48,25 +48,6 @@ process:
     -
       plugin: skip_on_empty
       method: row
-  0:
-    field_cards:
-      migration:
-        - articles_et
-        - campaigns_et
-        - country_details_et
-        - donation_forms_et
-        - donation_landing_pages_et
-        - events_et
-        - filtered_landing_pages_et
-        - press_and_media_et
-        - press_and_media_biographies_et
-        - publication_et
-        - shorthand_story_et
-        - standard_page_et
-        - stories_et
-        - webforms_et
-        - get_involved_node_et
-        - flexible_content_et
 destination:
   plugin: 'entity:paragraph'
   default_bundle: card_collection

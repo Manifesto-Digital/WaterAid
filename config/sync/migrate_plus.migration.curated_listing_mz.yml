@@ -118,21 +118,6 @@ process:
       method: process
   field_rows: field_rows
   field_card_columns: field_card_columns
-  0:
-    field_audience:
-      migration: _mz
-    field_get_involved:
-      migration: _mz
-    field_country:
-      migration: _mz
-    field_event_type:
-      migration: _mz
-    field_subject_area:
-      migration: _mz
-    field_themes:
-      migration: _mz
-    field_topic:
-      migration: _mz
 destination:
   plugin: 'entity:paragraph'
   default_bundle: related_content

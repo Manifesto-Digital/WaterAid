@@ -48,25 +48,6 @@ process:
     -
       plugin: skip_on_empty
       method: row
-  0:
-    field_cards:
-      migration:
-        - articles_gh
-        - campaigns_gh
-        - country_details_gh
-        - donation_forms_gh
-        - donation_landing_pages_gh
-        - events_gh
-        - filtered_landing_pages_gh
-        - press_and_media_gh
-        - press_and_media_biographies_gh
-        - publication_gh
-        - shorthand_story_gh
-        - standard_page_gh
-        - stories_gh
-        - webforms_gh
-        - get_involved_node_gh
-        - flexible_content_gh
 destination:
   plugin: 'entity:paragraph'
   default_bundle: card_collection
