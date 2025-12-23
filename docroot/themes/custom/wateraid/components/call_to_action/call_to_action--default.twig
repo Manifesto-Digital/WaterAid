@@ -8,15 +8,16 @@
   <div class="cta__content">
     <{{ tag }} class="cta__content--title pseudo-h2">{{ title }}</{{ tag }}>
 
-    {% if description %}
-      <div class="cta__content--description">
-        {{ description }}
-      </div>
-    {% endif %}
-  </div>
-  {% if cta.title and cta.url or link.title and link.url %}
-    <div class="cta__links">
-      <div class="cta__links--wrapper">
+  {% if description %}
+    <div class="cta__content--description">
+      {{ description }}
+    </div>
+  {% endif %}
+</div>
+{% if cta.title and cta.url or link.title and link.url %}
+  <div class="cta__links">
+    <div class="cta__links--wrapper">
+      {% if cta.title and cta.url %}
         <div class="cta__links--cta">
           {{ include('wateraid:button', {
             text: cta.title,
@@ -25,17 +26,18 @@
             theme: colour == 'white' ? 'light' : 'dark'
           }) }}
         </div>
-        {% if link.title and link.url %}
-          <div class="cta__links--link">
-            {{ include('wateraid:link', {
-              text: link.title,
-              link: link.url,
-              type: 'text',
-            }) }}
-          </div>
-        {% endif %}
-      </div>
+      {% endif %}
+      {% if link.title and link.url %}
+        <div class="cta__links--link">
+          {{ include('wateraid:link', {
+            text: link.title,
+            link: link.url,
+            type: 'text',
+          }) }}
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
+  </div>
+{% endif %}
 </div>
 
