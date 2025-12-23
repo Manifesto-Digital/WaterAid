@@ -155,6 +155,48 @@ class ParagraphSource extends SqlBase {
           $row->setSourceProperty('field_card_columns', $column_value);
         }
 
+        // Attempt to strip invalid UTF-8 from the strings to prevent fatal
+        // errors.
+        if (is_array($value)) {
+          foreach ($value as $key => $data) {
+            if (is_array($data)) {
+              foreach ($data as $sub => $sub_value) {
+                $value[$key][$sub] = preg_replace('/[\x00-\x08\x10\x0B\x0C\x0E-\x19\x7F]' .
+                  '|(?<=^|[\x00-\x7F])[\x80-\xBF]+' .
+                  '|([\xC0\xC1]|[\xF0-\xFF])[\x80-\xBF]*' .
+                  '|[\xC2-\xDF]((?![\x80-\xBF])|[\x80-\xBF]{2,})' .
+                  '|[\xE0-\xEF](([\x80-\xBF](?![\x80-\xBF]))|(?![\x80-\xBF]{2})|[\x80-\xBF]{3,})/',
+                  '�', $sub_value);
+
+                $value[$key][$sub] = preg_replace('/\xE0[\x80-\x9F][\x80-\xBF]' .
+                  '|\xED[\xA0-\xBF][\x80-\xBF]/S', '?', $value[$key][$sub]);
+              }
+            }
+            else {
+              $value[$key] = preg_replace('/[\x00-\x08\x10\x0B\x0C\x0E-\x19\x7F]' .
+                '|(?<=^|[\x00-\x7F])[\x80-\xBF]+' .
+                '|([\xC0\xC1]|[\xF0-\xFF])[\x80-\xBF]*' .
+                '|[\xC2-\xDF]((?![\x80-\xBF])|[\x80-\xBF]{2,})' .
+                '|[\xE0-\xEF](([\x80-\xBF](?![\x80-\xBF]))|(?![\x80-\xBF]{2})|[\x80-\xBF]{3,})/',
+                '�', $data);
+
+              $value[$key] = preg_replace('/\xE0[\x80-\x9F][\x80-\xBF]' .
+                '|\xED[\xA0-\xBF][\x80-\xBF]/S', '?', $value[$key]);
+            }
+          }
+        }
+        else {
+          $value = preg_replace('/[\x00-\x08\x10\x0B\x0C\x0E-\x19\x7F]' .
+            '|(?<=^|[\x00-\x7F])[\x80-\xBF]+' .
+            '|([\xC0\xC1]|[\xF0-\xFF])[\x80-\xBF]*' .
+            '|[\xC2-\xDF]((?![\x80-\xBF])|[\x80-\xBF]{2,})' .
+            '|[\xE0-\xEF](([\x80-\xBF](?![\x80-\xBF]))|(?![\x80-\xBF]{2})|[\x80-\xBF]{3,})/',
+            '�', $data);
+
+          $value = preg_replace('/\xE0[\x80-\x9F][\x80-\xBF]' .
+            '|\xED[\xA0-\xBF][\x80-\xBF]/S', '?', $value[$key]);
+        }
+
         $row->setSourceProperty($field, $value);
       }
     }
