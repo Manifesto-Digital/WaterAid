@@ -17,7 +17,7 @@
   body.primary-menu-open & {
     visibility: visible;
     opacity: 1;
-    height: 84vh;
+    height: calc(100vh - 78px);
 
     @include tablet {
       display: none;
@@ -68,8 +68,7 @@
     left: 0;
     background: white;
     width: 100%;
-    // @todo Should probably make the height dynamic.
-    height: 90vh;
+    height: calc(100vh - 78px);
 
     &.active {
       display: block;
@@ -80,6 +79,9 @@
     transform: translateX(100%);
     background-color: $wa-blue;
 
+    .mobile-nav__container{
+      height: calc(100vh - 200px);
+    }
     .mobile-nav__container > li {
       border-bottom: 1px solid $wa-white;
     }
@@ -88,6 +90,10 @@
     // Level 3 is nested under level 2, so just 100vw nudge again.
     transform: translateX(100%);
     background-color: $wa-navy;
+
+    .mobile-nav__container{
+      height: calc(100vh - 200px);
+    }
 
     .mobile-nav__container > li {
       border-bottom-color: $wa-blue
