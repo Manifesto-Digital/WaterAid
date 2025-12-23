@@ -93,13 +93,13 @@ process:
         - video_jp
         - carousel_jp
         - content_carousel_jp
-        - enhanced_carousel_item_jp
-        - tabbed_item_jp
+        - enhanced_carousel_jp
+        - tabbed_jp
         - content_with_large_image_jp
         - aside_with_image_jp
         - quote_jp
         - listing_jp
-        - biography_item_jp
+        - biography_jp
         - activation_bar_item_jp
         - rainbow_link_item_jp
         - donation_cta_widget_embed_jp

@@ -143,13 +143,13 @@ process:
         - video_se
         - carousel_se
         - content_carousel_se
-        - enhanced_carousel_item_se
-        - tabbed_item_se
+        - enhanced_carousel_se
+        - tabbed_se
         - content_with_large_image_se
         - aside_with_image_se
         - quote_se
         - listing_se
-        - biography_item_se
+        - biography_se
         - activation_bar_item_se
         - rainbow_link_item_se
         - donation_cta_widget_embed_se

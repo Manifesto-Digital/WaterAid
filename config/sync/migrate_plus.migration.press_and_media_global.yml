@@ -116,13 +116,13 @@ process:
         - video_global
         - carousel_global
         - content_carousel_global
-        - enhanced_carousel_item_global
-        - tabbed_item_global
+        - enhanced_carousel_global
+        - tabbed_global
         - content_with_large_image_global
         - aside_with_image_global
         - quote_global
         - listing_global
-        - biography_item_global
+        - biography_global
         - activation_bar_item_global
         - rainbow_link_item_global
         - donation_cta_widget_embed_global

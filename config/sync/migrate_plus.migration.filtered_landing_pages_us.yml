@@ -90,13 +90,13 @@ process:
         - video_us
         - carousel_us
         - content_carousel_us
-        - enhanced_carousel_item_us
-        - tabbed_item_us
+        - enhanced_carousel_us
+        - tabbed_us
         - content_with_large_image_us
         - aside_with_image_us
         - quote_us
         - listing_us
-        - biography_item_us
+        - biography_us
         - activation_bar_item_us
         - rainbow_link_item_us
         - donation_cta_widget_embed_us

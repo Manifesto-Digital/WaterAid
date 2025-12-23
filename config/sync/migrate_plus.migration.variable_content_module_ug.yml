@@ -45,13 +45,13 @@ process:
       - video_ug
       - carousel_ug
       - content_carousel_ug
-      - enhanced_carousel_item_ug
-      - tabbed_item_ug
+      - enhanced_carousel_ug
+      - tabbed_ug
       - content_with_large_image_ug
       - aside_with_image_ug
       - quote_ug
       - listing_ug
-      - biography_item_ug
+      - biography_ug
       - activation_bar_item_ug
       - rainbow_link_item_ug
       - donation_cta_widget_embed_ug
@@ -79,13 +79,13 @@ process:
       - video_ug
       - carousel_ug
       - content_carousel_ug
-      - enhanced_carousel_item_ug
-      - tabbed_item_ug
+      - enhanced_carousel_ug
+      - tabbed_ug
       - content_with_large_image_ug
       - aside_with_image_ug
       - quote_ug
       - listing_ug
-      - biography_item_ug
+      - biography_ug
       - activation_bar_item_ug
       - rainbow_link_item_ug
       - donation_cta_widget_embed_ug
@@ -138,13 +138,13 @@ migration_dependencies:
     - video_ug
     - carousel_ug
     - content_carousel_ug
-    - enhanced_carousel_item_ug
-    - tabbed_item_ug
+    - enhanced_carousel_ug
+    - tabbed_ug
     - content_with_large_image_ug
     - aside_with_image_ug
     - quote_ug
     - listing_ug
-    - biography_item_ug
+    - biography_ug
     - activation_bar_item_ug
     - rainbow_link_item_ug
     - donation_cta_widget_embed_ug

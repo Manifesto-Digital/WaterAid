@@ -62,7 +62,7 @@ process:
     source: '@temp_media'
 destination:
   plugin: 'entity:paragraph'
-  default_bundle: image_gallery_item
+  default_bundle: gallery_item
 idMap: {  }
 migration_dependencies:
   required:

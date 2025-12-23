@@ -238,13 +238,13 @@ process:
         - video_mz
         - carousel_mz
         - content_carousel_mz
-        - enhanced_carousel_item_mz
-        - tabbed_item_mz
+        - enhanced_carousel_mz
+        - tabbed_mz
         - content_with_large_image_mz
         - aside_with_image_mz
         - quote_mz
         - listing_mz
-        - biography_item_mz
+        - biography_mz
         - activation_bar_item_mz
         - rainbow_link_item_mz
         - donation_cta_widget_embed_mz

@@ -70,13 +70,13 @@ process:
         - video_au
         - carousel_au
         - content_carousel_au
-        - enhanced_carousel_item_au
-        - tabbed_item_au
+        - enhanced_carousel_au
+        - tabbed_au
         - content_with_large_image_au
         - aside_with_image_au
         - quote_au
         - listing_au
-        - biography_item_au
+        - biography_au
         - activation_bar_item_au
         - rainbow_link_item_au
         - donation_cta_widget_embed_au

@@ -83,13 +83,13 @@ process:
         - video_mw
         - carousel_mw
         - content_carousel_mw
-        - enhanced_carousel_item_mw
-        - tabbed_item_mw
+        - enhanced_carousel_mw
+        - tabbed_mw
         - content_with_large_image_mw
         - aside_with_image_mw
         - quote_mw
         - listing_mw
-        - biography_item_mw
+        - biography_mw
         - activation_bar_item_mw
         - rainbow_link_item_mw
         - donation_cta_widget_embed_mw

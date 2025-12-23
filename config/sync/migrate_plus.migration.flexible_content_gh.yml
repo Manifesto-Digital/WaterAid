@@ -122,13 +122,13 @@ process:
         - video_gh
         - carousel_gh
         - content_carousel_gh
-        - enhanced_carousel_item_gh
-        - tabbed_item_gh
+        - enhanced_carousel_gh
+        - tabbed_gh
         - content_with_large_image_gh
         - aside_with_image_gh
         - quote_gh
         - listing_gh
-        - biography_item_gh
+        - biography_gh
         - activation_bar_item_gh
         - rainbow_link_item_gh
         - donation_cta_widget_embed_gh
