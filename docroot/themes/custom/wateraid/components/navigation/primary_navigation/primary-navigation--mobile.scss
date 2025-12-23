@@ -80,7 +80,7 @@
     background-color: $wa-blue;
 
     .mobile-nav__container{
-      height: calc(100vh - 200px);
+      height: calc(100% - 196px);
     }
     .mobile-nav__container > li {
       border-bottom: 1px solid $wa-white;
@@ -92,7 +92,7 @@
     background-color: $wa-navy;
 
     .mobile-nav__container{
-      height: calc(100vh - 200px);
+      height: calc(100% - 196px);
     }
 
     .mobile-nav__container > li {
