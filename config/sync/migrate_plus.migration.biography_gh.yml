@@ -25,7 +25,7 @@ process:
       default_value: en
   status: status
   field_images:
-    plugin: migration_lookup
+    plugin: paragraph_migration_lookup
     source: field_biography_item
     migration: biography_item_gh
     no_stub: true

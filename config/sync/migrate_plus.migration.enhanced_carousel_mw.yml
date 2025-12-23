@@ -25,7 +25,7 @@ process:
       default_value: en
   status: status
   field_images:
-    plugin: migration_lookup
+    plugin: paragraph_migration_lookup
     migration: enhanced_carousel_item_mw
     source: field_enhanced_carousel_items
     no_stub: true
