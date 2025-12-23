@@ -16,7 +16,7 @@ label: 'Redirects MW'
 source:
   plugin: redirect_source
   constants:
-    uk_site: uk/
+    uk_site: mw/
 process:
   language:
     plugin: default_value

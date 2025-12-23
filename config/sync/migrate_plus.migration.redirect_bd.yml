@@ -16,7 +16,7 @@ label: 'Redirects BD'
 source:
   plugin: redirect_source
   constants:
-    uk_site: uk/
+    uk_site: bd/
 process:
   language:
     plugin: default_value

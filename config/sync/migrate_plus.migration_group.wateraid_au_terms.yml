@@ -1,0 +1,17 @@
+uuid: bd40246e-b2a7-41ec-975f-a86b8623122c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_au_terms
+label: 'WaterAid AU migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/au site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: au_site_migration
+  migration_tags:
+    - wateraid_au

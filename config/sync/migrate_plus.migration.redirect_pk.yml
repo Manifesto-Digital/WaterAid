@@ -16,7 +16,7 @@ label: 'Redirects PK'
 source:
   plugin: redirect_source
   constants:
-    uk_site: uk/
+    uk_site: pk/
 process:
   language:
     plugin: default_value

@@ -1,0 +1,17 @@
+uuid: 3f6b9636-d2a4-494f-bcc2-ddbd3feae1ea
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_us
+label: 'WaterAid US migration'
+description: 'Content from the wateraid.org/us site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: us_site_migration
+  migration_tags:
+    - wateraid_us

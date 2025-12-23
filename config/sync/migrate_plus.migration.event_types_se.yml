@@ -1,0 +1,37 @@
+uuid: bec8a509-3bf4-4cff-a641-12d5765f3375
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: event_types_se
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_se_terms
+label: 'Event Types (SE)'
+source:
+  plugin: term_source
+  bundle: event_types
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: sv
+  status: status
+  name: name
+  description/value: description__value
+  description/format:
+    -
+      plugin: default_value
+      default_value: full_html
+  weight: weight
+destination:
+  plugin: 'wa_term:taxonomy_term'
+  default_bundle: event_types
+idMap: {  }
+migration_dependencies: null
+include: null

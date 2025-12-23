@@ -16,7 +16,7 @@ label: 'Redirects NG'
 source:
   plugin: redirect_source
   constants:
-    uk_site: uk/
+    uk_site: ng/
 process:
   language:
     plugin: default_value

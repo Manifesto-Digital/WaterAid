@@ -1,0 +1,17 @@
+uuid: d6d848bf-48b7-4818-b7a0-69f16e80819f
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_jp
+label: 'WaterAid JP migration'
+description: 'Content from the wateraid.org/jp site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: jp_site_migration
+  migration_tags:
+    - wateraid_jp

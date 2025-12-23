@@ -1,0 +1,70 @@
+uuid: cd374c43-d388-466a-8271-465b30bd0727
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: biography_item_au
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_au
+label: 'Biography (AU)'
+source:
+  plugin: paragraph_source
+  bundle: biography_item
+  fields:
+    - field_information_body
+    - field_call_to_action_link_single
+    - field_paragraph_image
+    - field_name
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_rich_text/value: field_information_body/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_link:
+    plugin: links_migration_lookup
+    source: field_call_to_action_link_single
+    migration:
+      - articles_au
+      - campaigns_au
+      - country_details_au
+      - donation_forms_au
+      - donation_landing_pages_au
+      - events_au
+      - filtered_landing_pages_au
+      - flexible_content_au
+      - get_involved_node_au
+      - jobs_au
+      - press_and_media_au
+      - press_and_media_biographies_au
+      - publication_au
+      - standard_page_au
+      - stories_au
+      - webforms_au
+  field_title: field_name
+  temp_media:
+    plugin: migration_lookup
+    source: field_paragraph_image
+    migration: media_au
+    no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies:
+  required:
+    - image_au
+include: null
