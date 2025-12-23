@@ -32,7 +32,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 0
     region: content
   field_teaser_image:
     type: entity_reference_entity_view
@@ -49,11 +49,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
     region: content
 hidden:
   co_authors: true
@@ -77,5 +72,6 @@ hidden:
   field_search_phrases: true
   field_theme: true
   langcode: true
+  links: true
   node_read_time: true
   search_api_excerpt: true
