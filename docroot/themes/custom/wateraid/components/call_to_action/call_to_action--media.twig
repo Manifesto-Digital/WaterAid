@@ -1,11 +1,12 @@
 {% set cta_classes = [
   'cta',
-  'cta--' ~ variant
+  'cta--' ~ variant,
+  'cta--' ~ media_type
 ] %}
 {% set tag = heading_level ? heading_level : 'h2' %}
 
 <div {{ attributes.addClass(cta_classes) }}>
-  {% if image %}
+  {% if media_type == 'image' and image %}
     <div class="cta__image">
       {{ include('wateraid:image', {
         image,
@@ -17,7 +18,7 @@
     </div>
   {% endif %}
 
-  {% if video %}
+  {% if media_type == 'video' and video %}
     <div class="cta__video">
       {{ video }}
 
@@ -45,17 +46,17 @@
   {% endif %}
 
   <div class="cta__content">
-    <h2 class="cta__content--title">{{ title }}</h2>
     <{{ tag }} class="cta__content--title pseudo-h2">{{ title }}</{{ tag }}>
 
-    {% if description %}
-      <div class="cta__content--description">
-        {{ description }}
-      </div>
-    {% endif %}
+  {% if description %}
+    <div class="cta__content--description">
+      {{ description }}
+    </div>
+  {% endif %}
 
-    {% if cta.title and cta.url or link.title and link.url %}
+  {% if cta.title and cta.url or link.title and link.url %}
     <div class="cta__links">
+      {% if cta.title and cta.url %}
         <div class="cta__links--cta">
           {{ include('wateraid:button', {
             text: cta.title,
@@ -64,16 +65,17 @@
             theme: colour == 'white' ? 'light' : 'dark'
           }) }}
         </div>
-        {% if link.title and link.url %}
-          <div class="cta__links--link">
-            {{ include('wateraid:link', {
-              text: link.title,
-              link: link.url,
-              type: 'text',
-            }) }}
-          </div>
-        {% endif %}
-      </div>
-    {% endif %}
-  </div>
+      {% endif %}
+      {% if link.title and link.url %}
+        <div class="cta__links--link">
+          {{ include('wateraid:link', {
+            text: link.title,
+            link: link.url,
+            type: 'text',
+          }) }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
 </div>
