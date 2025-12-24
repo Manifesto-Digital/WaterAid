@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.webform.field_donation_widget
     - field.field.node.webform.field_hero
     - field.field.node.webform.field_metatags
-    - field.field.node.webform.field_options
     - field.field.node.webform.field_review_date
     - field.field.node.webform.field_sidebar_content
     - field.field.node.webform.field_teaser_image
@@ -217,12 +216,6 @@ content:
       sidebar: false
       use_details: false
     third_party_settings: {  }
-  field_options:
-    type: options_select
-    weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 7
@@ -351,6 +344,7 @@ content:
       webforms: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true

@@ -106,4 +106,5 @@ hidden:
   field_search_phrases: true
   langcode: true
   node_read_time: true
+  reading_time: true
   search_api_excerpt: true

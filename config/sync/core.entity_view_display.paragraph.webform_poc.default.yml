@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.webform_poc.field_options
     - field.field.paragraph.webform_poc.field_webform
     - paragraphs.paragraphs_type.webform_poc
   module:
@@ -18,7 +17,7 @@ content:
     label: hidden
     settings:
       source_entity: true
-      lazy: false
+      lazy: true
     third_party_settings: {  }
     weight: 0
     region: content
@@ -26,5 +25,4 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_options: true
   search_api_excerpt: true
