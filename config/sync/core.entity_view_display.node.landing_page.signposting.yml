@@ -4,25 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.signposting
-    - field.field.node.landing_page.field_audience
     - field.field.node.landing_page.field_content
-    - field.field.node.landing_page.field_country
-    - field.field.node.landing_page.field_event_type
-    - field.field.node.landing_page.field_get_involved
     - field.field.node.landing_page.field_hero
-    - field.field.node.landing_page.field_key_stages
     - field.field.node.landing_page.field_metatags
-    - field.field.node.landing_page.field_regions
-    - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_show_donation_reminder
-    - field.field.node.landing_page.field_subject_area
-    - field.field.node.landing_page.field_synopsis
     - field.field.node.landing_page.field_teaser_image
     - field.field.node.landing_page.field_teaser_text
-    - field.field.node.landing_page.field_theme
-    - field.field.node.landing_page.field_topic
     - node.type.landing_page
   module:
     - user
@@ -58,23 +47,12 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   entitygroupfield: true
-  field_audience: true
   field_content: true
-  field_country: true
-  field_event_type: true
-  field_get_involved: true
   field_hero: true
-  field_key_stages: true
   field_metatags: true
-  field_regions: true
-  field_resources: true
   field_review_date: true
   field_search_phrases: true
   field_show_donation_reminder: true
-  field_subject_area: true
-  field_synopsis: true
-  field_theme: true
-  field_topic: true
   langcode: true
   links: true
   node_read_time: true
