@@ -8,12 +8,8 @@ dependencies:
     - field.field.node.article.field_country
     - field.field.node.article.field_get_involved
     - field.field.node.article.field_hero
-    - field.field.node.article.field_hide_related_content
     - field.field.node.article.field_metatags
-    - field.field.node.article.field_override_related_content
     - field.field.node.article.field_post_description
-    - field.field.node.article.field_related_content
-    - field.field.node.article.field_related_content_type
     - field.field.node.article.field_review_date
     - field.field.node.article.field_search_phrases
     - field.field.node.article.field_teaser_image
@@ -55,10 +51,6 @@ third_party_settings:
         - title
         - field_hero
         - field_post_description
-        - field_hide_related_content
-        - field_related_content_type
-        - field_override_related_content
-        - field_related_content
         - langcode
       label: General
       region: content
@@ -219,13 +211,6 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
-  field_hide_related_content:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
     weight: 18
@@ -234,38 +219,11 @@ content:
       sidebar: false
       use_details: false
     third_party_settings: {  }
-  field_override_related_content:
-    type: boolean_checkbox
-    weight: 6
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_post_description:
     type: string_textfield
     weight: 3
     region: content
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_related_content:
-    type: entity_reference_autocomplete
-    weight: 7
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_related_content_type:
-    type: entity_reference_autocomplete
-    weight: 5
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
