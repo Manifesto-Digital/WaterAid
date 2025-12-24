@@ -71,7 +71,6 @@ third_party_settings:
         - field_content
         - field_donation_widget
         - webform
-        - field_options
       label: Content
       region: content
       parent_name: group_tabs
