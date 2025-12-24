@@ -438,6 +438,7 @@ function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array 
       'blogs_solr',
       'press_releases_solr',
       'stories_solr',
+      'publications',
     ])) {
       $suggestions[] = 'views_view__full_text';
     }
