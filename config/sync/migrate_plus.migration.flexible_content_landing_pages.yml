@@ -17,16 +17,7 @@ source:
   plugin: landing_node_source
   bundle: flexible_content
   fields:
-    - field_audiences
-    - field_countries
-    - field_event_type
-    - field_get_involved_terms
-    - field_key_stage
     - field_meta_tags
-    - field_regions
-    - field_subject_areas
-    - field_themes
-    - field_topic
     - field_modules
     - field_hero
     - field_teaser_image
@@ -55,44 +46,7 @@ process:
     migration: media
     source: field_teaser_image
     no_stub: true
-  field_audience:
-    plugin: migration_lookup
-    migration: audiences
-    source: field_audiences
-    no_stub: true
-  field_country:
-    plugin: migration_lookup
-    migration: countries
-    source: field_countries
-    no_stub: true
-  field_event_type:
-    plugin: migration_lookup
-    migration: event_types
-    source: field_event_type
-    no_stub: true
-  field_get_involved:
-    plugin: migration_lookup
-    migration: get_involved
-    source: field_get_involved_terms
-    no_stub: true
-  field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
-  field_regions: field_regions
-  field_subject_area:
-    plugin: migration_lookup
-    migration: subject_areas
-    source: field_subject_areas
-    no_stub: true
-  field_theme:
-    plugin: migration_lookup
-    migration: themes
-    source: field_themes
-    no_stub: true
-  field_topic:
-    plugin: migration_lookup
-    migration: topic
-    source: field_topic
-    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users
@@ -148,13 +102,6 @@ destination:
 idMap: {  }
 migration_dependencies:
   required:
-    - audiences
-    - countries
-    - event_types
-    - get_involved
-    - subject_areas
-    - themes
-    - topic
     - users
     - hero
 include: null
