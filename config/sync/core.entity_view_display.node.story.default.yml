@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
     - field.field.node.story.field_hide_related_content
-    - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_metatags
     - field.field.node.story.field_minimal_header
     - field.field.node.story.field_override_related_content
@@ -101,7 +100,6 @@ hidden:
   field_country: true
   field_get_involved: true
   field_hide_related_content: true
-  field_in_page_navigation: true
   field_override_related_content: true
   field_related_content: true
   field_related_content_type: true
