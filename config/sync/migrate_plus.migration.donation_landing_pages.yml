@@ -21,7 +21,6 @@ source:
     - field_display_donation_reminder
     - field_meta_tags
     - field_header_style
-    - field_subtext
     - field_modules
     - field_hero
     - field_teaser_image
@@ -55,7 +54,6 @@ process:
   field_display_donation_reminder: field_display_donation_reminder
   field_minimal_header: field_header_style
   field_meta_tags: field_meta_tags
-  field_subtext: field_subtext
   uid:
     plugin: migration_lookup
     migration: users

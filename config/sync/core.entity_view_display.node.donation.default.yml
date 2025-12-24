@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.donation.field_minimal_header
     - field.field.node.donation.field_review_date
     - field.field.node.donation.field_search_phrases
-    - field.field.node.donation.field_subtext
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
     - node.type.donation
@@ -25,6 +24,11 @@ targetEntityType: node
 bundle: donation
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_administrative_description:
     type: basic_string
     label: above
@@ -87,14 +91,6 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
-  field_subtext:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 108
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -105,6 +101,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_search_phrases: true
   field_teaser_image: true
   field_teaser_text: true
