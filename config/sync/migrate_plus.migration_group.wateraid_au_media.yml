@@ -1,0 +1,17 @@
+uuid: b4da0d30-22b4-4e2b-af52-d5daad4be9cb
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_au_media
+label: 'WaterAid AU migration (Media)'
+description: 'Media from the wateraid.org/au site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: au_site_migration
+  migration_tags:
+    - wateraid_au

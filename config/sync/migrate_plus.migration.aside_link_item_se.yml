@@ -1,0 +1,54 @@
+uuid: dd20ed84-877d-4342-8dbe-78e2d7127422
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: aside_link_item_se
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_se
+label: 'Aside Link Item (SE)'
+source:
+  plugin: paragraph_source
+  bundle: aside_link_item
+  fields:
+    - field_aside_link
+    - field_aside_link_title
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: sv
+  status: status
+  field_primary_cta:
+    -
+      plugin: links_migration_lookup
+      migration:
+        - articles_se
+        - campaigns_se
+        - country_details_se
+        - donation_forms_se
+        - donation_landing_pages_se
+        - events_se
+        - filtered_landing_pages_se
+        - flexible_content_se
+        - get_involved_node_se
+        - jobs_se
+        - press_and_media_se
+        - press_and_media_biographies_se
+        - publication_se
+        - standard_page_se
+        - stories_se
+        - webforms_se
+      source: field_aside_link
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: call_to_action
+idMap: {  }
+migration_dependencies: {  }
+include: null

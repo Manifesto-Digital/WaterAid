@@ -39,7 +39,7 @@ process:
     migration: media
     no_stub: true
   field_images:
-    plugin: image_media_to_image_paragraph
+    plugin: gallery_paragraph
     source: '@temp_media'
 destination:
   plugin: 'entity:paragraph'

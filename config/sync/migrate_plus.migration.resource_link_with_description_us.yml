@@ -1,0 +1,58 @@
+uuid: d147a0da-df8e-47af-811c-6be98587a557
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: resource_link_with_description_us
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_us
+label: 'Resource Link with Description (US)'
+source:
+  plugin: paragraph_source
+  bundle: resource_link_with_description
+  fields:
+    - field_resource_link_single
+    - field_resource_link_description
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_primary_cta:
+    -
+      plugin: links_migration_lookup
+      migration:
+        - articles_us
+        - campaigns_us
+        - country_details_us
+        - donation_forms_us
+        - donation_landing_pages_us
+        - events_us
+        - filtered_landing_pages_us
+        - flexible_content_us
+        - get_involved_node_us
+        - jobs_us
+        - press_and_media_us
+        - press_and_media_biographies_us
+        - publication_us
+        - standard_page_us
+        - stories_us
+        - webforms_us
+      source: field_resource_link_single
+  field_rich_text/value: field_resource_link_description/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: call_to_action
+idMap: {  }
+migration_dependencies: {  }
+include: null

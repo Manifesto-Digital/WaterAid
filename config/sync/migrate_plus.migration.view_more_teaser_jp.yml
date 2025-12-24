@@ -1,0 +1,42 @@
+uuid: 62a1318a-d9e1-4927-9f88-5fb9fedc23ec
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: view_more_teaser_jp
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_jp
+label: 'View More Teaser (JP)'
+source:
+  plugin: paragraph_source
+  bundle: view_more_teaser
+  fields:
+    - field_get_involved_content
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: ja
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - get_involved_node_jp
+        - flexible_content_jp
+      source: field_get_involved_content
+    -
+      plugin: skip_on_empty
+      method: row
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null

@@ -1,0 +1,17 @@
+uuid: 7b79b846-24e5-43ae-a850-388590406004
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_ca_nodes
+label: 'WaterAid CA migration (Nodes)'
+description: 'Nodes from the wateraid.org/ca site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: ca_site_migration
+  migration_tags:
+    - wateraid_ca

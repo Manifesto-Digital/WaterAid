@@ -143,13 +143,13 @@ process:
         - video_tz
         - carousel_tz
         - content_carousel_tz
-        - enhanced_carousel_item_tz
-        - tabbed_item_tz
+        - enhanced_carousel_tz
+        - tabbed_tz
         - content_with_large_image_tz
         - aside_with_image_tz
         - quote_tz
         - listing_tz
-        - biography_item_tz
+        - biography_tz
         - activation_bar_item_tz
         - rainbow_link_item_tz
         - donation_cta_widget_embed_tz
@@ -157,6 +157,8 @@ process:
         - variable_content_module_tz
         - statistics_tz
         - statistics_icons_tz
+        - curated_listing_tz
+        - curated_listing_overriden_tz
       source: field_modules
   field_content:
     plugin: merge_without_exception

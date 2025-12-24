@@ -1,0 +1,32 @@
+uuid: f54065ec-74dc-4036-8b41-2c1c1072ad87
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: remote_video_au
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_au
+label: 'Remote Video (AU)'
+source:
+  plugin: remote_video_source
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  field_media_oembed_video: field_media_video_embed_field_value
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:media'
+  default_bundle: remote_video
+idMap: {  }
+migration_dependencies: {  }
+include: null

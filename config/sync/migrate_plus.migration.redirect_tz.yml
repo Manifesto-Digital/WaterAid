@@ -16,11 +16,14 @@ label: 'Redirects TZ'
 source:
   plugin: redirect_source
   constants:
-    uk_site: uk/
+    uk_site: tz/
 process:
   language:
     plugin: default_value
     default_value: en
+  status_code:
+    plugin: default_value
+    default_value: 301
   redirect_source/path:
     plugin: concat
     source:
