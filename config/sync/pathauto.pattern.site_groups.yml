@@ -7,12 +7,12 @@ dependencies:
 id: site_groups
 label: 'Site Groups'
 type: 'canonical_entities:group'
-pattern: '[group:title]'
+pattern: '[group:field_slug]'
 selection_criteria:
-  73143c30-ab0d-417c-9b65-eb400ff1b71e:
+  99992a78-07ba-4eec-93c2-03464d5a24b1:
     id: 'entity_bundle:group'
     negate: false
-    uuid: 73143c30-ab0d-417c-9b65-eb400ff1b71e
+    uuid: 99992a78-07ba-4eec-93c2-03464d5a24b1
     context_mapping:
       group: group
     bundles:
