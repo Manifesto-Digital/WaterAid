@@ -72,6 +72,7 @@
 
         // Reset the display if necessary
         $otherField.css('display', 'flex');
+        $otherField.css('flex-flow', 'row wrap');
 
         // Uncheck pre-selected amounts when 'other' is clicked.
         // Make the field required so an empty amount can't be submitted
