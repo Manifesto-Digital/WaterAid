@@ -9,12 +9,9 @@ dependencies:
     - field.field.node.story.field_country
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
-    - field.field.node.story.field_hide_related_content
+    - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_metatags
     - field.field.node.story.field_minimal_header
-    - field.field.node.story.field_override_related_content
-    - field.field.node.story.field_related_content
-    - field.field.node.story.field_related_content_type
     - field.field.node.story.field_review_date
     - field.field.node.story.field_search_phrases
     - field.field.node.story.field_teaser_image
@@ -94,12 +91,9 @@ hidden:
   entitygroupfield: true
   field_content: true
   field_hero: true
-  field_hide_related_content: true
+  field_in_page_navigation: true
   field_metatags: true
   field_minimal_header: true
-  field_override_related_content: true
-  field_related_content: true
-  field_related_content_type: true
   field_review_date: true
   field_search_phrases: true
   langcode: true
