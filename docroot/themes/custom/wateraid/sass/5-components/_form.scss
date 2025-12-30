@@ -4,7 +4,7 @@
 .webform-submission-form {
   @include base.container-sm();
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   gap: base.$wa-spacing-04;
 
   @include desktop() {
@@ -76,7 +76,7 @@
   .form-actions {
     margin: base.$wa-spacing-09 0;
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
     gap: base.$wa-spacing-06;
 
     .webform-page-help {
@@ -178,6 +178,10 @@
       }
     }
   }
+
+  .hidden {
+    display: none !important;
+  }
 }
 
 // Checkboxes & Radios
@@ -245,6 +249,10 @@
     width: fit-content;
     flex: 1 1 auto;
   }
+}
+
+.webform-type-checkbox input[type="checkbox"] + label.option {
+  width: calc(100% - 2.5rem);
 }
 
 input[type='checkbox'],
