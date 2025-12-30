@@ -20,7 +20,7 @@
       {{ bundle }}
     </div>
     <h3 class="card__heading">
-      <a href="{{ url }}" class="card__link">{{ heading }}{% if is_external %}<span class="visually-hidden"> - {{ 'external' }}</span>{% endif %}
+      <a href="{{ url }}" class="card__link" {{ is_external ? 'target=_blank' : undefined }}>{{ heading }}{% if is_external %}<span class="visually-hidden"> - {{ 'external' }}</span>{% endif %}
       </a>
     </h3>
 

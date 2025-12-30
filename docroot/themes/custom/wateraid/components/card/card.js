@@ -5,16 +5,26 @@
         const cardLink = card.querySelector('.card__link');
         const statsLink = card.querySelector('.card__link > .link');
 
+        const isExternalURL = new URL(cardLink.href).origin !== location.origin;
         if (cardLink) {
           card.addEventListener("click", () => {
             card.focus();
-            window.location.href = cardLink.href;
+
+            if (isExternalURL){
+              window.open(cardLink.href);
+            } else {
+              window.location.href = cardLink.href;
+            }
           });
         }
         if (statsLink) {
           card.addEventListener("click", () => {
             card.focus();
-            window.location.href = statsLink.href;
+            if (isExternalURL){
+              window.open(cardLink.href);
+            } else {
+              window.location.href = cardLink.href;
+            }
           });
         }
       }
