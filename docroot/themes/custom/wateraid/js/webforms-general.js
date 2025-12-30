@@ -27,7 +27,6 @@
 
   Drupal.behaviors.increaseImpactBehaviour = {
     attach: function (context, settings) {
-      console.log('Increase impact tooltip behavior loaded.');
       setTimeout(() => {
         const impactTags = document.querySelectorAll(".wateraid-donation-amount-upsell-tooltip");
         impactTags.forEach((impactTag) => {
