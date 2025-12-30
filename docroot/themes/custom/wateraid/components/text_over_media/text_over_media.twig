@@ -1,0 +1,47 @@
+<div class="text-media text-media--{{ media_type }}">
+  {% if media_type == 'image' and image %}
+    <div class="text-media__image">
+      {{ include('wateraid:image', {
+        image,
+        caption: media_caption,
+        credit: media_credit,
+        width: 'full',
+        caption_display: 'expandable',
+        display: 'background'
+      }) }}
+    </div>
+  {% endif %}
+
+  {% if media_type == 'video' and video %}
+    <div class="text-media__video">
+      {{ video }}
+
+      <div class="text-media__video--play">
+        {{ include('wateraid:button', {
+          text: 'Play video',
+          link: '',
+          id: 'text-media-play-button',
+          type: 'icon',
+          icon: 'wa-utility-play',
+          theme: 'dark',
+        }) }}
+      </div>
+      <div class="text-media__video--pause">
+        {{ include('wateraid:button', {
+          text: 'Pause video',
+          link: '',
+          id: 'text-media-pause-button',
+          type: 'icon',
+          icon: 'wa-utility-pause',
+          theme: 'dark',
+        }) }}
+      </div>
+    </div>
+  {% endif %}
+
+    <div class="text-media__content">
+    {{ include('wateraid:rich_text', {
+      text: content
+    }) }}
+    </div>
+</div>

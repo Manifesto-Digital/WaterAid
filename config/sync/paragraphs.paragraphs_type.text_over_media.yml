@@ -1,0 +1,10 @@
+uuid: 72438d20-12db-48d6-8f83-f66e2fddf929
+langcode: en
+status: true
+dependencies: {  }
+id: text_over_media
+label: 'Text over media'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
