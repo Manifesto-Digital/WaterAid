@@ -133,7 +133,7 @@
 
                 var tooltipShow;
                 window.addEventListener('scroll', () => {
-                  if (document.querySelector('#edit-donation-amount-amount-recurring-amounts-buttons label[for="edit-donation-amount-amount-recurring-amounts-buttons-10"]').closest('form').offsetTop - 500 < window.scrollY && sessionStorage.getItem(tag) !== 'close') {
+                  if (document.querySelector('#edit-donation-amount-amount-recurring-amounts-buttons label[for="edit-donation-amount-amount-recurring-amounts-buttons-10"]')?.closest('form').offsetTop - 500 < window.scrollY && sessionStorage.getItem(tag) !== 'close') {
                     tooltipShow = setTimeout(() => {
                       showTooltip();
                     }, 5000);
