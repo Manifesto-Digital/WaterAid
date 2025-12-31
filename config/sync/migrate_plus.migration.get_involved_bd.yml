@@ -45,7 +45,7 @@ process:
   field_exclude_from_landing_page/value: field_exclude_from_landing_page
   field_get_involved_category_titl/value: field_category_title
 destination:
-  plugin: 'entity:taxonomy_term'
+  plugin: 'wa_term:taxonomy_term'
   default_bundle: get_involved
 idMap: {  }
 migration_dependencies: null

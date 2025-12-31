@@ -3,25 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.landing_page.field_audience
     - field.field.node.landing_page.field_content
-    - field.field.node.landing_page.field_country
-    - field.field.node.landing_page.field_event_type
-    - field.field.node.landing_page.field_get_involved
     - field.field.node.landing_page.field_hero
-    - field.field.node.landing_page.field_key_stages
     - field.field.node.landing_page.field_metatags
-    - field.field.node.landing_page.field_regions
-    - field.field.node.landing_page.field_resources
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_show_donation_reminder
-    - field.field.node.landing_page.field_subject_area
-    - field.field.node.landing_page.field_synopsis
     - field.field.node.landing_page.field_teaser_image
     - field.field.node.landing_page.field_teaser_text
-    - field.field.node.landing_page.field_theme
-    - field.field.node.landing_page.field_topic
     - node.type.landing_page
     - workflows.workflow.editorial
   module:
@@ -29,7 +18,6 @@ dependencies:
     - datetime
     - field_group
     - layout_paragraphs
-    - link
     - media_library
     - metatag
     - path
@@ -39,7 +27,6 @@ third_party_settings:
       children:
         - group_general
         - group_content
-        - group_tag
         - group_teaser
         - group_meta_tags
       label: Tabs
@@ -58,8 +45,6 @@ third_party_settings:
       children:
         - title
         - field_hero
-        - field_synopsis
-        - field_resources
         - langcode
         - field_show_donation_reminder
       label: General
@@ -125,30 +110,6 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
-    group_tag:
-      children:
-        - field_audience
-        - field_country
-        - field_event_type
-        - field_get_involved
-        - field_key_stages
-        - field_regions
-        - field_subject_area
-        - field_theme
-        - field_topic
-      label: Tags
-      region: content
-      parent_name: group_tabs
-      weight: 22
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: true
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page
@@ -170,16 +131,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_audience:
-    type: entity_reference_autocomplete
-    weight: 5
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_content:
     type: layout_paragraphs
     weight: 4
@@ -191,36 +142,6 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
-    third_party_settings: {  }
-  field_country:
-    type: entity_reference_autocomplete
-    weight: 6
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_event_type:
-    type: entity_reference_autocomplete
-    weight: 7
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_get_involved:
-    type: entity_reference_autocomplete
-    weight: 9
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_hero:
     type: layout_paragraphs
@@ -234,12 +155,6 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
-  field_key_stages:
-    type: options_select
-    weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
     weight: 18
@@ -247,20 +162,6 @@ content:
     settings:
       sidebar: false
       use_details: false
-    third_party_settings: {  }
-  field_regions:
-    type: options_select
-    weight: 11
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_resources:
-    type: link_default
-    weight: 4
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
@@ -283,24 +184,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  field_subject_area:
-    type: entity_reference_autocomplete
-    weight: 12
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_synopsis:
-    type: string_textfield
-    weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_teaser_image:
     type: media_library_widget
     weight: 5
@@ -320,26 +203,6 @@ content:
         maxlength_js: 157
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
-  field_theme:
-    type: entity_reference_autocomplete
-    weight: 13
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_topic:
-    type: entity_reference_autocomplete
-    weight: 14
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 5

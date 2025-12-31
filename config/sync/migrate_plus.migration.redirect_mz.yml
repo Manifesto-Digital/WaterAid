@@ -18,6 +18,9 @@ source:
   constants:
     uk_site: mz/
 process:
+  status_code:
+    plugin: default_value
+    default_value: 301
   language:
     plugin: default_value
     default_value: pt

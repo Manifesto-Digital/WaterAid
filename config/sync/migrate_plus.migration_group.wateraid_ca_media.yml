@@ -1,0 +1,17 @@
+uuid: f34e09d2-04eb-4228-a98b-803e4bf52bac
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_ca_media
+label: 'WaterAid CA migration (Media)'
+description: 'Media from the wateraid.org/ca site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: ca_site_migration
+  migration_tags:
+    - wateraid_ca

@@ -1,0 +1,68 @@
+uuid: be22ba3f-bb87-4f7e-9568-a1a3c3cb09f4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: enhanced_carousel_item_se
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_se
+label: 'Enhanced Carousel (SE)'
+source:
+  plugin: paragraph_source
+  bundle: enhanced_carousel_item
+  fields:
+    - field_scroll_carousel_image
+    - field_scroll_carousel_content
+    - field_scroll_carousel_link
+    - field_enhanced_carousel_title
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: sv
+  status: status
+  field_title: field_enhanced_carousel_title
+  field_rich_text/value: field_scroll_carousel_content/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_link:
+    plugin: links_migration_lookup
+    migration:
+      - articles_se
+      - campaigns_se
+      - country_details_se
+      - donation_forms_se
+      - donation_landing_pages_se
+      - events_se
+      - filtered_landing_pages_se
+      - flexible_content_se
+      - get_involved_node_se
+      - jobs_se
+      - press_and_media_se
+      - press_and_media_biographies_se
+      - publication_se
+      - standard_page_se
+      - stories_se
+      - webforms_se
+    source: field_scroll_carousel_link
+  temp_media:
+    plugin: migration_lookup
+    source: field_scroll_carousel_image
+    migration: media_se
+    no_stub: true
+  field_images:
+    plugin: image_media_to_image_paragraph
+    source: '@temp_media'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: gallery_item
+idMap: {  }
+migration_dependencies: {  }
+include: null

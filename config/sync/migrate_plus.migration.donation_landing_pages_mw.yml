@@ -21,7 +21,6 @@ source:
     - field_display_donation_reminder
     - field_meta_tags
     - field_header_style
-    - field_subtext
     - field_modules
     - field_hero
     - field_teaser_image
@@ -55,7 +54,6 @@ process:
   field_display_donation_reminder: field_display_donation_reminder
   field_minimal_header: field_header_style
   field_meta_tags: field_meta_tags
-  field_subtext: field_subtext
   uid:
     plugin: migration_lookup
     migration: users_mw
@@ -83,13 +81,13 @@ process:
         - video_mw
         - carousel_mw
         - content_carousel_mw
-        - enhanced_carousel_item_mw
-        - tabbed_item_mw
+        - enhanced_carousel_mw
+        - tabbed_mw
         - content_with_large_image_mw
         - aside_with_image_mw
         - quote_mw
         - listing_mw
-        - biography_item_mw
+        - biography_mw
         - activation_bar_item_mw
         - rainbow_link_item_mw
         - donation_cta_widget_embed_mw
@@ -97,6 +95,8 @@ process:
         - variable_content_module_mw
         - statistics_mw
         - statistics_icons_mw
+        - curated_listing_mw
+        - curated_listing_overriden_mw
       source: field_modules
   field_content:
     plugin: merge_without_exception

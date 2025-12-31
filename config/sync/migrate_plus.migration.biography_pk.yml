@@ -1,0 +1,39 @@
+uuid: 727e81d3-de48-48ba-883f-c9de67f81de0
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: biography_pk
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_pk
+label: 'Biography PK'
+source:
+  plugin: paragraph_source
+  bundle: biographies
+  fields:
+    - field_biography_item
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_images:
+    plugin: paragraph_migration_lookup
+    source: field_biography_item
+    migration: biography_item_pk
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies:
+  required:
+    - biography_item_pk
+include: null

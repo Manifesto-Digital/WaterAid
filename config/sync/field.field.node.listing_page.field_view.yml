@@ -28,6 +28,7 @@ settings:
     blogs_solr: blogs_solr
     events_solr: events_solr
     press_releases_solr: press_releases_solr
+    publications: publications
     search: search
     stories_solr: stories_solr
   enabled_settings:

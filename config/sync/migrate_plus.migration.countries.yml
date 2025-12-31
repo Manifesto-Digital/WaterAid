@@ -69,7 +69,7 @@ process:
     migration: countries
     source: parent
 destination:
-  plugin: 'entity:taxonomy_term'
+  plugin: 'wa_term:taxonomy_term'
   default_bundle: countries
 idMap: {  }
 migration_dependencies: {  }

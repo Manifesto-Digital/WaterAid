@@ -1,0 +1,84 @@
+uuid: f529606b-bba6-4fc1-8702-f5ab9705576c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: shorthand_story_se
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_se_nodes
+label: 'Shorthand Stories (SE)'
+source:
+  plugin: node_source
+  bundle: shorthand_story
+  fields:
+    - field_audiences
+    - field_countries
+    - field_get_involved_terms
+    - field_meta_tags
+    - field_summary
+    - field_themes
+    - field_teaser_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: sv
+  status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      - draft
+      - published
+  title: title
+  field_teaser_text: field_summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media_se
+    source: field_teaser_image
+    no_stub: true
+  field_audience:
+    plugin: migration_lookup
+    migration: audiences_se
+    source: field_audiences
+    no_stub: true
+  field_country:
+    plugin: migration_lookup
+    migration: countries_se
+    source: field_countries
+    no_stub: true
+  field_get_involved:
+    plugin: migration_lookup
+    migration: get_involved_se
+    source: field_get_involved_terms
+    no_stub: true
+  field_meta_tags: field_meta_tags
+  field_theme:
+    plugin: migration_lookup
+    migration: themes_se
+    source: field_themes
+    no_stub: true
+  uid:
+    plugin: migration_lookup
+    migration: users_se
+    source: uid
+    no_stub: true
+destination:
+  plugin: 'entity:node'
+  default_bundle: story
+idMap: {  }
+migration_dependencies:
+  required:
+    - audiences_se
+    - countries_se
+    - get_involved_se
+    - themes_se
+    - users_se
+include: null

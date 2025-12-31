@@ -43,7 +43,9 @@ function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_
   }
 
   if (isset($form['field_metatags']['widget'][0]['basic']['description']['#description'])) {
-    $form['field_metatags']['widget'][0]['basic']['description']['#description'] = t("A brief and concise summary of the page's content that is a maximum of 160 characters in length. The description meta tag may be used by search engines to display a snippet about the page in search results. Set to <none> to disable inheritance of the parent value and prevent the output of this metatag entirely. Unless edited, this will automatically populate from the Teaser text field.");
+    $form['field_metatags']['widget'][0]['basic']['description']['#description'] = t("A brief and concise summary of the page's content that is a maximum of 160 characters in length. The description meta tag may be used by search engines to display a snippet about the page in search results. Set to %none to disable inheritance of the parent value and prevent the output of this metatag entirely. Unless edited, this will automatically populate from the Teaser text field.", [
+      '%none' => '<none>',
+    ]);
   }
 }
 
@@ -211,6 +213,10 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
   if (isset($form['field_variant'])) {
     wateraid_content_update_field_widget($form, ['field_video'], 'field_variant', 'video', 'visible');
     wateraid_content_update_field_widget($form, ['field_image', 'field_caption', 'field_credit'], 'field_variant', 'image', 'visible');
+  }
+  if (isset($form['field_hero_variant'])) {
+    wateraid_content_update_field_widget($form, ['field_video'], 'field_hero_variant', 'hero_with_video', 'visible');
+    wateraid_content_update_field_widget($form, ['field_image', 'field_caption', 'field_credit'], 'field_hero_variant', 'hero_with_image', 'visible');
   }
 }
 

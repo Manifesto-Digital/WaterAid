@@ -1,0 +1,56 @@
+uuid: 81322af9-3a68-4f4e-a805-95c7fd72d2d1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: curated_listing_overriden_ca
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_ca
+label: 'Curated Listing (overridden) (CA)'
+source:
+  plugin: paragraph_source
+  bundle: curated_listing
+  fields:
+    - field_cl_content
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - articles_ca
+        - campaigns_ca
+        - country_details_ca
+        - donation_forms_ca
+        - donation_landing_pages_ca
+        - events_ca
+        - filtered_landing_pages_ca
+        - press_and_media_ca
+        - press_and_media_biographies_ca
+        - publication_ca
+        - shorthand_story_ca
+        - standard_page_ca
+        - stories_ca
+        - webforms_ca
+        - get_involved_node_ca
+        - flexible_content_ca
+      source: field_cl_content
+    -
+      plugin: skip_on_empty
+      method: row
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null

@@ -8,13 +8,9 @@ dependencies:
     - field.field.node.story.field_country
     - field.field.node.story.field_get_involved
     - field.field.node.story.field_hero
-    - field.field.node.story.field_hide_related_content
     - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_metatags
     - field.field.node.story.field_minimal_header
-    - field.field.node.story.field_override_related_content
-    - field.field.node.story.field_related_content
-    - field.field.node.story.field_related_content_type
     - field.field.node.story.field_review_date
     - field.field.node.story.field_search_phrases
     - field.field.node.story.field_teaser_image
@@ -22,6 +18,7 @@ dependencies:
     - field.field.node.story.field_theme
     - node.type.story
   module:
+    - entity_reference_revisions
     - metatag
     - user
 id: node.story.default
@@ -32,14 +29,32 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 0
+    region: content
+  field_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 6
     region: content
   field_minimal_header:
     type: boolean
@@ -49,7 +64,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 107
+    weight: 7
     region: content
   field_teaser_image:
     type: entity_reference_entity_view
@@ -58,19 +73,19 @@ content:
       view_mode: gallery
       link: false
     third_party_settings: {  }
-    weight: 2
+    weight: 5
     region: content
   field_teaser_text:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 4
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   co_authors: true
@@ -79,18 +94,13 @@ hidden:
   entity_print_view_word_docx: true
   entitygroupfield: true
   field_audience: true
-  field_content: true
   field_country: true
   field_get_involved: true
-  field_hero: true
-  field_hide_related_content: true
   field_in_page_navigation: true
-  field_override_related_content: true
-  field_related_content: true
-  field_related_content_type: true
   field_review_date: true
   field_search_phrases: true
   field_theme: true
   langcode: true
   node_read_time: true
+  reading_time: true
   search_api_excerpt: true

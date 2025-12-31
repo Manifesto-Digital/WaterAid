@@ -24,11 +24,7 @@ source:
     - field_meta_tags
     - field_post_description
     - field_themes
-    - field_hide_related_content
     - field_modules
-    - field_override_related
-    - field_related_content
-    - field_related_content_type
     - field_article_hero_image
     - field_teaser_image
 process:
@@ -99,123 +95,6 @@ process:
       - '@temp_authors'
       - ''
       - created
-  field_hide_related_content: field_hide_related_content
-  field_override_related_content: field_override_related
-  temp_articles:
-    -
-      plugin: migration_lookup
-      migration: articles_global
-      source: field_related_content
-      no_stub: true
-  temp_campaigns:
-    -
-      plugin: migration_lookup
-      migration: campaigns_global
-      source: field_related_content
-      no_stub: true
-  temp_country_details:
-    -
-      plugin: migration_lookup
-      migration: country_details_global
-      source: field_related_content
-      no_stub: true
-  temp_events:
-    -
-      plugin: migration_lookup
-      migration: events_global
-      source: field_related_content
-      no_stub: true
-  temp_filtered_landing_pages:
-    -
-      plugin: migration_lookup
-      migration: filtered_landing_pages_global
-      source: field_related_content
-      no_stub: true
-  temp_flexible_content:
-    -
-      plugin: migration_lookup
-      migration: flexible_content_global
-      source: field_related_content
-      no_stub: true
-  temp_get_involved:
-    -
-      plugin: migration_lookup
-      migration: get_involved_node_global
-      source: field_related_content
-      no_stub: true
-  temp_press_and_media:
-    -
-      plugin: migration_lookup
-      migration: press_and_media_global
-      source: field_related_content
-      no_stub: true
-  temp_jobs:
-    -
-      plugin: migration_lookup
-      migration: jobs_global
-      source: field_related_content
-      no_stub: true
-  temp_press_and_media_biographies:
-    -
-      plugin: migration_lookup
-      migration: press_and_media_biographies_global
-      source: field_related_content
-      no_stub: true
-  temp_publication:
-    -
-      plugin: migration_lookup
-      migration: publication_global
-      source: field_related_content
-      no_stub: true
-  temp_standard_page:
-    -
-      plugin: migration_lookup
-      migration: standard_page_global
-      source: field_related_content
-      no_stub: true
-  temp_stories:
-    -
-      plugin: migration_lookup
-      migration: stories_global
-      source: field_related_content
-      no_stub: true
-  field_related_content:
-    plugin: merge_without_exception
-    source:
-      - '@temp_articles'
-      - '@temp_campaigns'
-      - '@temp_country_details'
-      - '@temp_events'
-      - '@temp_filtered_landing_pages'
-      - '@temp_flexible_content'
-      - '@temp_get_involved'
-      - '@temp_press_and_media'
-      - '@temp_jobs'
-      - '@temp_press_and_media_biographies'
-      - '@temp_publication'
-      - '@temp_standard_page'
-      - '@temp_stories'
-  field_related_content_type:
-    -
-      plugin: skip_on_empty
-      source: field_related_content_type
-      method: process
-    -
-      plugin: static_map
-      source: field_related_content_type
-      map:
-        campaign: standard_page
-        country_details: standard_page
-        filtered_landing_page: listing_page
-        flexible_content: standard_page
-        get_involved: landing_page
-        job: standard_page
-        press_and_media: standard_page
-        press_and_media_flexible: standard_page
-        shorthand_story: story
-        stories: story
-        article: article
-      default: ''
   temp_body:
     -
       plugin: body_to_paragraph
@@ -238,13 +117,13 @@ process:
         - video_global
         - carousel_global
         - content_carousel_global
-        - enhanced_carousel_item_global
-        - tabbed_item_global
+        - enhanced_carousel_global
+        - tabbed_global
         - content_with_large_image_global
         - aside_with_image_global
         - quote_global
         - listing_global
-        - biography_item_global
+        - biography_global
         - activation_bar_item_global
         - rainbow_link_item_global
         - donation_cta_widget_embed_global
@@ -252,6 +131,8 @@ process:
         - variable_content_module_global
         - statistics_global
         - statistics_icons_global
+        - curated_listing_global
+        - curated_listing_overriden_global
       source: field_modules
   field_content:
     plugin: merge_without_exception
@@ -265,20 +146,8 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_global
-    - campaigns_global
     - countries_global
-    - country_details_global
-    - events_global
-    - filtered_landing_pages_global
-    - flexible_content_global
     - get_involved_global
-    - get_involved_node_global
-    - jobs_global
-    - press_and_media_global
-    - press_and_media_biographies_global
-    - publication_global
-    - standard_page_global
-    - stories_global
     - themes_global
     - users_global
 include: null

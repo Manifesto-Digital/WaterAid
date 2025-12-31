@@ -9,12 +9,8 @@ dependencies:
     - field.field.node.article.field_country
     - field.field.node.article.field_get_involved
     - field.field.node.article.field_hero
-    - field.field.node.article.field_hide_related_content
     - field.field.node.article.field_metatags
-    - field.field.node.article.field_override_related_content
     - field.field.node.article.field_post_description
-    - field.field.node.article.field_related_content
-    - field.field.node.article.field_related_content_type
     - field.field.node.article.field_review_date
     - field.field.node.article.field_search_phrases
     - field.field.node.article.field_teaser_image
@@ -41,7 +37,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 0
     region: content
   field_teaser_image:
     type: entity_reference_entity_view
@@ -58,11 +54,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
     region: content
   node_read_time:
     type: string
@@ -82,15 +73,12 @@ hidden:
   field_country: true
   field_get_involved: true
   field_hero: true
-  field_hide_related_content: true
   field_metatags: true
-  field_override_related_content: true
   field_post_description: true
-  field_related_content: true
-  field_related_content_type: true
   field_review_date: true
   field_search_phrases: true
   field_theme: true
   langcode: true
+  links: true
   reading_time: true
   search_api_excerpt: true

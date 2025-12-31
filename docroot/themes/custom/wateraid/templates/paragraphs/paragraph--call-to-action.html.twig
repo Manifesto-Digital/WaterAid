@@ -64,7 +64,8 @@
     image: content.field_image|render ? content.field_image,
     media_caption: paragraph.field_caption.value ? content.field_caption,
     media_credit: paragraph.field_credit.value ? content.field_credit,
-    variant: paragraph.field_variant.value == 'text_only' ? 'default' : 'media'
+    variant: paragraph.field_variant.value == 'text_only' ? 'default' : 'media',
+    media_type: paragraph.field_variant.value
   }, only) }}
 {% endblock paragraph %}
 

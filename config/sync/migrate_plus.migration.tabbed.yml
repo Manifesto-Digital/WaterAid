@@ -1,0 +1,39 @@
+uuid: 92a70330-7687-4704-9cd2-0dbad45f007a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: tabbed
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_uk
+label: 'Tabbed Content'
+source:
+  plugin: paragraph_source
+  bundle: tabbed_content
+  fields:
+    - field_tab_items
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_images:
+    plugin: paragraph_migration_lookup
+    source: field_tab_items
+    migration: tabbed_item
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies:
+  required:
+    - tabbed_item
+include: null

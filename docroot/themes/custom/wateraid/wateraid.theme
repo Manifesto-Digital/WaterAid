@@ -343,19 +343,23 @@ function wateraid_preprocess_node(&$variables) {
   $view_mode = $variables['view_mode'];
 
   // Hide field_donation_widget if fq and val query parameters exist because another widget already set it.
-  if ($node->getType() === 'webform' && in_array($view_mode, ['full', 'default']) && isset($variables['content']['field_donation_widget'][0])) {
-    $request = \Drupal::request();
-    $fq_param = $request->query->get('fq');
-    $val_param = $request->query->get('val');
+  if ($node->getType() === 'webform' ) {
+    $variables['#attached']['library'][] = 'wateraid/webforms-general';
 
-    // If both fq and val query parameters exist, hide the donation widget field.
-    $variables['content']['first_step_as_widget'] = !($fq_param !== NULL && $val_param !== NULL);
+    if (in_array($view_mode, ['full', 'default']) && isset($variables['content']['field_donation_widget'][0])) {
+      $request = \Drupal::request();
+      $fq_param = $request->query->get('fq');
+      $val_param = $request->query->get('val');
 
-    // Add custom JS to handle FE behaviour.
-    $variables['#attached']['library'][] = 'wateraid/webform-behavior';
+      // If both fq and val query parameters exist, hide the donation widget field.
+      $variables['content']['first_step_as_widget'] = !($fq_param !== NULL && $val_param !== NULL);
 
-    // Hide fields except for edit when widget is shown.
-    $variables['#attached']['drupalSettings']['wateraid']['firstStepAsWidget'] = $variables['content']['first_step_as_widget'];
+      // Add custom JS to handle FE behaviour.
+      $variables['#attached']['library'][] = 'wateraid/webform-behavior';
+
+      // Hide fields except for edit when widget is shown.
+      $variables['#attached']['drupalSettings']['wateraid']['firstStepAsWidget'] = $variables['content']['first_step_as_widget'];
+    }
   }
 }
 
@@ -438,6 +442,7 @@ function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array 
       'blogs_solr',
       'press_releases_solr',
       'stories_solr',
+      'publications',
     ])) {
       $suggestions[] = 'views_view__full_text';
     }

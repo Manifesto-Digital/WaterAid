@@ -45,19 +45,21 @@ process:
       - video_et
       - carousel_et
       - content_carousel_et
-      - enhanced_carousel_item_et
-      - tabbed_item_et
+      - enhanced_carousel_et
+      - tabbed_et
       - content_with_large_image_et
       - aside_with_image_et
       - quote_et
       - listing_et
-      - biography_item_et
+      - biography_et
       - activation_bar_item_et
       - rainbow_link_item_et
       - donation_cta_widget_embed_et
       - hero_in_content_et
       - statistics_et
       - statistics_icons_et
+      - curated_listing_et
+      - curated_listing_overriden_et
     source: field_aside_section
     no_stub: true
   field_main:
@@ -77,19 +79,21 @@ process:
       - video_et
       - carousel_et
       - content_carousel_et
-      - enhanced_carousel_item_et
-      - tabbed_item_et
+      - enhanced_carousel_et
+      - tabbed_et
       - content_with_large_image_et
       - aside_with_image_et
       - quote_et
       - listing_et
-      - biography_item_et
+      - biography_et
       - activation_bar_item_et
       - rainbow_link_item_et
       - donation_cta_widget_embed_et
       - hero_in_content_et
       - statistics_et
       - statistics_icons_et
+      - curated_listing_et
+      - curated_listing_overriden_et
     source: field_vcm_main
     no_stub: true
   field_links:
@@ -134,15 +138,17 @@ migration_dependencies:
     - video_et
     - carousel_et
     - content_carousel_et
-    - enhanced_carousel_item_et
-    - tabbed_item_et
+    - enhanced_carousel_et
+    - tabbed_et
     - content_with_large_image_et
     - aside_with_image_et
     - quote_et
     - listing_et
-    - biography_item_et
+    - biography_et
     - activation_bar_item_et
     - rainbow_link_item_et
     - donation_cta_widget_embed_et
     - hero_in_content_et
+    - curated_listing_et
+    - curated_listing_overriden_et
 include: null

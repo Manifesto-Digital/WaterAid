@@ -1,0 +1,43 @@
+uuid: 801f2954-5446-436c-862c-512cbe20d984
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: info_section_us
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_us
+label: 'Info section (US)'
+source:
+  plugin: paragraph_source
+  bundle: info_section
+  fields:
+    - field_information_body
+    - field_information_lead_in_text
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_rich_text/value:
+    -
+      plugin: concat
+      source:
+        - field_information_lead_in_text/0
+        - field_information_body/0
+  field_rich_text/format:
+    -
+      plugin: default_value
+      default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: rich_text
+idMap: {  }
+migration_dependencies: {  }
+include: null

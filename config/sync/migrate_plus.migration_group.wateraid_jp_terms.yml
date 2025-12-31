@@ -1,0 +1,17 @@
+uuid: 18fa0076-91f6-4411-b566-0d70f723ec12
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_jp_terms
+label: 'WaterAid JP migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/jp site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: jp_site_migration
+  migration_tags:
+    - wateraid_jp

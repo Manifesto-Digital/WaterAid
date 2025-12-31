@@ -1,0 +1,39 @@
+uuid: 233fb4c8-c59e-4766-ac7e-cd025a210b7b
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: enhanced_carousel_gh
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_gh
+label: 'Enhanced Carousel GH'
+source:
+  plugin: paragraph_source
+  bundle: enhanced_carousel
+  fields:
+    - field_enhanced_carousel_items
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_images:
+    plugin: paragraph_migration_lookup
+    migration: enhanced_carousel_item_gh
+    source: field_enhanced_carousel_items
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image_gallery
+idMap: {  }
+migration_dependencies:
+  required:
+    - enhanced_carousel_item_gh
+include: null

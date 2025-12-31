@@ -17,7 +17,6 @@ dependencies:
     - field.storage.node.field_regions
     - field.storage.node.field_search_phrases
     - field.storage.node.field_subject_area
-    - field.storage.node.field_subtext
     - field.storage.node.field_teaser_text
     - field.storage.node.field_theme
     - field.storage.node.field_topic
@@ -394,14 +393,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_subject_area
-  field_subtext:
-    label: Subtext
-    datasource_id: 'entity:node'
-    property_path: field_subtext
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_subtext
   field_subtitle:
     label: 'Accordion items Subtitle'
     datasource_id: 'entity:node'

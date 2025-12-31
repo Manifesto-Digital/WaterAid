@@ -26,6 +26,9 @@ process:
     source:
       - constants/uk_site
       - redirect_source__path
+  status_code:
+    plugin: default_value
+    default_value: 301
   redirect_redirect/uri:
     -
       plugin: redirect_migration_lookup

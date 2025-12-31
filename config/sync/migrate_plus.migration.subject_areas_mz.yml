@@ -30,7 +30,7 @@ process:
       default_value: full_html
   weight: weight
 destination:
-  plugin: 'entity:taxonomy_term'
+  plugin: 'wa_term:taxonomy_term'
   default_bundle: subject_areas
 idMap: {  }
 migration_dependencies: null

@@ -1,0 +1,35 @@
+uuid: 578f69bf-6f7e-4ff7-ab26-fc3f20facba8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: video_au
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_au_media
+label: 'Video (AU)'
+source:
+  plugin: paragraph_source
+  bundle: video_item
+  fields:
+    - field_video_item_url
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_video:
+    plugin: video_url_to_media
+    source: field_video_item_url
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: video
+idMap: {  }
+migration_dependencies: {  }
+include: null
