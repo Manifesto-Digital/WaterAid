@@ -171,4 +171,9 @@ function wateraid_core_language_switch_links_alter (array &$links, $type, Url $u
     $links = [];
   }
 
+  if (count($links) === 1) {
+    // If there's only one link (the current language), hide the block.
+    $links = [];
+  }
+
 }
