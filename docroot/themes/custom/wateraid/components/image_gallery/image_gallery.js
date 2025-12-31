@@ -19,16 +19,16 @@
 
 
         gallery.querySelectorAll("[data-controls='previous']").forEach((prev) => {
-            prev.addEventListener("click", () => {
-              slider.goTo("prev");
-            });
+          prev.addEventListener("click", () => {
+            slider.goTo("prev");
           });
+        });
       }
 
       const elements = once('wateraid:image_gallery', '[data-component-id="wateraid:image_gallery"]', context);
       elements.forEach((gallery) => {
-          initSlider(gallery);
-        });
+        initSlider(gallery);
+      });
     },
   };
 })(Drupal, once);
