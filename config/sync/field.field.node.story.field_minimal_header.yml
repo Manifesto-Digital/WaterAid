@@ -10,12 +10,12 @@ field_name: field_minimal_header
 entity_type: node
 bundle: story
 label: 'Use minimal header'
-description: 'When enabled, the main menu will display in a hamburger.'
+description: 'When enabled, the main menu will display in a hamburger on desktop.'
 required: false
 translatable: false
 default_value:
   -
-    value: 0
+    value: 1
 default_value_callback: ''
 settings:
   on_label: 'Yes'

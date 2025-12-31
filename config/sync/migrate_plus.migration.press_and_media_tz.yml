@@ -47,12 +47,17 @@ process:
     migration: media_tz
     source: field_publication_image
     no_stub: true
+  temp_authors:
+    plugin: migration_lookup
+    migration: users_tz
+    source: field_author
+    no_stub: true
   field_hero:
     plugin: image_to_hero
     hero_type: hero_news
     source:
       - ''
-      - ''
+      - '@temp_authors'
       - ''
       - created
   title: title
@@ -79,11 +84,7 @@ process:
     source: field_get_involved_terms
     no_stub: true
   field_meta_tags: field_meta_tags
-  co_authors:
-    plugin: migration_lookup
-    migration: users_tz
-    source: field_author
-    no_stub: true
+  co_authors: '@temp_authors'
   field_theme:
     plugin: migration_lookup
     migration: themes_tz
@@ -115,13 +116,13 @@ process:
         - video_tz
         - carousel_tz
         - content_carousel_tz
-        - enhanced_carousel_item_tz
-        - tabbed_item_tz
+        - enhanced_carousel_tz
+        - tabbed_tz
         - content_with_large_image_tz
         - aside_with_image_tz
         - quote_tz
         - listing_tz
-        - biography_item_tz
+        - biography_tz
         - activation_bar_item_tz
         - rainbow_link_item_tz
         - donation_cta_widget_embed_tz
@@ -129,6 +130,8 @@ process:
         - variable_content_module_tz
         - statistics_tz
         - statistics_icons_tz
+        - curated_listing_tz
+        - curated_listing_overriden_tz
       source: field_modules
   temp_body:
     -

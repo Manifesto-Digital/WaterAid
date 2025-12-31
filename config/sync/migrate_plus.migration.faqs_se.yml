@@ -1,0 +1,43 @@
+uuid: 73e7d908-235d-44e5-9bcc-78398557f508
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: faqs_se
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_se
+label: 'FAQs (SE)'
+source:
+  plugin: paragraph_source
+  bundle: faqs
+  fields:
+    - field_faqs_faq
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: sv
+  status: status
+  temp_accordion_items:
+    plugin: migration_lookup
+    migration: faq_se
+    source: field_faqs_faq
+    no_stub: true
+  field_accordion_items:
+    plugin: merge_without_exception
+    source:
+      - '@temp_accordion_items'
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: accordion
+idMap: {  }
+migration_dependencies:
+  required:
+    - faq_se
+include: null

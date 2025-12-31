@@ -13,7 +13,7 @@ entity_type: paragraph
 bundle: webform_poc
 label: webform
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

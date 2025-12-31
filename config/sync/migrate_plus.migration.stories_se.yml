@@ -1,0 +1,140 @@
+uuid: b42f6c17-bb45-4889-9438-4bf58cdebfb5
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: stories_se
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_se_nodes
+label: 'Stories (SE)'
+source:
+  plugin: node_source
+  bundle: stories
+  fields:
+    - field_audiences
+    - field_countries
+    - field_get_involved_terms
+    - field_meta_tags
+    - field_themes
+    - field_modules
+    - field_article_hero_image
+    - field_article_hero_video
+    - field_teaser_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: sv
+  status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      - draft
+      - published
+  title: title
+  temp_image:
+    plugin: migration_lookup
+    source: field_article_hero_image
+    migration: media_se
+    no_stub: true
+  field_hero:
+    plugin: image_or_video_to_hero
+    source:
+      - '@temp_image'
+      - field_media_video_embed_field
+  field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media_se
+    source: field_teaser_image
+    no_stub: true
+  field_audience:
+    plugin: migration_lookup
+    migration: audiences_se
+    source: field_audiences
+    no_stub: true
+  field_country:
+    plugin: migration_lookup
+    migration: countries_se
+    source: field_countries
+    no_stub: true
+  field_get_involved:
+    plugin: migration_lookup
+    migration: get_involved_se
+    source: field_get_involved_terms
+    no_stub: true
+  field_meta_tags: field_meta_tags
+  field_theme:
+    plugin: migration_lookup
+    migration: themes_se
+    source: field_themes
+    no_stub: true
+  uid:
+    plugin: migration_lookup
+    migration: users_se
+    source: uid
+    no_stub: true
+  temp_body:
+    -
+      plugin: body_to_paragraph
+      source: body__value
+  temp_paragraphs:
+    -
+      plugin: paragraph_migration_lookup
+      migration:
+        - general_text_area_se
+        - wysiwyg_se
+        - menu_cta_se
+        - resource_link_with_description_se
+        - faqs_se
+        - view_more_teasers_se
+        - aside_link_item_se
+        - info_section_se
+        - quote_simple_se
+        - image_se
+        - image_gallery_se
+        - video_se
+        - carousel_se
+        - content_carousel_se
+        - enhanced_carousel_se
+        - tabbed_se
+        - content_with_large_image_se
+        - aside_with_image_se
+        - quote_se
+        - listing_se
+        - biography_se
+        - activation_bar_item_se
+        - rainbow_link_item_se
+        - donation_cta_widget_embed_se
+        - hero_in_content_se
+        - variable_content_module_se
+        - statistics_se
+        - statistics_icons_se
+        - curated_listing_se
+        - curated_listing_overriden_se
+      source: field_modules
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_paragraphs'
+destination:
+  plugin: 'entity:node'
+  default_bundle: story
+idMap: {  }
+migration_dependencies:
+  required:
+    - audiences_se
+    - countries_se
+    - get_involved_se
+    - themes_se
+    - users_se
+include: null

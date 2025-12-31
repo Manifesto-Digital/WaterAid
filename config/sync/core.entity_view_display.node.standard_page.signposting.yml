@@ -30,6 +30,11 @@ targetEntityType: node
 bundle: standard_page
 mode: signposting
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
     label: hidden
@@ -46,16 +51,12 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
 hidden:
   co_authors: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_content: true
   field_country: true
   field_event_type: true
@@ -73,5 +74,6 @@ hidden:
   field_theme: true
   field_topic: true
   langcode: true
+  links: true
   node_read_time: true
   search_api_excerpt: true

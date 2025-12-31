@@ -1,0 +1,42 @@
+uuid: 3fcf6fe1-cc5c-468f-af9b-66f8f606d473
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: aside_with_image_jp
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_jp
+label: 'Aside with Image (JP)'
+source:
+  plugin: paragraph_source
+  bundle: aside_with_image
+  fields:
+    - field_paragraph_content
+    - field_paragraph_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: ja
+  status: status
+  field_rich_text/value: field_paragraph_content/0
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_images:
+    plugin: migration_lookup
+    source: field_paragraph_image
+    migration: media_jp
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: text_media
+idMap: {  }
+migration_dependencies: {  }
+include: null

@@ -2,23 +2,26 @@
 {% if additional_classes %}
   {% set attributes = attributes.addClass(additional_classes) %}
 {% endif %}
-<div {{ attributes }}>
-  <div class="language-switcher">
-    <select aria-label="{{ 'Switch language'|t }}" id="language-select-{{ instance }}" aria-label="Switch language"
-            class="js-language-switcher-select language-switcher__select">
-      <option value="" disabled selected>{{ 'Language'|t }}</option>
-      {% for link in links %}
-        {% set is_current_language = link.language.id == get_current_language_id() %}
-        <option
-          data-jump-url="{{ path(link.url.routeName, link.url.routeParameters, {'language': link.language}) }}"
-          {% if is_current_language %}aria-label="{{ link.title }} (currently selected)"{% endif %}
-        >
-          {{ link.title }}{% if is_current_language %} &#10003;{% endif %}
-        </option>
-      {% endfor %}
-    </select>
-    <span class="icon icon--chevron">
-      {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
-    </span>
+
+{% if links is not empty %}
+  <div {{ attributes }}>
+    <div class="language-switcher">
+      <select aria-label="{{ 'Switch language'|t }}" id="language-select-{{ instance }}" aria-label="Switch language"
+              class="js-language-switcher-select language-switcher__select">
+        <option value="" disabled selected>{{ 'Language'|t }}</option>
+        {% for link in links %}
+          {% set is_current_language = link.language.id == get_current_language_id() %}
+          <option
+            data-jump-url="{{ path(link.url.routeName, link.url.routeParameters, {'language': link.language}) }}"
+            {% if is_current_language %}aria-label="{{ link.title }} (currently selected)"{% endif %}
+          >
+            {{ link.title }}{% if is_current_language %} &#10003;{% endif %}
+          </option>
+        {% endfor %}
+      </select>
+      <span class="icon icon--chevron">
+        {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
+      </span>
+    </div>
   </div>
-</div>
+{% endif %}

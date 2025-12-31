@@ -1,0 +1,60 @@
+uuid: 77a4f18e-46ff-4ae9-813c-80e721b26039
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: listing_au
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_au
+label: 'Listing (AU)'
+source:
+  plugin: listing_paragraph_source
+  bundle: listing
+  fields:
+    - field_items_per_row
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - articles_au
+        - campaigns_au
+        - country_details_au
+        - donation_forms_au
+        - donation_landing_pages_au
+        - events_au
+        - filtered_landing_pages_au
+        - flexible_content_au
+        - get_involved_node_au
+        - jobs_au
+        - press_and_media_au
+        - press_and_media_biographies_au
+        - publication_au
+        - standard_page_au
+        - stories_au
+        - webforms_au
+      source: field_listing_item
+  field_card_columns:
+    plugin: static_map
+    source: field_items_per_row
+    map:
+      three_row: 3_columns
+      four_row: 4_columns
+    default_value: 2_columns
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null

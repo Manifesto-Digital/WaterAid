@@ -53,6 +53,11 @@ final class WaMigrationSubscriber implements EventSubscriberInterface {
           'tz' => 'Tanzania',
           'ug' => 'Uganda',
           'uk' => 'WaterAid UK',
+          'au' => 'WaterAid Australia',
+          'ca' => 'Canada',
+          'jp' => 'WaterAid Japan',
+          'se' => 'Sweden',
+          'us' => 'United States',
         ];
 
         $group_label = (array_key_exists($matches[1], $groups)) ? $groups[$matches[1]] : NULL;

@@ -10,7 +10,7 @@ field_name: field_display_donation_reminder
 entity_type: node
 bundle: donation
 label: 'Display Donation Reminder'
-description: 'If the donation reminder is activated for one-off donations, display it on this page'
+description: 'When activated, donation reminder will display if a visitor abandons a one-off donation.'
 required: false
 translatable: false
 default_value: {  }

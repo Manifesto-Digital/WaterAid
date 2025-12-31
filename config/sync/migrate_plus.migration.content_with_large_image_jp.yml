@@ -1,0 +1,85 @@
+uuid: f2a93d13-61fe-4978-adf8-d0eaa99e37d6
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: content_with_large_image_jp
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_jp
+label: 'Content with Large Image (JP)'
+source:
+  plugin: paragraph_source
+  bundle: content_with_large_image
+  fields:
+    - field_hero_image
+    - field_vcm_intro
+    - field_vcm_links
+    - field_vcm_title
+  constants:
+    p_start: '<p>'
+    p_end: '</p>'
+    title_start: '<h2>'
+    title_end: '</h2>'
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: ja
+  status: status
+  field_link:
+    plugin: links_migration_lookup
+    source: field_vcm_links
+    migration:
+      - articles_jp
+      - campaigns_jp
+      - country_details_jp
+      - donation_forms_jp
+      - donation_landing_pages_jp
+      - events_jp
+      - filtered_landing_pages_jp
+      - flexible_content_jp
+      - get_involved_node_jp
+      - jobs_jp
+      - press_and_media_jp
+      - press_and_media_biographies_jp
+      - publication_jp
+      - standard_page_jp
+      - stories_jp
+      - webforms_jp
+  temp_title:
+    plugin: concat
+    source:
+      - constants/title_start
+      - field_vcm_title/0
+      - constants/title_end
+  temp_content:
+    plugin: concat
+    source:
+      - constants/p_start
+      - field_vcm_intro/0
+      - constants/p_end
+  field_rich_text/value:
+    plugin: concat
+    source:
+      - '@temp_title'
+      - '@temp_content'
+  field_rich_text/format:
+    plugin: default_value
+    default_value: full_html
+  field_media:
+    plugin: migration_lookup
+    source: field_hero_image
+    migration: media_jp
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: text_media
+idMap: {  }
+migration_dependencies: {  }
+include: null

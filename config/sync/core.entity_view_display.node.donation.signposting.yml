@@ -12,7 +12,6 @@ dependencies:
     - field.field.node.donation.field_minimal_header
     - field.field.node.donation.field_review_date
     - field.field.node.donation.field_search_phrases
-    - field.field.node.donation.field_subtext
     - field.field.node.donation.field_teaser_image
     - field.field.node.donation.field_teaser_text
     - node.type.donation
@@ -23,6 +22,11 @@ targetEntityType: node
 bundle: donation
 mode: signposting
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
     label: hidden
@@ -39,16 +43,12 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
 hidden:
   co_authors: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_administrative_description: true
   field_content: true
   field_display_donation_reminder: true
@@ -57,7 +57,7 @@ hidden:
   field_minimal_header: true
   field_review_date: true
   field_search_phrases: true
-  field_subtext: true
   langcode: true
+  links: true
   node_read_time: true
   search_api_excerpt: true

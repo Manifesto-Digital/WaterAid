@@ -1,0 +1,59 @@
+uuid: dcd35190-db97-40e2-8c69-793a3761a528
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: webforms_us
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_us_nodes
+label: 'Webforms (US)'
+source:
+  plugin: node_source
+  bundle: webform
+  fields:
+    - field_c_w_donation_menu
+    - field_meta_tags
+    - field_hero
+    - webform
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      - draft
+      - published
+  title: title
+  webform: webform
+  field_hero:
+    plugin: paragraph_migration_lookup
+    migration:
+      - hero_us
+    source: field_hero
+    no_stub: true
+  field_donation_menu: field_c_w_donation_menu
+  field_meta_tags: field_meta_tags
+  uid:
+    plugin: migration_lookup
+    migration: users_us
+    source: uid
+destination:
+  plugin: 'entity:node'
+  default_bundle: webform
+idMap: {  }
+migration_dependencies:
+  required:
+    - users_us
+    - hero_us
+include: null

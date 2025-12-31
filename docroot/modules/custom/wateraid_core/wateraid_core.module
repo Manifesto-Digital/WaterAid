@@ -5,7 +5,10 @@
  * Hooks for wateraid_core module.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Url;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\pathauto\PathautoPatternInterface;
@@ -127,4 +130,50 @@ function wateraid_core_entity_type_alter(array &$entity_types): void {
   if (isset($entity_types['user'])) {
     $entity_types['user']->setClass('\Drupal\wateraid_core\Entity\WaUser');
   }
+}
+
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function wateraid_core_language_switch_links_alter (array &$links, $type, Url $url) {
+  $route_match = \Drupal::routeMatch();
+  $activeTranslations = [];
+
+  // Check if we're on a node page.
+  $node = $route_match->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    if( $node->isTranslatable()) {
+    // Check if the node is translatable and has translations.
+      $activeTranslations = array_keys($node->getTranslationLanguages());
+    }
+  }
+  else {
+    // Check if we're on a group page.
+    $group = $route_match->getParameter('group');
+    if ($group instanceof GroupInterface && $group->isTranslatable()) {
+      if ($group->isTranslatable()) {
+        $activeTranslations = array_keys($group->getTranslationLanguages());
+      }
+    }
+  }
+
+  if (!empty($activeTranslations)) {
+    // Filter links to only include active translations.
+    foreach ($links as $code => $link) {
+      if (!in_array($code, $activeTranslations)) {
+        unset($links[$code]);
+      }
+    }
+  }
+  else {
+    // If no active translations found, clear all links.
+    $links = [];
+  }
+
+  if (count($links) === 1) {
+    // If there's only one link (the current language), hide the block.
+    $links = [];
+  }
+
 }

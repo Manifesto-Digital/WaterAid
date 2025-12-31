@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.webform_poc.field_options
     - field.field.paragraph.webform_poc.field_webform
     - paragraphs.paragraphs_type.webform_poc
   module:
@@ -13,12 +12,6 @@ targetEntityType: paragraph
 bundle: webform_poc
 mode: default
 content:
-  field_options:
-    type: options_select
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_webform:
     type: webform_entity_reference_select
     weight: 1
