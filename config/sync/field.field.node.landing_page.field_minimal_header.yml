@@ -1,0 +1,23 @@
+uuid: c4c95a21-4250-447b-a260-912e202e943a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minimal_header
+    - node.type.landing_page
+id: node.landing_page.field_minimal_header
+field_name: field_minimal_header
+entity_type: node
+bundle: landing_page
+label: 'Use minimal header'
+description: 'When enabled, the main menu will display in a hamburger on desktop.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
