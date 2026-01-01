@@ -9,8 +9,8 @@ id: node.shorthand_story.field_minimal_header
 field_name: field_minimal_header
 entity_type: node
 bundle: shorthand_story
-label: 'Use minimal Header'
-description: 'When enabled, the main menu will display in a hamburger.'
+label: 'Use minimal header'
+description: 'When enabled, the main menu will display in a hamburger on desktop.'
 required: false
 translatable: false
 default_value:

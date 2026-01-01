@@ -4,8 +4,16 @@
 .webform-submission-form {
   @include base.container-sm();
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   gap: base.$wa-spacing-04;
+
+  @include desktop() {
+    margin-left: 0;
+  }
+
+  @include xlarge-screen() {
+    margin-left: 7.125rem;
+  }
 
   .ssl-logo svg {
     max-width: 88px;
@@ -68,7 +76,7 @@
   .form-actions {
     margin: base.$wa-spacing-09 0;
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
     gap: base.$wa-spacing-06;
 
     .webform-page-help {
@@ -134,13 +142,22 @@
   }
 
   // Show/hide Loqate manual capture fields
-  &.webform-category-donation fieldset.wa-subelement-wrapper-capture-plus {
-    display: none;
-    &[data-pcamanual="pcamanual"] {
-      display: block;
+  &.webform-category-donation {
+    fieldset.wa-subelement-wrapper-capture-plus {
+      display: none;
+      &[data-pcamanual="pcamanual"] {
+        display: block;
 
-      .capture-manual {
-        display: none;
+        .capture-manual {
+          display: none;
+        }
+      }
+    }
+
+    .button__input-button-wrapper.focus {
+      outline: base.$wa-pink base.$wa-spacing-01 solid;
+      input[data-component-id="wateraid:button"]:focus-visible{
+        outline: none;
       }
     }
   }
@@ -160,6 +177,10 @@
         }
       }
     }
+  }
+
+  .hidden {
+    display: none !important;
   }
 }
 
@@ -228,6 +249,10 @@
     width: fit-content;
     flex: 1 1 auto;
   }
+}
+
+.webform-type-checkbox input[type="checkbox"] + label.option {
+  width: calc(100% - 2.5rem);
 }
 
 input[type='checkbox'],
@@ -681,6 +706,39 @@ fieldset.next-form-step {
 
       @include breakpoint-md {
         width: auto;
+      }
+
+      .wateraid-donation-amount-upsell-tooltip {
+        display: none;
+        position: absolute;
+        background: $wa-navy;
+        padding: $wa-spacing-02 $wa-spacing-03;
+        color: $wa-white;
+        font-family: $bold-font;
+        background-size: cover;
+        left: 50%;
+        width: max-content;
+        bottom: calc(100% + 24px);
+
+        &:after {
+          content: '';
+          background-image: url("/themes/custom/wateraid/images/icons/wa-triangle-dark.svg");
+          background-repeat: no-repeat;
+          background-position: left;
+          position: absolute;
+          left: 0;
+          bottom: -12px;
+          height: 12px;
+          width: 12px;
+        }
+
+        @include tablet {
+          display: block;
+        }
+
+        &.is-hidden {
+          display: none;
+        }
       }
     }
   }

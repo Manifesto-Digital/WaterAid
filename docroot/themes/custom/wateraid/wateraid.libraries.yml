@@ -9,6 +9,12 @@ webform-behavior:
   dependencies:
     - core/drupal
 
+webforms-general:
+  js:
+    js/webforms-general.js: { minified: true }
+  dependencies:
+    - core/drupal
+
 listing:
   js:
     components/listing/listing.js: { }

@@ -1,9 +1,11 @@
 $small-device-min-width: 390px;
 $medium-device-min-width: 768px;
 $large-device-min-width: 1024px;
+$xlarge-device-min-width: 1440px;
 $small-device-max-width: calc($small-device-min-width - 1px);
 $medium-device-max-width: calc($medium-device-min-width - 1px);
 $large-device-max-width: calc($large-device-min-width - 1px);
+$xlarge-device-max-width: calc($xlarge-device-min-width - 1px);
 
 // From width $width.
 @mixin from-breakpoint($width) {
@@ -32,6 +34,12 @@ $large-device-max-width: calc($large-device-min-width - 1px);
   }
 }
 
+@mixin breakpoint-xl {
+  @include from-breakpoint($xlarge-device-min-width) {
+    @content;
+  }
+}
+
 @mixin breakpoint-lg {
   @include from-breakpoint($large-device-min-width) {
     @content;
@@ -45,6 +53,11 @@ $large-device-max-width: calc($large-device-min-width - 1px);
   }
 }
 
+@mixin xlarge-screen {
+  @include breakpoint-xl {
+    @content;
+  }
+}
 @mixin desktop {
   @include breakpoint-lg {
     @content;

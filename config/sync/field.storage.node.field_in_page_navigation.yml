@@ -1,11 +1,11 @@
-uuid: d9f98df3-1610-433c-a7c6-5d5a04192a46
+uuid: ca346fe2-5161-4b09-8135-afa251f7ed4c
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_override_related_content
-field_name: field_override_related_content
+id: node.field_in_page_navigation
+field_name: field_in_page_navigation
 entity_type: node
 type: boolean
 settings: {  }

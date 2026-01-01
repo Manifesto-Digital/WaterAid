@@ -5,13 +5,13 @@
 {% set attributes = attributes.addClass(all_classes) %}
 
 {% set donateIcon %}
-  {% if type == 'donate' %}
-    <span class="button__svg">
+  {% if type == 'donate'%}
     {% if icon|render %}
+      <span class="button__svg">
       {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
       {{ include(icon_url) }}
+      </span>
     {% endif %}
-    </span>
     {{ text }}
   {% endif %}
 {% endset %}
