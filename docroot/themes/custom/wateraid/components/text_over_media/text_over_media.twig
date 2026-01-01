@@ -1,47 +1,51 @@
-<div class="text-media text-media--{{ media_type }}">
-  {% if media_type == 'image' and image %}
-    <div class="text-media__image">
-      {{ include('wateraid:image', {
-        image,
-        caption: media_caption,
-        credit: media_credit,
-        width: 'full',
-        caption_display: 'expandable',
-        display: 'background'
-      }) }}
+<div class="text-over-media text-over-media--{{ media_type }}">
+  <div class="text-over-media__wrapper">
+    <div class="text-over-media__background">
+      {% if media_type == 'image' and image %}
+        <div class="text-over-media__image">
+          {{ include('wateraid:image', {
+            image,
+            caption: media_caption,
+            credit: media_credit,
+            width: 'full',
+            caption_display: 'expandable'
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if media_type == 'video' and video %}
+        <div class="text-over-media__video">
+          {{ video }}
+
+          <div class="text-over-media__video--play">
+            {{ include('wateraid:button', {
+              text: 'Play video',
+              link: '',
+              id: 'text-over-media-play-button',
+              type: 'icon',
+              icon: 'wa-utility-play',
+              theme: 'dark',
+            }) }}
+          </div>
+          <div class="text-over-media__video--pause">
+            {{ include('wateraid:button', {
+              text: 'Pause video',
+              link: '',
+              id: 'text-over-media-pause-button',
+              type: 'icon',
+              icon: 'wa-utility-pause',
+              theme: 'dark',
+            }) }}
+          </div>
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
-
-  {% if media_type == 'video' and video %}
-    <div class="text-media__video">
-      {{ video }}
-
-      <div class="text-media__video--play">
-        {{ include('wateraid:button', {
-          text: 'Play video',
-          link: '',
-          id: 'text-media-play-button',
-          type: 'icon',
-          icon: 'wa-utility-play',
-          theme: 'dark',
+    <div class="text-over-media__content-wrapper">
+      <div class="text-over-media__content">
+        {{ include('wateraid:rich_text', {
+          text: content
         }) }}
       </div>
-      <div class="text-media__video--pause">
-        {{ include('wateraid:button', {
-          text: 'Pause video',
-          link: '',
-          id: 'text-media-pause-button',
-          type: 'icon',
-          icon: 'wa-utility-pause',
-          theme: 'dark',
-        }) }}
-      </div>
     </div>
-  {% endif %}
-
-    <div class="text-media__content">
-    {{ include('wateraid:rich_text', {
-      text: content
-    }) }}
-    </div>
+  </div>
 </div>

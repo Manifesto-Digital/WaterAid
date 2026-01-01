@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.text_over_media.field_image
     - field.field.paragraph.text_over_media.field_media_type
     - field.field.paragraph.text_over_media.field_rich_text
-    - field.field.paragraph.text_over_media.field_variant
     - field.field.paragraph.text_over_media.field_video
     - paragraphs.paragraphs_type.text_over_media
   module:
@@ -57,13 +56,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_variant:
-    type: list_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 7
     region: content
   field_video:
     type: entity_reference_entity_view

@@ -4,7 +4,9 @@
       function addCustomVideoPlay(video) {
         const videoElement = video.querySelector("video");
         const playButton = video.querySelector(".text-over-media__video--play");
-        const pauseButton = video.querySelector(".text-over-media__video--pause");
+        const pauseButton = video.querySelector(
+          ".text-over-media__video--pause",
+        );
 
         if (videoElement) {
           videoElement.controls = false;
@@ -23,28 +25,32 @@
           });
         }
       }
+      // Set component height on desktop.
+      function setComponentHeight(component) {
+        let width = document.body.clientWidth;
 
-      function toggleImageCaption(image) {
-        let openButton = image.querySelector(".image__button--open button");
-        let closeButton = image.querySelector(".image__button--close button");
+        if (width > 1024) {
+          // Add get content height.
+          const content = component.querySelector(".text-over-media__content");
+          const contentHeight = content.offsetHeight;
 
-        if (openButton) {
-          openButton.addEventListener("click", function () {
-            image.classList.add("open");
-          });
-          closeButton.addEventListener("click", function () {
-            image.classList.remove("open");
-          });
+          // Add padding for component.
+          const newComponentHeight = contentHeight + 96;
+          component.style.height = newComponentHeight + "px";
         }
       }
 
-      context.querySelectorAll(".text-over-media--image").forEach((image) => {
-        toggleImageCaption(image);
+      context.querySelectorAll(".text-over-media__wrapper").forEach((component) => {
+        setTimeout(() => {
+          setComponentHeight(component);
+        }, 500);
       });
 
       context.querySelectorAll(".text-over-media__video").forEach((video) => {
         addCustomVideoPlay(video);
       });
+
+      window.addEventListener("resize", setComponentHeight);
     },
   };
 })(Drupal);

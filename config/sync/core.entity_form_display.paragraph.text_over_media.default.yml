@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.text_over_media.field_image
     - field.field.paragraph.text_over_media.field_media_type
     - field.field.paragraph.text_over_media.field_rich_text
-    - field.field.paragraph.text_over_media.field_variant
     - field.field.paragraph.text_over_media.field_video
     - paragraphs.paragraphs_type.text_over_media
   module:
@@ -61,12 +60,6 @@ content:
         maxlength_js: null
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
-  field_variant:
-    type: options_select
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_video:
     type: media_library_widget
     weight: 6
