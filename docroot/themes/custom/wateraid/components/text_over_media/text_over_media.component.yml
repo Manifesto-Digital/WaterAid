@@ -1,0 +1,29 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Text over media
+status: stable
+description: Text over media component
+props:
+  type: object
+  properties:
+    content:
+      type: ["string", "null"]
+      title: Content
+slots:
+  image:
+    title: Image
+    description: Image slot
+  media_caption:
+    type: string
+    title: Caption
+  media_credit:
+    type: string
+    title: Credit
+  video:
+    title: Video
+    description: Video slot
+  media_type:
+    title: Type
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/text_over_media/text_over_media.css: {}

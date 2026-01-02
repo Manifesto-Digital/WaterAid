@@ -1,0 +1,23 @@
+uuid: 6dff7b62-f951-4f4e-86e7-9fdd9baccdd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_type
+    - paragraphs.paragraphs_type.text_over_media
+  module:
+    - options
+id: paragraph.text_over_media.field_media_type
+field_name: field_media_type
+entity_type: paragraph
+bundle: text_over_media
+label: 'Media type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: image
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,6 +1,7 @@
 @import "../../sass/base";
 
 .cta {
+  z-index: 1;
   &[data-component-id="wateraid:call_to_action"] {
     margin-top: $wa-spacing-07;
     @include desktop {

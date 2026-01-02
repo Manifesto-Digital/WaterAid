@@ -39,21 +39,21 @@
  */
 #}
 
-{%
-  set classes = [
+{% set classes = [
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   not paragraph.isPublished() ? 'paragraph--unpublished'
-]
-%}
+] | sort | join(' ') | trim %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:card_collection', {
-      card_items: content.field_cards|children,
-      background: paragraph.field_background_colour.value,
-      columns: paragraph.field_card_columns.value|replace({'_' : '-'}),
-    }, only) }}
+  <div class="{{ classes }}">
+    <div{{ attributes }}>
+      {{ include('wateraid:card_collection', {
+        card_items: content.field_cards|children,
+        background: paragraph.field_background_colour.value,
+        columns: paragraph.field_card_columns.value|replace({'_' : '-'}),
+      }, only) }}
+    </div>
   </div>
 {% endblock paragraph %}

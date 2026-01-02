@@ -39,14 +39,23 @@
  */
 #}
 
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] | sort | join(' ') | trim %}
+
 {% block paragraph %}
-  {{ include('wateraid:donate_block', {
-    theme: paragraph.field_theme.value,
-    title: content.field_title,
-    heading_level: paragraph.field_heading_level.value,
-    content: content.field_donate_content,
-    widget: content.field_donate_widget,
-  }, only) }}
+  <div class="{{ classes }}">
+    {{ include('wateraid:donate_block', {
+      theme: paragraph.field_theme.value,
+      title: content.field_title,
+      heading_level: paragraph.field_heading_level.value,
+      content: content.field_donate_content,
+      widget: content.field_donate_widget,
+    }, only) }}
+  </div>
 {% endblock paragraph %}
 
 {% set catch_cache = content|render %}

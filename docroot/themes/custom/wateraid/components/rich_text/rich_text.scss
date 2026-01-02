@@ -1,6 +1,8 @@
 @import "../../sass/base";
 
 [data-component-id="wateraid:rich_text"] {
+  background-color: $wa-white;
+  z-index: 1;
   color: $wa-navy;
   margin-top: $wa-spacing-07;
   @include desktop {
@@ -120,3 +122,8 @@
   }
 }
 
+.text-over-media {
+  [data-component-id="wateraid:rich_text"] {
+    background-color: $wa-blue;
+  }
+}

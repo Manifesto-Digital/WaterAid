@@ -49,6 +49,7 @@
         margin: $wa-spacing-06 auto 0 auto;
         display: block;
       }
+
       label.error {
         display: block;
         font-family: $bold-font;
@@ -244,6 +245,7 @@
       }
     }
   }
+
   &__donation-summary,
   &__donation-summary.show {
     display: none;
@@ -383,15 +385,18 @@
   .donate-widget__donation-summary.show {
     display: block;
   }
+
   .donate-widget__donation-summary {
     background: $wa-cream;
     padding: 1.5rem;
     margin-bottom: 3rem;
     color: $wa-navy;
+
     &__label {
       font-size: calculate-rem(20);
       margin-bottom: 0.5rem;
     }
+
     &__amount {
       font-size: calculate-rem(28);
       font-family: $heading-font;

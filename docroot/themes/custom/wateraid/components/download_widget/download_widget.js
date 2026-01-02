@@ -38,7 +38,6 @@
       context.querySelectorAll(".download-widget").forEach((widget) => {
         init(widget);
       });
-      console.log('init');
     },
   };
 })(Drupal);
