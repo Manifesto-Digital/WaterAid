@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.landing_page.field_content
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_metatags
+    - field.field.node.landing_page.field_minimal_header
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_show_donation_reminder
@@ -47,6 +48,7 @@ third_party_settings:
         - field_hero
         - langcode
         - field_show_donation_reminder
+        - field_minimal_header
       label: General
       region: content
       parent_name: group_tabs
@@ -163,6 +165,13 @@ content:
       sidebar: false
       use_details: false
     third_party_settings: {  }
+  field_minimal_header:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 14
@@ -179,7 +188,7 @@ content:
     third_party_settings: {  }
   field_show_donation_reminder:
     type: boolean_checkbox
-    weight: 26
+    weight: 4
     region: content
     settings:
       display_label: true
@@ -205,7 +214,7 @@ content:
         maxlength_js_enforce: true
   langcode:
     type: language_select
-    weight: 5
+    weight: 3
     region: content
     settings:
       include_locked: true
