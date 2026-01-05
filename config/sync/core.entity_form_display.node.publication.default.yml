@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.publication.field_audience
-    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
     - field.field.node.publication.field_get_involved
@@ -68,10 +67,6 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - field_documents
-        - field_download_link_placement
-        - field_force_open
-        - field_force_download
         - field_content
         - field_search_phrases
       label: Content
@@ -93,7 +88,6 @@ third_party_settings:
         - field_country
         - field_key_stages
         - field_get_involved
-        - field_regions
         - field_subject_area
         - field_theme
       label: Tags
@@ -147,16 +141,6 @@ targetEntityType: node
 bundle: publication
 mode: default
 content:
-  co_authors:
-    type: entity_reference_autocomplete_tags
-    weight: 5
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 2
@@ -170,14 +154,6 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_author_override:
-    type: string_textfield
-    weight: 11
-    region: content
-    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
@@ -356,6 +332,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  co_authors: true
   entitygroupfield: true
   publish_on: true
   publish_state: true

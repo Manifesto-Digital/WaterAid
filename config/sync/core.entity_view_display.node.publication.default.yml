@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.publication.field_audience
-    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
     - field.field.node.publication.field_get_involved
@@ -127,7 +126,6 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   entitygroupfield: true
-  field_author_override: true
   field_search_phrases: true
   field_teaser_image: true
   field_teaser_text: true

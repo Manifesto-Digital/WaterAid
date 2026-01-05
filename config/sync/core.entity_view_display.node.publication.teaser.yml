@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.publication.field_audience
-    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
     - field.field.node.publication.field_get_involved
@@ -98,7 +97,6 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   entitygroupfield: true
-  field_author_override: true
   field_content: true
   field_hero: true
   field_key_stages: true
