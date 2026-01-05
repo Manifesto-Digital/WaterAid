@@ -30,7 +30,6 @@ source:
     - field_themes
     - field_modules
     - field_publication_image
-    - field_documents
     - field_teaser_image
 process:
   langcode:
@@ -67,11 +66,6 @@ process:
       - '@temp_authors'
       - ''
       - created
-  field_documents:
-    plugin: migration_lookup
-    migration: documents_global
-    source: field_documents
-    no_stub: true
   field_teaser_text: body__summary
   field_teaser_image:
     plugin: migration_lookup

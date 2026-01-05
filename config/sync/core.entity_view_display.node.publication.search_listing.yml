@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
-    - field.field.node.publication.field_documents
     - field.field.node.publication.field_download_link_placement
     - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
@@ -60,7 +59,6 @@ hidden:
   field_author_override: true
   field_content: true
   field_country: true
-  field_documents: true
   field_download_link_placement: true
   field_force_open: true
   field_get_involved: true
