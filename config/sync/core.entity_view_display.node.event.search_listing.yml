@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.event.field_regions
     - field.field.node.event.field_review_date
     - field.field.node.event.field_search_phrases
-    - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - field.field.node.event.field_theme
@@ -29,6 +28,11 @@ targetEntityType: node
 bundle: event
 mode: search_listing
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
     label: hidden
@@ -50,6 +54,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_audience: true
   field_content: true
   field_country: true
@@ -63,7 +68,6 @@ hidden:
   field_regions: true
   field_review_date: true
   field_search_phrases: true
-  field_synopsis: true
   field_theme: true
   langcode: true
   links: true
