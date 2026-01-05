@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
     - field.field.node.publication.field_metatags
-    - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
@@ -31,6 +30,11 @@ targetEntityType: node
 bundle: publication
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_audience:
     type: entity_reference_label
     label: hidden
@@ -97,6 +101,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
   field_author_override: true
   field_content: true
   field_documents: true
@@ -106,7 +111,6 @@ hidden:
   field_hero: true
   field_key_stages: true
   field_metatags: true
-  field_regions: true
   field_review_date: true
   field_search_phrases: true
   langcode: true

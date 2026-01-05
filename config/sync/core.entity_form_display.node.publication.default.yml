@@ -15,7 +15,6 @@ dependencies:
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
     - field.field.node.publication.field_metatags
-    - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
@@ -271,12 +270,6 @@ content:
       sidebar: false
       use_details: false
     third_party_settings: {  }
-  field_regions:
-    type: options_select
-    weight: 11
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_review_date:
     type: datetime_default
     weight: 6
@@ -394,6 +387,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true
