@@ -11,9 +11,7 @@
             caption_display: 'expandable'
           }) }}
         </div>
-      {% endif %}
-
-      {% if media_type == 'video' and video %}
+      {% elseif media_type == 'video' and video %}
         <div class="text-over-media__video">
           {{ video }}
 
