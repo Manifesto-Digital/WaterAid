@@ -1,0 +1,18 @@
+<section class="section" id="{{ id }}">
+  <div class="section__background">
+    <div class="section__image">
+      {{ include('wateraid:image', {
+        image: image,
+        caption: caption,
+        credit: credit,
+        width: 'full',
+        caption_display: 'expandable'
+      }) }}
+    </div>
+  </div>
+  <div class="section__copy">
+    {{ include('wateraid:rich_text', {
+      text: copy
+    }) }}
+  </div>
+</section>

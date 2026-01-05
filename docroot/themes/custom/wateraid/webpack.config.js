@@ -46,6 +46,8 @@ module.exports = {
     'components/statistics/statistics': ['./components/statistics/statistics.scss'],
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
     'components/video/video': ['./components/video/video.scss'],
+    'components/scrollmation/scrollmation': ['./components/scrollmation/scrollmation.scss'],
+    'components/scrollmation_section/scrollmation_section': ['./components/scrollmation_section/scrollmation_section.scss'],
   },
   output: {
     filename: 'js/[name].js',

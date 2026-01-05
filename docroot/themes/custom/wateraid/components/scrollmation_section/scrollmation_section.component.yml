@@ -1,0 +1,14 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: scrollmation
+status: stable
+description: Video component
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/scrollmation_section/scrollmation_section.css: {}

@@ -1,0 +1,148 @@
+uuid: 57b00393-33a4-492f-9c22-bcfdbddaa15e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section
+    - paragraphs.paragraphs_type.scrollmation
+    - paragraphs.paragraphs_type.scrollmation_section
+  module:
+    - entity_reference_revisions
+id: paragraph.scrollmation.field_section
+field_name: field_section
+entity_type: paragraph
+bundle: scrollmation
+label: Section
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      scrollmation_section: scrollmation_section
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 40
+        enabled: false
+      accordion_item:
+        weight: 41
+        enabled: false
+      background_scrollmation:
+        weight: 42
+        enabled: false
+      call_to_action:
+        weight: 43
+        enabled: false
+      cancel_anytime:
+        weight: 44
+        enabled: false
+      card_collection:
+        weight: 45
+        enabled: false
+      donate_block:
+        weight: 46
+        enabled: false
+      donate_exit_modal:
+        weight: 47
+        enabled: false
+      donation_amount:
+        weight: 48
+        enabled: false
+      donation_placeholder_do_not_use:
+        weight: 49
+        enabled: false
+      donation_widget:
+        weight: 50
+        enabled: false
+      download_widget:
+        weight: 51
+        enabled: false
+      external_card:
+        weight: 52
+        enabled: false
+      facts_and_stats:
+        weight: 53
+        enabled: false
+      gallery_item:
+        weight: 54
+        enabled: false
+      hero_basic:
+        weight: 55
+        enabled: false
+      hero_donate:
+        weight: 56
+        enabled: false
+      hero_image:
+        weight: 57
+        enabled: false
+      hero_news:
+        weight: 58
+        enabled: false
+      hero_search:
+        weight: 59
+        enabled: false
+      hero_story:
+        weight: 60
+        enabled: false
+      hero_video:
+        weight: 61
+        enabled: false
+      image:
+        weight: 62
+        enabled: false
+      image_gallery:
+        weight: 63
+        enabled: false
+      image_with_quote_sidebar:
+        weight: 64
+        enabled: false
+      internal_card:
+        weight: 65
+        enabled: false
+      quote:
+        weight: 66
+        enabled: false
+      related_content:
+        weight: 67
+        enabled: false
+      rich_text:
+        weight: 68
+        enabled: false
+      scrollmation:
+        weight: 70
+        enabled: false
+      scrollmation_section:
+        weight: 69
+        enabled: true
+      spend:
+        weight: 70
+        enabled: false
+      spend_amount:
+        weight: 71
+        enabled: false
+      spend_item:
+        weight: 72
+        enabled: false
+      spend_module:
+        weight: 73
+        enabled: false
+      stats_item:
+        weight: 74
+        enabled: false
+      temp_paragraph:
+        weight: 75
+        enabled: false
+      text_media:
+        weight: 76
+        enabled: false
+      video:
+        weight: 77
+        enabled: false
+      webform_poc:
+        weight: 78
+        enabled: false
+field_type: entity_reference_revisions

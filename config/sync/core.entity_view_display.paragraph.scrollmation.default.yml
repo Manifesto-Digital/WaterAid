@@ -1,0 +1,28 @@
+uuid: f96bb5ed-5f1b-4e40-86da-9a0ca9fea459
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.scrollmation.field_section
+    - paragraphs.paragraphs_type.scrollmation
+  module:
+    - entity_reference_revisions
+id: paragraph.scrollmation.default
+targetEntityType: paragraph
+bundle: scrollmation
+mode: default
+content:
+  field_section:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

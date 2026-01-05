@@ -1,0 +1,26 @@
+uuid: ee29920e-0379-431b-b733-e1e9f1c07809
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rich_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.scrollmation_section
+  module:
+    - text
+id: paragraph.scrollmation_section.field_rich_text
+field_name: field_rich_text
+entity_type: paragraph
+bundle: scrollmation_section
+label: Text
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+field_type: text_long

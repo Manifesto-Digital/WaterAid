@@ -1,0 +1,19 @@
+uuid: 99905d76-2e90-43fe-8111-921190a79e7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_credit
+    - paragraphs.paragraphs_type.scrollmation_section
+id: paragraph.scrollmation_section.field_credit
+field_name: field_credit
+entity_type: paragraph
+bundle: scrollmation_section
+label: Credit
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

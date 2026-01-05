@@ -1,0 +1,19 @@
+uuid: 68bf3cce-ad41-4c49-990c-df633ca3dda1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption
+    - paragraphs.paragraphs_type.scrollmation_section
+id: paragraph.scrollmation_section.field_caption
+field_name: field_caption
+entity_type: paragraph
+bundle: scrollmation_section
+label: Caption
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

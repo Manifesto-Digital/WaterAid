@@ -1,0 +1,67 @@
+@import "../../sass/base";
+
+.scrollmation {
+  min-height: 720px;
+  backface-visibility: hidden;
+  clip-path: inset(0 0 0 0);
+  position: relative;
+
+  .paragraph--type--scrollmation-section {
+    .section__background {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+
+    &:first-of-type {
+      .section__background {
+        display: block;
+      }
+
+      .image__button {
+        bottom: 80px;
+        @include desktop {
+          display: block;
+        }
+      }
+
+      .section__copy {
+        padding-top: 24px;
+        margin-top: -72px;
+        @include desktop {
+          padding-top: 48px;
+          margin-top: 0;
+        }
+      }
+    }
+
+    &:last-of-type {
+      .section__background {
+        display: block;
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column-reverse;
+        @include desktop {
+          display: block;
+        }
+      }
+
+      .image {
+        margin-top: 0;
+      }
+
+      .section__copy {
+        padding-bottom: 24px;
+        margin-bottom: -72px;
+        @include desktop {
+          padding-bottom: 48px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+}
