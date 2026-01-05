@@ -22,7 +22,6 @@ source:
     - field_countries
     - field_link_placement
     - field_event_type
-    - field_force_download
     - field_force_open
     - field_get_involved_terms
     - field_key_stage
@@ -95,7 +94,6 @@ process:
     migration: event_types_bd
     source: field_event_type
     no_stub: true
-  field_force_download: field_force_download
   field_force_open: field_force_open
   field_get_involved:
     plugin: migration_lookup

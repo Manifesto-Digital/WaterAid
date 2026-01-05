@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.publication.field_country
     - field.field.node.publication.field_documents
     - field.field.node.publication.field_download_link_placement
-    - field.field.node.publication.field_force_download
     - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
@@ -219,13 +218,6 @@ content:
     weight: 13
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_force_download:
-    type: boolean_checkbox
-    weight: 15
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_force_open:
     type: boolean_checkbox
