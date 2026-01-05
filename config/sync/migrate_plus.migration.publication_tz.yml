@@ -20,7 +20,6 @@ source:
     - field_audiences
     - field_author
     - field_countries
-    - field_link_placement
     - field_event_type
     - field_get_involved_terms
     - field_key_stage
@@ -81,7 +80,6 @@ process:
     migration: countries_tz
     source: field_countries
     no_stub: true
-  field_download_link_placement: field_link_placement
   field_event_type:
     plugin: migration_lookup
     migration: event_types_tz
