@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.event.field_regions
     - field.field.node.event.field_review_date
     - field.field.node.event.field_search_phrases
-    - field.field.node.event.field_synopsis
     - field.field.node.event.field_teaser_image
     - field.field.node.event.field_teaser_text
     - field.field.node.event.field_theme
@@ -110,7 +109,6 @@ hidden:
   field_regions: true
   field_review_date: true
   field_search_phrases: true
-  field_synopsis: true
   langcode: true
   node_read_time: true
   search_api_excerpt: true
