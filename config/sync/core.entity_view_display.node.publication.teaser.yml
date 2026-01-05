@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
     - field.field.node.publication.field_download_link_placement
-    - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
@@ -103,7 +102,6 @@ hidden:
   field_author_override: true
   field_content: true
   field_download_link_placement: true
-  field_force_open: true
   field_hero: true
   field_key_stages: true
   field_metatags: true

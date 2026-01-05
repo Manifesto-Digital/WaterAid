@@ -22,7 +22,6 @@ source:
     - field_countries
     - field_link_placement
     - field_event_type
-    - field_force_open
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
@@ -88,7 +87,6 @@ process:
     migration: event_types_se
     source: field_event_type
     no_stub: true
-  field_force_open: field_force_open
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved_se
