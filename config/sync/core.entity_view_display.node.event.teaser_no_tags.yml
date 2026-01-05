@@ -1,9 +1,9 @@
-uuid: 6015d143-8a57-464f-878a-50b57aba63d5
+uuid: f6ee8359-b90a-46ee-827b-b3cefb7abf67
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.search_listing
+    - core.entity_view_mode.node.teaser_no_tags
     - field.field.node.event.field_audience
     - field.field.node.event.field_content
     - field.field.node.event.field_country
@@ -24,15 +24,47 @@ dependencies:
     - node.type.event
   module:
     - user
-id: node.event.search_listing
+id: node.event.teaser_no_tags
 targetEntityType: node
 bundle: event
-mode: search_listing
+mode: teaser_no_tags
 content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
     weight: -20
+    region: content
+  field_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_event_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_get_involved:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_teaser_image:
     type: entity_reference_entity_view
@@ -48,6 +80,19 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
@@ -56,13 +101,9 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   entitygroupfield: true
-  field_audience: true
   field_content: true
-  field_country: true
   field_event_end_date: true
   field_event_start_date: true
-  field_event_type: true
-  field_get_involved: true
   field_hero: true
   field_metatags: true
   field_properties: true
@@ -70,8 +111,6 @@ hidden:
   field_review_date: true
   field_search_phrases: true
   field_synopsis: true
-  field_theme: true
   langcode: true
-  links: true
   node_read_time: true
   search_api_excerpt: true
