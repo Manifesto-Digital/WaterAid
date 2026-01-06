@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.signposting
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
@@ -59,7 +58,6 @@ hidden:
   entitygroupfield: true
   field_age_range: true
   field_content: true
-  field_event_type: true
   field_force_download: true
   field_get_involved: true
   field_hero: true

@@ -18,7 +18,6 @@ source:
   bundle: flexible_content
   fields:
     - field_audiences
-    - field_event_type
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
@@ -59,11 +58,6 @@ process:
     plugin: migration_lookup
     migration: audiences_ng
     source: field_audiences
-    no_stub: true
-  field_event_type:
-    plugin: migration_lookup
-    migration: event_types_ng
-    source: field_event_type
     no_stub: true
   field_get_involved:
     plugin: migration_lookup
@@ -145,7 +139,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_ng
-    - event_types_ng
     - get_involved_ng
     - subject_areas_ng
     - themes_ng

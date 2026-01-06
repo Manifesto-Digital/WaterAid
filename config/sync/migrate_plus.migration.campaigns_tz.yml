@@ -18,7 +18,6 @@ source:
   bundle: campaign
   fields:
     - field_audiences
-    - field_event_type
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
@@ -52,11 +51,6 @@ process:
     plugin: migration_lookup
     migration: audiences_tz
     source: field_audiences
-    no_stub: true
-  field_event_type:
-    plugin: migration_lookup
-    migration: event_types_tz
-    source: field_event_type
     no_stub: true
   field_get_involved:
     plugin: migration_lookup
@@ -132,7 +126,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_tz
-    - event_types_tz
     - get_involved_tz
     - subject_areas_tz
     - topic_tz

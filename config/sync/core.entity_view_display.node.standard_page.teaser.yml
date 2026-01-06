@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
@@ -34,14 +33,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
-    region: content
-  field_event_type:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
     region: content
   field_get_involved:
     type: entity_reference_label
