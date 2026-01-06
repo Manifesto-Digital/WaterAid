@@ -21,7 +21,6 @@ source:
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
-    - field_regions
     - field_resources
     - field_subject_areas
     - field_themes
@@ -66,7 +65,6 @@ process:
     no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
-  field_regions: field_regions
   field_resources:
     -
       plugin: links_migration_lookup

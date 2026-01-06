@@ -23,7 +23,6 @@ source:
     - field_key_stage
     - field_meta_tags
     - field_header_style
-    - field_regions
     - field_subject_areas
     - field_themes
     - field_topic
@@ -67,7 +66,6 @@ process:
     no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
-  field_regions: field_regions
   field_minimal_header: field_header_style
   field_subject_area:
     plugin: migration_lookup

@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
-    - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
@@ -228,12 +227,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  field_regions:
-    type: options_select
-    weight: 14
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_resources:
     type: link_default
