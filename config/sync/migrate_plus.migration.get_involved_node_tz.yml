@@ -26,7 +26,6 @@ source:
     - field_regions
     - field_resources
     - field_subject_areas
-    - field_synopsis
     - field_themes
     - field_topic
     - field_event_hero_image

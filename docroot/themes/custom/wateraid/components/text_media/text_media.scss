@@ -28,6 +28,14 @@
     }
   }
 
+  .video__caption {
+    background-color: $wa-cream;
+
+    &:after {
+      content: none;
+    }
+  }
+
   &__text {
     [data-component-id="wateraid:rich_text"] {
       margin: 0;

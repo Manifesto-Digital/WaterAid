@@ -1,9 +1,9 @@
-uuid: be8eba70-4029-47f2-b741-b70ab50e9136
+uuid: f6ee8359-b90a-46ee-827b-b3cefb7abf67
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.teaser_no_tags
     - field.field.node.event.field_audience
     - field.field.node.event.field_content
     - field.field.node.event.field_country
@@ -23,10 +23,10 @@ dependencies:
     - node.type.event
   module:
     - user
-id: node.event.teaser
+id: node.event.teaser_no_tags
 targetEntityType: node
 bundle: event
-mode: teaser
+mode: teaser_no_tags
 content:
   content_moderation_control:
     settings: {  }
