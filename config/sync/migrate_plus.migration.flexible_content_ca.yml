@@ -18,15 +18,11 @@ source:
   bundle: flexible_content
   fields:
     - field_audiences
-    - field_countries
-    - field_event_type
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
     - field_header_style
-    - field_regions
     - field_subject_areas
-    - field_themes
     - field_topic
     - field_modules
     - field_hero
@@ -61,16 +57,6 @@ process:
     migration: audiences_ca
     source: field_audiences
     no_stub: true
-  field_country:
-    plugin: migration_lookup
-    migration: countries_ca
-    source: field_countries
-    no_stub: true
-  field_event_type:
-    plugin: migration_lookup
-    migration: event_types_ca
-    source: field_event_type
-    no_stub: true
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved_ca
@@ -78,17 +64,11 @@ process:
     no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
-  field_regions: field_regions
   field_minimal_header: field_header_style
   field_subject_area:
     plugin: migration_lookup
     migration: subject_areas_ca
     source: field_subject_areas
-    no_stub: true
-  field_theme:
-    plugin: migration_lookup
-    migration: themes_ca
-    source: field_themes
     no_stub: true
   field_topic:
     plugin: migration_lookup
@@ -151,11 +131,8 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_ca
-    - countries_ca
-    - event_types_ca
     - get_involved_ca
     - subject_areas_ca
-    - themes_ca
     - topic_ca
     - users_ca
     - hero_ca
