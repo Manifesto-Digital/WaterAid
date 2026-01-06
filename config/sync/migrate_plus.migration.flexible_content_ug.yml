@@ -24,7 +24,6 @@ source:
     - field_meta_tags
     - field_header_style
     - field_subject_areas
-    - field_themes
     - field_topic
     - field_modules
     - field_hero
@@ -71,11 +70,6 @@ process:
     plugin: migration_lookup
     migration: subject_areas_ug
     source: field_subject_areas
-    no_stub: true
-  field_theme:
-    plugin: migration_lookup
-    migration: themes_ug
-    source: field_themes
     no_stub: true
   field_topic:
     plugin: migration_lookup
@@ -140,7 +134,6 @@ migration_dependencies:
     - audiences_ug
     - get_involved_ug
     - subject_areas_ug
-    - themes_ug
     - topic_ug
     - users_ug
     - hero_ug

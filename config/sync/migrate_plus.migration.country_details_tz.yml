@@ -19,7 +19,6 @@ source:
   fields:
     - field_audiences
     - field_meta_tags
-    - field_themes
     - field_modules
     - field_hero
     - field_teaser_image
@@ -55,11 +54,6 @@ process:
     source: field_audiences
     no_stub: true
   field_meta_tags: field_meta_tags
-  field_theme:
-    plugin: migration_lookup
-    migration: themes_tz
-    source: field_themes
-    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users_tz
@@ -116,7 +110,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_tz
-    - themes_tz
     - users_tz
     - hero_tz
 include: null

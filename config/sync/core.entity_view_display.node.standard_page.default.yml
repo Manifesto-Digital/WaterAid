@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
-    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
     - node.type.standard_page
   module:
@@ -93,7 +92,6 @@ hidden:
   field_subject_area: true
   field_teaser_image: true
   field_teaser_text: true
-  field_theme: true
   field_topic: true
   langcode: true
   node_read_time: true

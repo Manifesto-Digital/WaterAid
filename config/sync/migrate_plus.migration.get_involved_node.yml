@@ -23,7 +23,6 @@ source:
     - field_meta_tags
     - field_resources
     - field_subject_areas
-    - field_themes
     - field_topic
     - field_event_hero_image
     - field_teaser_image
@@ -91,11 +90,6 @@ process:
     migration: subject_areas
     source: field_subject_areas
     no_stub: true
-  field_theme:
-    plugin: migration_lookup
-    migration: themes
-    source: field_themes
-    no_stub: true
   field_topic:
     plugin: migration_lookup
     migration: topic
@@ -159,7 +153,6 @@ migration_dependencies:
     - audiences
     - get_involved
     - subject_areas
-    - themes
     - topic
     - users
 include: null
