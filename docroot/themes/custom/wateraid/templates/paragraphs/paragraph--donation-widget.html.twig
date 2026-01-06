@@ -39,40 +39,40 @@
  */
 #}
 
-{%
-  set classes = [
+{% set classes = [
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   not paragraph.isPublished() ? 'paragraph--unpublished'
-]
-%}
+] | sort | join(' ') | trim %}
 
 {% set parent_bundle = paragraph.getParentEntity().bundle %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:donate_widget', {
-      heading: paragraph.field_title.value,
-      heading_level: paragraph.field_heading_level.value,
-      button_text: 'Donate securely now',
-      webform_node: path('entity.node.canonical', {'node': paragraph.field_webform_node.entity.id}),
-      monthly_amounts: monthly_donation_amounts,
-      one_off_amounts: one_off_donation_amounts,
-      monthly_default: paragraph.field_monthly_default.value,
-      additional_link: paragraph.field_payin_link.0.title ? {
-        title: paragraph.field_payin_link.0.title,
-        href: paragraph.field_payin_link.0.url,
-      } : {},
-      variant: parent_bundle == 'hero_donate' ? 'hero' : 'default',
-      config: {
-        monthly_index: paragraph.field_monthly_index.value,
-        one_off_index: paragraph.field_one_off_index.value,
-        hide_desktop_one_off: paragraph.field_hide_desktop_one_off.value,
-        hide_desktop_monthly: paragraph.field_hide_desktop_monthly.value,
-        ssl_logo_dark: ssl_logo_dark,
-      },
-      id: paragraph.id(),
-    }, with_context = false) }}
+  <div class="{{ classes }}">
+    <div{{ attributes }}>
+      {{ include('wateraid:donate_widget', {
+        heading: paragraph.field_title.value,
+        heading_level: paragraph.field_heading_level.value,
+        button_text: 'Donate securely now',
+        webform_node: path('entity.node.canonical', {'node': paragraph.field_webform_node.entity.id}),
+        monthly_amounts: monthly_donation_amounts,
+        one_off_amounts: one_off_donation_amounts,
+        monthly_default: paragraph.field_monthly_default.value,
+        additional_link: paragraph.field_payin_link.0.title ? {
+          title: paragraph.field_payin_link.0.title,
+          href: paragraph.field_payin_link.0.url,
+        } : {},
+        variant: parent_bundle == 'hero_donate' ? 'hero' : 'default',
+        config: {
+          monthly_index: paragraph.field_monthly_index.value,
+          one_off_index: paragraph.field_one_off_index.value,
+          hide_desktop_one_off: paragraph.field_hide_desktop_one_off.value,
+          hide_desktop_monthly: paragraph.field_hide_desktop_monthly.value,
+          ssl_logo_dark: ssl_logo_dark,
+        },
+        id: paragraph.id(),
+      }, with_context = false) }}
+    </div>
   </div>
 {% endblock paragraph %}

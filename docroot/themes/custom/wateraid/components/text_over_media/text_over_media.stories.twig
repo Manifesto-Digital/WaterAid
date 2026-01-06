@@ -1,0 +1,81 @@
+{% stories text_over_media with { title: 'wateraid/Molecules/TextOverMedia' } %}
+  {% story TextWithImage with {
+    name: 'Image',
+    args: {
+      media_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      media_credit: 'Lorem ipsum dolor sit amet.',
+    }
+  } %}
+    {% set image %}
+      <img src="https://images.pexels.com/photos/26292604/pexels-photo-26292604.jpeg" alt="Example image"/>
+    {% endset %}
+
+    {% set content %}
+      <p>
+        Lorem ipsum dolor sit amet consectetur. Dignissim purus scelerisque id pellentesque. Cursus et et diam amet.
+        Quisque nisl viverra fames sit. Eget vitae posuere consequat tincidunt nisl convallis.
+      </p>
+      <p>
+        Adipiscing habitasse cursus quis ac semper. Lorem feugiat ipsum adipiscing urna semper sit. Fusce eleifend
+        gravida lectus nibh aliquet. Turpis tortor rutrum sagittis tellus euismod nulla. In ut sit sit amet fames at
+        gravida rhoncus. Sem tincidunt vulputate amet cras. Est nam risus egestas mi sit aliquam vel feugiat. Fusce sem
+        adipiscing tincidunt arcu. Scelerisque fermentum arcu non scelerisque vel neque. Porttitor amet platea enim
+        aliquam eget proin egestas in arcu. Enim est morbi porta pellentesque commodo dolor.
+      </p>
+      <p>
+        Elit elementum auctor blandit ut nunc vitae turpis. Eu tellus suspendisse bibendum metus erat at netus
+        elementum. Tellus scelerisque nibh ipsum dignissim eget sit. Congue eget id cursus ut donec. Viverra volutpat
+        quis adipiscing et. Nunc aliquet faucibus id varius ultrices fames. Dolor faucibus sed nibh at tincidunt. Vel
+        tincidunt neque aenean non commodo vitae.
+      </p>
+    {% endset %}
+
+    {{ include('wateraid:text_over_media', {
+      content,
+      image,
+      media_caption,
+      media_credit,
+      media_type: 'image'
+    }) }}
+  {% endstory %}
+
+  {% story TextWithVideo with {
+    name: 'Video',
+    args: {
+      content: 'Regular paragraph lorem ipsum dolor sit amet consectetur. Vitae sit dui volutpat cursus ut ultrices pellentesque et sit. Nisl in consequat ut potenti. Donec sed ipsum quam.',
+    }
+  } %}
+
+    {# Defaults #}
+    {% set video %}
+      <video controls="controls" width="640" height="480">
+        <source src="https://www.pexels.com/download/video/31853732/" type="video/mp4">
+      </video>
+    {% endset %}
+    {% set content %}
+      <p>
+        Lorem ipsum dolor sit amet consectetur. Dignissim purus scelerisque id pellentesque. Cursus et et diam amet.
+        Quisque nisl viverra fames sit. Eget vitae posuere consequat tincidunt nisl convallis.
+      </p>
+      <p>
+        Adipiscing habitasse cursus quis ac semper. Lorem feugiat ipsum adipiscing urna semper sit. Fusce eleifend
+        gravida lectus nibh aliquet. Turpis tortor rutrum sagittis tellus euismod nulla. In ut sit sit amet fames at
+        gravida rhoncus. Sem tincidunt vulputate amet cras. Est nam risus egestas mi sit aliquam vel feugiat. Fusce sem
+        adipiscing tincidunt arcu. Scelerisque fermentum arcu non scelerisque vel neque. Porttitor amet platea enim
+        aliquam eget proin egestas in arcu. Enim est morbi porta pellentesque commodo dolor.
+      </p>
+      <p>
+        Elit elementum auctor blandit ut nunc vitae turpis. Eu tellus suspendisse bibendum metus erat at netus
+        elementum. Tellus scelerisque nibh ipsum dignissim eget sit. Congue eget id cursus ut donec. Viverra volutpat
+        quis adipiscing et. Nunc aliquet faucibus id varius ultrices fames. Dolor faucibus sed nibh at tincidunt. Vel
+        tincidunt neque aenean non commodo vitae.
+      </p>
+    {% endset %}
+
+    {{ include('wateraid:text_over_media', {
+      content,
+      video,
+      media_type: 'video'
+    }) }}
+  {% endstory %}
+{% endstories %}

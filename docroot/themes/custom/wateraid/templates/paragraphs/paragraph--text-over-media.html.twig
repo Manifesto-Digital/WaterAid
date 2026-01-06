@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a paragraph.
+ * Default theme implementation for the Text over media paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -40,18 +40,14 @@
 #}
 
 {% block paragraph %}
-  <div class="paragraph paragraph--type--quote">
-    <div{{ attributes }}>
-      {% block content %}
-        {{ include('wateraid:quote', {
-          type: paragraph.field_quote_type.value,
-          quote: content.field_quote,
-          citation: content.field_citation,
-          image: content.field_image,
-          image_caption: content.field_caption,
-          image_credit: content.field_credit,
-        }) }}
-      {% endblock %}
-    </div>
-  </div>
+  {{ include('wateraid:text_over_media', {
+    content: content.field_rich_text|render,
+    video: content.field_video|render ? content.field_video,
+    image: content.field_image|render ? content.field_image,
+    media_caption: paragraph.field_caption.value ? content.field_caption,
+    media_credit: paragraph.field_credit.value ? content.field_credit,
+    media_type: paragraph.field_media_type.value
+  }, only) }}
 {% endblock paragraph %}
+
+{% set catch_cache = content|render %}
