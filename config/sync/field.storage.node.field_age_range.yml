@@ -1,0 +1,39 @@
+uuid: 52a271c9-d201-4f6f-8883-00d385a3f1e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_age_range
+field_name: field_age_range
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '811'
+      label: 'Under 5'
+    -
+      value: '816'
+      label: 5–7
+    -
+      value: '821'
+      label: 8–11
+    -
+      value: '826'
+      label: 12–14
+    -
+      value: '831'
+      label: 15–16
+    -
+      value: '836'
+      label: 16+
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

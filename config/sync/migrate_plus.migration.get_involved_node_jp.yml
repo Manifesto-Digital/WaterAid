@@ -18,15 +18,11 @@ source:
   bundle: get_involved
   fields:
     - field_audiences
-    - field_countries
-    - field_event_type
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
-    - field_regions
     - field_resources
     - field_subject_areas
-    - field_themes
     - field_topic
     - field_event_hero_image
     - field_teaser_image
@@ -61,16 +57,6 @@ process:
     migration: media_jp
     source: field_teaser_image
     no_stub: true
-  field_country:
-    plugin: migration_lookup
-    migration: countries_jp
-    source: field_countries
-    no_stub: true
-  field_event_type:
-    plugin: migration_lookup
-    migration: event_types_jp
-    source: field_event_type
-    no_stub: true
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved_jp
@@ -78,7 +64,6 @@ process:
     no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
-  field_regions: field_regions
   field_resources:
     -
       plugin: links_migration_lookup
@@ -104,11 +89,6 @@ process:
     plugin: migration_lookup
     migration: subject_areas_jp
     source: field_subject_areas
-    no_stub: true
-  field_theme:
-    plugin: migration_lookup
-    migration: themes_jp
-    source: field_themes
     no_stub: true
   field_topic:
     plugin: migration_lookup
@@ -171,11 +151,8 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_jp
-    - countries_jp
-    - event_types_jp
     - get_involved_jp
     - subject_areas_jp
-    - themes_jp
     - topic_jp
     - users_jp
 include: null

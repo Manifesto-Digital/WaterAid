@@ -4,23 +4,19 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_country
-    - field.field.node.standard_page.field_event_type
-    - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
-    - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
-    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
     - node.type.standard_page
   module:
@@ -30,21 +26,10 @@ targetEntityType: node
 bundle: standard_page
 mode: teaser
 content:
-  field_country:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
+  content_moderation_control:
+    settings: {  }
     third_party_settings: {  }
-    weight: 5
-    region: content
-  field_event_type:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
+    weight: -20
     region: content
   field_get_involved:
     type: entity_reference_label
@@ -78,14 +63,6 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_theme:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 8
-    region: content
   field_topic:
     type: entity_reference_label
     label: hidden
@@ -104,13 +81,13 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  entitygroupfield: true
+  field_age_range: true
   field_content: true
-  field_force_download: true
   field_hero: true
   field_key_stages: true
   field_metatags: true
   field_minimal_header: true
-  field_regions: true
   field_resources: true
   field_review_date: true
   field_search_phrases: true
