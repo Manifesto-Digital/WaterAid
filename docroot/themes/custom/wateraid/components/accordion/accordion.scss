@@ -3,7 +3,9 @@
 .accordion {
   margin-top: $wa-spacing-07;
   scroll-margin-top: $wa-spacing-07;
-  
+  background-color: $wa-white;
+  z-index: 1;
+
   @include desktop {
     margin-top: $wa-spacing-09;
     scroll-margin-top: $wa-spacing-09;

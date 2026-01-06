@@ -23,7 +23,6 @@ source:
     - field_get_involved_terms
     - field_meta_tags
     - field_regions
-    - field_synopsis
     - field_themes
     - field_modules
     - field_event_logo
@@ -85,7 +84,6 @@ process:
     no_stub: true
   field_meta_tags: field_meta_tags
   field_regions: field_regions
-  field_synopsis: field_synopsis
   field_theme:
     plugin: migration_lookup
     migration: themes_et

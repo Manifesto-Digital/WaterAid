@@ -4,18 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.publication.field_audience
-    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
-    - field.field.node.publication.field_documents
-    - field.field.node.publication.field_download_link_placement
-    - field.field.node.publication.field_force_download
-    - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
     - field.field.node.publication.field_metatags
-    - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
@@ -73,10 +67,6 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - field_documents
-        - field_download_link_placement
-        - field_force_open
-        - field_force_download
         - field_content
         - field_search_phrases
       label: Content
@@ -98,7 +88,6 @@ third_party_settings:
         - field_country
         - field_key_stages
         - field_get_involved
-        - field_regions
         - field_subject_area
         - field_theme
       label: Tags
@@ -152,16 +141,6 @@ targetEntityType: node
 bundle: publication
 mode: default
 content:
-  co_authors:
-    type: entity_reference_autocomplete_tags
-    weight: 5
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 2
@@ -175,14 +154,6 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_author_override:
-    type: string_textfield
-    weight: 11
-    region: content
-    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
@@ -207,33 +178,6 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_documents:
-    type: media_library_widget
-    weight: 12
-    region: content
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-  field_download_link_placement:
-    type: options_select
-    weight: 13
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_force_download:
-    type: boolean_checkbox
-    weight: 15
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_force_open:
-    type: boolean_checkbox
-    weight: 14
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
@@ -270,12 +214,6 @@ content:
     settings:
       sidebar: false
       use_details: false
-    third_party_settings: {  }
-  field_regions:
-    type: options_select
-    weight: 11
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
@@ -394,6 +332,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  co_authors: true
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true

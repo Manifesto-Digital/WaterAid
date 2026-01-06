@@ -38,27 +38,20 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
-  ]
-%}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% block content %}
-      {{ include('wateraid:quote', {
-        type: paragraph.field_quote_type.value,
-        quote: content.field_quote,
-        citation: content.field_citation,
-        image: content.field_image,
-        image_caption: content.field_caption,
-        image_credit: content.field_credit,
-      })
-      }}
-    {% endblock %}
+  <div class="paragraph paragraph--type--quote">
+    <div{{ attributes }}>
+      {% block content %}
+        {{ include('wateraid:quote', {
+          type: paragraph.field_quote_type.value,
+          quote: content.field_quote,
+          citation: content.field_citation,
+          image: content.field_image,
+          image_caption: content.field_caption,
+          image_credit: content.field_credit,
+        }) }}
+      {% endblock %}
+    </div>
   </div>
 {% endblock paragraph %}

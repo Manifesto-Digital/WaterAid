@@ -39,26 +39,26 @@
  */
 #}
 
-{%
-  set classes = [
+{% set classes = [
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   not paragraph.isPublished() ? 'paragraph--unpublished'
-]
-%}
+] | sort | join(' ') | trim %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:accordion', {
-      title: paragraph.field_title.value,
-      heading_level: paragraph.field_heading_level.value,
-      description: content.field_rich_text,
-      accordion_items: content.field_accordion_items|children,
-      search: paragraph.field_display_search.value,
-      search_label: paragraph.field_label.value,
-      search_description: paragraph.field_description.value,
-      anchor_id: paragraph.field_anchor_id.value
-    }, with_context = false) }}
+  <div class="{{ classes }}">
+    <div{{ attributes }}>
+      {{ include('wateraid:accordion', {
+        title: paragraph.field_title.value,
+        heading_level: paragraph.field_heading_level.value,
+        description: content.field_rich_text,
+        accordion_items: content.field_accordion_items|children,
+        search: paragraph.field_display_search.value,
+        search_label: paragraph.field_label.value,
+        search_description: paragraph.field_description.value,
+        anchor_id: paragraph.field_anchor_id.value
+      }, with_context = false) }}
+    </div>
   </div>
 {% endblock paragraph %}

@@ -43,15 +43,24 @@
   {% set media_type = paragraph.field_video.entity.bundle() %}
 {% endif %}
 
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] | sort | join(' ') | trim %}
+
 {% block paragraph %}
-  {{ include('wateraid:video', {
-    video: content.field_video,
-    type: media_type == 'dam_video' ? 'local' : 'remote',
-    image: content.field_image,
-    caption: paragraph.field_caption.value ? content.field_caption,
-    credit: paragraph.field_credit.value ? content.field_credit,
-    width: paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim,
-  }, only) }}
+  <div class="{{ classes }}">
+    {{ include('wateraid:video', {
+      video: content.field_video,
+      type: media_type == 'dam_video' ? 'local' : 'remote',
+      image: content.field_image,
+      caption: paragraph.field_caption.value ? content.field_caption,
+      credit: paragraph.field_credit.value ? content.field_credit,
+      width: paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim,
+    }, only) }}
+  </div>
 {% endblock paragraph %}
 
 {% set catch_cache = content|render %}
