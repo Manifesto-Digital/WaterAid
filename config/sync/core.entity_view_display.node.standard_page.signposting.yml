@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.signposting
+    - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
@@ -57,8 +57,8 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   entitygroupfield: true
+  field_age_range: true
   field_content: true
-  field_country: true
   field_event_type: true
   field_force_download: true
   field_get_involved: true

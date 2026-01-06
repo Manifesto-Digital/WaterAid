@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
@@ -179,16 +179,6 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
-    third_party_settings: {  }
-  field_country:
-    type: entity_reference_autocomplete
-    weight: 11
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_event_type:
     type: entity_reference_autocomplete
@@ -391,6 +381,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
+  field_age_range: true
   publish_on: true
   publish_state: true
   unpublish_on: true

@@ -61,11 +61,6 @@ process:
     migration: audiences_ug
     source: field_audiences
     no_stub: true
-  field_country:
-    plugin: migration_lookup
-    migration: countries_ug
-    source: field_countries
-    no_stub: true
   field_event_type:
     plugin: migration_lookup
     migration: event_types_ug
@@ -151,7 +146,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_ug
-    - countries_ug
     - event_types_ug
     - get_involved_ug
     - subject_areas_ug

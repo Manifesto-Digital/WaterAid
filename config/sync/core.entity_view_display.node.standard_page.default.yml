@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_country
     - field.field.node.standard_page.field_event_type
     - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
@@ -32,6 +32,11 @@ targetEntityType: node
 bundle: standard_page
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_content:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -79,7 +84,8 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_country: true
+  entitygroupfield: true
+  field_age_range: true
   field_event_type: true
   field_force_download: true
   field_get_involved: true
