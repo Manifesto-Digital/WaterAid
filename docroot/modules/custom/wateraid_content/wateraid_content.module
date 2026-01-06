@@ -316,7 +316,10 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
       $node_field = ($field == 'field_themes') ? 'field_theme' : $field;
 
       $query->leftJoin('node__' . $node_field, $field, $field . '.entity_id = n.nid');
-      $conditions->condition($field . '.' . $node_field . '_target_id', $values, 'IN');
+
+      foreach ($values as $value) {
+        $conditions->condition($field . '.' . $node_field . '_target_id', $value);
+      }
     }
   }
 
