@@ -18,9 +18,7 @@ source:
   bundle: country_details
   fields:
     - field_audiences
-    - field_country
     - field_meta_tags
-    - field_themes
     - field_modules
     - field_hero
     - field_teaser_image
@@ -55,17 +53,7 @@ process:
     migration: audiences_ca
     source: field_audiences
     no_stub: true
-  field_country:
-    plugin: migration_lookup
-    migration: countries_ca
-    source: field_country
-    no_stub: true
   field_meta_tags: field_meta_tags
-  field_theme:
-    plugin: migration_lookup
-    migration: themes_ca
-    source: field_themes
-    no_stub: true
   uid:
     plugin: migration_lookup
     migration: users_ca
@@ -122,8 +110,6 @@ idMap: {  }
 migration_dependencies:
   required:
     - audiences_ca
-    - countries_ca
-    - themes_ca
     - users_ca
     - hero_ca
 include: null
