@@ -50,15 +50,6 @@ function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- */
-function wateraid_content_form_node_publication_form_alter(&$form, FormStateInterface $form_state): void {
-  if (isset($form['field_author_override'])) {
-    $form['field_author_override']['#group'] = (isset($form['author'])) ? 'author' : NULL;
-  }
-}
-
-/**
  * Implements hook_ENTITY_TYPE_presave().
  */
 function wateraid_content_paragraph_presave(ParagraphInterface $paragraph): void {
@@ -355,3 +346,11 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
   $variables['content']['#cache']['tags'][] = 'node_list';
 }
 
+/**
+ * Implements hook_field_widget_complete_WIDGET_TYPE_form_alter().
+ */
+function wateraid_content_field_widget_complete_boolean_checkbox_form_alter(&$field_widget_complete_form, FormStateInterface $form_state, $context): void {
+  if (isset($field_widget_complete_form['widget']['#field_name']) && $field_widget_complete_form['widget']['#field_name'] == 'field_show_read_time') {
+    $field_widget_complete_form['#attached']['library'][] = 'wateraid_content/hero';
+  }
+}

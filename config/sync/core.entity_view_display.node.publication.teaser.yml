@@ -5,18 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.publication.field_audience
-    - field.field.node.publication.field_author_override
     - field.field.node.publication.field_content
     - field.field.node.publication.field_country
-    - field.field.node.publication.field_documents
-    - field.field.node.publication.field_download_link_placement
-    - field.field.node.publication.field_force_download
-    - field.field.node.publication.field_force_open
     - field.field.node.publication.field_get_involved
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
     - field.field.node.publication.field_metatags
-    - field.field.node.publication.field_regions
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
@@ -31,6 +25,11 @@ targetEntityType: node
 bundle: publication
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_audience:
     type: entity_reference_label
     label: hidden
@@ -97,16 +96,11 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_author_override: true
+  entitygroupfield: true
   field_content: true
-  field_documents: true
-  field_download_link_placement: true
-  field_force_download: true
-  field_force_open: true
   field_hero: true
   field_key_stages: true
   field_metatags: true
-  field_regions: true
   field_review_date: true
   field_search_phrases: true
   langcode: true
