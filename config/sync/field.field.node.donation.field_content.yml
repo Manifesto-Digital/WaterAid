@@ -25,6 +25,7 @@ dependencies:
     - paragraphs.paragraphs_type.spend_module
     - paragraphs.paragraphs_type.stats_item
     - paragraphs.paragraphs_type.temp_paragraph
+    - paragraphs.paragraphs_type.text_over_media
     - paragraphs.paragraphs_type.webform_poc
   module:
     - entity_reference_revisions
@@ -63,117 +64,121 @@ settings:
       spend_module: spend_module
       temp_paragraph: temp_paragraph
       hero_story: hero_story
+      text_over_media: text_over_media
     negate: 1
     target_bundles_drag_drop:
       accordion:
-        weight: -74
+        weight: -76
         enabled: false
       accordion_item:
-        weight: -55
-        enabled: true
-      call_to_action:
-        weight: -73
-        enabled: false
-      cancel_anytime:
-        weight: -72
-        enabled: false
-      card_collection:
-        weight: -71
-        enabled: false
-      donate_block:
-        weight: -70
-        enabled: false
-      donate_exit_modal:
-        weight: -69
-        enabled: false
-      donation_amount:
-        weight: -54
-        enabled: true
-      donation_placeholder_do_not_use:
-        weight: -53
-        enabled: true
-      donation_widget:
-        weight: -68
-        enabled: false
-      download_widget:
-        weight: -67
-        enabled: false
-      external_card:
-        weight: -52
-        enabled: true
-      facts_and_stats:
-        weight: -66
-        enabled: false
-      gallery_item:
-        weight: -50
-        enabled: true
-      hero_basic:
-        weight: -58
-        enabled: true
-      hero_donate:
-        weight: -51
-        enabled: true
-      hero_image:
-        weight: -59
-        enabled: true
-      hero_news:
         weight: -57
         enabled: true
-      hero_search:
-        weight: -47
-        enabled: true
-      hero_story:
-        weight: -39
-        enabled: true
-      hero_video:
-        weight: -56
-        enabled: true
-      image:
-        weight: -65
-        enabled: false
-      image_gallery:
-        weight: -64
-        enabled: false
-      image_with_quote_sidebar:
-        weight: -45
-        enabled: true
-      internal_card:
-        weight: -49
-        enabled: true
-      quote:
-        weight: -63
-        enabled: false
-      related_content:
-        weight: -62
-        enabled: false
-      rich_text:
+      call_to_action:
         weight: -75
         enabled: false
-      spend:
-        weight: -44
+      cancel_anytime:
+        weight: -74
+        enabled: false
+      card_collection:
+        weight: -73
+        enabled: false
+      donate_block:
+        weight: -72
+        enabled: false
+      donate_exit_modal:
+        weight: -71
+        enabled: false
+      donation_amount:
+        weight: -56
         enabled: true
-      spend_amount:
-        weight: -42
+      donation_placeholder_do_not_use:
+        weight: -55
         enabled: true
-      spend_item:
-        weight: -43
+      donation_widget:
+        weight: -70
+        enabled: false
+      download_widget:
+        weight: -69
+        enabled: false
+      external_card:
+        weight: -54
         enabled: true
-      spend_module:
+      facts_and_stats:
+        weight: -68
+        enabled: false
+      gallery_item:
+        weight: -52
+        enabled: true
+      hero_basic:
+        weight: -60
+        enabled: true
+      hero_donate:
+        weight: -53
+        enabled: true
+      hero_image:
+        weight: -61
+        enabled: true
+      hero_news:
+        weight: -59
+        enabled: true
+      hero_search:
+        weight: -49
+        enabled: true
+      hero_story:
         weight: -41
         enabled: true
+      hero_video:
+        weight: -58
+        enabled: true
+      image:
+        weight: -67
+        enabled: false
+      image_gallery:
+        weight: -66
+        enabled: false
+      image_with_quote_sidebar:
+        weight: -47
+        enabled: true
+      internal_card:
+        weight: -51
+        enabled: true
+      quote:
+        weight: -65
+        enabled: false
+      related_content:
+        weight: -64
+        enabled: false
+      rich_text:
+        weight: -77
+        enabled: false
+      spend:
+        weight: -46
+        enabled: true
+      spend_amount:
+        weight: -44
+        enabled: true
+      spend_item:
+        weight: -45
+        enabled: true
+      spend_module:
+        weight: -43
+        enabled: true
       stats_item:
-        weight: -48
+        weight: -50
         enabled: true
       temp_paragraph:
-        weight: -40
+        weight: -42
         enabled: true
       text_media:
-        weight: -61
+        weight: -63
         enabled: false
+      text_over_media:
+        weight: -40
+        enabled: true
       video:
-        weight: -60
+        weight: -62
         enabled: false
       webform_poc:
-        weight: -46
+        weight: -48
         enabled: true
 field_type: entity_reference_revisions

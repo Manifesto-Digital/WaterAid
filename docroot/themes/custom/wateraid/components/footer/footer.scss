@@ -1,6 +1,9 @@
 @import "../../sass/base";
 
 .footer {
+  background-color: $wa-white;
+  z-index: 1;
+
   &__inner {
     background-color: $wa-blue;
   }

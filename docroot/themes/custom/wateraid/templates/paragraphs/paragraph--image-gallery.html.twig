@@ -39,19 +39,21 @@
  */
 #}
 
-{%
-  set classes = [
-  'paragraph',
-  'paragraph--type--' ~ paragraph.bundle|clean_class,
-  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-  not paragraph.isPublished() ? 'paragraph--unpublished'
-]
-%}
+ {% set classes = [
+   'paragraph',
+   'paragraph--type--' ~ paragraph.bundle|clean_class,
+   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+   not paragraph.isPublished() ? 'paragraph--unpublished'
+ ] | sort | join(' ') | trim %}
+
+
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:image_gallery', {
-      theme: paragraph.field_theme.value,
-      image_items: content.field_images|children,
-    }, with_context = false) }}
+  <div class="{{ classes }}">
+    <div{{ attributes }}>
+      {{ include('wateraid:image_gallery', {
+        theme: paragraph.field_theme.value,
+        image_items: content.field_images|children,
+      }, with_context = false) }}
+    </div>
   </div>
 {% endblock paragraph %}

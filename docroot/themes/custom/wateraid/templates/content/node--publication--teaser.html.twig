@@ -76,9 +76,6 @@
     {% set authors = authors|merge([item.entity.label()]) %}
   {% endfor %}
 {% endif %}
-{% if node.field_author_override.value %}
-  {% set authors = authors|merge([node.field_author_override.value]) %}
-{% endif %}
 
 {{ include('wateraid:card', {
   attributes: attributes,

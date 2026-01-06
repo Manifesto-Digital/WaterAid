@@ -46,13 +46,16 @@ body {
 }
 
 div[data-drupal-messages] {
-  @include page-container;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: white;
+  z-index: 1;
+  position: relative;
 }
 
 // Status messages
 .messages__wrapper {
+  @include page-container;
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
@@ -64,16 +67,59 @@ div[data-drupal-messages] {
   .messages {
     width: 100%;
     padding: 1rem;
-    &--status{
+
+    &--status {
       background-color: $wa-dark-green;
       color: $wa-white;
     }
+
     &--warning {
       background-color: $wa-yellow;
     }
+
     &--error {
       background-color: $wa-orange;
       color: $wa-white;
+    }
+  }
+}
+
+// Story content type
+.page-node-type-story {
+  .paragraph--type--accordion,
+  .paragraph--type--call-to-action,
+  .paragraph--type--card-collection,
+  .paragraph--type--donate-block,
+  .paragraph--type--donation-widget,
+  .paragraph--type--download-widget,
+  .paragraph--type--facts-and-stats,
+  .paragraph--type--image,
+  .paragraph--type--image-gallery,
+  .paragraph--type--quote,
+  .paragraph--type--related-content,
+  .paragraph--type--rich-text,
+  .paragraph--type--text-media,
+  .paragraph--type--video {
+    background-color: $wa-white;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: $wa-spacing-06 0;
+  }
+
+  .paragraph--type--donation-widget .donate-widget,
+  .paragraph--type--donate-block .donate-block,
+  .paragraph--type--download-widget .download-widget,
+  .paragraph--type--text-media .m-text-media {
+    @include container-md();
+  }
+
+  .paragraph--type--donation-widget,
+  .paragraph--type--donate-block {
+    button#donate_submit {
+      margin: 0;
     }
   }
 }
