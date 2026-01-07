@@ -1,0 +1,8 @@
+uuid: 8b4d9b81-3117-4109-8ff4-2143bfbce288
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_fixed_payment_date
+label: 'WaterAid fixed payment date'
+locked: false
+pattern: jS

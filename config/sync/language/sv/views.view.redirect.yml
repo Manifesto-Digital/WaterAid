@@ -17,7 +17,16 @@ display:
             first: '« första'
             last: 'sista »'
       fields:
+        redirect_source__path:
+          label: Från
         created:
           label: Created
+      filters:
+        redirect_source__path:
+          expose:
+            label: Från
+        redirect_redirect__uri:
+          expose:
+            label: Till
   page_1:
     display_title: Page
