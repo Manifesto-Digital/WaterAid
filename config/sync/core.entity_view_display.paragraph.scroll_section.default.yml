@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.scrollmation_section.field_caption
-    - field.field.paragraph.scrollmation_section.field_credit
-    - field.field.paragraph.scrollmation_section.field_image
-    - field.field.paragraph.scrollmation_section.field_rich_text
-    - paragraphs.paragraphs_type.scrollmation_section
+    - field.field.paragraph.scroll_section.field_caption
+    - field.field.paragraph.scroll_section.field_credit
+    - field.field.paragraph.scroll_section.field_image
+    - field.field.paragraph.scroll_section.field_rich_text
+    - paragraphs.paragraphs_type.scroll_section
   module:
     - text
-id: paragraph.scrollmation_section.default
+id: paragraph.scroll_section.default
 targetEntityType: paragraph
-bundle: scrollmation_section
+bundle: scroll_section
 mode: default
 content:
   field_caption:

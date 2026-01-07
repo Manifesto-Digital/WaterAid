@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_caption
-    - paragraphs.paragraphs_type.scrollmation_section
-id: paragraph.scrollmation_section.field_caption
+    - paragraphs.paragraphs_type.scroll_section
+id: paragraph.scroll_section.field_caption
 field_name: field_caption
 entity_type: paragraph
-bundle: scrollmation_section
+bundle: scroll_section
 label: Caption
 description: ''
 required: false

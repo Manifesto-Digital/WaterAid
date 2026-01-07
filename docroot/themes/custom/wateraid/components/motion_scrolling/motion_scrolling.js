@@ -1,7 +1,7 @@
 (function (Drupal) {
-  Drupal.behaviors.scrollmation = {
+  Drupal.behaviors.motionScrolling = {
     attach: function (context) {
-      const sections = document.querySelectorAll(".section");
+      const sections = context.querySelectorAll(".section");
       sections[0].classList.add("active");
 
       // 1. Set initial height
@@ -23,7 +23,7 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // Remove active state from current active element
-            const currentActive = document.querySelector(".active");
+            const currentActive = context.querySelector(".active");
 
             if (currentActive) {
               currentActive.classList.remove("active");
@@ -40,12 +40,6 @@
       // Optional: Update heights if the window is resized
       window.addEventListener("resize", setHeight);
 
-      context.querySelectorAll(".scrollmation").forEach((scrollmation) => {
-        createScrollMation(scrollmation);
-        context.addEventListener("scroll", () => {
-          createScrollMation(scrollmation);
-        });
-      });
     },
   };
 })(Drupal);

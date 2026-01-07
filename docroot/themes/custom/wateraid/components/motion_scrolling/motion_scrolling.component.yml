@@ -1,5 +1,5 @@
 "$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
-name: scrollmation
+name: motion_scrolling
 status: stable
 description: Video component
 props:
@@ -11,4 +11,4 @@ props:
 libraryOverrides:
   css:
     theme:
-      ../../dist/css/components/scrollmation/scrollmation.css: {}
+      ../../dist/css/components/motion_scrolling/motion_scrolling.css: {}

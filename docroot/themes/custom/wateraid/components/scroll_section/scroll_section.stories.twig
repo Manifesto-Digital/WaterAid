@@ -1,6 +1,6 @@
-{% stories scrollmation_section with { title: 'wateraid/Molecules/ScrollmationSection' } %}
+{% stories scroll_section with { title: 'wateraid/Molecules/ScrollSection' } %}
   {% story default with {
-    name: 'Scrollmation Section',
+    name: 'Scroll Section',
   } %}
     {% set section_copy %}
       <h2>Section</h2>
@@ -37,7 +37,7 @@
       <img src="https://cdn.pixabay.com/photo/2014/11/21/03/24/mountains-540116_1280.jpg" alt="Example image"/>
     {% endset %}
 
-    {{ include('wateraid:scrollmation_section', {
+    {{ include('wateraid:scroll_section', {
       copy: section_copy,
       image: section_image,
       caption: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.',

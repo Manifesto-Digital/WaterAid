@@ -6,13 +6,13 @@ dependencies:
     - field.storage.paragraph.field_rich_text
     - filter.format.basic_html
     - filter.format.full_html
-    - paragraphs.paragraphs_type.scrollmation_section
+    - paragraphs.paragraphs_type.scroll_section
   module:
     - text
-id: paragraph.scrollmation_section.field_rich_text
+id: paragraph.scroll_section.field_rich_text
 field_name: field_rich_text
 entity_type: paragraph
-bundle: scrollmation_section
+bundle: scroll_section
 label: Text
 description: ''
 required: true

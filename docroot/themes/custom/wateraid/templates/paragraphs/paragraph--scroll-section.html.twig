@@ -48,12 +48,13 @@
 
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:scrollmation_section', {
+    {{ include('wateraid:scroll_section', {
       id: paragraph.id(),
       copy: content.field_rich_text,
       image: content.field_image,
       caption: content.field_caption,
       credit: content.field_credit,
+      variant: paragraph.parentEntity.field_scroll_variant.0.value,
     })
     }}
   </div>

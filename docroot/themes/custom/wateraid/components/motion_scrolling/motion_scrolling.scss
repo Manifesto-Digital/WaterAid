@@ -1,12 +1,12 @@
 @import "../../sass/base";
 
-.scrollmation {
+.motion-scrolling {
   min-height: 720px;
   backface-visibility: hidden;
   clip-path: inset(0 0 0 0);
   position: relative;
 
-  .paragraph--type--scrollmation-section {
+  .paragraph--type--scroll-section {
     .section__background {
       display: none;
       @include desktop {

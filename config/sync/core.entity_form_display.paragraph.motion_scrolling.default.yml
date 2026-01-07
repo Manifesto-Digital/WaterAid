@@ -3,18 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.scrollmation.field_section
-    - paragraphs.paragraphs_type.scrollmation
+    - field.field.paragraph.motion_scrolling.field_scroll_variant
+    - field.field.paragraph.motion_scrolling.field_section
+    - paragraphs.paragraphs_type.motion_scrolling
   module:
     - default_paragraphs
-id: paragraph.scrollmation.default
+id: paragraph.motion_scrolling.default
 targetEntityType: paragraph
-bundle: scrollmation
+bundle: motion_scrolling
 mode: default
 content:
+  field_scroll_variant:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_section:
     type: default_paragraphs
-    weight: 0
+    weight: 1
     region: content
     settings:
       title: Paragraph
@@ -29,7 +36,7 @@ content:
         add_above: 0
         convert: 0
       default_paragraph_types:
-        scrollmation_section:
+        scroll_section:
           edit_mode: closed
           weight: '0'
           value: 0

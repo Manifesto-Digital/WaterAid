@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_credit
-    - paragraphs.paragraphs_type.scrollmation_section
-id: paragraph.scrollmation_section.field_credit
+    - paragraphs.paragraphs_type.scroll_section
+id: paragraph.scroll_section.field_credit
 field_name: field_credit
 entity_type: paragraph
-bundle: scrollmation_section
+bundle: scroll_section
 label: Credit
 description: ''
 required: false

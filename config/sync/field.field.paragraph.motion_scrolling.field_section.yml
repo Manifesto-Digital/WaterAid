@@ -4,14 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_section
-    - paragraphs.paragraphs_type.scrollmation
-    - paragraphs.paragraphs_type.scrollmation_section
+    - paragraphs.paragraphs_type.motion_scrolling
+    - paragraphs.paragraphs_type.scroll_section
   module:
     - entity_reference_revisions
-id: paragraph.scrollmation.field_section
+id: paragraph.motion_scrolling.field_section
 field_name: field_section
 entity_type: paragraph
-bundle: scrollmation
+bundle: motion_scrolling
 label: Section
 description: ''
 required: true
@@ -22,7 +22,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      scrollmation_section: scrollmation_section
+      scroll_section: scroll_section
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -30,9 +30,6 @@ settings:
         enabled: false
       accordion_item:
         weight: 41
-        enabled: false
-      background_scrollmation:
-        weight: 42
         enabled: false
       call_to_action:
         weight: 43
@@ -103,6 +100,9 @@ settings:
       internal_card:
         weight: 65
         enabled: false
+      motion_scrolling:
+        weight: 70
+        enabled: false
       quote:
         weight: 66
         enabled: false
@@ -112,10 +112,7 @@ settings:
       rich_text:
         weight: 68
         enabled: false
-      scrollmation:
-        weight: 70
-        enabled: false
-      scrollmation_section:
+      scroll_section:
         weight: 69
         enabled: true
       spend:

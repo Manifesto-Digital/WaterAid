@@ -3,15 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.scrollmation.field_section
-    - paragraphs.paragraphs_type.scrollmation
+    - field.field.paragraph.motion_scrolling.field_scroll_variant
+    - field.field.paragraph.motion_scrolling.field_section
+    - paragraphs.paragraphs_type.motion_scrolling
   module:
     - entity_reference_revisions
-id: paragraph.scrollmation.default
+    - options
+id: paragraph.motion_scrolling.default
 targetEntityType: paragraph
-bundle: scrollmation
+bundle: motion_scrolling
 mode: default
 content:
+  field_scroll_variant:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_section:
     type: entity_reference_revisions_entity_view
     label: above
