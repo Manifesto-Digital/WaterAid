@@ -1,6 +1,7 @@
 label: Innehåll
 display:
   default:
+    display_title: Förvald
     display_options:
       title: Innehåll
       fields:

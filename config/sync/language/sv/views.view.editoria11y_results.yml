@@ -38,6 +38,7 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
+    display_title: Förvald
   block_recent_issues:
     display_options:
       fields:
