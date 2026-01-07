@@ -5,6 +5,8 @@
  * Install file for wateraid_donation feature module.
  */
 
+use Drupal\webform\Plugin\WebformHandlerMessageInterface;
+
 /**
  * Remove the legacy webforms that are no longer needed.
  */
@@ -154,4 +156,41 @@ function wateraid_donations_update_8002(): void {
   }
 
 //  throw new \Exception("Error out");
+}
+
+/**
+ * Enable email on all webforms.
+ */
+function wateraid_donations_update_8003(&$sandbox): void {
+  if (!isset($sandbox['webforms'])) {
+    $sandbox['webforms'] = \Drupal::entityTypeManager()->getStorage('webform')->getQuery()->execute();
+    $sandbox['max'] = count($sandbox['webforms']);
+    $sandbox['#finished'] = 0;
+  }
+
+  if ($id = array_pop($sandbox['webforms'])) {
+
+    /** @var \Drupal\webform\WebformInterface $webform */
+    if ($webform = \Drupal::entityTypeManager()->getStorage('webform')->load($id)) {
+      $enabled = FALSE;
+
+      foreach ($webform->getHandlers() as $handler) {
+        if ($handler instanceof WebformHandlerMessageInterface) {
+
+          if ($handler->isDisabled()) {
+
+            // Assume any disabled email handler needs to be enabled.
+            $handler->enable();
+            $enabled = TRUE;
+          }
+        }
+      }
+
+      if ($enabled) {
+        $webform->save();
+      }
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['webforms']) ? 1 : ($sandbox['max'] - count($sandbox['webforms'])) / $sandbox['max'];
 }
