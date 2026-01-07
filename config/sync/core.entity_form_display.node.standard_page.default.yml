@@ -71,7 +71,6 @@ third_party_settings:
     group_content:
       children:
         - field_resources
-        - field_force_download
         - field_content
         - field_search_phrases
       label: Content
@@ -106,13 +105,10 @@ third_party_settings:
         required_fields: true
     group_tags:
       children:
+        - field_age_range
         - field_get_involved
-        - field_country
-        - field_event_type
         - field_key_stages
-        - field_regions
         - field_subject_area
-        - field_theme
         - field_topic
       label: Tags
       region: content
@@ -161,6 +157,12 @@ content:
   created:
     type: datetime_timestamp
     weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_age_range:
+    type: options_select
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -345,7 +347,6 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
-  field_age_range: true
   publish_on: true
   publish_state: true
   unpublish_on: true
