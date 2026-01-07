@@ -17,7 +17,6 @@ source:
   plugin: node_source
   bundle: press_and_media_flexible
   fields:
-    - field_countries
     - field_meta_tags
     - field_themes
     - field_modules
@@ -41,11 +40,6 @@ process:
     plugin: migration_lookup
     migration: media_ug
     source: field_teaser_image
-    no_stub: true
-  field_country:
-    plugin: migration_lookup
-    migration: countries_ug
-    source: field_countries
     no_stub: true
   field_meta_tags: field_meta_tags
   field_theme:
@@ -108,7 +102,6 @@ destination:
 idMap: {  }
 migration_dependencies:
   required:
-    - countries_ug
     - themes_ug
     - users_ug
 include: null

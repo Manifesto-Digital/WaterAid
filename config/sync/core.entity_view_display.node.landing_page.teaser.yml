@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.landing_page.field_content
     - field.field.node.landing_page.field_hero
     - field.field.node.landing_page.field_metatags
+    - field.field.node.landing_page.field_minimal_header
     - field.field.node.landing_page.field_review_date
     - field.field.node.landing_page.field_search_phrases
     - field.field.node.landing_page.field_show_donation_reminder
@@ -55,6 +56,7 @@ hidden:
   field_content: true
   field_hero: true
   field_metatags: true
+  field_minimal_header: true
   field_review_date: true
   field_search_phrases: true
   field_show_donation_reminder: true

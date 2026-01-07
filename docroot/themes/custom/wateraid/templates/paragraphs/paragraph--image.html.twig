@@ -41,7 +41,15 @@
 {% set width = paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim %}
 {% set width = force_width ? force_width : width %}
 
+ {% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+ ] | sort | join(' ') | trim %}
+
 {% block paragraph %}
+<div class="{{ classes }}">
   {{ include('wateraid:image', {
     image: content.field_image,
     caption: paragraph.field_caption.value ? content.field_caption,
@@ -49,6 +57,7 @@
     width: width,
     caption_display: paragraph.field_caption_display.value ? content.field_caption_display|render|striptags|trim
   }, only) }}
+</div>
 {% endblock paragraph %}
 
 {% set catch_cache = content|render %}

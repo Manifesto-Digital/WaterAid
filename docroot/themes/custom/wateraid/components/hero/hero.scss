@@ -1,6 +1,8 @@
 @import "../../sass/base";
 
 .hero {
+  z-index: 1;
+
   &[data-component-id="wateraid:hero"] {
     margin-bottom: $wa-spacing-13;
     position: relative;
@@ -55,7 +57,9 @@
 
     div {
       display: flex;
+      flex: 1 1 100%;
     }
+
     video {
       width: 100%;
       height: 100%;
@@ -209,6 +213,8 @@
   &--basic,
   &--media,
   &--news {
+    background-color: $wa-white;
+
     .hero__content-wrapper {
       display: flex;
       gap: $wa-spacing-06;
@@ -344,7 +350,11 @@
     }
   }
 
-  &--story {
+  &--story[data-component-id="wateraid:hero"] {
+    position: relative;
+    background: white;
+    margin-bottom: 0;
+
     @include desktop {
       .hero__content {
         position: absolute;

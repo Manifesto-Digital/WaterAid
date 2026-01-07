@@ -11,7 +11,7 @@ entity_type: node
 bundle: webform
 label: 'Use donation menu behaviours'
 description: 'When enabled, the main menu will display in collapsed mode. Clicking the main site logo will also display a redirect prompt.'
-required: true
+required: false
 translatable: false
 default_value:
   -

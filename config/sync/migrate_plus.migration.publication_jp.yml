@@ -20,19 +20,14 @@ source:
     - field_audiences
     - field_author
     - field_countries
-    - field_link_placement
     - field_event_type
-    - field_force_download
-    - field_force_open
     - field_get_involved_terms
     - field_key_stage
     - field_meta_tags
-    - field_regions
     - field_subject_areas
     - field_themes
     - field_modules
     - field_publication_image
-    - field_documents
     - field_teaser_image
 process:
   langcode:
@@ -69,11 +64,6 @@ process:
       - '@temp_authors'
       - ''
       - created
-  field_documents:
-    plugin: migration_lookup
-    migration: documents_jp
-    source: field_documents
-    no_stub: true
   field_teaser_text: body__summary
   field_teaser_image:
     plugin: migration_lookup
@@ -90,14 +80,11 @@ process:
     migration: countries_jp
     source: field_countries
     no_stub: true
-  field_download_link_placement: field_link_placement
   field_event_type:
     plugin: migration_lookup
     migration: event_types_jp
     source: field_event_type
     no_stub: true
-  field_force_download: field_force_download
-  field_force_open: field_force_open
   field_get_involved:
     plugin: migration_lookup
     migration: get_involved_jp
@@ -105,7 +92,6 @@ process:
     no_stub: true
   field_key_stages: field_key_stage
   field_meta_tags: field_meta_tags
-  field_regions: field_regions
   field_subject_area:
     plugin: migration_lookup
     migration: subject_areas_jp

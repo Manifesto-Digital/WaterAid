@@ -1,0 +1,11 @@
+uuid: 86aa5ceb-028d-41d5-981e-e4b7eabd77b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_no_tags
+label: 'Teaser (No Tags)'
+description: 'A similar display as the Teaser only without any tag pills.'
+targetEntityType: node
+cache: true

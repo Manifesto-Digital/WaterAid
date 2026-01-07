@@ -1,18 +1,18 @@
-uuid: ec01ddc4-3ea1-4199-b022-f7d95e4902f0
+uuid: 7a677fac-d665-4bce-bd11-e9ce1c4ab005
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_regions
+    - field.storage.node.field_age_range
     - node.type.standard_page
   module:
     - options
-id: node.standard_page.field_regions
-field_name: field_regions
+id: node.standard_page.field_age_range
+field_name: field_age_range
 entity_type: node
 bundle: standard_page
-label: Regions
-description: ''
+label: Age
+description: 'Select the age range this content is suitable for.'
 required: false
 translatable: false
 default_value: {  }

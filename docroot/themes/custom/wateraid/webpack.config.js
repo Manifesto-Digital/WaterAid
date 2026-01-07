@@ -45,6 +45,7 @@ module.exports = {
     'components/spend/spend': ['./components/spend/spend.scss'],
     'components/statistics/statistics': ['./components/statistics/statistics.scss'],
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
+    'components/text_over_media/text_over_media': ['./components/text_over_media/text_over_media.scss'],
     'components/video/video': ['./components/video/video.scss'],
     'components/scrollmation/scrollmation': ['./components/scrollmation/scrollmation.scss'],
     'components/scrollmation_section/scrollmation_section': ['./components/scrollmation_section/scrollmation_section.scss'],

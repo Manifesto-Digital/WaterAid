@@ -5,6 +5,8 @@
 ] %}
 
 <div {{ attributes.addClass(hero_classes) }}>
+  {# attributes are passed to children so we must clear them here #}
+  {% set attributes = attributes.removeClass(hero_classes) %}
   {% if mobile_image|render %}
     <div class="hero__image hero__image--mobile">
       {{ include('wateraid:image', {
@@ -33,26 +35,28 @@
     <div class="hero__video">
       {{ video }}
 
-      <div class="hero__video--play">
-        {{ include('wateraid:button', {
-          text: 'Play video',
-          link: '',
-          id: 'hero-play-button',
-          type: 'icon',
-          icon: 'wa-utility-play',
-          theme: 'dark',
-        }) }}
-      </div>
-      <div class="hero__video--pause">
-        {{ include('wateraid:button', {
-          text: 'Pause video',
-          link: '',
-          id: 'hero-pause-button',
-          type: 'icon',
-          icon: 'wa-utility-pause',
-          theme: 'dark',
-        }) }}
-      </div>
+      {% if video[0]['#media'].bundle() != 'remote_video' %}
+        <div class="hero__video--play">
+          {{ include('wateraid:button', {
+            text: 'Play video',
+            link: '',
+            id: 'hero-play-button',
+            type: 'icon',
+            icon: 'wa-utility-play',
+            theme: 'dark',
+          }) }}
+        </div>
+        <div class="hero__video--pause">
+          {{ include('wateraid:button', {
+            text: 'Pause video',
+            link: '',
+            id: 'hero-pause-button',
+            type: 'icon',
+            icon: 'wa-utility-pause',
+            theme: 'dark',
+          }) }}
+        </div>
+      {% endif %}
     </div>
   {% endif %}
   <div class="hero__content">
