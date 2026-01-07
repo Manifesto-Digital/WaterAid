@@ -5,7 +5,10 @@
  * Primary module hooks for WaterAid Group module.
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\group\Entity\GroupRelationship;
 
@@ -36,4 +39,48 @@ function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_st
       '@url' => $group_list_url,
     ])
   );
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function wateraid_group_entity_insert(EntityInterface $entity) {
+  wateraid_group_maybe_reset_language_map($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function wateraid_group_entity_update(EntityInterface $entity) {
+  wateraid_group_maybe_reset_language_map($entity);
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function wateraid_group_entity_delete(EntityInterface $entity) {
+  wateraid_group_maybe_reset_language_map($entity);
+}
+
+/**
+ * Clears the cached group language map when relevant entities change.
+ */
+function wateraid_group_maybe_reset_language_map(EntityInterface $entity): void {
+  if ($entity->getEntityTypeId() !== 'group') {
+    return;
+  }
+  if ($entity->bundle() !== 'wateraid_site') {
+    return;
+  }
+
+  \Drupal::service('wateraid_group.group_language_map')->reset();
+}
+
+/**
+ * Implements hook_language_types_info_alter().
+ */
+function wateraid_group_language_types_info_alter(array &$language_types): void {
+  $language_types[LanguageInterface::TYPE_URL]['name'] = new TranslatableMarkup('URL language');
+  $language_types[LanguageInterface::TYPE_URL]['description'] = new TranslatableMarkup('Language detected from URL path segments.');
+  $language_types[LanguageInterface::TYPE_URL]['locked'] = FALSE;
 }
