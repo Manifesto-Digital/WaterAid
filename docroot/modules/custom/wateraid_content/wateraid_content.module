@@ -213,6 +213,16 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
     wateraid_content_update_field_widget($form, ['field_video'], 'field_hero_variant', 'hero_with_video', 'visible');
     wateraid_content_update_field_widget($form, ['field_image', 'field_caption', 'field_credit'], 'field_hero_variant', 'hero_with_image', 'visible');
   }
+
+  if (isset($form['field_focal_point'])) {
+    $form['#attached']['library'][] = 'wateraid_content/focal_point';
+  }
+  // echo '<pre>';
+  // die(var_dump(
+  //   array_keys($form),
+  //   $form['#form_id'],
+  //   $form['form_id'],
+  // ));
 }
 
 /**

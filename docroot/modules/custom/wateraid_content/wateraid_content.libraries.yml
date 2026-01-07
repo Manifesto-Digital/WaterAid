@@ -1,3 +1,20 @@
 hero:
   js:
     js/hero.js: {}
+
+# focal_point:
+#   js:
+#     https://unpkg.com/react-umd/dist/react.umd.js: { minified: false, weight: -20 }
+#     https://unpkg.com/react-umd/dist/react-dom.umd.js: { minified: false, weight: -19 }
+#     /themes/custom/wateraid/node_modules/@lemoncode/react-image-focal-point/dist/react-image-focal-point.cjs.js: {
+#       minified: false,
+#       weight: -18,
+#       type: module
+#     }
+#     js/focal-point.js: {}
+#   css:
+#     theme:
+#       /themes/custom/wateraid/node_modules/@lemoncode/react-image-focal-point/dist/style.css: {}
+#   dependencies:
+#     - core/drupal
+#     - core/once

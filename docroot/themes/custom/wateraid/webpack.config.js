@@ -47,6 +47,7 @@ module.exports = {
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
     'components/text_over_media/text_over_media': ['./components/text_over_media/text_over_media.scss'],
     'components/video/video': ['./components/video/video.scss'],
+    'components/focal_point/focal_point': ['./components/focal_point/focal_point.jsx'],
   },
   output: {
     filename: 'js/[name].js',
@@ -86,7 +87,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -158,7 +159,7 @@ module.exports = {
     modules: [
       path.join(__dirname, 'node_modules'),
     ],
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
   },
   plugins: [
     new RemoveEmptyScriptsPlugin(),
