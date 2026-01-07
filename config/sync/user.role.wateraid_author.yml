@@ -7,6 +7,13 @@ dependencies:
     - filter.format.full_html
     - filter.format.restricted_html
     - group.type.wateraid_site
+    - media.type.dam_file
+    - media.type.dam_image
+    - media.type.dam_video
+    - media.type.local_file
+    - media.type.local_image
+    - media.type.local_video
+    - media.type.remote_video
     - node.type.article
     - node.type.donation
     - node.type.event
@@ -26,6 +33,7 @@ dependencies:
     - content_moderation
     - content_translation
     - filter
+    - group
     - group_content_menu
     - media
     - menu_link_content
@@ -36,17 +44,20 @@ dependencies:
     - preview_link
     - quick_node_clone
     - redirect
+    - shorthand
     - system
-    - wateraid_core
+    - toolbar
 id: wateraid_author
 label: 'WaterAid Author'
-weight: -8
+weight: -7
 is_admin: null
 permissions:
   - 'access administration pages'
   - 'access content overview'
-  - 'access nodes directly'
+  - 'access group overview'
+  - 'access shorthand story overview'
   - 'access site in maintenance mode'
+  - 'access toolbar'
   - 'administer redirects'
   - 'change own username'
   - 'clone article content'
@@ -73,6 +84,9 @@ permissions:
   - 'clone webform content'
   - 'create article content'
   - 'create basic block content'
+  - 'create dam_file media'
+  - 'create dam_image media'
+  - 'create dam_video media'
   - 'create donation content'
   - 'create event content'
   - 'create landing_page content'
@@ -98,6 +112,7 @@ permissions:
   - 'delete own standard_page content'
   - 'delete own story content'
   - 'delete own webform content'
+  - 'download shorthand content'
   - 'edit any article content'
   - 'edit any basic block content'
   - 'edit any donation content'
@@ -114,12 +129,19 @@ permissions:
   - 'edit co-authors of co-authored content'
   - 'edit co-authors of own content'
   - 'edit own article content'
+  - 'edit own dam_file media'
+  - 'edit own dam_image media'
+  - 'edit own dam_video media'
   - 'edit own donation content'
   - 'edit own event content'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
+  - 'edit own local_file media'
+  - 'edit own local_image media'
+  - 'edit own local_video media'
   - 'edit own page content'
   - 'edit own publication content'
+  - 'edit own remote_video media'
   - 'edit own shorthand_story content'
   - 'edit own standard_page content'
   - 'edit own story content'
