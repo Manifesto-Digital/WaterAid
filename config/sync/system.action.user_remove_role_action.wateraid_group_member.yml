@@ -1,0 +1,14 @@
+uuid: 3fafd88d-b85b-4ba6-bc31-3d614c84a960
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wateraid_group_member
+  module:
+    - user
+id: user_remove_role_action.wateraid_group_member
+label: 'Remove the WaterAid Group Member role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wateraid_group_member

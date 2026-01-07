@@ -1,0 +1,14 @@
+uuid: 31fb31a7-9db3-43d1-979e-31b5fe5ea604
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wateraid_group_member
+  module:
+    - user
+id: user_add_role_action.wateraid_group_member
+label: 'Add the WaterAid Group Member role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wateraid_group_member
