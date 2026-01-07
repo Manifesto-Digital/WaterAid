@@ -16,22 +16,34 @@
 
     &:first-of-type {
       .section__background {
-        display: block;
+        opacity: 1;
+      }
+
+      .section__image {
+        opacity: 1;
       }
 
       .image__button {
-        bottom: 80px;
+        bottom: $wa-spacing-02;
         @include desktop {
           display: block;
         }
       }
 
-      .section__copy {
-        padding-top: 24px;
+      .section--background .section__copy {
+        padding-top: $wa-spacing-06;
         margin-top: -72px;
         @include desktop {
-          padding-top: 48px;
+          padding-top: $wa-spacing-09;
           margin-top: 0;
+        }
+      }
+
+      .section__container {
+        display: flex;
+        flex-direction: column-reverse;
+        @include desktop {
+          flex-direction: row;
         }
       }
     }
@@ -53,11 +65,11 @@
         margin-top: 0;
       }
 
-      .section__copy {
-        padding-bottom: 24px;
-        margin-bottom: -72px;
+      .section--background .section__copy {
+        padding-bottom: $wa-spacing-06;
+        margin-bottom: -$wa-spacing-12;
         @include desktop {
-          padding-bottom: 48px;
+          padding-bottom: $wa-spacing-09;
           margin-bottom: 0;
         }
       }

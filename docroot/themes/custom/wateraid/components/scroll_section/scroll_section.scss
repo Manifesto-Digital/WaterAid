@@ -8,7 +8,7 @@
     opacity: 0.9;
     color: $wa-white;
     max-width: 660px;
-    padding: 0 24px;
+    padding: 0 $wa-spacing-06;
     z-index: 1;
     position: relative;
 
@@ -59,8 +59,8 @@
     .image__button {
       position: fixed;
       top: calc(100% - 36px);
-      right: 52px;
-      width: 40px;
+      right: calculate-rem(52);
+      width: $wa-spacing-08;
     }
 
     .image__caption {
@@ -71,8 +71,8 @@
 
     .section__copy {
       height: 100%;
-      margin-left: 48px;
-      padding: 0 48px;
+      margin-left: $wa-spacing-09;
+      padding: 0 $wa-spacing-09;
     }
 
     &.active {
@@ -84,8 +84,43 @@
 
   &--two-column {
     .section__container {
-      display: flex;
+      max-width: 1440px;
+      margin: 0 auto;
+
+      @include tablet {
+        padding-left: $wa-spacing-05;
+        padding-right: $wa-spacing-05;
+      }
+      @include desktop {
+        display: flex;
+        padding-left: $wa-spacing-09;
+        padding-right: $wa-spacing-09;
+      }
     }
 
+    @include desktop {
+      .section__copy {
+        width: 660px;
+        max-width: 60%;
+      }
+      .section__image {
+        position: absolute;
+        max-width: 40%;
+        right: $wa-spacing-08;
+      }
+
+      .image {
+        position: sticky;
+        margin-bottom: $wa-spacing-08;
+        top: $wa-spacing-08;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      &.active {
+        .image {
+          opacity: 1;
+        }
+      }
+    }
   }
 }

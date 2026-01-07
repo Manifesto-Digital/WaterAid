@@ -47,8 +47,8 @@ module.exports = {
     'components/text_media/text_media': ['./components/text_media/text_media.scss'],
     'components/text_over_media/text_over_media': ['./components/text_over_media/text_over_media.scss'],
     'components/video/video': ['./components/video/video.scss'],
-    'components/scrollmation/scrollmation': ['./components/scrollmation/scrollmation.scss'],
-    'components/scrollmation_section/scrollmation_section': ['./components/scrollmation_section/scrollmation_section.scss'],
+    'components/motion_scrolling/motion_scrolling': ['./components/motion_scrolling/motion_scrolling.scss'],
+    'components/scroll_section/scroll_section': ['./components/scroll_section/scroll_section.scss'],
   },
   output: {
     filename: 'js/[name].js',

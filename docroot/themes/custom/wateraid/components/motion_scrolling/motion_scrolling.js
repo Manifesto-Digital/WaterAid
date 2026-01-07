@@ -2,16 +2,17 @@
   Drupal.behaviors.motionScrolling = {
     attach: function (context) {
       const sections = context.querySelectorAll(".section");
-      sections[0].classList.add("active");
-
-      // 1. Set initial height
-      const setHeight = () => {
+      if (sections[0]) {
+        sections[0].classList.add("active");
+      }
+      // Set section initial height
+      const setSectionHeight = () => {
         sections.forEach((section) => {
           section.style.height = `${section.offsetHeight}px`;
         });
       };
 
-      setHeight();
+      setSectionHeight();
 
       // 2. Efficiently track active section using Intersection Observer
       const observerOptions = {
@@ -37,9 +38,30 @@
 
       sections.forEach((section) => observer.observe(section));
 
-      // Optional: Update heights if the window is resized
-      window.addEventListener("resize", setHeight);
+      // Set scroll height on desktop
+      const setScrollHeight = () => {
+        const twoColumns = document.querySelectorAll(
+          ".motion-scrolling--two-column",
+        );
+        let width = document.body.clientWidth;
 
+        if (twoColumns && width > 1024) {
+          twoColumns.forEach((component) => {
+            const sectionImages = component.querySelectorAll(".section__image");
+            console.log(sectionImages);
+            console.log(component.offsetHeight);
+            sectionImages.forEach((image) => {
+              image.style.height = `${component.offsetHeight}px`;
+            });
+          });
+        }
+      };
+
+      setScrollHeight();
+
+      // Optional: Update heights if the window is resized
+      window.addEventListener("resize", setSectionHeight);
+      window.addEventListener("resize", setScrollHeight);
     },
   };
 })(Drupal);

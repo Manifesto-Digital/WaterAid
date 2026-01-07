@@ -48,8 +48,9 @@
 
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:motion_scroll', {
+    {{ include('wateraid:motion_scrolling', {
       sections: content.field_section|children,
+      variant: paragraph.field_scroll_variant.value,
     })
     }}
   </div>
