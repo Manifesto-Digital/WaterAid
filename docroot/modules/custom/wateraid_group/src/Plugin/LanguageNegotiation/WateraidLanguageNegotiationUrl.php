@@ -55,7 +55,7 @@ class WateraidLanguageNegotiationUrl extends LanguageNegotiationUrl implements I
    */
   public function getLangcode(?Request $request = NULL) {
 
-   if (!$request) {
+    if (!$request) {
       return parent::getLangcode($request);
     }
 
@@ -134,7 +134,6 @@ class WateraidLanguageNegotiationUrl extends LanguageNegotiationUrl implements I
     }
 
     $target_language = $this->resolveTargetLanguageFromOptions($options, $group_data);
-
 
     // Prevent the parent from prepending the language prefix globally.
     unset($options['prefix']);

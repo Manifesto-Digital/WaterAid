@@ -8,9 +8,7 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
-use Drupal\group\Entity\GroupRelationship;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
@@ -80,7 +78,7 @@ function wateraid_group_maybe_reset_language_map(EntityInterface $entity): void 
  * Implements hook_language_types_info_alter().
  */
 function wateraid_group_language_types_info_alter(array &$language_types): void {
-  $language_types[LanguageInterface::TYPE_URL]['name'] = new TranslatableMarkup('URL language');
-  $language_types[LanguageInterface::TYPE_URL]['description'] = new TranslatableMarkup('Language detected from URL path segments.');
+  $language_types[LanguageInterface::TYPE_URL]['name'] = t('URL language');
+  $language_types[LanguageInterface::TYPE_URL]['description'] = t('Language detected from URL path segments.');
   $language_types[LanguageInterface::TYPE_URL]['locked'] = FALSE;
 }
