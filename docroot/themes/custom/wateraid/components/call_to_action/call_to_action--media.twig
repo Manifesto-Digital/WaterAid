@@ -22,26 +22,28 @@
     <div class="cta__video">
       {{ video }}
 
-      <div class="cta__video--play">
-        {{ include('wateraid:button', {
-          text: 'Play video',
-          link: '',
-          id: 'cta-play-button',
-          type: 'icon',
-          icon: 'wa-utility-play',
-          theme: 'dark',
-        }) }}
-      </div>
-      <div class="cta__video--pause">
-        {{ include('wateraid:button', {
-          text: 'Pause video',
-          link: '',
-          id: 'cta-pause-button',
-          type: 'icon',
-          icon: 'wa-utility-pause',
-          theme: 'dark',
-        }) }}
-      </div>
+      {% if video[0]['#media'].bundle() != 'remote_video' %}
+        <div class="cta__video--play">
+          {{ include('wateraid:button', {
+            text: 'Play video',
+            link: '',
+            id: 'cta-play-button',
+            type: 'icon',
+            icon: 'wa-utility-play',
+            theme: 'dark',
+          }) }}
+        </div>
+        <div class="cta__video--pause">
+          {{ include('wateraid:button', {
+            text: 'Pause video',
+            link: '',
+            id: 'cta-pause-button',
+            type: 'icon',
+            icon: 'wa-utility-pause',
+            theme: 'dark',
+          }) }}
+        </div>
+      {% endif %}
     </div>
   {% endif %}
 
