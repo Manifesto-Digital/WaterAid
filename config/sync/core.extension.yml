@@ -70,6 +70,7 @@ module:
   locale: 0
   loqate: 0
   loqate_email: 0
+  mailer_transport: 0
   masquerade: 0
   maxlength: 0
   media: 0
@@ -121,6 +122,7 @@ module:
   storybook: 0
   svg_image: 0
   svg_image_field: 0
+  symfony_mailer: 0
   system: 0
   taxonomy: 0
   text: 0

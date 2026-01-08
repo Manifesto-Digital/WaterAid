@@ -12,6 +12,7 @@ dependencies:
     - media.type.dam_video
     - media.type.donation_icon_library
     - media.type.icon_library
+    - media.type.local_file
     - media.type.local_image
     - media.type.local_video
     - media.type.remote_video
@@ -44,6 +45,7 @@ dependencies:
     - currency
     - editoria11y
     - entity_usage
+    - file
     - filter
     - group
     - group_content_menu
@@ -63,13 +65,12 @@ dependencies:
     - system
     - taxonomy
     - toolbar
-    - wateraid_core
     - wateraid_donations
     - webform
     - webform_node
 id: wateraid_super_admin
 label: 'WaterAid Super Admin'
-weight: -6
+weight: -5
 is_admin: null
 permissions:
   - 'access administration pages'
@@ -79,9 +80,9 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access entity usage statistics'
+  - 'access files overview'
   - 'access group overview'
   - 'access media overview'
-  - 'access nodes directly'
   - 'access own webform configuration'
   - 'access shorthand story overview'
   - 'access site in maintenance mode'
@@ -184,6 +185,7 @@ permissions:
   - 'delete any icon_library media revisions'
   - 'delete any landing_page content'
   - 'delete any listing_page content'
+  - 'delete any local_file media revisions'
   - 'delete any local_image media'
   - 'delete any local_image media revisions'
   - 'delete any local_video media'
@@ -259,6 +261,7 @@ permissions:
   - 'edit any icon_library media'
   - 'edit any landing_page content'
   - 'edit any listing_page content'
+  - 'edit any local_file media'
   - 'edit any local_image media'
   - 'edit any local_video media'
   - 'edit any page content'
@@ -285,6 +288,7 @@ permissions:
   - 'edit own icon_library media'
   - 'edit own landing_page content'
   - 'edit own listing_page content'
+  - 'edit own local_file media'
   - 'edit own local_image media'
   - 'edit own local_video media'
   - 'edit own page content'
@@ -317,6 +321,7 @@ permissions:
   - 'revert any dam_video media revisions'
   - 'revert any donation_icon_library media revisions'
   - 'revert any icon_library media revisions'
+  - 'revert any local_file media revisions'
   - 'revert any local_image media revisions'
   - 'revert any local_video media revisions'
   - 'revert any remote_video media revisions'
@@ -370,6 +375,7 @@ permissions:
   - 'view any dam_video media revisions'
   - 'view any donation_icon_library media revisions'
   - 'view any icon_library media revisions'
+  - 'view any local_file media revisions'
   - 'view any local_image media revisions'
   - 'view any local_video media revisions'
   - 'view any remote_video media revisions'

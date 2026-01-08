@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a summary of a webform settings handler.
+ *
+ * Available variables:
+ * - settings: The current configuration for this debug handler.
+ * - handler: The settings handler.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if settings.debug %}<strong class="color-error">{{ 'Debugging is enabled'|t }}</strong><br />{% endif %}
+{% for setting in settings.options_modifier %}
+  {% if setting.source_field %}
+    <p>
+      <b>{{ setting.source_field }}:</b> {{ setting.value }}<br /> {{ setting.action }} - {{ setting.option }}
+    </p>
+  {% endif %}
+{% endfor %}

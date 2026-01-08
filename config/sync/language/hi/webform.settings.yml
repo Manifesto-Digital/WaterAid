@@ -11,6 +11,8 @@ settings:
   dialog_options:
     narrow:
       title: संकीर्ण
+    normal:
+      title: सामान्य
     wide:
       title: चौड़ा
 element:

@@ -1,9 +1,12 @@
 display:
   default:
+    display_title: Förvald
     display_options:
       fields:
         type:
           label: Type
+        message:
+          label: Meddelande
         name:
           label: Användare
         link:

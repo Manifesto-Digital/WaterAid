@@ -51,6 +51,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
     $elements = [];
 
     $elements['impact_statistics'] = [
+      '#title' => t('Impact Statistics'),
       '#type' => 'container',
       '#attributes' => [
         'class' => [
