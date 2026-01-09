@@ -1,0 +1,7 @@
+name: Cloudflare Redirect
+type: module
+description: Handle the Global site redirects to regional sites.
+core_version_requirement: ^10 || ^11
+package: WaterAid
+dependencies:
+  - drupal:page_cache
