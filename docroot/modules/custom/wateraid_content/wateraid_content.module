@@ -258,8 +258,10 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
 
   // Only get published nodes.
   $query = \Drupal::database()->select('node_field_data', 'n')
-    ->fields('n', ['nid']);
+    ->fields('n', ['nid', 'created']);
   $query->condition('n.status', 1);
+  $query->groupBy('n.nid');
+  $query->groupBy('n.created');
 
   if ($group = \Drupal::routeMatch()->getParameter('group')) {
     $query->leftJoin('group_relationship_field_data', 'g', 'n.nid = entity_id AND g.gid = ' . $group->id());
@@ -286,7 +288,9 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
 
   if ($event_sort) {
     $query->leftJoin('node__field_event_start_date', 'es', 'n.nid = es.entity_id');
+    $query->addField('es', 'field_event_start_date_value');
     $query->orderBy('es.field_event_start_date_value');
+    $query->groupBy('es.field_event_start_date_value');
 
     $or = $query->orConditionGroup();
     $or->isNull('es.field_event_start_date_value');
@@ -294,7 +298,6 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
     $now = new DrupalDateTime();
     $or->condition('es.field_event_start_date_value', $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT), '>=');
     $query->condition($or);
-
   }
 
   $query->orderBy('n.created', 'DESC');
@@ -317,10 +320,10 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
       $values = explode(', ', $paragraph->get($field)->getString());
       $node_field = ($field == 'field_themes') ? 'field_theme' : $field;
 
-      $query->leftJoin('node__' . $node_field, $field, $field . '.entity_id = n.nid');
-
-      foreach ($values as $value) {
-        $conditions->condition($field . '.' . $node_field . '_target_id', $value);
+      foreach ($values as $key => $value) {
+        $alias = $field . $key;
+        $query->leftJoin('node__' . $node_field, $alias, $alias . '.entity_id = n.nid');
+        $conditions->condition($alias . '.' . $node_field . '_target_id', $value);
       }
     }
   }

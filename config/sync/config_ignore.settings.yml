@@ -3,4 +3,5 @@ _core:
 mode: simple
 ignored_config_entities:
   - 'key.key.*'
+  - 'system.site:mail'
   - 'webform.webform.*'
