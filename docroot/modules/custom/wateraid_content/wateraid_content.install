@@ -115,3 +115,38 @@ function wateraid_content_update_10004(): void {
 
   \Drupal::logger('wateraid_content')->info('Updated @count donation_widget paragraphs with new field values.', ['@count' => count($paragraphs)]);
 }
+
+/**
+ * Delete historic values from the database for deleted fields.
+ */
+function wateraid_content_update_10005(&$sandbox): void {
+  if (!isset($sandbox['ids'])) {
+    $sandbox['ids'] = \Drupal::entityTypeManager()->getStorage('node_type')->getQuery()->execute();
+    $sandbox['max'] = count($sandbox['ids']);
+    $sandbox['#finished'] = 0;
+  }
+
+  if ($id = array_pop($sandbox['ids'])) {
+    if ($fields = \Drupal::service('entity_field.manager')->getFieldDefinitions('node', $id)) {
+      foreach ([
+        'field_audience',
+        'field_get_involved',
+        'field_country',
+        'field_event_type',
+        'field_subject_area',
+        'field_theme',
+        'field_topic',
+      ] as $field) {
+        if (!array_key_exists($field, $fields)) {
+          foreach (['node__', 'node_revision__'] as $table) {
+            \Drupal::database()->delete($table . $field)
+              ->condition('bundle', $id)
+              ->execute();
+          }
+        }
+      }
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
