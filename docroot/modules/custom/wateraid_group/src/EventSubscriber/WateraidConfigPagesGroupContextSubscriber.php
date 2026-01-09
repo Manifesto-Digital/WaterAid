@@ -24,6 +24,7 @@ final class WateraidConfigPagesGroupContextSubscriber implements EventSubscriber
    * Constructs a WateraidConfigPagesGroupContextSubscriber instance.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
    */
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManager,
