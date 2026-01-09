@@ -1,0 +1,8 @@
+uuid: a8595cad-5f16-4b61-b9ba-14fafe26171c
+langcode: en
+status: true
+dependencies: {  }
+id: wateraid_fixed_donation
+label: 'WaterAid fixed donation'
+locked: false
+pattern: d/m/Y

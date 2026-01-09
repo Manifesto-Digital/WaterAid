@@ -277,7 +277,7 @@
             errorLabel.className = 'error';
             errorLabel.setAttribute('for', 'donate_submit');
             errorLabel.setAttribute('role', 'alert');
-            errorLabel.textContent = Drupal.t('Please enter a minimum amount of £2 for monthly donations.');
+            errorLabel.textContent = Drupal.t('Please enter a value greater than or equal to ') + `${minDonationAmount}.`;
             submitButton.parentNode.after(errorLabel);
             submitButton.classList.add('error');
 

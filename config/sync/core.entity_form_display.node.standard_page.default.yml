@@ -3,23 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
-    - field.field.node.standard_page.field_country
-    - field.field.node.standard_page.field_event_type
-    - field.field.node.standard_page.field_force_download
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_metatags
     - field.field.node.standard_page.field_minimal_header
-    - field.field.node.standard_page.field_regions
     - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
-    - field.field.node.standard_page.field_theme
     - field.field.node.standard_page.field_topic
     - node.type.standard_page
     - workflows.workflow.editorial
@@ -75,7 +71,6 @@ third_party_settings:
     group_content:
       children:
         - field_resources
-        - field_force_download
         - field_content
         - field_search_phrases
       label: Content
@@ -110,13 +105,10 @@ third_party_settings:
         required_fields: true
     group_tags:
       children:
+        - field_age_range
         - field_get_involved
-        - field_country
-        - field_event_type
         - field_key_stages
-        - field_regions
         - field_subject_area
-        - field_theme
         - field_topic
       label: Tags
       region: content
@@ -147,6 +139,23 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+    group_review_date:
+      children:
+        - field_review_date
+      label: 'Review Date'
+      region: content
+      parent_name: ''
+      weight: 90
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
+        weight: 0
 id: node.standard_page.default
 targetEntityType: node
 bundle: standard_page
@@ -168,6 +177,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_age_range:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_content:
     type: layout_paragraphs
     weight: 10
@@ -179,33 +194,6 @@ content:
       nesting_depth: 0
       require_layouts: 0
       empty_message: ''
-    third_party_settings: {  }
-  field_country:
-    type: entity_reference_autocomplete
-    weight: 11
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_event_type:
-    type: entity_reference_autocomplete
-    weight: 12
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_force_download:
-    type: boolean_checkbox
-    weight: 9
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
@@ -249,12 +237,6 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
-  field_regions:
-    type: options_select
-    weight: 14
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_resources:
     type: link_default
@@ -307,16 +289,6 @@ content:
         maxlength_js: 160
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
-  field_theme:
-    type: entity_reference_autocomplete
-    weight: 16
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_topic:
     type: entity_reference_autocomplete
     weight: 17
@@ -391,6 +363,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   publish_on: true
   publish_state: true
   unpublish_on: true

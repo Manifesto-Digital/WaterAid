@@ -35,6 +35,24 @@ function wateraid_donation_forms_theme(): array {
         'uri' => NULL,
       ],
     ],
+    'webform_handler_wateraid_email_summary' => [
+      'variables' => [
+        'settings' => NULL,
+        'handler' => [],
+      ],
+    ],
+    'webform_handler_flexible_options_modifier_summary' => [
+      'variables' => [
+        'settings' => NULL,
+        'handler' => [],
+      ],
+    ],
+    'webform_handler_azure_blob_storage_handler_summary' => [
+      'variables' => [
+        'settings' => NULL,
+        'handler' => [],
+      ],
+    ],
   ];
 }
 

@@ -858,3 +858,21 @@ if ($cdn_domain) {
   $config['cdn.settings']['status'] = TRUE;
   $config['cdn.settings']['mapping']['domain'] = $cdn_domain;
 }
+
+/**
+ * Migrated from old site.
+ *
+ * Override the symfony_mailer sendmail command to use the -t flag.
+ *
+ * Acquia does not support -bs and even though Symfony does not recommend using -t as
+ * "you won't have error reporting and Bcc headers won't be removed", we were already using
+ * this flag with swiftmailer so this override is simply retaining the existing
+ * behaviour before the migration to symfony_mailer.
+ *
+ * References:
+ * - Acquia: https://docs.acquia.com/cloud-platform/manage/platform-email/faq/#id9
+ * - Symfony: https://symfony.com/doc/current/mailer.html#using-built-in-transports
+ */
+$settings['mailer_sendmail_commands'] = [
+  '/usr/sbin/sendmail -t',
+];
