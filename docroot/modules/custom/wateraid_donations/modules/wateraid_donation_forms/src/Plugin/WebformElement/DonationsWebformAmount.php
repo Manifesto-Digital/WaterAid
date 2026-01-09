@@ -121,15 +121,15 @@ class DonationsWebformAmount extends WebformCompositeBase {
     $value = $this->prepareFormattedItemValue($this->getValue($element, $webform_submission));
 
     $items = [];
-    $items['donation_frequency'] = (string) $this->t('<em>Frequency:</em> @value', ['@value' => $value['frequency']]);
-    $items['donation_amount'] = (string) $this->t('<em>Amount:</em> @value', ['@value' => $value['amount']]);
-    $items['donation_currency'] = (string) $this->t('<em>Currency:</em> @value', ['@value' => $value['currency']]);
+    $items['donation_frequency'] = (string) $this->t('Frequency: @value', ['@value' => $value['frequency']]);
+    $items['donation_amount'] = (string) $this->t('Amount: @value', ['@value' => $value['amount']]);
+    $items['donation_currency'] = (string) $this->t('Currency: @value', ['@value' => $value['currency']]);
 
     /** @var \Drupal\wateraid_donation_forms\DonationServiceInterface $donation_service */
     $donation_service = \Drupal::service('wateraid_donation_forms.donation');
 
     if ($end_date = $donation_service->getFixedPeriodDateEnd($webform_submission)) {
-      $items['donation_duration'] = (string) $this->t('<em>Duration:</em> @value months (Last payment: @end_date)', [
+      $items['donation_duration'] = (string) $this->t('Duration: @value months (Last payment: @end_date)', [
         '@value' => $value['duration'],
         '@end_date' => $end_date->format('d/m/Y'),
       ]);

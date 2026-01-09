@@ -68,7 +68,7 @@ class DonationsWebformPayment extends WebformCompositeBase {
     // Making the payment method more human-readable.
     $payment_methods = $value['payment_methods'];
     $payment_methods = ucfirst(str_replace('_', ' ', $payment_methods));
-    $items['payment_method'] = (string) $this->t('<em>Method:</em> @value', ['@value' => $payment_methods]);
+    $items['payment_method'] = (string) $this->t('Method: @value', ['@value' => $payment_methods]);
     return $items;
   }
 
