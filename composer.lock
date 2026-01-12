@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f5c9fc53b59da4eb3fc581cebc84f35",
+    "content-hash": "4a04c434438a4cc8af97b1750603ef7d",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -8750,17 +8750,17 @@
         },
         {
             "name": "drupal/shorthand",
-            "version": "5.0.0-beta1",
+            "version": "5.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/shorthand.git",
-                "reference": "5.0.0-beta1"
+                "reference": "5.0.0-rc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/shorthand-5.0.0-beta1.zip",
-                "reference": "5.0.0-beta1",
-                "shasum": "9b9dbd0bb40e1f4e15b80bb3b842222042f491d5"
+                "url": "https://ftp.drupal.org/files/projects/shorthand-5.0.0-rc1.zip",
+                "reference": "5.0.0-rc1",
+                "shasum": "fee99f415208043cddfe73b86b438290880b5f05"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11.0"
@@ -8771,11 +8771,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "5.0.0-beta1",
-                    "datestamp": "1756651934",
+                    "version": "5.0.0-rc1",
+                    "datestamp": "1764511511",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -22472,7 +22472,7 @@
         "drupal/media_directories": 10,
         "drupal/preview_link": 15,
         "drupal/rabbit_hole": 15,
-        "drupal/shorthand": 10,
+        "drupal/shorthand": 5,
         "drupal/storybook": 10,
         "drupal/symfony_mailer": 10,
         "drupal/ultimate_cron": 10,
