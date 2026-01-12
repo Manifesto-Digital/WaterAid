@@ -41,12 +41,14 @@
 
 {% block paragraph %}
   {{ include('wateraid:text_over_media', {
+    title: content.field_title,
     content: content.field_rich_text|render,
     video: content.field_video|render ? content.field_video,
     image: content.field_image|render ? content.field_image,
     media_caption: paragraph.field_caption.value ? content.field_caption,
     media_credit: paragraph.field_credit.value ? content.field_credit,
-    media_type: paragraph.field_media_type.value
+    media_type: paragraph.field_media_type.value,
+    text_alignment: paragraph.field_text_alignment.value
   }, only) }}
 {% endblock paragraph %}
 

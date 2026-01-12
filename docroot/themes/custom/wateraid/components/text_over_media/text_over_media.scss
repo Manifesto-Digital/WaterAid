@@ -49,28 +49,42 @@
     margin: 0 auto;
   }
 
+  &__title {
+    color: $wa-white;
+    padding-bottom: $wa-spacing-07;
+  }
+
   &__content {
     position: relative;
     background-color: $wa-blue;
     max-width: calculate-rem(660);
-    padding: 48px;
+    padding: $wa-spacing-06 $wa-spacing-05;
     @include desktop {
       position: absolute;
       top: $wa-spacing-09;
       left: $wa-spacing-09;
+      padding: $wa-spacing-09;
     }
 
     [data-component-id="wateraid:rich_text"] {
       color: $wa-white;
       margin-top: 0;
+      h1, h2, h3 {
+        color: $wa-white;
+      }
+      blockquote:before {
+        background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark-white.svg");
+      }
     }
   }
 
   .image__button,
   .image__caption {
-    bottom: 16px;
+    bottom: $wa-spacing-04;
     @include desktop {
-      bottom: -660px;
+      position: fixed;
+      right: $wa-spacing-03;
+      bottom: $wa-spacing-04;
     }
   }
 
@@ -102,6 +116,36 @@
       border: none;
       cursor: pointer;
       z-index: 1;
+      @include desktop {
+        position: fixed;
+      }
+    }
+  }
+
+  &--right {
+    @include desktop {
+      .text-over-media__content {
+        right: $wa-spacing-09;
+        left: unset;
+      }
+
+      .text-over-media__video--play,
+      .text-over-media__video--pause {
+        right: unset;
+        left: $wa-spacing-03;
+      }
+
+      .image__button {
+        left: $wa-spacing-03;
+        right: unset;
+      }
+
+      .image__caption {
+        left: $wa-spacing-05;
+        bottom: $wa-spacing-06;
+        right: unset;
+      }
     }
   }
 }
+
