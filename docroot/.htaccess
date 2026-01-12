@@ -149,6 +149,13 @@ AddEncoding gzip svgz
   RewriteCond %{REQUEST_URI} ^/$ [NC]
   RewriteRule (.*) %{ENV:Country} [NC,NE,R,L]
 
+  # Repeat logic for wateraid-dev and wateraid-stage.manifesto.sh domain.
+  RewriteCond %{HTTP_HOST} ^(local\.|www\.|wateraid-dev\.|wateraid-stage\.manifesto\.sh)$ [NC]
+  RewriteCond %{REQUEST_URI} !^/global$
+  RewriteCond %{HTTP:CF-IPCountry} ^(AU|BD|CA|ET|IN|JP|GB|MW|MZ|NG|PK|RW|SE|TZ|UG|US)$
+  RewriteCond %{REQUEST_URI} ^/$ [NC]
+  RewriteRule (.*) %{ENV:Country} [NC,NE,R,L]
+
   # Repeat the logic for localhost for travis builds.
   RewriteCond %{HTTP_HOST} ^127\.0\.0\.1$ [NC]
   RewriteCond %{REQUEST_URI} !^/global$
