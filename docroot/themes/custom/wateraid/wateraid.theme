@@ -15,6 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\wateraid_blocks\Plugin\Block\WaFacetSummaryBlock;
 
 // Require all the theme includes.
@@ -450,7 +451,25 @@ function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array 
   }
 }
 
+/**
+ * Implements hook_preprocess_paragraph__spend().
+ *
+ * This function creates a variable for Group's spending module.
+ */
+function wateraid_preprocess_paragraph__stats_item(&$variables): void {
 
+  /** @var \Drupal\paragraphs\ParagraphInterFace $paragraph */
+  $paragraph = $variables['paragraph'];
+  $colour = 'creme';
+
+  if ($parent = $paragraph->getParentEntity()) {
+    if ($parent instanceof ParagraphInterface) {
+      $colour = ($parent->hasField('field_card_colour')) ? $parent->get('field_card_colour')->getString() : NULL;
+    }
+  }
+
+  $variables['colour'] = $colour;
+}
 
 /**
  * Implements hook_preprocess_paragraph__spend().

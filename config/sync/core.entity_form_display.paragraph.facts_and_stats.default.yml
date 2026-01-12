@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.facts_and_stats.field_card_colour
     - field.field.paragraph.facts_and_stats.field_column_count
     - field.field.paragraph.facts_and_stats.field_heading_level
     - field.field.paragraph.facts_and_stats.field_link
@@ -19,6 +20,12 @@ targetEntityType: paragraph
 bundle: facts_and_stats
 mode: default
 content:
+  field_card_colour:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_column_count:
     type: options_select
     weight: 4
