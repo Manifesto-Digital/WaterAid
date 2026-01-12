@@ -60,6 +60,11 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ] | sort | join(' ') | trim %}
 
+{% set variant = paragraph.field_variant.value == 'text_only' ? 'default' : 'media' %}
+{% if not content.field_video|render and not content.field_image|render %}
+  {% set variant = 'default' %}
+{% endif %}
+
 {% block paragraph %}
   <div class="{{ classes }}">
     {{ include('wateraid:call_to_action', {
@@ -72,7 +77,7 @@
       image: content.field_image|render ? content.field_image,
       media_caption: paragraph.field_caption.value ? content.field_caption,
       media_credit: paragraph.field_credit.value ? content.field_credit,
-      variant: paragraph.field_variant.value == 'text_only' ? 'default' : 'media',
+      variant: variant,
       media_type: paragraph.field_variant.value
     }, only) }}
   </div>

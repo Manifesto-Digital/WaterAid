@@ -1,7 +1,10 @@
 display:
   default:
+    display_title: Förvald
     display_options:
       fields:
+        filename:
+          label: Namn
         status:
           label: Status
         count:
@@ -22,6 +25,8 @@ display:
   page_2:
     display_options:
       fields:
+        entity_label:
+          label: Objekt
         type:
           label: 'Entity type'
       arguments:

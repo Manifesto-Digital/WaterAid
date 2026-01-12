@@ -12,6 +12,8 @@ settings:
   dialog_options:
     narrow:
       title: 幅狭
+    normal:
+      title: ノーマル
     wide:
       title: ワイド
 element:

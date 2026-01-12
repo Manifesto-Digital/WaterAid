@@ -1,4 +1,4 @@
-<div class="text-over-media text-over-media--{{ media_type }}">
+<div class="text-over-media text-over-media--{{ media_type }} text-over-media--{{ text_alignment }}">
   <div class="text-over-media__wrapper">
     <div class="text-over-media__background">
       {% if media_type == 'image' and image %}
@@ -40,6 +40,9 @@
     </div>
     <div class="text-over-media__content-wrapper">
       <div class="text-over-media__content">
+        <h2 class="text-over-media__title">
+          {{ title }}
+        </h2>
         {{ include('wateraid:rich_text', {
           text: content
         }) }}

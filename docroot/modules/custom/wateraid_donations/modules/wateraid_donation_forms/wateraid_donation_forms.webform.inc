@@ -97,6 +97,12 @@ function wateraid_donation_forms_webform_third_party_settings_form_alter(&$form,
 
   /** @var \Drupal\webform\WebformInterface $webform */
   $webform = $form_state->getFormObject()->getEntity();
+
+  // We only need to act on donation forms.
+  if (!_wateraid_donation_forms_is_donation_form($webform)) {
+    return;
+  }
+
   /** @var \Drupal\currency\FormHelperInterface $form_helper */
   $form_helper = \Drupal::service('currency.form_helper');
 
@@ -138,13 +144,13 @@ function wateraid_donation_forms_webform_third_party_settings_form_alter(&$form,
     '#title' => t('Upsell Text'),
     '#description' => t('Displayed in the right column'),
     '#default_value' => $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_upsell_confirmation')['donation_upsell_text']['value'] ?? '',
-    '#format' => $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_upsell_confirmation')['donation_upsell_text']['format'],
+    '#format' => $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_upsell_confirmation')['donation_upsell_text']['format'] ?? '',
   ];
 
   $form['third_party_settings']['wateraid_donation_forms']['donation_upsell_confirmation']['donation_upsell_discount_widget'] = [
     '#type' => 'fieldset',
     '#title' => t('Discount Widget'),
-    '#description' => t('A widget that allows the user to copy a code to cilpboard, then navigate to the shop'),
+    '#description' => t('A widget that allows the user to copy a code to clipboard, then navigate to the shop'),
   ];
 
   $form['third_party_settings']['wateraid_donation_forms']['donation_upsell_confirmation']['donation_upsell_discount_widget']['donation_upsell_discount_code'] = [

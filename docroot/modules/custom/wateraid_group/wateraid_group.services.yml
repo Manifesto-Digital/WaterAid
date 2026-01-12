@@ -16,3 +16,9 @@ services:
     class: Drupal\wateraid_group\Routing\GroupNodeRouteSubscriber
     tags:
       - { name: event_subscriber }
+
+  wateraid_group.group_language_map:
+    class: Drupal\wateraid_group\Service\GroupLanguageMap
+    arguments:
+      - '@entity_type.manager'
+      - '@cache.data'

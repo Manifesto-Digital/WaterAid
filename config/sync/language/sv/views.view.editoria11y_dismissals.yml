@@ -27,6 +27,7 @@ display:
           sort_asc_label: Stigande
           sort_desc_label: Fallande
       use_more_text: 'Reset filters'
+    display_title: Förvald
   dismissals__page:
     display_options:
       fields:
