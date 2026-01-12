@@ -40,7 +40,7 @@
     "drupal/admin_toolbar": "^3.5",
     "drupal/anonymous_token": "^3.0@beta",
     "drupal/azure_storage": "^2.0",
-    "drupal/better_exposed_filters": "^7.0",
+    "drupal/better_exposed_filters": "^7.1",
     "drupal/block_class": "^4.0",
     "drupal/block_visibility_groups": "^2.0",
     "drupal/cdn": "^5.0@alpha",
@@ -51,9 +51,9 @@
     "drupal/config_pages": "^2.19",
     "drupal/config_split": "^2.0",
     "drupal/configurable_views_filter_block": "^1.0",
-    "drupal/core-composer-scaffold": "^10.5",
-    "drupal/core-project-message": "^10.5",
-    "drupal/core-recommended": "^10.5",
+    "drupal/core-composer-scaffold": "^10.6",
+    "drupal/core-project-message": "^10.6",
+    "drupal/core-recommended": "^10.6",
     "drupal/currency": "^3.4",
     "drupal/datalayer": "^2.1",
     "drupal/default_paragraphs": "^2.0",
@@ -105,12 +105,12 @@
     "drupal/schema_metatag": "^3.0",
     "drupal/search_api": "^1.39",
     "drupal/search_api_solr": "^4.3",
-    "drupal/searchstax": "^1.8",
+    "drupal/searchstax": "^1.9",
     "drupal/seckit": "^2.0",
     "drupal/security_review": "^3.0",
     "drupal/sharethis": "^3.1",
     "drupal/shield": "^1.8",
-    "drupal/shorthand": "^5.0@beta",
+    "drupal/shorthand": "^5.0@RC",
     "drupal/social_media_links": "^2.10",
     "drupal/stage_file_proxy": "^3.1",
     "drupal/storybook": "^1.0@beta",
@@ -123,7 +123,7 @@
     "drupal/twig_tweak": "^3.4",
     "drupal/ultimate_cron": "^2.0@beta",
     "drupal/view_mode_selector": "^1.1",
-    "drupal/views_bulk_operations": "^4.3",
+    "drupal/views_bulk_operations": "^4.4",
     "drupal/views_infinite_scroll": "^2.0",
     "drupal/viewsreference": "^2.0@beta",
     "drupal/webform": "^6.2",
@@ -138,7 +138,7 @@
     "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
-    "drupal/core-dev": "^10.5",
+    "drupal/core-dev": "^10.6",
     "drupal/kint-kint": "^2.2",
     "mglaman/phpstan-drupal": "^1.2",
     "phpstan/extension-installer": "^1.4",
@@ -172,7 +172,16 @@
         "web-root": "docroot/"
       },
       "file-mapping": {
-        "[web-root]/sites/development.services.yml": false
+        "[web-root]/sites/development.services.yml": false,
+        "[web-root]/robots.txt": false,
+        "[web-root]/web.config": false,
+        "[web-root]/.htaccess": false,
+        "[web-root]/sites/default/default.settings.php": false,
+        "[web-root]/sites/default/settings.php": {
+          "mode": "replace",
+          "path": "docroot/sites/default/default.settings.php",
+          "overwrite": false
+      }
       }
     },
     "installer-types": [
@@ -232,7 +241,6 @@
             "3133989 - How to retrieve all submissions for a form?": "https://www.drupal.org/files/issues/2023-10-25/webform_rest-load-submission-data-3133989.patch"
         },
         "drupal/shorthand": {
-            "Issue #3546012 - 4.0.24 is broken Class \"Drupal\\shorthand\\Drush\\Commands\\ShorthandCommands\" does not exist": "https://git.drupalcode.org/project/shorthand/-/merge_requests/56.patch",
             "Add missing access shorthand story overview permission": "patches/shorthand-add-access-story-overview-permission.patch"
         }
     },
