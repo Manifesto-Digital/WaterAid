@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for the Scrollmation module paragraph.
+ * Default theme implementation for the Parallax scroll module paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -48,7 +48,7 @@
 
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:motion_scrolling', {
+    {{ include('wateraid:parallax_scroll', {
       sections: content.field_section|children,
       variant: paragraph.field_scroll_variant.value,
     })

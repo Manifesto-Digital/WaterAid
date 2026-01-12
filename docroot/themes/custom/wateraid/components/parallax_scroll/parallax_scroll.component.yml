@@ -1,0 +1,12 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: parallax_scroll
+status: stable
+description: Parallax scroll component
+slots:
+  sections:
+    title: Sections
+    description: Scroll sections
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/parallax_scroll/parallax_scroll.css: {}

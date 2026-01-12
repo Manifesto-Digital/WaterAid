@@ -1,5 +1,5 @@
 (function (Drupal) {
-  Drupal.behaviors.motionScrolling = {
+  Drupal.behaviors.parallaxScroll = {
     attach: function (context) {
       const sections = context.querySelectorAll(".section");
       if (sections[0]) {
@@ -41,7 +41,7 @@
       // Set scroll height on desktop
       const setScrollHeight = () => {
         const twoColumns = document.querySelectorAll(
-          ".motion-scrolling--two-column",
+          ".parallax-scroll--two-column",
         );
         let width = document.body.clientWidth;
 

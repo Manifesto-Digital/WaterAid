@@ -1,9 +1,6 @@
-{% stories motion_scrolling with { title: 'wateraid/Organisms/ScrollMation' } %}
+{% stories parallax_scroll with { title: 'wateraid/Organisms/ParallaxScroll' } %}
   {% story default with {
-    name: 'ScrollMation',
-    args: {
-      title: 'Lorem ipsum dolor sit amet.',
-    }
+    name: 'ParallaxScroll',
   } %}
     {% set section_1_copy %}
       <h2>Section 1</h2>
@@ -138,8 +135,8 @@
       }),
     ]
    %}
-    {{ include('wateraid:motion_scrolling', {
-      title,
+    {{ include('wateraid:parallax_scroll', {
+      sections,
     }) }}
   {% endstory %}
 {% endstories %}

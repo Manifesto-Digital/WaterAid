@@ -20,7 +20,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_video
     - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.internal_card
-    - paragraphs.paragraphs_type.motion_scrolling
+    - paragraphs.paragraphs_type.parallax_scroll
     - paragraphs.paragraphs_type.scroll_section
     - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_amount
@@ -65,7 +65,7 @@ settings:
       spend_amount: spend_amount
       hero_story: hero_story
       text_over_media: text_over_media
-      motion_scrolling: motion_scrolling
+      parallax_scroll: parallax_scroll
       scroll_section: scroll_section
     negate: 1
     target_bundles_drag_drop:
@@ -144,7 +144,7 @@ settings:
       internal_card:
         weight: -46
         enabled: true
-      motion_scrolling:
+      parallax_scroll:
         weight: 66
         enabled: true
       quote:

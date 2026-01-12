@@ -4,14 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_section
-    - paragraphs.paragraphs_type.motion_scrolling
+    - paragraphs.paragraphs_type.parallax_scroll
     - paragraphs.paragraphs_type.scroll_section
   module:
     - entity_reference_revisions
-id: paragraph.motion_scrolling.field_section
+id: paragraph.parallax_scroll.field_section
 field_name: field_section
 entity_type: paragraph
-bundle: motion_scrolling
+bundle: parallax_scroll
 label: Section
 description: ''
 required: true
@@ -100,7 +100,7 @@ settings:
       internal_card:
         weight: 65
         enabled: false
-      motion_scrolling:
+      parallax_scroll:
         weight: 70
         enabled: false
       quote:

@@ -3,15 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.motion_scrolling.field_scroll_variant
-    - field.field.paragraph.motion_scrolling.field_section
-    - paragraphs.paragraphs_type.motion_scrolling
+    - field.field.paragraph.parallax_scroll.field_scroll_variant
+    - field.field.paragraph.parallax_scroll.field_section
+    - paragraphs.paragraphs_type.parallax_scroll
   module:
     - entity_reference_revisions
     - options
-id: paragraph.motion_scrolling.default
+id: paragraph.parallax_scroll.default
 targetEntityType: paragraph
-bundle: motion_scrolling
+bundle: parallax_scroll
 mode: default
 content:
   field_scroll_variant:

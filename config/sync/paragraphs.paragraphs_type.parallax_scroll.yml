@@ -2,7 +2,7 @@ uuid: 7e71a9ef-5c07-4d97-ade5-fccb78000dff
 langcode: en
 status: true
 dependencies: {  }
-id: motion_scrolling
+id: parallax_scroll
 label: 'Motion scrolling'
 icon_uuid: null
 icon_default: null

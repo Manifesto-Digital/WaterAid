@@ -140,7 +140,7 @@ settings:
       internal_card:
         weight: -49
         enabled: true
-      motion_scrolling:
+      parallax_scroll:
         weight: -71
         enabled: false
       quote:
