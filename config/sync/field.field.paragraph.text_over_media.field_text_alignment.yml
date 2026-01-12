@@ -1,0 +1,23 @@
+uuid: a6fa61d2-7385-434f-bd44-a011472c3234
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_alignment
+    - paragraphs.paragraphs_type.text_over_media
+  module:
+    - options
+id: paragraph.text_over_media.field_text_alignment
+field_name: field_text_alignment
+entity_type: paragraph
+bundle: text_over_media
+label: 'Text alignment'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string
