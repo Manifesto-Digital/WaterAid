@@ -131,7 +131,8 @@
       transform: translateX(-$wa-spacing-04) translateY(-$wa-spacing-02);
     }
 
-    .card__image img {
+    .card__image img,
+    .card__image {
       width: calculate-rem(144);
       height: calculate-rem(144);
     }

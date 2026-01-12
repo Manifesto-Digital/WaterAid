@@ -1,16 +1,16 @@
-uuid: 2e8ae3bb-83a9-423e-9fb6-61de403a2495
+uuid: ba36f32a-17ea-4733-b3bd-abc620f990e2
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_card_colour
-    - paragraphs.paragraphs_type.stats_item
+    - paragraphs.paragraphs_type.facts_and_stats
   module:
     - options
-id: paragraph.stats_item.field_card_colour
+id: paragraph.facts_and_stats.field_card_colour
 field_name: field_card_colour
 entity_type: paragraph
-bundle: stats_item
+bundle: facts_and_stats
 label: Colour
 description: ''
 required: true
