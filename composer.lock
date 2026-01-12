@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c735aed59448f3cd955593e8414e77d",
+    "content-hash": "8f5c9fc53b59da4eb3fc581cebc84f35",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -8379,17 +8379,17 @@
         },
         {
             "name": "drupal/searchstax",
-            "version": "1.8.1",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/searchstax.git",
-                "reference": "1.8.1"
+                "reference": "1.9.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/searchstax-1.8.1.zip",
-                "reference": "1.8.1",
-                "shasum": "15e74cf04b96dcce146095dc7f4b7b2cf765114a"
+                "url": "https://ftp.drupal.org/files/projects/searchstax-1.9.1.zip",
+                "reference": "1.9.1",
+                "shasum": "8109ac3e363c5f7994b70991a2786cb6bfb570c8"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10 || ^11",
@@ -8398,6 +8398,8 @@
             },
             "require-dev": {
                 "drupal/acquia_search": "3.1.x-dev||3.1.11",
+                "drupal/facets": "3.0.x-dev||1.x-dev",
+                "drupal/key": "1.20.0||1.x-dev||2.x-dev",
                 "drupal/search_api_attachments": ">=10||1.0.0-beta19",
                 "drupal/search_api_autocomplete": "1.x-dev||1.6.0",
                 "drupal/search_api_page": "1.x-dev||1.0.0-beta3",
@@ -8407,8 +8409,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.8.1",
-                    "datestamp": "1759215194",
+                    "version": "1.9.1",
+                    "datestamp": "1766433735",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
