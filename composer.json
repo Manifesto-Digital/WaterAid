@@ -119,7 +119,6 @@
     "drupal/svg_image": "^3.0",
     "drupal/svg_image_field": "^2.3",
     "drupal/symfony_mailer": "^2.0@beta",
-    "drupal/tb_megamenu": "^1.10",
     "drupal/tmgmt_google": "^1.2",
     "drupal/twig_tweak": "^3.4",
     "drupal/ultimate_cron": "^2.0@beta",

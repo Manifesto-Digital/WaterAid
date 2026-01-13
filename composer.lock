@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75210216b28c25b49983cd5d20469da6",
+    "content-hash": "a917a77299d22b84d3a9427218dc8438",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -9332,81 +9332,6 @@
             "homepage": "https://www.drupal.org/project/symfony_mailer",
             "support": {
                 "source": "https://git.drupalcode.org/project/symfony_mailer"
-            }
-        },
-        {
-            "name": "drupal/tb_megamenu",
-            "version": "1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/tb_megamenu.git",
-                "reference": "8.x-1.10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tb_megamenu-8.x-1.10.zip",
-                "reference": "8.x-1.10",
-                "shasum": "8371e06981760de0849eda74fa7a07016a480e74"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.10",
-                    "datestamp": "1756399717",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Wade Stewart (themodularlab)",
-                    "homepage": "https://www.drupal.org/u/themodularlab",
-                    "role": "Owner"
-                },
-                {
-                    "name": "Michael Girgis (knaffles)",
-                    "homepage": "https://www.drupal.org/u/knaffles",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Andrew Olson (andrewozone)",
-                    "homepage": "https://www.drupal.org/u/andrewozone",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Justin Todd (quondam)",
-                    "homepage": "https://www.drupal.org/u/quondam",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Irene Dobbs (irene_dobbs)",
-                    "homepage": "https://www.drupal.org/u/irene_dobbs",
-                    "role": "Co-Maintainer"
-                },
-                {
-                    "name": "Henry Odiete (henry.odiete)",
-                    "homepage": "https://www.drupal.org/u/henry.odiete",
-                    "role": "Co-Maintainer"
-                },
-                {
-                    "name": "themodularlab",
-                    "homepage": "https://www.drupal.org/user/3190381"
-                }
-            ],
-            "description": "Provides complex, multi-column mega menu solutions for Drupal.",
-            "homepage": "https://www.drupal.org/project/tb_megamenu",
-            "support": {
-                "source": "https://git.drupalcode.org/project/tb_megamenu",
-                "issues": "https://www.drupal.org/project/issues/tb_megamenu"
             }
         },
         {
