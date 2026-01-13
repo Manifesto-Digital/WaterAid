@@ -199,6 +199,12 @@
 
     &-inner {
       @include page-container;
+      height: calc(100vh - 140px);
+      width: 100%;
+      padding-top: $wa-spacing-05;
+      padding-bottom: $wa-spacing-10;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .mobile-nav__back-btn {
