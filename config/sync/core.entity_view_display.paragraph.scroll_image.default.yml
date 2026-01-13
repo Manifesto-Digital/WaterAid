@@ -1,0 +1,72 @@
+uuid: 511f74be-605e-40d1-9153-d4ec0153baa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.scroll_image.field_caption
+    - field.field.paragraph.scroll_image.field_credit
+    - field.field.paragraph.scroll_image.field_image
+    - field.field.paragraph.scroll_image.field_mobile_caption
+    - field.field.paragraph.scroll_image.field_mobile_credit
+    - field.field.paragraph.scroll_image.field_mobile_image
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.default
+targetEntityType: paragraph
+bundle: scroll_image
+mode: default
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_mobile_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_mobile_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_mobile_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

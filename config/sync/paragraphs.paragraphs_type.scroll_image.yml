@@ -1,0 +1,10 @@
+uuid: b6cd59a2-324d-42e3-85d2-63894ad597cd
+langcode: en
+status: true
+dependencies: {  }
+id: scroll_image
+label: 'Scroll image'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,46 @@
+uuid: f96bb5ed-5f1b-4e40-86da-9a0ca9fea459
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.parallax_scroll.field_rich_text
+    - field.field.paragraph.parallax_scroll.field_scroll_images
+    - field.field.paragraph.parallax_scroll.field_scroll_variant
+    - paragraphs.paragraphs_type.parallax_scroll
+  module:
+    - entity_reference_revisions
+    - options
+    - text
+id: paragraph.parallax_scroll.default
+targetEntityType: paragraph
+bundle: parallax_scroll
+mode: default
+content:
+  field_rich_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_scroll_images:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_scroll_variant:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

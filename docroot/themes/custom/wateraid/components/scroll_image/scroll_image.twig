@@ -1,0 +1,25 @@
+<div class="scroll-image">
+{% if mobile_image|render %}
+  <div class="scroll-image__mobile">
+    {{ include('wateraid:image', {
+      image: mobile_image,
+      caption: mobile_caption,
+      credit: mobile_credit,
+      width: 'full',
+      caption_display: 'expandable'
+    }) }}
+  </div>
+{% endif %}
+
+  {% if image %}
+    <div class="{{ mobile_image|render ? "scroll-image__desktop" }}">
+      {{ include('wateraid:image', {
+        image: image,
+        caption: caption,
+        credit: credit,
+        width: 'full',
+        caption_display: 'expandable'
+      }) }}
+    </div>
+  {% endif %}
+</div>

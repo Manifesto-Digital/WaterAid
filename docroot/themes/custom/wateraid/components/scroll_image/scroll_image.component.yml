@@ -1,0 +1,8 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: scroll_section
+status: stable
+description: Scroll image component
+libraryOverrides:
+  css:
+    theme:
+      ../../dist/css/components/scroll_image/scroll_image.css: {}
