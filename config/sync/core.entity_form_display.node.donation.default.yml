@@ -120,7 +120,7 @@ third_party_settings:
       label: 'Review Date'
       region: content
       parent_name: ''
-      weight: 90
+      weight: -5
       format_type: details_sidebar
       format_settings:
         classes: ''
