@@ -20,6 +20,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_video
     - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.internal_card
+    - paragraphs.paragraphs_type.scroll_image
     - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_amount
     - paragraphs.paragraphs_type.spend_item
@@ -61,6 +62,7 @@ settings:
       image_with_quote_sidebar: image_with_quote_sidebar
       spend_amount: spend_amount
       hero_story: hero_story
+      scroll_image: scroll_image
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -150,8 +152,8 @@ settings:
       rich_text:
         weight: -81
         enabled: false
-      scroll_section:
-        weight: -42
+      scroll_image:
+        weight: 70
         enabled: true
       spend:
         weight: -47
