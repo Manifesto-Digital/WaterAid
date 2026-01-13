@@ -34,7 +34,7 @@ dependencies:
     - field.storage.paragraph.field_stat_items
     - field.storage.paragraph.field_subtitle
     - field.storage.paragraph.field_title
-    - search_api.server.searchstax_server
+    - search_api.server.searchstax_server_1
   module:
     - entitygroupfield
     - group
@@ -91,6 +91,12 @@ third_party_settings:
         ja: '0'
         hi: '0'
         pt: '0'
+        fr: '0'
+        es: '0'
+        da: '0'
+        nl: '0'
+        or: '0'
+        bn: '0'
       use_universal_collation: false
 id: searchstax_index
 name: 'SearchStax index'
@@ -995,4 +1001,4 @@ options:
   delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
-server: searchstax_server
+server: searchstax_server_1

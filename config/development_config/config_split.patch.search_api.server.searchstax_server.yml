@@ -1,8 +1,0 @@
-adding:
-  status: false
-  backend_config:
-    connector_config:
-      autosuggest_core: ''
-      key_id: ''
-removing:
-  status: true

@@ -13,8 +13,8 @@ folder: ../config/development_config
 module: {  }
 theme: {  }
 complete_list:
-  - search_api.server.searchstax_server_1
+  - search_api.server.testing
 partial_list:
   - search_api.index.jp_search
   - search_api.index.searchstax_index
-  - search_api.server.searchstax_server
+  - search_api.server.searchstax_server_1

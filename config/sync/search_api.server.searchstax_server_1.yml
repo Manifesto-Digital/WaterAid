@@ -1,4 +1,4 @@
-uuid: af68ad26-5fdc-474f-b476-bf48aa1b6f9f
+uuid: 2e827729-7d19-4fe2-bf99-dcc19ed4953d
 langcode: en
 status: true
 dependencies:
@@ -8,14 +8,20 @@ dependencies:
     - search_api_solr.solr_cache.cache_filter_default_9_0_0
     - search_api_solr.solr_cache.cache_persegfilter_default_9_0_0
     - search_api_solr.solr_cache.cache_queryresult_default_9_0_0
+    - search_api_solr.solr_field_type.text_da_7_0_0
     - search_api_solr.solr_field_type.text_edge_und_7_0_0
     - search_api_solr.solr_field_type.text_edgestring_und_6_0_0
     - search_api_solr.solr_field_type.text_en_7_0_0
+    - search_api_solr.solr_field_type.text_es_7_0_0
+    - search_api_solr.solr_field_type.text_fr_7_0_0
     - search_api_solr.solr_field_type.text_hi_7_0_0
     - search_api_solr.solr_field_type.text_ja_8_0_0
     - search_api_solr.solr_field_type.text_ngram_und_7_0_0
     - search_api_solr.solr_field_type.text_ngramstring_und_6_0_0
+    - search_api_solr.solr_field_type.text_nl_7_0_0
     - search_api_solr.solr_field_type.text_phonetic_en_7_0_0
+    - search_api_solr.solr_field_type.text_phonetic_es_7_0_0
+    - search_api_solr.solr_field_type.text_phonetic_fr_7_0_0
     - search_api_solr.solr_field_type.text_phonetic_und_7_0_0
     - search_api_solr.solr_field_type.text_string_und_6_0_0
     - search_api_solr.solr_field_type.text_sv_7_0_0
@@ -31,24 +37,24 @@ dependencies:
   module:
     - search_api_solr
     - searchstax
-id: searchstax_server
-name: 'SearchStax server (app WaterAid)'
-description: "Connects to the <em class=\"placeholder\">WaterAid</em> SearchStax app (account <em class=\"placeholder\">WaterAid</em>).\r\n\r\nMigrated from the <em class=\"placeholder\">Acquia Search API Solr server</em> server."
+id: searchstax_server_1
+name: 'SearchStax WAProduction'
+description: 'Connects to the <em class="placeholder">WAProduction</em> SearchStax app (account <em class="placeholder">WaterAid</em>).'
 backend: search_api_solr
 backend_config:
-  retrieve_data: true
-  highlight_data: true
-  site_hash: true
+  retrieve_data: false
+  highlight_data: false
+  site_hash: false
   server_prefix: ''
   domain: generic
   environment: default
   connector: searchstax
   connector_config:
     scheme: https
-    host: searchcloud-4-eu-west-1.searchstax.com
+    host: ''
     port: 443
     path: /
-    core: wateraid-6646
+    core: ''
     timeout: 5
     index_timeout: 15
     optimize_timeout: 10
@@ -60,9 +66,11 @@ backend_config:
     jmx: false
     jts: false
     solr_install_dir: ''
-    update_endpoint: 'https://searchcloud-4-eu-west-1.searchstax.com/29847/wateraid-6646/update'
-    update_token: e6fd0e365167e7d1951e54a761ee81bbaf49203c
-    context: '29847'
+    update_endpoint: ''
+    update_token: ''
+    autosuggest_core: ''
+    context: ''
+    key_id: searchstax_connector_migrated_searchstax_server_1_3
   optimize: false
   fallback_multiple: false
   disabled_field_types: {  }
