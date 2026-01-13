@@ -1,4 +1,4 @@
-uuid: ee29920e-0379-431b-b733-e1e9f1c07809
+uuid: 7a55dc11-ee82-4bbe-b989-62178cecb594
 langcode: en
 status: true
 dependencies:
@@ -6,16 +6,16 @@ dependencies:
     - field.storage.paragraph.field_rich_text
     - filter.format.basic_html
     - filter.format.full_html
-    - paragraphs.paragraphs_type.scroll_section
+    - paragraphs.paragraphs_type.parallax_scroll
   module:
     - text
-id: paragraph.scroll_section.field_rich_text
+id: paragraph.parallax_scroll.field_rich_text
 field_name: field_rich_text
 entity_type: paragraph
-bundle: scroll_section
-label: Text
+bundle: parallax_scroll
+label: Content
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

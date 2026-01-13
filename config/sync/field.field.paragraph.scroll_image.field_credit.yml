@@ -1,14 +1,14 @@
-uuid: 99905d76-2e90-43fe-8111-921190a79e7c
+uuid: 49273c91-dd82-4731-a3fb-d75d0ef94dbd
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_credit
-    - paragraphs.paragraphs_type.scroll_section
-id: paragraph.scroll_section.field_credit
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.field_credit
 field_name: field_credit
 entity_type: paragraph
-bundle: scroll_section
+bundle: scroll_image
 label: Credit
 description: ''
 required: false

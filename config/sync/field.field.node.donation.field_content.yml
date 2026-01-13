@@ -20,7 +20,6 @@ dependencies:
     - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.internal_card
     - paragraphs.paragraphs_type.parallax_scroll
-    - paragraphs.paragraphs_type.scroll_section
     - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_amount
     - paragraphs.paragraphs_type.spend_item
@@ -68,7 +67,6 @@ settings:
       hero_story: hero_story
       text_over_media: text_over_media
       parallax_scroll: parallax_scroll
-      scroll_section: scroll_section
     negate: 1
     target_bundles_drag_drop:
       accordion:

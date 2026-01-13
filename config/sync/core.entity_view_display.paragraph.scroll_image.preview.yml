@@ -1,0 +1,55 @@
+uuid: 2c9d4273-b55d-41fa-bc7e-73a38b49a9f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.scroll_image.field_caption
+    - field.field.paragraph.scroll_image.field_credit
+    - field.field.paragraph.scroll_image.field_image
+    - field.field.paragraph.scroll_image.field_mobile_caption
+    - field.field.paragraph.scroll_image.field_mobile_credit
+    - field.field.paragraph.scroll_image.field_mobile_image
+    - paragraphs.paragraphs_type.scroll_image
+  module:
+    - media
+id: paragraph.scroll_image.preview
+targetEntityType: paragraph
+bundle: scroll_image
+mode: preview
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_credit:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_mobile_caption: true
+  field_mobile_credit: true
+  field_mobile_image: true
+  search_api_excerpt: true

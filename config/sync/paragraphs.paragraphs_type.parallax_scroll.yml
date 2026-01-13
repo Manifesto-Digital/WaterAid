@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: parallax_scroll
-label: 'Motion scrolling'
+label: 'Parallax scroll'
 icon_uuid: null
 icon_default: null
 description: ''

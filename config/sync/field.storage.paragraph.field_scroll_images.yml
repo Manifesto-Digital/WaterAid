@@ -1,12 +1,12 @@
-uuid: 475bccd9-d4d5-47f8-8c2d-dab313e7b032
+uuid: db866e99-fa49-4a04-81ee-d36a1f3f7bc4
 langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
     - paragraphs
-id: paragraph.field_section
-field_name: field_section
+id: paragraph.field_scroll_images
+field_name: field_scroll_images
 entity_type: paragraph
 type: entity_reference_revisions
 settings:

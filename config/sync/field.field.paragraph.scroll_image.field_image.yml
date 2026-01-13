@@ -1,4 +1,4 @@
-uuid: 8aa6c637-8990-48d0-95b6-9b09176bd53d
+uuid: 6cf8accf-ed63-4600-8396-f55db93f00f3
 langcode: en
 status: true
 dependencies:
@@ -6,14 +6,14 @@ dependencies:
     - field.storage.paragraph.field_image
     - media.type.dam_image
     - media.type.local_image
-    - paragraphs.paragraphs_type.scroll_section
-id: paragraph.scroll_section.field_image
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.field_image
 field_name: field_image
 entity_type: paragraph
-bundle: scroll_section
+bundle: scroll_image
 label: Image
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

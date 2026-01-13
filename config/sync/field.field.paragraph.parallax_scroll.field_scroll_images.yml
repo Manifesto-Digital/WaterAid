@@ -1,20 +1,20 @@
-uuid: 57b00393-33a4-492f-9c22-bcfdbddaa15e
+uuid: c4057947-f611-4f9b-be17-2bb3aa31b390
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_section
+    - field.storage.paragraph.field_scroll_images
     - paragraphs.paragraphs_type.parallax_scroll
-    - paragraphs.paragraphs_type.scroll_section
+    - paragraphs.paragraphs_type.scroll_image
   module:
     - entity_reference_revisions
-id: paragraph.parallax_scroll.field_section
-field_name: field_section
+id: paragraph.parallax_scroll.field_scroll_images
+field_name: field_scroll_images
 entity_type: paragraph
 bundle: parallax_scroll
-label: Section
+label: Images
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -22,14 +22,14 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      scroll_section: scroll_section
+      scroll_image: scroll_image
     negate: 0
     target_bundles_drag_drop:
       accordion:
-        weight: 40
+        weight: 41
         enabled: false
       accordion_item:
-        weight: 41
+        weight: 42
         enabled: false
       call_to_action:
         weight: 43
@@ -101,45 +101,51 @@ settings:
         weight: 65
         enabled: false
       parallax_scroll:
-        weight: 70
-        enabled: false
-      quote:
         weight: 66
         enabled: false
-      related_content:
+      quote:
         weight: 67
         enabled: false
-      rich_text:
+      related_content:
         weight: 68
         enabled: false
-      scroll_section:
+      rich_text:
         weight: 69
+        enabled: false
+      scroll_image:
+        weight: 71
         enabled: true
-      spend:
+      scroll_section:
         weight: 70
         enabled: false
-      spend_amount:
+      spend:
         weight: 71
         enabled: false
-      spend_item:
+      spend_amount:
         weight: 72
         enabled: false
-      spend_module:
+      spend_item:
         weight: 73
         enabled: false
-      stats_item:
+      spend_module:
         weight: 74
         enabled: false
-      temp_paragraph:
+      stats_item:
         weight: 75
         enabled: false
-      text_media:
+      temp_paragraph:
         weight: 76
         enabled: false
-      video:
+      text_media:
         weight: 77
         enabled: false
-      webform_poc:
+      text_over_media:
         weight: 78
+        enabled: false
+      video:
+        weight: 79
+        enabled: false
+      webform_poc:
+        weight: 80
         enabled: false
 field_type: entity_reference_revisions

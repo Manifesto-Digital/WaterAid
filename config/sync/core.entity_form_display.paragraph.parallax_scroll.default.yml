@@ -3,31 +3,35 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.parallax_scroll.field_rich_text
+    - field.field.paragraph.parallax_scroll.field_scroll_images
     - field.field.paragraph.parallax_scroll.field_scroll_variant
-    - field.field.paragraph.parallax_scroll.field_section
     - paragraphs.paragraphs_type.parallax_scroll
   module:
     - default_paragraphs
+    - text
 id: paragraph.parallax_scroll.default
 targetEntityType: paragraph
 bundle: parallax_scroll
 mode: default
 content:
-  field_scroll_variant:
-    type: options_select
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_section:
-    type: default_paragraphs
-    weight: 1
+  field_rich_text:
+    type: text_textarea
+    weight: 2
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+  field_scroll_images:
+    type: default_paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Image
+      title_plural: Images
       closed_mode: summary
-      autocollapse: none
+      autocollapse: all
       add_mode: dropdown
       form_display_mode: default
       features:
@@ -36,11 +40,17 @@ content:
         add_above: 0
         convert: 0
       default_paragraph_types:
-        scroll_section:
+        scroll_image:
           edit_mode: closed
           weight: '0'
           value: 0
       edit_mode: closed
+    third_party_settings: {  }
+  field_scroll_variant:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
