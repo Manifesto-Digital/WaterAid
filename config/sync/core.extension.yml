@@ -15,7 +15,6 @@ module:
   breakpoint: 0
   captcha: 0
   cdn: 0
-  cdn_ui: 0
   ckeditor5: 0
   ckeditor_citation: 0
   cloudflare_redirect: 0
@@ -97,7 +96,6 @@ module:
   path_alias: 0
   phpass: 0
   preview_link: 0
-  queue_ui: 0
   quick_node_clone: 0
   rabbit_hole: 0
   recaptcha_v3: 0
