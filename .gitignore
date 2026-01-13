@@ -13,12 +13,13 @@ docroot/sites/*/*.settings.php
 docroot/sites/*.settings.local.php
 docroot/sites/*.sites.php
 docroot/web.config
+docroot/*.txt
+docroot/*/*.txt
 
 .csslintrc
 .eslintignore
 .eslintrc.json
 .ht.router.php
-*.txt
 README.md
 example.gitignore
 
