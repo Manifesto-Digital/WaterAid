@@ -84,13 +84,13 @@ third_party_settings:
       collection: ''
       timezone: ''
     multilingual:
-      limit_to_content_language: true
+      limit_to_content_language: false
       include_language_independent: false
       use_language_undefined_as_fallback_language: false
       specific_languages:
-        ja: ja
         en: '0'
         sv: '0'
+        ja: '0'
         hi: '0'
         pt: '0'
       use_universal_collation: false
@@ -877,9 +877,10 @@ datasource_settings:
   'entity:node':
     bundles:
       default: true
-      selected: {  }
+      selected:
+        - webform
     languages:
-      default: true
+      default: false
       selected:
         - ja
 processor_settings:

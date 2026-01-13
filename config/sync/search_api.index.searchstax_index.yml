@@ -879,7 +879,8 @@ datasource_settings:
         - webform
     languages:
       default: true
-      selected: {  }
+      selected:
+        - ja
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
@@ -931,7 +932,6 @@ processor_settings:
       - field_regions
       - field_rich_text
       - field_search_phrases
-      - field_subtext
       - field_subtitle
       - field_teaser_text
       - field_title
@@ -971,11 +971,11 @@ processor_settings:
     title: true
     alt: true
     tags:
-      b: 2
-      h1: 5
-      h2: 3
-      h3: 2
-      strong: 2
+      b: 2.0
+      h1: 5.0
+      h2: 3.0
+      h3: 2.0
+      strong: 2.0
   language_with_fallback: {  }
   rendered_item: {  }
   solr_date_range:
