@@ -1,9 +1,12 @@
 <div class="parallax-scroll parallax-scroll--{{ variant|replace({'_':'-'}) }}" data-image-count={{ images|length }}>
 
-  {% if variant == 'background' %}
-    <div class="parallax-scroll__images parallax-scroll__background">
+  {% if variant == 'two_column' %}
+    <div class="parallax-scroll__container">
+  {% endif %}
+
+    <div class="parallax-scroll__images {{ variant == 'background' ? 'parallax-scroll__background' }}">
       {% for key, image in images %}
-        <div class="parallax-scroll__image" data-image-no="{{ key + 1}}">
+        <div class="parallax-scroll__image" data-image-no="{{ key + 1 }}">
           {{ image }}
         </div>
       {% endfor %}
@@ -15,21 +18,7 @@
       }) }}
     </div>
 
-  {% else %}
-    <div class="parallax-scroll__container">
-      <div class="parallax-scroll__images">
-        {% for key, image in images %}
-          <div class="parallax-scroll__image" data-image-no="{{ key + 1}}">
-            {{ image }}
-          </div>
-        {% endfor %}
-      </div>
-      <div class="parallax-scroll__copy">
-        {{ include('wateraid:rich_text', {
-          text: copy
-        }) }}
-      </div>
+  {% if variant == 'two_column' %}
     </div>
   {% endif %}
-
 </div>
