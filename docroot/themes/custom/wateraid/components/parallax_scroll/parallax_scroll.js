@@ -1,55 +1,58 @@
 (function (Drupal) {
   Drupal.behaviors.parallaxScroll = {
     attach: function (context) {
-      const sections = context.querySelectorAll(".section");
-      if (sections[0]) {
-        sections[0].classList.add("active");
-      }
-      // Set section initial height
-      const setSectionHeight = () => {
-        sections.forEach((section) => {
-          section.style.height = `${section.offsetHeight}px`;
+      let width = document.body.clientWidth;
+      const setScrollLogic = (component) => {
+        const images = component.querySelectorAll(".parallax-scroll__image");
+
+        // Set first image as active.
+        if (images[0]) {
+          images[0].classList.add("active");
+        }
+
+        // Set array of percentages based on how many images are uploaded.
+        const imageCount = component.getAttribute("data-image-count");
+        const changeDecimal = 1 / imageCount;
+        const thresholdArray = [0];
+
+        images.forEach((image) => {
+          thresholdArray.push(image.getAttribute("data-image-no") * changeDecimal);
         });
-      };
 
-      setSectionHeight();
+        // Change image when between thresholds.
+        window.addEventListener("scroll", () => {
+          const rect = component.getBoundingClientRect();
+          const componentHeight = rect.height;
 
-      // 2. Efficiently track active section using Intersection Observer
-      const observerOptions = {
-        root: null, // use the viewport
-        threshold: 0.5, // trigger when 50% of the section is visible
-      };
+          const scrolledAmount = -rect.top;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Remove active state from current active element
-            const currentActive = context.querySelector(".active");
+          const scrollPercent = scrolledAmount / componentHeight;
 
-            if (currentActive) {
-              currentActive.classList.remove("active");
+          for (let i = 0; i < thresholdArray.length; i++) {
+            if (
+              scrollPercent >= thresholdArray[i] &&
+              scrollPercent < thresholdArray[i + 1]
+            ) {
+              images.forEach((image) => {image.classList.remove("active");});
+              images[i].classList.add("active");
             }
-
-            // Add active state to the visible section
-            entry.target.classList.add("active");
           }
         });
-      }, observerOptions);
+      };
 
-      sections.forEach((section) => observer.observe(section));
+      context.querySelectorAll(".parallax-scroll").forEach((parallaxScroll) => {
+        setScrollLogic(parallaxScroll);
+      });
 
-      // Set scroll height on desktop
+      // Set image container height on desktop for sticky image on two column variant.
       const setScrollHeight = () => {
-        const twoColumns = document.querySelectorAll(
-          ".parallax-scroll--two-column",
-        );
+        const twoColumns = document.querySelectorAll(".parallax-scroll--two-column");
         let width = document.body.clientWidth;
 
         if (twoColumns && width > 1024) {
           twoColumns.forEach((component) => {
-            const sectionImages = component.querySelectorAll(".section__image");
-            console.log(sectionImages);
-            console.log(component.offsetHeight);
+            const sectionImages = component.querySelectorAll(".parallax-scroll__image");
+
             sectionImages.forEach((image) => {
               image.style.height = `${component.offsetHeight}px`;
             });
@@ -57,11 +60,37 @@
         }
       };
 
-      setScrollHeight();
+      if (width > 1024) {
+        setScrollHeight();
+      }
 
-      // Optional: Update heights if the window is resized
-      window.addEventListener("resize", setSectionHeight);
       window.addEventListener("resize", setScrollHeight);
+
+      // Set image container height on mobile for sticky image.
+      const setImageHeight = () => {
+        const components = document.querySelectorAll(".parallax-scroll");
+        width = document.body.clientWidth;
+        let heights = [];
+
+        if (components && width < 1024) {
+          components.forEach((component) => {
+            const sectionImages = component.querySelectorAll(".scroll-image");
+
+            sectionImages.forEach((image) => {
+              heights.push(image.offsetHeight);
+            });
+
+            const imageContainer = component.querySelector(".parallax-scroll__images");
+            imageContainer.style.height = `${Math.min.apply(0, heights)}px`;
+          });
+        }
+      };
+
+      if (width < 1024) {
+        setImageHeight();
+      }
+
+      window.addEventListener("resize", setImageHeight);
     },
   };
 })(Drupal);

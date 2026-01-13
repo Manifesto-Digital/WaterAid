@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for the Parallax scroll module paragraph.
+ * Default theme implementation for the Scroll image paragraph.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -38,19 +38,27 @@
  * @ingroup themeable
  */
 #}
-{% set classes = [
+{% set width = paragraph.field_image_width.value ? content.field_image_width|render|striptags|trim %}
+{% set width = force_width ? force_width : width %}
+
+ {% set classes = [
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   not paragraph.isPublished() ? 'paragraph--unpublished'
-] %}
+ ] | sort | join(' ') | trim %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ include('wateraid:parallax_scroll', {
-      variant: paragraph.field_scroll_variant.value,
-      images: content.field_scroll_images|children,
-      copy: content.field_rich_text|render
-    }) }}
-  </div>
+<div class="{{ classes }}">
+  {{ include('wateraid:scroll_image', {
+    image: content.field_image,
+    caption: paragraph.field_caption.value ? content.field_caption,
+    credit: paragraph.field_credit.value ? content.field_credit,
+    mobile_image: content.field_mobile_image,
+    mobile_caption: paragraph.field_mobile_caption.value ? content.field_mobile_caption,
+    mobile_credit: paragraph.field_mobile_credit.value ? content.field_mobile_credit,
+  }, only) }}
+</div>
 {% endblock paragraph %}
+
+{% set catch_cache = content|render %}
