@@ -1,4 +1,10 @@
 adding:
-  status: false
+  dependencies:
+    config:
+      - search_api.server.ddev_solr_local
+  server: ddev_solr_local
 removing:
-  status: true
+  dependencies:
+    config:
+      - search_api.server.searchstax_server
+  server: searchstax_server
