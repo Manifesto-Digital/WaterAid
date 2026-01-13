@@ -1,0 +1,19 @@
+uuid: 7f6eb618-3721-47c7-89d2-c7aca0e0fd74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mobile_credit
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.field_mobile_credit
+field_name: field_mobile_credit
+entity_type: paragraph
+bundle: scroll_image
+label: 'Mobile credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

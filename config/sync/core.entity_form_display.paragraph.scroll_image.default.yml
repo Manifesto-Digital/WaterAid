@@ -1,0 +1,89 @@
+uuid: f19c36f3-4178-493b-9bc7-b34689642e05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.scroll_image.field_caption
+    - field.field.paragraph.scroll_image.field_credit
+    - field.field.paragraph.scroll_image.field_image
+    - field.field.paragraph.scroll_image.field_mobile_caption
+    - field.field.paragraph.scroll_image.field_mobile_credit
+    - field.field.paragraph.scroll_image.field_mobile_image
+    - paragraphs.paragraphs_type.scroll_image
+  module:
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_mobile:
+      children:
+        - field_mobile_image
+        - field_mobile_caption
+        - field_mobile_credit
+      label: Mobile
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.scroll_image.default
+targetEntityType: paragraph
+bundle: scroll_image
+mode: default
+content:
+  field_caption:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_credit:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_mobile_caption:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_credit:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_image:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
