@@ -7,8 +7,4 @@ removing:
   dependencies:
     config:
       - search_api.server.searchstax_server
-  processor_settings:
-    html_filter:
-      fields:
-        - field_subtext
   server: null
