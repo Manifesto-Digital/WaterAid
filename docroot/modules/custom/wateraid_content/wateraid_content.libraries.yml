@@ -2,13 +2,17 @@ hero:
   js:
     js/hero.js: {}
 
+
+cropperjs:
+  remote: https://github.com/fengyuanchen/cropperjs
+  version: "1.5.13"
+  js:
+    https://unpkg.com/cropperjs@2.1.0/dist/cropper.min.css: { type: external, minified: true }
+
 image_cropper:
   js:
-    https://unpkg.com/cropperjs: { minified: false, weight: -20 }
     js/image_cropper.js: {}
-  css:
-    theme:
-      https://unpkg.com/react-image-crop/dist/ReactCrop.css: {}
   dependencies:
     - core/drupal
     - core/once
+    - wateraid_content/cropperjs
