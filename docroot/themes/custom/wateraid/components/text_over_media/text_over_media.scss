@@ -69,7 +69,7 @@
     [data-component-id="wateraid:rich_text"] {
       color: $wa-white;
       margin-top: 0;
-      h1, h2, h3 {
+      h1, h2, h3, ul li::marker {
         color: $wa-white;
       }
       blockquote:before {
