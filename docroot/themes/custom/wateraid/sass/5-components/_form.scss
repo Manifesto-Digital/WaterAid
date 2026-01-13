@@ -230,6 +230,7 @@
   .webform-type-radio {
     display: flex;
     flex-flow: row wrap;
+    flex-wrap: nowrap;
     + label.error {
         width: 100%;
         flex: 1 1 100%;
@@ -246,12 +247,11 @@
     font-family: base.$font-family;
     font-size: base.calculate-rem(20);
     margin: 0;
-    width: fit-content;
     flex: 1 1 auto;
   }
 }
 
-.webform-type-checkbox input[type="checkbox"] + label.option {
+.webform-type-checkbox input[type='checkbox'] + label.option {
   width: calc(100% - 2.5rem);
 }
 
@@ -264,6 +264,8 @@ input[type='radio'] {
   border-radius: base.$radius-xxs;
   border: base.calculate-rem(2) solid base.$wa-navy;
   vertical-align: middle;
+  flex-basis: 1.5rem;
+  flex-shrink: 0;
 
   &:checked {
     background-color: base.$wa-navy;
