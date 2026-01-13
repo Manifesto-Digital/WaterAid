@@ -19,8 +19,6 @@ use Drupal\views\Views;
 function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_state): void {
   if (isset($form['field_review_date'])) {
     if (wateraid_content_review_date_form_access($form, $form_state)) {
-      $form['field_review_date']['#group'] = (isset($form['advanced'])) ? 'advanced' : NULL;
-
       if ($form['field_review_date']['widget'][0]['value']) {
         // Set a date range that can be no more than +2 years.
         $date = new DrupalDateTime();
