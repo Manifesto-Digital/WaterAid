@@ -100,7 +100,7 @@ third_party_settings:
       use_universal_collation: false
 id: searchstax_index
 name: 'SearchStax index'
-description: 'Search index on SearchStax.'
+description: 'Index for non-Japanese content.'
 read_only: false
 field_settings:
   changed:

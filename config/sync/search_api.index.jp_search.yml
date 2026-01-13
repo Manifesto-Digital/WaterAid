@@ -102,7 +102,7 @@ third_party_settings:
       use_universal_collation: false
 id: jp_search
 name: 'JP Search'
-description: ''
+description: 'Index for Japanese content.'
 read_only: false
 field_settings:
   changed:
