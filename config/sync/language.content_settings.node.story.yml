@@ -1,18 +1,16 @@
-uuid: ede5d214-172b-4a75-9edd-7388cd88cf76
+uuid: ec823fa6-bc77-4fbb-974b-0049752ffc09
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
+    - node.type.story
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: true
-    bundle_settings:
-      untranslatable_fields_hide: '0'
-id: node.article
+id: node.story
 target_entity_type_id: node
-target_bundle: article
+target_bundle: story
 default_langcode: current_interface
 language_alterable: true
