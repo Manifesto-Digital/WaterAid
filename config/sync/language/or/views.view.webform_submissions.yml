@@ -1,0 +1,27 @@
+display:
+  default:
+    display_options:
+      fields:
+        view_webform_submission:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          text: ଦୃଶ୍ୟ
+  embed_administer:
+    display_options:
+      fields:
+        operations:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+  embed_manage:
+    display_options:
+      fields:
+        view_webform_submission:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          text: ଦୃଶ୍ୟ
+        edit_webform_submission:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          text: 'ସମ୍ପାଦନ କରନ୍ତୁ'
+  embed_review:
+    display_options:
+      fields:
+        view_webform_submission:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          text: ଦୃଶ୍ୟ

@@ -10,10 +10,22 @@ url:
     ja: ja
     hi: hi
     pt: pt
+    fr: fr
+    es: es
+    da: da
+    nl: nl
+    or: or
+    bn: bn
   domains:
     en: ''
     sv: ''
     ja: ''
     hi: ''
     pt: ''
+    fr: ''
+    es: ''
+    da: ''
+    nl: ''
+    or: ''
+    bn: ''
 selected_langcode: site_default

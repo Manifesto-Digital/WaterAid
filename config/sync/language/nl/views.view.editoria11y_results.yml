@@ -1,0 +1,129 @@
+label: Editoria11y-resultaten
+display:
+  default:
+    display_title: Standaard
+    display_options:
+      title: Topresultaten
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: 'Opnieuw instellen'
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      use_more_text: "Alle pagina's met problemen"
+  block_recent_issues:
+    display_title: 'Blok: Recente problemen'
+    display_options:
+      fields:
+        created:
+          label: Gedetecteerd
+        result_name:
+          label: Uitgave
+        page_path:
+          label: Paginapad
+      use_more_text: 'Recente problemen'
+      block_category: Editoria11y
+  block_top_issues:
+    display_title: 'Blok: Meest voorkomende meldingen'
+    display_options:
+      fields:
+        result_name:
+          label: Uitgave
+        result_name_count:
+          label: Aantal
+      use_more_text: 'Alle problemen'
+      block_category: Editoria11y
+  issues__page:
+    display_title: 'Alle problemen'
+    display_options:
+      title: 'Alle problemen'
+      fields:
+        result_name_count:
+          label: Aantal
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Eerste'
+            last: 'Laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
+      sorts:
+        result_name:
+          expose:
+            label: Resultaatnaam
+      use_more_text: "Alle pagina's met problemen"
+      menu:
+        title: Probleemtypes
+  issues_by_page__page:
+    display_title: 'Problemen op de opgegeven pagina'
+    display_options:
+      title: 'Problemen op de opgegeven pagina'
+      fields:
+        result_name_count:
+          label: Aantal
+        result_name:
+          label: Uitgave
+        created:
+          label: Gedetecteerd
+        page_path:
+          label: Paginapad
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Eerste'
+            last: 'Laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
+      header:
+        area_text_custom:
+          content: '<h1>Toegankelijkheidsproblemen op pagina {{page_title}}</h1>'
+      footer:
+        area_text_custom_1:
+          content: '<p><a href="../editoria11y/pages" class="button button--primary">Alle pagina''s met problemen</a></p>'
+      menu:
+        title: Probleemtypes
+  pages_by_issue__page:
+    display_title: "Pagina's met een opgegeven probleem"
+    display_options:
+      title: "Pagina's met een specifiek probleem"
+      fields:
+        created:
+          label: Gedetecteerd
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
+      footer:
+        area_text_custom:
+          content: '<a href="../editoria11y/issues" class="button button--primary">Alle problemen</a>'
+      menu:
+        title: "Pagina's met problemen"
+  recent__page:
+    display_title: 'Recente problemen'
+    display_options:
+      title: 'Recente toegankelijkheidsproblemen'
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
+      menu:
+        title: 'Recente problemen'

@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: ପୂର୍ବନିର୍ଦ୍ଧାରିତ
+    display_options:
+      fields:
+        bundle:
+          label: ପ୍ରକାର
+        status:
+          label: ଅବସ୍ଥିତି
+          settings:
+            format_custom_true: ପ୍ରକାଶିତ
+        operations:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+      exposed_form:
+        options:
+          submit_button: ଛାଣକ
+      filters:
+        bundle:
+          expose:
+            label: ପ୍ରକାର
+        status:
+          group_info:
+            group_items:
+              1:
+                title: ପ୍ରକାଶିତ
+        langcode:
+          expose:
+            label: ଭାଷା

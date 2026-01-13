@@ -1,0 +1,16 @@
+display:
+  default:
+    display_title: ପୂର୍ବନିର୍ଦ୍ଧାରିତ
+    display_options:
+      fields:
+        type:
+          label: ପ୍ରକାର
+        link:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+      exposed_form:
+        options:
+          submit_button: ଛାଣକ
+      filters:
+        type:
+          expose:
+            label: ପ୍ରକାର

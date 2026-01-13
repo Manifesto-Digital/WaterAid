@@ -1,0 +1,85 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Appliquer
+          reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+  block_recent_issues:
+    display_options:
+      fields:
+        result_name:
+          label: Ticket
+        page_path:
+          label: 'Chemin de la page'
+  block_top_issues:
+    display_options:
+      fields:
+        result_name:
+          label: Ticket
+        result_name_count:
+          label: Décompte
+      use_more_text: 'Tous les tickets'
+  issues__page:
+    display_options:
+      title: 'Tous les tickets'
+      fields:
+        result_name_count:
+          label: Décompte
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Premier'
+            last: 'Dernier »'
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
+  issues_by_page__page:
+    display_options:
+      fields:
+        result_name_count:
+          label: Décompte
+        result_name:
+          label: Ticket
+        page_path:
+          label: 'Chemin de la page'
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Premier'
+            last: 'Dernier »'
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
+  pages_by_issue__page:
+    display_options:
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
+  recent__page:
+    display_options:
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage

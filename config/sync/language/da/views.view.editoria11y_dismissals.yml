@@ -1,0 +1,36 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Udfør
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+  dismissals__page:
+    display_options:
+      fields:
+        created:
+          label: Tilsluttet
+        name:
+          label: Af
+          separator: ', '
+        page_path:
+          label: Sti
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Første'
+            last: 'Sidste »'
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+      filters:
+        uid:
+          expose:
+            label: Af
