@@ -122,6 +122,54 @@ AddEncoding gzip svgz
   # Rewrite install.php during installation to see if mod_rewrite is working
   RewriteRule ^core/install\.php core/install.php?rewrite=ok [QSA,L]
 
+  # Rewrite rules added for WSM-91
+  # Set the Redirect URL by using CF-IPCountry header value
+  SetEnvIf CF-IPCountry "AU" Country=https://www.wateraid.org/au
+  SetEnvIf CF-IPCountry "BD" Country=https://www.wateraid.org/bd
+  SetEnvIf CF-IPCountry "CA" Country=https://www.wateraid.org/ca
+  SetEnvIf CF-IPCountry "ET" Country=https://www.wateraid.org/et
+  SetEnvIf CF-IPCountry "IN" Country=https://www.wateraid.org/in
+  SetEnvIf CF-IPCountry "JP" Country=https://www.wateraid.org/jp
+  SetEnvIf CF-IPCountry "GB" Country=https://www.wateraid.org/uk
+  SetEnvIf CF-IPCountry "MW" Country=https://www.wateraid.org/mw
+  SetEnvIf CF-IPCountry "MZ" Country=https://www.wateraid.org/mz
+  SetEnvIf CF-IPCountry "NG" Country=https://www.wateraid.org/ng
+  SetEnvIf CF-IPCountry "PK" Country=https://www.wateraid.org/pk
+  SetEnvIf CF-IPCountry "RW" Country=https://www.wateraid.org/se
+  SetEnvIf CF-IPCountry "SE" Country=https://www.wateraid.org/se
+  SetEnvIf CF-IPCountry "TZ" Country=https://www.wateraid.org/tz
+  SetEnvIf CF-IPCountry "UG" Country=https://www.wateraid.org/ug
+  SetEnvIf CF-IPCountry "US" Country=https://www.wateraid.org/us
+
+  # Country code redirects based on Cloudflare Headers
+  # Host check ensures to match wateraid.org domains excl. ie. washmatters
+  RewriteCond %{HTTP_HOST} ^(local\.|www\.|acquiastage\.|)(wateraid\.org)$ [NC]
+  RewriteCond %{REQUEST_URI} !^/global$
+  RewriteCond %{HTTP:CF-IPCountry} ^(AU|BD|CA|ET|IN|JP|GB|MW|MZ|NG|PK|RW|SE|TZ|UG|US)$
+  RewriteCond %{REQUEST_URI} ^/$ [NC]
+  RewriteRule (.*) %{ENV:Country} [NC,NE,R,L]
+
+  # Repeat logic for wateraid-dev and wateraid-stage.manifesto.sh domain.
+  RewriteCond %{HTTP_HOST} ^(local\.|www\.|wateraid-dev\.|wateraid-stage\.manifesto\.sh)$ [NC]
+  RewriteCond %{REQUEST_URI} !^/global$
+  RewriteCond %{HTTP:CF-IPCountry} ^(AU|BD|CA|ET|IN|JP|GB|MW|MZ|NG|PK|RW|SE|TZ|UG|US)$
+  RewriteCond %{REQUEST_URI} ^/$ [NC]
+  RewriteRule (.*) %{ENV:Country} [NC,NE,R,L]
+
+  # Repeat the logic for localhost for travis builds.
+  RewriteCond %{HTTP_HOST} ^127\.0\.0\.1$ [NC]
+  RewriteCond %{REQUEST_URI} !^/global$
+  RewriteCond %{HTTP:CF-IPCountry} ^(AU|BD|CA|ET|IN|JP|GB|MW|MZ|NG|PK|RW|SE|TZ|UG|US)$
+  RewriteCond %{REQUEST_URI} ^/$ [NC]
+  RewriteRule (.*) %{ENV:Country} [NC,NE,R,L]
+
+  RewriteCond %{REQUEST_URI} ^/donate$ [NC]
+  RewriteCond %{HTTP:CF-IPCountry} ^(AU|BD|CA|ET|IN|JP|GB|MW|MZ|NG|PK|RW|SE|TZ|UG|US)$
+  RewriteRule (.*) %{ENV:Country}/donate [NC,NE,R,L]
+
+  # Block all requests to autodiscover.xml.
+  RewriteRule ^autodiscover/autodiscover.xml$ - [forbidden,last]
+
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.
   RewriteCond %{REQUEST_FILENAME} !-f

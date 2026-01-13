@@ -91,23 +91,25 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
         foreach ($params as $vocab => $tids) {
           if (isset($map[$view_id]['block_1'][$vocab])) {
 
-            /** @var \Drupal\taxonomy\TermInterface $term */
-            foreach (\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadMultiple($tids) as $term) {
-              $url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()]);
-              $copy = $params;
-              unset($copy[$vocab][$term->id()]);
-              $url->setOptions([
-                'query' => $copy,
-                'attributes' => [
-                  'class' => [
-                    'wa-pill',
-                  ],
-                  'aria-label' => t('Remove the :term filter', [
-                    ':term' => $term->label(),
-                  ]),
-                ],
-              ]);
-              $links[] = Link::fromTextAndUrl($term->label(), $url);
+            // Regions is a select list not a taxonomy reference so needs special handling.
+            if ($vocab == 'regions') {
+              $field_definition = \Drupal::service('entity_field.manager')->getFieldDefinitions('node','event')['field_regions'];
+              $regions = $field_definition->getFieldStorageDefinition()->toArray()['settings']['allowed_values'];
+
+              foreach ($tids as $tid) {
+                if (array_key_exists($tid, $regions)) {
+                  $links[] = self::getLink($regions[$tid], $tid, $vocab, $node->id(), $params);;
+                }
+              }
+            }
+            else {
+
+              /** @var \Drupal\taxonomy\TermInterface $term */
+              foreach (\Drupal::entityTypeManager()
+                ->getStorage('taxonomy_term')
+                ->loadMultiple($tids) as $term) {
+                $links[] = self::getLink($term->label(), $term->id(), $vocab, $node->id(), $params);
+              }
             }
           }
         }
@@ -188,6 +190,44 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
         ],
       ],
     ];
+  }
+
+  /**
+   * Helper to create a link to remove the filter.
+   *
+   * @param string $label
+   *   The link label
+   * @param int|string $value
+   *   The filter value
+   * @param string $vocab
+   *   The key of the value in the parameter array.
+   * @param int|string $nid
+   *   The node idea for the current URL.
+   * @param array $params
+   *   The array of currently set filter parameters.
+   *
+   * @return \Drupal\Core\Link
+   *   The link.
+   */
+  public static function getLink(string $label, int|string $value, string $vocab, int|string $nid, array $params): Link {
+    $url = Url::fromRoute('entity.node.canonical', ['node' => $nid]);
+
+    // Remove the parameter we want the link to remove.
+    unset($params[$vocab][$value]);
+
+    $url->setOptions([
+      'query' => $params,
+      'attributes' => [
+        'class' => [
+          'wa-pill',
+        ],
+        'aria-label' => t('Remove the :term filter', [
+          ':term' => $label,
+        ]),
+      ],
+    ]);
+
+    return Link::fromTextAndUrl($label, $url);
   }
 
 }

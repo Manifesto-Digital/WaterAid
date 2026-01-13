@@ -8,7 +8,9 @@
 <div {{ attributes.addClass(card_classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
 
   <div class="card__image">
-    <img src="{{ image_url }}" alt="" />
+    {% if image_url %}
+      <img src="{{ image_url }}" alt="" />
+    {% endif %}
   </div>
 
   <div class="card__body">
