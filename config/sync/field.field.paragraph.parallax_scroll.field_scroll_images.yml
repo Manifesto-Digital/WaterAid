@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: parallax_scroll
 label: Images
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -115,9 +115,6 @@ settings:
       scroll_image:
         weight: 71
         enabled: true
-      scroll_section:
-        weight: 70
-        enabled: false
       spend:
         weight: 71
         enabled: false
