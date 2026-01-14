@@ -57,6 +57,12 @@ function wateraid_preprocess_page(&$variables): void {
         $donate_header = (bool) $node->get('field_donation_menu')->value;
         break;
 
+      case 'standard_page':
+        $value = $node->get('field_header')->getString() ?? 'default';
+        $donate_header = ($value == 'donation');
+        $minimal_header = ($value == 'minimal');
+        break;
+
       case 'landing_page':
       case 'shorthand_story':
       case 'story':

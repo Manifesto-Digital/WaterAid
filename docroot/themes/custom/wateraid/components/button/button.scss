@@ -72,6 +72,7 @@
     &--menu {
       .button__hover {
         background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square.svg");
+        z-index: 0;
       }
     }
   }
