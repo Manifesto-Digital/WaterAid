@@ -86,8 +86,8 @@
               <div class="image-crop-modal__controls">
                 <button type="button" class="btn-crop-zoom-in" title="Zoom In">Zoom In (+)</button>
                 <button type="button" class="btn-crop-zoom-out" title="Zoom Out">Zoom Out (-)</button>
-                <button type="button" class="btn-crop-rotate-left" title="Rotate Left">Rotate Left</button>
-                <button type="button" class="btn-crop-rotate-right" title="Rotate Right">Rotate Right</button>
+<!--                <button type="button" class="btn-crop-rotate-left" title="Rotate Left">Rotate Left</button>-->
+<!--                <button type="button" class="btn-crop-rotate-right" title="Rotate Right">Rotate Right</button>-->
                 <button type="button" class="btn-crop-flip-h" title="Flip Horizontal">Flip H</button>
                 <button type="button" class="btn-crop-flip-v" title="Flip Vertical">Flip V</button>
                 <button type="button" class="btn-crop-reset" title="Reset">Reset</button>
@@ -111,8 +111,16 @@
         // Get the image element
         const cropTargetImage = imageField.querySelector('#crop-target-image');
 
+        const cropField = form.querySelector('input[name="field_image_crop[0][value]"]');
+
+        const data = JSON.parse(cropField.value);
+
         // Initialize Cropper.js
         const cropper = new Cropper(cropTargetImage, {
+          ready: function () {
+            // Set the initial crop box data
+            cropper.setData(data);
+          },
           aspectRatio: 2.35/1, // Free aspect ratio
           viewMode: 1,
           dragMode: 'move',
@@ -132,8 +140,8 @@
         // Control buttons
         const zoomInBtn = modalOverlay.querySelector('.btn-crop-zoom-in');
         const zoomOutBtn = modalOverlay.querySelector('.btn-crop-zoom-out');
-        const rotateLeftBtn = modalOverlay.querySelector('.btn-crop-rotate-left');
-        const rotateRightBtn = modalOverlay.querySelector('.btn-crop-rotate-right');
+        // const rotateLeftBtn = modalOverlay.querySelector('.btn-crop-rotate-left');
+        // const rotateRightBtn = modalOverlay.querySelector('.btn-crop-rotate-right');
         const flipHBtn = modalOverlay.querySelector('.btn-crop-flip-h');
         const flipVBtn = modalOverlay.querySelector('.btn-crop-flip-v');
         const resetBtn = modalOverlay.querySelector('.btn-crop-reset');
@@ -151,13 +159,13 @@
         });
 
         // Rotation controls
-        rotateLeftBtn.addEventListener('click', function() {
-          cropper.rotate(-45);
-        });
-
-        rotateRightBtn.addEventListener('click', function() {
-          cropper.rotate(45);
-        });
+        // rotateLeftBtn.addEventListener('click', function() {
+        //   cropper.rotate(-90);
+        // });
+        //
+        // rotateRightBtn.addEventListener('click', function() {
+        //   cropper.rotate(90);
+        // });
 
         // Flip controls
         let scaleX = 1;

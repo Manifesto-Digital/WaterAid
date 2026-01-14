@@ -26,7 +26,6 @@
         const pointX = image.getAttribute('data-x');
         const pointY = image.getAttribute('data-y');
 
-        const rotate = image.getAttribute('data-rotate');
         const scaleX = image.getAttribute('data-scale-x');
         const scaleY = image.getAttribute('data-scale-y');
 
@@ -39,7 +38,7 @@
         // Set the image styling, object position for focal point and transform properties.
         const styles = {
           objectPosition: `${focalPointX}% ${focalPointY}%`,
-          transform: `rotate(${rotate}deg) scaleX(${scaleX}) scaleY(${scaleY})`,
+          transform: `scaleX(${scaleX}) scaleY(${scaleY})`,
         };
 
         Object.assign(img.style, styles);
