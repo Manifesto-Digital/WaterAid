@@ -1,0 +1,20 @@
+uuid: 3c37945a-a4ae-4c6e-9a8f-361c6c09e0ba
+langcode: en
+status: false
+dependencies: {  }
+id: dev_stage
+label: Dev/Stage
+description: 'Local settings for the Development and Test environments.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/development_config
+module: {  }
+theme: {  }
+complete_list:
+  - search_api.server.testing
+partial_list:
+  - search_api.index.jp_search
+  - search_api.index.searchstax_index
+  - search_api.server.searchstax_server_1

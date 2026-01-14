@@ -34,13 +34,14 @@ dependencies:
     - field.storage.paragraph.field_stat_items
     - field.storage.paragraph.field_subtitle
     - field.storage.paragraph.field_title
-    - search_api.server.searchstax_server
+    - search_api.server.searchstax_server_1
   module:
     - entitygroupfield
     - group
     - node
     - paragraphs
     - search_api_japanese_normalizer
+    - search_api_kana_convert
     - search_api_solr
     - search_api_tinysegmenter
 third_party_settings:
@@ -93,10 +94,16 @@ third_party_settings:
         ja: '0'
         hi: '0'
         pt: '0'
+        fr: '0'
+        es: '0'
+        da: '0'
+        nl: '0'
+        or: '0'
+        bn: '0'
       use_universal_collation: false
 id: jp_search
 name: 'JP Search'
-description: ''
+description: 'Index for Japanese content.'
 read_only: false
 field_settings:
   changed:
@@ -979,6 +986,84 @@ processor_settings:
       h3: 2.0
       strong: 2.0
       u: 1.5
+  kana_convert:
+    weights:
+      preprocess_index: -22
+      preprocess_query: -22
+    all_fields: 1
+    fields:
+      - field_caption
+      - field_caption_1
+      - field_citation
+      - field_citation_1
+      - field_citation_2
+      - field_citation_3
+      - field_credit
+      - field_credit_1
+      - field_key_stages
+      - field_post_description
+      - field_properties
+      - field_quote
+      - field_quote_1
+      - field_quote_2
+      - field_quote_3
+      - field_quote_4
+      - field_quote_5
+      - field_regions
+      - field_rich_text
+      - field_search_phrases
+      - field_subtitle
+      - field_teaser_text
+      - field_title
+      - field_title_1
+      - field_title_2
+      - field_title_3
+      - field_title_4
+      - field_title_5
+      - field_title_6
+      - langcode
+      - processed
+      - processed_1
+      - processed_10
+      - processed_11
+      - processed_12
+      - processed_13
+      - processed_14
+      - processed_15
+      - processed_16
+      - processed_17
+      - processed_2
+      - processed_3
+      - processed_4
+      - processed_5
+      - processed_6
+      - processed_7
+      - processed_8
+      - processed_9
+      - title
+      - title_1
+      - title_2
+      - title_3
+      - title_4
+      - title_5
+      - title_6
+      - type
+    converts:
+      a: a
+      s: s
+      K: K
+      V: V
+      r: 0
+      R: 0
+      'n': 0
+      'N': 0
+      A: 0
+      S: 0
+      k: 0
+      h: 0
+      H: 0
+      c: 0
+      C: 0
   language_with_fallback: {  }
   rendered_item: {  }
   search_api_japanese_normalizer:
@@ -1104,11 +1189,11 @@ processor_settings:
     ignored: ._-
     spaces: ''
     overlap_cjk: 0
-    minimum_hiragana_word_length: '2'
-    minimum_katakana_word_length: '2'
+    minimum_hiragana_word_length: '1'
+    minimum_katakana_word_length: '1'
     minimum_kanji_word_length: '1'
-    minimum_word_length: '3'
-    minimum_word_size: 3
+    minimum_word_length: '1'
+    minimum_word_size: 1
   type_boost:
     weights:
       preprocess_index: 0
@@ -1123,4 +1208,4 @@ options:
   delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
-server: searchstax_server
+server: searchstax_server_1

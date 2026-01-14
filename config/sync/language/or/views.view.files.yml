@@ -1,0 +1,16 @@
+display:
+  default:
+    display_title: ପୂର୍ବନିର୍ଦ୍ଧାରିତ
+    display_options:
+      fields:
+        status:
+          label: ଅବସ୍ଥିତି
+        operations:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+      exposed_form:
+        options:
+          submit_button: ଛାଣକ
+      filters:
+        status:
+          expose:
+            label: ଅବସ୍ଥିତି

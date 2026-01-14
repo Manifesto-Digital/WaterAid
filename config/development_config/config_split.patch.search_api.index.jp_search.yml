@@ -1,0 +1,10 @@
+adding:
+  dependencies:
+    config:
+      - search_api.server.testing
+  server: testing
+removing:
+  dependencies:
+    config:
+      - search_api.server.searchstax_server_1
+  server: null

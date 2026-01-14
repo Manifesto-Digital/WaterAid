@@ -1,0 +1,9 @@
+uuid: 51792694-9444-4950-bda1-879d14426aae
+langcode: en
+status: true
+dependencies: {  }
+id: or
+label: Odia
+direction: ltr
+weight: 9
+locked: false

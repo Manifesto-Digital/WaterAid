@@ -1,0 +1,32 @@
+display:
+  default:
+    display_title: ପୂର୍ବନିର୍ଦ୍ଧାରିତ
+    display_options:
+      fields:
+        name:
+          label: 'ଚାଳକ ନାମ'
+        status:
+          label: ଅବସ୍ଥିତି
+          settings:
+            format_custom_false: ନିଷିଦ୍ଧ
+            format_custom_true: ସକ୍ରିୟ
+        access:
+          label: 'ଶେଷ ପ୍ରବେଶ'
+        operations:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+      exposed_form:
+        options:
+          submit_button: ଛାଣକ
+      filters:
+        status:
+          group_info:
+            label: ଅବସ୍ଥିତି
+            group_items:
+              1:
+                title: ସକ୍ରିୟ
+              2:
+                title: ନିଷିଦ୍ଧ
+  page_1:
+    display_options:
+      menu:
+        title: ତାଲିକା

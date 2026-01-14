@@ -785,7 +785,13 @@ if (!empty($acquia_env)) {
   if (($acquia_env === 'dev' || $acquia_env === 'test')) {
     $config['config_split.config_split.dev_stage']['status'] = TRUE;
   }
-  if (($acquia_env === 'prod')) {
+  if ($acquia_env === 'dev') {
+
+    // Make DEV search indexes read only: content will be indexed on Test only.
+    $config['search_api.index.jp_search']['read_only'] = TRUE;
+    $config['search_api.index.searchstax_index']['read_only'] = TRUE;
+  }
+  if ($acquia_env === 'prod') {
     $config['config_split.config_split.prod']['status'] = TRUE;
 
     $config['loqate.loqateapikeyconfig']['mode'] = 'live';
