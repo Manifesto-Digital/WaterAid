@@ -1,0 +1,13 @@
+display:
+  default:
+    display_title: ପୂର୍ବନିର୍ଦ୍ଧାରିତ
+    display_options:
+      fields:
+        info:
+          label: 'ବ୍ଲକ ବର୍ଣ୍ଣନା'
+        operations:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+      filters:
+        info:
+          expose:
+            label: 'ବ୍ଲକ ବର୍ଣ୍ଣନା'

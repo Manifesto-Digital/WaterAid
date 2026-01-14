@@ -395,6 +395,9 @@ function wateraid_preprocess_views_view(&$variables): void {
 
   $view_id = $view->id();
 
+  // Handle the JP versions of the listing views.
+  $view_id = (str_ends_with($view_id, '_jp')) ? substr($view_id, 0, strlen($view_id) - 3) : $view_id;
+
   if (in_array($view_id, array_keys($map))) {
     $display = $view->current_display;
 
@@ -425,7 +428,7 @@ function wateraid_preprocess_views_view(&$variables): void {
 
       $settings['visible_filters'] = $map[$view_id][$display];
 
-      $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view_id . '-' . $display, $settings);
+      $plugin_block = $block_manager->createInstance('configurable_views_filter_block_block:' . $view->id() . '-' . $display, $settings);
 
       if (!$plugin_block instanceof Broken) {
         $variables['exposed']['views_filters'] = $plugin_block->build();
@@ -445,6 +448,11 @@ function wateraid_theme_suggestions_views_view_alter(array &$suggestions, array 
       'press_releases_solr',
       'stories_solr',
       'publications',
+      'events_solr_jp',
+      'blogs_solr_jp',
+      'press_releases_solr_jp',
+      'stories_solr_jp',
+      'publications_jp',
     ])) {
       $suggestions[] = 'views_view__full_text';
     }

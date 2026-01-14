@@ -6,9 +6,9 @@ name: WaterAid
 mail: admin@example.com
 slogan: ''
 page:
-  403: ''
-  404: ''
-  front: /node
+  403: /global/page-not-found
+  404: /global/page-not-found
+  front: /front-page
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

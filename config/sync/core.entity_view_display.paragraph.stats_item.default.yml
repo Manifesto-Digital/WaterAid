@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.stats_item.field_description
     - field.field.paragraph.stats_item.field_figure
+    - field.field.paragraph.stats_item.field_header_tag
     - field.field.paragraph.stats_item.field_icon
     - field.field.paragraph.stats_item.field_link
     - paragraphs.paragraphs_type.stats_item
@@ -20,7 +21,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 3
     region: content
   field_figure:
     type: string
@@ -49,10 +50,11 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 2
     region: content
 hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_header_tag: true
   search_api_excerpt: true

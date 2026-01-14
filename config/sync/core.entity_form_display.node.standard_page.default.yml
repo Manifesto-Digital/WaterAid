@@ -139,6 +139,23 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+    group_review_date:
+      children:
+        - field_review_date
+      label: 'Review Date'
+      region: content
+      parent_name: ''
+      weight: -5
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
+        weight: 0
 id: node.standard_page.default
 targetEntityType: node
 bundle: standard_page
@@ -329,6 +346,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

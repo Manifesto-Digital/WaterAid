@@ -1,0 +1,27 @@
+uuid: b27c4c33-3686-46c3-9d1d-e1ab8a898805
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_header_tag
+field_name: field_header_tag
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: h3
+      label: H3
+    -
+      value: h4
+      label: H4
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

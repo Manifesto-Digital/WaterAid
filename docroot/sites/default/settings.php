@@ -782,10 +782,16 @@ if (!empty($acquia_env)) {
   // $settings['acquia_search']['override_search_core'] = "ABLR-206360.{$acquia_env}.override";
 
   $config['config_split.config_split.local_dev']['status'] = FALSE;
-  if (($acquia_env === 'dev' || $acquia_env === 'test')) {
+  if (($acquia_env === 'dev' || $acquia_env === 'stage')) {
     $config['config_split.config_split.dev_stage']['status'] = TRUE;
   }
-  if (($acquia_env === 'prod')) {
+  if ($acquia_env === 'dev') {
+
+    // Make DEV search indexes read only: content will be indexed on Test only.
+    $config['search_api.index.jp_search']['read_only'] = TRUE;
+    $config['search_api.index.searchstax_index']['read_only'] = TRUE;
+  }
+  if ($acquia_env === 'prod') {
     $config['config_split.config_split.prod']['status'] = TRUE;
 
     $config['loqate.loqateapikeyconfig']['mode'] = 'live';

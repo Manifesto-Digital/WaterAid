@@ -1,0 +1,56 @@
+label: 'Editoria11y genegeerde meldingen'
+display:
+  default:
+    display_title: Standaard
+    display_options:
+      title: 'Genegeerde meldingen'
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: 'Opnieuw instellen'
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      empty:
+        area_text_custom:
+          content: 'Geen genegeerde meldingen gevonden.'
+      use_more_text: 'Alle genegeerde meldingen'
+  dismissals__page:
+    display_title: 'Pagina met genegeerde meldingen'
+    display_options:
+      title: 'Genegeerde toegankelijkheidsmeldingen'
+      fields:
+        page_title:
+          label: 'Pagina met probleem'
+        dismissal_status:
+          label: Gemarkeerd
+        created:
+          label: Aan
+        name:
+          label: Door
+          separator: ', '
+        page_path:
+          label: Pad
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Eerste'
+            last: 'Laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
+      filters:
+        uid:
+          expose:
+            label: Door
+      use_more_text: 'Alle genegeerde meldingen'
+      menu:
+        title: 'Genegeerde meldingen'
+        description: 'Problemen gemarkeerd als verborgen of OK in Editoria11y.'
+  recent_dismissals:
+    display_title: 'Recent genegeerde meldingen'
+    display_options:
+      block_category: Editoria11y

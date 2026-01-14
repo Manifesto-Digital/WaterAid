@@ -17,9 +17,6 @@ settings:
     -
       value: h3
       label: H3
-    -
-      value: h4
-      label: H4
   allowed_values_function: ''
 module: options
 locked: false

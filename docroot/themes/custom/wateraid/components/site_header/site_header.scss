@@ -19,8 +19,12 @@ $header-padding-bottom: 0;
     @include page-container;
     display: flex;
     justify-content: space-between;
-    padding-top: $wa-spacing-05;
-    padding-bottom: $wa-spacing-06;
+    padding-top: $wa-spacing-03;
+    padding-bottom: $wa-spacing-03;
+    @include tablet {
+      padding-top: $wa-spacing-05;
+      padding-bottom: $wa-spacing-06;
+    }
   }
 
   &__main {
@@ -94,6 +98,10 @@ $header-padding-bottom: 0;
       @include wa-transition-motion-flow(background-color, 0.4s);
     }
 
+    .button--donate:after {
+      min-height: 58px;;
+    }
+
     &[data-mobile-menu-level-active='2'] {
       .site-header__colour-wrapper {
         background-color: $wa-blue;
@@ -101,6 +109,24 @@ $header-padding-bottom: 0;
 
       .site-header__logo-image {
         color: $wa-white;
+      }
+
+      .mobile-nav__search {
+        background-image: linear-gradient(transparent, $wa-blue, $wa-blue);
+      }
+
+      .button--menu {
+        color: $wa-white;
+        &:after {
+          background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square-blue.svg");
+        }
+      }
+
+      .button--search-btn {
+        color: $wa-white;
+        &:after {
+          background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-dark.svg");
+        }
       }
     }
 
@@ -112,11 +138,39 @@ $header-padding-bottom: 0;
       .site-header__logo-image {
         color: $wa-white;
       }
+
+      .mobile-nav__search {
+        background-image: linear-gradient(transparent, $wa-navy, $wa-navy);
+      }
+
+      .button--menu {
+        color: $wa-white;
+        &:after {
+          background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-square-navy.svg");
+        }
+      }
+
+      .button--search-btn {
+        color: $wa-white;
+        &:after {
+          background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-navy.svg");
+        }
+      }
+
+      .button--donate {
+        color: $wa-navy;
+        &:after {
+          background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-lime.svg");
+        }
+      }
     }
 
     &[data-mobile-menu-level-active='site-selector'] {
       .site-header__colour-wrapper {
         background-color: $wa-cream;
+      }
+      .mobile-nav__search {
+        background-image: linear-gradient(transparent, $wa-cream, $wa-cream);
       }
     }
   }

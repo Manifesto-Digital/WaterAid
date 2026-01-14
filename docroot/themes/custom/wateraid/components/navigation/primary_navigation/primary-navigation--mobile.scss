@@ -47,6 +47,7 @@
     height: 100%;
     width: 100%;
     padding-top: $wa-spacing-05;
+    padding-bottom: $wa-spacing-10;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -80,7 +81,7 @@
     background-color: $wa-blue;
 
     .mobile-nav__container{
-      height: calc(100% - 196px);
+      height: calc(100% - 70px);
     }
     .mobile-nav__container > li {
       border-bottom: 1px solid $wa-white;
@@ -92,7 +93,7 @@
     background-color: $wa-navy;
 
     .mobile-nav__container{
-      height: calc(100% - 196px);
+      height: calc(100% - 70px);
     }
 
     .mobile-nav__container > li {
@@ -198,6 +199,12 @@
 
     &-inner {
       @include page-container;
+      height: calc(100vh - 140px);
+      width: 100%;
+      padding-top: $wa-spacing-05;
+      padding-bottom: $wa-spacing-10;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .mobile-nav__back-btn {
@@ -228,7 +235,9 @@
     visibility: hidden;
     opacity: 0;
     position: fixed;
-    bottom: $wa-spacing-06;
+    padding: $wa-spacing-11 $wa-spacing-05  $wa-spacing-06 $wa-spacing-05;
+    background-image: linear-gradient(transparent, $wa-white, $wa-white);
+    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -242,7 +251,7 @@
 
     .button {
       width: 100%;
-      max-width: 300px;
+      max-width: 400px;
       justify-content: center;
       text-align: center;
 
@@ -250,7 +259,7 @@
       &:after,
       .button__hover {
         width: 100%;
-        max-width: 300px;
+        max-width: 400px;
       }
     }
 

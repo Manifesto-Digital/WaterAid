@@ -47,6 +47,7 @@
       // Set image container height on desktop for sticky image on two column variant.
       const setScrollHeight = () => {
         const twoColumns = document.querySelectorAll(".parallax-scroll--two-column");
+        const background = document.querySelectorAll(".parallax-scroll--background");
         let width = document.body.clientWidth;
 
         if (twoColumns && width > 1024) {
@@ -55,6 +56,21 @@
 
             sectionImages.forEach((image) => {
               image.style.height = `${component.offsetHeight}px`;
+            });
+          });
+        }
+
+        if (background && width > 1024) {
+          background.forEach((component) => {
+            const imagesWrappers = component.querySelectorAll(".image__wrapper");
+
+            imagesWrappers.forEach((wrapper) => {
+              wrapper.style.height = `${component.offsetHeight}px`;
+            });
+            const imageContents = component.querySelectorAll(".image__content");
+
+            imageContents.forEach((content) => {
+              content.style.height = `${component.offsetHeight}px`;
             });
           });
         }

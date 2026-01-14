@@ -1,0 +1,16 @@
+uuid: 3145e687-4058-438f-8670-d8c7d60e7f89
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.donation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.donation
+target_entity_type_id: node
+target_bundle: donation
+default_langcode: current_interface
+language_alterable: true

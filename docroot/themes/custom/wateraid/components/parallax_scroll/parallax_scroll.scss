@@ -25,8 +25,12 @@
       margin: 0;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, ul li::marker {
       color: $wa-white;
+    }
+
+    blockquote:before {
+      background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark-white.svg");
     }
   }
 
@@ -73,6 +77,12 @@
       opacity: 1;
     }
 
+    .image {
+      @include desktop {
+        margin-top: 0;
+      }
+    }
+
     img {
       width: 100%;
       height: 100%;
@@ -91,14 +101,18 @@
 
     .image__wrapper {
       position: unset;
+      width: 100%;
     }
 
     .image__button {
       @include desktop {
-        position: fixed;
-        top: calc(100% - 36px);
-        right: calculate-rem(52);
-        width: $wa-spacing-08;
+        position: sticky;
+        top: calc(100vh - 32px);
+        left: unset;
+        width: 100%;
+        padding-right: $wa-spacing-03;
+        padding-bottom: $wa-spacing-03;
+        justify-items: flex-end;
       }
     }
 
@@ -106,7 +120,14 @@
       @include desktop {
         position: fixed;
         top: calc(100% - 80px);
-        right: 68px;
+        right: 24px;
+      }
+    }
+
+    .image__content {
+      @include desktop {
+        position: absolute;
+        width: 100%;
       }
     }
 

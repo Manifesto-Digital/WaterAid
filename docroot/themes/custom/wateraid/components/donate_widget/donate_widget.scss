@@ -369,9 +369,6 @@
     background: transparent;
     color: $wa-navy;
     padding: 0;
-    @include desktop() {
-      margin-left: 7.125rem;
-    }
   }
 
   .donate-widget__fr-logo {
