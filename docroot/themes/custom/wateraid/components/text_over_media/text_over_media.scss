@@ -69,22 +69,52 @@
     [data-component-id="wateraid:rich_text"] {
       color: $wa-white;
       margin-top: 0;
-      h1, h2, h3 {
+
+      h1, h2, h3, ul li::marker {
         color: $wa-white;
       }
+
       blockquote:before {
         background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark-white.svg");
       }
     }
   }
 
-  .image__button,
-  .image__caption {
+  .image {
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  .image__button {
     bottom: $wa-spacing-04;
     @include desktop {
-      position: fixed;
-      right: $wa-spacing-03;
-      bottom: $wa-spacing-04;
+      position: sticky;
+      top: calc(100vh - 60px);
+      left: unset;
+      width: 100%;
+      padding-right: $wa-spacing-03;
+      padding-bottom: $wa-spacing-03;
+      justify-items: flex-end;
+      margin-top: -36px;
+    }
+  }
+
+  .image__content {
+    @include desktop {
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .image__caption {
+    @include desktop {
+      position: sticky;
+      top: calc(100vh - 108px);
+      width: 100%;
+      margin-right: 1.25rem;
+      margin-bottom: 1.25rem;
+      justify-self: flex-end;
     }
   }
 
@@ -117,7 +147,10 @@
       cursor: pointer;
       z-index: 1;
       @include desktop {
-        position: fixed;
+        position: sticky;
+        top: calc(100vh - 60px);
+        margin: $wa-spacing-04 $wa-spacing-06;
+        justify-items: flex-end;
       }
     }
   }
@@ -131,19 +164,19 @@
 
       .text-over-media__video--play,
       .text-over-media__video--pause {
-        right: unset;
-        left: $wa-spacing-03;
+        justify-items: flex-start;
       }
 
       .image__button {
-        left: $wa-spacing-03;
-        right: unset;
+        padding-left: $wa-spacing-03;
+        padding-bottom: $wa-spacing-03;
+        justify-items: flex-start;
       }
 
       .image__caption {
-        left: $wa-spacing-05;
-        bottom: $wa-spacing-06;
-        right: unset;
+        margin-left: $wa-spacing-05;
+        margin-bottom: $wa-spacing-05;
+        justify-self: flex-start;
       }
     }
   }

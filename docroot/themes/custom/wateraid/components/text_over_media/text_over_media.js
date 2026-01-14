@@ -1,6 +1,7 @@
 (function (Drupal) {
   Drupal.behaviors.textOverMedia = {
     attach(context) {
+      let width = document.body.clientWidth;
       function addCustomVideoPlay(video) {
         const videoElement = video.querySelector("video");
         const playButton = video.querySelector(".text-over-media__video--play");
@@ -33,7 +34,7 @@
       }
       // Set component height on desktop.
       function setComponentHeight(component) {
-        let width = document.body.clientWidth;
+        width = document.body.clientWidth;
         if (width > 1024) {
           // Add get content height.
           const content = component.querySelector(".text-over-media__content");
@@ -41,7 +42,21 @@
 
           // Add padding for component.
           const newComponentHeight = contentHeight + 96;
-          component.style.height = newComponentHeight + "px";
+          component.style.height = `${newComponentHeight}px`;
+
+          // Set image wrapper height for sticky caption.
+          const imageWrapper = component.querySelector(".image__wrapper");
+          const imageContent = component.querySelector(".image__content");
+          if (imageContent && imageWrapper) {
+            imageWrapper.style.height = `${component.offsetHeight}px`;
+            imageContent.style.height = `${component.offsetHeight}px`;
+          }
+
+          // Set video wrapper height for sticky buttons.
+          const videoWrapper = component.querySelector(".text-over-media__video");
+          if (videoWrapper) {
+            videoWrapper.style.height = `${component.offsetHeight}px`;
+          }
         }
         else {
           component.style.height = "unset";
