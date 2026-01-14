@@ -26,11 +26,17 @@ settings:
     block: block
   preselect_views:
     blogs_solr: blogs_solr
+    blogs_solr_jp: blogs_solr_jp
     events_solr: events_solr
+    events_solr_jp: events_solr_jp
     press_releases_solr: press_releases_solr
+    press_releases_solr_jp: press_releases_solr_jp
     publications: publications
+    publications_jp: publications_jp
     search: search
+    search_jp: search_jp
     stories_solr: stories_solr
+    stories_solr_jp: stories_solr_jp
   enabled_settings:
     argument: argument
 field_type: viewsreference
