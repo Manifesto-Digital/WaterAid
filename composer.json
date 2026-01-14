@@ -105,6 +105,7 @@
     "drupal/search_api": "^1.39",
     "drupal/search_api_japanese_normalizer": "^1.0@beta",
     "drupal/search_api_japanese_tokenizer": "^1.0@alpha",
+    "drupal/search_api_kana_convert": "^1.0",
     "drupal/search_api_solr": "^4.3",
     "drupal/searchstax": "^1.9",
     "drupal/seckit": "^2.0",

@@ -111,9 +111,8 @@ module:
   search_api: 0
   search_api_japanese_normalizer: 0
   search_api_japanese_tokenizer: 0
-  search_api_mecab: 0
+  search_api_kana_convert: 0
   search_api_solr: 0
-  search_api_sudachi: 0
   search_api_tinysegmenter: 0
   searchstax: 0
   seckit: 0
