@@ -42,7 +42,7 @@ final class DamImage extends DamBase {
     $remote_thumbnail_url = NULL;
 
     // If there is no remote thumbnail, there's nothing for us to fetch here.
-    if ($api_result = $this->orange_api->getPublicLink($system_identifier, NULL, 100, 100)) {
+    if ($api_result = $this->orange_api->getPublicLink($system_identifier, NULL, 800, NULL)) {
       if (isset($api_result['link'])) {
         $remote_thumbnail_url = $api_result['link'];
       }

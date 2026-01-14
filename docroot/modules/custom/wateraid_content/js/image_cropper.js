@@ -9,7 +9,7 @@
         return;
       }
 
-      console.log('Image Cropper behavior attached',);
+      console.log('Image Cropper behavior attached');
 
       // Find all layout paragraphs component forms
       if (!context.matches('form[data-drupal-selector="edit-layout-paragraphs-component-form-hero-image"]')) {
@@ -113,7 +113,7 @@
 
         // Initialize Cropper.js
         const cropper = new Cropper(cropTargetImage, {
-          aspectRatio: NaN, // Free aspect ratio
+          aspectRatio: 16/9, // Free aspect ratio
           viewMode: 1,
           dragMode: 'move',
           autoCropArea: 0.8,
@@ -183,7 +183,7 @@
         // Close modal function
         function closeModal() {
           cropper.destroy();
-          document.body.removeChild(modalOverlay);
+          modalOverlay.remove();
         }
 
         closeBtn.addEventListener('click', closeModal);
@@ -210,16 +210,18 @@
           console.log('Crop data:', cropInfo);
 
           // Try to find or create a hidden field to store crop data
-          let cropDataField = form.querySelector('input[name="field_image_crop_data"]');
+          // let cropDataField = form.querySelector('input[name="field_image_crop_data"]');
+          //
+          // if (cropDataField === null) {
+          //   cropDataField = document.createElement('input');
+          //   cropDataField.type = 'hidden';
+          //   cropDataField.name = 'field_image_crop_data';
+          //   form.appendChild(cropDataField);
+          // }
+          // cropDataField.value = JSON.stringify(cropInfo);
 
-          if (!cropDataField) {
-            cropDataField = document.createElement('input');
-            cropDataField.type = 'hidden';
-            cropDataField.name = 'field_image_crop_data';
-            form.appendChild(cropDataField);
-          }
-
-          cropDataField.value = JSON.stringify(cropInfo);
+          const cropField = form.querySelector('input[name="field_image_crop[0][value]"]');
+          cropField.value = JSON.stringify(cropInfo);
 
           // Optional: Generate cropped image canvas
           const canvas = cropper.getCroppedCanvas();
@@ -228,7 +230,11 @@
             console.log('Cropped canvas generated:', canvas.width + 'x' + canvas.height);
           }
 
-          alert('Crop data saved!\n\nCrop area: ' + cropInfo.width + 'x' + cropInfo.height + ' pixels\nPosition: (' + cropInfo.x + ', ' + cropInfo.y + ')');
+          console.log(cropper.getCroppedCanvas);
+          const canvasData = cropper.getCanvasData();
+
+          console.log(canvasData);
+          // alert('Crop data saved!\n\nCrop area: ' + cropInfo.width + 'x' + cropInfo.height + ' pixels\nPosition: (' + cropInfo.x + ', ' + cropInfo.y + ')');
 
           closeModal();
         });

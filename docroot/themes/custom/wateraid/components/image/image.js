@@ -16,11 +16,20 @@
         }
       }
 
+      function cropImage(image) {
+
+      }
+
+      context.querySelectorAll('.image--cropped').forEach((image) => {
+        cropImage(image);
+      });
+
       context
         .querySelectorAll('[data-component-id="wateraid:image"]')
         .forEach((image) => {
           attachEventListeners(image);
         });
+
     },
   };
 })(Drupal);
