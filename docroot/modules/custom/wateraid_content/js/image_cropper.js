@@ -113,7 +113,7 @@
 
         // Initialize Cropper.js
         const cropper = new Cropper(cropTargetImage, {
-          aspectRatio: 16/9, // Free aspect ratio
+          aspectRatio: 2.35/1, // Free aspect ratio
           viewMode: 1,
           dragMode: 'move',
           autoCropArea: 0.8,

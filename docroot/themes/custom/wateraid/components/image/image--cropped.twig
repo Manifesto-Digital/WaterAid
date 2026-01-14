@@ -1,7 +1,7 @@
 <div data-component-id="wateraid:image"
      class="image image--cropped image--{{ width }} image--{{ caption_display|replace({'_':'-'}) }}"
      data-x="{{ image_crop_data.x }}" data-y="{{ image_crop_data.y }}" data-width="{{ image_crop_data.width }}"
-     data-height="{{ image_crop_data.width }}" data-rotate="{{ image_crop_data.rotate }}"
+     data-height="{{ image_crop_data.height }}" data-rotate="{{ image_crop_data.rotate }}"
      data-scale-x="{{ image_crop_data.scaleX }}" data-scale-y="{{ image_crop_data.scaleY }}"
      data-image-height="{{ image_crop_data.imageHeight }}" data-image-width="{{ image_crop_data.imageWidth }}">
   <div class="image__wrapper">
@@ -43,15 +43,3 @@
     {% endif %}
   </div>
 </div>
-
-<ul>
-  <li>x: {{ image_crop_data.x }}</li>
-  <li>y: {{ image_crop_data.y }}</li>
-  <li>width: {{ image_crop_data.width }}</li>
-  <li>height: {{ image_crop_data.height }}</li>
-  <li>rotate: {{ image_crop_data.rotate }}</li>
-  <li>scaleX: {{ image_crop_data.scaleX }}</li>
-  <li>scaleY: {{ image_crop_data.scaleY }}</li>
-  <li>imageWidth: {{ image_crop_data.imageWidth }}</li>
-  <li>imageHeight: {{ image_crop_data.imageHeight }}</li>
-</ul>

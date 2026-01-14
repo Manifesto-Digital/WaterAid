@@ -502,13 +502,12 @@ function wateraid_preprocess_paragraph__spend(&$variables) {
  * donation amount fields, then passes the structured arrays to Twig.
  */
 function wateraid_preprocess_paragraph__hero_image(&$variables) {
-  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
-  $paragraph = $variables['paragraph'];
+  if (isset($variables['content']['field_image_crop'][0]['#context'])) {
+    $crop_json = $variables['content']['field_image_crop'][0]['#context']['value'];
+    $crop_array = json_decode($crop_json, TRUE);
 
-  $crop_json = $variables['content']['field_image_crop'][0]['#context']['value'];
-  $crop_array = json_decode($crop_json, TRUE);
-
-  $variables['image_crop_data'] = $crop_array;
+    $variables['image_crop_data'] = $crop_array;
+  }
 }
 
 /**
