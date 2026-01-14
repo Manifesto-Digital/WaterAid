@@ -1,0 +1,23 @@
+uuid: 417d18e6-7c1a-4050-a592-d0760b075982
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_header_tag
+    - paragraphs.paragraphs_type.stats_item
+  module:
+    - options
+id: paragraph.stats_item.field_header_tag
+field_name: field_header_tag
+entity_type: paragraph
+bundle: stats_item
+label: 'Header Level'
+description: 'Select the heading level for the component heading.'
+required: true
+translatable: false
+default_value:
+  -
+    value: h3
+default_value_callback: ''
+settings: {  }
+field_type: list_string
