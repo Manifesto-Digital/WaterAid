@@ -1,6 +1,6 @@
 uuid: 12c1370e-96d2-4058-a349-b6d8c6cef1da
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - search_api_solr.solr_cache.cache_document_default_9_0_0
@@ -51,7 +51,25 @@ backend_config:
   connector: searchstax
   connector_config:
     scheme: https
+    host: ''
     port: 443
+    path: /
+    core: ''
+    timeout: 5
+    index_timeout: 15
+    optimize_timeout: 10
+    finalize_timeout: 30
+    skip_schema_check: false
+    solr_version: ''
+    http_method: AUTO
+    commit_within: 1000
+    jmx: false
+    jts: false
+    solr_install_dir: ''
+    update_endpoint: ''
+    update_token: ''
+    autosuggest_core: ''
+    context: ''
     key_id: searchstax_connector_migrated_testing
   optimize: false
   fallback_multiple: false

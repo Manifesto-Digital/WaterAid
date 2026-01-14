@@ -782,7 +782,7 @@ if (!empty($acquia_env)) {
   // $settings['acquia_search']['override_search_core'] = "ABLR-206360.{$acquia_env}.override";
 
   $config['config_split.config_split.local_dev']['status'] = FALSE;
-  if (($acquia_env === 'dev' || $acquia_env === 'test')) {
+  if (($acquia_env === 'dev' || $acquia_env === 'stage')) {
     $config['config_split.config_split.dev_stage']['status'] = TRUE;
   }
   if ($acquia_env === 'dev') {
