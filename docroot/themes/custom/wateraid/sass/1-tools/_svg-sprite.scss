@@ -24,12 +24,16 @@ $sprites: (
     'wa-container-sm-rectangle--blue': "../../images/sprite.svg#wa-container-sm-rectangle--blue-view",
     'wa-container-sm-rectangle-pink': "../../images/sprite.svg#wa-container-sm-rectangle-pink-view",
     'wa-container-sm-rectangle': "../../images/sprite.svg#wa-container-sm-rectangle-view",
+    'wa-container-sm-square-blue': "../../images/sprite.svg#wa-container-sm-square-blue-view",
+    'wa-container-sm-square-navy': "../../images/sprite.svg#wa-container-sm-square-navy-view",
     'wa-container-sm-square-white': "../../images/sprite.svg#wa-container-sm-square-white-view",
     'wa-container-sm-square': "../../images/sprite.svg#wa-container-sm-square-view",
     'wa-container-sm-tall': "../../images/sprite.svg#wa-container-sm-tall-view",
     'wa-container-sm-wide-border-dark': "../../images/sprite.svg#wa-container-sm-wide-border-dark-view",
     'wa-container-sm-wide-border-donate': "../../images/sprite.svg#wa-container-sm-wide-border-donate-view",
     'wa-container-sm-wide-border-light': "../../images/sprite.svg#wa-container-sm-wide-border-light-view",
+    'wa-container-sm-wide-border-navy': "../../images/sprite.svg#wa-container-sm-wide-border-navy-view",
+    'wa-container-sm-wide-lime': "../../images/sprite.svg#wa-container-sm-wide-lime-view",
     'wa-container-sm-wide-navy': "../../images/sprite.svg#wa-container-sm-wide-navy-view",
     'wa-container-sm-wide-white': "../../images/sprite.svg#wa-container-sm-wide-white-view",
     'wa-container-sm-wide': "../../images/sprite.svg#wa-container-sm-wide-view",
@@ -237,6 +241,14 @@ $sizes: (
         'width': 300px,
         'height': 160px
     ),
+    'wa-container-sm-square-blue': (
+        'width': 53px,
+        'height': 53px
+    ),
+    'wa-container-sm-square-navy': (
+        'width': 53px,
+        'height': 53px
+    ),
     'wa-container-sm-square-white': (
         'width': 53px,
         'height': 53px
@@ -258,6 +270,14 @@ $sizes: (
         'height': 53px
     ),
     'wa-container-sm-wide-border-light': (
+        'width': 241px,
+        'height': 53px
+    ),
+    'wa-container-sm-wide-border-navy': (
+        'width': 241px,
+        'height': 53px
+    ),
+    'wa-container-sm-wide-lime': (
         'width': 241px,
         'height': 53px
     ),
