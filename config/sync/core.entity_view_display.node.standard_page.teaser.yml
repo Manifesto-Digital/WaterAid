@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_get_involved
+    - field.field.node.standard_page.field_header
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_metatags
@@ -84,6 +85,7 @@ hidden:
   entitygroupfield: true
   field_age_range: true
   field_content: true
+  field_header: true
   field_hero: true
   field_key_stages: true
   field_metatags: true

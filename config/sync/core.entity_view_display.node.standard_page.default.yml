@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_get_involved
+    - field.field.node.standard_page.field_header
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_metatags
@@ -31,7 +32,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 0
     region: content
   field_content:
     type: entity_reference_revisions_entity_view
@@ -40,7 +41,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_hero:
     type: entity_reference_revisions_entity_view
@@ -49,14 +50,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 4
     region: content
   field_resources:
     type: link
@@ -68,12 +69,12 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 115
+    weight: 5
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   co_authors: true
@@ -83,6 +84,7 @@ hidden:
   entitygroupfield: true
   field_age_range: true
   field_get_involved: true
+  field_header: true
   field_key_stages: true
   field_minimal_header: true
   field_review_date: true
