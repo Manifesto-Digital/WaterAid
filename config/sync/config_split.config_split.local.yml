@@ -11,12 +11,16 @@ no_patching: false
 storage: folder
 folder: ../config/local_config
 module:
+  cdn_ui: 0
   devel: 0
+  kint: 0
+  queue_ui: 0
   views_ui: 0
 theme: {  }
 complete_list:
   - search_api.server.ddev_solr_local
 partial_list:
+  - search_api.index.jp_search
   - search_api.index.searchstax_index
   - search_api.server.searchstax_server
   - system.performance

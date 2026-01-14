@@ -2567,61 +2567,6 @@
             }
         },
         {
-            "name": "drupal/azure_storage",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/azure_storage.git",
-                "reference": "2.0.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/azure_storage-2.0.3.zip",
-                "reference": "2.0.3",
-                "shasum": "a02ee9863a9ec7f679ace000fbab3779e06ef656"
-            },
-            "require": {
-                "drupal/core": "^8.8.3 || ^9 || ^10 || ^11",
-                "drupal/key": "*",
-                "microsoft/azure-storage-common": "^1.5",
-                "microsoft/azure-storage-queue": "^1.3"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "2.0.3",
-                    "datestamp": "1760730897",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "baikho",
-                    "homepage": "https://www.drupal.org/user/2727459"
-                },
-                {
-                    "name": "dakku",
-                    "homepage": "https://www.drupal.org/user/97634"
-                }
-            ],
-            "description": "Azure Storage Integration",
-            "homepage": "https://www.drupal.org/project/azure_storage",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/azure_storage",
-                "issues": "https://www.drupal.org/project/issues/azure_storage"
-            }
-        },
-        {
             "name": "drupal/better_exposed_filters",
             "version": "7.1.1",
             "source": {
@@ -8276,6 +8221,106 @@
             }
         },
         {
+            "name": "drupal/search_api_japanese_normalizer",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/search_api_japanese_normalizer.git",
+                "reference": "1.0.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/search_api_japanese_normalizer-1.0.0-beta1.zip",
+                "reference": "1.0.0-beta1",
+                "shasum": "3abb6ef4caaa355bdeab316119a8cf8ccf1f3c54"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11",
+                "drupal/search_api": "^1.37"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-beta1",
+                    "datestamp": "1738318325",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Taiki Terao",
+                    "homepage": "https://www.drupal.org/user/3839603",
+                    "email": "taiki.terao@studio-umi.jp"
+                },
+                {
+                    "name": "Yutaro Ohno",
+                    "homepage": "https://www.drupal.org/user/219263",
+                    "email": "yutaro.ohno@studio-umi.jp"
+                }
+            ],
+            "description": "The Search API Japanese Normalizer module enhances search performance for the Search API module by standardizing variations in Japanese character types according to predefined rules.",
+            "homepage": "https://drupal.org/project/search_api_japanese_normalizer",
+            "support": {
+                "source": "https://git.drupalcode.org/project/search_api_japanese_normalizer",
+                "issues": "https://drupal.org/project/issues/search_api_japanese_normalizer"
+            }
+        },
+        {
+            "name": "drupal/search_api_japanese_tokenizer",
+            "version": "1.0.0-alpha4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/search_api_japanese_tokenizer.git",
+                "reference": "1.0.0-alpha4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/search_api_japanese_tokenizer-1.0.0-alpha4.zip",
+                "reference": "1.0.0-alpha4",
+                "shasum": "fa135bbc54c427eaf023f32232e20f4e4653636d"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11",
+                "drupal/search_api": "^1.37",
+                "u7aro/tinysegmenter-php": "^0.2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha4",
+                    "datestamp": "1740011777",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Yutaro Ohno",
+                    "homepage": "https://www.drupal.org/user/219263",
+                    "email": "yutaro.ohno@studio-umi.jp"
+                }
+            ],
+            "description": "A processor that tokenizes Japanese text using natural language processing (machine learning or morphological analysis).",
+            "homepage": "https://drupal.org/project/search_api_japanese_tokenizer",
+            "support": {
+                "source": "https://git.drupalcode.org/project/search_api_japanese_tokenizer",
+                "issues": "https://drupal.org/project/issues/search_api_japanese_tokenizer"
+            }
+        },
+        {
             "name": "drupal/search_api_solr",
             "version": "4.3.10",
             "source": {
@@ -9287,81 +9332,6 @@
             "homepage": "https://www.drupal.org/project/symfony_mailer",
             "support": {
                 "source": "https://git.drupalcode.org/project/symfony_mailer"
-            }
-        },
-        {
-            "name": "drupal/tb_megamenu",
-            "version": "1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/tb_megamenu.git",
-                "reference": "8.x-1.10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tb_megamenu-8.x-1.10.zip",
-                "reference": "8.x-1.10",
-                "shasum": "8371e06981760de0849eda74fa7a07016a480e74"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.10",
-                    "datestamp": "1756399717",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Wade Stewart (themodularlab)",
-                    "homepage": "https://www.drupal.org/u/themodularlab",
-                    "role": "Owner"
-                },
-                {
-                    "name": "Michael Girgis (knaffles)",
-                    "homepage": "https://www.drupal.org/u/knaffles",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Andrew Olson (andrewozone)",
-                    "homepage": "https://www.drupal.org/u/andrewozone",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Justin Todd (quondam)",
-                    "homepage": "https://www.drupal.org/u/quondam",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Irene Dobbs (irene_dobbs)",
-                    "homepage": "https://www.drupal.org/u/irene_dobbs",
-                    "role": "Co-Maintainer"
-                },
-                {
-                    "name": "Henry Odiete (henry.odiete)",
-                    "homepage": "https://www.drupal.org/u/henry.odiete",
-                    "role": "Co-Maintainer"
-                },
-                {
-                    "name": "themodularlab",
-                    "homepage": "https://www.drupal.org/user/3190381"
-                }
-            ],
-            "description": "Provides complex, multi-column mega menu solutions for Drupal.",
-            "homepage": "https://www.drupal.org/project/tb_megamenu",
-            "support": {
-                "source": "https://git.drupalcode.org/project/tb_megamenu",
-                "issues": "https://www.drupal.org/project/issues/tb_megamenu"
             }
         },
         {
@@ -11772,102 +11742,6 @@
                 "source": "https://github.com/mck89/peast/tree/v1.17.4"
             },
             "time": "2025-10-10T12:53:17+00:00"
-        },
-        {
-            "name": "microsoft/azure-storage-common",
-            "version": "1.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Azure/azure-storage-common-php.git",
-                "reference": "8ca7b1bf4c9ca7c663e75a02a0035b05b37196a0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Azure/azure-storage-common-php/zipball/8ca7b1bf4c9ca7c663e75a02a0035b05b37196a0",
-                "reference": "8ca7b1bf4c9ca7c663e75a02a0035b05b37196a0",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0|^7.0",
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MicrosoftAzure\\Storage\\Common\\": "src/Common"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Azure Storage PHP Client Library",
-                    "email": "dmsh@microsoft.com"
-                }
-            ],
-            "description": "This project provides a set of common code shared by Azure Storage Blob, Table, Queue and File PHP client libraries.",
-            "keywords": [
-                "azure",
-                "common",
-                "php",
-                "sdk",
-                "storage"
-            ],
-            "support": {
-                "issues": "https://github.com/Azure/azure-storage-common-php/issues",
-                "source": "https://github.com/Azure/azure-storage-common-php/tree/v1.5.2"
-            },
-            "time": "2021-10-09T03:03:47+00:00"
-        },
-        {
-            "name": "microsoft/azure-storage-queue",
-            "version": "1.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Azure/azure-storage-queue-php.git",
-                "reference": "750974f7a888bb7a93cacb873b3280c45e970a23"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Azure/azure-storage-queue-php/zipball/750974f7a888bb7a93cacb873b3280c45e970a23",
-                "reference": "750974f7a888bb7a93cacb873b3280c45e970a23",
-                "shasum": ""
-            },
-            "require": {
-                "microsoft/azure-storage-common": "~1.5",
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MicrosoftAzure\\Storage\\Queue\\": "src/Queue"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Azure Storage PHP Client Library",
-                    "email": "dmsh@microsoft.com"
-                }
-            ],
-            "description": "This project provides a set of PHP client libraries that make it easy to access Microsoft Azure Storage Queue APIs.",
-            "keywords": [
-                "azure",
-                "php",
-                "queue",
-                "sdk",
-                "storage"
-            ],
-            "support": {
-                "issues": "https://github.com/Azure/azure-storage-queue-php/issues",
-                "source": "https://github.com/Azure/azure-storage-queue-php/tree/v1.3.4"
-            },
-            "time": "2021-10-09T03:29:05+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -16563,6 +16437,51 @@
                 }
             ],
             "time": "2025-12-14T11:28:47+00:00"
+        },
+        {
+            "name": "u7aro/tinysegmenter-php",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/u7aro/tinysegmenter-php.git",
+                "reference": "a6a6924bf4d9fcee746434e7d6a88f719e2896bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/u7aro/tinysegmenter-php/zipball/a6a6924bf4d9fcee746434e7d6a88f719e2896bb",
+                "reference": "a6a6924bf4d9fcee746434e7d6a88f719e2896bb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "U7aro\\TinySegmenter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Yutaro Ohno"
+                }
+            ],
+            "description": "This is a PHP port of TinySegmenter, a JavaScript library for Japanese text segmentation.",
+            "keywords": [
+                "japanese",
+                "text-segmentation",
+                "tinysegmenter",
+                "tokenization"
+            ],
+            "support": {
+                "source": "https://github.com/u7aro/tinysegmenter-php/tree/v0.2.0"
+            },
+            "time": "2025-01-31T01:22:05+00:00"
         },
         {
             "name": "webflo/drupal-finder",
@@ -22630,6 +22549,8 @@
         "drupal/media_directories": 10,
         "drupal/preview_link": 15,
         "drupal/rabbit_hole": 15,
+        "drupal/search_api_japanese_normalizer": 10,
+        "drupal/search_api_japanese_tokenizer": 15,
         "drupal/shorthand": 5,
         "drupal/storybook": 10,
         "drupal/symfony_mailer": 10,

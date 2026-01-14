@@ -15,7 +15,6 @@ module:
   breakpoint: 0
   captcha: 0
   cdn: 0
-  cdn_ui: 0
   ckeditor5: 0
   ckeditor_citation: 0
   cloudflare_redirect: 0
@@ -85,7 +84,6 @@ module:
   metatag_twitter_cards: 0
   migrate: 0
   migrate_plus: 0
-  migrate_source_queue: 0
   migrate_tools: 0
   mysql: 0
   node: 0
@@ -98,7 +96,6 @@ module:
   path_alias: 0
   phpass: 0
   preview_link: 0
-  queue_ui: 0
   quick_node_clone: 0
   rabbit_hole: 0
   recaptcha_v3: 0
@@ -112,7 +109,12 @@ module:
   schema_web_page: 0
   schema_web_site: 0
   search_api: 0
+  search_api_japanese_normalizer: 0
+  search_api_japanese_tokenizer: 0
+  search_api_mecab: 0
   search_api_solr: 0
+  search_api_sudachi: 0
+  search_api_tinysegmenter: 0
   searchstax: 0
   seckit: 0
   security_review: 0
