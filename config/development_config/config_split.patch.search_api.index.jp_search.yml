@@ -7,4 +7,4 @@ removing:
   dependencies:
     config:
       - search_api.server.searchstax_server_1
-  server: null
+  server: searchstax_server_1
