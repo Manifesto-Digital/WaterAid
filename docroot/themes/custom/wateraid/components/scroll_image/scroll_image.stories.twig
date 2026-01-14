@@ -1,0 +1,18 @@
+{% stories scroll_image with { title: 'wateraid/Molecules/ScrollImage' } %}
+  {% story default with {
+    name: 'Scroll Image',
+  } %}
+    {% set image %}
+      <img src="https://cdn.pixabay.com/photo/2014/11/21/03/24/mountains-540116_1280.jpg" alt="Example image"/>
+    {% endset %}
+
+    {{ include('wateraid:scroll_section', {
+      image: image,
+      caption: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.',
+      credit: 'Credit: Excepteur sint.'
+      mobile_image: image,
+      mobile_caption: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.',
+      mobile_credit: 'Credit: Excepteur sint.'
+    }) }}
+  {% endstory %}
+{% endstories %}

@@ -1,0 +1,19 @@
+uuid: 895235a8-6fe0-4ff6-9457-7997a48bd91d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mobile_caption
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.field_mobile_caption
+field_name: field_mobile_caption
+entity_type: paragraph
+bundle: scroll_image
+label: 'Mobile caption'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

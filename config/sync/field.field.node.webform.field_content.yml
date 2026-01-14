@@ -19,6 +19,8 @@ dependencies:
     - paragraphs.paragraphs_type.hero_video
     - paragraphs.paragraphs_type.image_with_quote_sidebar
     - paragraphs.paragraphs_type.internal_card
+    - paragraphs.paragraphs_type.parallax_scroll
+    - paragraphs.paragraphs_type.scroll_image
     - paragraphs.paragraphs_type.spend
     - paragraphs.paragraphs_type.spend_amount
     - paragraphs.paragraphs_type.spend_item
@@ -61,6 +63,8 @@ settings:
       spend_amount: spend_amount
       hero_story: hero_story
       text_over_media: text_over_media
+      parallax_scroll: parallax_scroll
+      scroll_image: scroll_image
     negate: 1
     target_bundles_drag_drop:
       accordion:
@@ -138,6 +142,9 @@ settings:
       internal_card:
         weight: -47
         enabled: true
+      parallax_scroll:
+        weight: 66
+        enabled: true
       quote:
         weight: -66
         enabled: false
@@ -147,6 +154,9 @@ settings:
       rich_text:
         weight: -76
         enabled: false
+      scroll_image:
+        weight: 70
+        enabled: true
       spend:
         weight: -45
         enabled: true

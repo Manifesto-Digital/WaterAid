@@ -1,0 +1,17 @@
+@import "../../sass/base";
+
+.scroll-image {
+  &__mobile {
+    display: block;
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__desktop {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+  }
+}
