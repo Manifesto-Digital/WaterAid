@@ -1,0 +1,44 @@
+uuid: af68ad26-5fdc-474f-b476-bf48aa1b6f9f
+langcode: en
+status: false
+dependencies:
+  module:
+    - search_api_solr
+    - searchstax
+id: searchstax_server
+name: 'SearchStax server (app WaterAid)'
+description: |-
+  Connects to the <em class="placeholder">WaterAid</em> SearchStax app (account <em class="placeholder">WaterAid</em>).
+
+  Migrated from the <em class="placeholder">Acquia Search API Solr server</em> server.
+backend: search_api_solr
+backend_config:
+  retrieve_data: true
+  highlight_data: true
+  site_hash: true
+  server_prefix: ''
+  domain: generic
+  environment: default
+  connector: searchstax
+  connector_config:
+    scheme: https
+    host: searchcloud-4-eu-west-1.searchstax.com
+    port: 443
+    core: wateraid-6646
+    update_endpoint: 'https://searchcloud-4-eu-west-1.searchstax.com/29847/wateraid-6646/update'
+    update_token: e6fd0e365167e7d1951e54a761ee81bbaf49203c
+    context: '29847'
+  optimize: false
+  fallback_multiple: false
+  disabled_field_types: {  }
+  disabled_caches: {  }
+  disabled_request_handlers:
+    - request_handler_elevate_default_7_0_0
+    - request_handler_replicationmaster_default_7_0_0
+    - request_handler_replicationslave_default_7_0_0
+  disabled_request_dispatchers:
+    - request_dispatcher_httpcaching_default_7_0_0
+  rows: 10
+  index_single_documents_fallback_count: 10
+  index_empty_text_fields: false
+  suppress_missing_languages: false
