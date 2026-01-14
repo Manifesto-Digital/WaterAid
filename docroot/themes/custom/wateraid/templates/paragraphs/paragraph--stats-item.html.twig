@@ -46,10 +46,13 @@
   not paragraph.isPublished() ? 'paragraph--unpublished'
 ] %}
 
+{% set tag = paragraph.field_header_tag.value ? paragraph.field_header_tag.value : 'h3' %}
+
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:card', {
       heading: content.field_figure,
+      heading_tag: tag,
       description: content.field_description,
       image_url: file_url(paragraph.field_icon[0].entity.field_media_svg.entity.uri.value),
       url: paragraph.field_link.0.url,

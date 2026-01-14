@@ -41,6 +41,9 @@ slots:
   colour:
     type: string
     title: Card colour
+  heading_tag:
+    type: string
+    title: Heading Tag
 libraryOverrides:
   css:
     theme:
