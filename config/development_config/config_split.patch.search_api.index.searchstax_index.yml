@@ -1,10 +1,12 @@
 adding:
+  status: false
   dependencies:
     config:
       - search_api.server.testing
   server: testing
 removing:
+  status: true
   dependencies:
     config:
       - search_api.server.searchstax_server_1
-  server: null
+  server: searchstax_server_1

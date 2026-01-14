@@ -12,8 +12,7 @@ storage: folder
 folder: ../config/development_config
 module: {  }
 theme: {  }
-complete_list:
-  - search_api.server.testing
+complete_list: {  }
 partial_list:
   - search_api.index.jp_search
   - search_api.index.searchstax_index
