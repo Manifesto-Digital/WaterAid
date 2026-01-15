@@ -9,29 +9,29 @@
 
 <div {{ attributes.addClass(card_classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
 
-  <div class="card__image">
-    {% if image_url %}
-      <img src="{{ image_url }}" alt="" />
-    {% endif %}
-  </div>
+  {% if image_url %}
+    <div class="card__image">
+      <img src="{{ image_url }}" alt=""/>
+    </div>
+  {% endif %}
 
   <div class="card__body">
-    <{{ tag }}  class="card__heading pseudo-h3">
-      {{ heading }}
-    </{{ tag }} >
+    <{{ tag }} class="card__heading pseudo-h3">
+    {{ heading }}
+  </{{ tag }} >
 
-    <div class="card__description">
-      {{ description }}
-    </div>
-
-    {% if url %}
-      <div class="card__link">
-        {{ include('wateraid:link', {
-          text: link_text,
-          link: url,
-          type: 'text',
-        }) }}
-      </div>
-    {% endif %}
+  <div class="card__description">
+    {{ description }}
   </div>
+
+  {% if url %}
+    <div class="card__link">
+      {{ include('wateraid:link', {
+        text: link_text,
+        link: url,
+        type: 'text',
+      }) }}
+    </div>
+  {% endif %}
+</div>
 </div>
