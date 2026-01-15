@@ -16,7 +16,9 @@
         const thresholdArray = [0];
 
         images.forEach((image) => {
-          thresholdArray.push(image.getAttribute("data-image-no") * changeDecimal);
+          thresholdArray.push(
+            image.getAttribute("data-image-no") * changeDecimal,
+          );
         });
 
         // Change image when between thresholds.
@@ -33,7 +35,9 @@
               scrollPercent >= thresholdArray[i] &&
               scrollPercent < thresholdArray[i + 1]
             ) {
-              images.forEach((image) => {image.classList.remove("active");});
+              images.forEach((image) => {
+                image.classList.remove("active");
+              });
               images[i].classList.add("active");
             }
           }
@@ -46,13 +50,19 @@
 
       // Set image container height on desktop for sticky image on two column variant.
       const setScrollHeight = () => {
-        const twoColumns = document.querySelectorAll(".parallax-scroll--two-column");
-        const background = document.querySelectorAll(".parallax-scroll--background");
+        const twoColumns = document.querySelectorAll(
+          ".parallax-scroll--two-column",
+        );
+        const background = document.querySelectorAll(
+          ".parallax-scroll--background",
+        );
         let width = document.body.clientWidth;
 
         if (twoColumns && width > 1024) {
           twoColumns.forEach((component) => {
-            const sectionImages = component.querySelectorAll(".parallax-scroll__image");
+            const sectionImages = component.querySelectorAll(
+              ".parallax-scroll__image",
+            );
 
             sectionImages.forEach((image) => {
               image.style.height = `${component.offsetHeight}px`;
@@ -62,7 +72,8 @@
 
         if (background && width > 1024) {
           background.forEach((component) => {
-            const imagesWrappers = component.querySelectorAll(".image__wrapper");
+            const imagesWrappers =
+              component.querySelectorAll(".image__wrapper");
 
             imagesWrappers.forEach((wrapper) => {
               wrapper.style.height = `${component.offsetHeight}px`;
@@ -83,30 +94,30 @@
       window.addEventListener("resize", setScrollHeight);
 
       // Set image container height on mobile for sticky image.
-      const setImageHeight = () => {
-        const components = document.querySelectorAll(".parallax-scroll");
+      const setImageHeight = (component) => {
         width = document.body.clientWidth;
         let heights = [];
 
-        if (components && width < 1024) {
-          components.forEach((component) => {
-            const sectionImages = component.querySelectorAll(".scroll-image");
+        if (width < 1024) {
+          const sectionImages = component.querySelectorAll(".scroll-image");
 
-            sectionImages.forEach((image) => {
-              heights.push(image.offsetHeight);
-            });
-
-            const imageContainer = component.querySelector(".parallax-scroll__images");
-            imageContainer.style.height = `${Math.min.apply(0, heights)}px`;
+          sectionImages.forEach((image) => {
+            heights.push(image.offsetHeight);
           });
+
+          const imageContainer = component.querySelector(".parallax-scroll__images");
+          imageContainer.style.height = `${Math.min.apply(0, heights)}px`;
         }
       };
 
-      if (width < 1024) {
-        setImageHeight();
-      }
-
-      window.addEventListener("resize", setImageHeight);
+      context.querySelectorAll(".parallax-scroll").forEach((component) => {
+        if (width < 1024) {
+          setTimeout(() => {
+            setImageHeight(component);
+          }, 300);
+        }
+        window.addEventListener("resize", setImageHeight);
+      });
     },
   };
 })(Drupal);
