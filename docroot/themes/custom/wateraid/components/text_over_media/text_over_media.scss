@@ -182,3 +182,6 @@
   }
 }
 
+.paragraph-item--text-over-media + .paragraph-item--text-over-media .text-over-media {
+  margin-top: 0;
+}

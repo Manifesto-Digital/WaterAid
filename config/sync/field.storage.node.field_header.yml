@@ -1,0 +1,30 @@
+uuid: 737cb145-02f4-4469-8819-e435913c40ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_header
+field_name: field_header
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: 'Default Header'
+    -
+      value: donation
+      label: 'Donation Header'
+    -
+      value: minimal
+      label: 'Minimal Header'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

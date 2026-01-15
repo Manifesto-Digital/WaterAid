@@ -1,8 +1,9 @@
-uuid: a5b5b84c-31b2-4eee-a451-d04d5d1285f5
+uuid: beae0e9e-0807-4112-86a4-7afd91e36b84
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.hero_image.field_call_to_action_type
     - field.field.paragraph.hero_image.field_caption
     - field.field.paragraph.hero_image.field_credit
@@ -14,15 +15,17 @@ dependencies:
     - field.field.paragraph.hero_image.field_mobile_image
     - field.field.paragraph.hero_image.field_primary_cta
     - field.field.paragraph.hero_image.field_standfirst
+    - image.style.medium
     - paragraphs.paragraphs_type.hero_image
   module:
     - link
+    - media
     - options
     - text
-id: paragraph.hero_image.default
+id: paragraph.hero_image.preview
 targetEntityType: paragraph
 bundle: hero_image
-mode: default
+mode: preview
 content:
   field_call_to_action_type:
     type: list_default
@@ -48,21 +51,15 @@ content:
     weight: 2
     region: content
   field_image:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: hidden
     settings:
-      view_mode: full
-      link: false
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_image_crop:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 10
     region: content
   field_link:
     type: link
@@ -124,4 +121,5 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_image_crop: true
   search_api_excerpt: true

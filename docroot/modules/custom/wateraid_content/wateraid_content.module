@@ -211,6 +211,27 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
     wateraid_content_update_field_widget($form, ['field_video'], 'field_hero_variant', 'hero_with_video', 'visible');
     wateraid_content_update_field_widget($form, ['field_image', 'field_caption', 'field_credit'], 'field_hero_variant', 'hero_with_image', 'visible');
   }
+
+  if (isset($form['field_image_crop'])) {
+    $form['field_image_crop']['#attributes'] = ['hidden'=> 'true'];
+  }
+
+  // Attach image cropper library to hero_image paragraphs.
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $form_state->getFormObject()->getParagraph();
+  if ($paragraph->bundle() === 'hero_image' && isset($form['field_image'])) {
+    $form['#attached']['library'][] = 'wateraid_content/image_cropper';
+  }
+
+  if (isset($form['field_image_crop'])) {
+    $form['#attached']['library'][] = 'wateraid_content/image_cropper';
+  }
+  // echo '<pre>';
+  // die(var_dump(
+  //   array_keys($form),
+  //   $form['#form_id'],
+  //   $form['form_id'],
+  // ));
 }
 
 /**

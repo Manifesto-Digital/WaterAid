@@ -1,0 +1,42 @@
+
+<div data-component-id="wateraid:image" class="image image--{{ width }} image--{{ caption_display|replace({'_':'-'}) }}">
+  <div class="image__wrapper">
+    <figure class="image__content">
+      {{ image }}
+
+      {% if caption or credit %}
+        <figcaption class="image__caption">
+          {{ caption }}
+          <span class="image__credit">{{ credit }}</span>
+        </figcaption>
+      {% endif %}
+
+    </figure>
+
+    {% if (caption or credit) and caption_display == 'expandable' %}
+      <div class="image__button">
+        <div class="image__button--open">
+          {{ include('wateraid:button', {
+            text: 'Open caption',
+            link: '',
+            id: 'image-caption-open',
+            type: 'icon-small',
+            icon: 'wa-utility-information',
+            theme: 'dark',
+          }) }}
+        </div>
+        <div class="image__button--close">
+          {{ include('wateraid:button', {
+            text: 'Close caption',
+            link: '',
+            id: 'image-caption-close',
+            type: 'icon-small',
+            icon: 'wa-utility-close',
+            theme: 'dark',
+          }) }}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>

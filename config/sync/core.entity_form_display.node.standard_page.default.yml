@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
     - field.field.node.standard_page.field_get_involved
+    - field.field.node.standard_page.field_header
     - field.field.node.standard_page.field_hero
     - field.field.node.standard_page.field_key_stages
     - field.field.node.standard_page.field_metatags
@@ -53,7 +54,7 @@ third_party_settings:
       children:
         - title
         - field_hero
-        - field_minimal_header
+        - field_header
         - langcode
       label: General
       region: content
@@ -205,13 +206,19 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_header:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_hero:
     type: layout_paragraphs
     weight: 2
     region: content
     settings:
-      view_mode: default
-      preview_view_mode: default
+      view_mode: preview
+      preview_view_mode: preview
       form_display_mode: default
       nesting_depth: 0
       require_layouts: 0
@@ -230,13 +237,6 @@ content:
     settings:
       sidebar: false
       use_details: false
-    third_party_settings: {  }
-  field_minimal_header:
-    type: boolean_checkbox
-    weight: 3
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_resources:
     type: link_default
@@ -369,6 +369,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  field_minimal_header: true
   publish_on: true
   publish_state: true
   unpublish_on: true
