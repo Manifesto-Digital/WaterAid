@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.group.wateraid_site.field_content
     - field.field.group.wateraid_site.field_currency_prefix
+    - field.field.group.wateraid_site.field_google_tag_id
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
     - field.field.group.wateraid_site.field_minimum_donation
@@ -46,12 +47,13 @@ third_party_settings:
         - field_currency_prefix
         - field_minimum_donation
         - langcode
+        - field_google_tag_id
         - path
         - status
       label: General
       region: content
       parent_name: group_tabs
-      weight: 20
+      weight: 0
       format_type: tab
       format_settings:
         classes: ''
@@ -68,7 +70,7 @@ third_party_settings:
       label: Content
       region: content
       parent_name: group_tabs
-      weight: 21
+      weight: 1
       format_type: tab
       format_settings:
         classes: ''
@@ -85,7 +87,7 @@ mode: default
 content:
   field_content:
     type: layout_paragraphs
-    weight: 11
+    weight: 0
     region: content
     settings:
       view_mode: default
@@ -98,6 +100,14 @@ content:
   field_currency_prefix:
     type: string_textfield
     weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_google_tag_id:
+    type: string_textfield
+    weight: 9
     region: content
     settings:
       size: 60
@@ -146,7 +156,7 @@ content:
     third_party_settings: {  }
   field_spend_module:
     type: layout_paragraphs
-    weight: 13
+    weight: 2
     region: content
     settings:
       view_mode: default
@@ -174,26 +184,26 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 9
+    weight: 10
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 11
+    weight: 13
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   translation:
-    weight: 8
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }

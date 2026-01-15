@@ -13,7 +13,7 @@ use Drupal\Core\Url;
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
  */
-function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
   // Only show warning on node creation (not edit).
   /** @var \Drupal\node\NodeInterface $node */
   $node = $form_state->getFormObject()->getEntity();
@@ -42,21 +42,21 @@ function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_st
 /**
  * Implements hook_entity_insert().
  */
-function wateraid_group_entity_insert(EntityInterface $entity) {
+function wateraid_group_entity_insert(EntityInterface $entity): void {
   wateraid_group_maybe_reset_language_map($entity);
 }
 
 /**
  * Implements hook_entity_update().
  */
-function wateraid_group_entity_update(EntityInterface $entity) {
+function wateraid_group_entity_update(EntityInterface $entity): void {
   wateraid_group_maybe_reset_language_map($entity);
 }
 
 /**
  * Implements hook_entity_delete().
  */
-function wateraid_group_entity_delete(EntityInterface $entity) {
+function wateraid_group_entity_delete(EntityInterface $entity): void {
   wateraid_group_maybe_reset_language_map($entity);
 }
 
@@ -81,4 +81,35 @@ function wateraid_group_language_types_info_alter(array &$language_types): void 
   $language_types[LanguageInterface::TYPE_URL]['name'] = t('URL language');
   $language_types[LanguageInterface::TYPE_URL]['description'] = t('Language detected from URL path segments.');
   $language_types[LanguageInterface::TYPE_URL]['locked'] = FALSE;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_group_preprocess_html(&$variables): void {
+  $gtm_code = NULL;
+
+  /** @var \Drupal\group\Entity\GroupInterface $group */
+  if ($group = \Drupal::routeMatch()->getParameter('group')) {
+    $gtm_code = $group->get('field_google_tag_id')->getString();
+  }
+
+  // If the group has provided a GTM account, override the default.
+  if ($gtm_code) {
+    if (isset($variables['page']['#attached']['drupalSettings']['gtm']['tagIds'][0])) {
+      $variables['page']['#attached']['drupalSettings']['gtm']['tagIds'][0] = $gtm_code;
+    }
+
+    /** @var \Drupal\Core\Url $gtm_url */
+    if ($gtm_url = $variables['page_top']['google_tag_gtm_iframe'][0]['#url'] ?? NULL) {
+      $options = $gtm_url->getOptions();
+
+      if (isset($options['query']['id'])) {
+        $options['query']['id'] = $gtm_code;
+      }
+
+      $gtm_url->setOptions($options);
+      $variables['page_top']['google_tag_gtm_iframe'][0]['#url'] = $gtm_url;
+    }
+  }
 }
