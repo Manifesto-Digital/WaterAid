@@ -3,20 +3,21 @@
   Drupal.behaviors.donationBanner = {
     attach(context) {
       function toggleBanner(banner) {
-        banner.classList.toggle("banner--active");
+        const wrapper = banner.parentNode.parentNode;
 
-        const wrapper = banner.parentNode;
-        wrapper.classList.toggle("container-closed");
+        let scatoken = wrapper.dataset.token;
 
-        const panel = banner.nextElementSibling;
-
-        if (banner.classList.contains("banner--active")) {
-          banner.setAttribute("aria-expanded", "true");
-          panel.setAttribute("aria-hidden", "false");
-        } else {
-          banner.setAttribute("aria-expanded", "false");
-          panel.setAttribute("aria-hidden", "true");
-        }
+        fetch(Drupal.url('wateraid-donation-forms/reminder?token=' + scatoken), {
+          method: "POST",
+          body: '',
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+        }).then(r => {
+          if (r.status === 200) {
+            wrapper.style.display = 'none';
+          }
+        });
       }
 
       function attachBannerEventListeners(bannerElement) {
