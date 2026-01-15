@@ -150,3 +150,28 @@ function wateraid_content_update_10005(&$sandbox): void {
 
   $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
 }
+
+/**
+ * Copy historic values for minimal header on standard page.
+ */
+function wateraid_content_update_10006(&$sandbox): void {
+  if (!isset($sandbox['ids'])) {
+    $sandbox['ids'] = \Drupal::database()->select('node__field_minimal_header', 'n')
+      ->fields('n', ['entity_id'])
+      ->condition('n.bundle', 'standard_page')
+      ->condition('n.field_minimal_header_value', 1)
+      ->execute()->fetchAllKeyed(0, 0);
+    $sandbox['max'] = count($sandbox['ids']);
+    $sandbox['#finished'] = 0;
+  }
+
+  if ($nid = array_pop($sandbox['ids'])) {
+    /** @var \Drupal\node\NodeInterface $node */
+    if ($node = \Drupal::entityTypeManager()->getStorage('node')->load($nid)) {
+      $node->set('field_header', 'minimal');
+      $node->save();
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
