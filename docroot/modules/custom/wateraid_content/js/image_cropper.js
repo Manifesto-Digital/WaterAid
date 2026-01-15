@@ -9,34 +9,18 @@
         return;
       }
 
-      console.log('Image Cropper behavior attached');
-
       // Find all layout paragraphs component forms
       if (!context.matches('form[data-drupal-selector="edit-layout-paragraphs-component-form-hero-image"]')) {
         return;
       }
 
       const form = context;
-
-      console.log('Processing form for image cropper:', form);
-      // // Check if this is a hero_image paragraph
-      // const paragraphType = form.querySelector('input[name="type"]');
-      // if (!paragraphType || paragraphType.value !== 'hero_image') {
-      //   return;
-      // }
-
-      // // Check if field_image exists
       const imageField = form.querySelector('[data-drupal-selector="edit-field-image"] .fieldset__wrapper');
-      // if (!imageField) {
-      //   return;
-      // }
 
       // Check if button already exists
       if (imageField.querySelector('.btn-show-crop')) {
-        console.log('Crop button already exists, skipping.');
         return;
       }
-      console.log('Adding crop button to image field.', imageField);
 
       // Create the "Show Crop" button
       const cropButton = document.createElement('button');
@@ -46,7 +30,6 @@
 
       // Insert button after the field widget
       const fieldWidget = imageField.querySelector('[data-drupal-selector="edit-group-image"]');
-      console.log('Field widget for button insertion:', fieldWidget);
       if (fieldWidget) {
         fieldWidget.appendChild(cropButton);
       } else {
@@ -61,8 +44,6 @@
 
       function openCropModal(form, imageField) {
         // Find the image from the referenced media entity
-        console.log('Opening crop modal for image field:', imageField);
-
         const mediaImage = imageField.querySelector('img');
 
         if (!mediaImage || !mediaImage.src) {
@@ -79,18 +60,14 @@
         modalOverlay.innerHTML = `
           <div class="image-crop-modal">
             <div class="image-crop-modal__header">
-              <h2 class="image-crop-modal__title">Crop Image</h2>
+              <h2 class="image-crop-modal__title ui-dialog-title">Crop Image</h2>
               <button type="button" class="image-crop-modal__close" aria-label="Close">&times;</button>
             </div>
             <div class="image-crop-modal__body">
               <div class="image-crop-modal__controls">
-                <button type="button" class="btn-crop-zoom-in" title="Zoom In">Zoom In (+)</button>
-                <button type="button" class="btn-crop-zoom-out" title="Zoom Out">Zoom Out (-)</button>
-<!--                <button type="button" class="btn-crop-rotate-left" title="Rotate Left">Rotate Left</button>-->
-<!--                <button type="button" class="btn-crop-rotate-right" title="Rotate Right">Rotate Right</button>-->
-                <button type="button" class="btn-crop-flip-h" title="Flip Horizontal">Flip H</button>
-                <button type="button" class="btn-crop-flip-v" title="Flip Vertical">Flip V</button>
-                <button type="button" class="btn-crop-reset" title="Reset">Reset</button>
+                <button type="button" class="btn-crop-flip-h button ui-button" title="Flip Horizontal">Flip H</button>
+                <button type="button" class="btn-crop-flip-v button ui-button" title="Flip Vertical">Flip V</button>
+                <button type="button" class="btn-crop-reset button ui-button" title="Reset">Reset</button>
               </div>
               <div class="image-crop-container">
                 <img id="crop-target-image" src="${imageSrc}" alt="Image to crop">
@@ -100,8 +77,8 @@
               </div>
             </div>
             <div class="image-crop-modal__footer">
-              <button type="button" class="btn-crop-cancel">Cancel</button>
-              <button type="button" class="btn-crop-save button--primary">Save Crop Data</button>
+              <button type="button" class="btn-crop-save button--primary button ui-button">Save Crop Data</button>
+              <button type="button" class="btn-crop-cancel button ui-button">Cancel</button>
             </div>
           </div>
         `;
@@ -113,18 +90,23 @@
 
         const cropField = form.querySelector('input[name="field_image_crop[0][value]"]');
 
-        const data = JSON.parse(cropField.value);
+        let data;
+
+        if (cropField.value) {
+          data = JSON.parse(cropField.value);
+        }
 
         // Initialize Cropper.js
         const cropper = new Cropper(cropTargetImage, {
           ready: function () {
-            // Set the initial crop box data
-            cropper.setData(data);
+            if (data) {
+              cropper.setData(data);
+            }
           },
-          aspectRatio: 2.35/1, // Free aspect ratio
+          aspectRatio: 1440/480, // Free aspect ratio
           viewMode: 1,
           dragMode: 'move',
-          autoCropArea: 0.8,
+          autoCropArea: 1,
           restore: false,
           guides: true,
           center: true,
@@ -133,39 +115,17 @@
           cropBoxResizable: true,
           toggleDragModeOnDblclick: false,
           movable: true,
-          resizable: true,
+          resizable: false,
           centered: true
         });
 
         // Control buttons
-        const zoomInBtn = modalOverlay.querySelector('.btn-crop-zoom-in');
-        const zoomOutBtn = modalOverlay.querySelector('.btn-crop-zoom-out');
-        // const rotateLeftBtn = modalOverlay.querySelector('.btn-crop-rotate-left');
-        // const rotateRightBtn = modalOverlay.querySelector('.btn-crop-rotate-right');
         const flipHBtn = modalOverlay.querySelector('.btn-crop-flip-h');
         const flipVBtn = modalOverlay.querySelector('.btn-crop-flip-v');
         const resetBtn = modalOverlay.querySelector('.btn-crop-reset');
         const closeBtn = modalOverlay.querySelector('.image-crop-modal__close');
         const cancelBtn = modalOverlay.querySelector('.btn-crop-cancel');
         const saveBtn = modalOverlay.querySelector('.btn-crop-save');
-
-        // Zoom controls
-        zoomInBtn.addEventListener('click', function() {
-          cropper.zoom(0.1);
-        });
-
-        zoomOutBtn.addEventListener('click', function() {
-          cropper.zoom(-0.1);
-        });
-
-        // Rotation controls
-        // rotateLeftBtn.addEventListener('click', function() {
-        //   cropper.rotate(-90);
-        // });
-        //
-        // rotateRightBtn.addEventListener('click', function() {
-        //   cropper.rotate(90);
-        // });
 
         // Flip controls
         let scaleX = 1;
@@ -215,34 +175,8 @@
             imageHeight: Math.round(imageData.naturalHeight)
           };
 
-          console.log('Crop data:', cropInfo);
-
-          // Try to find or create a hidden field to store crop data
-          // let cropDataField = form.querySelector('input[name="field_image_crop_data"]');
-          //
-          // if (cropDataField === null) {
-          //   cropDataField = document.createElement('input');
-          //   cropDataField.type = 'hidden';
-          //   cropDataField.name = 'field_image_crop_data';
-          //   form.appendChild(cropDataField);
-          // }
-          // cropDataField.value = JSON.stringify(cropInfo);
-
           const cropField = form.querySelector('input[name="field_image_crop[0][value]"]');
           cropField.value = JSON.stringify(cropInfo);
-
-          // Optional: Generate cropped image canvas
-          const canvas = cropper.getCroppedCanvas();
-          if (canvas) {
-            // You could potentially upload this to a field or show preview
-            console.log('Cropped canvas generated:', canvas.width + 'x' + canvas.height);
-          }
-
-          console.log(cropper.getCroppedCanvas);
-          const canvasData = cropper.getCanvasData();
-
-          console.log(canvasData);
-          // alert('Crop data saved!\n\nCrop area: ' + cropInfo.width + 'x' + cropInfo.height + ' pixels\nPosition: (' + cropInfo.x + ', ' + cropInfo.y + ')');
 
           closeModal();
         });

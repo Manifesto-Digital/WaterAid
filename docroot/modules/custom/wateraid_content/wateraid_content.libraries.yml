@@ -22,3 +22,6 @@ image_cropper:
     - core/drupal
     - core/once
     - wateraid_content/cropperjs
+  css:
+    theme:
+      css/image_cropper.css: { }
