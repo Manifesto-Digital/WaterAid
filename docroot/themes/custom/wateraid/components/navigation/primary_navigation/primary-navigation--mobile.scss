@@ -85,6 +85,10 @@
     }
     .mobile-nav__container > li {
       border-bottom: 1px solid $wa-white;
+
+      &:last-child {
+        margin-bottom: 5rem;
+      }
     }
   }
   &__level-3 {
