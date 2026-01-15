@@ -42,6 +42,16 @@
         openCropModal(form, imageField);
       });
 
+      // If image is removed then clear the crop field.
+      const removeButton = form.querySelector('input[name="field_image-0-media-library-remove-button"]');
+      const cropField = form.querySelector('input[name="field_image_crop[0][value]"]');
+
+      if (removeButton) {
+        removeButton.addEventListener('mousedown', () => {
+          cropField.value = '';
+        })
+      }
+
       function openCropModal(form, imageField) {
         // Find the image from the referenced media entity
         const mediaImage = imageField.querySelector('img');
