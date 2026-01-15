@@ -1,29 +1,21 @@
-uuid: 3daa50d9-fc8a-41d3-8152-3f5f5fa5bcf7
+uuid: 0b58e8db-1884-4a68-83eb-9300eb4be8c3
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.media_library
+    - core.entity_view_mode.media.full
     - field.field.media.local_image.field_media_image
     - media.type.local_image
   module:
     - svg_image
-id: media.local_image.media_library
+id: media.local_image.full
 targetEntityType: media
 bundle: local_image
-mode: media_library
+mode: full
 content:
-  name:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  thumbnail:
+  field_media_image:
     type: image
-    label: hidden
+    label: visually_hidden
     settings:
       image_link: ''
       image_style: ''
@@ -34,14 +26,15 @@ content:
         height: null
       svg_render_as_image: true
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
 hidden:
   created: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_media_image: true
   langcode: true
+  name: true
   search_api_excerpt: true
+  thumbnail: true
   uid: true

@@ -1,0 +1,45 @@
+<div data-component-id="wateraid:image"
+     class="image image--cropped image--{{ width }} image--{{ caption_display|replace({'_':'-'}) }}"
+     data-x="{{ image_crop_data.x }}" data-y="{{ image_crop_data.y }}" data-width="{{ image_crop_data.width }}"
+     data-height="{{ image_crop_data.height }}" data-rotate="{{ image_crop_data.rotate }}"
+     data-scale-x="{{ image_crop_data.scaleX }}" data-scale-y="{{ image_crop_data.scaleY }}"
+     data-image-height="{{ image_crop_data.imageHeight }}" data-image-width="{{ image_crop_data.imageWidth }}">
+  <div class="image__wrapper">
+    <figure class="image__content">
+      {{ image }}
+
+      {% if caption or credit %}
+        <figcaption class="image__caption">
+          {{ caption }}
+          <span class="image__credit">{{ credit }}</span>
+        </figcaption>
+      {% endif %}
+
+    </figure>
+
+    {% if (caption or credit) and caption_display == 'expandable' %}
+      <div class="image__button">
+        <div class="image__button--open">
+          {{ include('wateraid:button', {
+            text: 'Open caption',
+            link: '',
+            id: 'image-caption-open',
+            type: 'icon-small',
+            icon: 'wa-utility-information',
+            theme: 'dark',
+          }) }}
+        </div>
+        <div class="image__button--close">
+          {{ include('wateraid:button', {
+            text: 'Close caption',
+            link: '',
+            id: 'image-caption-close',
+            type: 'icon-small',
+            icon: 'wa-utility-close',
+            theme: 'dark',
+          }) }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

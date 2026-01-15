@@ -10,7 +10,6 @@ dependencies:
     - field.field.media.dam_image.field_dam_expiry_date
     - field.field.media.dam_image.field_dam_last_checked
     - field.field.media.dam_image.field_media_dam_image
-    - image.style.medium
     - media.type.dam_image
   module:
     - svg_image
@@ -54,7 +53,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: medium
+      image_style: ''
       image_loading:
         attribute: lazy
       svg_attributes:

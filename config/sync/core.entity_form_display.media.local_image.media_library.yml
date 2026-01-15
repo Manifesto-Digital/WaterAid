@@ -16,7 +16,7 @@ mode: media_library
 content:
   field_media_image:
     type: image_image
-    weight: -50
+    weight: 0
     region: content
     settings:
       progress_indicator: throbber
