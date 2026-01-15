@@ -27,7 +27,7 @@
                 {{ include('wateraid:button', {
                   classes: ['site-header__mobile-donate-btn'],
                   text: link.title,
-                  url: link.url.toString(),
+                  link: link.url.toString(),
                   type: 'donate',
                 }, false) }}
               {% endif %}
