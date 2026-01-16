@@ -91,7 +91,11 @@ final class ExpiryChecker extends QueueWorkerBase implements ContainerFactoryPlu
                   }
 
                   if ($value) {
-                    $media->set($field, substr(strip_tags($value), 0, 250));
+
+                    // Only set the caption if it doesn't contain non-ASCII characters.
+                    if (!preg_match('/[^\x20-\x7e]/', $value)) {
+                      $media->set($field, substr(strip_tags($value), 0, 250));
+                    }
                   }
                 }
               }
