@@ -131,14 +131,19 @@ final class AjaxMediaController extends ControllerBase {
     $media = $this->createMedia($drupalMediaType, $systemIdentifier, $damItemData);
 
     if (in_array($drupalMediaType, ['dam_image', 'dam_video'])) {
+
       // Set alt text if available.
       if (isset($apiResponseItem['CoreField']['Title'])) {
         $media->set('field_media_image_alt', $apiResponseItem['CoreField']['Title']);
       }
       if (isset($apiResponseItem['CustomField.Caption'])) {
-        $media->set('field_caption', $apiResponseItem['CustomField.Caption']);
+
+        // Only set the caption if it doesn't contain non-ASCII characters.
+        if (!preg_match('/[^\x20-\x7e]/', $apiResponseItem['CustomField.Caption'])) {
+          $media->set('field_caption', substr(strip_tags($apiResponseItem['CustomField.Caption']), 0, 250));
+        }
       }
-      if (isset($apiResponseItem['customfield.Credit']) && isset($apiResponseItem['customfield.Credit']['Value'])) {
+      if (isset($apiResponseItem['customfield.Credit']['Value'])) {
         $media->set('field_credit', $apiResponseItem['customfield.Credit']['Value']);
       }
     }

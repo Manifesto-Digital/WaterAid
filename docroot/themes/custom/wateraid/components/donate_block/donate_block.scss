@@ -47,6 +47,12 @@
     }
   }
 
+  .paragraph-item--rich-text .container-sm {
+    @include desktop() {
+      margin-left: 0;
+    }
+  }
+
   &--light {
     .quote {
       background-color: $wa-white;
