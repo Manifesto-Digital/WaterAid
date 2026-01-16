@@ -1,8 +1,8 @@
 <div {{ attributes.addClass('donation-banner-wrapper') }}>
-  <div class="donation-banner">
+  <div class="donation-banner" data-token="{{ token }}">
     <div class="container">
       <button aria-expanded="true" class="donation__toggle banner--active">
-        {{ include('@wateraid/images/icons/wa-utility-chevron.svg') }}
+        {{ include('@wateraid/images/icons/wa-utility-close.svg') }}
       </button>
       <div aria-hidden="false" class="donation__content">
         <p>You pledge to donate <strong>{{ amount }}</strong></p>

@@ -226,12 +226,8 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
   if (isset($form['field_image_crop'])) {
     $form['#attached']['library'][] = 'wateraid_content/image_cropper';
   }
-  // echo '<pre>';
-  // die(var_dump(
-  //   array_keys($form),
-  //   $form['#form_id'],
-  //   $form['form_id'],
-  // ));
+
+  $form['#attached']['library'][] = 'wateraid_content/wateraid_content';
 }
 
 /**

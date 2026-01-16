@@ -33,6 +33,7 @@ function wateraid_donation_forms_theme(): array {
       'variables' => [
         'amount' => NULL,
         'uri' => NULL,
+        'token' => NULL,
       ],
     ],
     'webform_handler_wateraid_email_summary' => [

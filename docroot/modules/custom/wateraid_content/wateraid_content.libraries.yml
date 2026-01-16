@@ -25,3 +25,8 @@ image_cropper:
   css:
     theme:
       css/image_cropper.css: { }
+
+wateraid_content:
+  css:
+    theme:
+      css/wateraid_content.css: { }
