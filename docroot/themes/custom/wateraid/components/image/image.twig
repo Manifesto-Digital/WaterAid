@@ -1,2 +1,3 @@
-{% set cropVariant = cropVariant ? cropVariant : 'default' %}
-{% include '@wateraid/components/image/image--' ~ cropVariant ~ '.twig' %}
+{% set variant = variant == 'cropped' ? variant : 'default' %}
+
+{% include '@wateraid/components/image/image--' ~ variant ~ '.twig' %}
