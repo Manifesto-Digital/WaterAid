@@ -123,7 +123,7 @@
     flex-direction: column;
 
     @include tablet {
-      padding: $wa-spacing-09;
+      padding: $wa-spacing-09 0;
     }
 
     &--title {
@@ -236,7 +236,7 @@
 
       @include desktop {
         margin-bottom: $wa-spacing-10;
-        padding: $wa-spacing-09 $wa-spacing-09 $wa-spacing-01 $wa-spacing-09;
+        padding: $wa-spacing-09 0 $wa-spacing-01 0;
       }
 
       &::after {
@@ -265,6 +265,10 @@
   }
 
   &--white {
+    &[data-component-id="wateraid:hero"] {
+      margin-bottom: $wa-spacing-09;
+    }
+
     .hero__content {
       background-color: $wa-white;
     }

@@ -46,6 +46,7 @@
 
   // Colour variants
   &--white {
+    padding: 0 $wa-spacing-09;
     .card {
       background-color: $wa-cream;
       color: $wa-navy;
