@@ -1,0 +1,19 @@
+uuid: aa69d05e-43c6-4c1d-8ea5-8dca3de6b861
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_crop
+    - paragraphs.paragraphs_type.hero_image
+id: paragraph.hero_image.field_image_crop
+field_name: field_image_crop
+entity_type: paragraph
+bundle: hero_image
+label: 'Image crop'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

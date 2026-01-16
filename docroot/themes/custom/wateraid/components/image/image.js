@@ -16,11 +16,53 @@
         }
       }
 
+      // Set image focal point and transform.
+      function focusImage(image) {
+        const width = image.getAttribute('data-width');
+        const height = image.getAttribute('data-height');
+        const imageWidth = image.getAttribute('data-image-width');
+        const imageHeight = image.getAttribute('data-image-height');
+
+        const pointX = image.getAttribute('data-x');
+        const pointY = image.getAttribute('data-y');
+
+        const scaleX = image.getAttribute('data-scale-x');
+        const scaleY = image.getAttribute('data-scale-y');
+
+        // Get point %.
+
+        // Get focus point %.
+        let focalPointX = Math.round(((width / 2) + Number(pointX)) / imageWidth * 100);
+        let focalPointY = Math.round(((height / 2) + Number(pointY)) / imageHeight * 100);
+
+        if (pointY === '0') {
+          focalPointY = 0;
+        } else if (Number(pointY) + Number(height) === Number(imageHeight)) {
+          focalPointY = 100;
+        }
+
+
+        const img = image.querySelector('img');
+
+        // Set the image styling, object position for focal point and transform properties.
+        const styles = {
+          objectPosition: `${focalPointX}% ${focalPointY}%`,
+          transform: `scaleX(${scaleX}) scaleY(${scaleY})`,
+        };
+
+        Object.assign(img.style, styles);
+      }
+
+      context.querySelectorAll('.image--cropped').forEach((image) => {
+        focusImage(image);
+      });
+
       context
         .querySelectorAll('[data-component-id="wateraid:image"]')
         .forEach((image) => {
           attachEventListeners(image);
         });
+
     },
   };
 })(Drupal);

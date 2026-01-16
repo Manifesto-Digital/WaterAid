@@ -57,6 +57,12 @@ function wateraid_preprocess_page(&$variables): void {
         $donate_header = (bool) $node->get('field_donation_menu')->value;
         break;
 
+      case 'standard_page':
+        $value = $node->get('field_header')->getString() ?? 'default';
+        $donate_header = ($value == 'donation');
+        $minimal_header = ($value == 'minimal');
+        break;
+
       case 'landing_page':
       case 'shorthand_story':
       case 'story':
@@ -501,6 +507,21 @@ function wateraid_preprocess_paragraph__spend(&$variables) {
   $group = $relationship->getGroup();
 
   $variables['spend'] = $group->field_spend_module->view();
+}
+
+/**
+ * Implements hook_preprocess_paragraph__hero_image().
+ *
+ * This function now calls a helper to process the monthly and one-off
+ * donation amount fields, then passes the structured arrays to Twig.
+ */
+function wateraid_preprocess_paragraph__hero_image(&$variables) {
+  if (isset($variables['content']['field_image_crop'][0]['#context'])) {
+    $crop_json = $variables['content']['field_image_crop'][0]['#context']['value'];
+    $crop_array = json_decode($crop_json, TRUE);
+
+    $variables['image_crop_data'] = $crop_array;
+  }
 }
 
 /**

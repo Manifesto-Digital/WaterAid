@@ -18,3 +18,7 @@ props:
       type: string
       title: URL
       description: The Donation URL the user was donating at
+    token:
+      type: string
+      title: Token
+      description: An anonymous CSRF access token.

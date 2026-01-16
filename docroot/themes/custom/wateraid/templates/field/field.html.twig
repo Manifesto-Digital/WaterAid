@@ -56,7 +56,10 @@
   {% if multiple %}
     <div{{ attributes.addClass(classes) }}>
       {% for item in items %}
-        <div{{ item.attributes }}>{{ item.content }}</div>
+        {% if item.content and item.content['#paragraph'] %}
+          {% set para_type = item.content['#paragraph'].bundle()|clean_class %}
+        {% endif %}
+        <div{{ item.attributes.addClass("paragraph-item--" ~ para_type) }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}

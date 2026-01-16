@@ -7,6 +7,7 @@
 <div {{ attributes.addClass(hero_classes) }}>
   {# attributes are passed to children so we must clear them here #}
   {% set attributes = attributes.removeClass(hero_classes) %}
+
   {% if mobile_image|render %}
     <div class="hero__image hero__image--mobile">
       {{ include('wateraid:image', {
@@ -21,13 +22,25 @@
 
   {% if image %}
     <div class="hero__image {{ mobile_image|render ? "hero__image--desktop" }}">
-      {{ include('wateraid:image', {
-        image: image,
-        caption: media_caption,
-        credit: media_credit,
-        width: 'full',
-        caption_display: 'expandable'
-      }) }}
+      {% if (image_crop_data.x is not null) and (image_crop_data.y is not null) %}
+        {{ include('wateraid:image', {
+          image: image,
+          caption: media_caption,
+          credit: media_credit,
+          width: 'full',
+          caption_display: 'expandable',
+          variant: 'cropped',
+          image_crop_data,
+        }) }}
+      {% else %}
+        {{ include('wateraid:image', {
+          image: image,
+          caption: media_caption,
+          credit: media_credit,
+          width: 'full',
+          caption_display: 'expandable'
+        }) }}
+      {% endif %}
     </div>
   {% endif %}
 
@@ -61,45 +74,45 @@
   {% endif %}
   <div class="hero__content">
     <div class="hero__content-wrapper">
-    <h1 class="hero__content--title">{{ title }}</h1>
+      <h1 class="hero__content--title">{{ title }}</h1>
 
-    {% if standfirst %}
-      <div class="hero__content--standfirst">
-        {{ standfirst }}
-      </div>
-    {% endif %}
+      {% if standfirst %}
+        <div class="hero__content--standfirst">
+          {{ standfirst }}
+        </div>
+      {% endif %}
 
-    {% if cta.title and cta.url or link.title and link.url %}
-      <div class="hero__content--ctas">
-        {% if cta.title and cta.url %}
-          <div class="hero__content--cta">
-            {% if cta.type == 'donate' %}
-              {{ include('wateraid:button', {
-                text: cta.title,
-                link: cta.url,
-                type: 'donate',
+      {% if cta.title and cta.url or link.title and link.url %}
+        <div class="hero__content--ctas">
+          {% if cta.title and cta.url %}
+            <div class="hero__content--cta">
+              {% if cta.type == 'donate' %}
+                {{ include('wateraid:button', {
+                  text: cta.title,
+                  link: cta.url,
+                  type: 'donate',
+                }) }}
+              {% else %}
+                {{ include('wateraid:button', {
+                  text: cta.title,
+                  link: cta.url,
+                  type: 'primary',
+                  theme: colour == 'white' ? 'light' : 'dark'
+                }) }}
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if link.title and link.url %}
+            <div class="hero__content--link">
+              {{ include('wateraid:link', {
+                text: link.title,
+                link: link.url,
+                type: 'text',
               }) }}
-            {% else %}
-              {{ include('wateraid:button', {
-                text: cta.title,
-                link: cta.url,
-                type: 'primary',
-                theme: colour == 'white' ? 'light' : 'dark'
-              }) }}
-            {% endif %}
-          </div>
-        {% endif %}
-        {% if link.title and link.url %}
-          <div class="hero__content--link">
-            {{ include('wateraid:link', {
-              text: link.title,
-              link: link.url,
-              type: 'text',
-            }) }}
-          </div>
-        {% endif %}
-      </div>
-    {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
   </div>
-</div>
 </div>

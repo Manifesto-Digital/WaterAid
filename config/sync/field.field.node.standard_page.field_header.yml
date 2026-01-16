@@ -1,0 +1,23 @@
+uuid: d83a768c-276d-41e7-9743-ff2fe52c9bc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header
+    - node.type.standard_page
+  module:
+    - options
+id: node.standard_page.field_header
+field_name: field_header
+entity_type: node
+bundle: standard_page
+label: Header
+description: 'Select the header to use for this page: Default will use the standard header and menu, Donation uses the donation header variant, and Minimal uses the collapsed mobile menu.'
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

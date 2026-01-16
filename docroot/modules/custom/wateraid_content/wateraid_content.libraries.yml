@@ -1,3 +1,32 @@
 hero:
   js:
     js/hero.js: {}
+
+cropperjs:
+  remote: https://github.com/fengyuanchen/cropperjs
+  version: "1.6.1"
+  license:
+    name: MIT
+    url: https://github.com/fengyuanchen/cropperjs/blob/main/LICENSE
+    gpl-compatible: true
+  js:
+    https://unpkg.com/cropperjs@1.6.1/dist/cropper.min.js: { type: external, minified: true }
+  css:
+    theme:
+      https://unpkg.com/cropperjs@1.6.1/dist/cropper.min.css: { type: external, minified: true }
+
+image_cropper:
+  js:
+    js/image_cropper.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - wateraid_content/cropperjs
+  css:
+    theme:
+      css/image_cropper.css: { }
+
+wateraid_content:
+  css:
+    theme:
+      css/wateraid_content.css: { }

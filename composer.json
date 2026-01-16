@@ -232,6 +232,9 @@
     },
     "enable-patching": true,
     "patches": {
+        "drupal/core": {
+            "#3356667: Error: Cannot read properties of undefined (reading 'settings') with dialog.position.js": "https://www.drupal.org/files/issues/2024-08-11/3356667-undefined-settings-dialog-position-52.patch"
+        },
         "drupal/group_content_menu": {
             "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"
         },

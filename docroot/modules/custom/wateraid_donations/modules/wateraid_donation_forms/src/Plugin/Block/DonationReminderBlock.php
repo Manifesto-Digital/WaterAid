@@ -89,6 +89,7 @@ final class DonationReminderBlock extends BlockBase implements TrustedCallbackIn
             '#theme' => 'wateraid_donation_forms_banner',
             '#amount' => $data['amount'],
             '#uri' => $data['url'],
+            '#token' => \Drupal::service('anonymous_token.csrf_token')->get('wateraid-donation-forms/reminder'),
           ];
         }
       }
