@@ -1,3 +1,4 @@
+label: 'Editoria11y: Alerts'
 display:
   default:
     display_title: 'Por defecto'
@@ -7,15 +8,15 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
   block_recent_issues:
+    display_title: 'Block: Recent alerts'
     display_options:
       fields:
         result_name:
           label: Incidencia
         page_path:
           label: 'Ruta de la página'
+      use_more_text: 'Recent alerts'
   block_top_issues:
     display_options:
       fields:
@@ -25,6 +26,7 @@ display:
           label: Número
       use_more_text: 'Todas las incidencias'
   issues__page:
+    display_title: 'Alert types'
     display_options:
       title: 'Todas las incidencias'
       fields:
@@ -33,16 +35,18 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
+      menu:
+        title: 'Issue types'
   issues_by_page__page:
+    display_title: 'Alerts on specified page'
     display_options:
+      title: 'Alerts on specified page'
       fields:
         result_name_count:
           label: Número
@@ -53,33 +57,42 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
+      header:
+        area_text_custom:
+          content: "<h1>Accessibility issues on: {{page_title_1}}</h1>\r\n{{uid}}{{uid_1}}"
+      footer:
+        area_text_custom_1:
+          content: '<p><a href="../editoria11y/pages" class="button button--primary">All pages with alerts</a></p>'
+      menu:
+        title: 'Issue types'
   pages_by_issue__page:
+    display_title: 'Pages with specified alert'
     display_options:
+      title: 'Pages with a specific alert'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
+      footer:
+        area_text_custom:
+          content: '<a href="../editoria11y/alerts" class="button button--primary">All alerts</a>'
   recent__page:
+    display_title: 'Recent alerts'
     display_options:
+      title: 'Recent accessibility alerts'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
+      menu:
+        title: 'Recent alerts'

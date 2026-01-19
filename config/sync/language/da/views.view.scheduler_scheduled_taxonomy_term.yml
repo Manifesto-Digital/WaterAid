@@ -1,10 +1,8 @@
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende
@@ -24,24 +22,16 @@ display:
         taxonomy_term_bulk_form:
           label: Masseopdatering
           action_title: Handling
-        name:
-          label: Term
-          separator: ', '
         vid:
           label: Ordforråd
-          separator: ', '
         status:
-          label: Status
           settings:
             format_custom_true: Udgivet
             format_custom_false: 'Ikke udgivet'
-          separator: ', '
         publish_on:
           label: 'Udgiv den'
-          separator: ', '
         unpublish_on:
           label: 'Afpublicér den'
-          separator: ', '
         operations:
           label: Handlinger
       filters:
@@ -49,8 +39,6 @@ display:
           expose:
             label: Ordforråd
         status:
-          expose:
-            label: Status
           group_info:
             label: Publiceringsstatus
             group_items:

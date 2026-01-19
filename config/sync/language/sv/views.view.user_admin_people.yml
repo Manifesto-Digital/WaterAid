@@ -20,5 +20,8 @@ display:
         status:
           group_info:
             label: Status
+        roles_target_id:
+          expose:
+            label: Role
   page_1:
     display_title: Page

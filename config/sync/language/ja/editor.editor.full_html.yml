@@ -6,3 +6,5 @@ settings:
           label: プレーンテキスト
         5:
           label: 差分
+        13:
+          label: XML

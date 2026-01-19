@@ -1,10 +1,8 @@
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: 'Opnieuw instellen'
           exposed_sorts_label: 'Sorteren op'
           sort_asc_label: Oplopend
@@ -14,7 +12,6 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
           tags:
             previous: '‹ vorige'
             next: 'volgende ›'
@@ -24,24 +21,16 @@ display:
         taxonomy_term_bulk_form:
           label: Bulk-update
           action_title: Actie
-        name:
-          label: Term
-          separator: ', '
         vid:
           label: Woordenlijst
-          separator: ', '
         status:
-          label: Status
           settings:
             format_custom_true: Gepubliceerd
             format_custom_false: 'Niet gepubliceerd'
-          separator: ', '
         publish_on:
           label: 'Publiceer op'
-          separator: ', '
         unpublish_on:
           label: 'Depubliceer op'
-          separator: ', '
         operations:
           label: Bewerkingen
       filters:
@@ -49,8 +38,6 @@ display:
           expose:
             label: Woordenlijst
         status:
-          expose:
-            label: Status
           group_info:
             label: Publicatiestatus
             group_items:

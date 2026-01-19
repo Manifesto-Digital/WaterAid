@@ -1,3 +1,20 @@
+label: 'Editoria11y: Dismissals'
 display:
   default:
     display_title: ডিফল্ট
+    display_options:
+      use_more_text: 'Reset filters'
+  dismissals__page:
+    display_options:
+      fields:
+        page_title:
+          label: Page
+        name:
+          label: 'Dismissed by'
+      filters:
+        uid:
+          expose:
+            label: 'Dismissed by'
+      use_more_text: 'Reset filters'
+      menu:
+        title: Dismissals

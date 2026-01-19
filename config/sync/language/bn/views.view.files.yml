@@ -9,6 +9,8 @@ display:
           label: সাইজ
         status:
           label: স্ট্যাটাস
+        count:
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: কার্যাবলী
       exposed_form:

@@ -1,34 +1,33 @@
 display:
   default:
-    display_title: Master
     display_options:
-      title: Nodes
       fields:
         title:
           label: Titel
-          separator: ', '
         type:
           label: Inhoudstype
-          separator: ', '
         status:
-          label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Bewerkingen
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Eerste'
             last: 'Laatste »'
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       exposed_form:
         options:
           submit_button: Toepassen
@@ -43,6 +42,7 @@ display:
         gid:
           exception:
             title: Alle
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:
@@ -54,11 +54,5 @@ display:
                 title: Gepubliceerd
               2:
                 title: 'Niet gepubliceerd'
-        type:
-          expose:
-            label: Type
   page_1:
     display_title: Pagina
-    display_options:
-      menu:
-        title: Nodes

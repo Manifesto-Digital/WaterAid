@@ -6,23 +6,26 @@ display:
       fields:
         title:
           label: Titre
-          separator: ', '
         type:
           label: 'Type de contenu'
-          separator: ', '
         status:
           label: État
           settings:
             format_custom_false: 'Non publié'
             format_custom_true: Publié
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Actions
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Premier'
             last: 'Dernier »'
           expose:
@@ -34,8 +37,6 @@ display:
           submit_button: Appliquer
           reset_button_label: Réinitialiser
           exposed_sorts_label: 'Trier par'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       empty:
         area_text_custom:
           content: 'Aucun contenu disponible.'
@@ -43,6 +44,7 @@ display:
         gid:
           exception:
             title: Tout
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:
@@ -54,11 +56,7 @@ display:
                 title: Publié
               2:
                 title: 'Non publié'
-        type:
-          expose:
-            label: Type
   page_1:
-    display_title: Page
     display_options:
       menu:
         title: Nœuds

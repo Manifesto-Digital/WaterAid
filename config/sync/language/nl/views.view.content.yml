@@ -10,11 +10,9 @@ display:
           label: Titel
         type:
           label: Inhoudstype
-          separator: ', '
         name:
           label: Auteur
         status:
-          label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
@@ -22,7 +20,6 @@ display:
           label: Bijgewerkt
         langcode:
           label: Taal
-          separator: ', '
         operations:
           label: Bewerkingen
       pager:
@@ -34,7 +31,6 @@ display:
             last: 'Laatste »'
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: 'Opnieuw instellen'
           exposed_sorts_label: 'Sorteren op'
           sort_asc_label: Oplopend
@@ -50,8 +46,6 @@ display:
           expose:
             label: Inhoudstype
         status:
-          expose:
-            label: Status
           group_info:
             label: Publicatiestatus
             group_items:
