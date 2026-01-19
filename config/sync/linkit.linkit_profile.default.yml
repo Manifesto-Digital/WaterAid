@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - node
+    - wateraid_group
 _core:
   default_config_hash: 0Jw_BFJCCtWk187tIYvME58VFpYwPaAdrc4eRtAyHH0
 label: Default
