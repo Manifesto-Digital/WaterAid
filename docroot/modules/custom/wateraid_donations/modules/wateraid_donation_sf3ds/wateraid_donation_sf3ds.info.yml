@@ -1,0 +1,10 @@
+name: WaterAid Donations SalesForce 3D secure
+type: module
+description: Provides integration between WaterAid donations and Salesforce 3D secure.
+core_version_requirement: ^10 || ^11
+package: wateraid
+wateraid.package: donations
+configure: wateraid_donation_sf3ds.settings
+dependencies:
+  - drupal:wateraid_donation_forms
+  - drupal:webform

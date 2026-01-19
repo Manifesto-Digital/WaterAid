@@ -145,6 +145,7 @@ module:
   wateraid_donation_gmo: 0
   wateraid_donation_google_pay: 0
   wateraid_donation_paypal: 0
+  wateraid_donation_sf3ds: 0
   wateraid_donation_stripe: 0
   wateraid_forms: 0
   wateraid_group: 0

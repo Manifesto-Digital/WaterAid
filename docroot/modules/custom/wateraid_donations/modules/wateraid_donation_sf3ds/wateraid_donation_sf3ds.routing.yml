@@ -1,0 +1,16 @@
+wateraid_donation_sf3ds.cardForm:
+  path: '/sf3ds/{token}'
+  defaults:
+    _form: 'Drupal\wateraid_donation_sf3ds\Form\CardForm'
+  requirements:
+    _custom_access: 'Drupal\wateraid_donation_sf3ds\Form\CardForm::access'
+    token: '\S{43}'
+
+wateraid_donation_sf3ds.success:
+  path: '/sf3ds/{token}/success'
+  defaults:
+    _controller: 'Drupal\wateraid_donation_sf3ds\Controller\CardFormReturn::success'
+  requirements:
+    _custom_access: 'Drupal\wateraid_donation_sf3ds\Controller\CardFormReturn::access'
+    _title_callback: 'Drupal\wateraid_donation_sf3ds\Controller\CardFormReturn::title'
+    token: '\S{43}'
