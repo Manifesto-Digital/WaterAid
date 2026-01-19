@@ -360,6 +360,11 @@
     margin-bottom: 0;
 
     @include desktop {
+      .hero__image img,
+      .hero__video video {
+        max-height: 864px;
+        object-fit: cover;
+      }
       .hero__content {
         position: absolute;
         top: $wa-spacing-09;
