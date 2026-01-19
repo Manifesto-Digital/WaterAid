@@ -11,7 +11,7 @@ dependencies:
     - field.field.paragraph.gallery_item.field_title
     - paragraphs.paragraphs_type.gallery_item
   module:
-    - link
+    - linkit
     - paragraphs
     - text
 id: paragraph.gallery_item.default
@@ -44,12 +44,14 @@ content:
         duplicate: duplicate
     third_party_settings: {  }
   field_link:
-    type: link_default
+    type: linkit
     weight: 5
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_rich_text:
     type: text_textarea

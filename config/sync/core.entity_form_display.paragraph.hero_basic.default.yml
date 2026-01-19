@@ -10,7 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.hero_basic
   module:
     - field_group
-    - link
+    - linkit
     - text
 third_party_settings:
   field_group:
@@ -43,20 +43,24 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_link:
-    type: link_default
+    type: linkit
     weight: 4
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_primary_cta:
-    type: link_default
+    type: linkit
     weight: 2
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_standfirst:
     type: text_textarea

@@ -15,7 +15,8 @@ dependencies:
   module:
     - address
     - field_group
-    - link
+    - linkit
+    - maxlength
     - media_library
     - telephone
     - text
@@ -59,13 +60,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_donate_link:
-    type: link_default
+    type: linkit
     weight: 0
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
   field_email:
     type: email_default
     weight: 2
