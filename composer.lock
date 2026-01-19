@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "854677e92e92f17dceca3ed5ff07f5ed",
+    "content-hash": "ace0de1f29029116a99de6dee13f0b50",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -11314,6 +11314,15 @@
             "time": "2025-12-15T11:28:16+00:00"
         },
         {
+            "name": "jquery-validation/jquery-validation",
+            "version": "1.21.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/jquery-validation/jquery-validation/releases/download/1.21.0/jquery-validation-1.21.0.zip"
+            },
+            "type": "npm-asset"
+        },
+        {
             "name": "jquery/chosen",
             "version": "1.8.7",
             "dist": {
@@ -12031,18 +12040,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.7.0"
             },
             "time": "2025-12-06T11:56:16+00:00"
-        },
-        {
-            "name": "npm-asset/jquery-validation",
-            "version": "1.21.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/jquery-validation/-/jquery-validation-1.21.0.tgz"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
         },
         {
             "name": "oomphinc/composer-installers-extender",
