@@ -187,6 +187,29 @@
       }
     }
   }
+
+  @include desktop-down {
+    .parallax-scroll__image.active {
+      height: 100%;
+      width: 100%;
+
+      .paragraph--type--scroll-image,
+      .scroll-image,
+      .scroll-image > div,
+      .image,
+      .image__wrapper,
+      .image__content,
+      .image__content div {
+        height: 100%;
+        width: 100%;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+  }
 }
 
 

@@ -38,7 +38,7 @@
         {% if grouped_items.asia_and_pacific %}
           {% set items_group = grouped_items.asia_and_pacific %}
           <ul class="site-selector__site-group">
-            <h3 class="site-selector__site-group-heading">{{ items_group.title|t }}</h3>
+            <span class="site-selector__site-group-heading">{{ items_group.title|t }}</span>
             {% for item in items_group.items %}
               <li class="site-selector__site-group-item">{{ link(item.title|t, item.url, item.attributes.addClass('site-selector__country')) }}</li>
             {% endfor %}
