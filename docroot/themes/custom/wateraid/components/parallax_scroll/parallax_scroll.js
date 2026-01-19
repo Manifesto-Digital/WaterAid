@@ -106,17 +106,24 @@
           });
 
           const imageContainer = component.querySelector(".parallax-scroll__images");
+          console.log(imageContainer);
           imageContainer.style.height = `${Math.min.apply(0, heights)}px`;
         }
       };
+
 
       context.querySelectorAll(".parallax-scroll").forEach((component) => {
         if (width < 1024) {
           setTimeout(() => {
             setImageHeight(component);
-          }, 300);
+          }, 400);
         }
-        window.addEventListener("resize", setImageHeight);
+
+        window.addEventListener("resize", function(){
+          setTimeout(() => {
+            setImageHeight(component);
+          }, 400);
+        });
       });
     },
   };
