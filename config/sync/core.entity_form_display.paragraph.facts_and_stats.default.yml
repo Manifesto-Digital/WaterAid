@@ -13,7 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.facts_and_stats
   module:
     - layout_paragraphs
-    - link
+    - linkit
     - text
 id: paragraph.facts_and_stats.default
 targetEntityType: paragraph
@@ -39,12 +39,14 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_link:
-    type: link_default
+    type: linkit
     weight: 2
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_rich_text:
     type: text_textarea

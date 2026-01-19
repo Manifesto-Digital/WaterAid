@@ -12,7 +12,7 @@ dependencies:
     - field.field.taxonomy_term.countries.field_url
     - taxonomy.vocabulary.countries
   module:
-    - link
+    - linkit
     - path
     - text
 id: taxonomy_term.countries.default
@@ -21,11 +21,11 @@ bundle: countries
 mode: default
 content:
   description:
-    type: text_textfield
+    type: text_textarea
     weight: 0
     region: content
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_add_to_site_selector:
@@ -74,12 +74,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_url:
-    type: link_default
+    type: linkit
     weight: 106
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   langcode:
     type: language_select

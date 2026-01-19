@@ -1,28 +1,29 @@
 display:
   default:
-    display_title: Master
     display_options:
       title: Indhold
       fields:
         title:
           label: Titel
-          separator: ', '
         type:
           label: Indholdstype
-          separator: ', '
         status:
-          label: Status
           settings:
             format_custom_false: 'Ikke udgivet'
             format_custom_true: Udgivet
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Handlinger
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Første'
             last: 'Sidste »'
           expose:
@@ -43,6 +44,7 @@ display:
         gid:
           exception:
             title: Alle
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:
@@ -54,9 +56,6 @@ display:
                 title: Udgivet
               2:
                 title: 'Ikke udgivet'
-        type:
-          expose:
-            label: Type
   page_1:
     display_title: Side
     display_options:

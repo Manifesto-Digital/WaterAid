@@ -10,11 +10,9 @@ display:
           label: Titel
         type:
           label: Indholdstype
-          separator: ', '
         name:
           label: Forfatter
         status:
-          label: Status
           settings:
             format_custom_false: 'Ikke udgivet'
             format_custom_true: Udgivet
@@ -22,7 +20,6 @@ display:
           label: Opdateret
         langcode:
           label: Sprog
-          separator: ', '
         operations:
           label: Handlinger
       pager:
@@ -34,7 +31,6 @@ display:
             last: 'Sidste »'
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende
@@ -50,8 +46,6 @@ display:
           expose:
             label: Indholdstype
         status:
-          expose:
-            label: Status
           group_info:
             label: Publiceringsstatus
             group_items:

@@ -1,0 +1,8 @@
+form.card:
+  js:
+    https://stg.static.mul-pay.jp/ext/js/token.js: { type: external, minified: true }
+    js/sf3ds.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupal.dialog.ajax

@@ -1,11 +1,9 @@
 label: Doorverwijzen
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: 'Opnieuw instellen'
           exposed_sorts_label: 'Sorteren op'
           sort_asc_label: Oplopend
@@ -20,11 +18,9 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       fields:
         redirect_source__path:
           label: Van
-          separator: ', '
         created:
           label: Aangemaakt
       filters:

@@ -1,4 +1,3 @@
-label: Watchdog
 description: 'Recente logberichten'
 display:
   default:
@@ -12,32 +11,21 @@ display:
           label: Watchdog-ID
         severity:
           label: Ernst
-        type:
-          label: Type
         timestamp:
           label: Datum
         message:
           label: Bericht
-          alter:
-            path: 'admin/reports/dblog/event/{{ wid }}'
-            alt: '{{ message }}'
         name:
           label: Gebruiker
-          separator: ', '
         link:
           label: Bewerkingen
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: 'Opnieuw instellen'
           exposed_sorts_label: 'Sorteren op'
           sort_asc_label: Oplopend
@@ -47,9 +35,6 @@ display:
           admin_label: 'Geen logberichten beschikbaar.'
           content: 'Geen logberichten beschikbaar.'
       filters:
-        type:
-          expose:
-            label: Type
         severity:
           expose:
             label: Ernst

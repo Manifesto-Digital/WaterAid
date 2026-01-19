@@ -12,7 +12,7 @@ dependencies:
     - field.field.config_pages.site_settings.field_youtube
   module:
     - field_group
-    - link
+    - linkit
     - media_library
 third_party_settings:
   field_group:
@@ -42,28 +42,37 @@ bundle: site_settings
 mode: default
 content:
   field_facebook:
-    type: link_default
+    type: linkit
     weight: 7
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
   field_instagram:
-    type: link_default
+    type: linkit
     weight: 8
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_linkedin:
-    type: link_default
+    type: linkit
     weight: 10
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_site_logo:
     type: media_library_widget
@@ -73,20 +82,24 @@ content:
       media_types: {  }
     third_party_settings: {  }
   field_tiktok:
-    type: link_default
+    type: linkit
     weight: 9
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_youtube:
-    type: link_default
+    type: linkit
     weight: 11
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
 hidden:
   label: true

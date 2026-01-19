@@ -1,0 +1,4 @@
+services:
+  wateraid_donation_sf3ds:
+    class: \Drupal\wateraid_donation_sf3ds\Service\Sf3dsService
+    arguments: ['@config.factory', '@current_route_match', '@entity_type.manager']

@@ -8,7 +8,7 @@
       const checkbox = context.querySelector('.js-form-item-field-show-read-time-value');
 
       if (url && checkbox) {
-        if (url.includes('publication')) {
+        if (url.includes('publication') || document.body.classList.contains('page-node-type-publication')) {
 
           // Hide the checkbox on publications.
           checkbox.style.display = 'none';
