@@ -2,15 +2,16 @@ settings:
   default_submit_button_label: Indsend
   default_reset_button_label: Gendan
   default_delete_button_label: Slet
+  default_form_file_limit_message: "<p>This form's file upload quota of %quota has been exceeded. Please remove some files.</p>"
   default_wizard_prev_button_label: '< Tidligere'
   default_wizard_next_button_label: 'Næste >'
-  default_wizard_start_label: Start
   default_wizard_confirmation_label: Komplet
   default_wizard_toggle_show_label: 'Vis alle'
   default_wizard_toggle_hide_label: 'Skjul alle'
   default_preview_next_button_label: Gennemse
   default_preview_prev_button_label: '< Tidligere'
   default_preview_label: Gennemse
+  default_preview_message: 'Please review your submission. Your submission is not complete until you press the &quot;Submit&quot; button!'
   default_draft_button_label: 'Gem kladde'
   default_draft_saved_message: 'Formular gemt. Du kan vende tilbage senere og gendanne standardværdierne.'
   default_previous_submission_message: 'Du har allerede indsendt denne formular. <a href="#">Se din forrige indsendelse</a>.'
@@ -18,10 +19,105 @@ settings:
   dialog_options:
     narrow:
       title: Smal
-    normal:
-      title: Normal
     wide:
       title: Bred
 element:
   default_more_title: Mere
-  default_section_title_tag: h2
+file:
+  file_private_redirect_message: '<p>Please login to access the uploaded file.</p>'
+mail:
+  default_subject: 'Webform submission from: [webform_submission:source-entity]'
+test:
+  types: |
+    checkbox:
+      - true
+    color:
+      - '#ffffcc'
+      - '#ffffcc'
+      - '#ccffff'
+    date:
+      - '1942-06-18'
+      - '1940-07-07'
+      - '1943-02-25'
+      - '1940-10-09'
+    datetime:
+      - '1942-06-18'
+      - '1940-07-07'
+      - '1943-02-25'
+      - '1940-10-09'
+    datelist:
+      - '1942-06-18'
+      - '1940-07-07'
+      - '1943-02-25'
+      - '1940-10-09'
+    email:
+      - 'example@example.com'
+      - 'test@test.com'
+      - 'random@random.com'
+    language_select:
+      - en
+    machine_name:
+      - 'loremipsum'
+      - 'oratione'
+      - 'dixisset'
+    tel:
+      - '123-456-7890'
+      - '098-765-4321'
+    textarea:
+      - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.'
+      - 'Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;'
+      - 'Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.'
+    text_format:
+      - value: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.</p>'
+      - value: '<p>Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;</p>'
+      - value: '<p>Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.</p>'
+    url:
+      - 'http://example.com'
+      - 'http://test.com'
+    webform_creditcard_number:
+      - '4111111111111111'
+    webform_email_confirm:
+      - 'example@example.com'
+      - 'test@test.com'
+      - 'random@random.com'
+    webform_email_multiple:
+      - 'example@example.com, test@test.com, random@random.com'
+    webform_location:
+      - value: 'The White House, 1600 Pennsylvania Ave NW, Washington, DC 20500, USA'
+      - value: 'London SW1A 1AA, United Kingdom'
+      - value: 'Moscow, Russia, 10307'
+    webform_time:
+      - '09:00'
+      - '17:00'
+  names: |
+    first_name:
+      - 'John'
+      - 'Paul'
+      - 'Ringo'
+      - 'George'
+    last_name:
+      - 'Lennon'
+      - 'McCartney'
+      - 'Starr'
+      - 'Harrison'
+    address:
+      - '10 Main Street'
+      - '11 Brook Alley Road. APT 1'
+    zip:
+      - '11111'
+      - '12345'
+      - '12345-6789'
+    phone:
+      - '123-456-7890'
+      - '098-765-4321'
+    city:
+      - 'Springfield'
+      - 'Pleasantville'
+      - 'Hill Valley'
+    url:
+      - 'http://example.com'
+      - 'http://test.com'
+    default:
+      - 'Loremipsum'
+      - 'Oratione'
+      - 'Dixisset'

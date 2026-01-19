@@ -1,33 +1,19 @@
-label: Media
 description: 'Find og håndtér mediefiler.'
 display:
   default:
     display_title: Standard
     display_options:
-      title: Media
       fields:
         media_bulk_form:
           action_title: Handling
-        thumbnail__target_id:
-          label: Thumbnail
-          separator: ', '
-        name:
-          separator: ', '
-        bundle:
-          label: Type
-          separator: ', '
         uid:
           label: Forfatter
-          separator: ', '
         status:
-          label: Status
           settings:
             format_custom_false: 'Ikke udgivet'
             format_custom_true: Udgivet
-          separator: ', '
         changed:
           label: Opdateret
-          separator: ', '
         operations:
           label: Handlinger
       pager:
@@ -43,7 +29,6 @@ display:
             offset_label: Forskydning
       exposed_form:
         options:
-          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende
@@ -52,9 +37,6 @@ display:
         area_text_custom:
           content: 'Ingen tilgængelige media.'
       filters:
-        bundle:
-          expose:
-            label: Type
         status:
           expose:
             label: Sandt
@@ -68,8 +50,3 @@ display:
         langcode:
           expose:
             label: Sprog
-  media_page_list:
-    display_title: Media
-    display_options:
-      menu:
-        title: Media

@@ -8,8 +8,6 @@ display:
           submit_button: Filtrer
           reset_button_label: Réinitialiser
           exposed_sorts_label: 'Trier par'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       pager:
         options:
           tags:
@@ -24,7 +22,6 @@ display:
       fields:
         redirect_source__path:
           label: 'A partir de'
-          separator: ', '
         created:
           label: Créé
       filters:
@@ -58,5 +55,3 @@ display:
           expose:
             label: 'Langue initiale'
       title: Rediriger
-  page_1:
-    display_title: Page

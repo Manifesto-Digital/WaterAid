@@ -1,7 +1,9 @@
+label: Media
 display:
   default:
     display_title: Förvald
     display_options:
+      title: Media
       fields:
         media_bulk_form:
           action_title: Åtgärd
@@ -38,3 +40,8 @@ display:
         langcode:
           expose:
             label: Språk
+  media_page_list:
+    display_title: Media
+    display_options:
+      menu:
+        title: Media

@@ -1,6 +1,7 @@
 display:
   default:
     display_options:
+      title: Content
       fields:
         title:
           label: ଶୀର୍ଷକ
@@ -8,8 +9,19 @@ display:
           label: ଅବସ୍ଥିତି
           settings:
             format_custom_true: ପ୍ରକାଶିତ
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+      arguments:
+        gid:
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           group_info:
@@ -19,3 +31,7 @@ display:
         type:
           expose:
             label: ପ୍ରକାର
+  page_1:
+    display_options:
+      menu:
+        title: Content

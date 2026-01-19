@@ -6,23 +6,26 @@ display:
       fields:
         title:
           label: Título
-          separator: ', '
         type:
           label: 'Tipo de contenido'
-          separator: ', '
         status:
           label: Estado
           settings:
             format_custom_false: 'Sin publicar'
             format_custom_true: Publicado
-          separator: ', '
+        view_group_relationship:
+          text: view
+        delete_group_relationship:
+          text: 'Remove from Site'
+        edit_node:
+          text: Edit
+        delete_node:
+          text: Delete
         dropbutton:
           label: Operaciones
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Primero'
             last: 'Último »'
           expose:
@@ -34,8 +37,6 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       empty:
         area_text_custom:
           content: 'No hay contenido disponible.'
@@ -43,6 +44,7 @@ display:
         gid:
           exception:
             title: Todo(s)
+          title: '{{ arguments.gid|placeholder }} content'
       filters:
         status:
           expose:

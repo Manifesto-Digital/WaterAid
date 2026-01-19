@@ -5,6 +5,8 @@ display:
       fields:
         status:
           label: ଅବସ୍ଥିତି
+        count:
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: ପ୍ରୟୋଗଗୁଡ଼ିକ
       exposed_form:

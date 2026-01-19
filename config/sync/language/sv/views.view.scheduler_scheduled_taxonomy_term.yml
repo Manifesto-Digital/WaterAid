@@ -19,6 +19,8 @@ display:
       fields:
         taxonomy_term_bulk_form:
           action_title: Åtgärd
+        vid:
+          label: Vokabulär
         status:
           label: Status
           settings:
@@ -31,6 +33,9 @@ display:
         operations:
           label: Funktioner
       filters:
+        vid:
+          expose:
+            label: Vokabulär
         status:
           expose:
             label: Status

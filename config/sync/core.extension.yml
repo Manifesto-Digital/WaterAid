@@ -102,6 +102,7 @@ module:
   redirect: 0
   redirect_bulk: 0
   rest: 0
+  robotstxt: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   schema_metatag: 0
