@@ -106,7 +106,6 @@
           });
 
           const imageContainer = component.querySelector(".parallax-scroll__images");
-          console.log(imageContainer);
           imageContainer.style.height = `${Math.min.apply(0, heights)}px`;
         }
       };
