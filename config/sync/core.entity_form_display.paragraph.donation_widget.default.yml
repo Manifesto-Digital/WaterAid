@@ -249,7 +249,7 @@ content:
     third_party_settings: {  }
   field_payin_link:
     type: linkit
-    weight: 5
+    weight: 24
     region: content
     settings:
       placeholder_url: ''
