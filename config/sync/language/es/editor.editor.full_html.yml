@@ -2,31 +2,7 @@ settings:
   plugins:
     ckeditor5_codeBlock:
       languages:
-        -
+        0:
           label: 'Texto sin formato'
-        -
-          label: C
-        -
-          label: 'C#'
-        -
-          label: C++
-        -
-          label: CSS
-        -
+        5:
           label: Diferencias
-        -
-          label: HTML
-        -
-          label: Java
-        -
-          label: JavaScript
-        -
-          label: PHP
-        -
-          label: Python
-        -
-          label: Ruby
-        -
-          label: TypeScript
-        -
-          label: XML

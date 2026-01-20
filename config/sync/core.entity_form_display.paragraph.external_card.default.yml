@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.external_card.field_media
     - paragraphs.paragraphs_type.external_card
   module:
-    - link
+    - linkit
     - media_library
 id: paragraph.external_card.default
 targetEntityType: paragraph
@@ -24,12 +24,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_link:
-    type: link_default
+    type: linkit
     weight: 4
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_media:
     type: media_library_widget

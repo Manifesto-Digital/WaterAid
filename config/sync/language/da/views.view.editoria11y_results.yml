@@ -1,3 +1,4 @@
+label: 'Editoria11y: Alerts'
 display:
   default:
     display_title: Standard
@@ -10,12 +11,14 @@ display:
           sort_asc_label: Stigende
           sort_desc_label: Faldende
   block_recent_issues:
+    display_title: 'Block: Recent alerts'
     display_options:
       fields:
         result_name:
           label: Udgave
         page_path:
           label: Sidesti
+      use_more_text: 'Recent alerts'
   block_top_issues:
     display_options:
       fields:
@@ -23,24 +26,29 @@ display:
           label: Udgave
         result_name_count:
           label: Antal
+      use_more_text: 'Alert types'
   issues__page:
+    display_title: 'Alert types'
     display_options:
+      title: 'Alert types'
       fields:
         result_name_count:
           label: Antal
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Første'
             last: 'Sidste »'
           expose:
             items_per_page_label: 'Antal elementer'
             items_per_page_options_all_label: '- Alle -'
             offset_label: Forskydning
+      menu:
+        title: 'Issue types'
   issues_by_page__page:
+    display_title: 'Alerts on specified page'
     display_options:
+      title: 'Alerts on specified page'
       fields:
         result_name_count:
           label: Antal
@@ -51,33 +59,42 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Første'
             last: 'Sidste »'
           expose:
             items_per_page_label: 'Antal elementer'
             items_per_page_options_all_label: '- Alle -'
             offset_label: Forskydning
+      header:
+        area_text_custom:
+          content: "<h1>Accessibility issues on: {{page_title_1}}</h1>\r\n{{uid}}{{uid_1}}"
+      footer:
+        area_text_custom_1:
+          content: '<p><a href="../editoria11y/pages" class="button button--primary">All pages with alerts</a></p>'
+      menu:
+        title: 'Issue types'
   pages_by_issue__page:
+    display_title: 'Pages with specified alert'
     display_options:
+      title: 'Pages with a specific alert'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Antal elementer'
             items_per_page_options_all_label: '- Alle -'
             offset_label: Forskydning
+      footer:
+        area_text_custom:
+          content: '<a href="../editoria11y/alerts" class="button button--primary">All alerts</a>'
   recent__page:
+    display_title: 'Recent alerts'
     display_options:
+      title: 'Recent accessibility alerts'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Antal elementer'
             items_per_page_options_all_label: '- Alle -'
             offset_label: Forskydning
+      menu:
+        title: 'Recent alerts'

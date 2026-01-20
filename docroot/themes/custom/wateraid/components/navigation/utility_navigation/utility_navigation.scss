@@ -121,14 +121,14 @@
     &--PAK:before {background-image: url('/themes/custom/wateraid/images/flags/PAK.png')}
     &--SWE:before {background-image: url('/themes/custom/wateraid/images/flags/SWE.png')}
     &--TZA:before {background-image: url('/themes/custom/wateraid/images/flags/TZA.png')}
-    &--UGA:before {background-image: url('/themes/custom/wateraid/images/flags/TZA.png')}
+    &--UGA:before {background-image: url('/themes/custom/wateraid/images/flags/UGA.png')}
     &--USA:before {background-image: url('/themes/custom/wateraid/images/flags/USA.png')}
   }
 }
 
 .utility-navigation--desktop {
   position: relative;
-  z-index: 5;
+  z-index: 25;
 
   .utility-navigation__menu-link--site-selector-btn {
     .icon {

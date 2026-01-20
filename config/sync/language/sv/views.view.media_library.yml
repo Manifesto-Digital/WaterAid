@@ -2,6 +2,7 @@ display:
   default:
     display_title: Förvald
     display_options:
+      title: Media
       fields:
         media_bulk_form:
           action_title: Åtgärd

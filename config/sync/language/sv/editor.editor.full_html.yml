@@ -2,5 +2,7 @@ settings:
   plugins:
     ckeditor5_codeBlock:
       languages:
-        -
+        0:
           label: 'Ren text'
+        13:
+          label: XML

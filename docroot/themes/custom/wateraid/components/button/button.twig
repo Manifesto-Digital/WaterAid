@@ -42,6 +42,7 @@
 {% set simpleIconRender %}
   {% if type in ['icon', 'social', 'icon-small'] %}
     {% set icon_url = '@wateraid/images/icons/' ~ icon ~ '.svg' %}
+    <span class="sr-only">{{ text }}</span>
     {{ include(icon_url) }}
   {% endif %}
 {% endset %}

@@ -6,8 +6,6 @@ display:
           submit_button: Filtrer
           reset_button_label: Réinitialiser
           exposed_sorts_label: 'Trier par'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       pager:
         options:
           tags:
@@ -16,28 +14,19 @@ display:
             first: "«\_premier"
             last: "dernier\_»"
       fields:
-        node_bulk_form:
-          action_title: Action
         title:
           label: Titre
-          separator: ', '
-        type:
-          separator: ', '
         name:
           label: Auteur
-          separator: ', '
         status:
           label: État
           settings:
             format_custom_true: Publié
             format_custom_false: 'Non publié'
-          separator: ', '
         publish_on:
           label: 'Publier le'
-          separator: ', '
         unpublish_on:
           label: 'Dépublier le'
-          separator: ', '
         operations:
           label: Actions
       filters:

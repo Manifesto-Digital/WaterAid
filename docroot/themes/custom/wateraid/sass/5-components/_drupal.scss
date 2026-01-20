@@ -20,7 +20,7 @@
     &--main {
       @include grid-item-span(4, 6, 8);
       @include desktop() {
-        margin-left: calculate-rem(114);
+        margin-left: 0;
       }
     }
 

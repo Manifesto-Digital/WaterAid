@@ -25,6 +25,18 @@
           }
       }
     },
+  {
+      "type": "package",
+      "package": {
+          "name": "jquery-validation/jquery-validation",
+          "version": "1.21.0",
+          "type": "npm-asset",
+          "dist": {
+              "url": "https://github.com/jquery-validation/jquery-validation/releases/download/1.21.0/jquery-validation-1.21.0.zip",
+              "type": "zip"
+          }
+      }
+  },
     {
       "type": "composer",
       "url": "https://asset-packagist.org"
@@ -99,6 +111,7 @@
     "drupal/recaptcha_v3": "^2.0",
     "drupal/redirect": "^1.10",
     "drupal/redirect_bulk": "^1.0",
+    "drupal/robotstxt": "^1.6",
     "drupal/scheduler": "^2.2",
     "drupal/scheduler_content_moderation_integration": "^3.0",
     "drupal/schema_metatag": "^3.0",
@@ -132,9 +145,9 @@
     "drupal/webp": "^1.0@RC",
     "drupal/xmlsitemap": "^2.0",
     "drush/drush": "^12.4",
+    "jquery-validation/jquery-validation": "^1.21",
     "justgiving/justgiving": "^1.0",
     "mikehaertl/phpwkhtmltopdf": "^2.5",
-    "npm-asset/jquery-validation": "^1.20",
     "oomphinc/composer-installers-extender": "^2.0",
     "wikimedia/composer-merge-plugin": "^2.1"
   },
@@ -233,7 +246,7 @@
     "enable-patching": true,
     "patches": {
         "drupal/core": {
-            "#3356667: Error: Cannot read properties of undefined (reading 'settings') with dialog.position.js": "https://www.drupal.org/files/issues/2024-08-11/3356667-undefined-settings-dialog-position-52.patch"
+            "#3356667: Error: Cannot read properties of undefined (reading 'settings') with dialog.position.js (MR)": "https://git.drupalcode.org/project/drupal/-/merge_requests/8892/diffs.patch"
         },
         "drupal/group_content_menu": {
             "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"

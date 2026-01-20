@@ -1,7 +1,6 @@
 label: Formulierinzendingen
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
@@ -13,27 +12,18 @@ display:
       pager:
         options:
           tags:
-            previous: ‹‹
-            next: ››
             first: '« Eerste'
             last: 'Laatste »'
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       fields:
-        sid:
-          label: '#'
-          separator: ', '
         in_draft:
           label: Concept
-          separator: ', '
         created:
           label: Aangemaakt
-          separator: ', '
         remote_addr:
           label: IP-adres
-          separator: ', '
         view_webform_submission:
           label: Bewerkingen
           text: weergeven
@@ -57,27 +47,18 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: Actie
-        sid:
-          label: '#'
-          separator: ', '
         in_draft:
           label: Concept
-          separator: ', '
         sticky:
           label: 'Vastgeplakt (sticky)'
-          separator: ', '
         locked:
           label: Vergrendeld
-          separator: ', '
         created:
           label: Aangemaakt
-          separator: ', '
         completed:
           label: Voltooid
-          separator: ', '
         remote_addr:
           label: IP-adres
-          separator: ', '
         operations:
           label: Bewerkingen
       filters:
@@ -96,27 +77,18 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: Actie
-        sid:
-          label: '#'
-          separator: ', '
         in_draft:
           label: Concept
-          separator: ', '
         sticky:
           label: 'Vastgeplakt (sticky)'
-          separator: ', '
         locked:
           label: Vergrendeld
-          separator: ', '
         created:
           label: Aangemaakt
-          separator: ', '
         completed:
           label: Voltooid
-          separator: ', '
         remote_addr:
           label: IP-adres
-          separator: ', '
         view_webform_submission:
           label: Bewerkingen
           text: weergeven
@@ -137,27 +109,18 @@ display:
     display_options:
       display_description: 'Inzendingen nakijken.'
       fields:
-        sid:
-          label: '#'
-          separator: ', '
         in_draft:
           label: Concept
-          separator: ', '
         sticky:
           label: 'Vastgeplakt (sticky)'
-          separator: ', '
         locked:
           label: Vergrendeld
-          separator: ', '
         created:
           label: Aangemaakt
-          separator: ', '
         completed:
           label: Voltooid
-          separator: ', '
         remote_addr:
           label: IP-adres
-          separator: ', '
         view_webform_submission:
           label: Bewerkingen
           text: weergeven

@@ -22,15 +22,15 @@
   <div class="site-selector__inner">
     <div class="site-selector__panel">
       <div class="site-selector__col site-selector__col--first">
-        <div class="site-selector__title">{{ panel_title }}</div>
-        <div class="site-selector__description">{{ panel_description|nl2br }}</div>
+        <div class="site-selector__title">{% if panel_title %}{{ panel_title|t }}{% endif %}</div>
+        <div class="site-selector__description">{% if panel_description %}{{ panel_description|t|nl2br }}{% endif %}</div>
       </div>
       <div class="site-selector__col">
         {% if grouped_items.global %}
         <ul class="site-selector__site-group">
           {% set global_items = grouped_items.global.items %}
           {% for item in global_items %}
-            <li class="site-selector__site-group-item">{{ link(item.title, item.url, item.attributes.addClass('site-selector__country')) }}</li>
+            <li class="site-selector__site-group-item">{{ link(item.title|t, item.url, item.attributes.addClass('site-selector__country')) }}</li>
           {% endfor %}
         </ul>
         {% endif %}
@@ -38,9 +38,9 @@
         {% if grouped_items.asia_and_pacific %}
           {% set items_group = grouped_items.asia_and_pacific %}
           <ul class="site-selector__site-group">
-            <h3 class="site-selector__site-group-heading">{{ items_group.title }}</h3>
+            <span class="site-selector__site-group-heading">{{ items_group.title|t }}</span>
             {% for item in items_group.items %}
-              <li class="site-selector__site-group-item">{{ link(item.title, item.url, item.attributes.addClass('site-selector__country')) }}</li>
+              <li class="site-selector__site-group-item">{{ link(item.title|t, item.url, item.attributes.addClass('site-selector__country')) }}</li>
             {% endfor %}
           </ul>
         {% endif %}
@@ -49,10 +49,10 @@
       <div class="site-selector__col">
         {% if grouped_items.africa %}
           {% set items_group = grouped_items.africa %}
-          <h3 class="site-selector__site-group-heading">{{ items_group.title }}</h3>
+          <h3 class="site-selector__site-group-heading">{{ items_group.title|t }}</h3>
           <ul class="site-selector__site-group">
           {% for item in items_group.items %}
-            <li class="site-selector__site-group-item">{{ link(item.title, item.url, item.attributes.addClass('site-selector__country')) }}</li>
+            <li class="site-selector__site-group-item">{{ link(item.title|t, item.url, item.attributes.addClass('site-selector__country')) }}</li>
           {% endfor %}
           </ul>
         {% endif %}
@@ -61,27 +61,24 @@
       <div class="site-selector__col">
         {% if grouped_items.americas %}
           {% set items_group = grouped_items.americas %}
-          <h3 class="site-selector__site-group-heading">{{ items_group.title }}</h3>
+          <h3 class="site-selector__site-group-heading">{{ items_group.title|t }}</h3>
           <ul class="site-selector__site-group">
           {% for item in items_group.items %}
-            <li class="site-selector__site-group-item">{{ link(item.title, item.url, item.attributes.addClass('site-selector__country')) }}</li>
+            <li class="site-selector__site-group-item">{{ link(item.title|t, item.url, item.attributes.addClass('site-selector__country')) }}</li>
           {% endfor %}
           </ul>
         {% endif %}
 
         {% if grouped_items.europe %}
           {% set items_group = grouped_items.europe %}
-          <h3 class="site-selector__site-group-heading">{{ items_group.title }}</h3>
+          <h3 class="site-selector__site-group-heading">{{ items_group.title|t }}</h3>
           <ul class="site-selector__site-group">
           {% for item in items_group.items %}
-            <li class="site-selector__site-group-item">{{ link(item.title, item.url, item.attributes.addClass('site-selector__country')) }}</li>
+            <li class="site-selector__site-group-item">{{ link(item.title|t, item.url, item.attributes.addClass('site-selector__country')) }}</li>
           {% endfor %}
           </ul>
         {% endif %}
       </div>
-
-
-
     </div>
   </div>
 </div>

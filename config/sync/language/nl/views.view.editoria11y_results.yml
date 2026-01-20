@@ -23,7 +23,6 @@ display:
         page_path:
           label: Paginapad
       use_more_text: 'Recente problemen'
-      block_category: Editoria11y
   block_top_issues:
     display_title: 'Blok: Meest voorkomende meldingen'
     display_options:
@@ -33,7 +32,6 @@ display:
         result_name_count:
           label: Aantal
       use_more_text: 'Alle problemen'
-      block_category: Editoria11y
   issues__page:
     display_title: 'Alle problemen'
     display_options:
@@ -44,14 +42,11 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Eerste'
             last: 'Laatste »'
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       sorts:
         result_name:
           expose:
@@ -75,14 +70,11 @@ display:
       pager:
         options:
           tags:
-            next: ››
-            previous: ‹‹
             first: '« Eerste'
             last: 'Laatste »'
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       header:
         area_text_custom:
           content: '<h1>Toegankelijkheidsproblemen op pagina {{page_title}}</h1>'
@@ -100,13 +92,9 @@ display:
           label: Gedetecteerd
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       footer:
         area_text_custom:
           content: '<a href="../editoria11y/issues" class="button button--primary">Alle problemen</a>'
@@ -118,12 +106,8 @@ display:
       title: 'Recente toegankelijkheidsproblemen'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       menu:
         title: 'Recente problemen'
