@@ -9,6 +9,10 @@
         if (videoElement) {
           videoElement.controls = false;
           pauseButton.style.display = "none";
+          const source = videoElement.querySelector('source');
+          const src = source.getAttribute('src');
+
+          source.setAttribute('src', `${src}#t=0.001`);
 
           playButton.addEventListener("click", function () {
             videoElement.play();
@@ -23,6 +27,7 @@
           });
         }
       }
+
 
       context.querySelectorAll(".cta__video").forEach((video) => {
         addCustomVideoPlay(video);
