@@ -190,7 +190,7 @@ content:
     region: content
     settings:
       view_mode: default
-      preview_view_mode: default
+      preview_view_mode: preview
       form_display_mode: default
       nesting_depth: 0
       require_layouts: 0
