@@ -42,8 +42,7 @@ function group_webform_group_relationship_delete(EntityInterface $entity) {
 /**
  * Implements hook_entity_type_alter().
  */
-function group_webform_entity_type_alter(array &$entity_types) {
-  $entity_types['webform']->setHandlerClass('list_builder', "Drupal\group_webform\GroupWebformEntityListBuilder");
+function group_webform_entity_type_alter(array &$entity_types): void {
   $entity_types['webform_submission']->setHandlerClass('list_builder', "Drupal\group_webform\GroupWebformSubmissionListBuilder");
 }
 
