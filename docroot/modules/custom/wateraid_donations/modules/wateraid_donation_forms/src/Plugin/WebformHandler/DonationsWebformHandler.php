@@ -243,19 +243,19 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $form[$payment_frequency_name]['option_label'] = [
           '#type' => 'textfield',
           '#title' => $this->t('Option label'),
-          '#default_value' => $this->configuration[$payment_frequency_name]['option_label'] ?? $payment_frequency['default_option_label'],
+          '#default_value' => $this->configuration[$payment_frequency_name]['option_label'] ?? $payment_frequency['default_option_label'] ?? '',
         ];
 
         $form[$payment_frequency_name]['enabled'] = [
           '#type' => 'checkbox',
           '#title' => $this->t('Enabled'),
-          '#default_value' => $this->configuration[$payment_frequency_name]['enabled'],
+          '#default_value' => $this->configuration[$payment_frequency_name]['enabled'] ?? FALSE,
         ];
 
         $form[$payment_frequency_name]['new_frequency'] = [
           '#type' => 'checkbox',
           '#title' => $this->t('New'),
-          '#default_value' => $this->configuration[$payment_frequency_name]['new_frequency'],
+          '#default_value' => $this->configuration[$payment_frequency_name]['new_frequency'] ?? NULL,
         ];
 
         $form[$payment_frequency_name]['frequency_default'] = [
@@ -303,7 +303,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
             }
             // Fallback to a config check if NULL.
             else {
-              if ($payment_provider_definition['requiresCustomerFields'] === TRUE && $this->configuration[$payment_frequency_name]['payment_methods'] && in_array($payment_provider_id, $this->configuration[$payment_frequency_name]['payment_methods'])) {
+              if ($payment_provider_definition['requiresCustomerFields'] === TRUE && isset($this->configuration[$payment_frequency_name]['payment_methods']) && in_array($payment_provider_id, $this->configuration[$payment_frequency_name]['payment_methods'])) {
                 // We've found a match so mark customer fields as required.
                 $customerFieldsRequired = TRUE;
               }
@@ -314,7 +314,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
             $payment_provider_enabled = $payment_provider_definition['enableByDefault'] ?? FALSE;
           }
           else {
-            $payment_provider_enabled = $this->configuration[$payment_frequency_name]['payment_methods'] && in_array($payment_provider_id, $this->configuration[$payment_frequency_name]['payment_methods']);
+            $payment_provider_enabled = isset($this->configuration[$payment_frequency_name]['payment_methods']) && in_array($payment_provider_id, $this->configuration[$payment_frequency_name]['payment_methods']);
           }
 
           $form[$payment_frequency_name]['payment_methods'][$payment_provider_id] = [
@@ -425,7 +425,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
                 'default_amount',
               ],
               '#return_value' => $i,
-              '#default_value' => $this->configuration[$payment_frequency_name]['default_amount'] == $i ? $i : NULL,
+              '#default_value' => isset($this->configuration[$payment_frequency_name]['default_amount']) && $this->configuration[$payment_frequency_name]['default_amount'] == $i ? $i : NULL,
             ],
           ];
 
@@ -501,7 +501,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
                   'default_duration',
                 ],
                 '#return_value' => $i,
-                '#default_value' => $this->configuration[$payment_frequency_name]['default_duration'] == $i ? $i : NULL,
+                '#default_value' => isset($this->configuration[$payment_frequency_name]['default_duration']) && $this->configuration[$payment_frequency_name]['default_duration'] == $i ? $i : NULL,
               ],
             ];
 
@@ -514,10 +514,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
-    $name_options = [];
-    $address_options = [];
-    $email_options = [];
-    $phone_options = [];
+    $name_options = $address_options = $email_options = $phone_options = [];
     $elements = $this->getWebform()->getElementsDecodedAndFlattened();
 
     foreach ($elements as $element_key => $element) {
@@ -537,7 +534,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
         default:
           // Capture all kinds of address fields.
-          if (strpos($element['#type'], 'webform_address') === 0 || $element['#type'] === 'pca_address_php') {
+          if (str_starts_with($element['#type'], 'webform_address') || $element['#type'] === 'pca_address_php') {
             $address_options[$element_key] = $element['#title'];
           }
       }
@@ -556,7 +553,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#type' => 'select',
       '#title' => $this->t('Customer name'),
       '#options' => $name_options,
-      '#default_value' => $this->configuration['customer_fields']['customer_name'],
+      '#default_value' => $this->configuration['customer_fields']['customer_name'] ?? '',
       '#required' => $customerFieldsRequired,
     ];
 
@@ -564,7 +561,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#type' => 'select',
       '#title' => $this->t('Customer address'),
       '#options' => $address_options,
-      '#default_value' => $this->configuration['customer_fields']['customer_address'],
+      '#default_value' => $this->configuration['customer_fields']['customer_address'] ?? '',
       '#required' => $customerFieldsRequired,
     ];
 
@@ -572,7 +569,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#type' => 'select',
       '#title' => $this->t('Customer email'),
       '#options' => $email_options,
-      '#default_value' => $this->configuration['customer_fields']['customer_email'],
+      '#default_value' => $this->configuration['customer_fields']['customer_email'] ?? '',
       '#required' => $customerFieldsRequired,
     ];
 
@@ -580,7 +577,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#type' => 'select',
       '#title' => $this->t('Customer phone'),
       '#options' => $phone_options,
-      '#default_value' => $this->configuration['customer_fields']['customer_phone'],
+      '#default_value' => $this->configuration['customer_fields']['customer_phone'] ?? '',
       '#required' => $customerFieldsRequired,
     ];
 
@@ -595,15 +592,15 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
     $values = $form_state->getValues();
 
-    $this->configuration['frequency_default'] = $values['frequency_default'];
+    $this->configuration['frequency_default'] = $values['frequency_default'] ?? '';
     // @todo Investigate undefined index notice.
-    $this->configuration['currency'] = $values['currency'];
-    $this->configuration['default_fund_code'] = $values['default_fund_code'];
-    $this->configuration['default_package_code'] = $values['default_package_code'];
-    $this->configuration['customer_fields'] = $values['customer_fields'];
-    $this->configuration['desktop_cancellation_message'] = $values['cancellation_messaging']['desktop_cancellation_message'];
-    $this->configuration['mobile_cancellation_message'] = $values['cancellation_messaging']['mobile_cancellation_message'];
-    $this->configuration['impact_statistics'] = $values['impact_statistics']['impact_statistics_text'];
+    $this->configuration['currency'] = $values['currency'] ?? '';
+    $this->configuration['default_fund_code'] = $values['default_fund_code'] ?? '';
+    $this->configuration['default_package_code'] = $values['default_package_code'] ?? '';
+    $this->configuration['customer_fields'] = $values['customer_fields'] ?? '';
+    $this->configuration['desktop_cancellation_message'] = $values['cancellation_messaging']['desktop_cancellation_message'] ?? '';
+    $this->configuration['mobile_cancellation_message'] = $values['cancellation_messaging']['mobile_cancellation_message'] ?? '';
+    $this->configuration['impact_statistics'] = $values['impact_statistics']['impact_statistics_text'] ?? '';
 
     foreach ($this->donationService->getPaymentFrequencies() as $frequency_name => $frequency) {
       if (isset($values[$frequency_name])) {
@@ -624,7 +621,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $this->configuration[$frequency_name]['minimum_amount'] = trim($this->configuration[$frequency_name]['minimum_amount']);
       }
     }
-    $this->configuration['recurring']['upsell'] = $values['recurring']['upsell'];
+    $this->configuration['recurring']['upsell'] = $values['recurring']['upsell'] ?? '';
   }
 
   /**

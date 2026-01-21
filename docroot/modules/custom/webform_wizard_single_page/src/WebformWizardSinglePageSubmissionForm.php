@@ -175,7 +175,7 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
    *   Array of form elements.
    */
   public function currentPageTitle(array $steps): array {
-    $step = $steps['current'][0];
+    $step = ($steps['current'][0]) ?? ['#page_number' => 1, '#title' => $this->t('Step One')];
 
     return [
       '#type' => 'html_tag',
@@ -217,7 +217,7 @@ class WebformWizardSinglePageSubmissionForm extends WebformWizardExtraSubmission
     $keys_after = array_filter($page_ids, fn($var) => $var > $current_position, 2);
     return [
       'past' => array_filter($pages, fn($key) => in_array($key, $keys_before), 2),
-      'current' => [$pages[$current_page]],
+      'current' => !empty($pages) && isset($current_page) ? [$pages[$current_page]] : [],
       'future' => array_filter($pages, fn($key) => in_array($key, $keys_after), 2),
     ];
   }
