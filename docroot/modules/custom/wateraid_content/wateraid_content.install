@@ -237,3 +237,43 @@ function wateraid_content_update_10008(&$sandbox): void {
     }
   }
 }
+
+/**
+ * Swap outdated roles for updated one.
+ */
+function wateraid_content_update_10009(&$sandbox): void {
+  if (!isset($sandbox['ids'])) {
+    $sandbox['ids'] = \Drupal::database()->select('user__roles', 'u')
+      ->fields('u', ['entity_id'])
+      ->condition('roles_target_id', [
+        'wateraid_author',
+        'content_editor'
+      ], 'IN')
+      ->groupBy('u.entity_id')
+      ->execute()
+      ->fetchAllKeyed(0, 0);
+    $sandbox['max'] = count($sandbox['ids']);
+    $sandbox['#finished'] = 0;
+  }
+
+  if ($uid = array_pop($sandbox['ids'])) {
+
+    /** @var \Drupal\user\UserInterface $user */
+    if ($user = \Drupal::entityTypeManager()->getStorage('user')->load($uid)) {
+      foreach ([
+        'wateraid_author',
+        'content_editor'
+      ] as $role) {
+        if ($user->hasRole($role)) {
+          $user->removeRole($role);
+        }
+      }
+
+      if (!$user->hasRole('wateraid_group_member')) {
+        $user->addRole('wateraid_group_member');
+      }
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
