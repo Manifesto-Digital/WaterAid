@@ -50,15 +50,18 @@
           const video = hero.querySelector(".hero--video video");
           if (video) {
             video.playsInline = true;
-            video.controls = false;
             video.muted = true;
 
+            // iOS working to show thumbnail image
             const source = video.querySelector('source');
             const src = source.getAttribute('src');
 
             source.setAttribute('src', `${src}#t=0.001`);
             if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
               video.setAttribute('preload', 'metadata');
+              video.controls = true;
+            } else {
+              video.controls = false;
             }
 
             if (width > 1024) {
