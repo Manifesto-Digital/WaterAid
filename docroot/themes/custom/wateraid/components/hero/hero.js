@@ -51,6 +51,7 @@
           if (video) {
             video.playsInline = true;
             video.muted = true;
+            video.controls = false;
 
             // iOS working to show thumbnail image
             const source = video.querySelector('source');
@@ -59,9 +60,7 @@
             source.setAttribute('src', `${src}#t=0.001`);
             if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
               video.setAttribute('preload', 'metadata');
-              video.controls = true;
-            } else {
-              video.controls = false;
+              video.setAttribute('poster', `${src}#t=0.001`);
             }
 
             if (width > 1024) {
