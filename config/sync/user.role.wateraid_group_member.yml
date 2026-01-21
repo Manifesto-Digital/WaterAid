@@ -23,7 +23,6 @@ dependencies:
     - node.type.standard_page
     - node.type.story
     - node.type.webform
-    - taxonomy.vocabulary.get_involved
     - taxonomy.vocabulary.subject_areas
     - workflows.workflow.editorial
   module:
@@ -31,9 +30,9 @@ dependencies:
     - content_translation
     - filter
     - group
-    - group_content_menu
     - media
     - menu_link_content
+    - node
     - node_co_authors
     - preview_link
     - quick_node_clone
@@ -65,7 +64,6 @@ permissions:
   - 'create dam_file media'
   - 'create dam_image media'
   - 'create dam_video media'
-  - 'create media'
   - 'delete media'
   - 'download shorthand content'
   - 'edit co-authors of own content'
@@ -78,12 +76,8 @@ permissions:
   - 'edit own remote_video media'
   - 'generate preview links'
   - 'translate any entity'
-  - 'translate article node'
   - 'translate editable entities'
-  - 'translate get_involved taxonomy_term'
-  - 'translate group_content_menu'
   - 'translate menu_link_content'
-  - 'translate page node'
   - 'translate subject_areas taxonomy_term'
   - 'translate wateraid_site group'
   - 'update media'
@@ -92,5 +86,6 @@ permissions:
   - 'use text format full_html'
   - 'view any unpublished content'
   - 'view latest version'
+  - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view the administration theme'
