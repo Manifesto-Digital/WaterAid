@@ -41,7 +41,7 @@ dependencies:
     - system
     - toolbar
 id: wateraid_group_member
-label: 'WaterAid Group Member'
+label: 'Group Member'
 weight: -8
 is_admin: null
 permissions:

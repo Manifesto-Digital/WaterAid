@@ -71,7 +71,7 @@ dependencies:
     - webform
     - webform_node
 id: wateraid_super_admin
-label: 'WaterAid Super Admin'
+label: 'Global Administrator'
 weight: -5
 is_admin: null
 permissions:
