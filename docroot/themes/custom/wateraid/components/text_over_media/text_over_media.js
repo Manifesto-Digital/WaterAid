@@ -9,8 +9,20 @@
 
         if (videoElement) {
           pauseButton.style.display = "none";
-          videoElement.controls = false;
+          videoElement.playsInline = true;
           videoElement.muted = true;
+
+          // iOS working to show thumbnail image
+          const source = videoElement.querySelector('source');
+          const src = source.getAttribute('src');
+
+          source.setAttribute('src', `${src}#t=0.001`);
+          if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            videoElement.setAttribute('preload', 'metadata');
+            videoElement.controls = true;
+          } else {
+            videoElement.controls = false;
+          }
 
           pauseButton.addEventListener("click", function () {
             videoElement.pause();
