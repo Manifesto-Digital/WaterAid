@@ -57,6 +57,9 @@
             const src = source.getAttribute('src');
 
             source.setAttribute('src', `${src}#t=0.001`);
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+              video.setAttribute('preload', 'metadata');
+            }
 
             if (width > 1024) {
               video.play();

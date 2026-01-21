@@ -17,6 +17,9 @@
           const src = source.getAttribute('src');
 
           source.setAttribute('src', `${src}#t=0.001`);
+          if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            videoElement.setAttribute('preload', 'metadata');
+          }
 
           pauseButton.addEventListener("click", function () {
             videoElement.pause();
