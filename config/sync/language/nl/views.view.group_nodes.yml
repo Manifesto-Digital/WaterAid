@@ -1,6 +1,7 @@
 display:
   default:
     display_options:
+      title: Content
       fields:
         title:
           label: Titel
@@ -60,3 +61,6 @@ display:
             label: Type
   page_1:
     display_title: Pagina
+    display_options:
+      menu:
+        title: Content
