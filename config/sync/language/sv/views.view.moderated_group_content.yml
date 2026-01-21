@@ -1,0 +1,34 @@
+display:
+  default:
+    display_title: Huvud
+    display_options:
+      fields:
+        title:
+          label: Titel
+        type:
+          label: Innehållstyp
+        name:
+          label: Författare
+        operations:
+          label: Funktioner
+      exposed_form:
+        options:
+          submit_button: Filtrera
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      arguments:
+        gid:
+          exception:
+            title: Alla
+      filters:
+        title:
+          expose:
+            label: Titel
+        type:
+          expose:
+            label: Innehållstyp
+        langcode:
+          expose:
+            label: Språk

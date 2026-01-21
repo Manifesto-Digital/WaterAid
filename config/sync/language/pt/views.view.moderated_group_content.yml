@@ -1,21 +1,17 @@
 display:
   default:
-    display_title: Predefinido
+    display_title: Principal
     display_options:
+      title: 'Conteúdo moderado'
       fields:
-        media_bulk_form:
-          action_title: Ação
-        thumbnail__target_id:
-          label: Miniatura
-        bundle:
-          label: Tipo
-        uid:
+        title:
+          label: Título
+        type:
+          label: 'Tipo de conteúdo'
+        name:
           label: Autor
-        status:
-          label: Estado
-          settings:
-            format_custom_false: 'Não publicado'
-            format_custom_true: Publicado
+        moderation_state:
+          label: 'Estado de moderação'
         changed:
           label: Atualizado
         operations:
@@ -38,20 +34,25 @@ display:
           exposed_sorts_label: 'Ordenar por'
           sort_asc_label: Ascendente
           sort_desc_label: Descendente
+      arguments:
+        gid:
+          exception:
+            title: Todos
       filters:
-        bundle:
+        title:
           expose:
-            label: Tipo
-        status:
+            label: Título
+        type:
           expose:
-            label: Verdadeiro
-          group_info:
-            label: 'Estado da publicação'
-            group_items:
-              1:
-                title: Publicado
-              2:
-                title: 'Não publicado'
+            label: 'Tipo de conteúdo'
+        moderation_state:
+          expose:
+            label: 'Estado de moderação'
         langcode:
           expose:
             label: Idioma
+  moderated_content:
+    display_title: 'Conteúdo moderado'
+    display_options:
+      menu:
+        title: 'Conteúdo moderado'
