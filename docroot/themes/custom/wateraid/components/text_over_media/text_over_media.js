@@ -10,7 +10,13 @@
         if (videoElement) {
           pauseButton.style.display = "none";
           videoElement.controls = false;
+          videoElement.playsInline = true;
           videoElement.muted = true;
+
+          const source = videoElement.querySelector('source');
+          const src = source.getAttribute('src');
+
+          source.setAttribute('src', `${src}#t=0.001`);
 
           pauseButton.addEventListener("click", function () {
             videoElement.pause();
