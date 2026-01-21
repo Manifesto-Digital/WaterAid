@@ -5,8 +5,8 @@ dependencies:
   config:
     - group.type.wateraid_site
 id: wateraid_site-content_manager
-label: 'Content Manager'
-weight: -4
+label: Editor
+weight: -5
 admin: false
 scope: individual
 global_role: null

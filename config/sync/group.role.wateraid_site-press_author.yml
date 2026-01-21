@@ -1,13 +1,13 @@
-uuid: a2544360-76a3-49b3-b32e-4d0c6ea96188
+uuid: b58d5785-129e-41e5-b30f-e9f38113206c
 langcode: en
 status: true
 dependencies:
   config:
     - group.type.wateraid_site
-id: wateraid_site-administrator
-label: Administrator
-weight: -6
-admin: true
+id: wateraid_site-press_author
+label: 'Press Author'
+weight: -4
+admin: false
 scope: individual
 global_role: null
 group_type: wateraid_site

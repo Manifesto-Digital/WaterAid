@@ -1,13 +1,13 @@
-uuid: a2544360-76a3-49b3-b32e-4d0c6ea96188
+uuid: 07e22721-37b4-4183-a11d-d33647d521db
 langcode: en
 status: true
 dependencies:
   config:
     - group.type.wateraid_site
-id: wateraid_site-administrator
-label: Administrator
-weight: -6
-admin: true
+id: wateraid_site-form_data_manager
+label: 'Form Data Manager'
+weight: -2
+admin: false
 scope: individual
 global_role: null
 group_type: wateraid_site
