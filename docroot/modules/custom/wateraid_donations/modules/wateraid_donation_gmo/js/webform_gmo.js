@@ -264,7 +264,7 @@
         drupalDialog.close();
         context.model.modalDisplayed = false;
         context.model.modalConfirmed = true;
-        const submitButton = document.querySelector('.webform-button--submit.button--primary');
+        const submitButton = document.querySelector('.button--primary .webform-button--submit');
         submitButton.click();
       });
 
@@ -475,7 +475,7 @@
         this.removeStatusMessageError();
         this.removeInlineErrors();
         // Show loading spinner.
-        donationSubmitLoader.style.display = 'block';
+        if (donationSubmitLoader) {donationSubmitLoader.style.display = 'block';}
         // Disable submit button.
         donationSubmit.setAttribute('disabled', 'disabled');
         // Set disable payment flag.
@@ -483,7 +483,7 @@
       }
       else if (state == 'complete') {
         // Remove loading spinner.
-        donationSubmitLoader.style.display = 'none';
+        if (donationSubmitLoader) {donationSubmitLoader.style.display = 'none';}
         // Enable submit button.
         donationSubmit.removeAttribute('disabled');
         // Remove disable payment flag.

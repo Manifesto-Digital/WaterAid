@@ -113,7 +113,7 @@
        *  upon a user submitting them to prevent multiple submissions
        */
       let cardNumberField = document.querySelector('.stripe-card-element');
-      let donationSubmitButton = document.querySelector('.webform-button--submit.button--primary');
+      let donationSubmitButton = document.querySelector('.button--primary .webform-button--submit');
       let donationSubmitLoader = document.querySelector('.webform-button--loading');
       let donationTypeSelector = document.querySelector('.wa-donation-method-selection');
       let webformBackButton = document.querySelector('.webform-button--previous');
