@@ -48,11 +48,27 @@
 
         context.querySelectorAll(".hero--story.hero--video").forEach((hero) => {
           const video = hero.querySelector(".hero--video video");
-          video.muted = true;
-          if (width > 1024) {
-            video.play();
-            playButton.style.display = "none";
-            pauseButton.style.display = "block";
+          if (video) {
+            video.playsInline = true;
+            video.muted = true;
+
+            // iOS working to show thumbnail image
+            const source = video.querySelector('source');
+            const src = source.getAttribute('src');
+
+            source.setAttribute('src', `${src}#t=0.001`);
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+              video.setAttribute('preload', 'metadata');
+              video.controls = true;
+            } else {
+              video.controls = false;
+            }
+
+            if (width > 1024) {
+              video.play();
+              playButton.style.display = "none";
+              pauseButton.style.display = "block";
+            }
           }
         });
       };

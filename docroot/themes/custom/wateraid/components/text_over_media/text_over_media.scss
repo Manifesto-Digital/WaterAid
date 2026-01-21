@@ -27,7 +27,8 @@
     }
 
     img,
-    video {
+    video,
+    iframe {
       width: 100%;
       height: 100%;
       display: block;
@@ -45,8 +46,10 @@
 
   &__content-wrapper {
     width: 100%;
-    max-width: calculate-rem(660);
     margin: 0 auto;
+    @include desktop {
+      max-width: calculate-rem(660);
+    }
   }
 
   &__title {
@@ -57,9 +60,9 @@
   &__content {
     position: relative;
     background-color: $wa-blue;
-    max-width: calculate-rem(660);
     padding: $wa-spacing-06 $wa-spacing-05;
     @include desktop {
+      max-width: calculate-rem(660);
       position: absolute;
       top: $wa-spacing-09;
       left: $wa-spacing-09;

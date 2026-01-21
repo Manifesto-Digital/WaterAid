@@ -169,7 +169,7 @@ content:
     region: content
     settings:
       view_mode: default
-      preview_view_mode: default
+      preview_view_mode: preview
       form_display_mode: default
       nesting_depth: 0
       require_layouts: 0
@@ -325,6 +325,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
