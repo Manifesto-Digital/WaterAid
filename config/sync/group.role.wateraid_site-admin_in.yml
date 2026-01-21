@@ -6,8 +6,8 @@ dependencies:
     - group.type.wateraid_site
     - user.role.administrator
 id: wateraid_site-admin_in
-label: Administrator
-weight: -6
+label: 'System Administrator'
+weight: -7
 admin: true
 scope: outsider
 global_role: administrator
