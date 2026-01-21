@@ -5,9 +5,63 @@
  *  Install and update hooks.
  */
 
+use Drupal\views\ViewExecutable;
+
 /**
  * Set the test fails variable so we can test storage failures.
  */
 function azure_blob_storage_cron(): void {
   Drupal::service('azure_blob_storage.queue_handler')->processQueue();
+}
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function azure_blob_storage_views_post_execute(ViewExecutable $view): void {
+
+  // As watchdog records have no views relationship to the entity they were
+  // raised about (as they don't have to be raised about an entity), we can't
+  // hide records based on entity access through the view. Instead, we will have
+  // to manually remove records the user shouldn't see.
+  if ($view->id() == 'webform_crm_failure_logs') {
+    $roles = \Drupal::currentUser()->getRoles(TRUE);
+
+    // If the user has more than one custom role, they MUST have either the
+    // System Administrator or Global Administrator role in addition to the
+    // Group Member role. Either of these roles give them unrestricted access to
+    // Webforms so we can safely skip them in that case. Only users with ONLY
+    // the Group Member role have restrictions on which Webforms they can view,
+    // based on their Group roles.
+    if (count($roles) == 1 && in_array('wateraid_group_member', $roles)) {
+
+      /** @var \Drupal\webform\WebformEntityStorageInterface $storage */
+      $storage = \Drupal::entityTypeManager()->getStorage('webform');
+
+      foreach ($view->result as $key => $result) {
+        $matches = [];
+
+        preg_match('/(Unable to store webform blob) (\d+) (from the) (.+) (webform to the Azure storage blob)/', $result->watchdog_message, $matches);
+
+        if (count($matches) == 6 && isset($matches[4])) {
+          /** @var \Drupal\webform\WebformInterface $webform */
+          if ($webform = $storage->load($matches[4])) {
+
+            // The webform access check takes into account global and group
+            // level roles, as well as custom access restrictions on the form
+            // itself, so can be used to check if the user can update this
+            // webform. All users can view webforms, so we'll check for an
+            // elevated permission to decide whether to leave this result in the
+            // list.
+            if (!$webform->access('update')) {
+              unset($view->result[$key]);
+            }
+          }
+        }
+
+        if (!empty($view->result)) {
+          ksort($view->result);
+        }
+      }
+    }
+  }
 }
