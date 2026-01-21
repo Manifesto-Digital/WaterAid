@@ -1,0 +1,30 @@
+uuid: 913eb2c2-c233-49e9-bdf1-7eb1a8c40bd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webform_poc.field_webform
+    - paragraphs.paragraphs_type.webform_poc
+  module:
+    - webform
+id: paragraph.webform_poc.preview
+targetEntityType: paragraph
+bundle: webform_poc
+mode: preview
+content:
+  field_webform:
+    type: webform_entity_reference_link
+    label: hidden
+    settings:
+      label: 'Embed [webform:title] webform'
+      dialog: wide
+      attributes: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
