@@ -37,6 +37,14 @@ function wateraid_preprocess_paragraph(&$variables): void {
   }
 
   $variables['#cache']['contexts'][] = 'url';
+  if ($variables['paragraph']->bundle() == 'hero_image' || $variables['paragraph']->bundle() == 'hero_donate') {
+    if (isset($variables['content']['field_image_crop'][0]['#context'])) {
+      $crop_json = $variables['content']['field_image_crop'][0]['#context']['value'];
+      $crop_array = json_decode($crop_json, TRUE);
+
+      $variables['image_crop_data'] = $crop_array;
+    }
+  }
 }
 
 /**

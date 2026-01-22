@@ -194,3 +194,103 @@ function wateraid_donations_update_8003(&$sandbox): void {
 
   $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['webforms']) ? 1 : ($sandbox['max'] - count($sandbox['webforms'])) / $sandbox['max'];
 }
+
+
+/**
+ * Alter any referenced webforms pointing to the wrong form.
+ */
+function wateraid_donations_update_8004(&$sandbox): void {
+  if (!isset($sandbox['webforms'])) {
+    $sandbox['webforms'] = \Drupal::database()->select('node__webform', 'w')
+      ->fields('w', ['entity_id'])
+      ->condition('webform_target_id', [
+        'contact_us',
+        'request_an_educational_workshop',
+        'update_your_details',
+        'zakat_calculator',
+      ], 'IN')
+      ->execute()
+      ->fetchAllKeyed(0, 0);
+    $sandbox['max'] = count($sandbox['webforms']);
+    $sandbox['#finished'] = 0;
+  }
+
+  if ($id = array_pop($sandbox['webforms'])) {
+
+    /** @var \Drupal\node\NodeInterface $node */
+    if ($node = \Drupal::entityTypeManager()->getStorage('node')->load($id)) {
+
+      /** @var \Drupal\group\Entity\Storage\GroupRelationshipStorageInterface $storage */
+      $storage = \Drupal::entityTypeManager()->getStorage('group_relationship');
+
+      // If the content isn't in a Group, we can't do anything.
+      if ($relationships = $storage->loadByEntity($node)) {
+        $value = $node->get('webform')->getValue();
+
+        foreach ($relationships as $relationship) {
+          $group = $relationship->getGroup();
+
+          if ($slug = ($group->hasField('field_slug')) ? $group->get('field_slug')->getString() : NULL) {
+            switch ($slug) {
+              case 'ja':
+                if ($value[0]['target_id'] == 'contact_us') {
+                  $value[0]['target_id'] = 'contact_us_ja';
+                  $changed = TRUE;
+                }
+                elseif ($value[0]['target_id'] == 'request_an_educational_workshop') {
+                  $value[0]['target_id']  = 'request_workshop_ja';
+                  $changed = TRUE;
+                }
+                break;
+
+              case 'se':
+                if ($value[0]['target_id'] == 'update_your_details') {
+                  $value[0]['target_id'] = 'update_your_details_se';
+                  $changed = TRUE;
+                }
+                break;
+
+              case 'au':
+                if ($value[0]['target_id'] == 'contact_us') {
+                  $value[0]['target_id'] = 'contact_us_au';
+                  $changed = TRUE;
+                }
+                break;
+
+              case 'ca':
+                if ($value[0]['target_id'] == 'contact_us') {
+                  $value[0]['target_id'] = 'contact_us_ca';
+                  $changed = TRUE;
+                }
+                break;
+
+              case 'us':
+                if ($value[0]['target_id'] == 'contact_us') {
+                  $value[0]['target_id'] = 'contact_us_us';
+                  $changed = TRUE;
+                }
+                elseif ($value[0]['target_id'] == 'zakat_calculator') {
+                  $value[0]['target_id']  = 'zakat_calculator_us';
+                  $changed = TRUE;
+                }
+                break;
+
+              default:
+                $changed = FALSE;
+                break;
+
+            }
+
+            if ($changed) {
+              $node->set('webform', $value);
+              $node->save();
+            }
+          }
+        }
+      }
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['webforms']) ? 1 : ($sandbox['max'] - count($sandbox['webforms'])) / $sandbox['max'];
+}
+

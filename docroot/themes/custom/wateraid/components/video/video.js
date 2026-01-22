@@ -23,17 +23,16 @@
 
         if (videoElement && playButton) {
           videoElement.playsInline = true;
+          videoElement.controls = false;
 
           // iOS working to show thumbnail image
           const source = videoElement.querySelector('source');
           const src = source.getAttribute('src');
-
           source.setAttribute('src', `${src}#t=0.001`);
+
           if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
             videoElement.setAttribute('preload', 'metadata');
-            videoElement.controls = true;
-          } else {
-            videoElement.controls = false;
+            videoElement.setAttribute('poster', `${src}#t=0.001`);
           }
 
           playButton.addEventListener("click", function (event) {
