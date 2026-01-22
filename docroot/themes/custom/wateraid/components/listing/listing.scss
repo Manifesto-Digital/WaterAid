@@ -304,7 +304,7 @@
 
   &--search {
     max-width: calculate-rem(888);
-    margin: -$wa-spacing-11 auto 8rem auto;
+    margin: 0 auto 8rem auto;
     padding: 0 $wa-spacing-05;
 
     @include desktop() {
