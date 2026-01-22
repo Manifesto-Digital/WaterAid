@@ -12,7 +12,6 @@ scope: individual
 global_role: null
 group_type: wateraid_site
 permissions:
-  - 'access content overview'
   - 'access group content menu overview'
   - 'access group_node overview'
   - 'access group_webform overview'
