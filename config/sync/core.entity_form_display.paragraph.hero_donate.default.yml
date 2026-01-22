@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.hero_donate.field_credit
     - field.field.paragraph.hero_donate.field_donate_widget
     - field.field.paragraph.hero_donate.field_image
+    - field.field.paragraph.hero_donate.field_image_crop
     - field.field.paragraph.hero_donate.field_quote
     - paragraphs.paragraphs_type.hero_donate
   module:
@@ -21,6 +22,7 @@ third_party_settings:
         - field_image
         - field_caption
         - field_credit
+        - field_image_crop
       label: Image
       region: content
       parent_name: ''
@@ -98,6 +100,14 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_image_crop:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_quote:
     type: string_textarea

@@ -10,7 +10,8 @@
       }
 
       // Find all layout paragraphs component forms
-      if (!context.matches('form[data-drupal-selector="edit-layout-paragraphs-component-form-hero-image"]')) {
+      if (!(context.matches('form[data-drupal-selector="edit-layout-paragraphs-component-form-hero-image"]')
+        || context.matches('form[data-drupal-selector="edit-layout-paragraphs-component-form-hero-donate"]'))) {
         return;
       }
 

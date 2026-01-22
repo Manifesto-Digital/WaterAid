@@ -1,8 +1,9 @@
-uuid: 1fe57921-24d3-4dc7-a1ba-726c63f587e6
+uuid: d2188e58-f2d2-499c-9800-b41c467895ec
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.hero_donate.field_caption
     - field.field.paragraph.hero_donate.field_citation
     - field.field.paragraph.hero_donate.field_credit
@@ -10,13 +11,15 @@ dependencies:
     - field.field.paragraph.hero_donate.field_image
     - field.field.paragraph.hero_donate.field_image_crop
     - field.field.paragraph.hero_donate.field_quote
+    - image.style.medium
     - paragraphs.paragraphs_type.hero_donate
   module:
     - entity_reference_revisions
-id: paragraph.hero_donate.default
+    - media
+id: paragraph.hero_donate.preview
 targetEntityType: paragraph
 bundle: hero_donate
-mode: default
+mode: preview
 content:
   field_caption:
     type: string
@@ -31,7 +34,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_credit:
     type: string
@@ -39,7 +42,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
+    weight: 4
     region: content
   field_donate_widget:
     type: entity_reference_revisions_entity_view
@@ -48,34 +51,29 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   field_image:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: hidden
     settings:
-      view_mode: full
-      link: false
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_image_crop:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 10
     region: content
   field_quote:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
 hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_image_crop: true
   search_api_excerpt: true
