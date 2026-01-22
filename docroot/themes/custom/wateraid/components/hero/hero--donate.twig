@@ -6,14 +6,26 @@
 
 <div {{ attributes.addClass(hero_classes) }}>
   {% if image %}
-    <div class="hero__image">
-      {{ include('wateraid:image', {
-        image,
-        caption: media_caption,
-        credit: media_credit,
-        width: 'full',
-        caption_display: 'expandable'
-      }) }}
+    <div class="hero__image {{ mobile_image|render ? "hero__image--desktop" }}">
+      {% if (image_crop_data.x is not null) and (image_crop_data.y is not null) %}
+        {{ include('wateraid:image', {
+          image: image,
+          caption: media_caption,
+          credit: media_credit,
+          width: 'full',
+          caption_display: 'expandable',
+          variant: 'cropped',
+          image_crop_data,
+        }) }}
+      {% else %}
+        {{ include('wateraid:image', {
+          image: image,
+          caption: media_caption,
+          credit: media_credit,
+          width: 'full',
+          caption_display: 'expandable'
+        }) }}
+      {% endif %}
     </div>
   {% endif %}
 
