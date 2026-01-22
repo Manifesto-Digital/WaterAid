@@ -5,7 +5,6 @@
  * Install and update functionality for Wateraid Content.
  */
 
-use Drupal\Core\Entity\EntityType;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 
