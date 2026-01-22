@@ -1,0 +1,5 @@
+wateraid_group.node_structure:
+  route_name: wateraid_group.node_structure
+  base_route: entity.node.canonical
+  title: Structure
+  weight: 100

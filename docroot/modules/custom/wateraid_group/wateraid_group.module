@@ -9,34 +9,43 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
  */
 function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
-  // Only show warning on node creation (not edit).
-  /** @var \Drupal\node\NodeInterface $node */
-  $node = $form_state->getFormObject()->getEntity();
-  if (!$node->isNew()) {
-    return;
-  }
 
   // Check if we're in a group context by looking at the route.
-  $route_match = \Drupal::routeMatch();
-  $route_name = $route_match->getRouteName();
+  $route_name = \Drupal::routeMatch()->getRouteName();
 
-  // If we're already in a group creation route, don't show the warning.
-  if (strpos($route_name, 'entity.group_relationship.create_form') === 0) {
-    return;
+  // If this is our view structure form, prevent anyone being able to save or
+  // delete the node through it. They are only meant to be looking.
+  if ($route_name == 'wateraid_group.node_structure') {
+    foreach (['delete', 'submit'] as $action) {
+      if (isset($form['actions'][$action]['#access'])) {
+        $form['actions'][$action]['#access'] = FALSE;
+      }
+    }
+
+    $form['#attached']['library'][] = 'wateraid_group/node_structure';
   }
+  // If we're already in a group creation route, don't show the warning.
+  elseif (!str_starts_with($route_name, 'entity.group_relationship.create_form')) {
 
-  // Display warning message directing users to create content within a Site.
-  $group_list_url = Url::fromRoute('entity.group.collection')->toString();
-  \Drupal::messenger()->addWarning(
-    t('Content should be created from within a Site (Group). Please navigate to <a href="@url">Sites</a> and create content there to ensure proper organization and URL structure.', [
-      '@url' => $group_list_url,
-    ])
-  );
+    // Only show warning on node creation (not edit).
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $form_state->getFormObject()->getEntity();
+    if (!$node->isNew()) {
+      // Display warning message directing users to create content within a Site.
+      $group_list_url = Url::fromRoute('entity.group.collection')->toString();
+      \Drupal::messenger()->addWarning(
+        t('Content should be created from within a Site (Group). Please navigate to <a href="@url">Sites</a> and create content there to ensure proper organization and URL structure.', [
+          '@url' => $group_list_url,
+        ])
+      );
+    }
+  }
 }
 
 /**
@@ -110,6 +119,44 @@ function wateraid_group_preprocess_html(&$variables): void {
 
       $gtm_url->setOptions($options);
       $variables['page_top']['google_tag_gtm_iframe'][0]['#url'] = $gtm_url;
+    }
+  }
+
+  // If this is our view structure page, it needs the gin edit form class adding
+  // to display the sidebar properly.
+  if (\Drupal::routeMatch()->getRouteName() == 'wateraid_group.node_structure') {
+    $variables['attributes']['class'][] = 'gin--edit-form';
+    $title = t('View the @type structure', [
+      '@type' => ucwords(str_replace('_', ' ', $variables['node_type'])),
+    ]);
+    $variables['head_title']['title'] = $title;
+  }
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function wateraid_group_entity_operation_alter(array &$operations, EntityInterface $entity): void {
+  if ($entity instanceof NodeInterface) {
+
+    // If our node structure operation is not present, add it with a copy of the
+    // other link's options.
+    if (!isset($operations['structure'])) {
+      $first = reset($operations);
+
+      $options = (isset($first['url'])) ? $first['url']->getOptions() : [];
+
+      if (isset($options['attributes']['aria-label'])) {
+        $options['attributes']['aria-label'] = t('View the structure of @entity_label', [
+          '@entity_label' => $entity->label(),
+        ]);
+      }
+
+      $operations['structure'] = [
+        'title' => t('Structure'),
+        'weight' => 60,
+        'url' => Url::fromRoute('wateraid_group.node_structure', ['node' => $entity->id()], $options),
+      ];
     }
   }
 }
