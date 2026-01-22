@@ -5,6 +5,10 @@
  * Install and update functionality for Wateraid Content.
  */
 
+use Drupal\Core\Entity\EntityType;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
 /**
  * Delete the unused taxonomy vocabularies.
  */
@@ -174,4 +178,63 @@ function wateraid_content_update_10006(&$sandbox): void {
   }
 
   $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
+
+/**
+ * Update the Menu Link Content bundle field definition.
+ */
+function wateraid_content_update_10008(&$sandbox): void {
+  $database = \Drupal::database();
+  $transaction = $database->startTransaction();
+
+  $bundle_of = 'menu_link_content';
+
+  $definition_manager = \Drupal::entityDefinitionUpdateManager();
+
+  $entity_type = $definition_manager->getEntityType($bundle_of);
+
+  $data = [];
+  $query = $database->select('menu_link_content_data', 'm')
+    ->fields('m')
+    ->execute();
+  $data['menu_link_content_data'] = $query->fetchAll();
+
+  $query = $database->select('menu_link_content', 'm')
+    ->fields('m')
+    ->execute();
+  $data['menu_link_content'] = $query->fetchAll();
+
+  // Clear out the values.
+  $database->truncate('menu_link_content_data')->execute();
+  $database->truncate('menu_link_content')->execute();
+
+  // Uninstall the field.
+  $field_storage_definition = $definition_manager->getFieldStorageDefinition($entity_type->getKey('bundle'), $bundle_of);
+  $definition_manager->uninstallFieldStorageDefinition($field_storage_definition);
+
+  // Create a new field definition.
+  $new_field = BaseFieldDefinition::create('string')
+    ->setLabel($entity_type->getBundleLabel())
+    ->setRequired(TRUE)
+    ->setReadOnly(TRUE)
+    ->setDescription(t('The content menu link bundle.'))
+    ->setSetting('max_length', EntityTypeInterface::BUNDLE_MAX_LENGTH)
+    ->setSetting('is_ascii', TRUE);
+
+  // Install the new definition.
+  $definition_manager->installFieldStorageDefinition($entity_type->getKey('bundle'), $bundle_of, $bundle_of, $new_field);
+
+  // Commit transaction.
+  unset($transaction);
+
+  foreach ($data as $table => $records) {
+    foreach ($records as $record) {
+      $record = (array) $record;
+
+      $database->insert($table)
+        ->fields(array_keys($record))
+        ->values($record)
+        ->execute();
+    }
+  }
 }
