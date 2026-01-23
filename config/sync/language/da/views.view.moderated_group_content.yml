@@ -1,8 +1,5 @@
-label: 'Modereret indhold'
-description: 'Find og moderér indhold.'
 display:
   default:
-    display_title: Standard
     display_options:
       title: 'Modereret indhold'
       fields:
@@ -38,6 +35,10 @@ display:
       empty:
         area_text_custom:
           content: 'Der er ikke noget modereret indhold tilgængeligt. Her vises kun ikke-udgivet indhold som f.eks. kladder.'
+      arguments:
+        gid:
+          exception:
+            title: Alle
       filters:
         title:
           expose:
@@ -53,3 +54,6 @@ display:
             label: Sprog
   moderated_content:
     display_title: 'Modereret indhold'
+    display_options:
+      menu:
+        title: 'Modereret indhold'

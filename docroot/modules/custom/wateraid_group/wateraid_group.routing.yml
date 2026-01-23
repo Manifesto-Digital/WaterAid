@@ -1,0 +1,12 @@
+wateraid_group.node_structure:
+  path: '/node/{node}/structure'
+  defaults:
+    _entity_form: 'node.default'
+    _title: 'View the node structure'
+  requirements:
+    _role: 'wateraid_group_member'
+  options:
+    _admin_route: TRUE
+    parameters:
+      node:
+        type: entity:node

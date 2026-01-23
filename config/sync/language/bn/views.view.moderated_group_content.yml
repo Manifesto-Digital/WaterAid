@@ -1,6 +1,5 @@
 display:
   default:
-    display_title: ডিফল্ট
     display_options:
       fields:
         title:
@@ -16,6 +15,10 @@ display:
       exposed_form:
         options:
           submit_button: ফিল্টার
+      arguments:
+        gid:
+          exception:
+            title: সমস্ত
       filters:
         title:
           expose:

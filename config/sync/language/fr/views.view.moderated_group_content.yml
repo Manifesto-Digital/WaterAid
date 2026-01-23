@@ -1,8 +1,6 @@
-label: 'Contenu modéré'
-description: 'Trouver et modérer du contenu.'
 display:
   default:
-    display_title: 'Par défaut'
+    display_title: Principal
     display_options:
       title: 'Contenu modéré'
       fields:
@@ -37,6 +35,10 @@ display:
       empty:
         area_text_custom:
           content: "Aucun contenu modéré disponible. Seules les versions de contenu en attente, telles que 'Brouillon', sont listées ici."
+      arguments:
+        gid:
+          exception:
+            title: Tout
       filters:
         title:
           expose:
@@ -52,3 +54,6 @@ display:
             label: Langue
   moderated_content:
     display_title: 'Contenu modéré'
+    display_options:
+      menu:
+        title: 'Contenu modéré'

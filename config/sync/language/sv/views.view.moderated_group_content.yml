@@ -1,6 +1,6 @@
 display:
   default:
-    display_title: Förvald
+    display_title: Huvud
     display_options:
       fields:
         title:
@@ -18,6 +18,10 @@ display:
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
+      arguments:
+        gid:
+          exception:
+            title: Alla
       filters:
         title:
           expose:

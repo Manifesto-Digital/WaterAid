@@ -1,8 +1,6 @@
-label: 'Contenido moderado'
-description: 'Encuentra y modera contenido.'
 display:
   default:
-    display_title: 'Por defecto'
+    display_title: Máster
     display_options:
       title: 'Contenido moderado'
       fields:
@@ -37,6 +35,10 @@ display:
       empty:
         area_text_custom:
           content: 'No hay contenido moderado disponible. Solo las versiones pendientes de contenido, como los borradores, se enumeran aquí.'
+      arguments:
+        gid:
+          exception:
+            title: Todo(s)
       filters:
         title:
           expose:
@@ -52,3 +54,6 @@ display:
             label: Idioma
   moderated_content:
     display_title: 'Contenido moderado'
+    display_options:
+      menu:
+        title: 'Contenido moderado'

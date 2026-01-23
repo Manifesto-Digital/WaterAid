@@ -1,8 +1,5 @@
-label: 'नियंत्रित सामग्री'
-description: 'खोजें और मध्यम सामग्री।'
 display:
   default:
-    display_title: डीफॉल्ट
     display_options:
       title: 'नियंत्रित सामग्री'
       fields:
@@ -35,6 +32,10 @@ display:
       empty:
         area_text_custom:
           content: 'कोई मॉडरेट सामग्री उपलब्ध नहीं है। सामग्री के केवल लंबित संस्करण, जैसे ड्राफ्ट, यहां सूचीबद्ध हैं।'
+      arguments:
+        gid:
+          exception:
+            title: सभी
       filters:
         title:
           expose:
@@ -47,3 +48,6 @@ display:
             label: भाषा
   moderated_content:
     display_title: 'नियंत्रित सामग्री'
+    display_options:
+      menu:
+        title: 'नियंत्रित सामग्री'

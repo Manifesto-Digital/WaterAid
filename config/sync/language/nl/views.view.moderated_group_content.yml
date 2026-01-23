@@ -1,8 +1,5 @@
-label: 'Gemodereerde inhoud'
-description: 'Inhoud zoeken en modereren.'
 display:
   default:
-    display_title: Standaard
     display_options:
       title: 'Gemodereerde inhoud'
       fields:
@@ -37,6 +34,10 @@ display:
       empty:
         area_text_custom:
           content: 'Geen inhoud beschikbaar voor moderatie. Alleen inhoud die op moderatie wacht, zoals concepten, wordt hier getoond.'
+      arguments:
+        gid:
+          exception:
+            title: Alle
       filters:
         title:
           expose:
@@ -52,3 +53,6 @@ display:
             label: Taal
   moderated_content:
     display_title: 'Gemodereerde inhoud'
+    display_options:
+      menu:
+        title: 'Gemodereerde inhoud'
