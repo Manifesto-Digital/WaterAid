@@ -1,0 +1,10 @@
+uuid: 79c7c2ae-5d8b-46bb-9a44-cd0cbeb6e81d
+langcode: en
+status: true
+dependencies: {  }
+id: event_registration_form
+label: 'Event registration form'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

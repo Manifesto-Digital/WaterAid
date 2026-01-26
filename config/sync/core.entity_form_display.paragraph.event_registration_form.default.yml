@@ -1,0 +1,112 @@
+uuid: 9885352e-4695-47f7-9495-fe96289fce9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.event_registration_form.field_amounts
+    - field.field.paragraph.event_registration_form.field_discount_amount
+    - field.field.paragraph.event_registration_form.field_discount_code
+    - field.field.paragraph.event_registration_form.field_discount_expiry
+    - field.field.paragraph.event_registration_form.field_event_registration_form
+    - paragraphs.paragraphs_type.event_registration_form
+  module:
+    - datetime
+    - default_paragraphs
+    - field_group
+    - webform
+third_party_settings:
+  field_group:
+    group_amounts:
+      children:
+        - field_amounts
+      label: Amounts
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_discount_information:
+      children:
+        - field_discount_amount
+        - field_discount_code
+        - field_discount_expiry
+      label: 'Discount information'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.event_registration_form.default
+targetEntityType: paragraph
+bundle: event_registration_form
+mode: default
+content:
+  field_amounts:
+    type: default_paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Amount
+      title_plural: Amounts
+      closed_mode: summary
+      autocollapse: none
+      add_mode: dropdown
+      form_display_mode: simple_form
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: 0
+        convert: 0
+      default_paragraph_types:
+        donation_amount:
+          edit_mode: closed
+          weight: '0'
+          value: 0
+      edit_mode: closed
+    third_party_settings: {  }
+  field_discount_amount:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_discount_code:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_discount_expiry:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_registration_form:
+    type: webform_entity_reference_select
+    weight: 0
+    region: content
+    settings:
+      default_data: true
+      webforms: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
