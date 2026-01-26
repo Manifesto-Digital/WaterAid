@@ -1,0 +1,25 @@
+uuid: d15aaa62-2a3c-43ed-a193-1fa65f4d9d0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_event_registration_form
+    - paragraphs.paragraphs_type.event_registration_form
+  module:
+    - webform
+id: paragraph.event_registration_form.field_event_registration_form
+field_name: field_event_registration_form
+entity_type: paragraph
+bundle: event_registration_form
+label: 'Event registration form'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

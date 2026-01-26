@@ -1,0 +1,19 @@
+uuid: ec017219-5c96-46b3-a0f6-2886a0876bd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_discount_code
+    - paragraphs.paragraphs_type.event_registration_form
+id: paragraph.event_registration_form.field_discount_code
+field_name: field_discount_code
+entity_type: paragraph
+bundle: event_registration_form
+label: 'Discount code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
