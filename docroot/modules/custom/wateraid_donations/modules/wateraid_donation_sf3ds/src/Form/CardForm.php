@@ -99,7 +99,7 @@ class CardForm extends FormBase {
       foreach ($map as $sf => $wf) {
         $form[$sf] = [
           '#type' => 'hidden',
-          '#value' => $webform_submission->getData()[$wf],
+          '#value' => $webform_submission->getData()[$wf] ?? '',
           '#attributes' => [
             'data-submission-value' => strtolower($sf),
           ],
@@ -107,7 +107,7 @@ class CardForm extends FormBase {
       }
       $form['Email'] = [
         '#type' => 'hidden',
-        '#value' => $webform_submission->getData()['email']['email'],
+        '#value' => $webform_submission->getData()['email']['email'] ?? '',
         '#attributes' => [
           'data-submission-value' => 'email',
         ],
