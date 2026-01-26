@@ -17,6 +17,8 @@ use Drupal\views\Views;
  * Implements hook_form_BASE_FORM_ID_alter().
  */
 function wateraid_content_form_node_form_alter(&$form, FormStateInterface $form_state): void {
+  $form['#validate'][] = 'wateraid_content_validate';
+
   if (isset($form['field_review_date'])) {
     if (wateraid_content_review_date_form_access($form, $form_state)) {
       if ($form['field_review_date']['widget'][0]['value']) {
@@ -377,5 +379,24 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
 function wateraid_content_field_widget_complete_boolean_checkbox_form_alter(&$field_widget_complete_form, FormStateInterface $form_state, $context): void {
   if (isset($field_widget_complete_form['widget']['#field_name']) && $field_widget_complete_form['widget']['#field_name'] == 'field_show_read_time') {
     $field_widget_complete_form['#attached']['library'][] = 'wateraid_content/hero';
+  }
+}
+
+/**
+ * Custom validation to check only one event registration form added to a page.
+ */
+function wateraid_content_validate($form, FormStateInterface $form_state) {
+  $paragraphs = $form_state->getValue('field_content');
+  $has_registration_form = FALSE;
+
+  foreach ($paragraphs as $paragraph) {
+    if ($paragraph['entity']->bundle() === 'event_registration_form') {
+      if ($has_registration_form === FALSE) {
+        $has_registration_form = TRUE;
+      }
+      else {
+        $form_state->setErrorByName('field_content', t('You can only add one Event Registration Form to a page.'));
+      }
+    }
   }
 }
