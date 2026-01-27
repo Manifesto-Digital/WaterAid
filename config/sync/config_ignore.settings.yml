@@ -5,4 +5,5 @@ ignored_config_entities:
   - 'key.key.*'
   - 'system.site:mail'
   - 'system.site:page'
+  - wateraid_donation_gmo.settings
   - 'webform.webform.*'
