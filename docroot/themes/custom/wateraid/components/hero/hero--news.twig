@@ -57,7 +57,7 @@
       {% if time_to_read %}
         <div class="hero__content--time">
           {{ include('@wateraid/images/icons/wa-utility-schedule.svg') }}
-          {{ time_to_read|replace({'minute': 'min'}) ~ ' read'|t }}
+          {{ time_to_read }} {{ 'min read'|t }}
         </div>
       {% endif %}
     </div>

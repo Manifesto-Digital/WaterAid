@@ -25,4 +25,4 @@ reading_time:
     webform:
       is_activated: 0
   words_per_minute: 225
-  unit_of_time: minute
+  unit_of_time: default
