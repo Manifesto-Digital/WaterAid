@@ -1,0 +1,51 @@
+uuid: b58d5785-129e-41e5-b30f-e9f38113206c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+id: wateraid_site-press_author
+label: 'Press Author'
+weight: -4
+admin: false
+scope: individual
+global_role: null
+group_type: wateraid_site
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:page entity'
+  - 'delete own group_node:page entity'
+  - 'update own group_node:page entity'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition send_for_review'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group_node:article entity'
+  - 'view group_node:article relationship'
+  - 'view group_node:donation entity'
+  - 'view group_node:donation relationship'
+  - 'view group_node:event entity'
+  - 'view group_node:event relationship'
+  - 'view group_node:landing_page entity'
+  - 'view group_node:landing_page relationship'
+  - 'view group_node:listing_page entity'
+  - 'view group_node:listing_page relationship'
+  - 'view group_node:page entity'
+  - 'view group_node:page relationship'
+  - 'view group_node:publication entity'
+  - 'view group_node:publication relationship'
+  - 'view group_node:shorthand_story entity'
+  - 'view group_node:shorthand_story relationship'
+  - 'view group_node:standard_page entity'
+  - 'view group_node:standard_page relationship'
+  - 'view group_node:story entity'
+  - 'view group_node:story relationship'
+  - 'view group_node:webform entity'
+  - 'view group_node:webform relationship'
+  - 'view group_webform:webform entity'
+  - 'view group_webform:webform relationship'
+  - 'view latest group version'
+  - 'view latest version'
+  - 'view own group_webform:webform submission'
+  - 'view own unpublished group'
+  - 'view own unpublished group_node:page entity'

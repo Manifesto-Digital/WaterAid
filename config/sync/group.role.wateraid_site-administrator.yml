@@ -5,8 +5,8 @@ dependencies:
   config:
     - group.type.wateraid_site
 id: wateraid_site-administrator
-label: 'Group Administrator'
-weight: -5
+label: Administrator
+weight: -6
 admin: true
 scope: individual
 global_role: null

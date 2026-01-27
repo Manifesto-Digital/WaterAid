@@ -5,8 +5,6 @@ dependencies:
   config:
     - user.role.administrator
     - user.role.authenticated
-    - user.role.content_editor
-    - user.role.wateraid_author
     - user.role.wateraid_super_admin
     - workflows.workflow.editorial
   module:

@@ -71,7 +71,7 @@ dependencies:
     - webform
     - webform_node
 id: wateraid_super_admin
-label: 'WaterAid Super Admin'
+label: 'Global Administrator'
 weight: -5
 is_admin: null
 permissions:
@@ -147,6 +147,7 @@ permissions:
   - 'create icon_library media'
   - 'create landing_page content'
   - 'create listing_page content'
+  - 'create local_file media'
   - 'create local_image media'
   - 'create local_video media'
   - 'create media'
@@ -221,6 +222,7 @@ permissions:
   - 'delete own icon_library media'
   - 'delete own landing_page content'
   - 'delete own listing_page content'
+  - 'delete own local_file media'
   - 'delete own local_image media'
   - 'delete own local_video media'
   - 'delete own page content'
@@ -351,14 +353,22 @@ permissions:
   - 'translate any entity'
   - 'translate article node'
   - 'translate configuration'
+  - 'translate donation node'
   - 'translate editable entities'
+  - 'translate event node'
   - 'translate get_involved taxonomy_term'
   - 'translate group_content_menu'
   - 'translate interface'
+  - 'translate landing_page node'
+  - 'translate listing_page node'
   - 'translate menu_link_content'
   - 'translate page node'
+  - 'translate shorthand_story node'
+  - 'translate standard_page node'
+  - 'translate story node'
   - 'translate subject_areas taxonomy_term'
   - 'translate wateraid_site group'
+  - 'translate webform node'
   - 'update any media'
   - 'update content translations'
   - 'update media'

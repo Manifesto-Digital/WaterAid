@@ -1,9 +1,7 @@
-label: Media
 display:
   default:
     display_title: Predefinido
     display_options:
-      title: Media
       fields:
         media_bulk_form:
           action_title: Ação
@@ -57,8 +55,3 @@ display:
         langcode:
           expose:
             label: Idioma
-  media_page_list:
-    display_title: Media
-    display_options:
-      menu:
-        title: Media

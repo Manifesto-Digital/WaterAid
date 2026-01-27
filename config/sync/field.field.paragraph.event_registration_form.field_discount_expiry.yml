@@ -1,0 +1,21 @@
+uuid: 7ecf291c-7380-4768-bce8-7d704aae13da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_discount_expiry
+    - paragraphs.paragraphs_type.event_registration_form
+  module:
+    - datetime
+id: paragraph.event_registration_form.field_discount_expiry
+field_name: field_discount_expiry
+entity_type: paragraph
+bundle: event_registration_form
+label: 'Discount expiry'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

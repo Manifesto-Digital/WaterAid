@@ -25,18 +25,6 @@
           }
       }
     },
-  {
-      "type": "package",
-      "package": {
-          "name": "jquery-validation/jquery-validation",
-          "version": "1.21.0",
-          "type": "npm-asset",
-          "dist": {
-              "url": "https://github.com/jquery-validation/jquery-validation/releases/download/1.21.0/jquery-validation-1.21.0.zip",
-              "type": "zip"
-          }
-      }
-  },
     {
       "type": "composer",
       "url": "https://asset-packagist.org"
@@ -82,6 +70,7 @@
     "drupal/field_group": "^4.0",
     "drupal/field_group_markup": "^1.0",
     "drupal/focal_point": "^2.1",
+    "drupal/gcontent_moderation": "^3.0@beta",
     "drupal/gin": "^4.1",
     "drupal/google_tag": "^2.0",
     "drupal/group": "^3.3",
@@ -146,9 +135,9 @@
     "drupal/webp": "^1.0@RC",
     "drupal/xmlsitemap": "^2.0",
     "drush/drush": "^12.4",
-    "jquery-validation/jquery-validation": "^1.21",
     "justgiving/justgiving": "^1.0",
     "mikehaertl/phpwkhtmltopdf": "^2.5",
+    "npm-asset/jquery-validation": "^1.21",
     "oomphinc/composer-installers-extender": "^2.0",
     "wikimedia/composer-merge-plugin": "^2.1"
   },

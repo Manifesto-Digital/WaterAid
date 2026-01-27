@@ -2,7 +2,6 @@ display:
   default:
     display_title: Predefinido
     display_options:
-      title: Media
       fields:
         media_bulk_form:
           action_title: Ação

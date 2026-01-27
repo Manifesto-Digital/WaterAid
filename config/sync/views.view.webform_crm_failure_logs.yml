@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - system.menu.admin
+    - user.role.administrator
+    - user.role.wateraid_group_member
+    - user.role.wateraid_super_admin
   module:
     - dblog
     - user
@@ -468,9 +471,12 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access site reports'
+          role:
+            wateraid_group_member: wateraid_group_member
+            wateraid_super_admin: wateraid_super_admin
+            administrator: administrator
       cache:
         type: none
         options: {  }
@@ -701,7 +707,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   page:
     id: page
@@ -727,5 +733,5 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }

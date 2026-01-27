@@ -5,14 +5,13 @@ dependencies:
   config:
     - group.type.wateraid_site
 id: wateraid_site-content_manager
-label: 'Content Manager'
-weight: -4
+label: Editor
+weight: -5
 admin: false
 scope: individual
 global_role: null
 group_type: wateraid_site
 permissions:
-  - 'access content overview'
   - 'access group content menu overview'
   - 'access group_node overview'
   - 'access group_webform overview'
@@ -128,6 +127,13 @@ permissions:
   - 'update own group_node:webform relationship'
   - 'update own group_webform:webform entity'
   - 'update own group_webform:webform relationship'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition request_changes'
+  - 'use editorial transition send_for_review'
   - 'view any group_webform:webform submission'
   - 'view any unpublished group'
   - 'view group'
@@ -156,6 +162,7 @@ permissions:
   - 'view group_webform:webform entity'
   - 'view group_webform:webform relationship'
   - 'view latest group version'
+  - 'view latest version'
   - 'view own group_webform:webform submission'
   - 'view own unpublished group'
   - 'view own unpublished group_node:article entity'
