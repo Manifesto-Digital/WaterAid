@@ -147,7 +147,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Expiry Date'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -178,9 +178,9 @@ display:
             html: false
           element_type: ''
           element_class: ''
-          element_label_type: ''
+          element_label_type: '0'
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -189,21 +189,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: timestamp
+          type: string
           settings:
-            date_format: medium
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: long
-              custom_date_format: ''
-            time_diff:
-              enabled: true
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: 2
-              refresh: 60
-              description: ''
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -213,7 +201,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: true
         field_dam_expired:
           id: field_dam_expired
           table: media__field_dam_expired
