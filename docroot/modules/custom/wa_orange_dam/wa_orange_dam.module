@@ -32,3 +32,15 @@ function wa_orange_dam_cron(): void {
     $queue->createItem($result->mid);
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wa_orange_dam_preprocess_field(&$variables): void {
+  if (isset($variables['element']['#field_name']) && $variables['element']['#field_name']) {
+    if (isset($variables['items'][0]['content']['#context']['value'])) {
+      $date_formater = \Drupal::service('date.formatter');
+      $variables['items'][0]['content']['#context']['value'] = $date_formater->format($variables['items'][0]['content']['#context']['value'], 'wateraid_fixed_donation');
+    }
+  }
+}

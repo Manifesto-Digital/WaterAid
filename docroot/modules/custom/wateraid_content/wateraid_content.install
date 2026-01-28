@@ -7,6 +7,8 @@
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Delete the unused taxonomy vocabularies.
@@ -274,6 +276,86 @@ function wateraid_content_update_10009(&$sandbox): void {
       }
 
       $user->save();
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
+
+/**
+ * Switch Expiry Date field to be plain text.
+ */
+function wateraid_content_update_10010(&$sandbox): void {
+  $field_name = 'field_dam_expiry_date';
+  $database = \Drupal::database();
+  $entity_type = 'media';
+  $table = $entity_type . '__' . $field_name;
+  $new_fields_list = [];
+  $field_storage = FieldStorageConfig::loadByName($entity_type, $field_name);
+
+  if (is_null($field_storage)) {
+    return;
+  }
+
+  if (!isset($sandbox['ids'])) {
+    // Get all current data from DB.
+    if ($database->schema()->tableExists($table)) {
+      // The table data to restore after the update is completed.
+      $sandbox['ids'] = $database->select($table, 'n')
+        ->fields('n')
+        ->execute()
+        ->fetchAll();
+
+      $sandbox['max'] = count($sandbox['ids']);
+      $sandbox['#finished'] = 0;
+    }
+    else {
+      $sandbox['ids'] = [];
+      $sandbox['max'] = 0;
+      $sandbox['#finished'] = 1;
+    }
+
+    // Use existing field config for new field.
+    foreach ($field_storage->getBundles() as $bundle => $label) {
+      $field = FieldConfig::loadByName($entity_type, $bundle, $field_name);
+      $new_field = $field->toArray();
+      $new_field['settings'] = [];
+      $new_field['field_type'] = 'string';
+      $new_fields_list[] = $new_field;
+    }
+
+    // Deleting field storage which will also delete bundles(fields).
+    $new_field_storage = $field_storage->toArray();
+    $new_field_storage['type'] = 'string';
+    $new_field_storage['settings'] = [
+      'max_length' => 255,
+      'case_sensitive' => FALSE,
+      'is_ascii' => FALSE,
+    ];
+    $new_field_storage['cardinality'] = 1;
+
+    $field_storage->delete();
+
+    // Purge field data now to allow new field and field_storage with same name
+    // to be created.
+    field_purge_batch(40);
+
+    // Create new field storage.
+    $new_field_storage = FieldStorageConfig::create($new_field_storage);
+    $new_field_storage->save();
+
+    // Create new fields.
+    foreach ($new_fields_list as $nfield) {
+      $nfieldConfig = FieldConfig::create($nfield);
+      $nfieldConfig->save();
+    }
+  }
+  else {
+    // Restore existing data in new table.
+    if ($row = array_pop($sandbox['ids'])) {
+      $media = \Drupal::entityTypeManager()->getStorage('media')->load($row->entity_id);
+      $media->set('field_dam_expiry_date', $row->field_dam_expiry_date_value);
+      $media->save();
     }
   }
 

@@ -27,26 +27,6 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_dam_expiry_date:
-    type: timestamp
-    label: above
-    settings:
-      date_format: short
-      custom_date_format: ''
-      timezone: ''
-      tooltip:
-        date_format: long
-        custom_date_format: ''
-      time_diff:
-        enabled: false
-        future_format: '@interval hence'
-        past_format: '@interval ago'
-        granularity: 2
-        refresh: 60
-        description: ''
-    third_party_settings: {  }
-    weight: 1
-    region: content
   thumbnail:
     type: image
     label: hidden
@@ -67,6 +47,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_dam_expiry_date: true
   field_dam_last_checked: true
   field_media_dam_file: true
   langcode: true
