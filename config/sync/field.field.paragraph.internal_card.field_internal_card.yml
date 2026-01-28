@@ -4,16 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_internal_card
-    - node.type.article
-    - node.type.donation
-    - node.type.event
-    - node.type.landing_page
-    - node.type.listing_page
-    - node.type.page
-    - node.type.publication
-    - node.type.standard_page
-    - node.type.story
-    - node.type.webform
     - paragraphs.paragraphs_type.internal_card
 id: paragraph.internal_card.field_internal_card
 field_name: field_internal_card
@@ -26,22 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: views
   handler_settings:
-    target_bundles:
-      article: article
-      page: page
-      donation: donation
-      event: event
-      landing_page: landing_page
-      listing_page: listing_page
-      publication: publication
-      standard_page: standard_page
-      story: story
-      webform: webform
-    sort:
-      field: _none
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: article
+    view:
+      view_name: entity_references
+      display_name: entity_reference_1
+      arguments: {  }
 field_type: entity_reference
