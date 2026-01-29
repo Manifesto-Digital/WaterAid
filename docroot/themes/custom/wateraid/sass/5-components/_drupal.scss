@@ -123,3 +123,9 @@ div[data-drupal-messages] {
     }
   }
 }
+
+.page-node-type-wateraid-site {
+  .field--name-field-content {
+    @include page-container;
+  }
+}
