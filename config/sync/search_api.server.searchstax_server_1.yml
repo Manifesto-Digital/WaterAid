@@ -70,7 +70,7 @@ backend_config:
     update_token: ''
     autosuggest_core: ''
     context: ''
-    key_id: searchstax_connector_migrated_searchstax_server_1_3
+    key_id: search_stax_connection
   optimize: false
   fallback_multiple: false
   disabled_field_types: {  }
