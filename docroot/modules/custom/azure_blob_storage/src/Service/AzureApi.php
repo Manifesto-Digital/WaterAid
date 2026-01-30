@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\azure_blob_storage\Service;
 
-use Drupal\Component\Serialization\Json;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Site\Settings;
@@ -48,9 +47,9 @@ final class AzureApi {
   private string $container = 'wateraid-webforms';
 
   /**
-   * Allows the user to override the default container.
+   * Sets the account name.
    *
-   * @param string $container
+   * @param string $accountName
    *   An alternative container to use.
    */
   public function setAccountName(string $accountName): void {
@@ -94,7 +93,7 @@ final class AzureApi {
   public function blobPut(string $blob_name, array $blob_data, $is_queue = FALSE): bool {
     $result = FALSE;
 
-    $blob = Json::encode($blob_data);
+    $blob = json_encode($blob_data);
     $content_type = 'application/json';
     $date = $this->dateGet();
     $http_method = 'PUT';
