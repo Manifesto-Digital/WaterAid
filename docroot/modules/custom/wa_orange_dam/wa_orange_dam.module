@@ -2,7 +2,7 @@
 
 /**
  * @file
- *  Hooks and other functionality for the WA DAM.
+ * Hooks and other functionality for the WA DAM.
  */
 
 /**
@@ -30,5 +30,22 @@ function wa_orange_dam_cron(): void {
 
   foreach ($query->execute()->fetchAll() as $result) {
     $queue->createItem($result->mid);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wa_orange_dam_preprocess_field(&$variables): void {
+  if (isset($variables['element']['#field_name']) && $variables['element']['#field_name'] === 'field_dam_expiry_date') {
+    if (isset($variables['items'][0]['content']['#context']['value'])) {
+      $date_formater = \Drupal::service('date.formatter');
+      try {
+        $variables['items'][0]['content']['#context']['value'] = $date_formater->format($variables['items'][0]['content']['#context']['value'], 'wateraid_fixed_donation');
+      }
+      catch (\Exception $e) {
+        \Drupal::logger('wa_orange_dam')->error('Error formatting DAM expiry date: @message', ['@message' => $e->getMessage()]);
+      }
+    }
   }
 }

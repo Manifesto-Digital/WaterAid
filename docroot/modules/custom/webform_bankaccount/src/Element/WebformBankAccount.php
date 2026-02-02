@@ -154,7 +154,7 @@ class WebformBankAccount extends WebformCompositeBase {
     /** @var \DateTime $start_date */
     foreach ($start_dates as $start_date) {
       $start_date_ts = $start_date->getTimestamp();
-      $start_date_options[$date_formatter->format($start_date_ts, 'html_date')] = $date_formatter->format($start_date_ts, 'wateraid_short');
+      $start_date_options[$date_formatter->format($start_date_ts, 'html_date')] = $date_formatter->format($start_date_ts, 'wateraid_fixed_donation');
     }
 
     return $start_date_options;
