@@ -84,8 +84,7 @@
     }
 
     .form-submit:not(.button--input-wrapped),
-    .webform-button--next:not(.button--input-wrapped),
-    .form-item-donate-button a {
+    .webform-button--next:not(.button--input-wrapped) {
       flex: 1;
       font-family: base.$heading-font;
       font-weight: 700;
@@ -914,6 +913,7 @@ label.button__input-button-wrapper {
   }
 }
 
+// Style link on a donate_button field.
 .form-item-donate-button {
   height: 100%;
   width: fit-content;
