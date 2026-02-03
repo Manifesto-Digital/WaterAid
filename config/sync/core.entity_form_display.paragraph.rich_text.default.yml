@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.rich_text.field_full_width
     - field.field.paragraph.rich_text.field_rich_text
     - paragraphs.paragraphs_type.rich_text
   module:
@@ -12,6 +13,13 @@ targetEntityType: paragraph
 bundle: rich_text
 mode: default
 content:
+  field_full_width:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_rich_text:
     type: text_textarea
     weight: 0
