@@ -518,6 +518,9 @@ function wateraid_preprocess_paragraph__rich_text(&$variables): void {
   if (!isset($variables['attributes']['class'])) {
     $variables['attributes']['class'] = [];
   }
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $is_full_width = $paragraph->get('field_full_width')->first()->getValue()['value'];
 
   if (isset($variables['content']['field_rich_text'][0]['#text'])) {
 
@@ -525,14 +528,18 @@ function wateraid_preprocess_paragraph__rich_text(&$variables): void {
     if ($variables['content']['field_rich_text'][0]['#format'] == 'full_html') {
       if (str_contains($variables['content']['field_rich_text'][0]['#text'], '<iframe')) {
         $iframe = TRUE;
-        $variables['attributes']['class'][] = 'container-md';
+        if($is_full_width === '0') {
+          $variables['attributes']['class'][] = 'container-md';
+        } 
       }
     }
   }
 
   // Only set the sm-container class if the content does not contain an iframe.
   if (!$iframe) {
-    $variables['attributes']['class'][] = 'container-sm';
+    if($is_full_width === '0') {
+      $variables['attributes']['class'][] = 'container-sm';
+    }
   }
 }
 

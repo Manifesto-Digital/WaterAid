@@ -1,0 +1,21 @@
+uuid: 8b6c1434-d6a6-4d8f-91bb-fdc84c107773
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_full_width
+    - paragraphs.paragraphs_type.rich_text
+id: paragraph.rich_text.field_full_width
+field_name: field_full_width
+entity_type: paragraph
+bundle: rich_text
+label: 'Make full width'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
