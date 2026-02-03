@@ -13,6 +13,7 @@ dependencies:
     - field.field.paragraph.donation_widget.field_monthly_index
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
+    - field.field.paragraph.donation_widget.field_override_webform
     - field.field.paragraph.donation_widget.field_payin_link
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
@@ -44,13 +45,14 @@ third_party_settings:
       children:
         - field_title
         - field_heading_level
+        - field_override_webform
         - field_webform_node
         - field_payin_link
         - field_monthly_default
       label: Content
       region: content
       parent_name: group_tabs
-      weight: 20
+      weight: 1
       format_type: tab
       format_settings:
         classes: ''
@@ -105,7 +107,7 @@ mode: default
 content:
   field_heading_level:
     type: options_select
-    weight: 22
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -125,7 +127,7 @@ content:
     third_party_settings: {  }
   field_monthly_default:
     type: boolean_checkbox
-    weight: 25
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -178,9 +180,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_override_webform:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_payin_link:
     type: linkit
-    weight: 24
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -190,7 +199,7 @@ content:
     third_party_settings: {  }
   field_title:
     type: string_textfield
-    weight: 21
+    weight: 1
     region: content
     settings:
       size: 60
@@ -198,7 +207,7 @@ content:
     third_party_settings: {  }
   field_webform_node:
     type: entity_reference_autocomplete
-    weight: 23
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS

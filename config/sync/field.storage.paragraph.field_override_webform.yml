@@ -1,0 +1,18 @@
+uuid: 6efbd545-3953-4ec1-ac77-40b9895fdbc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_override_webform
+field_name: field_override_webform
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
