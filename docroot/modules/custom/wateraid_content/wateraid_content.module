@@ -7,6 +7,7 @@
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -462,6 +463,39 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
   // Any node being edited could make it valid to appear in the listing, so
   // we'll use a very loose cache tag.
   $variables['content']['#cache']['tags'][] = 'node_list';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_content_preprocess_paragraph__donation_widget(&$variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $webform_id = NULL;
+
+  if ($paragraph->get('field_override_webform')->getString()) {
+    $webform_id = ($paragraph->get('field_webform_node')->isEmpty()) ? NULL : $paragraph->get('field_webform_node')->getValue()[0]['target_id'];
+  }
+  else {
+    $parent = $paragraph->getParentEntity();
+
+    // If the parent is a paragraph - such as when the donation widget is in the
+    // hero (donate) paragraph - go one step up to get the parent.
+    if ($parent instanceof ParagraphInterface) {
+      $parent = $parent->getParentEntity();
+    }
+
+    $webform_id = $parent->id();
+  }
+
+  // Something went wrong: let's use the current path.
+  if (!$webform_id) {
+    $variables['webform_path'] = \Drupal::requestStack()->getCurrentRequest()->getPathInfo();
+  }
+  else {
+    $variables['webform_path'] = Url::fromRoute('entity.node.canonical', ['node' => $webform_id])->toString();
+  }
 }
 
 /**
