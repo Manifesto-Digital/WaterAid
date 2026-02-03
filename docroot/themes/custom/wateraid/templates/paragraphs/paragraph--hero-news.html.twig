@@ -40,11 +40,10 @@
 #}
 
 {% set tags = {
-  'author': paragraph.parentEntity.field_audience.0.entity.name.value,
-  'country': paragraph.parentEntity.field_country.0.entity.name.value,
-  'theme': paragraph.parentEntity.field_theme.0.entity.name.value,
+  'author': paragraph.parentEntity.field_audience.0.entity|translation.name.value,
+  'country': paragraph.parentEntity.field_country.0.entity|translation.name.value,
+  'theme': paragraph.parentEntity.field_theme.0.entity|translation.name.value,
 } %}
-
 
 {% set authors = [] %}
 {% for item in paragraph.field_authors %}
