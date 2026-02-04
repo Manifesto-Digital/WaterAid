@@ -1,0 +1,47 @@
+uuid: 75fc7148-b0d5-45ef-9fde-b14b8446d834
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.donate_amount
+    - field.field.media.dam_image.field_caption
+    - field.field.media.dam_image.field_credit
+    - field.field.media.dam_image.field_dam_expired
+    - field.field.media.dam_image.field_dam_expiry_date
+    - field.field.media.dam_image.field_dam_last_checked
+    - field.field.media.dam_image.field_media_dam_image
+    - image.style.scale_crop_3_2_sm
+    - media.type.dam_image
+  module:
+    - wa_orange_dam
+id: media.dam_image.donate_amount
+targetEntityType: media
+bundle: dam_image
+mode: donate_amount
+content:
+  field_media_dam_image:
+    type: wa_orange_dam_image_formater
+    label: visually_hidden
+    settings:
+      image_style: scale_crop_3_2_sm
+      image_link: ''
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_caption: true
+  field_credit: true
+  field_dam_expired: true
+  field_dam_expiry_date: true
+  field_dam_last_checked: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
