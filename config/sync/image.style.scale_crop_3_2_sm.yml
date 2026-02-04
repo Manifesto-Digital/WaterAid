@@ -1,0 +1,15 @@
+uuid: d07a1a84-f982-4b68-9016-564bdd1a74c1
+langcode: en
+status: true
+dependencies: {  }
+name: scale_crop_3_2_sm
+label: 'Scale crop 3:2 sm'
+effects:
+  97cef044-d20f-485e-a96c-6c574e27b03f:
+    uuid: 97cef044-d20f-485e-a96c-6c574e27b03f
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 200
+      anchor: center-center

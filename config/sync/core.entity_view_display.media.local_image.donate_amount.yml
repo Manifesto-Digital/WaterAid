@@ -1,0 +1,41 @@
+uuid: 198b0f32-a520-40b3-9198-2a091d577a19
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.donate_amount
+    - field.field.media.local_image.field_media_image
+    - image.style.scale_crop_3_2_sm
+    - media.type.local_image
+  module:
+    - svg_image
+id: media.local_image.donate_amount
+targetEntityType: media
+bundle: local_image
+mode: donate_amount
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: scale_crop_3_2_sm
+      image_loading:
+        attribute: eager
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
