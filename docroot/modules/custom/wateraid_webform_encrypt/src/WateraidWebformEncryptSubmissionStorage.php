@@ -2,11 +2,15 @@
 
 namespace Drupal\wateraid_webform_encrypt;
 
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Utility\Error;
 use Drupal\encrypt\EncryptServiceInterface;
 use Drupal\encrypt\Entity\EncryptionProfile;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorage;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -166,6 +170,55 @@ class WateraidWebformEncryptSubmissionStorage extends WebformSubmissionStorage {
         $webform_submission->setData($data);
       }
     }
+  }
+
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getTotal(?WebformInterface $webform = NULL, ?EntityInterface $source_entity = NULL, ?AccountInterface $account = NULL, array $options = []): int|array {
+    if (!$webform) {
+      if ($source_entity instanceof ContentEntityInterface) {
+        if ($source_entity->hasField('webform')) {
+          if ($entities = $source_entity->get('webform')->referencedEntities()) {
+            $webform = reset($entities);
+          }
+        }
+      }
+    }
+
+    // If we don't have a webform - or the webform we have doesn't use the blob
+    // storage - we can't do anything to get the settings. Instead, we'll let
+    // the parent handle it.
+    if (!$webform || !$webform->getHandler('azure_blob_storage')) {
+      return parent::getTotal($webform, $source_entity, $account, $options);
+    }
+
+    if ($submissions = $webform->getThirdPartySetting('wateraid_forms', 'submissions')) {
+      if ($account || $source_entity) {
+        if (!$account) {
+
+          // This is total per source entity only.
+          return isset($submissions['per_entity'][$source_entity->id()]) ? count($submissions['per_entity'][$source_entity->id()]) : 0;
+        }
+        elseif (!$source_entity) {
+
+          // This is total per user only.
+          return isset($submissions['per_user'][$account->id()]) ? count($submissions['per_user'][$account->id()]) : 0;
+        }
+
+        // If we're here, this has to be total per user per source.
+        return isset($submissions['per_user_per_entity'][$account->id()][$source_entity->id()]) ? count($submissions['per_user_per_entity'][$account->id()][$source_entity->id()]) : 0;
+      }
+      else {
+
+        // We just want the total here.
+        return count($submissions['total']);
+      }
+    }
+
+    // At this point, we have no settings we can return.
+    return 0;
   }
 
 }
