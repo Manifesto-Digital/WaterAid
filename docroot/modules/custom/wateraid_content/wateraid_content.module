@@ -335,7 +335,7 @@ function wateraid_content_donation_widget_validate(array $form, FormStateInterfa
     $name = substr($string, 0, strlen($string) - 1);
   }
   else {
-    if ($form_state->getTriggeringElement()["#value"]->__toString() == 'Cancel') {
+    if ($form_state->getTriggeringElement()['#value']->__toString() == 'Cancel') {
       return;
     }
 
@@ -344,7 +344,7 @@ function wateraid_content_donation_widget_validate(array $form, FormStateInterfa
   }
 
   if (isset($form_values['field_override_webform']['value']) && $form_values['field_override_webform']['value'] == 1) {
-    if (!isset($value['field_webform_node'][0]['target_id'])) {
+    if (!isset($form_values['field_webform_node'][0]['target_id'])) {
       $form_state->setErrorByName($name, t('Webform page field is required'));
     }
   }
@@ -472,8 +472,6 @@ function wateraid_content_preprocess_paragraph__donation_widget(&$variables): vo
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
 
-  $webform_id = NULL;
-
   if ($paragraph->get('field_override_webform')->getString()) {
     $webform_id = ($paragraph->get('field_webform_node')->isEmpty()) ? NULL : $paragraph->get('field_webform_node')->getValue()[0]['target_id'];
   }
@@ -486,7 +484,7 @@ function wateraid_content_preprocess_paragraph__donation_widget(&$variables): vo
       $parent = $parent->getParentEntity();
     }
 
-    $webform_id = $parent->id();
+    $webform_id = ($parent) ? $parent->id() : NULL;
   }
 
   // Something went wrong: let's use the current path.
