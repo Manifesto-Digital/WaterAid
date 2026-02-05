@@ -44,6 +44,10 @@ function wateraid_preprocess_page(&$variables): void {
     $variables['bundle'] = $group->bundle();
   }
 
+  if ($group) {
+    $variables['group'] = $group->label();
+  }
+
   // Determine if we should be rendering the donate header, minimal or standard.
   $donate_header = FALSE;
   $minimal_header = FALSE;
