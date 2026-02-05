@@ -91,7 +91,7 @@
                      value="{{ item.amount }}"
                      {% if loop.index == default_monthly_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-                {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
+                {{ item.amount == 'other' ? 'Other' : currency_prefix ~ item.amount }}
               </label>
             </div>
           {% endfor %}
@@ -159,7 +159,7 @@
                      value="{{ item.amount }}"
                      {% if loop.index == default_one_off_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-                {{ item.amount == 'other' ? 'Other' : '£' ~ item.amount }}
+                {{ item.amount == 'other' ? 'Other' : currency_prefix ~ item.amount }}
               </label>
             </div>
           {% endfor %}
