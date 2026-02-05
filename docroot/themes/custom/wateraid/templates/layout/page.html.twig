@@ -48,7 +48,7 @@
   address: config_pages_field('footer', 'field_address'),
 } %}
 
-<div class="layout-container page-node-type-{{ bundle|replace({"_":"-"}) }}">
+<div class="layout-container page-node-type-{{ bundle|replace({"_":"-"}) }} {{ group ? 'group--' ~ group|lower|replace({' ':'-'}) }}">
 
   {% if donate_header %}
     {{ include ('wateraid:site_header_donate', {

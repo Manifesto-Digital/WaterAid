@@ -7,6 +7,7 @@
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -218,6 +219,11 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
     $form['field_image_crop']['#attributes'] = ['hidden'=> 'true'];
   }
 
+  if (isset($form['field_override_webform'])) {
+    wateraid_content_update_donation_widget($form);
+    $form['#validate'][] = 'wateraid_content_donation_widget_validate';
+  }
+
   // Attach image cropper library to hero_image paragraphs.
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $form_state->getFormObject()->getParagraph();
@@ -230,6 +236,60 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
   }
 
   $form['#attached']['library'][] = 'wateraid_content/wateraid_content';
+}
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ */
+function wateraid_content_field_widget_single_element_paragraphs_form_alter(array &$element, FormStateInterface $form_state, array $context): void {
+  if (isset($element['subform']['field_override_webform'])) {
+    wateraid_content_update_donation_widget($element['subform']);
+    $element['#element_validate'][] = 'wateraid_content_donation_widget_validate';
+  }
+}
+
+/**
+ * Helper to add states API to the field_override_webform field.
+ *
+ * @param array $form
+ *   The form the fields appear in.
+ */
+function wateraid_content_update_donation_widget(array &$form): void {
+
+  // The name of the element is different depending on which form is it in.
+  if (!empty($form['#parents'])) {
+    $target_name = wateraid_content_listing_get_element_name($form['#parents'], 'field_override_webform][value');
+  }
+  else {
+    $target_name = 'field_override_webform[value]';
+  }
+
+  if (isset($form['field_webform_node']['widget'][0]['target_id'])) {
+    $form['field_webform_node']['widget'][0]['target_id']['#states'] = [
+      'visible' => [
+        ':input[name="' . $target_name . '"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+}
+
+/**
+ * Helper to generate a components name value based on its parents.
+ *
+ * @param array $parents
+ *   The form parents array.
+ * @param string $field_name
+ *   The machine name of the field.
+ *
+ * @return string
+ *   The name for the field as Drupal will generate it.
+ */
+function wateraid_content_listing_get_element_name(array $parents, string $field_name): string {
+  $return = array_shift($parents) . '[';
+  $return .= implode('][', $parents);
+  $return .= '][' . $field_name . ']';
+
+  return $return;
 }
 
 /**
@@ -246,14 +306,46 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
  * @param string $state
  *   The state to use: visible, invisible, etc.
  */
-function wateraid_content_update_field_widget(array &$element, array $fields, string $target_field, string $value, string $state): void {
+function wateraid_content_update_field_widget(array &$element, array $fields, string $target_field, string $value, string $state, string $value_type = 'value'): void {
   foreach ($fields as $field) {
     if (isset($element[$field])) {
       $element[$field]['#states'] = [
         $state => [
-          ':input[name="' . $target_field . '"]' => ['value' => $value],
+          ':input[name="' . $target_field . '"]' => [$value_type => $value],
         ],
       ];
+    }
+  }
+}
+
+/**
+ * Ensure the webform node field is set if the user is overriding.
+ *
+ * @param array $form
+ *   The element form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return void
+ */
+function wateraid_content_donation_widget_validate(array $form, FormStateInterface $form_state): void {
+  if (isset($form['subform']['field_override_webform'])) {
+    $parents = $form['subform']['#parents'];
+    $form_values = $form_state->getValue($parents);
+    $string = wateraid_content_listing_get_element_name($parents, 'field_webform_node][0][target_id');
+    $name = substr($string, 0, strlen($string) - 1);
+  }
+  else {
+    if ($form_state->getTriggeringElement()['#value']->__toString() == 'Cancel') {
+      return;
+    }
+
+    $form_values = $form_state->getValues();
+    $name = 'field_webform_node';
+  }
+
+  if (isset($form_values['field_override_webform']['value']) && $form_values['field_override_webform']['value'] == 1) {
+    if (!isset($form_values['field_webform_node'][0]['target_id'])) {
+      $form_state->setErrorByName($name, t('Webform page field is required'));
     }
   }
 }
@@ -371,6 +463,37 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
   // Any node being edited could make it valid to appear in the listing, so
   // we'll use a very loose cache tag.
   $variables['content']['#cache']['tags'][] = 'node_list';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_content_preprocess_paragraph__donation_widget(&$variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->get('field_override_webform')->getString()) {
+    $webform_id = ($paragraph->get('field_webform_node')->isEmpty()) ? NULL : $paragraph->get('field_webform_node')->getValue()[0]['target_id'];
+  }
+  else {
+    $parent = $paragraph->getParentEntity();
+
+    // If the parent is a paragraph - such as when the donation widget is in the
+    // hero (donate) paragraph - go one step up to get the parent.
+    if ($parent instanceof ParagraphInterface) {
+      $parent = $parent->getParentEntity();
+    }
+
+    $webform_id = ($parent) ? $parent->id() : NULL;
+  }
+
+  // Something went wrong: let's use the current path.
+  if (!$webform_id) {
+    $variables['webform_path'] = \Drupal::requestStack()->getCurrentRequest()->getPathInfo();
+  }
+  else {
+    $variables['webform_path'] = Url::fromRoute('entity.node.canonical', ['node' => $webform_id])->toString();
+  }
 }
 
 /**

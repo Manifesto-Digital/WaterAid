@@ -54,8 +54,8 @@
       {{ include('wateraid:donate_widget', {
         heading: paragraph.field_title.value,
         heading_level: paragraph.field_heading_level.value,
-        button_text: 'Donate securely now',
-        webform_node: path('entity.node.canonical', {'node': paragraph.field_webform_node.entity.id}),
+        button_text: 'Donate securely now'|t,
+        webform_node: webform_path,
         monthly_amounts: monthly_donation_amounts,
         one_off_amounts: one_off_donation_amounts,
         monthly_default: paragraph.field_monthly_default.value,
@@ -72,6 +72,7 @@
           ssl_logo_dark: ssl_logo_dark,
         },
         id: paragraph.id(),
+        currency_prefix: currency_prefix ?? '£',
       }, with_context = false) }}
     </div>
   </div>

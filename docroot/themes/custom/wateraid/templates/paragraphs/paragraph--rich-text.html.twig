@@ -10,6 +10,7 @@
     <div{{ attributes }}>
       {{ include('wateraid:rich_text', {
         text: content.field_rich_text,
+        full_width: paragraph.field_full_width.value
       }) }}
     </div>
   </div>

@@ -36,6 +36,15 @@
     }
   };
 
-
+  Drupal.behaviors.zakatDonateHover = {
+    attach: function (context, settings) {
+      const buttonField = context.querySelector(".form-item-donate-button");
+      if (buttonField) {
+        const hoverSpan = context.createElement("span");
+        hoverSpan.classList.add("button__hover");
+        buttonField.appendChild(hoverSpan);
+      }
+    },
+  };
 
 })(Drupal, drupalSettings);

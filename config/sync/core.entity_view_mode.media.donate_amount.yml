@@ -1,0 +1,11 @@
+uuid: 8f3b197d-0ea7-4877-add0-4e505f48b41d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.donate_amount
+label: 'Donate amount'
+description: ''
+targetEntityType: media
+cache: true

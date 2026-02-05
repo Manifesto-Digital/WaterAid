@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Drupal\wateraid_donation_forms\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Provides a donation reminder block.
@@ -76,9 +79,13 @@ final class DonationReminderBlock extends BlockBase implements TrustedCallbackIn
       $entity = $params['group'];
     }
 
-    if ($entity && $entity->hasField('field_show_donation_reminder')) {
-      if ($entity->get('field_show_donation_reminder')->getString()) {
-        $show_message = TRUE;
+    // We can also add webforms into groups, so we need to check this is a
+    // content entity or we'll get an error.
+    if ($entity instanceof ContentEntityInterface) {
+      if ($entity->hasField('field_show_donation_reminder')) {
+        if ($entity->get('field_show_donation_reminder')->getString()) {
+          $show_message = TRUE;
+        }
       }
     }
 

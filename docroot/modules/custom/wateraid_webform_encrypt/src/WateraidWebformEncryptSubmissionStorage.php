@@ -2,14 +2,19 @@
 
 namespace Drupal\wateraid_webform_encrypt;
 
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Utility\Error;
 use Drupal\encrypt\EncryptServiceInterface;
 use Drupal\encrypt\Entity\EncryptionProfile;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorage;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Alter webform submission storage definitions.
@@ -22,11 +27,19 @@ class WateraidWebformEncryptSubmissionStorage extends WebformSubmissionStorage {
   protected EncryptServiceInterface $encryptionService;
 
   /**
+   * The Request service.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected RequestStack $requestStack;
+
+  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type): static {
     $instance = parent::createInstance($container, $entity_type);
     $instance->encryptionService = $container->get('encryption');
+    $instance->requestStack = $container->get('request_stack');
     return $instance;
   }
 
@@ -166,6 +179,73 @@ class WateraidWebformEncryptSubmissionStorage extends WebformSubmissionStorage {
         $webform_submission->setData($data);
       }
     }
+  }
+
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getTotal(?WebformInterface $webform = NULL, ?EntityInterface $source_entity = NULL, ?AccountInterface $account = NULL, array $options = []): int|array {
+    if (!$webform) {
+      if ($source_entity instanceof ContentEntityInterface) {
+        if ($source_entity->hasField('webform')) {
+          if ($entities = $source_entity->get('webform')->referencedEntities()) {
+            $webform = reset($entities);
+          }
+        }
+      }
+    }
+    if ($webform && $webform->isNew()) {
+
+      // New webforms can't have submissions.
+      return 0;
+    }
+
+    try {
+      if ($webform) {
+        $handler = $webform->getHandler('azure_blob_storage');
+      }
+    }
+    catch (\Exception $e) {
+      $handler = NULL;
+    }
+
+    // If we don't have a webform - or the webform we have doesn't use the blob
+    // storage - we can't do anything to get the settings. Instead, we'll let
+    // the parent handle it.
+    if (!$webform || !$handler) {
+      return parent::getTotal($webform, $source_entity, $account, $options);
+    }
+
+    if ($submissions = $webform->getThirdPartySetting('wateraid_forms', 'submissions')) {
+      if ($account || $source_entity) {
+        if (!$account) {
+
+          // This is total per source entity only.
+          return isset($submissions['per_entity'][$source_entity->id()]) ? count($submissions['per_entity'][$source_entity->id()]) : 0;
+        }
+
+        // For the anon user, the IP address is the key.
+        $key = ($account->id() > 0) ? $account->id() : $this->requestStack->getCurrentRequest()->getClientIp();
+
+        if (!$source_entity) {
+
+          // This is total per user only.
+          return isset($submissions['per_user'][$key]) ? count($submissions['per_user'][$key]) : 0;
+        }
+
+        // If we're here, this has to be total per user per source.
+        return isset($submissions['per_user_per_entity'][$key][$source_entity->id()]) ? count($submissions['per_user_per_entity'][$key][$source_entity->id()]) : 0;
+      }
+      else {
+
+        // We just want the total here.
+        return count($submissions['total']);
+      }
+    }
+
+    // At this point, we have no settings we can return.
+    return 0;
   }
 
 }

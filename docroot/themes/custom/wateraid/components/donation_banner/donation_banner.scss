@@ -3,6 +3,7 @@
 .donation-banner-wrapper {
   position: fixed;
   bottom: 0;
+  left: 0;
   z-index: 10;
   width: 100%;
 
@@ -20,17 +21,15 @@
       display: flex;
       gap: $wa-spacing-06;
       align-items: center;
-      flex: 100% 0 0;
       flex-wrap: wrap;
       padding: $wa-spacing-02 $wa-spacing-04;
+      width: 100%;
+      @include desktop {
+        width: unset;
+      }
 
       &.container-closed {
         background-color: transparent;
-      }
-
-      @include desktop {
-        flex-wrap: nowrap;
-        flex: 50% 0 0;
       }
 
       > * {
