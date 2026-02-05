@@ -14,6 +14,7 @@ dependencies:
     - field.field.paragraph.donation_widget.field_monthly_index
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
+    - field.field.paragraph.donation_widget.field_override_webform
     - field.field.paragraph.donation_widget.field_payin_link
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
@@ -58,12 +59,13 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
+        - field_override_webform
         - field_webform_node
         - field_monthly_default
       label: Content
       region: content
       parent_name: group_tabs
-      weight: 20
+      weight: 1
       format_type: tab
       format_settings:
         classes: ''
@@ -112,7 +114,7 @@ mode: simple_form
 content:
   field_monthly_default:
     type: boolean_checkbox
-    weight: 23
+    weight: 2
     region: content
     settings:
       display_label: true
@@ -153,9 +155,16 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+  field_override_webform:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_webform_node:
     type: entity_reference_autocomplete
-    weight: 22
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
