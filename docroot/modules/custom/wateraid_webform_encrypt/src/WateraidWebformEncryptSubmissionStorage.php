@@ -186,11 +186,25 @@ class WateraidWebformEncryptSubmissionStorage extends WebformSubmissionStorage {
         }
       }
     }
+    if ($webform && $webform->isNew()) {
+
+      // New webforms can't have submissions.
+      return 0;
+    }
+
+    try {
+      if ($webform) {
+        $handler = $webform->getHandler('azure_blob_storage');
+      }
+    }
+    catch (\Exception $e) {
+      $handler = NULL;
+    }
 
     // If we don't have a webform - or the webform we have doesn't use the blob
     // storage - we can't do anything to get the settings. Instead, we'll let
     // the parent handle it.
-    if (!$webform || !$webform->getHandler('azure_blob_storage')) {
+    if (!$webform || !$handler) {
       return parent::getTotal($webform, $source_entity, $account, $options);
     }
 
