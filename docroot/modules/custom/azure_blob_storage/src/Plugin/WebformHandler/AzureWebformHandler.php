@@ -6,6 +6,7 @@ use Drupal\Core\Queue\QueueInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Emails a webform submission.
@@ -30,11 +31,19 @@ class AzureWebformHandler extends WebformHandlerBase {
   private readonly QueueInterface $queue;
 
   /**
+   * The Request service.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected RequestStack $requestStack;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): AzureWebformHandler {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
     $instance->queue = $container->get('queue')->get('azure_blob_storage_queue');
+    $instance->requestStack = $container->get('request_stack');
 
     return $instance;
   }
@@ -61,6 +70,9 @@ class AzureWebformHandler extends WebformHandlerBase {
     // Now let's store the submission count for later.
     if ($webform_submission->isCompleted()) {
       $uid = $webform_submission->getOwnerId();
+
+      // For the anon user, the IP address is the key.
+      $uid = ($uid > 0) ? $uid : $this->requestStack->getCurrentRequest()->getClientIp();
 
       // If the settings have been overridden we won't be able to save our third
       // party settings, so we'll capture the overridden settings and put them
