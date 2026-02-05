@@ -14,6 +14,7 @@ use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorage;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Alter webform submission storage definitions.
@@ -26,11 +27,19 @@ class WateraidWebformEncryptSubmissionStorage extends WebformSubmissionStorage {
   protected EncryptServiceInterface $encryptionService;
 
   /**
+   * The Request service.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected RequestStack $requestStack;
+
+  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type): static {
     $instance = parent::createInstance($container, $entity_type);
     $instance->encryptionService = $container->get('encryption');
+    $instance->requestStack = $container->get('request_stack');
     return $instance;
   }
 
@@ -215,14 +224,18 @@ class WateraidWebformEncryptSubmissionStorage extends WebformSubmissionStorage {
           // This is total per source entity only.
           return isset($submissions['per_entity'][$source_entity->id()]) ? count($submissions['per_entity'][$source_entity->id()]) : 0;
         }
-        elseif (!$source_entity) {
+
+        // For the anon user, the IP address is the key.
+        $key = ($account->id() > 0) ? $account->id() : $this->requestStack->getCurrentRequest()->getClientIp();
+
+        if (!$source_entity) {
 
           // This is total per user only.
-          return isset($submissions['per_user'][$account->id()]) ? count($submissions['per_user'][$account->id()]) : 0;
+          return isset($submissions['per_user'][$key]) ? count($submissions['per_user'][$key]) : 0;
         }
 
         // If we're here, this has to be total per user per source.
-        return isset($submissions['per_user_per_entity'][$account->id()][$source_entity->id()]) ? count($submissions['per_user_per_entity'][$account->id()][$source_entity->id()]) : 0;
+        return isset($submissions['per_user_per_entity'][$key][$source_entity->id()]) ? count($submissions['per_user_per_entity'][$key][$source_entity->id()]) : 0;
       }
       else {
 
