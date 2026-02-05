@@ -147,6 +147,7 @@
   display: flex;
   flex-direction: column;
   margin-top: $wa-spacing-03;
+  position: relative;
 
   label {
     margin: $wa-spacing-03 0;
@@ -169,7 +170,6 @@
   input {
     height: 54px;
     padding: $wa-spacing-03 $wa-spacing-03 $wa-spacing-03 $wa-spacing-08;
-    background-image: url("/themes/custom/wateraid/images/icons/wa-pound.svg");
     background-position: 20px center;
     background-repeat: no-repeat;
     color: $wa-navy;
@@ -177,6 +177,15 @@
     font-size: calculate-rem(20);
     border-radius: $radius-xxs;
     border: 2px solid $wa-navy;
+  }
+
+  &__currency-prefix {
+    position: absolute;
+    font-family: $bold-font;
+    left: 1.25rem;
+    font-size: 1.25rem;
+    bottom: 0.875rem;
+    color: $wa-blue;
   }
 
   &.is-hidden {
