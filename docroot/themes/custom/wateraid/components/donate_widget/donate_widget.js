@@ -176,14 +176,27 @@
         const paypal = widget.querySelector('.wa-paypal');
         const google = widget.querySelector('.wa-google');
         const direct = widget.querySelector('.wa-direct-debit');
+        const fundraiser = widget.querySelector('.donate-widget__fr-logo');
 
+        const isAus = document.querySelector('.group--wateraid-australia') !== null;
         if (selectedFrequency.value === 'monthly') {
-          apple.style.display = 'none';
-          visa.style.display = 'none';
-          mastercard.style.display = 'none';
-          paypal.style.display = 'none';
-          google.style.display = 'none';
-          direct.style.display = 'block';
+          if (isAus) {
+            apple.style.display = 'none';
+            visa.style.display = 'block';
+            mastercard.style.display = 'block';
+            paypal.style.display = 'none';
+            google.style.display = 'none';
+            direct.style.display = 'none';
+            fundraiser.style.display = 'none';
+          }
+          else {
+            apple.style.display = 'none';
+            visa.style.display = 'none';
+            mastercard.style.display = 'none';
+            paypal.style.display = 'none';
+            google.style.display = 'none';
+            direct.style.display = 'block';
+          }
         }
         else {
           apple.style.display = 'block';
