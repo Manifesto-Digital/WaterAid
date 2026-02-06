@@ -49,6 +49,29 @@ function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_st
 }
 
 /**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function wateraid_group_form_menu_link_content_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  if (isset($form['link']['widget'][0]['uri'])) {
+    if ($form['link']['widget'][0]['uri']['#type'] == 'entity_autocomplete') {
+
+      // Override the autocomplete on menu links to use our view that prefixes
+      // with the group slug.
+      $form['link']['widget'][0]['uri']['#selection_handler'] = 'views';
+      $form['link']['widget'][0]['uri']['#selection_settings'] = [
+        'view' => [
+          'view_name' => 'entity_references',
+          'display_name' => 'entity_reference_1',
+          'arguments' => [],
+        ],
+        'match_operator' => 'CONTAINS',
+        'match_limit' => 10,
+      ];
+    }
+  }
+}
+
+/**
  * Implements hook_entity_insert().
  */
 function wateraid_group_entity_insert(EntityInterface $entity): void {
