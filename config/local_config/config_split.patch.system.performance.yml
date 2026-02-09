@@ -5,4 +5,4 @@ adding:
 removing:
   cache:
     page:
-      max_age: 86400
+      max_age: 1800

@@ -44,6 +44,7 @@ display:
       tab_options:
         title: কনটেন্ট
   user_page:
+    display_title: ব্যবহারকারী
     display_options:
       tab_options:
         title: কনটেন্ট
@@ -51,4 +52,3 @@ display:
         uid:
           exception:
             title: সমস্ত
-    display_title: ব্যবহারকারী

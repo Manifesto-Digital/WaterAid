@@ -800,6 +800,8 @@ if (!empty($acquia_env)) {
     $config['wateraid_donation_paypal.settings']['mode'] = 'live';
     $config['stripe_api.settings']['mode'] = 'live';
     $config['wateraid_donation_gmo.settings']['mode'] = 'live';
+
+    $config['shield.settings']['shield_enable'] = FALSE;
   }
 }
 

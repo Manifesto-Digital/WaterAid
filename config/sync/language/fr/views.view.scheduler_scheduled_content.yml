@@ -1,5 +1,6 @@
 display:
   default:
+    display_title: Principal
     display_options:
       exposed_form:
         options:
@@ -49,12 +50,12 @@ display:
         langcode:
           expose:
             label: Langue
-    display_title: Principal
   overview:
     display_options:
       tab_options:
         title: Contenu
   user_page:
+    display_title: Utilisateur
     display_options:
       menu:
         title: Planifié
@@ -64,4 +65,3 @@ display:
         uid:
           exception:
             title: Tout
-    display_title: Utilisateur
