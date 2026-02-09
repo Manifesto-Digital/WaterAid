@@ -54,6 +54,7 @@ display:
       tab_options:
         title: Inhoud
   user_page:
+    display_title: Gebruiker
     display_options:
       menu:
         title: Gepland
@@ -63,4 +64,3 @@ display:
         uid:
           exception:
             title: Alle
-    display_title: Gebruiker
