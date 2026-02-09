@@ -8,6 +8,7 @@ use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\key\KeyRepositoryInterface;
+use Drupal\webform\WebformInterface;
 
 /**
  * PayPal Api Service.
@@ -80,12 +81,19 @@ class PayPalApiService {
   /**
    * Get API secret key for current mode.
    *
+   * @param \Drupal\webform\WebformInterface|null $webform
+   *   A Webform instance.
+   *
    * @return string
    *   API key.
    */
-  public function getApiKey(): string {
+  public function getApiKey(?WebformInterface $webform = NULL): string {
     $config_key = $this->getMode() . '_secret_key';
-    $key_id = $this->config->get($config_key);
+
+    // @see wateraid_donation_paypal_webform_third_party_settings_form_alter().
+    $key_id = ($webform) ? $webform->getThirdPartySetting('wateraid_donation_paypal', $config_key) : NULL;
+    $key_id = ($key_id) ?? $this->config->get($config_key);
+
     if (empty($key_id)) {
       return '';
     }
@@ -95,37 +103,24 @@ class PayPalApiService {
   /**
    * Get public key for current mode.
    *
+   * @param \Drupal\webform\WebformInterface|null $webform
+   *  A Webform instance.
+   *
    * @return string
    *   Public key.
    */
-  public function getPubKey(): string {
+  public function getPubKey(?WebformInterface $webform = NULL): string {
     $config_key = $this->getMode() . '_public_key';
-    $key_id = $this->config->get($config_key);
+
+    // @see wateraid_donation_paypal_webform_third_party_settings_form_alter().
+    $key_id = ($webform) ? $webform->getThirdPartySetting('wateraid_donation_paypal', $config_key) : NULL;
+    $key_id = ($key_id) ?? $this->config->get($config_key);
+
     if (empty($key_id)) {
       return '';
     }
 
     return $this->key->getKey($key_id)->getKeyValue();
-  }
-
-  /**
-   * Makes a call to the PayPal API.
-   *
-   * @param string $obj
-   *   PayPal object. E.g. Payment.
-   * @param string|null $method
-   *   PayPal object method. Common operations include retrieve, all, create.
-   * @param mixed $params
-   *   Additional params to pass to the method. Can be an array, string.
-   *
-   * @return mixed
-   *   Deprecated function returns NULL.
-   */
-  public function call(string $obj, ?string $method = NULL, mixed $params = NULL): mixed {
-    $this->logger->error('Deprecated function PayPalApiService::call used: please update your code.');
-
-    // This functionality is no longer available.
-    return NULL;
   }
 
 }
