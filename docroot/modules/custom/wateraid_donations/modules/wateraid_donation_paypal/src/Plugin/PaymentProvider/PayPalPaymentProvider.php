@@ -42,6 +42,20 @@ class PayPalPaymentProvider extends PaymentProviderBase {
       '#type' => 'paypal_express',
       '#title' => $this->t('PayPal'),
     ];
+
+    // Add the paypal client settings here so we have access to the webform to
+    // check if they have been overridden.
+    /** @var \Drupal\webform\WebformInterface $webform */
+    $webform = $form_state->getFormObject()->getEntity()->getWebform();
+
+    /** @var \Drupal\wateraid_donation_paypal\PayPalApiService $paypal_api */
+    $paypal_api = \Drupal::service('wateraid_donation_paypal.paypal_api');
+    $mode = $paypal_api->getMode() == 'live' ? 'production' : 'sandbox';
+    $client = [$mode => $paypal_api->getPubKey($webform)];
+    $element['#attached']['drupalSettings']['webformPayPalExpressElements'] = [
+      'client' => $client,
+      'mode' => $mode,
+    ];
   }
 
   /**
@@ -65,7 +79,7 @@ class PayPalPaymentProvider extends PaymentProviderBase {
     if (!empty($result['id'])) {
       return $result['id'];
     }
-    \Drupal::logger('paypal_api')->error('No transation id found for payment response: @result', [
+    \Drupal::logger('paypal_api')->error('No transaction id found for payment response: @result', [
       '@result' => Json::encode($result),
     ]);
     return 'not found';
