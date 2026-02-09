@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Functions for the PayPal Donations module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_webform_third_party_settings_form_alter().
+ *
+ * Provides settings to capture per Webform PayPal Credentials. We're not
+ * adding these settings to the DonationsWebformHandler to keep that class as
+ * generic as much as we can. Anything specific to a Payment Provider is kept
+ * as a separate piece of logic.
+ *
+ * @see \Drupal\wateraid_donation_paypal\PayPalApiService
+ */
+function wateraid_donation_paypal_webform_third_party_settings_form_alter(&$form, FormStateInterface $form_state): void {
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+  $index = 'wateraid_donation_paypal';
+
+  $form['third_party_settings'][$index] = [
+    '#type' => 'details',
+    '#title' => new TranslatableMarkup('Paypal API settings'),
+    '#description' => new TranslatableMarkup('Provides the ability to override Paypal API settings on a per Webform basis.'),
+    '#open' => TRUE,
+    '#weight' => 150,
+  ];
+
+  $form['third_party_settings'][$index]['test_secret_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('Paypal Secret Key (test)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_paypal', 'test_secret_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+  $form['third_party_settings'][$index]['test_public_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('Paypal Public Key (test)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_paypal', 'test_public_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+  $form['third_party_settings'][$index]['live_secret_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('PayPal Secret Key (live)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_paypal', 'live_secret_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+
+  $form['third_party_settings'][$index]['live_public_key'] = [
+    '#type' => 'key_select',
+    '#title' => new TranslatableMarkup('PayPal Public Key (live)'),
+    '#default_value' => $webform->getThirdPartySetting('wateraid_donation_paypal', 'live_public_key'),
+    '#empty_value' => '',
+    '#empty_option' => new TranslatableMarkup('- Use default -'),
+  ];
+}
