@@ -19,8 +19,10 @@
     @include h6();
     color: $wa-navy;
   }
+}
 
-  &__copy {
-
+.group--wateraid-australia {
+  .cancel-anytime__icon {
+    display: none;
   }
 }

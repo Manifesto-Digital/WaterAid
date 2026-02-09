@@ -392,7 +392,7 @@ class QueueHandler {
       if ($this->azureBlobStorageApi->blobPut($this->getPrefixedName($name, $is_donation), $this->generateBlobArray($submission, $is_donation), TRUE)) {
         // The submission has been successfully stored in the blob, so we can
         // delete it from the website.
-//          $submission->delete();
+        $submission->delete();
       }
       else {
         throw new \Exception("Unable to store webform blob {$data['sid']} from the {$data['webform_id']} webform to the Azure storage blob");

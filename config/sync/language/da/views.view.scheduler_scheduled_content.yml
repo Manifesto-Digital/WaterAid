@@ -54,6 +54,7 @@ display:
       tab_options:
         title: Indhold
   user_page:
+    display_title: Bruger
     display_options:
       menu:
         title: Planlagt
@@ -63,4 +64,3 @@ display:
         uid:
           exception:
             title: Alle
-    display_title: Bruger
