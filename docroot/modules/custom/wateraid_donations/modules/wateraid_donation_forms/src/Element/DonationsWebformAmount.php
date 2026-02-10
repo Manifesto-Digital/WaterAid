@@ -3,8 +3,10 @@
 namespace Drupal\wateraid_donation_forms\Element;
 
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\wateraid_donation_forms\DisplayModeButtonsTrait;
 use Drupal\webform\Element\WebformCompositeBase;
 use Drupal\webform\Element\WebformOtherBase;
@@ -266,6 +268,24 @@ class DonationsWebformAmount extends WebformCompositeBase {
             $element['amount'][$type_key]['amounts']['#default_value'] = $amount_defaults['default_amount'];
           }
 
+          if ($discount = $type_details['discount'] ?? NULL) {
+
+            // If there's no discount code, we can't do anything.
+            if ($discount['discount_code'] ?? NULL) {
+              if ($expiry = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $type_details['discount']['discount_expiry'])) {
+                $now = new DrupalDateTime();
+
+                if ($now < $expiry) {
+                  $element['amount'][$type_key]['discount_code'] = [
+                    '#type' => 'textfield',
+                    '#title' => t('Discount Code'),
+                    '#description' => t('If you have a discount code, please enter it here. Your discount will be applied before your payment is taken.'),
+                    '#default_value' => '',
+                  ];
+                }
+              }
+            }
+          }
         }
 
         if ($form_has_amounts === TRUE) {
