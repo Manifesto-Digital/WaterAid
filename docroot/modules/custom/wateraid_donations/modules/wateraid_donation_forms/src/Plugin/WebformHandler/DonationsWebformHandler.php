@@ -162,13 +162,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $form['default_fund_code'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Default fund code'),
-      '#default_value' => $this->configuration['default_fund_code'],
+      '#default_value' => $this->configuration['default_fund_code'] ?? '',
     ];
 
     $form['default_package_code'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Default package code'),
-      '#default_value' => $this->configuration['default_package_code'],
+      '#default_value' => $this->configuration['default_package_code'] ?? '',
     ];
 
     $form['cancellation_messaging'] = [
@@ -279,7 +279,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
             'settings',
             'frequency_default',
           ],
-          '#default_value' => $this->configuration['frequency_default'] == $payment_frequency_name ? $payment_frequency_name : NULL,
+          '#default_value' => isset($this->configuration['frequency_default']) && this->configuration['frequency_default'] == $payment_frequency_name ? $payment_frequency_name : NULL,
         ];
 
         $form[$payment_frequency_name]['payment_methods'] = [
