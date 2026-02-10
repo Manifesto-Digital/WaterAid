@@ -716,6 +716,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
       if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
         $amounts = [];
+        $discount = [];
 
         // Get the source entity if it is a paragraph.
         $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
@@ -745,6 +746,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
             }
           }
 
+          if ($paragraph->hasField('field_discount_code')) {
+            $discount = [
+              'discount_code' => $paragraph->get('field_discount_code')->getString(),
+              'discount_amount' => $paragraph->get('field_discount_amount')->getString(),
+              'discount_expiry' => $paragraph->get('field_discount_expiry')->getString(),
+            ];
+          }
         }
         if (empty($amounts)) {
           foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
@@ -791,6 +799,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
           'payment_methods_max' => $payment_method_max,
           'allow_other_amount' => $this->configuration[$payment_frequency_name]['allow_other_amount'] ?? TRUE,
           'minimum_amount' => !empty($this->configuration[$payment_frequency_name]['minimum_amount']) ? $this->configuration[$payment_frequency_name]['minimum_amount'] : 0,
+          'discount' => $discount,
         ];
       }
     }
