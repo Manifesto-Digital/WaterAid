@@ -20,6 +20,7 @@ use Drupal\currency\FormHelperInterface;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\wateraid_donation_forms\DonationConstants;
 use Drupal\wateraid_donation_forms\DonationService;
 use Drupal\wateraid_donation_forms\DonationServiceInterface;
@@ -279,7 +280,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
             'settings',
             'frequency_default',
           ],
-          '#default_value' => isset($this->configuration['frequency_default']) && this->configuration['frequency_default'] == $payment_frequency_name ? $payment_frequency_name : NULL,
+          '#default_value' => isset($this->configuration['frequency_default']) && $this->configuration['frequency_default'] == $payment_frequency_name ? $payment_frequency_name : NULL,
         ];
 
         $form[$payment_frequency_name]['payment_methods'] = [
@@ -357,6 +358,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
           '#type' => 'details',
           '#title' => $this->t('Amounts'),
           '#open' => TRUE,
+        ];
+
+        $form[$payment_frequency_name]['use_paragraph'] = [
+          '#type' => 'checkbox',
+          '#title' => $this->t('Use payment amounts from paragraph embed'),
+          '#description' => $this->t('If this webform is embedded in a Donation Widget or Registration Form paragraph, use the amounts from the paragraph.'),
+          '#default_value' => $this->configuration[$payment_frequency_name]['use_paragraph'] ?? ''
         ];
 
         // Upselling is for recurring payments only.
@@ -464,7 +472,6 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $form[$payment_frequency_name]['allow_other_amount'] = [
           '#type' => 'checkbox',
           '#title' => $this->t('Allow other amount'),
-          '#access' => FALSE,
           '#default_value' => $this->configuration[$payment_frequency_name]['allow_other_amount'] ?? TRUE,
         ];
 
@@ -535,6 +542,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
         case 'loqate_email_composite':
         case 'email':
+        case 'webform_email_confirm':
           $email_options[$element_key] = $element['#title'];
           break;
 
@@ -708,31 +716,63 @@ class DonationsWebformHandler extends WebformHandlerBase {
     foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
       if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
         $amounts = [];
-        foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
-          if (!empty($amount_details['amount'])) {
-            $amount_label = $this->getCurrencyValue($currency, $amount_details['amount']);
-            $amounts[$amount_details['amount']] = [
-              'benefit' => $amount_details['benefit'],
-              // @todo Use formatter from currency module.
-              'label' => $amount_label,
-              'stripePriceCode' => $amount_details['stripe_price_code'] ?? NULL,
-            ];
 
-            $image_file = NULL;
-            $icon_file = NULL;
+        // Get the source entity if it is a paragraph.
+        $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
+        $paragraph = ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
 
-            /** @var \Drupal\Core\Render\Renderer $renderer */
-            $renderer = \Drupal::service('renderer');
-            $element = [
-              '#theme' => 'wateraid_donation_forms_benefit',
-              '#amount' => $amount_label,
-              '#image' => $image_file?->getFileUri(),
-              '#icon' => $icon_file?->getFileUri(),
-              '#benefit' => $amount_details['benefit'] ?? NULL,
-              '#body' => $amount_details['body'] ?? NULL,
-            ];
+        if (!empty($this->configuration[$payment_frequency_name]['use_paragraph']) && $paragraph) {
+          if ($paragraph->hasField('field_amounts')) {
+            foreach ($paragraph->get('field_amounts')->referencedEntities() as $amount_details) {
+              if ($amount = $amount_details->get('field_donation_amount')->getString()) {
+                $amounts[$amount] = [
+                  'benefit' => '',
+                  'label' => $this->getCurrencyValue($currency, $amount),
+                  'stripePriceCode' => '',
+                ];
 
-            $amounts[$amount_details['amount']]['renderedBenefit'] = $renderer->render($element);
+                $element = [
+                  '#theme' => 'wateraid_donation_forms_benefit',
+                  '#amount' => $amounts[$amount]['label'],
+                  '#image' => ($amount_details->get('field_image')->isEmpty()) ? NULL : $amount_details->field_image->entity->getFileUrl(),
+                  '#icon' => ($amount_details->get('field_icon')->isEmpty()) ? NULL : $amount_details->field_icon->entity->getFileUrl(),
+                  '#benefit' => NULL,
+                  '#body' => $amount_details->get('field_title')->getString() ?? NULL,
+                ];
+              }
+
+              $amounts[$amount]['renderedBenefit'] = \Drupal::service('renderer')->render($element);
+            }
+          }
+
+        }
+        if (empty($amounts)) {
+          foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
+            if (!empty($amount_details['amount'])) {
+              $amount_label = $this->getCurrencyValue($currency, $amount_details['amount']);
+              $amounts[$amount_details['amount']] = [
+                'benefit' => $amount_details['benefit'],
+                // @todo Use formatter from currency module.
+                'label' => $amount_label,
+                'stripePriceCode' => $amount_details['stripe_price_code'] ?? NULL,
+              ];
+
+              $image_file = NULL;
+              $icon_file = NULL;
+
+              /** @var \Drupal\Core\Render\Renderer $renderer */
+              $renderer = \Drupal::service('renderer');
+              $element = [
+                '#theme' => 'wateraid_donation_forms_benefit',
+                '#amount' => $amount_label,
+                '#image' => $image_file?->getFileUri(),
+                '#icon' => $icon_file?->getFileUri(),
+                '#benefit' => $amount_details['benefit'] ?? NULL,
+                '#body' => $amount_details['body'] ?? NULL,
+              ];
+
+              $amounts[$amount_details['amount']]['renderedBenefit'] = $renderer->render($element);
+            }
           }
         }
 
@@ -749,7 +789,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
           'amounts' => $amounts,
           'payment_methods' => $this->configuration[$payment_frequency_name]['payment_methods'],
           'payment_methods_max' => $payment_method_max,
-          'allow_other_amount' => TRUE,
+          'allow_other_amount' => $this->configuration[$payment_frequency_name]['allow_other_amount'] ?? TRUE,
           'minimum_amount' => !empty($this->configuration[$payment_frequency_name]['minimum_amount']) ? $this->configuration[$payment_frequency_name]['minimum_amount'] : 0,
         ];
       }
@@ -815,12 +855,23 @@ class DonationsWebformHandler extends WebformHandlerBase {
       if (isset($this->configuration[$payment_frequency_name])) {
         $frequency_config = $this->configuration[$payment_frequency_name];
 
-        // Get the default amount index.
-        $amount_index = $frequency_config['default_amount'] ?? key($frequency_config['amounts']);
+        if ($frequency_config['use_paragraph'] ?? NULL) {
+          $amounts = $this->getAmounts();
 
-        // Get the default amount key from the index.
-        if (isset($frequency_config['amounts'][$amount_index]['amount'])) {
-          $amount_defaults[$payment_frequency_name]['default_amount'] = $frequency_config['amounts'][$amount_index]['amount'];
+          $amount_index = key($amounts[$payment_frequency_name]['amounts']);
+
+          // This needs to be a string to prevent a JS error in the donation
+          // forms js.
+          $amount_defaults[$payment_frequency_name]['default_amount'] = (string) $amount_index;
+        }
+        else {
+          // Get the default amount index.
+          $amount_index = $frequency_config['default_amount'] ?? key($frequency_config['amounts']);
+
+          // Get the default amount key from the index.
+          if (isset($frequency_config['amounts'][$amount_index]['amount'])) {
+            $amount_defaults[$payment_frequency_name]['default_amount'] = $frequency_config['amounts'][$amount_index]['amount'];
+          }
         }
 
         // Method does not use index so just set default to value.
@@ -905,7 +956,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     // Override defaults with user selections.
     $amount_defaults_all['frequency_default'] = $default_frequency;
     $amount_defaults_all[$default_frequency]['default_amount'] = $default_amount;
-    $amount_defaults_all[$default_frequency]['$default_payment_method'] = $default_payment_method;
+    $amount_defaults_all[$default_frequency]['default_payment_method'] = $default_payment_method;
     $amount_defaults_all[$default_frequency]['default_duration'] = $default_duration;
 
     return $amount_defaults_all;
@@ -914,8 +965,8 @@ class DonationsWebformHandler extends WebformHandlerBase {
   /**
    * Get the impact statistics text from the handler.
    *
-   * @return Drupal\Component\Render\MarkupInterface
-   *   The imact statistics text or an empty string if not set.
+   * @return \Drupal\Component\Render\MarkupInterface|string
+   *   The impact statistics text or an empty string if not set.
    */
   public function getImpactStatistics(): MarkupInterface|string {
     $markup = "";
