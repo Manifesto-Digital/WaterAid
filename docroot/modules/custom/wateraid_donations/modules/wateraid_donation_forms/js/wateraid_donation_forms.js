@@ -88,6 +88,9 @@
       this.typeSettings[frequency]['amount'] = amount;
       this.set('amount', amount);
     },
+    setDiscount: function (discount) {
+      this.set('discount', discount);
+    },
     setFrequency: function (frequency) {
       this.set('frequency', frequency);
       // var amount = this.typeSettings[frequency]['amount'];
@@ -267,7 +270,9 @@
       let frequency = this.model.get('frequency');
       $('.wa_donation_amounts-' + frequency + ' .webform-buttons-other input:checked').trigger('change');
       $('.wa_donation_amounts-' + frequency + ' .webform-buttons-other .js-webform-buttons-other-input input').trigger('input');
+      $('.wa_donation_amounts-' + frequency + ' .webform-buttons-other .js-form-item-amount-amount-one-off-discount-code').trigger('input');
       $('.wa_donation_durations-' + frequency + ' .webform-buttons-other input:checked').trigger('change');
+
       this.render();
       if (this.model.get('quizId')) {
         let quizId = this.model.get('quizId');
@@ -277,6 +282,7 @@
     events: {
       "change fieldset.wa_donations_frequency": "handleFrequencyChange",
       "change .wa_donation_amounts_container .webform-buttons-other": "handleAmountChange",
+      "input .wa_donation_amounts_container .js-form-item-amount-amount-one-off-discount-code input": "handleDiscountChange",
       "change .wa_donation_durations-fixed_period": "handleDurationChange",
       "input .wa_donation_amounts_container .webform-buttons-other .js-webform-buttons-other-input": "handleAmountChange"
     },
@@ -317,6 +323,11 @@
         else {
           this.model.setFixedPrice('');
         }
+      }
+    },
+    handleDiscountChange: function (event) {
+      if ($(event.target).val()) {
+        this.model.setDiscount($(event.target).val());
       }
     },
     handleDurationChange: function (event) {

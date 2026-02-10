@@ -112,6 +112,43 @@ class StripePaymentIntentController extends ControllerBase {
         ], Response::HTTP_BAD_REQUEST);
       }
 
+      if (!empty($data['donation_details']['discount'])) {
+        $valid = FALSE;
+
+        if ($frequency = $data['donation_details']['frequency'] ?? NULL) {
+          if ($pid = $data['donation_details']['amounts'][$frequency]['discount'] ?? NULL) {
+            /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+            if ($paragraph = $this->entityTypeManager()->getStorage('paragraph')->load($pid)) {
+              if ($paragraph->hasField('field_discount_code') && !$paragraph->get('field_discount_code')->isEmpty()) {
+                if ($code = $paragraph->get('field_discount_code')->getString() ?? NULL) {
+                  if ($code == $data['donation_details']['discount']) {
+                    $valid = TRUE;
+
+                    $discount = (int) $paragraph->get('field_discount_amount')->getString();
+                    $new_amount = $data['donation_details']['amount'] * ((100 - $discount) / 100);
+
+                    // Format the number without decimals: stripe will take the
+                    // payment in pence so the amount is * 100 later.
+                    $data['donation_details']['amount'] = number_format((float) $new_amount);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        if (!$valid) {
+
+          $this->messenger()->addError($this->t('The discount code entered is invalid.'));
+          return new JsonResponse([
+            'error' => [
+              'code' => Response::HTTP_BAD_REQUEST,
+              'message' => 'Invalid discount code.',
+            ],
+          ], Response::HTTP_BAD_REQUEST);
+        }
+      }
+
       // Handle the subscription.
       if ($data['donation_details']['frequency'] === 'recurring' && $data['donation_details']['paymentMethod'] === 'stripe_subscription') {
         return $this->subscriptionHandler($data, $csrf_token, $webform);
