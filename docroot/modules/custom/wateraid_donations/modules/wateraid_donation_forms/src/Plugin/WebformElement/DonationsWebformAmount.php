@@ -30,7 +30,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
   /**
    * {@inheritdoc}
    */
-  public function alterForm(array &$element, array &$form, FormStateInterface $form_state) {
+  public function alterForm(array &$element, array &$form, FormStateInterface $form_state): void {
     parent::alterForm($element, $form, $form_state);
     // Check if a frequency or amount has already been set in form state.
     $input_frequency = $form_state->get(DonationsWebformAmountElement::STORAGE_FREQUENCY);
@@ -44,13 +44,13 @@ class DonationsWebformAmount extends WebformCompositeBase {
       $query_amount = $request->get('val');
       $query_duration = $request->get('dur');
 
-      if (empty($input_frequency) && empty($input_amount) && $query_frequency && $query_amount) {
+      if ($query_frequency && $query_amount) {
         // Set default values in the form state to override the admin defined
         // defaults in DonationsWebformHandler::getAmountDefaultState.
         $form_state->set(DonationsWebformAmountElement::STORAGE_FREQUENCY, $query_frequency);
         $form_state->set(DonationsWebformAmountElement::STORAGE_AMOUNT, $query_amount);
 
-        // Set duration seperately, sometimes not included.
+        // Set duration separately, sometimes not included.
         if (empty($input_duration) && $query_duration) {
           $form_state->set(DonationsWebformAmountElement::STORAGE_DURATION, $query_duration);
         }
@@ -67,7 +67,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
   public function getDefaultProperties(): array {
     $default_properties = parent::getDefaultProperties();
     $default_properties['title'] = $this->t('Amount');
-    $default_properties['description'] = $this->t('Donation selection element.');
+    $default_properties['description'] = [];
     $default_properties['amount__placeholder'] = $this->t('Enter amount');
     $default_properties['amount__display_mode'] = self::getDefaultDisplayMode();
     $default_properties['frequency__display_mode'] = self::getDefaultDisplayMode();
