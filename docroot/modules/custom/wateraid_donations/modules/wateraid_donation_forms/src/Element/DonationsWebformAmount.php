@@ -268,23 +268,13 @@ class DonationsWebformAmount extends WebformCompositeBase {
             $element['amount'][$type_key]['amounts']['#default_value'] = $amount_defaults['default_amount'];
           }
 
-          if ($discount = $type_details['discount'] ?? NULL) {
-
-            // If there's no discount code, we can't do anything.
-            if ($discount['discount_code'] ?? NULL) {
-              if ($expiry = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $type_details['discount']['discount_expiry'])) {
-                $now = new DrupalDateTime();
-
-                if ($now < $expiry) {
-                  $element['amount'][$type_key]['discount_code'] = [
-                    '#type' => 'textfield',
-                    '#title' => t('Discount Code'),
-                    '#description' => t('If you have a discount code, please enter it here. Your discount will be applied before your payment is taken.'),
-                    '#default_value' => '',
-                  ];
-                }
-              }
-            }
+          if ($type_details['discount'] ?? NULL) {
+            $element['amount'][$type_key]['discount_code'] = [
+              '#type' => 'textfield',
+              '#title' => t('Discount Code'),
+              '#description' => t('If you have a discount code, please enter it here. Your discount will be applied before your payment is taken.'),
+              '#default_value' => '',
+            ];
           }
         }
 
@@ -543,7 +533,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
       if (is_array($amount) && isset($amount['buttons'])) {
         $amount = $amount['buttons'];
       }
-      $other_amount = $element['amount'][$frequency]['amounts']['other']['#value'];
+      $other_amount = $element['amount'][$frequency]['amounts']['other']['#value'] ?? NULL;
 
       $amount = $other_amount ?: $amount;
 

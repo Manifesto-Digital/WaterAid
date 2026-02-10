@@ -285,12 +285,14 @@ class WebformController extends WebformEntityController {
       '#markup' => $webform->getSettings()['confirmation_message'] ?? NULL,
     ];
 
-    // Donation details summary.
-    $message_content = $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_confirmation')['value'];
-    $message_format = $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_confirmation')['format'];
-    $build['#webform_submission']->waDonationConfirmation = [
-      '#markup' => check_markup($this->token->replace($message_content, ['webform_submission' => $webform_submission]), $message_format),
-    ];
+    if ($confirm_settings = $webform->getThirdPartySetting('wateraid_donation_forms', 'donation_confirmation')) {
+      // Donation details summary.
+      $message_content = $confirm_settings['value'] ?? '';
+      $message_format = $confirm_settings['format'] ?? 'basic_html';
+      $build['#webform_submission']->waDonationConfirmation = ($message_content) ? [
+        '#markup' => check_markup($this->token->replace($message_content, ['webform_submission' => $webform_submission]), $message_format),
+      ] : '';
+    }
 
     // Payment type specific markup.
     if (!empty($data[$prefix . 'payment_type'])) {
@@ -327,42 +329,48 @@ class WebformController extends WebformEntityController {
     }
 
     // Confirmation CTA markup.
-    $message_content = $webform->getThirdPartySetting('wateraid_donation_forms', 'after_confirmation_cta')['value'];
-    $message_format = $webform->getThirdPartySetting('wateraid_donation_forms', 'after_confirmation_cta')['format'];
-    $build['#webform_submission']->waAfterConfirmationMessage = [
-      '#markup' => check_markup($this->token->replace($message_content, ['webform_submission' => $webform_submission]), $message_format),
-    ];
+    if ($after = $webform->getThirdPartySetting('wateraid_donation_forms', 'after_confirmation_cta')) {
+      $message_content = $after['value'] ?? '';
+      $message_format = $after['format'] ?? '';
+      $build['#webform_submission']->waAfterConfirmationMessage = ($message_content) ? [
+        '#markup' => check_markup($this->token->replace($message_content, ['webform_submission' => $webform_submission]), $message_format),
+      ] : '';
+    }
 
     // Confirmation footer markup.
-    $message_content = $webform->getThirdPartySetting('wateraid_donation_forms', 'after_confirmation_footer')['value'];
-    $message_format = $webform->getThirdPartySetting('wateraid_donation_forms', 'after_confirmation_footer')['format'];
-    $build['#webform_submission']->waAfterConfirmationFooter = [
-      '#markup' => check_markup($this->token->replace($message_content, ['webform_submission' => $webform_submission]), $message_format),
-    ];
+    if ($after_footer = $webform->getThirdPartySetting('wateraid_donation_forms', 'after_confirmation_footer')) {
+      $message_content = $after_footer['value'] ?? '';
+      $message_format = $after_footer['format'] ?? '';
+      $build['#webform_submission']->waAfterConfirmationFooter = ($after_footer) ? [
+        '#markup' => check_markup($this->token->replace($message_content, ['webform_submission' => $webform_submission]), $message_format),
+      ] : '';
+    }
 
     // Create sharethis block dynamically and add to content.
-    $social_title = $webform->getThirdPartySetting('wateraid_donation_forms', 'social_share_title')['value'];
-    $st_js = $this->sharethisManager->sharethisIncludeJs();
-    $markup = $this->sharethisManager->blockContents();
-    $content = [
-      '#theme' => 'sharethis_block',
-      '#content' => $markup,
-      '#attached' => [
-        'library' => [
-          'sharethis/sharethispickerexternalbuttonsws',
-          'sharethis/sharethispickerexternalbuttons',
-          'sharethis/sharethis',
+    if ($social = $webform->getThirdPartySetting('wateraid_donation_forms', 'social_share_title')) {
+      $social_title = $social['value'] ?? '';
+      $st_js = $this->sharethisManager->sharethisIncludeJs();
+      $markup = $this->sharethisManager->blockContents();
+      $content = [
+        '#theme' => 'sharethis_block',
+        '#content' => $markup,
+        '#attached' => [
+          'library' => [
+            'sharethis/sharethispickerexternalbuttonsws',
+            'sharethis/sharethispickerexternalbuttons',
+            'sharethis/sharethis',
+          ],
+          'drupalSettings' => [
+            'sharethis' => $st_js,
+          ],
         ],
-        'drupalSettings' => [
-          'sharethis' => $st_js,
-        ],
-      ],
-    ];
+      ];
 
-    $content = \Drupal::service('renderer')->render($content);
-    $build['#webform_submission']->waSocialShare = [
-      '#markup' => '<span>' . $social_title . '</span>' . $content,
-    ];
+      $content = \Drupal::service('renderer')->render($content);
+      $build['#webform_submission']->waSocialShare = [
+        '#markup' => '<span>' . $social_title . '</span>' . $content,
+      ];
+    }
 
     return $build;
   }

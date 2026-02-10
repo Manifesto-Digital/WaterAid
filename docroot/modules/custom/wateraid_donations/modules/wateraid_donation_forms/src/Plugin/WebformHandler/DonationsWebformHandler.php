@@ -17,6 +17,7 @@ use Drupal\Core\Url;
 use Drupal\currency\Entity\Currency;
 use Drupal\currency\Entity\CurrencyInterface;
 use Drupal\currency\FormHelperInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
@@ -747,11 +748,18 @@ class DonationsWebformHandler extends WebformHandlerBase {
           }
 
           if ($paragraph->hasField('field_discount_code')) {
-            $discount = [
-              'discount_code' => $paragraph->get('field_discount_code')->getString(),
-              'discount_amount' => $paragraph->get('field_discount_amount')->getString(),
-              'discount_expiry' => $paragraph->get('field_discount_expiry')->getString(),
-            ];
+            $expiry = ($paragraph->get('field_discount_expiry')->isEmpty()) ? 'No Expiry' : $paragraph->get('field_discount_expiry')->getString();
+            $expiry = ($expiry == 'No Expiry') ? $expiry : DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $expiry);
+            $now = new DrupalDateTime();
+            $valid = $expiry == 'No Expiry' || $now < $expiry;
+
+            if ($valid) {
+
+              // If this discount is still active, add the paragraph ID so we
+              // can check the code later without leaking the code to the
+              // front end.
+              $discount = $paragraph->id();
+            }
           }
         }
         if (empty($amounts)) {
@@ -1184,6 +1192,8 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $form_state->setErrorByName($form['#payment_element_name'], $this->t('We were unable to take the payment as your donation exceeds the maximum limit. Please decrease your request and try again.'));
         return;
       }
+
+      $one = 1;
 
       // Prepare payload.
       $params = [
