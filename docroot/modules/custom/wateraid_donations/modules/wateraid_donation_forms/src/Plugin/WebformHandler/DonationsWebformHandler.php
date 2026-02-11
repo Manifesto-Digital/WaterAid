@@ -701,12 +701,15 @@ class DonationsWebformHandler extends WebformHandlerBase {
   /**
    * Placeholder method for getting frequency/amounts settings.
    *
+   * @param string $discount_code
+   *   Any entered discount code.
+   *
    * @return mixed[]
    *   An array of amounts by frequency.
    *
    * @todo replace with perhaps a trait for donation configuration.
    */
-  public function getAmounts(): array {
+  public function getAmounts(string $discount_code = ''): array {
     $amounts_full = [];
 
     /** @var \Drupal\currency\Entity\CurrencyInterface $currency */
@@ -722,13 +725,44 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $paragraph = ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
 
         if (!empty($this->configuration[$payment_frequency_name]['use_paragraph']) && $paragraph) {
+          $code = $paragraph->get('field_discount_code')->getString();
+          $discount_amount = $paragraph->get('field_discount_amount')->getString();
+
+          if ($paragraph->hasField('field_discount_code')) {
+            $discount = [
+              'discount_code' => $code,
+              'discount_amount' => $discount_amount,
+              'discount_expiry' => $paragraph->get('field_discount_expiry')->getString(),
+              'applied' => FALSE,
+              'code_provided' => !empty($discount_code),
+            ];
+          }
+
           if ($paragraph->hasField('field_amounts')) {
             foreach ($paragraph->get('field_amounts')->referencedEntities() as $amount_details) {
               if ($amount = $amount_details->get('field_donation_amount')->getString()) {
+                $old_amount = $amount;
+
+                // We don't want to accidentally apply a discount if the content
+                // creator hasn't entered a discount code and neither has the
+                // user, or if there is no discount to apply.
+                if (!empty($code) && !empty($discount_code) && !empty($discount_amount)) {
+                  if ($code == $discount_code) {
+                    $new_amount = $amount * ((100 - $discount_amount) / 100);
+
+                    // Do not allow any decimal places as stripe payments are
+                    // taken in pence so the amount selected will be * 100 in the
+                    // Javascript that takes the payment.
+                    $amount = number_format((float) $new_amount);
+                    $discount['applied'] = TRUE;
+                  }
+                }
+
                 $amounts[$amount] = [
                   'benefit' => '',
                   'label' => $this->getCurrencyValue($currency, $amount),
                   'stripePriceCode' => '',
+                  'original' => $old_amount,
                 ];
 
                 $element = [
@@ -743,14 +777,6 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
               $amounts[$amount]['renderedBenefit'] = \Drupal::service('renderer')->render($element);
             }
-          }
-
-          if ($paragraph->hasField('field_discount_code')) {
-            $discount = [
-              'discount_code' => $paragraph->get('field_discount_code')->getString(),
-              'discount_amount' => $paragraph->get('field_discount_amount')->getString(),
-              'discount_expiry' => $paragraph->get('field_discount_expiry')->getString(),
-            ];
           }
         }
         if (empty($amounts)) {
@@ -843,10 +869,15 @@ class DonationsWebformHandler extends WebformHandlerBase {
   /**
    * Get defaults.
    *
+   * @param string $discount_code
+   *   Any entered discount code.
+   * @param array $selected
+   *   An array of any user selections.
+   *
    * @return mixed[]
    *   Array of defaults.
    */
-  public function getAmountDefaults(): array {
+  public function getAmountDefaults(string $discount_code = '', array $selected = []): array {
     $amount_defaults = [];
 
     $payment_frequencies = $this->donationService->getPaymentFrequencies();
@@ -864,13 +895,27 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $frequency_config = $this->configuration[$payment_frequency_name];
 
         if ($frequency_config['use_paragraph'] ?? NULL) {
-          $amounts = $this->getAmounts();
+          $amounts = $this->getAmounts($discount_code);
 
-          $amount_index = key($amounts[$payment_frequency_name]['amounts']);
+          $amount_index = (string) key($amounts[$payment_frequency_name]['amounts']);
+
+          if (!empty($selected[$payment_frequency_name])) {
+            $amount_index = $selected[$payment_frequency_name];
+
+            if (!array_key_exists($amount_index, $amounts[$payment_frequency_name]['amounts'])) {
+              foreach ($amounts[$payment_frequency_name]['amounts'] as $discount_amount => $amount_data) {
+                if (!empty($amount_data['original'])) {
+                  if ($amount_data['original'] == $amount_index) {
+                    $amount_index = $discount_amount;
+                  }
+                }
+              }
+            }
+          }
 
           // This needs to be a string to prevent a JS error in the donation
           // forms js.
-          $amount_defaults[$payment_frequency_name]['default_amount'] = (string) $amount_index;
+          $amount_defaults[$payment_frequency_name]['default_amount'] = $amount_index;
         }
         else {
           // Get the default amount index.
@@ -936,7 +981,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
    */
   public function getAmountDefaultState(FormStateInterface $form_state): array {
     // Get default options.
-    $amount_defaults_all = $this->getAmountDefaults();
+    $amount_defaults_all = $this->getAmountDefaults(DonationsWebformHandler::getDiscountCode($form_state), DonationsWebformHandler::getSelectedAmount($form_state));
     $duration_defaults_all = $this->getDurationDefaults();
 
     // Add the default duration to each frequency.
@@ -1056,12 +1101,74 @@ class DonationsWebformHandler extends WebformHandlerBase {
   }
 
   /**
+   * Helper to get the user selected donation amount.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The Drupal form state.
+   *
+   * @return array
+   *   An array of values: empty if not.
+   */
+  public static function getSelectedAmount(FormStateInterface $form_state): array {
+    $values = $form_state->getValues();
+    $selected = [];
+
+    if (empty($values)) {
+      $values = $form_state->getUserInput();
+    }
+
+    if (isset($values['amount']['amount'])) {
+      foreach ($values['amount']['amount'] as $type => $data) {
+        if (!empty($data['amounts'])) {
+          $selected = [$type => $data['amounts']];
+        }
+      }
+    }
+
+    return $selected;
+  }
+
+  /**
+   * Helper to get a discount code entered by the user.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   A form state.
+   *
+   * @return string
+   *   The discount code if set.
+   */
+  public static function getDiscountCode(FormStateInterface $form_state): string {
+    $values = $form_state->getValues();
+    $discount_code = '';
+
+    if (empty($values)) {
+      $values = $form_state->getUserInput();
+    }
+
+    if (isset($values['amount']['amount'])) {
+      foreach ($values['amount']['amount'] as $data) {
+        if (!empty($data['discount_code']['code'])) {
+          $discount_code = $data['discount_code']['code'];
+        }
+      }
+    }
+
+    return $discount_code;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
+    $submission = $this->getWebformSubmission();
+
+    $data = $submission->getData();
+
+    $one = 1;
+
     $form['#attached']['library'][] = 'wateraid_donation_forms/wateraid_donation_forms';
     $form['#attached']['drupalSettings']['wateraidDonationForms']['webform_id'] = $this->getWebform()->id();
-    $form['#attached']['drupalSettings']['wateraidDonationForms']['amounts'] = $this->getAmounts();
+    $form['#attached']['drupalSettings']['wateraidDonationForms']['amounts'] = $this->getAmounts($this->getDiscountCode($form_state));
     $form['#attached']['drupalSettings']['wateraidDonationForms']['amount_defaults'] = $this->getAmountDefaultState($form_state);
     $form['#attached']['drupalSettings']['wateraidDonationForms']['webfrom_sid'] = $this->getWebformSubmission()->id();
     $form['#attached']['drupalSettings']['wateraidDonationForms']['country'] = \Drupal::config('system.date')->get('country.default');

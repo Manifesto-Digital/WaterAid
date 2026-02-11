@@ -75,9 +75,11 @@
             });
           });
 
-          otherInput.addEventListener('change', () => {
-            sessionStorage.setItem('last_one-off_donation', otherInput.value);
-          });
+          if (otherInput) {
+            otherInput.addEventListener('change', () => {
+              sessionStorage.setItem('last_one-off_donation', otherInput.value);
+            });
+          }
         }
       }
 
