@@ -317,7 +317,9 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
               if ($dam_reference && $dam_reference[0]['system_identifier']) {
                 /** @var \Drupal\wa_orange_dam\Service\Api $dam_api */
                 $dam_ai = \Drupal::service('wa_orange_dam.api');
-                $dam_image_data = $dam_ai->getPublicLink($dam_reference[0]['system_identifier']);
+                // Getting an image with max width and height of 300
+                // to avoid unnecessarily large images being loaded on the donation widget.
+                $dam_image_data = $dam_ai->getPublicLink($dam_reference[0]['system_identifier'], NULL, 300, 300);
                 $image_url = $dam_image_data['link'] ?? NULL;
               }
             }
