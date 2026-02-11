@@ -217,6 +217,7 @@
       .donate-widget__amount--image {
         @include tablet {
           max-width: 33%;
+          width: 100%;
         }
 
         img {
