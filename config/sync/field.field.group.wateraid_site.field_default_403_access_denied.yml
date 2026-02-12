@@ -1,0 +1,25 @@
+uuid: a4de2e80-b961-4311-a6d3-9e6e79cd1de0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_default_403_access_denied
+    - group.type.wateraid_site
+id: group.wateraid_site.field_default_403_access_denied
+field_name: field_default_403_access_denied
+entity_type: group
+bundle: wateraid_site
+label: 'Default 403 (Access Denied) Page'
+description: 'This page is displayed when the requested document is denied to the current user. Leave blank to display the generic "access denied" page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: entity_references
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

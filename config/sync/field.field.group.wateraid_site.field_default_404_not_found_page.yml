@@ -1,0 +1,25 @@
+uuid: 02c89a13-fcb9-4685-9b1b-00d5202226da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_default_404_not_found_page
+    - group.type.wateraid_site
+id: group.wateraid_site.field_default_404_not_found_page
+field_name: field_default_404_not_found_page
+entity_type: group
+bundle: wateraid_site
+label: 'Default 404 (not found) page'
+description: 'This page is displayed when no other content matches the requested document. Leave blank to display a default "page not found" page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: entity_references
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference
