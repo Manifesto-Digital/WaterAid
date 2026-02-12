@@ -1,0 +1,25 @@
+uuid: 87a99d40-a510-45c4-aaac-ceee3230448d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_months
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_months
+field_name: field_months
+entity_type: paragraph
+bundle: donation_widget
+label: Months
+description: 'Enter the number of months a fixed period donation should last for.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 6
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
