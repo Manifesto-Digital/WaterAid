@@ -489,6 +489,35 @@
       $(once('wateraid_donations_forms', 'form.webform-donations-page')).each(function () {
         initWateraidDonationForms(this);
       });
+
+      $( document ).on( 'ajaxStop', function() {
+        $(once( 'wateraid_ajax', 'form.webform-donations-page')).each(function () {
+          const scatoken = drupalSettings.wateraidDonationForms.csrf_token;
+
+          $.ajax(Drupal.url('wateraid-donation-forms/data-layer' + '?token=' + scatoken), {
+            method: 'POST',
+            dataType: 'json',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: JSON.stringify({
+              webform_id: drupalSettings.wateraidDonationForms.webform_id,
+            }),
+            complete: function (e) {
+              let response = e.responseJSON;
+              if (e.status === 200) {
+                if (response.data.data.length > 0) {
+                  window.dataLayer = window.dataLayer || [];
+
+                  response.data.data.forEach((element) => {
+                    window.dataLayer.push(element);
+                  })
+                }
+              }
+            }
+          });
+        })
+      });
     }
   };
 

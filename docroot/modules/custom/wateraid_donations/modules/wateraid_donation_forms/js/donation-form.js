@@ -67,7 +67,7 @@
           );
           const donationFrequency = document.getElementById('edit-donation-amount-frequency');
 
-          // Establist if the element is the frequency or payment field
+          // Establish if the element is the frequency or payment field
           let elementToStyle = '';
           if (oneOffPaymentMethods) {
             elementToStyle = oneOffPaymentMethods;

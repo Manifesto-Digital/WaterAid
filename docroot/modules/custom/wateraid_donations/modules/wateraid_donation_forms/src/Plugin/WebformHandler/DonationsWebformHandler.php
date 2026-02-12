@@ -5,6 +5,7 @@ namespace Drupal\wateraid_donation_forms\Plugin\WebformHandler;
 use CommerceGuys\Addressing\Country\CountryRepository;
 use CommerceGuys\Addressing\Country\CountryRepositoryInterface;
 use CommerceGuys\Addressing\Exception\UnknownCountryException;
+use Drupal\anonymous_token\Access\AnonymousCsrfTokenGenerator;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Unicode;
@@ -75,15 +76,23 @@ class DonationsWebformHandler extends WebformHandlerBase {
   protected CountryRepositoryInterface $countryRepository;
 
   /**
+   * The CSRF token generator.
+   */
+  protected AnonymousCsrfTokenGenerator $csrfTokenGenerator;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+
     $instance->setCurrencyFormHelper($container->get('currency.form_helper'));
     $instance->setDonationService($container->get('wateraid_donation_forms.donation'));
     $instance->setDateFormatter($container->get('date.formatter'));
     $instance->setRequestStack($container->get('request_stack'));
     $instance->countryRepository = new CountryRepository();
+    $instance->csrfTokenGenerator = $container->get('anonymous_token.csrf_token');
+
     return $instance;
   }
 
@@ -997,6 +1006,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $form['#attached']['drupalSettings']['wateraidDonationForms']['amount_defaults'] = $this->getAmountDefaultState($form_state);
     $form['#attached']['drupalSettings']['wateraidDonationForms']['webfrom_sid'] = $this->getWebformSubmission()->id();
     $form['#attached']['drupalSettings']['wateraidDonationForms']['country'] = \Drupal::config('system.date')->get('country.default');
+    $form['#attached']['drupalSettings']['wateraidDonationForms']['csrf_token'] = $this->csrfTokenGenerator->get('wateraid-donation-forms/data-layer');
 
     if ($message = $this->configuration['recurring']['upsell'] ?? '') {
       $form['#attached']['library'][] = 'wateraid_donation_forms/wateraid_donation_forms.upsell';
@@ -1334,8 +1344,18 @@ class DonationsWebformHandler extends WebformHandlerBase {
       ],
     ];
 
-    datalayer_add($ecommerce, TRUE);
-    datalayer_add($purchase);
+    $key = 'wateraid_donation_forms_datalayer';
+
+    $data = \Drupal::state()->get($key);
+
+    if (!isset($data[$webform_id])) {
+      $data[$webform_id] = [];
+    }
+
+    $data[$webform_id][] = $ecommerce;
+    $data[$webform_id][] = $purchase;
+
+    \Drupal::state()->set($key, $data);
   }
 
   /**

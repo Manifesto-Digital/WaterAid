@@ -25,3 +25,16 @@ wateraid_donation_forms.wateraid_donation_forms_reminder:
     _permission: 'access content'
     _anonymous_csrf_token: 'TRUE'
   methods: [POST]
+
+wateraid_donation_forms.datalayer:
+  path: '/wateraid-donation-forms/data-layer'
+  defaults:
+    _controller: '\Drupal\wateraid_donation_forms\Controller\WebformController::dataLayer'
+    _title: 'Get DataLayer data'
+  requirements:
+    # Access is controlled by anonymous_csrf_token.
+    _access: 'TRUE'
+    _anonymous_csrf_token: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+  methods: [POST]
