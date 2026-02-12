@@ -124,6 +124,7 @@
     position: absolute;
     visibility: hidden;
     pointer-events: none;
+    z-index: -1000;
   }
 }
 
