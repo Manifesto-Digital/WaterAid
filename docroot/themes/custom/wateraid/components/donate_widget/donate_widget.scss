@@ -14,6 +14,12 @@
     @include desktop {
       margin-top: $wa-spacing-09;
     }
+
+    border-bottom: 2px solid $wa-cream;
+    margin-bottom: 2rem;
+    @include desktop {
+      padding: 3.75rem 0 2rem;
+    }
   }
 
   &__heading {
@@ -89,12 +95,11 @@
   }
 
   &__fr-logo {
-    margin: 0 auto;
-
     a {
-      width: 186px;
-      height: 55px;
+      width: 93px;
+      height: 27px;
       background-image: url('/themes/custom/wateraid/images/icons/wa-fr-logo.svg');
+      background-size: contain;
       display: block;
       line-height: 0;
       font-size: 0;
@@ -387,8 +392,9 @@
   .donate-widget__fr-logo {
     a {
       background-image: url('/themes/custom/wateraid/images/icons/wa-fr-logo-colour.svg');
-      width: 159px;
-      height: 46px;
+      background-size: contain;
+      width: 79px;
+      height: 23px;
     }
   }
 
