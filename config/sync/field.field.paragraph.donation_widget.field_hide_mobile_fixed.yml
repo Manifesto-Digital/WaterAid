@@ -1,0 +1,25 @@
+uuid: a8010642-b6b5-4d7f-a3e8-7106b1acd105
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_mobile_fixed
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_hide_mobile_fixed
+field_name: field_hide_mobile_fixed
+entity_type: paragraph
+bundle: donation_widget
+label: 'Hide value on mobile - Fixed'
+description: "The Monthly donation value you want to hide on mobile devices.<br />If it doesn't exist all is displayed."
+required: true
+translatable: false
+default_value:
+  -
+    value: 7
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

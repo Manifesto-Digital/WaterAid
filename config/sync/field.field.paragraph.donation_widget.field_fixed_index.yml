@@ -1,0 +1,23 @@
+uuid: 270878b3-49a6-4395-90ae-c70ef43968ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_fixed_index
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - options
+id: paragraph.donation_widget.field_fixed_index
+field_name: field_fixed_index
+entity_type: paragraph
+bundle: donation_widget
+label: 'Fixed donations default item'
+description: 'Select the default amount to be selected when the user selects a Fixed Period donation'
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings: {  }
+field_type: list_integer
