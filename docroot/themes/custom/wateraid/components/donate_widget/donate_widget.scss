@@ -121,10 +121,7 @@
   margin: 0 0 $wa-spacing-06 0;
 
   &.is-hidden {
-    position: absolute;
-    visibility: hidden;
-    pointer-events: none;
-    z-index: -1000;
+    display: none;
   }
 }
 
@@ -210,7 +207,10 @@
       gap: $wa-spacing-06;
 
       &.is-hidden {
-        display: none;
+        position: absolute;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: -1000;
       }
 
       @include tablet {
@@ -220,7 +220,6 @@
       .donate-widget__amount--image {
         @include tablet {
           flex: 1 0 33%;
-          max-width: 33%;
         }
 
         img {
