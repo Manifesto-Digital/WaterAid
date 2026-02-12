@@ -5,10 +5,12 @@ namespace Drupal\wateraid_donation_forms\Plugin\WebformHandler;
 use CommerceGuys\Addressing\Country\CountryRepository;
 use CommerceGuys\Addressing\Country\CountryRepositoryInterface;
 use CommerceGuys\Addressing\Exception\UnknownCountryException;
+use Drupal\anonymous_token\Access\AnonymousCsrfTokenGenerator;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
@@ -74,15 +76,23 @@ class DonationsWebformHandler extends WebformHandlerBase {
   protected CountryRepositoryInterface $countryRepository;
 
   /**
+   * The CSRF token generator.
+   */
+  protected AnonymousCsrfTokenGenerator $csrfTokenGenerator;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+
     $instance->setCurrencyFormHelper($container->get('currency.form_helper'));
     $instance->setDonationService($container->get('wateraid_donation_forms.donation'));
     $instance->setDateFormatter($container->get('date.formatter'));
     $instance->setRequestStack($container->get('request_stack'));
     $instance->countryRepository = new CountryRepository();
+    $instance->csrfTokenGenerator = $container->get('anonymous_token.csrf_token');
+
     return $instance;
   }
 
@@ -996,6 +1006,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $form['#attached']['drupalSettings']['wateraidDonationForms']['amount_defaults'] = $this->getAmountDefaultState($form_state);
     $form['#attached']['drupalSettings']['wateraidDonationForms']['webfrom_sid'] = $this->getWebformSubmission()->id();
     $form['#attached']['drupalSettings']['wateraidDonationForms']['country'] = \Drupal::config('system.date')->get('country.default');
+    $form['#attached']['drupalSettings']['wateraidDonationForms']['csrf_token'] = $this->csrfTokenGenerator->get('wateraid-donation-forms/data-layer');
 
     if ($message = $this->configuration['recurring']['upsell'] ?? '') {
       $form['#attached']['library'][] = 'wateraid_donation_forms/wateraid_donation_forms.upsell';
@@ -1179,6 +1190,188 @@ class DonationsWebformHandler extends WebformHandlerBase {
       // Add normalised payment data back to the data object & assign
       // normalised data object back onto the submission.
       $webform_submission->setData(array_merge($webform_submission->getData(), $payment_data));
+      $form_state->setValue('payment_data', $payment_data);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
+    DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
+  }
+
+  /**
+   * Send tracking data to the dataLayer.
+   *
+   * @param array $values
+   *   The form submit values.
+   * @param string $webform_id
+   *   The Webform ID.
+   * @param bool $send_immediately
+   *   TRUE to send data to the datalayer, or FALSE to queue in State.
+   */
+  public static function sendTracking(array $values, string $webform_id = '', bool $send_immediately = FALSE): void {
+    if (!isset($values['payment_data'])) {
+
+      // In the final save of the submission data, the payment information is
+      // not stored in the 'payment_data' array, but is available in the root of
+      // the $values array. If we make a copy of the data in there, further code
+      // will be able to find the data.
+      $values['payment_data'] = $values;
+    }
+
+    if (!isset($values['gift_aid'])) {
+      $values['gift_aid'] = [];
+    }
+
+    // Amount
+    if (!$amount = $values['donation_amount']['amount'] ?? NULL) {
+      if (!$amount = $values['payment_data']['donation__amount']) {
+        $amount = $values['donation__amount'] ?? NULL;
+      }
+    }
+
+    // Frequency value.
+    if (!$frequency = $values['donation_amount']['frequency'] ?? NULL) {
+      if (!$frequency = $values['payment_data']['payment_frequency']) {
+        $frequency = $values['donation__frequency'] ?? NULL;
+      }
+    }
+
+    if ($frequency) {
+      $frequency = ($frequency == 'one_off') ? 'One-off' : 'Monthly';
+    }
+
+    // Org Name value.
+    $org_name = NULL;
+
+    foreach ([
+      'organisation_name',
+      'university_name',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $org_name = $value;
+      }
+    }
+
+    // Event type value
+    $event_type = NULL;
+
+    foreach ([
+      'what_kind_of_event_challenge_company_',
+      'what_kind_of_event_challenge_faith_group_',
+      'what_kind_of_event_challenge_school_',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $event_type = $value;
+      }
+    }
+
+    // Event name
+    $event_name = NULL;
+
+    foreach ([
+      'what_event_did_you_take_part_in_individual',
+      'what_event_did_you_take_part_in_company',
+      'what_was_the_name_of_the_event_',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $event_name = $value;
+      }
+    }
+
+    $comms = [];
+
+    if (isset($values['communication_preferences'])) {
+      foreach ($values['communication_preferences'] as $pref) {
+        switch ($pref) {
+          case 'opt_out_post':
+            $comms[] = 'None';
+            break;
+
+          case 'opt_in_email':
+            $comms[] = 'Email';
+            break;
+
+          case 'opt_in_phone':
+            $comms[] = 'Phone';
+            break;
+
+          case 'opt_in_sms':
+            $comms[] = 'SMS';
+            break;
+        }
+      }
+    }
+
+    // Event date.
+    $event_date = NULL;
+
+    foreach ([
+      'when_did_the_event_take_place_individual',
+      'when_did_the_event_take_place_company',
+    ] as $field) {
+      if ($value = $values[$field] ?? NULL) {
+        $event_date = $value;
+      }
+    }
+
+    $ecommerce = [
+      'event' => 'ecommerce',
+      'donation_id' => $values['payment_data']['donation__transaction_id'] ?? '',
+      'donation_form_id' => $webform_id,
+      'donation_date' => $values['payment_data']['donation__date'] ?? '',
+      'donation_payment_method' => $values['payment_data']['donation__payment_method'] ?? '',
+      'donation_payment_type' => $values['payment_data']['donation__payment_type'] ?? '',
+      'donation_fund_code' => $values['payment_data']['donation__fund_code'] ?? '',
+      'donation_package_Code' => $values['payment_data']['donation__package_code'] ?? '',
+      'referral_source' => $values['prompt_reason'] ?? '',
+      'notification_preferences' => $comms ?? [],
+    ];
+
+    $purchase = [
+      'event' => 'purchase',
+      'transaction_id' => $values['payment_data']['donation__transaction_id'] ?? '',
+      'value' => $amount,
+      'currency' => $values['payment_data']['donation__currency'] ?? '',
+      'items' => [
+        'item_donation_frequency' => $frequency,
+        'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
+        'item_brand' => 'WaterAid',
+        'item_category' => 'Donation',
+        'item_category2' => $frequency,
+        'price' => $values['donation_amount']['amount'] ?? '',
+        'quantity' => '1',
+        'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
+        'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
+        'item_donation_fundraising_org_name' => $org_name,
+        'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
+        'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
+        'item_donation_fundraising_event_type' => $event_type,
+        'item_donation_fundraising_event_name' => $event_name,
+        'item_donation_fundraising_event_date' => $event_date,
+        'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+      ],
+    ];
+
+    if ($send_immediately) {
+      datalayer_add($ecommerce, TRUE);
+      datalayer_add($purchase);
+    }
+    else {
+      $key = 'wateraid_donation_forms_datalayer';
+
+      $data = \Drupal::state()->get($key);
+
+      if (!isset($data[$webform_id])) {
+        $data[$webform_id] = [];
+      }
+
+      $data[$webform_id][] = $ecommerce;
+      $data[$webform_id][] = $purchase;
+
+      \Drupal::state()->set($key, $data);
     }
   }
 

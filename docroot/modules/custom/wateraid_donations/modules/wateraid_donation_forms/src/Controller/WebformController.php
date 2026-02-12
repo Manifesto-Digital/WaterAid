@@ -2,18 +2,22 @@
 
 namespace Drupal\wateraid_donation_forms\Controller;
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Core\PageCache\ResponsePolicy\KillSwitch;
 use Drupal\Core\Utility\Token;
 use Drupal\sharethis\SharethisManagerInterface;
 use Drupal\wateraid_donation_forms\DonationConstants;
 use Drupal\wateraid_donation_forms\FallbackPluginManager;
 use Drupal\wateraid_donation_forms\PaymentTypePluginManager;
+use Drupal\wateraid_donation_forms\Plugin\WebformHandler\DonationsWebformHandler;
 use Drupal\webform\Controller\WebformEntityController;
 use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Allows manipulation of the response object when performing a redirect.
@@ -55,6 +59,7 @@ class WebformController extends WebformEntityController {
     $instance->paymentTypePluginManager = $container->get('plugin.manager.payment_type');
     $instance->sharethisManager = $container->get('sharethis.manager');
     $instance->fallbackPluginManager = $container->get('plugin.manager.fallback');
+
     return $instance;
   }
 
@@ -149,6 +154,50 @@ class WebformController extends WebformEntityController {
   }
 
   /**
+   * Helper to pass info for the dataLayer to Javascript.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The current request.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   */
+  public function dataLayer(Request $request): JsonResponse {
+    if ($request->isXmlHttpRequest() === FALSE) {
+      // Error out in this case.
+      return new JsonResponse([
+        'error' => ['code' => Response::HTTP_FORBIDDEN],
+      ], Response::HTTP_FORBIDDEN);
+    }
+
+    $payload = [];
+
+    $content = $request->getContent();
+    if (!empty($content)) {
+      $settings = Json::decode($content);
+
+      if ($settings['webform_id']) {
+        $key = 'wateraid_donation_forms_datalayer';
+        $data = $this->state()->get($key);
+
+        if (!empty($data[$settings['webform_id']])) {
+          $payload = $data[$settings['webform_id']];
+        }
+
+        // Remove the data and store the state settings again.
+        unset($data[$settings['webform_id']]);
+        $this->state()->set($key, $data);
+      }
+    }
+
+    return new JsonResponse([
+      'data' => [
+        'data' => $payload,
+      ],
+    ], 200);
+
+  }
+
+  /**
    * Provide donation specific functionality.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
@@ -173,20 +222,7 @@ class WebformController extends WebformEntityController {
     $prefix = DonationConstants::DONATION_PREFIX;
     $data = $webform_submission->getData();
 
-    if ($this->moduleHandler()->moduleExists('datalayer')) {
-      datalayer_add([
-        'donationId' => $webform_submission->id(),
-        'donationFormId' => $webform_submission->getWebform()->id(),
-        'donationCurrency' => $data[$prefix . 'currency'] ?? NULL,
-        'donationAmount' => $data[$prefix . 'amount'] ?? NULL,
-        'donationDate' => $data[$prefix . 'date'] ?? NULL,
-        'donationFrequency' => $data[$prefix . 'frequency'] ?? NULL,
-        'donationPaymentMethod' => $data[$prefix . 'payment_method'] ?? NULL,
-        'donationPaymentType' => $data[$prefix . 'payment_type'] ?? NULL,
-        'donationFundCode' => $data[$prefix . 'fund_code'] ?? NULL,
-        'donationPackageCode' => $data[$prefix . 'package_code'] ?? NULL,
-      ]);
-    }
+    DonationsWebformHandler::sendTracking($webform_submission->getData(), $webform_submission->getWebform()->id(), TRUE);
 
     // Set default title.
     $build['#webform_submission']->waConfirmationTitle = [

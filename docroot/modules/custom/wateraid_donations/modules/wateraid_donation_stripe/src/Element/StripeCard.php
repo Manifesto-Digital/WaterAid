@@ -4,7 +4,7 @@ namespace Drupal\wateraid_donation_stripe\Element;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Render\Element\FormElement;
+use Drupal\Core\Render\Element\FormElementBase;
 use Drupal\Core\Security\TrustedCallbackInterface;
 
 /**
@@ -12,7 +12,7 @@ use Drupal\Core\Security\TrustedCallbackInterface;
  *
  * @FormElement("stripe_card")
  */
-class StripeCard extends FormElement implements TrustedCallbackInterface {
+class StripeCard extends FormElementBase implements TrustedCallbackInterface {
 
   /**
    * {@inheritdoc}

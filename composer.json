@@ -238,6 +238,12 @@
         "drupal/core": {
             "#3356667: Error: Cannot read properties of undefined (reading 'settings') with dialog.position.js (MR)": "https://git.drupalcode.org/project/drupal/-/merge_requests/8892/diffs.patch"
         },
+        "drupal/group": {
+            "#3071489: Incorrect Access Check on Media Library": "https://www.drupal.org/files/issues/2024-06-12/group-media-library-access-3071489-53-3.x.patch"
+        },
+        "drupal/layout_paragraphs": {
+            "#3384307: Access problem for Paragraph List in combination with Group module": "https://git.drupalcode.org/project/layout_paragraphs/-/merge_requests/196/diffs.patch"
+        },
         "drupal/group_content_menu": {
             "#3504994: Group member should not be allowed ...": "https://www.drupal.org/files/issues/2025-02-06/group_content_menu-manage-menu-items-permission-allows-menu-creation-3504994.patch"
         },

@@ -101,7 +101,7 @@
           {% for item in monthly_amounts %}
             {% set details_id = 'details-monthly-amount-' ~ item.amount ~ '-' ~ id %}
 
-            {% if item.title and item.description %}
+            {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
                 {% if item.image %}
                   <div class="donate-widget__amount--image">
@@ -109,13 +109,17 @@
                   </div>
                 {% endif %}
                 <div class="donate-widget__amount--meta">
-                  <div class="title">
-                    {% if item.icon %}
-                      <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
-                    {% endif %}
-                    {{ item.title }}
-                  </div>
-                  <div class="description">{{ item.description }}</div>
+                  {% if item.title %}
+                    <div class="title">
+                      {% if item.icon %}
+                        <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                      {% endif %}
+                      {{ item.title }}
+                    </div>
+                  {% endif %}
+                  {% if item.description %}
+                    <div class="description">{{ item.description }}</div>
+                  {% endif %}
                   {% if item.credit %}
                     <div class="donate-widget__amount--meta--credit">
                       {{ item.credit }}
@@ -170,7 +174,7 @@
           {% for item in one_off_amounts %}
             {% set details_id = 'details-amount-' ~ item.amount ~ '-' ~ id %}
 
-            {% if item.title and item.description %}
+            {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
                 {% if item.image %}
                   <div class="donate-widget__amount--image">
@@ -178,13 +182,17 @@
                   </div>
                 {% endif %}
                 <div class="donate-widget__amount--meta">
-                  <div class="title">
-                    {% if item.icon %}
-                      <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
-                    {% endif %}
-                    {{ item.title }}
-                  </div>
-                  <div class="description">{{ item.description }}</div>
+                  {% if item.title %}
+                    <div class="title">
+                      {% if item.icon %}
+                        <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                      {% endif %}
+                      {{ item.title }}
+                    </div>
+                  {% endif %}
+                  {% if item.description %}
+                    <div class="description">{{ item.description }}</div>
+                  {% endif %}
                   {% if item.credit %}
                     <div class="donate-widget__amount--meta--credit">
                       {{ item.credit }}
@@ -252,14 +260,12 @@
           {% include('@wateraid/images/icons/' ~ payment_logo.src) %}
         </span>
       {% endfor %}
+      {# FR logo #}
+      <span class="donate-widget__fr-logo">
+        <a href="https://www.fundraisingregulator.org.uk/directory/wateraid?utm_source=WATERAID&utm_medium=badge" title="Visit the Fundraising Regulator's WaterAid report: opens in new window" target="_blank">
+          Fundraising Regulator Logo
+        </a>
+      </span>
     </div>
-
-    {# FR logo #}
-    <div class="donate-widget__fr-logo">
-      <a href="https://www.fundraisingregulator.org.uk/directory/wateraid?utm_source=WATERAID&utm_medium=badge" title="Visit the Fundraising Regulator's WaterAid report: opens in new window" target="_blank">
-        Fundraising Regulator Logo
-      </a>
-    </div>
-
   </div>
 </div>

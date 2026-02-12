@@ -4,7 +4,7 @@ namespace Drupal\wateraid_donation_paypal\Element;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Render\Element\FormElement;
+use Drupal\Core\Render\Element\FormElementBase;
 use Drupal\Core\Security\TrustedCallbackInterface;
 
 /**
@@ -12,7 +12,7 @@ use Drupal\Core\Security\TrustedCallbackInterface;
  *
  * @FormElement("paypal_express")
  */
-class PayPalExpress extends FormElement implements TrustedCallbackInterface {
+class PayPalExpress extends FormElementBase implements TrustedCallbackInterface {
 
   /**
    * {@inheritdoc}
@@ -73,15 +73,6 @@ class PayPalExpress extends FormElement implements TrustedCallbackInterface {
     $element['#children'] = $build;
 
     $element['#attached']['library'][] = 'wateraid_donation_paypal/paypal.checkoutjs';
-
-    /** @var \Drupal\wateraid_donation_paypal\PayPalApiService $paypal_api */
-    $paypal_api = \Drupal::service('wateraid_donation_paypal.paypal_api');
-    $mode = $paypal_api->getMode() == 'live' ? 'production' : 'sandbox';
-    $client = [$mode => $paypal_api->getPubKey()];
-    $element['#attached']['drupalSettings']['webformPayPalExpressElements'] = [
-      'client' => $client,
-      'mode' => $mode,
-    ];
 
     // Create an empty style object that can be overridden by the theme.
     $element['#attached']['drupalSettings']['webformPayPalExpressElements']['style'] = [];
