@@ -220,6 +220,7 @@
       .donate-widget__amount--image {
         @include tablet {
           flex: 1 0 33%;
+          max-width: 33%;
         }
 
         img {
