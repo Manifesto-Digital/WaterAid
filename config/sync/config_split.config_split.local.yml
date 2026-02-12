@@ -20,6 +20,7 @@ theme: {  }
 complete_list:
   - search_api.server.ddev_solr_local
 partial_list:
+  - automated_cron.settings
   - search_api.index.jp_search
   - search_api.index.searchstax_index
   - search_api.server.searchstax_server_1
