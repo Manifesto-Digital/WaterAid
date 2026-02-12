@@ -222,9 +222,7 @@ class WebformController extends WebformEntityController {
     $prefix = DonationConstants::DONATION_PREFIX;
     $data = $webform_submission->getData();
 
-    if ($this->moduleHandler()->moduleExists('datalayer')) {
-      DonationsWebformHandler::sendTracking($webform_submission->getData(), $webform_submission->getWebform()->id());
-    }
+    DonationsWebformHandler::sendTracking($webform_submission->getData(), $webform_submission->getWebform()->id(), TRUE);
 
     // Set default title.
     $build['#webform_submission']->waConfirmationTitle = [
