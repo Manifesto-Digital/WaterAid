@@ -8,6 +8,7 @@ use Drupal\sharethis\SharethisManagerInterface;
 use Drupal\wateraid_donation_forms\DonationConstants;
 use Drupal\wateraid_donation_forms\FallbackPluginManager;
 use Drupal\wateraid_donation_forms\PaymentTypePluginManager;
+use Drupal\wateraid_donation_forms\Plugin\WebformHandler\DonationsWebformHandler;
 use Drupal\webform\Controller\WebformEntityController;
 use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
@@ -174,18 +175,7 @@ class WebformController extends WebformEntityController {
     $data = $webform_submission->getData();
 
     if ($this->moduleHandler()->moduleExists('datalayer')) {
-      datalayer_add([
-        'donationId' => $webform_submission->id(),
-        'donationFormId' => $webform_submission->getWebform()->id(),
-        'donationCurrency' => $data[$prefix . 'currency'] ?? NULL,
-        'donationAmount' => $data[$prefix . 'amount'] ?? NULL,
-        'donationDate' => $data[$prefix . 'date'] ?? NULL,
-        'donationFrequency' => $data[$prefix . 'frequency'] ?? NULL,
-        'donationPaymentMethod' => $data[$prefix . 'payment_method'] ?? NULL,
-        'donationPaymentType' => $data[$prefix . 'payment_type'] ?? NULL,
-        'donationFundCode' => $data[$prefix . 'fund_code'] ?? NULL,
-        'donationPackageCode' => $data[$prefix . 'package_code'] ?? NULL,
-      ]);
+      DonationsWebformHandler::sendTracking($webform_submission->getData(), $webform_submission->getWebform()->id());
     }
 
     // Set default title.

@@ -1188,7 +1188,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    $this->sendTracking($form_state->getValues());
+    DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
   }
 
   /**
@@ -1196,8 +1196,10 @@ class DonationsWebformHandler extends WebformHandlerBase {
    *
    * @param array $values
    *   The form submit values.
+   * @param string $webform_id
+   *   The Webform ID.
    */
-  private function sendTracking(array $values): void {
+  public static function sendTracking(array $values, string $webform_id = ''): void {
     if (!isset($values['payment_data'])) {
       $values['payment_data'] = [];
     }
@@ -1297,7 +1299,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $ecommerce = [
       'event' => 'ecommerce',
       'donation_id' => $values['payment_data']['donation__transaction_id'] ?? '',
-      'donation_form_id' => $this->webform->id(),
+      'donation_form_id' => $webform_id,
       'donation_date' => $values['payment_data']['donation__date'] ?? '',
       'donation_payment_method' => $values['payment_data']['donation__payment_method'] ?? '',
       'donation_payment_type' => $values['payment_data']['donation__payment_type'] ?? '',
@@ -1313,13 +1315,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       'value' => $amount,
       'currency' => $values['payment_data']['donation__currency'] ?? '',
       'items' => [
-        //The item’s SKU, unique to that type of donation.
-        'item_id' => '',
-        //The item’s name, unique to that type of donation.
-        'item_name' => '',
         'item_donation_frequency' => $frequency,
-        //The type of donation – Standard/Fundraising/Zakat/Sadaqah/etc.
-        'item_donation_category' => '',
         'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
         'item_brand' => 'WaterAid',
         'item_category' => 'Donation',
@@ -1339,7 +1335,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     ];
 
     datalayer_add($ecommerce, TRUE);
-    datalayer_add($purchase, TRUE);
+    datalayer_add($purchase);
   }
 
   /**
