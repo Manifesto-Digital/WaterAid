@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.group.wateraid_site.field_content
     - field.field.group.wateraid_site.field_currency_prefix
+    - field.field.group.wateraid_site.field_default_403_access_denied
+    - field.field.group.wateraid_site.field_default_404_not_found_page
     - field.field.group.wateraid_site.field_google_tag_id
     - field.field.group.wateraid_site.field_hero
     - field.field.group.wateraid_site.field_is_wash_matters_site
@@ -46,10 +48,12 @@ third_party_settings:
         - field_show_donation_reminder
         - field_currency_prefix
         - field_minimum_donation
-        - langcode
         - field_google_tag_id
+        - langcode
         - path
         - status
+        - field_default_403_access_denied
+        - field_default_404_not_found_page
       label: General
       region: content
       parent_name: group_tabs
@@ -102,6 +106,26 @@ content:
     weight: 7
     region: content
     settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_default_403_access_denied:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_default_404_not_found_page:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
