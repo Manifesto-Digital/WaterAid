@@ -17,6 +17,8 @@ use Drupal\group\Entity\GroupRelationship;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\wateraid_blocks\Plugin\Block\WaFacetSummaryBlock;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 // Require all the theme includes.
 $theme_path = Drupal::theme()->getActiveTheme()->getPath();
@@ -117,6 +119,84 @@ function wateraid_preprocess_page(&$variables): void {
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function wateraid_theme_suggestions_node_alter(array &$suggestions, array &$variables): void {
+
+  // Use custom node templates for 404 and 403 errors.
+  if ($exception = \Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')) {
+    if ($exception instanceof NotFoundHttpException) {
+      $suggestions[] = 'node__404_error';
+    }
+    elseif ($exception instanceof AccessDeniedHttpException) {
+      $suggestions[] = 'node__403_error';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_preprocess_node__403_error(&$variables): void {
+  wateraid_get_404_403_content($variables, '403');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wateraid_preprocess_node__404_error(&$variables): void {
+  wateraid_get_404_403_content($variables);
+}
+
+/**
+ * Load a group and see if it uses a custom node for errors.
+ *
+ * @param array $variables
+ *   A Drupal node render array.
+ * @param string $type
+ *   the type: 404 or 403.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function wateraid_get_404_403_content(array &$variables, string $type = '404'): void {
+  $path = explode('/', trim(\Drupal::requestStack()->getCurrentRequest()->getPathInfo(), '/'));
+
+  if (isset($path[0])) {
+    /** @var \Drupal\group\Entity\GroupInterface $group */
+    if ($groups = \Drupal::entityTypeManager()->getStorage('group')->loadByProperties([
+      'field_slug' => $path[0],
+    ])) {
+      $group = reset($groups);
+      $field = ($type == '404') ? 'field_default_404_not_found_page' : 'field_default_403_access_denied';
+      if (!$group->get($field)->isEmpty()) {
+        $nodes = $group->get($field)->referencedEntities();
+
+        if ($node = reset($nodes)) {
+          if ($node instanceof NodeInterface) {
+
+            /** @var \Drupal\node\NodeViewBuilder $viewBuilder */
+            $viewBuilder = \Drupal::entityTypeManager()->getViewBuilder('node');
+            $render = $viewBuilder->view($node);
+            $variables['content'] = $viewBuilder->build($render);
+            $variables['node'] = $node;
+            $variables['current_group_path'] = '/' . $path[0];
+
+            // Add the correct caching.
+            $contexts = $node->getCacheContexts();
+            $variables['#cache']['contexts'] = isset($variables['#cache']['contexts']) ? array_merge($variables['#cache']['contexts'], $contexts) : $contexts;
+            $variables['#cache']['contexts'] = array_merge($variables['#cache']['contexts'], $group->getCacheContexts());
+            $tags = $node->getCacheTags();
+            $variables['#cache']['tags'] = isset($variables['#cache']['tags']) ? array_merge($variables['#cache']['tags'], $tags) : $tags;
+            $variables['#cache']['tags'] = array_merge($variables['#cache']['tags'], $group->getCacheTags());
+          }
+        }
+      }
+    }
   }
 }
 
