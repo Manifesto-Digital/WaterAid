@@ -1208,10 +1208,17 @@ class DonationsWebformHandler extends WebformHandlerBase {
    *   The form submit values.
    * @param string $webform_id
    *   The Webform ID.
+   * @param bool $send_immediately
+   *   TRUE to send data to the datalayer, or FALSE to queue in State.
    */
-  public static function sendTracking(array $values, string $webform_id = ''): void {
+  public static function sendTracking(array $values, string $webform_id = '', bool $send_immediately = FALSE): void {
     if (!isset($values['payment_data'])) {
-      $values['payment_data'] = [];
+
+      // In the final save of the submission data, the payment information is
+      // not stored in the 'payment_data' array, but is available in the root of
+      // the $values array. If we make a copy of the data in there, further code
+      // will be able to find the data.
+      $values['payment_data'] = $values;
     }
 
     if (!isset($values['gift_aid'])) {
@@ -1219,14 +1226,17 @@ class DonationsWebformHandler extends WebformHandlerBase {
     }
 
     // Amount
-    if (!$amount = ($values['donation_amount']['amount']) ?? NULL) {
-      $amount = ($values['payment_data']['donation__amount']) ?? NULL;
+    if (!$amount = $values['donation_amount']['amount'] ?? NULL) {
+      if (!$amount = $values['payment_data']['donation__amount']) {
+        $amount = $values['donation__amount'] ?? NULL;
+      }
     }
 
-
     // Frequency value.
-    if (!$frequency = ($values['donation_amount']['frequency']) ?? NULL) {
-      $frequency = ($values['payment']['payment_frequency']) ?? NULL;
+    if (!$frequency = $values['donation_amount']['frequency'] ?? NULL) {
+      if (!$frequency = $values['payment_data']['payment_frequency']) {
+        $frequency = $values['donation__frequency'] ?? NULL;
+      }
     }
 
     if ($frequency) {
@@ -1273,24 +1283,25 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
     $comms = [];
 
-    foreach ($values['communication_preferences'] as $pref) {
-      switch ($pref) {
-        case 'opt_out_post':
-          $comms[] = 'None';
-          break;
+    if (isset($values['communication_preferences'])) {
+      foreach ($values['communication_preferences'] as $pref) {
+        switch ($pref) {
+          case 'opt_out_post':
+            $comms[] = 'None';
+            break;
 
-        case 'opt_in_email':
-          $comms[] = 'Email';
-          break;
+          case 'opt_in_email':
+            $comms[] = 'Email';
+            break;
 
-        case 'opt_in_phone':
-          $comms[] = 'Phone';
-          break;
+          case 'opt_in_phone':
+            $comms[] = 'Phone';
+            break;
 
-        case 'opt_in_sms':
-          $comms[] = 'SMS';
-          break;
-
+          case 'opt_in_sms':
+            $comms[] = 'SMS';
+            break;
+        }
       }
     }
 
@@ -1344,18 +1355,24 @@ class DonationsWebformHandler extends WebformHandlerBase {
       ],
     ];
 
-    $key = 'wateraid_donation_forms_datalayer';
-
-    $data = \Drupal::state()->get($key);
-
-    if (!isset($data[$webform_id])) {
-      $data[$webform_id] = [];
+    if ($send_immediately) {
+      datalayer_add($ecommerce, TRUE);
+      datalayer_add($purchase);
     }
+    else {
+      $key = 'wateraid_donation_forms_datalayer';
 
-    $data[$webform_id][] = $ecommerce;
-    $data[$webform_id][] = $purchase;
+      $data = \Drupal::state()->get($key);
 
-    \Drupal::state()->set($key, $data);
+      if (!isset($data[$webform_id])) {
+        $data[$webform_id] = [];
+      }
+
+      $data[$webform_id][] = $ecommerce;
+      $data[$webform_id][] = $purchase;
+
+      \Drupal::state()->set($key, $data);
+    }
   }
 
   /**
