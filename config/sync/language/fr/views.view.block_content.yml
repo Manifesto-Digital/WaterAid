@@ -2,7 +2,7 @@ label: 'Blocs de contenu'
 description: 'Trouver et gérer les blocs de contenu.'
 display:
   default:
-    display_title: 'Par défaut'
+    display_title: Default
     display_options:
       title: 'Blocs de contenu'
       fields:

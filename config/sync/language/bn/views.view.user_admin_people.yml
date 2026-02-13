@@ -1,7 +1,7 @@
 label: ব্যবহারকারীবৃন্দ
 display:
   default:
-    display_title: ডিফল্ট
+    display_title: Default
     display_options:
       title: ব্যবহারকারীবৃন্দ
       fields:

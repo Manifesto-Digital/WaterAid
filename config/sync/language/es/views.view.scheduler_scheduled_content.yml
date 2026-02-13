@@ -1,6 +1,5 @@
 display:
   default:
-    display_title: Máster
     display_options:
       exposed_form:
         options:
@@ -52,12 +51,12 @@ display:
         langcode:
           expose:
             label: Idioma
+    display_title: Máster
   overview:
     display_options:
       tab_options:
         title: Contenido
   user_page:
-    display_title: Usuario
     display_options:
       menu:
         title: Planificado
@@ -67,3 +66,4 @@ display:
         uid:
           exception:
             title: Todo(s)
+    display_title: Usuario

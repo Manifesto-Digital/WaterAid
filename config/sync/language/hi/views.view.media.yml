@@ -1,7 +1,7 @@
 label: मीडिया
 display:
   default:
-    display_title: डीफॉल्ट
+    display_title: Default
     display_options:
       title: मीडिया
       fields:

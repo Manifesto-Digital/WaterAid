@@ -1,7 +1,7 @@
 label: 'Editoria11y: Dismissals'
 display:
   default:
-    display_title: ପୂର୍ବନିର୍ଦ୍ଧାରିତ
+    display_title: Default
     display_options:
       use_more_text: 'Reset filters'
   dismissals__page:

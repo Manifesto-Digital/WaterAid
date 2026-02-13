@@ -2,7 +2,7 @@ label: システム監視
 description: 最近のログメッセージ
 display:
   default:
-    display_title: デフォルト
+    display_title: Default
     display_options:
       title: 最近のログメッセージ
       fields:
