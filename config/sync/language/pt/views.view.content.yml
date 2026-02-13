@@ -2,7 +2,7 @@ label: Conteúdo
 description: 'Encontrar e gerir conteúdo.'
 display:
   default:
-    display_title: Predefinido
+    display_title: Default
     display_options:
       title: Conteúdo
       fields:

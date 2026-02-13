@@ -1,7 +1,7 @@
 description: 'हाल की सामग्री।'
 display:
   default:
-    display_title: डीफॉल्ट
+    display_title: Default
     display_options:
       exposed_form:
         options:
