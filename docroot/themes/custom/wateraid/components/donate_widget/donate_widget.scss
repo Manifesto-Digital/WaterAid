@@ -14,12 +14,6 @@
     @include desktop {
       margin-top: $wa-spacing-09;
     }
-
-    border-bottom: 2px solid $wa-cream;
-    margin-bottom: 2rem;
-    @include desktop {
-      padding: 3.75rem 0 2rem;
-    }
   }
 
   &__heading {
@@ -387,6 +381,8 @@
     background: transparent;
     color: $wa-navy;
     padding: 0 0 2rem;
+    border-bottom: 2px solid $wa-cream;
+    margin-bottom: 2rem;
   }
 
   .donate-widget__fr-logo {
