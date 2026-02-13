@@ -11,6 +11,7 @@ display:
         name:
           label: Gebruikersnaam
         status:
+          label: Status
           settings:
             format_custom_false: Geblokkeerd
             format_custom_true: Actief
@@ -37,6 +38,7 @@ display:
             items_per_page_options_all_label: '- Alle -'
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: 'Opnieuw instellen'
           exposed_sorts_label: 'Sorteren op'
           sort_asc_label: Oplopend
@@ -50,6 +52,7 @@ display:
             label: 'Naam of e-mail bevat'
         status:
           group_info:
+            label: Status
             group_items:
               1:
                 title: Actief

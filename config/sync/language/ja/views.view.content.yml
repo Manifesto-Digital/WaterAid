@@ -2,7 +2,7 @@ label: コンテンツ
 description: コンテンツの検索と管理。
 display:
   default:
-    display_title: デフォルト
+    display_title: Default
     display_options:
       title: コンテンツ
       fields:

@@ -2,7 +2,7 @@ label: दस्तावेज
 description: 'फ़ाइलों को ढूंढें और प्रबंधित करें।'
 display:
   default:
-    display_title: डीफॉल्ट
+    display_title: Default
     display_options:
       title: दस्तावेज
       fields:

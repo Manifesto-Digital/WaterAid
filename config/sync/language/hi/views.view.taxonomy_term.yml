@@ -2,7 +2,7 @@ label: 'वर्गीकरण परिभाषा'
 description: 'एक निश्चित वर्गीकरण शब्द से संबंधित सामग्री।'
 display:
   default:
-    display_title: डीफॉल्ट
+    display_title: Default
     display_options:
       pager:
         options:

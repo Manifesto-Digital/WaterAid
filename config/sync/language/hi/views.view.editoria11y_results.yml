@@ -1,7 +1,7 @@
 label: 'Editoria11y: Alerts'
 display:
   default:
-    display_title: डीफॉल्ट
+    display_title: Default
     display_options:
       exposed_form:
         options:

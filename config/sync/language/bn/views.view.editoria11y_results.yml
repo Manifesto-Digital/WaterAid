@@ -1,7 +1,7 @@
 label: 'Editoria11y: Alerts'
 display:
   default:
-    display_title: ডিফল্ট
+    display_title: Default
   block_recent_issues:
     display_title: 'Block: Recent alerts'
     display_options:
