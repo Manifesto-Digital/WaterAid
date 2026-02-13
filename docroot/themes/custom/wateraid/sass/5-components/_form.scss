@@ -2,18 +2,9 @@
 
 // Webforms
 .webform-submission-form {
-  @include base.container-sm();
   display: flex;
   flex-flow: column wrap;
   gap: base.$wa-spacing-04;
-
-  @include desktop() {
-    margin-left: 0;
-  }
-
-  @include xlarge-screen() {
-    margin-left: 7.125rem;
-  }
 
   .ssl-logo svg {
     max-width: 88px;

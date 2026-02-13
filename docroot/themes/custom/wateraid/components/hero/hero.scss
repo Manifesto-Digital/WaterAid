@@ -250,11 +250,11 @@
         width: 100%;
         left: 0;
         height: $wa-spacing-09;
-        bottom: -$wa-spacing-09;
+        bottom: calc(0rem - ($wa-spacing-09 - 0.1rem));
 
         @include desktop {
           height: $wa-spacing-10;
-          bottom: -$wa-spacing-10;
+          bottom: calc(0rem - ($wa-spacing-10 - 0.1rem));
         }
       }
     }
