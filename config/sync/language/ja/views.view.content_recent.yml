@@ -2,7 +2,7 @@ label: 最近のコンテンツ
 description: 最近のコンテンツ。
 display:
   default:
-    display_title: デフォルト
+    display_title: Default
     display_options:
       title: 最近のコンテンツ
       exposed_form:

@@ -1,7 +1,7 @@
 description: 'Mensagens de registo recentes'
 display:
   default:
-    display_title: Predefinido
+    display_title: Default
     display_options:
       title: 'Mensagens de registo recentes'
       fields:

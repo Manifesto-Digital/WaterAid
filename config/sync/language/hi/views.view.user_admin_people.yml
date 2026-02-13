@@ -2,7 +2,7 @@ label: कर्मचारी
 description: 'अपनी साइट के साथ सहभागिता करने वाले लोगों को ढूंढें और प्रबंधित करें।'
 display:
   default:
-    display_title: डीफॉल्ट
+    display_title: Default
     display_options:
       title: कर्मचारी
       fields:

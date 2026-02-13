@@ -3,6 +3,7 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende
@@ -25,6 +26,7 @@ display:
         vid:
           label: Ordforråd
         status:
+          label: Status
           settings:
             format_custom_true: Udgivet
             format_custom_false: 'Ikke udgivet'
@@ -39,6 +41,8 @@ display:
           expose:
             label: Ordforråd
         status:
+          expose:
+            label: Status
           group_info:
             label: Publiceringsstatus
             group_items:

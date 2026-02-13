@@ -2,7 +2,7 @@ label: タクソノミーターム
 description: 特定のタクソノミータームに所属するコンテンツ。
 display:
   default:
-    display_title: デフォルト
+    display_title: Default
     display_options:
       pager:
         options:

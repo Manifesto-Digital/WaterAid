@@ -1,7 +1,7 @@
 description: コンテンツブロックの検索と管理を行います。
 display:
   default:
-    display_title: デフォルト
+    display_title: Default
     display_options:
       fields:
         info:

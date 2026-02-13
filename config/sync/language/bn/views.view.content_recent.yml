@@ -1,7 +1,7 @@
 label: 'সাম্প্রতিক বিষয়বস্তু'
 display:
   default:
-    display_title: ডিফল্ট
+    display_title: Default
     display_options:
       title: 'সাম্প্রতিক বিষয়বস্তু'
       empty:

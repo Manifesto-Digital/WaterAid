@@ -2,7 +2,7 @@ label: メディア
 description: メディアを検索し管理します。
 display:
   default:
-    display_title: デフォルト
+    display_title: Default
     display_options:
       title: メディア
       fields:

@@ -1,7 +1,7 @@
 label: কনটেন্ট
 display:
   default:
-    display_title: ডিফল্ট
+    display_title: Default
     display_options:
       title: কনটেন্ট
       fields:

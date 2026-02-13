@@ -2,7 +2,7 @@ label: 'Conteúdo recente'
 description: 'Conteúdo recente.'
 display:
   default:
-    display_title: Predefinido
+    display_title: Default
     display_options:
       title: 'Conteúdo recente'
       exposed_form:

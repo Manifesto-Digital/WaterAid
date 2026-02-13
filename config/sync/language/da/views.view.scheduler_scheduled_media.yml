@@ -3,6 +3,7 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende
@@ -27,6 +28,7 @@ display:
         uid:
           label: Forfatter
         status:
+          label: Status
           settings:
             format_custom_true: Udgivet
             format_custom_false: 'Ikke udgivet'
@@ -37,7 +39,12 @@ display:
         operations:
           label: Handlinger
       filters:
+        bundle:
+          expose:
+            label: Type
         status:
+          expose:
+            label: Status
           group_info:
             label: Publiceringsstatus
             group_items:

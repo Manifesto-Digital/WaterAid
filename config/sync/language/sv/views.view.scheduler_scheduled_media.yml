@@ -19,6 +19,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
+        bundle:
+          label: 'Media type'
         uid:
           label: Författare
         status:

@@ -31,6 +31,7 @@ display:
             offset_label: Forskydning
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           sort_asc_label: Stigende

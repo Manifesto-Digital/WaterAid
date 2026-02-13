@@ -3,6 +3,8 @@ display:
     display_title: Förvald
     display_options:
       fields:
+        nothing:
+          admin_label: Icon
         type:
           label: Type
         message:
