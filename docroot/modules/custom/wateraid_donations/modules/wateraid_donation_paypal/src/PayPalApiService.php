@@ -91,8 +91,9 @@ class PayPalApiService {
     $config_key = $this->getMode() . '_secret_key';
 
     // @see wateraid_donation_paypal_webform_third_party_settings_form_alter().
-    $key_id = ($webform) ? $webform->getThirdPartySetting('wateraid_donation_paypal', $config_key) : NULL;
-    $key_id = ($key_id) ?? $this->config->get($config_key);
+    if (!$key_id = $webform?->getThirdPartySetting('wateraid_donation_paypal', $config_key)) {
+      $key_id = $this->config->get($config_key);
+    }
 
     if (empty($key_id)) {
       return '';
@@ -113,8 +114,9 @@ class PayPalApiService {
     $config_key = $this->getMode() . '_public_key';
 
     // @see wateraid_donation_paypal_webform_third_party_settings_form_alter().
-    $key_id = ($webform) ? $webform->getThirdPartySetting('wateraid_donation_paypal', $config_key) : NULL;
-    $key_id = ($key_id) ?? $this->config->get($config_key);
+    if (!$key_id = $webform?->getThirdPartySetting('wateraid_donation_paypal', $config_key)) {
+      $key_id = $this->config->get($config_key);
+    }
 
     if (empty($key_id)) {
       return '';

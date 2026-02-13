@@ -57,6 +57,8 @@
             // Clear any error
             $errorEl.html('');
 
+            $errorEl.html(Drupal.t('Your payment is being processed: please wait.'));
+
             // Set up the payment here, when the buyer clicks on the button
             let amount = model.get('amount');
             let currency = model.get('currency');
@@ -74,10 +76,12 @@
             return actions.payment.execute().then(function (payment) {
               // The payment is complete!
               model.paymentComplete(JSON.stringify(payment));
+              $errorEl.html('');
             });
           },
 
           onError: function (err) {
+            $errorEl.html('');
             // Handle real-time validation errors from PayPal.
             $errorEl.html(Drupal.t('There was a problem with your PayPal payment. Please try again.'));
           }
