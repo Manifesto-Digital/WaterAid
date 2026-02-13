@@ -65,7 +65,7 @@ content:
       closed_mode: summary
       autocollapse: none
       add_mode: dropdown
-      form_display_mode: simple_form
+      form_display_mode: default
       features:
         duplicate: duplicate
         collapse_edit_all: collapse_edit_all
@@ -73,9 +73,9 @@ content:
         convert: 0
       default_paragraph_types:
         donation_amount:
-          edit_mode: closed
+          value: '1'
+          edit_mode: edit
           weight: '0'
-          value: 0
       edit_mode: closed
     third_party_settings: {  }
   field_discount_amount:
