@@ -51,7 +51,7 @@ final class WateraidConfigPagesGroupContextSubscriber implements EventSubscriber
     }
     $config_page_type = $request->attributes->get('config_pages_type');
     if ($config_page_type instanceof ConfigPagesTypeInterface) {
-      $has_wateraid_site_group_context = $config_page_type->context['group']['wateraid_site_group'];
+      $has_wateraid_site_group_context = ($config_page_type->context['group']['wateraid_site_group']) ?? NULL;
       if ($has_wateraid_site_group_context && empty($request->query->get(WateraidSiteGroupContext::GROUP_ID_QUERY_PARAM))) {
         // Just query the first group of this type, so we always have a context.
         $group_query = $this->entityTypeManager->getStorage('group')->getQuery();
