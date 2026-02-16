@@ -271,7 +271,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
             // Check existing value.
             if (isset($element['#value']['amount'][$type_key])) {
               // Check if the value is one of the pre-defined set.
-              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'];
+              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'] ?? $element['#value']['amount']['one_off']['amounts'];
             }
             // Fallback to default from different structure after
             // normalisation.
