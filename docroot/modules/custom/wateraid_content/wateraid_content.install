@@ -413,3 +413,36 @@ function wateraid_content_update_10011(&$sandbox): void {
 
   $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
 }
+
+/**
+ * Create social media settings.
+ */
+function wateraid_content_update_10012(): void {
+  foreach (\Drupal::entityTypeManager()->getStorage('group')->loadMultiple() as $group) {
+    $context = serialize([['wateraid_site_group' => $group->id()]]);
+
+    /** @var \Drupal\config_pages\ConfigPagesInterface $config_page */
+    if (!$config_page = \Drupal::service('config_pages.loader')->load('site_settings', $context)) {
+      $config_page = \Drupal::entityTypeManager()->getStorage('config_pages')->create([
+        'type' => 'site_settings',
+        'context' => $context,
+      ]);
+    }
+
+    foreach ([
+      'field_facebook' => 'https://www.facebook.com/wateraid/',
+      'field_instagram' => 'https://www.instagram.com/wateraid/',
+      'field_tiktok' => 'https://www.tiktok.com/@wateraid',
+      'field_linkedin' => 'https://www.linkedin.com/company/wateraid/',
+      'field_youtube' => 'https://www.youtube.com/WaterAid',
+      'field_site_logo' => ['target_id' => 20176],
+    ] as $field => $value) {
+      if (!$config_page->get($field)->getString()) {
+        $config_page->set($field, $value);
+      }
+    }
+
+    $config_page->save();
+  }
+
+}
