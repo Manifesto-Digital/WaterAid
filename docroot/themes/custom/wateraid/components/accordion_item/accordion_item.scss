@@ -24,6 +24,10 @@
       transition: transform 0.2s;
     }
 
+    span {
+      flex-basis: 90%;
+    }
+
     &[aria-expanded="true"] {
       svg {
         transform: rotate(0deg);
