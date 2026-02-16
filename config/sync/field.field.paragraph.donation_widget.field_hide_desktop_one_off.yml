@@ -11,11 +11,9 @@ entity_type: paragraph
 bundle: donation_widget
 label: 'Hide value on desktop - One off'
 description: "The One-off donation value you want to hide on desktop devices.<br />If it doesn't exist all is displayed."
-required: true
+required: false
 translatable: false
-default_value:
-  -
-    value: 20
+default_value: {  }
 default_value_callback: ''
 settings:
   min: 0
