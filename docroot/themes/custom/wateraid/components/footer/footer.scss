@@ -184,6 +184,7 @@
   &__socials ul {
     display: flex;
     gap: $wa-spacing-03;
+    flex-flow: row wrap;
   }
 
   &__menu--primary ul {
