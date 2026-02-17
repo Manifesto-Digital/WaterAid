@@ -1239,8 +1239,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
+    // Fallback to get parameter from URL.
+    if (!$frequency) {
+      $frequency = \Drupal::request()->query->get('fq');
+    }
+
     if ($frequency) {
-      $frequency = ($frequency == 'one_off') ? 'One-off' : 'Monthly';
+      $frequency = ($frequency == 'one_off') ? 'one_off' : 'monthly';
     }
 
     // Org Name value.
@@ -1317,8 +1322,14 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
+    $matched_categories = array_filter(
+      ['fundraising', 'zakat', 'sadaqah'],
+      fn($category_item) => str_contains(strtolower($webform_id), $category_item)
+    );
+    $category = $matched_categories ? reset($matched_categories) : 'Standard';
+
     $ecommerce = [
-      'event' => 'ecommerce',
+      'event' => 'purchase',
       'donation_id' => $values['payment_data']['donation__transaction_id'] ?? '',
       'donation_form_id' => $webform_id,
       'donation_date' => $values['payment_data']['donation__date'] ?? '',
@@ -1336,7 +1347,10 @@ class DonationsWebformHandler extends WebformHandlerBase {
       'value' => $amount,
       'currency' => $values['payment_data']['donation__currency'] ?? '',
       'items' => [
-        'item_donation_frequency' => $frequency,
+        'item_id' => strtoupper('DONATION' . $frequency . $category),
+        'item_name' => strtoupper('DONATION|' . $frequency . '|' . $category),
+        'item_donation_frequency' => $frequency ?? '',
+        'item_donation_category' => ucwords($category),
         'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
         'item_brand' => 'WaterAid',
         'item_category' => 'Donation',
