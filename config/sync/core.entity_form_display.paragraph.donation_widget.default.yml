@@ -13,7 +13,6 @@ dependencies:
     - field.field.paragraph.donation_widget.field_monthly_index
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
-    - field.field.paragraph.donation_widget.field_override_webform
     - field.field.paragraph.donation_widget.field_payin_link
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
@@ -137,17 +136,19 @@ content:
     weight: 28
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: 'Monthly Donation'
+      title_plural: 'Monthly Donations'
       edit_mode: open
       closed_mode: summary
       autocollapse: none
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: _none
       features:
+        add_above: '0'
         collapse_edit_all: collapse_edit_all
+        convert: '0'
         duplicate: duplicate
     third_party_settings: {  }
   field_monthly_index:
@@ -161,17 +162,19 @@ content:
     weight: 25
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
+      title: 'One off Donation'
+      title_plural: 'One off Donations'
       edit_mode: open
       closed_mode: summary
       autocollapse: none
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: _none
       features:
+        add_above: '0'
         collapse_edit_all: collapse_edit_all
+        convert: '0'
         duplicate: duplicate
     third_party_settings: {  }
   field_one_off_index:
@@ -179,13 +182,6 @@ content:
     weight: 26
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_override_webform:
-    type: boolean_checkbox
-    weight: 3
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_payin_link:
     type: linkit

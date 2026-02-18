@@ -319,7 +319,7 @@ function wateraid_preprocess_input(&$variables) {
  * This function now calls a helper to process the monthly and one-off
  * donation amount fields, then passes the structured arrays to Twig.
  */
-function wateraid_preprocess_paragraph__donation_widget(&$variables) {
+function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -349,9 +349,16 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
   $variables['monthly_donation_amounts'] = $monthly_amounts;
   $variables['one_off_donation_amounts'] = $one_off_amounts;
 
+  $variables['config'] = [
+    'monthly_index' => $paragraph->get('field_monthly_index')->isEmpty() ? NULL : $paragraph->get('field_monthly_index')->getString(),
+    'one_off_index' => $paragraph->get('field_one_off_index')->isEmpty() ? NULL : $paragraph->get('field_one_off_index')->getString(),
+    'hide_desktop_one_off' => $paragraph->get('field_hide_desktop_one_off')->isEmpty() ? 20 : $paragraph->get('field_hide_desktop_one_off')->getString(),
+    'hide_desktop_monthly' =>  $paragraph->get('field_hide_desktop_monthly')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_monthly')->getString(),
+  ];
+
   // Set SSL logo to dark if in webform nodes.
   $parentEntity = $paragraph->getParentEntity();
-  $variables['ssl_logo_dark'] = $parentEntity && $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
+  $variables['config']['ssl_logo_dark'] = $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
 
   // Add currency prefix per group if available.
   $group = \Drupal::routeMatch()->getParameters()->get('group');

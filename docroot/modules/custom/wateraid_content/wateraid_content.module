@@ -9,6 +9,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
@@ -220,8 +221,7 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
   }
 
   if (isset($form['field_override_webform'])) {
-    wateraid_content_update_donation_widget($form);
-    $form['#validate'][] = 'wateraid_content_donation_widget_validate';
+    $form['#attached']['library'][] = 'wateraid_content/webform';
   }
 
   // Attach image cropper library to hero_image paragraphs.
@@ -242,34 +242,8 @@ function wateraid_content_form_layout_paragraphs_component_form_alter(array &$fo
  * Implements hook_field_widget_single_element_form_alter().
  */
 function wateraid_content_field_widget_single_element_paragraphs_form_alter(array &$element, FormStateInterface $form_state, array $context): void {
-  if (isset($element['subform']['field_override_webform'])) {
-    wateraid_content_update_donation_widget($element['subform']);
-    $element['#element_validate'][] = 'wateraid_content_donation_widget_validate';
-  }
-}
-
-/**
- * Helper to add states API to the field_override_webform field.
- *
- * @param array $form
- *   The form the fields appear in.
- */
-function wateraid_content_update_donation_widget(array &$form): void {
-
-  // The name of the element is different depending on which form is it in.
-  if (!empty($form['#parents'])) {
-    $target_name = wateraid_content_listing_get_element_name($form['#parents'], 'field_override_webform][value');
-  }
-  else {
-    $target_name = 'field_override_webform[value]';
-  }
-
-  if (isset($form['field_webform_node']['widget'][0]['target_id'])) {
-    $form['field_webform_node']['widget'][0]['target_id']['#states'] = [
-      'visible' => [
-        ':input[name="' . $target_name . '"]' => ['checked' => TRUE],
-      ],
-    ];
+  if (isset($element['subform']['field_webform_node'])) {
+    $element['#attached']['library'][] = 'wateraid_content/webform';
   }
 }
 
@@ -314,38 +288,6 @@ function wateraid_content_update_field_widget(array &$element, array $fields, st
           ':input[name="' . $target_field . '"]' => [$value_type => $value],
         ],
       ];
-    }
-  }
-}
-
-/**
- * Ensure the webform node field is set if the user is overriding.
- *
- * @param array $form
- *   The element form.
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *
- * @return void
- */
-function wateraid_content_donation_widget_validate(array $form, FormStateInterface $form_state): void {
-  if (isset($form['subform']['field_override_webform'])) {
-    $parents = $form['subform']['#parents'];
-    $form_values = $form_state->getValue($parents);
-    $string = wateraid_content_listing_get_element_name($parents, 'field_webform_node][0][target_id');
-    $name = substr($string, 0, strlen($string) - 1);
-  }
-  else {
-    if ($form_state->getTriggeringElement()['#value']->__toString() == 'Cancel') {
-      return;
-    }
-
-    $form_values = $form_state->getValues();
-    $name = 'field_webform_node';
-  }
-
-  if (isset($form_values['field_override_webform']['value']) && $form_values['field_override_webform']['value'] == 1) {
-    if (!isset($form_values['field_webform_node'][0]['target_id'])) {
-      $form_state->setErrorByName($name, t('Webform page field is required'));
     }
   }
 }
@@ -471,20 +413,19 @@ function wateraid_content_preprocess_paragraph__related_content(&$variables): vo
 function wateraid_content_preprocess_paragraph__donation_widget(&$variables): void {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
+  $parent = $paragraph->getParentEntity();
 
-  if ($paragraph->get('field_override_webform')->getString()) {
-    $webform_id = ($paragraph->get('field_webform_node')->isEmpty()) ? NULL : $paragraph->get('field_webform_node')->getValue()[0]['target_id'];
+  // If the parent is a paragraph - such as when the donation widget is in the
+  // hero (donate) paragraph - go one step up to get the parent.
+  if ($parent instanceof ParagraphInterface) {
+    $parent = $parent->getParentEntity();
+  }
+
+  if ($parent instanceof NodeInterface && $parent->bundle() == 'webform') {
+    $webform_id = $parent->id();
   }
   else {
-    $parent = $paragraph->getParentEntity();
-
-    // If the parent is a paragraph - such as when the donation widget is in the
-    // hero (donate) paragraph - go one step up to get the parent.
-    if ($parent instanceof ParagraphInterface) {
-      $parent = $parent->getParentEntity();
-    }
-
-    $webform_id = ($parent) ? $parent->id() : NULL;
+    $webform_id = ($paragraph->get('field_webform_node')->isEmpty()) ? NULL : $paragraph->get('field_webform_node')->getValue()[0]['target_id'];
   }
 
   // Something went wrong: let's use the current path.
@@ -508,7 +449,7 @@ function wateraid_content_field_widget_complete_boolean_checkbox_form_alter(&$fi
 /**
  * Custom validation to check only one event registration form added to a page.
  */
-function wateraid_content_validate($form, FormStateInterface $form_state) {
+function wateraid_content_validate($form, FormStateInterface $form_state): void {
   $paragraphs = $form_state->getValue('field_content');
   $has_registration_form = FALSE;
 
