@@ -329,6 +329,9 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   // Process the 'one-off' amounts field using the same helper function.
   $one_off_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_one_off_donation_amounts');
 
+  // Process the 'fixed' amounts field using the same helper function.
+  $fixed_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_fixed_period_amounts');
+
   // Add the static 'other' option to both arrays.
   $other_option = [
     'amount' => 'other',
@@ -348,6 +351,7 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
 
   $variables['monthly_donation_amounts'] = $monthly_amounts;
   $variables['one_off_donation_amounts'] = $one_off_amounts;
+  $variables['fixed_period_donation_amounts'] = $fixed_amounts;
 
   $variables['config'] = [
     'monthly_index' => $paragraph->get('field_monthly_index')->isEmpty() ? NULL : $paragraph->get('field_monthly_index')->getString(),
@@ -359,6 +363,8 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   // Set SSL logo to dark if in webform nodes.
   $parentEntity = $paragraph->getParentEntity();
   $variables['config']['ssl_logo_dark'] = $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
+
+  $variables['#attached']['drupalSettings']['donate_widget']['duration'] = $paragraph->get('field_months')->getString() ?? 6;
 
   // Add currency prefix per group if available.
   $group = \Drupal::routeMatch()->getParameters()->get('group');
