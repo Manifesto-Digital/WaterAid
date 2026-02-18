@@ -11,11 +11,9 @@ entity_type: paragraph
 bundle: donation_widget
 label: 'Hide value on desktop - Fixed'
 description: 'Enter the key of any payment amounts to hide when the Donation Widget is viewed on a desktop device. If no items should be hidden, set to a higher number than there are amounts.'
-required: true
+required: false
 translatable: false
-default_value:
-  -
-    value: 7
+default_value: {  }
 default_value_callback: ''
 settings:
   min: 0

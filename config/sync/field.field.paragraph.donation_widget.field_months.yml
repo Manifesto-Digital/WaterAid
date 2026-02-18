@@ -11,7 +11,7 @@ entity_type: paragraph
 bundle: donation_widget
 label: Months
 description: 'Enter the number of months a fixed period donation should last for.'
-required: true
+required: false
 translatable: false
 default_value:
   -

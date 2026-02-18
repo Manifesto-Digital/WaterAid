@@ -18,6 +18,7 @@ use Drupal\currency\Entity\CurrencyInterface;
 use Drupal\currency\FormHelperInterface;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\wateraid_donation_forms\DonationConstants;
 use Drupal\wateraid_donation_forms\DonationService;
@@ -711,22 +712,51 @@ class DonationsWebformHandler extends WebformHandlerBase {
     /** @var \Drupal\currency\Entity\CurrencyInterface $currency */
     $currency = Currency::load($this->getCurrency());
 
+    // Get the source entity if it is a paragraph.
+    $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
+
+    if ($paragraph instanceof NodeInterface && $paragraph->hasField('field_donation_widget')) {
+      if ($paragraphs = $paragraph->get('field_donation_widget')->referencedEntities()) {
+        $paragraph = reset($paragraphs);
+      }
+    }
+
+    $paragraph = ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
+
     foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
       if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
         $amounts = [];
 
-        // Get the source entity if it is a paragraph.
-        $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
-        $paragraph = ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
-
         if (!empty($this->configuration[$payment_frequency_name]['use_paragraph']) && $paragraph) {
-          if ($paragraph->hasField('field_amounts')) {
-            foreach ($paragraph->get('field_amounts')->referencedEntities() as $amount_details) {
+          if ($paragraph->bundle() == 'donation_widget') {
+            switch ($payment_frequency_name) {
+              case 'recurring':
+                $field = 'field_monthly_donation_amounts';
+                break;
+
+              case 'one_off':
+                $field = 'field_one_off_donation_amounts';
+                break;
+
+              case 'fixed_period':
+                $field = 'field_fixed_period_amounts';
+                break;
+
+              default:
+                $field = NULL;
+            }
+          }
+          else {
+            $field = 'field_amounts';
+          }
+
+          if ($field && $paragraph->hasField($field)) {
+            foreach ($paragraph->get($field)->referencedEntities() as $amount_details) {
               if ($amount = $amount_details->get('field_donation_amount')->getString()) {
                 $amounts[$amount] = [
                   'benefit' => '',
                   'label' => $this->getCurrencyValue($currency, $amount),
-                  'stripePriceCode' => '',
+                  'stripePriceCode' => $amount_details->get('field_stripe_price_code')->getString() ?? NULL,
                 ];
 
                 $element = [
