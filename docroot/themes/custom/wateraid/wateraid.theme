@@ -356,8 +356,10 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   $variables['config'] = [
     'monthly_index' => $paragraph->get('field_monthly_index')->isEmpty() ? NULL : $paragraph->get('field_monthly_index')->getString(),
     'one_off_index' => $paragraph->get('field_one_off_index')->isEmpty() ? NULL : $paragraph->get('field_one_off_index')->getString(),
+    'fixed_payment_index' => $paragraph->get('field_fixed_index')->isEmpty() ? NULL : $paragraph->get('field_fixed_index')->getString(),
     'hide_desktop_one_off' => $paragraph->get('field_hide_desktop_one_off')->isEmpty() ? 20 : $paragraph->get('field_hide_desktop_one_off')->getString(),
-    'hide_desktop_monthly' =>  $paragraph->get('field_hide_desktop_monthly')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_monthly')->getString(),
+    'hide_desktop_monthly' => $paragraph->get('field_hide_desktop_monthly')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_monthly')->getString(),
+    'hide_fixed_monthly' => $paragraph->get('field_hide_desktop_fixed')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_fixed')->getString(),
   ];
 
   // Set SSL logo to dark if in webform nodes.
