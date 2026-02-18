@@ -1198,7 +1198,8 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
+  // Disable DL push on every form submit.
+  // DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
   }
 
   /**
