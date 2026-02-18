@@ -2,6 +2,10 @@ hero:
   js:
     js/hero.js: {}
 
+webform:
+  js:
+    js/webform.js: {}
+
 cropperjs:
   remote: https://github.com/fengyuanchen/cropperjs
   version: "1.6.1"
