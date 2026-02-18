@@ -1228,14 +1228,14 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
     // Amount
     if (!$amount = $values['donation_amount']['amount'] ?? NULL) {
-      if (!$amount = $values['payment_data']['donation__amount']) {
+      if (!$amount = $values['payment_data']['donation__amount'] ?? NULL) {
         $amount = $values['donation__amount'] ?? NULL;
       }
     }
 
     // Frequency value.
     if (!$frequency = $values['donation_amount']['frequency'] ?? NULL) {
-      if (!$frequency = $values['payment_data']['payment_frequency']) {
+      if (!$frequency = $values['payment_data']['payment_frequency'] ?? NULL) {
         $frequency = $values['donation__frequency'] ?? NULL;
       }
     }
