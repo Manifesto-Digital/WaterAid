@@ -1198,7 +1198,8 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
+  // Disable DL push on every form submit.
+  // DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
   }
 
   /**
@@ -1328,7 +1329,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     );
     $category = $matched_categories ? reset($matched_categories) : 'Standard';
 
-    $ecommerce = [
+    $event = [
       'event' => 'purchase',
       'donation_id' => $values['payment_data']['donation__transaction_id'] ?? '',
       'donation_form_id' => $webform_id,
@@ -1339,39 +1340,36 @@ class DonationsWebformHandler extends WebformHandlerBase {
       'donation_package_Code' => $values['payment_data']['donation__package_code'] ?? '',
       'referral_source' => $values['prompt_reason'] ?? '',
       'notification_preferences' => $comms ?? [],
-    ];
-
-    $purchase = [
-      'event' => 'purchase',
-      'transaction_id' => $values['payment_data']['donation__transaction_id'] ?? '',
-      'value' => $amount,
-      'currency' => $values['payment_data']['donation__currency'] ?? '',
-      'items' => [
-        'item_id' => strtoupper('DONATION' . $frequency . $category),
-        'item_name' => strtoupper('DONATION|' . $frequency . '|' . $category),
-        'item_donation_frequency' => $frequency ?? '',
-        'item_donation_category' => ucwords($category),
-        'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
-        'item_brand' => 'WaterAid',
-        'item_category' => 'Donation',
-        'item_category2' => $frequency,
-        'price' => $values['donation_amount']['amount'] ?? '',
-        'quantity' => '1',
-        'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
-        'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
-        'item_donation_fundraising_org_name' => $org_name,
-        'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
-        'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
-        'item_donation_fundraising_event_type' => $event_type,
-        'item_donation_fundraising_event_name' => $event_name,
-        'item_donation_fundraising_event_date' => $event_date,
-        'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+      'ecommerce' => [
+        'transaction_id' => $values['payment_data']['donation__transaction_id'] ?? '',
+        'value' => $amount,
+        'currency' => $values['payment_data']['donation__currency'] ?? '',
+        'items' => [
+          'item_id' => strtoupper('DONATION' . $frequency . $category),
+          'item_name' => strtoupper('DONATION|' . $frequency . '|' . $category),
+          'item_donation_frequency' => $frequency ?? '',
+          'item_donation_category' => ucwords($category),
+          'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
+          'item_brand' => 'WaterAid',
+          'item_category' => 'Donation',
+          'item_category2' => $frequency,
+          'price' => $values['donation_amount']['amount'] ?? '',
+          'quantity' => '1',
+          'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
+          'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
+          'item_donation_fundraising_org_name' => $org_name,
+          'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
+          'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
+          'item_donation_fundraising_event_type' => $event_type,
+          'item_donation_fundraising_event_name' => $event_name,
+          'item_donation_fundraising_event_date' => $event_date,
+          'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+        ],
       ],
     ];
 
     if ($send_immediately) {
-      datalayer_add($ecommerce, TRUE);
-      datalayer_add($purchase);
+      datalayer_add($event);
     }
     else {
       $key = 'wateraid_donation_forms_datalayer';
@@ -1382,8 +1380,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $data[$webform_id] = [];
       }
 
-      $data[$webform_id][] = $ecommerce;
-      $data[$webform_id][] = $purchase;
+      $data[$webform_id][] = $event;
 
       \Drupal::state()->set($key, $data);
     }
