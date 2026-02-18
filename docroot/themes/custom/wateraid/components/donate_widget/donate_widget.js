@@ -10,10 +10,12 @@
 
       const amountRadios = widget.querySelectorAll('input[name="one_off_amount"]');
       const monthlyAmountRadios = widget.querySelectorAll('input[name="monthly_amount"]');
+      const fixedAmountRadios = widget.querySelectorAll('input[name="fixed_amount"]');
       const detailElements = widget.querySelectorAll(".donate-widget__amount-details--detail");
       const frequencyRadios = widget.querySelectorAll('input[name="frequency"]');
       const oneOffContainer = widget.querySelector(".donate-widget__options-group--one-off");
       const monthlyContainer = widget.querySelector(".donate-widget__options-group--monthly");
+      const fixedContainer = widget.querySelector(".donate-widget__options-group--fixed-period");
       const monthlyCustomAmountContainer = widget.querySelector(".donate-widget__custom-amount--monthly");
       const monthlyCustomAmountInput = widget.querySelector("#custom_amount_monthly");
       const oneOffCustomAmountContainer = widget.querySelector(".donate-widget__custom-amount--one-off");
@@ -112,6 +114,10 @@
           selectedRadio = widget.querySelector('input[name="monthly_amount"]:checked');
         }
 
+        if (selectedFrequency.value === "fixed_period") {
+          selectedRadio = widget.querySelector('input[name="fixed_amount"]:checked');
+        }
+
         if (!selectedRadio) {
           return; // Do nothing if no radio is selected
         }
@@ -158,6 +164,9 @@
       monthlyAmountRadios.forEach((radio) => {
         radio.addEventListener("change", updateAmountSelection);
       });
+      fixedAmountRadios.forEach((radio) => {
+        radio.addEventListener("change", updateAmountSelection);
+      });
 
       /**
        * Updates donation amounts based on frequency selection.
@@ -198,12 +207,20 @@
             direct.style.display = 'block';
           }
         }
-        else {
+        else if (selectedFrequency.value === 'one_off') {
           apple.style.display = 'block';
           visa.style.display = 'block';
           mastercard.style.display = 'block'
           paypal.style.display = 'block';
           google.style.display = 'block';
+          direct.style.display = 'none';
+        }
+        else {
+          apple.style.display = 'none';
+          visa.style.display = 'block';
+          mastercard.style.display = 'block'
+          paypal.style.display = 'none';
+          google.style.display = 'none';
           direct.style.display = 'none';
         }
 
@@ -214,13 +231,31 @@
           if (oneOffContainer) {
             oneOffContainer.classList.add("is-hidden");
           }
+          if (fixedContainer) {
+            fixedContainer.classList.add("is-hidden");
+          }
           monthlyContainer.classList.remove("is-hidden");
 
           updateAmountSelection();
-        } else {
+        }
+        else if (selectedFrequency.value === "one-off") {
           oneOffContainer.classList.remove("is-hidden");
           if (monthlyContainer) {
             monthlyContainer.classList.add("is-hidden");
+          }
+          if (fixedContainer) {
+            fixedContainer.classList.add("is-hidden");
+          }
+
+          updateAmountSelection();
+        }
+        else {
+          fixedContainer.classList.remove("is-hidden");
+          if (monthlyContainer) {
+            monthlyContainer.classList.add("is-hidden");
+          }
+          if (oneOffContainer) {
+            oneOffContainer.classList.add("is-hidden");
           }
 
           updateAmountSelection();
@@ -241,14 +276,12 @@
           summary.classList.add('show');
           // Find donation frequency and amount
           summary.querySelector('.donate-widget__donation-summary__label').textContent =
-            selectedFrequency.value === 'monthly'
-              ? Drupal.t('You are making a regular donation of:')
-              : Drupal.t('You are making a one-off donation of:');
+            selectedFrequency.value === 'one_off'
+              ? Drupal.t('You are making a one-off donation of:') : Drupal.t('You are making a regular donation of:');
 
           // Get amount prefix if exists, eg.: £.
           summary.querySelector('.donate-widget__donation-summary__amount').textContent =
-            `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value === 'monthly' ? Drupal.t('per month') : ''}`;
-
+            `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value !== 'one_off' ? Drupal.t('per month') : ''}`;
         }
       }
 
@@ -264,6 +297,9 @@
 
         if (selectedFrequency.value === "monthly") {
           selectedRadio = widget.querySelector('input[name="monthly_amount"]:checked');
+        }
+        if (selectedFrequency.value === "fixed_period") {
+          selectedRadio = widget.querySelector('input[name="fixed_amount"]:checked');
         }
 
         const location = submitButton.getAttribute('data-location');
@@ -298,10 +334,13 @@
           }
         }
 
-        const redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue;
+        let redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue;
+
+        if (selectedFrequency.value === "fixed_period") {
+          redirectUrl = redirectUrl.concat('&dur=', drupalSettings.donate_widget.duration)
+        }
 
         window.location.href = redirectUrl;
-
       };
 
       submitButton.addEventListener('click', donateRedirection);
