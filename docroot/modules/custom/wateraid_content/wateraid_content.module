@@ -245,6 +245,11 @@ function wateraid_content_field_widget_single_element_paragraphs_form_alter(arra
   if (isset($element['subform']['field_webform_node'])) {
     $element['#attached']['library'][] = 'wateraid_content/webform';
   }
+  elseif (isset($element['subform']['field_stripe_price_code'])) {
+
+    // Hide the field if this isn't a fixed period donation.
+    $element['subform']['field_stripe_price_code']['#access'] = in_array('field_fixed_period_amounts', $element['subform']['field_stripe_price_code']['#parents']);
+  }
 }
 
 /**
