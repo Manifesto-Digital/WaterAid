@@ -244,6 +244,11 @@
     margin: 0;
     flex: 1 1 auto;
   }
+
+  .description {
+    margin-left: base.$wa-spacing-08;
+    margin-top: base.$wa-spacing-03;
+  }
 }
 
 .webform-type-checkbox input[type='checkbox'] + label.option {
