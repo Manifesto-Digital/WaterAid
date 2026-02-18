@@ -64,13 +64,7 @@
           href: paragraph.field_payin_link.0.url,
         } : {},
         variant: parent_bundle == 'hero_donate' ? 'hero' : 'default',
-        config: {
-          monthly_index: paragraph.field_monthly_index.value,
-          one_off_index: paragraph.field_one_off_index.value,
-          hide_desktop_one_off: paragraph.field_hide_desktop_one_off.value,
-          hide_desktop_monthly: paragraph.field_hide_desktop_monthly.value,
-          ssl_logo_dark: ssl_logo_dark,
-        },
+        config: config,
         id: paragraph.id(),
         currency_prefix: currency_prefix ?? '£',
       }, with_context = false) }}
