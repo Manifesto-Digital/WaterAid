@@ -51,6 +51,11 @@
     }
   }
 
+  .button--apply-discount {
+    @include text-link();
+    padding-top: 1rem;
+  }
+
   div[data-drupal-messages] {
     padding: 0;
     margin: 0;

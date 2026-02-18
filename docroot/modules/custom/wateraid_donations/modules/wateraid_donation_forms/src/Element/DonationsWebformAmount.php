@@ -2,10 +2,14 @@
 
 namespace Drupal\wateraid_donation_forms\Element;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\wateraid_donation_forms\DisplayModeButtonsTrait;
+use Drupal\wateraid_donation_forms\Plugin\WebformHandler\DonationsWebformHandler;
 use Drupal\webform\Element\WebformCompositeBase;
 use Drupal\webform\Element\WebformOtherBase;
 use Drupal\webform\Entity\Webform;
@@ -109,7 +113,13 @@ class DonationsWebformAmount extends WebformCompositeBase {
   public static function processWebformComposite(&$element, FormStateInterface $form_state, &$complete_form): array {
     parent::processWebformComposite($element, $form_state, $complete_form);
 
-    if (!empty($element['#webform']) && $webform = Webform::load($element['#webform'])) {
+    /** @var \Drupal\webform_wizard_single_page\WebformWizardSinglePageSubmissionForm $object */
+    $object = $form_state->getFormObject();
+
+    /** @var \Drupal\webform\WebformSubmissionInterface|null $submission */
+    $submission = $object->getEntity();
+
+    if (isset($webform) || !empty($element['#webform']) && $webform = Webform::load($element['#webform'])) {
       // Take the "storage" values into account, because we can skip the first
       // step with the WebformWizardExtraSubmissionForm class logic, which
       // means that the form state won't have the values defined initially.
@@ -119,9 +129,16 @@ class DonationsWebformAmount extends WebformCompositeBase {
       /** @var \Drupal\webform\Plugin\WebformHandlerPluginCollection $handlers */
       $handlers = $webform->getHandlers('wateraid_donations');
       if ($handlers->count() > 0) {
+
+        /** @var \Drupal\wateraid_donation_forms\Plugin\WebformHandler\DonationsWebformHandler $handler */
         $handler = $handlers->getIterator()->current();
-        $amounts = $handler->getAmounts();
-        $amount_defaults_all = $handler->getAmountDefaults();
+
+        // Set the submission so we can check if it is attached to a paragraph.
+        $handler->setWebformSubmission($submission);
+
+        $selected = DonationsWebformHandler::getSelectedAmount($form_state);
+        $amounts = $handler->getAmounts(DonationsWebformHandler::getDiscountCode($form_state));
+        $amount_defaults_all = $handler->getAmountDefaults(DonationsWebformHandler::getDiscountCode($form_state), $selected);
 
         $durations = $handler->getDurations();
         $duration_defaults_all = $handler->getDurationDefaults();
@@ -164,8 +181,12 @@ class DonationsWebformAmount extends WebformCompositeBase {
 
         // Process amount element into container with amount selection for each
         // frequency type.
+        $id = Html::getUniqueId( 'wa_donation_amounts');
         $element['amount']['#type'] = 'container';
         $element['amount']['#value'] = '';
+        $element['amount']['#attributes'] = [
+          'id' => $id,
+        ];
 
         $form_has_amounts = FALSE;
 
@@ -196,10 +217,22 @@ class DonationsWebformAmount extends WebformCompositeBase {
               '#type' => 'webform_buttons',
               '#title' => $element['amount']['#title'],
               '#default_value' => $amount_defaults['default_amount'],
+              '#attributes' => [
+                'autocomplete' => 'off',
+              ],
               '#after_build' => [
                 [self::class, 'afterBuild'],
               ],
             ] + self::getElementProperties($type_details['amounts'], 'benefit');
+
+            // If the value the user selected no longer exists in the form, a
+            // discount has been applied and we need to update the value in the
+            // form state to prevent an error.
+            if (!empty($selected[$type_key])) {
+              if ($selected[$type_key] !== $amount_defaults['default_amount']) {
+                $form_state->setValue(['amount', 'amount', $type_key, 'amounts'], $amount_defaults['default_amount']);
+              }
+            }
 
             $form_has_amounts = TRUE;
             $frequency_has_amounts = TRUE;
@@ -238,7 +271,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
             // Check existing value.
             if (isset($element['#value']['amount'][$type_key])) {
               // Check if the value is one of the pre-defined set.
-              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'];
+              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'] ?? $element['#value']['amount']['one_off']['amounts'];
             }
             // Fallback to default from different structure after
             // normalisation.
@@ -255,6 +288,90 @@ class DonationsWebformAmount extends WebformCompositeBase {
             $element['amount'][$type_key]['amounts']['#default_value'] = $amount_defaults['default_amount'];
           }
 
+          if ($discount = $type_details['discount'] ?? NULL) {
+            if ($discount['applied']) {
+
+              // The button has to remain for the triggering element to get set
+              // correctly, so we must hide it with CSS. If someone tries to
+              // expose it and press it again, without the input to enter a
+              // valid discount code it will just reset the values.
+              $element['amount'][$type_key]['discount_code'] = [
+                '#type' => 'html_tag',
+                '#tag' => 'div',
+                '#weight' => -10,
+                'message' => [
+                  '#markup' => t('<p>Your discount of :amount has been applied: and the amount(s) have been updated.</p>', [
+                    ':amount' => $discount['discount_amount'] . '%',
+                  ]),
+                ],
+                'button' => [
+                  '#type' => 'button',
+                  '#name' => 'apply-discount',
+                  '#value' => t('Apply Discount'),
+                  '#ajax' => [
+                    'callback' => [self::class, 'updateAmounts'],
+                    'event' => 'click',
+                    'wrapper' => $id,
+                  ],
+                  '#attributes' => [
+                    'class' => [
+                      'button',
+                      'button--apply-discount',
+                      'hidden',
+                    ],
+                  ],
+                ],
+              ];
+            }
+            else {
+              // If there's no discount code, we can't do anything.
+              if ($discount['discount_code'] ?? NULL) {
+                if ($expiry = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $type_details['discount']['discount_expiry'])) {
+                  $now = new DrupalDateTime();
+
+                  if ($now < $expiry) {
+                    $element['amount'][$type_key]['discount_code'] = [
+                      '#type' => 'html_tag',
+                      '#tag' => 'div',
+                      '#weight' => -10,
+                    ];
+
+                    if ($discount['code_provided']) {
+                      $element['amount'][$type_key]['discount_code']['message'] = [
+                        '#markup' => t('<p>The discount code you provided was invalid.</p>')
+                      ];
+                    }
+
+                    $element['amount'][$type_key]['discount_code']['code'] = [
+                      '#type' => 'textfield',
+                      '#title' => t('Discount Code'),
+                      '#description' => t('If you have a discount code, please enter it here. Your discount will NOT be applied if you do not click the Apply Discount button.'),
+                      '#default_value' => '',
+                      '#attributes' => [
+                        'autocomplete' => 'off',
+                      ],
+                    ];
+                    $element['amount'][$type_key]['discount_code']['button'] = [
+                      '#type' => 'button',
+                      '#value' => t('Apply Discount'),
+                      '#name' => 'apply-discount',
+                      '#ajax' => [
+                        'callback' => [self::class, 'updateAmounts'],
+                        'event' => 'click',
+                        'wrapper' => $id,
+                      ],
+                      '#attributes' => [
+                        'class' => [
+                          'button',
+                          'button--apply-discount',
+                        ],
+                      ],
+                    ];
+                  }
+                }
+              }
+            }
+          }
         }
 
         if ($form_has_amounts === TRUE) {
@@ -380,6 +497,31 @@ class DonationsWebformAmount extends WebformCompositeBase {
   }
 
   /**
+   * AJAX callback to rebuild the amounts.
+   *
+   * @param array $form
+   *   The form element.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The form state.
+   *
+   * @return array
+   *   The updated amounts.
+   */
+  public static function updateAmounts(array &$form, FormStateInterface $form_state): array {
+    $trigger = $form_state->getTriggeringElement();
+
+    if (isset($trigger['#array_parents'])) {
+      $parents = array_slice($trigger['#array_parents'], 0, 2);
+      $element = NestedArray::getValue($form, $parents);
+    }
+    else {
+      return [];
+    }
+
+    return $element['amount'] ?? [];
+  }
+
+  /**
    * Processes the element after build.
    *
    * See select list webform element for select list properties.
@@ -463,7 +605,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
    * @return mixed[]
    *   Return element properties array.
    */
-  private static function getElementProperties(array $settings, string $description_key = ''): array {
+  private static function getElementProperties(array $settings, string $description_key = '', string $discount_code = ''): array {
     $options = [];
     $descriptions = [];
     $stripe_price_codes = [];
@@ -493,6 +635,15 @@ class DonationsWebformAmount extends WebformCompositeBase {
    * Validates a donations_webform_amount element.
    */
   public static function validateDonationsWebformAmount(&$element, FormStateInterface $form_state, &$complete_form) {
+    if ($trigger = $form_state->getTriggeringElement()) {
+      if ($trigger['#name'] == 'apply-discount') {
+
+        // Errors stop the AJAX from completing correctly, and aren't needed at
+        // this point.
+        $form_state->clearErrors();
+      }
+    }
+
     // Donation webform amount field must be converted into a single value.
     $frequency = $element['frequency']['#value'] ?: $element['frequency']['#default_value'];
 
@@ -512,11 +663,11 @@ class DonationsWebformAmount extends WebformCompositeBase {
       if (is_array($amount) && isset($amount['buttons'])) {
         $amount = $amount['buttons'];
       }
-      $other_amount = $element['amount'][$frequency]['amounts']['other']['#value'];
+      $other_amount = $element['amount'][$frequency]['amounts']['other']['#value'] ?? NULL;
 
       $amount = $other_amount ?: $amount;
 
-      $form_state->setValueForElement($element['amount'], $amount);
+      $form_state->setValue(['amount', 'amount', $frequency, 'amounts'], $amount);
       $form_state->set(self::STORAGE_AMOUNT, $amount);
     }
 
