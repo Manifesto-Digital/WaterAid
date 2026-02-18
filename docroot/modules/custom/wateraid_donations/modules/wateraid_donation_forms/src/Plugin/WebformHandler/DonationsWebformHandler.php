@@ -10,14 +10,12 @@ use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\currency\Entity\Currency;
 use Drupal\currency\Entity\CurrencyInterface;
 use Drupal\currency\FormHelperInterface;
-use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
 use Drupal\wateraid_donation_forms\DonationConstants;
@@ -1195,20 +1193,12 @@ class DonationsWebformHandler extends WebformHandlerBase {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-  // Disable DL push on every form submit.
-  // DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
-  }
-
-  /**
    * Send tracking data to the dataLayer.
    *
    * @param array $values
    *   The form submit values.
    * @param string $webform_id
-   *   The Webform ID.
+   *   The webform ID.
    * @param bool $send_immediately
    *   TRUE to send data to the datalayer, or FALSE to queue in State.
    */
@@ -1226,7 +1216,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       $values['gift_aid'] = [];
     }
 
-    // Amount
+    // Amount.
     if (!$amount = $values['donation_amount']['amount'] ?? NULL) {
       if (!$amount = $values['payment_data']['donation__amount'] ?? NULL) {
         $amount = $values['donation__amount'] ?? NULL;
@@ -1261,7 +1251,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
-    // Event type value
+    // Event type value.
     $event_type = NULL;
 
     foreach ([
@@ -1274,7 +1264,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
-    // Event name
+    // Event name.
     $event_name = NULL;
 
     foreach ([
@@ -1345,25 +1335,27 @@ class DonationsWebformHandler extends WebformHandlerBase {
         'value' => $amount,
         'currency' => $values['payment_data']['donation__currency'] ?? '',
         'items' => [
-          'item_id' => strtoupper('DONATION' . $frequency . $category),
-          'item_name' => strtoupper('DONATION|' . $frequency . '|' . $category),
-          'item_donation_frequency' => $frequency ?? '',
-          'item_donation_category' => ucwords($category),
-          'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
-          'item_brand' => 'WaterAid',
-          'item_category' => 'Donation',
-          'item_category2' => $frequency,
-          'price' => $values['donation_amount']['amount'] ?? '',
-          'quantity' => '1',
-          'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
-          'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
-          'item_donation_fundraising_org_name' => $org_name,
-          'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
-          'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
-          'item_donation_fundraising_event_type' => $event_type,
-          'item_donation_fundraising_event_name' => $event_name,
-          'item_donation_fundraising_event_date' => $event_date,
-          'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+          [
+            'item_id' => strtoupper('DONATION' . $frequency . $category),
+            'item_name' => strtoupper('DONATION|' . $frequency . '|' . $category),
+            'item_donation_frequency' => $frequency ?? '',
+            'item_donation_category' => ucwords($category),
+            'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
+            'item_brand' => 'WaterAid',
+            'item_category' => 'Donation',
+            'item_category2' => $frequency,
+            'price' => $values['donation_amount']['amount'] ?? '',
+            'quantity' => '1',
+            'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
+            'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
+            'item_donation_fundraising_org_name' => $org_name,
+            'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
+            'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
+            'item_donation_fundraising_event_type' => $event_type,
+            'item_donation_fundraising_event_name' => $event_name,
+            'item_donation_fundraising_event_date' => $event_date,
+            'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+          ],
         ],
       ],
     ];
