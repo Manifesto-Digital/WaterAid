@@ -182,7 +182,7 @@
 
         <div class="donate-widget__amount-details">
           {% for item in one_off_amounts %}
-            {% set details_id = 'details-amount-' ~ item.amount ~ '-' ~ id %}
+            {% set details_id = 'details-one-off-amount' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
@@ -255,7 +255,7 @@
 
         <div class="donate-widget__amount-details">
           {% for item in fixed_amounts %}
-            {% set details_id = 'details-amount-' ~ item.amount ~ '-' ~ id %}
+            {% set details_id = 'details-fixed-amount' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
