@@ -181,7 +181,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Desktop cancellation message'),
       '#default_value' => $this->configuration['desktop_cancellation_message']['value'] ?? '',
       '#format' => $this->configuration['desktop_cancellation_message']['format'] ?? 'full_html',
-      '#allowed_formats' => ['full_html'],
+      '#allowed_formats' => ['full_html', 'basic_html'],
       '#help' => $this->t('Appears on desktop devices: A) Within the sidebar on step 1. B) Within the sidebar on steps 2 onwards if "monthly" payment frequency is selected.'),
     ];
 
@@ -190,7 +190,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Mobile cancellation message'),
       '#default_value' => $this->configuration['mobile_cancellation_message']['value'] ?? '',
       '#format' => $this->configuration['mobile_cancellation_message']['format'] ?? 'full_html',
-      '#allowed_formats' => ['full_html'],
+      '#allowed_formats' => ['full_html', 'basic_html'],
       '#help' => $this->t('Appears on mobile and tablet devices: A) At the bottom of step 1. B) At the bottom of steps 2 & 3 if "monthly" payment frequency is selected.'),
     ];
 
@@ -203,7 +203,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Impact Statistics'),
       '#default_value' => $this->configuration['impact_statistics']['value'] ?? '',
       '#format' => 'restricted_html',
-      '#allowed_formats' => ['restricted_html'],
+      '#allowed_formats' => ['restricted_html', 'basic_html'],
       '#help' => $this->t('Suitable for monthly donation Forms. Displays at the top of the donation form.'),
     ];
 
