@@ -285,6 +285,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $form[$payment_frequency_name]['payment_methods'] = [
           '#type' => 'fieldset',
           '#title' => $this->t('Payment methods'),
+          '#states' => [
+            'visible' => [
+              ':input[name="settings[' . $payment_frequency_name . '][enabled]"]' => [
+                'checked' => TRUE,
+              ],
+            ],
+          ],
         ];
 
         $default_payment_method = !empty($this->configuration[$payment_frequency_name]['default_payment_method'])
@@ -353,17 +360,29 @@ class DonationsWebformHandler extends WebformHandlerBase {
           ];
         }
 
-        $form[$payment_frequency_name]['amounts'] = [
-          '#type' => 'details',
-          '#title' => $this->t('Amounts'),
-          '#open' => TRUE,
-        ];
-
         $form[$payment_frequency_name]['use_paragraph'] = [
           '#type' => 'checkbox',
           '#title' => $this->t('Use payment amounts from paragraph embed'),
           '#description' => $this->t('If this webform is embedded in a Donation Widget or Registration Form paragraph, use the amounts from the paragraph.'),
           '#default_value' => $this->configuration[$payment_frequency_name]['use_paragraph'] ?? ''
+        ];
+
+        $form[$payment_frequency_name]['amounts'] = [
+          '#type' => 'details',
+          '#title' => $this->t('Amounts'),
+          '#open' => TRUE,
+          '#states' => [
+            'visible' => [
+              [
+                ':input[name="settings[' . $payment_frequency_name . '][enabled]"]' => [
+                  'checked' => TRUE,
+                ],
+                ':input[name="settings[' . $payment_frequency_name . '][use_paragraph]"]' => [
+                  'checked' => FALSE,
+                ],
+              ],
+            ],
+          ],
         ];
 
         // Upselling is for recurring payments only.
@@ -518,6 +537,18 @@ class DonationsWebformHandler extends WebformHandlerBase {
                 ],
                 '#return_value' => $i,
                 '#default_value' => isset($this->configuration[$payment_frequency_name]['default_duration']) && $this->configuration[$payment_frequency_name]['default_duration'] == $i ? $i : NULL,
+              ],
+              '#states' => [
+                'visible' => [
+                  [
+                    ':input[name="settings[' . $payment_frequency_name . '][enabled]"]' => [
+                      'checked' => TRUE,
+                    ],
+                    ':input[name="settings[' . $payment_frequency_name . '][use_paragraph]"]' => [
+                      'checked' => FALSE,
+                    ],
+                  ],
+                ],
               ],
             ];
 
