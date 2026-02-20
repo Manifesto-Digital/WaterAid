@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for the WA DAM module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function wa_orange_dam_schema(): array {
+  $schema['wa_orange_dam'] = wa_orange_dam_get_schema();
+
+  return $schema;
+}
+
+/**
+ * Returns the schema definition.
+ */
+function wa_orange_dam_get_schema(): array {
+  return [
+    'description' => 'Stores media expiry data for notifications',
+    'fields' => [
+      'uid' => [
+        'description' => 'The user who owns the content',
+        'type' => 'int',
+        'length' => 100,
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'mid' => [
+        'description' => 'The Media ID',
+        'type' => 'int',
+        'length' => 100,
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'The Node ID',
+        'type' => 'int',
+        'length' => 100,
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'expiry_date' => [
+        'description' => 'The expiry Date.',
+        'type' => 'int',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['uid', 'mid', 'nid'],
+  ];
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function wa_orange_dam_update_10001(): void {
+  $schema = Database::getConnection()->schema();
+  $schema->createTable('wa_orange_dam', wa_orange_dam_get_schema());
+}
