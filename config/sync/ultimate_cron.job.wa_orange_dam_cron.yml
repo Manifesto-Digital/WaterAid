@@ -4,14 +4,27 @@ status: true
 dependencies:
   module:
     - wa_orange_dam
-title: 'Default cron handler'
+title: 'Handle Orange DAM expiries and notices'
 id: wa_orange_dam_cron
 weight: 0
 module: wa_orange_dam
 callback: 'wa_orange_dam#cron'
 scheduler:
-  id: simple
+  id: crontab
+  configuration:
+    rules:
+      - '0 2 * * *'
+    catch_up: 0
 launcher:
   id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
 logger:
   id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

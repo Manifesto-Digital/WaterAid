@@ -1,0 +1,20 @@
+uuid: d7e99340-af3a-403d-8c6f-349dbb66d086
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_orange_dam
+title: 'Queue: Queue Populator'
+id: ultimate_cron_queue_wa_orange_dam_queue_populator
+weight: 10
+module: wa_orange_dam
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database
