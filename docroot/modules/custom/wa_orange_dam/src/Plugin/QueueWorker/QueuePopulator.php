@@ -72,6 +72,11 @@ final class QueuePopulator extends QueueWorkerBase implements ContainerFactoryPl
       $query->orderBy('l.field_dam_last_checked_value');
     }
     elseif ($data == 'wa_orange_dam_usage_processor') {
+
+      // Clear out the old data.
+      $this->connection->truncate('wa_orange_dam');
+
+      // Then repopulate it.
       $query = $this->connection->select('media__field_dam_expiry_date', 'e')
         ->condition('field_dam_expiry_date_value', strtotime('now +3 months'), '<');
       $query->leftJoin('entity_usage', 'u', 'u.target_id = e.entity_id AND u.target_type = :type', [
