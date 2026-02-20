@@ -84,6 +84,15 @@ class DonationsWebformPayment extends WebformCompositeBase {
       ],
       ];
 
+      /** @var \Drupal\webform_wizard_single_page\WebformWizardSinglePageSubmissionForm $object */
+      $object = $form_state->getFormObject();
+
+      /** @var \Drupal\webform\WebformSubmissionInterface|null $submission */
+      $submission = $object->getEntity();
+
+      // Set the submission so we can check if it is attached to a paragraph.
+      $handler->setWebformSubmission($submission);
+
       $amounts = $handler->getAmounts();
 
       // Get default options.

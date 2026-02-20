@@ -1,0 +1,23 @@
+uuid: 868d7ecf-bfa4-4cfd-8390-649184476b14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_desktop_fixed
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.field_hide_desktop_fixed
+field_name: field_hide_desktop_fixed
+entity_type: paragraph
+bundle: donation_widget
+label: 'Hide value on desktop - Fixed'
+description: 'Enter the key of any payment amounts to hide when the Donation Widget is viewed on a desktop device. If no items should be hidden, set to a higher number than there are amounts.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

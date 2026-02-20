@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.donation_amount.field_donation_amount
     - field.field.paragraph.donation_amount.field_icon
     - field.field.paragraph.donation_amount.field_image
+    - field.field.paragraph.donation_amount.field_stripe_price_code
     - field.field.paragraph.donation_amount.field_title
     - paragraphs.paragraphs_type.donation_amount
 id: paragraph.donation_amount.default
@@ -56,6 +57,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_stripe_price_code:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_title:
     type: string

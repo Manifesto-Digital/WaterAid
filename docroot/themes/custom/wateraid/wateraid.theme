@@ -244,7 +244,7 @@ function wateraid_add_group_menus(GroupInterface $group, array $menu_map, array 
 /**
  * Implements hook_preprocess_image_widget().
  */
-function wateraid_preprocess_image_widget(array &$variables) {
+function wateraid_preprocess_image_widget(array &$variables): void {
   $data = &$variables['data'];
 
   // This prevents image widget templates from rendering preview container HTML
@@ -262,7 +262,7 @@ function wateraid_preprocess_image_widget(array &$variables) {
  * Pass the element #type to the label's render array using a custom property
  * to avoid a recursive rendering loop.
  */
-function wateraid_preprocess_form_element(&$variables) {
+function wateraid_preprocess_form_element(&$variables): void {
   if (isset($variables['label']) && isset($variables['element']['#type'])) {
     $variables['label']['#element_type'] = $variables['element']['#type'];
   }
@@ -273,7 +273,7 @@ function wateraid_preprocess_form_element(&$variables) {
  *
  * Create the 'type' variable for the form element label template.
  */
-function wateraid_preprocess_form_element_label(&$variables) {
+function wateraid_preprocess_form_element_label(&$variables): void {
   if (isset($variables['element']['#element_type'])) {
     $variables['type'] = $variables['element']['#element_type'];
   }
@@ -285,7 +285,7 @@ function wateraid_preprocess_form_element_label(&$variables) {
  * Targets webform wizard buttons to be rendered as <button> elements
  * instead of <input> elements by adding a custom flag for the theme layer.
  */
-function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
   if (isset($form['#webform_id'])) {
     if (isset($form['actions']['wizard_prev'])) {
       $form['actions']['wizard_prev']['#button_type'] = 'previous';
@@ -305,7 +305,7 @@ function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
  * Checks for the custom flag and creates a simple boolean variable
  * for the input.html.twig template to use.
  */
-function wateraid_preprocess_input(&$variables) {
+function wateraid_preprocess_input(&$variables): void {
   // Check if our custom property from hook_form_alter() exists.
   if (isset($variables['element']['#button_type'])) {
     // Pass its value (e.g., 'next' or 'previous') to a simple Twig variable.
@@ -329,6 +329,9 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   // Process the 'one-off' amounts field using the same helper function.
   $one_off_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_one_off_donation_amounts');
 
+  // Process the 'fixed' amounts field using the same helper function.
+  $fixed_amounts = _wateraid_get_donation_amounts_from_field($paragraph, 'field_fixed_period_amounts');
+
   // Add the static 'other' option to both arrays.
   $other_option = [
     'amount' => 'other',
@@ -348,17 +351,22 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
 
   $variables['monthly_donation_amounts'] = $monthly_amounts;
   $variables['one_off_donation_amounts'] = $one_off_amounts;
+  $variables['fixed_period_donation_amounts'] = $fixed_amounts;
 
   $variables['config'] = [
     'monthly_index' => $paragraph->get('field_monthly_index')->isEmpty() ? NULL : $paragraph->get('field_monthly_index')->getString(),
     'one_off_index' => $paragraph->get('field_one_off_index')->isEmpty() ? NULL : $paragraph->get('field_one_off_index')->getString(),
+    'fixed_payment_index' => $paragraph->get('field_fixed_index')->isEmpty() ? NULL : $paragraph->get('field_fixed_index')->getString(),
     'hide_desktop_one_off' => $paragraph->get('field_hide_desktop_one_off')->isEmpty() ? 20 : $paragraph->get('field_hide_desktop_one_off')->getString(),
-    'hide_desktop_monthly' =>  $paragraph->get('field_hide_desktop_monthly')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_monthly')->getString(),
+    'hide_desktop_monthly' => $paragraph->get('field_hide_desktop_monthly')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_monthly')->getString(),
+    'hide_fixed_monthly' => $paragraph->get('field_hide_desktop_fixed')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_fixed')->getString(),
   ];
 
   // Set SSL logo to dark if in webform nodes.
   $parentEntity = $paragraph->getParentEntity();
   $variables['config']['ssl_logo_dark'] = $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
+
+  $variables['#attached']['drupalSettings']['donate_widget']['duration'] = $paragraph->get('field_months')->getString() ?? 6;
 
   // Add currency prefix per group if available.
   $group = \Drupal::routeMatch()->getParameters()->get('group');
@@ -446,7 +454,7 @@ function _wateraid_get_donation_amounts_from_field(Paragraph $paragraph, string 
 /**
  * Implements hook_preprocess_node().
  */
-function wateraid_preprocess_node(&$variables) {
+function wateraid_preprocess_node(&$variables): void {
   /** @var \Drupal\node\Entity\Node $node */
   $node = $variables['node'];
   $view_mode = $variables['view_mode'];
@@ -598,7 +606,7 @@ function wateraid_preprocess_webform(&$variables): void {
  *
  * This function creates a variable for Group's spending module.
  */
-function wateraid_preprocess_paragraph__spend(&$variables) {
+function wateraid_preprocess_paragraph__spend(&$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -682,7 +690,7 @@ function _wateraid_build_menu($menu_name, int $max_depth): array {
 /**
  * Implements hook_preprocess().
  */
-function wateraid_preprocess(&$variables) {
+function wateraid_preprocess(&$variables): void {
   // Adds the current group's canonical URL to template variables where exists.
   $group = \Drupal::routeMatch()->getParameter('group');
   $variables['current_group_path'] = '/';
@@ -692,14 +700,12 @@ function wateraid_preprocess(&$variables) {
   }
 }
 
-
 /**
  * Implements hook_preprocess_paragraph__download_widget().
  *
  * Get file information.
  */
-function wateraid_preprocess_paragraph__download_widget(&$variables)
-{
+function wateraid_preprocess_paragraph__download_widget(&$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $download = $paragraph->get('field_download_all_file');
