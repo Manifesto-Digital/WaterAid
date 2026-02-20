@@ -41,6 +41,8 @@ display:
             items_per_page_label: 'Elementos por página'
             items_per_page_options_all_label: '- Todo -'
             offset_label: Desplazamiento
+      menu:
+        title: 'Issue types'
   issues_by_page__page:
     display_title: 'Alerts on specified page'
     display_options:
@@ -67,6 +69,8 @@ display:
       footer:
         area_text_custom_1:
           content: '<p><a href="../editoria11y/pages" class="button button--primary">All pages with alerts</a></p>'
+      menu:
+        title: 'Issue types'
   pages_by_issue__page:
     display_title: 'Pages with specified alert'
     display_options:

@@ -13,7 +13,6 @@ display:
         name:
           label: Auteur
         status:
-          label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
@@ -48,8 +47,6 @@ display:
           expose:
             label: Inhoudstype
         status:
-          expose:
-            label: Status
           group_info:
             label: Publicatiestatus
             group_items:

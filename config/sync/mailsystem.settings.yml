@@ -1,0 +1,6 @@
+_core:
+  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
+theme: wateraid
+defaults:
+  sender: mime_mail
+  formatter: mime_mail

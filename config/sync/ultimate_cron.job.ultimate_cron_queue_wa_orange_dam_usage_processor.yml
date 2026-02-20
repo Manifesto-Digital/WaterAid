@@ -1,0 +1,20 @@
+uuid: 3d528e4a-f441-41aa-bf4b-d27b1aad22b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_orange_dam
+title: 'Queue: Usage Processor'
+id: ultimate_cron_queue_wa_orange_dam_usage_processor
+weight: 10
+module: wa_orange_dam
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database
