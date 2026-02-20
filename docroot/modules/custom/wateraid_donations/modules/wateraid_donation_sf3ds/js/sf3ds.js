@@ -3,12 +3,12 @@
  * Javascript behaviors for webform GMO elements.
  */
 
-(function ($, Drupal, drupalSettings, Multipayment) {
+(function ($, Drupal, drupalSettings, Multipayment, once) {
 
   Drupal.behaviors.sf3ds = {
 
     attach: function (context, settings) {
-      let selector_form = '#sf3ds-card-form';
+      let selector_form = once('sf3ds-card','#sf3ds-card-form');
       let selector_cardno = '#edit-cardnumber';
       let selector_cardholder = '#edit-cardholder'
       let selector_token = '#edit-pttoken';
@@ -47,6 +47,7 @@
 
         // Create modal markup.
         const modal = document.createElement('div');
+        modal.classList.add('node--type-webform');
         const modalTitle = document.createElement('h2');
         modalTitle.innerText = Drupal.t('Please review your form submission');
         modal.append(modalTitle);
@@ -133,10 +134,12 @@
         const buttonWrapper = document.createElement('div');
         const cancelButton = document.createElement('button');
         const confirmButton = document.createElement('button');
-        buttonWrapper.classList.add('donation-modal__button-wrapper');
+        buttonWrapper.classList.add('donation-modal__button-wrapper', 'button__wrapper', 'button__wrapper--primary');
         cancelButton.setAttribute('type', 'button');
+        cancelButton.classList.add('button', 'button--primary');
         cancelButton.innerText = Drupal.t('Amend');
         confirmButton.setAttribute('type', 'button');
+        confirmButton.classList.add('button', 'button--primary');
         confirmButton.innerText = Drupal.t('Submit');
         buttonWrapper.append(cancelButton, confirmButton);
         modal.append(buttonWrapper);
@@ -212,4 +215,4 @@
     }
   }
 
-})(jQuery, Drupal, drupalSettings, Multipayment);
+})(jQuery, Drupal, drupalSettings, Multipayment, once);

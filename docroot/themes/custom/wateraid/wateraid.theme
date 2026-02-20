@@ -285,7 +285,7 @@ function wateraid_preprocess_form_element_label(&$variables) {
  * Targets webform wizard buttons to be rendered as <button> elements
  * instead of <input> elements by adding a custom flag for the theme layer.
  */
-function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
   if (isset($form['#webform_id'])) {
     if (isset($form['actions']['wizard_prev'])) {
       $form['actions']['wizard_prev']['#button_type'] = 'previous';
@@ -297,6 +297,14 @@ function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       $form['actions']['submit']['#button_type'] = 'webform-submit';
     }
   }
+
+  // Target form here as its been given an ID that cannot be used in
+  // hook_form_FORM_ID_alter.
+  if ($form_id == 'sf3ds-card-form') {
+    $form['#attributes']['class'][] = 'webform-submission-form';
+    $form['#attributes']['class'][] = 'webform-donations-page';
+    $form['#attributes']['class'][] = 'container-sm';
+  }
 }
 
 /**
@@ -305,7 +313,7 @@ function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
  * Checks for the custom flag and creates a simple boolean variable
  * for the input.html.twig template to use.
  */
-function wateraid_preprocess_input(&$variables) {
+function wateraid_preprocess_input(&$variables): void {
   // Check if our custom property from hook_form_alter() exists.
   if (isset($variables['element']['#button_type'])) {
     // Pass its value (e.g., 'next' or 'previous') to a simple Twig variable.

@@ -70,7 +70,7 @@ class CardForm extends FormBase {
   /**
    * {@inheritDoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state): array {
 
     if ($webform_submission = $this->getSf3dsService()->getWebformSubmissionFromRoute()) {
 
@@ -224,6 +224,7 @@ class CardForm extends FormBase {
       $form['submit'] = [
         '#type' => 'submit',
         '#value' => $this->t('Make payment'),
+        '#button_type' => 'webform-submit',
       ];
     }
     return $form;

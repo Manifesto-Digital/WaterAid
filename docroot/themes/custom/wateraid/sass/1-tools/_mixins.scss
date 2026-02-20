@@ -130,7 +130,7 @@
   gap: spacing.$wa-spacing-02;
   align-items: center;
   max-width: fit-content;
-  color: $wa-white;
+  color: colors.$wa-white;
   text-decoration: none;
 
   &::before {
@@ -148,7 +148,7 @@
   }
 
   &:hover::before {
-    transform: translateX(-spacing.$wa-spacing-02) translateY(spacing.$wa-spacing-02);
+    transform: translateX(spacing.$wa-spacing-02) translateY(spacing.$wa-spacing-02);
     left: 0;
     height: 100%;
     width: 100%;
