@@ -27,7 +27,6 @@ display:
           label: Forfatter
           separator: ', '
         status:
-          label: Status
           settings:
             format_custom_true: Udgivet
             format_custom_false: 'Ikke udgivet'
@@ -48,8 +47,6 @@ display:
           expose:
             label: Indholdstype
         status:
-          expose:
-            label: Status
           group_info:
             label: Publiceringsstatus
             group_items:

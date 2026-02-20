@@ -4,16 +4,17 @@ status: true
 dependencies:
   module:
     - wa_orange_dam
-title: 'Default cron handler'
+title: 'Orange DAM Media Expiries'
 id: wa_orange_dam_cron
 weight: 0
 module: wa_orange_dam
 callback: 'wa_orange_dam#cron'
 scheduler:
-  id: simple
+  id: crontab
   configuration:
     rules:
-      - '0+@ 0 * * *'
+      - '0 2 * * *'
+    catch_up: 0
 launcher:
   id: serial
 logger:

@@ -11,7 +11,6 @@ display:
           label: Inhoudstype
           separator: ', '
         status:
-          label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
@@ -61,9 +60,6 @@ display:
                 title: Gepubliceerd
               2:
                 title: 'Niet gepubliceerd'
-        type:
-          expose:
-            label: Type
   page_1:
     display_title: Pagina
     display_options:

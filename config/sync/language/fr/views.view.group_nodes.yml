@@ -61,9 +61,6 @@ display:
                 title: Publié
               2:
                 title: 'Non publié'
-        type:
-          expose:
-            label: Type
   page_1:
     display_title: Page
     display_options:

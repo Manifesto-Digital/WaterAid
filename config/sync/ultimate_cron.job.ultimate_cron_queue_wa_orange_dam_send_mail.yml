@@ -1,0 +1,20 @@
+uuid: 18d7b679-a8fe-4540-96e4-91e6997dd7ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_orange_dam
+title: 'Queue: Send Mail'
+id: ultimate_cron_queue_wa_orange_dam_send_mail
+weight: 10
+module: wa_orange_dam
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

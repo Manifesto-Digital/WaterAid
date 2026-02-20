@@ -56,9 +56,6 @@ display:
         name:
           expose:
             label: 'Nom du média'
-        bundle:
-          expose:
-            label: Type
         status:
           expose:
             label: Vrai

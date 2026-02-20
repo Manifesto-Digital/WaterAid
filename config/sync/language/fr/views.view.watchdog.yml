@@ -36,9 +36,6 @@ display:
           admin_label: "Aucune entrée du journal n'est disponible."
           content: "Aucune entrée du journal n'est disponible."
       filters:
-        type:
-          expose:
-            label: Type
         severity:
           expose:
             label: Importance

@@ -1,19 +1,19 @@
-uuid: 15c4b64a-7bae-4ac8-9581-b407265a1e0f
+uuid: 5b88202f-4630-4994-84f0-4361df4f09c3
 langcode: en
 status: true
 dependencies:
   module:
-    - announcements_feed
-title: 'Default cron handler'
-id: announcements_feed_cron
-weight: 0
-module: announcements_feed
-callback: 'announcements_feed#cron'
+    - media
+title: 'Queue: Thumbnail downloader'
+id: ultimate_cron_queue_media_entity_thumbnail
+weight: 10
+module: media
+callback: 'ultimate_cron.queue_worker:queueCallback'
 scheduler:
   id: simple
   configuration:
     rules:
-      - '0+@ */3 * * *'
+      - '*/30+@ * * * *'
 launcher:
   id: serial
   configuration:

@@ -30,7 +30,6 @@ display:
           label: Woordenlijst
           separator: ', '
         status:
-          label: Status
           settings:
             format_custom_true: Gepubliceerd
             format_custom_false: 'Niet gepubliceerd'
@@ -48,8 +47,6 @@ display:
           expose:
             label: Woordenlijst
         status:
-          expose:
-            label: Status
           group_info:
             label: Publicatiestatus
             group_items:
