@@ -1,0 +1,13 @@
+services:
+  wateraid_tmgmt.email_notification_manager:
+    class: Drupal\wateraid_tmgmt\EmailNotificationManager
+    arguments:
+      - '@config.factory'
+      - '@date.formatter'
+      - '@entity_type.manager'
+      - '@plugin.manager.mail'
+      - '@renderer'
+
+  wateraid_tmgmt.translation_reports:
+    class: Drupal\wateraid_tmgmt\TranslationReports
+    arguments: ['@entity_type.manager']
