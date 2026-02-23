@@ -93,7 +93,7 @@ final class AzureApi {
   public function blobPut(string $blob_name, array $blob_data, $is_queue = FALSE): bool {
     $result = FALSE;
 
-    $blob = json_encode($blob_data);
+    $blob = json_encode($blob_data, JSON_UNESCAPED_UNICODE);
     $content_type = 'application/json';
     $date = $this->dateGet();
     $http_method = 'PUT';
