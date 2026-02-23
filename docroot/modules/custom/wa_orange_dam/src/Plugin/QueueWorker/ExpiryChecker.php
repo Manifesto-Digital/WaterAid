@@ -54,75 +54,77 @@ final class ExpiryChecker extends QueueWorkerBase implements ContainerFactoryPlu
    * {@inheritdoc}
    */
   public function processItem($data): void {
-    /** @var \Drupal\media\MediaInterface $media */
-    if ($media = $this->entityTypeManager->getStorage('media')->load($data)) {
-      if (!in_array($media->bundle(), [
-        'dam_file',
-        'dam_image',
-        'dam_video',
-      ])) {
-        return;
-      }
+    $mid = ($data->mid) ?? $data;
 
-      // Set the last checked date now so if anything goes wrong we don't end up
-      // checking this repeatedly.
-      $media->set('field_dam_last_checked', time());
+    if ($mid) {
+      /** @var \Drupal\media\MediaInterface $media */
+      if ($media = $this->entityTypeManager->getStorage('media')->load($mid)) {
+        if (!in_array($media->bundle(), [
+          'dam_file',
+          'dam_image',
+          'dam_video',
+        ])) {
+          return;
+        }
 
-      $field_name = 'field_media_' . $media->bundle();
+        // Set the last checked date now so if anything goes wrong we don't end up
+        // checking this repeatedly.
+        $media->set('field_dam_last_checked', time());
 
-      if ($values = $media->get($field_name)->getValue()) {
-        if (isset($values[0]['system_identifier']) && $system_id = $values[0]['system_identifier']) {
-          if ($api_result = $this->waOrangeDamApi->search([
-            'query' => 'SystemIdentifier:' . $system_id,
-          ])) {
-            if (isset($api_result['APIResponse']['Items'][0])) {
+        $field_name = 'field_media_' . $media->bundle();
 
-              // While we're here, we'll check the captions/credits.
-              foreach ([
-                'field_caption' => 'CustomField.Caption',
-                'field_credit' => 'customfield.Credit',
-              ] as $field => $key) {
-                if ($media->hasField($field) && $media->get($field)->isEmpty()) {
-                  if ($key == 'customfield.Credit') {
-                    $value = $api_result['APIResponse']['Items'][0]['customfield.Credit']['Value'] ?? NULL;
-                  }
-                  else {
-                    $value = $api_result['APIResponse']['Items'][0]['CustomField.Caption'] ?? NULL;
-                  }
+        if ($values = $media->get($field_name)->getValue()) {
+          if (isset($values[0]['system_identifier']) && $system_id = $values[0]['system_identifier']) {
+            if ($api_result = $this->waOrangeDamApi->search([
+              'query' => 'SystemIdentifier:' . $system_id,
+            ])) {
+              if (isset($api_result['APIResponse']['Items'][0])) {
+                // While we're here, we'll check the captions/credits.
+                foreach ([
+                  'field_caption' => 'CustomField.Caption',
+                  'field_credit' => 'customfield.Credit',
+                ] as $field => $key) {
+                  if ($media->hasField($field) && $media->get($field)
+                      ->isEmpty()) {
+                    if ($key == 'customfield.Credit') {
+                      $value = $api_result['APIResponse']['Items'][0]['customfield.Credit']['Value'] ?? NULL;
+                    }
+                    else {
+                      $value = $api_result['APIResponse']['Items'][0]['CustomField.Caption'] ?? NULL;
+                    }
 
-                  if ($value) {
-
-                    // Only set the caption if it doesn't contain non-ASCII characters.
-                    if (!preg_match('/[^\x20-\x7e]/', $value)) {
-                      $media->set($field, substr(strip_tags($value), 0, 250));
+                    if ($value) {
+                      // Only set the caption if it doesn't contain non-ASCII characters.
+                      if (!preg_match('/[^\x20-\x7e]/', $value)) {
+                        $media->set($field, substr(strip_tags($value), 0, 250));
+                      }
                     }
                   }
                 }
-              }
 
-              $date_value = $api_result['APIResponse']['Items'][0]['customfield.Expiry-Date'];
+                $date_value = $api_result['APIResponse']['Items'][0]['customfield.Expiry-Date'];
 
-              // Now check expiry dates.
-              if ($date_value) {
+                // Now check expiry dates.
+                if ($date_value) {
+                  // Set the updated expiry date whatever it is.
+                  $date = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $date_value);
+                  $media->set('field_dam_expiry_date', $date->getTimestamp());
 
-                // Set the updated expiry date whatever it is.
-                $date = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $date_value);
-                $media->set('field_dam_expiry_date', $date->getTimestamp());
+                  $now = new DrupalDateTime();
 
-                $now = new DrupalDateTime();
-
-                // And if the date has passed, mark this as expired.
-                if ($date <= $now) {
-                  $media->set('field_dam_expired', TRUE);
+                  // And if the date has passed, mark this as expired.
+                  if ($date <= $now) {
+                    $media->set('field_dam_expired', TRUE);
+                  }
                 }
               }
             }
           }
         }
-      }
 
-      // Save any changes to the media settings.
-      $media->save();
+        // Save any changes to the media settings.
+        $media->save();
+      }
     }
   }
 

@@ -88,6 +88,7 @@
     "drupal/metatag": "^2.0",
     "drupal/migrate_plus": "^6.0",
     "drupal/migrate_tools": "^6.1",
+    "drupal/mimemail": "^2.0",
     "drupal/node_co_authors": "^1.2",
     "drupal/node_read_time": "^1.15",
     "drupal/orange_dam": "^2.2",
