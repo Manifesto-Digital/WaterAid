@@ -3,14 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.donation_widget.field_fixed_index
+    - field.field.paragraph.donation_widget.field_fixed_period_amounts
     - field.field.paragraph.donation_widget.field_heading_level
+    - field.field.paragraph.donation_widget.field_hide_desktop_fixed
     - field.field.paragraph.donation_widget.field_hide_desktop_monthly
     - field.field.paragraph.donation_widget.field_hide_desktop_one_off
+    - field.field.paragraph.donation_widget.field_hide_mobile_fixed
     - field.field.paragraph.donation_widget.field_hide_mobile_monthly
     - field.field.paragraph.donation_widget.field_hide_mobile_one_off
     - field.field.paragraph.donation_widget.field_monthly_default
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
     - field.field.paragraph.donation_widget.field_monthly_index
+    - field.field.paragraph.donation_widget.field_months
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
     - field.field.paragraph.donation_widget.field_payin_link
@@ -28,6 +33,7 @@ third_party_settings:
         - group_content
         - group_one_off
         - group_monthly
+        - group_fixed_period
       label: Tabs
       region: content
       parent_name: ''
@@ -69,7 +75,7 @@ third_party_settings:
       label: Monthly
       region: content
       parent_name: group_tabs
-      weight: 22
+      weight: 3
       format_type: tab
       format_settings:
         classes: ''
@@ -88,7 +94,7 @@ third_party_settings:
       label: 'One off'
       region: content
       parent_name: group_tabs
-      weight: 21
+      weight: 2
       format_type: tab
       format_settings:
         classes: ''
@@ -99,16 +105,68 @@ third_party_settings:
         description: ''
         required_fields: true
         open: false
+    group_fixed_period:
+      children:
+        - field_fixed_period_amounts
+        - field_fixed_index
+        - field_hide_desktop_fixed
+        - field_months
+      label: 'Fixed Period'
+      region: content
+      parent_name: group_tabs
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: 'Configure settings for fixed period payments.'
+        required_fields: true
 id: paragraph.donation_widget.default
 targetEntityType: paragraph
 bundle: donation_widget
 mode: default
 content:
+  field_fixed_index:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_fixed_period_amounts:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Amount
+      title_plural: Amounts
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings: {  }
   field_heading_level:
     type: options_select
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_hide_desktop_fixed:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_hide_desktop_monthly:
     type: number
@@ -156,6 +214,13 @@ content:
     weight: 29
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_months:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_one_off_donation_amounts:
     type: paragraphs
@@ -213,6 +278,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_hide_mobile_fixed: true
   field_hide_mobile_monthly: true
   field_hide_mobile_one_off: true
   status: true

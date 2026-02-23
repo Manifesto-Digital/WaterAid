@@ -54,7 +54,6 @@
       'step': 0
     },
     initialize: function (params) {
-      // alert('hello');
       let amount_defaults = params.amount_defaults;
       let frequency = amount_defaults.frequency_default;
       let default_frequency_settings = amount_defaults[frequency];

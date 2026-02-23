@@ -1,0 +1,19 @@
+uuid: 85400eed-6b30-4e7b-84d6-1905cbcd3c7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stripe_price_code
+    - paragraphs.paragraphs_type.donation_amount
+id: paragraph.donation_amount.field_stripe_price_code
+field_name: field_stripe_price_code
+entity_type: paragraph
+bundle: donation_amount
+label: 'Stripe Price Code'
+description: 'This is the Stripe price code used in Stripe to identify the subscription. It MUST match the corresponding code from the Stripe account.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

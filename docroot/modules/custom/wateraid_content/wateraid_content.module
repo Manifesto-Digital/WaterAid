@@ -245,6 +245,11 @@ function wateraid_content_field_widget_single_element_paragraphs_form_alter(arra
   if (isset($element['subform']['field_webform_node'])) {
     $element['#attached']['library'][] = 'wateraid_content/webform';
   }
+  elseif (isset($element['subform']['field_stripe_price_code'])) {
+
+    // Hide the field if this isn't a fixed period donation.
+    $element['subform']['field_stripe_price_code']['#access'] = in_array('field_fixed_period_amounts', $element['subform']['field_stripe_price_code']['#parents']);
+  }
 }
 
 /**
@@ -452,6 +457,7 @@ function wateraid_content_field_widget_complete_boolean_checkbox_form_alter(&$fi
 function wateraid_content_validate($form, FormStateInterface $form_state): void {
   $paragraphs = $form_state->getValue('field_content');
   $has_registration_form = FALSE;
+  $has_donate_widget = !empty($form_state->getValue(['field_donation_widget', 0, 'subform']));
 
   foreach ($paragraphs as $paragraph) {
     if ($paragraph['entity']->bundle() === 'event_registration_form') {
@@ -460,6 +466,14 @@ function wateraid_content_validate($form, FormStateInterface $form_state): void 
       }
       else {
         $form_state->setErrorByName('field_content', t('You can only add one Event Registration Form to a page.'));
+      }
+    }
+    elseif ($paragraph['entity']->bundle() === 'donation_widget') {
+      if ($has_donate_widget === FALSE) {
+        $has_donate_widget = TRUE;
+      }
+      else {
+        $form_state->setErrorByName('field_content', t('You can only add one Donation Widget to a page.'));
       }
     }
   }

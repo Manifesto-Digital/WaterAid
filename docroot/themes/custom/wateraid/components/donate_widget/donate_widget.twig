@@ -5,6 +5,7 @@
 
 {% set default_monthly_index = config.monthly_index ?? '1'%}
 {% set default_one_off_index = config.one_off_index ?? '1'%}
+{% set default_fixed_index = config.fixed_payment_index ?? '1'%}
 
 {% set payment_logos = [
   { src: 'wa-visa.svg',
@@ -65,6 +66,15 @@
             <input class="donate-widget__radio-input" type="radio" id="{{ one_off_id }}" name="frequency" value="one-off"
               {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
             <label class="donate-widget__radio-label" for="{{ one_off_id }}">One off</label>
+          </div>
+        {% endif %}
+        <!-- Option: Fixed Period -->
+        {% if fixed_amounts|length %}
+          {% set fixed_id = 'freq-fixed-' ~ id %}
+          <div class="donate-widget__option">
+            <input class="donate-widget__radio-input" type="radio" id="{{ fixed_id }}" name="frequency" value="fixed_period"
+                   {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
+            <label class="donate-widget__radio-label" for="{{ fixed_id }}">Fixed Period</label>
           </div>
         {% endif %}
       </div>
@@ -172,7 +182,7 @@
 
         <div class="donate-widget__amount-details">
           {% for item in one_off_amounts %}
-            {% set details_id = 'details-amount-' ~ item.amount ~ '-' ~ id %}
+            {% set details_id = 'details-one-off-amount' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
@@ -213,6 +223,68 @@
           <input type="text"
                  id="custom_amount_one_off"
                  name="custom_amount_one_off"/>
+        </div>
+      </fieldset>
+    {% endif %}
+    <!-- Fixed Period Options -->
+    {% if fixed_amounts|length %}
+      <fieldset class="donate-widget__options-group donate-widget__options-group--fixed-period is-hidden">
+        <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
+        <div class="donate-widget__options-wrapper">
+          {% for item in fixed_amounts %}
+            {% set radio_id = 'amount-' ~ item.amount ~ '-' ~ id %}
+
+            <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_fixed == item.amount %} hide-on-desktop{% endif %}">
+              {% if loop.revindex == 2 %}
+                <div class="donate-widget__increase-impact">
+                  {{ 'Increase your impact'|t }}
+                </div>
+              {% endif %}
+              <input class="donate-widget__radio-input"
+                     type="radio"
+                     id="{{ radio_id }}"
+                     name="fixed_amount"
+                     value="{{ item.amount }}"
+                     {% if loop.index == default_fixed_index %}checked{% endif %}>
+              <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
+                {{ item.amount == 'other' ? 'Other' : currency_prefix ~ item.amount }}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="donate-widget__amount-details">
+          {% for item in fixed_amounts %}
+            {% set details_id = 'details-fixed-amount' ~ item.amount ~ '-' ~ id %}
+
+            {% if item.title or item.description %}
+              <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
+                {% if item.image %}
+                  <div class="donate-widget__amount--image">
+                    <img loading="lazy" alt="" src="{{ item.image }}"/>
+                  </div>
+                {% endif %}
+                <div class="donate-widget__amount--meta">
+                  {% if item.title %}
+                    <div class="title">
+                      {% if item.icon %}
+                        <span class="icon"><img loading="lazy" alt="" src="{{ item.icon }}"/></span>
+                      {% endif %}
+                      {{ item.title }}
+                    </div>
+                  {% endif %}
+                  {% if item.description %}
+                    <div class="description">{{ item.description }}</div>
+                  {% endif %}
+                  {% if item.credit %}
+                    <div class="donate-widget__amount--meta--credit">
+                      {{ item.credit }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </fieldset>
     {% endif %}

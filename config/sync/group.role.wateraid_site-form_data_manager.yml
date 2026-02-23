@@ -6,17 +6,19 @@ dependencies:
     - group.type.wateraid_site
 id: wateraid_site-form_data_manager
 label: 'Form Data Manager'
-weight: -2
+weight: -1
 admin: false
 scope: individual
 global_role: null
 group_type: wateraid_site
 permissions:
+  - 'access group_node overview'
   - 'access group_webform overview'
   - 'create group_webform:webform entity'
   - 'create group_webform:webform relationship'
   - 'delete any group_webform:webform relationship'
   - 'delete own group_webform:webform relationship'
+  - 'submission_view_any group_webform:webform entity'
   - 'update any group_webform:webform entity'
   - 'update any group_webform:webform relationship'
   - 'update own group_webform:webform entity'
