@@ -7,7 +7,7 @@ dependencies:
     - user.role.wateraid_group_member
 id: wateraid_site-group_member
 label: 'Group Member'
-weight: -1
+weight: -6
 admin: false
 scope: outsider
 global_role: wateraid_group_member
