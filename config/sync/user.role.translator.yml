@@ -1,0 +1,85 @@
+uuid: 06798f90-7537-40cd-bcb8-7a8137c2e7fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+    - node.type.article
+    - node.type.donation
+    - node.type.event
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.page
+    - node.type.publication
+    - node.type.shorthand_story
+    - node.type.standard_page
+    - node.type.story
+    - node.type.webform
+    - taxonomy.vocabulary.get_involved
+    - taxonomy.vocabulary.subject_areas
+    - workflows.workflow.editorial
+  module:
+    - config_translation
+    - content_moderation
+    - content_translation
+    - group_content_menu
+    - language
+    - locale
+    - menu_link_content
+    - node
+    - paragraphs
+    - system
+    - tmgmt
+    - tmgmt_smartling
+id: translator
+label: Translator
+weight: -3
+is_admin: null
+permissions:
+  - 'accept translation jobs'
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access site in maintenance mode'
+  - 'administer languages'
+  - 'administer tmgmt'
+  - 'create content translations'
+  - 'create translation jobs'
+  - 'delete content translations'
+  - 'delete translation jobs'
+  - 'see smartling messages'
+  - 'send context smartling'
+  - 'submit translation jobs'
+  - 'translate any entity'
+  - 'translate article node'
+  - 'translate configuration'
+  - 'translate donation node'
+  - 'translate editable entities'
+  - 'translate event node'
+  - 'translate get_involved taxonomy_term'
+  - 'translate group_content_menu'
+  - 'translate interface'
+  - 'translate landing_page node'
+  - 'translate listing_page node'
+  - 'translate menu_link_content'
+  - 'translate page node'
+  - 'translate publication node'
+  - 'translate shorthand_story node'
+  - 'translate standard_page node'
+  - 'translate story node'
+  - 'translate subject_areas taxonomy_term'
+  - 'translate wateraid_site group'
+  - 'translate webform node'
+  - 'update content translations'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition request_changes'
+  - 'use editorial transition send_for_review'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'

@@ -24,6 +24,7 @@ dependencies:
     - node.type.story
     - node.type.webform
     - taxonomy.vocabulary.subject_areas
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - content_translation
@@ -87,6 +88,13 @@ permissions:
   - 'translate subject_areas taxonomy_term'
   - 'translate wateraid_site group'
   - 'update media'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition request_changes'
+  - 'use editorial transition send_for_review'
   - 'use text format full_html'
   - 'view any unpublished content'
   - 'view latest version'

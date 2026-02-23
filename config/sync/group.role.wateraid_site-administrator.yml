@@ -6,7 +6,7 @@ dependencies:
     - group.type.wateraid_site
 id: wateraid_site-administrator
 label: Administrator
-weight: -5
+weight: -6
 admin: true
 scope: individual
 global_role: null
