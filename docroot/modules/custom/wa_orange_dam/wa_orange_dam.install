@@ -61,5 +61,8 @@ function wa_orange_dam_get_schema(): array {
  */
 function wa_orange_dam_update_10001(): void {
   $schema = Database::getConnection()->schema();
-  $schema->createTable('wa_orange_dam', wa_orange_dam_get_schema());
+
+  if (!$schema->tableExists('wa_orange_dam')) {
+    $schema->createTable('wa_orange_dam', wa_orange_dam_get_schema());
+  }
 }
