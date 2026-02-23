@@ -66,6 +66,7 @@ dependencies:
     - shorthand
     - system
     - taxonomy
+    - tmgmt_smartling
     - toolbar
     - wateraid_donations
     - webform
@@ -348,7 +349,9 @@ permissions:
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
   - 'revert webform revisions'
+  - 'see smartling messages'
   - 'select account cancellation method'
+  - 'send context smartling'
   - 'skip CAPTCHA'
   - 'translate any entity'
   - 'translate article node'
