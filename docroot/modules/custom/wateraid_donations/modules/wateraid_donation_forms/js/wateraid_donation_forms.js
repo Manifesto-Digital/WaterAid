@@ -274,6 +274,10 @@
         let quizId = this.model.get('quizId');
         $('#edit-quiz-id').val(quizId);
       }
+
+      if (frequency === 'fixed_period') {
+        $('.form-item-donation-amount-amount-fixed-period-amounts-other').remove();
+      }
     },
     events: {
       "change fieldset.wa_donations_frequency": "handleFrequencyChange",
