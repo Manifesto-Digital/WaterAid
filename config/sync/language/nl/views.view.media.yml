@@ -10,12 +10,9 @@ display:
           label: Miniatuur
         name:
           label: Medianaam
-        bundle:
-          label: Type
         uid:
           label: Auteur
         status:
-          label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
@@ -47,9 +44,6 @@ display:
         name:
           expose:
             label: Medianaam
-        bundle:
-          expose:
-            label: Type
         status:
           expose:
             label: Waar

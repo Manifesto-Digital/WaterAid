@@ -1,4 +1,7 @@
 services:
+  logger.channel.wa_orange_dam:
+    parent: logger.channel_base
+    arguments: ['wa_orange_dam']
   wa_orange_dam.api:
     class: Drupal\wa_orange_dam\Service\Api
     arguments: ['@http_client']

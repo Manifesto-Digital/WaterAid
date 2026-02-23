@@ -60,7 +60,6 @@ module:
   group_content_menu_bundles: 0
   group_webform: 0
   help: 0
-  history: 0
   image: 0
   key_value_field: 0
   language: 0
@@ -73,6 +72,7 @@ module:
   loqate: 0
   loqate_email: 0
   mailer_transport: 0
+  mailsystem: 0
   masquerade: 0
   maxlength: 0
   media: 0
@@ -87,6 +87,7 @@ module:
   migrate: 0
   migrate_plus: 0
   migrate_tools: 0
+  mimemail: 0
   mysql: 0
   node: 0
   node_co_authors: 0
