@@ -126,6 +126,7 @@
     "drupal/svg_image_field": "^2.3",
     "drupal/symfony_mailer": "^2.0@beta",
     "drupal/tmgmt_google": "^1.2",
+    "drupal/tmgmt_smartling": "^9.21",
     "drupal/twig_tweak": "^3.4",
     "drupal/ultimate_cron": "^2.0@beta",
     "drupal/view_mode_selector": "^1.1",

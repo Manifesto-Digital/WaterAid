@@ -135,6 +135,14 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  tmgmt: 0
+  tmgmt_config: 0
+  tmgmt_content: 0
+  tmgmt_extension_suit: 0
+  tmgmt_file: 0
+  tmgmt_locale: 0
+  tmgmt_smartling: 0
+  tmgmt_smartling_context_debug: 0
   token: 0
   toolbar: 0
   twig_tweak: 0
@@ -158,6 +166,8 @@ module:
   wateraid_group: 0
   wateraid_just_giving: 0
   wateraid_phased_launch: 0
+  wateraid_tmgmt: 0
+  wateraid_tmgmt_cleanup: 0
   webform: 0
   webform_bankaccount: 0
   webform_capture_plus: 0

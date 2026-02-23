@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a234904b708eaef9c47dd932fb382bd8",
+    "content-hash": "ce8f920f2b3aeb2c6e36f6cf151e77f4",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -9890,6 +9890,130 @@
             }
         },
         {
+            "name": "drupal/tmgmt_extension_suit",
+            "version": "9.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tmgmt_extension_suit.git",
+                "reference": "8.x-9.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tmgmt_extension_suit-8.x-9.4.zip",
+                "reference": "8.x-9.4",
+                "shasum": "a0e00c57fe66521b6118d3c0ea0f666e5e08bab6"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10.1 || ^11",
+                "drupal/tmgmt": "~1.14",
+                "drupal/tmgmt_file": "*"
+            },
+            "require-dev": {
+                "drupal/tmgmt": "~1.0",
+                "drupal/tmgmt_local": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-9.4",
+                    "datestamp": "1740048692",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "creaoy",
+                    "homepage": "https://www.drupal.org/user/350147"
+                },
+                {
+                    "name": "dimitrystd",
+                    "homepage": "https://www.drupal.org/user/2947159"
+                },
+                {
+                    "name": "loparev",
+                    "homepage": "https://www.drupal.org/user/3158841"
+                },
+                {
+                    "name": "Soul88",
+                    "homepage": "https://www.drupal.org/user/1074416"
+                }
+            ],
+            "description": "Some additional functionality for TMGMT module.",
+            "homepage": "https://www.drupal.org/project/tmgmt_extension_suit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt_extension_suit"
+            }
+        },
+        {
+            "name": "drupal/tmgmt_file",
+            "version": "1.18.0",
+            "require": {
+                "drupal/core": "^10.2 || ^11",
+                "drupal/tmgmt": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.18",
+                    "datestamp": "1768203319",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "cgalli",
+                    "homepage": "https://www.drupal.org/user/77453"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "floretan",
+                    "homepage": "https://www.drupal.org/user/66163"
+                },
+                {
+                    "name": "fubhy",
+                    "homepage": "https://www.drupal.org/user/761344"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                },
+                {
+                    "name": "schnitzel",
+                    "homepage": "https://www.drupal.org/user/643820"
+                },
+                {
+                    "name": "webflo",
+                    "homepage": "https://www.drupal.org/user/254778"
+                }
+            ],
+            "description": "A translator which allows you to export source data into a file and import the translated in return.",
+            "homepage": "https://www.drupal.org/project/tmgmt",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt"
+            }
+        },
+        {
             "name": "drupal/tmgmt_google",
             "version": "1.2.0",
             "source": {
@@ -9936,6 +10060,79 @@
             "homepage": "https://www.drupal.org/project/tmgmt_google",
             "support": {
                 "source": "https://git.drupalcode.org/project/tmgmt_google"
+            }
+        },
+        {
+            "name": "drupal/tmgmt_smartling",
+            "version": "9.21.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tmgmt_smartling.git",
+                "reference": "8.x-9.21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tmgmt_smartling-8.x-9.21.zip",
+                "reference": "8.x-9.21",
+                "shasum": "7d338f7b4947616b52ab44c4a0237cba1892baac"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10.1 || ^11",
+                "drupal/tmgmt": "~1.14",
+                "drupal/tmgmt_extension_suit": "~9.4",
+                "drupal/tmgmt_file": "*",
+                "smartling/api-sdk-php": "~5"
+            },
+            "require-dev": {
+                "drupal/tmgmt": "~1.0",
+                "drupal/tmgmt_extension_suit": "~9.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-9.21",
+                    "datestamp": "1771518687",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "andypost",
+                    "homepage": "https://www.drupal.org/user/118908"
+                },
+                {
+                    "name": "creaoy",
+                    "homepage": "https://www.drupal.org/user/350147"
+                },
+                {
+                    "name": "dimitrystd",
+                    "homepage": "https://www.drupal.org/user/2947159"
+                },
+                {
+                    "name": "loparev",
+                    "homepage": "https://www.drupal.org/user/3158841"
+                },
+                {
+                    "name": "m1r1k",
+                    "homepage": "https://www.drupal.org/user/1835386"
+                },
+                {
+                    "name": "soul88",
+                    "homepage": "https://www.drupal.org/user/1074416"
+                }
+            ],
+            "description": "Smartling provider plugin",
+            "homepage": "https://www.drupal.org/project/tmgmt_smartling",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt_smartling",
+                "error": "Invalid dependency: \"cohesion\" is an unknown drupal 8 package name"
             }
         },
         {
@@ -13628,6 +13825,54 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "smartling/api-sdk-php",
+            "version": "5.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smartling/api-sdk-php.git",
+                "reference": "ebf56d4039c002d34fd7358c51ca40bc37e1d168"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smartling/api-sdk-php/zipball/ebf56d4039c002d34fd7358c51ca40bc37e1d168",
+                "reference": "ebf56d4039c002d34fd7358c51ca40bc37e1d168",
+                "shasum": ""
+            },
+            "require": {
+                "composer/semver": "^3.4.2",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.0.0 || ^7.0.0",
+                "php": "^7.3 || ^8.0",
+                "psr/log": "^1.0.0 || ^3.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Smartling\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP library to communicate with SmartlingAPI",
+            "homepage": "https://www.smartling.com",
+            "keywords": [
+                "automated translation",
+                "i18n",
+                "internationalization",
+                "smartling"
+            ],
+            "support": {
+                "issues": "https://github.com/Smartling/api-sdk-php/issues",
+                "source": "https://github.com/Smartling/api-sdk-php/tree/5.0.5"
+            },
+            "time": "2026-02-03T16:00:08+00:00"
         },
         {
             "name": "solarium/solarium",

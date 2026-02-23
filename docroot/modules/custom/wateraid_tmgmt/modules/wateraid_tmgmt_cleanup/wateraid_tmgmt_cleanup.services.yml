@@ -1,0 +1,6 @@
+services:
+  wateraid_tmgmt_cleanup:
+    class: Drupal\wateraid_tmgmt_cleanup\Service\WateraidTmgmtCleanup
+    arguments:
+      - '@entity_type.manager'
+      - '@queue'

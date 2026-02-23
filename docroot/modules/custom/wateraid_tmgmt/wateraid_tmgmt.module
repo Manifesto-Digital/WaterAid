@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Module file for WaterAid TMGMT.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function wateraid_tmgmt_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'tmgmt_message') {
+    $fields['email_notification_timestamp'] = BaseFieldDefinition::create('timestamp')
+      ->setLabel(t('Email notification timestamp'));
+
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function wateraid_tmgmt_cron(): void {
+  /** @var \Drupal\wateraid_tmgmt\EmailNotificationManager $email_notification_manager */
+  $email_notification_manager = Drupal::service('wateraid_tmgmt.email_notification_manager');
+  $email_notification_manager->generateNotificationEmails();
+}
+
+/**
+ * Implements hook_mail().
+ */
+function wateraid_tmgmt_mail($key, &$message, $params): void {
+
+  if ($key == 'wateraid_tmgmt_error_notification') {
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['headers']['From'] = \Drupal::config('system.site')->get('mail');
+    $message['subject'] = new TranslatableMarkup('Smartling translation error report (@env)', [
+      '@env' => $_ENV['AH_SITE_ENVIRONMENT'] ?? 'local',
+    ]);
+
+    $message['body'][] = $params['body'];
+  }
+}
