@@ -6,3 +6,4 @@ form.card:
     - core/drupal
     - core/jquery
     - core/drupal.dialog.ajax
+    - core/once

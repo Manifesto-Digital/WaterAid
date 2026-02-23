@@ -750,6 +750,7 @@ fieldset.next-form-step {
     width: 100%;
 
     .button--secondary {
+      @include base.button-secondary();
       max-width: 100%;
       width: 100%;
       display: block;
@@ -854,6 +855,30 @@ fieldset.next-form-step {
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
+  }
+}
+
+.jp-donation-modal {
+  .button__wrapper {
+    width: unset;
+    display: flex;
+    gap: 1em;
+    padding: base.$wa-spacing-04 0;
+
+    .button {
+      flex: 0 1 auto;
+      &.button--secondary {
+        width: unset;
+        color: base.$wa-blue;
+
+        &:hover {
+          color: base.$wa-blue;
+        }
+      }
+      &.button--primary {
+        min-width: unset;
+      }
     }
   }
 }

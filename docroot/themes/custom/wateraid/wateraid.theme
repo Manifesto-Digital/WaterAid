@@ -297,6 +297,14 @@ function wateraid_form_alter(&$form, FormStateInterface $form_state, $form_id): 
       $form['actions']['submit']['#button_type'] = 'webform-submit';
     }
   }
+
+  // Target form here as its been given an ID that cannot be used in
+  // hook_form_FORM_ID_alter.
+  if ($form_id == 'sf3ds-card-form') {
+    $form['#attributes']['class'][] = 'webform-submission-form';
+    $form['#attributes']['class'][] = 'webform-donations-page';
+    $form['#attributes']['class'][] = 'container-sm';
+  }
 }
 
 /**
