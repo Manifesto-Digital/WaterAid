@@ -859,6 +859,30 @@ fieldset.next-form-step {
   }
 }
 
+.jp-donation-modal {
+  .button__wrapper {
+    width: unset;
+    display: flex;
+    gap: 1em;
+    padding: base.$wa-spacing-04 0;
+
+    .button {
+      flex: 0 1 auto;
+      &.button--secondary {
+        width: unset;
+        color: base.$wa-blue;
+
+        &:hover {
+          color: base.$wa-blue;
+        }
+      }
+      &.button--primary {
+        min-width: unset;
+      }
+    }
+  }
+}
+
 fieldset.wa-donation-methods {
   border: none;
 
