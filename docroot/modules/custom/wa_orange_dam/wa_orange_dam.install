@@ -49,7 +49,7 @@ function wa_orange_dam_get_schema(): array {
         'type' => 'int',
         'length' => 255,
         'not null' => TRUE,
-        'default' => '',
+        'default' => 0,
       ],
     ],
     'primary key' => ['uid', 'mid', 'nid'],
