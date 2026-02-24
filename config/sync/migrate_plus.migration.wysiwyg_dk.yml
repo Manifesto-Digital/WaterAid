@@ -22,7 +22,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   status: status
   field_rich_text/value: field_wysiwyg_text_block/0
   field_rich_text/format:

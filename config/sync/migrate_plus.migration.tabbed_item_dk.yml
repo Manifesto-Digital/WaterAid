@@ -24,7 +24,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   status: status
   field_title: field_tab_header
   field_rich_text/value: field_tab_content/0

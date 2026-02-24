@@ -20,7 +20,7 @@ source:
 process:
   language:
     plugin: default_value
-    default_value: dk
+    default_value: da
   status_code:
     plugin: default_value
     default_value: 301

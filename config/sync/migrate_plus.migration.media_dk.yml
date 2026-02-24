@@ -19,7 +19,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   field_media_dam_image:
     plugin: asset_to_orange_dam
     source: field_remote_id_value
