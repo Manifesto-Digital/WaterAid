@@ -247,9 +247,9 @@ class DonationsWebformAmount extends WebformCompositeBase {
           // elements.
           if ($element['#value']['frequency'] === $type_key) {
             // Check existing value.
-            if (isset($element['#value']['amount'][$type_key])) {
+            if (isset( $element['#value']['amount'][$type_key]['amounts']['buttons'])) {
               // Check if the value is one of the pre-defined set.
-              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'];
+              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'] ?? NULL;
             }
             // Fallback to default from different structure after
             // normalisation.
@@ -321,7 +321,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
             $element['duration'][$type_key]['durations'] = [
               '#type' => 'webform_buttons',
               '#title' => t('Please select duration'),
-              '#default_value' => $duration_defaults['default_duration'],
+              '#default_value' => $duration_defaults['default_duration'] ?? NULL,
               '#after_build' => [
                 [self::class, 'afterBuild'],
               ],
@@ -362,7 +362,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
           }
           // Fallback to default from config.
           else {
-            $element['duration'][$type_key]['durations']['#default_value'] = $duration_defaults['default_duration'];
+            $element['duration'][$type_key]['durations']['#default_value'] = $duration_defaults['default_duration'] ?? NULL;
           }
 
         }

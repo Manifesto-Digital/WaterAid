@@ -993,7 +993,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     // Add the default duration to each frequency.
     foreach ($amount_defaults_all as $frequency_name => $amount_values) {
       if (isset($duration_defaults_all[$frequency_name])) {
-        $amount_defaults_all[$frequency_name]['default_duration'] = $duration_defaults_all[$frequency_name]['default_duration'];
+        $amount_defaults_all[$frequency_name]['default_duration'] = $duration_defaults_all[$frequency_name]['default_duration'] ?? NULL;
       }
     }
 
