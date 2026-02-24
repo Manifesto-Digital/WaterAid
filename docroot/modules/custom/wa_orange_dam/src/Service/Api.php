@@ -111,14 +111,12 @@ final class Api {
     if (!empty($format)) {
       $query['Format'] = $format;
     }
-    elseif ($width && $height) {
+    else {
+      $query['Format'] = 'TRX';
+    }
+    if ($width && $height) {
       $query['MaxWidth'] = $width;
       $query['MaxHeight'] = $height;
-    }
-    else {
-
-      // Default to the original image if no style or width provided.
-      $query['Format'] = 'TRX';
     }
 
     $url = $this->base . '/webapi/objectmanagement/share/getlink_4HZ_v1?' . http_build_query($query);
