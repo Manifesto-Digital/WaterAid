@@ -6,7 +6,7 @@ dependencies:
     - group.type.wateraid_site
 id: wateraid_site-content_manager
 label: Editor
-weight: -5
+weight: -4
 admin: false
 scope: individual
 global_role: null
