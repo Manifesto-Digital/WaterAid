@@ -1,0 +1,115 @@
+uuid: a6c34f07-3375-49dd-98a8-56e664b2ee45
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: country_details_in
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_in_nodes
+label: 'Country Details IN '
+source:
+  plugin: node_source
+  bundle: country_details
+  fields:
+    - field_audiences
+    - field_meta_tags
+    - field_modules
+    - field_hero
+    - field_teaser_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  moderation_state:
+    plugin: static_map
+    source: status
+    default_value: draft
+    map:
+      - draft
+      - published
+  title: title
+  field_teaser_text: body__summary
+  field_teaser_image:
+    plugin: migration_lookup
+    migration: media_in
+    source: field_teaser_image
+    no_stub: true
+  field_hero:
+    plugin: paragraph_migration_lookup
+    migration:
+      - hero_in
+    source: field_hero
+    no_stub: true
+  field_audience:
+    plugin: migration_lookup
+    migration: audiences_in
+    source: field_audiences
+    no_stub: true
+  field_meta_tags: field_meta_tags
+  uid:
+    plugin: migration_lookup
+    migration: users_in
+    source: uid
+    no_stub: true
+  temp_body:
+    -
+      plugin: body_to_paragraph
+      source: body__value
+  temp_paragraphs:
+    -
+      plugin: paragraph_migration_lookup
+      migration:
+        - general_text_area_in
+        - wysiwyg_in
+        - menu_cta_in
+        - resource_link_with_description_in
+        - faqs_in
+        - view_more_teasers_in
+        - aside_link_item_in
+        - info_section_in
+        - quote_simple_in
+        - image_in
+        - image_gallery_in
+        - video_in
+        - carousel_in
+        - content_carousel_in
+        - enhanced_carousel_in
+        - tabbed_in
+        - content_with_large_image_in
+        - aside_with_image_in
+        - quote_in
+        - listing_in
+        - biography_in
+        - activation_bar_item_in
+        - rainbow_link_item_in
+        - donation_cta_widget_embed_in
+        - hero_in_content_in
+        - variable_content_module_in
+        - statistics_in
+        - statistics_icons_in
+        - curated_listing_in
+        - curated_listing_overriden_in
+      source: field_modules
+  field_content:
+    plugin: merge_without_exception
+    source:
+      - '@temp_body'
+      - '@temp_paragraphs'
+destination:
+  plugin: 'entity:node'
+  default_bundle: standard_page
+idMap: {  }
+migration_dependencies:
+  required:
+    - audiences_in
+    - users_in
+    - hero_in
+include: null
