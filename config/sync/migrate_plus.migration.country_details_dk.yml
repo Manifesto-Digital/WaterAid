@@ -26,7 +26,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   status: status
   moderation_state:
     plugin: static_map

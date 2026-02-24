@@ -31,7 +31,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   temp_hero:
     plugin: migration_lookup
     migration: media_dk

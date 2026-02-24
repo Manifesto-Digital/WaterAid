@@ -20,7 +20,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   status: status
   name: name
   description/value: description__value

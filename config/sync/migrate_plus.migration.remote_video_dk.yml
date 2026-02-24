@@ -19,7 +19,7 @@ process:
   langcode:
     -
       plugin: default_value
-      default_value: dk
+      default_value: da
   field_media_oembed_video: field_media_video_embed_field_value
   uid:
     plugin: default_value
