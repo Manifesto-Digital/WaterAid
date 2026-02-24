@@ -1,0 +1,17 @@
+uuid: 1715c7f4-cfd8-4fd5-8ec6-9cfa25eb8cba
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_in_terms
+label: 'WaterAid IN migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/in site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: in_site_migration
+  migration_tags:
+    - wateraid_in

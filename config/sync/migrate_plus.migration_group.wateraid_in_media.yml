@@ -1,0 +1,17 @@
+uuid: c208588e-b592-41ea-bef7-c96a6bdef05e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_in_media
+label: 'WaterAid IN migration (Media)'
+description: 'Media from the wateraid.org/in site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: in_site_migration
+  migration_tags:
+    - wateraid_in

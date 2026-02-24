@@ -1,0 +1,59 @@
+uuid: 68ec60eb-d52c-4bdf-ae61-b090a399011f
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: activation_bar_item_washmatters
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_washmatters
+label: 'Activation Bar WASHMATTERS '
+source:
+  plugin: paragraph_source
+  bundle: activation_bar
+  fields:
+    - field_activation_bar_item
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - articles_washmatters
+        - campaigns_washmatters
+        - country_details_washmatters
+        - donation_forms_washmatters
+        - donation_landing_pages_washmatters
+        - events_washmatters
+        - filtered_landing_pages_washmatters
+        - flexible_content_washmatters
+        - get_involved_node_washmatters
+        - jobs_washmatters
+        - press_and_media_washmatters
+        - press_and_media_biographies_washmatters
+        - publication_washmatters
+        - standard_page_washmatters
+        - stories_washmatters
+        - webforms_washmatters
+      source: field_call_to_action_link
+    -
+      plugin: skip_on_empty
+      method: row
+  field_card_columns:
+    plugin: default_value
+    default_value: 2_columns
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null
