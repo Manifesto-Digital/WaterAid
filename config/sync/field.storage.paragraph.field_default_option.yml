@@ -1,0 +1,30 @@
+uuid: 0f4beaa1-539a-4ac6-8a21-d0cd69e04c9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_default_option
+field_name: field_default_option
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: monthly
+      label: Monthly
+    -
+      value: one_off
+      label: 'One Off'
+    -
+      value: fixed_period
+      label: 'Fixed Period'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

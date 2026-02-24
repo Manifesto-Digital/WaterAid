@@ -20,7 +20,7 @@
   h6 {
     padding-bottom: $wa-spacing-07;
   }
-  
+
   label.error {
     color: base.$wa-orange;
   }
@@ -757,7 +757,6 @@ fieldset.next-form-step {
     width: 100%;
 
     .button--secondary {
-      @include base.button-secondary();
       max-width: 100%;
       width: 100%;
       display: block;

@@ -55,7 +55,7 @@
           {% set monthly_id = 'freq-monthly-' ~ id %}
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ monthly_id }}" name="frequency" value="monthly"
-              {% if monthly_default == '1' or one_off_amounts|length <= 0 %}checked{% endif %}>
+              {% if default_option == 'monthly' %}checked{% endif %}>
             <label class="donate-widget__radio-label" for="{{ monthly_id }}">Monthly</label>
           </div>
         {% endif %}
@@ -64,7 +64,7 @@
           {% set one_off_id = 'freq-one-off-' ~ id %}
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ one_off_id }}" name="frequency" value="one-off"
-              {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
+              {% if default_option == 'one_off' %}checked{% endif %}>
             <label class="donate-widget__radio-label" for="{{ one_off_id }}">One off</label>
           </div>
         {% endif %}
@@ -73,7 +73,7 @@
           {% set fixed_id = 'freq-fixed-' ~ id %}
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ fixed_id }}" name="frequency" value="fixed_period"
-                   {% if monthly_default == '0' or monthly_amounts|length <= 0 %}checked{% endif %}>
+               {% if default_option == 'fixed_period' %}checked{% endif %}>
             <label class="donate-widget__radio-label" for="{{ fixed_id }}">Fixed Period</label>
           </div>
         {% endif %}
@@ -82,7 +82,7 @@
 
     <!-- Monthly Options -->
     {% if monthly_amounts|length %}
-      <fieldset class="donate-widget__options-group donate-widget__options-group--monthly">
+      <fieldset class="donate-widget__options-group donate-widget__options-group--monthly{% if default_option != 'monthly' %} is-hidden{% endif %}">
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in monthly_amounts %}
@@ -155,7 +155,7 @@
     {% endif %}
     <!-- One off Options -->
     {% if one_off_amounts|length %}
-      <fieldset class="donate-widget__options-group donate-widget__options-group--one-off is-hidden">
+      <fieldset class="donate-widget__options-group donate-widget__options-group--one-off{% if default_option != 'one_off' %} is-hidden{% endif %}">
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in one_off_amounts %}
@@ -228,7 +228,7 @@
     {% endif %}
     <!-- Fixed Period Options -->
     {% if fixed_amounts|length %}
-      <fieldset class="donate-widget__options-group donate-widget__options-group--fixed-period is-hidden">
+      <fieldset class="donate-widget__options-group donate-widget__options-group--fixed-period{% if default_option != 'fixed_period' %} is-hidden{% endif %}">
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in fixed_amounts %}
