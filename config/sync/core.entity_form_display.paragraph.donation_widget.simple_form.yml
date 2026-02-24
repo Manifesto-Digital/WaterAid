@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.simple_form
+    - field.field.paragraph.donation_widget.field_default_option
     - field.field.paragraph.donation_widget.field_fixed_index
     - field.field.paragraph.donation_widget.field_fixed_period_amounts
     - field.field.paragraph.donation_widget.field_heading_level
@@ -64,9 +65,8 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - field_override_webform
+        - field_default_option
         - field_webform_node
-        - field_monthly_default
       label: Content
       region: content
       parent_name: group_tabs
@@ -135,6 +135,12 @@ targetEntityType: paragraph
 bundle: donation_widget
 mode: simple_form
 content:
+  field_default_option:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_fixed_period_amounts:
     type: paragraphs
     weight: 0
@@ -154,13 +160,6 @@ content:
         collapse_edit_all: collapse_edit_all
         convert: '0'
         duplicate: duplicate
-    third_party_settings: {  }
-  field_monthly_default:
-    type: boolean_checkbox
-    weight: 2
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_monthly_donation_amounts:
     type: paragraphs
@@ -225,6 +224,7 @@ hidden:
   field_hide_mobile_fixed: true
   field_hide_mobile_monthly: true
   field_hide_mobile_one_off: true
+  field_monthly_default: true
   field_monthly_index: true
   field_one_off_index: true
   field_payin_link: true

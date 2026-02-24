@@ -101,12 +101,6 @@ function wateraid_donation_forms_webform_submission_create(WebformSubmissionInte
     return;
   }
 
-  $version = $webform->getThirdPartySetting('wateraid_forms', 'style_version', 'v2');
-  if ($version !== 'v2') {
-    // Do not alter steps unless the form is v2.
-    return;
-  }
-
   // Check elements and find the specific amounts' element.
   $elements_pages = $webform->getElementsDecoded();
   // Get page keys.

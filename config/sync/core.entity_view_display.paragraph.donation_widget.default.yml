@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.donation_widget.field_default_option
     - field.field.paragraph.donation_widget.field_fixed_index
     - field.field.paragraph.donation_widget.field_fixed_period_amounts
     - field.field.paragraph.donation_widget.field_heading_level
@@ -191,4 +192,5 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_default_option: true
   search_api_excerpt: true

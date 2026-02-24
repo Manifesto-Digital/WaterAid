@@ -54,9 +54,7 @@
       });
 
       // Exit if we don't have the necessary elements
-      if ((!amountRadios.length || !detailElements.length) &&
-        !(oneOffCustomAmountContainer || monthlyCustomAmountContainer)
-      ) {
+      if (!submitButton) {
         return;
       }
 
@@ -342,6 +340,8 @@
 
         window.location.href = redirectUrl;
       };
+
+      console.log(submitButton);
 
       submitButton.addEventListener('click', donateRedirection);
 
