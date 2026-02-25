@@ -9,22 +9,22 @@
 
 {% set payment_logos = [
   { src: 'wa-visa.svg',
-    alt: 'Visa'|t
+    alt: 'Visa'
   },
   { src: 'wa-mastercard.svg',
-    alt: 'Mastercard'|t
+    alt: 'Mastercard'
   },
   { src: 'wa-paypal.svg',
-    alt: 'PayPal'|t
+    alt: 'PayPal'
   },
   { src: 'wa-apple.svg',
-    alt: 'Apple Pay'|t
+    alt: 'Apple Pay'
   },
   { src: 'wa-google.svg',
-    alt: 'Google Pay'|t
+    alt: 'Google Pay'
   },
   { src: 'wa-direct-debit.svg',
-    alt: 'Direct debit'|t
+    alt: 'Direct debit'
   },
 ] %}
 
@@ -56,7 +56,7 @@
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ monthly_id }}" name="frequency" value="monthly"
               {% if default_option == 'monthly' %}checked{% endif %}>
-            <label class="donate-widget__radio-label" for="{{ monthly_id }}">{{ 'Monthly'|t }}</label>
+            <label class="donate-widget__radio-label" for="{{ monthly_id }}">Monthly</label>
           </div>
         {% endif %}
         <!-- Option: One off -->
@@ -65,7 +65,7 @@
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ one_off_id }}" name="frequency" value="one-off"
               {% if default_option == 'one_off' %}checked{% endif %}>
-            <label class="donate-widget__radio-label" for="{{ one_off_id }}">{{ 'One off'|t }}</label>
+            <label class="donate-widget__radio-label" for="{{ one_off_id }}">One off</label>
           </div>
         {% endif %}
         <!-- Option: Fixed Period -->
@@ -74,7 +74,7 @@
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ fixed_id }}" name="frequency" value="fixed_period"
                {% if default_option == 'fixed_period' %}checked{% endif %}>
-            <label class="donate-widget__radio-label" for="{{ fixed_id }}">{{ 'Fixed Period'|t }}</label>
+            <label class="donate-widget__radio-label" for="{{ fixed_id }}">Fixed Period</label>
           </div>
         {% endif %}
       </div>
@@ -101,7 +101,7 @@
                      value="{{ item.amount }}"
                      {% if loop.index == default_monthly_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-                {{ item.amount == 'other' ? 'Other'|t : currency_prefix ~ item.amount }}
+                {{ item.amount == 'other' ? 'Other' : currency_prefix ~ item.amount }}
               </label>
             </div>
           {% endfor %}
@@ -174,7 +174,7 @@
                      value="{{ item.amount }}"
                      {% if loop.index == default_one_off_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-                {{ item.amount == 'other' ? 'Other'|t : currency_prefix ~ item.amount }}
+                {{ item.amount == 'other' ? 'Other' : currency_prefix ~ item.amount }}
               </label>
             </div>
           {% endfor %}
@@ -247,7 +247,7 @@
                      value="{{ item.amount }}"
                      {% if loop.index == default_fixed_index %}checked{% endif %}>
               <label class="donate-widget__radio-label amount" for="{{ radio_id }}">
-                {{ item.amount == 'other' ? 'Other'|t : currency_prefix ~ item.amount }}
+                {{ item.amount == 'other' ? 'Other' : currency_prefix ~ item.amount }}
               </label>
             </div>
           {% endfor %}
@@ -335,7 +335,7 @@
       {# FR logo #}
       <span class="donate-widget__fr-logo">
         <a href="https://www.fundraisingregulator.org.uk/directory/wateraid?utm_source=WATERAID&utm_medium=badge" title="Visit the Fundraising Regulator's WaterAid report: opens in new window" target="_blank">
-          {{ 'Fundraising Regulator Logo'|t }}
+          Fundraising Regulator Logo
         </a>
       </span>
     </div>

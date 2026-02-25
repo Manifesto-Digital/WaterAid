@@ -5,7 +5,7 @@
     {% if not paragraph.field_link.isEmpty() %}
       {% set link = {
         url: paragraph.field_link.0.url,
-        title: paragraph.field_link.0.title|t,
+        title: paragraph.field_link.0.title,
       }%}
     {% endif %}
 

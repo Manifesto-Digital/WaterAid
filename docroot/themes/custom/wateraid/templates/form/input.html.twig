@@ -19,7 +19,7 @@
     }) }}
 
   {% else %}
-    {% set text = attributes.value|t %}
+    {% set text = attributes.value %}
     {% set theme = button_type == 'primary' ? 'primary' : 'secondary' %}
 
     {{ include('wateraid:button', {

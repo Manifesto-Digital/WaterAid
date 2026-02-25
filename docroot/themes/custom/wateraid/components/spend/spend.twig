@@ -30,9 +30,9 @@
     {% for key,item in sg_1_items %}
       <p>
         {% if item.entity.field_spend_amount.value %}
-          <strong>{{ item.entity|translation.field_spend_amount.value }}</strong>
+          <strong>{{ item.entity.field_spend_amount.value }}</strong>
         {% endif %}
-        {{ item.entity|translation.field_description.value }}
+        {{ item.entity.field_description.value }}
       </p>
     {% endfor %}
   </div>
@@ -45,9 +45,9 @@
     {% for key,item in sg_2_items %}
       <p>
         {% if item.entity.field_spend_amount.value %}
-          <strong>{{ item.entity|translation.field_spend_amount.value }}</strong>
+          <strong>{{ item.entity.field_spend_amount.value }}</strong>
         {% endif %}
-        {{ item.entity|translation.field_description.value }}
+        {{ item.entity.field_description.value }}
       </p>
     {% endfor %}
   </div>

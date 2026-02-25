@@ -11,14 +11,14 @@
 
   {% if search == '1' %}
     <div class="accordion__search">
-      <label for="accordionSearch">{{ search_label ? search_label : 'Search'|t }}</label>
+      <label for="accordionSearch">{{ search_label ? search_label : 'Search' }}</label>
       {% if search_description %}
         <span class="accordion__search--description" id="accordionSearchDesc">{{ search_description }}</span>
       {% endif %}
       <div class="accordion__search--wrapper">
         <input type="text" id="accordionSearch" aria-describedby="accordionSearchDesc">
         {{ include('wateraid:button', {
-          text: 'Search'|t,
+          text: 'Search',
           type: 'primary',
           theme: colour == 'light',
           icon: 'wa-utility-search',
