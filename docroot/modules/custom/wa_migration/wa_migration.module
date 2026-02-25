@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ *   Functions and hooks for the Migrations.
+ */
+
+/**
+ * Helper function to copy the existing migrations for a new site.
+ *
+ * @param array $suffixes
+ *   An array of suffixes for the new migrations.
+ */
+function wa_migration_copy_migrations(array $suffixes = []): void {
+
+  $config_factory = \Drupal::configFactory();
+  $uuid_service = \Drupal::service('uuid');
+  $migration_groups = $config_factory->listAll('migrate_plus.migration_group');
+  $migrations = $config_factory->listAll('migrate_plus.migration.');
+
+  foreach ($suffixes as $site) {
+    foreach ($migration_groups as $group) {
+      $config = $config_factory->getEditable($group);
+
+      // Only copy the NG migrations.
+      if (str_contains($config->getName(), '_pk')) {
+        $data = $config->getRawData();
+
+        $data['uuid'] = $uuid_service->generate();
+
+        $data['id'] = str_replace('_pk', '_' . $site, $data['id']);
+        $data['label'] = str_replace(' PK ', ' ' . strtoupper($site) . ' ', $data['label']);
+        $data['description'] = str_replace('/pk', '/' . $site, $data['description']);
+
+        foreach ($data['shared_configuration'] as &$shared_config) {
+          foreach ($shared_config as $key => $value) {
+            $shared_config[$key] = str_replace('pk', $site, $value);
+          }
+        }
+
+        $name = str_replace('pk', $site, $config->getName());
+
+        $clone = clone $config;
+
+        $clone->setName($name);
+        $clone->initWithData($data);
+        $clone->save();
+      }
+    }
+
+    foreach ($migrations as $migration) {
+      $config = $config_factory->getEditable($migration);
+
+      if (str_contains($config->getName(), '_pk')) {
+        $data = $config->getRawData();
+
+        $data['uuid'] = $uuid_service->generate();
+
+        $data['id'] = str_replace('_pk', '_' . $site, $data['id']);
+        $data['label'] = str_replace(' PK', ' ' . strtoupper($site), $data['label']);
+        $data['migration_group'] = str_replace('pk', $site, $data['migration_group']);
+
+        foreach ($data['process'] as &$processors) {
+          if (isset($processors['migration'])) {
+            if (is_array($processors['migration'])) {
+              foreach ($processors['migration'] as $key => $name) {
+                $processors['migration'][$key] = str_replace('_pk', '_' . $site, $name);
+              }
+            }
+            else {
+              $processors['migration'] = str_replace('_pk', '_' . $site, $processors['migration']);
+            }
+          }
+          elseif (is_array($processors)) {
+            foreach ($processors as &$processor) {
+              if (isset($processor['migration'])) {
+                if (is_array($processor['migration'])) {
+                  foreach ($processor['migration'] as $key => $name) {
+                    $processor['migration'][$key] = str_replace('_pk', '_' . $site, $name);
+                  }
+                }
+                else {
+                  $processor['migration'] = str_replace('_pk', '_' . $site, $processor['migration']);
+                }
+              }
+            }
+          }
+        }
+
+        if (isset($data['migration_dependencies']['required'])) {
+          foreach ($data['migration_dependencies']['required'] as $key => $name) {
+            $data['migration_dependencies']['required'][$key] = str_replace('_pk', '_' . $site, $name);
+          }
+        }
+
+        $name = str_replace('pk', $site, $config->getName());
+
+        $clone = clone $config;
+
+        $clone->setName($name);
+        $clone->initWithData($data);
+        $clone->save();
+      }
+    }
+  }
+}

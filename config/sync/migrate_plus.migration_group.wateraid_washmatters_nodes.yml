@@ -1,0 +1,17 @@
+uuid: e9534d01-03d9-42bc-ad5e-93d3873a09a3
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_washmatters_nodes
+label: 'WaterAid WASHMATTERS migration (Nodes)'
+description: 'Nodes from the wateraid.org/washmatters site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: washmatters_site_migration
+  migration_tags:
+    - wateraid_washmatters

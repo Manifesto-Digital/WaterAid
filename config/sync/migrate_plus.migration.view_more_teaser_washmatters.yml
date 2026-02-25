@@ -1,0 +1,42 @@
+uuid: f6f0c53a-b2e1-4459-a6d1-9204da81d7d8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: view_more_teaser_washmatters
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_washmatters
+label: 'View More Teaser WASHMATTERS '
+source:
+  plugin: paragraph_source
+  bundle: view_more_teaser
+  fields:
+    - field_get_involved_content
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - get_involved_node_washmatters
+        - flexible_content_washmatters
+      source: field_get_involved_content
+    -
+      plugin: skip_on_empty
+      method: row
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null

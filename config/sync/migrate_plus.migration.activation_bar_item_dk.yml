@@ -1,0 +1,59 @@
+uuid: 48f176be-57ce-410f-a3e0-76967b9644a8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: activation_bar_item_dk
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_dk
+label: 'Activation Bar DK '
+source:
+  plugin: paragraph_source
+  bundle: activation_bar
+  fields:
+    - field_activation_bar_item
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: da
+  status: status
+  field_cards:
+    -
+      plugin: card_migration_lookup
+      migration:
+        - articles_dk
+        - campaigns_dk
+        - country_details_dk
+        - donation_forms_dk
+        - donation_landing_pages_dk
+        - events_dk
+        - filtered_landing_pages_dk
+        - flexible_content_dk
+        - get_involved_node_dk
+        - jobs_dk
+        - press_and_media_dk
+        - press_and_media_biographies_dk
+        - publication_dk
+        - standard_page_dk
+        - stories_dk
+        - webforms_dk
+      source: field_call_to_action_link
+    -
+      plugin: skip_on_empty
+      method: row
+  field_card_columns:
+    plugin: default_value
+    default_value: 2_columns
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: card_collection
+idMap: {  }
+migration_dependencies: {  }
+include: null
