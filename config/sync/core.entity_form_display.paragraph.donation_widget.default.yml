@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.donation_widget.field_default_option
     - field.field.paragraph.donation_widget.field_fixed_index
     - field.field.paragraph.donation_widget.field_fixed_period_amounts
     - field.field.paragraph.donation_widget.field_heading_level
@@ -50,10 +51,9 @@ third_party_settings:
       children:
         - field_title
         - field_heading_level
-        - field_override_webform
         - field_webform_node
         - field_payin_link
-        - field_monthly_default
+        - field_default_option
       label: Content
       region: content
       parent_name: group_tabs
@@ -129,6 +129,12 @@ targetEntityType: paragraph
 bundle: donation_widget
 mode: default
 content:
+  field_default_option:
+    type: options_select
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_fixed_index:
     type: options_select
     weight: 2
@@ -181,13 +187,6 @@ content:
     region: content
     settings:
       placeholder: ''
-    third_party_settings: {  }
-  field_monthly_default:
-    type: boolean_checkbox
-    weight: 6
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_monthly_donation_amounts:
     type: paragraphs
@@ -281,4 +280,5 @@ hidden:
   field_hide_mobile_fixed: true
   field_hide_mobile_monthly: true
   field_hide_mobile_one_off: true
+  field_monthly_default: true
   status: true

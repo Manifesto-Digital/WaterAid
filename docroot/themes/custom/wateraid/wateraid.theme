@@ -361,6 +361,34 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   $variables['one_off_donation_amounts'] = $one_off_amounts;
   $variables['fixed_period_donation_amounts'] = $fixed_amounts;
 
+  $default_option = $paragraph->get('field_default_option')->getString();
+  $amounts_field = $default_option . '_donation_amounts';
+
+  // If there are no amounts set for the default option, we'll see if we can
+  // work out which of the other ones we should use.
+  if (empty($variables[$amounts_field])) {
+    $options = [
+      'monthly' => 'monthly',
+      'one_off' => 'one_off',
+      'fixed_period' => 'fixed_period',
+    ];
+
+    unset($options[$default_option]);
+
+    while (!empty($options)) {
+      $option = array_shift($options);
+      $amounts_field = $option . '_donation_amounts';
+
+      // If the option has amounts, then use it.
+      if (!empty($variables[$amounts_field])) {
+        $default_option = $option;
+        $options = [];
+      }
+    }
+
+    $variables['default_option'] = $default_option;
+  }
+
   $variables['config'] = [
     'monthly_index' => $paragraph->get('field_monthly_index')->isEmpty() ? NULL : $paragraph->get('field_monthly_index')->getString(),
     'one_off_index' => $paragraph->get('field_one_off_index')->isEmpty() ? NULL : $paragraph->get('field_one_off_index')->getString(),
