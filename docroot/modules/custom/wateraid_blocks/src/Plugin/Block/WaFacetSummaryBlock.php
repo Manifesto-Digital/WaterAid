@@ -121,23 +121,11 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
             }
             else {
 
-              // Ensure we don't have random numbers set that might accidentally
-              // clash with genuine terms of this type.
-              if ($terms = \Drupal::entityTypeManager()
+              /** @var \Drupal\taxonomy\TermInterface $term */
+              foreach (\Drupal::entityTypeManager()
                 ->getStorage('taxonomy_term')
-                ->getQuery()
-                ->condition('vid', $vocab)
-                ->condition('tid', $tids, 'IN')
-                ->accessCheck(FALSE)
-                ->execute()
-              ) {
-
-                /** @var \Drupal\taxonomy\TermInterface $term */
-                foreach (\Drupal::entityTypeManager()
-                  ->getStorage('taxonomy_term')
-                  ->loadMultiple($terms) as $term) {
-                  $links[] = self::getLink($term->label(), $term->id(), $vocab, $node->id(), $params);
-                }
+                ->loadMultiple($terms) as $term) {
+                $links[] = self::getLink($term->label(), $term->id(), $vocab, $node->id(), $params);
               }
             }
           }
