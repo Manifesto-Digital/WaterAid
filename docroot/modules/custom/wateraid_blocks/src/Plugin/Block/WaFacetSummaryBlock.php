@@ -124,7 +124,7 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
               /** @var \Drupal\taxonomy\TermInterface $term */
               foreach (\Drupal::entityTypeManager()
                 ->getStorage('taxonomy_term')
-                ->loadMultiple($terms) as $term) {
+                ->loadMultiple($tids) as $term) {
                 $links[] = self::getLink($term->label(), $term->id(), $vocab, $node->id(), $params);
               }
             }
