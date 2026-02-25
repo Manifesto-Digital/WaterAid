@@ -72,8 +72,6 @@ class QueueHandler {
     $owner   = $webform->getOwner();
     $date    = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
 
-//    \Drupal::logger('azure_blob_storage')->notice(print_r($submission->getData(), TRUE));
-
     if ($isDonationSubmission) {
       if ($webform->id() === 'pay_in_your_fundraising') {
         $submission_data = self::mapPayInFundraising($submission);
@@ -232,11 +230,11 @@ class QueueHandler {
       $mappedData['in_memory_title']        = self::mapSafeValue($submissionData['in_memory'],'in_memory_title');
     }
 
-    if (!empty($submissionData['communication_preferences']['opt_in_email'])) {
+    if (!empty($submissionData['communication_preferences']['opt_in_email']) || $submissionData['communication_preferences'][0] == 'opt_in_email') {
       $mappedData['communication_preferences']['opt_in_email'] = TRUE;
     }
 
-    if (!empty($submissionData['communication_preferences']['opt_in_post'])) {
+    if (!empty($submissionData['communication_preferences']['opt_out_post'] || $submissionData['communication_preferences'][0] == 'opt_out_post')) {
       $mappedData['communication_preferences']['opt_out_post'] = TRUE;
     }
 
