@@ -1,0 +1,27 @@
+uuid: 2df95529-0451-4f41-b690-6547c9ead5d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_default_option
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.donation_widget.field_default_option
+field_name: field_default_option
+entity_type: paragraph
+bundle: donation_widget
+label: 'Default Option'
+description: 'Select the default frequency option to be selected. If you do not enter values for the selected default, this will be automatically calculated.'
+required: true
+translatable: false
+default_value:
+  -
+    value: monthly
+default_value_callback: ''
+settings: {  }
+field_type: list_string

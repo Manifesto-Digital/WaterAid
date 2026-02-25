@@ -1,0 +1,159 @@
+uuid: 94fdea23-bc62-470f-bf33-129b4e65e502
+langcode: en
+status: true
+dependencies:
+  module:
+    - tmgmt_smartling
+_core:
+  default_config_hash: U4LAxHXLm-E1HN1BhIjIA_u_d1ApA5ydmqBZZAkMS9k
+name: smartling
+label: 'Smartling translator (Sub-Prod Site)'
+description: 'Smartling Translator service.'
+auto_accept: true
+weight: -100
+plugin: smartling
+settings:
+  project_id: 354aee096
+  user_id: nmzolzkypapdudyjnqzzzjhofzcwga
+  token_secret: '8nbj7kft5dlie44o3pkj484tGI]gs7vgt0mgm1e1iar5avevd5at8'
+  auto_authorize_locales: true
+  callback_url_use: false
+  callback_url_host: ''
+  retrieval_type: published
+  scheme: public
+  contextUsername: platform@wateraid.org
+  context_url_host: ''
+  context_skip_host_verifying: false
+  custom_regexp_placeholder: '(@|%|!)[\w-]+'
+  translatable_attributes: 'title, alt'
+  exclude_translatable_attributes: ''
+  force_block_for_tags: ''
+  enable_smartling_logging: true
+  enable_notifications: true
+  async_mode: false
+  enable_basic_auth: false
+  download_by_job_items: false
+  basic_auth:
+    login: ''
+    password: hoO29$Gdl!oS
+  exclude_context_options:
+    node: '0'
+    'node:article': '0'
+    'node:donation': '0'
+    'node:event': '0'
+    'node:landing_page': '0'
+    'node:listing_page': '0'
+    'node:page': '0'
+    'node:publication': '0'
+    'node:shorthand_story': '0'
+    'node:standard_page': '0'
+    'node:story': '0'
+    'node:webform': '0'
+    block_content: '1'
+    'block_content:basic': '0'
+    content_moderation_state: '1'
+    'content_moderation_state:content_moderation_state': '0'
+    crop: '1'
+    'crop:focal_point': '0'
+    group: '0'
+    'group:wateraid_site': '0'
+    group_content_menu: '0'
+    'group_content_menu:donate_footer_menu': '0'
+    'group_content_menu:donate_header_menu': '0'
+    'group_content_menu:footer_primary_menu': '0'
+    'group_content_menu:footer_secondary_menu': '0'
+    'group_content_menu:wateraid_site_menu': '0'
+    group_relationship: '0'
+    'group_relationship:wateraid_site-12d0799c2903a95378': '0'
+    'group_relationship:wateraid_site-19c86b14bfd2e26e40': '0'
+    'group_relationship:wateraid_site-1c02bee45dced35c43': '0'
+    'group_relationship:wateraid_site-2dbfd00d8b1620b0e5': '0'
+    'group_relationship:wateraid_site-5515227a4518b62daf': '0'
+    'group_relationship:wateraid_site-9f5c3884f2c8146904': '0'
+    'group_relationship:wateraid_site-a177e81f7e11c2ed26': '0'
+    'group_relationship:wateraid_site-a9e15da1a4770c48b4': '0'
+    'group_relationship:wateraid_site-b7d23b07d4c365567b': '0'
+    'group_relationship:wateraid_site-d387b335c99fbc98b5': '0'
+    'group_relationship:wateraid_site-da761e30ee7506a19e': '0'
+    'group_relationship:wateraid_site-fed4c836730407570c': '0'
+    'group_relationship:wateraid_site-group_membership': '0'
+    'group_relationship:wateraid_site-group_node-article': '0'
+    'group_relationship:wateraid_site-group_node-event': '0'
+    'group_relationship:wateraid_site-group_node-page': '0'
+    'group_relationship:wateraid_site-group_node-story': '0'
+    'group_relationship:wateraid_site-group_node-webform': '0'
+    media: '1'
+    'media:dam_file': '0'
+    'media:dam_image': '0'
+    'media:dam_video': '0'
+    'media:donation_icon_library': '0'
+    'media:icon_library': '0'
+    'media:local_file': '0'
+    'media:local_image': '0'
+    'media:local_video': '0'
+    'media:remote_video': '0'
+    paragraph: '1'
+    'paragraph:accordion': '0'
+    'paragraph:accordion_item': '0'
+    'paragraph:call_to_action': '0'
+    'paragraph:cancel_anytime': '0'
+    'paragraph:card_collection': '0'
+    'paragraph:donate_block': '0'
+    'paragraph:donate_exit_modal': '0'
+    'paragraph:donation_amount': '0'
+    'paragraph:donation_placeholder_do_not_use': '0'
+    'paragraph:donation_widget': '0'
+    'paragraph:download_widget': '0'
+    'paragraph:event_registration_form': '0'
+    'paragraph:external_card': '0'
+    'paragraph:facts_and_stats': '0'
+    'paragraph:gallery_item': '0'
+    'paragraph:hero_basic': '0'
+    'paragraph:hero_donate': '0'
+    'paragraph:hero_image': '0'
+    'paragraph:hero_news': '0'
+    'paragraph:hero_search': '0'
+    'paragraph:hero_story': '0'
+    'paragraph:hero_video': '0'
+    'paragraph:image': '0'
+    'paragraph:image_gallery': '0'
+    'paragraph:image_with_quote_sidebar': '0'
+    'paragraph:internal_card': '0'
+    'paragraph:parallax_scroll': '0'
+    'paragraph:quote': '0'
+    'paragraph:related_content': '0'
+    'paragraph:rich_text': '0'
+    'paragraph:scroll_image': '0'
+    'paragraph:spend': '0'
+    'paragraph:spend_amount': '0'
+    'paragraph:spend_item': '0'
+    'paragraph:spend_module': '0'
+    'paragraph:stats_item': '0'
+    'paragraph:temp_paragraph': '0'
+    'paragraph:text_media': '0'
+    'paragraph:text_over_media': '0'
+    'paragraph:video': '0'
+    'paragraph:webform_poc': '0'
+    taxonomy_term: '0'
+    'taxonomy_term:audiences': '0'
+    'taxonomy_term:countries': '0'
+    'taxonomy_term:dam_media': '0'
+    'taxonomy_term:event_types': '0'
+    'taxonomy_term:get_involved': '0'
+    'taxonomy_term:subject_areas': '0'
+    'taxonomy_term:themes': '0'
+    'taxonomy_term:topic': '0'
+    user: '0'
+    'user:user': '0'
+remote_languages_mappings:
+  en: ''
+  sv: ''
+  ja: ''
+  hi: ''
+  pt: pt-PT
+  fr: fr-FR
+  es: es-LA
+  da: ''
+  nl: ''
+  or: ''
+  bn: ''

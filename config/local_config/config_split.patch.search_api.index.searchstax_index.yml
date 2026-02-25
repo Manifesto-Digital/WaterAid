@@ -1,7 +1,21 @@
 adding:
   dependencies:
     config:
+      - field.storage.node.field_age_range
       - search_api.server.ddev_solr_local
+  field_settings:
+    field_age_range:
+      label: Age
+      datasource_id: 'entity:node'
+      property_path: field_age_range
+      type: string
+      dependencies:
+        config:
+          - field.storage.node.field_age_range
+  processor_settings:
+    html_filter:
+      fields:
+        - field_age_range
   server: ddev_solr_local
 removing:
   dependencies:

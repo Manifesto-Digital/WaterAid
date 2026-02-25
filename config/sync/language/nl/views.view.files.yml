@@ -13,6 +13,7 @@ display:
         filesize:
           label: Grootte
         status:
+          label: Status
           settings:
             format_custom_false: Tijdelijk
         created:
@@ -49,6 +50,9 @@ display:
         filemime:
           expose:
             label: MIME-type
+        status:
+          expose:
+            label: Status
   page_1:
     display_title: Bestandenoverzicht
     display_options:

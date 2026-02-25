@@ -1,0 +1,24 @@
+wateraid_tmgmt.admin_translations:
+  title: 'Translation'
+  route_name: wateraid_tmgmt.admin_translations
+  parent: system.admin_wateraid
+
+wateraid_tmgmt.source_overview:
+  title: 'Sources'
+  description: 'Custom Bulk translation operation.'
+  route_name: wateraid_tmgmt.source_overview
+  parent: wateraid_tmgmt.admin_translations
+  weight: 15
+
+wateraid_tmgmt.remote_error_log_form:
+  title: 'Remote Error Logs'
+  description: 'Debug Smartling error logs.'
+  route_name: wateraid_tmgmt.remote_error_log_form
+  parent: wateraid_tmgmt.admin_translations
+  weight: 16
+
+wateraid_tmgmt.settings:
+  title: WaterAid TMGMT Settings
+  route_name: wateraid_tmgmt.settings
+  parent: wateraid_tmgmt.admin_translations
+  weight: 10

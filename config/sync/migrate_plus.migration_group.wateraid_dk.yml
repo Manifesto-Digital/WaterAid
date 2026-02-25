@@ -1,0 +1,17 @@
+uuid: 8579bc70-bccd-4f45-8ef4-ded90d2f52a0
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_dk
+label: 'WaterAid DK migration'
+description: 'Content from the wateraid.org/dk site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: dk_site_migration
+  migration_tags:
+    - wateraid_dk

@@ -1,0 +1,76 @@
+uuid: 35207f1e-0209-4b37-9799-54fd81fa5fc4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: countries_dk
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_dk_terms
+label: 'Countries DK '
+source:
+  plugin: term_source
+  bundle: countries
+  fields:
+    - field_get_involv_category_title
+    - field_get_involved_description
+    - field_add_to_site_selector
+    - field_country_code
+    - field_is_current_site
+    - field_sequence_number
+    - field_url
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: da
+  status: status
+  name: name
+  description/value: description__value
+  description/format:
+    -
+      plugin: default_value
+      default_value: full_html
+  weight: weight
+  field_category_title/value: field_get_involv_category_title
+  field_category_description/value: field_get_involved_description
+  field_add_to_site_selector/value: field_add_to_site_selector
+  field_country_code/value: field_country_code
+  field_is_current_site/value: field_is_current_site
+  field_sequence_number/value: field_sequence_number
+  field_url/uri:
+    -
+      plugin: link_migration_lookup
+      migration:
+        - articles_dk
+        - campaigns_dk
+        - country_details_dk
+        - donation_forms_dk
+        - donation_landing_pages_dk
+        - events_dk
+        - filtered_landing_pages_dk
+        - flexible_content_dk
+        - get_involved_node_dk
+        - jobs_dk
+        - press_and_media_dk
+        - press_and_media_biographies_dk
+        - publication_dk
+        - standard_page_dk
+        - stories_dk
+        - webforms_dk
+      source: field_url
+  parent:
+    plugin: migration_lookup
+    migration: countries_dk
+    source: parent
+destination:
+  plugin: 'wa_term:taxonomy_term'
+  default_bundle: countries
+idMap: {  }
+migration_dependencies: {  }
+include: null

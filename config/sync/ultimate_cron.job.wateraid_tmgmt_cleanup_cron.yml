@@ -1,0 +1,30 @@
+uuid: 4e96159b-25e1-460f-a229-8bfa567c407c
+langcode: en
+status: true
+dependencies:
+  module:
+    - wateraid_tmgmt_cleanup
+title: 'Default cron handler'
+id: wateraid_tmgmt_cleanup_cron
+weight: 0
+module: wateraid_tmgmt_cleanup
+callback: 'wateraid_tmgmt_cleanup#cron'
+scheduler:
+  id: crontab
+  configuration:
+    rules:
+      - '0 2 * * *'
+    catch_up: 0
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

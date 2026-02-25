@@ -1,0 +1,40 @@
+uuid: 22166db1-a412-4dfd-88a5-a3c5713b4801
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: statistics_washmatters
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_washmatters
+label: 'Statistics WASHMATTERS '
+source:
+  plugin: paragraph_source
+  bundle: statistics
+  fields:
+    - field_section_title
+    - field_statistic
+process:
+  langcode:
+    plugin: default_value
+    default_value: en
+  status: status
+  field_stat_items:
+    plugin: paragraph_migration_lookup
+    migration: statistic_washmatters
+    source: field_statistic
+    no_stub: true
+  field_title: field_section_title
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: facts_and_stats
+idMap: {  }
+migration_dependencies:
+  required:
+    - statistic_washmatters
+include: null

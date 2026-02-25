@@ -10,6 +10,8 @@ display:
           admin_label: Ikon
         severity:
           label: Grad
+        type:
+          label: Type
         timestamp:
           label: Dato
         message:
@@ -36,6 +38,9 @@ display:
           admin_label: 'Ingen logbeskeder til rådighed.'
           content: 'Ingen logbeskeder til rådighed.'
       filters:
+        type:
+          expose:
+            label: Type
         severity:
           expose:
             label: Grad
