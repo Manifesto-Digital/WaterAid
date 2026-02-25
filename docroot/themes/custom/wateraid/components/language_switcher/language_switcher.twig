@@ -13,7 +13,7 @@
           {% set is_current_language = link.language.id == get_current_language_id() %}
           <option
             data-jump-url="{{ path(link.url.routeName, link.url.routeParameters, {'language': link.language}) }}"
-            {% if is_current_language %}aria-label="{{ link.title }} {{ '(currently selected)'|t }}"{% endif %}
+            {% if is_current_language %}aria-label="{{ link.title }} (currently selected)"{% endif %}
           >
             {{ link.title }}{% if is_current_language %} &#10003;{% endif %}
           </option>

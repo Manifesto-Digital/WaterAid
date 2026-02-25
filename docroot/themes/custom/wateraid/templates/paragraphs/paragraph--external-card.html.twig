@@ -1,7 +1,7 @@
 {{ include('wateraid:card', {
   attributes: attributes,
-  heading: paragraph.field_link.0.title|t,
-  description: paragraph.field_description.0.value|t,
+  heading: paragraph.field_link.0.title,
+  description: paragraph.field_description.0.value,
   image: content.field_media,
   url: paragraph.field_link.0.url,
   variant: 'signposting',
