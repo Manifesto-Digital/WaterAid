@@ -6,7 +6,11 @@ dependencies:
     - field.storage.node.field_view
     - node.type.listing_page
   module:
+    - tmgmt_content
     - viewsreference
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.listing_page.field_view
 field_name: field_view
 entity_type: node
@@ -37,6 +41,8 @@ settings:
     search_jp: search_jp
     stories_solr: stories_solr
     stories_solr_jp: stories_solr_jp
+    teaching_resources_solr: teaching_resources_solr
+    teaching_resources_solr_jp: teaching_resources_solr_jp
   enabled_settings:
     argument: argument
 field_type: viewsreference
