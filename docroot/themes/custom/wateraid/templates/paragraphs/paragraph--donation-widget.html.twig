@@ -52,7 +52,7 @@
   <div class="{{ classes }}">
     <div{{ attributes }}>
       {{ include('wateraid:donate_widget', {
-        heading: paragraph.field_title.value,
+        heading: paragraph.field_title.value|t,
         heading_level: paragraph.field_heading_level.value,
         button_text: 'Donate securely now',
         webform_node: webform_path,
@@ -61,7 +61,7 @@
         fixed_amounts: fixed_period_donation_amounts,
         default_option: default_option,
         additional_link: paragraph.field_payin_link.0.title ? {
-          title: paragraph.field_payin_link.0.title,
+          title: paragraph.field_payin_link.0.title|t,
           href: paragraph.field_payin_link.0.url,
         } : {},
         variant: parent_bundle == 'hero_donate' ? 'hero' : 'default',

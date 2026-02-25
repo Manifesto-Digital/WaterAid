@@ -28,6 +28,6 @@
 {% if title is not empty or required -%}
   <label{{ attributes.addClass(classes) }}>{{ title }}</label>
   {% if not required and type not in field_types %}
-    <span class="optional">(optional)</span>
+    <span class="optional">({{ 'optional'|t }})</span>
   {% endif %}
 {%- endif %}

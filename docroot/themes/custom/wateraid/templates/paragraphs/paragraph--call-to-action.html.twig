@@ -42,14 +42,14 @@
 {% if not paragraph.field_primary_cta.isEmpty() %}
   {% set cta = {
     url: paragraph.field_primary_cta.0.url,
-    title: paragraph.field_primary_cta.0.title,
+    title: paragraph.field_primary_cta.0.title|t,
   } %}
 {% endif %}
 
 {% if not paragraph.field_link.isEmpty() %}
   {% set link = {
     url: paragraph.field_link.0.url,
-    title: paragraph.field_link.0.title,
+    title: paragraph.field_link.0.title|t,
   } %}
 {% endif %}
 

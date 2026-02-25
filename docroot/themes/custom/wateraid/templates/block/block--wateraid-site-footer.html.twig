@@ -26,14 +26,14 @@
  */
 #}
 {# Footer variables #}
-{% set facebook = field_facebook.0['#title'] %}
-{% set instagram = field_instagram.0['#title'] %}
-{% set tiktok = field_tiktok.0['#title'] %}
-{% set linkedin = field_linkedin.0['#title'] %}
-{% set youtube = field_youtube.0['#title'] %}
+{% set facebook = field_facebook.0['#title']|t %}
+{% set instagram = field_instagram.0['#title']|t %}
+{% set tiktok = field_tiktok.0['#title']|t %}
+{% set linkedin = field_linkedin.0['#title']|t %}
+{% set youtube = field_youtube.0['#title']|t %}
 {% set cta = {
   link: field_donate_link.0['#url'],
-  text: field_donate_link.0['#title']
+  text: field_donate_link.0['#title']|t
 } %}
 {% set contact_details = {
   tel: field_phone_number|render|striptags|trim,

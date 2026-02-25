@@ -17,21 +17,21 @@
 
   <div class="card__body">
     <{{ tag }} class="card__heading pseudo-h3">
-    {{ heading }}
-  </{{ tag }} >
+      {{ heading }}
+    </{{ tag }} >
 
-  <div class="card__description">
-    {{ description }}
-  </div>
-
-  {% if url %}
-    <div class="card__link">
-      {{ include('wateraid:link', {
-        text: link_text,
-        link: url,
-        type: 'text',
-      }) }}
+    <div class="card__description">
+      {{ description }}
     </div>
-  {% endif %}
-</div>
+
+    {% if url %}
+      <div class="card__link">
+        {{ include('wateraid:link', {
+          text: link_text,
+          link: url,
+          type: 'text',
+        }) }}
+      </div>
+    {% endif %}
+  </div>
 </div>
