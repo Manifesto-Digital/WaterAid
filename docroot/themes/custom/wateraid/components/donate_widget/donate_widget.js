@@ -341,8 +341,6 @@
         window.location.href = redirectUrl;
       };
 
-      console.log(submitButton);
-
       submitButton.addEventListener('click', donateRedirection);
 
       // Run the function once on page load to set the initial state correctly.

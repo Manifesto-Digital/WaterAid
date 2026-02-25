@@ -247,18 +247,15 @@
         (function (thisouter) {
           return function (data) {
             thisouter.ajaxrunning = false;
-            console.log(data);
             // Test for an error.
             if (data.Items.length === 1 && typeof(data.Items[0].Error) !== "undefined") {
               // Show the error message.
               alert(data.Items[0].Description);
-              console.log(data);
             }
             else {
               // Check if there were any items found.
               if (data.Items.length === 0) {
                 alert(Drupal.t("Sorry, there were no results"));
-                console.log(data);
               }
               else {
                 // FYI: The output is a JS object (e.g. data.Items[0].IsCorrect), the keys being:
@@ -283,12 +280,10 @@
                 if (data.Items[0].IsCorrect) {
                   // Bank account details are valid.
                   thisouter.BankAccountValidationShowErrorMessage('', thisouter);
-                  console.log(data);
                 }
                 else {
                   // There is something wrong with the bank account details.
                   thisouter.BankAccountValidationShowErrorMessage('Sorry, the bank details provided failed to pass our security checks. Please check the details and try again.', thisouter);
-                  console.log(data);
                 }
               }
             }
