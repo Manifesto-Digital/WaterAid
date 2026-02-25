@@ -12,11 +12,11 @@
       <div class="form-item__label-container">
 
 
-        <label for="edit-name" class="js-form-required form-required">Your Name</label>
+        <label for="edit-name" class="js-form-required form-required">{{ 'Your Name'|t }}</label>
 
       </div>
       <div class="description">
-        <div id="edit-name--description" class="webform-element-description">This is the help text description.</div>
+        <div id="edit-name--description" class="webform-element-description">{{  'This is the help text description.'|t }}</div>
 
       </div>
       <input data-drupal-selector="edit-name" aria-describedby="edit-name--description" type="text" id="edit-name"
@@ -52,8 +52,8 @@
       <div class="form-item__label-container">
 
 
-        <label for="edit-textarea-example">Textarea example</label>
-        <span class="optional">(optional)</span>
+        <label for="edit-textarea-example">{{ 'Textarea example'|t }}</label>
+        <span class="optional">({{ 'optional'|t }})</span>
 
       </div>
       <div class="description">
@@ -73,11 +73,11 @@
       <div class="form-item__label-container">
 
 
-        <label for="edit-email" class="js-form-required form-required">Your Email</label>
+        <label for="edit-email" class="js-form-required form-required">{{ 'Your Email'|t }}</label>
 
       </div>
       <div class="description">
-        <div id="edit-email--description" class="webform-element-description">This is the description.</div>
+        <div id="edit-email--description" class="webform-element-description">{{ 'This is the description.'|t }}</div>
 
       </div>
       <input data-drupal-selector="edit-email" aria-describedby="edit-email--description" type="email" id="edit-email"
@@ -91,12 +91,12 @@
       <div class="form-item__label-container">
 
 
-        <label for="edit-telephone-number">Telephone number</label>
-        <span class="optional">(optional)</span>
+        <label for="edit-telephone-number">{{ 'Telephone number'|t }}</label>
+        <span class="optional">({{ 'optional'|t }})</span>
 
       </div>
       <div class="description">
-        <div id="edit-telephone-number--description" class="webform-element-description">This is the description</div>
+        <div id="edit-telephone-number--description" class="webform-element-description">{{ 'This is the description'|t }}</div>
 
       </div>
       <input data-drupal-selector="edit-telephone-number" aria-describedby="edit-telephone-number--description"
@@ -114,7 +114,7 @@
 
       </div>
       <div class="description">
-        <div id="edit-message--description" class="webform-element-description">This is the description.</div>
+        <div id="edit-message--description" class="webform-element-description">{{ 'This is the description.'|t }}</div>
 
       </div>
       <div>
@@ -130,38 +130,40 @@
       <div class="form-item__label-container">
 
 
-        <label for="edit-select-field-example">Select field example</label>
-        <span class="optional">(optional)</span>
+        <label for="edit-select-field-example">{{ 'Select field example'|t }}</label>
+        <span class="optional">({{ 'optional'|t }})</span>
 
       </div>
       <div class="description">
-        <div id="edit-select-field-example--description" class="webform-element-description">This is the description.
+        <div id="edit-select-field-example--description" class="webform-element-description">
+          {{ 'This is the description.'|t }}
         </div>
 
       </div>
       <select data-drupal-selector="edit-select-field-example" aria-describedby="edit-select-field-example--description"
               id="edit-select-field-example" name="select_field_example" class="form-select">
         <option value="" selected="selected">- None -</option>
-        <option value="Sunday">Sunday</option>
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
+        <option value="Sunday">{{ 'Sunday'|t }}</option>
+        <option value="Monday">{{ 'Monday'|t }}</option>
+        <option value="Tuesday">{{ 'Tuesday'|t }}</option>
+        <option value="Wednesday">{{ 'Wednesday'|t }}</option>
+        <option value="Thursday">{{ 'Thursday'|t }}</option>
+        <option value="Friday">{{ 'Friday'|t }}</option>
+        <option value="Saturday">{{ 'Saturday'|t }}</option>
       </select>
     </div>
     <fieldset data-drupal-selector="edit-checkboxes-example"
               aria-describedby="edit-checkboxes-example--wrapper--description" id="edit-checkboxes-example--wrapper"
               class="checkboxes--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-checkboxes webform-type-checkboxes js-form-item form-item js-form-wrapper form-wrapper">
       <legend>
-        <span class="fieldset-legend">Checkboxes example</span>
-        <span class="optional">(optional)</span>
+        <span class="fieldset-legend">{{ 'Checkboxes example'|t }}</span>
+        <span class="optional">({{ 'optional'|t }})</span>
       </legend>
       <div class="fieldset-wrapper">
         <div class="description">
           <div id="edit-checkboxes-example--wrapper--description" data-drupal-field-elements="description"
-               class="webform-element-description">This is the description
+               class="webform-element-description">
+            {{ 'This is the description'|t }}
           </div>
         </div>
         <div id="edit-checkboxes-example"
@@ -176,7 +178,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-sunday" class="option">Sunday</label>
+            <label for="edit-checkboxes-example-sunday" class="option">{{ 'Sunday'|t }}</label>
 
           </div>
 
@@ -190,7 +192,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-monday" class="option">Monday</label>
+            <label for="edit-checkboxes-example-monday" class="option">{{ 'Monday'|t }}</label>
 
           </div>
 
@@ -204,7 +206,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-tuesday" class="option">Tuesday</label>
+            <label for="edit-checkboxes-example-tuesday" class="option">{{ 'Tuesday'|t }}</label>
 
           </div>
 
@@ -218,7 +220,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-wednesday" class="option">Wednesday</label>
+            <label for="edit-checkboxes-example-wednesday" class="option">{{ 'Wednesday'|t }}</label>
 
           </div>
 
@@ -232,7 +234,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-thursday" class="option">Thursday</label>
+            <label for="edit-checkboxes-example-thursday" class="option">{{ 'Thursday'|t }}</label>
 
           </div>
 
@@ -246,7 +248,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-friday" class="option">Friday</label>
+            <label for="edit-checkboxes-example-friday" class="option">{{ 'Friday'|t }}</label>
 
           </div>
 
@@ -260,7 +262,7 @@
                    class="form-checkbox" data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-checkboxes-example-saturday" class="option">Saturday</label>
+            <label for="edit-checkboxes-example-saturday" class="option">{{ 'Saturday'|t }}</label>
 
           </div>
         </div>
@@ -272,13 +274,14 @@
               class="radios--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-radios webform-type-radios js-form-item form-item js-form-wrapper form-wrapper"
               data-once="webform-radios-required">
       <legend id="edit-radios-example--wrapper-legend">
-        <span class="fieldset-legend">Radios example</span>
-        <span class="optional">(optional)</span>
+        <span class="fieldset-legend">{{ 'Radios example'|t }}</span>
+        <span class="optional">({{ 'optional'|t }})</span>
       </legend>
       <div class="fieldset-wrapper">
         <div class="description">
           <div id="edit-radios-example--wrapper--description" data-drupal-field-elements="description"
-               class="webform-element-description">Description example
+               class="webform-element-description">
+            {{ 'Description example'|t }}
           </div>
         </div>
         <div id="edit-radios-example" class="js-webform-radios webform-options-display-one-column">
@@ -292,7 +295,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-sunday" class="option">Sunday</label>
+            <label for="edit-radios-example-sunday" class="option">{{ 'Sunday'|t }}</label>
 
           </div>
 
@@ -306,7 +309,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-monday" class="option">Monday</label>
+            <label for="edit-radios-example-monday" class="option">{{ 'Monday'|t }}</label>
 
           </div>
 
@@ -320,7 +323,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-tuesday" class="option">Tuesday</label>
+            <label for="edit-radios-example-tuesday" class="option">{{ 'Tuesday'|t }}</label>
 
           </div>
 
@@ -334,7 +337,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-wednesday" class="option">Wednesday</label>
+            <label for="edit-radios-example-wednesday" class="option">{{ 'Wednesday'|t }}</label>
 
           </div>
 
@@ -348,7 +351,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-thursday" class="option">Thursday</label>
+            <label for="edit-radios-example-thursday" class="option">{{ 'Thursday'|t }}</label>
 
           </div>
 
@@ -362,7 +365,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-friday" class="option">Friday</label>
+            <label for="edit-radios-example-friday" class="option">{{ 'Friday'|t }}</label>
 
           </div>
 
@@ -376,7 +379,7 @@
                    data-once="webform-disable-autosubmit">
 
 
-            <label for="edit-radios-example-saturday" class="option">Saturday</label>
+            <label for="edit-radios-example-saturday" class="option">{{ 'Saturday'|t }}</label>
 
           </div>
         </div>

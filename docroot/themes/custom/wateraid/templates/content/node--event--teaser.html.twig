@@ -62,8 +62,8 @@
  */
 #}
 {% set tags = {
-  'event-type': node.field_event_type.0.entity.name.value,
-  'region': node.field_region.0.entity.name.value,
+  'event-type': node.field_event_type.0.entity|translation.name.value,
+  'region': node.field_region.0.entity|translation.name.value,
 } %}
 
 {% set authors = [] %}

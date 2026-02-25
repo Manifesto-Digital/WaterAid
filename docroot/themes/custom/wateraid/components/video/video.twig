@@ -10,7 +10,7 @@
         {% if type == 'local' or image %}
           <div class="video__play">
             {{ include('wateraid:button', {
-              text: 'Play video',
+              text: 'Play video'|t,
               link: '',
               id: 'video-play-button',
               type: 'icon',

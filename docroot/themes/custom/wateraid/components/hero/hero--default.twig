@@ -51,7 +51,7 @@
       {% if video[0]['#media'].bundle() != 'remote_video' %}
         <div class="hero__video--play">
           {{ include('wateraid:button', {
-            text: 'Play video',
+            text: 'Play video'|t,
             link: '',
             id: 'hero-play-button',
             type: 'icon',
@@ -61,7 +61,7 @@
         </div>
         <div class="hero__video--pause">
           {{ include('wateraid:button', {
-            text: 'Pause video',
+            text: 'Pause video'|t,
             link: '',
             id: 'hero-pause-button',
             type: 'icon',

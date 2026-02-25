@@ -51,7 +51,7 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {{ include('wateraid:accordion_item', {
-      title: paragraph.field_title.value,
+      title: paragraph.field_title.value|t,
       content: content.field_accordion_content,
     }, with_context = false) }}
   </div>

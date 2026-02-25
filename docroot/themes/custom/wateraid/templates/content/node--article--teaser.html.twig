@@ -62,9 +62,9 @@
  */
 #}
 {% set tags = {
-  'audience': node.field_audience.0.entity.name.value,
-  'country': node.field_country.0.entity.name.value,
-  'theme': node.field_theme.0.entity.name.value,
+  'audience': node.field_audience.0.entity|translation.name.value,
+  'country': node.field_country.0.entity|translation.name.value,
+  'theme': node.field_theme.0.entity|translation.name.value,
 } %}
 
 {% set authors = [] %}
