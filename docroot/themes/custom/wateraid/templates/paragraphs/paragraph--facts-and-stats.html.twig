@@ -42,7 +42,7 @@
 {% if not paragraph.field_link.isEmpty() %}
   {% set link = {
     url: paragraph.field_link.0.url,
-    title: paragraph.field_link.0.title,
+    title: paragraph.field_link.0.title ? paragraph.field_link.0.title|t : '',
   } %}
 {% endif %}
 
@@ -57,7 +57,7 @@
   <div class="{{ classes }}">
     <div{{ attributes }}>
       {{ include('wateraid:statistics', {
-        title: paragraph.field_title.value,
+        title: paragraph.field_title.isEmpty() ? '' : paragraph.field_title.value|t,
         heading_level: paragraph.field_heading_level.value,
         description: content.field_rich_text,
         link,
