@@ -23,11 +23,11 @@ function wateraid_preprocess_menu(&$variables) {
 
       // Add class to each menu item for flags.
       if (!$menu_link_content->get('field_country_class')->isEmpty()) {
-        $menu_item_attrs->addClass('site-selector__country--' . $menu_link_content->get('field_country_class')->first()->value);
+        $menu_item_attrs->addClass('site-selector__country--' . $menu_link_content->get('field_country_class')->first()->getString());
       }
 
       // Group menu items by region.
-      $group_id = !$menu_link_content->get('field_region')->isEmpty() ? $menu_link_content->get('field_region')->first()->value : NULL;
+      $group_id = !$menu_link_content->get('field_region')->isEmpty() ? $menu_link_content->get('field_region')->first()->getString() : NULL;
       $field_region_options = $menu_link_content->getFieldDefinition('field_region')->getItemDefinition()->getSetting('allowed_values');
 
       $group = &$grouped_items[$group_id ?? 'global'];
@@ -50,8 +50,8 @@ function wateraid_preprocess_menu(&$variables) {
     // Get config pages field data for panel.
     $site_selector_config_page = config_pages_config('global_site_selector');
     if ($site_selector_config_page instanceof ConfigPagesInterface) {
-      $variables['panel_title'] = $site_selector_config_page->get('field_title')->value;
-      $variables['panel_description'] = config_pages_config('global_site_selector')->get('field_description')->value;
+      $variables['panel_title'] = $site_selector_config_page->get('field_title')->getString();
+      $variables['panel_description'] = config_pages_config('global_site_selector')->get('field_description')->getString();
     }
   }
 
@@ -64,7 +64,7 @@ function wateraid_preprocess_menu(&$variables) {
       foreach ($variables['items'] as &$item) {
         /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $menu_link_content */
         $menu_link_content = $item['original_link'];
-        if ((bool) $menu_link_content->getEntity()->get('field_hide_on_mobile')->value) {
+        if ((bool) $menu_link_content->getEntity()->get('field_hide_on_mobile')->getString()) {
           $item['attributes']->addClass('donate-header-menu-item--hide-on-mobile');
         }
       }

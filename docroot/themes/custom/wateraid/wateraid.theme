@@ -106,7 +106,7 @@ function wateraid_preprocess_page(&$variables): void {
       $variables['wash_matters_url'] = $wash_matters_group->toUrl();
     }
     elseif ($group instanceof GroupInterface && $group->bundle() == 'wateraid_site') {
-      $variables['wash_matters_url'] = (bool) $group->get('field_is_wash_matters_site')->value ? NULL : $wash_matters_group->toUrl();
+      $variables['wash_matters_url'] = (bool) $group->get('field_is_wash_matters_site')->getString() ? NULL : $wash_matters_group->toUrl();
     }
   }
 
@@ -115,8 +115,8 @@ function wateraid_preprocess_page(&$variables): void {
     wateraid_add_group_menus($group, ['primary_navigation' => 'group_content_menu:wateraid_site_menu'], $variables, 3);
 
     // Add currency prefix per group if available.
-    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->value;
-    $variables['#attached']['drupalSettings']['donate_widget']['minimum_donation'] = intval($group->get('field_minimum_donation')->value);
+    $variables['#attached']['drupalSettings']['donate_widget']['currency_prefix'] = $group->get('field_currency_prefix')->getString();
+    $variables['#attached']['drupalSettings']['donate_widget']['minimum_donation'] = intval($group->get('field_minimum_donation')->getString());
   }
   else {
     $variables['primary_navigation'] = _wateraid_build_menu('main', 3);
@@ -790,7 +790,7 @@ function wateraid_preprocess_paragraph__download_widget(&$variables): void {
   foreach ($paragraph->get('field_files')->getValue() as $key => $file) {
     $media = \Drupal::entityTypeManager()->getStorage('media')->load($file['target_id']);
 
-    $variables['files'][$key]['name'] = $media->get('name')->value;
+    $variables['files'][$key]['name'] = $media->get('name')->getString();
 
     if($media->bundle() === 'dam_file'){
       $field = $media->get('field_media_dam_file')->first();
