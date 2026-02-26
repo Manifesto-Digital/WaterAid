@@ -15,4 +15,4 @@ id: paragraph.text_over_media
 target_entity_type_id: paragraph
 target_bundle: text_over_media
 default_langcode: current_interface
-language_alterable: true
+language_alterable: false
