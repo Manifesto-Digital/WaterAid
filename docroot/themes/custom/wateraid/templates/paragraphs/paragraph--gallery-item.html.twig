@@ -5,12 +5,12 @@
     {% if not paragraph.field_link.isEmpty() %}
       {% set link = {
         url: paragraph.field_link.0.url,
-        title: paragraph.field_link.0.title,
+        title: paragraph.field_link.0.title ? paragraph.field_link.0.title|t : '',
       }%}
     {% endif %}
 
     <div class="image-gallery__content">
-      <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ paragraph.field_title.0.value }}</{{ tag }}>
+      <{{ tag }} class="image-gallery__content--title pseudo-h2">{{ paragraph.field_title.0.value|t }}</{{ tag }}>
       {% if content.field_rich_text %}
         <div class="image-gallery__content--description">
           {{ content.field_rich_text }}
