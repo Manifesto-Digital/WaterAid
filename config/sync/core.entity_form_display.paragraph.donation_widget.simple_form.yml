@@ -4,17 +4,22 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.simple_form
+    - field.field.paragraph.donation_widget.field_default_option
+    - field.field.paragraph.donation_widget.field_fixed_index
+    - field.field.paragraph.donation_widget.field_fixed_period_amounts
     - field.field.paragraph.donation_widget.field_heading_level
+    - field.field.paragraph.donation_widget.field_hide_desktop_fixed
     - field.field.paragraph.donation_widget.field_hide_desktop_monthly
     - field.field.paragraph.donation_widget.field_hide_desktop_one_off
+    - field.field.paragraph.donation_widget.field_hide_mobile_fixed
     - field.field.paragraph.donation_widget.field_hide_mobile_monthly
     - field.field.paragraph.donation_widget.field_hide_mobile_one_off
     - field.field.paragraph.donation_widget.field_monthly_default
     - field.field.paragraph.donation_widget.field_monthly_donation_amounts
     - field.field.paragraph.donation_widget.field_monthly_index
+    - field.field.paragraph.donation_widget.field_months
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
-    - field.field.paragraph.donation_widget.field_override_webform
     - field.field.paragraph.donation_widget.field_payin_link
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
@@ -44,6 +49,7 @@ third_party_settings:
       children:
         - group_one_off
         - group_monthly
+        - group_fixed_period
       label: 'Donation amounts'
       region: content
       parent_name: group_tabs
@@ -59,9 +65,8 @@ third_party_settings:
         required_fields: true
     group_content:
       children:
-        - field_override_webform
+        - field_default_option
         - field_webform_node
-        - field_monthly_default
       label: Content
       region: content
       parent_name: group_tabs
@@ -81,7 +86,7 @@ third_party_settings:
       label: Monthly
       region: content
       parent_name: group_donation_amounts
-      weight: 22
+      weight: 1
       format_type: details
       format_settings:
         classes: ''
@@ -97,7 +102,7 @@ third_party_settings:
       label: 'One off'
       region: content
       parent_name: group_donation_amounts
-      weight: 20
+      weight: 0
       format_type: details
       format_settings:
         classes: ''
@@ -107,17 +112,54 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+    group_fixed_period:
+      children:
+        - field_fixed_period_amounts
+        - field_months
+      label: 'Fixed Period'
+      region: content
+      parent_name: group_donation_amounts
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        required_fields: true
+        direction: vertical
+        width_breakpoint: 640
 id: paragraph.donation_widget.simple_form
 targetEntityType: paragraph
 bundle: donation_widget
 mode: simple_form
 content:
-  field_monthly_default:
-    type: boolean_checkbox
-    weight: 2
+  field_default_option:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_fixed_period_amounts:
+    type: paragraphs
+    weight: 0
     region: content
     settings:
-      display_label: true
+      title: Amount
+      title_plural: Amounts
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings: {  }
   field_monthly_donation_amounts:
     type: paragraphs
@@ -137,6 +179,13 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+  field_months:
+    type: number
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_one_off_donation_amounts:
     type: paragraphs
     weight: 25
@@ -155,13 +204,6 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-  field_override_webform:
-    type: boolean_checkbox
-    weight: 0
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_webform_node:
     type: entity_reference_autocomplete
     weight: 1
@@ -174,11 +216,15 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_fixed_index: true
   field_heading_level: true
+  field_hide_desktop_fixed: true
   field_hide_desktop_monthly: true
   field_hide_desktop_one_off: true
+  field_hide_mobile_fixed: true
   field_hide_mobile_monthly: true
   field_hide_mobile_one_off: true
+  field_monthly_default: true
   field_monthly_index: true
   field_one_off_index: true
   field_payin_link: true

@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Wateraid_tmgmt_cleanup module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function wateraid_tmgmt_cleanup_cron(): void {
+  \Drupal::service('wateraid_tmgmt_cleanup')->deleteTranslationFiles();
+}

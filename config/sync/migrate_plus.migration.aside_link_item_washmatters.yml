@@ -1,0 +1,54 @@
+uuid: d753d394-8ccd-43fa-a837-a14cf49eae30
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: aside_link_item_washmatters
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_washmatters
+label: 'Aside Link Item WASHMATTERS '
+source:
+  plugin: paragraph_source
+  bundle: aside_link_item
+  fields:
+    - field_aside_link
+    - field_aside_link_title
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_primary_cta:
+    -
+      plugin: links_migration_lookup
+      migration:
+        - articles_washmatters
+        - campaigns_washmatters
+        - country_details_washmatters
+        - donation_forms_washmatters
+        - donation_landing_pages_washmatters
+        - events_washmatters
+        - filtered_landing_pages_washmatters
+        - flexible_content_washmatters
+        - get_involved_node_washmatters
+        - jobs_washmatters
+        - press_and_media_washmatters
+        - press_and_media_biographies_washmatters
+        - publication_washmatters
+        - standard_page_washmatters
+        - stories_washmatters
+        - webforms_washmatters
+      source: field_aside_link
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: call_to_action
+idMap: {  }
+migration_dependencies: {  }
+include: null

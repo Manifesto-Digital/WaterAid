@@ -1,0 +1,8 @@
+name: WaterAid TMGMT
+type: module
+description: Provides a custom bulk of entity translations via TMGMT.
+core_version_requirement: ^10|^11
+package: wateraid
+wateraid.package: tmgmt
+dependencies:
+  - tmgmt:tmgmt

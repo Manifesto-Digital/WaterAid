@@ -21,6 +21,10 @@
     padding-bottom: $wa-spacing-07;
   }
 
+  label.error {
+    color: base.$wa-orange;
+  }
+
   .form-wrapper {
     display: flex;
     flex-direction: column;
@@ -249,6 +253,11 @@
     margin: 0;
     flex: 1 1 auto;
   }
+
+  .description {
+    margin-left: base.$wa-spacing-08;
+    margin-top: base.$wa-spacing-03;
+  }
 }
 
 .webform-type-checkbox input[type='checkbox'] + label.option {
@@ -278,6 +287,9 @@ input[type='radio'] {
   &:focus-visible {
     outline: base.$wa-spacing-01 base.$wa-pink solid;
     box-shadow: 0 0 0 base.calculate-rem(2) base.$wa-navy;
+  }
+  &.error {
+    border-color: base.$wa-orange;
   }
 }
 
@@ -821,6 +833,16 @@ fieldset.next-form-step {
     label {
       margin-left: 1rem;
     }
+
+    label.error {
+      order: 3;
+      margin-left: 2.5rem;
+    }
+
+    label.error + label {
+      margin-left: 2.5rem;
+      margin-top: -1.5rem;
+    }
   }
 
   fieldset.prev-form-step legend {
@@ -854,6 +876,30 @@ fieldset.next-form-step {
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
+  }
+}
+
+.jp-donation-modal {
+  .button__wrapper {
+    width: unset;
+    display: flex;
+    gap: 1em;
+    padding: base.$wa-spacing-04 0;
+
+    .button {
+      flex: 0 1 auto;
+      &.button--secondary {
+        width: unset;
+        color: base.$wa-blue;
+
+        &:hover {
+          color: base.$wa-blue;
+        }
+      }
+      &.button--primary {
+        min-width: unset;
+      }
     }
   }
 }

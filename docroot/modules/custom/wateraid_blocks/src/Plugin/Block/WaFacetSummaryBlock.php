@@ -91,14 +91,31 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
         foreach ($params as $vocab => $tids) {
           if (isset($map[$view_id]['block_1'][$vocab])) {
 
-            // Regions is a select list not a taxonomy reference so needs special handling.
-            if ($vocab == 'regions') {
-              $field_definition = \Drupal::service('entity_field.manager')->getFieldDefinitions('node','event')['field_regions'];
-              $regions = $field_definition->getFieldStorageDefinition()->toArray()['settings']['allowed_values'];
+            $field_map = [
+              'regions' => [
+                'event' => 'field_regions',
+              ],
+              'age' => [
+                'standard_page' => 'field_age_range',
+              ],
+              'key_stages' => [
+                'standard_page' => 'field_key_stages',
+              ],
+            ];
 
-              foreach ($tids as $tid) {
-                if (array_key_exists($tid, $regions)) {
-                  $links[] = self::getLink($regions[$tid], $tid, $vocab, $node->id(), $params);;
+            // Some fields are a select list not a taxonomy reference so need
+            // special handling.
+            if (array_key_exists($vocab, $field_map)) {
+              foreach ($field_map[$vocab] as $node_type => $field_name) {
+                $field_definition = \Drupal::service('entity_field.manager')
+                  ->getFieldDefinitions('node', $node_type)[$field_name];
+                $regions = $field_definition->getFieldStorageDefinition()
+                  ->toArray()['settings']['allowed_values'];
+
+                foreach ($tids as $tid) {
+                  if (array_key_exists($tid, $regions)) {
+                    $links[] = self::getLink($regions[$tid], $tid, $vocab, $node->id(), $params);;
+                  }
                 }
               }
             }
@@ -187,6 +204,14 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
           'country' => 'country',
           'get_involved' => 'get_involved',
           'theme' => 'theme',
+        ],
+      ],
+      'teaching_resources_solr' => [
+        'block_1' => [
+          'key_stages' => 'key_stages',
+          'age' => 'age',
+          'subject_area' => 'subject_area',
+          'topic' => 'topic',
         ],
       ],
     ];

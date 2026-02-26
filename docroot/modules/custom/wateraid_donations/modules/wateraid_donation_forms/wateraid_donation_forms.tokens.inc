@@ -62,6 +62,11 @@ function wateraid_donation_forms_token_info() {
     'description' => t('Todays date in DD/MM/YYYY plus fixed month duration.'),
   ];
 
+  $webform_submission['donation-duration'] = [
+    'name' => t('WaterAid fixed duration Donation'),
+    'description' => t('Duration of fixed donation.'),
+  ];
+
   $webform_submission['first-name'] = [
     'name' => t('First Name'),
     'description' => t('First name of the donor.'),
@@ -232,6 +237,10 @@ function wateraid_donation_forms_tokens($type, $tokens, array $data, array $opti
           else {
             $replacements[$original] = t('This donation does not have a fixed period end date');
           }
+          break;
+
+        case 'donation-duration':
+          $replacements[$original] = $submission_data['donation_amount']['duration'] ?? NULL;
           break;
 
         case 'first-name':

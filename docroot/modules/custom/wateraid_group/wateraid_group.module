@@ -36,7 +36,7 @@ function wateraid_group_form_node_form_alter(&$form, FormStateInterface $form_st
     // Only show warning on node creation (not edit).
     /** @var \Drupal\node\NodeInterface $node */
     $node = $form_state->getFormObject()->getEntity();
-    if (!$node->isNew()) {
+    if ($node->isNew()) {
       // Display warning message directing users to create content within a Site.
       $group_list_url = Url::fromRoute('entity.group.collection')->toString();
       \Drupal::messenger()->addWarning(

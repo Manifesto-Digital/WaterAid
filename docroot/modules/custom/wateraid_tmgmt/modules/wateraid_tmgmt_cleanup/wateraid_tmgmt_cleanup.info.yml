@@ -1,0 +1,8 @@
+name: WaterAid TMGMT cleanup
+type: module
+description: Cleanup operations for WaterAid TMGMT
+core_version_requirement: ^10|^11
+package: wateraid
+wateraid.package: tmgmt
+dependencies:
+  - wateraid_tmgmt:wateraid_tmgmt

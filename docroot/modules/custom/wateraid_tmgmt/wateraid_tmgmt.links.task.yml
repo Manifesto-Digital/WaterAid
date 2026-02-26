@@ -1,0 +1,11 @@
+wateraid_tmgmt.source_overview:
+  route_name: wateraid_tmgmt.source_overview
+  title: Sources (WaterAid)
+  base_route: view.tmgmt_job_overview.page_1
+  weight: 15
+
+wateraid_tmgmt.remote_error_log_form:
+  route_name: wateraid_tmgmt.remote_error_log_form
+  title: Remote Error Logs
+  base_route: view.tmgmt_job_overview.page_1
+  weight: 16

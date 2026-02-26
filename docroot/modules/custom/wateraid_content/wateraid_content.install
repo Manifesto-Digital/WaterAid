@@ -367,51 +367,7 @@ function wateraid_content_update_10010(&$sandbox): void {
  * Update donation widgets for new settings.
  */
 function wateraid_content_update_10011(&$sandbox): void {
-  if (!isset($sandbox['ids'])) {
-    $sandbox['ids'] = \Drupal::entityTypeManager()->getStorage('paragraph')->getQuery()
-      ->condition('type', 'donation_widget')
-      ->accessCheck(FALSE)
-      ->execute();
-    $sandbox['max'] = count($sandbox['ids']);
-    $sandbox['#finished'] = 0;
-  }
-
-  if ($id = array_pop($sandbox['ids'])) {
-    $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->load($id);
-    $parent = $paragraph->getParentEntity();
-
-    // If the parent is a paragraph - such as when the donation widget is in the
-    // hero (donate) paragraph - go one step up to get the parent.
-    if ($parent instanceof ParagraphInterface) {
-      $parent = $parent->getParentEntity();
-    }
-
-    if ($parent) {
-      $parent_id = $parent->id();
-
-      $webform_id = ($paragraph->get('field_webform_node')
-        ->isEmpty()) ? NULL : $paragraph->get('field_webform_node')
-        ->getValue()[0]['target_id'];
-      $override = isset($webform_id) && $webform_id != $parent_id;
-
-      $paragraph->set('field_override_webform', $override);
-
-      // If the webform isn't overridden, empty the field.
-      if (!$override) {
-        $paragraph->set('field_webform_node', NULL);
-      }
-
-      $paragraph->save();
-    }
-    else {
-
-      // If a paragraph is orphaned, it can never be used or viewed, so we might
-      // as well delete it now.
-      $paragraph->delete();
-    }
-  }
-
-  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+  // Removed update hook as it relates to a deleted field.
 }
 
 /**

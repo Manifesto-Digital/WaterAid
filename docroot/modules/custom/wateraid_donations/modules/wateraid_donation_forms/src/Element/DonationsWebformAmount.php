@@ -113,13 +113,6 @@ class DonationsWebformAmount extends WebformCompositeBase {
   public static function processWebformComposite(&$element, FormStateInterface $form_state, &$complete_form): array {
     parent::processWebformComposite($element, $form_state, $complete_form);
 
-    /** @var \Drupal\webform_wizard_single_page\WebformWizardSinglePageSubmissionForm $object */
-    $object = $form_state->getFormObject();
-
-    /** @var \Drupal\webform\WebformSubmissionInterface|null $submission */
-    $submission = $object->getEntity();
-
-    if (isset($webform) || !empty($element['#webform']) && $webform = Webform::load($element['#webform'])) {
       // Take the "storage" values into account, because we can skip the first
       // step with the WebformWizardExtraSubmissionForm class logic, which
       // means that the form state won't have the values defined initially.
@@ -269,9 +262,9 @@ class DonationsWebformAmount extends WebformCompositeBase {
           // elements.
           if ($element['#value']['frequency'] === $type_key) {
             // Check existing value.
-            if (isset($element['#value']['amount'][$type_key])) {
+            if (isset( $element['#value']['amount'][$type_key]['amounts']['buttons'])) {
               // Check if the value is one of the pre-defined set.
-              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'] ?? $element['#value']['amount']['one_off']['amounts'];
+              $element['amount'][$type_key]['amounts']['#default_value'] = $element['#value']['amount'][$type_key]['amounts']['buttons'] ?? $element['#value']['amount']['one_off']['amounts'] ?? NULL;
             }
             // Fallback to default from different structure after
             // normalisation.
@@ -427,7 +420,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
             $element['duration'][$type_key]['durations'] = [
               '#type' => 'webform_buttons',
               '#title' => t('Please select duration'),
-              '#default_value' => $duration_defaults['default_duration'],
+              '#default_value' => $duration_defaults['default_duration'] ?? NULL,
               '#after_build' => [
                 [self::class, 'afterBuild'],
               ],
@@ -468,7 +461,7 @@ class DonationsWebformAmount extends WebformCompositeBase {
           }
           // Fallback to default from config.
           else {
-            $element['duration'][$type_key]['durations']['#default_value'] = $duration_defaults['default_duration'];
+            $element['duration'][$type_key]['durations']['#default_value'] = $duration_defaults['default_duration'] ?? NULL;
           }
 
         }

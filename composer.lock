@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f95bc1947ff4f57114aa4af168cccdff",
+    "content-hash": "ce8f920f2b3aeb2c6e36f6cf151e77f4",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -6540,6 +6540,86 @@
             }
         },
         {
+            "name": "drupal/mailsystem",
+            "version": "4.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mailsystem.git",
+                "reference": "8.x-4.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mailsystem-8.x-4.5.zip",
+                "reference": "8.x-4.5",
+                "shasum": "e52a814a87b343ab69f8d8ef462a9873c1d01158"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10.1 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-4.5",
+                    "datestamp": "1723379369",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "emartoni",
+                    "homepage": "https://www.drupal.org/user/3225331"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
+                },
+                {
+                    "name": "les lim",
+                    "homepage": "https://www.drupal.org/user/84263"
+                },
+                {
+                    "name": "manuel garcia",
+                    "homepage": "https://www.drupal.org/user/213194"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                },
+                {
+                    "name": "Nafes",
+                    "homepage": "https://www.drupal.org/user/2489926"
+                },
+                {
+                    "name": "pillarsdotnet",
+                    "homepage": "https://www.drupal.org/user/36148"
+                },
+                {
+                    "name": "renatog",
+                    "homepage": "https://www.drupal.org/user/3326031"
+                },
+                {
+                    "name": "tr",
+                    "homepage": "https://www.drupal.org/user/202830"
+                }
+            ],
+            "description": "Mail System",
+            "homepage": "https://www.drupal.org/project/mailsystem",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mailsystem"
+            }
+        },
+        {
             "name": "drupal/masquerade",
             "version": "2.0.0",
             "source": {
@@ -7119,6 +7199,59 @@
                 "source": "https://git.drupalcode.org/project/migrate_tools",
                 "issues": "https://www.drupal.org/project/issues/migrate_tools",
                 "slack": "#migrate"
+            }
+        },
+        {
+            "name": "drupal/mimemail",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mimemail.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mimemail-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "c2252489acc864231ebc5e81e7801e0e04f05146"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/mailsystem": "^4"
+            },
+            "require-dev": {
+                "drupal/rules": "^4.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1766093117",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "mark_fullmer",
+                    "homepage": "https://www.drupal.org/user/2612816"
+                },
+                {
+                    "name": "tr",
+                    "homepage": "https://www.drupal.org/user/202830"
+                }
+            ],
+            "description": "Sends MIME-encoded emails with embedded images and attachments.",
+            "homepage": "https://www.drupal.org/project/mimemail",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mimemail",
+                "issues": "https://www.drupal.org/project/issues/mimemail"
             }
         },
         {
@@ -9833,6 +9966,130 @@
             }
         },
         {
+            "name": "drupal/tmgmt_extension_suit",
+            "version": "9.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tmgmt_extension_suit.git",
+                "reference": "8.x-9.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tmgmt_extension_suit-8.x-9.4.zip",
+                "reference": "8.x-9.4",
+                "shasum": "a0e00c57fe66521b6118d3c0ea0f666e5e08bab6"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10.1 || ^11",
+                "drupal/tmgmt": "~1.14",
+                "drupal/tmgmt_file": "*"
+            },
+            "require-dev": {
+                "drupal/tmgmt": "~1.0",
+                "drupal/tmgmt_local": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-9.4",
+                    "datestamp": "1740048692",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "creaoy",
+                    "homepage": "https://www.drupal.org/user/350147"
+                },
+                {
+                    "name": "dimitrystd",
+                    "homepage": "https://www.drupal.org/user/2947159"
+                },
+                {
+                    "name": "loparev",
+                    "homepage": "https://www.drupal.org/user/3158841"
+                },
+                {
+                    "name": "Soul88",
+                    "homepage": "https://www.drupal.org/user/1074416"
+                }
+            ],
+            "description": "Some additional functionality for TMGMT module.",
+            "homepage": "https://www.drupal.org/project/tmgmt_extension_suit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt_extension_suit"
+            }
+        },
+        {
+            "name": "drupal/tmgmt_file",
+            "version": "1.18.0",
+            "require": {
+                "drupal/core": "^10.2 || ^11",
+                "drupal/tmgmt": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.18",
+                    "datestamp": "1768203319",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "cgalli",
+                    "homepage": "https://www.drupal.org/user/77453"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "floretan",
+                    "homepage": "https://www.drupal.org/user/66163"
+                },
+                {
+                    "name": "fubhy",
+                    "homepage": "https://www.drupal.org/user/761344"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                },
+                {
+                    "name": "schnitzel",
+                    "homepage": "https://www.drupal.org/user/643820"
+                },
+                {
+                    "name": "webflo",
+                    "homepage": "https://www.drupal.org/user/254778"
+                }
+            ],
+            "description": "A translator which allows you to export source data into a file and import the translated in return.",
+            "homepage": "https://www.drupal.org/project/tmgmt",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt"
+            }
+        },
+        {
             "name": "drupal/tmgmt_google",
             "version": "1.2.0",
             "source": {
@@ -9879,6 +10136,79 @@
             "homepage": "https://www.drupal.org/project/tmgmt_google",
             "support": {
                 "source": "https://git.drupalcode.org/project/tmgmt_google"
+            }
+        },
+        {
+            "name": "drupal/tmgmt_smartling",
+            "version": "9.21.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tmgmt_smartling.git",
+                "reference": "8.x-9.21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tmgmt_smartling-8.x-9.21.zip",
+                "reference": "8.x-9.21",
+                "shasum": "7d338f7b4947616b52ab44c4a0237cba1892baac"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10.1 || ^11",
+                "drupal/tmgmt": "~1.14",
+                "drupal/tmgmt_extension_suit": "~9.4",
+                "drupal/tmgmt_file": "*",
+                "smartling/api-sdk-php": "~5"
+            },
+            "require-dev": {
+                "drupal/tmgmt": "~1.0",
+                "drupal/tmgmt_extension_suit": "~9.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-9.21",
+                    "datestamp": "1771518687",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "andypost",
+                    "homepage": "https://www.drupal.org/user/118908"
+                },
+                {
+                    "name": "creaoy",
+                    "homepage": "https://www.drupal.org/user/350147"
+                },
+                {
+                    "name": "dimitrystd",
+                    "homepage": "https://www.drupal.org/user/2947159"
+                },
+                {
+                    "name": "loparev",
+                    "homepage": "https://www.drupal.org/user/3158841"
+                },
+                {
+                    "name": "m1r1k",
+                    "homepage": "https://www.drupal.org/user/1835386"
+                },
+                {
+                    "name": "soul88",
+                    "homepage": "https://www.drupal.org/user/1074416"
+                }
+            ],
+            "description": "Smartling provider plugin",
+            "homepage": "https://www.drupal.org/project/tmgmt_smartling",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt_smartling",
+                "error": "Invalid dependency: \"cohesion\" is an unknown drupal 8 package name"
             }
         },
         {
@@ -13571,6 +13901,54 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "smartling/api-sdk-php",
+            "version": "5.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Smartling/api-sdk-php.git",
+                "reference": "ebf56d4039c002d34fd7358c51ca40bc37e1d168"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Smartling/api-sdk-php/zipball/ebf56d4039c002d34fd7358c51ca40bc37e1d168",
+                "reference": "ebf56d4039c002d34fd7358c51ca40bc37e1d168",
+                "shasum": ""
+            },
+            "require": {
+                "composer/semver": "^3.4.2",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.0.0 || ^7.0.0",
+                "php": "^7.3 || ^8.0",
+                "psr/log": "^1.0.0 || ^3.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Smartling\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP library to communicate with SmartlingAPI",
+            "homepage": "https://www.smartling.com",
+            "keywords": [
+                "automated translation",
+                "i18n",
+                "internationalization",
+                "smartling"
+            ],
+            "support": {
+                "issues": "https://github.com/Smartling/api-sdk-php/issues",
+                "source": "https://github.com/Smartling/api-sdk-php/tree/5.0.5"
+            },
+            "time": "2026-02-03T16:00:08+00:00"
         },
         {
             "name": "solarium/solarium",

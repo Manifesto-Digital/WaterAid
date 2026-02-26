@@ -1,0 +1,17 @@
+uuid: 62077d2d-a4da-4344-a90f-852155e13810
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_washmatters_terms
+label: 'WaterAid WASHMATTERS migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/washmatters site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: washmatters_site_migration
+  migration_tags:
+    - wateraid_washmatters

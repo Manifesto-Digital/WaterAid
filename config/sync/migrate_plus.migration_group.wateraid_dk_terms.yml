@@ -1,0 +1,17 @@
+uuid: b5512f62-6337-4cce-9c42-9947712769a2
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: wateraid_dk_terms
+label: 'WaterAid DK migration (Terms)'
+description: 'Taxonomy terms from the wateraid.org/dk site'
+source_type: Database
+module: null
+shared_configuration:
+  source:
+    key: dk_site_migration
+  migration_tags:
+    - wateraid_dk

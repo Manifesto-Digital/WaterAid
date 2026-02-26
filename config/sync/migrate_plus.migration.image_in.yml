@@ -1,0 +1,37 @@
+uuid: b862eea2-71f3-44e8-a3eb-5c27d0b07a88
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: image_in
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_in
+label: 'Image IN '
+source:
+  plugin: paragraph_source
+  bundle: one_column_image
+  fields:
+    - field_paragraph_image
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: en
+  status: status
+  field_image:
+    plugin: migration_lookup
+    source: field_paragraph_image
+    migration: media_in
+    no_stub: true
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: image
+idMap: {  }
+migration_dependencies: {  }
+include: null

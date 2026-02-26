@@ -1,0 +1,37 @@
+uuid: 828120f6-54a6-49a2-9a49-e741b5bf8475
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - wa_migration
+id: general_text_area_dk
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Database
+migration_group: wateraid_dk
+label: 'General Text Area DK '
+source:
+  plugin: paragraph_source
+  bundle: general_text_area
+  fields:
+    - field_paragraph_content
+process:
+  langcode:
+    -
+      plugin: default_value
+      default_value: da
+  status: status
+  field_rich_text/value: field_paragraph_content/0
+  field_rich_text/format:
+    -
+      plugin: default_value
+      default_value: full_html
+destination:
+  plugin: 'entity:paragraph'
+  default_bundle: rich_text
+idMap: {  }
+migration_dependencies: {  }
+include: null

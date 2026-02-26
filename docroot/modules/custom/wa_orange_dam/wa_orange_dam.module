@@ -5,32 +5,28 @@
  * Hooks and other functionality for the WA DAM.
  */
 
+use Drupal\Core\Datetime\DrupalDateTime;
+
 /**
  * Implements hook_cron().
  */
 function wa_orange_dam_cron(): void {
-  $queue = \Drupal::queue('wa_orange_dam_expiry_checker');
-  $query = \Drupal::database()->select('media_field_data', 'm')
-    ->fields('m', ['mid'])
-    ->condition('m.bundle', [
-      'dam_file',
-      'dam_image',
-      'dam_video',
-    ], 'IN');
-  $query->leftJoin('media__field_dam_expired', 'e', 'e.entity_id = m.mid');
+  $now = new DrupalDateTime();
+  $day = $now->format('N');
 
-  $or = $query->orConditionGroup();
-  $or->condition('e.field_dam_expired_value', 1, '<>');
-  $or->isNull('e.field_dam_expired_value');
+  if ($day == 7) {
 
-  $query->condition($or);
-  $query->leftJoin('media__field_dam_last_checked', 'l', 'l.entity_id = m.mid');
-  $query->orderBy('l.field_dam_last_checked_value');
-  $query->range(0, 50);
-
-  foreach ($query->execute()->fetchAll() as $result) {
-    $queue->createItem($result->mid);
+    // Run the populator every Sunday.
+    \Drupal::queue('wa_orange_dam_queue_populator')->createItem('wa_orange_dam_usage_processor');
   }
+  elseif ($day == 1) {
+
+    // And the notifications every Monday.
+    \Drupal::queue('wa_orange_dam_notification_populator')->createItem(TRUE);
+  }
+
+  // And the expiry checker every cron run.
+  \Drupal::queue('wa_orange_dam_queue_populator')->createItem('wa_orange_dam_expiry_checker');
 }
 
 /**
@@ -47,5 +43,17 @@ function wa_orange_dam_preprocess_field(&$variables): void {
         \Drupal::logger('wa_orange_dam')->error('Error formatting DAM expiry date: @message', ['@message' => $e->getMessage()]);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function wa_orange_dam_mail($key, &$message, $params): void {
+  if (in_array($key, ['systems_admin', 'node_author'])) {
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['headers']['From'] = \Drupal::config('system.site')->get('mail');
+    $message['subject'] = $params['subject'];
+    $message['body'][] = $params['message'];
   }
 }

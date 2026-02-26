@@ -16,9 +16,9 @@ use Drupal\Core\Url;
 use Drupal\currency\Entity\Currency;
 use Drupal\currency\Entity\CurrencyInterface;
 use Drupal\currency\FormHelperInterface;
-use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\wateraid_donation_forms\DonationConstants;
 use Drupal\wateraid_donation_forms\DonationService;
@@ -181,7 +181,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Desktop cancellation message'),
       '#default_value' => $this->configuration['desktop_cancellation_message']['value'] ?? '',
       '#format' => $this->configuration['desktop_cancellation_message']['format'] ?? 'full_html',
-      '#allowed_formats' => ['full_html'],
+      '#allowed_formats' => ['full_html', 'basic_html'],
       '#help' => $this->t('Appears on desktop devices: A) Within the sidebar on step 1. B) Within the sidebar on steps 2 onwards if "monthly" payment frequency is selected.'),
     ];
 
@@ -190,7 +190,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Mobile cancellation message'),
       '#default_value' => $this->configuration['mobile_cancellation_message']['value'] ?? '',
       '#format' => $this->configuration['mobile_cancellation_message']['format'] ?? 'full_html',
-      '#allowed_formats' => ['full_html'],
+      '#allowed_formats' => ['full_html', 'basic_html'],
       '#help' => $this->t('Appears on mobile and tablet devices: A) At the bottom of step 1. B) At the bottom of steps 2 & 3 if "monthly" payment frequency is selected.'),
     ];
 
@@ -203,7 +203,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Impact Statistics'),
       '#default_value' => $this->configuration['impact_statistics']['value'] ?? '',
       '#format' => 'restricted_html',
-      '#allowed_formats' => ['restricted_html'],
+      '#allowed_formats' => ['restricted_html', 'basic_html'],
       '#help' => $this->t('Suitable for monthly donation Forms. Displays at the top of the donation form.'),
     ];
 
@@ -285,6 +285,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $form[$payment_frequency_name]['payment_methods'] = [
           '#type' => 'fieldset',
           '#title' => $this->t('Payment methods'),
+          '#states' => [
+            'visible' => [
+              ':input[name="settings[' . $payment_frequency_name . '][enabled]"]' => [
+                'checked' => TRUE,
+              ],
+            ],
+          ],
         ];
 
         $default_payment_method = !empty($this->configuration[$payment_frequency_name]['default_payment_method'])
@@ -353,10 +360,29 @@ class DonationsWebformHandler extends WebformHandlerBase {
           ];
         }
 
+        $form[$payment_frequency_name]['use_paragraph'] = [
+          '#type' => 'checkbox',
+          '#title' => $this->t('Use payment amounts from paragraph embed'),
+          '#description' => $this->t('If this webform is embedded in a Donation Widget or Registration Form paragraph, use the amounts from the paragraph.'),
+          '#default_value' => $this->configuration[$payment_frequency_name]['use_paragraph'] ?? ''
+        ];
+
         $form[$payment_frequency_name]['amounts'] = [
           '#type' => 'details',
           '#title' => $this->t('Amounts'),
           '#open' => TRUE,
+          '#states' => [
+            'visible' => [
+              [
+                ':input[name="settings[' . $payment_frequency_name . '][enabled]"]' => [
+                  'checked' => TRUE,
+                ],
+                ':input[name="settings[' . $payment_frequency_name . '][use_paragraph]"]' => [
+                  'checked' => FALSE,
+                ],
+              ],
+            ],
+          ],
         ];
 
         $form[$payment_frequency_name]['use_paragraph'] = [
@@ -518,6 +544,18 @@ class DonationsWebformHandler extends WebformHandlerBase {
                 ],
                 '#return_value' => $i,
                 '#default_value' => isset($this->configuration[$payment_frequency_name]['default_duration']) && $this->configuration[$payment_frequency_name]['default_duration'] == $i ? $i : NULL,
+              ],
+              '#states' => [
+                'visible' => [
+                  [
+                    ':input[name="settings[' . $payment_frequency_name . '][enabled]"]' => [
+                      'checked' => TRUE,
+                    ],
+                    ':input[name="settings[' . $payment_frequency_name . '][use_paragraph]"]' => [
+                      'checked' => FALSE,
+                    ],
+                  ],
+                ],
               ],
             ];
 
@@ -715,9 +753,20 @@ class DonationsWebformHandler extends WebformHandlerBase {
     /** @var \Drupal\currency\Entity\CurrencyInterface $currency */
     $currency = Currency::load($this->getCurrency());
 
+    // Get the source entity if it is a paragraph.
+    $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
+
+    if ($paragraph instanceof NodeInterface && $paragraph->hasField('field_donation_widget')) {
+      if ($paragraphs = $paragraph->get('field_donation_widget')->referencedEntities()) {
+        $paragraph = reset($paragraphs);
+      }
+    }
+
+    $paragraph = ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
+
     foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
       if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
-        $amounts = [];
+        $amounts = [];        $amounts = [];
         $discount = [];
 
         // Get the source entity if it is a paragraph.
@@ -737,32 +786,36 @@ class DonationsWebformHandler extends WebformHandlerBase {
               'code_provided' => !empty($discount_code),
             ];
           }
+          
+          if ($paragraph->bundle() == 'donation_widget') {
+            switch ($payment_frequency_name) {
+              case 'recurring':
+                $field = 'field_monthly_donation_amounts';
+                break;
 
-          if ($paragraph->hasField('field_amounts')) {
-            foreach ($paragraph->get('field_amounts')->referencedEntities() as $amount_details) {
+              case 'one_off':
+                $field = 'field_one_off_donation_amounts';
+                break;
+
+              case 'fixed_period':
+                $field = 'field_fixed_period_amounts';
+                break;
+
+              default:
+                $field = NULL;
+            }
+          }
+          else {
+            $field = 'field_amounts';
+          }
+
+          if ($field && $paragraph->hasField($field)) {
+            foreach ($paragraph->get($field)->referencedEntities() as $amount_details) {
               if ($amount = $amount_details->get('field_donation_amount')->getString()) {
-                $old_amount = $amount;
-
-                // We don't want to accidentally apply a discount if the content
-                // creator hasn't entered a discount code and neither has the
-                // user, or if there is no discount to apply.
-                if (!empty($code) && !empty($discount_code) && !empty($discount_amount)) {
-                  if ($code == $discount_code) {
-                    $new_amount = $amount * ((100 - $discount_amount) / 100);
-
-                    // Do not allow any decimal places as stripe payments are
-                    // taken in pence so the amount selected will be * 100 in the
-                    // Javascript that takes the payment.
-                    $amount = number_format((float) $new_amount);
-                    $discount['applied'] = TRUE;
-                  }
-                }
-
                 $amounts[$amount] = [
                   'benefit' => '',
                   'label' => $this->getCurrencyValue($currency, $amount),
-                  'stripePriceCode' => '',
-                  'original' => $old_amount,
+                  'stripePriceCode' => $amount_details->get('field_stripe_price_code')->getString() ?? NULL,
                 ];
 
                 $element = [
@@ -778,6 +831,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
               $amounts[$amount]['renderedBenefit'] = \Drupal::service('renderer')->render($element);
             }
           }
+
         }
         if (empty($amounts)) {
           foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
@@ -915,6 +969,28 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
           // This needs to be a string to prevent a JS error in the donation
           // forms js.
+          if ($frequency_config['use_paragraph'] ?? NULL) {
+          $amounts = $this->getAmounts($discount_code);
+          $amount_defaults[$payment_frequency_name]['default_amount'] = $amount_index;          $amounts = $this->getAmounts($discount_code);
+
+          $amount_index = (string) key($amounts[$payment_frequency_name]['amounts']);
+
+          if (!empty($selected[$payment_frequency_name])) {
+            $amount_index = $selected[$payment_frequency_name];
+
+            if (!array_key_exists($amount_index, $amounts[$payment_frequency_name]['amounts'])) {
+              foreach ($amounts[$payment_frequency_name]['amounts'] as $discount_amount => $amount_data) {
+                if (!empty($amount_data['original'])) {
+                  if ($amount_data['original'] == $amount_index) {
+                    $amount_index = $discount_amount;
+                  }
+                }
+              }
+            }
+          }
+
+          // This needs to be a string to prevent a JS error in the donation
+          // forms js.
           $amount_defaults[$payment_frequency_name]['default_amount'] = $amount_index;
         }
         else {
@@ -987,7 +1063,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     // Add the default duration to each frequency.
     foreach ($amount_defaults_all as $frequency_name => $amount_values) {
       if (isset($duration_defaults_all[$frequency_name])) {
-        $amount_defaults_all[$frequency_name]['default_duration'] = $duration_defaults_all[$frequency_name]['default_duration'];
+        $amount_defaults_all[$frequency_name]['default_duration'] = $duration_defaults_all[$frequency_name]['default_duration'] ?? NULL;
       }
     }
 
@@ -1361,19 +1437,12 @@ class DonationsWebformHandler extends WebformHandlerBase {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
-  }
-
-  /**
    * Send tracking data to the dataLayer.
    *
    * @param array $values
    *   The form submit values.
    * @param string $webform_id
-   *   The Webform ID.
+   *   The webform ID.
    * @param bool $send_immediately
    *   TRUE to send data to the datalayer, or FALSE to queue in State.
    */
@@ -1391,22 +1460,27 @@ class DonationsWebformHandler extends WebformHandlerBase {
       $values['gift_aid'] = [];
     }
 
-    // Amount
+    // Amount.
     if (!$amount = $values['donation_amount']['amount'] ?? NULL) {
-      if (!$amount = $values['payment_data']['donation__amount']) {
+      if (!$amount = $values['payment_data']['donation__amount'] ?? NULL) {
         $amount = $values['donation__amount'] ?? NULL;
       }
     }
 
     // Frequency value.
     if (!$frequency = $values['donation_amount']['frequency'] ?? NULL) {
-      if (!$frequency = $values['payment_data']['payment_frequency']) {
+      if (!$frequency = $values['payment_data']['payment_frequency'] ?? NULL) {
         $frequency = $values['donation__frequency'] ?? NULL;
       }
     }
 
+    // Fallback to get parameter from URL.
+    if (!$frequency) {
+      $frequency = \Drupal::request()->query->get('fq');
+    }
+
     if ($frequency) {
-      $frequency = ($frequency == 'one_off') ? 'One-off' : 'Monthly';
+      $frequency = ($frequency == 'one_off') ? 'one_off' : 'monthly';
     }
 
     // Org Name value.
@@ -1421,7 +1495,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
-    // Event type value
+    // Event type value.
     $event_type = NULL;
 
     foreach ([
@@ -1434,7 +1508,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
-    // Event name
+    // Event name.
     $event_name = NULL;
 
     foreach ([
@@ -1483,8 +1557,14 @@ class DonationsWebformHandler extends WebformHandlerBase {
       }
     }
 
-    $ecommerce = [
-      'event' => 'ecommerce',
+    $matched_categories = array_filter(
+      ['fundraising', 'zakat', 'sadaqah'],
+      fn($category_item) => str_contains(strtolower($webform_id), $category_item)
+    );
+    $category = $matched_categories ? reset($matched_categories) : 'Standard';
+
+    $event = [
+      'event' => 'purchase',
       'donation_id' => $values['payment_data']['donation__transaction_id'] ?? '',
       'donation_form_id' => $webform_id,
       'donation_date' => $values['payment_data']['donation__date'] ?? '',
@@ -1494,36 +1574,38 @@ class DonationsWebformHandler extends WebformHandlerBase {
       'donation_package_Code' => $values['payment_data']['donation__package_code'] ?? '',
       'referral_source' => $values['prompt_reason'] ?? '',
       'notification_preferences' => $comms ?? [],
-    ];
-
-    $purchase = [
-      'event' => 'purchase',
-      'transaction_id' => $values['payment_data']['donation__transaction_id'] ?? '',
-      'value' => $amount,
-      'currency' => $values['payment_data']['donation__currency'] ?? '',
-      'items' => [
-        'item_donation_frequency' => $frequency,
-        'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
-        'item_brand' => 'WaterAid',
-        'item_category' => 'Donation',
-        'item_category2' => $frequency,
-        'price' => $values['donation_amount']['amount'] ?? '',
-        'quantity' => '1',
-        'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
-        'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
-        'item_donation_fundraising_org_name' => $org_name,
-        'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
-        'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
-        'item_donation_fundraising_event_type' => $event_type,
-        'item_donation_fundraising_event_name' => $event_name,
-        'item_donation_fundraising_event_date' => $event_date,
-        'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+      'ecommerce' => [
+        'transaction_id' => $values['payment_data']['donation__transaction_id'] ?? '',
+        'value' => $amount,
+        'currency' => $values['payment_data']['donation__currency'] ?? '',
+        'items' => [
+          [
+            'item_id' => strtoupper('DONATION' . $frequency . $category),
+            'item_name' => strtoupper('DONATION|' . $frequency . '|' . $category),
+            'item_donation_frequency' => $frequency ?? '',
+            'item_donation_category' => ucwords($category),
+            'item_giftaid' => $values['gift_aid']['opt_in'] ?? '',
+            'item_brand' => 'WaterAid',
+            'item_category' => 'Donation',
+            'item_category2' => $frequency,
+            'price' => $values['donation_amount']['amount'] ?? '',
+            'quantity' => '1',
+            'item_donation_fundraising_method' => $values['how_was_the_money_raised_'] ?? '',
+            'item_donation_fundraising_org_type' => $values['organisation_type'] ?? '',
+            'item_donation_fundraising_org_name' => $org_name,
+            'item_donation_fundraising_club_type' => $values['type_of_service_organisation_or_club'] ?? '',
+            'item_donation_fundraising_wateraid_talk' => $values['have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_'] ?? '',
+            'item_donation_fundraising_event_type' => $event_type,
+            'item_donation_fundraising_event_name' => $event_name,
+            'item_donation_fundraising_event_date' => $event_date,
+            'item_donation_fundraising_team_name' => $values['team_name'] ?? '',
+          ],
+        ],
       ],
     ];
 
     if ($send_immediately) {
-      datalayer_add($ecommerce, TRUE);
-      datalayer_add($purchase);
+      datalayer_add($event);
     }
     else {
       $key = 'wateraid_donation_forms_datalayer';
@@ -1534,8 +1616,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $data[$webform_id] = [];
       }
 
-      $data[$webform_id][] = $ecommerce;
-      $data[$webform_id][] = $purchase;
+      $data[$webform_id][] = $event;
 
       \Drupal::state()->set($key, $data);
     }
