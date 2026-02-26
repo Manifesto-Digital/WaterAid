@@ -1,0 +1,22 @@
+uuid: dc1e0b90-802a-4a9d-bac3-0d54a41d580d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donation_placeholder_do_not_use
+id: paragraph.donation_placeholder_do_not_use.status
+field_name: status
+entity_type: paragraph
+bundle: donation_placeholder_do_not_use
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 5dedb48b-501e-4d64-b1e0-9645f67c8499
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: countries
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

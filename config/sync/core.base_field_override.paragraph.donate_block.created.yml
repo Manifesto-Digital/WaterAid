@@ -1,0 +1,18 @@
+uuid: 31512616-7c29-4855-8fc5-e5804edd2293
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donate_block
+id: paragraph.donate_block.created
+field_name: created
+entity_type: paragraph
+bundle: donate_block
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

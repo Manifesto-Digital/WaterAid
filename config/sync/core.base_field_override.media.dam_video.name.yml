@@ -1,0 +1,20 @@
+uuid: 1675515c-98bc-4be3-9795-37868dfc97e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+id: media.dam_video.name
+field_name: name
+entity_type: media
+bundle: dam_video
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

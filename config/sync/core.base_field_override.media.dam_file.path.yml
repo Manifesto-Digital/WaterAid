@@ -1,0 +1,20 @@
+uuid: 4f065474-43e4-476f-b068-f1ad1dc94fd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+  module:
+    - path
+id: media.dam_file.path
+field_name: path
+entity_type: media
+bundle: dam_file
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

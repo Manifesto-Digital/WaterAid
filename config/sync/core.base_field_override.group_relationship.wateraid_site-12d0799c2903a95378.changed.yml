@@ -1,0 +1,18 @@
+uuid: 585184b7-af71-427c-a5b9-c7f2d77446d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-12d0799c2903a95378
+id: group_relationship.wateraid_site-12d0799c2903a95378.changed
+field_name: changed
+entity_type: group_relationship
+bundle: wateraid_site-12d0799c2903a95378
+label: 'Changed on'
+description: 'The time that the group relationship was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

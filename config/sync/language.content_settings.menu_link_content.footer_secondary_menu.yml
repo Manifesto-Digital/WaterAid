@@ -1,0 +1,17 @@
+uuid: 0ed13e2e-d11a-49e3-9487-043217ef25c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - menu_link_content
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: menu_link_content.footer_secondary_menu
+target_entity_type_id: menu_link_content
+target_bundle: footer_secondary_menu
+default_langcode: current_interface
+language_alterable: true

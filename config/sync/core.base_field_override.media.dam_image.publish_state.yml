@@ -1,0 +1,20 @@
+uuid: fd052f34-41f5-4f99-be6b-95035f2572ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_image
+  module:
+    - options
+id: media.dam_image.publish_state
+field_name: publish_state
+entity_type: media
+bundle: dam_image
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,20 @@
+uuid: d39ebb15-bc3a-453c-9348-310e5bf8f85b
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+  module:
+    - path
+id: media.donation_icon_library.path
+field_name: path
+entity_type: media
+bundle: donation_icon_library
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

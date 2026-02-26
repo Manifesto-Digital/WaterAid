@@ -6,7 +6,14 @@ dependencies:
     - field.storage.node.field_properties
     - node.type.event
   module:
+    - content_translation
     - key_value_field
+third_party_settings:
+  content_translation:
+    translation_sync:
+      value: value
+      description: description
+      key: '0'
 id: node.event.field_properties
 field_name: field_properties
 entity_type: node
@@ -14,7 +21,7 @@ bundle: event
 label: Properties
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

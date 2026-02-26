@@ -1,0 +1,18 @@
+uuid: 0583f5cd-cc4f-430d-90f3-f9045c711ef8
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+id: media.dam_file.changed
+field_name: changed
+entity_type: media
+bundle: dam_file
+label: Changed
+description: 'The time the media item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

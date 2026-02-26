@@ -1,0 +1,22 @@
+uuid: f22f171e-d394-41ff-a648-7c13bd760071
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+id: media.dam_file.status
+field_name: status
+entity_type: media
+bundle: dam_file
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

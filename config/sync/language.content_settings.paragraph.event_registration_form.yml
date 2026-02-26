@@ -1,0 +1,18 @@
+uuid: 47bcaca2-528f-46e7-bd80-c69466eb0480
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.event_registration_form
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.event_registration_form
+target_entity_type_id: paragraph
+target_bundle: event_registration_form
+default_langcode: current_interface
+language_alterable: true

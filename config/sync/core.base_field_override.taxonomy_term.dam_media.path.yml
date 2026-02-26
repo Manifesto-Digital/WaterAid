@@ -1,0 +1,20 @@
+uuid: 695b293a-6f12-424c-88e6-af60e8c77d1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+  module:
+    - path
+id: taxonomy_term.dam_media.path
+field_name: path
+entity_type: taxonomy_term
+bundle: dam_media
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

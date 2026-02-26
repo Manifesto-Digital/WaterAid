@@ -1,0 +1,20 @@
+uuid: 8b122d44-9bd5-4f6d-8daf-eb19f781b7f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+  module:
+    - options
+id: media.donation_icon_library.unpublish_state
+field_name: unpublish_state
+entity_type: media
+bundle: donation_icon_library
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

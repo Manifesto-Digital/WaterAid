@@ -1,0 +1,18 @@
+uuid: b47d38b9-746e-4477-b9bb-eb3bbca550a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donate_block
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.donate_block
+target_entity_type_id: paragraph
+target_bundle: donate_block
+default_langcode: current_interface
+language_alterable: true

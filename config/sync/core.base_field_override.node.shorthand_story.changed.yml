@@ -1,0 +1,18 @@
+uuid: 886960e7-067e-4a2e-b36a-bc0b4ebbc01b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story.changed
+field_name: changed
+entity_type: node
+bundle: shorthand_story
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

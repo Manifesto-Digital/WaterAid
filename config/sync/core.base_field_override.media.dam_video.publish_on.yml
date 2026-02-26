@@ -1,0 +1,18 @@
+uuid: 774471e9-33ff-43c6-80a9-5930ca46b692
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+id: media.dam_video.publish_on
+field_name: publish_on
+entity_type: media
+bundle: dam_video
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

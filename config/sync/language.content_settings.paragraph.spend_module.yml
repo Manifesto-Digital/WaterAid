@@ -1,0 +1,18 @@
+uuid: 1fc92762-cad7-4f25-a925-dcfed17ceab9
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.spend_module
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.spend_module
+target_entity_type_id: paragraph
+target_bundle: spend_module
+default_langcode: current_interface
+language_alterable: true

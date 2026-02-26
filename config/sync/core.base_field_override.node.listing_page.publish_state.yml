@@ -1,0 +1,20 @@
+uuid: 4bb2011e-4d1d-4025-8827-f6ea40c7bac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+  module:
+    - options
+id: node.listing_page.publish_state
+field_name: publish_state
+entity_type: node
+bundle: listing_page
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

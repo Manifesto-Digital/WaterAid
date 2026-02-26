@@ -1,0 +1,18 @@
+uuid: 6e6e04db-f5ad-4669-a3f3-e63538c42fd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+id: taxonomy_term.dam_media.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: dam_media
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

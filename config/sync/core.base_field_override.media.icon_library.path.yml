@@ -1,0 +1,20 @@
+uuid: 1b7146ef-cffc-4254-acb8-d71d48b33e7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.icon_library
+  module:
+    - path
+id: media.icon_library.path
+field_name: path
+entity_type: media
+bundle: icon_library
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

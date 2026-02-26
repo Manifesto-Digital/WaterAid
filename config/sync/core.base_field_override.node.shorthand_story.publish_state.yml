@@ -1,0 +1,20 @@
+uuid: c8dc88e2-207c-46a8-8c12-8e4a538837b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+  module:
+    - options
+id: node.shorthand_story.publish_state
+field_name: publish_state
+entity_type: node
+bundle: shorthand_story
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

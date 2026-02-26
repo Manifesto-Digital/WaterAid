@@ -1,0 +1,18 @@
+uuid: 4f140a19-42a7-424f-a6f8-06892b80d9e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+id: node.article.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: article
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

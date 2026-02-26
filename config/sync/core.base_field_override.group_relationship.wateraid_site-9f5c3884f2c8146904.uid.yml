@@ -1,0 +1,20 @@
+uuid: d95619df-3630-46e5-95a3-7eca4446fbd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-9f5c3884f2c8146904
+id: group_relationship.wateraid_site-9f5c3884f2c8146904.uid
+field_name: uid
+entity_type: group_relationship
+bundle: wateraid_site-9f5c3884f2c8146904
+label: 'Group relationship creator'
+description: 'The username of the group relationship creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupRelationship::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

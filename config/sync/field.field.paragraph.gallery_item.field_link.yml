@@ -14,7 +14,7 @@ bundle: gallery_item
 label: Link
 description: 'Enter a link to direct users to.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

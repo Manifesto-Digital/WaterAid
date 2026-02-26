@@ -1,0 +1,18 @@
+uuid: 2f810b18-472b-47d1-9961-f8f4f048a7b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: donation_icon_library
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

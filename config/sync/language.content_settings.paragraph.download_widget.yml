@@ -1,0 +1,18 @@
+uuid: 43a0474c-fd8e-4a6d-8821-5416fffb7b1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.download_widget
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.download_widget
+target_entity_type_id: paragraph
+target_bundle: download_widget
+default_langcode: current_interface
+language_alterable: true

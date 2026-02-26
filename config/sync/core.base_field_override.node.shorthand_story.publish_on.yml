@@ -1,0 +1,18 @@
+uuid: 79f9114c-fad7-4664-91f3-d41767ebe4ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story.publish_on
+field_name: publish_on
+entity_type: node
+bundle: shorthand_story
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

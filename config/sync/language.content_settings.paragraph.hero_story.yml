@@ -1,0 +1,18 @@
+uuid: 43ed940f-c73f-4952-a2b9-ee417a6a8874
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.hero_story
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.hero_story
+target_entity_type_id: paragraph
+target_bundle: hero_story
+default_langcode: current_interface
+language_alterable: true

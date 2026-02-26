@@ -1,0 +1,20 @@
+uuid: 7f25dd66-97b2-4dff-9d39-e56c911fe070
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.audiences
+  module:
+    - options
+id: taxonomy_term.audiences.publish_state
+field_name: publish_state
+entity_type: taxonomy_term
+bundle: audiences
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

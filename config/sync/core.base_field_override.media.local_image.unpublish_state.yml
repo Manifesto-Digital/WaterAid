@@ -1,0 +1,20 @@
+uuid: 6d4d15ec-6256-4fab-a25c-b0203d637517
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_image
+  module:
+    - options
+id: media.local_image.unpublish_state
+field_name: unpublish_state
+entity_type: media
+bundle: local_image
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

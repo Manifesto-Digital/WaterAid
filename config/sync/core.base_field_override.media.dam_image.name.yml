@@ -1,0 +1,20 @@
+uuid: 1d0c4816-3183-4002-86ae-95794a269ccf
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_image
+id: media.dam_image.name
+field_name: name
+entity_type: media
+bundle: dam_image
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

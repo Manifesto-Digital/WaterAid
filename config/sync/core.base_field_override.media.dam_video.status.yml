@@ -1,0 +1,22 @@
+uuid: 85768b1c-7603-432b-a3eb-af35bccb0594
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+id: media.dam_video.status
+field_name: status
+entity_type: media
+bundle: dam_video
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

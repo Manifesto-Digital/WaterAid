@@ -1,0 +1,22 @@
+uuid: 5eca9b78-c816-4184-8340-c300d2343cc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+id: taxonomy_term.dam_media.status
+field_name: status
+entity_type: taxonomy_term
+bundle: dam_media
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

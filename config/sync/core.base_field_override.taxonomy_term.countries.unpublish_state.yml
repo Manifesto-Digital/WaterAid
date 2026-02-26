@@ -1,0 +1,20 @@
+uuid: 6231b8b0-ba9b-471e-8063-6dbc26a09aa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.countries
+  module:
+    - options
+id: taxonomy_term.countries.unpublish_state
+field_name: unpublish_state
+entity_type: taxonomy_term
+bundle: countries
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,18 @@
+uuid: 93fadbd3-21c6-468e-8c59-e1418b9eebd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node.listing_page.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: listing_page
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

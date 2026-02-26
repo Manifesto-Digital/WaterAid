@@ -1,0 +1,18 @@
+uuid: c4d24d98-d220-4b53-93cf-12ffc21fe98c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+id: taxonomy_term.dam_media.name
+field_name: name
+entity_type: taxonomy_term
+bundle: dam_media
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

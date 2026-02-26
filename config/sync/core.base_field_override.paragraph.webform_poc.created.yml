@@ -1,0 +1,18 @@
+uuid: c44eed48-8ade-4afd-84d7-a4679cf8ecca
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.webform_poc
+id: paragraph.webform_poc.created
+field_name: created
+entity_type: paragraph
+bundle: webform_poc
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

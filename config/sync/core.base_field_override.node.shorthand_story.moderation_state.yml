@@ -1,0 +1,18 @@
+uuid: 6c188c53-2741-4eb8-a97e-97eb307e44e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story.moderation_state
+field_name: moderation_state
+entity_type: node
+bundle: shorthand_story
+label: 'Moderation state'
+description: 'The moderation state of this piece of content.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
