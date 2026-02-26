@@ -62,10 +62,10 @@
  */
 #}
 {% set tags = {
-  'audience': node.field_audience.0.entity.name.value,
-  'country': node.field_country.0.entity.name.value,
-  'get-involved': node.field_get_involved.0.entity.name.value,
-  'theme': node.field_theme.0.entity.name.value,
+  'audience': node.field_audience.isEmpty() ? '' : node.field_audience.0.entity|translation.name.value,
+  'country': node.field_country.isEmpty() ? '' : node.field_country.0.entity|translation.name.value,
+  'get-involved': node.field_get_involved.isEmpty() ? '' : node.field_get_involved.0.entity|translation.name.value,
+  'theme': node.field_theme.isEmpty() ? '' : node.field_theme.0.entity|translation.name.value,
 } %}
 
 {{ include('wateraid:card', {

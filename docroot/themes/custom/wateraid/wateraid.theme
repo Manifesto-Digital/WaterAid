@@ -495,6 +495,20 @@ function wateraid_preprocess_node(&$variables): void {
   $node = $variables['node'];
   $view_mode = $variables['view_mode'];
 
+  foreach ([
+    'key_stages' => 'field_key_stages',
+    'ages' => 'field_age_range',
+  ] as $variable => $field) {
+    if ($node->hasField($field)) {
+      $settings = $node->get($field)->getSettings()['allowed_values'];
+      foreach ($node->get($field)->getValue() as $value) {
+        if (isset($value['value']) && isset($settings[$value['value']])) {
+          $variables[$variable][] = t($settings[$value['value']]);
+        }
+      }
+    }
+  }
+
   // Hide field_donation_widget if fq and val query parameters exist because another widget already set it.
   if ($node->getType() === 'webform' ) {
     $variables['#attached']['library'][] = 'wateraid/webforms-general';
