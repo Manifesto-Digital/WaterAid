@@ -1,0 +1,22 @@
+uuid: 9888adb1-c00e-4870-858a-5480090f65b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.donate_header_menu
+id: group_content_menu.donate_header_menu.status
+field_name: status
+entity_type: group_content_menu
+bundle: donate_header_menu
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

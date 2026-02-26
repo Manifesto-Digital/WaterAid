@@ -1,0 +1,20 @@
+uuid: f3814248-750e-486d-99e5-2c43f2575feb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+  module:
+    - path
+id: node.shorthand_story.path
+field_name: path
+entity_type: node
+bundle: shorthand_story
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,20 @@
+uuid: 416eb68f-94d1-4f04-8906-63f99bbc7f9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_file
+id: media.local_file.name
+field_name: name
+entity_type: media
+bundle: local_file
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

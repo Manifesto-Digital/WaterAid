@@ -1,0 +1,20 @@
+uuid: 27bf770e-ce97-459d-bc9a-f9aa96ef86e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-5515227a4518b62daf
+  module:
+    - metatag
+id: group_relationship.wateraid_site-5515227a4518b62daf.metatag
+field_name: metatag
+entity_type: group_relationship
+bundle: wateraid_site-5515227a4518b62daf
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

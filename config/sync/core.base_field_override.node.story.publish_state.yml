@@ -1,0 +1,20 @@
+uuid: b58d835a-bb80-471f-8979-65bdd09c005c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.story
+  module:
+    - options
+id: node.story.publish_state
+field_name: publish_state
+entity_type: node
+bundle: story
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

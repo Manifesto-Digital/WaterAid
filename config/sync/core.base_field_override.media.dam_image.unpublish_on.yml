@@ -1,0 +1,18 @@
+uuid: ceb183ca-3c46-4cc6-b9ce-9f141e6f9b55
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_image
+id: media.dam_image.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: dam_image
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

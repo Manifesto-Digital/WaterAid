@@ -1,0 +1,22 @@
+uuid: 130adacd-02d5-46e2-898b-0e2e1a3601cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story.sticky
+field_name: sticky
+entity_type: node
+bundle: shorthand_story
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

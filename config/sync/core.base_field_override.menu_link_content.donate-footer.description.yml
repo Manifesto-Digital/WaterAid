@@ -1,0 +1,18 @@
+uuid: ee4cd8de-5bdf-4e23-9ced-c8127124d014
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.donate-footer.description
+field_name: description
+entity_type: menu_link_content
+bundle: donate-footer
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

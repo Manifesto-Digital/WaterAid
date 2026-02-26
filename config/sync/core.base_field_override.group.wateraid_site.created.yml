@@ -1,0 +1,18 @@
+uuid: 2ef920cb-8b8e-41a3-bef5-8d05bc19f08e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+id: group.wateraid_site.created
+field_name: created
+entity_type: group
+bundle: wateraid_site
+label: 'Created on'
+description: 'The time that the group was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

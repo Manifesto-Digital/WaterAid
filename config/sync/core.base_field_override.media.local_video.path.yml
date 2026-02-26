@@ -1,0 +1,20 @@
+uuid: e5af1863-3475-4922-83c3-ce74d2175b19
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_video
+  module:
+    - path
+id: media.local_video.path
+field_name: path
+entity_type: media
+bundle: local_video
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

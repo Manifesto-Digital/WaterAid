@@ -13,7 +13,7 @@ bundle: wateraid_site_menu
 label: Description
 description: 'The description is only visible for top level menu items, on the mega menu and mobile menu.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

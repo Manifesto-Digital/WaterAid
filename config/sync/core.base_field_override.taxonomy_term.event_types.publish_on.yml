@@ -1,0 +1,18 @@
+uuid: cdb84967-f703-44f9-862f-af32e73fb4f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.event_types
+id: taxonomy_term.event_types.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: event_types
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,18 @@
+uuid: af2a3164-b1e5-4070-86bf-d1dc6c44a658
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.donation
+id: node.donation.publish_on
+field_name: publish_on
+entity_type: node
+bundle: donation
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

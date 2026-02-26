@@ -1,0 +1,21 @@
+uuid: 1637c56a-2da7-41f7-bf01-dcf2f9b4d00a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.audiences
+  module:
+    - text
+id: taxonomy_term.audiences.description
+field_name: description
+entity_type: taxonomy_term
+bundle: audiences
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

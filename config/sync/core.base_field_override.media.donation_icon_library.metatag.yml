@@ -1,0 +1,20 @@
+uuid: 52a04a1a-aeba-4792-bda0-3a7b3cc53ade
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+  module:
+    - metatag
+id: media.donation_icon_library.metatag
+field_name: metatag
+entity_type: media
+bundle: donation_icon_library
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

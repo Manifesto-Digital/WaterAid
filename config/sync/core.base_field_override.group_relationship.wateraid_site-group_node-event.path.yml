@@ -1,0 +1,20 @@
+uuid: 815f323b-e9cd-4a6e-af34-0d7273dcf89d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.wateraid_site-group_node-event
+  module:
+    - path
+id: group_relationship.wateraid_site-group_node-event.path
+field_name: path
+entity_type: group_relationship
+bundle: wateraid_site-group_node-event
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

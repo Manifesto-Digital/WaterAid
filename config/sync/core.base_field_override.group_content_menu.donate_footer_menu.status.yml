@@ -1,0 +1,22 @@
+uuid: fbef701b-f6f4-4fbf-8d83-41e56ed13dc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.donate_footer_menu
+id: group_content_menu.donate_footer_menu.status
+field_name: status
+entity_type: group_content_menu
+bundle: donate_footer_menu
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

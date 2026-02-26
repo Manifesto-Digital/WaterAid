@@ -1,0 +1,18 @@
+uuid: 6f3a184c-ad68-4dff-bf59-94f52871c56b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries.unpublish_on
+field_name: unpublish_on
+entity_type: taxonomy_term
+bundle: countries
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,20 @@
+uuid: 221af1f2-8bdd-4e2c-adc4-f55049557095
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_file
+  module:
+    - metatag
+id: media.local_file.metatag
+field_name: metatag
+entity_type: media
+bundle: local_file
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,18 @@
+uuid: ab9be5ab-2338-42af-9ab4-cf30fe4c406f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cancel_anytime
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.cancel_anytime
+target_entity_type_id: paragraph
+target_bundle: cancel_anytime
+default_langcode: current_interface
+language_alterable: true

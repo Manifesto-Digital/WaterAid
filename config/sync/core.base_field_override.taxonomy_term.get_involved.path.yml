@@ -1,0 +1,20 @@
+uuid: 76178480-0f1f-46fb-bb96-d108c0119e1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.get_involved
+  module:
+    - path
+id: taxonomy_term.get_involved.path
+field_name: path
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

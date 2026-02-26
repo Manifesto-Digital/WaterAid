@@ -1,0 +1,18 @@
+uuid: 94647aa8-6bfc-4853-898d-f0ae2f141fc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.created
+field_name: created
+entity_type: media
+bundle: donation_icon_library
+label: 'Authored on'
+description: 'The time the media item was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getRequestTime'
+settings: {  }
+field_type: created

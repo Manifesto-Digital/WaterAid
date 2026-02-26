@@ -1,0 +1,18 @@
+uuid: 3fd053b7-97ca-4048-9548-8e59a5697388
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donate_exit_modal
+id: paragraph.donate_exit_modal.created
+field_name: created
+entity_type: paragraph
+bundle: donate_exit_modal
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

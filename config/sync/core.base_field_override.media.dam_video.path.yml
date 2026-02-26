@@ -1,0 +1,20 @@
+uuid: d153bd6a-4b40-4f2c-8f79-c7be358eb73d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+  module:
+    - path
+id: media.dam_video.path
+field_name: path
+entity_type: media
+bundle: dam_video
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

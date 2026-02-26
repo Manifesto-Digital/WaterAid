@@ -1,0 +1,18 @@
+uuid: f50d4112-bd9b-445d-9243-2f611add4bac
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.hero_search
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.hero_search
+target_entity_type_id: paragraph
+target_bundle: hero_search
+default_langcode: current_interface
+language_alterable: true

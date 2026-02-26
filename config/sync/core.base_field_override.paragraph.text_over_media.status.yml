@@ -1,0 +1,22 @@
+uuid: d004e7df-b1f0-4668-85f2-8572dafc9fdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.text_over_media
+id: paragraph.text_over_media.status
+field_name: status
+entity_type: paragraph
+bundle: text_over_media
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

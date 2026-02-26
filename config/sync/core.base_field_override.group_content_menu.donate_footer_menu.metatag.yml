@@ -1,0 +1,20 @@
+uuid: b3105a17-234e-4029-a0d6-1a09818ea9df
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.donate_footer_menu
+  module:
+    - metatag
+id: group_content_menu.donate_footer_menu.metatag
+field_name: metatag
+entity_type: group_content_menu
+bundle: donate_footer_menu
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

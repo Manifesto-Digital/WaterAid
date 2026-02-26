@@ -1,0 +1,22 @@
+uuid: e26a37da-e8bd-4ba8-aaef-9e929b03aa4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.status
+field_name: status
+entity_type: paragraph
+bundle: donation_widget
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

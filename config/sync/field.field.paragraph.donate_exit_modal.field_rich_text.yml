@@ -16,7 +16,7 @@ bundle: donate_exit_modal
 label: Copy
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

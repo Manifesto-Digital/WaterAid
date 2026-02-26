@@ -1,0 +1,18 @@
+uuid: 063b4c5b-eda6-4728-a120-88cc59eba945
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_file
+id: media.local_file.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: local_file
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
