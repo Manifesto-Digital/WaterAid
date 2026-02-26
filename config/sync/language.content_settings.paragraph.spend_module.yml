@@ -15,4 +15,4 @@ id: paragraph.spend_module
 target_entity_type_id: paragraph
 target_bundle: spend_module
 default_langcode: current_interface
-language_alterable: true
+language_alterable: false

@@ -15,4 +15,4 @@ id: paragraph.temp_paragraph
 target_entity_type_id: paragraph
 target_bundle: temp_paragraph
 default_langcode: current_interface
-language_alterable: true
+language_alterable: false

@@ -15,4 +15,4 @@ id: paragraph.download_widget
 target_entity_type_id: paragraph
 target_bundle: download_widget
 default_langcode: current_interface
-language_alterable: true
+language_alterable: false

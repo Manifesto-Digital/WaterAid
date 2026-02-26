@@ -15,4 +15,4 @@ id: paragraph.donate_block
 target_entity_type_id: paragraph
 target_bundle: donate_block
 default_langcode: current_interface
-language_alterable: true
+language_alterable: false
