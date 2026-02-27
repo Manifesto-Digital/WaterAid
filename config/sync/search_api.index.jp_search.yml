@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_age_range
     - field.storage.node.field_audience
     - field.storage.node.field_content
     - field.storage.node.field_country
@@ -114,6 +115,14 @@ field_settings:
     dependencies:
       module:
         - node
+  field_age_range:
+    label: Age
+    datasource_id: 'entity:node'
+    property_path: field_age_range
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_age_range
   field_audience:
     label: Audience
     datasource_id: 'entity:node'
@@ -920,6 +929,7 @@ processor_settings:
       preprocess_query: -15
     all_fields: true
     fields:
+      - field_age_range
       - field_caption
       - field_caption_1
       - field_citation
