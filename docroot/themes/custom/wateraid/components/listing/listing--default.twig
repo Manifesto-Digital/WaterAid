@@ -12,7 +12,7 @@
     {% if filters|render %}
       <div class="listing__wrapper--button">
         {{ include('wateraid:button', {
-          text: 'Show filters',
+          text: 'Show filters'|t,
           link: '',
           id: 'show-filters',
           type: 'secondary',
@@ -24,7 +24,7 @@
       <div class="listing__filters">
         <div class="listing__filters--button">
           {{ include('wateraid:button', {
-            text: 'Hide filters',
+            text: 'Hide filters'|t,
             link: '',
             id: 'hide-filters',
             type: 'secondary',

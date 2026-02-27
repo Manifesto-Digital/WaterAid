@@ -25,7 +25,7 @@
       {% if video[0]['#media'].bundle() != 'remote_video' %}
         <div class="cta__video--play">
           {{ include('wateraid:button', {
-            text: 'Play video',
+            text: 'Play video'|t,
             link: '',
             id: 'cta-play-button',
             type: 'icon',
@@ -35,7 +35,7 @@
         </div>
         <div class="cta__video--pause">
           {{ include('wateraid:button', {
-            text: 'Pause video',
+            text: 'Pause video'|t,
             link: '',
             id: 'cta-pause-button',
             type: 'icon',
@@ -79,5 +79,5 @@
       {% endif %}
     </div>
   {% endif %}
-</div>
+  </div>
 </div>

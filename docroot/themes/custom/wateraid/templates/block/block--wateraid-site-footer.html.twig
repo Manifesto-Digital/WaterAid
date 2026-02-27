@@ -33,7 +33,7 @@
 {% set youtube = field_youtube.0['#title'] %}
 {% set cta = {
   link: field_donate_link.0['#url'],
-  text: field_donate_link.0['#title']
+  text: field_donate_link.0['#title'] ? field_donate_link.0['#title']|t : '',
 } %}
 {% set contact_details = {
   tel: field_phone_number|render|striptags|trim,
