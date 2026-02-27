@@ -1,0 +1,22 @@
+uuid: 52b64e45-a21d-428e-8e32-d2c231dab06f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.webform_poc
+id: paragraph.webform_poc.status
+field_name: status
+entity_type: paragraph
+bundle: webform_poc
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

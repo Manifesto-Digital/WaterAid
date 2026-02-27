@@ -1,0 +1,18 @@
+uuid: 45a93ab5-fccf-4e9b-911d-eb791714a634
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.changed
+field_name: changed
+entity_type: media
+bundle: donation_icon_library
+label: Changed
+description: 'The time the media item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

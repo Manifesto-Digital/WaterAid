@@ -12,7 +12,7 @@ bundle: hero_search
 label: Title
 description: 'Enter the title for your hero'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -12,7 +12,7 @@ bundle: story
 label: 'Search Phrases'
 description: 'Enter any keywords related to this content that users may use when searching for it.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

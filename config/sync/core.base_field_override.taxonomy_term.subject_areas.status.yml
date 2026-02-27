@@ -1,0 +1,22 @@
+uuid: 91234997-bab5-49b1-a374-80d91518f9c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+id: taxonomy_term.subject_areas.status
+field_name: status
+entity_type: taxonomy_term
+bundle: subject_areas
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

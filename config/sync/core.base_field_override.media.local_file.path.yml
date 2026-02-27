@@ -1,0 +1,20 @@
+uuid: e80fd0a5-e70c-44d7-aa5d-b867f4b5f3d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_file
+  module:
+    - path
+id: media.local_file.path
+field_name: path
+entity_type: media
+bundle: local_file
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

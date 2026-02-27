@@ -1,0 +1,18 @@
+uuid: cd38e608-d8c0-4a5f-87c5-0de18edf242f
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+id: media.dam_video.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: dam_video
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

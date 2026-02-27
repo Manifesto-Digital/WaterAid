@@ -1,0 +1,22 @@
+uuid: d167cb7f-2fc6-4569-8889-60fb3bfa0d9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.footer_secondary_menu
+id: group_content_menu.footer_secondary_menu.status
+field_name: status
+entity_type: group_content_menu
+bundle: footer_secondary_menu
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 87aa55bc-5ea7-4032-9f16-5324f77ad073
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.donate_footer_menu
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content_menu.donate_footer_menu
+target_entity_type_id: group_content_menu
+target_bundle: donate_footer_menu
+default_langcode: site_default
+language_alterable: true

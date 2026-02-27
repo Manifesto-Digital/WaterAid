@@ -1,0 +1,20 @@
+uuid: bfaf6408-cfc8-43db-a9e3-210e6b7da6cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+  module:
+    - metatag
+id: node.shorthand_story.metatag
+field_name: metatag
+entity_type: node
+bundle: shorthand_story
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

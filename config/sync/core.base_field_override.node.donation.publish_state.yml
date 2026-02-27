@@ -1,0 +1,20 @@
+uuid: e611e277-e595-46c7-852f-c3e827d19b54
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.donation
+  module:
+    - options
+id: node.donation.publish_state
+field_name: publish_state
+entity_type: node
+bundle: donation
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

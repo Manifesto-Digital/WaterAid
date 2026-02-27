@@ -1,0 +1,20 @@
+uuid: eb6bbbc7-3fde-4076-9a60-d1a3dfccf04c
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+  module:
+    - metatag
+id: media.dam_video.metatag
+field_name: metatag
+entity_type: media
+bundle: dam_video
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

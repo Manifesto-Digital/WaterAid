@@ -1,0 +1,20 @@
+uuid: 7a7ecc8f-7dc2-4d22-85d4-f79554604abe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story.menu_link
+field_name: menu_link
+entity_type: node
+bundle: shorthand_story
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

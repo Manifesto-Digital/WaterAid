@@ -1,0 +1,20 @@
+uuid: f3adb05b-80db-4461-b377-41bc3b7be000
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.name
+field_name: name
+entity_type: media
+bundle: donation_icon_library
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

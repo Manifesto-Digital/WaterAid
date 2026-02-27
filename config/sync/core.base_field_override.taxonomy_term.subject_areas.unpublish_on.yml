@@ -1,0 +1,18 @@
+uuid: efc1db6e-b470-41f5-8df9-3abbf3c82206
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+id: taxonomy_term.subject_areas.unpublish_on
+field_name: unpublish_on
+entity_type: taxonomy_term
+bundle: subject_areas
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

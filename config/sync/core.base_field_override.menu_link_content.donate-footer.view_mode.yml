@@ -1,0 +1,19 @@
+uuid: 0e52c74a-a320-45b5-842c-c6a4158cf69a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+    - menu_item_extras
+id: menu_link_content.donate-footer.view_mode
+field_name: view_mode
+entity_type: menu_link_content
+bundle: donate-footer
+label: 'View mode'
+description: 'Per item view mode selector.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

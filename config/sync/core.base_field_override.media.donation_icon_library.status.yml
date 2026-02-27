@@ -1,0 +1,22 @@
+uuid: 62e2a4a4-4b45-40d5-8641-5793b57d6b49
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.status
+field_name: status
+entity_type: media
+bundle: donation_icon_library
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

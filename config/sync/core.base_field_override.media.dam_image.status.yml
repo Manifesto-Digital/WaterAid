@@ -1,0 +1,22 @@
+uuid: 9ffedbdd-fda0-4a86-b734-1361fdf3744a
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_image
+id: media.dam_image.status
+field_name: status
+entity_type: media
+bundle: dam_image
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

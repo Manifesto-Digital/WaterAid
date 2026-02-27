@@ -1,0 +1,18 @@
+uuid: 2204b763-2a63-4fcd-8b29-689229a3440c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.story
+id: node.story.created
+field_name: created
+entity_type: node
+bundle: story
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

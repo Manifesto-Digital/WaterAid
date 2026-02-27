@@ -1,0 +1,18 @@
+uuid: 56433eb3-b928-4955-bb70-34f9e7ad6379
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.parallax_scroll
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.parallax_scroll
+target_entity_type_id: paragraph
+target_bundle: parallax_scroll
+default_langcode: current_interface
+language_alterable: false

@@ -1,0 +1,18 @@
+uuid: 9e9537ac-92cd-4ead-9eb4-7e5b17032e25
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.image_with_quote_sidebar
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.image_with_quote_sidebar
+target_entity_type_id: paragraph
+target_bundle: image_with_quote_sidebar
+default_langcode: current_interface
+language_alterable: false

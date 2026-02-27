@@ -1,0 +1,18 @@
+uuid: 459e6204-cb07-4cc2-b82b-aa626c8802d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.footer_primary_menu
+id: group_content_menu.footer_primary_menu.label
+field_name: label
+entity_type: group_content_menu
+bundle: footer_primary_menu
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

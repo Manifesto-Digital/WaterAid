@@ -1,0 +1,20 @@
+uuid: 8e095f31-8309-4d0a-9aaa-d4f3fab777a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event
+id: node.event.co_authors
+field_name: co_authors
+entity_type: node
+bundle: event
+label: Co-authors
+description: 'Users who co-authored the content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

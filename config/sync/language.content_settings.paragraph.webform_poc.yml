@@ -1,0 +1,18 @@
+uuid: dd7273e4-dea4-47f2-858a-5ec0ae65fe07
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.webform_poc
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.webform_poc
+target_entity_type_id: paragraph
+target_bundle: webform_poc
+default_langcode: current_interface
+language_alterable: false

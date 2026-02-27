@@ -1,0 +1,20 @@
+uuid: 8b1e81c8-d5a8-4dd0-a9c2-cf188333cf6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node.listing_page.co_authors
+field_name: co_authors
+entity_type: node
+bundle: listing_page
+label: Co-authors
+description: 'Users who co-authored the content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

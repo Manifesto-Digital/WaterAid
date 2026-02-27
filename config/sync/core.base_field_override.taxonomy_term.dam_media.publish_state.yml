@@ -1,0 +1,20 @@
+uuid: f2e805f6-1ff6-4455-83bb-e7114e6c5d13
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+  module:
+    - options
+id: taxonomy_term.dam_media.publish_state
+field_name: publish_state
+entity_type: taxonomy_term
+bundle: dam_media
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

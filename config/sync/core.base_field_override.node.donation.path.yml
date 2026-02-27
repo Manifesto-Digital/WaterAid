@@ -1,0 +1,20 @@
+uuid: c9be6062-7a47-4560-a06d-f646133bca4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.donation
+  module:
+    - path
+id: node.donation.path
+field_name: path
+entity_type: node
+bundle: donation
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

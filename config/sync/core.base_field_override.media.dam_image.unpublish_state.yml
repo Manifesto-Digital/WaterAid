@@ -1,0 +1,20 @@
+uuid: 35043e4e-62b9-4726-a34f-da56d98d2a38
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_image
+  module:
+    - options
+id: media.dam_image.unpublish_state
+field_name: unpublish_state
+entity_type: media
+bundle: dam_image
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,18 @@
+uuid: e0bc05b4-f5dc-4bfc-bf45-3bf366db6640
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donation_widget
+id: paragraph.donation_widget.created
+field_name: created
+entity_type: paragraph
+bundle: donation_widget
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

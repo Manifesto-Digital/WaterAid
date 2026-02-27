@@ -1,0 +1,18 @@
+uuid: 521947fb-05ff-4048-be34-c683efe99d28
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.story
+id: node.story.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: story
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

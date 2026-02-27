@@ -1,0 +1,20 @@
+uuid: e63180d0-8e72-425a-8445-d2ef05e98efc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.donation
+  module:
+    - options
+id: node.donation.unpublish_state
+field_name: unpublish_state
+entity_type: node
+bundle: donation
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

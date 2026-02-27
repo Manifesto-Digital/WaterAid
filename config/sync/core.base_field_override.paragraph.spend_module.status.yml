@@ -1,0 +1,22 @@
+uuid: 4f52749f-c582-4fe6-b135-aee2a1780e12
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.spend_module
+id: paragraph.spend_module.status
+field_name: status
+entity_type: paragraph
+bundle: spend_module
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

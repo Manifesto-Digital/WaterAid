@@ -1,0 +1,22 @@
+uuid: 5cbb77bf-57dc-44f0-98eb-ddf1b3a42496
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.hero_video
+id: paragraph.hero_video.status
+field_name: status
+entity_type: paragraph
+bundle: hero_video
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

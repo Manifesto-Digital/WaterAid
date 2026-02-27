@@ -1,0 +1,20 @@
+uuid: 3343ab29-35ab-477c-8b58-075b9919187f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.get_involved
+  module:
+    - options
+id: taxonomy_term.get_involved.unpublish_state
+field_name: unpublish_state
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,18 @@
+uuid: eed3cbe8-9ed0-4e98-8cb6-e31d2c219b25
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.created
+field_name: created
+entity_type: paragraph
+bundle: scroll_image
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

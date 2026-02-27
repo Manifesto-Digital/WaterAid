@@ -1,0 +1,20 @@
+uuid: 807ef478-5249-405a-b756-724a662113cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.audiences
+  module:
+    - path
+id: taxonomy_term.audiences.path
+field_name: path
+entity_type: taxonomy_term
+bundle: audiences
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

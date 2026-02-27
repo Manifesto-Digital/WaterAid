@@ -1,0 +1,22 @@
+uuid: 7209da24-03de-4fba-a4d7-32d35bb13453
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.wateraid_site
+id: group.wateraid_site.status
+field_name: status
+entity_type: group
+bundle: wateraid_site
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

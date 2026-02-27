@@ -1,0 +1,18 @@
+uuid: 53cfd3e5-0c15-4f52-a21b-fce164227a16
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_image
+id: media.local_image.publish_on
+field_name: publish_on
+entity_type: media
+bundle: local_image
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

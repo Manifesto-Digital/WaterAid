@@ -1,0 +1,20 @@
+uuid: 352d159b-41ed-4d31-99b1-640b95787649
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+id: media.dam_file.uid
+field_name: uid
+entity_type: media
+bundle: dam_file
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

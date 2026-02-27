@@ -1,0 +1,18 @@
+uuid: 52739687-690a-4ef0-9e5e-ee00c681baf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node.listing_page.changed
+field_name: changed
+entity_type: node
+bundle: listing_page
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

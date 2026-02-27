@@ -1,0 +1,20 @@
+uuid: 050139e7-a82b-4f97-bdc8-ff9e7329092f
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.icon_library
+  module:
+    - options
+id: media.icon_library.unpublish_state
+field_name: unpublish_state
+entity_type: media
+bundle: icon_library
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

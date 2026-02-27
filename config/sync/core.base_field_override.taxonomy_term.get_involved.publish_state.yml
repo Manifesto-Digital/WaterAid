@@ -1,0 +1,20 @@
+uuid: 5aee6ed0-65a0-430c-b551-fa1b70419e08
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.get_involved
+  module:
+    - options
+id: taxonomy_term.get_involved.publish_state
+field_name: publish_state
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

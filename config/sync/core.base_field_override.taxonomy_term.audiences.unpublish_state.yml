@@ -1,0 +1,20 @@
+uuid: c98ce7d3-39a5-4d0d-8696-8225c9f5e3d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.audiences
+  module:
+    - options
+id: taxonomy_term.audiences.unpublish_state
+field_name: unpublish_state
+entity_type: taxonomy_term
+bundle: audiences
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

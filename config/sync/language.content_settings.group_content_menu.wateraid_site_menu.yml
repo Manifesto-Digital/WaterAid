@@ -8,11 +8,11 @@ dependencies:
     - content_translation
 third_party_settings:
   content_translation:
-    enabled: true
+    enabled: false
     bundle_settings:
       untranslatable_fields_hide: '0'
 id: group_content_menu.wateraid_site_menu
 target_entity_type_id: group_content_menu
 target_bundle: wateraid_site_menu
 default_langcode: site_default
-language_alterable: true
+language_alterable: false
