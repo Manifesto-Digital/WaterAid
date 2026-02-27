@@ -38,10 +38,20 @@
 
   &--3-columns .card {
     @include grid-item-span(4, 6, 4);
+    &__heading {
+      @include desktop() {
+        @include h5();
+      }
+    }
   }
 
   &--4-columns .card {
     @include grid-item-span(4, 6, 3);
+    &__heading {
+      @include desktop() {
+        @include h5();
+      }
+    }
   }
 
   // Colour variants
