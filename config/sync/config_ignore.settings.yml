@@ -7,3 +7,4 @@ ignored_config_entities:
   - 'system.site:page'
   - wateraid_donation_gmo.settings
   - 'webform.webform.*'
+  - ~webform.webform.donate_oneoff_sf3ds
