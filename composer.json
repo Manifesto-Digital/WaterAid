@@ -146,7 +146,7 @@
   },
   "require-dev": {
     "drupal/core-dev": "^10.6",
-    "drupal/kint-kint": "^2.2",
+    "drupal/kint-kint": "^2.3",
     "mglaman/phpstan-drupal": "^1.2",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan-deprecation-rules": "^1.2",
