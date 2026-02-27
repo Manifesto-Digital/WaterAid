@@ -108,8 +108,21 @@
 
     &:hover {
       background-color: $wa-white;
+      cursor: pointer;
+      .card__heading {
+        text-decoration: underline;
+      }
+      .card__image img {
+          transform: scale(1.05);
+      }
     }
 
+    .card__image {
+      overflow: hidden;
+      img {
+        transition: transform .5s
+      }
+    }
     .card__heading {
       @include h6();
       padding-bottom: $wa-spacing-02;
