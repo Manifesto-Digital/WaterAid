@@ -6,6 +6,8 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Extension\ModuleExtensionList;
+use Drupal\Core\Url;
+use Drupal\wateraid_donation_forms\Plugin\WebformHandler\DonationsWebformHandler;
 use Drupal\wateraid_donation_sf3ds\Service\Sf3dsService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -49,8 +51,11 @@ class CardFormReturn extends ControllerBase {
       $webform_submission->setData($data);
       $webform_submission->save();
 
+      DonationsWebformHandler::sendTracking($webform_submission->getData(), $webform_submission->getWebform()->id(), TRUE);
+
       $confirmation_message = $webform_submission->getWebform()->getSetting('confirmation_message');
       $confirmation_image_uri = $this->moduleExtensionList->getPath('wateraid_donation_forms') . '/images/confirm-icon.png';
+      $url = Url::fromRoute('entity.group.canonical', ['group' => 11]);
 
       return [
         'container' => [
@@ -83,6 +88,18 @@ class CardFormReturn extends ControllerBase {
               'class' => ['webform-confirmation__message'],
             ],
             '#markup' => $confirmation_message,
+          ],
+          'link' => [
+            '#type' => 'link',
+            '#title' => $this->t('Return to the home page.'),
+            '#url' => $url,
+            '#attributes' => [
+              'class' => [
+                'button',
+                'button--primary',
+              ],
+            ],
+            '#button_type' => 'webform-submit',
           ],
         ],
       ];
