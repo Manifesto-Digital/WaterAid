@@ -6,7 +6,7 @@
 ] %}
 
 <div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card') }}>
-
+  <div class="card__wrapper">
   <div class="card__image">
     {% if image|render %}
       {{ image }}
@@ -64,5 +64,6 @@
         {{ include('@wateraid/images/icons/wa-external.svg') }}
       </div>
     {% endif %}
+  </div>
   </div>
 </div>
