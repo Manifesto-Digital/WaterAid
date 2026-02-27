@@ -113,6 +113,13 @@ class DonationsWebformAmount extends WebformCompositeBase {
   public static function processWebformComposite(&$element, FormStateInterface $form_state, &$complete_form): array {
     parent::processWebformComposite($element, $form_state, $complete_form);
 
+    /** @var \Drupal\webform_wizard_single_page\WebformWizardSinglePageSubmissionForm $object */
+    $object = $form_state->getFormObject();
+
+    /** @var \Drupal\webform\WebformSubmissionInterface|null $submission */
+    $submission = $object->getEntity();
+
+    if (isset($webform) || !empty($element['#webform']) && $webform = Webform::load($element['#webform'])) {
       // Take the "storage" values into account, because we can skip the first
       // step with the WebformWizardExtraSubmissionForm class logic, which
       // means that the form state won't have the values defined initially.
@@ -128,7 +135,6 @@ class DonationsWebformAmount extends WebformCompositeBase {
 
         // Set the submission so we can check if it is attached to a paragraph.
         $handler->setWebformSubmission($submission);
-
         $selected = DonationsWebformHandler::getSelectedAmount($form_state);
         $amounts = $handler->getAmounts(DonationsWebformHandler::getDiscountCode($form_state));
         $amount_defaults_all = $handler->getAmountDefaults(DonationsWebformHandler::getDiscountCode($form_state), $selected);

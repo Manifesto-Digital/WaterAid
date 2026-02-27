@@ -360,6 +360,12 @@ class DonationsWebformHandler extends WebformHandlerBase {
           ];
         }
 
+        $form[$payment_frequency_name]['amounts'] = [
+          '#type' => 'details',
+          '#title' => $this->t('Amounts'),
+          '#open' => TRUE,
+        ];
+
         $form[$payment_frequency_name]['use_paragraph'] = [
           '#type' => 'checkbox',
           '#title' => $this->t('Use payment amounts from paragraph embed'),
@@ -383,13 +389,6 @@ class DonationsWebformHandler extends WebformHandlerBase {
               ],
             ],
           ],
-        ];
-
-        $form[$payment_frequency_name]['use_paragraph'] = [
-          '#type' => 'checkbox',
-          '#title' => $this->t('Use payment amounts from paragraph embed'),
-          '#description' => $this->t('If this webform is embedded in a Donation Widget or Registration Form paragraph, use the amounts from the paragraph.'),
-          '#default_value' => $this->configuration[$payment_frequency_name]['use_paragraph'] ?? ''
         ];
 
         // Upselling is for recurring payments only.
@@ -766,7 +765,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
     foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
       if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
-        $amounts = [];        $amounts = [];
+        $amounts = [];
         $discount = [];
 
         // Get the source entity if it is a paragraph.
@@ -786,7 +785,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
               'code_provided' => !empty($discount_code),
             ];
           }
-          
+
           if ($paragraph->bundle() == 'donation_widget') {
             switch ($payment_frequency_name) {
               case 'recurring':
@@ -812,10 +811,31 @@ class DonationsWebformHandler extends WebformHandlerBase {
           if ($field && $paragraph->hasField($field)) {
             foreach ($paragraph->get($field)->referencedEntities() as $amount_details) {
               if ($amount = $amount_details->get('field_donation_amount')->getString()) {
+                $old_amount = $amount;
+
+                // We don't want to accidentally apply a discount if the content
+                // creator hasn't entered a discount code and neither has the
+                // user, or if there is no discount to apply.
+                if (!empty($code) && !empty($discount_code) && !empty($discount_amount)) {
+                  if ($code == $discount_code) {
+                    $new_amount = $amount * ((100 - $discount_amount) / 100);
+
+                    // Do not allow any decimal places as stripe payments are
+                    // taken in pence so the amount selected will be * 100 in the
+                    // Javascript that takes the payment.
+                    $amount = number_format((float) $new_amount);
+                    $discount['applied'] = TRUE;
+                  }
+                }
+
+                // echo '<pre>';
+                // die(var_dump($code, $discount_code, $discount_amount));
+
                 $amounts[$amount] = [
                   'benefit' => '',
                   'label' => $this->getCurrencyValue($currency, $amount),
-                  'stripePriceCode' => $amount_details->get('field_stripe_price_code')->getString() ?? NULL,
+                  'stripePriceCode' => $amount_details->get('field_stripe_price_code')->getString() ?? '',
+                  'original' => $old_amount,
                 ];
 
                 $element = [
@@ -831,8 +851,8 @@ class DonationsWebformHandler extends WebformHandlerBase {
               $amounts[$amount]['renderedBenefit'] = \Drupal::service('renderer')->render($element);
             }
           }
-
         }
+
         if (empty($amounts)) {
           foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
             if (!empty($amount_details['amount'])) {
@@ -841,7 +861,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
                 'benefit' => $amount_details['benefit'],
                 // @todo Use formatter from currency module.
                 'label' => $amount_label,
-                'stripePriceCode' => $amount_details['stripe_price_code'] ?? NULL,
+                'stripePriceCode' => $amount_details['stripe_price_code'] ?? '',
               ];
 
               $image_file = NULL;
@@ -969,29 +989,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
 
           // This needs to be a string to prevent a JS error in the donation
           // forms js.
-          if ($frequency_config['use_paragraph'] ?? NULL) {
-          $amounts = $this->getAmounts($discount_code);
-          $amount_defaults[$payment_frequency_name]['default_amount'] = $amount_index;          $amounts = $this->getAmounts($discount_code);
-
-          $amount_index = (string) key($amounts[$payment_frequency_name]['amounts']);
-
-          if (!empty($selected[$payment_frequency_name])) {
-            $amount_index = $selected[$payment_frequency_name];
-
-            if (!array_key_exists($amount_index, $amounts[$payment_frequency_name]['amounts'])) {
-              foreach ($amounts[$payment_frequency_name]['amounts'] as $discount_amount => $amount_data) {
-                if (!empty($amount_data['original'])) {
-                  if ($amount_data['original'] == $amount_index) {
-                    $amount_index = $discount_amount;
-                  }
-                }
-              }
-            }
-          }
-
-          // This needs to be a string to prevent a JS error in the donation
-          // forms js.
-          $amount_defaults[$payment_frequency_name]['default_amount'] = $amount_index;
+          $amount_defaults[$payment_frequency_name]['default_amount'] = (string) $amount_index;
         }
         else {
           // Get the default amount index.
@@ -1236,15 +1234,9 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
-    $submission = $this->getWebformSubmission();
-
-    $data = $submission->getData();
-
-    $one = 1;
-
     $form['#attached']['library'][] = 'wateraid_donation_forms/wateraid_donation_forms';
     $form['#attached']['drupalSettings']['wateraidDonationForms']['webform_id'] = $this->getWebform()->id();
-    $form['#attached']['drupalSettings']['wateraidDonationForms']['amounts'] = $this->getAmounts($this->getDiscountCode($form_state));
+    $form['#attached']['drupalSettings']['wateraidDonationForms']['amounts'] = $this->getAmounts();
     $form['#attached']['drupalSettings']['wateraidDonationForms']['amount_defaults'] = $this->getAmountDefaultState($form_state);
     $form['#attached']['drupalSettings']['wateraidDonationForms']['webfrom_sid'] = $this->getWebformSubmission()->id();
     $form['#attached']['drupalSettings']['wateraidDonationForms']['country'] = \Drupal::config('system.date')->get('country.default');
@@ -1437,12 +1429,19 @@ class DonationsWebformHandler extends WebformHandlerBase {
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
+    DonationsWebformHandler::sendTracking($form_state->getValues(), $this->webform?->id());
+  }
+
+  /**
    * Send tracking data to the dataLayer.
    *
    * @param array $values
    *   The form submit values.
    * @param string $webform_id
-   *   The webform ID.
+   *   The Webform ID.
    * @param bool $send_immediately
    *   TRUE to send data to the datalayer, or FALSE to queue in State.
    */
