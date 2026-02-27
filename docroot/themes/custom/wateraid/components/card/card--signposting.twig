@@ -6,14 +6,14 @@
 ] %}
 
 <div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card') }}>
-
-  <div class="card__image">
-    {% if image|render %}
-      {{ image }}
-    {% else %}
-      <img src="{{ file_url('/themes/custom/wateraid/images/png/card-fallback.png') }}" alt=""/>
-    {% endif %}
-  </div>
+  <div class="card__wrapper">
+    <div class="card__image">
+      {% if image|render %}
+        {{ image }}
+      {% else %}
+        <img src="{{ file_url('/themes/custom/wateraid/images/png/card-fallback.webp') }}" alt=""/>
+      {% endif %}
+    </div>
 
   <div class="card__body">
     <div class="card__bundle">
