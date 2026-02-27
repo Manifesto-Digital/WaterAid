@@ -169,6 +169,13 @@
       }
     }
 
+    .card__heading {
+      @include h5();
+      @include desktop() {
+        @include h3();
+      }
+    }
+
     .card__body {
       padding: $wa-spacing-06;
     }
