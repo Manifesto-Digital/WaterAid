@@ -22,8 +22,18 @@ final class RemoteVideoSource extends SqlBase {
    * {@inheritdoc}
    */
   public function query(): SelectInterface {
-    return $this->select('media__field_media_video_embed_field', 'm')
+    $query = $this->select('media__field_media_video_embed_field', 'm')
       ->fields('m');
+
+    $settings = $this->migration->getPluginDefinition();
+    $migration_group = $settings['migration_group'] ?? NULL;
+
+    // If this is Washmatters, only bring in English content.
+    if (str_starts_with($migration_group, 'wateraid_wash')) {
+      $query->condition('langcode', 'en');
+    }
+
+    return $query;
   }
 
   /**
