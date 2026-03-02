@@ -8,7 +8,6 @@ display:
         type:
           label: Indholdstype
         status:
-          label: Status
           settings:
             format_custom_false: 'Ikke udgivet'
             format_custom_true: Udgivet
@@ -57,9 +56,6 @@ display:
                 title: Udgivet
               2:
                 title: 'Ikke udgivet'
-        type:
-          expose:
-            label: Type
   page_1:
     display_title: Side
     display_options:

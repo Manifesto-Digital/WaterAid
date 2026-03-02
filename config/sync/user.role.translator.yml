@@ -22,7 +22,6 @@ dependencies:
     - config_translation
     - content_moderation
     - content_translation
-    - group_content_menu
     - language
     - locale
     - menu_link_content
@@ -57,7 +56,6 @@ permissions:
   - 'translate editable entities'
   - 'translate event node'
   - 'translate get_involved taxonomy_term'
-  - 'translate group_content_menu'
   - 'translate interface'
   - 'translate landing_page node'
   - 'translate listing_page node'

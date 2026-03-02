@@ -1,0 +1,37 @@
+display:
+  default:
+    display_options:
+      fields:
+        label:
+          label: Label
+        source_language_1:
+          label: Van
+        target_language:
+          label: Naar
+        translator:
+          label: Provider
+        operations:
+          label: Bewerkingen
+      pager:
+        options:
+          tags:
+            next: 'volgende ›'
+            previous: '‹ vorige'
+            first: '« eerste'
+            last: 'laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: 'Opnieuw instellen'
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      filters:
+        translator:
+          expose:
+            label: Provider
+  page_1:
+    display_title: Pagina

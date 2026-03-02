@@ -11,7 +11,6 @@ display:
         name:
           label: Gebruikersnaam
         status:
-          label: Status
           settings:
             format_custom_false: Geblokkeerd
             format_custom_true: Actief
@@ -52,7 +51,6 @@ display:
             label: 'Naam of e-mail bevat'
         status:
           group_info:
-            label: Status
             group_items:
               1:
                 title: Actief

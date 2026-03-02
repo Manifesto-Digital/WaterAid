@@ -1,0 +1,37 @@
+display:
+  default:
+    display_title: Huvud
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      pager:
+        options:
+          tags:
+            previous: '‹ föregående'
+            next: 'nästa ›'
+            first: '« första'
+            last: 'sista »'
+      fields:
+        state:
+          label: Läge
+        label:
+          label: Etikett
+        type:
+          label: Type
+        operations:
+          label: Funktioner
+      arguments:
+        tjid:
+          exception:
+            title: Alla
+  checkout:
+    display_options:
+      fields:
+        label:
+          label: Etikett
+        type:
+          label: Type
