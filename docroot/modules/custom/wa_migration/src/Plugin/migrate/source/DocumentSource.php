@@ -28,6 +28,14 @@ final class DocumentSource extends SqlBase {
     $query->leftJoin('file_managed', 'f', 'f.fid = m.field_document_target_id');
     $query->addField('f', 'filename');
 
+    $settings = $this->migration->getPluginDefinition();
+    $migration_group = $settings['migration_group'] ?? NULL;
+
+    // If this is Washmatters, only bring in English content.
+    if (str_starts_with($migration_group, 'wateraid_wash')) {
+      $query->condition('m.langcode', 'en');
+    }
+
     return $query;
   }
 
