@@ -159,7 +159,7 @@
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in one_off_amounts %}
-            {% set radio_id = 'amount-' ~ item.amount ~ '-' ~ id %}
+            {% set radio_id = 'one-off-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_one_off == item.amount %} hide-on-desktop{% endif %}">
               {% if loop.revindex == 2 %}
@@ -182,7 +182,7 @@
 
         <div class="donate-widget__amount-details">
           {% for item in one_off_amounts %}
-            {% set details_id = 'details-one-off-amount' ~ item.amount ~ '-' ~ id %}
+            {% set details_id = 'details-one-off-amount-' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
@@ -232,7 +232,7 @@
         <legend class="donate-widget__legend">{{ 'How much can you donate?'|t }}</legend>
         <div class="donate-widget__options-wrapper">
           {% for item in fixed_amounts %}
-            {% set radio_id = 'amount-' ~ item.amount ~ '-' ~ id %}
+            {% set radio_id = 'fixed-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_fixed == item.amount %} hide-on-desktop{% endif %}">
               <input class="donate-widget__radio-input"
