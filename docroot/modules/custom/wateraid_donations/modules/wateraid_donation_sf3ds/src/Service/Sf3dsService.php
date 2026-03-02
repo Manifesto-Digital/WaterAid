@@ -6,6 +6,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\wateraid_donation_gmo\WateraidWebformGmoService;
 use Drupal\webform\WebformSubmissionInterface;
 
 /**
@@ -17,6 +18,7 @@ class Sf3dsService {
     private ConfigFactoryInterface $configFactory,
     private RouteMatchInterface $routeMatch,
     private EntityTypeManagerInterface $entityTypeManager,
+    private readonly WateraidWebformGmoService $webformGmoService,
   ) {
   }
 
@@ -45,7 +47,9 @@ class Sf3dsService {
    *   The form action.
    */
   public function getFormAction() : string {
-    return ($_ENV['SF3DS_FORM_ACTION'] ?? $this->getConfig()->get('form_action')) . '/paymentrequest';
+    $action = $this->webformGmoService->getSalesforceUrl();
+
+    return ($_ENV['SF3DS_FORM_ACTION']) ? $_ENV['SF3DS_FORM_ACTION'] . '/paymentrequest' : $action;
   }
 
   /**
