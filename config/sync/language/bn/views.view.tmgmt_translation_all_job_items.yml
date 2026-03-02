@@ -1,0 +1,10 @@
+display:
+  default:
+    display_options:
+      fields:
+        type:
+          label: টাইপ
+        target_language:
+          label: বরাবর
+        operations:
+          label: কার্যাবলী

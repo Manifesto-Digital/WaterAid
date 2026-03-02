@@ -4,17 +4,16 @@ status: true
 dependencies:
   module:
     - wateraid_tmgmt_cleanup
-title: 'Default cron handler'
+title: 'Clean Up Old Translation Jobs'
 id: wateraid_tmgmt_cleanup_cron
 weight: 0
 module: wateraid_tmgmt_cleanup
 callback: 'wateraid_tmgmt_cleanup#cron'
 scheduler:
-  id: crontab
+  id: simple
   configuration:
     rules:
-      - '0 2 * * *'
-    catch_up: 0
+      - '0+@ */6 * * *'
 launcher:
   id: serial
   configuration:

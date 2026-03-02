@@ -1,0 +1,34 @@
+display:
+  default:
+    display_title: Principal
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Appliquer
+          reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
+          tags:
+            previous: "‹\_précédent"
+            next: "suivant\_›"
+            first: "«\_premier"
+            last: "dernier\_»"
+      fields:
+        label:
+          label: Libellé
+        operations:
+          label: Actions
+      arguments:
+        tjid:
+          exception:
+            title: Tout
+  checkout:
+    display_options:
+      fields:
+        label:
+          label: Libellé
