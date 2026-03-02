@@ -1,6 +1,5 @@
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
@@ -14,29 +13,14 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
           tags:
             previous: '‹ vorige'
             next: 'volgende ›'
             first: '« eerste'
             last: 'laatste »'
       fields:
-        state:
-          label: State
         label:
           label: Label
-        type:
-          label: Type
-        progress:
-          label: Progress
-        word_count:
-          label: Words
-          separator: ', '
-        tags_count:
-          label: Tags
-          separator: ', '
-        changed:
-          label: Changed
         operations:
           label: Bewerkingen
       arguments:
@@ -44,18 +28,7 @@ display:
           exception:
             title: Alle
   checkout:
-    display_title: Checkout
     display_options:
       fields:
         label:
           label: Label
-        type:
-          label: Type
-        word_count:
-          label: Words
-          separator: ', '
-        changed:
-          label: Changed
-          separator: ', '
-  submitted:
-    display_title: Submitted

@@ -25,11 +25,7 @@ display:
           label: Criado
         name:
           label: Nome
-          separator: ', '
-      title: Messages
       arguments:
         tjid:
           exception:
             title: Todos
-  embed:
-    display_title: Embed

@@ -13,10 +13,6 @@ display:
           separator: ', '
         name:
           label: 'Nom du média'
-          separator: ', '
-        bundle:
-          label: Type
-          separator: ', '
         uid:
           label: Auteur
           separator: ', '
