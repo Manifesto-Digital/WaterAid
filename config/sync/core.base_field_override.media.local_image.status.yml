@@ -1,0 +1,22 @@
+uuid: 2ce51e1f-125b-4636-aebd-23b80824191d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_image
+id: media.local_image.status
+field_name: status
+entity_type: media
+bundle: local_image
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

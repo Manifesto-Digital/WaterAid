@@ -1,0 +1,18 @@
+uuid: 8a14daf8-53cd-4462-ad12-210f926e2480
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+id: taxonomy_term.subject_areas.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: subject_areas
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

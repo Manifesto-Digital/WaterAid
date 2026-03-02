@@ -1,0 +1,18 @@
+uuid: 7e38a5d5-34d2-4aab-b137-96602e8ca89a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.get_involved
+id: taxonomy_term.get_involved.unpublish_on
+field_name: unpublish_on
+entity_type: taxonomy_term
+bundle: get_involved
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

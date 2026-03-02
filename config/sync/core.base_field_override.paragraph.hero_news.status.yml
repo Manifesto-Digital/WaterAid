@@ -1,0 +1,22 @@
+uuid: 32312b30-03ab-47f3-93d4-7707f3c017b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.hero_news
+id: paragraph.hero_news.status
+field_name: status
+entity_type: paragraph
+bundle: hero_news
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

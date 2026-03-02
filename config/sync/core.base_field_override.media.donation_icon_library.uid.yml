@@ -1,0 +1,20 @@
+uuid: 7e7743fd-8084-426a-a1da-04e3f6514fb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.uid
+field_name: uid
+entity_type: media
+bundle: donation_icon_library
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

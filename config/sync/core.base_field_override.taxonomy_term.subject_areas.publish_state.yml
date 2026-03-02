@@ -1,0 +1,20 @@
+uuid: 664fe3e6-76de-4204-8b88-b47165ac09d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+  module:
+    - options
+id: taxonomy_term.subject_areas.publish_state
+field_name: publish_state
+entity_type: taxonomy_term
+bundle: subject_areas
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

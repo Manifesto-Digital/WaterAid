@@ -1,0 +1,18 @@
+uuid: 30577809-a5e0-41d2-9b61-d0d720d34d00
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+id: media.dam_file.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: dam_file
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

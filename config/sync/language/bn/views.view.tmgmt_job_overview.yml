@@ -1,0 +1,15 @@
+display:
+  default:
+    display_options:
+      fields:
+        target_language:
+          label: বরাবর
+        operations:
+          label: কার্যাবলী
+      pager:
+        options:
+          tags:
+            next: 'পরবর্তী ›'
+            previous: '‹ পূর্ববর্তী'
+            first: '« প্রথম'
+            last: 'শেষ »'

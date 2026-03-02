@@ -1,0 +1,20 @@
+uuid: 7b57ec52-dbe9-48ee-8135-20eb24660731
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+  module:
+    - metatag
+id: taxonomy_term.dam_media.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: dam_media
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

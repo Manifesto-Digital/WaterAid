@@ -1,0 +1,22 @@
+uuid: 87b4f64d-b655-49c9-bfc7-f1072fd9ba2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.parallax_scroll
+id: paragraph.parallax_scroll.status
+field_name: status
+entity_type: paragraph
+bundle: parallax_scroll
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: e035b199-d090-468c-b4a4-09ba11d55290
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_video
+id: media.dam_video.changed
+field_name: changed
+entity_type: media
+bundle: dam_video
+label: Changed
+description: 'The time the media item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

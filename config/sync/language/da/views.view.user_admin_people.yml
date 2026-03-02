@@ -11,7 +11,6 @@ display:
         name:
           label: Brugernavn
         status:
-          label: Status
           settings:
             format_custom_false: Blokeret
             format_custom_true: Aktiv
@@ -53,7 +52,6 @@ display:
             label: 'Navn eller e-mail indeholder'
         status:
           group_info:
-            label: Status
             group_items:
               1:
                 title: Aktiv

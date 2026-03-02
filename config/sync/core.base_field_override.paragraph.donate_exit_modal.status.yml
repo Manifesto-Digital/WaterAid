@@ -1,0 +1,22 @@
+uuid: a091e5fd-3f05-4b63-8501-f7e7db2f7021
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.donate_exit_modal
+id: paragraph.donate_exit_modal.status
+field_name: status
+entity_type: paragraph
+bundle: donate_exit_modal
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -20,7 +20,7 @@
         {# attributes here is inherited in the close button from attributes above #}
         {% set attributes = attributes.removeClass('inactivity-modal') %}
         {{ include('wateraid:button', {
-          text: 'Close',
+          text: 'Close'|t,
           link: '',
           id: 'modal-close',
           type: 'icon-small',
@@ -43,7 +43,7 @@
           }) }}
         {% elseif continueDonation %}
           {{ include('wateraid:button', {
-            text: 'Continue my donation',
+            text: 'Continue my donation'|t,
             link: '#',
             classes: ['continue-donation-button'],
             type: 'donate',

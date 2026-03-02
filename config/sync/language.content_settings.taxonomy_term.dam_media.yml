@@ -4,8 +4,15 @@ status: true
 dependencies:
   config:
     - taxonomy.vocabulary.dam_media
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
 id: taxonomy_term.dam_media
 target_entity_type_id: taxonomy_term
 target_bundle: dam_media
-default_langcode: site_default
-language_alterable: false
+default_langcode: current_interface
+language_alterable: true

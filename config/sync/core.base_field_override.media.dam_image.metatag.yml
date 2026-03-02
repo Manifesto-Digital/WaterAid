@@ -1,0 +1,20 @@
+uuid: 3a51d794-1f97-4e8c-8007-4ffcfcd5797e
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_image
+  module:
+    - metatag
+id: media.dam_image.metatag
+field_name: metatag
+entity_type: media
+bundle: dam_image
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

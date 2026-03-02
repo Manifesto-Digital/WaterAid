@@ -1,0 +1,34 @@
+display:
+  default:
+    display_title: Huvud
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      fields:
+        state:
+          label: Läge
+        label:
+          label: Etikett
+        type:
+          label: Type
+        source_language:
+          label: Från
+        target_language:
+          label: Till
+        operations:
+          label: Funktioner
+      filters:
+        state:
+          group_info:
+            label: Läge
+        job_type:
+          group_info:
+            group_items:
+              1:
+                title: Normal
+  page_1:
+    display_title: Page

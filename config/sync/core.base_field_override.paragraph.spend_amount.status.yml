@@ -1,0 +1,22 @@
+uuid: 7d2d1627-c83e-4579-8402-bee7c67cfc11
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.spend_amount
+id: paragraph.spend_amount.status
+field_name: status
+entity_type: paragraph
+bundle: spend_amount
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: bd5e1ff9-ae9d-4670-a344-bcdfbf20f087
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+id: taxonomy_term.subject_areas.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: subject_areas
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

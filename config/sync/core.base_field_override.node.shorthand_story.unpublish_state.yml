@@ -1,0 +1,20 @@
+uuid: 4e183847-3926-4556-8538-5051cff4e07a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+  module:
+    - options
+id: node.shorthand_story.unpublish_state
+field_name: unpublish_state
+entity_type: node
+bundle: shorthand_story
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

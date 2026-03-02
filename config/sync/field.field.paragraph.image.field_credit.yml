@@ -12,7 +12,7 @@ bundle: image
 label: Credit
 description: 'Leave empty to use the default credit from the media item.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

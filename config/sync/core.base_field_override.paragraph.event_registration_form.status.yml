@@ -1,0 +1,22 @@
+uuid: 40c6cd06-41e1-4751-9f77-796b021db877
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.event_registration_form
+id: paragraph.event_registration_form.status
+field_name: status
+entity_type: paragraph
+bundle: event_registration_form
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

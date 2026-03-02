@@ -12,7 +12,7 @@ bundle: image_with_quote_sidebar
 label: Citation
 description: 'Enter a citation related to this quote.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -1,0 +1,13 @@
+display:
+  default:
+    display_options:
+      fields:
+        type:
+          label: ପ୍ରକାର
+        operations:
+          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+  checkout:
+    display_options:
+      fields:
+        type:
+          label: ପ୍ରକାର

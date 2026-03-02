@@ -1,0 +1,39 @@
+display:
+  default:
+    display_title: Huvud
+    display_options:
+      fields:
+        state:
+          label: Läge
+        label:
+          label: Etikett
+        source_language_1:
+          label: Från
+        target_language:
+          label: Till
+        translator:
+          label: Leverantör
+        operations:
+          label: Funktioner
+      pager:
+        options:
+          tags:
+            next: 'nästa ›'
+            previous: '‹ föregående'
+            first: '« första'
+            last: 'sista »'
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      filters:
+        state:
+          expose:
+            label: Läge
+        translator:
+          expose:
+            label: Leverantör
+  page_1:
+    display_title: Page

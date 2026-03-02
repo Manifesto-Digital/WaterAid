@@ -1,0 +1,35 @@
+display:
+  default:
+    display_title: Principal
+    display_options:
+      fields:
+        label:
+          label: Libellé
+        source_language_1:
+          label: 'A partir de'
+        target_language:
+          label: À
+        translator:
+          label: Fournisseur
+        operations:
+          label: Actions
+      pager:
+        options:
+          tags:
+            next: "suivant\_›"
+            previous: "‹\_précédent"
+            first: "«\_premier"
+            last: "dernier\_»"
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
+      exposed_form:
+        options:
+          submit_button: Appliquer
+          reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+      filters:
+        translator:
+          expose:
+            label: Fournisseur

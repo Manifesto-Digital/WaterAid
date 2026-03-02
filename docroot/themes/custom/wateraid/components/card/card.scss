@@ -108,8 +108,21 @@
 
     &:hover {
       background-color: $wa-white;
+      cursor: pointer;
+      .card__heading {
+        text-decoration: underline;
+      }
+      .card__image img {
+          transform: scale(1.05);
+      }
     }
 
+    .card__image {
+      overflow: hidden;
+      img {
+        transition: transform .5s
+      }
+    }
     .card__heading {
       @include h6();
       padding-bottom: $wa-spacing-02;
@@ -147,14 +160,17 @@
     .card__link {
       padding-top: $wa-spacing-02;
     }
-
-    .link--text:hover {
-      text-decoration: none;
-    }
   }
 
   &--signposting {
     background-color: $wa-white;
+
+    .card__heading {
+      @include h5();
+      @include desktop() {
+        @include h3();
+      }
+    }
 
     .card__body {
       padding: $wa-spacing-06;

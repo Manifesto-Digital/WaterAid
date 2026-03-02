@@ -1,7 +1,6 @@
 {% set card_classes = [
   'card',
   'card--' ~ variant,
-  'card--link',
 ] %}
 
 <div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card') }}>
@@ -10,7 +9,7 @@
     {% if image|render %}
       {{ image }}
     {% else %}
-      <img src="{{ file_url('/themes/custom/wateraid/images/png/card-fallback.png') }}" alt=""/>
+      <img src="{{ file_url('/themes/custom/wateraid/images/png/card-fallback.webp') }}" alt=""/>
     {% endif %}
   </div>
 
@@ -59,11 +58,21 @@
       <div class="card__tags">
         {% for tag in tags %}
           {% if tag %}
-            {{ include('wateraid:content_tag', {
-              text: tag,
-              size: 'small',
-              theme: 'light'
-            }) }}
+            {% if tag is iterable %}
+              {% for subtag in tag %}
+                {{ include('wateraid:content_tag', {
+                  text: subtag,
+                  size: 'small',
+                  theme: 'light'
+                }) }}
+              {% endfor %}
+            {% else %}
+              {{ include('wateraid:content_tag', {
+                text: tag,
+                size: 'small',
+                theme: 'light'
+              }) }}
+            {% endif %}
           {% endif %}
         {% endfor %}
       </div>

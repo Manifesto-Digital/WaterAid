@@ -1,0 +1,20 @@
+uuid: d0499aba-1686-4aac-bd52-ba99a879b181
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+  module:
+    - options
+id: taxonomy_term.subject_areas.unpublish_state
+field_name: unpublish_state
+entity_type: taxonomy_term
+bundle: subject_areas
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

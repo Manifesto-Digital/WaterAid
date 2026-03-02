@@ -1,0 +1,18 @@
+uuid: 4ba3cb9d-d42e-4efe-84b2-8f83e858a295
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_file
+id: media.local_file.publish_on
+field_name: publish_on
+entity_type: media
+bundle: local_file
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

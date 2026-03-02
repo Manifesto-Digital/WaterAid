@@ -2,12 +2,12 @@
   'card',
   'card--' ~ variant,
   'card--' ~ colour,
-  url ? 'card--link' : 'card--no-link',
+  'card--no-link',
 ] %}
 
 {% set tag = heading_tag ? heading_tag : 'h3' %}
 
-<div {{ attributes.addClass(card_classes).setAttribute('data-component', url ? 'card' : 'card--no-link') }}>
+<div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card--no-link') }}>
 
   {% if image_url %}
     <div class="card__image">

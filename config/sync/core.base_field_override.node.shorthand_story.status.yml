@@ -1,0 +1,22 @@
+uuid: 896f2b3e-034c-4e0d-ad5c-5ca2c8bb319e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.shorthand_story
+id: node.shorthand_story.status
+field_name: status
+entity_type: node
+bundle: shorthand_story
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

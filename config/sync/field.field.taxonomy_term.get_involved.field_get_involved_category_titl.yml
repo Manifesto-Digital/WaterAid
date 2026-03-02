@@ -12,7 +12,7 @@ bundle: get_involved
 label: 'Get Involved Category title'
 description: 'e.g. <strong>Popular Campaigns</strong> or <strong>Popular Events</strong><br>Note: if this field is not used, the taxonomy term name will be used instead.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

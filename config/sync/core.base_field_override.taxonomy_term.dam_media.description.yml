@@ -1,0 +1,21 @@
+uuid: 9ce5ad0a-3155-4ac9-a696-d6dc4fd108ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dam_media
+  module:
+    - text
+id: taxonomy_term.dam_media.description
+field_name: description
+entity_type: taxonomy_term
+bundle: dam_media
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

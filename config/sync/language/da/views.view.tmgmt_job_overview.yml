@@ -1,0 +1,38 @@
+display:
+  default:
+    display_options:
+      fields:
+        label:
+          label: Etiket
+        source_language_1:
+          label: Fra
+        target_language:
+          label: Til
+        translator:
+          label: Udbyder
+        operations:
+          label: Handlinger
+      pager:
+        options:
+          tags:
+            next: 'næste ›'
+            previous: '‹ forrige'
+            first: '« første'
+            last: 'sidste »'
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+      exposed_form:
+        options:
+          submit_button: Udfør
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      filters:
+        translator:
+          expose:
+            label: Udbyder
+  page_1:
+    display_title: Side

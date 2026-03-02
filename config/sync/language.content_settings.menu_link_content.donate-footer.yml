@@ -1,0 +1,17 @@
+uuid: cde98aff-7ad2-4b12-a123-52d1587899e4
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - menu_link_content
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: menu_link_content.donate-footer
+target_entity_type_id: menu_link_content
+target_bundle: donate-footer
+default_langcode: current_interface
+language_alterable: true

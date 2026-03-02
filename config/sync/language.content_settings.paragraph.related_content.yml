@@ -1,0 +1,18 @@
+uuid: edf53b01-f55c-4515-bb35-2f0ce09e8f93
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.related_content
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.related_content
+target_entity_type_id: paragraph
+target_bundle: related_content
+default_langcode: current_interface
+language_alterable: false

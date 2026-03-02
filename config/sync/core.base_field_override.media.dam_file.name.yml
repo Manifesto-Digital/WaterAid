@@ -1,0 +1,20 @@
+uuid: 45c7878b-60b8-4bab-87ae-0289ed5c65a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.dam_file
+id: media.dam_file.name
+field_name: name
+entity_type: media
+bundle: dam_file
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,606 @@
+uuid: fe5bdfc4-a0c8-4c28-8139-432095a7ee48
+langcode: ja
+status: open
+dependencies:
+  module:
+    - wateraid_donation_forms
+    - wateraid_donation_sf3ds
+    - wateraid_donation_stripe
+    - wateraid_forms
+    - webform_pdf_receipt
+    - webform_wizard_extra
+    - webform_wizard_single_page
+third_party_settings:
+  wateraid_donation_forms:
+    currency: JPY
+    donation_confirmation:
+      value: '<p><strong>申込日</strong><br>[webform_submission:donation-date]</p><p><strong>寄付金額</strong><br>[webform_submission:donation-amount]円</p>'
+      format: basic_html
+    gift_aid_confirmation:
+      value: ''
+      format: basic_html
+    gift_aid_email_confirmation:
+      value: ''
+      format: basic_html
+    social_share_title:
+      value: '<p><strong>シェアをして支援の輪を広げてください</strong></p>'
+      format: basic_html
+    social_share_text: ''
+    after_confirmation_footer:
+      value: ''
+      format: basic_html
+    after_confirmation_cta:
+      value: ''
+      format: basic_html
+    direct_debit_guarantee:
+      value: ''
+      format: basic_html
+    bank_transfer_instructions:
+      value: '<p>このたびはご支援をお申込みいただきありがとうございます。ご寄付は下記の指定銀行口座へお振込いただけます。</p><p><strong>●郵便振替によるご寄付</strong></p><p>口座番号　00100-0-359375<br>加入者名　ウォーターエイドジャパン</p><h5>※ご希望の方には、口座番号と加入者名を印刷した振込用紙をお送りします。<a href="https://www.wateraid.org/jp/form/brochure">こちら</a>からご請求いただけます。</h5><p>&nbsp;</p><p><strong>●その他の金融機関からのご寄付</strong></p><p>〇〇八（ゼロゼロハチ）店<br>普通　4057566<br>特定非営利活動法人ウォーターエイドジャパン</p><p>フォームにご入力いただいたメールアドレス宛てに、お振込依頼の自動返信メールを送信しています。</p>'
+      format: basic_html
+    confirmation_image_url: ''
+    donation_upsell_confirmation:
+      donation_upsell_image: {  }
+      donation_upsell_text:
+        value: ''
+        format: basic_html
+      donation_upsell_discount_widget:
+        donation_upsell_discount_code: ''
+        donation_upsell_exclusions: ''
+  wateraid_donation_stripe:
+    test_secret_key: ''
+    test_public_key: ''
+    live_secret_key: ''
+    live_public_key: ''
+  webform_wizard_extra:
+    one_page: false
+  wateraid_forms:
+    style_version: v1
+  webform_pdf_receipt:
+    pdf_text:
+      value: ''
+      format: wateraid_pdf
+  webform_wizard_single_page:
+    single_page: true
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: donate_oneoff_sf3ds
+title: 'Donate - oneoff - sf3ds'
+description: ''
+categories:
+  - Donation
+elements: |-
+  other:
+    '#type': webform_wizard_page
+    '#title': 'Donate to WaterAid'
+    donation_amount:
+      '#type': donations_webform_amount
+      '#title': '❶ 寄付金額'
+      '#title_display': before
+      '#required': true
+      '#frequency__access': false
+      '#amount__required': true
+    corporate_name_in_japanese:
+      '#type': textfield
+      '#title': 法人名（フリガナ）
+      '#maxlength': 80
+      '#placeholder': ○○○カブシキガイシャ
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="individual_corporate"]':
+            value: corporate
+    individual_corporate:
+      '#type': radios
+      '#title': 個人／法人
+      '#options':
+        individual: 個人
+        corporate: 法人
+      '#required': true
+      '#default_value': individual
+    corporate_name:
+      '#type': textfield
+      '#title': 法人名
+      '#maxlength': 34
+      '#placeholder': 〇〇〇株式会社
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="individual_corporate"]':
+            value: corporate
+    last_name:
+      '#type': textfield
+      '#title': 姓
+      '#maxlength': 40
+      '#placeholder': 山田
+      '#required': true
+    first_name:
+      '#type': textfield
+      '#title': 名
+      '#maxlength': 40
+      '#placeholder': 太郎
+      '#required': true
+    last_name_in_japanese:
+      '#type': textfield
+      '#title': セイ
+      '#maxlength': 80
+      '#placeholder': ヤマダ
+      '#required': true
+    first_name_in_japanese:
+      '#type': textfield
+      '#title': メイ
+      '#maxlength': 80
+      '#placeholder': タロウ
+      '#required': true
+    postcode:
+      '#type': textfield
+      '#title': 郵便番号
+      '#minlength': 7
+      '#maxlength': 8
+      '#placeholder': 123-4567
+      '#required': true
+    prefecture:
+      '#type': textfield
+      '#title': 都道府県
+      '#minlength': 3
+      '#maxlength': 4
+      '#placeholder': 東京都
+      '#required': true
+    city:
+      '#type': textfield
+      '#title': 市区町村
+      '#help': 14文字以内でご入力ください。
+      '#maxlength': 14
+      '#placeholder': 墨田区○○町
+      '#required': true
+    street:
+      '#type': textfield
+      '#title': 番地・建物名
+      '#help': |-
+        36文字以内でご入力ください。<br />
+        ※番地・部屋番号をお忘れなくご入力ください。
+      '#maxlength': 36
+      '#placeholder': '2丁目○○番地　〇ビル101'
+      '#required': true
+    email:
+      '#type': loqate_email_composite
+      '#title': メールアドレス
+      '#required': true
+      '#loqate_validation': false
+      '#loqate_validation_refuse_disposable': false
+      '#email__title': メールアドレス
+      '#email__placeholder': your@email.com
+      '#email__required': true
+    e_newsletter:
+      '#type': checkbox
+      '#title': このメールアドレスにメールマガジンを配信する
+      '#default_value': true
+    phone:
+      '#type': textfield
+      '#title': 電話番号
+      '#help': 半角数字・ハイフン（ー）無しで入力ください。
+      '#minlength': 10
+      '#maxlength': 13
+      '#placeholder': '09012345678'
+      '#required': true
+    payment_information:
+      '#type': fieldset
+      '#title': '❸ お支払い情報'
+      payment:
+        '#type': donations_webform_payment
+        '#title': 決済方法
+      receipt:
+        '#type': radios
+        '#title': 領収書発行
+        '#description': '<h5>※お申込み者名と異なる名義で領収書発行をご希望の場合、希望される領収書名を【備考欄】にご記入ください。</h5>'
+        '#options':
+          'yes': 希望する
+          'no': 希望しない
+        '#required': true
+        '#default_value': 'yes'
+      memo:
+        '#type': textarea
+        '#title': 備考欄
+        '#maxlength': 255
+      sf3ds_success:
+        '#type': value
+        '#title': 'Success Flag'
+    actions:
+      '#type': webform_actions
+      '#title': 'Submit button(s)'
+      '#submit__label': お申込み内容確認画面へ
+  submission_info:
+    '#type': webform_markup
+    '#markup': '<p>・入力内容はSSL暗号化して送信されます。<br>・docomo、au、softbankなど携帯電話会社のセキュリティ設定のため受信拒否と認識されている、または迷惑メール対策としてご自身でドメイン指定受信をご設定の場合、メー ルが正しく届かないことがございます。「@wateraid.org」ドメインを受信できるように設定してください。</p>'
+css: "/* Remove border above fieldsets */\r\nfieldset { border-top: none; }\r\n/* Make benefit text bold */\r\n.wa_donations_benefit { font-weight: bold; }\r\n/* Expiry date field - keep the fields aligned */\r\n#edit-payment-payment-methods-one-off-methods-gmo-expiry-csv-expiration legend {\r\n  margin-top: 1.3rem;\r\n}"
+javascript: "document.addEventListener('DOMContentLoaded', function () {\r\n  // Trim last three characters from donation amount on confirmation page (remove decimals)\r\n  if (document.querySelector('.donation-amount-text')) {\r\n    document.querySelector('.donation-amount-text').innerText = document.querySelector('.donation-amount-text').innerText.slice(0, -3); \r\n  }\r\n}, false);"
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_file_limit_message: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: 今回のご寄付：お申し込みが完了しました
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 7
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  wateraid_donations:
+    id: wateraid_donations
+    handler_id: wateraid_donations
+    label: 'WaterAid Donations'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -50
+    settings:
+      frequency_default: one_off
+      currency: ''
+      default_fund_code: ''
+      default_package_code: ''
+      customer_fields:
+        customer_name: ''
+        customer_address: ''
+        customer_email: email
+        customer_phone: ''
+      one_off:
+        option_label: 今回のみの寄付
+        enabled: 1
+        new_frequency: 0
+        payment_methods:
+          - gmo
+          - gmo_bank_transfer
+          - sf3ds
+        default_payment_method: sf3ds
+        amounts:
+          -
+            amount: '1000'
+            image: null
+            icon: null
+            benefit: '1,000円のご寄付で、モザンビークで2mの給水パイプを購入できます'
+            body: ''
+          -
+            amount: '3000'
+            image: null
+            icon: null
+            benefit: '3,000円のご寄付で、パキスタンの1クラス40人の生徒たちを対象に衛生教育を実施することができます'
+            body: ''
+          -
+            amount: '5000'
+            image: null
+            icon: null
+            benefit: '5,000円のご寄付で、マリに家庭用手洗い設備1基を設置することができます'
+            body: ''
+          -
+            amount: '10000'
+            image: null
+            icon: null
+            benefit: '10,000円のご寄付で、4人が清潔な水を利用できるようになります'
+            body: ''
+          -
+            amount: '20000'
+            image: null
+            icon: null
+            benefit: '20,000円のご寄付で、バングラデシュでモーター式のポンプを購入できます'
+            body: ''
+          -
+            amount: '100000'
+            image: null
+            icon: null
+            benefit: 10万円のご寄付で、ルワンダで給水パイプ100ｍを購入できます
+            body: ''
+        default_amount: '2'
+        allow_other_amount: true
+        minimum_amount: '1000'
+        progress_donation_message: 'You are making a one-off donation of [donation:currency-sign][donation:amount].'
+      recurring:
+        option_label: 毎月の寄付（定額）
+        enabled: 0
+        new_frequency: 0
+        payment_methods:
+          - gmo_subscription
+        default_payment_method: gmo_subscription
+        amounts:
+          -
+            amount: '2000'
+            image: null
+            icon: null
+            benefit: '月2,000円のご寄付を1年継続すると、ネパールで給水ポンプのメンテナンスのできる人材3人を育成することができます'
+            body: ''
+          -
+            amount: '3000'
+            image: null
+            icon: null
+            benefit: '月3,000円のご寄付を1年継続すると、15人が清潔な水を利用できるようになります'
+            body: ''
+          -
+            amount: '10000'
+            image: null
+            icon: null
+            benefit: '月3,000円のご寄付を1年継続すると、ザンビアで大型貯水タンク（1万リットル）を2つ購入できます'
+            body: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+        default_amount: '0'
+        upsell: ''
+        allow_other_amount: true
+        minimum_amount: '1000'
+        progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount].'
+      desktop_cancellation_message:
+        value: ''
+        format: full_html
+      mobile_cancellation_message:
+        value: ''
+        format: full_html
+      impact_statistics:
+        value: ''
+        format: restricted_html
+      fixed_period:
+        option_label: ''
+        enabled: 0
+        new_frequency: 0
+        payment_methods: {  }
+        default_payment_method: ''
+        amounts:
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+          -
+            amount: ''
+            image: null
+            icon: null
+            benefit: ''
+            body: ''
+            stripe_price_code: ''
+        default_amount: '0'
+        allow_other_amount: true
+        minimum_amount: '2'
+        progress_donation_message: 'You are making a monthly donation of [donation:currency-sign][donation:amount] for [donation:duration] months.'
+        durations:
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+          -
+            duration: ''
+        default_duration: '0'
+  sf_3ds:
+    id: sf3ds
+    handler_id: sf_3ds
+    label: 'Sf 3ds'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
+variants: {  }

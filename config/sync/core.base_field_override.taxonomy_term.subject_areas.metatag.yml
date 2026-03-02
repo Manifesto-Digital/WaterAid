@@ -1,0 +1,20 @@
+uuid: 8f4da37b-b891-43d4-9c6a-ebbe17f2c526
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.subject_areas
+  module:
+    - metatag
+id: taxonomy_term.subject_areas.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: subject_areas
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

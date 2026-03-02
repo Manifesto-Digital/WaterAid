@@ -1,0 +1,22 @@
+uuid: 89f9e617-437f-4674-857a-aea35824b250
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.scroll_image
+id: paragraph.scroll_image.status
+field_name: status
+entity_type: paragraph
+bundle: scroll_image
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 9507d71a-fb48-4342-bdb1-1de10c007ee4
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_video
+id: media.local_video.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: local_video
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

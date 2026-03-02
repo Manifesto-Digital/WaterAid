@@ -1,0 +1,18 @@
+uuid: 92996223-1291-4706-b407-d56dbb3c50de
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.donation_icon_library
+id: media.donation_icon_library.publish_on
+field_name: publish_on
+entity_type: media
+bundle: donation_icon_library
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

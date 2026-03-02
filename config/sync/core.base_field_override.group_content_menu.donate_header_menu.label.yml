@@ -1,0 +1,18 @@
+uuid: 1a9500f6-b183-4a49-a858-e21bbd613bf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.donate_header_menu
+id: group_content_menu.donate_header_menu.label
+field_name: label
+entity_type: group_content_menu
+bundle: donate_header_menu
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

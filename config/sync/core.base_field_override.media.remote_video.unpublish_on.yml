@@ -1,0 +1,18 @@
+uuid: 45ffd7d1-01c4-436a-8f6e-4991186b4b25
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.remote_video
+id: media.remote_video.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: remote_video
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,18 @@
+uuid: 42061441-6da1-408c-942c-1fe1112797b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.secondary-footer.description
+field_name: description
+entity_type: menu_link_content
+bundle: secondary-footer
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

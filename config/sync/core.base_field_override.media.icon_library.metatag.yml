@@ -1,0 +1,20 @@
+uuid: fade4fb8-49cb-4384-aebd-6da59f343598
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.icon_library
+  module:
+    - metatag
+id: media.icon_library.metatag
+field_name: metatag
+entity_type: media
+bundle: icon_library
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

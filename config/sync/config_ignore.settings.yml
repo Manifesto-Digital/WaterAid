@@ -6,4 +6,6 @@ ignored_config_entities:
   - 'system.site:mail'
   - 'system.site:page'
   - wateraid_donation_gmo.settings
+  - wateraid_donation_sf3ds.settings
   - 'webform.webform.*'
+  - webform_bankaccount.loqateapisettings

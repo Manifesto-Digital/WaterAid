@@ -1,0 +1,20 @@
+uuid: 61bc3c5a-3ff2-4a05-887f-6478dd1a5432
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.local_image
+id: media.local_image.name
+field_name: name
+entity_type: media
+bundle: local_image
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

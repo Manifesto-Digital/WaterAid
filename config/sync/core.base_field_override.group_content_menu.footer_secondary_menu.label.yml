@@ -1,0 +1,18 @@
+uuid: a384989d-d137-4fd8-aad3-20ad5951606b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.footer_secondary_menu
+id: group_content_menu.footer_secondary_menu.label
+field_name: label
+entity_type: group_content_menu
+bundle: footer_secondary_menu
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
