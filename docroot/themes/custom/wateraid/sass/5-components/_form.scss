@@ -557,7 +557,7 @@ input[type='radio'] {
   }
 }
 
-.pca .pcaautocomplete,
+.pca div.pcaautocomplete,
 .pcaautocomplete .pcatext {
   border-color: transparent !important;
 }
@@ -780,7 +780,7 @@ fieldset.next-form-step {
   }
 
   .pca {
-    .pcaautocomplete {
+    div.pcaautocomplete {
       border: none !important;
       max-width: 100%;
     }
@@ -1008,5 +1008,4 @@ label.button__input-button-wrapper {
       transform: translateX(base.$wa-spacing-02) translateY(-(base.$wa-spacing-02));
     }
   }
-
 }
