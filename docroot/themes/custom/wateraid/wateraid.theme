@@ -385,9 +385,9 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
         $options = [];
       }
     }
-
-    $variables['default_option'] = $default_option;
   }
+
+  $variables['default_option'] = $default_option;
 
   $variables['config'] = [
     'monthly_index' => $paragraph->get('field_monthly_index')->isEmpty() ? NULL : $paragraph->get('field_monthly_index')->getString(),
