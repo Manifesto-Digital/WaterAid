@@ -849,6 +849,8 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
 
   // Enable local split.
   $config['config_split.config_split.local']['status'] = TRUE;
+
+  $config['tfa.settings']['enabled'] = FALSE;
 }
 
 $repo_root = dirname(DRUPAL_ROOT);
