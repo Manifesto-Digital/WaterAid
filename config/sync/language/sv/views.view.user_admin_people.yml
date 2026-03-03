@@ -40,5 +40,8 @@ display:
             group_items:
               1:
                 title: Active
+        roles_target_id:
+          expose:
+            label: Roll
   page_1:
     display_title: Page
