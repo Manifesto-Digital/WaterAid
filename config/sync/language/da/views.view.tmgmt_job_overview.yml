@@ -1,15 +1,27 @@
 display:
   default:
+    display_title: Master
     display_options:
       fields:
+        state:
+          label: State
+          separator: ', '
         label:
           label: Etiket
         source_language_1:
           label: Fra
+          separator: ', '
         target_language:
           label: Til
+          separator: ', '
         translator:
           label: Udbyder
+        progress:
+          label: Progress
+        tags_count:
+          label: Tags
+        changed:
+          label: Changed
         operations:
           label: Handlinger
       pager:
@@ -31,6 +43,12 @@ display:
           sort_asc_label: Stigende
           sort_desc_label: Faldende
       filters:
+        state:
+          expose:
+            label: State
+        source_language:
+          expose:
+            label: 'Source language'
         translator:
           expose:
             label: Udbyder

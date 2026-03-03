@@ -1,5 +1,6 @@
 display:
   default:
+    display_title: Master
     display_options:
       exposed_form:
         options:
@@ -20,8 +21,21 @@ display:
             first: '« første'
             last: 'sidste »'
       fields:
+        state:
+          label: State
         label:
           label: Etiket
+        type:
+          label: Type
+        progress:
+          label: Progress
+        word_count:
+          separator: ', '
+        tags_count:
+          label: Tags
+          separator: ', '
+        changed:
+          label: Changed
         operations:
           label: Handlinger
       arguments:
@@ -29,7 +43,17 @@ display:
           exception:
             title: Alle
   checkout:
+    display_title: Checkout
     display_options:
       fields:
         label:
           label: Etiket
+        type:
+          label: Type
+        word_count:
+          separator: ', '
+        changed:
+          label: Changed
+          separator: ', '
+  submitted:
+    display_title: Submitted

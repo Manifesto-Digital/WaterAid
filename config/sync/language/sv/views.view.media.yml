@@ -5,17 +5,37 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
+        thumbnail__target_id:
+          separator: ', '
+        name:
+          separator: ', '
         bundle:
           label: Type
+          separator: ', '
         uid:
           label: Författare
+          separator: ', '
         status:
           label: Status
           settings:
             format_custom_false: 'Ej publicerad'
             format_custom_true: Publicerad
+          separator: ', '
+        changed:
+          separator: ', '
         operations:
           label: Funktioner
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Filtrera

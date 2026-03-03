@@ -8,16 +8,25 @@ display:
           action_title: Actie
         thumbnail__target_id:
           label: Miniatuur
+          separator: ', '
         name:
           label: Medianaam
+          separator: ', '
+        bundle:
+          label: Type
+          separator: ', '
         uid:
           label: Auteur
+          separator: ', '
         status:
+          label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
+          separator: ', '
         changed:
           label: Bijgewerkt
+          separator: ', '
         operations:
           label: Bewerkingen
       pager:
@@ -30,6 +39,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Filter
@@ -44,6 +54,9 @@ display:
         name:
           expose:
             label: Medianaam
+        bundle:
+          expose:
+            label: Type
         status:
           expose:
             label: Waar

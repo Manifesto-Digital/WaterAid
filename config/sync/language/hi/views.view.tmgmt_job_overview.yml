@@ -4,14 +4,21 @@ display:
       fields:
         state:
           label: अवस्था
+          separator: ', '
         label:
           label: लेबल
         source_language_1:
           label: से
+          separator: ', '
         target_language:
           label: को
+          separator: ', '
         translator:
           label: प्रदाता
+        tags_count:
+          label: Tags
+        changed:
+          label: Changed
         operations:
           label: कार्यवाही
       pager:

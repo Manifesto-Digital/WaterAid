@@ -20,6 +20,7 @@ display:
       fields:
         redirect_source__path:
           label: से
+          separator: ', '
         created:
           label: निर्मित
       filters:

@@ -8,9 +8,11 @@ display:
       fields:
         filename:
           label: Navn
+          separator: ', '
         filesize:
           label: Størrelse
         status:
+          label: Status
           settings:
             format_custom_false: Midlertidig
         created:
@@ -45,6 +47,9 @@ display:
         filename:
           expose:
             label: Filnavn
+        status:
+          expose:
+            label: Status
   page_1:
     display_title: Filoversigt
     display_options:
@@ -59,6 +64,7 @@ display:
           label: 'Registrerer modul'
         count:
           label: 'Brug antal'
+          format_plural_string: !!binary MQNAY291bnQ=
       pager:
         options:
           tags:

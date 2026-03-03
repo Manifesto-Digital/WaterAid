@@ -3,14 +3,27 @@ display:
     display_title: Máster
     display_options:
       fields:
+        state:
+          label: State
+          separator: ', '
         label:
           label: Etiqueta
         source_language_1:
           label: Desde
+          separator: ', '
         target_language:
           label: Para
+          separator: ', '
         translator:
           label: Proveedor
+        progress:
+          label: Progress
+        word_count:
+          label: Words
+        tags_count:
+          label: Tags
+        changed:
+          label: Changed
         operations:
           label: Operaciones
       pager:
@@ -29,9 +42,22 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       filters:
+        state:
+          expose:
+            label: State
+        source_language:
+          expose:
+            label: 'Source language'
         translator:
           expose:
             label: Proveedor
   page_1:
     display_title: Página
+    display_options:
+      menu:
+        title: Jobs
+      tab_options:
+        title: Jobs

@@ -1,3 +1,4 @@
+label: 'Translation All Job Items'
 display:
   default:
     display_title: Principal
@@ -29,18 +30,37 @@ display:
           label: Tipo
         source_language:
           label: De
+          separator: ', '
         target_language:
           label: Para
+          separator: ', '
+        word_count:
+          separator: ', '
+        tags_count:
+          label: Tags
+          separator: ', '
+        changed:
+          label: Changed
+          separator: ', '
         operations:
           label: Operações
       filters:
         state:
+          expose:
+            label: States
           group_info:
             label: Estado
+        source_language:
+          expose:
+            label: 'Source language'
         job_type:
           group_info:
             group_items:
               1:
                 title: Normal
+      title: 'Job Items'
   page_1:
     display_title: Página
+    display_options:
+      menu:
+        title: 'Job Items'

@@ -88,6 +88,7 @@ module:
   migrate_plus: 0
   migrate_tools: 0
   mimemail: 0
+  miniorange_saml: 0
   mysql: 0
   node: 0
   node_co_authors: 0
