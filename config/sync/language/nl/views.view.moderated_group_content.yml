@@ -1,18 +1,26 @@
 display:
   default:
+    display_title: Master
     display_options:
       title: 'Gemodereerde inhoud'
       fields:
+        nid:
+          separator: ', '
         title:
           label: Titel
+          separator: ', '
         type:
           label: Inhoudstype
+          separator: ', '
         name:
           label: Auteur
+          separator: ', '
         moderation_state:
           label: Moderatiestatus
+          separator: ', '
         changed:
           label: Bijgewerkt
+          separator: ', '
         operations:
           label: Bewerkingen
       pager:
@@ -25,6 +33,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       exposed_form:
         options:
           reset_button_label: 'Opnieuw instellen'

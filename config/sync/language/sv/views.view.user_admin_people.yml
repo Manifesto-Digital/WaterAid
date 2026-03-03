@@ -3,12 +3,29 @@ display:
     display_title: Förvald
     display_options:
       fields:
+        user_bulk_form:
+          label: 'Bulk update'
         name:
           label: Användarnamn
         status:
           label: Status
+          settings:
+            format_custom_true: Active
         operations:
           label: Funktioner
+        mail:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Filtrera
@@ -20,5 +37,8 @@ display:
         status:
           group_info:
             label: Status
+            group_items:
+              1:
+                title: Active
   page_1:
     display_title: Page

@@ -1,13 +1,19 @@
 display:
   default:
+    display_title: Master
     display_options:
       fields:
         name:
           label: Gebruiker
+          separator: ', '
         group_roles:
           label: Rollen
+          separator: ', '
         changed:
           label: Bijgewerkt
+          separator: ', '
+        created:
+          separator: ', '
         dropbutton:
           label: Bewerkingen
       pager:
@@ -18,6 +24,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Toepassen

@@ -8,14 +8,19 @@ display:
       fields:
         title:
           label: Titel
+          separator: ', '
         type:
           label: Indholdstype
+          separator: ', '
         name:
           label: Forfatter
+          separator: ', '
         moderation_state:
           label: Godkendelsestilstand
+          separator: ', '
         changed:
           label: Opdateret
+          separator: ', '
         operations:
           label: Handlinger
       pager:

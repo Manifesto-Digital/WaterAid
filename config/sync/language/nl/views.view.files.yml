@@ -8,6 +8,7 @@ display:
       fields:
         filename:
           label: Naam
+          separator: ', '
         filemime:
           label: MIME-type
         filesize:
@@ -33,6 +34,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Filter
@@ -71,6 +73,7 @@ display:
           label: 'Module registreren'
         count:
           label: Gebruiksfrequentie
+          format_plural_string: !!binary MQNAY291bnQ=
       pager:
         options:
           tags:
@@ -79,6 +82,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       arguments:
         fid:
           exception:

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce8f920f2b3aeb2c6e36f6cf151e77f4",
+    "content-hash": "68733b81bcbc40c7aefdc4dac8522fd4",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -7176,6 +7176,135 @@
                 "source": "https://git.drupalcode.org/project/migrate_tools",
                 "issues": "https://www.drupal.org/project/issues/migrate_tools",
                 "slack": "#migrate"
+            }
+        },
+        {
+            "name": "drupal/mimemail",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mimemail.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mimemail-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "c2252489acc864231ebc5e81e7801e0e04f05146"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/mailsystem": "^4"
+            },
+            "require-dev": {
+                "drupal/rules": "^4.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1766093117",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "mark_fullmer",
+                    "homepage": "https://www.drupal.org/user/2612816"
+                },
+                {
+                    "name": "tr",
+                    "homepage": "https://www.drupal.org/user/202830"
+                }
+            ],
+            "description": "Sends MIME-encoded emails with embedded images and attachments.",
+            "homepage": "https://www.drupal.org/project/mimemail",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mimemail",
+                "issues": "https://www.drupal.org/project/issues/mimemail"
+            }
+        },
+        {
+            "name": "drupal/miniorange_saml",
+            "version": "3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/miniorange_saml.git",
+                "reference": "3.1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/miniorange_saml-3.1.3.zip",
+                "reference": "3.1.3",
+                "shasum": "6d1d4c1924baf963bfe8da804fde8bbaa74359b8"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10  || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.1.3",
+                    "datestamp": "1772045578",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "abhay19",
+                    "homepage": "https://www.drupal.org/user/3549350"
+                },
+                {
+                    "name": "arsh244",
+                    "homepage": "https://www.drupal.org/user/3619504"
+                },
+                {
+                    "name": "gauravsood91",
+                    "homepage": "https://www.drupal.org/user/3288491"
+                },
+                {
+                    "name": "nitesh_jain",
+                    "homepage": "https://www.drupal.org/user/3858913"
+                },
+                {
+                    "name": "riteshk2357@gmail.com",
+                    "homepage": "https://www.drupal.org/user/3852367"
+                },
+                {
+                    "name": "roushan59227",
+                    "homepage": "https://www.drupal.org/user/3855273"
+                },
+                {
+                    "name": "shrishail hiremath",
+                    "homepage": "https://www.drupal.org/user/3669372"
+                },
+                {
+                    "name": "singh_ankit",
+                    "homepage": "https://www.drupal.org/user/3723914"
+                },
+                {
+                    "name": "sudhanshu0542",
+                    "homepage": "https://www.drupal.org/user/3723916"
+                }
+            ],
+            "description": "Login to Drupal site through an external IdP using the SAML 2.0 Protocol",
+            "homepage": "https://www.drupal.org/project/miniorange_saml",
+            "support": {
+                "source": "https://git.drupalcode.org/project/miniorange_saml"
             }
         },
         {
