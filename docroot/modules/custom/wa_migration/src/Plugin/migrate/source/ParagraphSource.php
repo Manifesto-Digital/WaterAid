@@ -45,6 +45,14 @@ class ParagraphSource extends SqlBase {
       }
     }
 
+    $settings = $this->migration->getPluginDefinition();
+    $migration_group = $settings['migration_group'] ?? NULL;
+
+    // If this is Washmatters, only bring in English content.
+    if (str_starts_with($migration_group, 'wateraid_wash')) {
+      $query->condition('p.langcode', 'en');
+    }
+
     return $query;
   }
 
