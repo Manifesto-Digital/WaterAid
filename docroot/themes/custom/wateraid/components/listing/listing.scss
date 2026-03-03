@@ -10,8 +10,9 @@
   &__wrapper {
     @include grid();
 
-    .button:not(.button--icon) {
+    input.button:not(.button--icon) {
       max-width: 100%;
+      margin: -0.75rem 0;
     }
   }
 
@@ -82,10 +83,6 @@
     .form-actions {
       position: relative;
       width: 100%;
-
-      &::after {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide.svg");
-      }
     }
 
     input.button {
@@ -120,17 +117,6 @@
         padding: 0;
         list-style: none;
       }
-
-      .pager__item a {
-        align-items: center;
-        background-image: url("/themes/custom/wateraid/components/listing/images/wa-utility-plus-blue.svg");
-        background-position: $wa-spacing-06 center;
-        background-repeat: no-repeat;
-        color: $wa-blue;
-        max-width: fit-content;
-        padding: $wa-spacing-03 $wa-spacing-06 $wa-spacing-03 $wa-spacing-10;
-        text-decoration: none;
-      }
     }
 
     .pager {
@@ -139,15 +125,8 @@
     .pager__item {
       width: fit-content;
       margin: auto;
-      &::after {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-border-light.svg");
-      }
     }
-    .form-actions {
-      &::after {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide.svg");
-      }
-    }
+
     input.button,
     .pager__item,
     .form-actions {
@@ -159,50 +138,6 @@
       justify-self: center;
       justify-content: center;
       position: relative;
-
-      &::before {
-        background-image: url("/themes/custom/wateraid/images/icons/wa-container-sm-wide-navy.svg");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        content: "";
-        display: block;
-        height: 0;
-        position: absolute;
-        transition: transform 200ms;
-        width: 0;
-        will-change: transform;
-        z-index: -1;
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &:hover::before {
-        transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
-        left: 0;
-        height: 100%;
-        width: 100%;
-      }
-
-      &:focus-visible {
-        outline: $wa-pink $wa-spacing-01 solid;
-        border: none;
-        background: none;
-      }
-
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-        left: 0;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-      }
-
       .bef-exposed-form {
         display: none;
       }
@@ -281,14 +216,10 @@
         display: none;
       }
     }
-
-    label.button__input-button-wrapper input:only-child {
-      height: calculate-rem(54);
-      width: calculate-rem(48);
-    }
-    
     .form-submit {
       @include reset-button();
+      height: calculate-rem(54);
+      width: calculate-rem(48);
       background-image: url("/themes/custom/wateraid/images/icons/wa-icon-search.svg");
       background-position: center;
       background-repeat: no-repeat;
