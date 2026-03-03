@@ -30,7 +30,7 @@ class RedirectSource extends SqlBase {
 
     // If this is Washmatters, only bring in English content.
     if (str_starts_with($migration_group, 'wateraid_wash')) {
-      $query->condition('r.langcode', 'en');
+      $query->condition('r.language', 'en');
     }
 
     return $query;
