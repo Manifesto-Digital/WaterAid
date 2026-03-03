@@ -1,0 +1,17 @@
+donate_india.jsclib:
+  js:
+    js/jscLib.js: {}
+
+donate_india.donationcart:
+  js:
+    js/donationcart.js: {}
+  dependencies:
+    - symmetry_donation_cart/donate_india.jsclib
+
+symmetry_donation_cart.library:
+  js:
+    js/webform_donation_cart_view.js: {}
+  dependencies:
+    - core/jquery
+    - wateraid_donation_forms/wateraid_donation_forms
+    - symmetry_donation_cart/donate_india.donationcart
