@@ -77,13 +77,13 @@ final class QueuePopulator extends QueueWorkerBase implements ContainerFactoryPl
       $this->connection->truncate('wa_orange_dam');
 
       // Then repopulate it.
-      $query = $this->connection->select('media__field_dam_expiry_date', 'e')
-        ->condition('field_dam_expiry_date_value', strtotime('now +3 months'), '<');
+      $query = $this->connection->select('media__field_dam_expiry', 'e')
+        ->condition('field_dam_expiry_value', strtotime('now +3 months'), '<');
       $query->leftJoin('entity_usage', 'u', 'u.target_id = e.entity_id AND u.target_type = :type', [
         ':type' => 'media',
       ]);
       $query->leftJoin('entity_usage', 'pu', 'pu.target_id = u.source_id AND pu.target_type = u.source_type');
-      $query->fields('e', ['entity_id', 'field_dam_expiry_date_value']);
+      $query->fields('e', ['entity_id', 'field_dam_expiry_value']);
       $query->fields('u', ['source_id', 'source_type']);
     }
 
