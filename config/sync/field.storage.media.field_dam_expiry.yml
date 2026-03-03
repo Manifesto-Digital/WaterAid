@@ -1,0 +1,19 @@
+uuid: 2da870f8-9c73-4c77-84b0-f40173d2d998
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_dam_expiry
+field_name: field_dam_expiry
+entity_type: media
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

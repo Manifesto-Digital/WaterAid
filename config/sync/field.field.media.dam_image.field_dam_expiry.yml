@@ -1,0 +1,24 @@
+uuid: fdf11388-af21-4e02-8edd-e5432ad029b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_dam_expiry
+    - media.type.dam_image
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: media.dam_image.field_dam_expiry
+field_name: field_dam_expiry
+entity_type: media
+bundle: dam_image
+label: 'DAM Expiry'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
