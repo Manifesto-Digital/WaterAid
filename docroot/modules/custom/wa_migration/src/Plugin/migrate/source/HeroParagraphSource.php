@@ -21,9 +21,19 @@ final class HeroParagraphSource extends ParagraphSource {
    * {@inheritdoc}
    */
   public function query(): SelectInterface {
-    return $this->select('paragraphs_item_field_data', 'p')
+    $query = $this->select('paragraphs_item_field_data', 'p')
       ->fields('p')
       ->condition('p.type', 'hero');
+
+    $settings = $this->migration->getPluginDefinition();
+    $migration_group = $settings['migration_group'] ?? NULL;
+
+    // If this is Washmatters, only bring in English content.
+    if (str_starts_with($migration_group, 'wateraid_wash')) {
+      $query->condition('langcode', 'en');
+    }
+
+    return $query;
   }
 
   /**

@@ -21,9 +21,19 @@ final class ListingParagraphSource extends ParagraphSource {
    * {@inheritdoc}
    */
   public function query(): SelectInterface {
-    return $this->select('paragraphs_item_field_data', 'p')
+    $query = $this->select('paragraphs_item_field_data', 'p')
       ->fields('p')
       ->condition('p.type', 'listing');
+
+    $settings = $this->migration->getPluginDefinition();
+    $migration_group = $settings['migration_group'] ?? NULL;
+
+    // If this is Washmatters, only bring in English content.
+    if (str_starts_with($migration_group, 'wateraid_wash')) {
+      $query->condition('p.langcode', 'en');
+    }
+
+    return $query;
   }
 
   /**
@@ -54,10 +64,19 @@ final class ListingParagraphSource extends ParagraphSource {
   public function prepareRow(Row $row): bool {
     $value = [];
 
-    if ($ids = $this->select('paragraph__field_listing_item', 'f')
+    $settings = $this->migration->getPluginDefinition();
+    $migration_group = $settings['migration_group'] ?? NULL;
+    $washmatters = str_starts_with($migration_group, 'wateraid_wash');
+
+    $query = $this->select('paragraph__field_listing_item', 'f')
       ->fields('f', ['field_listing_item_target_id'])
-      ->condition('entity_id', $row->getSourceProperty('id'))
-      ->execute()->fetchAll()) {
+      ->condition('entity_id', $row->getSourceProperty('id'));
+
+    if ($washmatters) {
+      $query->condition('f.langcode', 'en');
+    }
+
+    if ($ids = $query->execute()->fetchAll()) {
       $pids = [];
 
       foreach ($ids as $id) {
@@ -70,13 +89,25 @@ final class ListingParagraphSource extends ParagraphSource {
         ->fields('p')
         ->condition('p.id', $pids, 'IN');
 
-      $query->leftJoin('paragraph__field_call_to_action_link', 'c', 'p.id = c.entity_id');
+      if ($washmatters) {
+        $query->condition('p.langcode', 'en');
+      }
+
+      $condition = ($washmatters) ? 'p.id = c.entity_id AND c.langcode = :langcode' : 'p.id = c.entity_id';
+      $args = ($washmatters) ? [':langcode' => 'en'] : [];
+      $query->leftJoin('paragraph__field_call_to_action_link', 'c', $condition, $args);
       $query->fields('c');
-      $query->leftJoin('paragraph__field_listing_item_details', 'd', 'd.entity_id = p.id');
+
+      $condition = ($washmatters) ? 'd.entity_id = p.id AND d.langcode = :langcode' : 'd.entity_id = p.id';
+      $query->leftJoin('paragraph__field_listing_item_details', 'd', $condition, $args);
       $query->fields('d');
-      $query->leftJoin('paragraph__field_listing_item_title', 't', 't.entity_id = p.id');
+
+      $condition = ($washmatters) ? 't.entity_id = p.id AND t.langcode = :langcode' : 't.entity_id = p.id';
+      $query->leftJoin('paragraph__field_listing_item_title', 't', $condition, $args);
       $query->fields('t');
-      $query->leftJoin('paragraph__field_image', 'i', 'i.entity_id = p.id');
+
+      $condition = ($washmatters) ? 'i.entity_id = p.id AND i.langcode = :langcode' : 'i.entity_id = p.id';
+      $query->leftJoin('paragraph__field_image', 'i', $condition, $args);
       $query->fields('i');
 
       foreach ($query->execute()->fetchAll() as $datum) {
