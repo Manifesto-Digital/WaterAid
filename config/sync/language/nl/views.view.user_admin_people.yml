@@ -11,6 +11,7 @@ display:
         name:
           label: Gebruikersnaam
         status:
+          label: Status
           settings:
             format_custom_false: Geblokkeerd
             format_custom_true: Actief
@@ -25,6 +26,8 @@ display:
             past_format: '@interval geleden'
         operations:
           label: Bewerkingen
+        mail:
+          separator: ', '
       pager:
         options:
           tags:
@@ -35,6 +38,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Filter
@@ -51,6 +55,7 @@ display:
             label: 'Naam of e-mail bevat'
         status:
           group_info:
+            label: Status
             group_items:
               1:
                 title: Actief

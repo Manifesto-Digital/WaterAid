@@ -7,6 +7,8 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       pager:
         options:
           expose:
@@ -19,15 +21,45 @@ display:
             first: '« Primero'
             last: 'Último »'
       fields:
+        state:
+          label: State
         label:
           label: Etiqueta
         type:
           label: Tipo
         source_language:
           label: Desde
+          separator: ', '
         target_language:
           label: Para
+          separator: ', '
+        progress:
+          label: Progress
+        word_count:
+          label: Word
+          separator: ', '
+        tags_count:
+          label: Tags
+          separator: ', '
+        changed:
+          label: Changed
+          separator: ', '
         operations:
           label: Operaciones
+      filters:
+        state:
+          expose:
+            label: States
+          group_info:
+            label: State
+        source_language:
+          expose:
+            label: 'Source language'
+        job_type:
+          group_info:
+            label: 'Job type'
+            group_items:
+              1:
+                title: Normal
   page_1:
     display_title: Página

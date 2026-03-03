@@ -5,8 +5,10 @@ display:
       fields:
         info:
           label: Beskrivelse
+          separator: ', '
         type:
           label: Bloktype
+          separator: ', '
         changed:
           label: Opdateret
         operations:

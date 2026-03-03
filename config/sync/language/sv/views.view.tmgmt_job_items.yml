@@ -4,12 +4,17 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
       pager:
         options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
           tags:
             previous: '‹ föregående'
             next: 'nästa ›'
@@ -22,6 +27,15 @@ display:
           label: Etikett
         type:
           label: Type
+        progress:
+          label: Progress
+        word_count:
+          separator: ', '
+        tags_count:
+          label: Tags
+          separator: ', '
+        changed:
+          label: Changed
         operations:
           label: Funktioner
       arguments:
@@ -29,9 +43,17 @@ display:
           exception:
             title: Alla
   checkout:
+    display_title: Checkout
     display_options:
       fields:
         label:
           label: Etikett
         type:
           label: Type
+        word_count:
+          separator: ', '
+        changed:
+          label: Changed
+          separator: ', '
+  submitted:
+    display_title: Submitted

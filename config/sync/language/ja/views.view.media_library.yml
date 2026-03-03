@@ -62,6 +62,8 @@ display:
       fields:
         media_bulk_form:
           action_title: アクション
+        name:
+          separator: ', '
         edit_media:
           alter:
             text: '{{ name }}を編集'

@@ -5,6 +5,9 @@ display:
     display_title: Standard
     display_options:
       title: 'Seneste indhold'
+      fields:
+        changed:
+          separator: ', '
       exposed_form:
         options:
           submit_button: Udfør

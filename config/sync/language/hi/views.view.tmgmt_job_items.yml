@@ -24,6 +24,13 @@ display:
           label: लेबल
         type:
           label: प्रकार
+        word_count:
+          separator: ', '
+        tags_count:
+          label: Tags
+          separator: ', '
+        changed:
+          label: Changed
         operations:
           label: कार्यवाही
       arguments:
@@ -37,3 +44,10 @@ display:
           label: लेबल
         type:
           label: प्रकार
+        word_count:
+          separator: ', '
+        changed:
+          label: Changed
+          separator: ', '
+  submitted:
+    display_title: Submitted

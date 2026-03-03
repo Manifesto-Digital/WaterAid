@@ -18,6 +18,7 @@ display:
           label: メッセージ
         name:
           label: ユーザー
+          separator: ', '
         link:
           label: 操作
       pager:

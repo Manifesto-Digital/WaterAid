@@ -5,6 +5,9 @@ display:
     display_title: Standaard
     display_options:
       title: 'Recente inhoud'
+      fields:
+        changed:
+          separator: ', '
       exposed_form:
         options:
           submit_button: Toepassen

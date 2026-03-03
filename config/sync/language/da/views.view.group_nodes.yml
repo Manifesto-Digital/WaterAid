@@ -1,16 +1,21 @@
 display:
   default:
+    display_title: Master
     display_options:
       title: Indhold
       fields:
         title:
           label: Titel
+          separator: ', '
         type:
           label: Indholdstype
+          separator: ', '
         status:
+          label: Status
           settings:
             format_custom_false: 'Ikke udgivet'
             format_custom_true: Udgivet
+          separator: ', '
         view_group_relationship:
           text: view
         delete_group_relationship:
@@ -56,6 +61,9 @@ display:
                 title: Udgivet
               2:
                 title: 'Ikke udgivet'
+        type:
+          expose:
+            label: Type
   page_1:
     display_title: Side
     display_options:

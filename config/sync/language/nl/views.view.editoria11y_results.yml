@@ -47,6 +47,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       sorts:
         result_name:
           expose:
@@ -75,6 +76,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       header:
         area_text_custom:
           content: '<h1>Toegankelijkheidsproblemen op pagina {{page_title}}</h1>'
@@ -95,6 +97,7 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       footer:
         area_text_custom:
           content: '<a href="../editoria11y/issues" class="button button--primary">Alle problemen</a>'
@@ -109,5 +112,6 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
+            offset_label: Offset
       menu:
         title: 'Recente problemen'
