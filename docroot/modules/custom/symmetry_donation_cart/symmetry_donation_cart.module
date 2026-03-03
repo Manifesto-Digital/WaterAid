@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Provides hooks for the module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_webform_third_party_settings_form_alter().
+ *
+ * Provides settings to capture per Webform campaign.
+ */
+function symmetry_donation_cart_webform_third_party_settings_form_alter(&$form, FormStateInterface $form_state): void {
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  $webform = $form_state->getFormObject()->getEntity();
+  $index = 'symmetry_donation_cart';
+
+  $form['third_party_settings'][$index]['symmetry_campaign_code'] = [
+    '#type' => 'textfield',
+    '#title' => new TranslatableMarkup('Enter the campaign code'),
+    '#default_value' => $webform->getThirdPartySetting('symmetry_donation_cart', 'symmetry_campaign_code'),
+    '#empty_value' => '',
+  ];
+
+}
