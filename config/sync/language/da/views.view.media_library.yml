@@ -61,6 +61,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Handling
+        name:
+          separator: ', '
         edit_media:
           alter:
             text: 'Redigér {{ name }}'

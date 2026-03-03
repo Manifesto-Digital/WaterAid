@@ -22,12 +22,16 @@ display:
       fields:
         sid:
           label: No.
+          separator: ', '
         in_draft:
           label: 下書き
+          separator: ', '
         created:
           label: 作成
+          separator: ', '
         remote_addr:
           label: IPアドレス
+          separator: ', '
         view_webform_submission:
           label: 操作
           text: ビュー
@@ -46,18 +50,25 @@ display:
           action_title: アクション
         sid:
           label: No.
+          separator: ', '
         in_draft:
           label: 下書き
+          separator: ', '
         sticky:
           label: 固定
+          separator: ', '
         locked:
           label: ロック
+          separator: ', '
         created:
           label: 作成
+          separator: ', '
         completed:
           label: 完了
+          separator: ', '
         remote_addr:
           label: IPアドレス
+          separator: ', '
         operations:
           label: 操作
       filters:
@@ -74,18 +85,25 @@ display:
           action_title: アクション
         sid:
           label: No.
+          separator: ', '
         in_draft:
           label: 下書き
+          separator: ', '
         sticky:
           label: 固定
+          separator: ', '
         locked:
           label: ロック
+          separator: ', '
         created:
           label: 作成
+          separator: ', '
         completed:
           label: 完了
+          separator: ', '
         remote_addr:
           label: IPアドレス
+          separator: ', '
         view_webform_submission:
           label: 操作
           text: ビュー
@@ -104,18 +122,25 @@ display:
       fields:
         sid:
           label: No.
+          separator: ', '
         in_draft:
           label: 下書き
+          separator: ', '
         sticky:
           label: 固定
+          separator: ', '
         locked:
           label: ロック
+          separator: ', '
         created:
           label: 作成
+          separator: ', '
         completed:
           label: 完了
+          separator: ', '
         remote_addr:
           label: IPアドレス
+          separator: ', '
         view_webform_submission:
           label: 操作
           text: ビュー

@@ -5,13 +5,16 @@ display:
       fields:
         title:
           label: शीर्षक
+          separator: ', '
         type:
           label: 'सामग्री प्रकार'
+          separator: ', '
         status:
           label: अवस्था
           settings:
             format_custom_false: अप्रकाशित
             format_custom_true: प्रकाशित
+          separator: ', '
         view_group_relationship:
           text: view
         delete_group_relationship:

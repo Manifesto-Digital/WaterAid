@@ -6,5 +6,7 @@ display:
           label: টাইপ
         target_language:
           label: বরাবর
+        tags_count:
+          label: Tags
         operations:
           label: কার্যাবলী

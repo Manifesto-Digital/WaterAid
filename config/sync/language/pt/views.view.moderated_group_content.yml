@@ -4,16 +4,23 @@ display:
     display_options:
       title: 'Conteúdo moderado'
       fields:
+        nid:
+          separator: ', '
         title:
           label: Título
+          separator: ', '
         type:
           label: 'Tipo de conteúdo'
+          separator: ', '
         name:
           label: Autor
+          separator: ', '
         moderation_state:
           label: 'Estado de moderação'
+          separator: ', '
         changed:
           label: Atualizado
+          separator: ', '
         operations:
           label: Operações
       pager:

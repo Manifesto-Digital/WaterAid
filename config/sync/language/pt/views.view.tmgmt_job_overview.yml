@@ -5,14 +5,21 @@ display:
       fields:
         state:
           label: Estado
+          separator: ', '
         label:
           label: Etiqueta
         source_language_1:
           label: De
+          separator: ', '
         target_language:
           label: Para
+          separator: ', '
         translator:
           label: Fornecedor
+        tags_count:
+          label: Tags
+        changed:
+          label: Changed
         operations:
           label: Operações
       pager:
@@ -37,8 +44,16 @@ display:
         state:
           expose:
             label: Estado
+        source_language:
+          expose:
+            label: 'Source language'
         translator:
           expose:
             label: Fornecedor
   page_1:
     display_title: Página
+    display_options:
+      menu:
+        title: Jobs
+      tab_options:
+        title: Jobs

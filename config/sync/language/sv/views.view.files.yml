@@ -1,16 +1,28 @@
+label: Files
 display:
   default:
     display_title: Förvald
     display_options:
+      title: Files
       fields:
         filename:
           label: Namn
+          separator: ', '
         status:
           label: Status
         count:
           format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         operations:
           label: Funktioner
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Filtrera
@@ -22,6 +34,10 @@ display:
         status:
           expose:
             label: Status
+  page_1:
+    display_options:
+      menu:
+        title: Files
   page_2:
     display_options:
       fields:
@@ -29,6 +45,17 @@ display:
           label: Objekt
         type:
           label: 'Entity type'
+        count:
+          format_plural_string: !!binary MQNAY291bnQ=
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
       arguments:
         fid:
           exception:

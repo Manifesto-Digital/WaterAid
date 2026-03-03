@@ -20,6 +20,7 @@ display:
           label: Ligado
         name:
           label: 'Dismissed by'
+          separator: ', '
         page_path:
           label: Caminho
       pager:
