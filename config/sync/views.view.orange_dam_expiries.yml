@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.media.field_dam_expired
-    - field.storage.media.field_dam_expiry_date
+    - field.storage.media.field_dam_expiry
     - field.storage.media.field_dam_last_checked
     - system.menu.admin
   module:
@@ -139,15 +139,15 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_dam_expiry_date:
-          id: field_dam_expiry_date
-          table: media__field_dam_expiry_date
-          field: field_dam_expiry_date
+        field_dam_expiry:
+          id: field_dam_expiry
+          table: media__field_dam_expiry
+          field: field_dam_expiry
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'DAM Expiry'
           exclude: false
           alter:
             alter_text: false
@@ -178,9 +178,9 @@ display:
             html: false
           element_type: ''
           element_class: ''
-          element_label_type: '0'
+          element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -189,9 +189,8 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
+          type: basic_string
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -201,7 +200,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: true
+          field_api_classes: false
         field_dam_expired:
           id: field_dam_expired
           table: media__field_dam_expired
@@ -429,12 +428,25 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: '<p>Expiry dates have not been populated yet. Please try again tomorrow.</p>'
+            format: basic_html
+          tokenize: false
       sorts:
-        field_dam_expiry_date_value:
-          id: field_dam_expiry_date_value
-          table: media__field_dam_expiry_date
-          field: field_dam_expiry_date_value
+        field_dam_expiry_value:
+          id: field_dam_expiry_value
+          table: media__field_dam_expiry
+          field: field_dam_expiry_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -512,19 +524,16 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_dam_expiry_date_value:
-          id: field_dam_expiry_date_value
-          table: media__field_dam_expiry_date
-          field: field_dam_expiry_date_value
+        field_dam_expiry_value:
+          id: field_dam_expiry_value
+          table: media__field_dam_expiry
+          field: field_dam_expiry_value
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: string
           operator: 'not empty'
-          value:
-            min: ''
-            max: ''
-            value: ''
+          value: ''
           group: 1
           exposed: false
           expose:
@@ -541,8 +550,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            min_placeholder: ''
-            max_placeholder: ''
             placeholder: ''
           is_grouped: false
           group_info:
@@ -556,6 +563,10 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: table
         options:
@@ -627,7 +638,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.media.field_dam_expired'
-        - 'config:field.storage.media.field_dam_expiry_date'
+        - 'config:field.storage.media.field_dam_expiry'
         - 'config:field.storage.media.field_dam_last_checked'
   page_1:
     id: page_1
@@ -652,5 +663,5 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.media.field_dam_expired'
-        - 'config:field.storage.media.field_dam_expiry_date'
+        - 'config:field.storage.media.field_dam_expiry'
         - 'config:field.storage.media.field_dam_last_checked'
