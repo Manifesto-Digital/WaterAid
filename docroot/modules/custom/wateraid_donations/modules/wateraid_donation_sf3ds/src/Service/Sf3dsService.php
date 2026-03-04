@@ -49,7 +49,7 @@ class Sf3dsService {
   public function getFormAction() : string {
     $action = $this->webformGmoService->getSalesforceUrl();
 
-    return ($_ENV['SF3DS_FORM_ACTION']) ? $_ENV['SF3DS_FORM_ACTION'] . '/paymentrequest' : $action;
+    return (isset($_ENV['SF3DS_FORM_ACTION'])) ? $_ENV['SF3DS_FORM_ACTION'] . '/paymentrequest' : $action;
   }
 
   /**
