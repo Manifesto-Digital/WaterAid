@@ -302,7 +302,6 @@
             summary.querySelector('.donate-widget__donation-summary__label').textContent = Drupal.t('You are making a regular donation of:');
 
             let args = (selectedDuration) ? {'@months': selectedDuration.value} : {'@months': drupalSettings.donate_widget.duration}
-            console.log(args);
 
             // Get amount prefix if exists, eg.: £.
             summary.querySelector('.donate-widget__donation-summary__amount').textContent =
