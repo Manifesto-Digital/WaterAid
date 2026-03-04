@@ -7,6 +7,7 @@
 
 use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\StringTranslation\PluralTranslatableMarkup;
 use Drupal\group_content_menu\GroupContentMenuInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
@@ -390,11 +391,22 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
     'hide_fixed_monthly' => $paragraph->get('field_hide_desktop_fixed')->isEmpty() ? 7 : $paragraph->get('field_hide_desktop_fixed')->getString(),
   ];
 
+  $durations = [];
+
+  foreach ($paragraph->get('field_months')->getValue() as $value) {
+    $durations[$value['value']] = new PluralTranslatableMarkup($value['value'], '@count month', '@count months', [], [], \Drupal::service('string_translation'));
+  }
+
+  if ($durations && count($durations) > 1) {
+    $variables['fixed_period_durations'] = $durations;
+  }
+  else {
+    $variables['#attached']['drupalSettings']['donate_widget']['duration'] = ($durations) ? reset($durations) : 6;
+  }
+
   // Set SSL logo to dark if in webform nodes.
   $parentEntity = $paragraph->getParentEntity();
   $variables['ssl_logo_dark'] = $parentEntity && $parentEntity instanceof NodeInterface && $parentEntity->bundle() === 'webform';
-
-  $variables['#attached']['drupalSettings']['donate_widget']['duration'] = $paragraph->get('field_months')->getString() ?? 6;
 
   // Add currency prefix per group if available.
   $group = \Drupal::routeMatch()->getParameters()->get('group');
