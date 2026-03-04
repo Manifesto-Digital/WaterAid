@@ -402,7 +402,7 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables) {
   }
   else {
     $variables['config']['fixed_period_durations'] = [];
-    $variables['#attached']['drupalSettings']['donate_widget']['duration'] = ($durations) ? reset($durations) : 6;
+    $variables['#attached']['drupalSettings']['donate_widget']['duration'] = ($durations) ? key($durations) : 6;
   }
 
   // Set SSL logo to dark if in webform nodes.

@@ -297,13 +297,16 @@
         if (selectedFrequency.value && amountValue) {
           summary.classList.add('show');
 
-          if (selectedDuration) {
+          if (selectedFrequency.value === 'fixed_period') {
             // Find donation frequency and amount
             summary.querySelector('.donate-widget__donation-summary__label').textContent = Drupal.t('You are making a regular donation of:');
 
+            let args = (selectedDuration) ? {'@months': selectedDuration.value} : {'@months': drupalSettings.donate_widget.duration}
+            console.log(args);
+
             // Get amount prefix if exists, eg.: £.
             summary.querySelector('.donate-widget__donation-summary__amount').textContent =
-              `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedDuration ? Drupal.t('per month for @months months', {'@months': selectedDuration.value}) : 'per month'}`;
+              `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${Drupal.t('per month for @months months', args)}`;
           }
           else {
             // Find donation frequency and amount
@@ -372,8 +375,6 @@
         if (selectedFrequency.value === "fixed_period") {
           redirectUrl = (selectedDuration) ? redirectUrl.concat('&dur=', selectedDuration.value) : redirectUrl.concat('&dur=', drupalSettings.donate_widget.duration)
         }
-
-        alert(redirectUrl);
 
         window.location.href = redirectUrl;
       };
