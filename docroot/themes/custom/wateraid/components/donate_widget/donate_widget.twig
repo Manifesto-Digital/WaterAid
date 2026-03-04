@@ -264,6 +264,27 @@
           {% endfor %}
         </div>
       </fieldset>
+      {% if config.fixed_period_durations|length %}
+        <fieldset class="donate-widget__options-group donate-widget__options-group--fixed-period--durations{% if default_option != 'fixed_period' %} is-hidden{% endif %}">
+          <legend class="donate-widget__legend">{{ 'How long can you donate for?'|t }}</legend>
+          <div class="donate-widget__options-wrapper">
+            {% for key,label in config.fixed_period_durations %}
+              {% set radio_id = 'fixed-amount-duration-' ~ key ~ '-' ~ id %}
+              <div class="donate-widget__option donate-widget__option-{{ key }}">
+                <input class="donate-widget__radio-input"
+                       type="radio"
+                       id="{{ radio_id }}"
+                       name="fixed_amount_duration"
+                       value="{{ key }}"
+                       {% if loop.index == 1 %}checked{% endif %}>
+                <label class="donate-widget__radio-label duration" for="{{ radio_id }}">
+                  {{ label }}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      {% endif %}
     {% endif %}
     <div class="donate-widget__donation-summary" aria-live="polite" aria-atomic="true">
       <div class="donate-widget__donation-summary__label"></div>
