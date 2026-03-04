@@ -406,9 +406,10 @@ function wateraid_preprocess_paragraph__donation_widget(&$variables): void {
   }
 
   if ($durations && count($durations) > 1) {
-    $variables['fixed_period_durations'] = $durations;
+    $variables['config']['fixed_period_durations'] = $durations;
   }
   else {
+    $variables['config']['fixed_period_durations'] = [];
     $variables['#attached']['drupalSettings']['donate_widget']['duration'] = ($durations) ? reset($durations) : 6;
   }
 
