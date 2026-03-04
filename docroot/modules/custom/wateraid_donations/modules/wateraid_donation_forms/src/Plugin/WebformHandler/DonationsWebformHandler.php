@@ -721,7 +721,10 @@ class DonationsWebformHandler extends WebformHandlerBase {
         $values = [];
 
         if ($this->configuration[$payment_frequency_name]['use_paragraph'] ?? NULL) {
-          if ($paragraph->bundle() == 'donation_widget') {
+
+          // We can only use custom durations for the fixed_period frequency, so
+          // don't set them for anything else.
+          if ($paragraph->bundle() == 'donation_widget' && $payment_frequency_name == 'fixed_period') {
             foreach ($paragraph->get('field_months')->getValue() as $duration) {
               $values[] = ['duration' => $duration['value']];
             }
@@ -1012,27 +1015,27 @@ class DonationsWebformHandler extends WebformHandlerBase {
           $durations = [];
 
           if (!empty($frequency_config['use_paragraph']) && $paragraph) {
-            if ($paragraph->bundle() == 'donation_widget') {
+            if ($paragraph->bundle() == 'donation_widget' && $payment_frequency_name == 'fixed_period') {
               foreach ($paragraph->get('field_months')->getValue() as $duration) {
                 $durations[] = $duration['value'];
               }
             }
           }
-          if (array_key_exists('durations', $frequency_config)) {
+          if (empty($durations) && array_key_exists('durations', $frequency_config)) {
             // Get the default duration index.
             $duration_index = $frequency_config['default_duration'] ?? key($frequency_config['durations']);
 
             // Get the default duration key from the index.
-            if (empty($durations) && isset($frequency_config['durations'][$duration_index]['duration'])) {
+            if (isset($frequency_config['durations'][$duration_index]['duration'])) {
               $duration_defaults[$payment_frequency_name]['default_duration'] = $frequency_config['durations'][$duration_index]['duration'];
             }
-
-            // Method does not use index so just set default to value.
-            $duration_defaults[$payment_frequency_name]['default_payment_method'] = !empty($frequency_config['default_payment_method']) ? $frequency_config['default_payment_method'] : reset($frequency_config['payment_methods']);
           }
           else {
             $duration_defaults[$payment_frequency_name]['default_duration'] = reset($durations);
           }
+
+          // Method does not use index so just set default to value.
+          $duration_defaults[$payment_frequency_name]['default_payment_method'] = !empty($frequency_config['default_payment_method']) ? $frequency_config['default_payment_method'] : reset($frequency_config['payment_methods']);
         }
       }
     }
