@@ -3,6 +3,7 @@ _core:
 mode: simple
 ignored_config_entities:
   - 'key.key.*'
+  - miniorange_saml.settings
   - 'system.site:mail'
   - 'system.site:page'
   - wateraid_donation_gmo.settings
