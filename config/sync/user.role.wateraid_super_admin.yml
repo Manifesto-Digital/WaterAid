@@ -48,6 +48,7 @@ dependencies:
     - entity_usage
     - file
     - filter
+    - force_password_change
     - group
     - group_content_menu
     - language
@@ -98,6 +99,7 @@ permissions:
   - 'access webform submission user'
   - 'administer bulk redirects'
   - 'administer content translation'
+  - 'administer force password change'
   - 'administer group'
   - 'administer languages'
   - 'administer menu'
