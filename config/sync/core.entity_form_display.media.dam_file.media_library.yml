@@ -6,7 +6,6 @@ dependencies:
     - core.entity_form_mode.media.media_library
     - field.field.media.dam_file.field_dam_expired
     - field.field.media.dam_file.field_dam_expiry
-    - field.field.media.dam_file.field_dam_expiry_date
     - field.field.media.dam_file.field_dam_last_checked
     - field.field.media.dam_file.field_media_dam_file
     - media.type.dam_file
@@ -20,7 +19,6 @@ hidden:
   directory: true
   field_dam_expired: true
   field_dam_expiry: true
-  field_dam_expiry_date: true
   field_dam_last_checked: true
   field_media_dam_file: true
   langcode: true

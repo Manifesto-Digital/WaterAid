@@ -97,6 +97,7 @@ class CardFormReturn extends ControllerBase {
               'class' => [
                 'button',
                 'button--primary',
+                'button--light',
               ],
             ],
             '#button_type' => 'webform-submit',

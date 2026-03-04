@@ -7,7 +7,6 @@ dependencies:
     - field.field.media.dam_image.field_credit
     - field.field.media.dam_image.field_dam_expired
     - field.field.media.dam_image.field_dam_expiry
-    - field.field.media.dam_image.field_dam_expiry_date
     - field.field.media.dam_image.field_dam_last_checked
     - field.field.media.dam_image.field_media_dam_image
     - media.type.dam_image
@@ -94,7 +93,6 @@ content:
 hidden:
   field_dam_expired: true
   field_dam_expiry: true
-  field_dam_expiry_date: true
   field_dam_last_checked: true
   publish_on: true
   publish_state: true
