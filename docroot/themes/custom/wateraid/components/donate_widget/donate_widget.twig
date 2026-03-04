@@ -255,7 +255,7 @@
 
         <div class="donate-widget__amount-details">
           {% for item in fixed_amounts %}
-            {% set details_id = 'details-fixed-amount' ~ item.amount ~ '-' ~ id %}
+            {% set details_id = 'details-fixed-amount-' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
