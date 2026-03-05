@@ -32,6 +32,22 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_default_403_access_denied:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_default_404_not_found_page:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_hero:
     type: entity_reference_revisions_entity_view
     label: hidden

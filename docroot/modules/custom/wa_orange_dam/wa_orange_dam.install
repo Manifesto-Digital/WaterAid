@@ -6,8 +6,6 @@
  */
 
 use Drupal\Core\Database\Database;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Implements hook_schema().
