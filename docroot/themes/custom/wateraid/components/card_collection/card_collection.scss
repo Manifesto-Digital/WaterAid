@@ -18,15 +18,16 @@
   &--1-column .card {
     @include grid-item-span(4, 6, 12);
     @include desktop() {
-      @include grid();
-
-      &__image,
-      &__body {
+      .card__wrapper {
+        @include grid();
+      }
+      .card__image,
+      .card__body {
         @include grid-item-span(4, 6, 6);
         align-self: center;
         padding-left: 0;
       }
-      &__description {
+      .card__description {
         @include paragraph-md();
       }
     }
