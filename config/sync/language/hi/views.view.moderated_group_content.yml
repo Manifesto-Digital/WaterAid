@@ -1,10 +1,16 @@
+<<<<<<<< HEAD:config/sync/language/hi/views.view.moderated_content.yml
+label: 'नियंत्रित सामग्री'
+description: 'Find and moderate content.'
 display:
   default:
+    display_title: Default
+========
+display:
+  default:
+>>>>>>>> origin/main:config/sync/language/hi/views.view.moderated_group_content.yml
     display_options:
       title: 'नियंत्रित सामग्री'
       fields:
-        nid:
-          separator: ', '
         title:
           label: शीर्षक
           separator: ', '

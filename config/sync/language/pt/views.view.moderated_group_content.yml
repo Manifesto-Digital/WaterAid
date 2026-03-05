@@ -1,11 +1,13 @@
 display:
   default:
+<<<<<<<< HEAD:config/sync/language/pt/views.view.moderated_content.yml
+    display_title: Default
+========
     display_title: Principal
+>>>>>>>> origin/main:config/sync/language/pt/views.view.moderated_group_content.yml
     display_options:
       title: 'Conteúdo moderado'
       fields:
-        nid:
-          separator: ', '
         title:
           label: Título
           separator: ', '

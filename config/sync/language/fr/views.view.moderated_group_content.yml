@@ -1,11 +1,17 @@
+<<<<<<<< HEAD:config/sync/language/fr/views.view.moderated_content.yml
+label: 'Contenu modéré'
+description: 'Find and moderate content.'
+display:
+  default:
+    display_title: Default
+========
 display:
   default:
     display_title: Principal
+>>>>>>>> origin/main:config/sync/language/fr/views.view.moderated_group_content.yml
     display_options:
       title: 'Contenu modéré'
       fields:
-        nid:
-          separator: ', '
         title:
           label: Titre
           separator: ', '

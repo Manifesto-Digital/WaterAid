@@ -35,6 +35,10 @@
   h6 {
     padding-bottom: $wa-spacing-07;
   }
+  
+  label.error {
+    color: base.$wa-orange;
+  }
 
   label.error {
     color: base.$wa-orange;
