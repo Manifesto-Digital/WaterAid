@@ -5,6 +5,11 @@ dependencies:
   config:
     - field.storage.paragraph.field_months
     - paragraphs.paragraphs_type.donation_widget
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: paragraph.donation_widget.field_months
 field_name: field_months
 entity_type: paragraph
