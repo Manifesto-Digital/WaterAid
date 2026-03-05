@@ -6,7 +6,7 @@ dependencies:
     - field.field.media.dam_video.field_caption
     - field.field.media.dam_video.field_credit
     - field.field.media.dam_video.field_dam_expired
-    - field.field.media.dam_video.field_dam_expiry_date
+    - field.field.media.dam_video.field_dam_expiry
     - field.field.media.dam_video.field_dam_last_checked
     - field.field.media.dam_video.field_media_dam_video
     - media.type.dam_video
@@ -39,7 +39,7 @@ hidden:
   field_caption: true
   field_credit: true
   field_dam_expired: true
-  field_dam_expiry_date: true
+  field_dam_expiry: true
   field_dam_last_checked: true
   langcode: true
   name: true

@@ -108,7 +108,7 @@ final class ExpiryChecker extends QueueWorkerBase implements ContainerFactoryPlu
                 if ($date_value) {
                   // Set the updated expiry date whatever it is.
                   $date = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $date_value);
-                  $media->set('field_dam_expiry_date', $date->getTimestamp());
+                  $media->set('field_dam_expiry', $date->getTimestamp());
 
                   $now = new DrupalDateTime();
 

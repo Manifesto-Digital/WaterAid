@@ -1,0 +1,7 @@
+symmetry_donation_cart.settings:
+  type: mapping
+  label: 'WaterAid India symmetry donation settings'
+  mapping:
+    symmetry_campaign_code:
+      type: string
+      label: 'Enter the campaign code'

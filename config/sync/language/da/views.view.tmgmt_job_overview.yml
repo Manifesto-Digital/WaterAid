@@ -1,0 +1,56 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        state:
+          label: State
+          separator: ', '
+        label:
+          label: Etiket
+        source_language_1:
+          label: Fra
+          separator: ', '
+        target_language:
+          label: Til
+          separator: ', '
+        translator:
+          label: Udbyder
+        progress:
+          label: Progress
+        tags_count:
+          label: Tags
+        changed:
+          label: Changed
+        operations:
+          label: Handlinger
+      pager:
+        options:
+          tags:
+            next: 'næste ›'
+            previous: '‹ forrige'
+            first: '« første'
+            last: 'sidste »'
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+      exposed_form:
+        options:
+          submit_button: Udfør
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      filters:
+        state:
+          expose:
+            label: State
+        source_language:
+          expose:
+            label: 'Source language'
+        translator:
+          expose:
+            label: Udbyder
+  page_1:
+    display_title: Side

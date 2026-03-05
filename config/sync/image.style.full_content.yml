@@ -1,0 +1,13 @@
+uuid: cafb04b8-5a7c-4566-ac24-6219bed466e9
+langcode: en
+status: true
+dependencies: {  }
+name: full_content
+label: 'Full content'
+effects:
+  c8d7438e-27e6-447b-8d26-c31a2265f707:
+    uuid: c8d7438e-27e6-447b-8d26-c31a2265f707
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

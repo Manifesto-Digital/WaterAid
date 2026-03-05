@@ -3,10 +3,24 @@ display:
     display_title: Förvald
     display_options:
       fields:
+        info:
+          separator: ', '
+        type:
+          separator: ', '
         operations:
           label: Funktioner
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
       exposed_form:
         options:
+          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande

@@ -6,6 +6,21 @@
   flex-flow: column wrap;
   gap: base.$wa-spacing-04;
 
+  &.sf3ds-card-form {
+    .number-input__buttons {
+      display: none !important;
+    }
+
+    .inline-desktop-fields--60-40 {
+      @include base.desktop {
+        .fieldset-wrapper {
+          display: flex;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+
   .ssl-logo svg {
     max-width: 88px;
     height: 35px;
@@ -557,7 +572,7 @@ input[type='radio'] {
   }
 }
 
-.pca .pcaautocomplete,
+.pca div.pcaautocomplete,
 .pcaautocomplete .pcatext {
   border-color: transparent !important;
 }
@@ -794,7 +809,7 @@ fieldset.next-form-step {
   }
 
   .pca {
-    .pcaautocomplete {
+    div.pcaautocomplete {
       border: none !important;
       max-width: 100%;
     }
@@ -1022,5 +1037,4 @@ label.button__input-button-wrapper {
       transform: translateX(base.$wa-spacing-02) translateY(-(base.$wa-spacing-02));
     }
   }
-
 }

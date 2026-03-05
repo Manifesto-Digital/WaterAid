@@ -48,12 +48,13 @@ dependencies:
     - entity_usage
     - file
     - filter
+    - force_password_change
     - group
-    - group_content_menu
     - language
     - locale
     - media
     - menu_link_content
+    - mimemail
     - node
     - node_co_authors
     - paragraphs
@@ -99,6 +100,7 @@ permissions:
   - 'access webform submission user'
   - 'administer bulk redirects'
   - 'administer content translation'
+  - 'administer force password change'
   - 'administer group'
   - 'administer languages'
   - 'administer menu'
@@ -284,6 +286,7 @@ permissions:
   - 'edit config_pages entity'
   - 'edit footer config page entity'
   - 'edit global_site_selector config page entity'
+  - 'edit mimemail user settings'
   - 'edit own article content'
   - 'edit own dam_file media'
   - 'edit own dam_image media'
@@ -351,6 +354,7 @@ permissions:
   - 'revert webform revisions'
   - 'see smartling messages'
   - 'select account cancellation method'
+  - 'send arbitrary files'
   - 'send context smartling'
   - 'skip CAPTCHA'
   - 'translate any entity'
@@ -360,7 +364,6 @@ permissions:
   - 'translate editable entities'
   - 'translate event node'
   - 'translate get_involved taxonomy_term'
-  - 'translate group_content_menu'
   - 'translate interface'
   - 'translate landing_page node'
   - 'translate listing_page node'

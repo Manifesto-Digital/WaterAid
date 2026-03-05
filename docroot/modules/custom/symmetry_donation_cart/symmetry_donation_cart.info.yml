@@ -1,0 +1,7 @@
+name: Symmetry DonationCart
+type: module
+description: Provides integration between wateraid donations and Symmetry DonationCart for eg. India
+core_version_requirement: ^9 || ^10 || ^11
+package: wateraid
+dependencies:
+  - wateraid_donations:wateraid_donation_forms

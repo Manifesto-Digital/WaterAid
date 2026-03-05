@@ -1,17 +1,15 @@
-uuid: f8e031ba-aa33-4e71-84a9-3578041d851f
+uuid: 2da870f8-9c73-4c77-84b0-f40173d2d998
 langcode: en
 status: true
 dependencies:
   module:
     - media
-id: media.field_dam_expiry_date
-field_name: field_dam_expiry_date
+id: media.field_dam_expiry
+field_name: field_dam_expiry
 entity_type: media
-type: string
+type: string_long
 settings:
-  max_length: 255
   case_sensitive: false
-  is_ascii: false
 module: core
 locked: false
 cardinality: 1

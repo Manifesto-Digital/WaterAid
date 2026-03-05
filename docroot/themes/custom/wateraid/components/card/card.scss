@@ -112,8 +112,21 @@
 
     &:hover {
       background-color: $wa-white;
+      cursor: pointer;
+      .card__heading {
+        text-decoration: underline;
+      }
+      .card__image img {
+          transform: scale(1.05);
+      }
     }
 
+    .card__image {
+      overflow: hidden;
+      img {
+        transition: transform .5s
+      }
+    }
     .card__wrapper {
       background-color: $wa-white;
     }
@@ -154,10 +167,6 @@
 
     .card__link {
       padding-top: $wa-spacing-02;
-    }
-
-    .link--text:hover {
-      text-decoration: none;
     }
   }
 

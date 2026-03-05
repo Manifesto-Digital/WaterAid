@@ -9,6 +9,8 @@ use Drupal\anonymous_token\Access\AnonymousCsrfTokenGenerator;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -81,6 +83,13 @@ class DonationsWebformHandler extends WebformHandlerBase {
   protected AnonymousCsrfTokenGenerator $csrfTokenGenerator;
 
   /**
+   * The cache.
+   *
+   * @var \Drupal\Core\Cache\CacheBackendInterface
+   */
+  protected CacheBackendInterface $cache;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
@@ -92,6 +101,7 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $instance->setRequestStack($container->get('request_stack'));
     $instance->countryRepository = new CountryRepository();
     $instance->csrfTokenGenerator = $container->get('anonymous_token.csrf_token');
+    $instance->cache = $container->get('cache.default');
 
     return $instance;
   }
@@ -703,30 +713,62 @@ class DonationsWebformHandler extends WebformHandlerBase {
    *   The durations.
    */
   public function getDurations(): array {
-    $durations_full = [];
+    $durations_full = $durations = [];
+    $paragraph = $this->getParagraphFromWebform();
 
     foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
       if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
-        $durations = [];
-        if (array_key_exists('durations', $this->configuration[$payment_frequency_name])) {
-          foreach ($this->configuration[$payment_frequency_name]['durations'] as $duration_details) {
-            if (!empty($duration_details['duration'])) {
-              $durations[$duration_details['duration']] = [
-                'label' => $this->formatPlural($duration_details['duration'], '@count month', '@count months'),
-              ];
+        $values = [];
+
+        if ($this->configuration[$payment_frequency_name]['use_paragraph'] ?? NULL) {
+
+          // We can only use custom durations for the fixed_period frequency, so
+          // don't set them for anything else.
+          if ($paragraph->bundle() == 'donation_widget' && $payment_frequency_name == 'fixed_period') {
+            foreach ($paragraph->get('field_months')->getValue() as $duration) {
+              $values[] = ['duration' => $duration['value']];
             }
           }
-
-          $durations_full[$payment_frequency_name] = [
-            'label' => $this->configuration[$payment_frequency_name]['option_label'] ?? $payment_frequency->getUiLabel(),
-            'durations' => $durations,
-          ];
         }
-      }
+        if (empty($values) && array_key_exists('durations', $this->configuration[$payment_frequency_name])) {
+          $values = $this->configuration[$payment_frequency_name]['durations'];
+        }
 
+        foreach ($values as $duration_details) {
+          if (!empty($duration_details['duration'])) {
+            $durations[$duration_details['duration']] = [
+              'label' => $this->formatPlural($duration_details['duration'], '@count month', '@count months'),
+            ];
+          }
+        }
+
+        $durations_full[$payment_frequency_name] = [
+          'label' => $this->configuration[$payment_frequency_name]['option_label'] ?? $payment_frequency->getUiLabel(),
+          'durations' => $durations,
+        ];
+      }
     }
 
     return $durations_full;
+  }
+
+  /**
+   * Helper to get any linked paragraphs from the webform.
+   *
+   * @return \Drupal\paragraphs\ParagraphInterface|null
+   *   The paragraph, or NULL on error.
+   */
+  public function getParagraphFromWebform(): ?ParagraphInterface {
+    // Get the source entity if it is a paragraph.
+    $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
+
+    if ($paragraph instanceof NodeInterface && $paragraph->hasField('field_donation_widget')) {
+      if ($paragraphs = $paragraph->get('field_donation_widget')->referencedEntities()) {
+        $paragraph = reset($paragraphs);
+      }
+    }
+
+    return ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
   }
 
   /**
@@ -738,120 +780,131 @@ class DonationsWebformHandler extends WebformHandlerBase {
    * @todo replace with perhaps a trait for donation configuration.
    */
   public function getAmounts(): array {
-    $amounts_full = [];
+    $webform = $this->getWebform();
+    $tags = $webform->getCacheTags();
 
-    /** @var \Drupal\currency\Entity\CurrencyInterface $currency */
-    $currency = Currency::load($this->getCurrency());
+    $cache_key = 'amounts-' . $webform->id();
 
     // Get the source entity if it is a paragraph.
-    $paragraph = $this->getWebformSubmission()?->getSourceEntity() ?? NULL;
-
-    if ($paragraph instanceof NodeInterface && $paragraph->hasField('field_donation_widget')) {
-      if ($paragraphs = $paragraph->get('field_donation_widget')->referencedEntities()) {
-        $paragraph = reset($paragraphs);
-      }
+    if ($paragraph = $this->getParagraphFromWebform()) {
+      $cache_key .= $paragraph->id();
+      $tags = array_merge($tags, $paragraph->getCacheTags());
     }
 
-    $paragraph = ($paragraph instanceof ParagraphInterface) ? $paragraph : NULL;
+    if ($data = $this->cache->get($cache_key)) {
+      $amounts_full = $data->data;
+    }
+    else {
+      $amounts_full = [];
 
-    foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
-      if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
-        $amounts = [];
+      /** @var \Drupal\currency\Entity\CurrencyInterface $currency */
+      $currency = Currency::load($this->getCurrency());
 
-        if (!empty($this->configuration[$payment_frequency_name]['use_paragraph']) && $paragraph) {
-          if ($paragraph->bundle() == 'donation_widget') {
-            switch ($payment_frequency_name) {
-              case 'recurring':
-                $field = 'field_monthly_donation_amounts';
-                break;
+      foreach ($this->donationService->getPaymentFrequencies() as $payment_frequency_name => $payment_frequency) {
+        if (!empty($this->configuration[$payment_frequency_name]['enabled'])) {
+          $amounts = [];
 
-              case 'one_off':
-                $field = 'field_one_off_donation_amounts';
-                break;
+          if (!empty($this->configuration[$payment_frequency_name]['use_paragraph']) && $paragraph) {
+            if ($paragraph->bundle() == 'donation_widget') {
+              switch ($payment_frequency_name) {
+                case 'recurring':
+                  $field = 'field_monthly_donation_amounts';
+                  break;
 
-              case 'fixed_period':
-                $field = 'field_fixed_period_amounts';
-                break;
+                case 'one_off':
+                  $field = 'field_one_off_donation_amounts';
+                  break;
 
-              default:
-                $field = NULL;
+                case 'fixed_period':
+                  $field = 'field_fixed_period_amounts';
+                  break;
+
+                default:
+                  $field = NULL;
+              }
+            }
+            else {
+              $field = 'field_amounts';
+            }
+
+            if ($field && $paragraph->hasField($field)) {
+              foreach ($paragraph->get($field)
+                ->referencedEntities() as $amount_details) {
+                if ($amount = $amount_details->get('field_donation_amount')
+                  ->getString()) {
+                  $amounts[$amount] = [
+                    'benefit' => '',
+                    'label' => $this->getCurrencyValue($currency, $amount),
+                    'stripePriceCode' => $amount_details->get('field_stripe_price_code')
+                        ->getString() ?? NULL,
+                  ];
+
+                  $element = [
+                    '#theme' => 'wateraid_donation_forms_benefit',
+                    '#amount' => $amounts[$amount]['label'],
+                    '#image' => ($amount_details->get('field_image')
+                      ->isEmpty()) ? NULL : $amount_details->field_image->entity?->field_media_dam_image?->view('default')[0]['#uri'],
+                    '#icon' => ($amount_details->get('field_icon')
+                      ->isEmpty()) ? NULL : $amount_details->field_icon->entity?->field_media_svg?->entity->getFileUri(),
+                    '#benefit' => NULL,
+                    '#body' => $amount_details->get('field_title')
+                        ->getString() ?? NULL,
+                  ];
+                }
+
+                $amounts[$amount]['renderedBenefit'] = \Drupal::service('renderer')
+                  ->render($element);
+              }
             }
           }
-          else {
-            $field = 'field_amounts';
-          }
-
-          if ($field && $paragraph->hasField($field)) {
-            foreach ($paragraph->get($field)->referencedEntities() as $amount_details) {
-              if ($amount = $amount_details->get('field_donation_amount')->getString()) {
-                $amounts[$amount] = [
-                  'benefit' => '',
-                  'label' => $this->getCurrencyValue($currency, $amount),
-                  'stripePriceCode' => $amount_details->get('field_stripe_price_code')->getString() ?? NULL,
+          if (empty($amounts)) {
+            foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
+              if (!empty($amount_details['amount'])) {
+                $amount_label = $this->getCurrencyValue($currency, $amount_details['amount']);
+                $amounts[$amount_details['amount']] = [
+                  'benefit' => $amount_details['benefit'],
+                  // @todo Use formatter from currency module.
+                  'label' => $amount_label,
+                  'stripePriceCode' => $amount_details['stripe_price_code'] ?? NULL,
                 ];
 
+                /** @var \Drupal\Core\Render\Renderer $renderer */
+                $renderer = \Drupal::service('renderer');
                 $element = [
                   '#theme' => 'wateraid_donation_forms_benefit',
-                  '#amount' => $amounts[$amount]['label'],
-                  '#image' => ($amount_details->get('field_image')->isEmpty()) ? NULL : $amount_details->field_image->entity->getFileUrl(),
-                  '#icon' => ($amount_details->get('field_icon')->isEmpty()) ? NULL : $amount_details->field_icon->entity->getFileUrl(),
-                  '#benefit' => NULL,
-                  '#body' => $amount_details->get('field_title')->getString() ?? NULL,
+                  '#amount' => $amount_label,
+                  '#image' => NULL,
+                  '#icon' => NULL,
+                  '#benefit' => $amount_details['benefit'] ?? NULL,
+                  '#body' => $amount_details['body'] ?? NULL,
                 ];
+
+                $amounts[$amount_details['amount']]['renderedBenefit'] = $renderer->render($element);
               }
-
-              $amounts[$amount]['renderedBenefit'] = \Drupal::service('renderer')->render($element);
             }
           }
 
-        }
-        if (empty($amounts)) {
-          foreach ($this->configuration[$payment_frequency_name]['amounts'] as $amount_details) {
-            if (!empty($amount_details['amount'])) {
-              $amount_label = $this->getCurrencyValue($currency, $amount_details['amount']);
-              $amounts[$amount_details['amount']] = [
-                'benefit' => $amount_details['benefit'],
-                // @todo Use formatter from currency module.
-                'label' => $amount_label,
-                'stripePriceCode' => $amount_details['stripe_price_code'] ?? NULL,
-              ];
-
-              $image_file = NULL;
-              $icon_file = NULL;
-
-              /** @var \Drupal\Core\Render\Renderer $renderer */
-              $renderer = \Drupal::service('renderer');
-              $element = [
-                '#theme' => 'wateraid_donation_forms_benefit',
-                '#amount' => $amount_label,
-                '#image' => $image_file?->getFileUri(),
-                '#icon' => $icon_file?->getFileUri(),
-                '#benefit' => $amount_details['benefit'] ?? NULL,
-                '#body' => $amount_details['body'] ?? NULL,
-              ];
-
-              $amounts[$amount_details['amount']]['renderedBenefit'] = $renderer->render($element);
+          $payment_method_max = [];
+          $payment_provider_definitions = \Drupal::service('plugin.manager.payment_provider')
+            ->getDefinitions();
+          foreach ($this->configuration[$payment_frequency_name]['payment_methods'] as $payment_method) {
+            if (isset($payment_provider_definitions[$payment_method])) {
+              $payment_method_max[$payment_method] = $payment_provider_definitions[$payment_method]['paymentUpperLimit'];
             }
           }
-        }
 
-        $payment_method_max = [];
-        $payment_provider_definitions = \Drupal::service('plugin.manager.payment_provider')->getDefinitions();
-        foreach ($this->configuration[$payment_frequency_name]['payment_methods'] as $payment_method) {
-          if (isset($payment_provider_definitions[$payment_method])) {
-            $payment_method_max[$payment_method] = $payment_provider_definitions[$payment_method]['paymentUpperLimit'];
-          }
+          $amounts_full[$payment_frequency_name] = [
+            'label' => $this->configuration[$payment_frequency_name]['option_label'] ?? $payment_frequency->getUiLabel(),
+            'amounts' => $amounts,
+            'payment_methods' => $this->configuration[$payment_frequency_name]['payment_methods'],
+            'payment_methods_max' => $payment_method_max,
+            'allow_other_amount' => $this->configuration[$payment_frequency_name]['allow_other_amount'] ?? TRUE,
+            'minimum_amount' => !empty($this->configuration[$payment_frequency_name]['minimum_amount']) ? $this->configuration[$payment_frequency_name]['minimum_amount'] : 0,
+          ];
         }
-
-        $amounts_full[$payment_frequency_name] = [
-          'label' => $this->configuration[$payment_frequency_name]['option_label'] ?? $payment_frequency->getUiLabel(),
-          'amounts' => $amounts,
-          'payment_methods' => $this->configuration[$payment_frequency_name]['payment_methods'],
-          'payment_methods_max' => $payment_method_max,
-          'allow_other_amount' => $this->configuration[$payment_frequency_name]['allow_other_amount'] ?? TRUE,
-          'minimum_amount' => !empty($this->configuration[$payment_frequency_name]['minimum_amount']) ? $this->configuration[$payment_frequency_name]['minimum_amount'] : 0,
-        ];
       }
+
+      $this->cache->set($cache_key, $amounts_full, Cache::PERMANENT, $tags);
     }
 
     return $amounts_full;
@@ -951,20 +1004,34 @@ class DonationsWebformHandler extends WebformHandlerBase {
     $duration_defaults = [];
 
     $payment_frequencies = $this->donationService->getPaymentFrequencies();
+    $paragraph = $this->getParagraphFromWebform();
 
     foreach ($payment_frequencies as $payment_frequency_name => $payment_frequency) {
       // Check the config exists before continuing.
       if (isset($this->configuration[$payment_frequency_name])) {
         $frequency_config = $this->configuration[$payment_frequency_name];
 
-        if (array_key_exists('durations', $frequency_config)) {
+        if (!empty($frequency_config['enabled'])) {
+          $durations = [];
 
-          // Get the default duration index.
-          $duration_index = $frequency_config['default_duration'] ?? key($frequency_config['durations']);
+          if (!empty($frequency_config['use_paragraph']) && $paragraph) {
+            if ($paragraph->bundle() == 'donation_widget' && $payment_frequency_name == 'fixed_period') {
+              foreach ($paragraph->get('field_months')->getValue() as $duration) {
+                $durations[] = $duration['value'];
+              }
+            }
+          }
+          if (empty($durations) && array_key_exists('durations', $frequency_config)) {
+            // Get the default duration index.
+            $duration_index = $frequency_config['default_duration'] ?? key($frequency_config['durations']);
 
-          // Get the default duration key from the index.
-          if (isset($frequency_config['durations'][$duration_index]['duration'])) {
-            $duration_defaults[$payment_frequency_name]['default_duration'] = $frequency_config['durations'][$duration_index]['duration'];
+            // Get the default duration key from the index.
+            if (isset($frequency_config['durations'][$duration_index]['duration'])) {
+              $duration_defaults[$payment_frequency_name]['default_duration'] = $frequency_config['durations'][$duration_index]['duration'];
+            }
+          }
+          else {
+            $duration_defaults[$payment_frequency_name]['default_duration'] = reset($durations);
           }
 
           // Method does not use index so just set default to value.

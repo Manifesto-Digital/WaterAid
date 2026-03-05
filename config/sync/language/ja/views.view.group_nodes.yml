@@ -6,13 +6,16 @@ display:
       fields:
         title:
           label: タイトル
+          separator: ', '
         type:
           label: コンテンツタイプ
+          separator: ', '
         status:
           label: 状態
           settings:
             format_custom_false: 非掲載
             format_custom_true: 掲載
+          separator: ', '
         view_group_relationship:
           text: view
         delete_group_relationship:

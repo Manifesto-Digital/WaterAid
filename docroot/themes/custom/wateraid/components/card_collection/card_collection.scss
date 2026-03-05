@@ -69,6 +69,18 @@
     .card {
       background-color: $wa-white;
       color: $wa-navy;
+
+      &::before {
+        z-index: 1;
+      }
+
+      &__wrapper {
+        height: 100%;
+        width: 100%;
+        background-color: $wa-white;
+        position: relative;
+        z-index: 5;
+      }
     }
   }
 }
