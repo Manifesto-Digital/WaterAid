@@ -110,6 +110,8 @@
         durationRadios.forEach((radio) => {
           radio.addEventListener("change", updateDurationSelection);
         });
+
+        updateDonationSummary();
       }
 
       /**
