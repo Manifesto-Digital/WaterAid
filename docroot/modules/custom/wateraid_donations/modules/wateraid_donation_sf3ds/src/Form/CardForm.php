@@ -133,13 +133,6 @@ class CardForm extends FormBase {
         )->toString(),
       ];
 
-      $form['cardholder'] = [
-        '#type' => 'textfield',
-        '#required' => TRUE,
-        '#title' => $this->t('Card holders name'),
-        '#attributes' => ['class' => ['clear-on-submit']],
-      ];
-
       $form['cardnumber'] = [
         '#type' => 'number',
         '#required' => TRUE,
@@ -152,6 +145,13 @@ class CardForm extends FormBase {
             'clear-on-submit',
           ],
         ],
+      ];
+
+      $form['cardholder'] = [
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#title' => $this->t('Card holders name'),
+        '#attributes' => ['class' => ['clear-on-submit']],
       ];
 
       $form['expiry_csv'] = [
