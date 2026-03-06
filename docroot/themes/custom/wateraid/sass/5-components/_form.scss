@@ -1,18 +1,35 @@
+
 @use "../base";
 
 // Webforms
 .webform-submission-form {
-  @include base.container-sm();
   display: flex;
   flex-flow: column wrap;
   gap: base.$wa-spacing-04;
 
-  @include desktop() {
-    margin-left: 0;
-  }
+  &.sf3ds-card-form,
+  &.webform-submission-form--sf3ds {
+    .number-input__buttons {
+      display: none !important;
+    }
 
-  @include xlarge-screen() {
-    margin-left: 7.125rem;
+    .inline-desktop-fields--60-40 {
+      @include base.desktop {
+        .fieldset-wrapper {
+          display: flex;
+          gap: 1rem;
+        }
+      }
+    }
+
+    .webform-type-fieldset,
+    .fieldset-without-border {
+      border: none;
+    }
+
+    .fieldset-without-border .fieldset-legend {
+      display: none;
+    }
   }
 
   .ssl-logo svg {
@@ -28,6 +45,10 @@
   h5,
   h6 {
     padding-bottom: $wa-spacing-07;
+  }
+
+  label.error {
+    color: base.$wa-orange;
   }
 
   label.error {
@@ -128,7 +149,6 @@
         cursor: pointer;
       }
     }
-
 
     .button--input-wrapped + .ajax-progress {
       position: absolute;
@@ -350,6 +370,7 @@ input[type='radio'] {
   // Inputs & textareas
   .stripe-card-element,
   input[type='text'],
+  input[type='password'],
   input[type='email'],
   input[type='tel'],
   input[type='date'],
@@ -1006,5 +1027,11 @@ label.button__input-button-wrapper {
       cursor: pointer;
       transform: translateX(base.$wa-spacing-02) translateY(-(base.$wa-spacing-02));
     }
+  }
+}
+
+.tfa-entry-form {
+  .button--input-wrapped.button--primary {
+    color: base.$wa-white;
   }
 }
