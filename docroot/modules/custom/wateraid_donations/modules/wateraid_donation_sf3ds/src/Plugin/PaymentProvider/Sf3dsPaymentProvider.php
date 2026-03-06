@@ -13,9 +13,9 @@ use Drupal\webform\WebformInterface;
  * @PaymentProvider(
  *   id = "sf3ds",
  *   label = @Translation("SalesForce 3DS card"),
- *   ui_label = @Translation("SalesForce 3DS card"),
+ *   ui_label = @Translation("Credit/debit card"),
  *   export_label = @Translation("SalesForce 3DS card"),
- *   description = @Translation("SalesForce 3DS card"),
+ *   description = @Translation("Credit/debit card payments linked to Salesforce (Japan only)"),
  *   type = "all",
  *   payment_frequency = "one_off",
  *   paymentType = "card",
@@ -39,7 +39,7 @@ class Sf3dsPaymentProvider extends PaymentProviderBase {
    */
   public function processWebformComposite(array &$element, FormStateInterface $form_state, array &$complete_form): void {
     $element['prompt'] = [
-      '#markup' => $this->t('<p>Please enter you credit card details on the following page.</p>'),
+      '#markup' => $this->t('<p>Please enter your credit card details on the following page.</p>'),
     ];
   }
 

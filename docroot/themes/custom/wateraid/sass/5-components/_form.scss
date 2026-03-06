@@ -21,8 +21,13 @@
       }
     }
 
-    .webform-type-fieldset {
+    .webform-type-fieldset,
+    .fieldset-without-border {
       border: none;
+    }
+
+    .fieldset-without-border .fieldset-legend {
+      display: none;
     }
   }
 
