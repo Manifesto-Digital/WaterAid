@@ -629,6 +629,7 @@ fieldset.prev-form-step {
 
   button,
   input[value="Edit"] {
+    @include base.reset-button;
     @include link();
   }
 }
@@ -788,9 +789,22 @@ fieldset.next-form-step {
   }
 
   .button[value='Edit'] {
+    @include base.reset-button;
+    font-family: base.$font-family;
+    color: base.$wa-navy;
     align-self: start;
+    text-align: left;
     @include base.desktop {
       left: 4rem;
+    }
+    &.button--primary:hover {
+      transform: unset;
+    }
+  }
+  .prev-form-step {
+    .button--primary:after,
+    .button__wrapper .button__hover {
+      background: unset;
     }
   }
 

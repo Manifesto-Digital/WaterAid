@@ -2,27 +2,9 @@
 
 .card {
   position: relative;
-
-  &.card--link::before {
-    transition: transform 200ms;
-    will-change: transform;
-    content: "";
-    display: block;
-    position: absolute;
-    height: 0;
-    width: 0;
-    z-index: -1;
-    background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-tall.svg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-
-  &.card--link:hover::before {
-    transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
-    left: 0;
-    height: 100%;
-    width: 100%;
-  }
+  height: 100%;
+  width: fit-content;
+  position: relative;
 
   &.card--link:hover {
     cursor: pointer;
@@ -88,6 +70,7 @@
 
   &__external {
     margin: 0 0 0 auto;
+
     svg {
       color: $wa-blue;
     }
@@ -131,6 +114,10 @@
         transition: transform .5s
       }
     }
+    .card__wrapper {
+      background-color: $wa-white;
+    }
+
     .card__heading {
       @include h6();
       padding-bottom: $wa-spacing-02;
@@ -171,7 +158,9 @@
   }
 
   &--signposting {
-    background-color: $wa-white;
+    .card__wrapper {
+      background-color: $wa-white;
+    }
 
     .card__heading {
       @include h5();
@@ -289,6 +278,31 @@
     .card__image {
       filter: brightness(0) invert(1);
     }
+  }
+
+  &__wrapper {
+    height: 100%;
+    width: fit-content;
+    position: relative;
+    z-index: 5;
+    transition: transform 200ms;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateX($wa-spacing-02) translateY(-$wa-spacing-02);
+    }
+  }
+
+  .card__hover {
+    z-index: 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: block;
+    top: 0;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-tall.svg");
   }
 }
 
