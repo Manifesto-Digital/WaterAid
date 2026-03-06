@@ -187,7 +187,7 @@ class QueueHandler {
         "opt_in_phone"        => NULL,
         "opt_in_sms"          => NULL,
         "opt_in_social_media" => NULL,
-        "opt_out_post"        => TRUE
+        "opt_out_post"        => FALSE,
       ],
       'reason_for_donating'         => self::mapSafeValue($submissionData,'prompt_reason'),
       'in_memory_firstname'         => '',
@@ -230,11 +230,11 @@ class QueueHandler {
       $mappedData['in_memory_title']        = self::mapSafeValue($submissionData['in_memory'],'in_memory_title');
     }
 
-    if (!empty($submissionData['communication_preferences']['opt_in_email']) || $submissionData['communication_preferences'][0] == 'opt_in_email') {
+    if (!empty($submissionData['communication_preferences']['opt_in_email']) || in_array('opt_in_email', $submissionData['communication_preferences'])) {
       $mappedData['communication_preferences']['opt_in_email'] = TRUE;
     }
 
-    if (!empty($submissionData['communication_preferences']['opt_out_post'] || $submissionData['communication_preferences'][0] == 'opt_out_post')) {
+    if (!empty($submissionData['communication_preferences']['opt_out_post']) || in_array('opt_out_post', $submissionData['communication_preferences'])) {
       $mappedData['communication_preferences']['opt_out_post'] = TRUE;
     }
 

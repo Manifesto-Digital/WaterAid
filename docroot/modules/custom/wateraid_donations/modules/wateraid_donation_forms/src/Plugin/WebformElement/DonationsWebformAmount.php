@@ -49,11 +49,11 @@ class DonationsWebformAmount extends WebformCompositeBase {
         // defaults in DonationsWebformHandler::getAmountDefaultState.
         $form_state->set(DonationsWebformAmountElement::STORAGE_FREQUENCY, $query_frequency);
         $form_state->set(DonationsWebformAmountElement::STORAGE_AMOUNT, $query_amount);
+      }
 
-        // Set duration separately, sometimes not included.
-        if (empty($input_duration) && $query_duration) {
-          $form_state->set(DonationsWebformAmountElement::STORAGE_DURATION, $query_duration);
-        }
+      // Set duration separately, sometimes not included.
+      if (empty($input_duration) && $query_duration) {
+        $form_state->set(DonationsWebformAmountElement::STORAGE_DURATION, $query_duration);
       }
     }
 

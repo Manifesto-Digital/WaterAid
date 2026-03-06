@@ -74,7 +74,7 @@
           <div class="donate-widget__option">
             <input class="donate-widget__radio-input" type="radio" id="{{ fixed_id }}" name="frequency" value="fixed_period"
                {% if default_option == 'fixed_period' %}checked{% endif %}>
-            <label class="donate-widget__radio-label" for="{{ fixed_id }}">{{ 'Fixed Period'|t }}</label>
+            <label class="donate-widget__radio-label" for="{{ fixed_id }}">{{ 'Fixed period'|t }}</label>
           </div>
         {% endif %}
       </div>
@@ -89,11 +89,6 @@
             {% set radio_id = 'monthly-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_monthly == item.amount %} hide-on-desktop{% endif %}">
-              {% if loop.revindex == 2 %}
-                <div class="donate-widget__increase-impact">
-                  {{ 'Increase your impact'|t }}
-                </div>
-              {% endif %}
               <input class="donate-widget__radio-input"
                      type="radio"
                      id="{{ radio_id }}"
@@ -162,11 +157,6 @@
             {% set radio_id = 'one-off-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_one_off == item.amount %} hide-on-desktop{% endif %}">
-              {% if loop.revindex == 2 %}
-                <div class="donate-widget__increase-impact">
-                  {{ 'Increase your impact'|t }}
-                </div>
-              {% endif %}
               <input class="donate-widget__radio-input"
                      type="radio"
                      id="{{ radio_id }}"
@@ -235,11 +225,6 @@
             {% set radio_id = 'fixed-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_fixed == item.amount %} hide-on-desktop{% endif %}">
-              {% if loop.revindex == 2 %}
-                <div class="donate-widget__increase-impact">
-                  {{ 'Increase your impact'|t }}
-                </div>
-              {% endif %}
               <input class="donate-widget__radio-input"
                      type="radio"
                      id="{{ radio_id }}"
@@ -255,7 +240,7 @@
 
         <div class="donate-widget__amount-details">
           {% for item in fixed_amounts %}
-            {% set details_id = 'details-fixed-amount' ~ item.amount ~ '-' ~ id %}
+            {% set details_id = 'details-fixed-amount-' ~ item.amount ~ '-' ~ id %}
 
             {% if item.title or item.description %}
               <div id="{{ details_id }}" class="donate-widget__amount-details--detail">
@@ -287,6 +272,27 @@
           {% endfor %}
         </div>
       </fieldset>
+      {% if config.fixed_period_durations|length %}
+        <fieldset class="donate-widget__options-group donate-widget__options-group--fixed-period--durations{% if default_option != 'fixed_period' %} is-hidden{% endif %}">
+          <legend class="donate-widget__legend">{{ 'How long can you donate for?'|t }}</legend>
+          <div class="donate-widget__options-wrapper">
+            {% for key,label in config.fixed_period_durations %}
+              {% set radio_id = 'fixed-amount-duration-' ~ key ~ '-' ~ id %}
+              <div class="donate-widget__option donate-widget__option-{{ key }}">
+                <input class="donate-widget__radio-input"
+                       type="radio"
+                       id="{{ radio_id }}"
+                       name="fixed_amount_duration"
+                       value="{{ key }}"
+                       {% if loop.index == 1 %}checked{% endif %}>
+                <label class="donate-widget__radio-label duration" for="{{ radio_id }}">
+                  {{ label }}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      {% endif %}
     {% endif %}
     <div class="donate-widget__donation-summary" aria-live="polite" aria-atomic="true">
       <div class="donate-widget__donation-summary__label"></div>

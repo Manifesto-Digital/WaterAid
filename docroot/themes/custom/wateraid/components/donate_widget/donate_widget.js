@@ -13,9 +13,11 @@
       const fixedAmountRadios = widget.querySelectorAll('input[name="fixed_amount"]');
       const detailElements = widget.querySelectorAll(".donate-widget__amount-details--detail");
       const frequencyRadios = widget.querySelectorAll('input[name="frequency"]');
+      const durationRadios = widget.querySelectorAll('input[name="fixed_amount_duration"]');
       const oneOffContainer = widget.querySelector(".donate-widget__options-group--one-off");
       const monthlyContainer = widget.querySelector(".donate-widget__options-group--monthly");
       const fixedContainer = widget.querySelector(".donate-widget__options-group--fixed-period");
+      const durationsContainer = widget.querySelector(".donate-widget__options-group--fixed-period--durations");
       const monthlyCustomAmountContainer = widget.querySelector(".donate-widget__custom-amount--monthly");
       const monthlyCustomAmountInput = widget.querySelector("#custom_amount_monthly");
       const oneOffCustomAmountContainer = widget.querySelector(".donate-widget__custom-amount--one-off");
@@ -25,6 +27,7 @@
       const minDonationAmount = parseInt(drupalSettings.donate_widget?.minimum_donation);
       let selectedFrequency;
       let amountValue;
+      let selectedDuration;
 
       // Add event listener on input changes.
       monthlyCustomAmountInput?.addEventListener("input", () => {
@@ -97,6 +100,18 @@
           applePay.style.display = 'block';
           googlePay.style.display = 'none';
         }
+      }
+
+      const updateDurationSelection = () => {
+        if (selectedFrequency.value === 'fixed_period') {
+          selectedDuration = widget.querySelector('input[name="fixed_amount_duration"]:checked');
+        }
+
+        durationRadios.forEach((radio) => {
+          radio.addEventListener("change", updateDurationSelection);
+        });
+
+        updateDonationSummary();
       }
 
       /**
@@ -232,6 +247,9 @@
           if (fixedContainer) {
             fixedContainer.classList.add("is-hidden");
           }
+          if (durationsContainer) {
+            durationsContainer.classList.add("is-hidden");
+          }
           monthlyContainer.classList.remove("is-hidden");
 
           updateAmountSelection();
@@ -244,6 +262,10 @@
           if (fixedContainer) {
             fixedContainer.classList.add("is-hidden");
           }
+          if (durationsContainer) {
+            durationsContainer.classList.add("is-hidden");
+          }
+
 
           updateAmountSelection();
         }
@@ -254,6 +276,10 @@
           }
           if (oneOffContainer) {
             oneOffContainer.classList.add("is-hidden");
+          }
+          if (durationsContainer) {
+            durationsContainer.classList.remove("is-hidden");
+            updateDurationSelection();
           }
 
           updateAmountSelection();
@@ -272,14 +298,27 @@
         // If both are found, update the summary display.
         if (selectedFrequency.value && amountValue) {
           summary.classList.add('show');
-          // Find donation frequency and amount
-          summary.querySelector('.donate-widget__donation-summary__label').textContent =
-            selectedFrequency.value === 'one_off'
-              ? Drupal.t('You are making a one-off donation of:') : Drupal.t('You are making a regular donation of:');
 
-          // Get amount prefix if exists, eg.: £.
-          summary.querySelector('.donate-widget__donation-summary__amount').textContent =
-            `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value !== 'one_off' ? Drupal.t('per month') : ''}`;
+          if (selectedFrequency.value === 'fixed_period') {
+            // Find donation frequency and amount
+            summary.querySelector('.donate-widget__donation-summary__label').textContent = Drupal.t('You are making a regular donation of:');
+
+            let args = (selectedDuration) ? {'@months': selectedDuration.value} : {'@months': drupalSettings.donate_widget.duration}
+
+            // Get amount prefix if exists, eg.: £.
+            summary.querySelector('.donate-widget__donation-summary__amount').textContent =
+              `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${Drupal.t('per month for @months months', args)}`;
+          }
+          else {
+            // Find donation frequency and amount
+            summary.querySelector('.donate-widget__donation-summary__label').textContent =
+              selectedFrequency.value === 'one_off'
+                ? Drupal.t('You are making a one-off donation of:') : Drupal.t('You are making a regular donation of:');
+
+            // Get amount prefix if exists, eg.: £.
+            summary.querySelector('.donate-widget__donation-summary__amount').textContent =
+              `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value !== 'one_off' ? Drupal.t('per month') : ''}`;
+          }
         }
       }
 
@@ -335,7 +374,7 @@
         let redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue;
 
         if (selectedFrequency.value === "fixed_period") {
-          redirectUrl = redirectUrl.concat('&dur=', drupalSettings.donate_widget.duration)
+          redirectUrl = (selectedDuration) ? redirectUrl.concat('&dur=', selectedDuration.value) : redirectUrl.concat('&dur=', drupalSettings.donate_widget.duration)
         }
 
         window.location.href = redirectUrl;
@@ -346,14 +385,7 @@
       // Run the function once on page load to set the initial state correctly.
       updateAmountSelection();
       updateFrequencySelection();
-
-      // Hide impact tag after 10 seconds.
-      setInterval(() => {
-        const impactTags = document.querySelectorAll(".donate-widget__increase-impact");
-        impactTags.forEach((impactTag) => {
-          impactTag.classList.add("is-hidden");
-        });
-      }, 10000);
+      updateDurationSelection();
     });
   });
 })(Drupal, drupalSettings);
