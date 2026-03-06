@@ -93,14 +93,18 @@
       cursor: pointer;
       .card__heading {
         text-decoration: underline;
+        text-decoration-color: $wa-navy;
       }
       .card__image img {
           transform: scale(1.05);
       }
     }
 
-    .card__wrapper {
-      background-color: $wa-white;
+    .card__link:focus-visible {
+      color: $wa-navy;
+      background-color: $wa-pink;
+      border-bottom: solid $wa-navy 3px;
+      outline: none;
     }
 
     .card__image {
@@ -109,6 +113,10 @@
         transition: transform .5s
       }
     }
+    .card__wrapper {
+      background-color: $wa-white;
+    }
+
     .card__heading {
       @include h6();
       padding-bottom: $wa-spacing-02;
@@ -151,6 +159,14 @@
   &--signposting {
     .card__wrapper {
       background-color: $wa-white;
+    }
+
+    .card__heading {
+      @include h5();
+      overflow-wrap: normal;
+      @include desktop() {
+        @include h3();
+      }
     }
 
     .card__body {
