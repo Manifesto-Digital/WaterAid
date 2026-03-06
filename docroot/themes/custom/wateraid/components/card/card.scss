@@ -6,27 +6,6 @@
   width: fit-content;
   position: relative;
 
-  //&.card--link::before {
-  //  transition: transform 200ms;
-  //  will-change: transform;
-  //  content: "";
-  //  display: block;
-  //  position: absolute;
-  //  height: 0;
-  //  width: 0;
-  //  z-index: -1;
-  //  background-image: url("/themes/custom/wateraid/images/icons/wa-container-lg-tall.svg");
-  //  background-size: 100% 100%;
-  //  background-repeat: no-repeat;
-  //}
-
-  //&.card--link:hover::before {
-  //  transform: translateX(-$wa-spacing-02) translateY($wa-spacing-02);
-  //  left: 0;
-  //  height: 100%;
-  //  width: 100%;
-  //}
-
   &.card--link:hover {
     cursor: pointer;
   }
