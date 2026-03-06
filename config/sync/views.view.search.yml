@@ -353,8 +353,8 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: result
-          empty: false
-          content: '<strong>@start - @end</strong> of <strong>@total</strong> results'
+          empty: true
+          content: ''
       footer: {  }
       display_extenders: {  }
     cache_metadata:

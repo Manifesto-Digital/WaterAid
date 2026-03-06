@@ -478,3 +478,20 @@ function wateraid_content_validate($form, FormStateInterface $form_state): void 
     }
   }
 }
+
+/**
+ * Implements hook_views_pre_execute().
+ */
+function wateraid_content_views_pre_execute(ViewExecutable $view): void {
+
+  // Set the result summary programmatically here as the view only executes if a
+  // search term has been enters. This means the message won't show on page
+  // load.
+  if (in_array($view->id(), ['search', 'search_jp'])) {
+
+    /** @var \Drupal\views\Plugin\views\area\Result $result */
+    if ($result = ($view->header['result']) ?? NULL) {
+      $result->options['content'] = '<strong>@start - @end</strong> of <strong>@total</strong> results';
+    }
+  }
+}
