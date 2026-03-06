@@ -17,7 +17,7 @@
   </div>
 
   <div class="m-text-media__media">
-    {% if media_type == 'dam_image' %}
+    {% if media_type == 'dam_image' or media_type == 'local_image' %}
       {{ include('wateraid:image', {
         image: media,
         caption: caption,
