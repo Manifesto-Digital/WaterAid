@@ -1,5 +1,6 @@
 site_key: 6LcrRqMZAAAAADebFF3SvX9yKc_T866YwNeiSdQf
 secret_key: 6LcrRqMZAAAAADyawhGtMGDJHH1TgGDrzI6tYx7A
+hide_badge: false
 verify_hostname: false
 default_challenge: ''
 error_message: 'Please check the box to confirm you are not a robot'
