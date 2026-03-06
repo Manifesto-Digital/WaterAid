@@ -30,6 +30,10 @@
       margin-bottom: $wa-spacing-09;
     }
 
+    .button__wrapper .button__hover {
+      z-index: 1;
+    }
+
     &--wrapper {
       display: flex;
       flex: 1;
