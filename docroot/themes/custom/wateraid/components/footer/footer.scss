@@ -154,11 +154,14 @@
     @include grid-item-span(4, 6, 9);
   }
 
+  &__contact--wrapper {
+    display: flex;
+    gap: $wa-spacing-03;
+  }
   &__contact--tel {
     align-items: center;
     display: flex;
     gap: $wa-spacing-02;
-    flex: 1 0 100%;
   }
 
   &__contact,
