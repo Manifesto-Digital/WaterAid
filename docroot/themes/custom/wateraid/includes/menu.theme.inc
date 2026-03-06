@@ -22,13 +22,13 @@ function wateraid_preprocess_menu(&$variables) {
       $menu_item_attrs = $item['attributes'];
 
       // Add class to each menu item for flags.
-      if (!$menu_link_content->get('field_country_class')->isEmpty()) {
+      if ($menu_link_content && !$menu_link_content->get('field_country_class')->isEmpty()) {
         $menu_item_attrs->addClass('site-selector__country--' . $menu_link_content->get('field_country_class')->first()->getString());
       }
 
       // Group menu items by region.
-      $group_id = !$menu_link_content->get('field_region')->isEmpty() ? $menu_link_content->get('field_region')->first()->getString() : NULL;
-      $field_region_options = $menu_link_content->getFieldDefinition('field_region')->getItemDefinition()->getSetting('allowed_values');
+      $group_id = $menu_link_content && !$menu_link_content->get('field_region')->isEmpty() ? $menu_link_content->get('field_region')->first()->getString() : NULL;
+      $field_region_options = $menu_link_content ? $menu_link_content->getFieldDefinition('field_region')->getItemDefinition()->getSetting('allowed_values') : [] ;
 
       $group = &$grouped_items[$group_id ?? 'global'];
 

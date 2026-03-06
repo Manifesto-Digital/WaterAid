@@ -35,7 +35,7 @@
   h6 {
     padding-bottom: $wa-spacing-07;
   }
-  
+
   label.error {
     color: base.$wa-orange;
   }
@@ -360,6 +360,7 @@ input[type='radio'] {
   // Inputs & textareas
   .stripe-card-element,
   input[type='text'],
+  input[type='password'],
   input[type='email'],
   input[type='tel'],
   input[type='date'],
