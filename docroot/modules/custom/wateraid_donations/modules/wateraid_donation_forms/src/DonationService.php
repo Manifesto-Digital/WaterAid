@@ -211,9 +211,10 @@ class DonationService implements DonationServiceInterface {
   /**
    * {@inheritDoc}
    */
-  public function getFixedPeriodDateEnd(WebformSubmissionInterface $webform_submission): \DateTime|NULL {
-    if (!is_array($webform_submission->getData()['donation_amount']['duration'])) {
-      if ($duration = $webform_submission->getData()['donation_amount']['duration'] ?? NULL) {
+  public function getFixedPeriodDateEnd(WebformSubmissionInterface $webform_submission): \DateTime|null {
+    $donationData = $webform_submission->getData();
+    if (isset($donationData['donation_amount']) && !is_array($donationData['donation_amount']['duration'])) {
+      if ($duration = $donationData['donation_amount']['duration'] ?? NULL) {
         $datetime = new \DateTime();
         $datetime->setTimestamp($webform_submission->getCreatedTime());
         return $datetime->add(new \DateInterval('P' . ($duration - 1) . 'M'));

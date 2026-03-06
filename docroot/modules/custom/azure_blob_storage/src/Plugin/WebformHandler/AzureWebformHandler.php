@@ -72,7 +72,8 @@ class AzureWebformHandler extends WebformHandlerBase {
       $uid = $webform_submission->getOwnerId();
 
       // For the anon user, the IP address is the key.
-      $uid = ($uid > 0) ? $uid : $this->requestStack->getCurrentRequest()->getClientIp();
+      // Replace dots with underscores since Drupal config keys don't support dots.
+      $uid = ($uid > 0) ? $uid : str_replace('.', '_', $this->requestStack->getCurrentRequest()->getClientIp());
 
       // If the settings have been overridden we won't be able to save our third
       // party settings, so we'll capture the overridden settings and put them
