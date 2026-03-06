@@ -8,6 +8,7 @@
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_entity_base_field_info().
@@ -43,5 +44,53 @@ function wateraid_tmgmt_mail($key, &$message, $params): void {
     ]);
 
     $message['body'][] = $params['body'];
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function wateraid_tmgmt_views_pre_view(ViewExecutable $view, $display_id, array &$args): void {
+  if ($view->id() != 'tmgmt_job_overview') {
+    return;
+  }
+
+  $id = 'tmgmt_job_bulk_form';
+
+  // If the handler exists in the view, get it.
+  if ($handler = $view->getHandler($view->current_display, 'field', $id)) {
+
+    // Now delete so we don't put the broken handler back.
+    $view->removeHandler($view->current_display, 'field', $id);
+
+    // Then get the other handlers so we can put them back.
+    $handlers = $view->getHandlers('field');
+
+    // Clear everything out so the TMGMT handler can be first.
+    foreach ($handlers as $name => $value) {
+      $view->removeHandler($view->current_display, 'field', $name);
+    }
+
+    // Repair the handler's broken config.
+    $handler += [
+      'alter' => [],
+      'empty_zero' => FALSE,
+      'hide_empty' => FALSE,
+      'empty' => FALSE,
+      'element_default_classes' => [],
+      'element_label_class' => '',
+      'element_label_type' => '',
+      'element_class' => '',
+      'element_type' => '',
+    ];
+
+    // And add the fixed handler back.
+    $view->addHandler($view->current_display, 'field', 'tmgmt_job', $id, $handler);
+
+
+    // And finally all the others.
+    foreach ($handlers as $name => $value) {
+      $view->addHandler($view->current_display, 'field', 'tmgmt_job', $name, $value);
+    }
   }
 }
