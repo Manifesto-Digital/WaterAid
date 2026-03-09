@@ -310,12 +310,12 @@
           else {
             // Find donation frequency and amount
             summary.querySelector('.donate-widget__donation-summary__label').textContent =
-              selectedFrequency.value === 'one_off'
+              selectedFrequency.value === 'one-off'
                 ? Drupal.t('You are making a one-off donation of:') : Drupal.t('You are making a regular donation of:');
 
             // Get amount prefix if exists, eg.: £.
             summary.querySelector('.donate-widget__donation-summary__amount').textContent =
-              `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value !== 'one_off' ? Drupal.t('per month') : ''}`;
+              `${drupalSettings.donate_widget?.currency_prefix || ''}${amountValue} ${selectedFrequency.value !== 'one-off' ? Drupal.t('per month') : ''}`;
           }
         }
       }
