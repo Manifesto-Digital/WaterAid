@@ -6,7 +6,8 @@
   flex-flow: column wrap;
   gap: base.$wa-spacing-04;
 
-  &.sf3ds-card-form {
+  &.sf3ds-card-form,
+  &.webform-submission-form--sf3ds {
     .number-input__buttons {
       display: none !important;
     }
@@ -18,6 +19,15 @@
           gap: 1rem;
         }
       }
+    }
+
+    .webform-type-fieldset,
+    .fieldset-without-border {
+      border: none;
+    }
+
+    .fieldset-without-border .fieldset-legend {
+      display: none;
     }
   }
 
