@@ -24,6 +24,7 @@ dependencies:
     - node.type.story
     - node.type.webform
     - taxonomy.vocabulary.subject_areas
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - content_translation

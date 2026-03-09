@@ -16,6 +16,7 @@ dependencies:
     - shortcut
     - storybook
     - system
+    - tfa
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
 id: authenticated
@@ -28,6 +29,7 @@ permissions:
   - 'access site-wide contact form'
   - 'delete own files'
   - 'render storybook stories'
+  - 'setup own tfa'
   - 'skip CAPTCHA'
   - 'use text format basic_html'
   - 'use text format restricted_html'
