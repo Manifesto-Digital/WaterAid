@@ -267,9 +267,28 @@
       width: calculate-rem(48);
     }
 
-    .form-submit {
+    .button__wrapper {
+
+      .button--primary:hover {
+        transform: unset;
+      }
+      .button:after {
+        content: unset;
+        background: unset;
+      }
+
+      .button__hover {
+        display: none;
+      }
+    }
+
+    label.button__input-button-wrapper input:only-child {
       height: calculate-rem(54);
       width: calculate-rem(48);
+    }
+    
+    .form-submit {
+      @include reset-button();
       background-image: url("/themes/custom/wateraid/images/icons/wa-icon-search.svg");
       background-position: center;
       background-repeat: no-repeat;
