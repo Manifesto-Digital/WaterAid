@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Functions and hooks for the SF3DS module.
+ */
+
+use Drupal\Core\Entity\ContentEntityFormInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\webform\WebformSubmissionInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function wateraid_donation_sf3ds_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  if ($object = $form_state->getFormObject()) {
+    if ($object instanceof ContentEntityFormInterface) {
+      $entity = $object->getEntity();
+
+      if ($entity instanceof WebformSubmissionInterface) {
+        if ($webform = $entity->getWebform()) {
+          if ($handlers = $webform->getHandlers('sf3ds')) {
+            if ($handlers->getInstanceIds()) {
+
+              // If this webform is using the sf3ds handler, give is a unique
+              // class to identify it for styling purposes.
+              $form['#attributes']['class'][] = 'webform-submission-form--sf3ds';
+            }
+          }
+        }
+      }
+    }
+  }
+}

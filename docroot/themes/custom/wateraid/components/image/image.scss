@@ -42,6 +42,8 @@
 
   &--large {
     @include container-md();
+    display: grid;
+    width: inherit;
 
     .image__wrapper {
       @include grid-item-span(4, 6, 12);

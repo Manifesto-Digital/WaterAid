@@ -19,6 +19,7 @@
           {% if donate_text %}
             {{ donate_text }}
           {% endif %}
+          <div class="footer__contact--wrapper">
           {% if contact_details.tel %}
             <div class="footer__contact--tel">
               {{ include('@wateraid/images/icons/wa-icon-phone.svg') }}
@@ -40,6 +41,7 @@
                 type: 'inline'
               }) }}
             </div>
+          </div>
           {% endif %}
         </div>
       </div>

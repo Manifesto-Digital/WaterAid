@@ -89,6 +89,11 @@
             {% set radio_id = 'monthly-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_monthly == item.amount %} hide-on-desktop{% endif %}">
+              {% if loop.revindex == 2 %}
+                <div class="donate-widget__increase-impact">
+                  {{ 'Increase your impact'|t }}
+                </div>
+              {% endif %}
               <input class="donate-widget__radio-input"
                      type="radio"
                      id="{{ radio_id }}"
@@ -157,6 +162,11 @@
             {% set radio_id = 'one-off-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_one_off == item.amount %} hide-on-desktop{% endif %}">
+              {% if loop.revindex == 2 %}
+                <div class="donate-widget__increase-impact">
+                  {{ 'Increase your impact'|t }}
+                </div>
+              {% endif %}
               <input class="donate-widget__radio-input"
                      type="radio"
                      id="{{ radio_id }}"
