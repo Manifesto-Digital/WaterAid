@@ -149,10 +149,6 @@
       }
     }
 
-    .button--input-wrapped.button--primary {
-      color: base.$wa-white;
-    }
-
     .button--input-wrapped + .ajax-progress {
       position: absolute;
       top: 4rem;
@@ -1054,5 +1050,11 @@ label.button__input-button-wrapper {
       cursor: pointer;
       transform: translateX(base.$wa-spacing-02) translateY(-(base.$wa-spacing-02));
     }
+  }
+}
+
+.tfa-entry-form {
+  .button--input-wrapped.button--primary {
+    color: base.$wa-white;
   }
 }
