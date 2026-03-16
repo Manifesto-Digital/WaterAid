@@ -329,10 +329,3 @@ function wateraid_content_update_10012(): void {
   }
 
 }
-
-/**
- * Update donation widgets for new settings.
- */
-function wateraid_content_update_10011(&$sandbox): void {
-  // Removed update hook as it relates to a deleted field.
-}
