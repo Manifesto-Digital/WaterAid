@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "971f1f0680084e37d6c2688d4cac3e68",
+    "content-hash": "ce8f920f2b3aeb2c6e36f6cf151e77f4",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -10388,6 +10388,130 @@
                 }
             ],
             "description": "Translation Management Tool",
+            "homepage": "https://www.drupal.org/project/tmgmt",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt"
+            }
+        },
+        {
+            "name": "drupal/tmgmt_extension_suit",
+            "version": "9.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tmgmt_extension_suit.git",
+                "reference": "8.x-9.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tmgmt_extension_suit-8.x-9.4.zip",
+                "reference": "8.x-9.4",
+                "shasum": "a0e00c57fe66521b6118d3c0ea0f666e5e08bab6"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10.1 || ^11",
+                "drupal/tmgmt": "~1.14",
+                "drupal/tmgmt_file": "*"
+            },
+            "require-dev": {
+                "drupal/tmgmt": "~1.0",
+                "drupal/tmgmt_local": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-9.4",
+                    "datestamp": "1740048692",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "creaoy",
+                    "homepage": "https://www.drupal.org/user/350147"
+                },
+                {
+                    "name": "dimitrystd",
+                    "homepage": "https://www.drupal.org/user/2947159"
+                },
+                {
+                    "name": "loparev",
+                    "homepage": "https://www.drupal.org/user/3158841"
+                },
+                {
+                    "name": "Soul88",
+                    "homepage": "https://www.drupal.org/user/1074416"
+                }
+            ],
+            "description": "Some additional functionality for TMGMT module.",
+            "homepage": "https://www.drupal.org/project/tmgmt_extension_suit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tmgmt_extension_suit"
+            }
+        },
+        {
+            "name": "drupal/tmgmt_file",
+            "version": "1.18.0",
+            "require": {
+                "drupal/core": "^10.2 || ^11",
+                "drupal/tmgmt": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.18",
+                    "datestamp": "1768203319",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "cgalli",
+                    "homepage": "https://www.drupal.org/user/77453"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "floretan",
+                    "homepage": "https://www.drupal.org/user/66163"
+                },
+                {
+                    "name": "fubhy",
+                    "homepage": "https://www.drupal.org/user/761344"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                },
+                {
+                    "name": "schnitzel",
+                    "homepage": "https://www.drupal.org/user/643820"
+                },
+                {
+                    "name": "webflo",
+                    "homepage": "https://www.drupal.org/user/254778"
+                }
+            ],
+            "description": "A translator which allows you to export source data into a file and import the translated in return.",
             "homepage": "https://www.drupal.org/project/tmgmt",
             "support": {
                 "source": "https://git.drupalcode.org/project/tmgmt"
