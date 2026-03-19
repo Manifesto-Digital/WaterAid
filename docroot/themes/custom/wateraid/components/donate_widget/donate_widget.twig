@@ -77,6 +77,15 @@
             <label class="donate-widget__radio-label" for="{{ fixed_id }}">{{ 'Fixed period'|t }}</label>
           </div>
         {% endif %}
+        <!-- Option: Fixed Period -->
+        {% if fixed_amounts|length %}
+          {% set fixed_id = 'freq-fixed-' ~ id %}
+          <div class="donate-widget__option">
+            <input class="donate-widget__radio-input" type="radio" id="{{ fixed_id }}" name="frequency" value="fixed_period"
+               {% if default_option == 'fixed_period' %}checked{% endif %}>
+            <label class="donate-widget__radio-label" for="{{ fixed_id }}">{{ 'Fixed period'|t }}</label>
+          </div>
+        {% endif %}
       </div>
     </fieldset>
 

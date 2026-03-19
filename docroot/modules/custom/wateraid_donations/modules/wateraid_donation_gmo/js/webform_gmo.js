@@ -204,6 +204,7 @@
 
       // Create modal markup.
       const modal = document.createElement('div');
+      modal.classList.add('node--type-webform', 'jp-donation-modal');
       const modalTitle = document.createElement('h2');
       modalTitle.innerText = Drupal.t('Please review your form submission');
       modal.append(modalTitle);
@@ -234,12 +235,19 @@
       const buttonWrapper = document.createElement('div');
       const cancelButton = document.createElement('button');
       const confirmButton = document.createElement('button');
-      buttonWrapper.classList.add('donation-modal__button-wrapper');
+      buttonWrapper.classList.add('donation-modal__button-wrapper', 'button__wrapper', 'button__wrapper--primary');
       cancelButton.setAttribute('type', 'button');
-      cancelButton.innerText = Drupal.t('Amend');
+      cancelButton.setAttribute('id', 'cancel-button')
+      const cancelLabel = document.createElement('label');
+      cancelLabel.innerText = Drupal.t('Amend');
+      cancelLabel.classList.add('button__input-button-wrapper', 'button', 'button--secondary', 'button--light')
+      cancelLabel.append(cancelButton);
       confirmButton.setAttribute('type', 'button');
-      confirmButton.innerText = Drupal.t('Submit');
-      buttonWrapper.append(cancelButton, confirmButton);
+      const confirmLabel = document.createElement('label');
+      confirmLabel.innerText = Drupal.t('Submit');
+      confirmLabel.classList.add('button__input-button-wrapper', 'button', 'button--primary', 'button--light')
+      confirmLabel.append(confirmButton);
+      buttonWrapper.append(cancelLabel, confirmLabel);
       modal.append(buttonWrapper);
 
       // Open modal.

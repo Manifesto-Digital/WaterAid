@@ -149,10 +149,6 @@
       }
     }
 
-    .button--input-wrapped.button--primary {
-      color: base.$wa-white;
-    }
-
     .button--input-wrapped + .ajax-progress {
       position: absolute;
       top: 4rem;
@@ -1055,4 +1051,106 @@ label.button__input-button-wrapper {
       transform: translateX(base.$wa-spacing-02) translateY(-(base.$wa-spacing-02));
     }
   }
+}
+
+.tfa-entry-form {
+  .button--input-wrapped.button--primary {
+    color: base.$wa-white;
+  }
+}
+
+.ui-dialog {
+  position: absolute;
+  inset-block-start: 0;
+  outline: none;
+
+  &:not(.ui-dialog-off-canvas) {
+    max-width: 1280px;
+    border: 0 none !important;
+    background: base.$wa-white;
+
+    .layout-region-node-actions {
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inset-block-start: auto;
+      inset-inline-end: auto;
+    }
+
+    .layout-region-node-secondary {
+      width: 100%;
+    }
+
+    .views-exposed-form.views-exposed-form,
+    .views-displays {
+      border: 1px solid base.$wa-navy;
+    }
+
+    @media (max-width: 47.99em) {
+      .ui-dialog:not(.ui-dialog-off-canvas) {
+        min-width: 92%;
+        max-width: 92%;
+      }
+    }
+  }
+
+  .ui-dialog-titlebar {
+    line-height: 1.2;
+    padding: base.$wa-spacing-04;
+    background: base.$wa-blue;
+    color: base.$wa-white;
+    border: 0 none;
+    position: relative;
+    border-radius: unset;
+  }
+
+  .ui-dialog-title {
+    @include base.h2;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .ui-dialog-titlebar-close {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    opacity: .8;
+    margin: 0;
+    transform: translateY(-50%);
+    border: none;
+    background-image: url("/themes/custom/wateraid/images/icons/wa-utility-close.svg");
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .ui-widget-overlay {
+    opacity: .9;
+    background: base.$wa-white;
+  }
+
+  .ui-widget-content {
+    border: 1px solid base.$wa-navy-80;
+    background: base.$wa-white;
+  }
+}
+
+[dir="ltr"] .ui-dialog {
+  inset-inline-start: 0;
+}
+
+[dir="rtl"] .ui-dialog {
+  inset-inline-end: 0;
+}
+
+.ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
+  box-shadow: base.$wa-navy-80;
+}
+
+.ui-button .ui-icon {
+  background-image: none;
 }
