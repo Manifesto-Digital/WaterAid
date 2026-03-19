@@ -6,7 +6,9 @@
  */
 
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\NodeInterface;
@@ -65,6 +67,21 @@ function wateraid_content_paragraph_presave(ParagraphInterface $paragraph): void
             $paragraph->set($field, $media->get($field)->getValue());
           }
         }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function wateraid_content_paragraph_view_alter(array &$build, ParagraphInterface $paragraph, EntityViewDisplayInterface $display): void {
+  if ($build['#view_mode'] == 'preview' && $paragraph->bundle() == 'rich_text') {
+    if (isset($build['field_rich_text'][0])) {
+      $text = &$build['field_rich_text'][0]['#text'];
+
+      if (str_contains($text, '<script') || str_contains($text, '<iframe')) {
+        $text = '[Preview of embedded content disabled]';
       }
     }
   }
