@@ -157,6 +157,7 @@
   }
 
   &--signposting {
+    word-break: break-word;
     .card__wrapper {
       background-color: $wa-white;
     }
