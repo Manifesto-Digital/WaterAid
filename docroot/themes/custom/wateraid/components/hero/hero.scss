@@ -141,7 +141,7 @@
       h2, h3, a {
         color: $wa-white;
       }
-      
+
       h2,
       h3,
       h4,
@@ -292,6 +292,7 @@
       background-color: $wa-white;
     }
 
+    h2, h3, a,
     .hero__content--title,
     .hero__content--link a,
     .hero__content--time svg {
@@ -368,7 +369,7 @@
       }
     }
 
-    h1 {
+    h1, h2, h3, a {
       color: $wa-blue;
     }
   }
