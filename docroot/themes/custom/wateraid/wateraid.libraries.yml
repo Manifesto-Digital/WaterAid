@@ -1,7 +1,7 @@
 main:
   css:
     theme:
-      dist/css/styles.css: {}
+      dist/css/styles.css: { weight: 50 }
 
 webform-behavior:
   js:
