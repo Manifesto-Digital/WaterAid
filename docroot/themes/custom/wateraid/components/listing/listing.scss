@@ -178,8 +178,6 @@
         @include grid-item-span(4, 3, 6);
       }
     }
-
-
   }
 
   &--search,
@@ -232,6 +230,8 @@
 
     .form-submit {
       @include reset-button();
+      height: calculate-rem(54);
+      width: calculate-rem(48);
       background-image: url("/themes/custom/wateraid/images/icons/wa-icon-search.svg");
       background-position: center;
       background-repeat: no-repeat;

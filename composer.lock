@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "971f1f0680084e37d6c2688d4cac3e68",
+    "content-hash": "a234904b708eaef9c47dd932fb382bd8",
     "packages": [
         {
             "name": "acquia/http-hmac-php",
@@ -10409,17 +10409,17 @@
         },
         {
             "name": "drupal/tmgmt_extension_suit",
-            "version": "9.4.0",
+            "version": "9.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/tmgmt_extension_suit.git",
-                "reference": "8.x-9.4"
+                "reference": "8.x-9.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tmgmt_extension_suit-8.x-9.4.zip",
-                "reference": "8.x-9.4",
-                "shasum": "a0e00c57fe66521b6118d3c0ea0f666e5e08bab6"
+                "url": "https://ftp.drupal.org/files/projects/tmgmt_extension_suit-8.x-9.5.zip",
+                "reference": "8.x-9.5",
+                "shasum": "57fcc6a708fcd905a641dd9d002dfa9d7365b435"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10.1 || ^11",
@@ -10433,8 +10433,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-9.4",
-                    "datestamp": "1740048692",
+                    "version": "8.x-9.5",
+                    "datestamp": "1774427129",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10459,7 +10459,7 @@
                     "homepage": "https://www.drupal.org/user/3158841"
                 },
                 {
-                    "name": "Soul88",
+                    "name": "soul88",
                     "homepage": "https://www.drupal.org/user/1074416"
                 }
             ],
@@ -20728,16 +20728,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "6.0.2",
+            "version": "6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "897b5986ece6b4f9d8413fea345c7d49c757d6bf"
+                "reference": "7bae67520aa9f5ecc506d646810bd40d9da54582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/897b5986ece6b4f9d8413fea345c7d49c757d6bf",
-                "reference": "897b5986ece6b4f9d8413fea345c7d49c757d6bf",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/7bae67520aa9f5ecc506d646810bd40d9da54582",
+                "reference": "7bae67520aa9f5ecc506d646810bd40d9da54582",
                 "shasum": ""
             },
             "require": {
@@ -20787,9 +20787,9 @@
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "support": {
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
-                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/6.0.2"
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/6.0.3"
             },
-            "time": "2026-03-01T18:43:49+00:00"
+            "time": "2026-03-18T20:49:53+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -23944,5 +23944,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

@@ -13,69 +13,72 @@
     {% endif %}
   </div>
 
-  <div class="card__body">
-    <h3 class="card__heading">
-      <a href="{{ url }}" class="card__link">{{ heading }}</a>
-    </h3>
+    <div class="card__body">
+      <h3 class="card__heading">
+        <a href="{{ url }}" class="card__link">{{ heading }}</a>
+      </h3>
 
-    {% if date %}
-      <div class="card__date">
-        {{ date|date("j F Y") }}
+      {% if date %}
+        <div class="card__date">
+          {{ date|date("j F Y") }}
 
-        {% if end_date and (date|date("j F Y") != end_date|date("j F Y")) %}
-          - {{ end_date|date("j F Y") }}
-        {% endif %}
-
-      </div>
-    {% endif %}
-
-    {% if authors %}
-      <div class="card__authors">
-        {% if authors|length <= 2 %}
-          {{ authors.0 }}
-          {% if authors|length == 2 %}
-            {{ include('@wateraid/images/icons/wa-shape-drop.svg') }}
-            {{ authors.1 }}
+          {% if end_date and (date|date("j F Y") != end_date|date("j F Y")) %}
+            - {{ end_date|date("j F Y") }}
           {% endif %}
-        {% else %}
-          {{ authors|length ~ ' authors'|t }}
-        {% endif %}
+
+        </div>
+      {% endif %}
+
+      {% if authors %}
+        <div class="card__authors">
+          {% if authors|length <= 2 %}
+            {{ authors.0 }}
+            {% if authors|length == 2 %}
+              {{ include('@wateraid/images/icons/wa-shape-drop.svg') }}
+              {{ authors.1 }}
+            {% endif %}
+          {% else %}
+            {{ authors|length ~ ' authors'|t }}
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if time_to_read %}
+        <div class="card__read-time">
+          {{ include('@wateraid/images/icons/wa-utility-schedule.svg') }}
+          {{ time_to_read }} {{ ' min read'|t }}
+        </div>
+      {% endif %}
+
+      <div class="card__description">
+        {{ description }}
       </div>
-    {% endif %}
 
-    {% if time_to_read %}
-      <div class="card__read-time">
-        {{ include('@wateraid/images/icons/wa-utility-schedule.svg') }}
-        {{ time_to_read }} {{ ' min read'|t }}
-      </div>
-    {% endif %}
-
-    <div class="card__description">
-      {{ description }}
-    </div>
-
-    {% if tags %}
-      <div class="card__tags">
-        {% for tag in tags %}
-          {% if tag %}
-            {% if tag is iterable %}
-              {% for subtag in tag %}
+      {% if tags %}
+        <div class="card__tags">
+          {% for tag in tags %}
+            {% if tag %}
+              {% if tag is iterable %}
+                {% for subtag in tag %}
+                  {{ include('wateraid:content_tag', {
+                    text: subtag,
+                    size: 'small',
+                    theme: 'light'
+                  }) }}
+                {% endfor %}
+              {% else %}
                 {{ include('wateraid:content_tag', {
-                  text: subtag,
+                  text: tag,
                   size: 'small',
                   theme: 'light'
                 }) }}
-              {% endfor %}
-            {% else %}
-              {{ include('wateraid:content_tag', {
-                text: tag,
-                size: 'small',
-                theme: 'light'
-              }) }}
+              {% endif %}
             {% endif %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
   </div>
+
+  <span class="card__hover"></span>
 </div>

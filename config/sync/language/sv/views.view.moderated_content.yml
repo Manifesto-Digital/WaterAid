@@ -1,0 +1,48 @@
+display:
+  default:
+    display_title: Förvald
+    display_options:
+      fields:
+        title:
+          label: Titel
+          separator: ', '
+        type:
+          label: Innehållstyp
+          separator: ', '
+        name:
+          label: Författare
+          separator: ', '
+        moderation_state:
+          separator: ', '
+        changed:
+          separator: ', '
+        operations:
+          label: Funktioner
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Filtrera
+          reset_button_label: Återställ
+          exposed_sorts_label: 'Sortera efter'
+          sort_asc_label: Stigande
+          sort_desc_label: Fallande
+      filters:
+        title:
+          expose:
+            label: Titel
+        type:
+          expose:
+            label: Innehållstyp
+        langcode:
+          expose:
+            label: Språk
