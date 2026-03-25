@@ -31,10 +31,7 @@ class SolrQuerySubscriber implements EventSubscriberInterface {
     $search_api_query = $event->getSearchApiQuery();
     $view = $search_api_query->getOption('search_api_view');
 
-    if (!$view || $view->id() !== 'press_releases_solr' || !in_array($view->current_display, ['block_1', 'block_2'])) {
-      return;
-    }
-    if (!$view || $view->id() !== 'press_releases_solr_jp' || !in_array($view->current_display, ['block_1', 'block_2'])) {
+    if (!$view || !in_array($view->id(), ['press_releases_solr_jp', 'press_releases_solr']) || !in_array($view->current_display, ['block_1', 'block_2'])) {
       return;
     }
 
