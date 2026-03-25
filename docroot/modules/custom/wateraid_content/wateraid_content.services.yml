@@ -1,0 +1,5 @@
+services:
+  wateraid_content.solr_query_subscriber:
+    class: Drupal\wateraid_content\EventSubscriber\SolrQuerySubscriber
+    tags:
+      - { name: event_subscriber }
