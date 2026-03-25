@@ -4,7 +4,6 @@
   position: relative;
   height: 100%;
   width: fit-content;
-  position: relative;
 
   &.card--link:hover {
     cursor: pointer;
@@ -118,12 +117,6 @@
       background-color: $wa-white;
     }
 
-    .card__image {
-      overflow: hidden;
-      img {
-        transition: transform .5s
-      }
-    }
     .card__heading {
       @include h6();
       padding-bottom: $wa-spacing-02;

@@ -1,30 +1,22 @@
-label: Média
-description: 'Trouver et gérer des media.'
+label: 'Contenu modéré'
+description: 'Find and moderate content.'
 display:
   default:
     display_title: Default
     display_options:
-      title: Média
+      title: 'Contenu modéré'
       fields:
-        media_bulk_form:
-          action_title: Action
-        thumbnail__target_id:
-          label: Vignette
+        title:
+          label: Titre
+          separator: ', '
+        type:
+          label: 'Type de contenu'
           separator: ', '
         name:
-          label: 'Nom du média'
-          separator: ', '
-        bundle:
-          label: Type
-          separator: ', '
-        uid:
           label: Auteur
           separator: ', '
-        status:
-          label: État
-          settings:
-            format_custom_false: 'Non publié'
-            format_custom_true: Publié
+        moderation_state:
+          label: 'État de modération'
           separator: ', '
         changed:
           label: 'Mis à jour'
@@ -51,29 +43,19 @@ display:
           sort_desc_label: Desc
       empty:
         area_text_custom:
-          content: 'Aucun média disponible.'
+          content: "Aucun contenu modéré disponible. Seules les versions de contenu en attente, telles que 'Brouillon', sont listées ici."
       filters:
-        name:
+        title:
           expose:
-            label: 'Nom du média'
-        bundle:
+            label: Titre
+        type:
           expose:
-            label: Type
-        status:
+            label: 'Type de contenu'
+        moderation_state:
           expose:
-            label: Vrai
-          group_info:
-            label: 'Statut de publication'
-            group_items:
-              1:
-                title: Publié
-              2:
-                title: 'Non publié'
+            label: 'État de modération'
         langcode:
           expose:
             label: Langue
-  media_page_list:
-    display_title: Média
-    display_options:
-      menu:
-        title: Média
+  moderated_content:
+    display_title: 'Contenu modéré'
