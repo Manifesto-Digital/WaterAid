@@ -73,6 +73,7 @@ module:
   loqate: 0
   loqate_email: 0
   mailer_transport: 0
+  mailsystem: 0
   masquerade: 0
   maxlength: 0
   media: 0
