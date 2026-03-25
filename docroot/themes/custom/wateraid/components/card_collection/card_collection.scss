@@ -18,15 +18,16 @@
   &--1-column .card {
     @include grid-item-span(4, 6, 12);
     @include desktop() {
-      @include grid();
-
-      &__image,
-      &__body {
+      .card__wrapper {
+        @include grid();
+      }
+      .card__image,
+      .card__body {
         @include grid-item-span(4, 6, 6);
         align-self: center;
         padding-left: 0;
       }
-      &__description {
+      .card__description {
         @include paragraph-md();
       }
     }
@@ -38,10 +39,20 @@
 
   &--3-columns .card {
     @include grid-item-span(4, 6, 4);
+    &__heading {
+      @include desktop() {
+        @include h5();
+      }
+    }
   }
 
   &--4-columns .card {
     @include grid-item-span(4, 6, 3);
+    &__heading {
+      @include desktop() {
+        @include h5();
+      }
+    }
   }
 
   // Colour variants
@@ -59,6 +70,18 @@
     .card {
       background-color: $wa-white;
       color: $wa-navy;
+
+      &::before {
+        z-index: 1;
+      }
+
+      &__wrapper {
+        height: 100%;
+        width: 100%;
+        background-color: $wa-white;
+        position: relative;
+        z-index: 5;
+      }
     }
   }
 }
