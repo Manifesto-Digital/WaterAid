@@ -10,6 +10,7 @@ display:
           label: 'ऍफ़ आई डी'
         filename:
           label: नाम
+          separator: ', '
         filemime:
           label: 'माइम प्रकार'
         filesize:

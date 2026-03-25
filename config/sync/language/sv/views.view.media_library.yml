@@ -5,6 +5,12 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
       exposed_form:
         options:
           reset_button_label: Återställ
@@ -37,6 +43,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Åtgärd
+        name:
+          separator: ', '
         edit_media:
           text: Edit
         delete_media:
@@ -51,6 +59,9 @@ display:
         name:
           expose:
             label: Namn
+      header:
+        display_link_table:
+          label: Table
   widget_table:
     display_options:
       fields:
@@ -66,3 +77,6 @@ display:
         name:
           expose:
             label: Namn
+      header:
+        display_link_table:
+          label: Table

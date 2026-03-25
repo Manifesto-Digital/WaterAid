@@ -4,6 +4,9 @@ display:
     display_title: Default
     display_options:
       title: Média
+      fields:
+        media_bulk_form:
+          action_title: Action
       pager:
         options:
           expose:
@@ -15,6 +18,8 @@ display:
           submit_button: 'Appliquer les filtres'
           reset_button_label: Réinitialiser
           exposed_sorts_label: 'Trier par'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       empty:
         area_text_custom:
           content: 'Aucun média disponible.'
@@ -51,8 +56,13 @@ display:
           expose:
             label: Langue
   page:
+    display_title: Page
     display_options:
       fields:
+        media_bulk_form:
+          action_title: Action
+        name:
+          separator: ', '
         edit_media:
           alter:
             text: 'Modifier {{ name }}'

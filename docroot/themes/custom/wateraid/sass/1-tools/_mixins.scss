@@ -94,10 +94,10 @@
   max-width: fit-content;
   text-decoration: none;
   color: colors.$wa-white;
+  transition: transform 200ms;
 
 
   &::before {
-    transition: transform 200ms;
     will-change: transform;
     content: "";
     display: block;
@@ -110,6 +110,9 @@
     background-repeat: no-repeat;
   }
 
+  &:hover {
+    transform: translateX((spacing.$wa-spacing-02)) translateY(-(spacing.$wa-spacing-02));
+  }
   &:hover::before {
     transform: translateX(-(spacing.$wa-spacing-02)) translateY(spacing.$wa-spacing-02);
     left: 0;

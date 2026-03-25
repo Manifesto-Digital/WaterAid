@@ -1,0 +1,8 @@
+help_text: 'Neem contact op met de beheerder om uw account te resetten.'
+mail:
+  tfa_enabled_configuration:
+    subject: 'Uw [site:name] account heeft nu tweestapsverificatie'
+    body: "[user:display-name],\r\n\r\nBedankt voor het aanzetten van tweestapsverificatie op uw [site:name] account!\r\n\r\nDeze extra beveiligingslaag helpt ervoor te zorgen dat alleen u kan inloggen met uw account.\r\n\r\nMocht u ooit het apparaat kwijtraken waarmee de QR-code is gescand, verwijder dan de koppeling met dit account.\r\n\r\n--\r\n[site:name]"
+  tfa_disabled_configuration:
+    subject: 'Uw [site:name] account heeft niet langer tweestapsverificatie'
+    body: "[user:display-name],\r\n\r\nTweestapsverificatie is uitgezet op uw [site:name] account.\r\n\r\nIndien u dit niet zelf hebt veroorzaakt dient u contact op te nemen een beheerder.\r\n\r\n--\r\n[site:name]"

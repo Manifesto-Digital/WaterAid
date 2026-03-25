@@ -12,3 +12,11 @@ js_version: '3'
 search_specific_analytics_keys: {  }
 searches_via_searchstudio: true
 untracked_roles: {  }
+eu_cookie_compliance:
+  enabled: true
+flood_protection:
+  enabled: false
+  search_limit: 15
+  search_window: 10
+  update_limit: 50
+  update_window: 60

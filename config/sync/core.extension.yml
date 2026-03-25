@@ -73,6 +73,7 @@ module:
   loqate: 0
   loqate_email: 0
   mailer_transport: 0
+  mailsystem: 0
   masquerade: 0
   maxlength: 0
   media: 0
@@ -87,6 +88,8 @@ module:
   migrate: 0
   migrate_plus: 0
   migrate_tools: 0
+  mimemail: 0
+  miniorange_saml: 0
   mysql: 0
   node: 0
   node_co_authors: 0
@@ -135,6 +138,7 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  tfa: 0
   tmgmt: 0
   tmgmt_config: 0
   tmgmt_content: 0

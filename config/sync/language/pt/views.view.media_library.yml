@@ -44,6 +44,8 @@ display:
       fields:
         media_bulk_form:
           action_title: Ação
+        name:
+          separator: ', '
         edit_media:
           text: Editar
         delete_media:
