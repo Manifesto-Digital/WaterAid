@@ -87,10 +87,13 @@
           otherAmountMax: true
         });
       });
+
+      $('.webform-submission-form').addClass('webform-gmo-payments');
     },
     // Display a modal for users to confirm form inputs before submission.
     displayReviewModal: function () {
       this.model.modalDisplayed = true;
+      document.body.classList.add('modal-open');
       const form = document.querySelector('.webform-submission-form');
 
       // Get all the form inputs and obtain their labels and values.
@@ -232,23 +235,38 @@
       })
 
       // Create submit and cancel buttons.
-      const buttonWrapper = document.createElement('div');
-      const cancelButton = document.createElement('button');
+      const outerWrapper = document.createElement('div');
+      outerWrapper.classList.add('donation-modal__button--outer-wrapper');
+
+      // Button wrappers.
+      const confirmWrapper = document.createElement('div');
       const confirmButton = document.createElement('button');
-      buttonWrapper.classList.add('donation-modal__button-wrapper', 'button__wrapper', 'button__wrapper--primary');
-      cancelButton.setAttribute('type', 'button');
-      cancelButton.setAttribute('id', 'cancel-button')
-      const cancelLabel = document.createElement('label');
-      cancelLabel.innerText = Drupal.t('Amend');
-      cancelLabel.classList.add('button__input-button-wrapper', 'button', 'button--secondary', 'button--light')
-      cancelLabel.append(cancelButton);
+      confirmWrapper.classList.add('donation-modal__button-wrapper', 'button__wrapper', 'button__wrapper--primary');
+      const amendWrapper = confirmWrapper.cloneNode();
+
+      // Amend button.
+      const amendButton = document.createElement('button');
+      amendButton.setAttribute('type', 'button');
+      amendButton.setAttribute('class', 'button button--secondary');
+      amendButton.innerText = Drupal.t('Amend');
+
+      // Confirm button.
       confirmButton.setAttribute('type', 'button');
-      const confirmLabel = document.createElement('label');
-      confirmLabel.innerText = Drupal.t('Submit');
-      confirmLabel.classList.add('button__input-button-wrapper', 'button', 'button--primary', 'button--light')
-      confirmLabel.append(confirmButton);
-      buttonWrapper.append(cancelLabel, confirmLabel);
-      modal.append(buttonWrapper);
+      confirmButton.setAttribute('class', 'button button--primary  button--light');
+      confirmButton.innerText = Drupal.t('Submit');
+
+
+      // Append buttons to modal.
+      const amendHover = document.createElement('span');
+      amendHover.classList.add('button__hover');
+      amendWrapper.append(amendButton, amendHover);
+
+      const confirmHover = document.createElement('span');
+      confirmHover.classList.add('button__hover');
+      confirmWrapper.append(confirmButton, confirmHover);
+
+      outerWrapper.append(amendWrapper, confirmWrapper);
+      modal.append(outerWrapper);
 
       // Open modal.
       const options = {
@@ -262,14 +280,16 @@
       const context = this;
 
       // Set up cancel event handler, which allows form to be amended.
-      cancelButton.addEventListener('click', function () {
+      amendButton.addEventListener('click', function () {
         drupalDialog.close();
+        document.documentElement.classList.remove('modal-open');
         context.model.modalDisplayed = false;
       });
 
       // Set up confirm event handler, will allows form to be submitted.
       confirmButton.addEventListener('click', function () {
         drupalDialog.close();
+        document.documentElement.classList.remove('modal-open');
         context.model.modalDisplayed = false;
         context.model.modalConfirmed = true;
         const submitButton = document.querySelector('.button--primary .webform-button--submit');
@@ -483,7 +503,9 @@
         this.removeStatusMessageError();
         this.removeInlineErrors();
         // Show loading spinner.
-        if (donationSubmitLoader) {donationSubmitLoader.style.display = 'block';}
+        if (donationSubmitLoader) {
+          donationSubmitLoader.style.display = 'block';
+        }
         // Disable submit button.
         donationSubmit.setAttribute('disabled', 'disabled');
         // Set disable payment flag.
@@ -491,7 +513,9 @@
       }
       else if (state == 'complete') {
         // Remove loading spinner.
-        if (donationSubmitLoader) {donationSubmitLoader.style.display = 'none';}
+        if (donationSubmitLoader) {
+          donationSubmitLoader.style.display = 'none';
+        }
         // Enable submit button.
         donationSubmit.removeAttribute('disabled');
         // Remove disable payment flag.
