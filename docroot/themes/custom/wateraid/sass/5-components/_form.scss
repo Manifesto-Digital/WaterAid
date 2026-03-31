@@ -213,6 +213,8 @@
     border: none;
   }
 
+  input[type="number"][method="gmo"] + .number-input__buttons,
+  input[type="number"][method="gmo"] + label + .number-input__buttons,
   input[type="number"][method="gmo_subscription"] + .number-input__buttons,
   input[type="number"][method="gmo_subscription"] + label + .number-input__buttons {
     display: none;

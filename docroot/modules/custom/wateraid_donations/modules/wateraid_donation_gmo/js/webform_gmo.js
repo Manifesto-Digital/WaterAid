@@ -140,8 +140,7 @@
                       // If 'other' is selected for the donation amount, then get
                       // that value instead of the label.
                       if (input.value == '_other_') {
-                        const radioWrapper = input.closest('.form-radios');
-                        const amountWrapper = radioWrapper.nextElementSibling;
+                        const amountWrapper = input.closest('fieldset.webform-buttons-other');
                         const otherAmount = amountWrapper.querySelector('.form-number');
                         value = otherAmount.value;
                       }
