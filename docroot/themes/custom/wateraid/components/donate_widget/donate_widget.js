@@ -376,7 +376,7 @@
           currentQuery.push(`${key}=${value}`);
         });
 
-        let redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue + '&' + currentQuery.join('&');
+        let redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue + (currentQuery.length ? '&' + currentQuery.join('&') : '');
 
         if (selectedFrequency.value === "fixed_period") {
           redirectUrl = (selectedDuration) ? redirectUrl.concat('&dur=', selectedDuration.value) : redirectUrl.concat('&dur=', drupalSettings.donate_widget.duration)
