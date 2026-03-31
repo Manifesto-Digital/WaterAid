@@ -371,7 +371,14 @@
           }
         }
 
-        let redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue;
+        const currentUrl = new URL(window.location);
+        const currentQuery = [];
+        // copy all params
+        currentUrl.searchParams.forEach((value, key) => {
+          currentQuery.push(`${key}=${value}`);
+        });
+
+        let redirectUrl = location + '?fq=' + frequencyValue.replace('-', '_').replace('monthly', 'recurring') + '&val=' + amountValue + (currentQuery.length ? '&' + currentQuery.join('&') : '');
 
         if (selectedFrequency.value === "fixed_period") {
           redirectUrl = (selectedDuration) ? redirectUrl.concat('&dur=', selectedDuration.value) : redirectUrl.concat('&dur=', drupalSettings.donate_widget.duration)
