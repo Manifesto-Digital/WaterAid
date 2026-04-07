@@ -785,6 +785,9 @@ if (!empty($acquia_env)) {
   if (($acquia_env === 'dev' || $acquia_env === 'stage')) {
     $config['config_split.config_split.dev_stage']['status'] = TRUE;
   }
+  if (($acquia_env === 'prod')) {
+    $config['config_split.config_split.prod']['status'] = TRUE;
+  }
   if ($acquia_env === 'dev') {
 
     // Make DEV search indexes read only: content will be indexed on Test only.

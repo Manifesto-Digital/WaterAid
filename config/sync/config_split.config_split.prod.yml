@@ -1,0 +1,17 @@
+uuid: 331c5d4c-9d41-430b-b0b0-47fe697388b4
+langcode: en
+status: false
+dependencies: {  }
+id: prod
+label: Prod
+description: 'Settings for the Production environment.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/prod_config
+module:
+  memcache: 0
+theme: {  }
+complete_list: {  }
+partial_list: {  }
