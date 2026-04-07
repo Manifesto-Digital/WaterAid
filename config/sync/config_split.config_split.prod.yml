@@ -12,6 +12,7 @@ storage: folder
 folder: ../config/prod_config
 module:
   memcache: 0
+  syslog: 0
 theme: {  }
 complete_list: {  }
 partial_list: {  }
