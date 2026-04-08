@@ -5,7 +5,7 @@ display:
         type:
           label: ପ୍ରକାର
         operations:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
   checkout:
     display_options:
       fields:

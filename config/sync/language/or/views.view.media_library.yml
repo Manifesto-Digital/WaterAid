@@ -11,7 +11,7 @@ display:
                 title: ପ୍ରକାଶିତ
         langcode:
           expose:
-            label: ଭାଷା
+            label: Language
   page:
     display_options:
       fields:

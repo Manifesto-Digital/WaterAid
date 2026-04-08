@@ -20,21 +20,13 @@ display:
       fields:
         taxonomy_term_bulk_form:
           action_title: कार्रवाई
-        name:
-          separator: ', '
         vid:
           label: शब्दावली
-          separator: ', '
         status:
           label: अवस्था
           settings:
             format_custom_true: प्रकाशित
             format_custom_false: अप्रकाशित
-          separator: ', '
-        publish_on:
-          separator: ', '
-        unpublish_on:
-          separator: ', '
         operations:
           label: कार्यवाही
       filters:

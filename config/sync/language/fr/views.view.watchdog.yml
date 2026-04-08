@@ -11,11 +11,8 @@ display:
           label: Importance
         type:
           label: Type
-        message:
-          label: Message
         name:
           label: Utilisateur
-          separator: ', '
         link:
           label: Actions
       pager:
@@ -29,8 +26,6 @@ display:
           submit_button: Filtrer
           reset_button_label: Réinitialiser
           exposed_sorts_label: 'Trier par'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       empty:
         area:
           admin_label: "Aucune entrée du journal n'est disponible."
@@ -42,5 +37,3 @@ display:
         severity:
           expose:
             label: Importance
-  page:
-    display_title: Page

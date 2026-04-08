@@ -1,21 +1,17 @@
 display:
   default:
-    display_title: Master
     display_options:
       title: Content
       fields:
         title:
           label: Titel
-          separator: ', '
         type:
           label: Inhoudstype
-          separator: ', '
         status:
           label: Status
           settings:
             format_custom_false: 'Niet gepubliceerd'
             format_custom_true: Gepubliceerd
-          separator: ', '
         view_group_relationship:
           text: view
         delete_group_relationship:
@@ -34,7 +30,6 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       exposed_form:
         options:
           submit_button: Toepassen

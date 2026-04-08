@@ -1,26 +1,18 @@
 display:
   default:
-    display_title: Master
     display_options:
       title: 'Modereret indhold'
       fields:
-        nid:
-          separator: ', '
         title:
           label: Titel
-          separator: ', '
         type:
           label: Indholdstype
-          separator: ', '
         name:
           label: Forfatter
-          separator: ', '
         moderation_state:
           label: Godkendelsestilstand
-          separator: ', '
         changed:
           label: Opdateret
-          separator: ', '
         operations:
           label: Handlinger
       pager:

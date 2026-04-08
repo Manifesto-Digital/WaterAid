@@ -17,7 +17,6 @@ display:
           label: Mensagem
         name:
           label: Utilizador
-          separator: ', '
         link:
           label: Operações
       pager:

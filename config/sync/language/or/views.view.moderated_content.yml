@@ -3,16 +3,17 @@ display:
     display_title: Default
     display_options:
       fields:
-        status:
-          label: ଅବସ୍ଥିତି
-        count:
-          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
+        title:
+          label: Title
         operations:
           label: Operations
       exposed_form:
         options:
           submit_button: Filter
       filters:
-        status:
+        title:
           expose:
-            label: ଅବସ୍ଥିତି
+            label: Title
+        langcode:
+          expose:
+            label: Language

@@ -1,6 +1,5 @@
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
@@ -14,7 +13,6 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
           tags:
             previous: '‹ Vorige'
             next: 'Volgende ›'
@@ -29,38 +27,16 @@ display:
           label: Type
         source_language:
           label: Van
-          separator: ', '
         target_language:
           label: Naar
-          separator: ', '
-        progress:
-          label: Progress
-        word_count:
-          label: Word
-          separator: ', '
-        tags_count:
-          label: Tags
-          separator: ', '
-        changed:
-          label: Changed
-          separator: ', '
         operations:
           label: Bewerkingen
       filters:
         state:
-          expose:
-            label: States
           group_info:
             label: State
-        source_language:
-          expose:
-            label: 'Source language'
-        target_language:
-          expose:
-            label: 'Target language'
         job_type:
           group_info:
-            label: 'Job type'
             group_items:
               1:
                 title: Normaal

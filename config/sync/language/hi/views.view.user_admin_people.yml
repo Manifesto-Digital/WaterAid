@@ -21,8 +21,6 @@ display:
           label: 'अंतिम पहुंच'
         operations:
           label: कार्यवाही
-        mail:
-          separator: ', '
       pager:
         options:
           tags:

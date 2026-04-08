@@ -20,22 +20,13 @@ display:
           action_title: Ação
         title:
           label: Título
-          separator: ', '
-        type:
-          separator: ', '
         name:
           label: Autor
-          separator: ', '
         status:
           label: Estado
           settings:
             format_custom_true: Publicado
             format_custom_false: 'Não publicado'
-          separator: ', '
-        publish_on:
-          separator: ', '
-        unpublish_on:
-          separator: ', '
         operations:
           label: Operações
       filters:

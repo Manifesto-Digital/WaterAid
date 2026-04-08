@@ -27,14 +27,6 @@ display:
           label: ラベル
         type:
           label: タイプ
-        word_count:
-          label: Words
-          separator: ', '
-        tags_count:
-          label: Tags
-          separator: ', '
-        changed:
-          label: Changed
         operations:
           label: 操作
       arguments:
@@ -42,18 +34,9 @@ display:
           exception:
             title: すべて
   checkout:
-    display_title: Checkout
     display_options:
       fields:
         label:
           label: ラベル
         type:
           label: タイプ
-        word_count:
-          label: Words
-          separator: ', '
-        changed:
-          label: Changed
-          separator: ', '
-  submitted:
-    display_title: Submitted

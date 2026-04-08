@@ -11,10 +11,6 @@ display:
           sort_desc_label: Fallande
       pager:
         options:
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
           tags:
             previous: '‹ föregående'
             next: 'nästa ›'
@@ -22,28 +18,20 @@ display:
             last: 'sista »'
       fields:
         media_bulk_form:
-          label: 'Bulk update'
           action_title: Åtgärd
-        name:
-          separator: ', '
         bundle:
           label: 'Media type'
-          separator: ', '
         uid:
           label: Författare
-          separator: ', '
         status:
           label: Status
           settings:
             format_custom_true: Publicerad
             format_custom_false: 'Ej publicerad'
-          separator: ', '
         publish_on:
           label: 'Publicera den'
-          separator: ', '
         unpublish_on:
           label: 'Avpublicera den'
-          separator: ', '
         operations:
           label: Funktioner
       filters:

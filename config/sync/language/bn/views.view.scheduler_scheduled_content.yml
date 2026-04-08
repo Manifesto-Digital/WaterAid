@@ -3,7 +3,7 @@ display:
     display_options:
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       pager:
         options:
           tags:
@@ -13,9 +13,9 @@ display:
             last: 'শেষ »'
       fields:
         title:
-          label: শিরোনাম
+          label: Title
         name:
-          label: লেখক
+          label: Author
         status:
           label: স্ট্যাটাস
           settings:
@@ -25,10 +25,10 @@ display:
       filters:
         title:
           expose:
-            label: শিরোনাম
+            label: Title
         type:
           expose:
-            label: 'কন্টেন্টের ধরণ'
+            label: 'Content type'
         status:
           expose:
             label: স্ট্যাটাস
@@ -38,7 +38,7 @@ display:
                 title: প্রকাশিত
         langcode:
           expose:
-            label: ভাষা
+            label: Language
   overview:
     display_options:
       tab_options:

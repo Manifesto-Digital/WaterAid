@@ -5,14 +5,8 @@ display:
       fields:
         name:
           label: Usuario
-          separator: ', '
-        group_roles:
-          separator: ', '
         changed:
           label: Actualizado
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: Operaciones
       pager:
@@ -29,8 +23,6 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       arguments:
         gid:
           exception:

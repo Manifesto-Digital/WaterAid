@@ -4,7 +4,7 @@ display:
       title: Content
       fields:
         title:
-          label: ଶୀର୍ଷକ
+          label: Title
         status:
           label: ଅବସ୍ଥିତି
           settings:
@@ -18,7 +18,7 @@ display:
         delete_node:
           text: Delete
         dropbutton:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
       arguments:
         gid:
           title: '{{ arguments.gid|placeholder }} content'

@@ -6,34 +6,34 @@ display:
       title: কনটেন্ট
       fields:
         title:
-          label: শিরোনাম
+          label: Title
         type:
-          label: 'কন্টেন্টের ধরণ'
+          label: 'Content type'
         name:
-          label: লেখক
+          label: Author
         status:
           label: স্ট্যাটাস
           settings:
             format_custom_true: প্রকাশিত
         changed:
-          label: আপডেটকৃত
+          label: Updated
         langcode:
-          label: ভাষা
+          label: Language
         operations:
           label: কার্যাবলী
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       empty:
         area_text_custom:
           content: 'কোন কন্টেন্ট নেই।'
       filters:
         title:
           expose:
-            label: শিরোনাম
+            label: Title
         type:
           expose:
-            label: 'কন্টেন্টের ধরণ'
+            label: 'Content type'
         status:
           expose:
             label: স্ট্যাটাস
@@ -43,7 +43,7 @@ display:
                 title: প্রকাশিত
         langcode:
           expose:
-            label: ভাষা
+            label: Language
   page_1:
     display_options:
       menu:

@@ -13,10 +13,10 @@ display:
         access:
           label: 'ଶେଷ ପ୍ରବେଶ'
         operations:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
       exposed_form:
         options:
-          submit_button: ଛାଣକ
+          submit_button: Filter
       filters:
         status:
           group_info:
