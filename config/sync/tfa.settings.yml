@@ -1,7 +1,7 @@
 _core:
   default_config_hash: JyIkFj38h-aTLsrCfejAfP277qBJ61tlaLEBH44IHhg
 langcode: en
-enabled: true
+enabled: false
 required_roles:
   authenticated: authenticated
   wateraid_group_member: '0'
