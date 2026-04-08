@@ -846,10 +846,6 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   $config['key.key.webform_encrypt_key']['key_provider'] = 'config';
   $config['key.key.webform_encrypt_key']['key_provider_settings']['key_value'] = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';
 
-  // reCaptcha v3.
-  $config['recaptcha_v3.settings']['site_key'] = '6LfmHCkdAAAAAFcTcD-N6cNay3UA8ti221UnUYIv';
-  $config['recaptcha_v3.settings']['secret_key'] = '6LfmHCkdAAAAABYZksQxxKhum3Y8KJuFRi64gX-C';
-
   // Enable local split.
   $config['config_split.config_split.local']['status'] = TRUE;
 
