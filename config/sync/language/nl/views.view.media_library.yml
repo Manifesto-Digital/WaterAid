@@ -12,7 +12,6 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       exposed_form:
         options:
           submit_button: 'Filters toepassen'
@@ -61,8 +60,6 @@ display:
       fields:
         media_bulk_form:
           action_title: Actie
-        name:
-          separator: ', '
         edit_media:
           alter:
             text: '{{ name }} bewerken'

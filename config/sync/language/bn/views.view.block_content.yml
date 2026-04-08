@@ -4,6 +4,6 @@ display:
     display_options:
       fields:
         changed:
-          label: আপডেটকৃত
+          label: Updated
         operations:
           label: কার্যাবলী

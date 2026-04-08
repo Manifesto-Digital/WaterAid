@@ -3,7 +3,7 @@ display:
     display_options:
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       pager:
         options:
           tags:
@@ -13,7 +13,7 @@ display:
             last: 'শেষ »'
       fields:
         uid:
-          label: লেখক
+          label: Author
         status:
           label: স্ট্যাটাস
           settings:
@@ -33,6 +33,6 @@ display:
                 title: প্রকাশিত
         langcode:
           expose:
-            label: ভাষা
+            label: Language
   user_page:
     display_title: ব্যবহারকারী

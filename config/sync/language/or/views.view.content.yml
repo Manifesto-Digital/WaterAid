@@ -4,22 +4,22 @@ display:
     display_options:
       fields:
         title:
-          label: ଶୀର୍ଷକ
+          label: Title
         status:
           label: ଅବସ୍ଥିତି
           settings:
             format_custom_true: ପ୍ରକାଶିତ
         langcode:
-          label: ଭାଷା
+          label: Language
         operations:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
       exposed_form:
         options:
-          submit_button: ଛାଣକ
+          submit_button: Filter
       filters:
         title:
           expose:
-            label: ଶୀର୍ଷକ
+            label: Title
         status:
           expose:
             label: ଅବସ୍ଥିତି
@@ -29,4 +29,4 @@ display:
                 title: ପ୍ରକାଶିତ
         langcode:
           expose:
-            label: ଭାଷା
+            label: Language

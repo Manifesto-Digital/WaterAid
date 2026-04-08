@@ -5,27 +5,10 @@ display:
       fields:
         name:
           label: Användare
-          separator: ', '
-        group_roles:
-          separator: ', '
-        changed:
-          separator: ', '
-        created:
-          separator: ', '
         dropbutton:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       exposed_form:
         options:
-          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande

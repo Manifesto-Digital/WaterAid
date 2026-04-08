@@ -70,6 +70,7 @@
     "drupal/facets": "^3.0",
     "drupal/field_group": "^4.0",
     "drupal/field_group_markup": "^1.0",
+    "drupal/filter_perms": "^2.0",
     "drupal/focal_point": "^2.1",
     "drupal/force_password_change": "^2.0",
     "drupal/gcontent_moderation": "^3.0@beta",

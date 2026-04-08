@@ -6,7 +6,7 @@ display:
         info:
           label: 'ବ୍ଲକ ବର୍ଣ୍ଣନା'
         operations:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
       filters:
         info:
           expose:

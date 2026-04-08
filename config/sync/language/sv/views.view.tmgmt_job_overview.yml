@@ -5,23 +5,14 @@ display:
       fields:
         state:
           label: Läge
-          separator: ', '
         label:
           label: Etikett
         source_language_1:
           label: Från
-          separator: ', '
         target_language:
           label: Till
-          separator: ', '
         translator:
           label: Leverantör
-        progress:
-          label: Progress
-        tags_count:
-          label: Tags
-        changed:
-          label: Changed
         operations:
           label: Funktioner
       pager:
@@ -31,13 +22,8 @@ display:
             previous: '‹ föregående'
             first: '« första'
             last: 'sista »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       exposed_form:
         options:
-          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
@@ -46,9 +32,6 @@ display:
         state:
           expose:
             label: Läge
-        source_language:
-          expose:
-            label: 'Source language'
         translator:
           expose:
             label: Leverantör

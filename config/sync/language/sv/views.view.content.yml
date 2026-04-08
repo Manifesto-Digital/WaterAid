@@ -9,7 +9,6 @@ display:
           label: Titel
         type:
           label: Innehållstyp
-          separator: ', '
         name:
           label: Författare
         status:
@@ -19,16 +18,8 @@ display:
             format_custom_true: Publicerad
         langcode:
           label: Språk
-          separator: ', '
         operations:
           label: Funktioner
-      pager:
-        options:
-          tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
       exposed_form:
         options:
           submit_button: Filtrera

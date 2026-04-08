@@ -7,19 +7,14 @@ display:
       fields:
         title:
           label: タイトル
-          separator: ', '
         type:
           label: コンテンツタイプ
-          separator: ', '
         name:
           label: 投稿者
-          separator: ', '
         moderation_state:
           label: モデレーション状態
-          separator: ', '
         changed:
           label: 更新
-          separator: ', '
         operations:
           label: 操作
       pager:

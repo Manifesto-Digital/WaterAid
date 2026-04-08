@@ -4,8 +4,6 @@ display:
       fields:
         target_language:
           label: বরাবর
-        tags_count:
-          label: Tags
         operations:
           label: কার্যাবলী
       pager:

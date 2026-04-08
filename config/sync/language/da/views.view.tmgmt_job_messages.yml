@@ -1,6 +1,5 @@
 display:
   default:
-    display_title: Master
     display_options:
       exposed_form:
         options:
@@ -23,15 +22,9 @@ display:
       fields:
         created:
           label: Oprettet
-        label:
-          label: Item
         name:
           label: Navn
-          separator: ', '
-      title: Messages
       arguments:
         tjid:
           exception:
             title: Alle
-  embed:
-    display_title: Embed

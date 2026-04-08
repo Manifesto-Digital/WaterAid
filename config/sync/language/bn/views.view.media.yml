@@ -8,18 +8,18 @@ display:
         bundle:
           label: টাইপ
         uid:
-          label: লেখক
+          label: Author
         status:
           label: স্ট্যাটাস
           settings:
             format_custom_true: প্রকাশিত
         changed:
-          label: আপডেটকৃত
+          label: Updated
         operations:
           label: কার্যাবলী
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       filters:
         bundle:
           expose:
@@ -31,7 +31,7 @@ display:
                 title: প্রকাশিত
         langcode:
           expose:
-            label: ভাষা
+            label: Language
   media_page_list:
     display_title: মাধ্যম
     display_options:

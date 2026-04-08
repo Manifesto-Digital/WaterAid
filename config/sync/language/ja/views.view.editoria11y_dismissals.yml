@@ -20,7 +20,6 @@ display:
           label: オン
         name:
           label: 'Dismissed by'
-          separator: ', '
         page_path:
           label: パス
       pager:

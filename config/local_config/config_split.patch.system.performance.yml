@@ -1,7 +1,7 @@
 adding:
   cache:
     page:
-      max_age: 0
+      max_age: 300
 removing:
   cache:
     page:

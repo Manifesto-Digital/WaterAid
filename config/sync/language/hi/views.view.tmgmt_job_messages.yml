@@ -20,12 +20,8 @@ display:
       fields:
         created:
           label: निर्मित
-        label:
-          label: Item
         name:
           label: नाम
-          separator: ', '
-      title: Messages
       arguments:
         tjid:
           exception:
