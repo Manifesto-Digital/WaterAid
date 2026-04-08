@@ -6,16 +6,13 @@ display:
       fields:
         title:
           label: Título
-          separator: ', '
         type:
           label: 'Tipo de contenido'
-          separator: ', '
         status:
           label: Estado
           settings:
             format_custom_false: 'Sin publicar'
             format_custom_true: Publicado
-          separator: ', '
         view_group_relationship:
           text: view
         delete_group_relationship:
@@ -40,8 +37,6 @@ display:
           submit_button: Aplicar
           reset_button_label: Restablecer
           exposed_sorts_label: 'Ordenar por'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
       empty:
         area_text_custom:
           content: 'No hay contenido disponible.'

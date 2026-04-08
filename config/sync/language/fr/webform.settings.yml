@@ -34,8 +34,6 @@ settings:
   dialog_options:
     narrow:
       title: Étroit
-    normal:
-      title: Normal
     wide:
       title: Large
 element:

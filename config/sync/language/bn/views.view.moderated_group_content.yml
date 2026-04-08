@@ -3,18 +3,18 @@ display:
     display_options:
       fields:
         title:
-          label: শিরোনাম
+          label: Title
         type:
-          label: 'কন্টেন্টের ধরণ'
+          label: 'Content type'
         name:
-          label: লেখক
+          label: Author
         changed:
-          label: আপডেটকৃত
+          label: Updated
         operations:
           label: কার্যাবলী
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       arguments:
         gid:
           exception:
@@ -22,10 +22,10 @@ display:
       filters:
         title:
           expose:
-            label: শিরোনাম
+            label: Title
         type:
           expose:
-            label: 'কন্টেন্টের ধরণ'
+            label: 'Content type'
         langcode:
           expose:
-            label: ভাষা
+            label: Language

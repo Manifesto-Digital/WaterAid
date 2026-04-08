@@ -7,7 +7,7 @@ display:
         group_roles:
           label: ভূমিকা
         changed:
-          label: আপডেটকৃত
+          label: Updated
         dropbutton:
           label: কার্যাবলী
       arguments:

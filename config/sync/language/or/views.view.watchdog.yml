@@ -6,10 +6,10 @@ display:
         type:
           label: ପ୍ରକାର
         link:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
       exposed_form:
         options:
-          submit_button: ଛାଣକ
+          submit_button: Filter
       filters:
         type:
           expose:

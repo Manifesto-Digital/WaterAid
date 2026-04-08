@@ -4,22 +4,10 @@ display:
     display_options:
       exposed_form:
         options:
-          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
           sort_desc_label: Fallande
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
       fields:
         state:
           label: Läge
@@ -29,31 +17,14 @@ display:
           label: Type
         source_language:
           label: Från
-          separator: ', '
         target_language:
           label: Till
-          separator: ', '
-        progress:
-          label: Progress
-        word_count:
-          separator: ', '
-        tags_count:
-          label: Tags
-          separator: ', '
-        changed:
-          label: Changed
-          separator: ', '
         operations:
           label: Funktioner
       filters:
         state:
-          expose:
-            label: States
           group_info:
             label: Läge
-        source_language:
-          expose:
-            label: 'Source language'
         job_type:
           group_info:
             group_items:

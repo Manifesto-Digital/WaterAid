@@ -17,7 +17,6 @@ display:
           label: संदेश
         name:
           label: प्रयोक्ता
-          separator: ', '
         link:
           label: कार्यवाही
       pager:

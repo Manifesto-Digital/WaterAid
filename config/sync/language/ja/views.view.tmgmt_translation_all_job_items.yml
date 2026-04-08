@@ -29,30 +29,14 @@ display:
           label: タイプ
         source_language:
           label: 送信元
-          separator: ', '
         target_language:
           label: 宛先
-          separator: ', '
-        word_count:
-          label: Word
-          separator: ', '
-        tags_count:
-          label: Tags
-          separator: ', '
-        changed:
-          label: Changed
-          separator: ', '
         operations:
           label: 操作
       filters:
         state:
-          expose:
-            label: States
           group_info:
             label: 状態
-        source_language:
-          expose:
-            label: 'Source language'
         job_type:
           group_info:
             group_items:

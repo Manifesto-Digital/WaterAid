@@ -22,7 +22,6 @@ display:
             label: Sidtitel
       exposed_form:
         options:
-          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
@@ -47,7 +46,6 @@ display:
           label: Sida
         name:
           label: 'Dismissed by'
-          separator: ', '
       filters:
         combine_1:
           admin_label: Titel
@@ -67,15 +65,6 @@ display:
         uid:
           expose:
             label: 'Dismissed by'
-      pager:
-        options:
-          tags:
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       use_more_text: 'Reset filters'
       menu:
         title: Dismissals

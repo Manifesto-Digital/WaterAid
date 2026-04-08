@@ -15,7 +15,7 @@ display:
           label: কার্যাবলী
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       empty:
         area:
           admin_label: 'কোন লগ বার্তা নেই।'

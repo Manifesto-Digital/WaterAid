@@ -8,7 +8,6 @@ display:
       fields:
         filename:
           label: Navn
-          separator: ', '
         filesize:
           label: Størrelse
         status:
@@ -64,7 +63,6 @@ display:
           label: 'Registrerer modul'
         count:
           label: 'Brug antal'
-          format_plural_string: !!binary MQNAY291bnQ=
       pager:
         options:
           tags:

@@ -36,3 +36,4 @@ permissions:
   - 'use text format wateraid_pdf'
   - 'use text format webform_default'
   - 'view media'
+  - 'view the administration theme'

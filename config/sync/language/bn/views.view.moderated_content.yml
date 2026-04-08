@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: Default
+    display_options:
+      fields:
+        title:
+          label: Title
+        type:
+          label: 'Content type'
+        name:
+          label: Author
+        changed:
+          label: Updated
+        operations:
+          label: কার্যাবলী
+      exposed_form:
+        options:
+          submit_button: Filter
+      filters:
+        title:
+          expose:
+            label: Title
+        type:
+          expose:
+            label: 'Content type'
+        langcode:
+          expose:
+            label: Language

@@ -4,9 +4,9 @@ display:
       title: Content
       fields:
         title:
-          label: শিরোনাম
+          label: Title
         type:
-          label: 'কন্টেন্টের ধরণ'
+          label: 'Content type'
         status:
           label: স্ট্যাটাস
           settings:

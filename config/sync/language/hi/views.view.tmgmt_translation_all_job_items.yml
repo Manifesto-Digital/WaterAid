@@ -26,24 +26,12 @@ display:
           label: प्रकार
         source_language:
           label: से
-          separator: ', '
         target_language:
           label: को
-          separator: ', '
-        word_count:
-          separator: ', '
-        tags_count:
-          label: Tags
-          separator: ', '
-        changed:
-          label: Changed
-          separator: ', '
         operations:
           label: कार्यवाही
       filters:
         state:
-          expose:
-            label: States
           group_info:
             label: अवस्था
         job_type:

@@ -1,30 +1,17 @@
-description: 'Gives a bulk operation overview of translation jobs in the system.'
 display:
   default:
-    display_title: Master
     display_options:
       fields:
         state:
           label: State
-          separator: ', '
         label:
           label: Label
         source_language_1:
           label: Van
-          separator: ', '
         target_language:
           label: Naar
-          separator: ', '
         translator:
           label: Provider
-        progress:
-          label: Progress
-        word_count:
-          label: Words
-        tags_count:
-          label: Tags
-        changed:
-          label: Changed
         operations:
           label: Bewerkingen
       pager:
@@ -37,7 +24,6 @@ display:
           expose:
             items_per_page_label: 'Items per pagina'
             items_per_page_options_all_label: '- Alle -'
-            offset_label: Offset
       exposed_form:
         options:
           submit_button: Toepassen
@@ -45,27 +31,12 @@ display:
           exposed_sorts_label: 'Sorteren op'
           sort_asc_label: Oplopend
           sort_desc_label: Aflopend
-      empty:
-        area_text_custom:
-          content: 'No jobs available.'
       filters:
         state:
           expose:
             label: State
-        source_language:
-          expose:
-            label: 'Source language'
-        target_language:
-          expose:
-            label: 'Target language'
         translator:
           expose:
             label: Provider
   page_1:
     display_title: Pagina
-    display_options:
-      menu:
-        title: Jobs
-        description: 'Manage and review existing translation jobs.'
-      tab_options:
-        title: Jobs

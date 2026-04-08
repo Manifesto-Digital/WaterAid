@@ -34,7 +34,6 @@ display:
             label: 'Status för publicering'
       exposed_form:
         options:
-          submit_button: Apply
           reset_button_label: Återställ
           exposed_sorts_label: 'Sortera efter'
           sort_asc_label: Stigande
@@ -85,15 +84,6 @@ display:
           exception:
             title: Alla
       title: 'Alerts on specified page'
-      pager:
-        options:
-          tags:
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       header:
         area_text_custom:
           content: "<h1>Accessibility issues on: {{page_title_1}}</h1>\r\n{{uid}}{{uid_1}}"
@@ -128,12 +118,6 @@ display:
           exception:
             title: Alla
       title: 'Pages with a specific alert'
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       footer:
         area_text_custom:
           content: '<a href="../editoria11y/alerts" class="button button--primary">All alerts</a>'
@@ -151,27 +135,12 @@ display:
       fields:
         result_name_count:
           label: Alerts
-      pager:
-        options:
-          tags:
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       menu:
         title: 'Issue types'
   recent__page:
     display_title: 'Recent alerts'
     display_options:
       title: 'Recent accessibility alerts'
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       menu:
         title: 'Recent alerts'
 label: 'Editoria11y: Alerts'

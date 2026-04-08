@@ -22,7 +22,7 @@ display:
           label: কার্যাবলী
       exposed_form:
         options:
-          submit_button: ফিল্টার
+          submit_button: Filter
       filters:
         status:
           group_info:

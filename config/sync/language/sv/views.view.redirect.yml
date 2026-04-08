@@ -16,16 +16,9 @@ display:
             next: 'nästa ›'
             first: '« första'
             last: 'sista »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
       fields:
-        redirect_bulk_form:
-          action_title: 'With selection'
         redirect_source__path:
           label: Från
-          separator: ', '
         created:
           label: Created
       filters:
@@ -35,8 +28,5 @@ display:
         redirect_redirect__uri:
           expose:
             label: Till
-        language:
-          expose:
-            label: 'Original language'
   page_1:
     display_title: Page

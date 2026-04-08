@@ -10,10 +10,10 @@ display:
           settings:
             format_custom_true: ପ୍ରକାଶିତ
         operations:
-          label: ପ୍ରୟୋଗଗୁଡ଼ିକ
+          label: Operations
       exposed_form:
         options:
-          submit_button: ଛାଣକ
+          submit_button: Filter
       filters:
         bundle:
           expose:
@@ -25,4 +25,4 @@ display:
                 title: ପ୍ରକାଶିତ
         langcode:
           expose:
-            label: ଭାଷା
+            label: Language

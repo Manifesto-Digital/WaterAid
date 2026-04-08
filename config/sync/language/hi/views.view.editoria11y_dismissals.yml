@@ -19,7 +19,6 @@ display:
           label: चालू
         name:
           label: द्वारा
-          separator: ', '
         page_path:
           label: मार्ग
       pager:

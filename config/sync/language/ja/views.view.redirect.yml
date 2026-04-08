@@ -22,11 +22,8 @@ display:
             items_per_page_options_all_label: '- 全て -'
             offset_label: オフセット
       fields:
-        redirect_bulk_form:
-          action_title: 'With selection'
         redirect_source__path:
           label: 送信元
-          separator: ', '
         created:
           label: 作成
       filters:
