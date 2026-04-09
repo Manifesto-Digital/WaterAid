@@ -90,7 +90,7 @@ final class UsageProcessor extends QueueWorkerBase implements ContainerFactoryPl
             'uid' => $entity->getOwnerId(),
             'mid' => $data->entity_id,
             'nid' => $entity->id(),
-            'expiry_date' => $data->field_dam_expiry ?? 0,
+            'expiry_date' => $data->field_dam_expiry_value ?? 0,
           ])
           ->execute();
       }
