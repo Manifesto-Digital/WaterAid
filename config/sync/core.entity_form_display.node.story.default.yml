@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.story.field_in_page_navigation
     - field.field.node.story.field_metatags
     - field.field.node.story.field_minimal_header
+    - field.field.node.story.field_publication_date
     - field.field.node.story.field_review_date
     - field.field.node.story.field_search_phrases
     - field.field.node.story.field_teaser_image
@@ -71,6 +72,7 @@ third_party_settings:
       children:
         - field_content
         - field_search_phrases
+        - field_publication_date
       label: Content
       region: content
       parent_name: group_tabs
@@ -239,6 +241,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_publication_date:
+    type: datetime_default
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_review_date:
     type: datetime_default
