@@ -21,6 +21,7 @@ dependencies:
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
     - field.field.paragraph.donation_widget.field_payin_link
+    - field.field.paragraph.donation_widget.field_show_increase_your_impact
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
     - paragraphs.paragraphs_type.donation_widget
@@ -233,5 +234,6 @@ hidden:
   field_monthly_index: true
   field_one_off_index: true
   field_payin_link: true
+  field_show_increase_your_impact: true
   field_title: true
   status: true
