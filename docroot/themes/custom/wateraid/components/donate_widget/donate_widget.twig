@@ -89,7 +89,7 @@
             {% set radio_id = 'monthly-amount-' ~ item.amount ~ '-' ~ id %}
 
             <div class="donate-widget__option {{ item.amount == 'other' ? 'custom-amount' : '' }}{% if config.hide_desktop_monthly == item.amount %} hide-on-desktop{% endif %}">
-              {% if loop.revindex == 2 %}
+              {% if loop.revindex == 2 and show_flag == 1 %}
                 <div class="donate-widget__increase-impact">
                   {{ 'Increase your impact'|t }}
                 </div>
