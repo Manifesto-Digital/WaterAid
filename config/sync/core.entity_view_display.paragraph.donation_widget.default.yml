@@ -20,6 +20,7 @@ dependencies:
     - field.field.paragraph.donation_widget.field_one_off_donation_amounts
     - field.field.paragraph.donation_widget.field_one_off_index
     - field.field.paragraph.donation_widget.field_payin_link
+    - field.field.paragraph.donation_widget.field_show_increase_your_impact
     - field.field.paragraph.donation_widget.field_title
     - field.field.paragraph.donation_widget.field_webform_node
     - paragraphs.paragraphs_type.donation_widget
@@ -171,6 +172,16 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 11
+    region: content
+  field_show_increase_your_impact:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 19
     region: content
   field_title:
     type: string

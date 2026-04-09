@@ -1,0 +1,28 @@
+uuid: 8e0a649f-ca7e-405b-b852-c6b37bf36f69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_increase_your_impact
+    - paragraphs.paragraphs_type.donation_widget
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.donation_widget.field_show_increase_your_impact
+field_name: field_show_increase_your_impact
+entity_type: paragraph
+bundle: donation_widget
+label: "Show 'Increase your impact' flag"
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
