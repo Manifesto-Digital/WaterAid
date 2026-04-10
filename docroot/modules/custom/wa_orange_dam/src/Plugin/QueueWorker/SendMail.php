@@ -6,6 +6,8 @@ namespace Drupal\wa_orange_dam\Plugin\QueueWorker;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\GeneratedLink;
+use Drupal\Core\Link;
 use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -114,11 +116,11 @@ final class SendMail extends QueueWorkerBase implements ContainerFactoryPluginIn
 
             if ($owner && $media && $node) {
               $render['table']['#rows'][] = [
-                'owner' => $owner->toLink(NULL, NULL, ['absolute' => TRUE])->toString(),
-                'media' => $media->toLink(NULL, 'edit-form', ['absolute' => TRUE])->toString(),
-                'node' => $node->toLink(NULL, 'edit-form', ['absolute' => TRUE])->toString(),
+                'owner' => ($owner->isAnonymous()) ? 'Anonymous' : $this->generateLink($owner->toLink()),
+                'media' => $this->generateLink($media->toLink()),
+                'node' => $this->generateLink($node->toLink()),
                 'expiry' => $this->t(':expiry', [
-                  ':expiry' => $result->expiry,
+                  ':expiry' => $result->expiry == '1st January 1970' ? 'No expiry set' : $result->expiry,
                 ]),
               ];
             }
@@ -140,5 +142,33 @@ final class SendMail extends QueueWorkerBase implements ContainerFactoryPluginIn
         }
       }
     }
+  }
+
+  /**
+   * Helper to generate the correct URL for content.
+   *
+   * @param \Drupal\Core\Link $link
+   *   The link to alter.
+   *
+   * @return \Drupal\Core\GeneratedLink
+   *   The link URL.
+   */
+  private function generateLink(Link $link): GeneratedLink {
+    $domain = NULL;
+
+    $acquia_env = $_ENV['AH_SITE_ENVIRONMENT'] ?? FALSE;
+    if (!empty($acquia_env)) {
+      $domain = ($acquia_env === 'dev') ? 'https://wateraid-dev.manifesto.sh' : NULL;
+      $domain = ($acquia_env === 'prod') ? 'https://www.wateraid.org' : NULL;
+      $domain = ($domain) ?? 'https://wateraid-stage.manifesto.sh';
+    }
+
+    $domain = ($domain) ?? 'https://wateraid.ddev.site';
+
+    $url = Url::fromUri($domain . $link->getUrl()->toString());
+    $text = $link->getText();
+
+
+    return Link::fromTextAndUrl($text, $url)->toString();
   }
 }
