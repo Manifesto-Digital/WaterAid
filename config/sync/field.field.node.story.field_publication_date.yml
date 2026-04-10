@@ -1,0 +1,28 @@
+uuid: 2ecfb54d-5049-4069-a56f-472df19b4f3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publication_date
+    - node.type.story
+  module:
+    - datetime
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.story.field_publication_date
+field_name: field_publication_date
+entity_type: node
+bundle: story
+label: 'Publication Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime
