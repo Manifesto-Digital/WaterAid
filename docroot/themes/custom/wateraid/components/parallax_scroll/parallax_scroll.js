@@ -39,11 +39,15 @@
           }
           thresholdArray.push(lastPercent, 1);
         } else {
-          images.forEach((image) => {
-            thresholdArray.push(
-              image.getAttribute("data-image-no") * changeDecimal,
-            );
-          });
+          if (imageCount === '2') {
+            thresholdArray.push(0.35, 1);
+          } else {
+            images.forEach((image) => {
+              thresholdArray.push(
+                image.getAttribute("data-image-no") * changeDecimal
+              );
+            });
+          }
         }
 
 
