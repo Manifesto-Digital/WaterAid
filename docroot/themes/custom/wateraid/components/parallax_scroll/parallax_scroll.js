@@ -4,7 +4,7 @@
       let width = document.body.clientWidth;
       const setScrollLogic = (component) => {
         const images = component.querySelectorAll(".parallax-scroll__image");
-
+        
         // Set first image as active.
         if (images[0]) {
           images[0].classList.add("active");
@@ -27,17 +27,23 @@
           const midArea = lastPercent - firstPercent;
           const midPercent = midArea / (Number(imageCount) - 2);
 
-          // Calculate percentages of middles images.
-          for (let i = 1; i < images.length - 2; i++) {
-            let prevPercent = firstPercent + midPercent;
-            if (i === 1) {
-              thresholdArray.push(firstPercent + midPercent);
-            } else {
-              thresholdArray.push(prevPercent + midPercent);
-              prevPercent = prevPercent + midPercent;
+          if(imageCount === 2) {
+            thresholdArray.push(0.5);
+          } else if (imageCount === 3) {
+            thresholdArray.push(0.36, 0.61);
+          } else {
+            // Calculate percentages of middles images.
+            for (let i = 1; i < images.length - 2; i++) {
+              let prevPercent = firstPercent + midPercent;
+              if (i === 1) {
+                thresholdArray.push(firstPercent + midPercent);
+              } else {
+                thresholdArray.push(prevPercent + midPercent);
+                prevPercent = prevPercent + midPercent;
+              }
             }
+            thresholdArray.push(lastPercent, 1);
           }
-          thresholdArray.push(lastPercent, 1);
         } else {
           if (imageCount === '2') {
             thresholdArray.push(0.35, 1);
@@ -68,7 +74,9 @@
               images.forEach((image) => {
                 image.classList.remove("active");
               });
-              images[i].classList.add("active");
+              if(images[i]) {
+                images[i].classList.add("active");
+              }
             }
           }
         });
