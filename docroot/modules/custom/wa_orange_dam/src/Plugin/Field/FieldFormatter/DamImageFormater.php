@@ -162,7 +162,7 @@ final class DamImageFormater extends ImageFormatter {
         '#uri' => $data['link'],
         '#width' => $width,
         '#height' => $height,
-        '#alt' => substr(strip_tags($search['APIResponse']['Items'][0]['CustomField.Caption']), 0, 250) ?? '',
+        '#alt' => isset($search['APIResponse']['Items'][0]['CustomField.Caption']) ? substr(strip_tags($search['APIResponse']['Items'][0]['CustomField.Caption']), 0, 250) : '',
         '#attributes' => [],
         '#cache' => $cache,
       ];
