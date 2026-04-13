@@ -1087,6 +1087,8 @@ label.button__input-button-wrapper {
   position: absolute;
   inset-block-start: 0;
   outline: none;
+  background: base.$wa-white;
+  z-index: 100;
 
   &:not(.ui-dialog-off-canvas) {
     max-width: 1280px;
@@ -1133,6 +1135,11 @@ label.button__input-button-wrapper {
     border: 1px solid base.$wa-navy-80;
     background: base.$wa-white;
     z-index: 100;
+  }
+
+  .ui-widget-content.ui-dialog-content {
+    border: 1px solid base.$wa-navy-80;
+    padding-inline: 30px;
   }
 }
 .donation-modal {
