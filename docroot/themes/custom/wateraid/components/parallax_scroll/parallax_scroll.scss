@@ -25,11 +25,11 @@
       margin: 0;
     }
 
-    h1, h2, h3, ul li::marker {
+    h1, h2, h3, ul li::marker,[data-component-id="wateraid:rich_text"] cite {
       color: $wa-white;
     }
 
-    blockquote:before {
+    [data-component-id="wateraid:rich_text"] blockquote:before {
       background-image: url("/themes/custom/wateraid/images/icons/wa-icon-quote-mark-white.svg");
     }
   }
