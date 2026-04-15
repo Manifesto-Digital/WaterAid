@@ -11,8 +11,6 @@ display:
           label: Watchdog-ID
         severity:
           label: Ernst
-        type:
-          label: Type
         timestamp:
           label: Datum
         message:
@@ -38,9 +36,6 @@ display:
           admin_label: 'Geen logberichten beschikbaar.'
           content: 'Geen logberichten beschikbaar.'
       filters:
-        type:
-          expose:
-            label: Type
         severity:
           expose:
             label: Ernst

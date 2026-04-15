@@ -19,8 +19,6 @@ display:
             first: '« primero'
             last: 'último »'
       fields:
-        state:
-          label: State
         label:
           label: Etiqueta
         type:

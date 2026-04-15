@@ -26,7 +26,6 @@ display:
         vid:
           label: Ordforråd
         status:
-          label: Status
           settings:
             format_custom_true: Udgivet
             format_custom_false: 'Ikke udgivet'
@@ -41,8 +40,6 @@ display:
           expose:
             label: Ordforråd
         status:
-          expose:
-            label: Status
           group_info:
             label: Publiceringsstatus
             group_items:

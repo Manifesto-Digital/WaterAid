@@ -170,6 +170,14 @@
       }
     }
 
+    .card__heading {
+      @include h5();
+      overflow-wrap: normal;
+      @include desktop() {
+        @include h3();
+      }
+    }
+
     .card__body {
       padding: $wa-spacing-06;
     }
