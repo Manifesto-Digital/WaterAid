@@ -30,6 +30,7 @@ dependencies:
     - field.storage.paragraph.field_link
     - field.storage.paragraph.field_primary_cta
     - field.storage.paragraph.field_published_date
+    - field.storage.node.field_publication_type
     - field.storage.paragraph.field_quote
     - field.storage.paragraph.field_rich_text
     - field.storage.paragraph.field_standfirst
@@ -310,6 +311,14 @@ field_settings:
         - field.storage.paragraph.field_published_date
       module:
         - paragraphs
+  field_publication_type:
+    label: 'Publication type'
+    datasource_id: 'entity:node'
+    property_path: field_publication_type
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_publication_type
   field_quote:
     label: 'Accordion Quote'
     datasource_id: 'entity:node'

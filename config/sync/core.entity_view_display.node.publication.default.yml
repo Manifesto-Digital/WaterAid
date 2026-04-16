@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.publication.field_hero
     - field.field.node.publication.field_key_stages
     - field.field.node.publication.field_metatags
+    - field.field.node.publication.field_publication_type
     - field.field.node.publication.field_review_date
     - field.field.node.publication.field_search_phrases
     - field.field.node.publication.field_subject_area
@@ -88,6 +89,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 15
+    region: content
+  field_publication_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 112
     region: content
   field_review_date:
     type: datetime_time_ago

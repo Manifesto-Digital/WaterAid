@@ -1,0 +1,9 @@
+uuid: 8828a224-5707-4028-90d2-af20fb51b0b5
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_block__publications__block_1
+name: 'search_api:views_block__publications__block_1'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }
