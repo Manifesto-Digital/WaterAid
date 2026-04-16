@@ -198,6 +198,13 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
           'topic' => 'topic',
         ],
       ],
+      'publications' => [
+        'block_1' => [
+          'country' => 'country',
+          'publication_type' => 'publication_type',
+          'theme' => 'theme',
+        ],
+      ],
       'stories_solr' => [
         'block_1' => [
           'audience' => 'audience',
