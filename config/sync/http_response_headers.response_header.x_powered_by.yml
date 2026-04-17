@@ -1,0 +1,12 @@
+uuid: d102c43b-8a73-4b63-a569-6b9c26947255
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: qN2wWwIBQbvvZJ3v_gPS6_atvVWy-iU55c5Tdj_MqFQ
+id: x_powered_by
+label: X-Powered-By
+description: "The X-Powered-By header gives information on the technology that's supporting the Web Server. It is best not to provide this information."
+name: X-Powered-By
+value: ''
+visibility: {  }

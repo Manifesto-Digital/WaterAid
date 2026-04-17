@@ -1,0 +1,12 @@
+uuid: 1633889e-f337-4114-923c-7908f30c8a45
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: QnihCO4_FUzmixcXqUFF2z8WsUZt-Llst3ovAoeXZ0E
+id: public_key_pins
+label: Public-Key-Pins
+description: 'HTTP Public Key Pinning (HPKP) is a security feature that tells a web client to associate a specific cryptographic public key with a certain web server to prevent Man in the Middle (MITM) attacks with forged certificates.'
+name: Public-Key-Pins
+value: ''
+visibility: {  }
