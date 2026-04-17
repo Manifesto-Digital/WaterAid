@@ -104,3 +104,31 @@ function wa_migration_copy_migrations(array $suffixes = []): void {
     }
   }
 }
+
+/**
+ * Implements hook_cron().
+ */
+function wa_migration_cron(): void {
+
+  // Manually trigger the queue so that we can create one file every cron run,
+  // as the API process is a little slow and we don't want to choke it.
+  $queue = \Drupal::queue('wa_migration_washmatters_files');
+
+  if ($queue_item = $queue->claimItem()) {
+
+    /** @var \Drupal\Core\Queue\QueueWorkerInterface $queue_worker */
+    $queue_worker = \Drupal::service('plugin.manager.queue_worker')
+      ->createInstance('wa_migration_washmatters_files');
+
+    try {
+      // Process only 1 queue item per cron run.
+      $queue_worker->processItem($queue_item->data);
+      $queue->deleteItem($queue_item);
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('wa_migration')->error(t('Error processing queue item: :error', [
+        ':error' => $e->getMessage(),
+      ]));
+    }
+  }
+}
