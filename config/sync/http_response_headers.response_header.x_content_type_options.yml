@@ -1,0 +1,12 @@
+uuid: ef5be575-6244-46d5-8a14-6cbea4be4e10
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: qRI3wEmvqepaLI3hMH5U_tq_svkQ6s-7cgAmZKO-F4A
+id: x_content_type_options
+label: X-Content-Type-Options
+description: 'This header parameter prevents Google Chrome and Internet Explorer from trying to mime-sniff the content-type of a response away from the one being declared by the server.'
+name: X-Content-Type-Options
+value: nosniff
+visibility: {  }
