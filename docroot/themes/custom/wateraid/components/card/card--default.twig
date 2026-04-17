@@ -7,6 +7,7 @@
 
 <div {{ attributes.addClass(card_classes).setAttribute('data-component', 'card') }}>
 
+  {{ group }}
   <div class="card__image">
     {% if image|render %}
       {{ image }}
@@ -26,9 +27,16 @@
     {% if date %}
       <div class="card__date">
         {{ include('@wateraid/images/icons/wa-utility-calendar.svg') }}
-        {{ date|date("j F Y") }}
-        {% if end_date and (date|date("j F Y") != end_date|date("j F Y")) %}
-          - {{ end_date|date("j F Y") }}
+        {% if group == 'ウォーターエイド｜水・衛生専門の国際NGO' %}
+          {{ date|date("Y年n月j日") }}
+          {% if end_date and (date|date("Y年n月j日") != end_date|date("Y年n月j日")) %}
+            - {{ end_date|date("Y年n月j日") }}
+          {% endif %}
+        {% else %}
+          {{ date|date("j F Y") }}
+          {% if end_date and (date|date("j F Y") != end_date|date("j F Y")) %}
+            - {{ end_date|date("j F Y") }}
+          {% endif %}
         {% endif %}
       </div>
     {% endif %}
