@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Config\Config;
+use Drupal\Core\Database\Database;
 
 /**
  * Implements hook_install().
@@ -97,6 +98,38 @@ function wa_migration_update_10002(&$sandbox): void {
         $canon[$term->label()] = $term->id();
       }
     }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
+}
+
+/**
+ * Add Washmatters files to a queue.
+ */
+function wa_migration_update_10003(&$sandbox): void {
+  if (!isset($sandbox['ids'])) {
+    Database::setActiveConnection('washmatters_site_migration');
+    $database = Database::getConnection();
+    $query = $database->select('node__field_documents', 'd');
+    $query->leftJoin('media__field_document', 'f', 'd.field_documents_target_id = f.entity_id');
+    $query->leftJoin('file_managed', 'fm', 'fm.fid = f.field_document_target_id');
+    $query->fields('fm', ['uri']);
+    $query->condition('d.bundle', 'publication');
+    $sandbox['ids'] = [];
+    $results = $query->execute()->fetchAll();
+
+    foreach ($results as $result) {
+      $sandbox['ids'][] = $result->uri;
+    }
+
+    $sandbox['max'] = count($sandbox['ids']);
+
+    Database::setActiveConnection();
+  }
+
+  if ($url = array_pop($sandbox['ids'])) {
+    $item = (str_starts_with($url, 'public://')) ? str_replace('public://', 'https://washmatters.wateraid.org/sites/g/files/jkxoof256/files/', $url) : $url;
+    \Drupal::queue('wa_migration_washmatters_files')->createItem($item);
   }
 
   $sandbox['#finished'] = empty($sandbox['max']) || empty($sandbox['ids']) ? 1 : ($sandbox['max'] - count($sandbox['ids'])) / $sandbox['max'];
