@@ -57,7 +57,6 @@
             });
           }
         }
-        console.log(thresholdArray);
 
         // Change image when between thresholds.
         window.addEventListener("scroll", () => {
