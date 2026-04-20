@@ -541,11 +541,12 @@ function wateraid_preprocess_node(&$variables): void {
       $variables['#attached']['drupalSettings']['wateraid']['firstStepAsWidget'] = $variables['content']['first_step_as_widget'];
     }
   }
-
-  $route_match = \Drupal::routeMatch();
-  $params = $route_match->getParameters();
-  $group = $params->get('group');
-  $variables['group'] = $group->label();
+    $route_match = \Drupal::routeMatch();
+    $params = $route_match->getParameters();
+    $group = $params->get('group');
+    if ($group) {
+      $variables['group'] = $group->label();
+    }
 }
 
 /**
