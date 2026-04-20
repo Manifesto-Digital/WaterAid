@@ -1,0 +1,24 @@
+uuid: f588dcd0-8b87-4d82-878f-9b388714f0c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_script
+    - paragraphs.paragraphs_type.script_embed
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.script_embed.field_script
+field_name: field_script
+entity_type: paragraph
+bundle: script_embed
+label: Script
+description: 'Paste the embed code or script that has been provided by the site you are embedding content from.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,10 @@
+uuid: b3b9933e-2532-4a15-bb59-4a1b0c799418
+langcode: en
+status: true
+dependencies: {  }
+id: script_embed
+label: 'Script embed'
+icon_uuid: null
+icon_default: null
+description: 'A paragraph to allow pasting of script tags within pages.'
+behavior_plugins: {  }
