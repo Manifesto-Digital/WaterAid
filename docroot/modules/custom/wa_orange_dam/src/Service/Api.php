@@ -135,34 +135,6 @@ final class Api {
   }
 
   /**
-   * Helper to create a file on the Orange DAM.
-   *
-   * @param string $file_url
-   *   A url to the file.
-   * @param string $folder_id
-   *   The folder to copy the file into.
-   * @param string|NULL $bearer
-   *   The bearer token. Optional.
-   *
-   * @return array
-   */
-  public function createFile(string $file_url, string $folder_id, string $bearer = NULL): array {
-    $options = [
-      'form_params' => [
-        'folderRecordID' => $folder_id,
-        'fileURL' => $file_url,
-        'fileName' => basename($file_url),
-        'importMode' => 'ProcessInLine',
-      ],
-      'headers' => [
-        'content-type' => 'application/x-www-form-urlencoded',
-      ]
-    ];
-
-    return $this->call($this->base . '/webapi/mediafile/import/upload/uploadmediawithurl_45L_v1', 'POST', $bearer, $options);
-  }
-
-  /**
    * Call the API.
    *
    * @param string $url
@@ -171,33 +143,23 @@ final class Api {
    *   A valid http method.
    * @param string|null $bearer
    *   The bearer. Defaults to the bearer in settings if empty.
-   * @param array $options
-   *   An array of options to pass the the http_library.
    *
    * @return array
    *   The result of the API call. Empty on error.
    */
-  private function call(string $url, string $method, ?string $bearer = NULL, array $options = []): array {
+  private function call(string $url, string $method, ?string $bearer = NULL): array {
     $return = [];
 
     $bearer = ($bearer) ?? Settings::get('orange_dam_bearer');
-    $headers = [
-      'accept' => 'application/json',
-      'Authorization' => 'Bearer ' . $bearer,
-      'content-type' => 'application/json',
-    ];
-
-    if (isset($options['headers'])) {
-      $options['headers'] += $headers;
-    }
-    else {
-      $options += [
-        'headers' => $headers,
-      ];
-    }
 
     try {
-      $response = $this->httpClient->request($method, $url, $options);
+      $response = $this->httpClient->request($method, $url, [
+        'headers' => [
+          'accept' => 'application/json',
+          'Authorization' => 'Bearer ' . $bearer,
+          'content-type' => 'application/json',
+        ],
+      ]);
 
       if ($body = $response->getBody()->getContents()) {
         $return = Json::decode($body);
