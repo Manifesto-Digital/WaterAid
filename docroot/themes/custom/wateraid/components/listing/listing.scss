@@ -290,3 +290,9 @@
 .viewsreference--view-title {
   display: none;
 }
+
+.without-search {
+  .listing__header .bef-exposed-form {
+    display: none;
+  }
+}

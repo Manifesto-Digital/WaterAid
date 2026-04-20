@@ -8,10 +8,6 @@ discard_parameters:
   - keys
   - sort
   - spellcheck
-js_version: '3'
-search_specific_analytics_keys: {  }
-searches_via_searchstudio: true
-untracked_roles: {  }
 eu_cookie_compliance:
   enabled: true
 flood_protection:
@@ -20,3 +16,7 @@ flood_protection:
   search_window: 10
   update_limit: 50
   update_window: 60
+js_version: '3'
+search_specific_analytics_keys: {  }
+searches_via_searchstudio: true
+untracked_roles: {  }
