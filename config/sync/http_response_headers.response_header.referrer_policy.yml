@@ -1,0 +1,12 @@
+uuid: fdf34738-3bfc-4b75-9fee-7523b7b4b175
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: JSZo_FSu2YFf7fXKgHhgJGvzRNHDcmakAcXGR4jCf-s
+id: referrer_policy
+label: Referrer-Policy
+description: 'Referrer Policy is a new header that allows a site to control how much information the browser includes with navigations away from a document and should be set by all sites.'
+name: Referrer-Policy
+value: strict-origin-when-cross-origin
+visibility: {  }

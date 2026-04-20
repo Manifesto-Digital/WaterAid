@@ -1,0 +1,12 @@
+uuid: dd04e4c6-3d65-47eb-8cde-63dccbc0605e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: xjdq0o6GzQSm6T11WcRHJ3A_DGGSEYiLrmqhLM8hpWQ
+id: x_xss_protection
+label: X-Xss-Protection
+description: "This response header can be used to configure a user-agent's built in reflective XSS protection. Currently, only Microsoft's Internet Explorer, Google Chrome and Safari (WebKit) support this header."
+name: X-Xss-Protection
+value: '1; mode=block'
+visibility: {  }

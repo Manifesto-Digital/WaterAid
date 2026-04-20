@@ -1,0 +1,12 @@
+uuid: efaab0d9-f4c0-452c-993a-6182dc268762
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: EzF-BPkjidXdWfV5ZguA1GZG1XlRg3gh8_E7Oi9MdtM
+id: strict_transport_security
+label: Strict-Transport-Security
+description: 'This policy will enforce TLS on your site and all subdomains for a year.'
+name: Strict-Transport-Security
+value: 'max-age=31536000; includeSubDomains'
+visibility: {  }
