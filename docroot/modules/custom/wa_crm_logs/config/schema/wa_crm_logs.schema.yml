@@ -1,8 +1,7 @@
-# Schema for the configuration files of the CRM Logs module.
 wa_crm_logs.settings:
   type: config_object
   label: 'CRM Logs settings'
   mapping:
-    example:
-      type: string
-      label: 'Example'
+    expiry:
+      type: int
+      label: 'Expiry after this many days'

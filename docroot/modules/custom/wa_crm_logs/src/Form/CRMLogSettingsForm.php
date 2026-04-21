@@ -16,7 +16,7 @@ final class CRMLogSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId(): string {
-    return 'wa_crm_logs_c_r_m_log_settings';
+    return 'wa_crm_logs_crm_log_settings';
   }
 
   /**
@@ -30,10 +30,11 @@ final class CRMLogSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-    $form['example'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Example'),
-      '#default_value' => $this->config('wa_crm_logs.settings')->get('example'),
+    $form['expiry'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Delete logs after'),
+      '#description' => t('Enter a number of <strong>days</strong>. When a log is this many days old it will be deleted. Leave empty to disable.'),
+      '#default_value' => $this->config('wa_crm_logs.settings')->get('expiry'),
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -41,26 +42,11 @@ final class CRMLogSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state): void {
-    // @todo Validate the form here.
-    // Example:
-    // @code
-    //   if ($form_state->getValue('example') === 'wrong') {
-    //     $form_state->setErrorByName(
-    //       'message',
-    //       $this->t('The value is not correct.'),
-    //     );
-    //   }
-    // @endcode
-    parent::validateForm($form, $form_state);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
+    $value = $form_state->getValue('expiry') ?? NULL;
+
     $this->config('wa_crm_logs.settings')
-      ->set('example', $form_state->getValue('example'))
+      ->set('expiry', $value)
       ->save();
     parent::submitForm($form, $form_state);
   }
