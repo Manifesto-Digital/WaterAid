@@ -63,4 +63,17 @@ final class Logging implements LoggingInterface {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function deleteBySubmission(WebformSubmissionInterface $submission): void {
+    $storage = $this->entityTypeManager->getStorage('crm_log');
+
+    if ($logs = $storage->loadByProperties([
+      'submission' => $submission->id(),
+    ])) {
+      $storage->delete($logs);
+    }
+  }
+
 }

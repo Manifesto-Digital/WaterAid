@@ -414,6 +414,7 @@ class QueueHandler {
           // The submission has been successfully stored in the blob, so we can
           // delete it from the website.
           $submission->delete();
+          $this->logging->deleteBySubmission($submission);
         }
         else {
           if ($log = $this->logging->createLog("Unable to store webform blob {$data['sid']} from the {$data['webform_id']} webform to the Azure storage blob", $submission, $group)) {

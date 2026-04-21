@@ -37,4 +37,16 @@ interface LoggingInterface {
    */
   public function deleteLogs(): void;
 
+  /**
+   * Delete any logs relating to a specific webform submission.
+   *
+   * @param \Drupal\webform\WebformSubmissionInterface $submission
+   *   The webform submission.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function deleteBySubmission(WebformSubmissionInterface $submission): void;
+
 }
