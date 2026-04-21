@@ -1,0 +1,22 @@
+entity.crm_log.settings:
+  title: 'Settings'
+  route_name: entity.crm_log.settings
+  base_route: entity.crm_log.settings
+entity.crm_log.view:
+  title: 'View'
+  route_name: entity.crm_log.canonical
+  base_route: entity.crm_log.canonical
+entity.crm_log.edit_form:
+  title: 'Edit'
+  route_name: entity.crm_log.edit_form
+  base_route: entity.crm_log.canonical
+entity.crm_log.delete_form:
+  title: 'Delete'
+  route_name: entity.crm_log.delete_form
+  base_route: entity.crm_log.canonical
+  weight: 10
+entity.crm_log.collection:
+  title: 'CRM Logs'
+  route_name: entity.crm_log.collection
+  base_route: system.admin_content
+  weight: 10

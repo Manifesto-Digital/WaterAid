@@ -1,0 +1,7 @@
+entity.crm_log.settings:
+  path: '/admin/structure/crm_log_settings'
+  defaults:
+    _title: 'CRM Log settings'
+    _form: 'Drupal\wa_crm_logs\Form\CRMLogSettingsForm'
+  requirements:
+    _permission: 'administer crm_log'

@@ -8,4 +8,4 @@ services:
     arguments: ['@http_client', '@logger.channel.azure_blob_storage']
   azure_blob_storage.queue_handler:
     class: Drupal\azure_blob_storage\Service\QueueHandler
-    arguments: ['@config.factory', '@entity_type.manager', '@database', '@queue', '@azure_blob_storage.api', '@logger.channel.azure_blob_storage']
+    arguments: ['@config.factory', '@entity_type.manager', '@database', '@queue', '@azure_blob_storage.api']

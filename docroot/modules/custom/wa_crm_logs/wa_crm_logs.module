@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for CRM Logs module.
+ */
+
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function wa_crm_logs_theme(): array {
+  return [
+    'crm_log' => ['render element' => 'content'],
+  ];
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function wa_crm_logs_user_cancel($edit, UserInterface $account, $method): void {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish crm logs.
+      $storage = \Drupal::entityTypeManager()->getStorage('crm_log');
+      $crm_log_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($crm_log_ids) as $crm_log) {
+        $crm_log->set('status', FALSE)->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize crm logs.
+      $storage = \Drupal::entityTypeManager()->getStorage('crm_log');
+      $crm_log_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($crm_log_ids) as $crm_log) {
+        $crm_log->setOwnerId(0)->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function wa_crm_logs_user_predelete(UserInterface $account): void {
+  // Delete crm logs that belong to this account.
+  $storage = \Drupal::entityTypeManager()->getStorage('crm_log');
+  $crm_log_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  $storage->delete(
+    $storage->loadMultiple($crm_log_ids)
+  );
+  // Delete old revisions.
+  $crm_log_ids = $storage->getQuery()
+    ->allRevisions()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  foreach (array_keys($crm_log_ids) as $revision_id) {
+    $storage->deleteRevision($revision_id);
+  }
+}

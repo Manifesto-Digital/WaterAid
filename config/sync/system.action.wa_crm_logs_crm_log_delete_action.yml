@@ -1,0 +1,13 @@
+uuid: 69e4b650-3349-45dd-9563-39017828d5ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_crm_logs
+_core:
+  default_config_hash: EsZgjP2PJrvruFAen2L0pbZOHoNfdwq2ycXYnf0WVyw
+id: wa_crm_logs_crm_log_delete_action
+label: 'Delete crm logs'
+type: crm_log
+plugin: 'entity:delete_action:crm_log'
+configuration: {  }

@@ -159,6 +159,7 @@ module:
   user: 0
   views_infinite_scroll: 0
   viewsreference: 0
+  wa_crm_logs: 0
   wa_migration: 0
   wa_orange_dam: 0
   wateraid_blocks: 0

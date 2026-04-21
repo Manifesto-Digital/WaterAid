@@ -13,35 +13,55 @@ use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Queue\QueueFactory;
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\webform\WebformSubmissionInterface;
 
 class QueueHandler {
 
-  private ConfigFactory $configFactory;
-  private Connection $database;
-  private EntityTypeManagerInterface $entityTypeManager;
-  private AzureApi $azureBlobStorageApi;
-  private LoggerChannelInterface $loggerChannel;
+  /**
+   * The main CRM Transfer queue.
+   *
+   * @var \Drupal\Core\Queue\QueueInterface
+   */
   private QueueInterface $mainQueue;
+
+  /**
+   * The dead letter queue for failed items.
+   *
+   * @var \Drupal\Core\Queue\QueueInterface
+   */
   private QueueInterface $deadLetterQueue;
 
+  /**
+   * The option list array.
+   *
+   * @var array
+   */
   private array $optionList = [];
 
 
   /**
    * @param ConfigFactory $configFactory
+   *   The config factory.
    * @param EntityTypeManagerInterface $entityTypeManager
+   *   An entity type manager.
    * @param Connection $database
+   *   a database connection.
    * @param QueueFactory $queueService
+   *   The queue factory.
    * @param AzureApi $azureBlobStorageApi
-   * @param LoggerChannelInterface $loggerChannel
+   *   The Azure API service.
+   * @param Logging $logging
+   *   The CRM logging service.
    */
-  public function __construct(ConfigFactory $configFactory, EntityTypeManagerInterface $entityTypeManager, Connection $database, QueueFactory $queueService, AzureApi $azureBlobStorageApi, LoggerChannelInterface $loggerChannel) {
-    $this->configFactory       = $configFactory;
-    $this->entityTypeManager   = $entityTypeManager;
-    $this->database            = $database;
-    $this->azureBlobStorageApi = $azureBlobStorageApi;
-    $this->loggerChannel       = $loggerChannel;
+  public function __construct(
+    private readonly ConfigFactory $configFactory,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly Connection $database,
+    QueueFactory $queueService,
+    private readonly AzureApi $azureBlobStorageApi,
+    private readonly Logging $logging,
+  ) {
     $this->mainQueue           = $queueService->get('azure_blob_storage_queue');
     $this->deadLetterQueue     = $queueService->get('azure_blob_storage_dead_letter_queue');
 
@@ -375,8 +395,8 @@ class QueueHandler {
       ]);
 
     if ($submissions && count($submissions)) {
-      $submission  = reset($submissions);
-      $name        = $data['webform_id'] . '-' . $submission->uuid() . '.json';
+      $submission = reset($submissions);
+      $name = $data['webform_id'] . '-' . $submission->uuid() . '.json';
       $is_donation = FALSE;
 
       try {
@@ -384,21 +404,54 @@ class QueueHandler {
         $is_donation = TRUE;
       }
       catch (\Exception $e) {
-
       }
 
-      if ($this->azureBlobStorageApi->blobPut($this->getPrefixedName($name, $is_donation), $this->generateBlobArray($submission, $is_donation), TRUE)) {
-        // The submission has been successfully stored in the blob, so we can
-        // delete it from the website.
-        $submission->delete();
+      // Get the group for logging purposes.
+      $group = $this->getGroup($submission);
+
+      try {
+        if ($this->azureBlobStorageApi->blobPut($this->getPrefixedName($name, $is_donation), $this->generateBlobArray($submission, $is_donation), TRUE)) {
+          // The submission has been successfully stored in the blob, so we can
+          // delete it from the website.
+          $submission->delete();
+        }
+        else {
+          if ($log = $this->logging->createLog("Unable to store webform blob {$data['sid']} from the {$data['webform_id']} webform to the Azure storage blob", $submission, $group)) {
+            $log->save();
+          }
+        }
       }
-      else {
-        throw new \Exception("Unable to store webform blob {$data['sid']} from the {$data['webform_id']} webform to the Azure storage blob");
+      catch (\Exception $e) {
+        if ($log = $this->logging->createLog($e, $submission, $group)) {
+          $log->save();
+        }
       }
     }
     else {
-      throw new \Exception("Unable to load webform {$data['sid']} from the {$data['webform_id']} webform to the Azure storage blob");
+      if ($log = $this->logging->createLog("Unable to load webform {$data['sid']} from the {$data['webform_id']} webform to the Azure storage blob", $data['sid'])) {
+        $log->save();
+      }
     }
+  }
+
+  /**
+   * @param \Drupal\webform\WebformSubmissionInterface $submission
+   *
+   * @return \Drupal\group\Entity\GroupInterface|null
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function getGroup(WebformSubmissionInterface $submission): ?GroupInterface {
+    $group = NULL;
+
+    /** @var \Drupal\group\Entity\Storage\GroupRelationshipStorageInterface $storage */
+    $storage = $this->entityTypeManager->getStorage('group_relationship');
+
+    if ($relationships = $storage->loadByEntity($submission->getWebform())) {
+      $group = $relationships[0]->getGroup();
+    }
+
+    return $group;
   }
 
   /**
@@ -415,8 +468,6 @@ class QueueHandler {
         $this->mainQueue->deleteItem($item);
       }
       catch (\Exception $e) {
-        $this->loggerChannel->critical($e->getMessage());
-
         $data['tries']++;
         $this->mainQueue->deleteItem($item);
 
