@@ -1,0 +1,29 @@
+uuid: 46f8ce8c-2b4f-4dc0-8bea-1d9cce7a1915
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_crm_logs
+title: 'Clean up Blob Transfer logs'
+id: wa_crm_logs_cron
+weight: 0
+module: wa_crm_logs
+callback: 'wa_crm_logs#cron'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '0+@ 0 * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

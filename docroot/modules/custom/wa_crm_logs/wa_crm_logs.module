@@ -78,3 +78,37 @@ function wa_crm_logs_user_predelete(UserInterface $account): void {
 function wa_crm_logs_cron(): void {
   \Drupal::service('wa_crm_logs.logging')->deleteLogs();
 }
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function wa_crm_logs_views_data_alter(array &$data): void {
+  if (isset($data['crm_log_field_data'])) {
+    $data['crm_log_field_data']['webform_submission'] = [
+      'title' => t('Webform submission'),
+      'help' => t('Relates the CRM Log relationship to the Webform Submission'),
+      'relationship' => [
+        'group' => t('Webform Submission'),
+        'base' => 'webform_submission',
+        'base field' => 'sid',
+        'relationship field' => 'submission',
+        'id' => 'standard',
+        'label' => t('Relationship to Webform Submission'),
+      ],
+    ];
+  }
+  if (isset($data['webform_submission'])) {
+    $data['webform_submission']['crm_log_field_data'] = [
+      'title' => t('CRM log'),
+      'help' => t('Relates the Webform Submission to the CRM Log'),
+      'relationship' => [
+        'group' => t('CRM log'),
+        'base' => 'crm_log_field_data',
+        'base field' => 'submission',
+        'relationship field' => 'sid',
+        'id' => 'standard',
+        'label' => t('Relationship to CRM Log'),
+      ],
+    ];
+  }
+}

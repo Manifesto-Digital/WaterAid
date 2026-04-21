@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\wa_crm_logs\Entity;
 
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\wa_crm_logs\CRMLogInterface;
 use Drupal\Core\Entity\EntityChangedTrait;
@@ -12,7 +11,6 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\RevisionableContentEntityBase;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\user\EntityOwnerTrait;
 
