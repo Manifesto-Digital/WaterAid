@@ -11,6 +11,7 @@ display:
         uid:
           label: Forfatter
         status:
+          label: Status
           settings:
             format_custom_false: 'Ikke udgivet'
             format_custom_true: Udgivet
@@ -40,6 +41,9 @@ display:
         area_text_custom:
           content: 'Ingen tilgængelige media.'
       filters:
+        bundle:
+          expose:
+            label: Type
         status:
           expose:
             label: Sandt

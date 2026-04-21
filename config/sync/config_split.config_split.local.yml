@@ -17,6 +17,7 @@ module:
   purge_ui: 0
   queue_ui: 0
   views_ui: 0
+  dblog: 0
 theme: {  }
 complete_list:
   - search_api.server.ddev_solr_local

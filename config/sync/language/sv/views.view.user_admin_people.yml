@@ -7,6 +7,10 @@ display:
           label: Användarnamn
         status:
           label: Status
+          settings:
+            format_custom_true: Active
+        roles_target_id:
+          label: Roles
         operations:
           label: Funktioner
       exposed_form:
@@ -20,6 +24,9 @@ display:
         status:
           group_info:
             label: Status
+            group_items:
+              1:
+                title: Active
         roles_target_id:
           expose:
             label: Roll
