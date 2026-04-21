@@ -18,5 +18,5 @@ entity.crm_log.delete_form:
 entity.crm_log.collection:
   title: 'CRM Logs'
   route_name: entity.crm_log.collection
-  base_route: system.admin_content
+  base_route: system.admin_reports
   weight: 10

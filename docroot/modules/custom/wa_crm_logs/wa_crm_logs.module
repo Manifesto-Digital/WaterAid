@@ -71,3 +71,10 @@ function wa_crm_logs_user_predelete(UserInterface $account): void {
     $storage->deleteRevision($revision_id);
   }
 }
+
+/**
+ * Implements hook_cron().
+ */
+function wa_crm_logs_cron(): void {
+  \Drupal::service('wa_crm_logs.logging')->deleteLogs();
+}

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\wa_crm_logs\Entity;
 
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\wa_crm_logs\CRMLogInterface;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -65,12 +67,12 @@ use Drupal\user\EntityOwnerTrait;
  *     "revision_log_message" = "revision_log",
  *   },
  *   links = {
- *     "collection" = "/admin/content/crm-log",
+ *     "collection" = "/admin/reports/crm-transfer-error",
  *     "add-form" = "/admin/reports/crm-transfer-error/add",
  *     "canonical" = "/admin/reports/crm-transfer-error/{crm_log}",
  *     "edit-form" = "/admin/reports/crm-transfer-error/{crm_log}/edit",
  *     "delete-form" = "/admin/reports/crm-transfer-error/{crm_log}/delete",
- *     "delete-multiple-form" = "/admin/content/crm-log/delete-multiple",
+ *     "delete-multiple-form" = "/admin/reports/crm-transfer-error/delete-multiple",
  *     "revision" = "/admin/reports/crm-transfer-error/{crm_log}/revision/{crm_log_revision}/view",
  *     "revision-delete-form" = "/admin/reports/crm-transfer-error/{crm_log}/revision/{crm_log_revision}/delete",
  *     "revision-revert-form" = "/admin/reports/crm-transfer-error/{crm_log}/revision/{crm_log_revision}/revert",
@@ -83,6 +85,16 @@ final class CRMLog extends RevisionableContentEntityBase implements CRMLogInterf
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
+  use StringTranslationTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function label() {
+    return $this->t('CRM Log :id', [
+      ':id' => $this->id(),
+    ]);
+  }
 
   /**
    * {@inheritdoc}

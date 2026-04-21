@@ -28,4 +28,13 @@ interface LoggingInterface {
    */
   public function createLog(\Exception|string $error, WebformSubmissionInterface|int|string $submission, ?GroupInterface $group = NULL): CRMLogInterface;
 
+  /**
+   * Deletes outdated logs based on settings.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function deleteLogs(): void;
+
 }

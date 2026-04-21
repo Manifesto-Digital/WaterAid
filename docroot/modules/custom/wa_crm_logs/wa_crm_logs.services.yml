@@ -1,4 +1,4 @@
 services:
   wa_crm_logs.logging:
     class: Drupal\wa_crm_logs\Service\Logging
-    arguments: ['@entity_type.manager']
+    arguments: ['@entity_type.manager', '@config.factory']

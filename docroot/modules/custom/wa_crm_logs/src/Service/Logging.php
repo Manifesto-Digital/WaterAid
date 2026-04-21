@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\wa_crm_logs\Service;
 
+use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\wa_crm_logs\CRMLogInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\group\Entity\GroupInterface;
@@ -19,6 +21,7 @@ final class Logging implements LoggingInterface {
    */
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly ConfigFactory $configFactory,
   ) {}
 
   /**
@@ -37,6 +40,27 @@ final class Logging implements LoggingInterface {
     }
 
     return $log;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function deleteLogs(): void {
+    if ($expiry = $this->configFactory->get('wa_crm_logs.settings')->get('expiry')) {
+      $storage = $this->entityTypeManager->getStorage('crm_log');
+
+      $query = $storage->getQuery();
+
+      $date = new DrupalDateTime();
+      $date->modify("- $expiry days");
+
+      $query->condition('created', $date->getTimestamp(), '<');
+
+      if ($results = $query->accessCheck(FALSE)->execute()) {
+        $logs = $storage->loadMultiple($results);
+        $storage->delete($logs);
+      }
+    }
   }
 
 }

@@ -8,10 +8,4 @@ entity.crm_log.collection:
   title: 'CRM Logs'
   description: 'List of crm logs.'
   route_name: entity.crm_log.collection
-  parent: system.admin_content
-
-wa_crm_logs.crm_log_settings:
-  title: CRM Log settings
-  description: Configure the CRM Logs
-  route_name: wa_crm_logs.crm_log_settings
-  weight: 10
+  parent: system.admin_reports
