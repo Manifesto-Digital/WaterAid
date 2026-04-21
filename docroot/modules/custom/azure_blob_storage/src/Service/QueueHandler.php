@@ -9,11 +9,11 @@ use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Queue\QueueFactory;
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\group\Entity\GroupInterface;
+use Drupal\wa_crm_logs\Service\Logging;
 use Drupal\webform\WebformSubmissionInterface;
 
 class QueueHandler {
@@ -39,7 +39,6 @@ class QueueHandler {
    */
   private array $optionList = [];
 
-
   /**
    * @param ConfigFactory $configFactory
    *   The config factory.
@@ -62,8 +61,8 @@ class QueueHandler {
     private readonly AzureApi $azureBlobStorageApi,
     private readonly Logging $logging,
   ) {
-    $this->mainQueue           = $queueService->get('azure_blob_storage_queue');
-    $this->deadLetterQueue     = $queueService->get('azure_blob_storage_dead_letter_queue');
+    $this->mainQueue = $queueService->get('azure_blob_storage_queue');
+    $this->deadLetterQueue = $queueService->get('azure_blob_storage_dead_letter_queue');
 
     if (Settings::get('azure_blob_storage_accountname')) {
       $this->azureBlobStorageApi->setAccountName(Settings::get('azure_blob_storage_accountname'));
@@ -89,8 +88,8 @@ class QueueHandler {
    */
   private function generateBlobArray(WebformSubmissionInterface $submission, bool $isDonationSubmission = false): array {
     $webform = $submission->getWebform();
-    $owner   = $webform->getOwner();
-    $date    = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
+    $owner = $webform->getOwner();
+    $date = ($submitted = $submission->getCompletedTime()) ? DrupalDateTime::createFromTimestamp($submitted) : new DrupalDateTime();
 
     if ($isDonationSubmission) {
       if ($webform->id() === 'pay_in_your_fundraising') {
@@ -106,13 +105,13 @@ class QueueHandler {
     }
 
     return [
-      'id'                        => $submission->uuid(),
-      'webform'                   => $this->getPrefixedName($webform->id(), $isDonationSubmission),
-      'webform_owner'             => ($owner) ? $owner->label() : 'Anonymous',
-      'webform_last_updated'      => '',
-      "submission_remote_address" => $submission->getRemoteAddr(),
-      'submission_data'           => $submission_data,
-      'submission_date'           => $date->format(\DateTimeInterface::ATOM),
+      'id' => $submission->uuid(),
+      'webform' => $this->getPrefixedName($webform->id(), $isDonationSubmission),
+      'webform_owner' => ($owner) ? $owner->label() : 'Anonymous',
+      'webform_last_updated' => '',
+      'submission_remote_address' => $submission->getRemoteAddr(),
+      'submission_data' => $submission_data,
+      'submission_date' => $date->format(\DateTimeInterface::ATOM),
     ];
   }
 
@@ -160,7 +159,7 @@ class QueueHandler {
     $option_config = $this->configFactory->loadMultiple($ids);
 
     foreach ($option_config as $key => $config_item) {
-      $option_key  = str_replace('webform.webform_options.', '', $key);
+      $option_key = str_replace('webform.webform_options.', '', $key);
       $raw_options = $config_item->getRawData()['options'];
 
       if(!empty($raw_options)) {
@@ -189,65 +188,65 @@ class QueueHandler {
 
     $mappedData = [
       'contact_name_first' => self::mapSafeValue($submissionData['contact_name'], 'first'),
-      'contact_name_last'  => self::mapSafeValue($submissionData['contact_name'], 'last'),
+      'contact_name_last' => self::mapSafeValue($submissionData['contact_name'], 'last'),
       'contact_name_title' => self::mapSafeValue($submissionData['contact_name'], 'title'),
-      'contact_email'      => self::mapSafeValue($submissionData['contact_email'], 'email'),
+      'contact_email' => self::mapSafeValue($submissionData['contact_email'], 'email'),
       'contact_address' => [
-        'address'        => self::mapSafeValue($submissionData['contact_address'],'address'),
-        'address_2'      => self::mapSafeValue($submissionData['contact_address'],'address_2'),
-        'city'           => self::mapSafeValue($submissionData['contact_address'],'city'),
-        'country'        => self::mapSafeValue($submissionData['contact_address'],'country'),
-        'paf_validated'  => self::mapSafeValue($submissionData['contact_address'],'paf'),
-        'postal_code'    => self::mapSafeValue($submissionData['contact_address'],'postal_code'),
+        'address' => self::mapSafeValue($submissionData['contact_address'],'address'),
+        'address_2' => self::mapSafeValue($submissionData['contact_address'],'address_2'),
+        'city' => self::mapSafeValue($submissionData['contact_address'],'city'),
+        'country' => self::mapSafeValue($submissionData['contact_address'],'country'),
+        'paf_validated' => self::mapSafeValue($submissionData['contact_address'],'paf'),
+        'postal_code' => self::mapSafeValue($submissionData['contact_address'],'postal_code'),
         'state_province' => self::mapSafeValue($submissionData['contact_address'],'state_province'),
       ],
-      "contact_phone" => self::mapSafeValue($submissionData, 'contact_phone'),
-      "communication_preferences" => [
-        "opt_in_email"        => NULL,
-        "opt_in_phone"        => NULL,
-        "opt_in_sms"          => NULL,
-        "opt_in_social_media" => NULL,
-        "opt_out_post"        => FALSE,
+      'contact_phone' => self::mapSafeValue($submissionData, 'contact_phone'),
+      'communication_preferences' => [
+        'opt_in_email' => NULL,
+        'opt_in_phone' => NULL,
+        'opt_in_sms' => NULL,
+        'opt_in_social_media' => NULL,
+        'opt_out_post' => FALSE,
       ],
-      'reason_for_donating'         => self::mapSafeValue($submissionData,'prompt_reason'),
-      'in_memory_firstname'         => '',
-      'in_memory_lastname'          => '',
-      'in_memory_relationship'      => '',
-      'in_memory_title'             => '',
-      'gift_aid'                    => (isset($submissionData['gift_aid']) && !empty($submissionData['gift_aid']['opt_in'])) ? TRUE  : NULL,
-      'donation_currency'           => self::mapSafeValue($submissionData,'donation__currency'),
-      'donation_amount'             => self::mapSafeValue($submissionData,'donation__amount'),
-      'donation_date'               => self::mapSafeValue($submissionData,'donation__date'),
+      'reason_for_donating' => self::mapSafeValue($submissionData,'prompt_reason'),
+      'in_memory_firstname' => '',
+      'in_memory_lastname' => '',
+      'in_memory_relationship' => '',
+      'in_memory_title' => '',
+      'gift_aid' => (isset($submissionData['gift_aid']) && !empty($submissionData['gift_aid']['opt_in'])) ? TRUE : NULL,
+      'donation_currency' => self::mapSafeValue($submissionData,'donation__currency'),
+      'donation_amount' => self::mapSafeValue($submissionData,'donation__amount'),
+      'donation_date' => self::mapSafeValue($submissionData,'donation__date'),
       'donation_fulfillment_letter' => self::mapSafeValue($submissionData,'donation__fulfillment_letter'),
-      'donation_status'             => self::mapSafeValue($submissionData, 'donation__status'),
-      'donation_transaction_id'     => '',
-      'donation_payment_method'     => self::mapSafeValue($submissionData, 'donation__payment_method'),
-      'dd_currency'                 => '',
-      'dd_amount'                   => '',
-      'dd_date'                     => '',
-      'dd_fulfillment_letter'       => '',
-      'dd_status'                   => '',
-      'dd_first_payment_date'       => '',
-      'dd_frequency'                => '',
-      'dd_sort_code'                => '',
-      'dd_account_number'           => '',
-      'dd_account_name'             => '',
-      'dd_instruction_reference'    => '',
-      'utm_campaign'                => '',
-      'utm_source'                  => '',
-      'utm_content'                 => '',
-      'utm_medium'                  => '',
-      'fund_code'                   => '',
-      'package_id'                  => self::mapSafeValue($submissionData, 'donation__package_code'),
-      'campaign'                    => '',
-      'segment_code'                => ''
+      'donation_status' => self::mapSafeValue($submissionData, 'donation__status'),
+      'donation_transaction_id' => '',
+      'donation_payment_method' => self::mapSafeValue($submissionData, 'donation__payment_method'),
+      'dd_currency' => '',
+      'dd_amount' => '',
+      'dd_date' => '',
+      'dd_fulfillment_letter' => '',
+      'dd_status' => '',
+      'dd_first_payment_date' => '',
+      'dd_frequency' => '',
+      'dd_sort_code' => '',
+      'dd_account_number' => '',
+      'dd_account_name' => '',
+      'dd_instruction_reference' => '',
+      'utm_campaign' => '',
+      'utm_source' => '',
+      'utm_content' => '',
+      'utm_medium' => '',
+      'fund_code' => '',
+      'package_id' => self::mapSafeValue($submissionData, 'donation__package_code'),
+      'campaign' => '',
+      'segment_code' => ''
     ];
 
     if (isset($submissionData['in_memory'])) {
-      $mappedData['in_memory_firstname']    = self::mapSafeValue($submissionData['in_memory'],'in_memory_firstname');
-      $mappedData['in_memory_lastname']     = self::mapSafeValue($submissionData['in_memory'],'in_memory_lastname');
+      $mappedData['in_memory_firstname'] = self::mapSafeValue($submissionData['in_memory'],'in_memory_firstname');
+      $mappedData['in_memory_lastname'] = self::mapSafeValue($submissionData['in_memory'],'in_memory_lastname');
       $mappedData['in_memory_relationship'] = self::mapSafeValue($submissionData['in_memory'],'in_memory_relationship');
-      $mappedData['in_memory_title']        = self::mapSafeValue($submissionData['in_memory'],'in_memory_title');
+      $mappedData['in_memory_title'] = self::mapSafeValue($submissionData['in_memory'],'in_memory_title');
     }
 
     if (!empty($submissionData['communication_preferences']['opt_in_email']) || in_array('opt_in_email', $submissionData['communication_preferences'])) {
@@ -263,16 +262,16 @@ class QueueHandler {
       isset($submissionData['payment']) &&
       ($submissionData['donation__payment_method'] === 'bank_account')
     ) {
-      $mappedData['dd_currency']              = self::mapSafeValue($submissionData['payment'], 'currency');
-      $mappedData['dd_amount']                = self::mapSafeValue($submissionData['payment'], 'amount');
-      $mappedData['dd_date']                  = self::mapSafeValue($submissionData['payment'], 'date');
-      $mappedData['dd_fulfillment_letter']    = self::mapSafeValue($submissionData['payment'], 'fulfillment_letter');
-      $mappedData['dd_status']                = self::mapSafeValue($submissionData['payment'], 'dd_status');
-      $mappedData['dd_first_payment_date']    = self::mapSafeValue($submissionData['payment'], 'first_payment_date');
-      $mappedData['dd_frequency']             = self::mapSafeValue($submissionData['payment'], 'frequency');
-      $mappedData['dd_sort_code']             = self::mapSafeValue($submissionData['payment'], 'sort_code');
-      $mappedData['dd_account_number']        = self::mapSafeValue($submissionData['payment'], 'account_number');
-      $mappedData['dd_account_name']          = self::mapSafeValue($submissionData['payment'],'account_name');
+      $mappedData['dd_currency'] = self::mapSafeValue($submissionData['payment'], 'currency');
+      $mappedData['dd_amount'] = self::mapSafeValue($submissionData['payment'], 'amount');
+      $mappedData['dd_date'] = self::mapSafeValue($submissionData['payment'], 'date');
+      $mappedData['dd_fulfillment_letter'] = self::mapSafeValue($submissionData['payment'], 'fulfillment_letter');
+      $mappedData['dd_status'] = self::mapSafeValue($submissionData['payment'], 'dd_status');
+      $mappedData['dd_first_payment_date'] = self::mapSafeValue($submissionData['payment'], 'first_payment_date');
+      $mappedData['dd_frequency'] = self::mapSafeValue($submissionData['payment'], 'frequency');
+      $mappedData['dd_sort_code'] = self::mapSafeValue($submissionData['payment'], 'sort_code');
+      $mappedData['dd_account_number'] = self::mapSafeValue($submissionData['payment'], 'account_number');
+      $mappedData['dd_account_name'] = self::mapSafeValue($submissionData['payment'],'account_name');
       $mappedData['dd_instruction_reference'] = self::mapSafeValue($submissionData['payment'], 'instruction_reference');
     }
 
@@ -298,23 +297,23 @@ class QueueHandler {
 
     $keys = [
       'have_you_had_a_talk_or_workshop_from_a_wateraid_speaker_' => 'have_you_had_a_talk_or_workshop_from_a_wateraid_speaker',
-      'how_was_the_money_raised_'                                => 'how_was_the_money_raised',
-      'organisation_name'                                        => 'organisation_name',
-      'organisation_name_company'                                => 'organisation_name_company',
-      'organisation_type'                                        => 'organisation_type',
-      'team_name'                                                => 'team_name',
-      'type_of_service_organisation_or_club'                     => 'type_of_service_organisation_or_club',
-      'university_name'                                          => 'university_name',
-      'what_event_did_you_take_part_in_company'                  => 'what_event_did_you_take_part_in_company',
-      'what_event_did_you_take_part_in_individual'               => 'what_event_did_you_take_part_in_individual',
-      'what_kind_of_event_challenge_company_'                    => 'what_kind_of_event_challenge_company',
-      'what_kind_of_event_challenge_faith_group_'                => 'what_kind_of_event_challenge_faith_group',
-      'what_kind_of_event_challenge_individual_'                 => 'what_kind_of_event_challenge_individual',
-      'what_kind_of_event_challenge_school_'                     => 'what_kind_of_event_challenge_school',
-      'what_was_the_name_of_the_event_'                          => 'what_was_the_name_of_the_event',
-      'what_was_the_name_of_the_event_water_company_event'       => 'what_was_the_name_of_the_event_water_company_event',
-      'when_did_the_event_take_place_company'                    => 'when_did_the_event_take_place_company',
-      'when_did_the_event_take_place_individual'                 => 'when_did_the_event_take_place_individual',
+      'how_was_the_money_raised_' => 'how_was_the_money_raised',
+      'organisation_name' => 'organisation_name',
+      'organisation_name_company' => 'organisation_name_company',
+      'organisation_type' => 'organisation_type',
+      'team_name' => 'team_name',
+      'type_of_service_organisation_or_club' => 'type_of_service_organisation_or_club',
+      'university_name' => 'university_name',
+      'what_event_did_you_take_part_in_company' => 'what_event_did_you_take_part_in_company',
+      'what_event_did_you_take_part_in_individual' => 'what_event_did_you_take_part_in_individual',
+      'what_kind_of_event_challenge_company_' => 'what_kind_of_event_challenge_company',
+      'what_kind_of_event_challenge_faith_group_' => 'what_kind_of_event_challenge_faith_group',
+      'what_kind_of_event_challenge_individual_' => 'what_kind_of_event_challenge_individual',
+      'what_kind_of_event_challenge_school_' => 'what_kind_of_event_challenge_school',
+      'what_was_the_name_of_the_event_' => 'what_was_the_name_of_the_event',
+      'what_was_the_name_of_the_event_water_company_event' => 'what_was_the_name_of_the_event_water_company_event',
+      'when_did_the_event_take_place_company' => 'when_did_the_event_take_place_company',
+      'when_did_the_event_take_place_individual' => 'when_did_the_event_take_place_individual',
     ];
 
     foreach ($keys as $sourceKey => $destinationKey) {
@@ -351,15 +350,15 @@ class QueueHandler {
    *   The mapped data
    */
   public function mapStandardItem(WebformSubmissionInterface $submission): array {
-    $data    = $submission->getData();
+    $data = $submission->getData();
     $webform = $submission->getWebform();
-    $fields  = $webform->getElementsDecodedAndFlattened();
+    $fields = $webform->getElementsDecodedAndFlattened();
 
     foreach ($fields as $fieldKey => $fieldDefinition) {
       if (isset($fieldDefinition['#options']) && is_string($fieldDefinition['#options'])) {
         if (!empty($this->optionList[$fieldDefinition['#options']])) {
           $options = $this->optionList[$fieldDefinition['#options']];
-          $values  = $data[$fieldKey];
+          $values = $data[$fieldKey];
 
           $data[$fieldKey] = [];
 
@@ -382,6 +381,7 @@ class QueueHandler {
    *
    * @throws InvalidPluginDefinitionException
    * @throws PluginNotFoundException
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function processQueueItem(array $data): void {
     if (!isset($data['webform_id']) || !isset($data['sid'])) {
@@ -390,7 +390,7 @@ class QueueHandler {
 
     $submissions = $this->entityTypeManager->getStorage('webform_submission')
       ->loadByProperties([
-        'sid'        => $data['sid'],
+        'sid' => $data['sid'],
         'webform_id' => $data['webform_id'],
       ]);
 

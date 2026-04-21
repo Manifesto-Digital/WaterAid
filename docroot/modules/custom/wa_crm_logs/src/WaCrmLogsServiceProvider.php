@@ -20,7 +20,7 @@ final class WaCrmLogsServiceProvider implements ServiceModifierInterface {
 
     // Add the service dependency here so we can install the new module without
     // any errors.
-    if ($container->hasExtension('azure_blob_storage.queue_handler')) {
+    if ($container->hasDefinition('azure_blob_storage.queue_handler')) {
       $container->getDefinition('azure_blob_storage.queue_handler')
         ->addArgument(new Reference('wa_crm_logs.logging'));
     }
