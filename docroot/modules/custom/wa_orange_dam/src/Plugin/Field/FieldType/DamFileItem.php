@@ -48,6 +48,7 @@ class DamFileItem extends FieldItemBase {
       $search = $this->api()
         ->search(['query' => 'SystemIdentifier:' . $system_id], [
           'CoreField.FileSize',
+          'CoreField.Id_Client',
           'Document.FileSizeMB',
           'Document.FileExtension',
           'Document.MimeType',
@@ -55,6 +56,7 @@ class DamFileItem extends FieldItemBase {
 
       $data['url'] = $public_link['link'] ?? '';
       $data['filename'] = (isset($public_link['link'])) ? basename($public_link['link']) : '';
+      $data['title'] =$search['APIResponse']['Items'][0]['CoreField.Id_Client'] ?? $data['filename'];
       $data['file_size'] = $search['APIResponse']['Items'][0]['CoreField.FileSize'] ?? '';
       $data['file_size_mb'] = $search['APIResponse']['Items'][0]['Document.FileSizeMB'] ?? '';
       $data['file_mimetype'] = $search['APIResponse']['Items'][0]['MIMEtype'] ?? '';
