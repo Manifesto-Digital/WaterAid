@@ -165,7 +165,7 @@
     events: {
       "click .webform-button--previous": "backStep",
       "click .webform-button--next": "nextStep",
-      "click .webform-button--submit": "submitForm",
+      "click .sf3ds_submit": "submitForm",
       "click .payment-button": "submitForm"
     },
     backStep: function (event) {
@@ -214,7 +214,7 @@
       this.model.trigger('submitForm', event);
     },
     doSubmitForm: function () {
-      $('input.webform-button--submit', this.el).click();
+      $('input.sf3ds_submit', this.el).click();
     },
     scrollToError: function (event) {
       let $form = $(this.el).closest('form');

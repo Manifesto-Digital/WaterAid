@@ -15,7 +15,9 @@
       this.listenTo(this.model, 'submitForm', this.submitFormHandler);
       this.listenTo(this.model, 'refresh', this.handleMountBehaviour);
       this.mounted = false;
+      // $('.webform-submission-form').on('click', '#edit-sf3ds-card-form-submit', this.submitFormHandler);
     },
+
     // Set inputs within a given wrapper to be either required or optional.
     setInputState: function (wrapper, state) {
       const inputs = wrapper.querySelectorAll('input');
@@ -52,7 +54,7 @@
       });
     },
     handleMountBehaviour: function () {
-      if (this.model.isCurrentPaymentMethod(this)) {
+      if (this.model.attributes.paymentMethod === 'sf3ds') {
         this.setInputState(this.el, 'required');
         if (!this.mounted) {
           this.mounted = true;
@@ -119,7 +121,16 @@
               'gmo-card-recurring',
               'gmo-expiration-month-recurring',
               'gmo-expiration-year-recurring',
-              'gmo-security-code-recurring'
+              'gmo-security-code-recurring',
+              'edit-sf3ds-card-form-cardnumber',
+              'edit-sf3ds-card-form-cardholder',
+              'edit-sf3ds-card-form-month',
+              'edit-sf3ds-card-form-year',
+              'edit-sf3ds-card-form-security-code',
+              'edit-sf3ds-card-form-submit',
+              'edit-payment-payment-methods-one-off-selection-gmo-bank-transfer',
+              'edit-payment-payment-methods-one-off-selection-sf3ds',
+              'edit-submit'
             ];
 
             if (excludedFields.indexOf(input.id) == -1) {
@@ -162,7 +173,7 @@
                     }
 
                     const id = input.getAttribute('data-drupal-selector') + '-preview';
-                    const parentFieldset = fieldset.closest('.webform-type-fieldset, .donations-webform-amount--wrapper');
+                    const parentFieldset = fieldset.closest('.fieldgroup, .donations-webform-amount--wrapper, .webform-type-fieldset');
                     const parentFieldsetTitle = parentFieldset.querySelector('.fieldset-legend').innerText;
 
                     // Check if the fieldset already exists on the data object.
@@ -195,6 +206,22 @@
                   }
                   data[fieldsetTitle][id]['value'] = input.value;
                   data[fieldsetTitle][id]['label'] = label;
+                }
+                else {
+                  const setTitle = input.parentElement.parentElement.getAttribute('data-webform-key');
+                  let label = '';
+                  if (input.parentElement && input.parentElement.classList.contains('form-item')) {
+                    label = input.parentElement.querySelector('label').innerText;
+                  }
+                  const id = input.getAttribute('data-drupal-selector') + "-preview";
+                  if (!data.hasOwnProperty(setTitle)) {
+                    data[setTitle] = {}
+                  }
+                  if (!data[setTitle].hasOwnProperty(id)) {
+                    data[setTitle][id] = {}
+                  }
+                  data[setTitle][id]['value'] = input.value;
+                  data[setTitle][id]['label'] = label;
                 }
               }
             }
@@ -302,7 +329,6 @@
         // Prevent form from submitting until salesforceSuccess flag is true.
         if (!this.model.salesforceSuccess) {
           event.preventDefault();
-
           // Only proceed if the non-payment form fields are valid.
           if ($('.webform-submission-form').valid()) {
             // If fields are valid, show modal for user to confirm form inputs

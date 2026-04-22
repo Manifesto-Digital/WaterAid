@@ -6,6 +6,9 @@ gmo.gmojs-test:
     - wateraid_donation_forms/wateraid_donation_forms
     - core/drupal.message
     - core/drupal.dialog.ajax
+    - core/drupal
+    - core/jquery
+    - core/once
 gmo.gmojs-live:
   js:
     https://static.mul-pay.jp/ext/js/token.js: { type: external, minified: true }
@@ -14,3 +17,15 @@ gmo.gmojs-live:
     - wateraid_donation_forms/wateraid_donation_forms
     - core/drupal.message
     - core/drupal.dialog.ajax
+    - core/drupal
+    - core/jquery
+    - core/once
+form.card:
+  js:
+    https://stg.static.mul-pay.jp/ext/js/token.js: { type: external, minified: true }
+    js/webform_gmo.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupal.dialog.ajax
+    - core/once
