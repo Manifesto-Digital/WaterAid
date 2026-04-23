@@ -4,7 +4,7 @@
       let width = document.body.clientWidth;
       const setScrollLogic = (component) => {
         const images = component.querySelectorAll(".parallax-scroll__image");
-        
+
         // Set first image as active.
         if (images[0]) {
           images[0].classList.add("active");
@@ -16,22 +16,24 @@
         const thresholdArray = [0];
 
         // Check if background image that first and last image show full image.
-        const isBackground = component.classList.contains("parallax-scroll--background");
+        const isBackground = component.classList.contains(
+          "parallax-scroll--background",
+        );
         const componentHeight = component.offsetHeight;
         const windowHeight = window.innerHeight;
         const firstPercent = (windowHeight + 200) / componentHeight;
 
         if (isBackground && firstPercent > changeDecimal) {
-          thresholdArray.push(firstPercent);
           const lastPercent = 1 - firstPercent;
           const midArea = lastPercent - firstPercent;
           const midPercent = midArea / (Number(imageCount) - 2);
 
-          if(imageCount === 2) {
-            thresholdArray.push(0.5);
-          } else if (imageCount === 3) {
+          if (imageCount === "2") {
+            thresholdArray.push(0.5, 1);
+          } else if (imageCount === "3") {
             thresholdArray.push(0.36, 0.61);
           } else {
+            thresholdArray.push(firstPercent);
             // Calculate percentages of middles images.
             for (let i = 1; i < images.length - 2; i++) {
               let prevPercent = firstPercent + midPercent;
@@ -45,17 +47,16 @@
             thresholdArray.push(lastPercent, 1);
           }
         } else {
-          if (imageCount === '2') {
+          if (imageCount === "2") {
             thresholdArray.push(0.35, 1);
           } else {
             images.forEach((image) => {
               thresholdArray.push(
-                image.getAttribute("data-image-no") * changeDecimal
+                image.getAttribute("data-image-no") * changeDecimal,
               );
             });
           }
         }
-
 
         // Change image when between thresholds.
         window.addEventListener("scroll", () => {
@@ -74,7 +75,7 @@
               images.forEach((image) => {
                 image.classList.remove("active");
               });
-              if(images[i]) {
+              if (images[i]) {
                 images[i].classList.add("active");
               }
             }
@@ -88,13 +89,19 @@
 
       // Set image container height on desktop for sticky image on two column variant.
       const setScrollHeight = () => {
-        const twoColumns = document.querySelectorAll(".parallax-scroll--two-column");
-        const background = document.querySelectorAll(".parallax-scroll--background");
+        const twoColumns = document.querySelectorAll(
+          ".parallax-scroll--two-column",
+        );
+        const background = document.querySelectorAll(
+          ".parallax-scroll--background",
+        );
         let width = document.body.clientWidth;
 
         if (twoColumns && width > 1024) {
           twoColumns.forEach((component) => {
-            const sectionImages = component.querySelectorAll(".parallax-scroll__image");
+            const sectionImages = component.querySelectorAll(
+              ".parallax-scroll__image",
+            );
 
             sectionImages.forEach((image) => {
               image.style.height = `${component.offsetHeight}px`;

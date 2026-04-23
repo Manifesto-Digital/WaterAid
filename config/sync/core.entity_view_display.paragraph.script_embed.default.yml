@@ -1,0 +1,24 @@
+uuid: 12b93f31-a121-4b2b-9818-fdcf6da80fb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.script_embed.field_script
+    - paragraphs.paragraphs_type.script_embed
+id: paragraph.script_embed.default
+targetEntityType: paragraph
+bundle: script_embed
+mode: default
+content:
+  field_script:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

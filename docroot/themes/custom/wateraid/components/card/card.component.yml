@@ -44,6 +44,9 @@ slots:
   heading_tag:
     type: string
     title: Heading Tag
+  group:
+    type: string
+    title: Group
 libraryOverrides:
   css:
     theme:
