@@ -1149,7 +1149,7 @@ label.button__input-button-wrapper {
     z-index: 100;
   }
 
-  .ui-widget-content.ui-dialog-content {
+  .jp-donation-modal.ui-widget-content.ui-dialog-content {
     border: 1px solid base.$wa-navy-80;
     padding-inline: 30px;
   }
@@ -1232,4 +1232,10 @@ label.button__input-button-wrapper {
 
 .ui-button .ui-icon {
   background-image: none;
+}
+
+.webform-gmo-payments {
+  .webform-button--submit {
+    display: none;
+  }
 }

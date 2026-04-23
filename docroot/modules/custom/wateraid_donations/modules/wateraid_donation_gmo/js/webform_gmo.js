@@ -276,8 +276,14 @@
       amendButton.innerText = Drupal.t('Amend');
 
       // Confirm button.
-      confirmButton.setAttribute('type', 'button');
-      confirmButton.setAttribute('class', 'button button--primary  button--light');
+      confirmButton.setAttribute('type', 'submit');
+      confirmButton.setAttribute('data-disable-refocus', 'true');
+      confirmButton.setAttribute('id', 'edit-actions-submit');
+      confirmButton.setAttribute('name', 'op');
+      confirmButton.setAttribute('value', Drupal.t('Submit'));
+      confirmButton.setAttribute('data-once', 'drupal-ajax');
+      confirmButton.setAttribute('data-drupal-selector', 'edit-actions-submit');
+      confirmButton.setAttribute('class', 'button button--primary  button--light', 'cv-validate-before-ajax', 'button--webform-submit', 'js-form-submit', 'form-submit', 'input--submit', 'button--input-wrapped');
       confirmButton.innerText = Drupal.t('Submit');
 
 

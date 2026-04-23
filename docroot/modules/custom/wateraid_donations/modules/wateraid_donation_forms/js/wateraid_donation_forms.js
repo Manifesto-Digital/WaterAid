@@ -71,7 +71,7 @@
       button.setAttribute('type', 'submit');
       button.setAttribute('title', 'submit');
       button.innerText = Drupal.t('Submit');
-      button.classList.add('webform-button--submit', 'sf3ds_submit', 'button', 'button--primary', 'button--light', 'button--webform-submit', 'js-form-submit', 'form-submit', 'input--submit', 'button--input-wrapped');
+      button.classList.add('sf3ds_submit', 'button', 'button--primary', 'button--light', 'button--webform-submit', 'js-form-submit', 'form-submit', 'input--submit', 'button--input-wrapped');
       buttonWrapper.appendChild(button);
 
       const hover = document.createElement("span");
@@ -182,7 +182,6 @@
       "click .webform-button--previous": "backStep",
       "click .webform-button--next": "nextStep",
       "click .sf3ds_submit": "submitForm",
-      "click .webform-button--submit": "submitForm"
     },
     backStep: function (event) {
       this.model.trigger('backStep', event);
