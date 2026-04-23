@@ -62,6 +62,14 @@ class Sf3dsWebformHandler extends WebformHandlerBase {
     }
   }
 
+  public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
+    parent::alterForm($form, $form_state, $webform_submission);
+
+    if ($form['actions']['submit']['#attributes']['class']) {
+      $form['actions']['submit']['#attributes']['class'][] = 'sf3ds_submit';
+    }
+  }
+
   /**
    * Get the currency that applies to this webform.
    *

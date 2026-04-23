@@ -28,9 +28,6 @@ class Sf3DsCardForm extends WebformCompositeBase {
    * {@inheritdoc}
    */
   public static function getCompositeElements(array $element): array {
-
-    $element['#attached']['library'][] = 'wateraid_donation_sf3ds/form.card';
-
     $element['AccTyp'] = ['#type' => 'hidden', '#value' => 1];
     $element['PtTyp'] = ['#type' => 'hidden', '#value' => 1];
     $element['PtWay'] = ['#type' => 'hidden', '#value' => 1];
@@ -117,17 +114,6 @@ class Sf3DsCardForm extends WebformCompositeBase {
     $element['PtToken'] = [
       '#type' => 'hidden',
       '#attributes' => ['id' => ['edit-pttoken']],
-    ];
-
-    $element['submit'] = [
-      '#type' => 'submit',
-      '#value' => t('Make payment'),
-      '#button_type' => 'webform-submit',
-      '#attributes' => [
-        'class' => [
-          'sf3ds_submit',
-        ],
-      ],
     ];
 
     return $element;
