@@ -98,7 +98,11 @@ class DonationsWebformAmount extends WebformCompositeBase {
     ];
     foreach ($form_elements as $form_element) {
       $key = '#' . $form_element . '__display_mode';
+
       $element[$form_element]['#attributes']['class'][] = self::getDisplayModeClassByElement($element, $key);
+      if ($element[$form_element]['#title_display'] === 'invisible') {
+        $element[$form_element]['#attributes']['class'][] = 'label-display--invisible';
+      }
     }
     return $element;
   }
