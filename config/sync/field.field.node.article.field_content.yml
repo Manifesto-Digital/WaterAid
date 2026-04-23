@@ -30,6 +30,10 @@ dependencies:
     - paragraphs.paragraphs_type.text_over_media
   module:
     - entity_reference_revisions
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.article.field_content
 field_name: field_content
 entity_type: node
@@ -158,6 +162,9 @@ settings:
         enabled: false
       rich_text:
         weight: -83
+        enabled: false
+      script_embed:
+        weight: 73
         enabled: false
       scroll_image:
         weight: -43

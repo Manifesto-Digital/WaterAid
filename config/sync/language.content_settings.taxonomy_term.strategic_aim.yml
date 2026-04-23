@@ -1,0 +1,11 @@
+uuid: 0c481e95-f9af-4367-8432-0f22bec48cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.strategic_aim
+id: taxonomy_term.strategic_aim
+target_entity_type_id: taxonomy_term
+target_bundle: strategic_aim
+default_langcode: site_default
+language_alterable: false

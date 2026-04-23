@@ -541,6 +541,12 @@ function wateraid_preprocess_node(&$variables): void {
       $variables['#attached']['drupalSettings']['wateraid']['firstStepAsWidget'] = $variables['content']['first_step_as_widget'];
     }
   }
+    $route_match = \Drupal::routeMatch();
+    $params = $route_match->getParameters();
+    $group = $params->get('group');
+    if ($group) {
+      $variables['group'] = $group->label();
+    }
 }
 
 /**
@@ -809,6 +815,7 @@ function wateraid_preprocess_paragraph__download_widget(&$variables): void {
         $data = $field->getDownloadInfo();
 
         $variables['files'][$key]['url'] = $data['url'];
+        $variables['files'][$key]['title'] = $data['title'];
         $variables['files'][$key]['filename'] = $data['filename'];
         $variables['files'][$key]['size'] = $data['file_size'];
         $variables['files'][$key]['format'] = $data['file_extension'];
@@ -821,7 +828,7 @@ function wateraid_preprocess_paragraph__download_widget(&$variables): void {
       $factor = floor((strlen($file->getSize()) - 1) / 3);
 
       $variables['files'][$key]['url'] = Url::fromUri($path);
-      $variables['files'][$key]['filename'] = $file->getFileName();
+      $variables['files'][$key]['filename'] = $variables['files'][$key]['filename'] = $file->getFileName();
       $variables['files'][$key]['size'] = sprintf("%.2f", $file->getSize() / pow(1024, $factor)) .' '. @$sz[$factor] . "B";
       $variables['files'][$key]['format'] = str_replace("application/", "", $file->getMimeType());
     }

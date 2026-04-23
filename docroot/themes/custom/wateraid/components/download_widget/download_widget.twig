@@ -11,10 +11,10 @@
         {% endif %}
         {% for file in files %}
           {% if file.filename %}
-            <option value={{ file.filename }} data-name="{{ file.name }}"
+            <option value={{ file.filename }} data-name="{{ file.title }}"
                     data-url={{ file.url }} data-size="{{ file.size }}"
                     data-format={{ file.format }} {% if files|length == 1 %}selected{% endif %}>
-              {{ file.name }}
+              {{ file.title }}
             </option>
           {% endif %}
         {% endfor %}

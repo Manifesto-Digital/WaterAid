@@ -11,7 +11,7 @@ final class AjaxFileForm extends AjaxMediaForm {
    * {@inheritdoc}
    */
   protected function getDefaultMediaType(): string {
-    return 'dam_video';
+    return 'dam_file';
   }
 
 }

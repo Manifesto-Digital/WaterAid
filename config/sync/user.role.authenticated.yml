@@ -28,6 +28,7 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'delete own files'
+  - 'disable own tfa'
   - 'render storybook stories'
   - 'setup own tfa'
   - 'skip CAPTCHA'

@@ -1,0 +1,11 @@
+uuid: 43afb5f5-6885-4d5c-a6cc-fd7882b7dc6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.donor
+id: taxonomy_term.donor
+target_entity_type_id: taxonomy_term
+target_bundle: donor
+default_langcode: site_default
+language_alterable: false
