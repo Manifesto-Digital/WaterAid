@@ -29,8 +29,11 @@ dependencies:
     - node.type.webform
     - taxonomy.vocabulary.audiences
     - taxonomy.vocabulary.countries
+    - taxonomy.vocabulary.donor
     - taxonomy.vocabulary.event_types
     - taxonomy.vocabulary.get_involved
+    - taxonomy.vocabulary.resource_type
+    - taxonomy.vocabulary.strategic_aim
     - taxonomy.vocabulary.subject_areas
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.topic
@@ -162,8 +165,11 @@ permissions:
   - 'create story content'
   - 'create terms in audiences'
   - 'create terms in countries'
+  - 'create terms in donor'
   - 'create terms in event_types'
   - 'create terms in get_involved'
+  - 'create terms in resource_type'
+  - 'create terms in strategic_aim'
   - 'create terms in subject_areas'
   - 'create terms in themes'
   - 'create terms in topic'
@@ -244,15 +250,21 @@ permissions:
   - 'delete story revisions'
   - 'delete term revisions in audiences'
   - 'delete term revisions in countries'
+  - 'delete term revisions in donor'
   - 'delete term revisions in event_types'
   - 'delete term revisions in get_involved'
+  - 'delete term revisions in resource_type'
+  - 'delete term revisions in strategic_aim'
   - 'delete term revisions in subject_areas'
   - 'delete term revisions in themes'
   - 'delete term revisions in topic'
   - 'delete terms in audiences'
   - 'delete terms in countries'
+  - 'delete terms in donor'
   - 'delete terms in event_types'
   - 'delete terms in get_involved'
+  - 'delete terms in resource_type'
+  - 'delete terms in strategic_aim'
   - 'delete terms in subject_areas'
   - 'delete terms in themes'
   - 'delete terms in topic'
@@ -313,8 +325,11 @@ permissions:
   - 'edit site_settings config page entity'
   - 'edit terms in audiences'
   - 'edit terms in countries'
+  - 'edit terms in donor'
   - 'edit terms in event_types'
   - 'edit terms in get_involved'
+  - 'edit terms in resource_type'
+  - 'edit terms in strategic_aim'
   - 'edit terms in subject_areas'
   - 'edit terms in themes'
   - 'edit terms in topic'
@@ -346,8 +361,11 @@ permissions:
   - 'revert story revisions'
   - 'revert term revisions in audiences'
   - 'revert term revisions in countries'
+  - 'revert term revisions in donor'
   - 'revert term revisions in event_types'
   - 'revert term revisions in get_involved'
+  - 'revert term revisions in resource_type'
+  - 'revert term revisions in strategic_aim'
   - 'revert term revisions in subject_areas'
   - 'revert term revisions in themes'
   - 'revert term revisions in topic'
@@ -425,8 +443,11 @@ permissions:
   - 'view story revisions'
   - 'view term revisions in audiences'
   - 'view term revisions in countries'
+  - 'view term revisions in donor'
   - 'view term revisions in event_types'
   - 'view term revisions in get_involved'
+  - 'view term revisions in resource_type'
+  - 'view term revisions in strategic_aim'
   - 'view term revisions in subject_areas'
   - 'view term revisions in themes'
   - 'view term revisions in topic'
