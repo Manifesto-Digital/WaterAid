@@ -211,7 +211,6 @@
       }
     },
     submitForm: function (event) {
-      alert('submitForm');
       // Fire off the DataLayer with completed submission.
       let donationFrequency = this.model.get('frequency');
       if (donationFrequency === 'one_off') {
@@ -230,7 +229,6 @@
     },
     doSubmitForm: function () {
       $('input.sf3ds_submit', this.el).click();
-      alert('doSubmit');
     },
     scrollToError: function (event) {
       let $form = $(this.el).closest('form');

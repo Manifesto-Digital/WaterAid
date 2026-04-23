@@ -53,7 +53,7 @@
       });
     },
     handleMountBehaviour: function () {
-      if (this.model.attributes.paymentMethod === 'sf3ds') {
+      if (this.model.attributes.paymentMethod === 'sf3ds' || this.model.attributes.paymentMethod === 'gmo_bank_transfer') {
         this.setInputState(this.el, 'required');
         if (!this.mounted) {
           this.mounted = true;
