@@ -15,7 +15,6 @@
       this.listenTo(this.model, 'submitForm', this.submitFormHandler);
       this.listenTo(this.model, 'refresh', this.handleMountBehaviour);
       this.mounted = false;
-      // $('.webform-submission-form').on('click', '#edit-sf3ds-card-form-submit', this.submitFormHandler);
     },
 
     // Set inputs within a given wrapper to be either required or optional.
