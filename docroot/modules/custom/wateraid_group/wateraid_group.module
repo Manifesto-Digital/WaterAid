@@ -10,6 +10,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
@@ -120,9 +122,23 @@ function wateraid_group_language_types_info_alter(array &$language_types): void 
  */
 function wateraid_group_preprocess_html(&$variables): void {
   $gtm_code = NULL;
+  $group = \Drupal::routeMatch()->getParameter('group');
+
+  // If the group hasn't been found but we have a node, use that instead.
+  if (!$group) {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node instanceof NodeInterface) {
+        if ($relations = \Drupal::entityTypeManager()->getStorage('group_relationship')->loadByEntity($node)) {
+          if ($relation = reset($relations)) {
+            $group = $relation->getGroup();
+          }
+        }
+      }
+    }
+  }
 
   /** @var \Drupal\group\Entity\GroupInterface $group */
-  if ($group = \Drupal::routeMatch()->getParameter('group')) {
+  if ($group) {
     $gtm_code = $group->get('field_google_tag_id')->getString();
   }
 
