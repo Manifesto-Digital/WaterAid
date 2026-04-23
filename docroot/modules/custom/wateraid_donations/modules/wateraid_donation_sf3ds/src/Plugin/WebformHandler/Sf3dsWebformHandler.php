@@ -3,6 +3,7 @@
 namespace Drupal\wateraid_donation_sf3ds\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\wateraid_donation_forms\DonationConstants;
 use Drupal\wateraid_donation_forms\Element\DonationsWebformAmount;
 use Drupal\webform\Plugin\WebformHandlerBase;
@@ -50,14 +51,70 @@ class Sf3dsWebformHandler extends WebformHandlerBase {
 
     // Confirm form for sf3ds is non-webform form POSTing direct to salesforce.
     if ('sf3ds' == trim($webform_submission->getData()['payment']['payment_methods'] ?? '')) {
-      $form_state->setRedirect(
-        'wateraid_donation_sf3ds.cardForm',
-        ['token' => $webform_submission->getToken()]
-      );
 
-      // Otherwise revert to default confirmation behavior.
+      /** @var \Drupal\wateraid_donation_sf3ds\Service\Sf3dsService $sf3ds */
+      $sf3ds = \Drupal::service('wateraid_donation_sf3ds');
+      $url = $sf3ds->getFormAction();
+
+      $data = $webform_submission->getData();
+      $input = $form_state->getUserInput();
+
+      $post = [];
+
+      $map = [
+        'FirstNm' => 'first_name',
+        'LastNm'  => 'last_name',
+        'FirstNmJp' => 'first_name_in_japanese',
+        'LastNmJp' => 'last_name_in_japanese',
+        'PostCode' => 'postcode',
+        'Prefecture' => 'prefecture',
+        'City' => 'city',
+        'Street' => 'street',
+        'Phone' => 'phone',
+        'IndCorp' => 'individual_corporate',
+        'CorpName' => 'corporate_name',
+        'CorpNameJp' => 'corporate_name_in_japanese',
+        'Receipt' => 'receipt',
+        'Memo' => 'memo',
+        'Agree' => 'tong_yi_suru',
+        'ENewsletter' => 'e_newsletter',
+      ];
+      foreach ($map as $sf => $wf) {
+        $post[$sf] = $data[$wf];
+      }
+
+      $post['Amount'] = $data['donation_amount']['amount'];
+
+      foreach ($input['sf3ds_card_form'] as $key => $value) {
+        $post[$key] = $value;
+      }
+
+      $one = 1;
+
+      try {
+        $response = \Drupal::httpClient()->post($url, [
+          'headers' => [
+            'Content-type' => 'application/x-www-form-urlencoded',
+          ],
+          'form_params' => $post,
+        ]);
+
+        if ($response->getStatusCode() === 200) {
+
+          // Otherwise revert to default confirmation behavior.
+          parent::confirmForm($form, $form_state, $webform_submission);
+        }
+        else {
+
+        }
+      }
+      catch (\Exception $e) {
+        $one = 1;
+      }
     }
     else {
+
+      // Otherwise revert to default confirmation behavior.
       parent::confirmForm($form, $form_state, $webform_submission);
     }
   }
