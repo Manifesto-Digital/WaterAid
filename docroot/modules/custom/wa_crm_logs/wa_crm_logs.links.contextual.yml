@@ -1,0 +1,10 @@
+entity.crm_log.edit_form:
+  route_name: entity.crm_log.edit_form
+  group: crm_log
+  title: 'Edit'
+
+entity.crm_log.delete_form:
+  route_name: entity.crm_log.delete_form
+  group: crm_log
+  title: 'Delete'
+  weight: 10

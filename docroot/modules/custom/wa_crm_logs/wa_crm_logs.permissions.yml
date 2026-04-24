@@ -1,0 +1,17 @@
+administer crm_log:
+  title: 'Administer crm logs'
+  restrict access: true
+view crm_log:
+  title: 'View crm log'
+edit crm_log:
+  title: 'Edit crm log'
+delete crm_log:
+  title: 'Delete crm log'
+create crm_log:
+  title: 'Create crm log'
+view crm_log revision:
+  title: 'View crm log revision'
+revert crm_log revision:
+  title: 'Revert crm log revision'
+delete crm_log revision:
+  title: 'Delete crm log revision'

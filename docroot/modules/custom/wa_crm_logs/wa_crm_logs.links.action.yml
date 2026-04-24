@@ -1,0 +1,5 @@
+crm_log.add_form:
+  title: 'Add crm log'
+  route_name: entity.crm_log.add_form
+  appears_on:
+    - entity.crm_log.collection

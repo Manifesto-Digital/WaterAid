@@ -170,6 +170,9 @@ final class AzureApi {
           ':e' => $e->getMessage(),
         ]));
       }
+      else {
+        throw $e;
+      }
     }
 
     return $result;

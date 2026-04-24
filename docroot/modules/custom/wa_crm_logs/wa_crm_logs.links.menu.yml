@@ -1,0 +1,11 @@
+entity.crm_log.settings:
+  title: 'CRM Log'
+  description: 'Configure a CRM Log entity type.'
+  route_name:  entity.crm_log.settings
+  parent: system.admin_structure
+
+entity.crm_log.collection:
+  title: 'CRM Logs'
+  description: 'List of crm logs.'
+  route_name: entity.crm_log.collection
+  parent: system.admin_reports

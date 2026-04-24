@@ -1,0 +1,13 @@
+uuid: 416abf67-5709-4418-9dbc-afcb40078359
+langcode: en
+status: true
+dependencies:
+  module:
+    - wa_crm_logs
+_core:
+  default_config_hash: V9vtuKf1b7JDsh4YalwxEyoAfAqH6qLqjb2rxONnHNs
+id: wa_crm_logs_crm_log_save_action
+label: 'Save crm logs'
+type: crm_log
+plugin: 'entity:save_action:crm_log'
+configuration: {  }

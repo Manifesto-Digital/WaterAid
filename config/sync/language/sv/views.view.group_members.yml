@@ -5,6 +5,8 @@ display:
       fields:
         name:
           label: Användare
+        group_roles:
+          label: Roles
         dropbutton:
           label: Funktioner
       exposed_form:

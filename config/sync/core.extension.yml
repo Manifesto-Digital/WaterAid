@@ -29,7 +29,6 @@ module:
   content_moderation: 0
   contextual: 0
   datetime: 0
-  dblog: 0
   default_paragraphs: 0
   diff: 0
   dynamic_entity_reference: 0
@@ -159,6 +158,7 @@ module:
   user: 0
   views_infinite_scroll: 0
   viewsreference: 0
+  wa_crm_logs: 0
   wa_migration: 0
   wa_orange_dam: 0
   wateraid_blocks: 0

@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for CRM Logs module.
+ */
+
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function wa_crm_logs_theme(): array {
+  return [
+    'crm_log' => ['render element' => 'content'],
+  ];
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function wa_crm_logs_user_cancel($edit, UserInterface $account, $method): void {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish crm logs.
+      $storage = \Drupal::entityTypeManager()->getStorage('crm_log');
+      $crm_log_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($crm_log_ids) as $crm_log) {
+        $crm_log->set('status', FALSE)->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize crm logs.
+      $storage = \Drupal::entityTypeManager()->getStorage('crm_log');
+      $crm_log_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($crm_log_ids) as $crm_log) {
+        $crm_log->setOwnerId(0)->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function wa_crm_logs_user_predelete(UserInterface $account): void {
+  // Delete crm logs that belong to this account.
+  $storage = \Drupal::entityTypeManager()->getStorage('crm_log');
+  $crm_log_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  $storage->delete(
+    $storage->loadMultiple($crm_log_ids)
+  );
+  // Delete old revisions.
+  $crm_log_ids = $storage->getQuery()
+    ->allRevisions()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  foreach (array_keys($crm_log_ids) as $revision_id) {
+    $storage->deleteRevision($revision_id);
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function wa_crm_logs_cron(): void {
+  \Drupal::service('wa_crm_logs.logging')->deleteLogs();
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function wa_crm_logs_views_data_alter(array &$data): void {
+  if (isset($data['crm_log_field_data'])) {
+    $data['crm_log_field_data']['webform_submission'] = [
+      'title' => t('Webform submission'),
+      'help' => t('Relates the CRM Log relationship to the Webform Submission'),
+      'relationship' => [
+        'group' => t('Webform Submission'),
+        'base' => 'webform_submission',
+        'base field' => 'sid',
+        'relationship field' => 'submission',
+        'id' => 'standard',
+        'label' => t('Relationship to Webform Submission'),
+      ],
+    ];
+  }
+  if (isset($data['webform_submission'])) {
+    $data['webform_submission']['crm_log_field_data'] = [
+      'title' => t('CRM log'),
+      'help' => t('Relates the Webform Submission to the CRM Log'),
+      'relationship' => [
+        'group' => t('CRM log'),
+        'base' => 'crm_log_field_data',
+        'base field' => 'submission',
+        'relationship field' => 'sid',
+        'id' => 'standard',
+        'label' => t('Relationship to CRM Log'),
+      ],
+    ];
+  }
+}

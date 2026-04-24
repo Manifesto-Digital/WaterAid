@@ -1,0 +1,5 @@
+name: 'CRM Logs'
+type: module
+description: 'Generate logs away from DB Logs for errors during the Blob transfer process.'
+package: Microsoft
+core_version_requirement: ^10 || ^11
