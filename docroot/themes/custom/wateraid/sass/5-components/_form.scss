@@ -1,4 +1,3 @@
-
 @use "../base";
 
 // Webforms
@@ -226,8 +225,10 @@
       margin-left: 0;
       width: calc(100% - 2.5rem);
     }
+
     .js-form-type-checkbox label.error {
       margin-left: 0;
+
       & + label {
         margin-left: 1rem;
         margin-top: 0;
@@ -337,6 +338,7 @@ input[type='radio'] {
     outline: base.$wa-spacing-01 base.$wa-pink solid;
     box-shadow: 0 0 0 base.calculate-rem(2) base.$wa-navy;
   }
+
   &.error {
     border-color: base.$wa-orange;
   }
@@ -833,10 +835,12 @@ fieldset.next-form-step {
     @include base.desktop {
       left: 4rem;
     }
+
     &.button--primary:hover {
       transform: unset;
     }
   }
+
   .prev-form-step {
     .button--primary:after,
     .button__wrapper .button__hover {
@@ -952,6 +956,7 @@ fieldset.next-form-step {
 
     .button {
       flex: 0 1 auto;
+
       &.button--secondary {
         width: unset;
         color: base.$wa-blue;
@@ -960,6 +965,7 @@ fieldset.next-form-step {
           color: base.$wa-blue;
         }
       }
+
       &.button--primary {
         min-width: unset;
       }
@@ -1091,6 +1097,11 @@ label.button__input-button-wrapper {
   background: base.$wa-white;
   z-index: 100;
 
+  .ui-widget-content.ui-dialog-content {
+    background: base.$wa-white;
+    padding-inline: 30px;
+  }
+
   &:not(.ui-dialog-off-canvas) {
     max-width: 1280px;
     border: 0 none !important;
@@ -1138,11 +1149,12 @@ label.button__input-button-wrapper {
     z-index: 100;
   }
 
-  .ui-widget-content.ui-dialog-content {
+  .jp-donation-modal.ui-widget-content.ui-dialog-content {
     border: 1px solid base.$wa-navy-80;
     padding-inline: 30px;
   }
 }
+
 .donation-modal {
   padding: 0;
 
@@ -1154,21 +1166,37 @@ label.button__input-button-wrapper {
   }
 
   h2 {
+    font-family: $heading-font;
     margin-bottom: 1.5rem;
     color: base.$black;
   }
+
   h3 {
+    font-family: $heading-font;
     margin-bottom: 1.5rem;
   }
 
   dt {
+    font-family: $font-family;
     font-weight: 700;
   }
 
+  dd {
+    font-family: $font-family;
+    padding-bottom: 0.5rem;
+  }
+
   dl {
+    font-family: $font-family;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid base.$wa-cream;
     margin-bottom: 1.5rem;
+  }
+
+  button {
+    font-family: $heading-font;
+    font-size: calculate-rem(24);
+    height: calculate-rem(53);
   }
 
   .ui-dialog-content {
@@ -1204,4 +1232,10 @@ label.button__input-button-wrapper {
 
 .ui-button .ui-icon {
   background-image: none;
+}
+
+.webform-gmo-payments {
+  .webform-actions {
+    display: none;
+  }
 }

@@ -22,8 +22,7 @@
     if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))  // If Internet Explorer, return version number
     {
       return true;
-    }
-    else  // If another browser, return 0
+    } else  // If another browser, return 0
     {
       return false;
     }
@@ -40,6 +39,7 @@
    * Backbone State Model.
    */
   Drupal.wateraidDonationForms.StateModel = Backbone.Model.extend({
+    el: '#block-wateraid-content',
     defaults: {
       'amount': 0,
       'currency': 'GBP',
@@ -60,6 +60,23 @@
       this.set('amounts', params.amounts);
       this.typeSettings = [];
       let model = this;
+
+      // Create new submit button for form.
+      const form = document.querySelector('.webform-submission-form');
+      const buttonWrapper = document.createElement('div');
+      buttonWrapper.classList.add('button__wrapper', 'button__wrapper--primary');
+      form.append(buttonWrapper);
+
+      const button = document.createElement("button");
+      button.setAttribute('type', 'submit');
+      button.setAttribute('title', 'submit');
+      button.innerText = Drupal.t('Submit');
+      button.classList.add('sf3ds_submit', 'button', 'button--primary', 'button--light', 'button--webform-submit', 'js-form-submit', 'form-submit', 'input--submit', 'button--input-wrapped');
+      buttonWrapper.appendChild(button);
+
+      const hover = document.createElement("span");
+      hover.classList.add('button__hover');
+      buttonWrapper.appendChild(hover);
 
       // Setting currency and country.
       model['attributes']['currency'] = drupalSettings.wateraidDonationForms.currency;
@@ -145,8 +162,7 @@
       }
       if ((queryValue.fq && queryValue.val) || queryValue.quiz_id) {
         return queryValue;
-      }
-      else {
+      } else {
         return 0;
       }
     },
@@ -165,8 +181,7 @@
     events: {
       "click .webform-button--previous": "backStep",
       "click .webform-button--next": "nextStep",
-      "click .webform-button--submit": "submitForm",
-      "click .payment-button": "submitForm"
+      "click .sf3ds_submit": "submitForm",
     },
     backStep: function (event) {
       this.model.trigger('backStep', event);
@@ -190,8 +205,7 @@
           $(location).attr('href', querys);
         }
         return false;
-      }
-      else {
+      } else {
         this.model.trigger('nextStep', event);
       }
     },
@@ -200,8 +214,7 @@
       let donationFrequency = this.model.get('frequency');
       if (donationFrequency === 'one_off') {
         donationFrequency = 'one-off';
-      }
-      else {
+      } else {
         donationFrequency = 'regular';
       }
       dataLayer.push({
@@ -214,7 +227,7 @@
       this.model.trigger('submitForm', event);
     },
     doSubmitForm: function () {
-      $('input.webform-button--submit', this.el).click();
+      $('input.sf3ds_submit', this.el).click();
     },
     scrollToError: function (event) {
       let $form = $(this.el).closest('form');
@@ -222,7 +235,7 @@
         event.preventDefault();
         if ($('.error').length && $('.error:visible:first').length) {
           $('html, body').animate(
-            { scrollTop: $('.error:visible:first').offset().top - 40 },
+            {scrollTop: $('.error:visible:first').offset().top - 40},
             'slow'
           );
         }
@@ -248,8 +261,7 @@
         let $value_element = $('.wa_donation_amounts-' + urlParams.fq + ' .webform-buttons-other input[value="' + urlParams.val + '"]');
         if ($value_element.length) {
           $value_element.prop('checked', true).click();
-        }
-        else {
+        } else {
           // Value doesn't exist, use "other" input.
           $('.wa_donation_amounts-' + urlParams.fq + ' .webform-buttons-other input[value="_other_"]').prop('checked', true).click();
           $('.wa_donation_amounts-' + urlParams.fq + ' .webform-buttons-other .js-webform-buttons-other-input input').val(urlParams.val);
@@ -317,8 +329,7 @@
         // If it is a subscription, set the price code
         if ($(event.target).attr('data-stripe-price')) {
           this.model.setFixedPrice($(event.target).attr('data-stripe-price'));
-        }
-        else {
+        } else {
           this.model.setFixedPrice('');
         }
       }
@@ -393,8 +404,7 @@
             if (available) {
               $("#".id).show();
               $("[for = " + id + "]").parent().show();
-            }
-            else {
+            } else {
               $("[for = " + id + "]").parent().remove();
             }
           })
@@ -465,7 +475,10 @@
   function initWateraidDonationForms($form) {
     let wateraidDonationForms = Drupal.wateraidDonationForms;
     // Create a model and the appropriate views.
-    let model = new wateraidDonationForms.StateModel({'amount_defaults': options.amount_defaults, 'amounts': options.amounts});
+    let model = new wateraidDonationForms.StateModel({
+      'amount_defaults': options.amount_defaults,
+      'amounts': options.amounts
+    });
     // Bind to global window.
     Drupal.wateraidDonationForms.model = model;
     // Create payment element view.
@@ -493,8 +506,8 @@
         initWateraidDonationForms(this);
       });
 
-      $( document ).on( 'ajaxStop', function() {
-        $(once( 'wateraid_ajax', 'form.webform-donations-page')).each(function () {
+      $(document).on('ajaxStop', function () {
+        $(once('wateraid_ajax', 'form.webform-donations-page')).each(function () {
           const scatoken = drupalSettings.wateraidDonationForms.csrf_token;
 
           $.ajax(Drupal.url('wateraid-donation-forms/data-layer' + '?token=' + scatoken), {

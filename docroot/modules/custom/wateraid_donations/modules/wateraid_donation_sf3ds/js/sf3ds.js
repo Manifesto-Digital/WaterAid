@@ -8,7 +8,6 @@
   Drupal.behaviors.sf3ds = {
 
     attach: function (context, settings) {
-      let selector_form = once('sf3ds-card','#sf3ds-card-form');
       let selector_cardno = '#edit-cardnumber';
       let selector_cardholder = '#edit-cardholder'
       let selector_token = '#edit-pttoken';
@@ -19,7 +18,48 @@
       let modalDisplayed = false;
       let modalConfirmed = false;
 
-      $(selector_form).submit(function () {
+      const form = document.querySelector('.webform-submission-form');
+
+      const onSubmit = (e) => {
+        e.preventDefault();
+
+        // Do nothing if the modal is open.
+        if (modalDisplayed && !modalConfirmed) {
+          return false;
+        }
+
+        const submissionData = getSubmissionData(form);
+
+        if (!submissionData) {
+
+          // Let the webform validation handle the errors.
+          return false;
+        }
+
+        const token = document.querySelector('#edit-pttoken');
+
+        if (token) {
+          if (isSf3ds() && !token.value) {
+            getPaymentToken();
+            return false;
+          }
+          else {
+            if (!modalDisplayed && !modalConfirmed) {
+              displayReviewModal();
+              return false;
+            }
+          }
+        }
+
+        return false;
+      };
+
+      if (form) {
+        form.addEventListener("submit", onSubmit);
+      }
+
+      $('.webform-submission-form').submit(function () {
+        return;
 
         if ($(selector_token).val()) {
           if (!modalDisplayed && !modalConfirmed) {
@@ -39,6 +79,23 @@
         }
       });
 
+      function isSf3ds() {
+        const payment_methods = document.querySelectorAll('input.wa-donation-method-selection');
+        var result = false;
+
+        if (payment_methods) {
+          payment_methods.forEach(payment_method => {
+            if (payment_method.checked) {
+              if (payment_method.value === 'sf3ds') {
+                result = true;
+              }
+            }
+          });
+        }
+
+        return result;
+      }
+
       function displayReviewModal() {
         modalDisplayed = true;
 
@@ -57,55 +114,55 @@
           {
             label: Drupal.t('❶ 寄付金額'),
             fields: {
-              amount: Drupal.t('寄付金額'),
+              Amount: Drupal.t('寄付金額'),
             }
           },
           {
             label: Drupal.t('❷ お名前・ご連絡先'),
             fields: {
-              indcorp: Drupal.t('個人／法人'),
-              corpname: Drupal.t('法人名'),
-              corpnamejp: Drupal.t('法人名（フリガナ）'),
+              IndCorp: Drupal.t('個人／法人'),
+              CorpName: Drupal.t('法人名'),
+              CorpNameJp: Drupal.t('法人名（フリガナ）'),
             }
           },
           {
             label: Drupal.t('お名前'),
             fields: {
-              lastnm: Drupal.t('姓'),
-              firstnm: Drupal.t('名'),
+              LastNm: Drupal.t('姓'),
+              FirstNm: Drupal.t('名'),
             }
           },
           {
             label: Drupal.t('お名前（フリガナ）'),
             fields: {
-              lastnmjp: Drupal.t('セイ'),
-              firstnmjp: Drupal.t('メイ'),
+              LastNmJp: Drupal.t('セイ'),
+              FirstNmJp: Drupal.t('メイ'),
             }
           },
           {
             label: Drupal.t('ご住所'),
             fields: {
-              postcode: Drupal.t('郵便番号'),
-              prefecture: Drupal.t('都道府県'),
-              city: Drupal.t('市区町村'),
-              street: Drupal.t('番地・建物名'),
-              email: Drupal.t('メールアドレス'),
-              enewsletter: '',
-              phone: Drupal.t('電話番号'),
+              PostCode: Drupal.t('郵便番号'),
+              Prefecture: Drupal.t('都道府県'),
+              City: Drupal.t('市区町村'),
+              Street: Drupal.t('番地・建物名'),
+              Email: Drupal.t('メールアドレス'),
+              Enewsletter: '',
+              Phone: Drupal.t('電話番号'),
             }
           },
           {
             label: Drupal.t('❸ お支払い情報'),
             fields: {
-              method: Drupal.t('決済方法'),
-              receipt: Drupal.t('領収書発行'),
-              memo: Drupal.t('備考欄'),
+              Method: Drupal.t('決済方法'),
+              Receipt: Drupal.t('領収書発行'),
+              Memo: Drupal.t('備考欄'),
             }
           },
           {
             label: Drupal.t('❹ プライバシーポリシー'),
             fields: {
-              agree: Drupal.t('プライバシーポリシーをご確認いただき、同意をお願いいたします。'),
+              Agree: Drupal.t('プライバシーポリシーをご確認いただき、同意をお願いいたします。'),
             }
           }
         ];
@@ -175,20 +232,58 @@
       }
 
       function getSubmissionData() {
-        const $submissionFields = $('input[data-submission-value]');
-        const submissionData = {};
+        const form = document.querySelector('.webform-submission-form');
+        const inputs = form.querySelectorAll("input");
+        let submissionData = true;
 
-        $submissionFields.each(function (i) {
-          submissionData[$(this).data('submission-value')] = $(this).val();
-        });
+        if (inputs) {
+          inputs.forEach(input => {
 
-        // Tweak the data for easy output.
-        submissionData.agree = (submissionData.agree === "1") ? Drupal.t('同意する') : '';
-        submissionData.amount = new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(submissionData.amount);
-        submissionData.indcorp = (submissionData.indcorp === "individual") ? Drupal.t('個人') : Drupal.t('法人');
-        submissionData.receipt = (submissionData.receipt === "yes") ? Drupal.t('希望する') : Drupal.t('希望しない');
-        submissionData.enewsletter = (submissionData.enewsletter === "1") ? Drupal.t('このメールアドレスにメールマガジンを配信する') : '';
-        submissionData['method'] = Drupal.t('クレジットカード');
+            if (input && input.required) {
+              if (!input.value) {
+                submissionData = false;
+              }
+            }
+          });
+        }
+
+        if (submissionData) {
+          submissionData = {};
+
+          const individual = form.querySelector('.form-item-individual-corporate');
+
+          submissionData.indCorp = individual.querySelector('input:checked').value;
+
+          submissionData.FirstNm = form.querySelector('#edit-first-name').value;
+          submissionData.LastNm = form.querySelector('#edit-last-name').value;
+          submissionData.FirstNmJp = form.querySelector('#edit-first-name-in-japanese').value;
+          submissionData.LastNmJp = form.querySelector('#edit-last-name-in-japanese').value;
+          submissionData.Email = form.querySelector('#edit-email-email').value;
+          submissionData.PostCode = form.querySelector('#edit-postcode').value;
+          submissionData.Prefecture = form.querySelector('#edit-prefecture').value;
+          submissionData.City = form.querySelector('#edit-city').value;
+          submissionData.Street = form.querySelector('#edit-street').value;
+          submissionData.Phone = form.querySelector('#edit-phone').value;
+          submissionData.Memo = form.querySelector('#edit-memo').value;
+          submissionData.ENewsletter = (form.querySelector('#edit-e-newsletter').value === "1") ? Drupal.t('このメールアドレスにメールマガジンを配信する') : '';
+          submissionData.Agree = Drupal.t('同意する');
+
+          if (submissionData.indCorp !== 'individual') {
+            submissionData.CorpName = form.querySelector('#edit-edit-corporate-name').value;
+            submissionData.CorpNameJp = form.querySelector('#edit-corporate-name-in-japanese').value;
+          }
+
+          const amountButtons = form.querySelector('#edit-donation-amount-amount-one-off-amounts-buttons');
+          const amount = amountButtons.querySelector('input:checked').value;
+
+          submissionData.Amount = new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(amount);
+
+          const receipts = form.querySelector('.form-item-receipt')
+          const receipt = receipts.querySelector('input:checked').value;
+
+          submissionData.Receipt = (receipt === "yes") ? Drupal.t('希望する') : Drupal.t('希望しない');
+          submissionData['method'] = Drupal.t('クレジットカード');
+        }
 
         return submissionData;
       }

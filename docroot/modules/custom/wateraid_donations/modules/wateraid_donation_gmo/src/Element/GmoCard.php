@@ -50,6 +50,7 @@ class GmoCard extends FormElement implements TrustedCallbackInterface {
     $service = \Drupal::service('wateraid_webform_gmo');
     $library = $service->getGmoLibraryName();
     $element['#attached']['library'][] = $library;
+    $element['#attached']['library'][] = 'wateraid_donation_gmo/form.card';
     return $element;
   }
 
