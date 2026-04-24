@@ -282,7 +282,7 @@ display:
             operator: search_api_fulltext_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: search_api_fulltext
+            identifier: keywords
             required: false
             remember: false
             multiple: false
@@ -507,7 +507,7 @@ display:
             operator: search_api_fulltext_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: search_api_fulltext
+            identifier: keywords
             required: false
             remember: false
             multiple: false
