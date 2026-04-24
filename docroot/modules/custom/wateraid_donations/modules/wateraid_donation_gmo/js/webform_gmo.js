@@ -10,11 +10,16 @@
    * Declare view to allow GMO component to interact with the payment model.
    */
   Drupal.wateraidDonationForms.GmoView = Backbone.View.extend({
+    events: {
+      "click #edit-actions-submit": "submitForm",
+    },
     initialize: function () {
       this.listenTo(this.model, 'change:paymentMethod', this.handleMountBehaviour);
       this.listenTo(this.model, 'submitForm', this.submitFormHandler);
       this.listenTo(this.model, 'refresh', this.handleMountBehaviour);
       this.mounted = false;
+      this.modalConfirmed = false;
+      this.modalDisplayed = false;
     },
 
     // Set inputs within a given wrapper to be either required or optional.
@@ -93,7 +98,7 @@
     },
     // Display a modal for users to confirm form inputs before submission.
     displayReviewModal: function () {
-      this.model.modalDisplayed = true;
+      this.modalDisplayed = true;
       document.body.classList.add('modal-open');
       const form = document.querySelector('.webform-submission-form');
 
@@ -314,15 +319,15 @@
       amendButton.addEventListener('click', function () {
         drupalDialog.close();
         document.documentElement.classList.remove('modal-open');
-        context.model.modalDisplayed = false;
+        this.modalDisplayed = false;
       });
 
       // Set up confirm event handler, will allows form to be submitted.
       confirmButton.addEventListener('click', function () {
         drupalDialog.close();
         document.documentElement.classList.remove('modal-open');
-        context.model.modalDisplayed = false;
-        context.model.modalConfirmed = true;
+        this.modalDisplayed = false;
+        this.modalConfirmed = true;
         const submitButton = document.querySelector('.button--primary .webform-button--submit');
         submitButton.click();
       });
@@ -338,13 +343,13 @@
           if ($('.webform-submission-form').valid()) {
             // If fields are valid, show modal for user to confirm form inputs
             // before proceeding.
-            if (!this.model.modalDisplayed && !this.model.modalConfirmed) {
+            if (!this.modalDisplayed && !this.modalConfirmed) {
               this.displayReviewModal();
               return false;
             }
 
-            // Only proceed if modal inputs have been confirmed.
-            if (!this.model.modalConfirmed) {
+            // // Only proceed if modal inputs have been confirmed.
+            if (!this.modalConfirmed) {
               return false;
             }
 
@@ -357,7 +362,7 @@
             // Ensure we're only altering the submit event when dealing with GMO
             // payments:
             // 1. Card payment submission.
-            if (['gmo', 'gmo_subscription'].includes(this.model.attributes.paymentMethod)) {
+            if (['gmo', 'gmo_subscription', 'sf3ds'].includes(this.model.attributes.paymentMethod)) {
               if (document.getElementById('payment-response-result').value === '') {
                 this.createPaymentMethod(event);
               }
@@ -391,7 +396,7 @@
       errorMessageWrapper.scrollIntoView({ block: 'center' });
 
       this.handleMountBehaviour();
-      this.model.modalConfirmed = false;
+      this.modalConfirmed = false;
     },
     // Remove any card error messages next to card input fields.
     removeInlineErrors: function () {
@@ -430,7 +435,7 @@
       input.classList.remove('valid');
       input.setAttribute('aria-invalid', true);
       input.scrollIntoView({ block: 'center' });
-      this.model.modalConfirmed = false;
+      this.modalConfirmed = false;
     },
     // Process the form submission.
     clearAndSubmit: function (context) {
@@ -456,12 +461,18 @@
       };
 
       const shopId = drupalSettings.webformGmo.shop_id;
-      const cardNumber = document.getElementById('gmo-card' + frequencyIdSuffix());
-      const expiryYear = document.getElementById('gmo-expiration-year' + frequencyIdSuffix());
-      const expiryMonth = document.getElementById('gmo-expiration-month' + frequencyIdSuffix());
-      const securityCode = document.getElementById('gmo-security-code' + frequencyIdSuffix());
-      const carholderName = document.getElementById('gmo-cardholder-name' + frequencyIdSuffix());
-      const paymentToken = document.getElementById('gmo-payment-token' + frequencyIdSuffix());
+      // const cardNumber = document.getElementById('gmo-card' + frequencyIdSuffix());
+      // const expiryYear = document.getElementById('gmo-expiration-year' + frequencyIdSuffix());
+      // const expiryMonth = document.getElementById('gmo-expiration-month' + frequencyIdSuffix());
+      // const securityCode = document.getElementById('gmo-security-code' + frequencyIdSuffix());
+      // const carholderName = document.getElementById('gmo-cardholder-name' + frequencyIdSuffix());
+      // const paymentToken = document.getElementById('gmo-payment-token' + frequencyIdSuffix());
+      const cardNumber = document.getElementById('edit-sf3ds-card-form-cardnumber');
+      const expiryYear = document.getElementById('edit-sf3ds-card-form-year');
+      const expiryMonth = document.getElementById('edit-sf3ds-card-form-month');
+      const securityCode = document.getElementById('edit-sf3ds-card-form-security-code');
+      const carholderName = document.getElementById('edit-sf3ds-card-form-cardholder');
+      const paymentToken = document.getElementById('edit-pttoken');
 
       Multipayment.init(shopId);
       Multipayment.getToken(
