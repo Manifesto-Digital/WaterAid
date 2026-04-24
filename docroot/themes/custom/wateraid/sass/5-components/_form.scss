@@ -1205,3 +1205,14 @@ label.button__input-button-wrapper {
 .ui-button .ui-icon {
   background-image: none;
 }
+
+.label-display--invisible {
+  .fieldset-legend {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}
