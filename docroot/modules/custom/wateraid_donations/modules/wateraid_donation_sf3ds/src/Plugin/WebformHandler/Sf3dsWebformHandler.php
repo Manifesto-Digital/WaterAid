@@ -51,66 +51,79 @@ class Sf3dsWebformHandler extends WebformHandlerBase {
 
     // Confirm form for sf3ds is non-webform form POSTing direct to salesforce.
     if ('sf3ds' == trim($webform_submission->getData()['payment']['payment_methods'] ?? '')) {
-
-      /** @var \Drupal\wateraid_donation_sf3ds\Service\Sf3dsService $sf3ds */
-      $sf3ds = \Drupal::service('wateraid_donation_sf3ds');
-      $url = $sf3ds->getFormAction();
-
-      $data = $webform_submission->getData();
       $input = $form_state->getUserInput();
 
-      $post = [];
+      if ($input['sf3ds_card_form']['PtToken']) {
 
-      $map = [
-        'FirstNm' => 'first_name',
-        'LastNm'  => 'last_name',
-        'FirstNmJp' => 'first_name_in_japanese',
-        'LastNmJp' => 'last_name_in_japanese',
-        'PostCode' => 'postcode',
-        'Prefecture' => 'prefecture',
-        'City' => 'city',
-        'Street' => 'street',
-        'Phone' => 'phone',
-        'IndCorp' => 'individual_corporate',
-        'CorpName' => 'corporate_name',
-        'CorpNameJp' => 'corporate_name_in_japanese',
-        'Receipt' => 'receipt',
-        'Memo' => 'memo',
-        'Agree' => 'tong_yi_suru',
-        'ENewsletter' => 'e_newsletter',
-      ];
-      foreach ($map as $sf => $wf) {
-        $post[$sf] = $data[$wf];
-      }
+        /** @var \Drupal\wateraid_donation_sf3ds\Service\Sf3dsService $sf3ds */
+        $sf3ds = \Drupal::service('wateraid_donation_sf3ds');
+        $url = $sf3ds->getFormAction();
 
-      $post['Amount'] = $data['donation_amount']['amount'];
+        $data = $webform_submission->getData();
+        $input = $form_state->getUserInput();
 
-      foreach ($input['sf3ds_card_form'] as $key => $value) {
-        $post[$key] = $value;
-      }
+        $post = [];
 
-      $one = 1;
-
-      try {
-        $response = \Drupal::httpClient()->post($url, [
-          'headers' => [
-            'Content-type' => 'application/x-www-form-urlencoded',
-          ],
-          'form_params' => $post,
-        ]);
-
-        if ($response->getStatusCode() === 200) {
-
-          // Otherwise revert to default confirmation behavior.
-          parent::confirmForm($form, $form_state, $webform_submission);
+        $map = [
+          'FirstNm' => 'first_name',
+          'LastNm' => 'last_name',
+          'FirstKnNm' => 'first_name_in_japanese',
+          'LastKnNm' => 'last_name_in_japanese',
+          'PostCd' => 'postcode',
+          'State' => 'prefecture',
+          'City' => 'city',
+          'Street' => 'street',
+          'Phone' => 'phone',
+          'IndCorp' => 'individual_corporate',
+          'CorpName' => 'corporate_name',
+          'CompanyKnNm' => 'corporate_name_in_japanese',
+          'Receipt' => 'receipt',
+          'Memo' => 'memo',
+          'Agree' => 'tong_yi_suru',
+          'EmailMaga' => 'e_newsletter',
+        ];
+        foreach ($map as $sf => $wf) {
+          $post[$sf] = $data[$wf];
         }
-        else {
 
-        }
-      }
-      catch (\Exception $e) {
+        $post['Amount'] = $data['donation_amount']['amount'];
+        $post['PtToken'] = $input['sf3ds_card_form']['PtToken'];
+        $post['AccTyp'] = 1;
+        $post['PtTyp'] = 1;
+        $post['PtWay'] = 1;
+        $post['SuccessURL'] =  Url::fromRoute(
+          'wateraid_donation_sf3ds.success',
+          ['token' => $webform_submission->getToken()],
+          ['absolute' => TRUE]
+        )->toString();
+        $post['FailURL'] = $this->getWebform()->toUrl();
+
         $one = 1;
+
+        try {
+          $response = \Drupal::httpClient()->post($url, [
+            'headers' => [
+              'Content-type' => 'application/x-www-form-urlencoded',
+            ],
+            'form_params' => $post,
+          ]);
+
+          if ($response->getStatusCode() === 200) {
+
+            // Otherwise revert to default confirmation behavior.
+            parent::confirmForm($form, $form_state, $webform_submission);
+          }
+        }
+        catch (\Exception $e) {
+          $this->getLogger('wateraid_donation_sf3ds')->error($this->t('Error posting data to salesforce: :error', [
+            ':error' => $e->getMessage(),
+          ]));
+        }
       }
+
+      // If we reach this point, something has gone wrong somewhere.
+      $this->messenger()->addError($this->t('There was a problem taking your donation. Please contact us for assistance.'));
+      $form_state->setRedirectUrl($this->getWebform()->toUrl());
     }
     else {
 
@@ -119,7 +132,10 @@ class Sf3dsWebformHandler extends WebformHandlerBase {
     }
   }
 
-  public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
+  /**
+   * {@inheritdoc}
+   */
+  public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission): void {
     parent::alterForm($form, $form_state, $webform_submission);
 
     if ($form['actions']['submit']['#attributes']['class']) {
