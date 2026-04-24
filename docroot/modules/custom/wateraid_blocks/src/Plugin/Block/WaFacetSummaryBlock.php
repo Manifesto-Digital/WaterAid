@@ -221,6 +221,12 @@ final class WaFacetSummaryBlock extends BlockBase implements TrustedCallbackInte
           'topic' => 'topic',
         ],
       ],
+      'projects' => [
+        'block_1' => [
+          'donor' => 'donor',
+          'strategic_aims' => 'strategic_aims',
+        ],
+      ],
     ];
   }
 

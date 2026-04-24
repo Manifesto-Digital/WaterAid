@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.search_listing
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_donor
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_header
     - field.field.node.standard_page.field_hero
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
+    - field.field.node.standard_page.field_strategic_aims
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
@@ -56,6 +58,7 @@ hidden:
   entitygroupfield: true
   field_age_range: true
   field_content: true
+  field_donor: true
   field_get_involved: true
   field_header: true
   field_hero: true
@@ -65,6 +68,7 @@ hidden:
   field_resources: true
   field_review_date: true
   field_search_phrases: true
+  field_strategic_aims: true
   field_subject_area: true
   field_topic: true
   langcode: true

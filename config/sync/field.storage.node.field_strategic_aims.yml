@@ -1,0 +1,20 @@
+uuid: cf9ca703-c66b-40a8-aaa1-a303b9d81c0c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_strategic_aims
+field_name: field_strategic_aims
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

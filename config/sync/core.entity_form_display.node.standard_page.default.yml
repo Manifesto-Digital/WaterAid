@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.standard_page.field_age_range
     - field.field.node.standard_page.field_content
+    - field.field.node.standard_page.field_donor
     - field.field.node.standard_page.field_get_involved
     - field.field.node.standard_page.field_header
     - field.field.node.standard_page.field_hero
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.standard_page.field_resources
     - field.field.node.standard_page.field_review_date
     - field.field.node.standard_page.field_search_phrases
+    - field.field.node.standard_page.field_strategic_aims
     - field.field.node.standard_page.field_subject_area
     - field.field.node.standard_page.field_teaser_image
     - field.field.node.standard_page.field_teaser_text
@@ -111,6 +113,8 @@ third_party_settings:
         - field_key_stages
         - field_subject_area
         - field_topic
+        - field_donor
+        - field_strategic_aims
       label: Tags
       region: content
       parent_name: group_tabs
@@ -196,6 +200,16 @@ content:
       require_layouts: 0
       empty_message: ''
     third_party_settings: {  }
+  field_donor:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_get_involved:
     type: entity_reference_autocomplete
     weight: 10
@@ -260,6 +274,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_strategic_aims:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_subject_area:

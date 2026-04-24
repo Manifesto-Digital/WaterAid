@@ -35,6 +35,8 @@ settings:
     events_solr_jp: events_solr_jp
     press_releases_solr: press_releases_solr
     press_releases_solr_jp: press_releases_solr_jp
+    projects: projects
+    projects_jp: projects_jp
     publications: publications
     publications_jp: publications_jp
     search: search
