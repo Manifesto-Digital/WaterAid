@@ -7,6 +7,7 @@ dependencies:
     - field.storage.node.field_audience
     - field.storage.node.field_content
     - field.storage.node.field_country
+    - field.storage.node.field_donor
     - field.storage.node.field_event_end_date
     - field.storage.node.field_event_start_date
     - field.storage.node.field_event_type
@@ -19,6 +20,7 @@ dependencies:
     - field.storage.node.field_publication_type
     - field.storage.node.field_regions
     - field.storage.node.field_search_phrases
+    - field.storage.node.field_strategic_aims
     - field.storage.node.field_subject_area
     - field.storage.node.field_teaser_text
     - field.storage.node.field_theme
@@ -233,6 +235,14 @@ field_settings:
         - field.storage.paragraph.field_credit
       module:
         - paragraphs
+  field_donor:
+    label: Donor
+    datasource_id: 'entity:node'
+    property_path: field_donor
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_donor
   field_event_end_date:
     label: 'Event end date'
     datasource_id: 'entity:node'
@@ -418,6 +428,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_search_phrases
+  field_strategic_aims:
+    label: 'Strategic Aims'
+    datasource_id: 'entity:node'
+    property_path: field_strategic_aims
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_strategic_aims
   field_subject_area:
     label: 'Subject Area'
     datasource_id: 'entity:node'
